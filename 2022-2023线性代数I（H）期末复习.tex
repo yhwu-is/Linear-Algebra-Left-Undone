@@ -1,0 +1,92 @@
+\documentclass{ctexbook}
+
+\usepackage{geometry}
+\geometry{a4paper}
+%\usepackage[UTF8, heading = false, scheme = plain]{ctex}%格式
+\usepackage{ctex}
+\usepackage{bm}
+\usepackage{graphicx} %添加图片
+\usepackage{amsthm}
+\usepackage{amsmath}
+\renewcommand{\vec}[1]{\boldsymbol{#1}} % 生产粗体向量，而不是带箭头的向量
+\usepackage{amssymb}
+\usepackage{booktabs} % excel导出的大表格
+\usepackage{hyperref}
+\usepackage{rotating}
+\usepackage{extarrows}
+
+%\newtheorem{definition}{Definition} %英文
+
+%\newtheorem{theorem}{Theorem}
+
+\newtheorem{definition}{定义}[section] %中文
+\newtheorem{example}{例}[section]
+\newtheorem{lemma}{引理}[section]
+
+\newtheorem{theorem}{定理}[section]
+
+%\newenvironment{proof}{{\noindent\it 证明}\quad}{\hfill □ \square□\par}
+
+\DeclareMathOperator{\Ima}{Im}%定义新符号
+
+\DeclareMathOperator{\Rank}{rank}%定义求秩算子
+
+\title{\heiti 2022-2023 学年秋冬学期 \\ 线性代数I（H）期末复习讲义}
+\author{2022-2023 秋冬线性代数 I（H）辅学期末复习授课 \\ 吴一航\ \ yhwu\_is@zju.edu.cn}
+
+\begin{document}
+\maketitle
+\centerline{\huge \heiti 前言}
+\vskip 0.3 in
+\kaishu
+线性代数作为一门重要的基础学科，是很多同学大一必修的课程，也是将来深入学习部分方向的基础。
+竺院同学学习的《大学数学：代数与几何（第二版）》（居余马，李海中）授课的思路不同于国内绝大
+部分的线性代数以及高等代数教材，从线性空间和线性映射出发引入矩阵，所以更加抽象，但是也
+更加接近本质。
+
+然而，这也导致可参考的资料有限。一般的线性代数以及高等代数教材都是从行列式入手，线性空间和
+线性映射的内容要么在学完矩阵等内容后讲解，或者是根本不涉及。并且普通的考研数学也基本不涉及
+这一部分，因此一直以来都只有《大学数学：代数与几何学习辅导》（林翠琴，居余马）一本教材的
+配套辅导资料比较贴近，很多同学可能会参考国内的丘维声老师的高等代数或者是国外著名的MIT教授
+Gilbert Strang 的网课，但内容还是略有差别，也比较耗费精力，对于很多同学而言并不是最好的
+选择。虽然说学习知识更重要的在于体会其本质内容，体会其深入的思想，但现实问题
+在于，缺少内容的总结以及题目的练习会使得很多同学无法适应这种抽象的学习思维。因此，我编写
+本册的主要目的就在于给这一套教程一个合适的配套资料，使得同学们能在学习与复习时更加有头绪。
+
+在编写与修订的过程中，我主要参考了教材《大学数学：代数与几何（第二版）》（居余马，李海中）
+、《大学数学：代数与几何学习辅导》（林翠琴，居余马）、《高等代数（第二版）》（丘维声）、
+《高等代数：学习指导书》（丘维声）、《线性代数辅导讲义》（汤家凤）、
+《高等代数强化讲义》（李扬）以及《高等代数考研：高频真题分类精解300例》等，并参考了部分
+历年试题。同时需要感谢谢集同学等在阅读过程中指出了本册中的一部分笔误。
+
+在编写中，我主要按照2022-2023学年秋冬学期的考核要求编写，因此正交、正定等内容并未包含在内。
+我的编写整体思路与教材章节顺序一致，除去高斯消元法的内容并未首先讲解，而是并入专题五中，如果
+这一部分不够熟悉的同学，建议先阅读专题五的第一节内容。并且编写过程中我将教材及其辅导资料中
+有价值的习题全部摘录，这些也是考试中很多习题的改编起点。除此之外，本册中多处内容提及教材中
+相应内容，因此建议二者配套阅读。
+
+除此之外，本册有一个精简版适用于期末短期复习，删除了部分较难的内容和习题，更加针对考试的难度，
+如果对自己要求不是很高或者考前时间有限建议阅读精简版。
+
+由于本人水平与时间有限，本册中可能还存在着一些问题，并且还有很多内容并没有详细展开提供严谨
+的说明，答案的修订也比较仓促，希望各位见谅。如果条件允许，可以考虑开源共享源文件的方式，对
+修订本册感兴趣的同学也可以参与进来，让本册更加完善，使得本册能更好地实现其目的。
+
+最后，希望本册能对各位同学有所帮助，无论是对线性代数的学习与考试还是对未来遇见线性代数的
+应用的情况。祝各位同学考试顺利，学有所成！
+
+\begin{flushright}
+    \songti 编者 \\
+    2023年2月10日
+\end{flushright}
+\songti
+\tableofcontents
+\newpage
+\setcounter{page}{1} % 将页码计数设置为1
+\input{./专题一 向量组与线性空间.tex}
+\input{./专题二 线性映射及其矩阵表示.tex}
+\input{./专题三 矩阵运算 矩阵的秩.tex}
+\input{./专题四 行列式.tex}
+\input{./专题五 线性方程组.tex}
+\input{./专题六 特征值与特征向量 矩阵标准形.tex}
+\end{document}

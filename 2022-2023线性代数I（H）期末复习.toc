@@ -1,0 +1,152 @@
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}向量组与线性空间}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Overview}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}线性空间及其子空间的概念}{1}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}线性空间的定义}{1}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}线性空间举例}{2}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}线性子空间}{2}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}习题}{4}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}线性相关性}{4}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}线性相关性的定义}{4}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}线性相关性的定理}{5}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}习题}{6}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}向量组的秩\ 线性空间的维数\ 向量组的坐标}{8}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}秩与维数的概念}{8}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}相关定理与性质}{8}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}求解极大线性无关组}{9}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}向量组的坐标}{9}{subsection.1.4.4}%
+\contentsline {subsection}{\numberline {1.4.5}习题}{10}{subsection.1.4.5}%
+\contentsline {section}{\numberline {1.5}线性空间的交与和}{12}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}线性空间的交与和的概念}{12}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}维数公式}{12}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}直和的概念与等价条件}{13}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}习题}{14}{subsection.1.5.4}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}线性映射及其矩阵表示}{17}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Overview}{17}{section.2.1}%
+\contentsline {section}{\numberline {2.2}线性映射的定义}{17}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}线性映射的定义}{17}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}线性映射的基本运算}{18}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}线性映射举例}{18}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}线性映射的确定}{19}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}习题}{19}{subsection.2.2.5}%
+\contentsline {section}{\numberline {2.3}线性映射的像、核与秩}{20}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}线性映射的像和核的定义}{20}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}线性映射的秩的定义}{21}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}线性映射基本定理（维数公式）}{21}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}线性映射的像和核的进一步讨论}{22}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}习题}{22}{subsection.2.3.5}%
+\contentsline {section}{\numberline {2.4}线性映射矩阵表示}{24}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}一个最基本的定义}{24}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}一组简单的例子}{25}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}习题}{25}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}线性空间的同构}{27}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}线性空间同构的概念}{27}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}线性空间同构举例}{28}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}一些相似的定理}{28}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}习题}{30}{subsection.2.5.4}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}矩阵运算\ 矩阵的秩}{33}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Overview}{33}{section.3.1}%
+\contentsline {section}{\numberline {3.2}矩阵基本运算}{33}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}基本概念}{33}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}基本性质}{33}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}矩阵可交换问题}{34}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}习题}{35}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3}矩阵的转置}{36}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}基本概念}{36}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}基本性质}{36}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}对阵矩阵与反对称矩阵}{37}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}习题}{37}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}初等矩阵}{38}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}基本概念与性质}{38}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}习题}{39}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}可逆矩阵}{40}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}基本概念}{40}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}基本性质}{40}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}逆矩阵的求解（基本方法）}{41}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}矩阵方程}{41}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}习题}{42}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}分块矩阵}{42}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}运算性质}{42}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}分块矩阵初等变换（打洞法）*}{44}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}分块矩阵与数学归纳法}{45}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}习题}{45}{subsection.3.6.4}%
+\contentsline {section}{\numberline {3.7}矩阵计算进阶问题}{45}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}几种特殊的矩阵}{46}{subsection.3.7.1}%
+\contentsline {subsubsection}{对角矩阵}{46}{subsubsection*.2}%
+\contentsline {subsubsection}{上（下）三角矩阵}{46}{subsubsection*.3}%
+\contentsline {subsubsection}{基本矩阵}{47}{subsubsection*.4}%
+\contentsline {subsubsection}{其他矩阵}{47}{subsubsection*.5}%
+\contentsline {subsection}{\numberline {3.7.2}逆矩阵的求解（进阶方法）}{47}{subsection.3.7.2}%
+\contentsline {subsubsection}{给定多项式求逆矩阵}{47}{subsubsection*.6}%
+\contentsline {subsubsection}{利用分块矩阵初等变换*}{47}{subsubsection*.7}%
+\contentsline {subsubsection}{求逆的分式思想*}{48}{subsubsection*.8}%
+\contentsline {subsubsection}{提逆思想*}{48}{subsubsection*.9}%
+\contentsline {subsection}{\numberline {3.7.3}矩阵的迹*}{48}{subsection.3.7.3}%
+\contentsline {subsubsection}{基本概念与性质}{48}{subsubsection*.10}%
+\contentsline {subsubsection}{幂零矩阵}{49}{subsubsection*.11}%
+\contentsline {subsection}{\numberline {3.7.4}矩阵的幂}{49}{subsection.3.7.4}%
+\contentsline {section}{\numberline {3.8}矩阵的秩的定义与性质}{51}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}矩阵的三个秩的基本概念与性质}{51}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}相抵标准形}{52}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}秩相关的等式与不等式}{53}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}习题}{54}{subsection.3.8.4}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}行列式}{57}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Overview}{57}{section.4.1}%
+\contentsline {section}{\numberline {4.2}行列式的定义与性质}{57}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}公理化定义}{57}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}递归式定义}{58}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}行列式的常用性质}{59}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}习题}{60}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}行列式的运算}{62}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}概述}{62}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}习题}{62}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}伴随矩阵的定义与性质}{64}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}伴随矩阵的定义与性质}{64}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}习题}{65}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Cramer法则}{67}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Cramer法则}{67}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}习题}{67}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}行列式的秩的定义与性质}{68}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}行列式的秩}{68}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}关于秩的总结}{68}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}习题}{69}{subsection.4.6.3}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}线性方程组}{71}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Overview}{71}{section.5.1}%
+\contentsline {section}{\numberline {5.2}高斯消元法}{71}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}基本步骤}{71}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}其他方法}{72}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}习题}{73}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}线性方程组解的一般理论}{73}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}线性方程组解的一般理论}{74}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}齐次线性方程组解的一般理论}{74}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}非齐次线性方程组解的一般理论}{75}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}习题}{75}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}利用线性方程组解的一般理论解决矩阵秩的问题}{79}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}概述}{79}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}习题}{80}{subsection.5.4.2}%
+\contentsline {section}{\numberline {5.5}线性方程组拓展题型}{81}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}含参数的线性方程组问题}{81}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}线性方程组同解问题}{81}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}线性方程组公共解问题}{82}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}线性方程组反问题}{83}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}习题}{83}{subsection.5.5.5}%
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}特征值与特征向量\ 矩阵标准形}{87}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Overview}{87}{section.6.1}%
+\contentsline {section}{\numberline {6.2}特征值与特征向量}{87}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}特征值与特征向量的定义与求解}{87}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}特征值的基本性质}{89}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}特征向量的基本性质}{90}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}习题}{90}{subsection.6.2.4}%
+\contentsline {section}{\numberline {6.3}矩阵相似与对角化}{91}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}矩阵相似的定义与性质}{91}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}可对角化的条件}{93}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}对角化问题的一般解法}{94}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}实对称矩阵对角化}{95}{subsection.6.3.4}%
+\contentsline {subsection}{\numberline {6.3.5}幂等矩阵}{95}{subsection.6.3.5}%
+\contentsline {subsection}{\numberline {6.3.6}习题}{96}{subsection.6.3.6}%
+\contentsline {section}{\numberline {6.4}二次型及其标准形}{99}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}二次型的定义}{99}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}矩阵相合的定义与性质}{100}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}二次型标准形的定义与求解}{101}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}相合规范形\ 惯性定理}{101}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.5}标准形的应用}{102}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.6}习题}{103}{subsection.6.4.6}%
