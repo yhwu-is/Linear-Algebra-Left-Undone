@@ -23,7 +23,7 @@
 	
 	$D(\alpha_1,\dots,\alpha_i+\beta_i,\dots,\alpha_n)=D(\alpha_1,\dots,\alpha_i,\dots,\alpha_n)+D(\alpha_1,\dots,\beta_i,\dots,\alpha_n)$\textup{;}
 
-	\textup{3}.（反对称性）$D(\alpha_1,\dots,\alpha_i,\dots,\alpha_j,\dots,\alpha_n)=-D(\alpha_1,\dots,\alpha_j,\dots,\alpha_j,\dots,\alpha_n)$\textup{;}
+	\textup{3}.（反对称性）$D(\alpha_1,\dots,\alpha_i,\dots,\alpha_j,\dots,\alpha_n)=-D(\alpha_1,\dots,\alpha_j,\dots,\alpha_i,\dots,\alpha_n)$\textup{;}
 
 	\textup{4}.（规范性）$D(e_1,e_2,\dots,e_n)=1$.
 \end{definition}
@@ -53,7 +53,7 @@
 \subsection{递归式定义}
 首先需要回顾余子式和代数余子式的概念：
 \begin{definition}
-	在$n$阶行列式$D=|a_{ij}|_{n \times n}$中，去掉元素$a_ij$所在的第$i$行和第$j$列的所有元素
+	在$n$阶行列式$D=|a_{ij}|_{n \times n}$中，去掉元素$a_{ij}$所在的第$i$行和第$j$列的所有元素
 	而得到的$n-1$阶行列式称为元素$a_{ij}$的余子式，记作$M_{ij}$，并把数$A_{ij}=(-1)^{i+j}M_{ij}$
 	称为元素$a_{ij}$的代数余子式.
 \end{definition}
@@ -89,10 +89,10 @@
 	$n$阶行列式$D=|a_{ij}|_{n \times n}$的某一行（列）元素与另一行（列）相应元素的代数余子式
 	的乘积之和等于$0$，即
 	\begin{equation}
-		D=\sum_{k=1}^{n}a_{kj}A_{ki}=a_{1j}A_{1i}+a_{2j}A_{2i}+\dots+a_{nj}A_{ni},\ j \neq i
+		\sum_{k=1}^{n}a_{kj}A_{ki}=a_{1j}A_{1i}+a_{2j}A_{2i}+\dots+a_{nj}A_{ni}=0,\ j \neq i
 	\end{equation}
 	\begin{equation}
-		D=\sum_{k=1}^{n}a_{jk}A_{ik}=a_{j1}A_{i1}+a_{j2}A_{i2}+\dots+a_{jn}A_{in},\ j \neq i
+		\sum_{k=1}^{n}a_{jk}A_{ik}=a_{j1}A_{i1}+a_{j2}A_{i2}+\dots+a_{jn}A_{in}=0,\ j \neq i
 	\end{equation}
 \end{theorem}
 我们若将行列式第$j$列元素替换为第$i$列元素，那么上述（3）式根据定义3就是在求替换后的行列式，
