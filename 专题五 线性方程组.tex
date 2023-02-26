@@ -262,7 +262,7 @@ $A\bm{X}=\bm{b}$.
 	\item 设$A$为$m \times n$矩阵，$r(A)=m$，$B$是$m$阶可逆矩阵，已知$A$的行空间$R(A^\mathrm{T})$是方程组$CX=0$的解空间，证明：
 	$BA$的行向量也是$CX=0$的一个基础解系.
 	\item 设$A$是$n$阶矩阵，且$A_{11}\neq 0$，证明：方程组$AX=b$（$b$为非零向量）有无穷多解的充要条件为$A^*b=0$.
-	\item 若$n$阶矩阵$A$的各行、各列元素之和都为0，证明：$|A|$的所有元素的代数余子式都相等.
+	\item 若$n$阶矩阵$A$的各行、各列元素之和都为0，证明：$A$的所有元素的代数余子式都相等.
 	\item 已知 $\alpha_1,\ \alpha_2,\ \dots,\ \alpha_s$ 是齐次线性方程组 $AX=0$ 的一组基础解系，向量组
 
 	$$
@@ -343,7 +343,7 @@ $A\bm{X}=\bm{b}$.
 
 	\textup{（3）}设$A,B$分别是$m \times n$和$n \times s$矩阵，则$r(AB)\le\min\{r(A),r(B)\}$\textup{；}
 
-	\textup{（4）}$A^2=A \iff r(A)+r(E-A)=n$，$A^2=E \iff r(A+E)=r(A-E)=n$.
+	\textup{（4）}$A^2=A \iff r(A)+r(E-A)=n$，$A^2=E \iff r(A+E)+r(A-E)=n$.
 \end{example}
 实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用
 维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系
@@ -408,20 +408,20 @@ $A\bm{X}=\bm{b}$.
 
 我们来看两线性方程组同解的充要条件：
 \begin{theorem}
-	$n$元齐次线性方程组（$1$）$A_{m_1 \times n}X=0$与（$2$）$B_{m_2 \times n}=0$同解的
+	$n$元齐次线性方程组（$1$）$A_{m_1 \times n}X=0$与（$2$）$B_{m_2 \times n}X=0$同解的
 	充要条件是$r\begin{pmatrix}
 		A \\ B
 	\end{pmatrix}=r(A)=r(B)$.
 \end{theorem}
 \begin{theorem}
-	$n$元非齐次线性方程组（$1$）$A_{m_1 \times n}X=b$与（$2$）$B_{m_2 \times n}=d$同解的
+	$n$元非齐次线性方程组（$1$）$A_{m_1 \times n}X=b$与（$2$）$B_{m_2 \times n}X=d$同解的
 	充要条件是
 	
 	\textup{1. }$r(A)\neq r(A,b)$且$r(B)\neq r(B,d)$
 	
 	或
 	
-	\textup{2. }$\begin{pmatrix}
+	\textup{2. }r$\begin{pmatrix}
 		A & b \\ B & d
 	\end{pmatrix}=r\begin{pmatrix}
 		A \\ B
@@ -441,7 +441,7 @@ $A\bm{X}=\bm{b}$.
 \subsection{线性方程组公共解问题}
 公共解即为两线性方程组解集的交集，我们从齐次和非齐次讨论有公共解的条件：
 \begin{theorem}
-	对于$n$元齐次线性方程组\textup{（1）}$A_{m_1 \times n}X=0$与\textup{（2）}$B_{m_2 \times n}=0$有
+	对于$n$元齐次线性方程组\textup{（1）}$A_{m_1 \times n}X=0$与\textup{（2）}$B_{m_2 \times n}X=0$有
 
 	\textup{（1）}\textup{（1）}与\textup{（2）}有非零公共解的充要条件是$r\begin{pmatrix}
 			A \\ B
@@ -450,7 +450,7 @@ $A\bm{X}=\bm{b}$.
 	\textup{（2）}设$\eta_1,\eta_2,\cdots,\eta_s(s=n-r(B))$是\textup{（2）}的基础解系，则
 	\textup{（1）}与\textup{（2）}有非零公共解的充要条件是$A\eta_1,A\eta_2,\cdots,A\eta_s$线性相关\textup{；}
 
-	\textup{（3）}设$\gamma_1,\gamma_2,\cdots,\gamma_t(s=n-r(A))$是\textup{（1）}的基础解系，
+	\textup{（3）}设$\gamma_1,\gamma_2,\cdots,\gamma_t(t=n-r(A))$是\textup{（1）}的基础解系，
 	$\eta_1,\eta_2,\cdots,\eta_s(s=n-r(B))$是\textup{（2）}的基础解系，则\textup{（1）}与\textup{（2）}有非零公共解的充要条件是
 	$\gamma_1,\gamma_2,\cdots,\gamma_t,\eta_1,\eta_2,\cdots,\eta_s$线性相关.
 \end{theorem}
@@ -459,7 +459,7 @@ $A\bm{X}=\bm{b}$.
 
 	\textup{（1）}\textup{（1）}与\textup{（2）}有公共解的充要条件是$r\begin{pmatrix}
 			A \\ B
-		\end{pmatrix}=\begin{pmatrix}
+		\end{pmatrix}=r\begin{pmatrix}
 			A & b \\ B & d
 		\end{pmatrix}$\textup{；}
 
