@@ -1,0 +1,76 @@
+\documentclass{ctexbook}
+
+\usepackage{geometry}
+\geometry{a4paper}
+%\usepackage[UTF8, heading = false, scheme = plain]{ctex}%格式
+\usepackage{ctex}
+\usepackage{bm}
+\usepackage{graphicx} %添加图片
+\usepackage{amsthm}
+\usepackage{amsmath}
+\renewcommand{\vec}[1]{\boldsymbol{#1}} % 生产粗体向量，而不是带箭头的向量
+\usepackage{amssymb}
+\usepackage{booktabs} % excel导出的大表格
+\usepackage{hyperref}
+\usepackage{rotating}
+\usepackage{extarrows}
+
+\usepackage{zhnumber}
+% \renewcommand\thechapter{\zhnum{chapter}}
+
+\usepackage[center]{titlesec}  % chapter标题修改为第*讲
+\titleformat{\chapter}{\centering\Huge\bfseries}{第\,\thechapter\,讲}{1em}{}
+\titleformat{\section}{\raggedright\Large\bfseries}{\,\thesection\,}{1em}{}
+\titleformat{\subsection}{\raggedright\large\bfseries}{\,\thesubsection\,}{1em}{}
+
+% \CTEXsetup[name = {第\,\thechapter\,讲}]{chapter}
+% \usepackage{titletoc}
+% \titlecontents{chapter}[3em]{\bfseries \zihao{5} \vspace{10pt}}{\contentslabel{4em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+
+\newtheorem{definition}{定义}[section] %中文
+\newtheorem{example}{例}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{theorem}{定理}[section]
+
+%\newenvironment{proof}{{\noindent\it 证明}\quad}{\hfill □ \square□\par}
+\DeclareMathOperator{\Ima}{Im}%定义新符号
+\DeclareMathOperator{\Rank}{rank}%定义求秩算子
+
+\title{\heiti 浙江大学 2023-2024 学年 \\ 线性代数荣誉课辅学讲义}
+\author{2023-2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航\ \ yhwu\_is@zju.edu.cn}
+
+\begin{document}
+\maketitle
+
+\songti
+\tableofcontents
+\newpage
+\setcounter{page}{1} % 将页码计数设置为1
+\input{./专题/第一讲 预备知识.tex}
+\input{./专题/第二讲 线性空间.tex}
+\input{./专题/第三讲 有限维线性空间.tex}
+\input{./专题/第四讲 线性空间的运算.tex}
+\input{./专题/第五讲 线性映射.tex}
+\input{./专题/第六讲 线性映射基本定理.tex}
+\input{./专题/第七讲 商空间与对偶.tex}
+\input{./专题/第八讲 矩阵基本运算.tex}
+\input{./专题/第九讲 矩阵运算进阶.tex}
+\input{./专题/第十讲 矩阵的秩.tex}
+\input{./专题/第十一讲 行列式（I）.tex}
+\input{./专题/第十二讲 行列式计算进阶.tex}
+\input{./专题/第十三讲 朝花夕拾.tex}
+\input{./专题/第十四讲 多项式.tex}
+\input{./专题/第十五讲 不变子空间.tex}
+\input{./专题/第十六讲 相似标准形.tex}
+\input{./专题/第十七讲 多项式的进一步讨论.tex}
+\input{./专题/第十八讲 若当标准形.tex}
+\input{./专题/第十九讲 内积空间.tex}
+\input{./专题/第二十讲 内积空间上的算子（I）.tex}
+\input{./专题/第二十一讲 内积空间上的算子（II）.tex}
+\input{./专题/第二十二讲 极分解与奇异值分解.tex}
+\input{./专题/第二十三讲 实空间上的算子.tex}
+\input{./专题/第二十四讲 行列式（II）.tex}
+\input{./专题/第二十五讲 线性代数与解析几何基础.tex}
+\input{./专题/第二十六讲 二次型.tex}
+\input{./专题/第二十七讲 线性代数与多元微积分.tex}
+\end{document}
