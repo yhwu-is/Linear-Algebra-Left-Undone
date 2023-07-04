@@ -29,6 +29,6 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: 线性代数荣誉课辅学讲义-${{ github.ref_name }}-${{ github.run_number }}.pdf
+          name: 线性代数荣誉课辅学讲义-${{ github.run_number }}.pdf
           path: |
             ${{ github.workspace }}/讲义/线性代数荣誉课辅学讲义.pdf
