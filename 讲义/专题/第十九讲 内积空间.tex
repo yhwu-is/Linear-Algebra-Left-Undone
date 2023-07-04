@@ -1,8 +1,282 @@
 \chapter{内积空间}
 
 \section{内积和范数}
+\subsection{内积和范数的定义及性质}
+前面研究的所有空间都是线性空间，只注重于线性结构，忽视了向量的度量性质，如向量的长度、夹角等。
+但度量性质恰是在分析、几何问题中不可缺少的。故从此章起，我们引入度量的概念，将线性空间推广为内积空间。
+
+\vspace{2ex} 
+
+内积的引入始于我们曾在高中研究过的 $\mathbf{R}^{2}$ 与 $\mathbf{R}^{3}$ 上的向量点积，范数则是始于向量的长度概念。
+内积即是点积性质的推广，本质上就是一个函数，它把 $ V $ 中元素的每个有序对 $(u, v)$ 都映射成一个数 
+$ \langle u, v \rangle \in \mathbf{F}$，并且具有以下性质：
+
+1. 正定性：$\forall v \in V, \enspace \langle v, v \rangle \geqslant 0, \enspace \langle v, v \rangle = 0 \Leftrightarrow v = 0$; 
+
+2. 第一个位置的加性：$\forall u, v, w \in V, \enspace \langle u + v, w \rangle = \langle u, w \rangle + \langle v, w \rangle$;
+
+3. 第一个位置的齐性：$\forall \lambda \in \mathbf{F}, \enspace \forall u, v \in V, 
+\enspace \langle \lambda u, v \rangle = \lambda \langle u, v \rangle$;
+
+4. 共轭对称性：$\forall u, v \in V, \enspace \langle u, v \rangle = \overline{\langle v, u \rangle}$.
+
+每个实数都等于它的复共轭，所以在处理实向量空间时，共轭对称性实际上转变为对称性，即：
+$\forall u, v \in V, \enspace \langle u, v \rangle = \langle v, u \rangle$
+
+而由以上定义，我们可以快速得到以下性质：
+
+1. 对于每个取定的 $u \in V$，将 $ v $ 变为 $\langle v, u \rangle$ 的函数是 $ V $ 到 $\mathbf{F}$ 的线性映射.
+
+2. $\forall u \in V, \enspace \langle 0, u \rangle = \langle u, 0 \rangle = 0$.
+
+3. $\forall u, v, w \in V, \enspace \langle u, v + w \rangle = \langle u, v \rangle + \langle u, w \rangle$.
+
+4. $\forall \lambda \in \mathbf{F}, \enspace \forall u, v \in V, \enspace \langle u, \lambda v \rangle = \overline{\lambda} \langle u, v \rangle$.
+
+其实从以上的定义与性质可以发现，实内积空间上的内积与我们之后要提到的双线性函数有着密不可分的联系——
+实线性空间上的正定对称双线性函数实际上就是该空间上的一个内积，在此先按下不表。
+
+\vspace{2ex} 
+
+内积定义完成后，便可由该内积确定一个相应的范数：对于 $v \in V$，$v$ 的范数（记作 $ \lVert v \rVert $）
+定义为 $ \lVert v \rVert = \sqrt{\langle v, v \rangle}$. \enspace 并且具有以下性质：
+
+1. $\forall v \in V, \enspace \left\lVert v \right\rVert = 0 \Leftrightarrow v = 0$.
+
+2. $\forall v \in V, \enspace \forall \lambda \in \mathbf{F}, 
+\enspace \left\lVert \lambda v \right\rVert  = \left\lvert \lambda \right\rvert \lVert v \rVert$.
+
+上述性质留给读者自证，从中我们也能发现一个普遍原理：处理范数的平方通常比直接处理范数更容易。
+
+\vspace{2ex} 
+
+以下给出几个内积和范数的示例：
+
+\begin{example}
+    \textup{（1）}$\mathbf{F}^{n}$ 上的欧几里得内积定义为：
+    \[\left\langle (w_1, \ldots, w_n), (z_1, \ldots, z_n)\right\rangle = w_1\overline{z_1} + \cdots + w_n\overline{z_n} = \vec{W}\overline{\vec{Z}}^{T}\]
+    对应范数：
+    \[\left\lVert (z_1, \ldots, z_n) \right\rVert  = \sqrt{\lvert z^2_1 \rvert + \cdots + \lvert z^2_n \rvert}\]
+
+    \textup{（2）}定义在 $ \left[-1, 1\right] $ 上的连续实值函数构成的向量空间可定义内积如下：
+    \[\left\langle f, g\right\rangle = \int_{-1}^1f(x)g(x)\mathrm{d}x\]
+    对应范数：
+    \[\left\lVert f \right\rVert = \sqrt{\int_{-1}^1(f(x))^2\mathrm{d}x}\]
+\end{example}
+
+\subsection{正交的定义，基于正交的性质}
+
+以下给出一个关键定义：
+
+\begin{definition}
+    两个向量 $u, v \in V$ 称为正交的，如果 $\langle u, v\rangle = 0$.
+\end{definition}
+
+该定义中向量的次序是无关紧要的，因为 $\langle u, v\rangle = 0 \Leftrightarrow \langle v, u\rangle = 0$. 
+
+\vspace{2ex} 
+
+那么正交的定义关键在何处呢？以下给出 $R^{n}$ 空间上夹角的定义以供理解
+（证明良定义需要用到 Cauchy-Schwarz 不等式）：
+
+\begin{definition}
+    设 $u, v \in R^{n}$，则 $u, v$ 的夹角 $ \theta $ 为 
+    $ \theta = \arccos \frac{\langle u, v\rangle}{\lVert u \rVert \lVert v \rVert}$.
+\end{definition}
+
+那么我们可以发现，当两向量正交时，它们的夹角就是 $\frac{\pi}{2}$，
+也就是我们在几何中常说的垂直，它能将我们导向一些重要的定理。
+
+\vspace{2ex} 
+
+让我们从一些简单的结果开始研究正交性，比如正交性与 0 的关系：
+
+1. 0 正交与 $V$ 中的任意向量.
+
+2. 0 是 $V$ 中唯一一个与自身正交的向量.
+
+然后是熟悉的勾股定理在内积空间上的推广：
+
+\begin{theorem}
+    设 $u, v$ 是 $V$ 中的正交向量，则 $\lVert u + v \rVert^2 = \lVert u \rVert^2 + \lVert v \rVert^2 $ 
+\end{theorem}
+
+注意勾股定理的逆定理仅在实内积空间上成立。
+
+\vspace{2ex} 
+
+借助于正交的性质，我们能够简化很多与内积相关的计算，
+进而会很自然的思考这样一个问题：一个向量能否分解两个互相正交的向量？
+
+从而便引进了正交分解：
+
+\begin{theorem}
+    设 $u, v \in V$ 且 $v \neq 0$. 令 $ c = \frac{\langle u, v\rangle}{\lVert v \rVert^2}, 
+    \enspace w = u - \frac{\langle u, v\rangle}{\lVert v \rVert^2}v$. 则 $\langle w, v\rangle = 0$ 
+    且 $u = cv + w$
+\end{theorem}
+
+而通过正交分解，我们可以证明一个数学中最重要的不等式（之一）：Cauchy-Schwarz 不等式。
+
+\begin{theorem}
+    设 $u, v \in V$. 则 $\left\lvert \left\langle u, v\right\rangle \right\rvert \leqslant \lVert u \rVert\lVert v \rVert$. 
+    等号成立当且仅当 $u, v$ 之一是另一个的标量倍.
+\end{theorem}
+
+也可以通过引入参数，利用二次三项式的判别式证明。
+
+\vspace{2ex}
+
+借助 Cauchy-Schwarz 不等式，我们可以得到三角不等式：
+
+\begin{theorem}
+    设 $u, v \in V$. 则 $\lVert u, v \rVert \leqslant \lVert u \rVert + \lVert v \rVert$.
+    等号成立当且仅当 $u, v$ 之一是另一个的非负标量倍.
+\end{theorem}
+
+其几何解释就是俗称的三角形两边之和小于第三边。
+
+\vspace{2ex}
+
+另一个与几何相关的结论就是平行四边形恒等式:
+
+\begin{theorem}
+    设 $u, v \in V$. 则 $ \lVert u + v \rVert^{2} + \lVert u - v \rVert^{2} = 2(\lVert u \rVert^{2} + \lVert v \rVert^{2})$.
+\end{theorem}
+
+其几何解释为任意的平行四边形两对角线的长度的平方和等于四边长度的平方和。
+
+\vspace{2ex}
+
+
+以下为另外几个与内积有关的恒等式，我们会在证明正规算子和自伴算子的性质时运用到它们：
+
+\begin{example}
+    证明下列式子成立：
+
+    \textup{（1）} $\textbf{F} = \textbf{R}$ 时:
+    \[(i) \enspace \langle u, v\rangle  = \frac{1}{4}\left( \lVert u + v \rVert^2 - \lVert u - v \rVert^2\right);\]
+    \[(ii) \enspace \langle Tu, v\rangle + \langle Tv, u\rangle = 
+    \frac{1}{2}\left(\langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle\right).\]
+
+    \textup{（2）} $\textbf{F} = \textbf{C}$ 时:
+    \[(i) \enspace \langle u, v\rangle  = \frac{1}{4}\left( (\lVert u + v \rVert^2 - \lVert u - v \rVert^2) + i(\lVert u + iv \rVert^2 - \lVert u - iv \rVert^2) \right);\]
+    \begin{align*}
+        (ii) \enspace \langle Tu, v\rangle = & \frac{1}{4}  ((\langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle) \\ 
+                                             & + i(\langle T(u + iv), u + iv\rangle + \langle T(u - iv), u - iv\rangle)).
+    \end{align*}
+
+\end{example}
+
 
 \section{标准正交基}
+
+这一节我们将沿着正交的路径接着往下走，看看如果整个向量组乃至一组基都是单位化的且互相正交的话，会有怎样的性质。
+我们也会讲解如何获取这样一组基的算法，并介绍 Riesz 表示定理，其揭示了线性泛函和内积的深刻联系。
+
+\begin{definition}
+    标准正交（规范正交）：如果一个向量组的每个向量范数都是 1 且与其他向量正交
+    则称这个向量组是标准正交（规范正交）的。
+\end{definition}
+
+在本书的剩余部分中我们都称此性质为标准正交。
+
+由以上定义，我们得出：$ V $ 上的向量组 $ e_1, \ldots , e_n $ 是标准正交的，如果
+\[ \langle e_j, e_k \rangle = \delta _{jk} = 
+\begin{cases}
+    1, \enspace j = k; \\
+    0, \enspace j \neq k.
+\end{cases}\]
+
+标准正交组的优势在于处理其线性组合的范数很方便。
+
+\begin{theorem}
+    若 $e_1, \ldots , e_m$ 是 $ V $ 中的标准正交向量组，则对 $\forall a_1, \ldots a_m \in \mathbf{F}$ 均有
+    \[ \lVert a_1e_1 + \cdots + a_ne_n\rVert^2 = \lvert a_1 \rvert^2 + \cdots + \lvert a_n \rvert^2.\]
+\end{theorem}
+
+反复使用勾股定理即可证明。该定理也有一个重要推论：
+
+\begin{theorem}
+    任何标准正交向量组都是线性无关的.
+\end{theorem}
+
+令其线性组合为 0 向量即证。
+
+\begin{example}
+    设 $e_1, \ldots , e_m$ 是 $ V $ 的标准正交组. 设 $ v \in V $. 证明
+    \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2 \]
+    当且仅当 $ v \in \mathrm{span}(e_1, \ldots , e_m).$
+\end{example}
+
+\vspace{2ex}
+
+既然标准正交组都是线性无关的，很自然我们就会想到在线性空间中最有用的线性无关组：基。
+也就有了标准正交基的定义。
+
+\begin{definition}
+    $ V $ 的标准正交基是 $ V $ 中的标准正交向量组构成的基.
+\end{definition}
+
+而由向量组确定为基的等价条件，易知长度为 $\mathrm{dim} \enspace V$ 的标准正交向量组都是
+$ V $ 的标准正交基。    
+
+标准正交基的优势就在于表出向量的表出系数可以提前确定。
+
+\begin{theorem}
+    设 $e_1, \ldots e_n$ 是 $ V $ 标准正交基且 $ v \in V$. 则
+    \[ v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_n \rangle e_n \]
+    且
+    \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2. \]
+\end{theorem}
+
+此为例 19.3 的特例。
+
+
+标准正交基的性质十分美妙，但我们取出一组基使得其恰好是标准正交基是十分困难的，
+所幸前人已经研究出了一套算法，可以将所有线性无关组转变为标准正交组，且张成空间相同。
+
+\begin{theorem}
+    Gram-Schmidt 过程：设 $v_1, \ldots ,v_n$ 是 $ V $ 中的线性无关向量组.
+    设 $e_1 = v_1/ \lVert v_1 \rVert$. 对于 $ j = 2, \ldots , m$，定义 $ e_j $ 如下：
+    \[ e_j = \frac{v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} }{\lVert v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} \rVert}.\]
+    则 $e_1, \ldots , e_m $ 是 $ V $ 中的标准正交组，使得对 $ j = 1, \ldots , m $ 有
+    \[ \mathrm{span} \enspace (v_1, \ldots, v_j) = \mathrm{span} \enspace (e_1, \ldots, e_j) \]
+\end{theorem}
+
+证明前半部分使用归纳法，后半部分证明两向量组等价即可。
+
+让我们简单运用一下 Gram-Schmidt 过程。
+\begin{example}
+    求 $\mathcal{P}_2(\mathbf{R})$ 的一组标准正交基，内积定义为 $\langle p, q \rangle = \int_{-1}^1 p(x)q(x)\mathrm{d}x$. 
+\end{example}
+
+不难发现，Gram-Schmidt 过程实际上可以分成两部分：
+
+1. 正交化：定义 $ u_1 = v_1 , \enspace u_j = v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1},
+\enspace j = 2, \ldots , m$，此时 $u_1, \ldots , u_m$ 已经互相正交。
+
+2. 单位化：$ e_j = \frac{u_j}{\lVert u_j \rVert} , \enspace j = 1, \ldots , m$，从而有 $\lVert e_j \rVert = 1, \enspace j = 1, \ldots , m$
+
+Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，也是应试经常考察的方面，需要多加注意。
+
+借助 Gram-Schmidt 过程，显然我们可以得到以下结论：
+
+1. 每个有限维内积空间都有标准正交基；
+
+2. 设 $ V $ 是有限的. 则 $ V $ 中每个标准正交向量组都可以扩充成 $ V $ 的标准正交基.
+
+\vspace{2ex}
+
+在此我们先打住，回忆一下内积的定义，其本质上就是一个函数，它把 $ V $ 中元素的每个有序对 $(u, v)$ 都映射成一个数 
+$ \langle u, v \rangle \in \mathbf{F}$，而我们也很熟悉一个把 $ V $ 中元素映射成一个数的函数，即所谓的线性泛函。
+那么这两者之间是否有某种联系？我们先借助几个例子观察一下。
+
+\begin{example}
+    \textup{（1）} 定义如下的函数 $\varphi$: $\mathbf{F}^{3} \rightarrow \mathbf{F}$
+    \[\varphi(z_1, z_2, z_3) = 2z_1 - 5z_2 + z_3\]
+    是
+\end{example}
 
 \section{正交补}
 
