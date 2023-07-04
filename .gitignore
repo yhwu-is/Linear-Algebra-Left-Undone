@@ -4,6 +4,7 @@
 ## Navigate to GitHub Actions or Releases to obtain a copy.
 讲义/*.pdf
 习题参考答案/*.pdf
+build
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
