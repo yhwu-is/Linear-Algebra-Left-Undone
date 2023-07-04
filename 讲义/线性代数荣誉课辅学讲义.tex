@@ -4,6 +4,7 @@
 \geometry{a4paper}
 %\usepackage[UTF8, heading = false, scheme = plain]{ctex}%格式
 \usepackage{ctex}
+\usepackage[utf8]{inputenc}
 \usepackage{bm}
 \usepackage{graphicx} %添加图片
 % \usepackage{amsthm}
@@ -11,7 +12,6 @@
 \renewcommand{\vec}[1]{\boldsymbol{#1}} % 生产粗体向量，而不是带箭头的向量
 \usepackage{amssymb}
 \usepackage{booktabs} % excel导出的大表格
-\usepackage{hyperref}
 \usepackage{rotating}
 \usepackage{extarrows}
 
@@ -20,39 +20,55 @@
 
 \usepackage{ntheorem}
 \theoremheaderfont{\bf\heiti}
-\theorembodyfont{\fangsong} 
+\theorembodyfont{\fangsong}
 
 \usepackage{zhnumber}
-% \renewcommand\thechapter{\zhnum{chapter}}
 
-\usepackage[center]{titlesec}  % chapter标题修改为第*讲
-\titleformat{\chapter}{\centering\Huge\bfseries}{第\,\thechapter\,讲}{1em}{}
-\titleformat{\section}{\raggedright\Large\bfseries}{\,\thesection\,}{1em}{}
-\titleformat{\subsection}{\raggedright\large\bfseries}{\,\thesubsection\,}{1em}{}
+% chapter 标题修改为第 * 讲
+\ctexset{
+    chapter={format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
+    section={format={\raggedright\Large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}}},
+    subsection={format={\raggedright\large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}}},
+}
 
-% \CTEXsetup[name = {第\,\thechapter\,讲}]{chapter}
-% \usepackage{titletoc}
-% \titlecontents{chapter}[3em]{\bfseries \zihao{5} \vspace{10pt}}{\contentslabel{4em}}{\hspace*{-4em}}{~\titlerule*[0.6pc]{$.$}~\contentspage}
+% hyperref 与 cleveref 需要最后引入
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{
+    colorlinks,
+    pdfborder={0 0 0},
+    bookmarksnumbered,
+}
 
-\newtheorem{definition}{定义}[chapter] %中文
+\newtheorem{definition}{定义}[chapter] % 中文
 \newtheorem{example}{例}[chapter]
 \newtheorem{lemma}{引理}[chapter]
 \newtheorem{theorem}{定理}[chapter]
 
 %\newenvironment{proof}{{\noindent\it 证明}\quad}{\hfill □ \square□\par}
-\DeclareMathOperator{\Ima}{Im}%定义新符号
-\DeclareMathOperator{\Rank}{rank}%定义求秩算子
+\DeclareMathOperator{\Ima}{Im}% 定义新符号
+\DeclareMathOperator{\Rank}{rank}% 定义求秩算子
 
 \title{\heiti 浙江大学 2023-2024 学年 \\ 线性代数荣誉课辅学讲义}
 \author{2023-2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航\ \ yhwu\_is@zju.edu.cn}
 
 \begin{document}
+\frontmatter
 \maketitle
 
 \songti
+
+% 插入空页
+{\null
+\thispagestyle{empty}
+\newpage}
+\setcounter{page}{1}
+
+\pdfbookmark[0]{目录}{contents}
 \tableofcontents
-\newpage
-\setcounter{page}{1} % 将页码计数设置为1
+
+\mainmatter
+\setcounter{page}{1} % 将页码计数设置为 1
 \input{./专题/第一讲 预备知识.tex}
 \input{./专题/第二讲 线性空间.tex}
 \input{./专题/第三讲 有限维线性空间.tex}

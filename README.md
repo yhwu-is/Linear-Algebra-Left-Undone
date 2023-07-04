@@ -29,3 +29,10 @@
     - 如果要修改的内容不多，只是一些 typo 等，或是有更好的编写思路等可以通过提 issue 的方式与我们进行交流
     - 特别注意：如果你不是本项目的合作者，请不要直接向本仓库 push，这样的行为都将是无效的
 - 讲义部分请严格按照当前文件结构进行提交，即保持现有的章节目录，图片放在 `figs` 文件夹中。如果有文件结构上的改变请先提 issue 或直接与我通过邮件/QQ 等方式交流
+
+## 手动编译
+
+请在`讲义`目录下使用 `XeLaTeX` 编译 PDF。
+```sh
+latexmk -xelatex -interaction=nonstopmode -file-line-error -output-directory=build *.tex
+```

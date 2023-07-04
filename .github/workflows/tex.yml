@@ -22,13 +22,13 @@ jobs:
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v2
         with:
-          args:  -xelatex -interaction=nonstopmode -file-line-error
+          args:  -xelatex -interaction=nonstopmode -file-line-error -output-directory=build
           working_directory: 讲义
           root_file: 线性代数荣誉课辅学讲义.tex
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: 线性代数荣誉课辅学讲义-${{ github.ref_name }}-${{ github.run_number }}.pdf
+          name: 线性代数荣誉课辅学讲义-${{ github.run_number }}.pdf
           path: |
-            ${{ github.workspace }}/讲义/线性代数荣誉课辅学讲义.pdf
+            ${{ github.workspace }}/讲义/build/线性代数荣誉课辅学讲义.pdf
