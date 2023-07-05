@@ -2,16 +2,16 @@
 
 \usepackage{geometry}
 \geometry{a4paper}
-%\usepackage[UTF8, heading = false, scheme = plain]{ctex}%格式
+%\usepackage[UTF8, heading = false, scheme = plain]{ctex} % 格式
 \usepackage{ctex}
 \usepackage[utf8]{inputenc}
 \usepackage{bm}
-\usepackage{graphicx} %添加图片
+\usepackage{graphicx} % 添加图片
 % \usepackage{amsthm}
 \usepackage{amsmath}
 \renewcommand{\vec}[1]{\boldsymbol{#1}} % 生产粗体向量，而不是带箭头的向量
 \usepackage{amssymb}
-\usepackage{booktabs} % excel导出的大表格
+\usepackage{booktabs} % excel 导出的大表格
 \usepackage{rotating}
 \usepackage{extarrows}
 
@@ -22,6 +22,12 @@
 \theoremheaderfont{\bf\heiti}
 \theorembodyfont{\fangsong}
 
+\usepackage{makeidx} % 名词索引
+\makeindex
+
+\usepackage{xparse}
+\NewDocumentCommand{\keyterm}{smm}{{\heiti\bfseries{#2}（{\sffamily{#3}}）}\IfBooleanF{#1}{\index{#2}}}
+
 \usepackage{zhnumber}
 
 % chapter 标题修改为第 * 讲
@@ -30,6 +36,8 @@
     section={format={\raggedright\Large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}}},
     subsection={format={\raggedright\large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}}},
 }
+
+\usepackage{mismath} % 包含 rank, span 等命令
 
 % hyperref 与 cleveref 需要最后引入
 \usepackage{hyperref}
@@ -46,8 +54,6 @@
 \newtheorem{theorem}{定理}[chapter]
 
 %\newenvironment{proof}{{\noindent\it 证明}\quad}{\hfill □ \square□\par}
-\DeclareMathOperator{\Ima}{Im}% 定义新符号
-\DeclareMathOperator{\Rank}{rank}% 定义求秩算子
 
 \title{\heiti 浙江大学 2023-2024 学年 \\ 线性代数荣誉课辅学讲义}
 \author{2023-2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航\ \ yhwu\_is@zju.edu.cn}
@@ -66,6 +72,8 @@
 
 \pdfbookmark[0]{目录}{contents}
 \tableofcontents
+
+\addtolength{\parskip}{.5em}
 
 \mainmatter
 \setcounter{page}{1} % 将页码计数设置为 1
@@ -96,4 +104,9 @@
 \input{./专题/第二十五讲 行列式（II）.tex}
 \input{./专题/第二十六讲 线性代数与解析几何基础.tex}
 \input{./专题/第二十七讲 线性代数与多元微积分.tex}
+
+\backmatter
+\pdfbookmark[0]{索引}{index}
+\printindex
+
 \end{document}
