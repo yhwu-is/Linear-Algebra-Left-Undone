@@ -1,30 +1,138 @@
 \chapter{有限维线性空间}
 
 \section{线性相关性}
+\subsection{线性相关性的定义}
+研究线性相关性来源于我们希望知道有限维线性空间至少需要多少个向量张成，以下是其定义：
+\begin{definition}
+	设$V(\mathbf{F})$是一个线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_m\in V$，如果存在
+	不全为$0$的$\lambda_1,\lambda_2,\ldots,\lambda_m\in\mathbf{F}$，使得
+	$$\lambda_1\alpha_1+\alpha_2\lambda_2+\cdots+\lambda_m\alpha_m=0$$
+	成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，否则称线性无关（即系数只能为$0$）.
+\end{definition}
+线性相关和线性无关的证明就是基于这个定义，请务必牢牢掌握．
+
+直接由定义我们可以导出以下结论：
+
+1. 线性空间中单个向量$\alpha$线性相关的充要条件是$\alpha$为零向量；
+
+2. 任何含零向量的向量组都线性相关.
+
+我们来看几个基本的例子：
+\begin{example}
+	\textup{（1）}判断$(1,1,0),(0,1,1),(1,0,-1)$的线性相关性；
+
+	\textup{（2）}判断$(1,-3,1),(-1,2,-2),(1,1,3)$的线性相关性；
+
+	\textup{（3）}判断$p_1(x)=1+x,p_2(x)=1-x,p_3(x)=x+x^2$的线性相关性；
+
+	\textup{（4）}判断$1,\sin^2x,\cos^2x$的线性相关性；
+
+	\textup{（5）}判断$1,2^x,2^{-x}$的线性相关性.
+\end{example}
+注意上述（3）到（5）题为不能代入特殊的$x$值来说明，例如（3）令$x=0$得到线性相关的做法是错误的，因为
+（3）中线性空间就是多项式构成的线性空间，其中的元素就是多项式，不能代入值．注意（5）是特殊题型，
+需要构造更多的方程来求解这一问题．
+\subsection{线性相关性的定理}
+本节内容十分重要，是理解线性空间结构的基础，希望同学们对以下定理及其证明十分熟练并且要有深刻的理解．
+我们的主线思路是从不同方面理解线性相关性：
+\begin{enumerate}
+	\item 从线性组合看（定义）
+
+	      向量组线性相关$\iff$它们有系数不全为0的线性组合等于零向量；
+
+	      向量组线性无关$\iff$它们只有系数全为0的线性组合才会等于零向量．
+	\item 从线性表示看（教材定理2.3）
+	      \begin{theorem}
+		      线性空间$V(\mathbf{F})$中的向量组$\alpha_1,\alpha_2,\ldots,\alpha_m(m \ge 2)$线性相关的充分必要条件是
+		      $\alpha_1,\alpha_2,\ldots,\alpha_m$中有一个向量可由其余向量在域$\mathbf{F}$上线性表示.
+	      \end{theorem}
+	      这一定理等价描述为，向量组线性无关的充分必要条件是其中的向量无法互相表示．这是显然的，因为向量组能互相表示
+	      利用定义可以轻松写出非零系数的线性表示．总结一下即为：
+
+	      向量组线性相关$\iff$其中至少有一个向量可以由其余向量线性表示；
+
+	      向量组线性无关$\iff$其中每一个向量都不能由其余向量线性表出．
+	\item 从齐次线性方程组看（教材P66例3，实际上这一点与定义十分类似）
+
+	      列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$有非零解;
+
+	      列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$只有零解．
+	\item 从向量组线性表示一个向量的方式看（教材定理2.4）
+	      \begin{theorem}
+		      若向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，而向量组$\beta,\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，
+		      则$\beta$可由$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示，且表示法唯一.
+	      \end{theorem}
+	      总结如下：若向量组外另一向量可由这一组向量线性表示，则
+
+	      向量组线性无关$\iff$表出方式唯一；
+
+	      向量组线性相关$\iff$表示方式有无穷多种．
+
+	      表示方式唯一的证明是经典的，即设有另一种表示方式，然后利用线性无关的定义说明这两种表示方式必定相同即可．
+	\item 从向量组与它的部分组的关系看（教材P67例6）
+
+	      如果向量组的一个部分组线性相关，那么整个向量组也线性相关；
+
+	      如果向量组线性无关，那么它的任何一个部分组也线性无关．
+\end{enumerate}
+
+最后我们还要介绍一个定理，这一定理更加重要，证明可能较为复杂，但结论一定要熟练掌握：
+\begin{theorem}\label{线性表示}
+	设$V(\mathbf{F})$中向量组$\{\beta_1,\beta_2,\ldots,\beta_s\}$的每个向量可由另一向量组$\alpha_1,\alpha_2,\ldots,\alpha_r$
+	线性表示.若$s>r$，则$\{\beta_1,\beta_2,\ldots,\beta_s\}$线性相关.
+\end{theorem}
+这一定理的等价命题为，$\{\beta_1,\beta_2,\ldots,\beta_s\}$线性无关则必有$s\le r$．
+
+这一定理可通俗概括为：多的向量组可以被少的向量组线性表示，多的一定线性相关．反过来说，线性无关的向量只能被等长或更长的向量组线性表示．
 
 \section{基与维数}
+\subsection{基与维数的定义}
+由对线性无关与上一讲对线性扩张的定义，我们可以得到如下定义：
+\begin{definition}
+	若线性空间$V(\mathbf{F})$的有限子集$B=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$线性无关，且$L(B) = V$，则称$B$为$V$的一组基，
+	并称$n$为$V$的维数，记作$\dim V = n$.
+\end{definition}
 
-\vspace{2ex} 
+从维数的定义中我们可以理解到，一个线性空间的基的长度必定是唯一的，否则同一个线性空间将会出现多个不同的维数，这是不合理的．
+证明可以直接利用定理\ref{线性表示}，反证法即可．当然我们也可以不利用定理\ref{线性表示}，直接通过线性无关的定义以及线性方程组的解的情况讨论
+得到线性空间维数唯一的结论，读者可以自行尝试．
+
+我们需要提及一个概念，即自然基．例如三维空间的自然基为$(1,0,0),(0,1,0),(0,0,1)$．$n$维空间也有类似的推广（即$n$个只有一位为$0$其余全为$1$的向量）．
+对于多项式我们则将$1,x,x^2,\ldots$称为自然基，矩阵、函数等也有相关的常用的基．
+
+\subsection{相关定理与性质}
+\begin{theorem}
+	设$V(\mathbf{F})$是线性空间，$B=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$是$V$的一组基当且仅当$V$中任一向量可由$B$中向量线性表示，且表示方式唯一．
+\end{theorem}
+假设一个向量$\alpha$有以下表示方式：$$\alpha=\lambda_1\beta_1+\lambda_2\beta_2+\cdots+\lambda_n\beta_n.$$
+若$\alpha$在基下有第二种表示方式，即：$$\alpha=\mu_1\beta_1+\mu_2\beta_2+\cdots+\mu_n\beta_n.$$
+两式相减可得：$$0=(\lambda_1-\mu_1)\beta_1+(\lambda_2-\mu_2)\beta_2+\cdots+(\lambda_n-\mu_n)\beta_n.$$
+利用基线性无关的性质，即可得到每个$\lambda_j-\mu_j=0$．，证明了定理的一方面．
+另一方面，设每个$\alpha\in V$在$B$下表示方式唯一，说明$\alpha_1,\alpha_2,\ldots,\alpha_n$张成$V$．
+要证明线性无关性，设$\lambda_1,\ldots,\lambda_n\in\mathbb{F}$使得$$0=\lambda_1\beta_1+\cdots+\lambda_n\beta_n.$$
+由表示的唯一性，可得$\lambda_1=\cdots=\lambda_n=0$，因此$\alpha_1,\ldots,\alpha_n$线性无关，从而是$V$的一组基．
+
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-\vspace{2ex} 
+\vspace{2ex}
 
 \centerline{\heiti \Large 习题}
-\vspace{2ex} 
+\vspace{2ex}
 {\kaishu }
 \begin{flushright}
-    \kaishu
+	\kaishu
 
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-	\item 
+	\item
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-	\item 
+	\item
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-	\item 
+	\item
 \end{enumerate}
