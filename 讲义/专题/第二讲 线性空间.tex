@@ -1,6 +1,41 @@
 \chapter{线性空间}
 
 \section{线性空间的定义}
+线性空间是我们接触的第一个比较重要的概念，它是定义在非空集合$V$和数域$\mathbf{F}$
+上的，并且定义了$V$中的加法和$V\times \mathbf{F}$（即数域中的数与集合中向量之间的）数乘运算．
+总结起来就是由非空集合+数域+运算构成的，并且运算满足以下性质：
+
+加法构成交换群$\langle V:+\rangle$（阿贝尔群，见教材 1.10 节，考试一般不要求）
+
+1. 结合律：$a+(b+c)=(a+b)+c$；
+
+2. 加法单位元：$\exists 0 \in V$，使得$\forall\alpha\in V$，有$a+0=0+a$；
+
+3. 逆元：$\forall\alpha\in V,\exists b\in V$，有$a+b=b+a=0$，记$b=-a$；
+
+4. 交换律：$\forall\alpha,\beta\in V, \alpha+\beta=\beta+\alpha$.
+
+注意：加法零元和逆元是唯一的，我们可以定义减法运算为加上一个元素的逆．
+
+数乘运算也满足四条性质：$\forall \alpha,\beta \in V,\forall \lambda,\mu\in\mathbf{F}$以及$\mathbf{F}$
+上的乘法单位元1，有：
+
+1. $1\cdot \alpha=\alpha$；
+
+2. $\lambda(\mu\alpha)=(\lambda\mu)\alpha$；
+
+3. $(\lambda+\mu)\alpha=\lambda\alpha+\mu\alpha$；
+
+4. $\lambda(\alpha+\beta)=\lambda\alpha+\lambda\beta$.
+
+注意，综合上述性质我们有方程$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=0$
+在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1+-\lambda^{-1}\lambda_2\alpha_2+\cdots+-\lambda^{-1}\lambda_r\alpha_r$.
+
+以上定义请务必牢记于心，考试可能要求你验证线性空间．记忆难度也并不大，阿贝尔群四条性质都有名称标注，
+数乘运算也是结合律和分配律加单位元．
+
+注意线性空间还有一个重要的概念是运算封闭，即线性空间中的元素进行加法或数乘运算后，得到的元素仍然是属于线性空间的．
+这一点是定义要求的，加法封闭是阿贝尔群的要求，数乘请参考教材定义的要求．
 
 \section{线性子空间}
 我们首先看线性子空间的定义：
@@ -8,21 +43,21 @@
 	设$W$是线性空间$V(\mathbf{F})$的非空子集，如果$W$对$V$中的运算也构成域$\mathbf{F}$
 	上的线性空间，则称$W$是$V$的线性子空间（简称子空间）.
 \end{definition}
-请一定注意定义中的非空子集，建议验证子空间时先验证非空。接下来是验证子空间的一般方法：
+请一定注意定义中的非空子集，建议验证子空间时先验证非空．接下来是验证子空间的一般方法：
 \begin{theorem}
 	线性空间$V(\mathbf{F})$的非空子集$W$为$V$的子空间的充分必要条件是$W$对于$V(\mathbf{F})$的线性运算封闭.
 \end{theorem}
-这表明只要子空间中的元素满足对原空间的加法和数乘运算封闭即可。
+这表明只要子空间中的元素满足对原空间的加法和数乘运算封闭即可．
 
-注意线性空间有两个子空间称为平凡子空间，即仅含零元的子集$\{0\}$和其自身$V$。其它
-子空间称为非平凡子空间。
+注意线性空间有两个子空间称为平凡子空间，即仅含零元的子集$\{0\}$和其自身$V$．其它
+子空间称为非平凡子空间．
 \begin{example}
 	\textup{（1）}说明$\mathbf{R}[x]_2$是$\mathbf{R}[x]_3$的子空间\textup{；}
 
 	\textup{（2）}判断$W_1=\{(x,y,z)\ |\ \cfrac{x}{3}=\cfrac{y}{2}=z\},
-	W_2=\{(x,,y,z)\ |\ x+y+z=1,x-y+z=1\}$是否为$\mathbf{R}^3$的子空间.
+		W_2=\{(x,,y,z)\ |\ x+y+z=1,x-y+z=1\}$是否为$\mathbf{R}^3$的子空间.
 \end{example}
-第二小问表明过原点的直线/平面构成三维空间的子空间，不过原点的无法保持线性性。
+第二小问表明过原点的直线/平面构成三维空间的子空间，不过原点的无法保持线性性．
 
 \section{线性扩张}
 接下来我们讨论线性扩张及其性质，我们首先来看线性组合和线性表示的概念：
@@ -42,7 +77,7 @@
 \begin{theorem}
 	线性空间$V(\mathbf{F})$的非空子集$S$的线性扩张$L(S)$是$V$中包含$S$的最小子空间.
 \end{theorem}
-这一定理的证明首先证明线性扩张是子空间，这是容易的，然后说明最小只需要说明$L(S)$是$V$中包含$S$的任意子空间的子集即可。
+这一定理的证明首先证明线性扩张是子空间，这是容易的，然后说明最小只需要说明$L(S)$是$V$中包含$S$的任意子空间的子集即可．
 
 最后我们再说明有限维线性空间和无限维线性空间的定义，本课程研究的内容都在有限维线性空间：
 \begin{definition}
@@ -52,52 +87,50 @@
 	证明：$\mathbf{R}[x]_3$是有限维线性空间，$\mathbf{R}[x]$是无限维线性空间.
 \end{example}
 
-\section{复数与线性空间}
-
-\vspace{2ex} 
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-\vspace{2ex} 
+\vspace{2ex}
 
 \centerline{\heiti \Large 习题}
-\vspace{2ex} 
-{\kaishu 1520年以来，全世界只有85个机构存活至今，其中50家是大学。大学依靠梦想、希望生存下去——这就是大学的历史。}
+\vspace{2ex}
+{\kaishu 1520年以来，全世界只有85个机构存活至今，其中50家是大学．大学依靠梦想、希望生存下去——这就是大学的历史．}
 \begin{flushright}
-    \kaishu
-    ——美国哥伦比亚大学校长L·C·柏林格
+	\kaishu
+	——美国哥伦比亚大学校长L·C·柏林格
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
 	\item 检验下列集合对指定的加法和数乘运算是否构成实数域上的线性空间.
-	
-	（1）有理数集$\mathbf{Q}$对普通的数的加法和乘法；
 
-	（2）集合$\mathbf{R}^2$对通常的向量加法和如下定义的数量乘法：$\lambda\cdot(x,y)=(\lambda x,y)$；
+	      （1）有理数集$\mathbf{Q}$对普通的数的加法和乘法；
 
-	（3）$\mathbf{R}_+^n$（即$n$元正实数向量）对如下定义的加法和数乘运算：
-	$$(a_1,\cdots,a_n)+(b_1,\cdots,b_n)=(a_1b_1,\cdots,a_nb_n),$$
-	$$\lambda\cdot(a_1,\cdots,a_n)=(a_1^\lambda,\cdots,a_n^\lambda).$$
+	      （2）集合$\mathbf{R}^2$对通常的向量加法和如下定义的数量乘法：$\lambda\cdot(x,y)=(\lambda x,y)$；
 
-	（4）请继续完成教材P86第二章习题第一题9-11小问关于函数的加法数乘定义线性空间的问题.
-	\item 请完成教材P86-86第二章习题第三题的全部小问.第5小问平常问题较多，实际上就是要判断满足一定条件的
-	多项式是否构成子空间.
+	      （3）$\mathbf{R}_+^n$（即$n$元正实数向量）对如下定义的加法和数乘运算：
+	      $$(a_1,\cdots,a_n)+(b_1,\cdots,b_n)=(a_1b_1,\cdots,a_nb_n),$$
+	      $$\lambda\cdot(a_1,\cdots,a_n)=(a_1^\lambda,\cdots,a_n^\lambda).$$
+
+	      （4）请继续完成教材P86第二章习题第一题9-11小问关于函数的加法数乘定义线性空间的问题.
+	\item 请完成教材P86-87第二章习题第三题的全部小问.第5小问平常问题较多，实际上就是要判断满足一定条件的
+	      多项式是否构成子空间.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
 	\item 设$V$是一个线性空间，$W$是$V$的子集，证明：$W$是$V$的子空间$\iff L(W)=W$.
 	\item 回答以下两个问题：
 
-	（1）设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：$\forall a,b \in \mathbf{R}^+,k\in \mathbf{R},a\oplus b = ab, k\odot a = a^k$，$\mathbf{R}^+$关于这一加法和数乘构成一个实线性空间，求$\mathbf{R}^+$的一组基；
+	      （1）设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：$\forall a,b \in \mathbf{R}^+,k\in \mathbf{R},a\oplus b = ab, k\odot a = a^k$，$\mathbf{R}^+$关于这一加法和数乘构成一个实线性空间，求$\mathbf{R}^+$的一组基；
 
-	（2）设$V$是一个$n$维实线性空间，证明：存在$V$中的一个由可列无穷多个向量组成的向量组$\{\alpha_i\ |\ i\in\mathbf{Z}^+\}$，使得其中任意$n$个向量组成的向量组都是$V$的一组基.
+	      （2）设$V$是一个$n$维实线性空间，证明：存在$V$中的一个由可列无穷多个向量组成的向量组$\{\alpha_i\ |\ i\in\mathbf{Z}^+\}$，使得其中任意$n$个向量组成的向量组都是$V$的一组基.
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
 	\item 设$E$是域$F$的一个子域.
-	
-	（1）证明：$F$关于自身的加法和乘法构成一个$E$上的向量空间，并举一例；
 
-	（2）举例说明：$E(E\neq F)$不是$F$上的线性空间；
+	      （1）证明：$F$关于自身的加法和乘法构成一个$E$上的向量空间，并举一例；
 
-	（3）证明：若$V$是$F$上的一个线性空间，则$V$也是$E$上的一个线性空间.
+	      （2）举例说明：$E(E\neq F)$不是$F$上的线性空间；
+
+	      （3）证明：若$V$是$F$上的一个线性空间，则$V$也是$E$上的一个线性空间.
 \end{enumerate}

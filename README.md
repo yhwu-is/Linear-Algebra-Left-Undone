@@ -21,7 +21,7 @@
 - 本项目的许可证为 [![CC BY-NC-SA Logo](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png) 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
 - 本仓库目前有两个分支，当前 `new` 为主分支，也是贡献的提交分支，`main` 为 2022-2023 学年秋冬学期的版本，在编写部分章节时可以直接截取其中的内容
 - 贡献方式
-    - Pull Request（推荐）¶：推荐通过 PR（即 Pull Request）的形式来进行贡献，具体流程：
+    - Pull Request（推荐）：推荐通过 PR（即 Pull Request）的形式来进行贡献，具体流程：
         - 在 GitHub 网页端点击右上角的 fork，将本仓库 fork 到自己的帐号下
         - 在自己帐号的对应仓库中进行修改
         - 修改完成后，点击 New Pull Request，提交一个 PR
