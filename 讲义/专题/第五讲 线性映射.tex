@@ -1,12 +1,164 @@
 \chapter{线性映射}
 
 \section{线性映射的定义}
+\subsection{线性映射的定义}
+\begin{definition}
+	从线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的一个映射$\sigma$是线性的，
+	如果$\forall \alpha,\beta \in V_1$和$\forall \lambda,\mu \in \mathbf{F}$都有
+	\begin{equation}
+		\sigma(\lambda\alpha+\mu\beta)=\lambda\sigma(\alpha)+\mu\sigma(\beta).
+	\end{equation}
+	
+	从线性空间$V$到自身的线性映射$\sigma$也叫作$V$上的线性变换，
+	从线性空间$V(\mathbf{F})$到域$\mathbf{F}$的线性映射$f$叫作$V$上的线性函数（线性形式）.
+\end{definition}
+实际上，上述定义式（1）可以分拆为以下（2）（3）式：
+\begin{equation}
+	\sigma(\alpha+\beta)=\sigma(\alpha)+\sigma(\beta)
+\end{equation}
+\begin{equation}
+	\sigma(\lambda\alpha)=\lambda\sigma(\alpha)
+\end{equation}
+其中（2）称为加性，（3）称为齐次性.
+
+根据定义，我们容易知道熟悉的过原点的直线（一次函数）是线性映射，而不过原点的直线不代表线性映射.
+
+特别注意：根据定义，线性映射一定将出发空间的零元映射到到达空间的零元，
+这是一个映射为线性映射的必要条件.
+\subsection{线性映射的基本运算}
+本节介绍线性映射的加法、数乘的定义，并介绍线性映射乘法（即复合）和逆运算.
+
+我们需要首先说明一个记号，我们把线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的所有线性映射组成的集合记作$L(V_1,V_2)$.
+我们希望在这个集合上定义线性空间，于是需要定义其中元素（线性映射）的加法和数乘运算：
+\begin{definition}
+	设$\sigma,\ \tau\in L(V_1,V_2)$，规定$\sigma$与$\tau$之和及$\lambda$与
+	$\sigma$的数乘$\lambda\sigma$分别为
+	\begin{equation}
+		(\sigma+\tau)(\alpha)=\sigma(\alpha)+\tau(\alpha),\ \forall\alpha\in V_1
+	\end{equation}
+	\begin{equation}
+		(\lambda\sigma)(\alpha)=\lambda(\sigma(\alpha)),\ \forall\alpha\in V_1
+	\end{equation}
+\end{definition}
+\begin{example}
+	证明：$L(V_1,V_2)$与上述定义的线性映射加法和数乘构成域$\mathbf{F}$上的线性空间.
+\end{example}
+下面讨论线性映射的复合.设$\sigma \in L(V_1,V_2),\ \tau \in L(V_2,V_3)$，则$\tau\sigma$是$L(V_1,V_3)$
+中的元素，且$\tau\sigma(\alpha)=\tau(\sigma(\alpha)),\ \forall \alpha \in V_1$.
+\begin{example}
+	证明：上述定义的映射$\tau\sigma$是线性映射.
+\end{example}
+注意：在上述定义中一定注意$\sigma$和$\tau$的顺序，我们需要先使用$\sigma$将$V_1$中的元素映射到
+$V_2$，然后再用外层的$\tau$映射到$V_3$.
+
+下面定义逆映射.如果可逆映射$\sigma:V_1 \to V_2$的逆映射为$\sigma^{-1}$，则$\sigma^{-1}\sigma=I_{V_1}$且
+$\sigma\sigma^{-1}=I_{V_2}$.其中$I_{V}$的含义为$V$上的恒等映射，即$I_V(\alpha)=\alpha,\ \forall \alpha \in V$.
+\begin{example}
+	证明：上述定义的逆映射$\sigma^{-1}$为线性映射.
+\end{example}
+\subsection{线性映射举例}
+本节内容希望各位同学按照教材3.1节例1-9了解常见的线性映射，了解一定的几何意义（虽然不会直接考察，但是对理解有帮助）.
+其中例1、7、8、9希望同学们当做练习，例2中旋转变换的矩阵表示的求幂在矩阵计算专题中有提及，
+例3镜面变换本是重点，但今年不要求内积空间，例6投影变换将在幂等矩阵中我们会再次提及.
 
 \section{线性映射的确定}
+有限维空间上的线性映射被基上的像唯一确定，即
+\begin{theorem}
+	已知线性映射$\sigma,\tau\in L(V_1,V_2)$，且有$V_1$的基$B=\{\alpha_1,\alpha_2,\cdots,\alpha_n\}$，
+	若$\sigma(\alpha_i)=\tau(\alpha_i),\ \forall \alpha_i \in B$，则有$\sigma=\tau$.
+\end{theorem}
+即映射在一组基上的像确定了，则映射是唯一的.这一证明是容易的，希望同学自行尝试.
+进一步地，我们有如下定理：
+\begin{theorem}
+	设$B=\{\alpha_1,\alpha_2,\cdots,\alpha_n\}$是$V_1(\mathrm{T})$的基，$S=\{\beta_1,\beta_2,\cdots,\beta_n\}$
+	是$V_2$中任意$n$个向量，则存在唯一的$\sigma\in L(V_1,V_2)$使得$\sigma(\alpha_i)=\beta_i,\ i=1,2,\cdots,n$.
+\end{theorem}
+这一定理即教材定理3.6，希望同学们自己先尝试自己证明，只需先定义映射然后证明其线性性即可，唯一性在上一个定理中已经说明.
 
 \section{线性映射的像与核}
+\subsection{线性映射的像和核的定义}
+\begin{definition}
+	设$\sigma$是线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的线性映射，$V_1$的所有元素
+	在$\sigma$下的像组成的集合
+	$$\sigma(V_1)=\{\beta\ |\ \beta=\sigma(\alpha),\ \alpha \in V_1\}$$
+	称为$\sigma$的像（或值域），记作$\textup{Im }\sigma$，$V_2$的零元$0_2$在$\sigma$下的完全原像
+	$$\sigma^{-1}(0_2)=\{\alpha\ |\ \sigma(\alpha)=0_2,\ \alpha \in V_!\}$$
+	称为$\sigma$的核，记作$\ker \sigma$.
+\end{definition}
+注意核的定义中$0_2$代表$V_2$中的零元，实际上下标也可以省略.
+
+注意，线性映射的像和核分别是$V_2$和$V_1$的子空间.同样地，若$W_1$和$W_2$分别是$V_1$和$V_2$的
+子空间，则$\sigma(W_1)$和$\sigma^{-1}(W_2)$也分别是$V_2$和$V_1$的子空间.以上命题的证明很简单，各位可以自行尝试.
+
+下面是一种经典题型，即已知线性映射求线性映射的像和核，注意方法如下：
+
+1. 像空间$\textup{Im }\sigma=\sigma(V_1)=L(\sigma(\alpha_1),\sigma(\alpha_2),\cdots,\sigma(\alpha_n))$，即线性映射在
+一组基下的像的线性扩张，解答写出极大线性无关组然后扩张即可；
+
+2. 核空间直接令$\sigma(\alpha)=0$，利用解线性方程组得到解$\alpha$，结果的线性扩张即为核空间.
+\begin{example}
+	已知$\mathbf{R}^3$到$\mathbf{R}^2$的映射$\sigma$为$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_2-x_3)$，
+	求$\sigma$的像和核.
+\end{example}
 
 \section{线性映射的矩阵表示}
+\subsection{一个最基本的定义}
+\begin{definition}
+	设$B_1=\{\epsilon_1,\epsilon_2,\dots,\epsilon_n\}$是$V_1(F)$的基，$B_2=\{\alpha_1,\alpha_2,\cdots,\alpha_m\}$是$V_2(F)$的基，
+	则线性映射$\sigma \in L(V_1,V_2)$被它作用于基$B_1$的像
+	$$\sigma(B_1)=\{\sigma(\epsilon_1),\sigma(\epsilon_2),\dots,\sigma(\epsilon_n)\}$$
+	所唯一确定，而$\sigma(B_1)$是$V_2$的一个子集，于是
+	$$\begin{cases}
+		\sigma(\epsilon_1)=a_{11}\alpha_1+a_{21}\alpha_2+\cdots+a_{m1}\alpha_m \\
+		\sigma(\epsilon_2)=a_{12}\alpha_1+a_{22}\alpha_2+\cdots+a_{m2}\alpha_m \\
+		\cdots \\
+		\sigma(\epsilon_n)=a_{1n}\alpha_1+a_{2n}\alpha_2+\cdots+a_{mn}\alpha_m
+	\end{cases}.$$
+	我们将$\sigma(B_1)=\{\sigma(\epsilon_1),\sigma(\epsilon_2),\dots,\sigma(\epsilon_n)\}$
+	关于基$B_2$的坐标排列成矩阵$M(\sigma)$，即
+	$$M(\sigma)=\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{2n} \\
+		\cdots & \cdots &        & \cdots \\
+		a_{m1} & a_{m2} & \cdots & a_{mn}
+	\end{pmatrix}.$$
+\end{definition}
+更通俗来说，线性映射矩阵表示就是将线性映射在一组基上的像在另一组基下的坐标按列排列的结果.
+
+之后我们会经常看见两种记号，即$(\sigma(\epsilon_1),\sigma(\epsilon_2),\dots,\sigma(\epsilon_n))$ 
+和$\sigma(\epsilon_1,\epsilon_2,\dots,\epsilon_n)$.实际上是等价的，等价原因是
+$(\sigma(\epsilon_1),\sigma(\epsilon_2),\dots,\sigma(\epsilon_n))A=(\sigma(\epsilon_1,\epsilon_2,\dots,\epsilon_n))A=\sigma((\epsilon_1,\epsilon_2,\dots,\epsilon_n)A)$成立，
+这一性质在之后会有运用，证明并不复杂，可以自行尝试或参考我的矩阵辅学授课.
+
+除此之外，我们还应当强调以下结论，在我们后续研究线性方程组解的相关性质时是常用的：
+\begin{theorem}
+	线性映射是单射当且仅当其矩阵表示为列满秩矩阵，线性映射是满射当且仅当其矩阵表示为行满秩矩阵.
+\end{theorem}
+这一结论的证明比较基本，希望大家能透过这一个结论看到列满秩矩阵与行满秩矩阵更本质的特征.
+\subsection{一组简单的例子}
+\begin{example}
+	已知$\sigma \in L(\mathbf{R}^3,\mathbf{R}^3)$且$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)$
+	
+	\textup{（1）}求$\sigma$的像空间和核空间；
+
+	\textup{（2）}求$\sigma$关于$\mathbf{R}^3$自然基的矩阵.
+\end{example}
+
+\begin{example}
+	设$A=\begin{pmatrix}1 & 0 & 2 \\ -1 & 2 & 1 \\ 1 & 2 & 5\end{pmatrix}$为两个三维线性空间之间的线性映射$\sigma$对应的矩阵，
+	求$\sigma$的像空间和核空间.
+\end{example}
+
+\begin{example}
+	已知$3$阶矩阵$A=\begin{pmatrix}
+		1 & 0 & 1 \\ 0 & -1 & 0 \\ -1 & 1 & -1
+	\end{pmatrix}$，定义$\mathbf{F}^{3 \times 3}$上的线性变换$\sigma(X)=AX,\ X \in \mathbf{F}^{3 \times 3}$，
+	求$\sigma$的像和核.
+\end{example}
+实际上，例题2.4.1和2.4.3都是属于已知映射求像和核的题目，具体方法在像和核一节已经讲述，并且求矩阵表示也是根据上面的定义
+即可，都是程式化的.然而例7则有不同，但此题与例2.4.1、2.4.2也有关联.实际上
+此类问题像空间就是以矩阵列空间为坐标的向量的线性扩张，核空间是以矩阵零空间的基（即$AX=0$的基础解系）为坐标的向量的线性扩张，
+推导见例7解析或我的矩阵辅学，希望各位同学能掌握推导并理解这三个例题之间的关系与区别.
 
 \vspace{2ex} 
 \centerline{\heiti \Large 内容总结}
