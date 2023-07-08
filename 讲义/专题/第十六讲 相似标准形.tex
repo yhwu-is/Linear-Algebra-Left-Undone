@@ -3,157 +3,162 @@
 \section{相似的定义与性质}
 我们早在线性映射矩阵表示专题中提到这一定理：
 \begin{theorem}
-	\textbf{基的选择对映射矩阵的影响}
-	
-	设线性变换$\sigma \in L(V,V)$，$B_1=\{\alpha_1,\dots,\alpha_n\}$和$B_2=\{\beta_1,\dots,\beta_n\}$
-	是线性空间的$V(F)$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，
-	则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
+    \textbf{\heiti 基的选择对映射矩阵的影响}
+
+    设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$
+    是线性空间的$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，
+    则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
 \end{theorem}
 定理相关习题在相关章节有介绍，教材也有例题.这一定理研究同一个映射在不同基下表示矩阵之间的关系.
 我们将具有如上性质的两个矩阵的关系称为相似的，规范定义如下：
 \begin{definition}
-	若对于$A,B\in M_n(\mathbf{F})$，存在可逆矩阵$C\in M_n(\mathbf{F})$, 使得
-	$C^{-1}AC=B$，则称$A$相似于$B$，记作$A\sim B$.
+    若对于$A,B\in \mathbf{M}_n(\mathbf{F})$，存在可逆矩阵$C\in \mathbf{M}_n(\mathbf{F})$, 使得
+    $C^{-1}AC=B$，则称$A$相似于$B$，记作$A\sim B$.
 \end{definition}
 相似矩阵有以下基本性质，证明较为基本，请自行完成：
+\begin{enumerate}
+    \item 相似是一种等价关系；两矩阵相似必相抵（秩相等）；
 
-1. 相似是一种等价关系；两矩阵相似必相抵（秩相等）；
+    \item $A\sim B$可以得到$A^\mathrm{T}\sim B^\mathrm{T}$，$A^m\sim B^m$，更一般地，对于任意多项式$f(x)$都有$f(A)\sim f(B)$，且
+    若$B=P^{-1}AP$，有$f(B)=P^{-1}f(A)P$.除此之外还有$A^*\sim B^*$，若$A,B$可逆，有$A^{-1}\sim B^{-1}$，$A^*\sim B^*$；
 
-2. $A\sim B$可以得到$A^\mathrm{T}\sim B^\mathrm{T}$，$A^m\sim B^m$，更一般地，对于任意多项式$f(x)$都有$f(A)\sim f(B)$，且
-若$B=P^{-1}AP$，有$f(B)=P^{-1}f(A)P$.除此之外还有$A^*\sim B^*$，若$A,B$可逆，有$A^{-1}\sim B^{-1}$，$A^*\sim B^*$；
+    \item $A_1\sim B_1$，$A_2\sim B_2$不一定有$A_1+A_2\sim B_1+B_2$，只有当$P^{-1}A_1P=B_1,P^{-1}A_2P=B_2$时
+    （即相同的过渡矩阵$P$）才有$P^{-1}(A_1+A_2)P=B_1+B_2$；
 
-3. $A_1\sim B_1$，$A_2\sim B_2$不一定有$A_1+A_2\sim B_1+B_2$，只有当$P^{-1}A_1P=B_1,P^{-1}A_2P=B_2$时
-（即相同的过渡矩阵$P$）才有$P^{-1}(A_1+A_2)P=B_1+B_2$；
+    \item 若$A_1\sim B_1$，$A_2\sim B_2$，则有
+    \[ \begin{pmatrix}
+        A_1 & O \\ O & A_2
+    \end{pmatrix}\sim\begin{pmatrix}
+        B_1 & O \\ O & B_2
+    \end{pmatrix}\]
 
-4. 若$A_1\sim B_1$，$A_2\sim B_2$，则有
-$$\begin{pmatrix}
-	A_1 & O \\ O & A_2
-\end{pmatrix}\sim\begin{pmatrix}
-	B_1 & O \\ O & B_2
-\end{pmatrix}\textup{；}$$
+    \item 相似矩阵有相同的特征多项式（逆命题不成立），即$A\sim B$有$|\lambda E-A|=|\lambda E-B|$，从而有相同的
+    迹，行列式，特征值，但特征向量不一定相同；
 
-5. 相似矩阵有相同的特征多项式（逆命题不成立），即$A\sim B$有$|\lambda E-A|=|\lambda E-B|$，从而有相同的
-迹，行列式，特征值，但特征向量不一定相同；
-
-6. 与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零
-（但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
+    \item 与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零
+    （但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
+\end{enumerate}
 \begin{example}
-	证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似.对于不可对角化的矩阵来说，这一结论还成立吗？
+    证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似.对于不可对角化的矩阵来说，这一结论还成立吗？
 \end{example}
 \begin{example}
-	（教材定理$4.10$推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
+    （教材定理$4.10$推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
 \end{example}
 一些题目可能需要判断矩阵是否相似，实际上我们有如下基本方法：
 \begin{enumerate}
-	\item 定义法：找到$P$使得$P^{-1}AP=B$即可，这一般是$A,B$没给出具体矩阵的做法，例如上面的性质证明；
-	\item 我们也可以先计算两者特征多项式是否相等（即特征值是否一致），若不一致则一定不相似，得到结论，若一致且均为实对称矩阵则相似，
-	否则不一定相似.于是对于这种特征值一致的情况，我们进行对角化，情况如下：
-	\begin{enumerate}
-		\item 若两矩阵均可对角化，则两矩阵相似（上述例题结论）；
-		\item 若一个矩阵可对角化，另一个矩阵不可对角化，则一定不相似；
-		\item 若两个矩阵都不可对角化，不一定相似.需要两矩阵各个特征值的几何重数（即各个特征子空间维数）都一致才相似，否则不相似
-		（了解结论即可，具体原因线性代数II会涉及）.
-	\end{enumerate}
+    \item 定义法：找到$P$使得$P^{-1}AP=B$即可，这一般是$A,B$没给出具体矩阵的做法，例如上面的性质证明；
+    \item 我们也可以先计算两者特征多项式是否相等（即特征值是否一致），若不一致则一定不相似，得到结论，若一致且均为实对称矩阵则相似，
+    否则不一定相似.于是对于这种特征值一致的情况，我们进行对角化，情况如下：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若两矩阵均可对角化，则两矩阵相似（上述例题结论）；
+        \item 若一个矩阵可对角化，另一个矩阵不可对角化，则一定不相似；
+        \item 若两个矩阵都不可对角化，不一定相似.需要两矩阵各个特征值的几何重数（即各个特征子空间维数）都一致才相似，否则不相似
+        （了解结论即可，具体原因线性代数II会涉及）.
+    \end{enumerate}
 \end{enumerate}
 \begin{example}
-	设$A,B\in M_n(\mathbf{F})$，证明：若$A$可逆，则$AB\sim BA$.
+    设$A,B\in M_n(\mathbf{F})$，证明：若$A$可逆，则$AB\sim BA$.
 \end{example}
 \begin{example}
-	设$A=\begin{pmatrix}
-		0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0
-	\end{pmatrix},B=\begin{pmatrix}
-		-1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 2
-	\end{pmatrix}$，判断$A$与$B$是否相似.
+    设$A=\begin{pmatrix}
+        0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0
+    \end{pmatrix},B=\begin{pmatrix}
+        -1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 2
+    \end{pmatrix}$，判断$A$与$B$是否相似.
 \end{example}
 最后我们谈一个拓展内容，我们考虑矩阵方程$AX-XB=O$，若$A,B$都是$n$阶方阵且$X$可逆，则$A$与$B$相似，所以
 这一矩阵方程的解空间的维数实际上刻画了$A$与$B$的相似程度.我们有如下结论，不要求掌握，也不要求证明，了解即可：
 \begin{theorem}
-	设$A,B$分别为数域$P$上$n$阶、$m$阶方阵，则$A,B$有$r$个两两不等的公共特征值，则矩阵方程$AX-XB=O$有秩为
-	$r$的矩阵解.反之，若数域为复数域，矩阵方程$AX-XB=O$有秩为$r$的矩阵解，则$A,B$至少有$r$个公共的特征值
-	（计重数）.
+    设$A,B$分别为数域$P$上$n$阶、$m$阶方阵，则$A,B$有$r$个两两不等的公共特征值，则矩阵方程$AX-XB=O$有秩为
+    $r$的矩阵解.反之，若数域为复数域，矩阵方程$AX-XB=O$有秩为$r$的矩阵解，则$A,B$至少有$r$个公共的特征值
+    （计重数）.
 \end{theorem}
 由此，复数域上$n$阶、$m$阶方阵$A,B$的矩阵方程$AX=XB$只有零解的充要条件是$A,B$没有公共特征值.
 
 \section{对角矩阵}
 \subsection{可对角化的条件}
 我们知道，矩阵可对角化意味着矩阵相似于一个对角矩阵，即存在可逆矩阵$P$使得$P^{-1}AP=\Lambda$，其中
-$\Lambda=\textup{diag}(\lambda_1,\lambda_2,\cdots,\lambda_n)$为对角矩阵.
+$\Lambda=\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)$为对角矩阵.
 
-将$P^{-1}AP=\Lambda$变形为$AP=P\Lambda$，并将矩阵$P$按列分块为$P=(X_1,X_2,\cdots,X_n)$，则有
-$A(X_1,X_2,\cdots,X_n)=(X_1,X_2,\cdots,X_n)\textup{diag}(\lambda_1,\lambda_2,\cdots,\lambda_n)$，
-利用分块矩阵乘法我们有$AX_j=\lambda_jX_j(X_j\neq 0,j=1,2,\cdots,n)$.
+将$P^{-1}AP=\Lambda$变形为$AP=P\Lambda$，并将矩阵$P$按列分块为$P=(X_1,X_2,\ldots,X_n)$，则有
+$A(X_1,X_2,\ldots,X_n)=(X_1,X_2,\ldots,X_n)\diag(\lambda_1,\lambda_2,\ldots,\lambda_n)$，
+利用分块矩阵乘法我们有$AX_j=\lambda_jX_j\enspace(X_j\neq 0,\enspace j=1,2,\ldots,n)$.
 
 通过上述过程我们容易证明$n$维空间上线性映射可对角化当且仅当有$n$个线性无关的特征向量.并且这一过程也是我们
 求解对角化问题的基本方法.综合上述推导以及上一节中2.3小节的定理，我们有如下结论：
 \begin{theorem}
-	设$V$是数域$\mathbf{F}$上的$n$维线性空间，$\sigma$是$V$上的线性变换，$\lambda_1,\lambda_2,\cdots,\lambda_s\in\mathbf{F}$
-	是$\sigma$的所有互异特征值，则以下条件等价：
-	
-	\textup{（1）}$\sigma$可对角化\textup{；}
-	
-	\textup{（2）}$\sigma$有$n$个线性无关的特征向量，它们构成$V$的一组基\textup{；}
-	
-	\textup{（3）}$V=V_{\lambda_1}\oplus V_{\lambda_2}\oplus\cdots\oplus V_{\lambda_s}$\textup{；}
-	
-	\textup{（4）}$n=\dim V_{\lambda_1}+\dim V_{\lambda_2}+\cdots+\dim V_{\lambda_s}$\textup{；}
-	
-	\textup{（5）}$\sigma$每个特征值的代数重数等于几何重数\textup{.}
+    设$V$是数域$\mathbf{F}$上的$n$维线性空间，$\sigma$是$V$上的线性变换，$\lambda_1,\lambda_2,\ldots,\lambda_s\in\mathbf{F}$
+    是$\sigma$的所有互异特征值，则以下条件等价：
+    \begin{enumerate}
+        \item $\sigma$可对角化；
+
+        \item $\sigma$有$n$个线性无关的特征向量，它们构成$V$的一组基；
+
+        \item $V=V_{\lambda_1}\oplus V_{\lambda_2}\oplus\cdots\oplus V_{\lambda_s}$；
+
+        \item $n=\dim V_{\lambda_1}+\dim V_{\lambda_2}+\cdots+\dim V_{\lambda_s}$；
+
+        \item $\sigma$每个特征值的代数重数等于几何重数.
+    \end{enumerate}
 \end{theorem}
 实际上对于矩阵我们有对应的定理，此处不再赘述.我们有一个推论，若有$n$个互不相同的特征值则一定能对角化，
-这是（2）的直接推论，但反之不成立，有多重特征值的矩阵也可能可以对角化，只要满足上述条件.
+这是2的直接推论，但反之不成立，有多重特征值的矩阵也可能可以对角化，只要满足上述条件.
 
 实际上由特征值的性质，我们容易知道数域$\mathbf{F}$上矩阵$A$可对角化，则$A^*$可对角化，对于数域$\mathbf{F}$上
 任意多项式$f(x)$，$f(A)$也可对角化，且$A$可逆时，$A^{-1}$也可对角化.
 \begin{example}
-	证明$r$阶上三角矩阵$(r>1)$
-	$$J_0=\begin{pmatrix}
-		\lambda_0 & 1 &  &  \\ 
-		  & \lambda_0 & \ddots &  \\
-		  &  & \ddots &  1 \\
-		  &  &  &  \lambda_0
-	\end{pmatrix}$$
-	不与对角阵相似.
+    证明$r$阶上三角矩阵$(r>1)$
+    \[J_0=\begin{pmatrix}
+        \lambda_0 & 1 &  &  \\
+          & \lambda_0 & \ddots &  \\
+          &  & \ddots &  1 \\
+          &  &  &  \lambda_0
+    \end{pmatrix}\]
+    不与对角阵相似.
 \end{example}
 \begin{example}
-	设$A=(a_{ij})_{n\times n}$是上三角矩阵.
-	
-	\textup{（1）}求$A$的全部特征值\textup{；}
+    设$A=(a_{ij})_{n\times n}$是上三角矩阵.
+    \begin{enumerate}
+        \item 求$A$的全部特征值；
 
-	\textup{（2）}若$A$主对角元互不相等，证明：$A$与对角阵相似\textup{；}
+        \item 若$A$主对角元互不相等，证明：$A$与对角阵相似；
 
-	\textup{（3）}若$n$个主对角元相等且$A$不为对角矩阵，证明：$A$不与对角阵相似.
+        \item 若$n$个主对角元相等且$A$不为对角矩阵，证明：$A$不与对角阵相似.
+    \end{enumerate}
 \end{example}
 \begin{example}
-	设$\alpha$和$\beta$是$\mathbf{R}^n(n>1)$中两个列向量，$A=\alpha\beta^\mathrm{T}\neq O$.
-	
-	\textup{（1）}求$A$的特征值\textup{；}
-	
-	\textup{（2）}证明：$\alpha^\mathrm{T}\beta=0\iff A$不可对角化.
+    设$\alpha$和$\beta$是$\mathbf{R}^n\enspace (n>1)$中两个列向量，$A=\alpha\beta^\mathrm{T}\neq O$.
+    \begin{enumerate}
+        \item 求$A$的特征值；
+
+        \item 证明：$\alpha^\mathrm{T}\beta=0\iff A$不可对角化.
+    \end{enumerate}
 \end{example}
 最后需要说明一点，如果一个矩阵可对角化，那么我们可以将其表示为$A=P\Lambda P^{-1}$，其中
 $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的表示思想，在解决一些题目时是重要的.
 \begin{example}
-	设$n$阶实对称矩阵$A$的特征值$\lambda_i\ge 0(i=1,\cdots,n)$.证明：存在特征值都是非负数的实对称矩阵
-	$B$使得$A=B^2$（本题可推广为多次幂）.
+    设$n$阶实对称矩阵$A$的特征值$\lambda_i\geqslant 0\enspace(i=1,\ldots,n)$.证明：存在特征值都是非负数的实对称矩阵
+    $B$使得$A=B^2$（本题可推广为多次幂）.
 \end{example}
 \begin{example}
-	设三阶矩阵$A$的特征值为$\lambda_1=-2,\lambda_2=1,\lambda_3=2$，对应的特征向量分别为
-	$\alpha_1=(1,1,0)^\mathrm{T},\alpha_2=(1,0,1)^\mathrm{T},\alpha_3=(1,1,1)^\mathrm{T}$，求矩阵$A$.
+    设三阶矩阵$A$的特征值为$\lambda_1=-2,\lambda_2=1,\lambda_3=2$，对应的特征向量分别为
+    $\alpha_1=(1,1,0)^\mathrm{T},\alpha_2=(1,0,1)^\mathrm{T},\alpha_3=(1,1,1)^\mathrm{T}$，求矩阵$A$.
 \end{example}
 \subsection{对角化问题的一般解法}
 下面我们总结一下求解对角化问题的基本方法：对于一个$n$阶可对角化矩阵$A$，求变换矩阵$P$使得$P^{-1}AP=\Lambda$，步骤如下：
+\begin{enumerate}
+    \item 求出$A$的所有不同特征值；
 
-1. 求出$A$的所有不同特征值；
+    \item 求出$A$在不同特征值下的特征子空间的基；
 
-2. 求出$A$在不同特征值下的特征子空间的基；
-
-3. 将这组基按列排列成矩阵$P$.
+    \item 将这组基按列排列成矩阵$P$.
+\end{enumerate}
 
 这一过程的合理性在本小节开头就有叙述.下面我们来看一个基本的例子：
 \begin{example}
-	设$A=\begin{pmatrix}
-		2 & 2 & 0 \\ 8 & 2 & a \\ 0 & 0 & 6
-	\end{pmatrix}$相似于对角矩阵，求常数$a$，并求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
+    设$A=\begin{pmatrix}
+        2 & 2 & 0 \\ 8 & 2 & a \\ 0 & 0 & 6
+    \end{pmatrix}$相似于对角矩阵，求常数$a$，并求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
 \end{example}
 除此之外，我们还可以利用对角化求解矩阵的幂的问题，在专题三中已经介绍，此处不再赘述.
 
@@ -161,231 +166,245 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 这一部分内容因为涉及正交的概念所以有班级未提及，因此我们只能回顾不涉及正交的部分.
 教材定义7.7给出了共轭矩阵的概念，下方给出了大量的性质，此处不再赘述.我们的重点在于以下两个定理：
 \begin{theorem}
-	实对称矩阵的特征值都是实数.
+    实对称矩阵的特征值都是实数.
 \end{theorem}
 这一定理的证明应当掌握，特别是如何证明实数的方法（即共轭等于自身）.
 \begin{theorem}
-	实对称矩阵一定可以相似对角化.
+    实对称矩阵一定可以相似对角化.
 \end{theorem}
 这一定理证明只需要讲教材定理7.13除去正交即可.以上两个定理十分重要，是我们接下来讨论以及解决一些问题的基础.
 \begin{example}
-	已知$A$是实反对称矩阵，证明：
+    已知$A$是实反对称矩阵，证明：
+    \begin{enumerate}
+        \item $A$的特征值必为0或纯虚数；
 
-	\textup{（1）}$A$的特征值必为$0$或纯虚数\textup{；}
-
-	\textup{（2）}$E-A^2$是可逆矩阵.
+        \item $E-A^2$是可逆矩阵.
+    \end{enumerate}
 \end{example}
-当然要注意的一点是，因为无法涉及正交的内容，本节习题中所有的对角化问题都无需进行施密特正交化，只需要像
+当然要注意的一点是，因为无法涉及正交的内容，本节习题中所有的对角化问题都无需进行 Schmidt 正交化，只需要像
 上一小节介绍的方法那样求出一般的可逆矩阵即可.
 \subsection{幂等矩阵}
 若$n$阶方阵$A$满足$A^2=A$，则$A$称为幂等矩阵.幂等矩阵具有如下基本性质，请自行证明：
+\begin{enumerate}
+    \item $A$是幂等矩阵等价于$r(A)+r(A-E)=n$；
 
-1. $A$是幂等矩阵等价于$r(A)+r(A-E)=n$；
+    \item $A$为幂等矩阵则一定可对角化，特征值为0和1，其中1的重数等于$r(A)$；
 
-2. $A$为幂等矩阵则一定可对角化，特征值为0和1，其中1的重数等于$r(A)$；
+    \item $A$是幂等矩阵时，$r(A)=\tr(A)$；
 
-3. $A$是幂等矩阵时，$r(A)=\textup{tr}(A)$；
-
-4. 所有秩为1迹也为1的矩阵均为幂等矩阵.
-
+    \item 所有秩为1迹也为1的矩阵均为幂等矩阵.
+\end{enumerate}
 实际上，幂等矩阵还有很多其他的性质，我们可以回到映射的角度去理解这一矩阵，
 例如其与投影变换的等价性（与像空间、核空间有关，可以自行证明）.
 \begin{example}
-	设$A$，$B$为两个$n$阶幂等矩阵，证明：
+    设$A$，$B$为两个$n$阶幂等矩阵，证明：
+    \begin{enumerate}
+        \item $A+B$为幂等矩阵当且仅当$AB=BA=O$；
 
-	\textup{（1）}$A+B$为幂等矩阵当且仅当$AB=BA=O$；
+        \item $A-B$为幂等矩阵当且仅当$AB=BA=B$；
 
-	\textup{（2）}$A-B$为幂等矩阵当且仅当$AB=BA=B$；
+        \item 若$AB=BA$，则$AB$为幂等矩阵. 反之，若$AB$为幂等矩阵，是否必有$AB=BA$；
 
-	\textup{（3）}若$AB=BA$，则$AB$为幂等矩阵，反之，若$AB$为幂等矩阵，是否必有$AB=BA$；
-
-	\textup{（4）}若$E-A-B$可逆，则$r(A)=r(B)$.
+        \item 若$E-A-B$可逆，则$r(A)=r(B)$.
+    \end{enumerate}
 \end{example}
 
 \section{上三角矩阵}
+
 虽然对角矩阵十分简洁，但很可惜很多算子都不存在如此简洁的矩阵表示.我们考虑更为普遍但也能
 保持良好性质的情况，上三角矩阵一定是一个好的突破口：
-\begin{theorem}\label{上三角矩阵等价条件}
-	设$V$是有限维复向量空间，$T\in L(V)$，则
-	
-	\textup{（1）}$T$关于$V$的某组基有上三角矩阵，记为$A$；
-	
-	\textup{（2）}$T$可逆的充要条件是$A$的主对角元均不为$0$；
-	
-	\textup{（3）}$T$的本征值恰为$A$的主对角元.
+\begin{theorem}\label{th:16:upper-tri}
+    设$V$是有限维复向量空间，$T\in \mathcal{L}(V)$，则
+    \begin{enumerate}
+        \item $T$关于$V$的某组基有上三角矩阵，记为$A$；
+
+        \item $T$可逆的充要条件是$A$的主对角元均不为0；
+
+        \item $T$的本征值恰为$A$的主对角元.
+    \end{enumerate}
 \end{theorem}
 除此之外，在第三章中我们也提到上三角矩阵相乘结果中对角线上元素是原矩阵对角线上
 对应元素相乘的结果，其逆的对角线上元素是原矩阵对角线对应元素的逆.以上性质表明，
 上三角矩阵是所有算子都可以在某组基下得到的且有良好性质的矩阵类型.
 
-在done right的体系中，这一定理的第一条需要基于以下命题：
+在Done Right的体系中，这一定理的第一条需要基于以下命题：
 \begin{theorem}
-	设$T\in L(V)$，且$v_1,v_2,\cdots,v_n$是$V$的基，则以下条件等价：
+    设$T\in \mathcal{L}(V)$，且$v_1,v_2,\ldots,v_n$是$V$的基，则以下条件等价：
+    \begin{enumerate}
+        \item $T$关于$v_1,v_2,\ldots,v_n$的矩阵是上三角的；
 
-	\textup{（1）}$T$关于$v_1,v_2,\cdots,v_n$的矩阵是上三角的；
+        \item 对每个$j=1,\ldots,n$有$Tv_j\in\spa(v_1,\ldots,v_j)$；
 
-	\textup{（2）}对每个$j=1,\cdots,n$有$Tv_j\in\textup{span}(v_1,\cdots,v_j)$；
-
-	\textup{（3）}对每个$j=1,\cdots,n$有$\textup{span}(v_1,\cdots,v_j)$在$T$下不变.
+        \item 对每个$j=1,\ldots,n$有$\spa(v_1,\ldots,v_j)$在$T$下不变.
+    \end{enumerate}
 \end{theorem}
-这一定理给出了上三角矩阵的几个充要条件，教材中关于定理\ref{上三角矩阵等价条件}（1）的
-两种证明在选定研究对象空间后核心都是利用等价条件进一步证明，（2）中也用到相关的结论.
-当然定理\ref{上三角矩阵等价条件}（1）的证明也可以基于上一学期的方法，各位同学可以在习题中
+这一定理给出了上三角矩阵的几个充要条件，教材中关于\autoref{th:16:upper-tri}(1)的
+两种证明在选定研究对象空间后核心都是利用等价条件进一步证明，(2)中也用到相关的结论.
+当然\autoref{th:16:upper-tri}(1)的证明也可以基于上一学期的方法，各位同学可以在习题中
 尝试完成证明，基本思想与证明实对称矩阵可正交对角化的分块矩阵方法类似.
 \begin{example}
-	设$V$是$n$维复向量空间。$T\in L(V)$，证明：对任意的正整数$r(1\le r\le n)$，$T$有$r$维不变子空间.
+    设$V$是$n$维复向量空间. $T\in \mathcal{L}(V)$，证明：对任意的正整数$r\enspace(1\leqslant r\leqslant n)$，$T$有$r$维不变子空间.
 \end{example}
 基于这一例子的结论，结合商空间，我们也可以推导出后续要讲解的哈密顿-凯莱定理，感兴趣的读者可以了解.
 
 接下来我们要讨论一个第六章习题中涉及但未归纳的问题，即算子/矩阵可交换的性质.我们有如下定理：
 \begin{theorem}
-	设$V$为$n$维复向量空间，$S,T\in L(V)$，$ST=TS$，则
+    设$V$为$n$维复向量空间，$S,T\in \mathcal{L}(V)$，$ST=TS$，则
+    \begin{enumerate}
+        \item $S$的每个本征空间都是$T$的不变子空间；
 
-	\textup{（1）}$S$的每个本征空间都是$T$的不变子空间；
-
-	\textup{（2）}$S,T$有公共的本征向量.
+        \item $S,T$有公共的本征向量.
+    \end{enumerate}
 \end{theorem}
 将这一定理的算子改为矩阵实际上是等价的.这一定理的证明实际上第六章的例题或习题中都有，可以参考.
 接下来我们希望应用这两个定理解决下面的问题：
 \begin{example}
-	设$V$为$n$维复向量空间，$S,T\in L(V)$，$ST=TS$，则
+    设$V$为$n$维复向量空间，$S,T\in \mathcal{L}(V)$，$ST=TS$，则
+    \begin{enumerate}
+        \item 若$S$有$s$个不同的本征值，则$S,T$至少有$s$个公共且线性无关的本征向量；
 
-	\textup{（1）}若$S$有$s$个不同的本征值，则$S,T$至少有$s$个公共且线性无关的本征向量；
-
-	\textup{（2）}存在$V$的一组基，使得$S$和$T$在这组基下的矩阵均为上三角矩阵.
+        \item 存在$V$的一组基，使得$S$和$T$在这组基下的矩阵均为上三角矩阵.
+    \end{enumerate}
 \end{example}
-这一习题的结论告诉我们：算子可交换对应于同时上三角化.例中（2）的结论如果换为矩阵表述应当是：
+这一习题的结论告诉我们：算子可交换对应于同时上三角化.例中 2 的结论如果换为矩阵表述应当是：
 设$A,B$是复数域上的两个$n$阶矩阵，且$AB=BA$，则存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$
 同时为上三角矩阵.
 
 \section{分块对角矩阵}
-\subsection{零空间的性质\ 幂零矩阵}
+\subsection{零空间的性质 \quad 幂零矩阵}
+% TODO 零空间 / 核空间
+% TODO 引用
 在\ref{本征空间与对角矩阵}节的末尾，我们提到了对于不可对角化的算子得到相对简单的标准形
 的思路：因为此时本征向量不足以构成一组基，原空间无法被分解为一维不变子空间的直和，也就无法被
-分解为本征空间的直和.但注意到本征空间实际上是$\textup{null }(\lambda I-T)$，而我们在
+分解为本征空间的直和.但注意到本征空间实际上是$\ker (\lambda I-T)$，而我们在
 \ref{像与核高级结论}节中提到了关于零空间可以随着算子幂次增加而增加的结论，因此我们可以考虑
 利用这一结论将本征空间扩张，从而使得扩张后的本征空间的直和为原空间.我们将关于零空间的这些结论
 总结为如下定理：
-\begin{theorem}\label{零空间性质}
-	设$T\in L(V)$，则有
+\begin{theorem}\label{th:16:kernel}
+    设$T\in \mathcal{L}(V)$，则有
+    \begin{enumerate}
+        \item $\{0\}=\ker T^0\subset\ker T^1\subset\cdots\subset
+        \ker T^k\subset\ker T^{k+1}\subset\cdots$；
 
-	\textup{（1）}$\{0\}=\textup{null }T^0\subset\textup{null }T^1\subset\cdots\subset
-	\textup{null }T^k\subset\textup{null }T^{k+1}\subset\cdots$；
+        \item 设$m$是非负整数使得$\ker T^m=\ker T^{m+1}$，则
+        \[\ker T^m=\ker T^{m+1}=\ker T^{m+2}=\ker T^{m+3}=\cdots\]
 
-	\textup{（2）}设$m$是非负整数使得$\textup{null }T^m=\textup{null }T^{m+1}$，则
-	$$\textup{null }T^m=\textup{null }T^{m+1}=\textup{null }T^{m+2}=\textup{null }T^{m+3}=\cdots\textup{；}$$
-
-	\textup{（3）}令$n=\dim V$，则$\textup{null }T^n=\textup{null }T^{n+1}=\textup{null }T^{n+1}=\cdots$.
+        \item 令$n=\dim V$，则$\ker T^n=\ker T^{n+1}=\ker T^{n+1}=\cdots$.
+    \end{enumerate}
 \end{theorem}
 这一定理对应教材8.2-8.4，证明环环相扣，并且8.3的证明有一定的趣味性.接下来我们继续对\ref{像与核高级结论}节中
-另一结论进行解读.我们有$T^2=T$时，$V=\textup{null }T\oplus\textup{range }T$，虽然这一幂等的条件不是必要的，
-但仍然存在很多矩阵无法满足这一等式，但我们有存在正整数$m$使得$V=\textup{null }T^m\oplus\textup{range }T^m,\forall T\in L(V)$.
+另一结论进行解读.我们有$T^2=T$时，$V=\ker T\oplus\im T$，虽然这一幂等的条件不是必要的，
+但仍然存在很多矩阵无法满足这一等式，但我们有存在正整数$m$使得$V=\ker T^m\oplus\im T^m,\enspace\forall T\in \mathcal{L}(V)$.
 实际上，我们可以取$m=\dim V$，这就是教材8.5的结论.证明方式请回顾\ref{直和}一节的两种方法，显然第二种更为简单直接.
 这一结论实际上也给予我们理由相信，扩张后的本征空间的直和也可以被证明等于原空间.
 
 基于上面零空间的讨论，为了后面小节的研究，我们将讲解幂零算子与幂零矩阵的相关准备知识.
 \begin{definition}
-	一个算子称为幂零的，如果它的某个幂等于$0$.
+    一个算子称为\keyterm{幂零}[nilpotent]的，如果它的某个幂等于 0.
 \end{definition}
+% TODO 引用
 幂零矩阵的定义类似，参考\ref{矩阵的迹}一节.实际上，在定理\ref{幂零矩阵性质}中我们已经介绍了
 部分内容，但现在的谈论角度与背景有差异，因此我们重述这一定理：
-\begin{theorem}\label{幂零算子性质}
-	设$N\in L(V)$是幂零的，则
+\begin{theorem} \label{nilpotent-operator}
+    设$N\in \mathcal{L}(V)$是幂零的，则
+    \begin{enumerate}
+        \item $N$的所有本征值均为0（等价定义）；
 
-	\textup{（1）}$N$的所有本征值均为$0$（等价定义）；
+        \item $N^{\dim V}$=0；
 
-	\textup{（2）}$N^{\dim V}$=$0$；
+        \item $V$有一组基使得$N$关于这组基的矩阵对角线和对角线下方元素均为0（等价定义）；
 
-	\textup{（3）}$V$有一组基使得$N$关于这组基的矩阵对角线和对角线下方元素均为$0$（等价定义）；
-
-	\textup{（4）}$N\pm I$可逆.
+        \item $N\pm I$可逆.
+    \end{enumerate}
 \end{theorem}
-其中（1）的等价性其中一边需要使用后文的知识，因此我们放在后续章节的习题中.
-（2）和（3）见教材8.18和8.19，而（4）可直接由（3）或者利用本征值$\lambda$与$T-\lambda I$可逆之间的关系得到，
-（3）的等价性另一半见教材8.A习题12.
+其中1的等价性其中一边需要使用后文的知识，因此我们放在后续章节的习题中.
+2和3见教材8.18和8.19，而4可直接由3或者利用本征值$\lambda$与$T-\lambda I$可逆之间的关系得到，
+3的等价性另一半见教材8.A习题12.
 
 \subsection{广义本征空间与分块对角矩阵}
 上一节中我们已经讨论了不可对角化算子获得简化矩阵的一般思想，即试图利用零空间增长的性质扩张
-本征空间，使得扩张后的本征空间（称为\textbf{广义本征空间}）的直和为原空间.下面我们给出严谨定义：
+本征空间，使得扩张后的本征空间（称为广义本征空间）的直和为原空间.下面我们给出严谨定义：
 \begin{definition}
-	设$T\in L(V)$，$\lambda\in\mathbf{F}$是$T$的本征值，若向量$v\neq 0$且存在正整数$j$使得
-	$(T-\lambda I)^jv=0$，则称$v$为$T$对应于$\lambda$的广义本征向量.$T$对应于$\lambda$的全体
-	广义本征向量与$0$向量构成的集合称为$T$相应于$\lambda$的广义本征空间，记为$G(\lambda,T)$.
+    设$T\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$T$的本征值，若向量$v\neq 0$且存在正整数$j$使得
+    $(T-\lambda I)^jv=0$，则称$v$为$T$对应于$\lambda$的\keyterm{广义本征向量}[generalized eigenvector].
+    $T$对应于$\lambda$的全体广义本征向量与0向量构成的集合称为$T$相应于$\lambda$的\keyterm{广义本征空间}[generalized eigenspace]，记为$G(\lambda,T)$.
 \end{definition}
 注意我们不定义广义本征值，因为若$\lambda$原先不是本征值，则对于任意的$j$，$(T-\lambda I)^j$
 仍为双射.
 
-实际上，根据定理\ref{零空间性质}，我们有$G(\lambda,T)=\textup{null }(T-\lambda I)^{\dim V}$.
+实际上，根据\autoref{th:16:kernel}，我们有$G(\lambda,T)=\ker (T-\lambda I)^{\dim V}$.
 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为
 广义本征空间的维数，几何重数定义为本征空间的维数.实际上第六章我们有类似的定义，我们将在多项式一节中
 讲解它们的关联.
 
 我们接下来的目标转向证明广义本征空间的和为直和且和为原空间，这样就能和定理\ref{本征常识}与
 定理\ref{算子对角化}思路对应.
-\begin{theorem}\label{广义本征性质}
-	设$V$是有限维的，$T\in L(V)$.用$\lambda_1,\cdots,\lambda_m$表示$T$的所有互异本征值.
+\begin{theorem}\label{th:16:gen-eigen}
+    设$V$是有限维的，$T\in \mathcal{L}(V)$.用$\lambda_1,\ldots,\lambda_m$表示$T$的所有互异本征值.
+    \begin{enumerate}
+        \item $T$对应于不同本征值的广义本征向量线性无关；
 
-	\textup{（1）}$T$对应于不同本征值的广义本征向量线性无关；
+        \item $T$不同本征值对应的广义本征空间的和为直和，且$V=G(\lambda_1,T)\oplus\cdots\oplus
+        G(\lambda_m,T)$；
 
-	\textup{（2）}$T$不同本征值对应的广义本征空间的和为直和，且$V=G(\lambda_1,T)\oplus\cdots\oplus
-	G(\lambda_m,T)$；
+        \item $V$有一个由$T$的广义本征向量组成的基；
 
-	\textup{（3）}$V$有一个由$T$的广义本征向量组成的基；
+        \item 每个$G(\lambda_i,T)$在$T$下都是不变的；
 
-	\textup{（4）}每个$G(\lambda_i,T)$在$T$下都是不变的；
-
-	\textup{（5）}每个$(T-\lambda_j I)|_{G(\lambda_j,T)}$都是幂零的.
+        \item 每个$(T-\lambda_j I)\vert_{G(\lambda_j,T)}$都是幂零的.
+    \end{enumerate}
 \end{theorem}
 注意这一定理适用于复向量空间上的任一算子.上述定理分别对应于教材8.13,8.21和8.23.其中（1）的证明具有一定的
 技巧性，上一学期也有类似的思想，但此定理更多的处理.（2）是本命题的核心，证明使用数学归纳法，略显繁杂.
 （3）-（5）证明比较基本，并且让我们可以得到如下矩阵标准形：
 \begin{theorem}
-	设$V$是复向量空间，$T\in L(V)$.设$\lambda_1,\cdots,\lambda_m$是$T$的所有互不相同的本征值，重数分别为
-	$d_1,\cdots,d_m$，则$V$有一组基使得$T$关于这组基的有分块对角矩阵
-	$$\begin{pmatrix}
-		A_1 &  & 0 \\  & \ddots &  \\ 0 &  & A_m
-	\end{pmatrix},$$其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
-	$$A_j=\begin{pmatrix}
-		\lambda_j &  & * \\  & \ddots &  \\ 0 &  & \lambda_j
-	\end{pmatrix}.$$
+    设$V$是复向量空间，$T\in \mathcal{L}(V)$.设$\lambda_1,\cdots,\lambda_m$是$T$的所有互不相同的本征值，重数分别为
+    $d_1,\cdots,d_m$，则$V$有一组基使得$T$关于这组基的有分块对角矩阵
+    $$\begin{pmatrix}
+        A_1 &  & O \\  & \ddots &  \\ O &  & A_m
+    \end{pmatrix},$$其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
+    $$A_j=\begin{pmatrix}
+        \lambda_j &  & * \\  & \ddots &  \\ O &  & \lambda_j
+    \end{pmatrix}.$$
 \end{theorem}
-这一定理的证明基于定理\ref{广义本征性质}以及幂零算子性质定理\ref{幂零算子性质}是简单的.
+这一定理的证明基于\autoref{th:16:gen-eigen} 以及幂零算子性质\autoref{nilpotent-operator} 是简单的.
 由此我们得到了一个相比于上三角矩阵更为简单，并且所有算子都可以获得的标准形.
 \begin{example}
-	设$T\in L(\mathbf{C}^3)$定义为
-	$$T(z_1,z_2,z_3)=(6z_1+3z_2+4z_3,6z_2+2z_3,7z_3),$$求一组基使其有分块对角矩阵并写出对应的分块对角矩阵.
+    设$T\in \mathcal{L}(\mathbf{C}^3)$定义为
+    \[T(z_1,z_2,z_3)=(6z_1+3z_2+4z_3,6z_2+2z_3,7z_3),\]求一组基使其有分块对角矩阵并写出对应的分块对角矩阵.
 \end{example}
 \begin{example}
-	设$T\in L(V)$，$S\in L(V)$可逆，证明：$T$和$S^{-1}TS$有相同的本征值，且重数也相同.
+    设$T,S\in \mathcal{L}(V)$可逆，证明：$T$和$S^{-1}TS$有相同的本征值，且重数也相同.
 \end{example}
 在进入下一个话题前，我们先简单介绍算子平方根的概念，这一概念在之后内积空间算子会进一步说明.
 \begin{definition}
-	我们称算子$T\in L(V)$的平方根是满足$R^2=T$的算子$R\in L(V)$.
+    我们称算子$T\in \mathcal{L}(V)$的平方根是满足$R^2=T$的算子$R\in \mathcal{L}(V)$.
 \end{definition}
 关于复向量空间，我们有如下两个结论：
-\begin{theorem}\label{幂零平方根}
-	设$V$是复向量空间.
+\begin{theorem} \label{th:16:np-sqrt}
+    设$V$是复向量空间.
+    \begin{enumerate}
+        \item 设$N\in \mathcal{L}(V)$幂零，则$(I+N)$有平方根；
 
-	\textup{（1）}设$N\in L(V)$幂零，则$(I+N)$有平方根；
-
-	\textup{（2）}若$T\in L(V)$可逆，则$T$有平方根.
+        \item 若$T\in \mathcal{L}(V)$可逆，则$T$有平方根.
+    \end{enumerate}
 \end{theorem}
-定理对应教材8.31和8.33.（1）的证明基于$\sqrt{1+x}$的泰勒展开，并应用幂零矩阵的定义，表明我们可以计算出这一平方根.
+定理对应教材8.31和8.33. 1的证明基于$\sqrt{1+x}$的泰勒展开，并应用幂零矩阵的定义，表明我们可以计算出这一平方根.
 我们不是第一次看到使用泰勒展开的情况，在\ref{矩阵的幂}一节的求逆的分式思想中使用了$\cfrac{1}{1-x}$的泰勒展开.
-（2）的证明实际上基于（1）以及定理\ref{广义本征性质}，是很简单明了的.
+2 的证明实际上基于 1以及\autoref{th:16:gen-eigen}，是很简单明了的.
 \begin{example}
-	定义$N\in L(\mathbf{F}^5)$为
-	$$N(x_1,x_2,x_3,x_4,x_5)=(2x_2,3x_3,-x_4,4x_5,0).$$
-	求$(I+N)$的一个平方根.
+    定义$N\in \mathcal{L}(\mathbf{F}^5)$为
+    \[N(x_1,x_2,x_3,x_4,x_5)=(2x_2,3x_3,-x_4,4x_5,0)\]
+    求$(I+N)$的一个平方根.
 \end{example}
 
-\vspace{2ex} 
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-\vspace{2ex} 
+\vspace{2ex}
 
 \centerline{\heiti \Large 习题}
-\vspace{2ex} 
+\vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
@@ -393,13 +412,13 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
