@@ -13,14 +13,14 @@
     重数分别为$d_1,\ldots,d_m$，则多项式\[(z-\lambda_1)^{d_1}\cdots(z-\lambda_m)^{d_m}\]
     称为$T$的\keyterm{特征多项式}[characteristic polynomial].
 \end{definition}
-根据这一定义，$T$的特征多项式的次数为$\dim V$（由\autoref{th:16:gen-eigen} (2) 可得）， % TODO 引用
+根据这一定义，$T$的特征多项式的次数为$\dim V$（由\autoref{thm:16:广义本征性质} (2) 可得）， % TODO 引用
 并且其零点恰为$T$的全部本征值.回忆定理\ref{特征多项式1}对特征多项式的定义，$f(\lambda)=|\lambda I-A|$，
 且多项式的$k$重根即为$k$重本征值，本征值的重数也就称为代数重数.
 \begin{example}
     设$V$是复向量空间，$V_1,\cdots,V_m$都是$V$的非零子空间使得$V=V_1\oplus\cdots\oplus V_m$.设$T\in \mathcal{L}(V)$，每个
     $V_j$在$T$下不变.对每个$j$，令$p_j$表示$T|_{V_j}$的多项式.证明：$T$的特征多项式为$p_1\cdots p_m$.
 \end{example}
-实际上，根据\autoref{th:14:factorization-of-polynomial}，我们知道这两个特征多项式的定义统一等价于两个代数重数的定义统一.教材在
+实际上，根据\autoref{thm:14:多项式分解}，我们知道这两个特征多项式的定义统一等价于两个代数重数的定义统一.教材在
 10.25中直接证明了特征多项式的统一，然后我们可以得出代数重数定义统一，即广义本征空间重数等于本征值作为特征多项式
 $|\lambda I-A|=0$的零点重数.
 
@@ -32,7 +32,7 @@ $|\lambda I-A|=0$的零点重数.
 \end{pmatrix}$，我们容易验证$A^2-I=0$，因此$\lambda^2-1$是$A$的一个零化多项式，同时我们发现这是
 $A$的特征多项式，因此我们可以猜想，是否对于所有的矩阵都有特征多项式是零化多项式的结论，事实上，这就是
 著名的 \keyterm{Hamilton-Cayley 定理}：
-\begin{theorem} \label{th:17:HC}
+\begin{theorem} \label{thm:17:HC}
     设$V$是复向量空间，$T\in \mathcal{L}(V)$.令$q$表示$T$的特征多项式，则$q(T)=0$.
 \end{theorem}
 基于 Done Right 的体系，我们可以很轻松地利用广义本征空间分解证明这一定理.一般的高等代数教材引入$\lambda$矩阵
@@ -42,13 +42,13 @@ $A$的特征多项式，因此我们可以猜想，是否对于所有的矩阵�
 
 接下来我们利用这一定理继续我们逆向推导的过程.我们的目标同样是找到能在直和后得到原空间
 的不变子空间的定义方式.实际上我们可以参照以下结论：
-\begin{theorem} \label{th:17:fact-and-direct-sum} % 多项式分解与零空间直和
+\begin{theorem} \label{thm:17:多项式分解与零空间直和}
     设$T\in \mathcal{L}(V)$，且在$\mathbf{F}[x]$中有$p=p_1p_2$，且$p_1,p_2$互素，则有
     \[\ker p(T)=\ker p_1(T)\oplus\ker p_2(T).\]
 \end{theorem}
-定理的证明我们留作习题，需要基于\autoref{th:14:bezout-lemma}. 我们需要将这一定理推广到因式更多的情况，
-证明只需要依照\autoref{th:17:fact-and-direct-sum} 然后进行数学归纳法即可：
-\begin{theorem} \label{th:17:fact-and-direct-sum-general}
+定理的证明我们留作习题，需要基于\autoref{thm:14:裴蜀定理}. 我们需要将这一定理推广到因式更多的情况，
+证明只需要依照\autoref{thm:17:多项式分解与零空间直和} 然后进行数学归纳法即可：
+\begin{theorem} \label{thm:17:多项式分解与零空间直和2}
     设$T\in \mathcal{L}(V)$，且在$\mathbf{F}[x]$中有$p=p_1p_2\cdots p_s$，且$p_1,p_2,\ldots,p_s$两两互素，
     则有\[\ker p(T)=\ker p_1(T)\oplus\ker p_2(T)\oplus\cdots\oplus\ker p_s(T).\]
 \end{theorem}
@@ -57,17 +57,17 @@ $A$的特征多项式，因此我们可以猜想，是否对于所有的矩阵�
 定义的特征多项式分解为互素因式乘积，有
 \[p(\lambda)=|\lambda I-A|=(\lambda-\lambda_1)^{r_1}(\lambda-\lambda_2)^{r_2}\cdots(\lambda-\lambda_m)^{r_m},\]
 其中$A$为$T$在某组基下的矩阵.能进行这样的分解的原因在于第六章中结论告诉我们特征多项式是首一的，且零点就是算子本征值，
-根据\autoref{th:14:factorization-of-polynomial} 可以知道这样的分解存在且$\lambda_1,\ldots,\lambda_m$为$T$的所有互异本征值，$r_1,\ldots,r_m$为本征值
-作为特征多项式零点的重数. 然后由于分解的因式显然是两两互素的，因此根据\autoref{th:17:fact-and-direct-sum-general}，我们有
+根据\autoref{thm:14:多项式分解} 可以知道这样的分解存在且$\lambda_1,\ldots,\lambda_m$为$T$的所有互异本征值，$r_1,\ldots,r_m$为本征值
+作为特征多项式零点的重数. 然后由于分解的因式显然是两两互素的，因此根据\autoref{thm:17:多项式分解与零空间直和2}，我们有
 \[\ker p(T)=V=\ker (T-\lambda_1I)^{r_1}\oplus\cdots\oplus\ker (T-\lambda_mI)^{r_m},\]
 这或许就是一种巧合，我们从多项式的角度也推导出了和广义本征空间相近的结论，并且这里将广义本征空间定义中$(T-\lambda I)$的幂次
 降低了.除此之外，$\ker (T-\lambda_iI)^{r_i}\enspace(i=1,2,\ldots,m)$也是$T$的不变子空间，因此我们也能得到分块对角矩阵的标准形，
-并且\autoref{th:16:gen-eigen} 的其他结论也可以基于此得到，此处不再赘述.
+并且\autoref{thm:16:广义本征性质} 的其他结论也可以基于此得到，此处不再赘述.
 
 总结一下上述两种推导思路，其核心都在于寻找合适的不变子空间的直和分解，使得算子在直和分解获得的基下的矩阵是分块对角矩阵.
  Done Right 的思想基于从本征空间到广义本征空间的自然扩张（基本原理是零空间增长），这保持了不变子空间的性质并且使得所有算子
 都有这样的直和分解，由此进一步得到 Hamilton-Cayley 定理.一般高等代数的思想在于首先引入$\lambda$矩阵理论得到 Hamilton-Cayley 定理，
-然后基于\autoref{th:17:fact-and-direct-sum-general} 的直和分解得到合适的不变子空间直和分解.我们可以看出，Done Right 的思路相对而言更加直观，但其缺陷
+然后基于\autoref{thm:17:多项式分解与零空间直和2} 的直和分解得到合适的不变子空间直和分解.我们可以看出，Done Right 的思路相对而言更加直观，但其缺陷
 也是显然的，很多具象的结论以及计算方式都在一般高等代数的思路中相对更为直接.所以 Done Right 向我们展示了高等代数中核心结论如何用更
 符合直觉的方式得到，实际应用时原先等价的技术手段很多时候仍是不可或缺的.
 \begin{example}
@@ -93,7 +93,7 @@ $(\dim V)^2$，这一点早在第二章中就有涉及.而根据 Hamilton-Cayley
 如果需要计算极小多项式，我们可以给出一个算法化的描述. 对于$m=1,2,\ldots$，我们相继考虑线性方程组
 \[a_0M(I)+a_1M(T)+\cdots+a_{m-1}M(T^{m-1})+M(T^m)=0,\]
 直到这一方程组有一个解$a_0,a_1,\ldots,a_{m-1}$，此时$a_0,a_1,\ldots,a_{m-1},1$即为极小多项式的次数.
-\begin{example} \label{ex:17:minimal-poly}
+\begin{example} \label{ex:17:最小多项式}
     求矩阵$A=\begin{pmatrix}
         0 & 0 & 0 \\ 1 & 0 & 2 \\ 2 & 1 & -1
     \end{pmatrix}$和$B=\begin{pmatrix}
@@ -129,23 +129,23 @@ $(\dim V)^2$，这一点早在第二章中就有涉及.而根据 Hamilton-Cayley
         \item 设$\mathbf{F}=\mathbf{C}$，则$T$的特征多项式是$T$的极小多项式的多项式倍.
     \end{enumerate}
 \end{theorem}
-在\autoref{ex:17:minimal-poly} 中我们不难发现，两个矩阵的极小多项式和特征多项式根一致，实际上这是对任意算子（或矩阵）
+在\autoref{ex:17:最小多项式} 中我们不难发现，两个矩阵的极小多项式和特征多项式根一致，实际上这是对任意算子（或矩阵）
 都成立的结论：
-\begin{theorem} \label{min-chr-same-root} % 极小与特征根相同
+\begin{theorem} \label{thm:17:极小多项式与特征多项式相同根}
     设$T\in \mathcal{L}(V)$，则$T$的极小多项式的零点恰好是$T$的本征值，即极小多项式与特征多项式在$\mathbf{F}$中有
     相同的根（重数可以不同）.
 \end{theorem}
 证明这一定理注意要证明两个方向，其一是极小多项式的零点都是特征多项式的零点，这只需要基于特征多项式是极小多项式的倍式；
 另一方面是特征多项式的零点（本征值）都是极小多项式的零点，这也是简单的，只需要利用极小多项式是零化多项式以及本征值的基本性质即可.
 
-这一定理是非常重要的，它关系到下一小节关于多项式和标准形关系的讨论.并且\autoref{ex:17:minimal-poly} 也可以基于此有更快的解法.
+这一定理是非常重要的，它关系到下一小节关于多项式和标准形关系的讨论.并且\autoref{ex:17:最小多项式} 也可以基于此有更快的解法.
 除此之外，我们还可以得到一个推论，即相似的矩阵有相同的极小多项式.因为上面的结论基于算子，相似矩阵对应的算子是一致的.
 
 \section{多项式与标准形的应用}
 在最后一小节我们尝试将两种描述算子的角度（标准形和多项式）联系起来，主要的桥梁就是上一小节中讨论的极小多项式.在前文讨论
-特征多项式诱导的不变子空间分解时，我们将广义本征空间定义中需要求零空间的算子幂次降低，而依据\autoref{min-chr-same-root} 以及
+特征多项式诱导的不变子空间分解时，我们将广义本征空间定义中需要求零空间的算子幂次降低，而依据\autoref{thm:17:极小多项式与特征多项式相同根} 以及
 特征多项式是极小多项式的倍式可知，这一幂次还可以进一步降低：
-\begin{theorem} \label{th:17:decomp} % 极小多项式与分解
+\begin{theorem} \label{thm:17:极小多项式与分解}
     设$T\in \mathcal{L}(V)$，$T$的极小多项式为$p=(\lambda-\lambda_1)^{s_1}\cdots(\lambda-\lambda_m)^{s_m}$，则有
     \[\ker p(T)=V=\ker (T-\lambda_1I)^{s_1}\oplus\cdots\oplus\ker (T-\lambda_mI)^{s_m}.\]
 \end{theorem}
@@ -156,13 +156,13 @@ $(\dim V)^2$，这一点早在第二章中就有涉及.而根据 Hamilton-Cayley
 的极小多项式的最小公倍式.证明我们留作习题，基本思想是利用限制算子说明全空间上的极小多项式是各个不变子空间的极小多项式的倍式.
 这一结论的应用或许并不直接，但如果我们考虑算子在不变子空间直和分解下的分块对角矩阵，那么这一分块对角矩阵的极小多项式实际上就等于
 各个分块的极小多项式的最小公倍式.
-\begin{example} \label{th:17:jordan-min-poly} % 若当形矩阵极小多项式
+\begin{example} \label{thm:17:若当形矩阵极小多项式}
     我们在此继续引入\keyterm{若当形矩阵}，即由若干个若当块组成的分块对角矩阵. 设$A$为若当形矩阵，
     $A=\diag(J_{r_1}(a),\ldots,J_{r_s}(a),J_{t_1}(b),\ldots,J_{t_m}(b))$，其中$r_1\leqslant\cdots\leqslant r_s$，
     $t_1\leqslant\cdots\leqslant t_m$，则$A$的极小多项式$p$为$(\lambda-a)^{r_1},\ldots,(\lambda-a)^{r_s},(\lambda-b)^{t_1},(\lambda-b)^{t_m}$
     的最小公倍式，即为$(\lambda-a)^{r_s}(\lambda-b)^{t_m}$.实际上，这一结论还可以进一步推广，但描述较为繁杂，读者只需从此例理解基本思想即可.
 \end{example}
-在\autoref{th:17:decomp} 中我们了解了极小多项式中因子幂次与广义本征空间的关联.加入极小多项式的各个因式的次数均为1，这与可对角化算子的不变子空间
+在\autoref{thm:17:极小多项式与分解} 中我们了解了极小多项式中因子幂次与广义本征空间的关联.加入极小多项式的各个因式的次数均为1，这与可对角化算子的不变子空间
 分解是一致的！因此我们可以得到下面的结论：
 \begin{theorem}
     设$T\in \mathcal{L}(V)$，$T$可对角化当且仅当$T$的极小多项式能分解成不同的一次因式的乘积.

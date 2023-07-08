@@ -48,7 +48,7 @@ $a\mapsto f(a)$，并将加法乘法写成$+(2,3)=5$，$\times(2,3)=6$，想必�
 
 对于乘法运算（可记为$\cdot$或$\times$），单位元一般记为1（更一般的可以记为$e$），逆元记为$a^{-1}$.
 事实上，我们可以给出更多的例子：
-\begin{example}\label{ex:1:abelgroup}
+\begin{example}\label{ex:1:Abel 群}
     \begin{enumerate}[label=(\arabic*)]
         \item 代数系统$\langle \mathbf{R}\backslash\{0\}:\circ\rangle$定义的一般乘法运算
 
@@ -61,12 +61,12 @@ $a\mapsto f(a)$，并将加法乘法写成$+(2,3)=5$，$\times(2,3)=6$，想必�
 事实上，我们可以对上面的定义做进一步的抽象.我们可以忽略集合中元素的差异（元素可以是实数，也可以是上述例子中
 的平面向量等），同时也可以忽略运算定义的差异，只关心运算作用于集合元素的性质.
 对于一般的代数系统$\langle G:\circ\rangle$，我们有如下定义：
-\begin{definition} \label{def:1:group}
+\begin{definition} \label{def:1:群}
     若运算$\circ$满足结合律，则称代数系统$\langle G:\circ\rangle$为\keyterm{半群}[semigroup]；若在半群基础上存在单位元，则称之为\keyterm{含幺半群}[monoid]；
     若在含幺半群基础上每个元素存在逆元，则称之为\keyterm{群}[group]；若在群的基础上运算还满足交换律，则称之为\keyterm{Abel群}[Abelian group]，也称\keyterm{交换群}[commutative group].
 \end{definition}
 
-\autoref{def:1:group} 给出了我们本节第一个要讨论的代数结构——群的定义. 简而言之，代数结构就是在集合上定义具有某些特定性质的运算
+\autoref{def:1:群} 给出了我们本节第一个要讨论的代数结构——群的定义. 简而言之，代数结构就是在集合上定义具有某些特定性质的运算
 后得到的一类代数系统.事实上，教材中42-44页给出了大量抽象的例子有助于同学们理解上述一系列群的定义，同时也能使读者体会到
 ``在集合上定义运算''的方式的多样与抽象.
 
@@ -130,10 +130,10 @@ $a\mapsto f(a)$，并将加法乘法写成$+(2,3)=5$，$\times(2,3)=6$，想必�
 成为一个域.我们回顾高中学习的平面向量知识，我们记$\vec{e}_1=(1,0)$，$\vec{e}_2=(0,1)$，则$\mathbf{R}^2$上的任一向量
 $\vec{u}=(x,y)$可写为$x\vec{e}_1+y\vec{e}_2$.此外，我们仍沿袭高中对向量长度的定义，即$\lvert\vec{u}\rvert=\sqrt{x^2+y^2}$.
 
-在\autoref{ex:1:abelgroup} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法
+在\autoref{ex:1:Abel 群} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法
 使得代数系统$\langle\mathbf{R}^2\backslash\{(0,0)\}:\circ\rangle$也为Abel群.这一乘法的构造需要满足一些自然的条件，同时
 也能实现构成Abel群的要求.事实上，我们有如下定理：
-\begin{theorem}\label{th:1:complexmult}
+\begin{theorem}\label{thm:1:复数乘法构造}
     平面点集$\mathbf{R^2}$上存在唯一的乘法$\circ$，满足
     \begin{enumerate}
         \item（单位元）$\vec{u}\circ\vec{e}_1=\vec{e}_1\circ\vec{u},\enspace\forall\vec{u}\in\mathbf{R^2}$；
@@ -151,7 +151,7 @@ $\vec{u}=(x,y)$可写为$x\vec{e}_1+y\vec{e}_2$.此外，我们仍沿袭高中�
     对任意向量
 \end{proof}
 
-在\autoref{th:1:complexmult} 赋予的乘法下，$\langle\mathbf{R}^2:+,\circ\rangle$成为复数域$\mathbf{C}$.我们可将$\vec{e}_1$合理简记为1，
+在\autoref{thm:1:复数乘法构造} 赋予的乘法下，$\langle\mathbf{R}^2:+,\circ\rangle$成为复数域$\mathbf{C}$.我们可将$\vec{e}_1$合理简记为1，
 同时$\vec{e}_2$简记为$\mathrm{i}$，利用$\vec{e}_2^2=-\vec{e}_1$可知$\mathrm{i}^2=-1$，这与我们熟知的虚数单位的定义是统一的.在此记号的约定下，
 $(a,b)$即为$a+b\mathrm{i}$.这一代数表示引入的相关概念，如实部、虚部、纯虚数，以及复数四则运算法则在高中阶段大家都已熟知，在此不再赘述.
 

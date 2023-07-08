@@ -6,7 +6,7 @@
 递归式定义（按行（列）展开）.
 
 \subsection{公理化定义}
-\begin{definition} \label{def:11:axiomatic-def}
+\begin{definition} \label{def:11:公理化定义}
     数域$\mathbf{F}$上的一个$n$阶行列式是取值于$\mathbf{F}$的$n$个$n$维向量
     $\alpha_1,\alpha_2,\ldots,\alpha_n \in \mathbf{F}^n$的一个函数，且$\forall \alpha_i,\beta_i \in \mathbf{F}^n$
     和$\forall \lambda \in \mathbf{F}$，满足下列规则：
@@ -26,8 +26,8 @@
 事实上，公理化定义从是逆序数定义可以推导出的行列式的运算性质，教材采用这种定义避开了繁琐的说明.
 除此之外，我们不难看出公理化定义可以形象地理解为对$n$维空间中体积的定义，
 对几何意义感兴趣的同学可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容.
-\begin{example} \label{ex:11:axiomatic-def}
-    使用\autoref{def:11:axiomatic-def} 验证下述命题的正确性：
+\begin{example} \label{ex:11:公理化定义}
+    使用\autoref{def:11:公理化定义} 验证下述命题的正确性：
     \begin{enumerate}
         \item 若行列式有一列为零向量，则行列式的值等于0.
 
@@ -41,14 +41,14 @@
     \end{enumerate}
 \end{example}
 
-\begin{example} \label{ex:11:axiomatic-def-2}
+\begin{example} \label{ex:11:公理化定义2}
     设向量$\alpha_1,\alpha_2,\beta_1,\beta_2$为三维列向量，又$A=(\alpha_1,\alpha_2,\beta_1),B=(\alpha_1,\alpha_2,\beta_2)$，
     且$|A|=3$，$|B|=2$，求$|2A+3B|$.
 \end{example}
 
 \subsection{递归式定义}
 首先需要回顾余子式和代数余子式的概念：
-\begin{definition} \label{def:11:cofactor}
+\begin{definition} \label{def:11:余子式}
     在$n$阶行列式$D=|a_{ij}|_{n \times n}$中，去掉元素$a_{ij}$所在的第$i$行和第$j$列的所有元素
     而得到的$n-1$阶行列式称为元素$a_{ij}$的\keyterm{余子式}[minor]，记作$M_{ij}$，并把数$A_{ij}=(-1)^{i+j}M_{ij}$
     称为元素$a_{ij}$的\keyterm{代数余子式}[cofactor].
@@ -56,7 +56,7 @@
 注意，虽然余子式和代数余子式在名称中含有式，但实际上他们是一个值.实际上行列式也称为``式''，但这些``式''
 只是形状上有个形式，实际上只是一个值.
 \begin{example} \label{ex:11:cofactor}
-    根据\autoref{def:11:cofactor} 计算行列式$\begin{vmatrix}
+    根据\autoref{def:11:余子式} 计算行列式$\begin{vmatrix}
         2 & 1 & 3 \\
         -1 & 0 & 2 \\
         1 & 5 & -2
@@ -64,20 +64,20 @@
 \end{example}
 
 接下来我们便可以给出递归式定义：
-\begin{definition} \label{def:11:recursive-def}
+\begin{definition} \label{def:11:递归式定义}
     设$D=|a_{ij}|_{n \times n}$，则
     \begin{gather}
-        \label{eq:11:recursive-def-1}
+        \label{eq:11:递归式定义1}
         D=\sum_{k=1}^{n}a_{kj}A_{kj}=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj} \quad j=1,2,\ldots,n \\
-        \label{eq:11:recursive-def-2}
+        \label{eq:11:递归式定义2}
         D=\sum_{k=1}^{n}a_{ik}A_{ik}=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in} \quad i=1,2,\ldots,n
     \end{gather}
 \end{definition}
-其中$A_{ij}$即为\autoref{def:11:cofactor} 给出的代数余子式，\autoref{eq:11:recursive-def-1} 称为$D$对第$j$列的展开式，\autoref{eq:11:recursive-def-2} 称为$D$对第$i$行的展开式.这一定义与公理化定义的
+其中$A_{ij}$即为\autoref{def:11:余子式} 给出的代数余子式，\autoref{eq:11:递归式定义1} 称为$D$对第$j$列的展开式，\autoref{eq:11:递归式定义2} 称为$D$对第$i$行的展开式.这一定义与公理化定义的
 等价性不难证明.事实上，这一定义被称为递归式定义的原因是显然的（如果在程序设计课程中已经学习过递归的概念），它使用$n-1$阶行列式定义$n$阶行列式，我们对任意$n$阶行列式
 都可以递归展开到1阶，从而得到最终行列式计算结果.
-\begin{example} \label{ex:11:recursive-def}
-    利用\autoref{def:11:recursive-def} 计算\autoref{ex:11:cofactor} 中的行列式，可以行列展开均使用并在上述公式中选取不同$i$和$j$以熟悉\autoref*{def:11:recursive-def}，并注意体会递归式定义的含义.
+\begin{example} \label{ex:11:递归式定义}
+    利用\autoref{def:11:递归式定义} 计算\autoref{ex:11:cofactor} 中的行列式，可以行列展开均使用并在上述公式中选取不同$i$和$j$以熟悉\autoref*{def:11:递归式定义}，并注意体会递归式定义的含义.
 \end{example}
 
 递归式定义有一个相关的结论如下：
@@ -85,17 +85,17 @@
     $n$阶行列式$D=|a_{ij}|_{n \times n}$的某一行（列）元素与另一行（列）相应元素的代数余子式
     的乘积之和等于0，即
     \begin{gather}
-        \label{eq:11:recursive-def-3}
+        \label{eq:11:递归式定义3}
         \sum_{k=1}^{n}a_{kj}A_{ki}=a_{1j}A_{1i}+a_{2j}A_{2i}+\cdots+a_{nj}A_{ni}=0 \quad j \neq i \\
-        \label{eq:11:recursive-def-4}
+        \label{eq:11:递归式定义4}
         \sum_{k=1}^{n}a_{jk}A_{ik}=a_{j1}A_{i1}+a_{j2}A_{i2}+\cdots+a_{jn}A_{in}=0 \quad j \neq i
     \end{gather}
 \end{theorem}
-我们若将行列式第$j$列元素替换为第$i$列元素，那么上述\autoref{eq:11:recursive-def-3} 根据\autoref{def:11:recursive-def} 就是在求替换后的行列式，
-并且有两列元素相同的行列式为0，我们便可以轻松地证明\autoref*{eq:11:recursive-def-3}，同理也可证明\autoref*{eq:11:recursive-def-4}. 同学们可能
-对\crefrange*{eq:11:recursive-def-1}{eq:11:recursive-def-4} 式繁杂的下标感到陌生，因此安排了\crefrange*{ex:11:axiomatic-def-2}{ex:11:recursive-def} 希望大家熟悉这些公式.
-\begin{example} \label{ex:11:recursive-def-2}
-    对\autoref{ex:11:recursive-def} 中的矩阵验证\autoref{def:11:axiomatic-def} 的正确性.
+我们若将行列式第$j$列元素替换为第$i$列元素，那么上述\autoref{eq:11:递归式定义3} 根据\autoref{def:11:递归式定义} 就是在求替换后的行列式，
+并且有两列元素相同的行列式为0，我们便可以轻松地证明\autoref*{eq:11:递归式定义3}，同理也可证明\autoref*{eq:11:递归式定义4}. 同学们可能
+对\crefrange*{eq:11:递归式定义1}{eq:11:递归式定义4} 式繁杂的下标感到陌生，因此安排了\crefrange*{ex:11:公理化定义2}{ex:11:递归式定义} 希望大家熟悉这些公式.
+\begin{example} \label{ex:11:递归式定义2}
+    对\autoref{ex:11:递归式定义} 中的矩阵验证\autoref{def:11:公理化定义} 的正确性.
 \end{example}
 这一节中行列式是按照一行（列）展开的，若按多行（列）展开则需要相应的 Laplace 定理，感兴趣的同学可以了解.
 \subsection{行列式的常用性质}
@@ -172,7 +172,7 @@
 \end{definition}
 我们要特别注意伴随矩阵代数余子式的下标与通常矩阵下标不一致，与转置下标一致.
 伴随矩阵具有以下几个重要性质，请各位同学掌握其证明并理解：
-\begin{example} \label{ex:11:adjugate}
+\begin{example} \label{ex:11:伴随矩阵}
     证明下列关于$n$阶矩阵$A$的伴随矩阵$A^*$的性质：
     \begin{enumerate}
         \item $AA^*=A^*A=|A|E$，若$A$可逆，则有$A^{-1}=|A|^{-1}A^*$，$A^*=|A|A^{-1}$，$(A^*)^{-1}=(A^{-1})^*=|A|^{-1}A$.
@@ -192,7 +192,7 @@
     \end{enumerate}
 \end{example}
 
-在计算行列式时若出现伴随矩阵，我们经常使用\autoref{ex:11:adjugate} 中的1，3进行计算.
+在计算行列式时若出现伴随矩阵，我们经常使用\autoref{ex:11:伴随矩阵} 中的1，3进行计算.
 
 使用伴随矩阵求逆矩阵是一种矩阵求逆的方式，我们通过一个简单的例子复习伴随矩阵的基本定义和性质：
 \begin{example}
@@ -205,10 +205,10 @@
 本节内容大家了解即可，要了解Cramer法则的内容及其与线性方程组的关系.教材中还有部分几何的内容，
 感兴趣的同学可以了解，当然一般而言几何部分不会考察.
 \subsection{Cramer法则}
-\begin{theorem} \keyterm{Cramer法则} \label{th:11:Cramer}
+\begin{theorem} \keyterm{Cramer法则} \label{thm:11:Cramer}
     对线性方程组
     \begin{gather}
-        \label{eq:11:linear-1}
+        \label{eq:11:线性方程组1}
         \left\{ \begin{array}{rcl}
             a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&0 \\
             a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=&0 \\
@@ -216,7 +216,7 @@
             a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n&=&0
         \end{array} \right.
         \\
-        \label{eq:11:linear-2}
+        \label{eq:11:线性方程组2}
         \left\{ \begin{array}{rcl}
             a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&b_1 \\
             a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=&b_2 \\
@@ -242,10 +242,10 @@
         a_{n1} & a_{n2} & \cdots & b_n
     \end{vmatrix}$，其中$D$称为系数行列式.
     \begin{enumerate}
-        \item 方程组 \ref{eq:11:linear-1} 只有零解$\iff D \neq 0$，有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
+        \item 方程组 \ref{eq:11:线性方程组1} 只有零解$\iff D \neq 0$，有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
 
-        \item 方程组 \ref{eq:11:linear-2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，
-        当$D=0$时，方程组 \ref{eq:11:linear-2} 要么无解，要么有无穷多解.
+        \item 方程组 \ref{eq:11:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，
+        当$D=0$时，方程组 \ref{eq:11:线性方程组2} 要么无解，要么有无穷多解.
     \end{enumerate}
 \end{theorem}
 我们可以用 Cramer 法则求解线性方程组，但要注意只有方程个数与未知数个数相等时才能使用，
@@ -264,12 +264,12 @@
 \begin{definition}
     矩阵$A=(a_{ij})_{n \times n}$的任意$k$行（$i_1<i_2<\cdots<i_k$行）和
     任意$k$列（$j_1<j_2<\cdots<j_k$列）的交点上的$k^2$个元素排成的行列式
-    $$\begin{vmatrix}
+    \[\begin{vmatrix}
         a_{i_1j_1} & a_{i_1j_2} & \cdots & a_{i_1j_k} \\
         a_{i_2j_1} & a_{i_2j_2} & \cdots & a_{i_2j_k} \\
         \vdots & \vdots & \ddots  & \vdots \\
         a_{i_kj_1} & a_{i_kj_2} & \cdots & a_{i_kj_k}
-    \end{vmatrix}$$
+    \end{vmatrix}\]
     称为矩阵$A$的一个$k$阶子式，若子式等于0则称$k$阶零子式，否则称非零子式.
     当$A$为方阵且$i_t=j_t\enspace(t=1,2,\ldots,k)$（即选取相同行列）时，称为$A$的
     $k$阶\keyterm{主子式}[principal minor]. 若$i_t=j_t=t\enspace(t=1,2,\ldots,k)$，称为$A$的$k$阶\keyterm{顺序主子式}[leading principal minor]

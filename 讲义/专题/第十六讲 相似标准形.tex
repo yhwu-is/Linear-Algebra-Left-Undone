@@ -213,7 +213,7 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 
 虽然对角矩阵十分简洁，但很可惜很多算子都不存在如此简洁的矩阵表示.我们考虑更为普遍但也能
 保持良好性质的情况，上三角矩阵一定是一个好的突破口：
-\begin{theorem}\label{th:16:upper-tri}
+\begin{theorem}\label{thm:16:上三角矩阵等价条件}
     设$V$是有限维复向量空间，$T\in \mathcal{L}(V)$，则
     \begin{enumerate}
         \item $T$关于$V$的某组基有上三角矩阵，记为$A$；
@@ -238,9 +238,9 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
         \item 对每个$j=1,\ldots,n$有$\spa(v_1,\ldots,v_j)$在$T$下不变.
     \end{enumerate}
 \end{theorem}
-这一定理给出了上三角矩阵的几个充要条件，教材中关于\autoref{th:16:upper-tri}(1)的
+这一定理给出了上三角矩阵的几个充要条件，教材中关于\autoref{thm:16:上三角矩阵等价条件}(1)的
 两种证明在选定研究对象空间后核心都是利用等价条件进一步证明，(2)中也用到相关的结论.
-当然\autoref{th:16:upper-tri}(1)的证明也可以基于上一学期的方法，各位同学可以在习题中
+当然\autoref{thm:16:上三角矩阵等价条件}(1)的证明也可以基于上一学期的方法，各位同学可以在习题中
 尝试完成证明，基本思想与证明实对称矩阵可正交对角化的分块矩阵方法类似.
 \begin{example}
     设$V$是$n$维复向量空间. $T\in \mathcal{L}(V)$，证明：对任意的正整数$r\enspace(1\leqslant r\leqslant n)$，$T$有$r$维不变子空间.
@@ -280,7 +280,7 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 \ref{像与核高级结论}节中提到了关于零空间可以随着算子幂次增加而增加的结论，因此我们可以考虑
 利用这一结论将本征空间扩张，从而使得扩张后的本征空间的直和为原空间.我们将关于零空间的这些结论
 总结为如下定理：
-\begin{theorem}\label{th:16:kernel}
+\begin{theorem}\label{thm:16:零空间性质}
     设$T\in \mathcal{L}(V)$，则有
     \begin{enumerate}
         \item $\{0\}=\ker T^0\subset\ker T^1\subset\cdots\subset
@@ -305,7 +305,7 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 % TODO 引用
 幂零矩阵的定义类似，参考\ref{矩阵的迹}一节.实际上，在定理\ref{幂零矩阵性质}中我们已经介绍了
 部分内容，但现在的谈论角度与背景有差异，因此我们重述这一定理：
-\begin{theorem} \label{nilpotent-operator}
+\begin{theorem} \label{thm:16:幂零算子性质}
     设$N\in \mathcal{L}(V)$是幂零的，则
     \begin{enumerate}
         \item $N$的所有本征值均为0（等价定义）；
@@ -332,14 +332,14 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 注意我们不定义广义本征值，因为若$\lambda$原先不是本征值，则对于任意的$j$，$(T-\lambda I)^j$
 仍为双射.
 
-实际上，根据\autoref{th:16:kernel}，我们有$G(\lambda,T)=\ker (T-\lambda I)^{\dim V}$.
+实际上，根据\autoref{thm:16:零空间性质}，我们有$G(\lambda,T)=\ker (T-\lambda I)^{\dim V}$.
 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为
 广义本征空间的维数，几何重数定义为本征空间的维数.实际上第六章我们有类似的定义，我们将在多项式一节中
 讲解它们的关联.
 
 我们接下来的目标转向证明广义本征空间的和为直和且和为原空间，这样就能和定理\ref{本征常识}与
 定理\ref{算子对角化}思路对应.
-\begin{theorem} \label{th:16:gen-eigen} % 广义本征性质
+\begin{theorem} \label{thm:16:广义本征性质}
     设$V$是有限维的，$T\in \mathcal{L}(V)$.用$\lambda_1,\ldots,\lambda_m$表示$T$的所有互异本征值.
     \begin{enumerate}
         \item $T$对应于不同本征值的广义本征向量线性无关；
@@ -360,14 +360,15 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 \begin{theorem}
     设$V$是复向量空间，$T\in \mathcal{L}(V)$.设$\lambda_1,\cdots,\lambda_m$是$T$的所有互不相同的本征值，重数分别为
     $d_1,\cdots,d_m$，则$V$有一组基使得$T$关于这组基的有分块对角矩阵
-    $$\begin{pmatrix}
+    \[\begin{pmatrix}
         A_1 &  & O \\  & \ddots &  \\ O &  & A_m
-    \end{pmatrix},$$其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
-    $$A_j=\begin{pmatrix}
+    \end{pmatrix}\]
+    其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
+    \[A_j=\begin{pmatrix}
         \lambda_j &  & * \\  & \ddots &  \\ O &  & \lambda_j
-    \end{pmatrix}.$$
+    \end{pmatrix}\]
 \end{theorem}
-这一定理的证明基于\autoref{th:16:gen-eigen} 以及幂零算子性质\autoref{nilpotent-operator} 是简单的.
+这一定理的证明基于\autoref{thm:16:广义本征性质} 以及幂零算子性质\autoref{thm:16:幂零算子性质} 是简单的.
 由此我们得到了一个相比于上三角矩阵更为简单，并且所有算子都可以获得的标准形.
 \begin{example}
     设$T\in \mathcal{L}(\mathbf{C}^3)$定义为
@@ -381,7 +382,7 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
     我们称算子$T\in \mathcal{L}(V)$的平方根是满足$R^2=T$的算子$R\in \mathcal{L}(V)$.
 \end{definition}
 关于复向量空间，我们有如下两个结论：
-\begin{theorem} \label{th:16:np-sqrt}
+\begin{theorem} \label{thm:16:幂零平方根}
     设$V$是复向量空间.
     \begin{enumerate}
         \item 设$N\in \mathcal{L}(V)$幂零，则$(I+N)$有平方根；
@@ -391,7 +392,7 @@ $P$可逆（即所谓特征值分解）.实际上相抵、相合都有类似的�
 \end{theorem}
 定理对应教材8.31和8.33. 1的证明基于$\sqrt{1+x}$的泰勒展开，并应用幂零矩阵的定义，表明我们可以计算出这一平方根.
 我们不是第一次看到使用泰勒展开的情况，在\ref{矩阵的幂}一节的求逆的分式思想中使用了$\cfrac{1}{1-x}$的泰勒展开.
-2 的证明实际上基于 1以及\autoref{th:16:gen-eigen}，是很简单明了的.
+2 的证明实际上基于 1以及\autoref{thm:16:广义本征性质}，是很简单明了的.
 \begin{example}
     定义$N\in \mathcal{L}(\mathbf{F}^5)$为
     \[N(x_1,x_2,x_3,x_4,x_5)=(2x_2,3x_3,-x_4,4x_5,0)\]

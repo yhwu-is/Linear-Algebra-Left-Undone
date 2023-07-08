@@ -23,7 +23,7 @@
     \item 分块矩阵的乘法：设$A=(a_{ij})_{m \times n}$，$B=(b_{ij})_{n \times p}$，如果
     把$A$，$B$分别分块为$r \times s$和$s \times t$分块矩阵，且$A$的列分块法与$B$的行分块法相同
     （注意这些条件始终保证可乘性成立），则
-    $$AB=\begin{pmatrix}
+    \[AB=\begin{pmatrix}
         A_{11} & A_{12} & \cdots & A_{1s} \\
         A_{21} & A_{22} & \cdots & A_{2s} \\
         \vdots & \vdots & \ddots & \vdots \\
@@ -33,7 +33,7 @@
         B_{21} & B_{22} & \cdots & B_{2t} \\
         \vdots & \vdots & \ddots & \vdots \\
         B_{s1} & B_{s2} & \cdots & B_{st}
-    \end{pmatrix}=C=(C_{kl})_{r \times t}.$$
+    \end{pmatrix}=C=(C_{kl})_{r \times t}\]
     其中$C$是$r \times t$分块矩阵，且$C_{kl}$与一般矩阵计算类似，即为$A$第$k$行块$B$的$l$列块对应元素相乘后相加，即
     \[C_{kl}=A_{k1}B_{1l}+A_{k2}B_{2l}+\cdots+A_{ks}B_{sl},\enspace k=1,\ldots,r,\enspace l=1,\ldots,t\]
 
@@ -126,13 +126,13 @@
 对于$\begin{pmatrix}
     A_1 & \alpha \\ \beta & a_{nn}
 \end{pmatrix}$，假设$A_1$可逆，我们有
-$$\begin{pmatrix}
+\[\begin{pmatrix}
     E_{n-1} & 0 \\ -\beta A_1^{-1} & 1
 \end{pmatrix}\begin{pmatrix}
     A_1 & \alpha \\ \beta & a_{nn}
 \end{pmatrix}=\begin{pmatrix}
     A_1 & \alpha \\ 0 & a_{nn}-\beta A_1^{-1}\alpha
-\end{pmatrix}$$
+\end{pmatrix}\]
 
 \begin{example}
     若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在主对角元全为1的下三角矩阵$L$和上三角矩阵$U$，使得$A=LU$（$L$-$U$分解）.
@@ -358,9 +358,9 @@ $$\begin{pmatrix}
 
     \begin{example}
         已知数列$\{a_n\},\enspace\{b_n\}$满足$a_0=-1,\enspace b_0=3$，且
-        $$\begin{cases}
+        \[\begin{cases}
             a_n=3a_{n-1}+b_{n-1}+2^{n-1} \\ b_n=2a_{n-1}+4b_{n-1}+2^n
-        \end{cases}$$
+        \end{cases}\]
         求$\{a_n\}\enspace\{b_n\}$的通项公式.
     \end{example}
     \item 利用初等矩阵的性质

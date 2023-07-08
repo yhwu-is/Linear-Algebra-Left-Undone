@@ -16,7 +16,7 @@
 则有解的条件为$\vec{b}$可以被$\vec{\beta}_1,\ldots,\vec{\beta}_n$线性表示，这等价于
 向量组$(\vec{\beta}_1,\ldots,\vec{\beta}_n)$与$(\vec{\beta}_1,\ldots,\vec{\beta}_n,\vec{b})$等价，故定理成立.
 
-\begin{theorem} \label{th:13:solution}
+\begin{theorem} \label{thm:13:方程组解}
     当方程组有解时（注意这个前提），以下定理成立：
     \begin{enumerate}
         \item 如果它的系数矩阵$A$的秩等于未知量的数目$n$，则方程组有唯一解；
@@ -25,7 +25,7 @@
     \end{enumerate}
 \end{theorem}
 这一定理有一个推论：齐次线性方程组有非零解的充要条件是：它的系数矩阵的秩小于未知量的数目（对于方阵即为行列式一章描述的，有非零解充分必要条件为其行列式为0）.
-\autoref{th:13:solution} 对应齐次线性方程组即为教材定理6.1的推论，对于非齐次的情况，注意本定理前提是方程组有解.证明时将方程组化为简化阶梯矩阵即可.
+\autoref{thm:13:方程组解} 对应齐次线性方程组即为教材定理6.1的推论，对于非齐次的情况，注意本定理前提是方程组有解.证明时将方程组化为简化阶梯矩阵即可.
 \subsection{齐次线性方程组解的一般理论}
 对于齐次线性方程组$A\vec{X}=0$，我们有：
 \begin{theorem}
@@ -50,25 +50,25 @@
 
 \subsection{非齐次线性方程组解的一般理论}
 对于非齐次线性方程组
-\begin{equation} \label{eq:13:nonhomogeneous}
+\begin{equation} \label{eq:13:非齐次}
     x_1\vec{\beta}_1+x_2\vec{\beta}_2+\cdots+x_n\vec{\beta}_n=\vec{b}
 \end{equation}
 我们将n元齐次线性方程组
-\begin{equation} \label{eq:13:homogeneous}
+\begin{equation} \label{eq:13:齐次}
     x_1\vec{\beta}_1+x_2\vec{\beta}_2+\cdots+x_n\vec{\beta}_n=0
 \end{equation}
 称为其导出组，则我们有：
 \begin{theorem}
     如果$n$元非齐次线性方程组有解，则它的解集$U=\{\gamma_0+\eta \mid \eta \in W\}$.
 \end{theorem}
-其中$\gamma_0$为\autoref{eq:13:nonhomogeneous} 的一个解（称为特解），$W$为\autoref{eq:13:homogeneous} 的解空间（\autoref*{eq:13:homogeneous} 的解称为通解）.
+其中$\gamma_0$为\autoref{eq:13:非齐次} 的一个解（称为特解），$W$为\autoref{eq:13:齐次} 的解空间（\autoref*{eq:13:齐次} 的解称为通解）.
 对于通解+特解，我们可以想象一个3元非齐次线性方程$ax + by + cz = d$ 和齐次线性方程$ax + by + cz = 0$.
 非齐次线性方程的解显然对应一个不过原点的平面，而齐次则过原点.
 我们便可以认为是齐次线性方程解平面沿着特解对应的向量平移到非齐次线性方程的解平面，这便是这一结论的几何解释.同时我们可以得到下述结论：
 
-1. $n$元非齐次线性方程组 \ref*{eq:13:nonhomogeneous} 的两个解的差是它的导出组 \ref*{eq:13:homogeneous} 的一个解.
+1. $n$元非齐次线性方程组 \ref*{eq:13:非齐次} 的两个解的差是它的导出组 \ref*{eq:13:齐次} 的一个解.
 
-2. $n$元非齐次线性方程组 \ref*{eq:13:nonhomogeneous} 的一个解与它的导出组 \ref*{eq:13:homogeneous} 的一个解之和仍是非齐次线性方程组 \ref*{eq:13:nonhomogeneous} 的一个解.
+2. $n$元非齐次线性方程组 \ref*{eq:13:非齐次} 的一个解与它的导出组 \ref*{eq:13:齐次} 的一个解之和仍是非齐次线性方程组 \ref*{eq:13:非齐次} 的一个解.
 
 这两个性质证明比较简单，实际上根据上述几何描述形象理解也不困难.上述定理与性质对应教材定理6.3，可以参看.
 \begin{example}
@@ -192,9 +192,9 @@
 \end{theorem}
 以上两个定理的证明作为练习.当然这两个定理无需记忆，只需要通过证明理解其含义即可.下面我们看一个简单的例子：
 \begin{example}
-    设四元齐次线性方程组(1) 为$$\begin{cases}
+    设四元齐次线性方程组(1) 为\[\begin{cases}
         2x_1+3x_2-x_3=0 \\ x_1+2x_2+x_3-x_4=0
-    \end{cases}.$$已知另一个四元齐次线性方程组 (2) 的基础解系为
+    \end{cases}\]已知另一个四元齐次线性方程组 (2) 的基础解系为
     \[\alpha_1=(2,-1,a+2,1)^\mathrm{T},\enspace\alpha_2=(-1,2,4,a+8)^\mathrm{T}\]
     \begin{enumerate}
         \item 求方程组 (1) 的一个基础解系；
