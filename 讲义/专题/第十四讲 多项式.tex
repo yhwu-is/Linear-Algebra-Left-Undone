@@ -1,110 +1,116 @@
 \chapter{多项式}
 
 \section{多项式的定义}
-我们从多项式的定义开始.对于函数
-$p:\mathbf{F}\to\mathbf{F}$，若存在$a_0,\cdots,a_m\in\mathbf{F}$使得对任意$z\in\mathbf{F}$有
+
+我们从多项式的定义开始.对于函数 $p:\mathbf{F}\to\mathbf{F}$，若存在
+$a_0,\ldots,a_m\in\mathbf{F}$使得对任意$z\in\mathbf{F}$有
 $p(z)=a_0+a_1z+\cdots+a_mz^m$，则称函数$p$为系数在$\mathbf{F}$中的多项式.
 
 对于一个定义，我们很关心它是否能带来一些简便，系数的唯一性便是一个很好的使得研究简便的性质.
 回顾之前证明一个向量在一组线性无关向量下的坐标唯一的证明，我们需要零向量在线性无关向量组
 下的坐标为0这一条件.在多项式中，这一定理转变为
 \begin{theorem}
-	设$a_0,\cdots,a_m\in\mathbf{F}$，若对任意$z\in\mathbf{F}$有$a_0+a_1z+\cdots+a_mz^m=0$，
-	则$a_0=\cdots=a_m=0$.
+    设$a_0,\ldots,a_m\in\mathbf{F}$，若对任意$z\in\mathbf{F}$有$a_0+a_1z+\cdots+a_mz^m=0$，
+    则$a_0=\cdots=a_m=0$.
 \end{theorem}
 基于此我们可以得到多项式的系数必然唯一，否则两相等多项式之差为0却可以有非零系数.
-（本质上将）$1,x,x^2,\cdots$视为多项式构成的线性空间的一组基即可）
+（本质上将）$1,x,x^2,\ldots$视为多项式构成的线性空间的一组基即可）
 
 \section{零点与因式}
+
 接下来我们研究多项式的零点与因式，从而可以引出多项式的分解.
-我们称$s\in\mathcal{P}(\mathbf{F})$为多项式$p\in\mathcal{P}(\mathbf{F})$的因式，如果
-存在多项式$q\in\mathcal{P}(\mathbf{F})$使得$p=sq$.但很多时候并不能整除，因此我们需要引入
+我们称$s\in\mathbf{F}[x]$为多项式$p\in\mathbf{F}[x]$的因式，如果
+存在多项式$q\in\mathbf{F}[x]$使得$p=sq$.但很多时候并不能整除，因此我们需要引入
 多项式的带余除法：
 \begin{theorem}
-	设$p,s\in\mathcal{P}(\mathbf{F})$且$s\neq 0$，则存在唯一的多项式$q,r\in\mathcal{P}(\mathbf{F})$，
-	使得$p=sq+r$，且$\deg r<\deg s$.
+    设$p,s\in\mathbf{F}[x]$且$s\neq 0$，则存在唯一的多项式$q,r\in\mathbf{F}[x]$，
+    使得$p=sq+r$，且$\deg r<\deg s$.
 \end{theorem}
 这一定理实际上是数的带余除法的延伸，证明是基本的，可参考教材4.8.
 \begin{example}
-	设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$.求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
+    设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$.求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
 \end{example}
 基于此我们可以研究多项式零点和因式的性质：
 \begin{theorem}
-	设$p\in\mathcal{P}(\mathbf{F})$，
+    设$p\in\mathbf{F}[x]$.
+    \begin{enumerate}
+        \item 若$\lambda\in\mathbf{F}$，则$p(\lambda)=0$当且仅当存在多项式
+            $q\in\mathbf{F}[x]$使得对每个$z\in\mathbf{F}$均有$p(z)=(z-\lambda)q(z)$；
 
-	\textup{（1）}若$\lambda\in\mathbf{F}$，则$p(\lambda)=0$当且仅当存在多项式
-	$q\in\mathcal{P}(\mathbf{F})$使得对每个$z\in\mathbf{F}$均有$p(z)=(z-\lambda)q(z)$；
-
-	\textup{（2）}若$p$是$m(m\ge 0)$次多项式，则$p$在$\mathbf{F}$上最多有$m$个互不相等的零点.
+        \item 若$p$是$m\enspace(m \geqslant 0)$次多项式，则$p$在$\mathbf{F}$上最多有$m$个互不相等的零点.
+    \end{enumerate}
 \end{theorem}
-（1）的证明基于带余除法，（2）只需基于（1）即可，都非常基本.我们希望（2）的最多能够在复数域的情况下取到，
+1 的证明基于带余除法，2只需基于1即可，都非常基本.我们希望2的最多能够在复数域的情况下取到，
 这需要接下来这一基本而伟大的定理——代数学基本定理作为支撑：
-\begin{theorem}\label{代数学基本定理}
-	非常数复多项式在复平面上必有零点.
+\begin{theorem} \textbf{\heiti 代数学基本定理} \label{th:14:fundamental-theorem-of-algebra}
+    非常数复多项式在复平面上必有零点.
 \end{theorem}
+
 代数基本定理最简单直接的证明来源于复分析中的刘维尔定理或柯西积分公式，感兴趣的同学可以学习，
 这里只需要承认这一定理.基于此我们可以进行多项式的分解，我们分复数域和实数域进行讨论：
-\begin{theorem}\label{多项式分解}
-	设$p\in\mathcal{P}(\mathbf{F})$是非常数多项式，则$p$可以唯一分解（不计因式的次序）为
+\begin{theorem}\label{th:14:factorization-of-polynomial}
+    设$p\in\mathbf{F}[x]$是非常数多项式，则$p$可以唯一分解（不计因式的次序）为
+    \begin{enumerate}
+        \item $(\mathbf{F}=\mathbf{C})\quad p(z)=c(z-\lambda_1)\cdots(z-\lambda_m)$，
+        其中$c,\lambda_1,\ldots,\lambda_m\in\mathbf{C}$；
 
-	\textup{（1）}（$\mathbf{F}=\mathbf{C}$），$p(z)=c(z-\lambda_1)\cdots(z-\lambda_m)$，
-	其中$c,\lambda_1,\cdots,\lambda_m\in\mathbf{C}$；
-
-	\textup{（2）}（$\mathbf{F}=\mathbf{R}$），$p(x)=c(x-\lambda_1)\cdots(x-\lambda_m)
-	(x^2+b_1x+c_1)\cdots(x^2+b_Mx+c_M)$，其中$c,\lambda_1,\cdots,\lambda_m,b_1,\cdots,b_M,
-	c_1,\cdots,c_M\in\mathbf{R}$，并且对每个$j$均有$b_j^2<4c_j$.
+        \item $(\mathbf{F}=\mathbf{R})\quad p(x)=c(x-\lambda_1)\cdots(x-\lambda_m)
+        (x^2+b_1x+c_1)\cdots(x^2+b_Mx+c_M)$，其中$c,\lambda_1,\ldots,\lambda_m,b_1,\ldots,b_M,
+        c_1,\ldots,c_M\in\mathbf{R}$，并且对每个$j$均有$b_j^2<4c_j$.
+    \end{enumerate}
 \end{theorem}
-（1）的证明基于代数学基本定理是简单的，唯一性也较为显然.（2）的证明需要教材4.15和4.16的支持，
+1 的证明基于代数学基本定理是简单的，唯一性也较为显然. 2的证明需要教材4.15和4.16的支持，
 剩余的证明也是基本的.
 \begin{example}
-	证明：每个奇数次的实系数多项式都有实的零点.
+    证明：每个奇数次的实系数多项式都有实的零点.
 \end{example}
 \begin{example}
-	设$p\in\mathcal{P}(\mathbf{F})$且$q\neq 0$.证明：$c$是$f(x)$的$k(k\ge 1)$重根的充要条件为
-	$$f(c)=f'(c)=\cdots=f^{(k-1)}(c),f^{(k)}(c)\neq 0.$$
+    设$p\in\mathbf{F}[x]$且$q\neq 0$.证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
+    \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
 \end{example}
-除此之外需要提及的是，若上述定理中$c=1$，则多项式最高次数的项的系数为1，则称这一多项式为首一多项式.
+除此之外需要提及的是，若上述定理中$c=1$，则多项式最高次数的项的系数为1，则称这一多项式为\keyterm{首一多项式}[monic polynomial].
 
 \section{整除与互素}
+
 提到因式我们很容易想到类似于整数的最大公因数的定义，这里我们依次引入整除、公因式和最大公因式的概念：
 \begin{definition}
-	设$p,q\in\mathcal{P}(\mathbf{F})$且$q\neq 0$，则$q$整除$p$或$p$能被$q$整除（记为$q|p$）当且仅当
-	$p$除以$q$的余式为$0$.
+    设$p,q\in\mathbf{F}[x]$且$q\neq 0$，则$q$整除$p$或$p$能被$q$整除（记为$q \mid p$）当且仅当
+    $p$除以$q$的余式为$0$.
 \end{definition}
 \begin{example}
-	设$p,q\in\mathcal{P}(\mathbf{F})$，证明：$p^2|q^2\iff p|q$.
+    设$p,q\in\mathbf{F}[x]$，证明：$p^2 \mid q^2\iff p \mid q$.
 \end{example}
 \begin{definition}
-	在$\mathcal{P}(\mathbf{F})$中，若$s|p$且$s|q$，则称$s$是$p$和$q$的一个公因式.若$p$和$q$的公因式$s$
-	满足对$p$和$q$的任一公因式$s'$都有$s'|s$，则称$s$是$p$和$q$的一个最大公因式.
+    在$\mathbf{F}[x]$中，若$s \mid p$且$s \mid q$，则称$s$是$p$和$q$的一个公因式.若$p$和$q$的公因式$s$
+    满足对$p$和$q$的任一公因式$s'$都有$s' \mid s$，则称$s$是$p$和$q$的一个最大公因式.
 \end{definition}
 故我们可以看出，当$p$和$q$不为0时，最大公因式即为次数最大的公因式.相应的，我们也有最小公倍式的定义，这也类似于
 整数中的最小公倍数，我们不再赘述.
 
 类似于整数中的辗转相除法（或称欧几里得算法），对于多项式我们有如下结论：
-\begin{theorem}\label{欧几里得算法}
-	设$p,q\in\mathcal{P}(\mathbf{F})$，存在它们的一个最大公因式$s$，则存在$u,v\in\mathcal{P}(\mathbf{F})$
-	使得$$s=up+vq.$$
+\begin{theorem}\label{th:14:euclidean-algorithm}
+    设$p,q\in\mathbf{F}[x]$，存在它们的一个最大公因式$s$，则存在$u,v\in\mathbf{F}[x]$
+    使得\[s=up+vq.\]
 \end{theorem}
 证明与欧几里得算法的构造是类似的，感兴趣的同学可以回顾初等数论的知识.在本节中我们更重视$p,q$最大公因式
-为1的情况，我们称之为\textbf{互素}，我们可以得到一个多项式互素的充要条件：
-\begin{theorem}\label{裴蜀定理}
-	设$p,q\in\mathcal{P}(\mathbf{F})$，则$p$和$q$互素的充要条件是存在$u,v\in\mathcal{P}(\mathbf{F})$
-	使得$$up+vq=1.$$
+为1的情况，我们称之为\keyterm{互素}[coprime]，我们可以得到一个多项式互素的充要条件：
+\begin{theorem}\label{th:14:bezout-lemma}
+    设$p,q\in\mathbf{F}[x]$，则$p$和$q$互素的充要条件是存在$u,v\in\mathbf{F}[x]$
+    使得\[up+vq=1.\]
 \end{theorem}
-这一定理称之为裴蜀定理（Bézout's Lemma），必要性根据定理\ref{欧几里得算法}可以直接得到，充分性可以设$p$和$q$
-的公因式为$s$，于是等式两边可以同时约去$s$，这表明必有$s|1$，故$s=1$，$p,q$必然互素.
+这一定理称之为\keyterm{裴蜀定理}[B\'ezout's Lemma]，必要性根据\autoref{th:14:euclidean-algorithm} 可以直接得到，充分性可以设$p$和$q$
+的公因式为$s$，于是等式两边可以同时约去$s$，这表明必有$s \mid 1$，故$s=1$，$p,q$必然互素.
 \begin{example}
-	证明：$\mathcal{P}(\mathbf{F})$中两个次数大于$0$的多项式没有公共复根的充要条件是它们互素.
+    证明：$\mathbf{F}[x]$中两个次数大于$0$的多项式没有公共复根的充要条件是它们互素.
 \end{example}
 
-\vspace{2ex} 
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-\vspace{2ex} 
+\vspace{2ex}
 
 \centerline{\heiti \Large 习题}
-\vspace{2ex} 
+\vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
@@ -112,13 +118,13 @@ $p(z)=a_0+a_1z+\cdots+a_mz^m$，则称函数$p$为系数在$\mathbf{F}$中的多
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
