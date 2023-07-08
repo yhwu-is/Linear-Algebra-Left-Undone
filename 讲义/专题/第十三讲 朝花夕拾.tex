@@ -8,84 +8,87 @@
 不是死记硬背结论，而是能够遇到变式的定理都能理解并给出证明.如果希望先按照教材思路
 回顾，实际上教材本章核心就在于定理6.1-6.3，应熟练掌握其证明并深刻理解其内涵.
 \subsection{线性方程组解的一般理论}
-\begin{theorem}
-	（线性方程组有解的充要条件）线性方程组有解的充分必要条件是其系数矩阵与增广矩阵有相同的秩.
+\begin{theorem} \textbf{\heiti 线性方程组有解的充要条件}
+
+    线性方程组有解的充分必要条件是其系数矩阵与增广矩阵有相同的秩.
 \end{theorem}
-定理的证明非常简单，将方程组视为$x_1\bm{\beta_1}+x_2\bm{\beta_2}+\cdots+x_n\bm{\beta_n}=\bm{b}$，
-则有解的条件为$\bm{b}$可以被$\bm{\beta_1},\cdots,\bm{\beta_n}$线性表示，这等价于
-向量组$(\bm{\beta_1},\cdots,\bm{\beta_n})$与$(\bm{\beta_1},\cdots,\bm{\beta_n},\bm{b})$等价，故定理成立.
+定理的证明非常简单，将方程组视为$x_1\vec{\beta}_1+x_2\vec{\beta}_2+\cdots+x_n\vec{\beta}_n=\vec{b}$，
+则有解的条件为$\vec{b}$可以被$\vec{\beta}_1,\ldots,\vec{\beta}_n$线性表示，这等价于
+向量组$(\vec{\beta}_1,\ldots,\vec{\beta}_n)$与$(\vec{\beta}_1,\ldots,\vec{\beta}_n,\vec{b})$等价，故定理成立.
 
-\begin{theorem}
-	当方程组有解时（注意这个前提），以下定理成立：
+\begin{theorem} \label{th:13:solution}
+    当方程组有解时（注意这个前提），以下定理成立：
+    \begin{enumerate}
+        \item 如果它的系数矩阵$A$的秩等于未知量的数目$n$，则方程组有唯一解；
 
-	\textup{1} 如果它的系数矩阵$A$的秩等于未知量的数目$n$，则方程组有唯一解；
-	
-	\textup{2} 如果$A$的秩小于$n$，则方程组有无穷多个解.
+        \item 如果$A$的秩小于$n$，则方程组有无穷多个解.
+    \end{enumerate}
 \end{theorem}
 这一定理有一个推论：齐次线性方程组有非零解的充要条件是：它的系数矩阵的秩小于未知量的数目（对于方阵即为行列式一章描述的，有非零解充分必要条件为其行列式为0）.
-定理2对应齐次线性方程组即为教材定理6.1的推论，对于非齐次的情况，注意本定理前提是方程组有解.证明时将方程组化为简化阶梯矩阵即可.
+\autoref{th:13:solution} 对应齐次线性方程组即为教材定理6.1的推论，对于非齐次的情况，注意本定理前提是方程组有解.证明时将方程组化为简化阶梯矩阵即可.
 \subsection{齐次线性方程组解的一般理论}
-对于齐次线性方程组$AX=0$，我们有：
+对于齐次线性方程组$A\vec{X}=0$，我们有：
 \begin{theorem}
-	其解空间为$\mathbf{R}^n$的子空间.
+    齐次线性方程组$A\vec{X}=0$的解空间为$\mathbf{R}^n$的子空间.
 \end{theorem}
 请回顾证明子空间的一般方法.在确认其为线性空间后，我们来研究该线性空间的基本性质.首先是由此引出的关于基础解系的概念.
 基础解系即为齐次线性方程组解空间的一组基，且这组基的每一个线性组合都是该方程组的解、
 然后我们来研究这一空间的维数：
 \begin{theorem}
-	矩阵$A \in M_{m \times n}(\mathbf{F})$，若$r(A) = r$，则该齐次线性方程组解空间维数为$n - r$.
+    矩阵$A \in \mathbf{M}_{m \times n}(\mathbf{F})$，若$r(A) = r$，则该齐次线性方程组解空间维数为$n - r$.
 \end{theorem}
 该定理即为教材定理6.1，证明使用维数公式（教材定理3.2）.本定理改写为类似于维数公式的形式即为$r(A) + \dim N(A) = n$.
-其中$N(A)$表示$A\bm{X}=0$的解空间.
+其中$N(A)$表示$A\vec{X}=0$的解空间.
 \begin{example}
-	若$n$元齐次线性方程组$AX = 0$的解都是$BX = 0$的解，证明：$r(B) \le r(A)$.
+    若$n$元齐次线性方程组$A\vec{X} = 0$的解都是$B\vec{X} = 0$的解. 证明：$r(B) \leqslant r(A)$.
 \end{example}
 \begin{theorem}
-	$^*$齐次线性方程组解空间的正交补是由方程组行向量为基张成的线性空间.
+    $^*$齐次线性方程组解空间的正交补是由方程组行向量为基张成的线性空间.
 \end{theorem}
 该定理需要用到正交补的概念，没有学习的班级可以参考教材2.9节简单理解.实际上在矩阵的秩的讲义中已经提到了这一定理.
 本定理中考虑了行向量张成的行空间，以往我们考虑列空间更多.
 
 \subsection{非齐次线性方程组解的一般理论}
 对于非齐次线性方程组
-\begin{equation}
-	x_1\bm{\beta_1}+x_2\bm{\beta_2}+\cdots+x_n\bm{\beta_n}=\bm{b}
+\begin{equation} \label{eq:13:nonhomogeneous}
+    x_1\vec{\beta}_1+x_2\vec{\beta}_2+\cdots+x_n\vec{\beta}_n=\vec{b}
 \end{equation}
 我们将n元齐次线性方程组
-\begin{equation}
-	x_1\bm{\beta_1}+x_2\bm{\beta_2}+\cdots+x_n\bm{\beta_n}=0
+\begin{equation} \label{eq:13:homogeneous}
+    x_1\vec{\beta}_1+x_2\vec{\beta}_2+\cdots+x_n\vec{\beta}_n=0
 \end{equation}
 称为其导出组，则我们有：
 \begin{theorem}
-	如果$n$元非齐次线性方程组有解，则它的解集$U=\{\gamma_0+\eta\ |\ \eta \in W\}$.
+    如果$n$元非齐次线性方程组有解，则它的解集$U=\{\gamma_0+\eta \mid \eta \in W\}$.
 \end{theorem}
-其中$\gamma_0$为（1）的一个解（称为特解），$W$为（2）的解空间（（2）的解称为通解）.
+其中$\gamma_0$为\autoref{eq:13:nonhomogeneous} 的一个解（称为特解），$W$为\autoref{eq:13:homogeneous} 的解空间（\autoref*{eq:13:homogeneous} 的解称为通解）.
 对于通解+特解，我们可以想象一个3元非齐次线性方程$ax + by + cz = d$ 和齐次线性方程$ax + by + cz = 0$.
 非齐次线性方程的解显然对应一个不过原点的平面，而齐次则过原点.
 我们便可以认为是齐次线性方程解平面沿着特解对应的向量平移到非齐次线性方程的解平面，这便是这一结论的几何解释.同时我们可以得到下述结论：
 
-1. $n$元非齐次线性方程组（1）的两个解的差是它的导出组（2）的一个解.
+1. $n$元非齐次线性方程组 \ref*{eq:13:nonhomogeneous} 的两个解的差是它的导出组 \ref*{eq:13:homogeneous} 的一个解.
 
-2. $n$元非齐次线性方程组（1）的一个解与它的导出组（2）的一个解之和仍是非齐次线性方程组（1）的一个解.
+2. $n$元非齐次线性方程组 \ref*{eq:13:nonhomogeneous} 的一个解与它的导出组 \ref*{eq:13:homogeneous} 的一个解之和仍是非齐次线性方程组 \ref*{eq:13:nonhomogeneous} 的一个解.
 
 这两个性质证明比较简单，实际上根据上述几何描述形象理解也不困难.上述定理与性质对应教材定理6.3，可以参看.
 \begin{example}
-	设$n$阶矩阵$A$的行列式$|A|\neq 0$，记$A$的前$n-1$列形成的矩阵为$A_1$，$A$的第$n$列为$b$，
-	问：线性方程组$A_1X=b$是否有解？
+    设$n$阶矩阵$A$的行列式$|A|\neq 0$，记$A$的前$n-1$列形成的矩阵为$A_1$，$A$的第$n$列为$b$，
+    问：线性方程组$A_1\vec{X}=b$是否有解？
 \end{example}
 
 \section{理论应用}
 我们首先来看四个最为经典的问题：
 \begin{example}
-	利用线性方程组解的一般理论，证明以下命题：
-	
-	\textup{（1）}设$A,B$分别是$m \times n$和$n \times s$矩阵，且$AB=O$，证明：$r(A)+r(B)\le n$\textup{；}
+    利用线性方程组解的一般理论，证明以下命题：
+    \begin{enumerate}
+        \item 设$A,B$分别是$m \times n$和$n \times s$矩阵，且$AB=O$，证明：$r(A)+r(B)\leqslant n$；
 
-	\textup{（2）}设$A$是$m \times n$实矩阵，证明：$r(A^\mathrm{T}A)=r(A)$\textup{；}
+        \item 设$A$是$m \times n$实矩阵，证明：$r(A^\mathrm{T}A)=r(A)$；
 
-	\textup{（3）}设$A,B$分别是$m \times n$和$n \times s$矩阵，则$r(AB)\le\min\{r(A),r(B)\}$\textup{；}
+        \item 设$A,B$分别是$m \times n$和$n \times s$矩阵，则$r(AB)\leqslant\min\{r(A),r(B)\}$；
 
-	\textup{（4）}$A^2=A \iff r(A)+r(E-A)=n$，$A^2=E \iff r(A+E)+r(A-E)=n$.
+        \item $A^2=A \iff r(A)+r(E-A)=n$，$A^2=E \iff r(A+E)+r(A-E)=n$.
+    \end{enumerate}
 \end{example}
 实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用
 维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系
@@ -94,123 +97,134 @@
 
 \section{线性方程组拓展题型}
 \subsection{含参数的线性方程组问题}
+
 此类问题一般考察对于含参数的线性方程组，参数取值如何时有解/无解/有唯一解等.
 此类问题一般有两种解法，一种是直接对系数矩阵做高斯消元法，另一种是考察系数矩阵行列式
-是否为0（特别是系数矩阵行列式为n阶特殊行列式时）.当然考察系数矩阵行列式的方法不是
+是否为0（特别是系数矩阵行列式为$n$阶特殊行列式时）.当然考察系数矩阵行列式的方法不是
 通用的，因为有时候参数不在系数矩阵，或者区分非齐次线性方程组无解/有无穷解的情况.
 我们来看一个简单的例子：
 \begin{example}
-	讨论下面方程组的解的情况，并在有解的情况下求解：$$\begin{cases}
-		x_1+x_2-x_3=1 \\ 2x_1+3x_2+kx_3=3 \\ x_1+kx_2+3x_3=2
-	\end{cases}.$$
+    讨论下面方程组的解的情况，并在有解的情况下求解：\[\begin{cases}
+        x_1+x_2-x_3=1 \\ 2x_1+3x_2+kx_3=3 \\ x_1+kx_2+3x_3=2
+    \end{cases}\]
 \end{example}
 \subsection{线性方程组同解问题}
 两个线性方程组同解实际上有两种情况：
+\begin{enumerate}
+    \item 两线性方程组都无解；
 
-1. 两线性方程组都无解；
-
-2. 两线性方程组都有解且有相同的解集.
+    \item 两线性方程组都有解且有相同的解集.
+\end{enumerate}
 
 我们来看两线性方程组同解的充要条件：
 \begin{theorem}
-	$n$元齐次线性方程组（$1$）$A_{m_1 \times n}X=0$与（$2$）$B_{m_2 \times n}X=0$同解的
-	充要条件是$r\begin{pmatrix}
-		A \\ B
-	\end{pmatrix}=r(A)=r(B)$.
+    $n$元齐次线性方程组 $A_{m_1 \times n}\vec{X}=0$与 $B_{m_2 \times n}\vec{X}=0$同解的
+    充要条件是$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=r(A)=r(B)$.
 \end{theorem}
 \begin{theorem}
-	$n$元非齐次线性方程组（$1$）$A_{m_1 \times n}X=b$与（$2$）$B_{m_2 \times n}X=d$同解的
-	充要条件是
-	
-	\textup{1. }$r(A)\neq r(A,b)$且$r(B)\neq r(B,d)$
-	
-	或
-	
-	\textup{2. }r$\begin{pmatrix}
-		A & b \\ B & d
-	\end{pmatrix}=r\begin{pmatrix}
-		A \\ B
-	\end{pmatrix}=r(A)=r(A,b)=r(B)=r(B,d)$.
+    $n$元非齐次线性方程组 $A_{m_1 \times n}\vec{X}=b$与 $B_{m_2 \times n}\vec{X}=d$同解的
+    充要条件是
+    \begin{enumerate}
+        \item $r(A)\neq r(A,b)$且$r(B)\neq r(B,d)$；或
+        \item $r\begin{pmatrix}
+            A & b \\ B & d
+        \end{pmatrix}=r\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}=r(A)=r(A,b)=r(B)=r(B,d)$.
+    \end{enumerate}
 \end{theorem}
-这两个定理的证明比较简单，作为练习.这两个定理可以用于两含参方程组同解问题的解决方法，当然应用前需要简要说明
+
+这两个定理的证明比较简单，作为练习. 这两个定理可以用于两含参方程组同解问题的解决方法，当然应用前需要简要说明
 以下这个定理.
 \begin{example}
-	已知方程组$$\begin{cases}
-		x_1+2x_2+3x_3=0 \\ 2x_1+3x_2+5x_3=0 \\ x_1+x_2+ax_3=0
-	\end{cases}$$
-	与$$\begin{cases}
-		x_1+bx_2+cx_3=0 \\ 2x_1+b^2x_2+(c+1)x_3=0
-	\end{cases}$$
-	同解，求$a,b,c$的值.
+    已知方程组\begin{gather*}\begin{cases}
+            x_1+2x_2+3x_3=0 \\ 2x_1+3x_2+5x_3=0 \\ x_1+x_2+ax_3=0
+        \end{cases}
+        \\
+        \begin{cases}
+            x_1+bx_2+cx_3=0 \\ 2x_1+b^2x_2+(c+1)x_3=0
+        \end{cases}
+    \end{gather*}
+    同解，求$a,b,c$的值.
 \end{example}
+
 \subsection{线性方程组公共解问题}
+
 公共解即为两线性方程组解集的交集，我们从齐次和非齐次讨论有公共解的条件：
 \begin{theorem}
-	对于$n$元齐次线性方程组\textup{（1）}$A_{m_1 \times n}X=0$与\textup{（2）}$B_{m_2 \times n}X=0$有
+    对于$n$元齐次线性方程组 (1) $A_{m_1 \times n}\vec{X}=0$与 (2) $B_{m_2 \times n}\vec{X}=0$有
+    \begin{enumerate}
+        \item (1) 与 (2) 有非零公共解的充要条件是$r\begin{pmatrix}
+                A \\ B
+            \end{pmatrix}<n$；
 
-	\textup{（1）}\textup{（1）}与\textup{（2）}有非零公共解的充要条件是$r\begin{pmatrix}
-			A \\ B
-		\end{pmatrix}<n$\textup{；}
+        \item 设$\eta_1,\eta_2,\ldots,\eta_s\enspace(s=n-r(B))$是 (2) 的基础解系，则
+        (1) 与 (2) 有非零公共解的充要条件是$A\eta_1,A\eta_2,\ldots,A\eta_s$线性相关；
 
-	\textup{（2）}设$\eta_1,\eta_2,\cdots,\eta_s(s=n-r(B))$是\textup{（2）}的基础解系，则
-	\textup{（1）}与\textup{（2）}有非零公共解的充要条件是$A\eta_1,A\eta_2,\cdots,A\eta_s$线性相关\textup{；}
-
-	\textup{（3）}设$\gamma_1,\gamma_2,\cdots,\gamma_t(t=n-r(A))$是\textup{（1）}的基础解系，
-	$\eta_1,\eta_2,\cdots,\eta_s(s=n-r(B))$是\textup{（2）}的基础解系，则\textup{（1）}与\textup{（2）}有非零公共解的充要条件是
-	$\gamma_1,\gamma_2,\cdots,\gamma_t,\eta_1,\eta_2,\cdots,\eta_s$线性相关.
+        \item 设$\gamma_1,\gamma_2,\ldots,\gamma_t\enspace(t=n-r(A))$是(1) 的基础解系，
+        $\eta_1,\eta_2,\ldots,\eta_s\enspace(s=n-r(B))$是 (2) 的基础解系，则(1) 与 (2) 有非零公共解的充要条件是
+        $\gamma_1,\gamma_2,\ldots,\gamma_t,\eta_1,\eta_2,\ldots,\eta_s$线性相关.
+    \end{enumerate}
 \end{theorem}
 \begin{theorem}
-	对于$n$元非齐次线性方程组\textup{（1）}$A_{m_1 \times n}X=b$与\textup{（2）}$B_{m_2 \times n}X=d$，若\textup{（1）}与\textup{（2）}都有解，则
+    对于$n$元非齐次线性方程组(1) $A_{m_1 \times n}\vec{X}=b$与 (2) $B_{m_2 \times n}\vec{X}=d$，若(1) 与 (2) 都有解，则
+    \begin{enumerate}
+        \item (1) 与 (2) 有公共解的充要条件是$r\begin{pmatrix}
+                A \\ B
+            \end{pmatrix}=r\begin{pmatrix}
+                A & b \\ B & d
+            \end{pmatrix}$；
 
-	\textup{（1）}\textup{（1）}与\textup{（2）}有公共解的充要条件是$r\begin{pmatrix}
-			A \\ B
-		\end{pmatrix}=r\begin{pmatrix}
-			A & b \\ B & d
-		\end{pmatrix}$\textup{；}
+        \item 若$r(B)=s$，且$\eta_1,\eta_2,\ldots,\eta_{n-s+1}$是 (2) 的$n-s+1$个线性无关的解，则
+        (1) 与 (2) 有公共解的充要条件是$b$是$A\eta_1,A\eta_2,\ldots,A\eta_{n-s+1}$的凸组合，即
+        存在数$k_1,k_2,\ldots,k_{n-s+1}$使得
+        \[b=k_1A\eta_1+k_2A\eta_2+\cdots+k_{n-s+1}A\eta_{n-s+1},\]
+        其中$k_1+k_2+\ldots+k_{n-s+1}=1$；
 
-	\textup{（2）}若$r(B)=s$，且$\eta_1,\eta_2,\cdots,\eta_{n-s+1}$是\textup{（2）}的$n-s+1$个线性无关的解，则
-	\textup{（1）}与\textup{（2）}有公共解的充要条件是$b$是$A\eta_1,A\eta_2,\cdots,A\eta_{n-s+1}$的凸组合，即
-	存在数$k_1,k_2,\cdots,k_{n-s+1}$使得
-	$$b=k_1A\eta_1+k_2A\eta_2+\cdots+k_{n-s+1}A\eta_{n-s+1},$$
-	其中$k_1+k_2+\cdots+k_{n-s+1}=1$\textup{；}
-	
-	\textup{（3）}若$r(A)=t$，$r(B)=s$，$\gamma_1,\gamma_2,\cdots,\gamma_{n-t+1}$是\textup{（1）}的$n-t+1$个线性无关的解，
-	$\eta_1,\eta_2,\cdots,\eta_{n-s+1}$是\textup{（2）}的$n-s+1$个线性无关的解，则\textup{（1）}与\textup{（2）}有公共解的充要条件是
-	存在数$k_1,k_2,\cdots,k_{n-t+1}$和$l_1,l_2,\cdots,l_{n-s+1}$使得
-	$$k_1\gamma_1+k_2\gamma_2+\cdots+k_{n-t+1}\gamma_{n-t+1}-l_1\eta_1-l_2\eta_2-\cdots-l_{n-s+1}\eta_{n-s+1}=0,$$
-	其中$k_1+k_2+\cdots+k_{n-t+1}=1$，$l_1+l_2+\cdots+l_{n-s+1}=1$.
+        \item 若$r(A)=t$，$r(B)=s$，$\gamma_1,\gamma_2,\ldots,\gamma_{n-t+1}$是(1) 的$n-t+1$个线性无关的解，
+        $\eta_1,\eta_2,\ldots,\eta_{n-s+1}$是 (2) 的$n-s+1$个线性无关的解，则(1) 与 (2) 有公共解的充要条件是
+        存在数$k_1,k_2,\ldots,k_{n-t+1}$和$l_1,l_2,\ldots,l_{n-s+1}$使得
+        \[k_1\gamma_1+k_2\gamma_2+\cdots+k_{n-t+1}\gamma_{n-t+1}-l_1\eta_1-l_2\eta_2-\cdots-l_{n-s+1}\eta_{n-s+1}=0\]
+        其中$k_1+k_2+\cdots+k_{n-t+1}=1$，$l_1+l_2+\cdots+l_{n-s+1}=1$.
+    \end{enumerate}
 \end{theorem}
 以上两个定理的证明作为练习.当然这两个定理无需记忆，只需要通过证明理解其含义即可.下面我们看一个简单的例子：
 \begin{example}
-	设四元齐次线性方程组\textup{（1）}为$$\begin{cases}
-		2x_1+3x_2-x_3=0 \\ x_1+2x_2+x_3-x_4=0
-	\end{cases}.$$已知另一个四元齐次线性方程组\textup{（2）}的基础解系为
-	$$\alpha_1=(2,-1,a+2,1)^\mathrm{T},\alpha_2=(-1,2,4,a+8)^\mathrm{T}.$$
+    设四元齐次线性方程组(1) 为$$\begin{cases}
+        2x_1+3x_2-x_3=0 \\ x_1+2x_2+x_3-x_4=0
+    \end{cases}.$$已知另一个四元齐次线性方程组 (2) 的基础解系为
+    \[\alpha_1=(2,-1,a+2,1)^\mathrm{T},\enspace\alpha_2=(-1,2,4,a+8)^\mathrm{T}\]
+    \begin{enumerate}
+        \item 求方程组 (1) 的一个基础解系；
 
-	\textup{（1）}求方程组\textup{（1）}的一个基础解系；
-
-	\textup{（2）}当$a$为何值时，方程组\textup{（1）}和\textup{（2）}有非零公共解，并求出非零公共解.
+        \item 当$a$为何值时，方程组 (1) 和 (2) 有非零公共解，并求出非零公共解.
+    \end{enumerate}
 \end{example}
+
 \subsection{线性方程组反问题}
+
 此类问题即已知方程组的解，要给出原方程组.对于齐次的情形，如果大家还记得系数矩阵行向量空间与解空间的
 正交补关系，此类题目是容易解决的.对于非齐次线性方程组，则先利用通解得到其导出齐次线性方程组，然后将
 特解代入得到需要求的非齐次线性方程组.
 \begin{example}
-	已知$\alpha_1=(1,2,-1,0,4)^\mathrm{T},\alpha_2=(-1,3,2,4,1)^\mathrm{T},\alpha_3=(2,9,-1,4,13)^\mathrm{T}$，
-	且有$W=L(\alpha_1,\alpha_2,\alpha_3)$.
+    已知$\alpha_1=(1,2,-1,0,4)^\mathrm{T},\enspace\alpha_2=(-1,3,2,4,1)^\mathrm{T},\enspace\alpha_3=(2,9,-1,4,13)^\mathrm{T}$，
+    且有$W=\spa(\alpha_1,\alpha_2,\alpha_3)$.
+    \begin{enumerate}
+        \item 求以$W$为解空间的一个齐次线性方程组；
 
-	\textup{（1）}求以$W$为解空间的一个齐次线性方程组；
-
-	\textup{（2）}求以$W'=\{\eta+\alpha\ |\ \alpha\in W\}$为解集的一个非齐次线性方程组，其中$\eta=(1,2,1,2,1)^\mathrm{T}$.
+        \item 求以$W'=\{\eta+\alpha \mid \alpha\in W\}$为解集的一个非齐次线性方程组，其中$\eta=(1,2,1,2,1)^\mathrm{T}$.
+    \end{enumerate}
 \end{example}
 
-\vspace{2ex} 
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-\vspace{2ex} 
+\vspace{2ex}
 
 \centerline{\heiti \Large 习题}
-\vspace{2ex} 
+\vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
@@ -218,13 +232,13 @@
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
