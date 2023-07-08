@@ -3,21 +3,23 @@
 \section{线性空间的交、并、和}
 \subsection{线性空间的交与和的概念}
 \begin{definition}
-	设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间，则
-	$$W_1 \cap W_2=\{\alpha\ |\ \alpha\in W_1 \textup{ and } \alpha\in W_2\};$$
-	$$W_1 \cup W_2=\{\alpha\ |\ \alpha\in W_1 \textup{ or } \alpha\in W_2\};$$
-	$$W_1 + W_2=\{\alpha_1+\alpha_2\ |\ \alpha_1\in W_1,\alpha_2\in W_2\}$$
-	分别称为$W_1$和$W_2$的交、并、和.
+    设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间，则
+    \begin{align*}
+    W_1 \cap W_2&=\{\alpha \mid \alpha\in W_1 \text{ 且 } \alpha\in W_2\} \\
+    W_1 \cup W_2&=\{\alpha \mid \alpha\in W_1 \text{ 或 } \alpha\in W_2\} \\
+    W_1 + W_2&=\{\alpha_1+\alpha_2 \mid \alpha_1\in W_1,\enspace\alpha_2\in W_2\}
+    \end{align*}
+    分别称为$W_1$和$W_2$的交、并、和.
 \end{definition}
 我们要注意，线性空间的交与和仍然是$V$的子空间，请各位同学自行证明.并且$V$的有限个子空间的交与和
 仍然是$V$的子空间.
 
 关于线性空间的并，我们必须注意线性空间的并不一定是线性空间，这很容易理解，
 因为两个线性空间元素组合在一起，两个线性空间各取一个元素求和显然不一定在并集中，大家
-可以自行举反例.我们给出以下结论：
-$W_1 \cup W_2$为线性空间$\iff W_1 \subseteq W_2$或$W_2 \subseteq W_1 \iff W_1 \cup W_2=W_1+W_2.$
+可以自行举反例. 我们给出以下结论：
+\[ W_1 \cup W_2 \text{ 为线性空间 } \iff W_1 \subseteq W_2 \text{ 或 } W_2 \subseteq W_1 \iff W_1 \cup W_2=W_1+W_2 \]
 
-这一结论证明并不复杂，希望各位同学掌握.$V$的有限个子空间的并仍为$V$的子空间的充要条件是其中有一个
+这一结论证明并不复杂，希望各位同学掌握. $V$的有限个子空间的并仍为$V$的子空间的充要条件是其中有一个
 子空间能包含其他所有子空间.
 
 我们可以从几何直观上理解这些概念，例如三维空间中两个不同的过原点的平面构成的线性空间的交是其交线（交线也过原点）构成的线性空间，
@@ -27,74 +29,75 @@ $W_1 \cup W_2$为线性空间$\iff W_1 \subseteq W_2$或$W_2 \subseteq W_1 \iff 
 
 关于线性空间的并我们还有一个重要的覆盖定理：
 \begin{theorem}
-	设$V_1,V_2,\cdots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量
-	不属于$V_1,V_2,\cdots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V.$
+    设$V_1,V_2,\ldots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量
+    不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V.$
 \end{theorem}
 这一定理表明，任何一个线性空间都不能被自身有限个非平凡子空间通过并得到.例如，有限条直线的并不可能是一个平面.
 定理的证明可以使用数学归纳法，下面是一个应用的例子：
 \begin{example}
-	设$V_1,V_2,\cdots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：存在$V$的一组基$\alpha_1,\alpha_2,\cdots,\alpha_n$
-	都不在$V_1,V_2,\cdots,V_s$中.
+    设$V_1,V_2,\ldots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：存在$V$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_n$
+    都不在$V_1,V_2,\ldots,V_s$中.
 \end{example}
 
 \section{维数公式}
 \begin{theorem}
-	设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间，则
-	$$\dim W_1+\dim W_2=\dim(W_1+W_2)+\dim(W_1\cap W_2).$$
+    设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间，则
+    \[\dim W_1+\dim W_2=\dim(W_1+W_2)+\dim(W_1\cap W_2).\]
 \end{theorem}
 上式称为子空间的维数公式，区别于下一专题中的线性映射基本定理的维数公式.这一定理的证明思想
 是重要的，利用基的扩张等技巧，需要同学们熟练掌握，下面是一个证明思想类似的例子：
 \begin{example}
-	已知$A,B$分别是数域$\mathbf{F}$上的$s \times k$和$k \times n$矩阵，$X$是$n \times 1$
-	的列向量，证明：所有满足$ABX=0$的$BX$构成一个线性空间$V$，且维数为$r(B)-r(AB).$
+    已知$A,B$分别是数域$\mathbf{F}$上的$s \times k$和$k \times n$矩阵，$X$是$n \times 1$
+    的列向量. 证明：所有满足$ABX=0$的$BX$构成一个线性空间$V$，且$\dim V = r(B) - r(AB)$.
 \end{example}
 
 \section{线性空间的直和}
 我们证明或者和空间很多时候都是利用和空间定义进行向量分解，这种分解唯一时即为直和.我们有如下定义：
 \begin{definition}
-	设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间，若$W_1 \cap W_2=\{0\}$，则$W_1+W_2$叫做
-	$W_1$与$W_2$的直和，记作$W_1\oplus W_2$.此时称$W_1,W_2$为互补子空间，或$W_1$是$W_2$的补空间，
-	或$W_2$是$W_1$的补空间.
+    设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间. 若$W_1 \cap W_2=\{0\}$，则$W_1+W_2$叫做
+    $W_1$与$W_2$的\keyterm{直和}[direct sum]，记作$W_1\oplus W_2$.此时称$W_1,W_2$为\keyterm{互补子空间}[complementary subspaces]，或$W_1$是$W_2$的补空间，
+    或$W_2$是$W_1$的补空间.
 \end{definition}
 我们需要注意，一个线性子空间的补空间并不唯一，请同学们给出相应的例子.
 
 直和有以下等价的命题，我们证明或者利用直和都可以任意选择：
 \begin{theorem}
-	对子空间$W_1,W_2$，下列命题等价：
+    对于子空间$W_1,W_2$，下列命题等价：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $W_1+W_2$是直和，即$W_1 \cap W_2=\{0\}$；
 
-	\textup{（1）}$W_1+W_2$是直和，即$W_1 \cap W_2=\{0\}$；
+        \item $W_1+W_2$中的每个向量$\alpha$的分解式$\alpha=\alpha_1+\alpha_2\enspace(\alpha_1\in W_1,\enspace\alpha_2\in W_2)$唯一；
 
-	\textup{（2）}$W_1+W_2$中的每个向量$\alpha$的分解式$\alpha=\alpha_1+\alpha_2(\alpha_1\in W_1,\alpha_2\in W_2)$唯一；
+        \item 零向量的分解式$0=\alpha_1+\alpha_2 \enspace(\alpha_1\in W_1,\enspace\alpha_2\in W_2)$仅当$\alpha_1=\alpha_2=0$时成立；
 
-	\textup{（3）}零向量的分解式$0=\alpha_1+\alpha_2(\alpha_1\in W_1,\alpha_2\in W_2)$仅当$\alpha_1=\alpha_2=0$时成立；
-
-	\textup{（4）}$\dim (W_1+W_2)=\dim W_1+\dim W_2$.
+        \item $\dim (W_1+W_2)=\dim W_1+\dim W_2$.
+    \end{enumerate}
 \end{theorem}
-我们也可以定义有限个子空间的直和，即$V=W_1\oplus+W_2\oplus\cdots\oplus W_n \iff W_i \cap \sum\limits_{j \neq i}W_j=\{0\}$.
-等价命题也是上述定理的推广，例如唯一分解、0的分解以及维数公式推广.我们有一个与多空间直和相关的定理：
+我们也可以定义有限个子空间的直和，即$V=W_1\oplus W_2\oplus\cdots\oplus W_n \iff W_i \cap \sum\limits_{j \neq i}W_j=\{0\}$.
+等价命题也是上述定理的推广，例如唯一分解、0的分解以及维数公式推广. 我们有一个与多空间直和相关的定理：
 \begin{theorem}
-	若$V=V_1\oplus V_2$，$V_1=V_{11}\oplus\cdots\oplus V_{1s}$，$V_2=V_{21}\oplus\cdots\oplus V_{2t}$，则
-	$$V=V_{11}\oplus\cdots\oplus V_{1s}\oplus V_{21}\oplus\cdots\oplus V_{2t}.$$
+    若$V=V_1\oplus V_2$，$V_1=V_{11}\oplus\cdots\oplus V_{1s}$，$V_2=V_{21}\oplus\cdots\oplus V_{2t}$，则
+    \[V=V_{11}\oplus\cdots\oplus V_{1s}\oplus V_{21}\oplus\cdots\oplus V_{2t}\]
 \end{theorem}
 我们证明直和一般有两种思路，一种是先证和，再证直和，我们来看一个例子：
 \begin{example}
-	数域$\mathbf{F}$上所有$n$级矩阵组成的线性空间$V=M_n(\mathbf{F})$，$V_1$表示所有对称矩阵
-	组成的集合，$V_2$表示所有反对称矩阵组成的集合，证明：$V_1,V_2$都是$V$的子空间，且$V=V_1\oplus V_2$.
+    数域$\mathbf{F}$上所有$n$阶方阵组成的线性空间$V=\mathbf{M}_{nn}(\mathbf{F})$，$V_1$表示所有对称矩阵
+    组成的集合，$V_2$表示所有反对称矩阵组成的集合. 证明：$V_1,V_2$都是$V$的子空间，且$V=V_1\oplus V_2$.
 \end{example}
 还有一种证明$V=V_1\oplus V_2$的方式是先令$W=V_1+V_2$，先证明和为直和（即交为$\{0\}$）再证$W=V$即可，
 下面是一个例子：
 \begin{example}
-	设$A$是数域$\mathbf{F}$上的一个$n$阶可逆方阵，$A$的前$r$个行向量组成的矩阵为$B$，后$n-r$个
-	行向量组成的矩阵为$C$，$n$元线性方程组$BX=0$与$CX=0$的解空间分别为$V_1,V_2$，证明：$\mathbf{F}^n=V_1\oplus V_2$.
+    设$A$是数域$\mathbf{F}$上的一个$n$阶可逆方阵，$A$的前$r$个行向量组成的矩阵为$B$，后$n-r$个
+    行向量组成的矩阵为$C$，$n$元线性方程组$BX=0$与$CX=0$的解空间分别为$V_1,V_2$. 证明：$\mathbf{F}^n=V_1\oplus V_2$.
 \end{example}
 
-\vspace{2ex} 
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-\vspace{2ex} 
+\vspace{2ex}
 
 \centerline{\heiti \Large 习题}
-\vspace{2ex} 
+\vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
@@ -102,13 +105,13 @@ $W_1 \cup W_2$为线性空间$\iff W_1 \subseteq W_2$或$W_2 \subseteq W_1 \iff 
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}

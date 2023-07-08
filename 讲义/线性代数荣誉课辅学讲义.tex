@@ -14,6 +14,12 @@
 \usepackage{booktabs} % excel 导出的大表格
 \usepackage{rotating}
 \usepackage{extarrows}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows, arrows.meta, calc, intersections, decorations.pathreplacing, patterns, decorations.markings}
 
 \usepackage{indentfirst}
 \setlength{\parindent}{2em}
@@ -26,7 +32,11 @@
 \makeindex
 
 \usepackage{xparse}
-\NewDocumentCommand{\keyterm}{smm}{{\heiti\bfseries{#2}（{\sffamily{#3}}）}\IfBooleanF{#1}{\index{#2}}}
+\NewDocumentCommand{\keyterm}{smo}{%
+    {\heiti\bfseries{#2}%
+    \IfNoValueF{#3}{（\sffamily{#3}）}}%
+    \IfBooleanF{#1}{\index{#2}}%
+}
 
 \usepackage{zhnumber}
 
@@ -53,6 +63,15 @@
 \newtheorem{lemma}{引理}[chapter]
 \newtheorem{theorem}{定理}[chapter]
 \newenvironment{proof}{{\noindent\bf\heiti 证明}\quad}{\hfill$\square$\par}
+
+\renewcommand{\figureautorefname}{图}
+\renewcommand{\tableautorefname}{表}
+\renewcommand{\equationautorefname}{式}
+\renewcommand{\theoremautorefname}{定理}
+\newcommand{\exampleautorefname}{例}
+\newcommand{\definitionautorefname}{定义}
+
+\DeclareMathOperator{\diag}{diag}
 
 \title{\heiti 浙江大学 2023-2024 学年 \\ 线性代数荣誉课辅学讲义}
 \author{2023-2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航\ \ yhwu\_is@zju.edu.cn}
