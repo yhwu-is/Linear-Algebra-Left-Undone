@@ -3,148 +3,155 @@
 \section{矩阵基本运算}
 \subsection{基本概念}
 \begin{enumerate}
-	\item 矩阵的加法来源于线性映射的加法，矩阵相加要求两矩阵行列数一致，相加时只需对应位置元素相加即可；
-	\item 矩阵的数乘来源于线性映射的数乘，计算只需矩阵的每个元素乘以常数即可；
-	\item 矩阵的乘法来源于线性映射的复合，计算时要求前一个矩阵的列数等于后一个矩阵的行数，矩阵$A$与$B$
-	相乘结果中第$i$行第$j$列元素为矩阵$A$的第$i$行与矩阵$B$的第$j$列对应位置元素相乘后求和的结果，
-	即对于$A=(a_{ij})_{m \times n}$和$B=(b_{ij})_{n \times l}$，矩阵$C=AB=(c_{ij})_{m \times l}$，且
-	$c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{in}b_{nj},\ i=1,\cdots,m,j=1,\cdots,l$.
+    \item 矩阵的加法来源于线性映射的加法，矩阵相加要求两矩阵行列数一致，相加时只需对应位置元素相加即可；
+    \item 矩阵的数乘来源于线性映射的数乘，计算只需矩阵的每个元素乘以常数即可；
+    \item 矩阵的乘法来源于线性映射的复合，计算时要求前一个矩阵的列数等于后一个矩阵的行数，矩阵$A$与$B$
+    相乘结果中第$i$行第$j$列元素为矩阵$A$的第$i$行与矩阵$B$的第$j$列对应位置元素相乘后求和的结果，
+    即对于$A=(a_{ij})_{m \times n}$和$B=(b_{ij})_{n \times l}$，矩阵$C=AB=(c_{ij})_{m \times l}$，且
+    $c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{in}b_{nj}\enspace(i=1,\ldots,m,\enspace j=1,\ldots,l)$.
 \end{enumerate}
 
 \subsection{基本性质}
 \begin{enumerate}
-	\item 回顾上一专题中$m \times n$矩阵构成的线性空间$M_{m \times n}(\mathbf{F})$；
-	\item 回顾矩阵乘法的基本性质：
-	\begin{enumerate}
-		\item $(AB)C=A(BC)$（结合律）
-		\item $\lambda(AB)=(\lambda A)B=A(\lambda B)$（其中$\lambda$是数量）
-		\item $A(B+C)=AB+AC$（左分配律）
-		\item $(B+C)P=BP+CP$（右分配律）
-		\item $A^kA^m=A^{k+m}$，$(A^k)^m=A^{km}$，其中$A$为方阵，$k$，$m$为任意整数，
-		负整数对应于逆矩阵的情况.
-	\end{enumerate}
-	\item 回顾矩阵多项式的定义（利用线性映射多项式在基下的矩阵表示定义），
-	并注意其交换性以及可因式分解性.
+    \item 回顾上一专题中$m \times n$矩阵构成的线性空间$\mathbf{M}_{m \times n}(\mathbf{F})$；
+    \item 回顾矩阵乘法的基本性质：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $(AB)C=A(BC)$（结合律）
+        \item $\lambda(AB)=(\lambda A)B=A(\lambda B),\enspace \lambda \in \mathbf{F}$
+        \item $A(B+C)=AB+AC$（左分配律）
+        \item $(B+C)P=BP+CP$（右分配律）
+        \item $A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$，其中$A$为方阵，$k,m$为任意整数. 负整数对应于逆矩阵的情况.
+    \end{enumerate}
+    \item 回顾矩阵多项式的定义（利用线性映射多项式在基下的矩阵表示定义），
+    并注意其交换性以及可因式分解性.
 \end{enumerate}
 \begin{example}
-	展开矩阵多项式$(A+\lambda E)^n$.
+    展开矩阵多项式$(A+\lambda E)^n$.
 \end{example}
 \begin{example}
-	设$f(x),\ g(x) \in \mathbf{F}[x]$，$A,\ B \in M_n(\mathbf{F})$，证明：
-	$$f(A)g(A)=g(A)f(A);$$
-	
-	\textup{1. }如果$AB=BA$，则$f(A)g(B)=g(B)f(A)$\textup{；}
+    设$f(x),g(x) \in \mathbf{F}[x],\enspace A,B \in \mathbf{M}_n(\mathbf{F})$. 证明：
+    \[f(A)g(A)=g(A)f(A)\]
+    \begin{enumerate}
+        \item 如果$AB=BA$，则$f(A)g(B)=g(B)f(A)$；
 
-	\textup{2. }设$f(x)=1+x+\cdots+x^{m-1}$，$g(x)=1-x$，$A=\begin{pmatrix}
-		a & b \\ 0 & a
-	\end{pmatrix}$，计算$f(A)g(A)$.
+        \item 设$f(x)=1+x+\cdots+x^{m-1}$，$g(x)=1-x$，$A=\begin{pmatrix}
+            a & b \\ 0 & a
+        \end{pmatrix}$，计算$f(A)g(A)$.
+    \end{enumerate}
 \end{example}
 其他需要注意的性质：
 \begin{enumerate}
-	\item 矩阵乘法不一定满足交换律（即$AB$不一定等于$BA$）.但是注意数量矩阵和任何矩阵相乘都是可交换的，因此求矩阵的幂次时，可以将其转化为$(A+\mu E)^n$（其中$E$为单位矩阵，$\mu$为常数）类型，然后利用二项式展开即可.很多情况下$A$都会是幂零矩阵，此时结果为有限项.
-	\item $A\neq O$且$B\neq O$不能推出$AB\neq O$.例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$.
-	\item 消去律也不一定满足：即$AC = BC$不一定$B = C$.原因在于$AB=AC \to A(B-C)=O$，由(2)可知不一定$B = C$.
+    \item 矩阵乘法不一定满足交换律（即$AB$不一定等于$BA$）.但是注意数量矩阵和任何矩阵相乘都是可交换的，因此求矩阵的幂次时，可以将其转化为$(A+\mu E)^n$（其中$E$为单位矩阵，$\mu$为常数）类型，然后利用二项式展开即可.很多情况下$A$都会是幂零矩阵，此时结果为有限项.
+    \item $A\neq O$且$B\neq O$不能推出$AB\neq O$.例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$.
+    \item 消去律也不一定满足：即$AB = AC$不一定$A = B$.原因在于$AB=AC \implies A(B-C)=O$，由(2)可知不一定$B = C$.
 \end{enumerate}
 
 \subsection{矩阵可交换问题}
 一般来说在本课程中此类问题直接设可交换矩阵的每一个元素都是未知数即可，一些特殊的技巧
 （使用关于一些特殊形状矩阵的结论）以及涉及到之后才能学到的知识的方法我们在这里也不展开了.我们只讨论一个基本的技巧，即
-$$\forall t,\ AB=BA \iff (A-tE)B=B(A-tE)$$
+\[\forall t,\enspace AB=BA \iff (A-tE)B=B(A-tE)\]
 此处的$t$根据矩阵的对角线上元素来决定，原则是使得其余矩阵与$A-tE$相乘的计算过程更为简单（一般是使得0元素更多），这样解方程也会更轻松.
 我们来看一个简单的例子：
 \begin{example}
-	求与矩阵$A=\begin{pmatrix}
-		3 & 0 & 0 \\ -1 & 3 & 0 \\ 0 & -1 & 3
-	\end{pmatrix}$可交换的矩阵.
+    求与矩阵$A=\begin{pmatrix}
+        3 & 0 & 0 \\ -1 & 3 & 0 \\ 0 & -1 & 3
+    \end{pmatrix}$可交换的矩阵.
 \end{example}
 
 关于可交换我们有以下定理，证明并不是很复杂（教材习题中有出现）：
 \begin{theorem}
-	\textup{（1）}与主对角元两两互异的对角矩阵可交换的方阵只能是对角矩阵；
+    \begin{enumerate}
+        \item 与主对角元两两互异的对角矩阵可交换的方阵只能是对角矩阵；
 
-	\textup{（2）}准对角矩阵$A$每个对角分块内对角线元素相同，但不同对角块之间不同，则与$A$可交换的矩阵只能是准对角矩阵；
-	
-	\textup{（3）}与所有$n$级可逆矩阵可交换的矩阵为数量矩阵；
-	
-	\textup{（4）}与所有$n$级矩阵可交换的矩阵为数量矩阵.
+        \item 准对角矩阵$A$每个对角分块内对角线元素相同，但不同对角块之间不同，则与$A$可交换的矩阵只能是准对角矩阵；
+
+        \item 与所有$n$级可逆矩阵可交换的矩阵为数量矩阵；
+
+        \item 与所有$n$级矩阵可交换的矩阵为数量矩阵.
+    \end{enumerate}
 \end{theorem}
 
 \section{矩阵转置}
 \subsection{基本概念}
 实际上，矩阵的转置就是第$i$行变成了第$i$列，或者抽象表达为：
-$$A=(a_{ij})_{m \times n},\ A^\mathrm{T}=(a'_{ji})_{n \times m},\ a_{ij}=a'_{ji}$$
-写成矩阵形式为：
+\[A=(a_{ij})_{m \times n},\enspace A^\mathrm{T}=(a'_{ji})_{n \times m},\enspace a_{ij}=a'_{ji}\]
+写成矩阵形式就是：
 \begin{definition}
-	设$A=\begin{pmatrix}
-		a_{11} & a_{12} & \cdots & a_{1n} \\
-		a_{21} & a_{22} & \cdots & a_{2n} \\
-		\vdots & \vdots &       & \vdots \\
-		a_{m1} & a_{m2} & \cdots & a_{mn}
-	\end{pmatrix}$，称$\begin{pmatrix}
-		a_{11} & a_{21} & \cdots & a_{m1} \\
-		a_{12} & a_{22} & \cdots & a_{m2} \\
-		\vdots & \vdots &       & \vdots \\
-		a_{1n} & a_{2n} & \cdots & a_{mn}
-	\end{pmatrix}$为矩阵$A$的转置，记作$A^\mathrm{T}$.
+    设$A=\begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{pmatrix}$，称$\begin{pmatrix}
+        a_{11} & a_{21} & \cdots & a_{m1} \\
+        a_{12} & a_{22} & \cdots & a_{m2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \cdots & a_{mn}
+    \end{pmatrix}$为矩阵$A$的转置，记作$A^\mathrm{T}$.
 \end{definition}
 
 \subsection{基本性质}
-1. $(A^\mathrm{T})^\mathrm{T}=A$
+\begin{enumerate}
+    \item $(A^\mathrm{T})^\mathrm{T}=A$
 
-2. $(A+B)^\mathrm{T}=A^\mathrm{T}+B^\mathrm{T}$
+    \item $(A+B)^\mathrm{T}=A^\mathrm{T}+B^\mathrm{T}$
 
-3. $(\lambda A)^\mathrm{T}=\lambda A^\mathrm{T}$（$\lambda$是数量）
+    \item $(\lambda A)^\mathrm{T}=\lambda A^\mathrm{T},\enspace \lambda \in \mathbf{F}$
 
-4. $(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}$，$(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T}$
+    \item $(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}$，$(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T}$
 
-5. $(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$
+    \item $(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$
 
-6. $(A^\mathrm{T})^m=(A^m)^\mathrm{T}$
+    \item $(A^\mathrm{T})^m=(A^m)^\mathrm{T}$
+\end{enumerate}
 
 以上证明大都是平凡的，可以自己尝试完成.
 \subsection{对阵矩阵与反对称矩阵}
 \begin{definition}
-	设$A=(a_{ij})_{n \times n}$，如果$\forall i,j=1,2,\cdots$均有$a_{ij}=a_{ji}$，
-	则称$A$为对称矩阵，若均有$a_{ij}=-a_{ji}$，则称$A$为反对称矩阵.
+    设$A=(a_{ij})_{n \times n}$，如果$\forall i,j=1,2,\ldots,n$均有$a_{ij}=a_{ji}$，
+    则称$A$为对称矩阵. 若均有$a_{ij}=-a_{ji}$，则称$A$为反对称矩阵.
 \end{definition}
 易得$A$为对称矩阵的充要条件为$A=A^\mathrm{T}$，$A$为反对称矩阵的充要条件为$A=-A^\mathrm{T}$.
 \begin{example}
-	证明以下几点性质：
-	
-	\textup{1. }反对称矩阵主对角元均为$0$\textup{；}
-	
-	\textup{2. }$AA^\mathrm{T}$和$A^\mathrm{T}A$均为对称矩阵\textup{；}
-	
-	\textup{3. }设$A,\ B$为$n$阶对称和反对称矩阵，则$AB+BA$是反对称矩阵\textup{；}
-	
-	\textup{4. }对称矩阵的乘积不一定对称\textup{；}
-	
-	\textup{5. }可逆的对称（反对称）矩阵的逆矩阵也是对称（反对称）矩阵.
+    证明以下几点性质：
+    \begin{enumerate}
+        \item 反对称矩阵主对角元均为$0$；
+
+        \item $AA^\mathrm{T}$和$A^\mathrm{T}A$均为对称矩阵；
+
+        \item 设$A,B$为$n$阶对称和反对称矩阵，则$AB+BA$是反对称矩阵；
+
+        \item 对称矩阵的乘积不一定对称；
+
+        \item 可逆的对称（反对称）矩阵的逆矩阵也是对称（反对称）矩阵.
+    \end{enumerate}
 \end{example}
 
 \section{初等矩阵}
 \subsection{基本概念与性质}
 \begin{definition}
-	将单位矩阵$E$做一次初等变换得到的矩阵称为初等矩阵，与三种初等行、列变换对应的三类初等矩阵为：
-	
-	\textup{（1）}将单位矩阵第$i$行（或列）乘$c$，得到初等倍乘矩阵$E_i(c)$\textup{；}
+    将单位矩阵$E$做一次初等变换得到的矩阵称为初等矩阵，与三种初等行、列变换对应的三类初等矩阵为：
+    \begin{enumerate}
+        \item 将单位矩阵第$i$行（或列）乘$c$，得到初等倍乘矩阵$E_i(c)$；
 
-	\textup{（2）}将单位矩阵第$i$行乘$c$加到第$j$行，或将第$j$列乘$c$加到第$i$列，得到初等倍加矩阵$E_{ij}(c)$\textup{；}
+        \item 将单位矩阵第$i$行乘$c$加到第$j$行，或将第$j$列乘$c$加到第$i$列，得到初等倍加矩阵$E_{ij}(c)$；
 
-	\textup{（3）}将单位矩阵第$i,j$行（或列）对换，得到初等对换矩阵$E_{ij}$.
+        \item 将单位矩阵第$i,j$行（或列）对换，得到初等对换矩阵$E_{ij}$.
+    \end{enumerate}
 \end{definition}
 请各位同学以矩阵形式写出以上三类矩阵.注意：
+\begin{enumerate}
+    \item 倍加变化请一定注意$i$和$j$在行列的情况下的不同；
 
-1. 倍加变化请一定注意$i$和$j$在行列的情况下的不同；
+    \item 三类矩阵不是三个矩阵，例如行列选择不唯一，常数选择不唯一；
 
-2. 三类矩阵不是三个矩阵，例如行列选择不唯一，常数选择不唯一；
+    \item 注意三种初等矩阵都是可逆的，且$E_i^{-1}(c)=E_i\left(\dfrac{1}{c}\right)$，$E_{ij}^{-1}(c)=E_{ij}(-c)$，$E_{ij}^{-1}=E_{ij}$；
 
-3. 注意三种初等矩阵都是可逆的，且$E_i^{-1}(c)=E_i(\cfrac{1}{c})$，$E_{ij}^{-1}(c)=E_{ij}(-c)$，$E_{ij}^{-1}=E_{ij}$；
-
-4. 三种初等矩阵的转置：$E_i^\mathrm{T}(c)=E_i(c)$，$E_{ij}^\mathrm{T}(c)=E_{ji}(c)$，$E_{ij}^\mathrm{T}=E_{ij}$；
+    \item 三种初等矩阵的转置：$E_i^\mathrm{T}(c)=E_i(c)$，$E_{ij}^\mathrm{T}(c)=E_{ji}(c)$，$E_{ij}^\mathrm{T}=E_{ij}$；
+\end{enumerate}
 
 初等矩阵大家非常关心为什么左乘代表行变换，右乘代表列变换.以右乘为例，我们来看矩阵$A$和$B$相乘的任一列结果.我们可以将矩阵$A$
-按列做分块矩阵得到$(\alpha_1,\cdots,\alpha_n)$，$\alpha_i$即表示$A$的第$i$列.然后矩阵$B$的第$j$列为列向量$(x_1,\cdots,x_n)^\mathrm{T}$，
+按列做分块矩阵得到$\begin{pmatrix}\alpha_1,\ldots,\alpha_n\end{pmatrix}$，$\alpha_i$即表示$A$的第$i$列.然后矩阵$B$的第$j$列为列向量$(x_1,\ldots,x_n)^\mathrm{T}$，
 由于矩阵$A$与$B$相乘结果第$j$列就是$A$与$B$的第$j$列相乘结果（回顾矩阵乘法的计算方式），则有$B$的第$i$列等于
 $x_1\alpha_1+\cdots+x_n\alpha_n$即为$A$的全部列向量的线性组合，故右乘矩阵$A$得到矩阵的任一列都是$A$的全部列向量的线性组合，
 所以右乘可以代表列变换.注意我这里并没有限制矩阵$B$为初等矩阵或可逆矩阵.
@@ -153,119 +160,124 @@ $x_1\alpha_1+\cdots+x_n\alpha_n$即为$A$的全部列向量的线性组合，故
 重新线性组合，思路会清晰很多.
 
 关于初等矩阵还有一个相当重要的定理：
+
 \begin{theorem}
-	任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
+    任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
 \end{theorem}
 定理证明只需要回忆高斯消元法可以将可逆矩阵化为单位矩阵即可.
 
 利用矩阵初等变换我们可以获得本学期需要学习的三个矩阵标准形，因此这一内容虽然很基本但是非常重要：
 \begin{enumerate}
-	\item 相抵矩阵：本章已学习的内容，在之后会详细说明；
-	\item 相似矩阵：若$P$为初等矩阵，对矩阵做$P^{-1}AP$变换即可得到与$A$相似的矩阵；
-	\item 相合矩阵：两个矩阵，其中一个可以通过做相同的初等行列变换的到另一个矩阵（若$P$为初等矩阵，
-	$P^{\mathrm{T}}AP$就是对$A$做了一次相同的初等行列变换）.
+    \item 相抵矩阵：本章已学习的内容，在之后会详细说明；
+    \item 相似矩阵：若$P$为初等矩阵，对矩阵做$P^{-1}AP$变换即可得到与$A$相似的矩阵；
+    \item 相合矩阵：两个矩阵，其中一个可以通过做相同的初等行列变换的到另一个矩阵（若$P$为初等矩阵，
+    $P^{\mathrm{T}}AP$就是对$A$做了一次相同的初等行列变换）.
 \end{enumerate}
 请同学们思考：如何从线性映射矩阵表示的角度理解初等变换与标准形的关系？在B组习题中将有练习进行体会
-（实际上对矩阵表示的基做“初等变换”就是对表示矩阵做了初等变换，这两种变换行列方向不一致且矩阵互逆）.
+（实际上对矩阵表示的基做``初等变换''就是对表示矩阵做了初等变换，这两种变换行列方向不一致且矩阵互逆）.
 
 \section{矩阵的逆}
 \subsection{基本概念}
 \begin{definition}
-	设$A \in M_n(\mathbf{F})$，如果存在$B \in M_n(\mathbf{F})$，使得$AB=BA=E$则称矩阵$A$可逆，
-	并把$B$称为$A$的逆矩阵.
+    设$A \in \mathbf{M}_n(\mathbf{F})$. 若存在$B \in \mathbf{M}_n(\mathbf{F})$使得$AB=BA=E$，则称矩阵$A$可逆，
+    并把$B$称为$A$的逆矩阵，记作 $ B = A^{-1} $.
 \end{definition}
 注意，逆矩阵定义基于方阵，非方阵没有上述逆矩阵.广义逆矩阵允许非方阵，但那是另一个定义，
 我们不需要掌握.对于可逆矩阵，注意以下两个定理：
 \begin{theorem}
-	可逆矩阵$A$的逆矩阵唯一.
+    可逆矩阵$A$的逆矩阵唯一.
 \end{theorem}
 \begin{theorem}
-	$AB=E \iff A$与$B$互为逆矩阵.
+    $AB=E \iff A$与$B$互为逆矩阵.
 \end{theorem}
 这两个定理的证明教材中有，特别注意唯一性的证明，反证法的思路一定要掌握，十分经典.
 还需要强调的一点是，逆矩阵来源于逆映射.
 \subsection{基本性质}
-1. 注意没有加法性质（请举出反例），对于数乘有$(\lambda A)^{-1}=\lambda^{-1}A^{-1}$；
+\begin{enumerate}
+    \item 注意没有加法性质（请举出反例），对于数乘有$(\lambda A)^{-1}=\lambda^{-1}A^{-1}$；
 
-2. $(AB)^{-1}=B^{-1}A^{-1}$，$(A_1A_2\cdots A_k)^{-1}=A_k^{-1}\cdots A_2^{-1}A_1^{-1}$；
+    \item $(AB)^{-1}=B^{-1}A^{-1},\enspace (A_1A_2\cdots A_k)^{-1}=A_k^{-1}\cdots A_2^{-1}A_1^{-1}$；
 
-3. $(A^k)^{-1}=(A^{-1})^k$，$A^kA^m=A^{k+m}$，$(A^k)^m=A^{km}$；
+    \item $(A^k)^{-1}=(A^{-1})^k,\enspace A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$；
 
-4. 若$A$和$B$可逆，则$A\neq O$且$B\neq O$能推出$AB\neq O$，并且$A$可逆且$AB=O$可以推出$B=O$，
-除此之外还有消去律成立，即$A$则有$AB=AC \Rightarrow B=C$成立.
+    \item 若$A$和$B$可逆，则$A\neq O$且$B\neq O$能推出$AB\neq O$，并且$A$可逆且$AB=O$可以推出$B=O$，除此之外还有消去律成立，即$A$则有$AB=AC \implies B=C$成立.
+\end{enumerate}
 
 还需要熟练掌握可逆矩阵的几个等价条件：
 \begin{theorem}
-	设$A \in M_n{\mathbf{F}}$，则下列命题等价：
+    设$A \in \mathbf{M}_n{\mathbf{F}}$，则下列命题等价：
+    \begin{enumerate}
+        \item $A$可逆；
 
-	\textup{（1）}$A$可逆；
-	
-	\textup{（2）}$r(A)=n$；
-	
-	\textup{（3）}$A$的$n$个行（列）向量线性无关；
-	
-	\textup{（4）}齐次线性方程组$AX=0$只有零解；
-	
-	\textup{（5）}$|A|\neq 0$.
+        \item $r(A)=n$；
+
+        \item $A$的$n$个行（列）向量线性无关；
+
+        \item 齐次线性方程组$AX=0$只有零解；
+
+        \item $|A|\neq 0$.
+    \end{enumerate}
 \end{theorem}
 \begin{example}
-	已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，
+    已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，
 
 $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$.求矩阵 $X$ 满足：
 
-$$X+(B(A^TB^2)^{-1}A^T)^{-1}=X(A^2(B^TA)^{-1}B^T)^{-1}(A+B)$$
+\[X+\left(B(A^TB^2)^{-1}A^T\right)^{-1}=X\left(A^2(B^TA)^{-1}B^T\right)^{-1}(A+B)\]
 \end{example}
 
 \subsection{逆矩阵的求解（基本方法）}
-1. 利用解线性方程组的方法：假设$AX=b$，使用高斯消元法求解；
+\begin{enumerate}
+    \item 利用解线性方程组的方法：假设$AX=b$，使用高斯消元法求解；
 
-2. 利用初等矩阵的方法（初等行变换为常用方法）.
+    \item 利用初等矩阵的方法（初等行变换为常用方法）.
+\end{enumerate}
 
 注意，基于初等变换的方法是非常重要的，我们很多时候不要被题目吓到去采用其他
 偏门的方法，实际上很多时候拿到一个具体的矩阵求逆，使用的方法就是初等行变换.
 
 \begin{example}
-	用上述两种方法求矩阵$A=\begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$的逆矩阵.
+    用上述两种方法求矩阵$A=\begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$的逆矩阵.
 \end{example}
 
 \subsection{矩阵方程}
 \begin{enumerate}
-	\item 考虑以下情形（其中出现的矩阵除$X$外均可逆，$X$不一定是列向量）：
-	\begin{enumerate}
-		\item $AX=B \Rightarrow X=A^{-1}B$，$XA=B \Rightarrow X=BA^{-1}$；
-		\item $AXB=C \Rightarrow X=A^{-1}CB^{-1}$；
-	\end{enumerate}
-	\item 考虑以下情形：$AX=B$但$A$不可逆（$X$不一定是列向量），直接高斯消元即可；
-	\item 考虑以下求解方式的合理性：
-	\begin{enumerate}
-		\item 若求$A^{-1}$，只需对$(A,E)$只做初等行变换，可以得到$(E,A^{-1})$；
-		\item 若求$A^{-1}B$，只需对$(A,B)$只做初等行变换，可以得到$(E,A^{-1}B)$；
-		\item 若求$BA^{-1}$，只需对$\begin{pmatrix}
-			A \\ B
-		\end{pmatrix}$只做初等列变换，可以得到$\begin{pmatrix}
-			E \\ BA^{-1}
-		\end{pmatrix}$；
-		\item 对$\begin{pmatrix}
-			A & E \\ E & O
-		\end{pmatrix}$的前$n$行与$n$列做相同的行列变换，可以得到$\begin{pmatrix}
-			P^\mathrm{T}AP & P^\mathrm{T} \\ P & O
-		\end{pmatrix}$.
-	\end{enumerate}
+    \item 考虑以下情形（其中出现的矩阵除$X$外均可逆，$X$不一定是列向量）：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $AX=B \implies X=A^{-1}B, \enspace XA=B \implies X=BA^{-1}$；
+        \item $AXB=C \implies X=A^{-1}CB^{-1}$；
+    \end{enumerate}
+    \item 考虑以下情形：$AX=B$但$A$不可逆（$X$不一定是列向量），直接高斯消元即可；
+    \item 考虑以下求解方式的合理性：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若求$A^{-1}$，只需对$(A,E)$只做初等行变换，可以得到$(E,A^{-1})$；
+        \item 若求$A^{-1}B$，只需对$(A,B)$只做初等行变换，可以得到$(E,A^{-1}B)$；
+        \item 若求$BA^{-1}$，只需对$\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}$只做初等列变换，可以得到$\begin{pmatrix}
+            E \\ BA^{-1}
+        \end{pmatrix}$；
+        \item 对$\begin{pmatrix}
+            A & E \\ E & O
+        \end{pmatrix}$的前$n$行与$n$列做相同的行列变换，可以得到$\begin{pmatrix}
+            P^\mathrm{T}AP & P^\mathrm{T} \\ P & O
+        \end{pmatrix}$.
+    \end{enumerate}
 \end{enumerate}
 
 \begin{example}
-	设$A=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1\end{pmatrix},\ 
-	B=\begin{pmatrix}0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0\end{pmatrix}$，求矩阵$X$满足：	
-	$$AXA+BXB=AXB+BXA+A(A-B)$$
+    设$A=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1\end{pmatrix},\
+    B=\begin{pmatrix}0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0\end{pmatrix}$，求矩阵$X$满足：
+    \[AXA+BXB=AXB+BXA+A(A-B)\]
 \end{example}
 
-\vspace{2ex} 
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-\vspace{2ex} 
+\vspace{2ex}
 
 \centerline{\heiti \Large 习题}
-\vspace{2ex} 
+\vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
@@ -273,13 +285,13 @@ $$X+(B(A^TB^2)^{-1}A^T)^{-1}=X(A^2(B^TA)^{-1}B^T)^{-1}(A+B)$$
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-	\item 
+    \item
 \end{enumerate}

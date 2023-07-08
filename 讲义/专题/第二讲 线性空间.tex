@@ -67,15 +67,15 @@
 \section{线性扩张}
 接下来我们讨论线性扩张及其性质，我们首先来看线性组合和线性表示的概念：
 \begin{definition}
-    设$V(\mathbf{F})$是一个线性空间，$\alpha_i\in V,\enspace\lambda_i\in \mathbf{F}(i=1,2,\cdots,m)$，
+    设$V(\mathbf{F})$是一个线性空间，$\alpha_i\in V,\enspace\lambda_i\in \mathbf{F}\enspace(i=1,2,\ldots,m)$，
     则向量$\alpha=\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m$
-    称为向量组$\{\alpha_1,\alpha_2,\cdots,\alpha_m\}$在域$\mathbf{F}$的线性组合，或说$\alpha$
-    在域$\mathbf{F}$上可用向量组$\{\alpha_1,\alpha_2,\cdots,\alpha_m\}$线性表示.
+    称为向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$在域$\mathbf{F}$的线性组合，或说$\alpha$
+    在域$\mathbf{F}$上可用向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示.
 \end{definition}
 基于此，我们给出线性扩张的定义：
 \begin{definition}
     设$S$是线性空间$V(\mathbf{F})$的非空子集，我们称
-    \[ \spa(S)=\{\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k \mid \lambda_1,\cdots,\lambda_k\in\mathbf{F},\enspace\alpha_1,\cdots,\alpha_k\in S,\enspace k\in\mathbf{N^*}\} \]
+    \[ \spa(S)=\{\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k \mid \lambda_1,\ldots,\lambda_k\in\mathbf{F},\enspace\alpha_1,\ldots,\alpha_k\in S,\enspace k\in\mathbf{N_+}\} \]
     为$S$的\keyterm{线性扩张}[linear span]，即$S$中所有有限子集在域$\mathbf{F}$上的一切线性组合组成的$V(\mathbf{F})$的子集.
 \end{definition}
 下面的定理告诉我们可以通过线性扩张构造子空间：
@@ -114,8 +114,8 @@
 
         \item $\mathbf{R}_+^n$（即$n$元正实数向量）对如下定义的加法和数乘运算：
         \begin{gather*}
-            (a_1,\cdots,a_n)+(b_1,\cdots,b_n)=(a_1b_1,\cdots,a_nb_n) \\
-            \lambda\cdot(a_1,\cdots,a_n)=(a_1^\lambda,\cdots,a_n^\lambda)
+            (a_1,\ldots,a_n)+(b_1,\ldots,b_n)=(a_1b_1,\ldots,a_nb_n) \\
+            \lambda\cdot(a_1,\ldots,a_n)=(a_1^\lambda,\ldots,a_n^\lambda)
         \end{gather*}
 
         \item 请继续完成教材P86第二章习题第一题9-11小问关于函数的加法数乘定义线性空间的问题.
