@@ -33,8 +33,8 @@
 
 \usepackage{xparse}
 \NewDocumentCommand{\keyterm}{smo}{%
-    {\heiti\bfseries{#2}%
-    \IfNoValueF{#3}{（\sffamily{#3}）}}%
+    {\sffamily\heiti\bfseries{#2}%
+    \IfNoValueF{#3}{（{#3}）}}%
     \IfBooleanF{#1}{\index{#2}}%
 }
 
@@ -68,8 +68,11 @@
 \renewcommand{\tableautorefname}{表}
 \renewcommand{\equationautorefname}{式}
 \renewcommand{\theoremautorefname}{定理}
+\renewcommand{\sectionautorefname}{节}
 \newcommand{\exampleautorefname}{例}
 \newcommand{\definitionautorefname}{定义}
+\crefrangeformat{equation}{式~#3#1#4--#5#2#6}
+\crefrangeformat{example}{例~#3#1#4--#5#2#6}
 
 \DeclareMathOperator{\diag}{diag}
 

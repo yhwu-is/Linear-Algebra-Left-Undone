@@ -23,7 +23,7 @@
     \item 分块矩阵的乘法：设$A=(a_{ij})_{m \times n}$，$B=(b_{ij})_{n \times p}$，如果
     把$A$，$B$分别分块为$r \times s$和$s \times t$分块矩阵，且$A$的列分块法与$B$的行分块法相同
     （注意这些条件始终保证可乘性成立），则
-    $$AB=\begin{pmatrix}
+    \[AB=\begin{pmatrix}
         A_{11} & A_{12} & \cdots & A_{1s} \\
         A_{21} & A_{22} & \cdots & A_{2s} \\
         \vdots & \vdots & \ddots & \vdots \\
@@ -33,7 +33,7 @@
         B_{21} & B_{22} & \cdots & B_{2t} \\
         \vdots & \vdots & \ddots & \vdots \\
         B_{s1} & B_{s2} & \cdots & B_{st}
-    \end{pmatrix}=C=(C_{kl})_{r \times t}.$$
+    \end{pmatrix}=C=(C_{kl})_{r \times t}\]
     其中$C$是$r \times t$分块矩阵，且$C_{kl}$与一般矩阵计算类似，即为$A$第$k$行块$B$的$l$列块对应元素相乘后相加，即
     \[C_{kl}=A_{k1}B_{1l}+A_{k2}B_{2l}+\cdots+A_{ks}B_{sl},\enspace k=1,\ldots,r,\enspace l=1,\ldots,t\]
 
@@ -126,16 +126,16 @@
 对于$\begin{pmatrix}
     A_1 & \alpha \\ \beta & a_{nn}
 \end{pmatrix}$，假设$A_1$可逆，我们有
-$$\begin{pmatrix}
+\[\begin{pmatrix}
     E_{n-1} & 0 \\ -\beta A_1^{-1} & 1
 \end{pmatrix}\begin{pmatrix}
     A_1 & \alpha \\ \beta & a_{nn}
 \end{pmatrix}=\begin{pmatrix}
     A_1 & \alpha \\ 0 & a_{nn}-\beta A_1^{-1}\alpha
-\end{pmatrix}$$
+\end{pmatrix}\]
 
 \begin{example}
-    若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在主对角元全为$1$的下三角矩阵$L$和上三角矩阵$U$，使得$A=LU$（$L$-$U$分解）.
+    若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在主对角元全为1的下三角矩阵$L$和上三角矩阵$U$，使得$A=LU$（$L$-$U$分解）.
 \end{example}
 
 \section{特殊矩阵}
@@ -182,12 +182,12 @@ $$\begin{pmatrix}
 
         \item $AB$仍然是上三角矩阵，且$AB$的主对角元素为$a_{11}b_{11},\ldots,a_{nn}b_{nn}$；
 
-        \item $A$可逆的充要条件是其主对角元均不为$0$，且$A$可逆时，$A^{-1}$也是上三角矩阵，并且$A^{-1}$的主对角元素分别为$a_{11}^{-1},\ldots,a_{nn}^{-1}$.
+        \item $A$可逆的充要条件是其主对角元均不为0，且$A$可逆时，$A^{-1}$也是上三角矩阵，并且$A^{-1}$的主对角元素分别为$a_{11}^{-1},\ldots,a_{nn}^{-1}$.
     \end{enumerate}
 \end{theorem}
 
 \begin{example}
-    已知$A_1,\ldots,A_n$是$n$个对角元都为$0$的上三角矩阵，证明：$A_1A_2\cdots A_n=O$.
+    已知$A_1,\ldots,A_n$是$n$个对角元都为0的上三角矩阵，证明：$A_1A_2\cdots A_n=O$.
 \end{example}
 
 \subsection{基本矩阵}
@@ -195,9 +195,9 @@ $$\begin{pmatrix}
 他们具有如下性质（可以回忆左右乘对应行列变换）：
 \begin{theorem}
     \begin{enumerate}
-        \item $AE_{ij}$的结果就是把$A$的第$i$列移到第$j$列的位置，其余元素都为$0$的矩阵；
+        \item $AE_{ij}$的结果就是把$A$的第$i$列移到第$j$列的位置，其余元素都为0的矩阵；
 
-        \item $E_{ij}B$的结果就是把$B$的第$j$行移到第$i$行的位置，其余元素都为$0$的矩阵；
+        \item $E_{ij}B$的结果就是把$B$的第$j$行移到第$i$行的位置，其余元素都为0的矩阵；
 
         \item $E_{ik}E_{kj}=E_{ij}$，当$k \neq l$时，有$E_{ik}E_{lj}=O$.
     \end{enumerate}
@@ -352,15 +352,15 @@ $$\begin{pmatrix}
     \end{example}
 
     \begin{example}
-        已知$A$是数域$P$上的一个$2$阶方阵，且存在正整数$l$使得$A^l=O$，证明：$A^2=O$.
+        已知$A$是数域$P$上的一个2阶方阵，且存在正整数$l$使得$A^l=O$，证明：$A^2=O$.
     \end{example}
     事实上，我们在幂零矩阵的讨论中已经提及了上例的一般情况.
 
     \begin{example}
         已知数列$\{a_n\},\enspace\{b_n\}$满足$a_0=-1,\enspace b_0=3$，且
-        $$\begin{cases}
+        \[\begin{cases}
             a_n=3a_{n-1}+b_{n-1}+2^{n-1} \\ b_n=2a_{n-1}+4b_{n-1}+2^n
-        \end{cases}$$
+        \end{cases}\]
         求$\{a_n\}\enspace\{b_n\}$的通项公式.
     \end{example}
     \item 利用初等矩阵的性质

@@ -84,8 +84,8 @@
     \item 矩阵的列空间与其转置矩阵的零空间互为正交补，这一点实际与上一条等价.
 \end{enumerate}
 
-接下来我们来看行秩（列秩比较显然，此处不再详细展开）.我们首先得到解空间的维数，这可以直接
-根据维数公式得到：$\dim \ker A =n-r(A)$，根据正交补的性质，我们的可以得到行秩即为
+接下来我们来看行秩（列秩比较显然，此处不再详细展开）.我们首先得到解空间（$N(A)$）的维数，这可以直接
+根据维数公式得到：$\dim N(A) =n-r(A)$，根据正交补的性质，我们的可以得到行秩即为
 $n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
 
 \section{相抵标准形}
@@ -96,9 +96,9 @@ $n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
 由这一定理我们可以推导出相抵标准形：
 \begin{theorem}
     若$r(A_{m \times n})=r$，则存在可逆矩阵$P$和$Q$，使得
-    $$PAQ=\begin{pmatrix}
+    \[PAQ=\begin{pmatrix}
         E_r & 0 \\ 0 & 0
-    \end{pmatrix}=U_r,$$
+    \end{pmatrix}=U_r\]
     其中$E_r$表示$r$阶单位矩阵.
 \end{theorem}
 这一定理证明直接使用定理4以及可逆矩阵可以拆分为初等矩阵的乘积即可.
@@ -137,13 +137,13 @@ $n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
 由此我们可以知道任意一个非零矩阵都可以被分解成一个列满秩矩阵和一个
 行满秩矩阵的乘积：
 
-$$A=P\begin{pmatrix}
+\[A=P\begin{pmatrix}
     E_r & O \\ O & O
 \end{pmatrix}Q=P\begin{pmatrix}
     E_r \\ O
 \end{pmatrix}\begin{pmatrix}
     E_r & O
-\end{pmatrix}Q$$
+\end{pmatrix}Q\]
 记$P_1=P\begin{pmatrix}
     E_r \\ O
 \end{pmatrix}$，$Q_1=\begin{pmatrix}
