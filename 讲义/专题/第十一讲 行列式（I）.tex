@@ -159,6 +159,34 @@
 （如``箭形''行列式，循环行列式，Vandermonde 行列式）、递推法求解、数学归纳法求解（这两种方法一般用于大对角形）、
 打洞法求解以及利用特征值求解等，具体方法我们将在下一讲中作为拓展展开讲解.
 
+事实上，范德蒙行列式有着广泛的应用，在此我们证明\autoref{thm:4:覆盖定理}的有限维情形作为一个例子：
+\begin{example}\label{ex:11:行列式证明覆盖定理}
+    设$V_1,V_2,\ldots,V_s$是有限维线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量
+    不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V.$
+\end{example}
+\begin{proof}
+    设$\dim V=n$，设$\vec{\alpha_1},\vec{\alpha_2},\cdots,\vec{\alpha_n}$为$V$的一组基，构造向量组$\{\vec{\beta_k}\}$中每个元素满足
+    \[\vec{\beta_k}=\vec{\alpha_1}+k\vec{\alpha_2}+\cdots+k^{n-1}\alpha_n,k=1,2,3,\cdots\]
+    任取上述向量组中的$n$个向量$\vec{\beta_{k_1}},\vec{\beta_{k_2}},\cdots,\vec{\beta_{k_n}}$，其中
+    $k_1<k_2<\cdots<k_n$，则有
+    \[(\vec{\beta_{k_1}},\vec{\beta_{k_2}},\cdots,\vec{\beta_{k_n}})=(\vec{\alpha_1},\vec{\alpha_2},\cdots,\vec{\alpha_n})C\]
+    其中
+    \[C=\begin{pmatrix}
+        1 & 1 & \cdots & 1 \\
+        k_1 & k_2 & \cdots & k_n \\
+        \vdots & \vdots &  & \vdots \\
+        k_1^{n-1} & k_2^{n-1} & \cdots & k_n^{n-1}
+    \end{pmatrix}.\]
+    则$|C|$是一个范德蒙行列式，由范德蒙行列式的性质可知$|C| \neq 0$，因此$C$可逆，又由于
+    $\vec{\alpha_1},\vec{\alpha_2},\cdots,\vec{\alpha_n}$是$V$的一组基，因此
+    $\vec{\beta_{k_1}},\vec{\beta_{k_2}},\cdots,\vec{\beta_{k_n}}$线性无关，从而
+    向量组$\{\vec{\beta_k}\}$中任意$n$个向量均构成$V$的一组基.
+
+    由于$V_1,V_2,\ldots,V_s$是$V$的非平凡子空间，因此每个子空间最多包含$\{\vec{\beta_k}\}$中$n-1$个向量，
+    进而$V_1\cup V_2\cup\ldots\cup V_s$只包含$\{\vec{\beta_k}\}$中有限个向量，
+    所以必然存在一个向量$\vec{\beta}_j$使得$\vec{\beta}_j \notin V_1\cup V_2\cup\ldots\cup V_s$.
+\end{proof}
+
 \section{伴随矩阵}
 伴随矩阵是一个重要的概念，其性质都比较经典，而且往年也有考察.
 \subsection{伴随矩阵的定义与性质}
