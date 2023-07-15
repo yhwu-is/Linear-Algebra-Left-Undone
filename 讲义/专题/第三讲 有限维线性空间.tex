@@ -1,35 +1,46 @@
 \chapter{有限维线性空间}
 
+在第二讲开头的\autoref{exp:2:线性空间引入}中，我们讨论了齐次线性方程组解的个数与方程组系数矩阵
+行向量间没有可互相消去的关系之间的联系.本节我们将这种``可互相消去的关系''进行形式化定义.另一方面，
+在第二讲最后探讨线性扩张的概念时，一个很自然的问题便是：一个有限维线性空间最少可以由多少个向量
+线性扩张而来？循此路径，我们将在本讲探寻线性空间的最基本的结构属性.
+
 \section{线性相关性}
 \subsection{线性相关性的定义}
-研究线性相关性来源于我们希望知道有限维线性空间至少需要多少个向量张成，以下是其定义：
+本节我们将形式化定义在引言中我们提到的``可相互消去的关系''——线性相关性，同时这一定义也可以解决
+引言中提到的关于有限维线性空间至少需要多少个向量张成的问题.
 \begin{definition}
-    设$V(\mathbf{F})$是一个线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_m\in V$，如果存在
+    设$V(\mathbf{F})$是一个线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_m\in V$，若存在
     不全为0的$\lambda_1,\lambda_2,\ldots,\lambda_m\in\mathbf{F}$，使得
-    \[\lambda_1\alpha_1+\alpha_2\lambda_2+\cdots+\lambda_m\alpha_m=0\]
-    成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$\keyterm{线性相关}[linearly dependent]，否则称\keyterm{线性无关}[linearly independent]（即系数只能为0）.
+    \[\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m=0\]
+    成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$\keyterm{线性相关}[linearly dependent]，
+    否则称\keyterm{线性无关}[linearly independent]（即系数只能为0）.
 \end{definition}
-线性相关和线性无关的证明就是基于这个定义，请务必牢牢掌握.
 
-直接由定义我们可以导出以下结论：
+很显然，\autoref{exp:2:线性空间引入}中的方程组1系数矩阵的三个行向量$\alpha_1,\alpha_2,\alpha_3$
+满足$\alpha_1+\alpha_2-\alpha_3=0$，因此满足线性相关的定义，方程组2的系数矩阵三个行向量
+$\beta_1,\beta_2,\beta_3$的线性组合则只有$0\cdot\beta_1+0\cdot\beta_2+0\cdot\beta_3$等于0，
+因此符合线性无关的定义.
+
+事实上，直接由定义我们还可以导出以下关于零向量的结论：
 \begin{enumerate}
     \item 线性空间中单个向量$\alpha$线性相关的充要条件是$\alpha$为零向量；
 
     \item 任何含零向量的向量组都线性相关.
 \end{enumerate}
 
-我们来看几个基本的例子：
+需要注意的是，很多时候线性相关和线性无关的证明就是基于定义，请务必牢牢掌握.我们先来看几个基本的例子：
 \begin{example}
     \begin{enumerate}[label=(\arabic*)]
-        \item 判断$(1,1,0),(0,1,1),(1,0,-1)$的线性相关性；
+        \item 判断$\mathbf{R}^3$中向量$(1,1,0),(0,1,1),(1,0,-1)$的线性相关性；
 
-        \item 判断$(1,-3,1),(-1,2,-2),(1,1,3)$的线性相关性；
+        \item 判断$\mathbf{R}^3$中向量$(1,-3,1),(-1,2,-2),(1,1,3)$的线性相关性；
 
-        \item 判断$p_1(x)=1+x,\enspace p_2(x)=1-x,\enspace p_3(x)=x+x^2$的线性相关性；
+        \item 判断$\mathbf{R}[x]_3$中$p_1(x)=1+x,\enspace p_2(x)=1-x,\enspace p_3(x)=x+x^2$的线性相关性；
 
-        \item 判断$1,\enspace \sin^2x,\enspace \cos^2x$的线性相关性；
+        \item 判断连续函数全体构成的线性空间中$1,\enspace \sin^2x,\enspace \cos^2x$的线性相关性；
 
-        \item 判断$1,\enspace 2^x,\enspace 2^{-x}$的线性相关性.
+        \item 判断连续函数全体构成的线性空间中$1,\enspace 2^x,\enspace 2^{-x}$的线性相关性.
     \end{enumerate}
 \end{example}
 注意上述 (3) 到 (5) 题为不能代入特殊的$x$值来说明，例如 (3) 令$x=0$得到线性相关的做法是错误的，因为
@@ -37,7 +48,8 @@
 需要构造更多的方程来求解这一问题.
 
 \subsection{线性相关性的定理}
-本节内容十分重要，是理解线性空间结构的基础，希望同学们对以下定理及其证明十分熟练并且要有深刻的理解.
+实际上，除了定义之外，线性相关性还有大量的等价描述.我们将在本节介绍常见的等价描述，它们是
+理解线性空间结构等后续内容的基础，因此希望读者对以下结论及其证明十分熟练并且要有深刻的理解.
 我们的主线思路是从不同方面理解线性相关性：
 \begin{enumerate}
     \item 从线性组合看（定义）
@@ -61,104 +73,342 @@
           列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$有非零解;
 
           列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$只有零解.
-    \item 从向量组线性表示一个向量的方式看（教材定理2.4）
-          \begin{theorem}
-              若向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，而向量组$\beta,\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，
-              则$\beta$可由$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示，且表示法唯一.
-          \end{theorem}
-          总结如下：若向量组外另一向量可由这一组向量线性表示，则
-
-          向量组线性无关$\iff$表示方式唯一；
-
-          向量组线性相关$\iff$表示方式有无穷多种.
-
-          表示方式唯一的证明是经典的，即设有另一种表示方式，然后利用线性无关的定义说明这两种表示方式必定相同即可.
     \item 从向量组与它的部分组的关系看（教材P67例6）
 
           如果向量组的一个部分组线性相关，那么整个向量组也线性相关；
 
           如果向量组线性无关，那么它的任何一个部分组也线性无关.
+    \item 从向量组线性表示一个向量的方式看（教材定理2.4）
+          \begin{theorem}\label{thm:3:线性无关等价表示唯一}
+              若向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，而向量组$\beta,\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，
+              则$\beta$可由$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示，且表示法唯一.
+          \end{theorem}
+          这一定理证明十分经典，特别是唯一性的证明需要掌握，因此此处我们给出证明：
+
+          \begin{proof}
+            由于向量组$\beta,\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，故存在不全为0的$\lambda_0,\lambda_1,\ldots,\lambda_m$使得
+            \begin{equation}\label{eq:3:线性无关等价定理}
+                \lambda_0\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m=0,
+            \end{equation}
+            其中$\lambda_0$必不为0，因为如果将$\lambda_0=0$代入\autoref{eq:3:线性无关等价定理}，则由于向量组
+            $\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，必有$\lambda_1=\lambda_2=\cdots=\lambda_m=0$，
+            与$\lambda_0,\lambda_1,\ldots,\lambda_m$不全为0的假设矛盾.
+
+            因此我们有
+            \[\beta=-\frac{\lambda_1}{\lambda_0}\alpha_1-\frac{\lambda_2}{\lambda_0}\alpha_2-\cdots-\frac{\lambda_m}{\lambda_0}\alpha_m.\]
+            由此我们知道$\beta$可由$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示.接下来我们证明表示方式的唯一性.假设有两种表示方法：
+            \begin{gather*}
+                \beta=\mu_1\alpha_1+\mu_2\alpha_2+\cdots+\mu_m\alpha_m, \\
+                \beta=\nu_1\alpha_1+\nu_2\alpha_2+\cdots+\nu_m\alpha_m.
+            \end{gather*}
+            两式相减可得
+            \[0=(\mu_1-\nu_1)\alpha_1+(\mu_2-\nu_2)\alpha_2+\cdots+(\mu_m-\nu_m)\alpha_m.\]
+            由于$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，因此$\mu_i-\nu_i=0(i=1,2,\cdots,m)$，即$\mu_i=\nu_i(i=1,2,\cdots,m)$，
+            因此表示方式唯一.
+          \end{proof}
+
+          事实上关于这一定理我们有一个直接的推论
+          \begin{corollary}
+            若向量组外另一向量可由这一组向量线性表示，则
+            \begin{enumerate}
+                \item 向量组线性无关$\iff$表示方式唯一；
+
+                \item 向量组线性相关$\iff$表示方式有无穷多种.
+            \end{enumerate}
+          \end{corollary}
+          推论的证明非常简单，此处考虑到读者可能处于初学阶段，给出证明范例：
+          
+          \begin{proof}
+            我们设向量组为$\alpha_1,\alpha_2,\ldots,\alpha_m$，向量组外的向量为$\beta$.
+            对于（a），向量组线性无关$\Rightarrow$表示方式唯一就是\autoref{thm:3:线性无关等价表示唯一}
+            的直接结论，因此我们只需考虑表示方式唯一$\Rightarrow$向量组线性无关.利用反证法，假设向量组线性相关，
+            则存在不全为0的$\lambda_1,\lambda_2,\ldots,\lambda_m$使得
+            \begin{equation}\label{eq:3:线性无关等价推论1}
+                0=\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m.
+            \end{equation}
+            由于$\beta$可由$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示，因此存在$\mu_1,\mu_2,\ldots,\mu_m$使得
+            \begin{equation}\label{eq:3:线性无关等价推论2}
+                \beta=\mu_1\alpha_1+\mu_2\alpha_2+\cdots+\mu_m\alpha_m.
+            \end{equation}
+            事实上，我们只需将\autoref{eq:3:线性无关等价推论1}两边乘以任意的$k\in\mathbf{F}$（$\mathbf{F}$为
+            向量组所在线性空间定义的数域），然后加到\autoref{eq:3:线性无关等价推论2}的两边即可得到
+            \[\beta=(\mu_1+k\lambda_1)\alpha_1+(\mu_2+k\lambda_2)\alpha_2+\cdots+(\mu_m+k\lambda_m)\alpha_m.\]
+            因此表示方式不唯一（且有无穷多种），与假设矛盾，因此向量组线性无关.事实上这一证明也将（b）中向量组线性无关
+            $\Rightarrow$表示方式有无穷多种证明给出，（b）的另一边同样用反证法可以回到（a）的证明，由此推论得证.
+          \end{proof}
 \end{enumerate}
 
-最后我们还要介绍一个定理，这一定理更加重要，证明可能较为复杂，但结论一定要熟练掌握：
+\section{基与维数}
+\subsection{引入：向量组的秩与极大线性无关组}
+在上一节中我们介绍了很基本的线性无关的等价表述，现在我们回到我们的主线，即我们希望解决有限维线性空间至少需要多少个
+向量张成的问题，接下来的讨论将逐步逼近问题的答案.
+\begin{lemma}\label{lemma:3:线性相关性引理}
+    设$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，则有$j\in\{1,2,\cdots,m\}$使得：
+    \begin{enumerate}
+        \item $\alpha_j=\spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1})$；
+        \item 从$\alpha_1,\alpha_2,\ldots,\alpha_m$中删去向量$\alpha_j$，剩余向量的张成空间仍等于
+                $\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)$.
+    \end{enumerate}
+\end{lemma}
+可能大家看见1的记号可能又有些许陌生了，但只需简单回顾线性扩张的定义，我们知道证明1就是证明$\alpha_j$可以被
+$\alpha_1,\alpha_2,\ldots,\alpha_{j-1}$线性表示.这一结论初看和\autoref{thm:3:线性无关等价表示唯一}很类似，
+但细看发现不太一样：我们要求必须有一个向量可以由排列在它前面的向量线性表示，而非被其余所有向量线性表示.因此这一结论
+并不平凡，证明的过程中也有一个技巧，我们给出证明供读者参考学习：
+
+\begin{proof}
+    由于$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，因此存在不全为0的$\lambda_1,\lambda_2,\ldots,\lambda_m$使得
+    \[\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m=0.\]
+    设$j$是$\{1,2,\cdots,m\}$中使得$\lambda_j\neq 0$的最大者，则有
+    \begin{equation}\label{eq:3:线性相关性引理}
+        \alpha_j=-\frac{\lambda_1}{\lambda_j}\alpha_1-\frac{\lambda_2}{\lambda_j}\alpha_2-\cdots-\frac{\lambda_{j-1}}{\lambda_j}\alpha_{j-1}.
+    \end{equation}
+    因此$\alpha_j$可由$\alpha_1,\alpha_2,\ldots,\alpha_{j-1}$线性表示，即$\alpha_j\in\spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1})$，
+    故1得证.
+
+    接下来我们证明2.首先$\spa(\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)\subseteq\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)$是显然的，
+    因为任意被$\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m$线性表示的向量实际上也是被
+    $\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示了，只是$\alpha_j$前的系数恒为0.
+
+    然后证明另一边包含关系，即$\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)\subseteq\spa(\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)$.
+    任取$\beta\in\spa(\alpha_1,\cdots,\alpha_m)$，则存在$\mu_1,\mu_2,\ldots,\mu_m$使得
+    \[\beta=\mu_1\alpha_1+\mu_2\alpha_2+\cdots+\mu_m\alpha_m.\]
+    将$\alpha_j$用\autoref{eq:3:线性相关性引理}表示，代入上式可得任意$\spa(\alpha_1,\cdots,\alpha_m)$中的向量都可以由
+    $\alpha_1,\ldots,\alpha_{j-1}$,\\$\alpha_{j+1},\ldots,\alpha_m$线性表示，因此
+    $\beta\in\spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)$，故引理得证.
+\end{proof}
+
+事实上1中证明最核心的步骤就是取$j$是$\{1,2,\cdots,m\}$中使得$\lambda_j\neq 0$的最大者，这一最大者是一定存在的，
+因为首先存在$\lambda_i\neq 0$，其次$\lambda_i\neq 0$的个数是有限的，因此一定存在最大者，这一证明的技巧十分重要，通俗的记忆方法
+为``从右往左检查，找到第一个不为0的系数（即最大的不为0的系数）''，我们给出一个推论，推论的证明思想就是如此，
+我们放在习题中供读者练习：
+\begin{corollary}
+    $\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关（其中$\alpha_1\neq 0$）的充要条件是存在一个向量$\alpha_i(1<i\neq m)$可由
+    $\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示，且表示法唯一.
+\end{corollary}
+事实上这一推论也可以作为线性无关的等价表述之一.
+
+接下来我们继续我们的主线思路，事实上\autoref{lemma:3:线性相关性引理}的2给我们了一个很重要的启示，即对于线性相关的向量组，
+我们丢弃其中某些（可以被其他向量线性表示）的向量后，张成的空间是不变的.因此我们可以重复丢弃这样的向量，并仍然保持张成空间不变.
+一个自然的问题是，这样丢弃的操作直到什么时候停止呢？
+
+事实上答案也是非常自然的，即我们最后一次从向量组中丢弃向量（并保证张成的空间不变）后，剩余的向量组恰好线性无关时即可停止丢弃.
+原因非常简单，因为如果这最后一次不丢弃，则根据\autoref{lemma:3:线性相关性引理}我们一定还能选出一个向量，使得丢弃这一向量
+后仍能保持张成空间不变.但一旦丢弃向量后向量组线性无关，这时一定不能继续丢弃，例如这时剩余的线性无关向量组为
+$\beta_1,\cdots,\beta_m$，这时丢弃其中任意一个$\beta_i(i\in\{1,2,\cdots,m\})$，则原向量组张成的空间中，至少
+$\beta_i$无法被剩余向量组线性表示（否则$\beta_i$可以被$\beta_1,\cdots,\beta_{i-1},\beta_{i+1},\cdots,\beta_m$线性表示，
+则$\beta_1,\cdots,\beta_m$必线性相关），因此我们一定不能继续丢弃.
+
+我们可以将上述过程形式化地表达为以下算法：
+\begin{enumerate}
+    \item 
+\end{enumerate}
+事实上，上述算法的每一步都是可操作的并且有绝对确定的结果，因此我们总能为一个向量组找到最短的可以张成同一线性空间的子向量组.
+
+在上述过程中我们可以引入两个重要的概念，即向量组的秩和极大线性无关组：
+\begin{definition}
+    设向量组$S=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$张成的线性空间为$V$，若存在$S$的一个线性无关向量组
+    $B=\{\alpha_{k1},\alpha_{k2},\ldots,\alpha_{kr}\}$，使得$V=\spa(B)$，则称$B$为$S$的一个
+    \keyterm{极大线性无关组}[maximal linearly independent set]，并称极大线性无关组的长度$r=r(S)$为$S$的
+    \keyterm{秩}[rank].
+\end{definition}
+定义中``极大''一词我们只需简单思考前述过程即可明白其含义，因为我们要求丢弃后的向量组一旦线性无关就要停止继续丢弃向量，
+因此这一剩余向量组的长度一定是所有线性无关向量组中最大的.
+
+要注意的是，极大线性无关组在本讲义、教材甚至其它教材（如丘维声老师的高等代数）中的定义都有所不同，实际上不同的版本只是为了
+顺应不同讲解思路而提出的，本质上并无区别，相信读者在完全理解本节内容后能认识到这一点.
+
+由此我们关于有限维线性空间至少需要多少个向量张成的问题有了初步的解答，即如果我们已知这一线性空间是可以由某一向量组张成的，
+那么这一向量组的秩（即极大线性无关组的长度）就是张成空间需要的最少向量个数.可能初看这一段话，其中出现的``极大''和``最小''
+容易导致思维的混乱，但我们可以用一句话清晰地总结：极大线性无关组的长度就是张成空间需要的最少向量个数（如果仍然混乱，我们可以
+回忆丢弃向量的过程：我们不断丢弃向量得到``最小''的仍然满足张成空间不变的向量组，而这一向量组必须是所有线性无关向量组中最长的，
+因为向量组丢到线性无关后不能再丢了）.
+
+\subsection{向量组的性质}
+事实上，我们会有一个自然的疑问，即极大线性无关组的长度是否唯一？我们在丢弃向量的时候，如果向量的排序不同，我们丢弃的次序也可能
+不同，因此我们最终得到的极大线性无关组是有可能不同的.但长度不同表明向量组的秩不唯一，这样向量组的秩就失去了很多研究价值——数学喜欢
+唯一确定的，例如数学分析中表达式的极限不唯一我们会称其极限不存在；又例如定积分的值如果可以是不唯一的，那么我们一定会
+重新思考积分的定义，否则面积、体积甚至物理中的很多问题都会产生意义不明的多解.
+
+因此我们需要尝试证明极大线性无关组的长度是唯一的，我们从下面这一非常重要的定理开始：
 \begin{theorem}\label{thm:3:线性表示}
     设$V(\mathbf{F})$中向量组$ \beta_1,\beta_2,\ldots,\beta_s $的每个向量可由另一向量组$\alpha_1,\alpha_2,\ldots,\alpha_r$
     线性表示.若$s>r$，则$ \beta_1,\beta_2,\ldots,\beta_s $线性相关.
 \end{theorem}
-这一定理的等价命题为，$ \beta_1,\beta_2,\ldots,\beta_s $线性无关则必有$s\leqslant r$.
+这一定理的等价（逆否）命题为，$ \beta_1,\beta_2,\ldots,\beta_s $线性无关则必有$s\leqslant r$.
 
 这一定理可通俗概括为：多的向量组可以被少的向量组线性表示，多的一定线性相关.反过来说，线性无关的向量只能被等长或更长的向量组线性表示.
+定理的证明思想上非常简单，但写起来可能有些许复杂，我们给出证明：
 
-\section{基与维数}
-\subsection{秩与维数的概念}
-\begin{definition}
-	若线性空间$V(\mathbf{F})$的非空子集$S$中存在线性无关的向量组$B=\{\alpha_1,\alpha_2,\cdots,\alpha_m\}$，
-	且$S$中每个向量都可以由$B$线性表示，则$B$中向量的个数$r$叫做$S$的\keyterm{秩}[rank]，记作$r(S)= r$（实际上即为极大线性无关组的长度）.
-\end{definition}
+\begin{proof}
+    
+\end{proof}
+
+事实上，\autoref{thm:3:线性表示}因其重要性又被称为源泉定理，因为我们可以基于此得到大量的推论，下面我们将给出几个简单的作为代表，
+习题中会出现更为复杂的应用：
+\begin{example}\label{ex:3:线性表示推论}
+    证明以下\autoref{thm:3:线性表示}的推论：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 任意$n$维线性空间中的$n+1$个向量必线性相关，反之，$n-1$个向量无法张成$n$维线性空间；
+        \item 若向量组$B_1$可以被向量组$B_2$线性表示，则有$r(B_1)\leqslant r(B_2)$；
+        \item 设$B_1$和$B_2$是两个线性无关向量组，若$B_1$可以被$B_2$线性表示，$B_2$也可以被$B_1$线性表示，则$B_1$和$B_2$长度相等.
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    
+\end{proof}
+
+事实上，\autoref{ex:3:线性表示推论}（3）中两个向量组$B_1$和$B_2$可以互相表示也可以称$B_1$和$B_2$等价.这里的等价和\autoref{def:1:等价关系}
+中描述的等价关系一致，即向量组等价同样满足自反性、对称性和传递性，即
+\begin{enumerate}
+    \item 自反性：
+    \item 对称性：
+    \item 传递性：
+\end{enumerate}
+三个条件的成立是显然的，我们不再赘述，接下来我们基于等价向量组的定义给出\autoref{thm:3:线性表示}的进一步结论，直至证明向量组的秩唯一：
+\begin{corollary}
+    关于等价的向量组，我们有如下结论：
+    \begin{enumerate}
+        \item 向量组与其极大线性无关组等价；
+        \item 向量组的任意两个极大线性无关组等价；
+        \item 向量组的任意两个极大线性无关组长度相等，即向量组的秩唯一.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    
+\end{proof}
+
+由此我们证明了向量组的秩是唯一的，因此这一定义对我们将来的研究非常友好.
+\subsection{基与维数}
+在前几小节中，我们讨论了这一问题：给定向量组$B$，我们能否选出一个长度最小的向量组$B_1$使其张成的空间与$B$能张成的空间相同.
+接下来我们讨论更一般化的情形，即我们不给定向量组$B$，直接讨论能张成一个线性空间的线性无关向量组.
 \begin{definition}
     若线性空间$V(\mathbf{F})$的有限子集$B=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$线性无关，且$\spa(B) = V$，则称$B$为$V$的一组基，
     并称$n$为$V$的维数，记作$\dim V = n$.
 \end{definition}
-实际上，综合上述两个定义我们可以看到，如果$S$为有限维线性空间$V(\mathbf{F})$的子空间，那么$S$的秩就是$S$的维数.
 
-从维数的定义中我们可以理解到，一个线性空间的基的长度必定是唯一的，否则同一个线性空间将会出现多个不同的维数，这是不合理的.
-证明可以直接利用\autoref{thm:3:线性表示}，反证法即可.当然我们也可以不利用\autoref*{thm:3:线性表示}，直接通过线性无关的定义以及线性方程组的解的情况讨论
-得到线性空间维数唯一的结论（大家可以自行尝试，实际上我的期中复习2021版中也有讲解）.
-
-我们需要提及一个概念，即自然基.例如三维空间的自然基为$(1,0,0),(0,1,0),(0,0,1)$. $n$维空间也有类似的推广（即$n$个只有一位为 1 其余全为 0 的向量）.
-对于多项式我们则将$1,x,x^2,\ldots$称为自然基，矩阵、函数等也有相关的常用的基.
-
-\begin{example}\label{exp:3:不同数域的维数}
-    线性空间$\mathbf{C(C)}$维数为1，不同于线性空间$\mathbf{C(R)}$维数为2.
-\end{example}
-\subsection{相关定理与性质}
-根据秩与维数的概念与\autoref{thm:3:线性表示}（或教材定理2.5），我们可以得到以下直接的结论：
+关于基与维数的定义，我们有以下几点需要强调：
 \begin{enumerate}
-    \item $r(S)=n$，则$S$中$n+1$个向量必线性相关，$S$中任何线性无关向量组至多含$n$个向量，且将含$n$个线性无关向量的
-    向量组称为$S$的极大线性无关组.同理，$n$维线性空间中$n+1$个向量必线性相关，其中含$n$个线性无关向量的向量组称为
-    线性空间的一组基；
+    \item 我们有一个自然的问题：有限维线性空间是否一定有基，若是，则上述定义的基和维数对所有有限维线性空间都是存在的.
+    事实上结论是显然的.根据定义，有限维线性空间$V$一定能被其某一有限子集$S$张成，我们根据求取极大线性无关组的算法取出$S$的极大线性无关组$B$，
+    则$B$一定是$V$的基.
 
-    注意：极大线性无关组有两个关键词：线性无关与张成空间，我们还有两个结论：
-    \begin{itemize}
-        \item 设向量组的秩为$r$，则它的任意$r$个线性无关的向量都构成它的一个极大线性无关组；
-        \item 设向量组的秩为$r$，则若向量组可以由其中的$r$个向量线性表出，那么这$r$个向量就是原向量组的一个极大线性无关组.
-    \end{itemize}
+    \item 由第一点我们发现，基的存在依赖于极大线性无关组的存在，二者只是在定义上有差别：极大线性无关组是一个向量组的最短等价向量组，
+    而基是张成线性空间的最短向量组.但二者本质统一，实际上极大线性无关组就是它能张成的线性空间的一组基，其长度（向量组的秩）也就是线性空间的维数.
 
-    \item 线性空间的基的个数（维数）是唯一的，但基中向量选取不唯一；
-
-    \item 若$r(S)=r$，$B=\{\alpha_1,\alpha_2,\ldots,\alpha_r\}$是$S$的极大线性无关组，则$\spa(S)=\spa(B)$，
-          即$\dim \spa(S)=r(S)$（秩与维数统一）.
+    \item 有限维线性空间的基不一定唯一，但它们的长度必定唯一（即维数唯一）.这一推导和向量组的秩唯一完全一致.我们可以假设有限维线性空间$V$有两组基$B_1$和$B_2$，
+    根据基的定义（即它们可以张成$V$，也就是可以表示出$V$中的所有向量）.因此$B_1$中的每一个向量都可以由$B_2$线性表示，反之亦然，因此$B_1$和$B_2$等价，
+    由此我们可以得到$B_1$和$B_2$的长度相等，即因此有限维线性空间维数唯一.
+    
+    \item 我们还需要提及一个概念：自然基.例如三维空间的自然基为$(1,0,0),(0,1,0),(0,0,1)$. $n$维空间也有类似的推广（即$n$个只有一位为 1 其余全为 0 的向量）.
+    对于多项式我们则将$1,x,x^2,\ldots$称为自然基，矩阵、函数等构成的线性空间也有相关的常用的基.
 \end{enumerate}
-接下来我们介绍等价向量组的概念.我们称可以互相线性表示的两个向量组为等价向量组.可以回忆教材1.3节等价关系，可知等价向量组必须满足自反性、对称性以及传递性.
-这一点是容易证明的.注意，等价向量组必定秩相等，这是由\autoref{thm:3:线性表示}（教材定理2.5）可以直接导出的.
-关于等价向量组，在后续专题过渡矩阵中还有更多的讨论.
 
-实际上上述结论将向量组的线性扩张替换为线性空间，向量组的秩替换为线性空间的维数，向量组的极大线性无关组替换为线性空间的基，
-我们能得到大量等价的结论.除此之外还有和线性相关性以及秩有关的很多结论，我们在这两节习题中展示.
+事实上，定义出基和维数之后我们对线性空间的研究方式就更明朗了：我们从开始的令人眼花缭乱的八条运算性质，利用这些线性运算的特点导出线性扩张与子空间的关联，
+然后经过线性相关性的讨论最终得到线性空间的本质结构实际上就是可以由基经过一系列线性运算扩张而来，因此我们对线性空间的研究很多时候只需要研究其基和维数即可，
+由此我们的抽象上升一层，即我们不需要观察线性空间中无限个向量，事实上只需要研究有限个向量的性质即可对整个线性空间有较为全面的了解.实际上这一思想与之后我们
+得到矩阵等讨论是密切相关的，因此在我们整个向着对线性方程组解的结构的讨论的路径中也称得上是一块关键的里程碑.
+
+我们经常会遇到验证线性空间的基的问题（求解基的题目最后往往也需要验证你写出的向量组确实是基），我们主要有如下两个角度：
+\begin{enumerate}
+    \item 根据定义，我们只需验证基的两个条件：线性无关和张成空间.线性无关利用定义即可，张成空间则需要验证任意向量都可以由基线性表示.
+    \item 若我们能确认线性空间$V$的维数$\dim V$，那么我们只需找到$\dim V$个线性无关的向量即可，因为它们必然是$V$的基.这一结论的证明
+    是容易的，在下面的例题中我们给出一个更一般的结论的证明供读者参考.
+\end{enumerate}
 \begin{example}
-	证明以下两个结论：
-
-	\textup{（1）}设$U$和$W$都是$V$的非零子空间，如果$U\subseteq W$，那么$\dim U \leqslant \dim W$；
-
-	\textup{（2）}设$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U = \dim W$，则$U = W$.
+    在$n$维线性空间$V$中，$n$个向量$\alpha_1,\ldots,\alpha_n$线性无关的充要条件是它们可以线性表示出$V$中的任意向量.
 \end{example}
-最后是一个很重要的定理，这一定理在之后大量的定理证明中都有运用：
+\begin{proof}
+    
+\end{proof}
+
+除此之外，我们也在此给出一些求解或验证线性空间的基和维数的基本例题，在习题以及后续章节中会有更多的例子.
+\begin{example}\label{ex:3:不同数域的维数}
+    证明：线性空间$\mathbf{C(C)}$维数为1，不同于线性空间$\mathbf{C(R)}$维数为2.
+\end{example}
+\begin{proof}
+    
+\end{proof}
+\begin{example}
+    证明：1，$(x-5)^2$，$(x-5)^3$是$\mathbf{R}[x]_4$的子空间$U$的一组基，其中$U$定义为
+    \[U=\{p\in\mathbf{R}[x]_4:p'(5)=0\}.\]
+\end{example}
+\begin{proof}
+    
+\end{proof}
+
+我们在后续讨论中经常会涉及子空间和原空间之间的关联，特别是它们的基之间的关联，下面这一定理能很好地满足我们的需求：
 \begin{theorem}
 	如果$W$是$n$维线性空间$V$的一个子空间，则$W$的基可以扩充为$V$的基.
 \end{theorem}
+这一定理的应用非常广泛，事实上笔者认为这一定理结论重要性高于证明，因此不在此给出证明，对证明感兴趣的读者可以参看教材70页.
 
-假设一个向量$\alpha$有以下表示方式：\[\alpha=\lambda_1\beta_1+\lambda_2\beta_2+\cdots+\lambda_n\beta_n.\]
-若$\alpha$在基下有第二种表示方式，即：\[\alpha=\mu_1\beta_1+\mu_2\beta_2+\cdots+\mu_n\beta_n.\]
-两式相减可得：\[0=(\lambda_1-\mu_1)\beta_1+(\lambda_2-\mu_2)\beta_2+\cdots+(\lambda_n-\mu_n)\beta_n.\]
-利用基线性无关的性质，即可得到每个$\lambda_j-\mu_j=0$，证明了定理的一方面.
+实际上还有关于向量组的秩、基与维数有关的很多结论，事实上都可以由前述的定理推导而来，很多结论事实上都非常自然，我们将习题中展示.
+考虑到本讲概念、定理内容多而杂.我们在本讲最后也会给出一个思维导图，读者可以参考.
 
-另一方面，设每个$\alpha\in V$在$B$下表示方式唯一，说明$\alpha_1,\alpha_2,\ldots,\alpha_n$张成$V$.
-要证明线性无关性，设$\lambda_1,\ldots,\lambda_n\in\mathbf{F}$使得\[0=\lambda_1\beta_1+\cdots+\lambda_n\beta_n.\]
-由表示的唯一性，可得$\lambda_1=\cdots=\lambda_n=0$，因此$\alpha_1,\ldots,\alpha_n$线性无关，从而是$V$的一组基.
+\subsection{极大线性无关组的求法}
+我们在前述讲解中实际上已经给出一个求解极大线性无关组的方法，但那一方法适用于证明极大线性无关组一定存在，
+如果考试中要求取极大线性无关组我们应当考虑教材71页给出的``通用而简便''的方法.事实上教材中给出的方法以及解释
+已经非常细致，我们只总结其关键步骤，读者可以参考教材中进行细致的学习.
+\begin{lemma}
+    极大线性无关组的求法
+
+    我们将题目给定的向量按列排成矩阵，然后将矩阵作初等变换化成阶梯矩阵，找到主元所在的列，提取出原矩阵对应列的向量即可.
+\end{lemma}
+
+注意极大线性无关组是不唯一的，但上面给出了一个程式化的方法.实际上如果能一眼看出结果的也不必如此麻烦
+（当然题目直接要求极大线性无关组还是应当写具体过程的）.
+\begin{example}\label{ex:3:求解极大线性无关组}
+	求向量组$\{\alpha_1=(1,-1,2,4),\alpha_2=(0,3,1,2),\alpha_3=(3,0,7,14),\alpha_4=(1,-1,2,0),\alpha_5=(2,1,5,6)\}$
+	的极大线性无关组和秩.
+\end{example}
+
+\section{向量的坐标}
+坐标的概念实际上我们已经熟悉，例如高中所学的平面向量的坐标表示就是向量在二维平面的基$(0,1),(1,0)$
+下的坐标表示.我们现在将这个概念拓展到更一般的线性空间：
+\begin{definition}
+	设$B=\{\beta_1,\beta_2,\cdots,\beta_n\}$是$n$维线性空间$V(\mathbf{F})$的一组基，如果$V$中元素$\alpha$
+	表示为$\alpha=a_1\beta_1+a_2\beta_2+\cdots+a_n\beta_n$，则其系数组$a_1,a_2,\cdots,a_n$称为$\alpha$在
+	基$B$下的坐标，记为$\alpha_B=(a_1,a_2,\cdots,a_n)$.
+\end{definition}
+\begin{example}
+	分别求$p(x)=a_0+a_1x+a_2x^2$在基$B_1=\{1,x,x^2\}$和$B_2=\{1,x-1,(x-1)^2\}$下的坐标.
+\end{example}
+
+关于向量的定义我们有以下几点需要强调：
+\begin{enumerate}
+    \item 坐标与向量是一一对应的：一个坐标可以确定唯一的向量，一个向量在基下表示的系数也必然唯一（因为基是线性无关的）；
+    \item 坐标保持元素间的线性运算关系不变：$(\alpha+\beta)_B=\alpha_B+\beta_B$和$(\lambda\alpha)_B=\lambda\alpha_B$成立，
+    例如$\mathbf{R}[x]_3$中的向量$\alpha=x^2+2x+1$和$\beta=2x^2+3x+1$，则$\alpha+\beta=3x^2+5x+2$，对应于向量运算，
+    我们有$(\alpha+\beta)_B=(3,5,2)=(1,2,0)+(2,3,2)=\alpha_B+\beta_B$.
+    证明如下：
+    
+    \begin{proof}
+        
+    \end{proof}
+    \item 由以上两点我们可以知道：我们对各种各样的$n$维线性空间的研究都可以首先通过坐标转化为$\mathbf{F}^n$中的元素进行研究，例如
+    \begin{example}
+        求$\mathbf{R}[x]_4$中向量组$\{p_1=x^3-x^2+2x+4,p_2=3x^2+x+2,p_3=3x^3+7x+14,p_4=x^3-x^2+2x,p_5=2x^3+x^2+5x+6\}$
+        的极大线性无关组.
+    \end{example}
+    我们首先将所有多项式先转化为坐标，然后就会发现和\autoref{ex:3:求解极大线性无关组}完全一致，最后将坐标转回多项式即可.
+
+    事实上，将任意的线性空间转化为$\mathbf{F}^n$研究的思想是非常重要的，因为这可以带来进一步的抽象，即我们甚至可以遮蔽线性空间基的特点，
+    只关注其维数进行研究，这与此后线性空间的同构以及矩阵表示都有密不可分的联系.事实上，我们一直都在使用这一基本思想，我们每次设线性空间有一组基
+    $\alpha_1,\cdots,\alpha_n$时，事实上我们只关注其维数$n$而遮蔽了基的特点：它可以是向量，可以是多项式，可以是矩阵、函数等等，
+    但这些都不重要，我们都可以这些元素视为几何空间$\mathbf{F}^n$中的向量，获得更直观的理解，从而可以忽视一些使我们理解困难的细节.
+    \item 容易验证$\mathbf{R}^n$中的向量在自然基下的坐标实际上就是向量本身，例如$(x,y)$在$\mathbf{R}^2$自然基$(0,1),(1,0)$
+    下的坐标仍然为$(x,y)$，需要牢记，有时可以加速解题.
+\end{enumerate}
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
+本节内容相对而言概念和定理非常多，涉及的题型也很多，因此我们在这里给出一个思维导图，供读者捋顺思路：
 
+事实上，与其他内容风格不一样的是，本讲中很大一部分的定理我们都给出了证明，一方面是为了提升阅读体验，防止在
+初学时就被多个``显然''等词汇困惑，另一方面也是希望读者能够从这些比较规范的证明中得到一些证明的技巧.
+
+也许读到这里很多读者都会有些迷惑与焦急——为什么我们仿佛在学习很多看起来十分抽象而且似乎没什么实际应用的
+知识呢？（抽象金字塔）
 \vspace{2ex}
 
 \centerline{\heiti \Large 习题}
@@ -170,11 +420,17 @@
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item $\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关（其中$\alpha_1\neq 0$）的充要条件是存在一个向量$\alpha_i(1<i\neq m)$可由
+    $\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示，且表示法唯一.
+    \item 证明以下两个结论：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 设$U$和$W$都是$V$的非零子空间，如果$U\subseteq W$，那么$\dim U \leqslant \dim W$；
+        \item 设$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U = \dim W$，则$U = W$.
+    \end{enumerate}
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
