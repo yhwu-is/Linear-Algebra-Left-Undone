@@ -1,25 +1,43 @@
 \chapter{线性映射基本定理}
 
+在上一讲的讨论中我们定义了线性映射的基本概念，讨论了由其定义直接引出的性质.本节我们将深入讨论
+线性映射像空间与核空间之间的关联，从而引出我们目前为止最核心的概念——同构，因为同构使得我们研究
+的抽象层次更上一层，并且我们可以在这抽象的制高点获得最具象的表达形式——矩阵，这使得我们之后的
+研究都可以转向同学们更熟悉的具象的代数运算，在我们向着解决线性方程组解的结构这一目标迈出关键一步.
+
 \section{线性映射的秩}
-我们已经知道，$\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$.
+通过对线性映射像的求解的讨论我们有
+$\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$.
 我们基于此定义线性映射的秩：
 \begin{definition}
     设$\sigma\in \mathcal{L}(V_1,V_2)$，如果$\sigma(V_1)$是$V_2$的有限维子空间，则
     $\sigma(V_1)$的维数称为$\sigma$的秩，记作$r(\sigma)$，即$r(\sigma)=\dim \sigma(V_1)$.
 \end{definition}
-简单理解即线性映射的秩即为线性映射像空间的维数.
+
+这一定义是平凡的，简单理解线性映射的秩即为线性映射像空间的维数.
 
 \section{线性映射基本定理}
-这一定理是本学期最重要的定理之一，因其重要性也被冠以线性映射基本定理（有限维线性空间）的名号：
-\begin{theorem}
+这一定理是线性代数最重要的定理之一，因其重要性也被冠以（有限维线性空间）线性映射基本定理的名号：
+\begin{theorem}\label{thm:6:线性映射基本定理}
     设$\sigma \in \mathcal{L}(V_1,V_2)$，若$\dim V_1=n$，则
     \[r(\sigma)+\dim\ker\sigma=n.\]
 \end{theorem}
-这一定理的证明方式希望大家熟练掌握，下面是一个思想上类似的例子：
+简而言之，这一定理表明：线性映射的秩（或者说线性映射像空间维数）与核空间维数之和等于出发空间的维数.
+这一定理的证明非常重要，在之后的很多讨论中还会用到这一思想，因此我们给出详细的证明并阐述其中的思想：
+
+\begin{proof}
+    
+\end{proof}
+
+事实上这一定理
+下面我们给出一个证明思想上类似的例子供读者练习：
 \begin{example}
     设$\sigma$为有限维线性空间$V$上的线性变换，$W$是$V$的子空间，证明：
     \[\dim\sigma(W)+\dim(\sigma^{-1}(0) \cap W)=\dim W.\]
 \end{example}
+\begin{proof}
+    
+\end{proof}
 基于线性映射基本定理，我们可以得到如下定理：
 \begin{theorem}
     对$\sigma \in \mathcal{L}(V_1,V_2)$且$\dim V_1=\dim V_2=n$，下列条件等价：
@@ -118,6 +136,33 @@ $ \sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m) $有相同的线性�
         \item 全体二元复向量$\mathbf{C}^2$在复数域上构成的线性空间$\mathbf{C}^2(\mathbf{C})$与$\mathcal{L}(\mathbf{R}^4,\mathbf{R})$.
     \end{enumerate}
 \end{example}
+
+\section{线性映射矩阵表示的进一步讨论}
+\subsection{一组简单的例子}
+\begin{example}\label{example:5:矩阵表示1}
+    已知$\sigma \in \mathcal{L}(\mathbf{R}^3,\mathbf{R}^3)$且$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$\sigma$的像空间和核空间；
+
+        \item 求$\sigma$关于$\mathbf{R}^3$自然基的矩阵.
+    \end{enumerate}
+\end{example}
+
+\begin{example}\label{ex:6:矩阵表示2}
+    设$A=\begin{pmatrix}1 & 0 & 2 \\ -1 & 2 & 1 \\ 1 & 2 & 5\end{pmatrix}$为两个三维线性空间之间的线性映射$\sigma$对应的矩阵，
+    求$\sigma$的像空间和核空间.
+\end{example}
+
+\begin{example}\label{ex:6:矩阵表示3}
+    已知3阶矩阵$A=\begin{pmatrix}
+        1 & 0 & 1 \\ 0 & -1 & 0 \\ -1 & 1 & -1
+    \end{pmatrix}$. 定义$\mathbf{F}^{3 \times 3}$上的线性变换$\sigma(X)=AX,\enspace X \in \mathbf{F}^{3 \times 3}$.
+    求$\sigma$的像和核.
+\end{example}
+实际上，例题2.4.1和2.4.3都是属于已知映射求像和核的题目，具体方法在像和核一节已经讲述，并且求矩阵表示也是根据上面的定义
+即可，都是程式化的.然而例7则有不同，但此题与例2.4.1、2.4.2也有关联.实际上
+此类问题像空间就是以矩阵列空间为坐标的向量的线性扩张，核空间是以矩阵零空间的基（即$AX=0$的基础解系）为坐标的向量的线性扩张，
+推导见例7解析或我的矩阵辅学，希望各位同学能掌握推导并理解这三个例题之间的关系与区别. % TODO 编号系统 autoref
 
 \subsection{一些相似的定理}
 \begin{theorem} \label{thm:6:线性映射对向量坐标的影响}

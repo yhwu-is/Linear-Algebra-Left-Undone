@@ -1,0 +1,134 @@
+\chapter{线性映射矩阵表示}
+
+\section{线性映射矩阵表示}
+\begin{definition}\label{def:7:线性映射矩阵表示}
+    设$B_1=\{\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n\}$是$V_1(F)$的基，$B_2=\{\alpha_1,\alpha_2,\cdots,\alpha_m\}$是$V_2(F)$的基.
+    则线性映射$\sigma \in \mathcal{L}(V_1,V_2)$被它作用于基$B_1$的像
+    \[\sigma(B_1)=\{\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)\}\]
+    所唯一确定，而$\sigma(B_1)$是$V_2$的子空间，于是其中元素都可以被基$B_2$线性表示，即
+    \[ \left\{
+     \begin{array}{rcl}
+        \sigma(\varepsilon_1)&=&a_{11}\alpha_1+a_{21}\alpha_2+\ldots+a_{m1}\alpha_m \\
+        \sigma(\varepsilon_2)&=&a_{12}\alpha_1+a_{22}\alpha_2+\ldots+a_{m2}\alpha_m \\
+        &\vdots& \\
+        \sigma(\varepsilon_n)&=&a_{1n}\alpha_1+a_{2n}\alpha_2+\ldots+a_{mn}\alpha_m
+     \end{array}
+    \right. \]
+
+    我们将$\sigma(B_1)=\{\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)\}$
+    关于基$B_2$的坐标排列成矩阵$\mathbf{M}(\sigma)$，即
+    \[\mathbf{M}(\sigma)=\begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{pmatrix}\]
+\end{definition}
+更通俗来说，线性映射矩阵表示就是将线性映射在一组基上的像在另一组基下的坐标表示按列排列得到的结果.
+这一整体过程我们也可以用如下记号表示：
+\begin{equation}\label{eq:7:线性映射矩阵表示}
+    (\sigma(\epsilon_1),\sigma(\epsilon_2),\ldots,\sigma(\epsilon_n))=(\alpha_1,\alpha_2,\ldots,\alpha_m)\mathbf{M}(\sigma).
+\end{equation}
+
+\begin{example}\label{ex:7:矩阵表示1}
+    已知$\sigma \in \mathcal{L}(\mathbf{R}^3,\mathbf{R}^3)$且$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$\sigma$的像空间和核空间；
+
+        \item 求$\sigma$关于$\mathbf{R}^3$自然基的矩阵.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求像空间和核空间的方法我们在之前已经介绍过，我们为了计算方便取$\mathbf{R}^3$的自然基$e_1,e_2,e_3$计算有：
+        \[\im\sigma=\spa(\sigma(e_1),\sigma(e_2),\sigma(e_3))=\spa((1,1,0),(1,0,1),(0,-1,0))=\mathbf{R}^3\]
+        对于核空间，解方程$\sigma(\alpha)=0$即可，我们也可以用更简洁的方式书写：
+        \[\ker\sigma=\{(x_1,x_2,x_3)\mid \sigma(x_1,x_2,x_3)=(0,0,0)\}=\{(0,0,0)\}\]
+        即方程只有零解，核空间可以记为$\ker\sigma=\{0\}$（只含零元的空间的一般记法）.
+        \item 我们根据\autoref{def:7:线性映射矩阵表示}，我们应先写出$\sigma$在出发空间一组基（按题目要求是$\mathbf{R}^3$
+        自然基）下的像，并将像表示为到达空间基（按题目要求是$\mathbf{R}^3$自然基）的线性组合，即
+        \begin{gather*}
+            \sigma(e_1)=(1,1,0)=e_1+e_2=(e_1,e_2,e_3)\begin{pmatrix}
+                1 \\ 1 \\ 0
+            \end{pmatrix} \\
+            \sigma(e_2)=(1,0,1)=e_1+e_3=(e_1,e_2,e_3)\begin{pmatrix}
+                1 \\ 0 \\ 1
+            \end{pmatrix} \\
+            \sigma(e_3)=(0,-1,0)=-e_2=(e_1,e_2,e_3)\begin{pmatrix}
+                0 \\ -1 \\ 0
+            \end{pmatrix}
+        \end{gather*}
+        接下来我们把坐标依次按列称矩阵就得到了本题需要求解的矩阵：
+        \[\mathbf{M}(\sigma)=\begin{pmatrix}
+            1 & 1 & 0 \\
+            1 & 0 & -1 \\
+            0 & 1 & 0
+        \end{pmatrix}\]
+    \end{enumerate}
+\end{solution}
+
+有趣的是，在结合我个人的学习经历以及过往辅学的经验后，我总结出了第二问的一种常见的错误解法，这里我需要加粗强调，下面这种
+解法是\textbf{完全错误的！！！}，这里展示这一解法是为了让读者将前面所学的知识完全厘清：
+
+\begin{solution}
+    （\textbf{错误解法！！！}）$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)=(x_1,x_2,x_3)\begin{pmatrix}
+        1 & 1 & 0 \\
+        1 & 0 & 1 \\
+        0 & -1 & 0
+    \end{pmatrix}$
+\end{solution}
+
+我们惊奇地发现，这一结果和我们前面得到的标准答案在向量的排列方式上发生了变化，即标准答案的1、2、3行变为了这里的1、2、3列，
+我们需要强调两点：
+\begin{enumerate}
+    \item 为什么这种解法是错误的：我们可以直接比较\autoref{eq:7:线性映射矩阵表示}和这一解法中，\autoref{eq:7:线性映射矩阵表示}
+    的等号左边是$n$个向量在$\sigma$下的像，而上述解法$\sigma(x_1,x_2,x_3)$只是$\sigma$在一个向量下的像，这显然是不一样的！！！
+    同样，等号右边括号内\autoref{eq:7:线性映射矩阵表示}是到达空间的一组基，而上述解法中仍然只是一个向量.我们从未定义过这样解题
+    的结果是什么，所以千万不能做这种无意义的事！！！
+
+    容易导致混淆的原因可能在于$(x,y,z)$向量是排列成一行的，可能看起来和$(e_1,e_2,e_3)$有点相似，但如果我们将后者拆分成
+    $((1,0,0),(0,1,0),(0,0,1))$，你还会混淆吗？
+
+    \item 为什么会出现行列互换这样的错误：事实上
+    \[\sigma(x,y,z)=\sigma(xe_1+ye_2+ze_3)=x\sigma(e_1)+y\sigma(e_2)+z\sigma(e_3)=(x,y,z)\begin{pmatrix}
+        \sigma(e_1) \\ \sigma(e_2) \\ \sigma(e_3)
+    \end{pmatrix},\]
+    这里将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$的结果按行排列成矩阵，而标准答案是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$
+    在$\mathbf{R}^3$自然基下的坐标按列排列成矩阵，回忆$\mathbf{R}^n$向量在自然基下坐标是其本身这一性质，标准答案就是将
+    $\sigma(e_1),\sigma(e_2),\sigma(e_3)$按列排列成矩阵，由此我们解释了行列互换发生的原因.
+\end{enumerate}
+
+这也就是为什么我强调读者不要参考教材102页例3求解像空间的方法来求解像空间——很容易导致这里矩阵表示犯这样的错误，
+并且容易导致初学时无法区分求解像空间和线性映射矩阵表示的方法.在这里我必须再次强调：在没有完全熟练掌握这些概念和方法前，
+不要乱用方法！！！
+
+还需需要特别强调的一点是，
+之后我们会经常看见两种记号，即$(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))$
+和$\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)$.实际上是等价的，等价原因是
+$(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))A=(\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))A=\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)A)$成立，
+这一性质在之后会有运用，证明并不复杂，可以自行尝试或参考我的矩阵辅学授课.
+
+\vspace{2ex}
+\centerline{\heiti \Large 内容总结}
+
+\vspace{2ex}
+
+\centerline{\heiti \Large 习题}
+\vspace{2ex}
+{\kaishu }
+\begin{flushright}
+    \kaishu
+
+\end{flushright}
+\centerline{\heiti A组}
+\begin{enumerate}
+    \item 设$\sigma: V_1\to V_2$是线性映射，证明：$\sigma(W_1)$和$\sigma^{-1}(W_2)$分别是$V_2$和$V_1$的子空间
+\end{enumerate}
+\centerline{\heiti B组}
+\begin{enumerate}
+    \item
+\end{enumerate}
+\centerline{\heiti C组}
+\begin{enumerate}
+    \item
+\end{enumerate}
