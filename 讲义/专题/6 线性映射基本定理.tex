@@ -2,8 +2,7 @@
 
 在上一讲的讨论中我们定义了线性映射的基本概念，讨论了由其定义直接引出的性质.本节我们将深入讨论
 线性映射像空间与核空间之间的关联，从而引出我们目前为止最核心的概念——同构，因为同构使得我们研究
-的抽象层次更上一层，并且我们可以在这抽象的制高点获得最具象的表达形式——矩阵，这使得我们之后的
-研究都可以转向同学们更熟悉的具象的代数运算，在我们向着解决线性方程组解的结构这一目标迈出关键一步.
+的抽象层次更上一层，为我们在下一讲中在这抽象的制高点获得最具象的表达形式——矩阵作铺垫.
 
 \section{线性映射的秩}
 通过对线性映射像的求解的讨论我们有
@@ -26,10 +25,31 @@ $\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\al
 这一定理的证明非常重要，在之后的很多讨论中还会用到这一思想，因此我们给出详细的证明并阐述其中的思想：
 
 \begin{proof}
-    
+    证明的思路和线性空间维数公式\autoref{thm:4:维数公式}的证明思路类似，即``设小扩大''.我们设
+    $\dim\ker\sigma=k$，并设$\ker\sigma$的一组基为$\alpha_1,\alpha_2,\ldots,\alpha_k$.
+    我们将其扩充为$V_1$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_k,\alpha_{k+1},\ldots,\alpha_n$.
+
+    根据定理要证明的等式和前述假设，我们只需证$r(\sigma)=n-k$，即证明像空间维数为$n-k$.
+    我们知道像空间为$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$，其中根据我们的假设，
+    $\sigma(\alpha_1)=\sigma(\alpha_2)=\cdots=\sigma(\alpha_k)=0$（因为它们是核空间的基），因此像空间为
+    $\spa(\sigma(\alpha_{k+1}),\ldots,\sigma(\alpha_n))$，我们只需证明这一向量组是线性无关的即可，因为这样
+    这$n-k$个向量就可以构成像空间的一组基，从而证明了$r(\sigma)=n-k$.
+
+    我们设$c_{k+1}\sigma(\alpha_{k+1})+\cdots+c_n\sigma(\alpha_n)=0$，即
+    \[\sigma(c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n)=0.\]
+    故$c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n \in \ker\sigma$，因此可以被$\alpha_1,\alpha_2,\ldots,\alpha_k$线性表示，
+    于是有
+    \[c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n=c_1\alpha_1+\cdots+c_k\alpha_k.\]
+    即
+    \[c_1\alpha_1+\cdots+c_k\alpha_k-c_{k+1}\alpha_{k+1}-\cdots-c_n\alpha_n=0.\]
+    由于$\alpha_1,\alpha_2,\ldots,\alpha_n$是$V_1$的一组基，因此$c_1=\cdots=c_k=c_{k+1}=\cdots=c_n=0$，
+    故$\sigma(\alpha_{k+1}),\ldots,\sigma(\alpha_n)$线性无关，命题得证.
 \end{proof}
 
-事实上这一定理
+事实上这一定理也被称为线性映射``维数公式''，但为了与线性空间维数公式\autoref{thm:4:维数公式}区分，本讲义中
+我们称这一定理为线性映射基本定理.读者可以比较一下两个``维数公式''的证明，二者都使用了``设小扩大''的思想，都将
+要证明的结论转化为证明一组向量是线性无关的，但其中证明线性无关的方法略有不同，读者可以仔细体会.
+
 下面我们给出一个证明思想上类似的例子供读者练习：
 \begin{example}
     设$\sigma$为有限维线性空间$V$上的线性变换，$W$是$V$的子空间，证明：
@@ -39,7 +59,7 @@ $\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\al
     
 \end{proof}
 基于线性映射基本定理，我们可以得到如下定理：
-\begin{theorem}
+\begin{theorem}\label{thm:6:双射等价条件}
     对$\sigma \in \mathcal{L}(V_1,V_2)$且$\dim V_1=\dim V_2=n$，下列条件等价：
     \begin{enumerate}
         \item $\ker \sigma=\{0\}$；
@@ -49,32 +69,53 @@ $\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\al
         \item $r(\sigma)=n$.
     \end{enumerate}
 \end{theorem}
-显然这一定理前提适用于一切有限维空间上的线性变换.我们需要注意的是，上述第一个等价式不是基于线性映射基本定理得到的，
-是教材定理3.1的内容，证明较为容易，建议先自己尝试证明.
 
-线性映射基本定理还隐藏着一个结论，即不可能存在从低维空间到高维空间的满射（反证法代入维数公式即可，当然也可以利用线性相关性证明）.
+显然这一定理前提要求是有限维空间上的线性变换.我们需要注意的是，上述1与2等价不是基于线性映射基本定理得到的，
+而是在前述\autoref{thm:5:单射与核空间}中已经证明的.其余等价性的证明也是非常简单，只需要简单套用维数公式即可.
+
+实际上，线性映射基本定理还隐藏着一个我们之前以及介绍过的结论，即不可能存在从低维空间到高维空间的满射.利用反证法，
+假设存在这样的映射$\sigma:V_1\to V_2$，则核空间维数$\dim\ker\sigma=n-r(\sigma)=\dim V_1-\dim V_2<0$，这显然是
+不合理的.当然这一结论有一对称形式也成立，即不存在高维空间到低维空间的单射，证明类似，不再赘述.
 
 \section{像与核的进一步讨论}
 关于线性变换的像和核有很多的包含关系或等式等结论，实际上很多问题都来源于线性映射基本定理及其推论，本节我们主要探讨这一话题.
 
 我们首先说明几个重要的原则：
 \begin{enumerate}
-    \item 解决此类问题大多需要综合利用维数公式及其推论，需要讲题给条件转化为合适的等价表述然后解决；
+    \item 解决此类问题大多需要综合利用维数公式及其推论，需要将题给条件转化为合适的等价表述然后解决；
 
     \item 注意集合相等的证明方式，实际上就是两个集合互相包含.实际上很多时候一边的包含是显然的，只需证明另一边；
 
     \item 时刻注意线性映射的像和核的定义，线性空间的交、和与直和的概念，例如看到像需要想到其存在原像，看到和与直和要想到将向量分拆等.
 \end{enumerate}
 
-接下来我们看一些经典的结论（已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$），有余力的同学可以思考其证明，其中结论1最为常见：
+接下来我们看一些经典的结论（已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$），、其中结论1最为常见：
 
 \begin{enumerate}
     \item 若$\sigma$为幂等变换（即$\sigma^2=\sigma$）有$V=\ker\sigma\oplus\im \sigma$；
 
-    \item $\ker\sigma \subseteq \ker\sigma^2 \subseteq \ker\sigma^3 \subseteq \cdots$；
+    \begin{proof}
+        
+    \end{proof}
 
-    \item $\im \sigma \supseteq \im \sigma^2 \supseteq \im \sigma^3 \supseteq \cdots$；
-
+    \item 关于核空间，我们有如下定理，这一定理在之后讨论矩阵标准形的时候非常有用：
+    \begin{theorem}\label{thm:6:核空间性质}
+        我们有如下关于核空间增长与停止增长的性质：
+        \begin{enumerate}
+            \item $\{0\}=\ker \sigma^0\subset\ker \sigma^1\subset\cdots\subset
+            \ker \sigma^k\subset\ker \sigma^{k+1}\subset\cdots$；
+    
+            \item 设$m$是非负整数使得$\ker \sigma^m=\ker \sigma^{m+1}$，则
+            \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
+    
+            \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+1}=\cdots$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        
+    \end{proof}
+    对于像空间而言也有类似于\autoref{thm:6:核空间性质}的定理，证明方法也是类似的，我们放在习题中供读者思考.
+    \item 存在正整数$m$使得$V=\im \sigma^m+\ker\sigma^m$（和前述性质思想类似，我们放在习题中供读者思考）；
     \item 下列条件等价：
     \begin{enumerate}[label=(\arabic*)]
         \item $V=\ker\sigma\oplus\im \sigma$；
@@ -83,47 +124,121 @@ $\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\al
         \item $\ker\sigma \cap \im \sigma=\{0\}$；
         \item $\im \sigma=\im \sigma^2$.
     \end{enumerate}
-
-    \item 存在正整数$m$使得对任意的$n>m$都有$\ker\sigma^n=\ker\sigma^m$，$\im \sigma^n=\im \sigma^m$；
-
-    \item 存在正整数$m$使得$V=\im \sigma^m+\ker\sigma^m$；
+    \begin{proof}
+        
+    \end{proof}
 
     \item $\dim(\ker\sigma+\im \sigma) \geqslant \cfrac{n}{2}$，等号成立充要条件为$\ker\sigma=\im \sigma$.
+    
+    \begin{proof}
+        这一结论的证明需要结合两个维数公式.事实上，由线性空间维数公式有
+        \[\dim(\ker\sigma+\im \sigma)=\dim\ker\sigma+\dim\im \sigma-\dim(\ker\sigma \cap \im \sigma)=n-\dim(\ker\sigma \cap \im \sigma),\]
+        因此只需证明$\dim(\ker\sigma+\im \sigma) \geqslant \cfrac{n}{2}$.
+
+        我们用反证法，我们知道$\ker\sigma\cap \im \sigma$是$\ker\sigma$和$\im\sigma$的子空间，因此
+        \begin{gather*}
+            \dim(\ker\sigma\cap \im \sigma) \leqslant \dim\ker\sigma \\
+            \dim(\ker\sigma\cap \im \sigma) \leqslant \dim\im\sigma
+        \end{gather*}
+        故若$\dim(\ker\sigma+\im \sigma)>\cfrac{n}{2}$，则有
+        \[\dim\ker\sigma+\dim\im \sigma>n\]
+        与线性映射基本定理矛盾，因此$\dim(\ker\sigma+\im \sigma) \geqslant \cfrac{n}{2}$成立.
+
+        接下来我们讨论取等条件.充分性显然，因为此时$\dim\ker\sigma=\dim\im\sigma=\cfrac{n}{2}$，且
+        $\ker\sigma\cap \im \sigma=\ker\sigma=\im\sigma$，故$\dim(\ker\sigma+\im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)=\cfrac{n}{2}$成立.
+
+        接下来我们讨论必要性.由$\dim(\ker\sigma+\im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)$可知
+        $\dim(\ker\sigma\cap \im \sigma)=\cfrac{n}{2}$，由$\ker\sigma\cap \im \sigma$是$\ker\sigma$和$\im\sigma$的子空间
+        可知$\dim\ker\sigma\geqslant\cfrac{n}{2},\dim\im \sigma\geqslant\cfrac{n}{2}$，又由线性映射基本定理，
+        $\dim\ker\sigma+\dim\im \sigma=n$，因此$\dim\ker\sigma=\dim\im \sigma=\cfrac{n}{2}$，即子空间维数与原空间
+        相等，故必有$\ker\sigma=\im \sigma=\ker\sigma\cap \im \sigma$成立（回顾线性空间$U\subset V$且$\dim U=\dim V$则$U=V$）.
+    \end{proof}
 \end{enumerate}
 
 \section{可逆与同构}
+同构是直至目前线性代数中最重要的概念，本节中我们只讨论基本的概念和性质，在下一讲中我们将结合线性映射矩阵表示深入探讨
+同构的深层意义.
 \subsection{线性空间同构的概念}
 \begin{definition}
     如果由线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$存在一个线性双射$\sigma$，则称
     $V_1(\mathbf{F})$和$V_2(\mathbf{F})$是\keyterm{同构的}，记作$V_1(\mathbf{F}) \cong V_2(\mathbf{F})$.
     $\sigma$称为$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的一个\keyterm{同构映射}[isomorphism].
 \end{definition}
-容易验证同构为等价关系，且对上述同构映射$\sigma$，$V_1$中向量组$ \alpha_1,\alpha_2,\ldots,\alpha_m $与$V_2$中对应的
-$ \sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m) $有相同的线性相关性，这不难证明.
 
-下面是同构的等价条件：
-\begin{theorem}
-    两个线性空间$V_1(\mathbf{F})$和$V_2(\mathbf{F})$同构的充要条件是它们的维数相等.
-\end{theorem}
-上述即教材定理3.8，定理的证明是简单的，利用维数公式以及同构是等价关系即可.
-
-我们需要指出，同构是本教材中最重要的概念之一，它统一了教材2-3章所学的内容，
-将线性空间可以按维数划分为不同的等价类，并且表明线性空间最本质的结构就在于
-基及其维数，之前第二章研究的线性相关性与向量组的秩等就是研究线性空间的内部结构，
-而线性映射则将相同或不同结构的线性空间联系在一起，同构则表明只要线性空间维数相同，
-则可以将两个空间中的所有元素一一对应.
-\subsection{线性空间同构举例}
-在上一节最后我们提到，同构则表明只要线性空间维数相同，则可以将两个空间中的所有元素
-一一对应.本节则研究几个经典的一一对应的例子.
+根据定义我们发现，同构映射实际上就是线性双射.关于同构的概念，我们有以下几点需要强调：
 \begin{enumerate}
-    \item 坐标映射：请回顾上一专题中向量的坐标，证明坐标映射是同构映射（实际上是显然的，因为一个向量在一组基下坐标唯一，而一个坐标对应唯一一个向量）；
+    \item 特别注意：同构是线性空间之间的关系，同构映射才是描述线性映射的；
+    \item 事实上，同构也是一种等价关系，这一点很容易验证，读者可以自行尝试（可能传递性略有困难，实际上只需说明线性双射
+    复合后仍是线性双射即可）；
+    \item 对同构映射$\sigma$，$V_1$中向量组$ \alpha_1,\alpha_2,\ldots,\alpha_m $与$V_2$中对应的
+    $ \sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m) $有相同的线性相关性，证明如下：
 
-    \item 若$\dim V_1(\mathbf{F})=m$，$\dim V_2(\mathbf{F})=n$，则$\mathcal{L}(V_1,V_2) \cong \mathbf{F}^{m \times n}$.
+    \begin{proof}
+        我们已知一般的线性映射将线性相关的向量组映射为线性相关的向量组，因此对于同构映射，我们只需证明
+        它能将线性无关的向量组映射为线性无关的向量组即可.
+        
+        设$V_1$中$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，我们考察$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m)$
+        的线性相关性，设
+        \[c_1\sigma(\alpha_1)+c_2\sigma(\alpha_2)+\cdots+c_m\sigma(\alpha_m)=0,\]
+        即
+        \[\sigma(c_1\alpha_1+c_2\alpha_2+\cdots+c_m\alpha_m)=0.\]
+        因为$\sigma$是线性双射，因此$\sigma$首先必须是单射，因此$\ker\sigma=\{0\}$，因此
+        \[c_1\alpha_1+c_2\alpha_2+\cdots+c_m\alpha_m=0,\]
+        由$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，故$c_1=c_2=\cdots=c_m=0$，即$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m)$
+        线性无关，证毕.
+    \end{proof}
+    
+    这一结论比一般的线性映射更强，对于一般的线性映射只有将线性相关的向量组映射为线性相关的向量组，无法保证将线性无关的向量组
+    映射为线性无关的向量组，但同构映射可以保证，因为它是线性双射.这一性质也是本质的，因为双射具有``一一对应''的属性，因此直觉
+    也告诉我们，线性空间的基在线性双射（同构映射）下的像应当对应于像空间的一组基.
 \end{enumerate}
 
-证明有两种方式，一种来源于教材定理3.7，较为复杂，我们实际上只需要通过线性映射矩阵表示即可说明.
+我们讨论几个经典的一一对应的例子.
+\begin{enumerate}
+    \item 第一个例子是坐标映射：在有限维向量空间的向量的坐标一节中，我们说明了一个向量在一组基下坐标唯一，而一个坐标对应唯一一个向量，
+    并且也证明了坐标运算的线性性，因此坐标映射是同构映射，并且是经典的同构映射.它可以建立起任何一个$n$维线性空间$V(\mathbf{F})$与几何向量空间
+    $\mathbf{F}^n$之间的一一对应（同构映射），即任意$n$维线性空间$V(\mathbf{F})\cong\mathbf{F}^n$.这一点之后会强调多次，需牢记；
 
-下面我们通过几个例题进一步了解几个常见的例子（简单题基本只需要判断维数是否相等即可）：
+    \item 第二个例子将在下一将线性映射矩阵表示中描述并证明，目前我们只给出结论，读者不必惊恐于不理解其中的记号，
+    因为下一讲的核心任务之一就是证明存在这一同构映射：若$\dim V_1(\mathbf{F})=m$，$\dim V_2(\mathbf{F})=n$，则
+    $\mathcal{L}(V_1,V_2) \cong \mathbf{F}^{m \times n}$.
+\end{enumerate}
+
+\subsection{同构的等价条件}
+下面我们给出同构的等价条件：
+\begin{theorem}\label{thm:6:同构的等价条件}
+    两个线性空间$V_1(\mathbf{F})$和$V_2(\mathbf{F})$同构的充要条件是它们的维数相等.
+\end{theorem}
+
+\begin{proof}
+    必要性：设$V_1(\mathbf{F})$和$V_2(\mathbf{F})$同构，即存在线性双射（故至少是单射）$\sigma:V_1\to V_2$.
+    由线性映射基本定理，
+    \[\dim V_1=\dim\ker\sigma+\dim\im\sigma=\dim\im\sigma=\dim V_2.\]
+    故必要性成立.
+
+    下证明充分性，即证两维数相等的线性空间之间存在线性双射.设$\dim V_1=\dim V_2=n$，设$V_1$的一组基为
+    $\alpha_1,\alpha_2,\ldots,\alpha_n$，$V_2$的一组基为$\beta_1,\beta_2,\ldots,\beta_n$，
+    根据\autoref{thm:5:线性映射构造}可知，我们可以定义线性映射$\sigma:V_1\to V_2$，使得
+    \begin{equation}\label{eq:6:构造同构}
+        \sigma(\alpha_1)=\beta_1,\sigma(\alpha_2)=\beta_2,\ldots,\sigma(\alpha_n)=\beta_n.
+    \end{equation}
+    接下来只需证明$\sigma$是线性双射即可.事实上$\sigma$是单射是显然的，因为若$\sigma(\alpha)=0$，
+    其中$\alpha\in V_1$，则$\alpha$可以写为$\alpha=k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n$，
+    则有
+    \[\sigma(\alpha)=\sigma(k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n)=k_1\sigma(\alpha_1)+k_2\sigma(\alpha_2)+\cdots+k_n\sigma(\alpha_n)=0,\]
+    又由\autoref{eq:6:构造同构}以及$\beta_1,\beta_2,\ldots,\beta_n$线性无关可知$k_1=k_2=\cdots=k_n=0$，因此$\alpha=0$，即$\sigma$是单射.
+    由\autoref{thm:6:双射等价条件}（或直接根据线性映射基本定理）可知，$\sigma$是线性双射，证毕.
+\end{proof}
+
+我们需要指出，同构是目前为止最重要的概念，它统一了前面所学的所有主干内容，将线性空间可以按维数划分为不同的等价类，
+并将抽象再升一层，表明线性空间最本质的特点在于维数，因为我们可以通过同构建立起对所有维数相同的线性空间之间的
+一一对应，更重要的是我们可以通过坐标映射建立起任何一个$n$维线性空间$V(\mathbf{F})$与几何向量空间
+$\mathbf{F}^n$之间的同构映射，从而遮蔽所有线性空间自身基的特色（例如有的线性空间中的元素是矩阵、函数、数列等），
+从而对所有有限维线性空间的研究都可以转为对简单向量空间的研究.从此以后的大部分研究中，我们再提到线性空间，
+我们只需要说出线性空间的维数，就相当于给出了几乎所有的信息.
+或许目前对上面的说法的认识还不够深刻，但在下一讲中我们将通过线性映射矩阵表示的讨论进一步加深理解.
+
+下面我们通过几个例题来应用同构的等价条件，也同时进一步了解几个常见的同构的例子：
 \begin{example}
     指出下面各组内的两个线性空间是否同构，若同构可以进一步思考同构映射的构造：
     \begin{enumerate}
@@ -136,117 +251,9 @@ $ \sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m) $有相同的线性�
         \item 全体二元复向量$\mathbf{C}^2$在复数域上构成的线性空间$\mathbf{C}^2(\mathbf{C})$与$\mathcal{L}(\mathbf{R}^4,\mathbf{R})$.
     \end{enumerate}
 \end{example}
+\begin{solution}
 
-\section{线性映射矩阵表示的进一步讨论}
-\subsection{一组简单的例子}
-\begin{example}\label{example:5:矩阵表示1}
-    已知$\sigma \in \mathcal{L}(\mathbf{R}^3,\mathbf{R}^3)$且$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)$
-    \begin{enumerate}[label=(\arabic*)]
-        \item 求$\sigma$的像空间和核空间；
-
-        \item 求$\sigma$关于$\mathbf{R}^3$自然基的矩阵.
-    \end{enumerate}
-\end{example}
-
-\begin{example}\label{ex:6:矩阵表示2}
-    设$A=\begin{pmatrix}1 & 0 & 2 \\ -1 & 2 & 1 \\ 1 & 2 & 5\end{pmatrix}$为两个三维线性空间之间的线性映射$\sigma$对应的矩阵，
-    求$\sigma$的像空间和核空间.
-\end{example}
-
-\begin{example}\label{ex:6:矩阵表示3}
-    已知3阶矩阵$A=\begin{pmatrix}
-        1 & 0 & 1 \\ 0 & -1 & 0 \\ -1 & 1 & -1
-    \end{pmatrix}$. 定义$\mathbf{F}^{3 \times 3}$上的线性变换$\sigma(X)=AX,\enspace X \in \mathbf{F}^{3 \times 3}$.
-    求$\sigma$的像和核.
-\end{example}
-实际上，例题2.4.1和2.4.3都是属于已知映射求像和核的题目，具体方法在像和核一节已经讲述，并且求矩阵表示也是根据上面的定义
-即可，都是程式化的.然而例7则有不同，但此题与例2.4.1、2.4.2也有关联.实际上
-此类问题像空间就是以矩阵列空间为坐标的向量的线性扩张，核空间是以矩阵零空间的基（即$AX=0$的基础解系）为坐标的向量的线性扩张，
-推导见例7解析或我的矩阵辅学，希望各位同学能掌握推导并理解这三个例题之间的关系与区别. % TODO 编号系统 autoref
-
-\subsection{一些相似的定理}
-\begin{theorem} \label{thm:6:线性映射对向量坐标的影响}
-    \textbf{\heiti 线性映射对向量坐标的影响}
-
-    设$\sigma \in \mathcal{L}(V_1,V_2)$关于$V_1$和$V_2$的基$B_1$和基$B_2$的矩阵为$A=(a_{ij})_{m \times n}$，
-    且$\alpha$与$\sigma(\alpha)$在基$B_1$和基$B_2$下的坐标分别为$X$和$Y$，则$Y=AX$.
-\end{theorem}
-上述即教材定理4.1，这一定理给出一个向量经过线性映射之后，其坐标的变化. 我们可以用下图表示：
-
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[>=Stealth]
-        \node (V) at (0,0) {$V$};
-        \node (W) at (3,0) {$W$};
-        \node (Fn) at (0,-3) {$\mathbf{F}^n$};
-        \node (Fm) at (3,-3) {$\mathbf{F}^m$};
-        \draw[->,thick] (V) -- node[below]{表示矩阵：$A$} (W);
-        \draw[<->,thick] (V) -- node[right]{同构} (Fn);
-        \draw[<->,thick] (W) -- node[left]{同构} (Fm);
-        \draw[->,thick] (Fn) -- node[above]{$\sigma(\alpha)=A\alpha$} (Fm);
-    \end{tikzpicture}
-\end{figure}
-
-图中我们可以看出通过坐标映射后得到的新映射即为\autoref{thm:6:线性映射对向量坐标的影响} 描述的映射.
-
-在描述下一定理之前，我们首先介绍过渡矩阵（变换矩阵）的概念.
-\begin{definition}
-    设$B_1=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$与$B_2=\{\beta_1,\beta_2,\ldots,\beta_n\}$是线性空间
-    $V(\mathbf{F})$的任意两组基，$B_2$中每个基向量被基$B_1$表示为
-    \[ \left\{
-    \begin{array}{rcl}
-        \beta_1&=&a_{11}\alpha_1+a_{21}\alpha_2+\cdots+a_{n1}\alpha_n \\
-        \beta_2&=&a_{12}\alpha_1+a_{22}\alpha_2+\cdots+a_{n2}\alpha_n \\
-        &\vdots& \\
-        \beta_n&=&a_{1n}\alpha_1+a_{2n}\alpha_2+\cdots+a_{nn}\alpha_n
-    \end{array}
-    \right. \]
-    将上式用矩阵表示为
-    \[(\beta_1,\beta_2,\cdots,\beta_n)=(\alpha_1,\alpha_2,\cdots,\alpha_n)\begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1n} \\
-        a_{21} & a_{22} & \cdots & a_{2n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nn}
-    \end{pmatrix}\]
-    我们将这一矩阵称为即$B_1$变为基$B_2$的变换矩阵（或过渡矩阵）.
-\end{definition}
-简单而言就是将$B_2$中的向量在$B_1$下的坐标按列排列.需要注意表述中是$B_1$变为基$B_2$还是反过来，
-这两个矩阵互逆.注意过渡矩阵一定是基与基之间的表示矩阵，并且过渡矩阵一定可逆.
-\begin{theorem}
-    \textbf{\heiti 基的选择对向量坐标的影响}
-
-    设线性空间$V$的两组基为$B_1$和$B_2$，且基$B_1$到$B_2$的变换矩阵（过渡矩阵）为$A$，如果
-    $\xi \in V(\mathbf{F})$，且在$B_1$和$B_2$下的坐标分别为$X$和$Y$，则$Y=A^{-1}X$.
-\end{theorem}
-上述即教材定理4.10，描述同一个向量在不同基下坐标之间的关系.事实上，这与本节同构关系紧密，因为
-同构意味着两个线性空间结构一致，故同构映射可以保持向量组的线性关系不变.在同构关系下，
-线性组合对应线性组合，线性无关对应线性无关，线性相关对应线性相关.我们有如下定理：
-\begin{theorem}
-    设$(\alpha_1,\alpha_2,\ldots,\alpha_n)$是线性无关的向量组，且
-    \[(\beta_1,\beta_2,\ldots,\beta_s)=(\alpha_1,\alpha_2,\ldots,\alpha_n)A\]
-    则向量组$(\beta_1,\beta_2,\ldots,\beta_s)$的秩等于矩阵$A$的秩.
-\end{theorem}
-定理的证明需要用到坐标映射是同构映射这一事实，我们不难发现等式左侧向量组与$A$的列向量组是等价的.
-事实上我们也可以由此发现，过渡矩阵一定是可逆矩阵.
-\begin{theorem}
-    已知$\beta_i=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{ni}\alpha_n\enspace(i=1,2,\ldots,n)$，
-    且$A=(a_{ij})$可逆，则$\alpha_1,\alpha_2,\ldots,\alpha_n$与$\beta_1,\beta_2,\ldots,\beta_n$
-    等价.
-\end{theorem}
-实际上这一定理与上一定理的思想都是类似的，我们可以看一个例题练习一下：
-\begin{example}
-    已知$\beta_1=\alpha_2+\alpha_3,\enspace\beta_2=\alpha_1+\alpha_3,\enspace\beta_3=\alpha_1+\alpha_2$，
-    证明$\alpha_1,\alpha_2,\alpha_3$与$\beta_1,\beta_2,\beta_3$等价.
-\end{example}
-\begin{theorem}
-    \textbf{\heiti 基的选择对映射矩阵的影响}
-
-    设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$
-    是线性空间的$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，
-    则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
-\end{theorem}
-上述即教材定理7.4，研究同一个映射在不同基下表示矩阵之间的关系.实际上我们将在下一专题初等矩阵一节进一步讨论.
-这一定理的证明需要用到我们之前描述的两种线性映射矩阵表示的统一性.
+\end{solution}
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
