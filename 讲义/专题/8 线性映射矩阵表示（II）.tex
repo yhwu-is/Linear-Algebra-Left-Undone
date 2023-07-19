@@ -1,75 +1,4 @@
-\chapter{矩阵基本运算}
-
-\section{矩阵基本运算}
-\subsection{基本概念}
-\begin{enumerate}
-    \item 矩阵的加法来源于线性映射的加法，矩阵相加要求两矩阵行列数一致，相加时只需对应位置元素相加即可；
-    \item 矩阵的数乘来源于线性映射的数乘，计算只需矩阵的每个元素乘以常数即可；
-    \item 矩阵的乘法来源于线性映射的复合，计算时要求前一个矩阵的列数等于后一个矩阵的行数，矩阵$A$与$B$
-    相乘结果中第$i$行第$j$列元素为矩阵$A$的第$i$行与矩阵$B$的第$j$列对应位置元素相乘后求和的结果，
-    即对于$A=(a_{ij})_{m \times n}$和$B=(b_{ij})_{n \times l}$，矩阵$C=AB=(c_{ij})_{m \times l}$，且
-    $c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{in}b_{nj}\enspace(i=1,\ldots,m,\enspace j=1,\ldots,l)$.
-\end{enumerate}
-
-\subsection{基本性质}
-\begin{enumerate}
-    \item 回顾上一专题中$m \times n$矩阵构成的线性空间$\mathbf{M}_{m \times n}(\mathbf{F})$；
-    \item 回顾矩阵乘法的基本性质：
-    \begin{enumerate}[label=(\arabic*)]
-        \item $(AB)C=A(BC)$（结合律）
-        \item $\lambda(AB)=(\lambda A)B=A(\lambda B),\enspace \lambda \in \mathbf{F}$
-        \item $A(B+C)=AB+AC$（左分配律）
-        \item $(B+C)P=BP+CP$（右分配律）
-        \item $A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$，其中$A$为方阵，$k,m$为任意整数. 负整数对应于逆矩阵的情况.
-    \end{enumerate}
-    \item 回顾矩阵多项式的定义（利用线性映射多项式在基下的矩阵表示定义），
-    并注意其交换性以及可因式分解性.
-\end{enumerate}
-\begin{example}
-    展开矩阵多项式$(A+\lambda E)^n$.
-\end{example}
-\begin{example}
-    设$f(x),g(x) \in \mathbf{F}[x],\enspace A,B \in \mathbf{M}_n(\mathbf{F})$. 证明：
-    \[f(A)g(A)=g(A)f(A)\]
-    \begin{enumerate}
-        \item 如果$AB=BA$，则$f(A)g(B)=g(B)f(A)$；
-
-        \item 设$f(x)=1+x+\cdots+x^{m-1}$，$g(x)=1-x$，$A=\begin{pmatrix}
-            a & b \\ 0 & a
-        \end{pmatrix}$，计算$f(A)g(A)$.
-    \end{enumerate}
-\end{example}
-其他需要注意的性质：
-\begin{enumerate}
-    \item 矩阵乘法不一定满足交换律（即$AB$不一定等于$BA$）.但是注意数量矩阵和任何矩阵相乘都是可交换的，因此求矩阵的幂次时，可以将其转化为$(A+\mu E)^n$（其中$E$为单位矩阵，$\mu$为常数）类型，然后利用二项式展开即可.很多情况下$A$都会是幂零矩阵，此时结果为有限项.
-    \item $A\neq O$且$B\neq O$不能推出$AB\neq O$.例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$.
-    \item 消去律也不一定满足：即$AB = AC$不一定$A = B$.原因在于$AB=AC \implies A(B-C)=O$，由(2)可知不一定$B = C$.
-\end{enumerate}
-
-\subsection{矩阵可交换问题}
-一般来说在本课程中此类问题直接设可交换矩阵的每一个元素都是未知数即可，一些特殊的技巧
-（使用关于一些特殊形状矩阵的结论）以及涉及到之后才能学到的知识的方法我们在这里也不展开了.我们只讨论一个基本的技巧，即
-\[\forall t,\enspace AB=BA \iff (A-tE)B=B(A-tE)\]
-此处的$t$根据矩阵的对角线上元素来决定，原则是使得其余矩阵与$A-tE$相乘的计算过程更为简单（一般是使得0元素更多），这样解方程也会更轻松.
-我们来看一个简单的例子：
-\begin{example}
-    求与矩阵$A=\begin{pmatrix}
-        3 & 0 & 0 \\ -1 & 3 & 0 \\ 0 & -1 & 3
-    \end{pmatrix}$可交换的矩阵.
-\end{example}
-
-关于可交换我们有以下定理，证明并不是很复杂（教材习题中有出现）：
-\begin{theorem}
-    \begin{enumerate}
-        \item 与主对角元两两互异的对角矩阵可交换的方阵只能是对角矩阵；
-
-        \item 准对角矩阵$A$每个对角分块内对角线元素相同，但不同对角块之间不同，则与$A$可交换的矩阵只能是准对角矩阵；
-
-        \item 与所有$n$级可逆矩阵可交换的矩阵为数量矩阵；
-
-        \item 与所有$n$级矩阵可交换的矩阵为数量矩阵.
-    \end{enumerate}
-\end{theorem}
+\chapter{线性映射矩阵表示（II）}
 
 \section{矩阵转置}
 \subsection{基本概念}
@@ -270,6 +199,90 @@ $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{p
     B=\begin{pmatrix}0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0\end{pmatrix}$，求矩阵$X$满足：
     \[AXA+BXB=AXB+BXA+A(A-B)\]
 \end{example}
+
+\subsection{一些相似的定理}
+\begin{theorem} \label{thm:6:线性映射对向量坐标的影响}
+    \textbf{\heiti 线性映射对向量坐标的影响}
+
+    设$\sigma \in \mathcal{L}(V_1,V_2)$关于$V_1$和$V_2$的基$B_1$和基$B_2$的矩阵为$A=(a_{ij})_{m \times n}$，
+    且$\alpha$与$\sigma(\alpha)$在基$B_1$和基$B_2$下的坐标分别为$X$和$Y$，则$Y=AX$.
+\end{theorem}
+上述即教材定理4.1，这一定理给出一个向量经过线性映射之后，其坐标的变化. 我们可以用下图表示：
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[>=Stealth]
+        \node (V) at (0,0) {$V$};
+        \node (W) at (3,0) {$W$};
+        \node (Fn) at (0,-3) {$\mathbf{F}^n$};
+        \node (Fm) at (3,-3) {$\mathbf{F}^m$};
+        \draw[->,thick] (V) -- node[below]{表示矩阵：$A$} (W);
+        \draw[<->,thick] (V) -- node[right]{同构} (Fn);
+        \draw[<->,thick] (W) -- node[left]{同构} (Fm);
+        \draw[->,thick] (Fn) -- node[above]{$\sigma(\alpha)=A\alpha$} (Fm);
+    \end{tikzpicture}
+\end{figure}
+
+图中我们可以看出通过坐标映射后得到的新映射即为\autoref{thm:6:线性映射对向量坐标的影响} 描述的映射.
+
+在描述下一定理之前，我们首先介绍过渡矩阵（变换矩阵）的概念.
+\begin{definition}
+    设$B_1=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$与$B_2=\{\beta_1,\beta_2,\ldots,\beta_n\}$是线性空间
+    $V(\mathbf{F})$的任意两组基，$B_2$中每个基向量被基$B_1$表示为
+    \[ \left\{
+    \begin{array}{rcl}
+        \beta_1&=&a_{11}\alpha_1+a_{21}\alpha_2+\cdots+a_{n1}\alpha_n \\
+        \beta_2&=&a_{12}\alpha_1+a_{22}\alpha_2+\cdots+a_{n2}\alpha_n \\
+        &\vdots& \\
+        \beta_n&=&a_{1n}\alpha_1+a_{2n}\alpha_2+\cdots+a_{nn}\alpha_n
+    \end{array}
+    \right. \]
+    将上式用矩阵表示为
+    \[(\beta_1,\beta_2,\cdots,\beta_n)=(\alpha_1,\alpha_2,\cdots,\alpha_n)\begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nn}
+    \end{pmatrix}\]
+    我们将这一矩阵称为即$B_1$变为基$B_2$的变换矩阵（或过渡矩阵）.
+\end{definition}
+简单而言就是将$B_2$中的向量在$B_1$下的坐标按列排列.需要注意表述中是$B_1$变为基$B_2$还是反过来，
+这两个矩阵互逆.注意过渡矩阵一定是基与基之间的表示矩阵，并且过渡矩阵一定可逆.
+\begin{theorem}
+    \textbf{\heiti 基的选择对向量坐标的影响}
+
+    设线性空间$V$的两组基为$B_1$和$B_2$，且基$B_1$到$B_2$的变换矩阵（过渡矩阵）为$A$，如果
+    $\xi \in V(\mathbf{F})$，且在$B_1$和$B_2$下的坐标分别为$X$和$Y$，则$Y=A^{-1}X$.
+\end{theorem}
+上述即教材定理4.10，描述同一个向量在不同基下坐标之间的关系.事实上，这与本节同构关系紧密，因为
+同构意味着两个线性空间结构一致，故同构映射可以保持向量组的线性关系不变.在同构关系下，
+线性组合对应线性组合，线性无关对应线性无关，线性相关对应线性相关.我们有如下定理：
+\begin{theorem}
+    设$(\alpha_1,\alpha_2,\ldots,\alpha_n)$是线性无关的向量组，且
+    \[(\beta_1,\beta_2,\ldots,\beta_s)=(\alpha_1,\alpha_2,\ldots,\alpha_n)A\]
+    则向量组$(\beta_1,\beta_2,\ldots,\beta_s)$的秩等于矩阵$A$的秩.
+\end{theorem}
+定理的证明需要用到坐标映射是同构映射这一事实，我们不难发现等式左侧向量组与$A$的列向量组是等价的.
+事实上我们也可以由此发现，过渡矩阵一定是可逆矩阵.
+\begin{theorem}
+    已知$\beta_i=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{ni}\alpha_n\enspace(i=1,2,\ldots,n)$，
+    且$A=(a_{ij})$可逆，则$\alpha_1,\alpha_2,\ldots,\alpha_n$与$\beta_1,\beta_2,\ldots,\beta_n$
+    等价.
+\end{theorem}
+实际上这一定理与上一定理的思想都是类似的，我们可以看一个例题练习一下：
+\begin{example}
+    已知$\beta_1=\alpha_2+\alpha_3,\enspace\beta_2=\alpha_1+\alpha_3,\enspace\beta_3=\alpha_1+\alpha_2$，
+    证明$\alpha_1,\alpha_2,\alpha_3$与$\beta_1,\beta_2,\beta_3$等价.
+\end{example}
+\begin{theorem}
+    \textbf{\heiti 基的选择对映射矩阵的影响}
+
+    设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$
+    是线性空间的$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，
+    则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
+\end{theorem}
+上述即教材定理7.4，研究同一个映射在不同基下表示矩阵之间的关系.实际上我们将在下一专题初等矩阵一节进一步讨论.
+这一定理的证明需要用到我们之前描述的两种线性映射矩阵表示的统一性.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
