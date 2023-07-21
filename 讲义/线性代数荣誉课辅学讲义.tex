@@ -9,13 +9,14 @@
 \usepackage{graphicx} % 添加图片
 % \usepackage{amsthm}
 \usepackage{amsmath}
-\renewcommand{\vec}[1]{\boldsymbol{#1}} % 生产粗体向量，而不是带箭头的向量
+\renewcommand{\vec}[1]{\boldsymbol{#1}} % 生成粗体向量，而非带箭头的向量
 \usepackage{amssymb}
 \usepackage{booktabs} % excel 导出的大表格
 \usepackage{rotating}
 \usepackage{extarrows}
 \usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage{multicol}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -25,13 +26,15 @@
 \setlength{\parindent}{2em}
 
 \usepackage{ntheorem}
-\theoremheaderfont{\bf\heiti}
+\theoremheaderfont{\bfseries\heiti}
 \theorembodyfont{\fangsong}
 
 \usepackage{makeidx} % 名词索引
 \makeindex
 
 \usepackage{xparse}
+% \keyterm{关键词}[英文] - 生成索引
+% \keyterm*{关键词}[英文] - 不生成索引
 \NewDocumentCommand{\keyterm}{smo}{%
     {\sffamily\heiti\bfseries{#2}%
     \IfNoValueF{#3}{（{#3}）}}%
@@ -63,14 +66,15 @@
 \newtheorem{lemma}{引理}[chapter]
 \newtheorem{theorem}{定理}[chapter]
 \newtheorem{corollary}{推论}[chapter]
-\newenvironment{proof}{{\noindent\bf\heiti 证明}\quad\fangsong}{\hfill$\square$\par}
-\newenvironment{solution}{{\noindent\bf\heiti 解}\quad\fangsong}{\par}
+\newenvironment{proof}{{\noindent\bfseries\heiti 证明}\quad\fangsong}{\hfill$\square$\par}
+\newenvironment{solution}{{\noindent\bfseries\heiti 解}\quad\fangsong}{\par}
 
 \renewcommand{\figureautorefname}{图}
 \renewcommand{\tableautorefname}{表}
 \renewcommand{\equationautorefname}{式}
 \renewcommand{\theoremautorefname}{定理}
 \renewcommand{\sectionautorefname}{节}
+\newcommand{\lemmaautorefname}{引理}
 \newcommand{\exampleautorefname}{例}
 \newcommand{\definitionautorefname}{定义}
 \crefrangeformat{equation}{式~#3#1#4--#5#2#6}
@@ -78,8 +82,8 @@
 
 \DeclareMathOperator{\diag}{diag}
 
-\title{\heiti 浙江大学 2023-2024 学年 \\ 线性代数荣誉课辅学讲义}
-\author{2023-2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航\ \ yhwu\_is@zju.edu.cn}
+\title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学讲义}
+\author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad yhwu\_is@zju.edu.cn}
 
 \begin{document}
 \frontmatter
@@ -133,6 +137,6 @@
 
 \backmatter
 \pdfbookmark[0]{索引}{index}
-\printindex
+\printindex % TODO 需要改
 
 \end{document}
