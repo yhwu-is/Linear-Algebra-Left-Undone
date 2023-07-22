@@ -1,13 +1,156 @@
 \chapter{线性映射矩阵表示（III）}
 
-\section{线性空间的积}
+本讲我们将介绍线性映射矩阵表示的最后两个主题——转置和初等变换.为了引入转置我们将首先介绍线性空间和
+线性映射的对偶，
+
+\section{对偶与转置}
+本节我们将开始讨论矩阵的另一种很基本的运算：转置.我们延续之前讨论的风格，首先介绍运算与线性映射之间的
+关联，然后再讨论其运算性质.当然，转置与线性映射的关联不再像之前的那样简单明了，而是要首先引入线性空间和
+线性映射对偶的概念.注意，这部分内容只在《线性代数应该这样学》中要求，只学习《大学数学：代数与几何》
+的读者可以选择性略过有关对偶的知识.
+
+\subsection{对偶空间}
 
 
-\section{线性空间的商}
+\subsection{对偶映射}
 
 
-\section{对偶}
+\subsection{对偶映射的矩阵}
+有了前述内容的铺垫，本节我们将最终给出对偶映射的矩阵.我们首先介绍矩阵转置的概念，然后说明对偶为什么与
+转置相关.
+\begin{definition}
+    设$A=\begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{pmatrix}$，称$\begin{pmatrix}
+        a_{11} & a_{21} & \cdots & a_{m1} \\
+        a_{12} & a_{22} & \cdots & a_{m2} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{1n} & a_{2n} & \cdots & a_{mn}
+    \end{pmatrix}$为矩阵$A$的转置，记作$A^\mathrm{T}$.
+\end{definition}
 
+简单来说，矩阵的转置就是矩阵的第$i$行变成了第$i$列（或者第$i$列变成了第$i$行，即行列互换），
+原先矩阵第$i$行第$j$列的元素转置后变为第$j$行第$i$列的元素，或者抽象表达为：
+\[A=(a_{ij})_{m \times n},\enspace A^\mathrm{T}=(a'_{ji})_{n \times m},\enspace a_{ij}=a'_{ji}\]
+
+
+可能由许多同学心存疑惑——我们为什么要费这么大劲介绍一个这么特别且抽象的概念然后引入转置？
+事实上对偶这一概念在数学中是非常重要的，在之后我们还将提起它，现在可以先留下一个美好的期待，
+相信在之后的学习中你会逐渐发现这一定义是自然而美妙的，而且其中蕴含的思想是有很大的应用价值的.
+
+\section{转置的计算性质}
+\subsection{基本性质}
+\begin{enumerate}
+    \item $(A^\mathrm{T})^\mathrm{T}=A$
+
+    \item $(A+B)^\mathrm{T}=A^\mathrm{T}+B^\mathrm{T}$
+
+    \item $(\lambda A)^\mathrm{T}=\lambda A^\mathrm{T},\enspace \lambda \in \mathbf{F}$
+
+    \item $(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}$，$(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T}$
+
+    \item $(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$
+
+    \item $(A^\mathrm{T})^m=(A^m)^\mathrm{T}$
+\end{enumerate}
+
+以上证明大都是平凡的，可以自己尝试完成.在熟悉了矩阵的基本运算性质后，我们可以来看下面这个例题进行综合练习：
+\begin{example}
+    已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，
+
+$B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$.求矩阵 $X$ 满足：
+
+\[X+\left(B(A^TB^2)^{-1}A^T\right)^{-1}=X\left(A^2(B^TA)^{-1}B^T\right)^{-1}(A+B)\]
+\end{example}
+
+\subsection{对阵矩阵与反对称矩阵}
+\begin{definition}
+    设$A=(a_{ij})_{n \times n}$，如果$\forall i,j=1,2,\ldots,n$均有$a_{ij}=a_{ji}$，
+    则称$A$为对称矩阵. 若均有$a_{ij}=-a_{ji}$，则称$A$为反对称矩阵.
+\end{definition}
+易得$A$为对称矩阵的充要条件为$A=A^\mathrm{T}$，$A$为反对称矩阵的充要条件为$A=-A^\mathrm{T}$.
+\begin{example}
+    证明以下几点性质：
+    \begin{enumerate}
+        \item 反对称矩阵主对角元均为0；
+
+        \item $AA^\mathrm{T}$和$A^\mathrm{T}A$均为对称矩阵；
+
+        \item 设$A,B$为$n$阶对称和反对称矩阵，则$AB+BA$是反对称矩阵；
+
+        \item 对称矩阵的乘积不一定对称；
+
+        \item 可逆的对称（反对称）矩阵的逆矩阵也是对称（反对称）矩阵.
+    \end{enumerate}
+\end{example}
+
+\section{初等矩阵}
+\subsection{基本概念与性质}
+\begin{definition}
+    将单位矩阵$E$做一次初等变换得到的矩阵称为初等矩阵，与三种初等行、列变换对应的三类初等矩阵为：
+    \begin{enumerate}
+        \item 将单位矩阵第$i$行（或列）乘$c$，得到初等倍乘矩阵$E_i(c)$；
+
+        \item 将单位矩阵第$i$行乘$c$加到第$j$行，或将第$j$列乘$c$加到第$i$列，得到初等倍加矩阵$E_{ij}(c)$；
+
+        \item 将单位矩阵第$i,j$行（或列）对换，得到初等对换矩阵$E_{ij}$.
+    \end{enumerate}
+\end{definition}
+请各位同学以矩阵形式写出以上三类矩阵.注意：
+\begin{enumerate}
+    \item 倍加变化请一定注意$i$和$j$在行列的情况下的不同；
+
+    \item 三类矩阵不是三个矩阵，例如行列选择不唯一，常数选择不唯一；
+
+    \item 注意三种初等矩阵都是可逆的，且$E_i^{-1}(c)=E_i\left(\dfrac{1}{c}\right)$，$E_{ij}^{-1}(c)=E_{ij}(-c)$，$E_{ij}^{-1}=E_{ij}$；
+
+    \item 三种初等矩阵的转置：$E_i^\mathrm{T}(c)=E_i(c)$，$E_{ij}^\mathrm{T}(c)=E_{ji}(c)$，$E_{ij}^\mathrm{T}=E_{ij}$；
+\end{enumerate}
+
+初等矩阵大家非常关心为什么左乘代表行变换，右乘代表列变换.以右乘为例，我们来看矩阵$A$和$B$相乘的任一列结果.我们可以将矩阵$A$
+按列做分块矩阵得到$\begin{pmatrix}\alpha_1,\ldots,\alpha_n\end{pmatrix}$，$\alpha_i$即表示$A$的第$i$列.然后矩阵$B$的第$j$列为列向量$(x_1,\ldots,x_n)^\mathrm{T}$，
+由于矩阵$A$与$B$相乘结果第$j$列就是$A$与$B$的第$j$列相乘结果（回顾矩阵乘法的计算方式），则有$B$的第$i$列等于
+$x_1\alpha_1+\cdots+x_n\alpha_n$即为$A$的全部列向量的线性组合，故右乘矩阵$A$得到矩阵的任一列都是$A$的全部列向量的线性组合，
+所以右乘可以代表列变换.注意我这里并没有限制矩阵$B$为初等矩阵或可逆矩阵.
+
+实际上左乘表示行变换可以用类似方法说明，只需按行对$B$分块即可.这一思想是特别重要的，在很多时候如果我们意识到左右乘是对被乘矩阵的行列
+重新线性组合，思路会清晰很多.
+
+关于初等矩阵还有一个相当重要的定理：
+
+\begin{theorem}
+    任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
+\end{theorem}
+定理证明只需要回忆高斯消元法可以将可逆矩阵化为单位矩阵即可.
+
+\subsection{逆矩阵的求解（基本方法）}
+\begin{enumerate}
+    \item 利用解线性方程组的方法：假设$AX=b$，使用高斯消元法求解；
+
+    \item 利用初等矩阵的方法（初等行变换为常用方法）.
+\end{enumerate}
+
+注意，基于初等变换的方法是非常重要的，我们很多时候使用的方法就是初等行变换.我们将通过
+下面这个例子详细介绍这两种方法的计算过程：
+\begin{example}
+    用上述两种方法求矩阵$A=\begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$的逆矩阵.
+\end{example}
+\begin{solution}
+
+\end{solution}
+
+利用矩阵初等变换我们可以获得本学期需要学习的三个矩阵标准形，因此这一内容虽然很基本但是非常重要：
+\begin{enumerate}
+    \item 相抵矩阵：本章已学习的内容，在之后会详细说明；
+    \item 相似矩阵：若$P$为初等矩阵，对矩阵做$P^{-1}AP$变换即可得到与$A$相似的矩阵；
+    \item 相合矩阵：两个矩阵，其中一个可以通过做相同的初等行列变换的到另一个矩阵（若$P$为初等矩阵，
+    $P^{\mathrm{T}}AP$就是对$A$做了一次相同的初等行列变换）.
+\end{enumerate}
+请同学们思考：如何从线性映射矩阵表示的角度理解初等变换与标准形的关系？在B组习题中将有练习进行体会
+（实际上对矩阵表示的基做``初等变换''就是对表示矩阵做了初等变换，这两种变换行列方向不一致且矩阵互逆）.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}

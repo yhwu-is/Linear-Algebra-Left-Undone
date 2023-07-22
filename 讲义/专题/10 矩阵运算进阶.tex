@@ -207,7 +207,7 @@
 其他矩阵如正交矩阵、置换矩阵、幂等矩阵、幂零矩阵等，有的会在稍后介绍部分性质，有的
 则会在课程进行中或者后续课程中再见到它们.
 
-\subsection{矩阵可交换问题}
+\section{矩阵可交换问题}
 一般来说在本课程中此类问题直接设可交换矩阵的每一个元素都是未知数即可，一些特殊的技巧
 （使用关于一些特殊形状矩阵的结论）以及涉及到之后才能学到的知识的方法我们在这里也不展开了.我们只讨论一个基本的技巧，即
 \[\forall t,\enspace AB=BA \iff (A-tE)B=B(A-tE)\]
@@ -231,6 +231,37 @@
         \item 与所有$n$级矩阵可交换的矩阵为数量矩阵.
     \end{enumerate}
 \end{theorem}
+
+\section{矩阵方程}
+\begin{enumerate}
+    \item 考虑以下情形（其中出现的矩阵除$X$外均可逆，$X$不一定是列向量）：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $AX=B \implies X=A^{-1}B, \enspace XA=B \implies X=BA^{-1}$；
+        \item $AXB=C \implies X=A^{-1}CB^{-1}$；
+    \end{enumerate}
+    \item 考虑以下情形：$AX=B$但$A$不可逆（$X$不一定是列向量），直接高斯消元即可；
+    \item 考虑以下求解方式的合理性：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若求$A^{-1}$，只需对$(A,E)$只做初等行变换，可以得到$(E,A^{-1})$；
+        \item 若求$A^{-1}B$，只需对$(A,B)$只做初等行变换，可以得到$(E,A^{-1}B)$；
+        \item 若求$BA^{-1}$，只需对$\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}$只做初等列变换，可以得到$\begin{pmatrix}
+            E \\ BA^{-1}
+        \end{pmatrix}$；
+        \item 对$\begin{pmatrix}
+            A & E \\ E & O
+        \end{pmatrix}$的前$n$行与$n$列做相同的行列变换，可以得到$\begin{pmatrix}
+            P^\mathrm{T}AP & P^\mathrm{T} \\ P & O
+        \end{pmatrix}$.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{example}
+    设$A=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1\end{pmatrix},\
+    B=\begin{pmatrix}0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0\end{pmatrix}$，求矩阵$X$满足：
+    \[AXA+BXB=AXB+BXA+A(A-B)\]
+\end{example}
 
 \section{矩阵的逆进阶求法}
 \subsection{给定多项式求逆矩阵}

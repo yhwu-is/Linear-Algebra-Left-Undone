@@ -94,6 +94,113 @@
 根据维数公式得到：$\dim N(A) =n-r(A)$，根据正交补的性质，我们的可以得到行秩即为
 $n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
 
+我们需要熟练掌握可逆矩阵的几个等价条件：
+\begin{theorem}
+    设$A \in \mathbf{M}_n{\mathbf{F}}$，则下列命题等价：
+    \begin{enumerate}
+        \item $A$可逆；
+
+        \item $r(A)=n$；
+
+        \item $A$的$n$个行（列）向量线性无关；
+
+        \item 齐次线性方程组$AX=0$只有零解；
+
+        \item $|A|\neq 0$.
+    \end{enumerate}
+\end{theorem}
+
+\section{三个重要的定理}
+这一讲我们将在引入逆矩阵的基础上，讨论三个容易混淆但各有十分重要内涵的定理.我们首先用一个例子来引入第一个定理：
+\begin{example}
+    
+\end{example}
+
+\begin{theorem} \label{thm:6:线性映射对向量坐标的影响}
+    \textbf{\heiti 线性映射对向量坐标的影响}
+
+    设$\sigma \in \mathcal{L}(V_1,V_2)$关于$V_1$和$V_2$的基$B_1$和基$B_2$的矩阵为$A=(a_{ij})_{m \times n}$，
+    且$\alpha$与$\sigma(\alpha)$在基$B_1$和基$B_2$下的坐标分别为$X$和$Y$，则$Y=AX$.
+\end{theorem}
+上述即教材定理4.1，这一定理给出一个向量经过线性映射之后，其坐标的变化. 我们可以用下图表示：
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=Stealth]
+        \node (V) at (0,0) {$V$};
+        \node (W) at (3,0) {$W$};
+        \node (Fn) at (0,-3) {$\mathbf{F}^n$};
+        \node (Fm) at (3,-3) {$\mathbf{F}^m$};
+        \draw[->,thick] (V) -- node[below]{表示矩阵：$A$} (W);
+        \draw[<->,thick] (V) -- node[right]{同构} (Fn);
+        \draw[<->,thick] (W) -- node[left]{同构} (Fm);
+        \draw[->,thick] (Fn) -- node[above]{$\sigma(\alpha)=A\alpha$} (Fm);
+    \end{tikzpicture}
+\end{figure}
+
+图中我们可以看出通过坐标映射后得到的新映射即为\autoref{thm:6:线性映射对向量坐标的影响} 描述的映射.
+
+在描述下一定理之前，我们首先介绍过渡矩阵（变换矩阵）的概念.
+\begin{definition}
+    设$B_1=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$与$B_2=\{\beta_1,\beta_2,\ldots,\beta_n\}$是线性空间
+    $V(\mathbf{F})$的任意两组基，$B_2$中每个基向量被基$B_1$表示为
+    \[ \left\{
+    \begin{array}{rcl}
+        \beta_1&=&a_{11}\alpha_1+a_{21}\alpha_2+\cdots+a_{n1}\alpha_n \\
+        \beta_2&=&a_{12}\alpha_1+a_{22}\alpha_2+\cdots+a_{n2}\alpha_n \\
+        &\vdots& \\
+        \beta_n&=&a_{1n}\alpha_1+a_{2n}\alpha_2+\cdots+a_{nn}\alpha_n
+    \end{array}
+    \right. \]
+    将上式用矩阵表示为
+    \[(\beta_1,\beta_2,\cdots,\beta_n)=(\alpha_1,\alpha_2,\cdots,\alpha_n)\begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nn}
+    \end{pmatrix}\]
+    我们将这一矩阵称为即$B_1$变为基$B_2$的变换矩阵（或过渡矩阵）.
+\end{definition}
+简单而言就是将$B_2$中的向量在$B_1$下的坐标按列排列.需要特别注意定义的是$B_1$变为基$B_2$还是反过来，
+这两种情况下得到的矩阵互逆.注意过渡矩阵一定是基与基之间的表示矩阵，并且过渡矩阵一定可逆.
+\begin{theorem}
+    \textbf{\heiti 基的选择对向量坐标的影响}
+
+    设线性空间$V$的两组基为$B_1$和$B_2$，且基$B_1$到$B_2$的变换矩阵（过渡矩阵）为$A$，如果
+    $\xi \in V(\mathbf{F})$，且在$B_1$和$B_2$下的坐标分别为$X$和$Y$，则$Y=A^{-1}X$.
+\end{theorem}
+上述即教材定理4.10，描述同一个向量在不同基下坐标之间的关系.事实上，这与本节同构关系紧密，因为
+同构意味着两个线性空间结构一致，故同构映射可以保持向量组的线性关系不变.在同构关系下，
+线性组合对应线性组合，线性无关对应线性无关，线性相关对应线性相关.我们有如下定理：
+
+\begin{theorem}
+    设$(\alpha_1,\alpha_2,\ldots,\alpha_n)$是线性无关的向量组，且
+    \[(\beta_1,\beta_2,\ldots,\beta_s)=(\alpha_1,\alpha_2,\ldots,\alpha_n)A\]
+    则向量组$(\beta_1,\beta_2,\ldots,\beta_s)$的秩等于矩阵$A$的秩.
+\end{theorem}
+定理的证明需要用到坐标映射是同构映射这一事实，我们不难发现等式左侧向量组与$A$的列向量组是等价的.
+事实上我们也可以由此发现，过渡矩阵一定是可逆矩阵.
+
+\begin{theorem}
+    已知$\beta_i=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{ni}\alpha_n\enspace(i=1,2,\ldots,n)$，
+    且$A=(a_{ij})$可逆，则$\alpha_1,\alpha_2,\ldots,\alpha_n$与$\beta_1,\beta_2,\ldots,\beta_n$
+    等价.
+\end{theorem}
+实际上这一定理与上一定理的思想都是类似的，我们可以看一个例题练习一下：
+\begin{example}
+    已知$\beta_1=\alpha_2+\alpha_3,\enspace\beta_2=\alpha_1+\alpha_3,\enspace\beta_3=\alpha_1+\alpha_2$，
+    证明$\alpha_1,\alpha_2,\alpha_3$与$\beta_1,\beta_2,\beta_3$等价.
+\end{example}
+\begin{theorem}
+    \textbf{\heiti 基的选择对映射矩阵的影响}
+
+    设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$
+    是线性空间的$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，
+    则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
+\end{theorem}
+上述即教材定理7.4，研究同一个映射在不同基下表示矩阵之间的关系.实际上我们将在下一专题初等矩阵一节进一步讨论.
+这一定理的证明需要用到我们之前描述的两种线性映射矩阵表示的统一性.
+
 \section{相抵标准形}
 此处我们需要首先回顾一个基本定理：
 \begin{theorem}
@@ -225,7 +332,12 @@ $n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 设$W$是$n$维线性空间$V$的一个非平凡子空间，$W$中取一组基$\delta_1,\cdots,\delta_m$，按如下两种方式将其扩充为
+	$V$的一组基：
+	$$B_1=\{\delta_1,\cdots,\delta_m,\alpha_{m+1},\cdots,\alpha_n\};$$
+	$$B_2=\{\delta_1,\cdots,\delta_m,\beta_{m+1},\cdots,\beta_n\}.$$
+	设基$B_1$到$B_2$的过渡矩阵为$P$，求商空间$V/W$的基$\alpha_{m+1}+W,\cdots,\alpha_n+W$到
+	$\beta_{m+1}+W,\cdots,\beta_n+W$的过渡矩阵.
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
