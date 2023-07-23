@@ -3,19 +3,229 @@
 本讲我们将介绍线性映射矩阵表示的最后两个主题——转置和初等变换.为了引入转置我们将首先介绍线性空间和
 线性映射的对偶，
 
-\section{对偶与转置}
+\section{对偶空间与对偶映射}
 本节我们将开始讨论矩阵的另一种很基本的运算：转置.我们延续之前讨论的风格，首先介绍运算与线性映射之间的
 关联，然后再讨论其运算性质.当然，转置与线性映射的关联不再像之前的那样简单明了，而是要首先引入线性空间和
 线性映射对偶的概念.注意，这部分内容只在《线性代数应该这样学》中要求，只学习《大学数学：代数与几何》
 的读者可以选择性略过有关对偶的知识.
 
 \subsection{对偶空间}
+说起对偶，我们并不陌生，这一词语一路陪伴了我们从小学到高中的语文课，有``整齐匀称''之美.在经济学中，
+我们可以将企业给定生产成本最大化产出的问题，和给定产出最小化成本的问题视为对偶.我们自然的想法是，要
+定义线性空间的对偶，那么应当也是与原先的线性空间有着某种一一对应的关系.接下来我们将开始定义线性空间的
+和对偶映射，然后逐步挖掘其中匀称之美.
 
+我们首先回顾一下在\autoref{def:3:线性映射的定义}中定义的线性泛函的概念：
+\begin{definition}
+    线性空间$V(\mathbf{F})$上的线性泛函是从$V$到$\mathbf{F}$的线性映射，即线性泛函是$\mathcal{L}(V,\mathbf{F})$中的元素.
+\end{definition}
+有时我们也将线性泛函称为线性函数，实际上它们都表示将$V$中向量映射到数域上的线性映射.我们来看几个线性泛函的例子：
+\begin{enumerate}
+    \item 定义$\sigma:\mathbf{F}^n\to\mathbf{F}$为$\sigma(x_1,\ldots,x_n)=c_1x_1+\cdots+c_nx_n$，其中$c_1,\ldots,c_n\in\mathbf{F}$，
+    则$\sigma$是线性泛函；
+    \item 定义$\sigma:\mathbf{R}[x]_n\to\mathbf{R}$为$\sigma(p(x))=\int_0^1p(x)\mathrm{d}x$，则$\sigma$是线性泛函.
+\end{enumerate}
+
+我们知道，全体$V$到$\mathbf{F}$的线性映射构成的集合$\mathcal{L}(V,\mathbf{F})$也是一个线性空间（因为这只是$\mathcal{L}(V_1,V_2)$的特例），
+我们将其定义为线性空间$V$的对偶空间：
+\begin{definition}
+    设$V$是数域$\mathbf{F}$上的线性空间，称$\mathcal{L}(V,\mathbf{F})$为$V$的对偶空间，记作$V^*$.
+\end{definition}
+
+即线性空间$V$的对偶空间是其上所有线性泛函构成的线性空间.事实上，我们知道对于有限维线性空间$V_1$和$V_2$而言，
+若$\dim V_1=n$，$\dim V_2=m$，则$\mathcal{L}(V_1,V_2)$的维数为$mn$，因此对偶空间$V^*$的维数就是$\dim V$，
+因为数域构成的线性空间$\mathbf{F}(\mathbf{F})$维数显然为1，因为乘法单位元1就可以作为一组基（1自身是线性无关，然后1
+数乘$\mathbf{F}$中的元素可以得到所有元素，当然同理只要是非零元就可以作为基）.
+
+有同学可能会想到$\mathbf{C}(\mathbf{R})$的维数为2，然而如果你翻回线性映射的定义就会发现，
+我们要求两个线性空间的数域是一致的，所以$V(\mathbf{F})$上的线性泛函一定是到$\mathbf{F}(\mathbf{F})$上的.
+
+沿着我们之前研究积空间和商空间的思路，接下来我们的目标非常明确：找到对偶空间的一组基.我们可以考虑这样一个问题，
+假定$V$的维数为$n$，其一组基为$\alpha_1,\ldots,\alpha_n$.由\autoref{thm:5:线性映射唯一确定}可知，$V$上任一
+线性泛函$f$都可以由其在$\alpha_1,\ldots,\alpha_n$下的像$f(\alpha_1),\ldots,f(\alpha_n)$唯一确定.我们考虑如下映射：
+\begin{align*}
+    \sigma:V^*&\to\mathbf{F}^n \\
+    f&\mapsto(f(\alpha_1),\ldots,f(\alpha_n))
+\end{align*}
+根据唯一确定性我们很容易证明可知$\sigma$是一个线性双射（即同构映射），事实上这也与$V^*$维数为$n$是相符的.由于同构映射
+具有保持向量组线性相关性的特点，我们取$\mathbf{F}^n$的自然基$e_1,\ldots,e_n$，则$\sigma^{-1}(e_1),\ldots,\sigma^{-1}(e_n)$
+就是$V^*$的一组基，我们称其为对偶基，记作$f_1,\ldots,f_n$.
+
+我们进一步探究对偶基的性质，根据上面的定义我们知道$f_i=\sigma^{-1}(e_i)$，即$\sigma(f_i)=e_i$，根据$\sigma$定义即$f_i$在$\sigma$下的像
+$(f(\alpha_1),\ldots,f(\alpha_n))=e_1=(0,\cdots,0,1,0,\cdots,0)$，即第$i$个分量为1，其余分量为0，即$f_i(\alpha_j)=\delta_{ij}$，
+其中$\delta_{ij}$为Kronecker符号，展开写即\[f_i(\alpha_j)=\begin{cases}
+    1, & i=j \\
+    0, & i\neq j
+\end{cases}\]
+这样我们便得到了对偶基.我们上面的构造利用的是同构映射，因此无需证明线性无关和张成.实际上直接证明也并不困难，我们将放在习题中供读者练习.
+
+事实上，通过对偶基的表示我们很容易看出对偶基和原空间基的一一对应关系，即对偶基的某个向量（实际上是映射）只有在原空间对应位置的向量下的像
+才为1，其余向量下的像都为0.讲到这里，可能很多读者已经觉得十分抽象了，我们可以理一下思路，对偶空间的定义就是全体线性泛函$V^*=\mathcal{L}(V,\mathbf{F})$，
+因此它的维数显然和$V$相等，并且我们通过了一个同构映射得到了对偶空间的基的表示.因为对偶空间中的元素是线性映射，因此基向量也只不过是满足一定条件
+的线性映射罢了，只是这里的表达可能略微复杂不够直观，但我们可以通过例子来熟悉：
+\begin{example}
+    设$V=\mathbf{R}[x]_3$，对于$g(x)\in V$，定义：
+    \[f_1(g(x))=\int_0^1g(x)\mathrm{d}x,\enspace f_2(g(x))=\int_0^2g(x)\mathrm{d}x,\enspace f_3(g(x))=\int_0^{-1}g(x)\mathrm{d}x,\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$f_1,f_2,f_3$是$V^*$一组基；
+        \item 求出$V$的一组基$g_1(x),g_2(x),g_3(x)$，使得$f_1,f_2,f_3$是$g_1,g_2,g_3$的对偶基.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+
+\end{solution}
 
 \subsection{对偶映射}
+接下来我们将介绍一个看起来可能更为抽象的概念——对偶映射.如果我们有一个线性映射$\sigma:V\to W$，对偶映射的自然想法就是
+出发空间和到达空间变为对偶空间，于是我们有如下定义：
+\begin{definition}
+    设$\sigma:V\to W$是线性映射，定义$\sigma^*:W^*\to V^*$为$\sigma^*(f)=f\circ\sigma,\forall f\in W^*$，
+    则称$\sigma^*$为$\sigma$的对偶映射.
+\end{definition}
+定义可能略显抽象，我们做一下说明：
+\begin{enumerate}
+    \item 看定义$\sigma^*(f)=f\circ\sigma,\forall f\in W^*$，实际上对偶映射只是把自变量$f$复合了一下原映射$\sigma$，
+    定义式很好记忆，接下来的各个证明都要熟练使用这一定义；
+    \item 因为$\sigma^*(f)=f\circ\sigma,\forall f\in W^*$，其中$\sigma:V\to W$，$f:W\to\mathbf{F}$，
+    由映射复合的定义可知$\sigma^*(f):V\to\mathbf{F}$，因此$\sigma^*$的出发空间是$W^*$（参数$f$所在空间），
+    到达空间是$V^*$（像$\sigma^*(f)$所在空间），故$\sigma^*:W^*\to V^*$；
+    \item $\sigma^*$满足线性性，因此是线性映射，证明只需使用线性映射复合运算的性质：
+    \begin{gather*}
+        \sigma^*(f_1+f_2)=(f_1+f_2)\circ\sigma=f_1\circ\sigma+f_2\circ\sigma=\sigma^*(f_1)+\sigma^*(f_2) \\
+        \sigma^*(\lambda f)=(\lambda f)\circ\sigma=\lambda(f\circ\sigma)=\lambda\sigma^*(f)
+    \end{gather*}
+    \item 对偶映射还有以下运算性质：
+    \begin{enumerate}
+        \item $\forall\sigma,\tau\in\mathcal{L}(V,W),\enspace (\sigma+\tau)^*=\sigma^*+\tau^*$；
+        \item $\forall\sigma\in\mathcal{L}(V,W),\enspace \forall\lambda\in\mathbf{F},\enspace (\lambda\sigma)^*=\lambda\sigma^*$；
+        \item $\forall\sigma\in\mathcal{L}(V,W),\enspace \forall\tau\in\mathcal{L}(W,U),\enspace (\tau\sigma)^*=\sigma^*\tau^*$.
+    \end{enumerate}
+    注意这里的前两点也是线性性质，但前面是指线性映射，是映射对于自变量的线性性，这里可以将$^*$看成一种运算，这种运算作用于对偶映射，
+    具有线性性.我们简要证明以下这三条性质：
+    \begin{enumerate}
+        \item $(\sigma+\tau)^*(f)=(f\circ(\sigma+\tau))=(f\circ\sigma)+(f\circ\tau)=\sigma^*(f)+\tau^*(f)=(\sigma^*+\tau^*)(f)$；
+        \item $(\lambda\sigma)^*(f)=(f\circ(\lambda\sigma))=(\lambda(f\circ\sigma))=\lambda(f\circ\sigma)=\lambda\sigma^*(f)=(\lambda\sigma^*)(f)$；
+        \item $(\tau\sigma)^*(f)=(f\circ(\tau\sigma))=((f\circ\tau)\circ\sigma)=\sigma^*(f\circ\tau)=\sigma^*(\tau^*(f))=(\sigma^*\tau^*)(f)$.
+    \end{enumerate}
+    这里的$f$是任意的，因此这三条性质成立.其中每一条最后一个等号我们回顾线性映射加法、数乘和复合的定义就会发现这一等号就是定义.
+\end{enumerate}
+这里希望读者能理解我们分点逐步加深理解的整理方式的良苦用心，事实上就是从简单的概念是什么开始，然后清晰地梳理出
+各种性质.将来读者在其他课程中学习到了抽象的新概念，也可以试图做这样的整理，更符合一般的学习逻辑.
 
+按照惯例，接下来我们要尝试使用线性映射基本定理研究对偶映射像空间和核空间的性质，然后得到一些推论.我们从下面几个方面逐步深入讨论：
+\begin{enumerate}
+    \item 零化子：为了下面进一步的研究，我们首先要给出零化子的概念：
+    \begin{definition}
+        对于线性空间$V$的子空间$U$，定义$U$的零化子$U^0$为
+        \[U^0=\{\varphi\in V^*\mid\varphi(u)=0,\forall u\in U\}.\]
+    \end{definition}
+    对于零化子，我们有以下说明：
+    \begin{enumerate}
+        \item 根据定义，$U$的零化子实际上就是把$U$中向量全部映射为0的线性泛函；
+        \item 我们很容易证明：$U^0$是$V^*$的子空间：
+        \begin{enumerate}
+            \item 非空：$0\in U^0$，零映射一定在$U^0$中；
+            \item 运算封闭：$\forall\varphi_1,\varphi_2\in U^0,\enspace \forall\lambda\in\mathbf{F}$，有
+            \[(\varphi_1+\varphi_2)(u)=\varphi_1(u)+\varphi_2(u)=0,\forall u\in U,\enspace (\lambda\varphi_1)(u)=\lambda\varphi_1(u)=0,\forall u\in U,\]
+            因此$\varphi_1+\varphi_2\in U^0$，$\lambda\varphi_1\in U^0$；
+        \end{enumerate}
+        \item 既然零化子是子空间，那么我们对其基和维数就会十分感兴趣.事实上，根据零化子$U^0$的定义是将子空间$U$完全映射为0，
+        根据\autoref{thm:5:线性映射唯一确定}，这等价于$U^0$中的元素将子空间$U$的基全部映为0.
 
-\subsection{对偶映射的矩阵}
+        设$U$的一组基为$\alpha_1,\ldots,\alpha_s$，则$U^0$中的元素$\varphi$满足
+        \begin{equation}\label{eq:9:零化子基}
+            \varphi(\alpha_1)=\cdots=\varphi(\alpha_s)=0.
+        \end{equation}
+        将这组基扩充成$V$的基$\alpha_1,\ldots,\alpha_s,\alpha_{s+1},\ldots,\alpha_n$，则$V^*$的对偶基为$f_1,\ldots,f_n$，
+        其中\[f_i(\alpha_j)=\begin{cases}
+            1, & i=j \\
+            0, & i\neq j
+        \end{cases}\]
+        因此满足\autoref{eq:9:零化子基}的$V^*$的基向量只有$f_{s+1},\ldots,f_n$.我们自然猜想这就是$U^0$的一组基，我们来验证：
+        \begin{enumerate}
+            \item 线性无关：证明是平凡的，因为$f_1,\ldots,f_n$是$V^*$的一组基，基向量组线性无关，因此其子向量组线性无关（可以回顾线性相关性的几种理解）；
+            \item 张成空间：设$\varphi\in U^0$，由于首先有$\varphi\in V^*$，则它可以被$f_1,\ldots,f_n$线性表示，即
+            \begin{equation}\label{eq:9:零化子线性表示}
+                \varphi=\lambda_1f_1+\cdots+\lambda_nf_n,\enspace \lambda_1,\ldots,\lambda_n\in\mathbf{F}.
+            \end{equation}
+            根据\autoref{thm:5:线性映射唯一确定}可知，$\varphi$被其在$\alpha_1,\ldots,\alpha_n$下的像唯一确定.
+            由于$\varphi\in U^0$，因此$\varphi(\alpha_1)=\cdots=\varphi(\alpha_s)=0$，代入\autoref{eq:9:零化子线性表示}可得
+            $\lambda_1=\cdots=\lambda_s=0$.
+
+            进一步我们将$\alpha_{i}(i=s+1,\cdots,n)$代入\autoref{eq:9:零化子线性表示}可得$\lambda_{i}=\varphi(\alpha_i)$，
+            因此$\varphi$可以被$f_{s+1},\ldots,f_n$线性表示为
+            \[\varphi=\varphi(\alpha_{s+1})f_{s+1}+\cdots+\varphi(\alpha_n)f_n.\]
+        \end{enumerate}
+        因此我们可以根据证明过程得到$U^0$的一组基为$f_{s+1},\ldots,f_n$，维数为$n-s$，更一般地我们有
+        \[\dim U^0=\dim V-\dim U.\]
+    \end{enumerate}
+    \item 对偶映射核空间与像空间的性质：我们不加证明地给出四个结论，它们对应《线性代数应该这样学》的3.107和3.109，笔者认为教材证明
+    非常清楚，因此不在此赘述：
+    \begin{theorem}\label{thm:9:对偶映射像和核的性质}
+        设$V$和$W$都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
+        \begin{enumerate}[label=(\arabic*)]
+            \item $\ker\sigma^*=(\im\sigma)^0$；
+            \item $\dim\ker\sigma^*=\dim\ker\sigma+\dim W-\dim V$；
+            \item $\dim\im\sigma^*=\dim\im\sigma$；
+            \item $\im\sigma^*=(\ker\sigma)^0$.
+        \end{enumerate}
+    \end{theorem}
+
+    事实上很多情况下我们也并不需要背诵这些性质，一方面这只是几个由前面更为基本的概念和定理导出的性质，不具一般性，并且是为了后续更重要的
+    结论铺垫；另一方面即使一定要记忆，它们很强的对称性使得记忆难度不大.
+\end{enumerate}
+
+\subsection{双重对偶空间}
+实际上，对偶空间有一个弊端，我们发现$V^*$的对偶基的选取是与$V$的基的选取有关的，因为我们需要首先确定$V$的一组基$\alpha_1,\ldots,\alpha_n$，
+然后才能得到$V^*$的对偶基$f_1,\ldots,f_n$，满足$f_i(\alpha_j)=\delta_{ij}$，其中$\delta_{ij}$为Kronecker符号.
+
+事实上这并不美观，因为如果我们尝试定义$V$和$V^*$之间的同构，由于这两个空间两组基的强相关性，我们一般需要有如下定义：
+\begin{align*}
+    \sigma:V&\to V^* \\
+    \alpha=\sum_{i=1}^nx_i\alpha_i&\mapsto\sum_{i=1}^nx_if_i
+\end{align*}
+我们会发现，这一映射的定义中$\alpha_i$和$f_i$都离不开选取$V$的一组基$\alpha_1,\ldots,\alpha_n$，
+更通俗地说，在我们取定了$V$的一组基前，我们甚至写不出$V$和$V^*$之间的同构！
+
+为了更容易地理解这一点，我们可以回想以往的线性映射的定义，例如最简单的
+\[\sigma(x_1,x_2,x_3)=(x_1-x_2,x_1+x_3,x_2-x_3),\]
+我们要求一个任意元素的像，例如$\sigma(1,2,3)$，我并不需要取$\mathbf{R}^3$的自然基还是其他的基也能知道像为$(-1,4,-1)$，
+然而$V$和$V^*$之间的同构$\sigma$作用于任意向量$\alpha$后的像$\sigma(\alpha)$在未确定$V$的基前是未定义的！我们一定需要
+$V$的基才能有坐标$x_i$，然后再利用这个坐标结合像空间的基（这组基和$V$的基是有关的）才能得到像，因此这里的同构映射是非常不美观的.
+
+有的读者可能会质疑，即$V$和$V^*$之间的同构真的一定需要建立在取定$V$的基的基础上吗？事实上的确是需要的，更规范的表述需要
+进一步学习范畴学等更为深入的数学知识，这里我们只给出直觉：因为同构映射实际上建立的是两个空间基的一一对应关系，然而$V^*$
+的基本身就依赖于$V$的基的选取，因此我们很难在定义同构映射时避免需要先确定$V$的基这一前提.
+
+因此我们会尝试研究$V$的对偶空间$V^*$的对偶空间$V^{**}$，我们称之为双重对偶空间.由于$V^*=\mathcal{L}(V,\mathbf{F})$，
+因此$V^{**}=\mathcal{L}(V^*,\mathbf{F})=\mathcal{L}(\mathcal{L}(V,\mathbf{F}),\mathbf{F})$，因此$V^**$中的元素是这样的线性映射：
+它的自变量是$V$上的线性泛函，它将这一线性泛函映到一个数.
+
+我们知道$\dim V=\dim V^*$，故$V^*$也和其
+对偶空间有相同的维数，即$\dim V^*=\dim V^{**}$，故$\dim V=\dim V^{**}$，因此我们可以尝试构造一个同构映射$\sigma:V\to V^{**}$，
+使得这一映射不依赖于$V$的基的选取.我们发现这样的映射是存在的，我们来跟着下面这个例子逐步说明：
+\begin{example}
+    设$V$为有限维线性空间，我们定义$\tau:V\to V^{**}$为
+    \[(\tau(\alpha))(f)=f(\alpha),\forall \alpha\in V, f\in V^*.\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$\tau$是线性映射；
+        \item 证明：若$\sigma\in\mathcal{L}(V,V)$，则$\sigma^{**}\circ\tau=\tau\circ\sigma$，这里$\sigma^{**}$是$\sigma^*$的对偶映射；
+        \item 证明：$\tau$是$V$到$V^{**}$的同构映射.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+
+\end{solution}
+
+我们发现这一同构映射不需要先确定$V$的基就可以定义，因此相对于$V$与$V^*$间的同构映射更为自然.在范畴学中，我们称这样的映射为
+自然同构，它不依赖于选取的基，一直客观存在着，就好像在等着我们发现一样，而$V$与$V^*$间的同构映射则需要通过我们先取出$V$的基才能定义，
+因此缺少了这样``自然''的客观存在的感觉.
+
+事实上本节的讨论是比较抽象的，我们只能通过一些例子和描述来直观理解其中核心的思想，即自然同构中``自然''的含义（不依赖于基的选取）.
+我们长篇的论述的核心就是直观地告诉读者，$V$和$V^*$之间找不到自然同构，但和$V^{**}$之间存在.更深入、严谨的讨论可能需要读者进一步
+学习范畴学的相关知识才能全面理解.
+
+\section{对偶映射的矩阵}
 有了前述内容的铺垫，本节我们将最终给出对偶映射的矩阵.我们首先介绍矩阵转置的概念，然后说明对偶为什么与
 转置相关.
 \begin{definition}
@@ -40,6 +250,11 @@
 可能由许多同学心存疑惑——我们为什么要费这么大劲介绍一个这么特别且抽象的概念然后引入转置？
 事实上对偶这一概念在数学中是非常重要的，在之后我们还将提起它，现在可以先留下一个美好的期待，
 相信在之后的学习中你会逐渐发现这一定义是自然而美妙的，而且其中蕴含的思想是有很大的应用价值的.
+
+除此之外，在这一节内容中笔者也反复强调，面对这一抽象的内容我们不要畏惧，我们可以先从是什么开始，
+熟练概念，然后理解相关的性质，例如我们在定义对偶映射的时候就强调先记住很好记忆的定义式，然后我们再说明
+它的出发空间、到达空间是什么，具有什么样的性质，不能一开始就妄图直接装下所有的概念、性质，这样只能使思维混乱且不知道自己学了什么.
+我们应当学会将抽象的概念通过拆解成大家从小就习惯的``是什么''的教育和研究中更感兴趣的内容两部分进行梳理，从而更快地理解.
 
 \section{转置的计算性质}
 \subsection{基本性质}
@@ -86,71 +301,6 @@ $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{p
         \item 可逆的对称（反对称）矩阵的逆矩阵也是对称（反对称）矩阵.
     \end{enumerate}
 \end{example}
-
-\section{初等矩阵}
-\subsection{基本概念与性质}
-\begin{definition}
-    将单位矩阵$E$做一次初等变换得到的矩阵称为初等矩阵，与三种初等行、列变换对应的三类初等矩阵为：
-    \begin{enumerate}
-        \item 将单位矩阵第$i$行（或列）乘$c$，得到初等倍乘矩阵$E_i(c)$；
-
-        \item 将单位矩阵第$i$行乘$c$加到第$j$行，或将第$j$列乘$c$加到第$i$列，得到初等倍加矩阵$E_{ij}(c)$；
-
-        \item 将单位矩阵第$i,j$行（或列）对换，得到初等对换矩阵$E_{ij}$.
-    \end{enumerate}
-\end{definition}
-请各位同学以矩阵形式写出以上三类矩阵.注意：
-\begin{enumerate}
-    \item 倍加变化请一定注意$i$和$j$在行列的情况下的不同；
-
-    \item 三类矩阵不是三个矩阵，例如行列选择不唯一，常数选择不唯一；
-
-    \item 注意三种初等矩阵都是可逆的，且$E_i^{-1}(c)=E_i\left(\dfrac{1}{c}\right)$，$E_{ij}^{-1}(c)=E_{ij}(-c)$，$E_{ij}^{-1}=E_{ij}$；
-
-    \item 三种初等矩阵的转置：$E_i^\mathrm{T}(c)=E_i(c)$，$E_{ij}^\mathrm{T}(c)=E_{ji}(c)$，$E_{ij}^\mathrm{T}=E_{ij}$；
-\end{enumerate}
-
-初等矩阵大家非常关心为什么左乘代表行变换，右乘代表列变换.以右乘为例，我们来看矩阵$A$和$B$相乘的任一列结果.我们可以将矩阵$A$
-按列做分块矩阵得到$\begin{pmatrix}\alpha_1,\ldots,\alpha_n\end{pmatrix}$，$\alpha_i$即表示$A$的第$i$列.然后矩阵$B$的第$j$列为列向量$(x_1,\ldots,x_n)^\mathrm{T}$，
-由于矩阵$A$与$B$相乘结果第$j$列就是$A$与$B$的第$j$列相乘结果（回顾矩阵乘法的计算方式），则有$B$的第$i$列等于
-$x_1\alpha_1+\cdots+x_n\alpha_n$即为$A$的全部列向量的线性组合，故右乘矩阵$A$得到矩阵的任一列都是$A$的全部列向量的线性组合，
-所以右乘可以代表列变换.注意我这里并没有限制矩阵$B$为初等矩阵或可逆矩阵.
-
-实际上左乘表示行变换可以用类似方法说明，只需按行对$B$分块即可.这一思想是特别重要的，在很多时候如果我们意识到左右乘是对被乘矩阵的行列
-重新线性组合，思路会清晰很多.
-
-关于初等矩阵还有一个相当重要的定理：
-
-\begin{theorem}
-    任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
-\end{theorem}
-定理证明只需要回忆高斯消元法可以将可逆矩阵化为单位矩阵即可.
-
-\subsection{逆矩阵的求解（基本方法）}
-\begin{enumerate}
-    \item 利用解线性方程组的方法：假设$AX=b$，使用高斯消元法求解；
-
-    \item 利用初等矩阵的方法（初等行变换为常用方法）.
-\end{enumerate}
-
-注意，基于初等变换的方法是非常重要的，我们很多时候使用的方法就是初等行变换.我们将通过
-下面这个例子详细介绍这两种方法的计算过程：
-\begin{example}
-    用上述两种方法求矩阵$A=\begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$的逆矩阵.
-\end{example}
-\begin{solution}
-
-\end{solution}
-
-利用矩阵初等变换我们可以获得本学期需要学习的三个矩阵标准形，因此这一内容虽然很基本但是非常重要：
-\begin{enumerate}
-    \item 相抵矩阵：本章已学习的内容，在之后会详细说明；
-    \item 相似矩阵：若$P$为初等矩阵，对矩阵做$P^{-1}AP$变换即可得到与$A$相似的矩阵；
-    \item 相合矩阵：两个矩阵，其中一个可以通过做相同的初等行列变换的到另一个矩阵（若$P$为初等矩阵，
-    $P^{\mathrm{T}}AP$就是对$A$做了一次相同的初等行列变换）.
-\end{enumerate}
-请同学们思考：如何从线性映射矩阵表示的角度理解初等变换与标准形的关系？在B组习题中将有练习进行体会
-（实际上对矩阵表示的基做``初等变换''就是对表示矩阵做了初等变换，这两种变换行列方向不一致且矩阵互逆）.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}

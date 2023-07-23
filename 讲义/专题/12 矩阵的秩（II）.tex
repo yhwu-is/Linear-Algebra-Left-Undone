@@ -1,0 +1,215 @@
+\chapter{矩阵的秩（II）}
+本节内容理解难度较大，事实上这里利用了很多线性空间与线性映射的思想，
+也有很多技巧性的内容，因此希望各位同学根据自己实际情况理解掌握.虽然很推荐
+这部分内容采用与教材不同的思路去理解，更多利用线性空间与线性映射的抽象知识思考，但是如果
+理解起来有一定困难也记住一些结论去解决一些问题.
+
+还有一部分应当属于本节的内容将在专题五线性方程组的部分提及，因此本节不再专门
+讲解利用线性方程组的思想解决矩阵的秩相关问题的部分.
+
+\section{初等矩阵}
+接下来一节我们将介绍一种特别的矩阵——初等矩阵.这一讲与线性映射可能关联不大，但其中要介绍的初等矩阵和
+可逆矩阵的关联将成为我们后面大量内容的讨论基础，因此我们在此展开叙述.
+
+\subsection{基本概念与性质}
+\begin{definition}
+    将单位矩阵$E$做一次初等变换得到的矩阵称为初等矩阵，与三种初等行、列变换对应的三类初等矩阵为：
+    \begin{enumerate}
+        \item 将单位矩阵第$i$行（或列）乘$c$，得到初等倍乘矩阵$E_i(c)$；
+
+        \item 将单位矩阵第$i$行乘$c$加到第$j$行，或将第$j$列乘$c$加到第$i$列，得到初等倍加矩阵$E_{ij}(c)$；
+
+        \item 将单位矩阵第$i,j$行（或列）对换，得到初等对换矩阵$E_{ij}$.
+    \end{enumerate}
+\end{definition}
+请各位同学以矩阵形式写出以上三类矩阵.注意：
+\begin{enumerate}
+    \item 倍加变化请一定注意$i$和$j$在行列的情况下的不同；
+
+    \item 三类矩阵不是三个矩阵，例如行列选择不唯一，常数选择不唯一；
+
+    \item 注意三种初等矩阵都是可逆的，且$E_i^{-1}(c)=E_i\left(\dfrac{1}{c}\right)$，$E_{ij}^{-1}(c)=E_{ij}(-c)$，$E_{ij}^{-1}=E_{ij}$；
+
+    \item 三种初等矩阵的转置：$E_i^\mathrm{T}(c)=E_i(c)$，$E_{ij}^\mathrm{T}(c)=E_{ji}(c)$，$E_{ij}^\mathrm{T}=E_{ij}$；
+\end{enumerate}
+
+初等矩阵大家非常关心为什么左乘代表行变换，右乘代表列变换.以右乘为例，我们来看矩阵$A$和$B$相乘的任一列结果.我们可以将矩阵$A$
+按列做分块矩阵得到$\begin{pmatrix}\alpha_1,\ldots,\alpha_n\end{pmatrix}$，$\alpha_i$即表示$A$的第$i$列.然后矩阵$B$的第$j$列为列向量$(x_1,\ldots,x_n)^\mathrm{T}$，
+由于矩阵$A$与$B$相乘结果第$j$列就是$A$与$B$的第$j$列相乘结果（回顾矩阵乘法的计算方式），则有$B$的第$i$列等于
+$x_1\alpha_1+\cdots+x_n\alpha_n$即为$A$的全部列向量的线性组合，故右乘矩阵$A$得到矩阵的任一列都是$A$的全部列向量的线性组合，
+所以右乘可以代表列变换.注意我这里并没有限制矩阵$B$为初等矩阵或可逆矩阵.
+
+实际上左乘表示行变换可以用类似方法说明，只需按行对$B$分块即可.这一思想是特别重要的，在很多时候如果我们意识到左右乘是对被乘矩阵的行列
+重新线性组合，思路会清晰很多.
+
+关于初等矩阵还有一个相当重要的定理：
+
+\begin{theorem}
+    任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
+\end{theorem}
+定理证明只需要回忆高斯消元法可以将可逆矩阵化为单位矩阵即可.
+
+\subsection{逆矩阵的求解（基本方法）}
+\begin{enumerate}
+    \item 利用解线性方程组的方法：假设$AX=b$，使用高斯消元法求解；
+
+    \item 利用初等矩阵的方法（初等行变换为常用方法）.
+\end{enumerate}
+
+注意，基于初等变换的方法是非常重要的，我们很多时候使用的方法就是初等行变换.我们将通过
+下面这个例子详细介绍这两种方法的计算过程：
+\begin{example}
+    用上述两种方法求矩阵$A=\begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$的逆矩阵.
+\end{example}
+\begin{solution}
+
+\end{solution}
+
+利用矩阵初等变换我们可以获得本学期需要学习的三个矩阵标准形，因此这一内容虽然很基本但是非常重要：
+\begin{enumerate}
+    \item 相抵矩阵：本章已学习的内容，在之后会详细说明；
+    \item 相似矩阵：若$P$为初等矩阵，对矩阵做$P^{-1}AP$变换即可得到与$A$相似的矩阵；
+    \item 相合矩阵：两个矩阵，其中一个可以通过做相同的初等行列变换的到另一个矩阵（若$P$为初等矩阵，
+    $P^{\mathrm{T}}AP$就是对$A$做了一次相同的初等行列变换）.
+\end{enumerate}
+请同学们思考：如何从线性映射矩阵表示的角度理解初等变换与标准形的关系？在B组习题中将有练习进行体会
+（实际上对矩阵表示的基做``初等变换''就是对表示矩阵做了初等变换，这两种变换行列方向不一致且矩阵互逆）.
+
+
+\section{相抵标准形}
+此处我们需要首先回顾一个基本定理：
+\begin{theorem}
+    初等变换不改变矩阵的秩（包括行变换和列变换）.
+\end{theorem}
+由这一定理我们可以推导出相抵标准形：
+\begin{theorem}
+    若$r(A_{m \times n})=r$，则存在可逆矩阵$P$和$Q$，使得
+    \[PAQ=\begin{pmatrix}
+        E_r & 0 \\ 0 & 0
+    \end{pmatrix}=U_r\]
+    其中$E_r$表示$r$阶单位矩阵.
+\end{theorem}
+这一定理证明直接使用定理4以及可逆矩阵可以拆分为初等矩阵的乘积即可.
+其中$U_r$称为相抵标准形.我们称两个矩阵相抵即两个矩阵可以通过一系列
+初等变换可以互相转化.由此我们得到关于矩阵相抵的两个等价命题：
+
+1. 矩阵$A$与$B$相抵$\iff$存在可逆矩阵$P$和$Q$使得$PAQ=B$；
+
+2. 矩阵$A$与$B$相抵$\iff r(A)=r(B)$.
+
+\begin{example}
+    设$A=\begin{pmatrix}
+        1 & 0 & 2 & -4 \\ 2 & 1 & 3 & -6 \\ -1 & -1 & -1 & 2
+    \end{pmatrix}$. 求
+    \begin{enumerate}
+        \item $A$的秩$r$和相抵标准形；
+
+        \item 3 阶可逆矩阵$P$和 4 阶可逆矩阵$Q$使得$PAQ=\begin{pmatrix}
+            E_r & 0 \\ 0 & 0
+        \end{pmatrix}$.
+    \end{enumerate}
+\end{example}
+
+关于相抵标准形，我们需要在此补充一个常用的技术，即相抵标准形的分解：
+
+我们对$s \times n$矩阵$\begin{pmatrix}
+    E_r & O \\ O & O
+\end{pmatrix}$有一种很重要的分解：
+\[\begin{pmatrix}
+    E_r & O \\ O & O
+\end{pmatrix}=\begin{pmatrix}
+    E_r \\ O
+\end{pmatrix}\begin{pmatrix}
+    E_r & O
+\end{pmatrix}\]
+由此我们可以知道任意一个非零矩阵都可以被分解成一个列满秩矩阵和一个
+行满秩矩阵的乘积：
+
+\[A=P\begin{pmatrix}
+    E_r & O \\ O & O
+\end{pmatrix}Q=P\begin{pmatrix}
+    E_r \\ O
+\end{pmatrix}\begin{pmatrix}
+    E_r & O
+\end{pmatrix}Q\]
+记$P_1=P\begin{pmatrix}
+    E_r \\ O
+\end{pmatrix}$，$Q_1=\begin{pmatrix}
+    E_r & O
+\end{pmatrix}Q$，则$A=P_1Q_1$，且$P_1$和$Q_1$分别为列满秩、行满秩矩阵.
+
+我们可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明：
+\begin{example}
+    \begin{enumerate}
+        \item $r\begin{pmatrix}
+            A & O \\ O & B
+        \end{pmatrix}=r(A)+r(B)$.
+
+        \item $r\begin{pmatrix}
+            A & D \\ O & B
+        \end{pmatrix}\geqslant r(A)+r(B),\enspace r\begin{pmatrix}
+            A & O \\ C & B
+        \end{pmatrix}\geqslant r(A)+r(B)$.
+    \end{enumerate}
+\end{example}
+
+\section{秩不等式}
+本节的内容实际上部分内容有一定的技巧性，对于荣誉课程来说还是以理解为主（所以
+其实本节中提到的很多内容都只是介绍性的，而非要求大家熟练掌握，但是遇见了要有
+一些基本的思路而不能完全不理解），可能下面列出定理的时候显得比较繁冗，但是实
+际上我们更重视其中的理解而非硬套结论.
+
+我们首先给出一些常见的秩相关的不等式或等式，这些式子希望各位同学能够理解其含义，
+而非机械记忆套用.下面这些等式/不等式的证明方式非常多，实际上可以利用之前所说化为
+相抵标准形的方法，也可以利用线性相关性的方法，也可以回到线性映射进行考量.总之
+解决的方法非常多，希望各位同学能熟练推导理解.
+\begin{enumerate}
+    \item $r(A)=r(PA)=r(AQ)=r(PAQ)$，其中$P$、$Q$可逆
+    \item $|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)$
+    \item $r(AB) \leqslant \min\{r(A),\ r(B)\}$
+    \item $r(A)=r(A^\mathrm{T})=r(AA^\mathrm{T})=r(A^\mathrm{T}A)$（注意第二个等号需要实矩阵作为前提条件）
+    \item $A \in \mathbf{F}^{s \times n}$，$B \in \mathbf{F}^{n \times m}$，
+    则$r(AB) \geqslant r(A)+r(B)-n$.（可以视为结论6的推论，特例$AB=O$时有$r(A)+r(B)\leqslant n$）
+    \item $r(ABC) \geqslant r(AB)+r(BC)-r(B)$.（还可以考虑$A,B,C$相等的特殊情况的结果）
+\end{enumerate}
+
+分块矩阵的相关公式在上一小节的例题中已经书写过，此处不再重复.
+
+一般而言，解决较为复杂的秩的问题时，我们可以采用如下方法：
+\begin{enumerate}
+    \item 利用（分块）矩阵初等变换；
+
+    \item 利用线性方程组解的一般理论（将在专题五讲解）；
+
+    \item 利用向量组线性相关性；
+
+    \item 利用已知的矩阵秩的等式和不等式.实际上等式很多时候基于可逆矩阵变换或者两个不等号夹逼.
+\end{enumerate}
+
+相关方法的应用都在本节最后的习题中有所体现，当然首要的任务是掌握上述基本的秩不等式的证明，
+很多也利用了上面的思想，并且解法不唯一.
+
+\vspace{2ex}
+\centerline{\heiti \Large 内容总结}
+
+\vspace{2ex}
+
+\centerline{\heiti \Large 习题}
+\vspace{2ex}
+{\kaishu }
+\begin{flushright}
+    \kaishu
+
+\end{flushright}
+\centerline{\heiti A组}
+\begin{enumerate}
+    \item
+\end{enumerate}
+\centerline{\heiti B组}
+\begin{enumerate}
+    \item 
+\end{enumerate}
+\centerline{\heiti C组}
+\begin{enumerate}
+    \item
+\end{enumerate}
