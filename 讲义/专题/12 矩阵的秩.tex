@@ -1,4 +1,9 @@
-\chapter{矩阵的秩（I）}
+\chapter{矩阵的秩}
+
+事实上，在前述介绍中我们已经有了充足的关于线性空间、线性映射以及矩阵的相关背景知识.回顾之前讨论的
+\autoref{exp:2:线性空间引入}中的例子以及线性映射核空间与齐次线性方程组的解的关联，我们是时候彻底
+揭开矩阵与抽象的线性空间和线性映射之间那层若隐若现的薄膜，而我们的工具正是本节讨论的核心——矩阵的秩.
+相信在理解了本节内容后，我们可以说是一只手已经触碰到线性方程组解的一般理论了.
 
 \section{矩阵的秩}
 我们首先给出矩阵的三个秩的定义：
@@ -7,7 +12,7 @@
     记为$r(A)$.我们将矩阵$A$的所有行向量组成的秩称为$A$的\keyterm*{行秩}[row rank]，
     所有列向量组成的向量组的秩称为$A$的\keyterm*{列秩}[column rank].
 \end{definition}
-对于以上三个秩我们有重要的定理如下：
+对于以上定义的三个秩，我们有定理如下，这一定理无论是证明还是结果都非常关键：
 \begin{theorem}
     任意矩阵的秩 = 行秩 = 列秩.
 \end{theorem}
@@ -193,6 +198,119 @@ $n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
 \end{theorem}
 上述即教材定理7.4，研究同一个映射在不同基下表示矩阵之间的关系.实际上我们将在下一专题初等矩阵一节进一步讨论.
 这一定理的证明需要用到我们之前描述的两种线性映射矩阵表示的统一性.
+
+\section{相抵标准形}
+此处我们需要首先回顾一个基本定理：
+\begin{theorem}
+    初等变换不改变矩阵的秩（包括行变换和列变换）.
+\end{theorem}
+由这一定理我们可以推导出相抵标准形：
+\begin{theorem}
+    若$r(A_{m \times n})=r$，则存在可逆矩阵$P$和$Q$，使得
+    \[PAQ=\begin{pmatrix}
+        E_r & 0 \\ 0 & 0
+    \end{pmatrix}=U_r\]
+    其中$E_r$表示$r$阶单位矩阵.
+\end{theorem}
+这一定理证明直接使用定理4以及可逆矩阵可以拆分为初等矩阵的乘积即可.
+其中$U_r$称为相抵标准形.我们称两个矩阵相抵即两个矩阵可以通过一系列
+初等变换可以互相转化.由此我们得到关于矩阵相抵的两个等价命题：
+
+1. 矩阵$A$与$B$相抵$\iff$存在可逆矩阵$P$和$Q$使得$PAQ=B$；
+
+2. 矩阵$A$与$B$相抵$\iff r(A)=r(B)$.
+
+\begin{example}
+    设$A=\begin{pmatrix}
+        1 & 0 & 2 & -4 \\ 2 & 1 & 3 & -6 \\ -1 & -1 & -1 & 2
+    \end{pmatrix}$. 求
+    \begin{enumerate}
+        \item $A$的秩$r$和相抵标准形；
+
+        \item 3 阶可逆矩阵$P$和 4 阶可逆矩阵$Q$使得$PAQ=\begin{pmatrix}
+            E_r & 0 \\ 0 & 0
+        \end{pmatrix}$.
+    \end{enumerate}
+\end{example}
+
+关于相抵标准形，我们需要在此补充一个常用的技术，即相抵标准形的分解：
+
+我们对$s \times n$矩阵$\begin{pmatrix}
+    E_r & O \\ O & O
+\end{pmatrix}$有一种很重要的分解：
+\[\begin{pmatrix}
+    E_r & O \\ O & O
+\end{pmatrix}=\begin{pmatrix}
+    E_r \\ O
+\end{pmatrix}\begin{pmatrix}
+    E_r & O
+\end{pmatrix}\]
+由此我们可以知道任意一个非零矩阵都可以被分解成一个列满秩矩阵和一个
+行满秩矩阵的乘积：
+
+\[A=P\begin{pmatrix}
+    E_r & O \\ O & O
+\end{pmatrix}Q=P\begin{pmatrix}
+    E_r \\ O
+\end{pmatrix}\begin{pmatrix}
+    E_r & O
+\end{pmatrix}Q\]
+记$P_1=P\begin{pmatrix}
+    E_r \\ O
+\end{pmatrix}$，$Q_1=\begin{pmatrix}
+    E_r & O
+\end{pmatrix}Q$，则$A=P_1Q_1$，且$P_1$和$Q_1$分别为列满秩、行满秩矩阵.
+
+我们可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明：
+\begin{example}
+    \begin{enumerate}
+        \item $r\begin{pmatrix}
+            A & O \\ O & B
+        \end{pmatrix}=r(A)+r(B)$.
+
+        \item $r\begin{pmatrix}
+            A & D \\ O & B
+        \end{pmatrix}\geqslant r(A)+r(B),\enspace r\begin{pmatrix}
+            A & O \\ C & B
+        \end{pmatrix}\geqslant r(A)+r(B)$.
+    \end{enumerate}
+\end{example}
+
+\section{秩不等式}
+本节的内容实际上部分内容有一定的技巧性，对于荣誉课程来说还是以理解为主（所以
+其实本节中提到的很多内容都只是介绍性的，而非要求大家熟练掌握，但是遇见了要有
+一些基本的思路而不能完全不理解），可能下面列出定理的时候显得比较繁冗，但是实
+际上我们更重视其中的理解而非硬套结论.
+
+我们首先给出一些常见的秩相关的不等式或等式，这些式子希望各位同学能够理解其含义，
+而非机械记忆套用.下面这些等式/不等式的证明方式非常多，实际上可以利用之前所说化为
+相抵标准形的方法，也可以利用线性相关性的方法，也可以回到线性映射进行考量.总之
+解决的方法非常多，希望各位同学能熟练推导理解.
+\begin{enumerate}
+    \item $r(A)=r(PA)=r(AQ)=r(PAQ)$，其中$P$、$Q$可逆
+    \item $|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)$
+    \item $r(AB) \leqslant \min\{r(A),\ r(B)\}$
+    \item $r(A)=r(A^\mathrm{T})=r(AA^\mathrm{T})=r(A^\mathrm{T}A)$（注意第二个等号需要实矩阵作为前提条件）
+    \item $A \in \mathbf{F}^{s \times n}$，$B \in \mathbf{F}^{n \times m}$，
+    则$r(AB) \geqslant r(A)+r(B)-n$.（可以视为结论6的推论，特例$AB=O$时有$r(A)+r(B)\leqslant n$）
+    \item $r(ABC) \geqslant r(AB)+r(BC)-r(B)$.（还可以考虑$A,B,C$相等的特殊情况的结果）
+\end{enumerate}
+
+分块矩阵的相关公式在上一小节的例题中已经书写过，此处不再重复.
+
+一般而言，解决较为复杂的秩的问题时，我们可以采用如下方法：
+\begin{enumerate}
+    \item 利用（分块）矩阵初等变换；
+
+    \item 利用线性方程组解的一般理论（将在专题五讲解）；
+
+    \item 利用向量组线性相关性；
+
+    \item 利用已知的矩阵秩的等式和不等式.实际上等式很多时候基于可逆矩阵变换或者两个不等号夹逼.
+\end{enumerate}
+
+相关方法的应用都在本节最后的习题中有所体现，当然首要的任务是掌握上述基本的秩不等式的证明，
+很多也利用了上面的思想，并且解法不唯一.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}

@@ -246,17 +246,34 @@ $V$的基才能有坐标$x_i$，然后再利用这个坐标结合像空间的基
 原先矩阵第$i$行第$j$列的元素转置后变为第$j$行第$i$列的元素，或者抽象表达为：
 \[A=(a_{ij})_{m \times n},\enspace A^\mathrm{T}=(a'_{ji})_{n \times m},\enspace a_{ij}=a'_{ji}\]
 
+接下来我们将说明对偶映射在对偶基下的矩阵就是原映射在原空间基下矩阵的转置：
+\begin{theorem}
+    $V$和$W$为有限维线性空间，$V$的一组基为$\alpha_1,\ldots,\alpha_n$，$W$的一组基为$\beta_1,\ldots,\beta_m$，
+    它们对偶空间的基分别为$f_1,\ldots,f_n$和$g_1,\ldots,g_m$.设$\sigma\in\mathcal{L}(V,W)$，它在上述$V$和$W$
+    的基下的矩阵为$A=(a_{ij})_{m \times n}$，则$\sigma^*\in\mathcal{L}(W^*,V^*)$在上述对偶基下的矩阵为
+    $C=(c_{ij})_{n \times m}=A^\mathrm{T}$.
+\end{theorem}
+\begin{proof}
+    根据线性映射矩阵表示的定义，我们有
+    \[\sigma^*(g_j)=\sum\limits_{i=1}^nc_{ij}f_i,\enspace j=1,2,\ldots,m.\]
+    上式左端根据对偶映射定义等于$(g_j\circ\sigma)$.于是我们将等式两端均作用于$\alpha_k$上有
+    \[(g_j\circ\sigma)(\alpha_k)=\sum\limits_{i=1}^nc_{ij}f_i(\alpha_k)=\sum\limits_{i=1}^nc_{ij}\delta_{ik}=c_{kj}.\]
+    另一方面，根据映射复合的结合律以及线性映射矩阵表示的定义，我们有
+    \[(g_j\circ\sigma)(\alpha_k)=g_j(\sigma(\alpha_k))=g_j\left(\sum\limits_{i=1}^na_{ik}\beta_i\right)=\sum\limits_{i=1}^na_{ik}g_j(\beta_i)=\sum\limits_{i=1}^na_{ik}\delta_{ij}=a_{jk}.\]
+    因此我们有$c_{kj}=a_{jk}$，即$C=A^\mathrm{T}$.
+\end{proof}
 
 可能由许多同学心存疑惑——我们为什么要费这么大劲介绍一个这么特别且抽象的概念然后引入转置？
 事实上对偶这一概念在数学中是非常重要的，在之后我们还将提起它，现在可以先留下一个美好的期待，
 相信在之后的学习中你会逐渐发现这一定义是自然而美妙的，而且其中蕴含的思想是有很大的应用价值的.
 
-除此之外，在这一节内容中笔者也反复强调，面对这一抽象的内容我们不要畏惧，我们可以先从是什么开始，
+除此之外，在这一讲中笔者也反复强调，面对这一抽象的内容我们不要畏惧，我们可以先从是什么开始，
 熟练概念，然后理解相关的性质，例如我们在定义对偶映射的时候就强调先记住很好记忆的定义式，然后我们再说明
 它的出发空间、到达空间是什么，具有什么样的性质，不能一开始就妄图直接装下所有的概念、性质，这样只能使思维混乱且不知道自己学了什么.
 我们应当学会将抽象的概念通过拆解成大家从小就习惯的``是什么''的教育和研究中更感兴趣的内容两部分进行梳理，从而更快地理解.
 
 \section{转置的计算性质}
+接下来我们转入具象的矩阵运算中，讨论转置这一运算的性质.我们首先给出一些基本的性质：
 \subsection{基本性质}
 \begin{enumerate}
     \item $(A^\mathrm{T})^\mathrm{T}=A$
@@ -271,8 +288,20 @@ $V$的基才能有坐标$x_i$，然后再利用这个坐标结合像空间的基
 
     \item $(A^\mathrm{T})^m=(A^m)^\mathrm{T}$
 \end{enumerate}
+关于上述性质我们有如下说明：
+\begin{enumerate}
+    \item 从计算角度来看是显然的，简而言之就是矩阵第$i$行变成第$i$列后又变回了第$i$行，因此矩阵不变；但如果从映射矩阵表示的角度来看，
+    我们需要验证对偶映射的对偶映射在双重对偶基下的矩阵仍是原映射在原空间基下的矩阵.这一点我们放在习题中供感兴趣的读者验证；
+    \item 第2-4点考虑从计算角度验证只需暴力计算即可，从映射角度之前已经说明了映射对偶运算的三条性质，因此这里也是显然的.至于4的最后
+    $n$个矩阵的情况只需要从两个相乘的情况出发数学归纳即可；
+    \item 第5点请不要忘记验证逆的运算性质的一般方法，我们只需要看到$(A^{-1})^\mathrm{T}A^\mathrm{T}=(AA^{-1})^\mathrm{T}=E$，
+    这里第一个等号运用了上面第4点转置乘法的性质.从这一式中我们看到$(A^{-1})^\mathrm{T}$是$A^\mathrm{T}$的逆矩阵，因此
+    利用逆的唯一性即可得到$(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$；
+    \item 这一点实际上将$(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T}$中的$A_i$全部取成$A$
+    即可.
+\end{enumerate}
 
-以上证明大都是平凡的，可以自己尝试完成.在熟悉了矩阵的基本运算性质后，我们可以来看下面这个例题进行综合练习：
+在熟悉了矩阵的基本运算性质后，我们可以来看下面这个例题进行综合练习：
 \begin{example}
     已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，
 
@@ -280,13 +309,16 @@ $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{p
 
 \[X+\left(B(A^TB^2)^{-1}A^T\right)^{-1}=X\left(A^2(B^TA)^{-1}B^T\right)^{-1}(A+B)\]
 \end{example}
+\begin{solution}
+
+\end{solution}
 
 \subsection{对阵矩阵与反对称矩阵}
 \begin{definition}
     设$A=(a_{ij})_{n \times n}$，如果$\forall i,j=1,2,\ldots,n$均有$a_{ij}=a_{ji}$，
     则称$A$为对称矩阵. 若均有$a_{ij}=-a_{ji}$，则称$A$为反对称矩阵.
 \end{definition}
-易得$A$为对称矩阵的充要条件为$A=A^\mathrm{T}$，$A$为反对称矩阵的充要条件为$A=-A^\mathrm{T}$.
+由定义易知$A$为对称矩阵的充要条件为$A=A^\mathrm{T}$，$A$为反对称矩阵的充要条件为$A=-A^\mathrm{T}$.
 \begin{example}
     证明以下几点性质：
     \begin{enumerate}
@@ -301,6 +333,22 @@ $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{p
         \item 可逆的对称（反对称）矩阵的逆矩阵也是对称（反对称）矩阵.
     \end{enumerate}
 \end{example}
+\begin{solution}
+
+\end{solution}
+
+我们已经看到转置和对称矩阵之间的关联，因此我们在之后在处理一些对称性很强的问题时，
+实际上都可以考虑利用转置来解决，例如：
+\begin{example}
+    $a,b,c,d$是四个实数，证明：$\begin{cases}
+		a^2+b^2=1 \\ c^2+d^2=1 \\ ac+bd=0
+	\end{cases}$成立的充分必要条件是$\begin{cases}
+		a^2+c^2=1 \\ b^2+d^2=1 \\ ab+cd=0
+	\end{cases}$.
+\end{example}
+\begin{solution}
+
+\end{solution}
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
