@@ -4,6 +4,70 @@
 
 \section{正定矩阵}
 
+可能很多同学对于行秩、列秩相等以及转置的几何意义很感兴趣.实际上我们有两种获得转置矩阵的
+方式，第一种来源于我们之前讨论的对偶空间上的线性映射对应的矩阵，这种方式可能不够直观.
+另一种获得的方法基于伴随算子.接下来我们将说明这些定义的统一性，深刻理解转置的内涵.
+
+我们可以研究矩阵及其转置的关系，我们可以用一个图形来表示：
+
+\begin{figure}[h]
+    \centering
+    \small
+    \begin{tikzpicture}
+        \tikzset{->-/.style={decoration={
+            markings,
+            mark=at position .6 with {\arrow{stealth}}},postaction={decorate}}}
+
+        \draw[rotate=45] (0,6) rectangle (-3,3) rectangle (-5,0)
+            (-3,3) rectangle(-3.35,3.35)
+            coordinate (xr) at (-2,4)
+            coordinate (xn) at (-4,2)
+            coordinate (x) at (-2,2)
+            coordinate (0n) at (-3,3)
+            node at (-1,5) {行空间}
+            node at (-4,1) {$A$的核空间}
+            node at (-1.5,6.5) {$\dim r$}
+            node at (-4,4) {$\mathbf{R}^n$}
+            node at (-6,3) {$\dim n-r$};
+
+        \draw[rotate=30] (6,2) rectangle (3.5,-2) rectangle (0,-4)
+            (3.5,-2) rectangle (3.85,-2.35)
+            coordinate (b) at (4.5,0.5)
+            coordinate (0m) at (3.5,-2)
+            node at (5,1.5) {列空间}
+            node at (2,-3) {$A^{\mathrm{T}}$的核空间}
+            node at (7,0) {$\dim r$}
+            node at (5,-3) {$\mathbf{R}^m$}
+            node at (4,-4.5) {$\dim m-r$};
+
+        \foreach \point in {xr, x, xn, 0n, b, 0m}
+            \fill[black] (\point) circle (1pt);
+
+        \node [left] at (xr) {$x_r$};
+        \node [below right] at (x) {$x=x_r+x_n$};
+        \node [left] at (xn) {$x_n$};
+        \node [right] at (0n) {0};
+        \node [right] at (b) {$b$};
+
+        \draw[->-,very thick] (xr) -- node[above,sloped] {$Ax_r = b$} (b);
+        \draw[->-,very thick] (x) -- node[below,sloped] {$Ax = b$} (b);
+        \draw[->-,very thick] (xn) -- node[below,sloped] {$Ax_n = 0$} (0m);
+
+        \draw[dashed,thick] (xr) -- (x) -- (xn);
+
+    \end{tikzpicture}
+\end{figure}
+
+我们观察到以下几点：
+\begin{enumerate}
+    \item 矩阵的行空间与解空间（零空间）互为正交补（直观理解两个空间就是互相垂直且互为补空间），这一点应当是在正交的内容中有所提及的；
+    \item 矩阵的列空间与其转置矩阵的零空间互为正交补，这一点实际与上一条等价.
+\end{enumerate}
+
+接下来我们来看行秩（列秩比较显然，此处不再详细展开）.我们首先得到解空间（$N(A)$）的维数，这可以直接
+根据维数公式得到：$\dim N(A) =n-r(A)$，根据正交补的性质，我们的可以得到行秩即为
+$n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
+
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 

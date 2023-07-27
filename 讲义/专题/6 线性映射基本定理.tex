@@ -170,6 +170,8 @@ $\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\al
     \item 特别注意：同构是线性空间之间的关系，同构映射才是描述线性映射的；
     \item 事实上，同构也是一种等价关系，这一点很容易验证，读者可以自行尝试（可能传递性略有困难，实际上只需说明线性双射
     复合后仍是线性双射即可）；
+    \item 同构映射的逆映射也是同构映射，即线性双射的逆映射仍然是线性双射.除此之外，两个同构映射的复合也是同构的.
+    这两个性质证明是容易的，我们放在习题中供读者验证.
     \item 对同构映射$\sigma$，$V_1$中向量组$ \alpha_1,\alpha_2,\ldots,\alpha_m $与$V_2$中对应的
     $ \sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m) $有相同的线性相关性，证明如下：
 
@@ -191,7 +193,26 @@ $\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\al
     这一结论比一般的线性映射更强，对于一般的线性映射只有将线性相关的向量组映射为线性相关的向量组，无法保证将线性无关的向量组
     映射为线性无关的向量组，但同构映射可以保证，因为它是线性双射.这一性质也是本质的，因为双射具有``一一对应''的属性，因此直觉
     也告诉我们，线性空间的基在线性双射（同构映射）下的像应当对应于像空间的一组基.
+
+    我们可以更进一步得到下面的结论：
+    \begin{theorem}\label{thm:6:同构保秩}
+        设$\sigma$是$V_1$到$V_2$的同构映射，$S_1=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$是$V_1$的任意一组向量，
+        $S_2=\{\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m)\}$，则$r(S_1)=r(S_2)$，即同构映射保持映射前后向量组秩不变.
+    \end{theorem}
+    \begin{proof}
+        反证法.假设$r(S_1)\neq r(S_2)$，我们从以下两方面导出矛盾：
+        \begin{enumerate}
+            \item 若$r(S_1)>r(S_2)$，取$S_1$的极大线性无关组，记为$S_1'$，则$r(S_1')=r(S_1)>r(S_2)$.又$S_1'$在$\sigma$下的像
+            $S_2'$为$S_2$的子向量组，因此$r(S_2')\leqslant r(S_2)$.但我们有同构映射保持线性无关性，因此$r(S_2')=r(S_1')=r(S_1)>r(S_2)$，
+            矛盾！因此这种情况不可能；
+
+            \item 若$r(S_1)<r(S_2)$，取$S_2$的极大线性无关组，记为$S_2'$，则$r(S_2')=r(S_2)>r(S_1)$.如前所述，同构映射的逆仍为同构映射，考虑$\sigma$
+            的逆$\sigma^{-1}$，$S_2'$在$\sigma^{-1}$下的像$S_1'$为$S_1$的子向量组，因此$r(S_1')\leqslant r(S_1)$.但我们有同构映射保持线性无关性，
+            因此$r(S_1')=r(S_2')=r(S_2)>r(S_1)$，矛盾！因此这种情况不可能.
+        \end{enumerate}
+    \end{proof}
 \end{enumerate}
+
 
 我们讨论几个经典的一一对应的例子.
 \begin{enumerate}
@@ -269,7 +290,7 @@ $\mathbf{F}^n$之间的同构映射，从而遮蔽所有线性空间自身基的
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 同构映射的逆、复合仍然是同构映射.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}

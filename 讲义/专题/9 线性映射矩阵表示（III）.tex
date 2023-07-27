@@ -171,8 +171,17 @@ $(f(\alpha_1),\ldots,f(\alpha_n))=e_1=(0,\cdots,0,1,0,\cdots,0)$，即第$i$个�
         \end{enumerate}
     \end{theorem}
 
-    事实上很多情况下我们也并不需要背诵这些性质，一方面这只是几个由前面更为基本的概念和定理导出的性质，不具一般性，并且是为了后续更重要的
+    事实上很多情况下我们也并不需要背诵这些性质，一方面这只是几个由前面更为基本的概念和定理导出的性质，不具一般性，并且是为了下面更重要的
     结论铺垫；另一方面即使一定要记忆，它们很强的对称性使得记忆难度不大.
+    
+    这一定理有一个非常关键的推论，其重要性大于上述定理，证明非常简单，见《线性代数应该这样学》3.108和3.110：
+    \begin{corollary}\label{cor:9:对偶映射单满射}
+        设$V$和$W$都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
+        \begin{enumerate}
+            \item $\sigma$是单射当且仅当$\sigma^*$是满射；
+            \item $\sigma$是满射当且仅当$\sigma^*$是单射.
+        \end{enumerate}
+    \end{corollary}
 \end{enumerate}
 
 \subsection{双重对偶空间}
