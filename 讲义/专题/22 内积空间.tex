@@ -58,7 +58,7 @@ $\forall u, v \in V, \enspace \langle u, v \rangle = \langle v, u \rangle$.
 
 以下给出几个内积和范数的示例：
 
-\begin{example} \label{ex:19:内积和范数}
+\begin{example} \label{ex:22:内积和范数}
     \begin{enumerate}
         \item $\mathbf{F}^{n}$ 上的欧几里得内积定义为：
         \[\left\langle (w_1, \ldots, w_n), (z_1, \ldots, z_n)\right\rangle = w_1\overline{z_1} + \cdots + w_n\overline{z_n} = \vec{W}\overline{\vec{Z}}^{\mathrm{T}}\]
@@ -126,7 +126,7 @@ $\forall u, v \in V, \enspace \langle u, v \rangle = \langle v, u \rangle$.
     且 $u = cv + w$.
 \end{theorem}
 
-而通过正交分解，我们可以证明一个数学中最重要的不等式（之一）：Cauchy-Schwarz 不等式.
+而通过正交分解，我们可以证明一个数学中最重要的不等式（之一）：\keyterm{Cauchy-Schwarz 不等式}.
 
 \begin{theorem}
     设 $u, v \in V$. 则 $\left\lvert \left\langle u, v\right\rangle \right\rvert \leqslant \lVert u \rVert\lVert v \rVert$.
@@ -212,7 +212,7 @@ $\forall u, v \in V, \enspace \langle u, v \rangle = \langle v, u \rangle$.
 
 令其线性组合为 $ \vec{0} $ 即证.
 
-\begin{example} \label{ex:19:标准正交组}
+\begin{example} \label{ex:22:标准正交组}
     设 $e_1, \ldots , e_m$ 是 $ V $ 的标准正交组. 设 $ v \in V $. 证明
     \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2 \]
     当且仅当 $ v \in \spa(e_1, \ldots , e_m).$
@@ -239,13 +239,13 @@ $ V $ 的标准正交基.
     \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2. \]
 \end{theorem}
 
-此为\autoref{ex:19:标准正交组} 的特例.
+此为\autoref{ex:22:标准正交组}的特例.
 
 标准正交基的性质十分美妙，但我们取出一组基使得其恰好是标准正交基是十分困难的，
 所幸前人已经研究出了一套算法，可以将所有线性无关组转变为标准正交组，且张成空间相同.
 
-\begin{theorem}
-    Gram-Schmidt 过程：设 $v_1, \ldots ,v_n$ 是 $ V $ 中的线性无关向量组.
+\begin{theorem} \keyterm{Gram-Schmidt 过程}
+    设 $v_1, \ldots ,v_n$ 是 $ V $ 中的线性无关向量组.
     设 $e_1 = \dfrac{v_1}{\lVert v_1 \rVert}$. 对于 $ j = 2, \ldots , m$，定义 $ e_j $ 如下：
     \[ e_j = \frac{v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} }{\lVert v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} \rVert}\]
     则 $e_1, \ldots , e_m $ 是 $ V $ 中的标准正交组，使得对 $ j = 1, \ldots , m $ 有
@@ -291,7 +291,7 @@ $ \langle u, v \rangle \in \mathbf{F}$，而我们也很熟悉一类把 $ V $ �
 
         \item 定义如下的函数 $\varphi$: $\mathbf{R}[x]_2 \rightarrow \mathbf{R}$
         \[\varphi(p) = \int_{-1}^1 p(t)(\cos(\pi t))\,\mathrm{d}t\]
-        是 $\mathbf{R}[x]_2$ 上的线性泛函, 此处的内积为\autoref{ex:19:内积和范数} (2) 中定义的.
+        是 $\mathbf{R}[x]_2$ 上的线性泛函, 此处的内积为\autoref{ex:22:内积和范数} (2) 中定义的.
         但以下的事实并不那么显然：$ \exists u \in \mathbf{R}[x]_2$, 使得
         $\forall p \in \mathbf{R}[x]_2$ 均有 $ \varphi (p) = \langle p, u\rangle $.
     \end{enumerate}
@@ -349,9 +349,9 @@ $ V $ 上的标准正交基都会计算出相同的结果.
 
 \subsection{正交补 \quad 正交投影}
 
-\begin{definition} \keyterm{正交补}[orthogonal complement]
-    设 $ U $ 是 $ V $ 的子集，则 $ U $ 的正交补（记作 $ U^{\perp } $）
-    是由 $ V $ 中与 $ U $ 的每个向量都正交的那些向量组成的集合：
+\begin{definition}
+    设 $ U $ 是 $ V $ 的子集，则 $ U $ 的\keyterm{正交补}[orthogonal complement]
+    （记作 $ U^{\perp } $）是由 $ V $ 中与 $ U $ 的每个向量都正交的那些向量组成的集合：
     \[U^{\perp } = \{ v \in V \mid \forall u \in U, \enspace \langle v, u\rangle = 0\}\]
 \end{definition}
 
@@ -388,10 +388,10 @@ $ V $ 上的标准正交基都会计算出相同的结果.
 第二条的证明还是具有一定技巧性的，希望读者仔细品味.
 
 除去这两个结论，该直和分解为我们定义正交投影奠定了基础：
-\begin{definition} \keyterm{正交投影}[orthogonal projection]
-    设 $ U $ 是 $ V $ 的有限维子空间. 定义 $ V $ 到 $ U $ 上的正交投影为如下算子
-    $ P_U \in \mathcal{L} (V)$：对 $ v \in V $ 将其写成 $ v = u + w $，其中 $ u \in U $
-    且 $ w \in U^{\perp }$，则 $ P_U v = u $.
+\begin{definition}
+    设 $ U $ 是 $ V $ 的有限维子空间. 定义 $ V $ 到 $ U $ 上的\keyterm{正交投影}[orthogonal projection]
+    为如下算子$ P_U \in \mathcal{L} (V)$：对 $ v \in V $ 将其写成 $ v = u + w $，其中
+    $ u \in U $ 且 $ w \in U^{\perp }$，则 $ P_U v = u $.
 \end{definition}
 
 正交投影的性质相当之多，不过大部分是成对刻画以及简单的推理，在此仅作罗列不加证明：
@@ -459,14 +459,12 @@ $ u \in U $ 使得 $ \lVert v - u \rVert $ 最小. 下面的定理表明，取 $
 \end{center}
 如果观测是绝对精准的，那么只需要测量 $ m = n $ 次，通过线性方程组即可解得 $ k_1, \ldots , k_n $.
 但是任何观测都会有误差，这样就会需要更多的观测次数，即 $ m > n $，得到如下的线性方程组
-\[ \left\{
-\begin{array}{rcl}
-    a_{11}k_1 + \cdots + a_{1n}k_n & = & b_1, \\
-    a_{21}k_1 + \cdots + a_{2n}k_n & = & b_2, \\
-    & \vdots & \\
-    a_{m1}k_1 + \cdots + a_{mn}k_n & = & b_m.  \\
-\end{array}
-\right. \]
+\[ \begin{cases} \begin{aligned}
+    a_{11}k_1 + \cdots + a_{1n}k_n &= b_1, \\
+    a_{21}k_1 + \cdots + a_{2n}k_n &= b_2, \\
+    & \vdotswithin{ = } \\
+    a_{m1}k_1 + \cdots + a_{mn}k_n &= b_m.  \\
+\end{aligned} \end{cases} \]
 中，方程个数 $ m $ 大于未知数个数 $ n $，该线性方程组可能无解. 于是我们的目标转为
 寻找一组数 $ c_1, \ldots , c_n $，使得
 \begin{align*}
