@@ -10,8 +10,8 @@
 
 \section{线性映射矩阵表示}
 \begin{definition}
-    域$\mathbf{F}$中的$m\times n$个元素$a_{ij}(i=1,\cdots,m,j=1,\cdots,n)$排成$m$行$n$列的矩形数表，称为
-    域$F$上的一个$m\times n$矩阵，记作
+    域$\mathbf{F}$中的$m\times n$个元素$a_{ij}\enspace(i=1,\ldots,m,j=1,\ldots,n)$排成$m$行$n$列的矩形数表，称为
+    域$\mathbf{F}$上的一个$m\times n$矩阵，记作
     \[A=\begin{pmatrix}
         a_{11} & a_{12} & \cdots & a_{1n} \\
         a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -24,22 +24,20 @@
 我们有一些常用的矩阵，例如零矩阵，即所有元素均为0的矩阵，通常记为$O$；单位矩阵也十分常见，它表示
 对角线上元素为1，其余元素为0的矩阵，通常记为$E$.
 
-除此之外，我们通常记域$\mathbf{F}$上的$m\times n$矩阵全体为$\mathbf{F}^{m\times n}$或$M_{m\times n}(\mathbf{F})$.
-当$m=n$时矩阵称为方阵，域$\mathbf{F}$上全体$n$阶矩阵（或称$n$阶方阵）记为$\mathbf{F}^{n\times n}$或$M_n(\mathbf{F})$.
+除此之外，我们通常记域$\mathbf{F}$上的$m\times n$矩阵全体为$\mathbf{F}^{m\times n}$或$\mathbf{M}_{m\times n}(\mathbf{F})$.
+当$m=n$时矩阵称为方阵，域$\mathbf{F}$上全体$n$阶矩阵（或称$n$阶方阵）记为$\mathbf{F}^{n\times n}$或$\mathbf{M}_n(\mathbf{F})$.
 
 \begin{definition}\label{def:7:线性映射矩阵表示}
-    设$B_1=\{\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n\}$是$V_1(F)$的基，$B_2=\{\alpha_1,\alpha_2,\cdots,\alpha_m\}$是$V_2(F)$的基.
+    设$B_1=\{\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n\}$是$V_1(\mathbf{F})$的基，$B_2=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$是$V_2(\mathbf{F})$的基.
     则线性映射$\sigma \in \mathcal{L}(V_1,V_2)$被它作用于基$B_1$的像
     \[\sigma(B_1)=\{\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)\}\]
     所唯一确定，而$\sigma(B_1)$是$V_2$的子空间，于是其中元素都可以被基$B_2$线性表示，即
-    \[ \left\{
-     \begin{array}{rcl}
-        \sigma(\varepsilon_1)&=&a_{11}\alpha_1+a_{21}\alpha_2+\ldots+a_{m1}\alpha_m \\
-        \sigma(\varepsilon_2)&=&a_{12}\alpha_1+a_{22}\alpha_2+\ldots+a_{m2}\alpha_m \\
-        &\vdots& \\
-        \sigma(\varepsilon_n)&=&a_{1n}\alpha_1+a_{2n}\alpha_2+\ldots+a_{mn}\alpha_m
-     \end{array}
-    \right. \]
+    \[ \begin{cases} \begin{aligned}
+        \sigma(\varepsilon_1) &= a_{11}\alpha_1+a_{21}\alpha_2+\cdots+a_{m1}\alpha_m \\
+        \sigma(\varepsilon_2) &= a_{12}\alpha_1+a_{22}\alpha_2+\cdots+a_{m2}\alpha_m \\
+        &\vdotswithin{ = } \\
+        \sigma(\varepsilon_n) &= a_{1n}\alpha_1+a_{2n}\alpha_2+\cdots+a_{mn}\alpha_m
+     \end{aligned} \end{cases} \]
 
     我们将$\sigma(B_1)=\{\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)\}$
     关于基$B_2$的坐标排列成矩阵$\mathbf{M}(\sigma)$，即
@@ -54,14 +52,14 @@
 更通俗来说，线性映射矩阵表示就是将线性映射在一组基上的像在另一组基下的坐标表示按列排列得到的结果.
 这一整体过程我们也可以用如下记号表示：
 \begin{equation}\label{eq:7:线性映射矩阵表示}
-    (\sigma(\epsilon_1),\sigma(\epsilon_2),\ldots,\sigma(\epsilon_n))=(\alpha_1,\alpha_2,\ldots,\alpha_m)\mathbf{M}(\sigma).
+    (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))=(\alpha_1,\alpha_2,\ldots,\alpha_m)\mathbf{M}(\sigma).
 \end{equation}
 
 根据定义我们直接有如下简单的观察：
 \begin{enumerate}
     \item 线性映射矩阵表示的结果是一个$m\times n$矩阵，其中$m$是到达空间的维数，$n$是出发空间的维数；
     \item 若$\sigma$在基下矩阵表示为$A=(a_{ij})_{m\times n}$，在出发空间的基的第$i$个向量在到达空间基下的坐标为
-    $(a_{1i},a_{2i},\ldots,a_{mi})$，即矩阵$A$的第$i$列，或写为$\sigma(\varepsilon)=a_{1i}\alpha_1+a_{2i}\alpha_2+\ldots+a_{mi}\alpha_m$.
+    $(a_{1i},a_{2i},\ldots,a_{mi})$，即矩阵$A$的第$i$列，或写为$\sigma(\varepsilon)=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{mi}\alpha_m$.
 \end{enumerate}
 
 \begin{example}\label{ex:7:矩阵表示1}
@@ -76,10 +74,10 @@
     \begin{enumerate}[label=(\arabic*)]
         \item 求像空间和核空间的方法我们在之前已经介绍过，我们为了计算方便取$\mathbf{R}^3$的自然基$e_1,e_2,e_3$计算有：
         \[\im\sigma=\spa(\sigma(e_1),\sigma(e_2),\sigma(e_3))=\spa((1,1,0),(1,0,1),(0,-1,0))=\mathbf{R}^3\]
-        对于核空间，解方程$\sigma(\alpha)=0$即可，我们也可以用更简洁的方式书写：
+        对于核空间，解方程$\sigma(\alpha)=0$即可. 我们也可以用更简洁的方式书写：
         \[\ker\sigma=\{(x_1,x_2,x_3)\mid \sigma(x_1,x_2,x_3)=(0,0,0)\}=\{(0,0,0)\}\]
         即方程只有零解，核空间可以记为$\ker\sigma=\{0\}$（只含零元的空间的一般记法）.
-        \item 我们根据\autoref{def:7:线性映射矩阵表示}，我们应先写出$\sigma$在出发空间一组基（按题目要求是$\mathbf{R}^3$
+        \item 我们根据\autoref{def:7:线性映射矩阵表示}，应先写出$\sigma$在出发空间一组基（按题目要求是$\mathbf{R}^3$
         自然基）下的像，并将像表示为到达空间基（按题目要求是$\mathbf{R}^3$自然基）的线性组合，即
         \begin{gather*}
             \sigma(e_1)=(1,1,0)=e_1+e_2=(e_1,e_2,e_3)\begin{pmatrix}
@@ -102,10 +100,10 @@
 \end{solution}
 
 有趣的是，在结合我个人的学习经历以及过往辅学的经验后，我总结出了第二问的一种常见的错误解法，这里我需要加粗强调，下面这种
-解法是\textbf{完全错误的！！！}，这里展示这一解法是为了让读者将前面所学的知识完全厘清：
+解法是\textbf{完全错误的！！！}这里展示这一解法是为了让读者将前面所学的知识完全厘清：
 
 \begin{solution}
-    （\textbf{错误解法！！！}）$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)=(x_1,x_2,x_3)\begin{pmatrix}
+    （\textbf{\songti 错误解法！！！}）$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)=(x_1,x_2,x_3)\begin{pmatrix}
         1 & 1 & 0 \\
         1 & 0 & 1 \\
         0 & -1 & 0
@@ -115,9 +113,9 @@
 我们惊奇地发现，这一结果和我们前面得到的标准答案在向量的排列方式上发生了变化，即标准答案的1、2、3行变为了这里的1、2、3列，
 我们需要强调两点：
 \begin{enumerate}
-    \item 为什么这种解法是错误的：我们可以直接比较\autoref{eq:7:线性映射矩阵表示}和这一解法中，\autoref{eq:7:线性映射矩阵表示}
+    \item 为什么这种解法是错误的：我们可以直接比较\autoref{eq:7:线性映射矩阵表示} 和这一解法中，\autoref*{eq:7:线性映射矩阵表示}
     的等号左边是$n$个向量在$\sigma$下的像，而上述解法$\sigma(x_1,x_2,x_3)$只是$\sigma$在一个向量下的像，这显然是不一样的！！！
-    同样，等号右边括号内\autoref{eq:7:线性映射矩阵表示}是到达空间的一组基，而上述解法中仍然只是一个向量.我们从未定义过这样解题
+    同样，等号右边括号内\autoref*{eq:7:线性映射矩阵表示} 是到达空间的一组基，而上述解法中仍然只是一个向量.我们从未定义过这样解题
     的结果是什么，所以千万不能做这种无意义的事！！！
 
     容易导致混淆的原因可能在于$(x,y,z)$向量是排列成一行的，可能看起来和$(e_1,e_2,e_3)$有点相似，但如果我们将后者拆分成
@@ -164,11 +162,11 @@ $\sigma$的数乘$\lambda\sigma$分别为
 $V_1$的基$B_1=\{\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n\}$，$V_2$的基$B_2=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$，
 假设$\sigma$和$\tau$在$B_1$和$B_2$下的矩阵分别为$A=(a_{ij})_{m\times n}$和$B=(b_{ij})_{m\times n}$，则
 \begin{gather*}
-    \sigma(\varepsilon_i)=a_{1i}\alpha_1+a_{2i}\alpha_2+\ldots+a_{mi}\alpha_m \\
-    \tau(\varepsilon_i)=b_{1i}\alpha_1+b_{2i}\alpha_2+\ldots+b_{mi}\alpha_m.
+    \sigma(\varepsilon_i)=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{mi}\alpha_m \\
+    \tau(\varepsilon_i)=b_{1i}\alpha_1+b_{2i}\alpha_2+\cdots+b_{mi}\alpha_m.
 \end{gather*}
 因此
-\[(\sigma+\tau)(\varepsilon_i)=(a_{1i}+b_{1i})\alpha_1+(a_{2i}+b_{2i})\alpha_2+\ldots+(a_{mi}+b_{mi})\alpha_m,i=1,2,\cdots,n\]
+\[(\sigma+\tau)(\varepsilon_i)=(a_{1i}+b_{1i})\alpha_1+(a_{2i}+b_{2i})\alpha_2+\cdots+(a_{mi}+b_{mi})\alpha_m,\enspace i=1,2,\ldots,n\]
 即$(\sigma+\tau)$矩阵表示$\mathbf{M}(\sigma+\tau)$的第$i$列元素为$A$和$B$的第$i$列对应元素相加.由于$i$是任取的，因此$(\sigma+\tau)$的矩阵表示
 每一列都是$A$和$B$同一列对应元素相加，实际上对于整个矩阵而言就是矩阵相同位置元素相加，即
 \begin{align*}
@@ -215,8 +213,8 @@ $\mathbf{F}^{m\times n}$，接下来我们需要讨论的是对于$n$维线性�
 $\mathcal{L}(V_1,V_2)$与$\mathbf{F}^{m\times n}$的同构.
 即我们需要定义一个线性双射$\varphi:\mathcal{L}(V_1,V_2)\to\mathbf{F}^{m\times n}$.事实上我们只需要
 很自然地利用线性映射矩阵表示定义，即定义
-\[\varphi(\sigma)=\mathbf{M}(\sigma)\]
-，也就是说$\varphi$将线性映射$\sigma$映射为其矩阵表示.接下来需要验证$\varphi$是线性双射.
+\[\varphi(\sigma)=\mathbf{M}(\sigma),\]
+也就是说$\varphi$将线性映射$\sigma$映射为其矩阵表示.接下来需要验证$\varphi$是线性双射.
 \begin{enumerate}
     \item 线性性是显然的，因为根据矩阵加法和数乘的定义，我们有
     \begin{gather*}
@@ -224,12 +222,12 @@ $\mathcal{L}(V_1,V_2)$与$\mathbf{F}^{m\times n}$的同构.
         \varphi(\lambda\sigma)=\mathbf{M}(\lambda\sigma)=\lambda\mathbf{M}(\sigma)=\lambda\varphi(\sigma).
     \end{gather*}
     \item 双射也是显然的：
-    \begin{enumerate}
+    \begin{enumerate}[label=(\arabic*)]
         \item 对于单射性，我们考察$\varphi$的核空间$\ker\varphi$中的元素$\sigma$，即$\sigma$在基下的矩阵表示为零矩阵，
         那么$\sigma$必然为零映射，因为它将所有基映射为0，故必然将所有出发空间元素映射为0，因此核空间为$\{0\}$，单射成立；
         \item 对于满射性，我们需要为任意$m\times n$矩阵$(a_{ij})_{m\times n}$找到一个线性映射，使得这一矩阵为这一
         线性映射在基下的矩阵表示.事实上，给定基和矩阵表示，我们就知道了线性映射在出发空间的基下的像——因为给定到达空间的基和矩阵就给定了
-        线性映射在出发空间的基在到达空间的基下的坐标.然后根据\autoref{thm:5:线性映射构造}知我们一定能找到这一映射，故满射性成立.
+        线性映射在出发空间的基在到达空间的基下的坐标.然后根据\autoref{thm:5:线性映射构造} 知我们一定能找到这一映射，故满射性成立.
     \end{enumerate}
 \end{enumerate}
 
@@ -270,9 +268,9 @@ $mn$，因为$m\times n$个只有一个元素为1，其余元素为0的$m\times 
 
 在本节最后，我们有四个非常重要的问题需要仔细探讨：
 \begin{enumerate}
-    \item 在有了矩阵乘法的定义后，高斯消元法中我们将线性方程组简记为$AX=b$实际上是相当自然的，除此之外，我们将向量坐标
+    \item 在有了矩阵乘法的定义后，高斯消元法中我们将线性方程组简记为$AX=\vec{b}$实际上是相当自然的，除此之外，我们将向量坐标
     表示为列向量的形式，例如
-    \[\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n)\begin{pmatrix}
+    \[\vec{\alpha}=(\alpha_1,\alpha_2,\ldots,\alpha_n)\begin{pmatrix}
         x_1 \\ x_2 \\ \vdots \\ x_n
     \end{pmatrix}\]
     这也是符合矩阵乘法定义的一种习惯（虽然基一般不是数域$\mathbf{F}$中的元素）.
@@ -300,7 +298,7 @@ $mn$，因为$m\times n$个只有一个元素为1，其余元素为0的$m\times 
     这一线性映射在这组基下的矩阵表示作为系数矩阵的线性方程组的解.这一联系将在朝花夕拾一讲中有更深入的讨论.
 
     \item 我们可以更进一步理解矩阵乘法.假设矩阵$A=(a_{ij})_{m\times n}$与$B=(b_{ij})_{n\times l}$相乘，我们有如下结论：
-    \begin{enumerate}
+    \begin{enumerate}[label=(\arabic*)]
         \item 乘积的第$k$列等于$A$乘以$B$的第$k$列，乘积的第$j$行等于$A$的第$j$行乘以$B$，这一点根据矩阵乘法计算方式显然；
         \item 乘积的每一列都是矩阵$A$各列的线性组合，每一行都是矩阵$B$各行的线性组合.我们简要说明前者，后者理由类似.我们考察
         乘积的每一列，由1可知乘积的第$k$列等于$A$乘以$B$的第$k$列，我们展开写乘积矩阵$C=(c_{ij})_{m\times l}$第$k$列的结果：
@@ -325,13 +323,13 @@ $mn$，因为$m\times n$个只有一个元素为1，其余元素为0的$m\times 
 
     \item 之后我们会经常看见两种记号，即
     \begin{gather*}
-        (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))=(\alpha_1,\alpha_2,\ldots,\alpha_m)A, \\
-        \sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)=(\alpha_1,\alpha_2,\ldots,\alpha_m)A.
+        (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))=(\alpha_1,\alpha_2,\ldots,\alpha_m)A \\
+        \sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)=(\alpha_1,\alpha_2,\ldots,\alpha_m)A
     \end{gather*}
     教材中两个记号是等价的，这只是记号上的差别，含义完全相同.但是在之后我们还会看到一个很特别的书写方式
     \[(\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))B=\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)B),\]
     教材不加解释地使用了这一等式，这容易导致读者的困惑，因此我们这里简要说明它们的确是等价的，从而接下来读者可以放心地自由使用这一结论.
-    
+
     根据上述的第一个性质可知，我们只需要证明对$B$的某一列上式成立即可，因为乘法结果是列与列对应的.我们设$B$的第$k$列为
     \[B_k=\begin{pmatrix}
         b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
@@ -352,19 +350,19 @@ $mn$，因为$m\times n$个只有一个元素为1，其余元素为0的$m\times 
 \end{enumerate}
 
 事实上矩阵乘法有很多和数的乘法重要的不同，我们在此特别指出供读者参考：
-\begin{enumerate}
+\begin{enumerate}[label=(\arabic*)]
     \item 矩阵乘法不一定满足交换律（即$AB$不一定等于$BA$，事实上随手写两个矩阵，很大的概率就是不交换的）.因此实数的完全平方公式代入矩阵
     不一定成立，即很多时候$(A+B)^2=A^2+AB+BA+B^2\neq A^2+2AB+B^2$；
-    
+
     \item 但是注意数量矩阵（即对角线上元素都相等，其余均为0，单位矩阵是其特例）和任何矩阵相乘都是可交换的，这一点在矩阵求幂时很有用；
-    \item $A\neq O$且$B\neq O$不能推出$AB\neq O$.例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$.
+    \item $A\neq O$且$B\neq O$不能推出$AB\neq O$.例如线性方程组$AX = \vec{0}$有非零解，若$B$的各列均为方程非零解，则$AB = O$.
     \item 消去律也不一定满足：即$AB = AC$不一定$A = B$.原因在于$AB=AC \implies A(B-C)=O$，由(2)可知不一定$B = C$.
 \end{enumerate}
 
 \subsection{矩阵多项式}
 我们在线性空间中已经介绍过，我们一般用$\mathbf{F}[x]_{m+1}$表示数域$\mathbf{F}$上的次数最高为$m$的多项式全体，其中的元素我们
 一般记为
-\[p(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0,a_i\in\mathbf{F}(i=1,2,\cdots,m).\]
+\[p(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0,\enspace a_i\in\mathbf{F}\enspace(i=1,2,\ldots,m)\]
 事实上这里的自变量不一定需要是一个数，也可以是线性映射或者矩阵.例如线性映射$\sigma:V\to V$构成的$m$次多项式可以记为
 \[p(\sigma)=a_m\sigma^m+a_{m-1}\sigma^{m-1}+\cdots+a_1\sigma+a_0I\]
 其中$\sigma^i$表示$\sigma$复合$i$次，$I$表示恒等映射.我们很容易说明当$\sigma$在$V$的一组基下矩阵表示为$A$时，
@@ -374,7 +372,7 @@ $p(\sigma)$在同一组基下的矩阵表示为
 \begin{enumerate}
     \item 这里我们要求$\sigma$是线性变换（即出发空间和到达空间一致），事实上也并不必要，只需出发空间和到达空间维数相同即可，因为我们的目的
     是保证矩阵的幂次可以定义（即$A$和$A$可乘，因此$A$的行列数一致）；
-    \item 上面的定义隐含：$\sigma^0$为恒等变换，$A^0=E$为单位矩阵；
+    \item 上面的定义隐含：$\sigma^0 = I$，$A^0=E$；
     \item $A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$，其中$A$为方阵，$k,m$为任意整数. 负整数对应于逆矩阵的情况，下一讲会作进一步解释.
 \end{enumerate}
 \begin{example}
@@ -406,33 +404,33 @@ $p(\sigma)$在同一组基下的矩阵表示为
     设$A=\begin{pmatrix}1 & 0 & 2 \\ -1 & 2 & 1 \\ 1 & 2 & 5\end{pmatrix}$为两个三维线性空间之间的线性映射$\sigma$对应的矩阵，
     求$\sigma$的像空间和核空间.
 \end{example}
-（注：本题没有给出线性映射出发空间和到达空间的基，读者可以任意假设）
+（注：本题没有给出线性映射出发空间和到达空间的基，读者可以任意假设.）
 
 \begin{solution}
 求解像空间和核空间，仍然是原先介绍的方法，虽然本题没有给出线性映射的直接定义，但矩阵表示也能给我们足够的信息.
 我们设这一矩阵表示的线性映射为$\sigma$，且
 \[(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\sigma(\varepsilon_3))=(\alpha_1,\alpha_2,\alpha_3)A\]
 根据线性映射矩阵表示的定义，我们知道矩阵表示就是线性映射在出发空间一组基下的像在到达空间一组基下的坐标按列排列，因此
-\begin{gather*}
-    \sigma(\varepsilon_1)=\alpha_1-\alpha_2+\alpha_3 \\
-    \sigma(\varepsilon_2)=2\alpha_2+2\alpha_3 \\
-    \sigma(\varepsilon_3)=2\alpha_1+\alpha_2+5\alpha_3
-\end{gather*}
+\begin{align*}
+    \sigma(\varepsilon_1)&=\alpha_1-\alpha_2+\alpha_3 \\
+    \sigma(\varepsilon_2)&=2\alpha_2+2\alpha_3 \\
+    \sigma(\varepsilon_3)&=2\alpha_1+\alpha_2+5\alpha_3
+\end{align*}
 因此$\im\sigma=\spa(\alpha_1-\alpha_2+\alpha_3,2\alpha_2+2\alpha_3,2\alpha_1+\alpha_2+5\alpha_3)$，然后求解
 极大线性无关组即可，结果为$\im\sigma=\spa(\alpha_1-\alpha_2+\alpha_3,2\alpha_2+2\alpha_3)$
 
 这里求解极大线性无关组的方法我们可以回忆\autoref{ex:3:转化为坐标}，我们先将三个向量转化为到达空间基下坐标，然后求解极大线性无关组，
 最后把基添加回来即可.实际上我们会发现，这里的三个坐标就是矩阵$A$的三个列向量（因为矩阵表示就是线性映射在出发空间一组基下的像
-在到达空间一组基下的坐标按列排列），因此我们只需要求解矩阵$A$的列向量的极大线性无关组（$(1,-1,1),(0,2,2)$）然后再将到达空间的基添加回来即可.
+在到达空间一组基下的坐标按列排列），因此我们只需要求解矩阵$A$的列向量的极大线性无关组$(1,-1,1),(0,2,2)$，然后再将到达空间的基添加回来即可.
 
-然后求解核空间，我们设$\sigma(\varepsilon)=0$，将$\varepsilon$写成出发空间基的表示后
-事实上就是\autoref{eq:7:方程组与核空间2}的形式，我们已说明这一形式与
-\autoref{eq:7:方程组与核空间1}等价，因此我们只需求解$AX=0$然后代回出发空间的基即可，
-最终结果为$\ker\sigma=\spa(4\varepsilon_1+3\varepsilon_2-2\varepsilon_3)$.
+然后求解核空间，我们设$\sigma(\varepsilon)=\vec{0}$，将$\varepsilon$写成出发空间基的表示后
+事实上就是\autoref{eq:7:方程组与核空间2} 的形式，我们已说明这一形式与\autoref{eq:7:方程组与核空间1}
+等价，因此我们只需求解$AX=\vec{0}$然后代回出发空间的基即可，最终结果为
+$\ker\sigma=\spa(4\varepsilon_1+3\varepsilon_2-2\varepsilon_3)$.
 \end{solution}
 
 总结一下，此类题目求解像空间实际上就是求出矩阵列向量的极大线性无关组，然后记得把基添加回来.求解核空间只需
-求解齐次线性方程组$AX=0$即可.
+求解齐次线性方程组$AX=\vec{0}$即可.
 
 \begin{example}\label{ex:7:矩阵表示3}
     已知3阶矩阵$A=\begin{pmatrix}
@@ -444,10 +442,9 @@ $p(\sigma)$在同一组基下的矩阵表示为
 
 \end{solution}
 
-实际上，\autoref{ex:7:矩阵表示2}和\autoref{ex:7:矩阵表示3}都属于已知映射求像和核的题目，求解方法仍然是原先介绍的方法，
-只是\autoref{ex:7:矩阵表示2}没有像\autoref{ex:7:矩阵表示1}或\autoref{ex:7:矩阵表示3}给出了线性映射的定义，而是给出矩阵表示，
+实际上，\autoref{ex:7:矩阵表示2} 和\autoref{ex:7:矩阵表示3} 都属于已知映射求像和核的题目，求解方法仍然是原先介绍的方法，
+只是\autoref*{ex:7:矩阵表示2} 没有像\autoref{ex:7:矩阵表示1} 或\autoref*{ex:7:矩阵表示3} 给出了线性映射的定义，而是给出矩阵表示，
 但这也完全不影响我们的求解.
-% TODO 编号系统 autoref
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
