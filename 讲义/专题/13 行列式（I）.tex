@@ -12,11 +12,11 @@
 
 \section{行列式的定义}
 很多教材采用``逆序数''定义行列式（感兴趣的同学可以参考丘维声《高等代数》等教材），但是本教材未提及，而且
-也缺乏直观，因此我们不展开描述.本教材使用公理化定义（使用一些规则描述）并讲解了递归式定义（按行（列）展开）.
+也缺乏直观，因此我们不展开描述. 本教材使用公理化定义（使用一些规则描述）并讲解了递归式定义（按行（列）展开）.
 
 \subsection{公理化定义}
-\begin{definition} \label{def:11:公理化定义}
-    数域$\mathbf{F}$上的一个$n$阶行列式是取值于$\mathbf{F}$的$n$个$n$维向量
+\begin{definition} \label{def:13:公理化定义}
+    数域$\mathbf{F}$上的一个$n$阶\keyterm{行列式}[determinant]是取值于$\mathbf{F}$的$n$个$n$维向量
     $\alpha_1,\alpha_2,\ldots,\alpha_n \in \mathbf{F}^n$的一个函数，且$\forall \alpha_i,\beta_i \in \mathbf{F}^n$
     和$\forall \lambda \in \mathbf{F}$，满足下列规则：
     \begin{enumerate}
@@ -36,8 +36,8 @@
 
 除此之外，我们不难看出公理化定义可以形象地理解为对$n$维空间中体积的定义，
 对几何意义感兴趣的同学可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容.
-\begin{example} \label{ex:11:公理化定义}
-    使用\autoref{def:11:公理化定义} 验证下述命题的正确性：
+\begin{example} \label{ex:13:公理化定义}
+    使用\autoref{def:13:公理化定义} 验证下述命题的正确性：
     \begin{enumerate}
         \item 若行列式有一列为零向量，则行列式的值等于0.
 
@@ -51,10 +51,10 @@
     \end{enumerate}
 \end{example}
 \begin{proof}
-    
+
 \end{proof}
 
-\begin{example} \label{ex:11:公理化定义2}
+\begin{example} \label{ex:13:公理化定义2}
     设向量$\alpha_1,\alpha_2,\beta_1,\beta_2$为三维列向量，又$A=(\alpha_1,\alpha_2,\beta_1),B=(\alpha_1,\alpha_2,\beta_2)$，
     且$|A|=3$，$|B|=2$，求$|2A+3B|$.
 \end{example}
@@ -64,15 +64,15 @@
 
 \subsection{递归式定义}
 首先我们需要引入余子式和代数余子式的概念：
-\begin{definition} \label{def:11:余子式}
+\begin{definition} \label{def:13:余子式}
     在$n$阶行列式$D=|a_{ij}|_{n \times n}$中，去掉元素$a_{ij}$所在的第$i$行和第$j$列的所有元素
     而得到的$n-1$阶行列式称为元素$a_{ij}$的\keyterm{余子式}[minor]，记作$M_{ij}$，并把数$A_{ij}=(-1)^{i+j}M_{ij}$
     称为元素$a_{ij}$的\keyterm{代数余子式}[cofactor].
 \end{definition}
-注意，虽然余子式和代数余子式在名称中含有式，但实际上他们是一个值.实际上行列式也称为``式''，但这些``式''
+注意，虽然余子式和代数余子式在名称中含有式，但实际上他们是一个值. 实际上行列式也称为``式''，但这些``式''
 只是形状上有个形式，实际上只是一个值.
-\begin{example} \label{ex:11:cofactor}
-    根据\autoref{def:11:余子式} 计算行列式$\begin{vmatrix}
+\begin{example} \label{ex:13:余子式}
+    根据\autoref{def:13:余子式} 计算行列式$\begin{vmatrix}
         2 & 1 & 3 \\
         -1 & 0 & 2 \\
         1 & 5 & -2
@@ -83,25 +83,25 @@
 \end{solution}
 
 接下来我们便可以给出递归式定义：
-\begin{definition} \label{def:11:递归式定义}
+\begin{definition} \label{def:13:递归式定义}
     设$D=|a_{ij}|_{n \times n}$，则
     \begin{gather}
-        \label{eq:11:递归式定义1}
+        \label{eq:13:递归式定义1}
         D=\sum_{k=1}^{n}a_{kj}A_{kj}=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj} \quad j=1,2,\ldots,n \\
-        \label{eq:11:递归式定义2}
+        \label{eq:13:递归式定义2}
         D=\sum_{k=1}^{n}a_{ik}A_{ik}=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in} \quad i=1,2,\ldots,n
     \end{gather}
 \end{definition}
-其中$A_{ij}$即为\autoref{def:11:余子式} 给出的代数余子式，\autoref{eq:11:递归式定义1} 称为$D$对第$j$列的展开式，\autoref{eq:11:递归式定义2}
+其中$A_{ij}$即为\autoref{def:13:余子式} 给出的代数余子式，\autoref{eq:13:递归式定义1} 称为$D$对第$j$列的展开式，\autoref{eq:13:递归式定义2}
 称为$D$对第$i$行的展开式.事实上，这一定义被称为递归式定义的原因是显然的（如果在程序设计课程中已经学习过递归的概念），
 它使用$n-1$阶行列式定义$n$阶行列式，因此我们对任意$n$阶行列式都可以递归展开到1阶，从而得到最终行列式计算结果.
 
 除此之外，我们需要强调的是，这里的递归式定义能称之为定义，必须要使得其与之前的公理化定义不冲突.事实上二者等价的证明都是
 技术性的，教材175页定理5.1说明了我们如何从公理化定义推出递归式定义，反过来我们只需要对公理化定义中每个性质利用公理化定义
 逐个展开验算即可，我们放在习题中供感兴趣的读者自行验证.因为都是技术性的问题，这里不展开叙述，事实上也不是我们核心的内容.
-\begin{example} \label{ex:11:递归式定义}
-    利用\autoref{def:11:递归式定义} 计算\autoref{ex:11:cofactor} 中的行列式，可以行列展开均使用并在上述公式中选取不同$i$和$j$以熟悉
-    \autoref{def:11:递归式定义}，并注意体会递归式定义的含义.
+\begin{example} \label{ex:13:递归式定义}
+    利用\autoref{def:13:递归式定义} 计算\autoref{ex:13:余子式} 中的行列式，可以行列展开均使用并在上述公式中选取不同$i$和$j$以熟悉
+    \autoref{def:13:递归式定义}，并注意体会递归式定义的含义.
 \end{example}
 \begin{solution}
 
@@ -112,21 +112,21 @@
     $n$阶行列式$D=|a_{ij}|_{n \times n}$的某一行（列）元素与另一行（列）相应元素的代数余子式
     的乘积之和等于0，即
     \begin{gather}
-        \label{eq:11:递归式定义3}
+        \label{eq:13:递归式定义3}
         \sum_{k=1}^{n}a_{kj}A_{ki}=a_{1j}A_{1i}+a_{2j}A_{2i}+\cdots+a_{nj}A_{ni}=0 \quad j \neq i \\
-        \label{eq:11:递归式定义4}
+        \label{eq:13:递归式定义4}
         \sum_{k=1}^{n}a_{jk}A_{ik}=a_{j1}A_{i1}+a_{j2}A_{i2}+\cdots+a_{jn}A_{in}=0 \quad j \neq i
     \end{gather}
 \end{theorem}
 
 我们简要说一下定理的证明.虽然这一定理看着下标满天飞，似乎很难证明，但如果我们首先将第$j$列元素替换为第$i$列元素，然后
-根据\autoref{def:11:递归式定义}按第$j$列展开求行列式，这一结果一定是0，因为此时矩阵第$i$和$j$两列完全相同.
-同时我们发现，我们上面展开写出的式子就是\autoref{eq:11:递归式定义3}（注意此时$a_{ki}=a_{kj}$），由此得证.
+根据\autoref{def:13:递归式定义}按第$j$列展开求行列式，这一结果一定是0，因为此时矩阵第$i$和$j$两列完全相同.
+同时我们发现，我们上面展开写出的式子就是\autoref{eq:13:递归式定义3}（注意此时$a_{ki}=a_{kj}$），由此得证.
 
-到目前为止，读者可能对\crefrange*{eq:11:递归式定义1}{eq:11:递归式定义4} 式繁杂的下标感到陌生，因此安排了
-\crefrange*{ex:11:公理化定义2}{ex:11:递归式定义} 希望大家熟悉这些公式.
-\begin{example} \label{ex:11:递归式定义2}
-    对\autoref{ex:11:递归式定义} 中的矩阵验证\autoref{def:11:公理化定义} 的正确性.
+到目前为止，读者可能对\crefrange*{eq:13:递归式定义1}{eq:13:递归式定义4} 式繁杂的下标感到陌生，因此安排了
+\crefrange*{ex:13:公理化定义2}{ex:13:递归式定义} 希望大家熟悉这些公式.
+\begin{example} \label{ex:13:递归式定义2}
+    对\autoref{ex:13:递归式定义} 中的矩阵验证\autoref{def:13:公理化定义} 的正确性.
 \end{example}
 \begin{solution}
 
@@ -148,7 +148,7 @@
     \item 利用4中的结论可以得到$|A^\mathrm{T}|=|A|$:
 
     \item 利用4中的结论可以得到$|AB|=|A||B|$，$|A^k|=|A|^k$；
-    
+
     \item 利用4中的结论可以得到上、下三角矩阵行列式均为主对角线元素的乘积；
 
     \item 利用4中的结论（求出初等矩阵逆矩阵行列式）可以得到若$A$可逆，则$|A^{-1}|=|A|^{-1}$.
@@ -164,7 +164,7 @@
         A & O \\ C & B
     \end{vmatrix} = \begin{vmatrix}
         A & D \\ O & B
-    \end{vmatrix} = |A||B|,\ \begin{vmatrix}
+    \end{vmatrix} = |A||B|,\enspace\begin{vmatrix}
         O & A \\ B & C
     \end{vmatrix} = (-1)^{kr}|A||B|$；
 
@@ -182,10 +182,10 @@
     \end{vmatrix} = (-1)^{mn}|C||B-AC^{-1}D|$；
 
     \item 设$A$和$B$分别是$n \times m$和$m \times n$矩阵，则$|E_n \pm AB|=|E_m \pm BA|$,且
-    $|\lambda E_n \pm AB|=\lambda^{n-m}|\lambda E_m \pm BA|(n \geqslant m)$.
+    $|\lambda E_n \pm AB|=\lambda^{n-m}|\lambda E_m \pm BA|\enspace(n \geqslant m)$.
 \end{enumerate}
 
-还有一部分由这些性质可以推导的其他性质将出现在C组习题中供参考.这部分主要是技巧性内容，可以选择性完成.
+还有一部分由这些性质可以推导的其他性质将出现在C组习题中供参考. 这部分主要是技巧性内容，可以选择性完成.
 
 \section{行列式的基本运算}
 本节内容按照往年经验不是考试重点，但是我们要保证教材中涉及的的方法都掌握.本节我们简要说明教材中提及的
@@ -209,9 +209,9 @@
 \end{enumerate}
 \end{solution}
 
-接下来我们需要介绍一个非常重要的行列式，我们称之为范德蒙行列式：
+接下来我们需要介绍一个非常重要的行列式，我们称之为Vandermonde行列式：
 \begin{example}
-    证明：$n$范德蒙行列式
+    证明：$n$Vandermonde行列式
     \[V_n=\begin{vmatrix}
         1 & 1 & \cdots & 1 \\
         x_1 & x_2 & \cdots & x_n \\
@@ -220,34 +220,34 @@
     \end{vmatrix}=\prod\limits_{1 \leqslant i < j \leqslant n}(x_j-x_i)\]
 \end{example}
 
-教材177-178页例2给出了对上式的详细解释以及证明，这里我们不再赘述.我们需要强调的是范德蒙行列式的重要性，
-事实上，范德蒙行列式有着广泛的应用，在之后不少的习题中我们将使用它.在此我们证明\autoref{thm:4:覆盖定理}
+教材177-178页例2给出了对上式的详细解释以及证明，这里我们不再赘述.我们需要强调的是Vandermonde行列式的重要性，
+事实上，Vandermonde行列式有着广泛的应用，在之后不少的习题中我们将使用它.在此我们证明\autoref{thm:4:覆盖定理}
 的有限维情形作为一个例子：
-\begin{example}\label{ex:11:行列式证明覆盖定理}
+\begin{example}\label{ex:13:行列式证明覆盖定理}
     设$V_1,V_2,\ldots,V_s$是有限维线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量
     不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V.$
 \end{example}
 \begin{proof}
-    设$\dim V=n$，设$\vec{\alpha_1},\vec{\alpha_2},\cdots,\vec{\alpha_n}$为$V$的一组基，构造向量组$\{\vec{\beta_k}\}$中每个元素满足
-    \[\vec{\beta_k}=\vec{\alpha_1}+k\vec{\alpha_2}+\cdots+k^{n-1}\alpha_n,k=1,2,3,\cdots\]
-    任取上述向量组中的$n$个向量$\vec{\beta_{k_1}},\vec{\beta_{k_2}},\cdots,\vec{\beta_{k_n}}$，其中
+    设$\dim V=n$，设$\vec{\alpha}_1,\vec{\alpha}_2,\ldots,\vec{\alpha}_n$为$V$的一组基，构造向量组$\{\vec{\beta_k}\}$中每个元素满足
+    \[\vec{\beta_k}=\vec{\alpha}_1+k\vec{\alpha}_2+\cdots+k^{n-1}\alpha_n,\enspace k=1,2,3,\ldots\]
+    任取上述向量组中的$n$个向量$\vec{\beta}_{k_1},\vec{\beta}_{k_2},\ldots,\vec{\beta}_{k_n}$，其中
     $k_1<k_2<\cdots<k_n$，则有
-    \[(\vec{\beta_{k_1}},\vec{\beta_{k_2}},\cdots,\vec{\beta_{k_n}})=(\vec{\alpha_1},\vec{\alpha_2},\cdots,\vec{\alpha_n})C\]
+    \[(\vec{\beta}_{k_1},\vec{\beta}_{k_2},\ldots,\vec{\beta}_{k_n})=(\vec{\alpha}_1,\vec{\alpha}_2,\ldots,\vec{\alpha}_n)C\]
     其中
     \[C=\begin{pmatrix}
         1 & 1 & \cdots & 1 \\
         k_1 & k_2 & \cdots & k_n \\
-        \vdots & \vdots &  & \vdots \\
+        \vdots & \vdots & \ddots & \vdots \\
         k_1^{n-1} & k_2^{n-1} & \cdots & k_n^{n-1}
     \end{pmatrix}.\]
-    则$|C|$是一个范德蒙行列式，由范德蒙行列式的性质可知$|C| \neq 0$，因此$C$可逆，又由于
-    $\vec{\alpha_1},\vec{\alpha_2},\cdots,\vec{\alpha_n}$是$V$的一组基，因此
-    $\vec{\beta_{k_1}},\vec{\beta_{k_2}},\cdots,\vec{\beta_{k_n}}$线性无关，从而
-    向量组$\{\vec{\beta_k}\}$中任意$n$个向量均构成$V$的一组基.
+    则$|C|$是一个 Vandermonde 行列式. 由 Vandermonde 行列式的性质可知$|C| \neq 0$，因此$C$可逆. 又由于
+    $\vec{\alpha}_1,\vec{\alpha}_2,\ldots,\vec{\alpha}_n$是$V$的一组基，因此
+    $\vec{\beta}_{k_1},\vec{\beta}_{k_2},\ldots,\vec{\beta}_{k_n}$线性无关，从而
+    向量组$\{\vec{\beta}_k\}$中任意$n$个向量均构成$V$的一组基.
 
-    由于$V_1,V_2,\ldots,V_s$是$V$的非平凡子空间，因此每个子空间最多包含$\{\vec{\beta_k}\}$中$n-1$个向量，
-    进而$V_1\cup V_2\cup\ldots\cup V_s$只包含$\{\vec{\beta_k}\}$中有限个向量，
-    所以必然存在一个向量$\vec{\beta}_j$使得$\vec{\beta}_j \notin V_1\cup V_2\cup\ldots\cup V_s$.
+    由于$V_1,V_2,\ldots,V_s$是$V$的非平凡子空间，因此每个子空间最多包含$\{\vec{\beta}_k\}$中$n-1$个向量，
+    进而$V_1\cup V_2\cup\cdots\cup V_s$只包含$\{\vec{\beta}_k\}$中有限个向量，
+    所以必然存在一个向量$\vec{\beta}_j$使得$\vec{\beta}_j \notin V_1\cup V_2\cup\cdots\cup V_s$.
 \end{proof}
 
 除此之外教材上还有一些基于递推的方法的例子，我们将会在下一讲中展开介绍这一方法以及其它技巧性更强的方法.
@@ -264,7 +264,7 @@
 \end{definition}
 我们要特别注意伴随矩阵代数余子式的下标与通常矩阵下标不一致，与转置下标一致.
 伴随矩阵具有以下几个重要性质，我们将给出大部分性质的证明，部分性质我们放在朝花夕拾中证明：
-\begin{example} \label{ex:11:伴随矩阵}
+\begin{example} \label{ex:13:伴随矩阵}
     证明下列关于$n$阶矩阵$A$的伴随矩阵$A^*$的性质：
     \begin{enumerate}
         \item $AA^*=A^*A=|A|E$，若$A$可逆，则有$A^{-1}=|A|^{-1}A^*$，$A^*=|A|A^{-1}$，$(A^*)^{-1}=(A^{-1})^*=|A|^{-1}A$.
@@ -277,17 +277,17 @@
         \item $(A^*)^*=|A|^{n-2}A$，$|(A^*)^*|=|A|^{(n-1)^2}$，无论$A$是否可逆（本题结论可以推广到更多重的伴随矩阵）.
 
         \item 对正整数$k$，$(A^k)^*=(A^*)^k$.
-        
-        \item \item $r(A^*)=\begin{cases}
+
+        \item $r(A^*)=\begin{cases}
             n & r(A)=n \\ 1 & r(A)=n-1 \\ 0 & r(A) < n-1
         \end{cases}$.
     \end{enumerate}
 \end{example}
 \begin{proof}
-    
+
 \end{proof}
 
-在计算行列式时若出现伴随矩阵，我们经常使用\autoref{ex:11:伴随矩阵} 中的1，3进行计算.
+在计算行列式时若出现伴随矩阵，我们经常使用\autoref{ex:13:伴随矩阵} 中的1,3进行计算.
 
 使用伴随矩阵求逆矩阵是一种矩阵求逆的方式，我们通过一个简单的例子复习：
 \begin{example}
@@ -306,21 +306,21 @@
 \begin{theorem} \keyterm{Cramer法则} \label{thm:13:Cramer}
     对线性方程组
     \begin{gather}
-        \label{eq:11:线性方程组1}
-        \left\{ \begin{array}{rcl}
-            a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&0 \\
-            a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=&0 \\
-            &\vdots& \\
-            a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n&=&0
-        \end{array} \right.
+        \label{def:13:线性方程组1}
+        \begin{cases} \begin{aligned}
+            a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n &= 0 \\
+            a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n &= 0 \\
+            &\vdotswithin{ = } \\
+            a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n &= 0
+        \end{aligned} \end{cases}
         \\
-        \label{eq:11:线性方程组2}
-        \left\{ \begin{array}{rcl}
-            a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&b_1 \\
-            a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=&b_2 \\
-            &\vdots& \\
-            a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n&=&b_n
-        \end{array} \right.
+        \label{def:13:线性方程组2}
+        \begin{cases} \begin{aligned}
+            a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n &= b_1 \\
+            a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n &= b_2 \\
+            &\vdotswithin{ = } \\
+            a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n &= b_n
+        \end{aligned} \end{cases}
     \end{gather}
 
     令$D=\begin{vmatrix}
@@ -340,14 +340,14 @@
         a_{n1} & a_{n2} & \cdots & b_n
     \end{vmatrix}$，其中$D$称为系数行列式.
     \begin{enumerate}
-        \item 方程组 \ref{eq:11:线性方程组1} 只有零解$\iff D \neq 0$，有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
+        \item 方程组 \ref{def:13:线性方程组1} 只有零解$\iff D \neq 0$，有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
 
-        \item 方程组 \ref{eq:11:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，
-        当$D=0$时，方程组 \ref{eq:11:线性方程组2} 要么无解，要么有无穷多解.
+        \item 方程组 \ref{def:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，
+        当$D=0$时，方程组 \ref{def:13:线性方程组2} 要么无解，要么有无穷多解.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    
+
 \end{proof}
 
 我们可以用 Cramer 法则求解线性方程组，但要注意只有方程个数与未知数个数相等时才能使用，
@@ -379,6 +379,7 @@
         a_{i_kj_1} & a_{i_kj_2} & \cdots & a_{i_kj_k}
     \end{vmatrix}\]
     称为矩阵$A$的一个$k$阶子式，若子式等于0则称$k$阶零子式，否则称非零子式.
+
     当$A$为方阵且$i_t=j_t\enspace(t=1,2,\ldots,k)$（即选取相同行列）时，称为$A$的
     $k$阶\keyterm{主子式}[principal minor]. 若$i_t=j_t=t\enspace(t=1,2,\ldots,k)$，称为$A$的$k$阶\keyterm{顺序主子式}[leading principal minor]
     （取前$k$行$k$列的左上角主子式）.
@@ -388,20 +389,17 @@
         1 & 5 & -2 \\ 2 & 3 & 4 \\ -1 & -3 & 0
     \end{pmatrix}$的所有一阶、二阶子式、主子式和顺序主子式.
 \end{example}
+
 接下来我们给出行列式的秩的定义.
 \begin{definition}
     矩阵$A$的非零子式的最高阶数$r$称为$A$的行列式秩.
 \end{definition}
-\raggedright 即矩阵$A$的行列式秩为$r$的含义为$A$至少有一个$r$阶子式不为0，但所有$r+1$阶子式均为0.
+即矩阵$A$的行列式秩为$r$的含义为$A$至少有一个$r$阶子式不为0，但所有$r+1$阶子式均为0.
 事实上，我们可以通过如下定理统一矩阵的秩和行列式秩：
 \begin{theorem}\label{thm:13:行列式秩等于行列式秩}
     矩阵$A$的秩$r(A)=r \iff A$的行列式的秩为$r$.
 \end{theorem}
-\begin{proof}
-    
-\end{proof}
-
-\raggedright 通过\autoref{thm:13:行列式秩等于行列式秩}我们可以得到上一个专题中矩阵的秩的等价定义.
+我们可以得到上一个专题中矩阵的秩的等价定义.
 \begin{definition}
     矩阵$A$的非零子式的最高阶数$r$称为矩阵$A$的秩，记为$r(A)$.
 \end{definition}
@@ -423,10 +421,10 @@
 \begin{enumerate}
     \item 在矩阵的秩的定义以及三秩的统一中体现了向量组的秩（行秩、列秩的定义基于向量组的秩）
     和线性映射的秩（矩阵的秩的定义基于线性映射的秩）与矩阵的秩的统一；
-    \item 在\autoref{thm:13:行列式秩等于行列式秩}中统一了矩阵的秩和行列式的秩.
+    \item 在\autoref{thm:13:行列式秩等于行列式秩} 中统一了矩阵的秩和行列式的秩.
 \end{enumerate}
 虽然线性映射的秩、矩阵的秩、行列式的秩的定义各不相同，但本质都在于向量组的秩（回顾线性映射的秩的定义，
-矩阵行秩、列秩的定义，乃至\autoref{thm:13:行列式秩等于行列式秩}的证明）. 这给我们的启示是上述提到的概念
+矩阵行秩、列秩的定义，乃至\autoref{thm:13:行列式秩等于行列式秩} 的证明）. 这给我们的启示是上述提到的概念
 都可以互相转化考虑.例如考虑可逆时，我们可以考虑行、列向量是否线性无关/矩阵对应的线性映射是否可逆/行列式是否为0等.
 虽然说起来很简单，但是实际做题的时候很多同学还是容易思维局限，因此我们需要将这些概念的统一性放在重要的位置.
 \begin{example}
