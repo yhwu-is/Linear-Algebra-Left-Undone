@@ -306,7 +306,7 @@
 \begin{theorem} \keyterm{Cramer法则} \label{thm:13:Cramer}
     对线性方程组
     \begin{gather}
-        \label{def:13:线性方程组1}
+        \label{eq:13:线性方程组1}
         \begin{cases} \begin{aligned}
             a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n &= 0 \\
             a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n &= 0 \\
@@ -314,7 +314,7 @@
             a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n &= 0
         \end{aligned} \end{cases}
         \\
-        \label{def:13:线性方程组2}
+        \label{eq:13:线性方程组2}
         \begin{cases} \begin{aligned}
             a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n &= b_1 \\
             a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n &= b_2 \\
@@ -340,10 +340,10 @@
         a_{n1} & a_{n2} & \cdots & b_n
     \end{vmatrix}$，其中$D$称为系数行列式.
     \begin{enumerate}
-        \item 方程组 \ref{def:13:线性方程组1} 只有零解$\iff D \neq 0$，有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
+        \item 方程组 \ref{eq:13:线性方程组1} 只有零解$\iff D \neq 0$，有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
 
-        \item 方程组 \ref{def:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，
-        当$D=0$时，方程组 \ref{def:13:线性方程组2} 要么无解，要么有无穷多解.
+        \item 方程组 \ref{eq:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，
+        当$D=0$时，方程组 \ref{eq:13:线性方程组2} 要么无解，要么有无穷多解.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
