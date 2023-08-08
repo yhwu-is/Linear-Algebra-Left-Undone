@@ -11,7 +11,7 @@
 我们从上三角矩阵出发，首先因为之前的讨论中上三角矩阵的一些优良性质大家已经非常熟悉，并且
 事实上，复向量空间中的所有线性变换都可以在某组基下得到上三角矩阵的矩阵表示.
 我们有如下定理：
-\begin{theorem}\label{thm:19:上三角矩阵存在}
+\begin{theorem}\label{thm:20:上三角矩阵存在}
     设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$，则
     \begin{enumerate}
         \item $\sigma$关于$V$的某组基有上三角矩阵，记为$A$；
@@ -65,7 +65,7 @@
 
 事实上，我们研究上三角矩阵（以及后续分块对角矩阵）的思路与研究对角矩阵是类似的，我们会讨论计算方法以及
 相关的等价条件.下面我们给出关于对角矩阵的一些等价条件：
-\begin{theorem}\label{thm:19:上三角矩阵等价条件}
+\begin{theorem}\label{thm:20:上三角矩阵等价条件}
     设$\sigma\in \mathcal{L}(V)$，且$v_1,v_2,\ldots,v_n$是$V$的基，则以下条件等价：
     \begin{enumerate}
         \item $\sigma$关于$v_1,v_2,\ldots,v_n$的矩阵是上三角的；
@@ -85,7 +85,7 @@
 
 这一定理给出了上三角矩阵的几个充要条件，基于这些充要条件我们可以有如下进一步的理解：
 \begin{enumerate}
-    \item 我们可以给出\autoref{thm:19:上三角矩阵存在}的另外两种证明，即《线性代数应该这样学》
+    \item 我们可以给出\autoref{thm:20:上三角矩阵存在}的另外两种证明，即《线性代数应该这样学》
     5.27给出的两种证明.事实上5.27的证明也使用了数学归纳法，但是之前分块矩阵的归纳是针对矩阵的
     阶数，这里是针对线性变换所在线性空间的维数.我们这给出证明，以便深刻体会数学归纳法的思想：
     
@@ -157,7 +157,7 @@
 事实上，根据可对角化的等价条件，我们知道一个线性变换不可对角化实际上是因为它没有足够多的
 线性无关的特征向量，也即特征子空间直和后比原空间略小.事实上，我们知道$\sigma$在特征值
 $\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$.我们回顾\autoref{thm:6:核空间性质}：
-\begin{theorem}\label{thm:19:核空间性质}
+\begin{theorem}\label{thm:20:核空间性质}
     设$\sigma\in \mathcal{L}(V)$，则有
     \begin{enumerate}
         \item $\{0\}=\ker \sigma^0\subset\ker \sigma^1\subset\cdots\subset
@@ -186,7 +186,7 @@ $\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$.我们回�
 
 根据线性映射矩阵表示很容易知道，幂零线性变换在任意一组基下的矩阵表示都是幂零矩阵.
 我们接下来首先讨论幂零线性变换的一些基本性质：
-\begin{theorem} \label{thm:19:幂零线性变换性质}
+\begin{theorem} \label{thm:20:幂零线性变换性质}
     设线性变换$N\in \mathcal{L}(V)$是幂零的，则
     \begin{enumerate}[label=(\arabic*)]
         \item $N$的所有特征值均为0（等价定义）；
@@ -243,14 +243,14 @@ $\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$.我们回�
 注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，
 $(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
 
-实际上，根据\autoref{thm:19:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$.
+实际上，根据\autoref{thm:20:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$.
 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为
 广义特征子空间的维数，几何重数定义为特征子空间的维数.实际上在不变子空间一讲中我们有类似的定义，我们将在下一讲中
 讲解它们的关联.
 
 我们接下来的目标转向我们的主线，即证明任意线性变换的广义特征子空间的和为直和且和为原空间.下面这一定理读者可以回顾
 特征值、特征向量的性质以及可对角化的等价条件，我们会发现这些定理具有很大的相似性，因此记忆难度并不大：
-\begin{theorem} \label{thm:19:广义特征性质}
+\begin{theorem} \label{thm:20:广义特征性质}
     设$V$是有限维的，$\sigma\in \mathcal{L}(V)$.用$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值.
     \begin{enumerate}[label=(\arabic*)]
         \item $\sigma$对应于不同特征值的广义特征向量线性无关；
@@ -304,9 +304,10 @@ $(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次�
 
 \end{solution}
 
-事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难.因为我们需要
-不断提升矩阵的幂次，直到得到的广义特征子空间不再发生改变才能够停止计算.这里的例子维数较低，但维数较高时
-我们可能需要进行很多次计算.
+事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难.因为
+当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，
+是很困难的，但事实上根据核空间停止增长的性质可以知道，我们只需要不断提升矩阵的幂次，直到得到的
+广义特征子空间不再发生改变就能够停止计算.
 
 \begin{example}
     设$\sigma,\tau\in \mathcal{L}(V)$可逆，证明：$\sigma$和$\tau^{-1}\sigma\tau$有相同的特征值，且重数也相同.
@@ -321,7 +322,7 @@ $(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次�
     我们称线性变换$\sigma\in \mathcal{L}(V)$的平方根是满足$\tau^2=\sigma$的线性变换$\tau\in \mathcal{L}(V)$.
 \end{definition}
 在复向量空间中，我们有如下两个结论：
-\begin{theorem} \label{thm:19:幂零平方根}
+\begin{theorem} \label{thm:20:幂零平方根}
     设$V$是复向量空间.
     \begin{enumerate}[label=(\arabic*)]
         \item 设$N\in \mathcal{L}(V)$幂零，则$(I+N)$有平方根；
