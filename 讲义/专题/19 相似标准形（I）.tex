@@ -1,0 +1,468 @@
+\chapter{相似标准形（I）}
+
+我们早在矩阵的秩一讲中接触了第一个``标准形''，即相抵标准形.那时我们知道标准形就是同一个映射选取了一组很好的基使得
+矩阵表示是一个很简单的矩阵，这一矩阵具有一定的代表性，具有很特别的形式，因此称为标准形.事实上这非常符合我们这几讲
+中讨论的内容，只是相抵标准形不要求线性变换，不要求选取出发空间和到达空间选取的是同一组基，如果有线性变换和同一组基
+的要求，便引出了我们这一讲的主题：相似标准形.
+
+接下来的两讲我们都将讨论复向量空间上的矩阵能有怎样的相似标准形，这一讲我们先介绍相似的定义与性质，以及最简单的相似标准形
+——对角矩阵，描述其求解方法和存在的条件.下一讲我们将说明两种所有矩阵都可以拥有的相似标准形：上三角矩阵和分块对角矩阵.
+
+\section{相似的定义与性质}
+我们早在矩阵的秩一讲中提到这一定理：
+\begin{theorem}
+    \textbf{\heiti 基的选择对映射矩阵的影响}
+
+    设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$
+    是线性空间的$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，
+    则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
+\end{theorem}
+这一定理研究了同一个线性变换在不同基下表示矩阵之间的关系.我们将同一个线性变换在不同基下表示的两个矩阵的关系称为相似的，
+规范定义如下：
+\begin{definition}
+    若对于$A,B\in \mathbf{M}_n(\mathbf{F})$，存在可逆矩阵$C\in \mathbf{M}_n(\mathbf{F})$, 使得
+    $C^{-1}AC=B$，则称$A$相似于$B$，记作$A\sim B$.
+\end{definition}
+相似有以下基本性质需要了解：
+\begin{enumerate}
+    \item 相似是一种等价关系；两矩阵相似必相抵（相似矩阵的秩相等）；
+
+    \begin{proof}
+        等价关系在《大学数学：代数与几何》的233页有说明，此处不再赘述；此外，由于乘以可逆矩阵不改变原矩阵的秩，因此$r(P^{-1}AP)=r(A)$，
+        即两矩阵相似必定秩相等，因此也必定相抵.
+    \end{proof}
+
+    需要说明的是相似必定相抵但反之不一定成立，相抵的两个矩阵甚至可能不是方阵，但相似有这一要求.即使是方阵也不一定成立，在习题中
+    我们会要求读者给出例子.
+
+    \item $A\sim B$可以得到$A^\mathrm{T}\sim B^\mathrm{T}$，$A^m\sim B^m$，更一般地，对于任意多项式$f(x)$都有$f(A)\sim f(B)$，且
+    若$B=P^{-1}AP$，有$f(B)=P^{-1}f(A)P$.除此之外还有$A,B$可逆时，$A^{-1}\sim B^{-1}$，$A^*\sim B^*$；
+
+    \begin{proof}
+        \begin{enumerate}
+            \item 由于$B^\mathrm{T}=(C^{-1}AC)^\mathrm{T}=C^\mathrm{T}A^\mathrm{T}(C^{-1})^\mathrm{T}=(C^\mathrm{T})^{-1}A^\mathrm{T}C^\mathrm{T}$，
+            因此$A^\mathrm{T}\sim B^\mathrm{T}$；
+            \item 由于$B^m=(C^{-1}AC)^m=C^{-1}A^mC$（乘积展开后中间$C^{-1}C$可以消去），因此$A^m\sim B^m$；
+            \item 设$f(A)=a_0E+a_1A+\cdots+a_mA^m$，则$f(B)=a_0P^{-1}EP+a_1P^{-1}AP+\cdots+a_mP^{-1}A^mP=P^{-1}f(A)P$，因此$f(A)\sim f(B)$，且
+            $f(B)=P^{-1}f(A)P$.
+            \item 由于$B^{-1}=(C^{-1}AC)^{-1}=C^{-1}A^{-1}C$，因此$A^{-1}\sim B^{-1}$，$A^*\sim B^*$.
+            \item 由于$B^*=(C^{-1}AC)^*=C^{-1}A^*C$，因此$A^*\sim B^*$.
+        \end{enumerate}
+    \end{proof}
+
+    \item $A_1\sim B_1$，$A_2\sim B_2$不一定有$A_1+A_2\sim B_1+B_2$，只有当$P^{-1}A_1P=B_1,P^{-1}A_2P=B_2$时
+    （即相同的过渡矩阵$P$）才有$P^{-1}(A_1+A_2)P=B_1+B_2$；
+
+    \item 若$A_1\sim B_1$，$A_2\sim B_2$，则有
+    \[ \begin{pmatrix}
+        A_1 & O \\ O & A_2
+    \end{pmatrix}\sim\begin{pmatrix}
+        B_1 & O \\ O & B_2
+    \end{pmatrix};\]
+
+    \begin{proof}
+        设$P_1^{-1}A_1P_1=B_1$，$P_2^{-1}A_2P_2=B_2$，则
+        \[ \begin{pmatrix}
+            P_1 & O \\ O & P_2
+        \end{pmatrix}^{-1}\begin{pmatrix}
+            A_1 & O \\ O & A_2
+        \end{pmatrix}\begin{pmatrix}
+            P_1 & O \\ O & P_2
+        \end{pmatrix}=\begin{pmatrix}
+            P_1^{-1}A_1P_1 & O \\ O & P_2^{-1}A_2P_2
+        \end{pmatrix}=\begin{pmatrix}
+            B_1 & O \\ O & B_2
+        \end{pmatrix}.\]
+    \end{proof}
+
+    \item 相似矩阵有相同的特征多项式（逆命题不成立），即$A\sim B$有$|\lambda E-A|=|\lambda E-B|$，从而有相同的
+    迹，行列式，特征值，但特征向量不一定相同；
+
+    \begin{proof}
+        设$B=P^{-1}AP$，则$|\lambda E-B|=|\lambda E-P^{-1}AP|=|P^{-1}(\lambda E-A)P|=|P^{-1}||\lambda E-A||P|=|\lambda E-A|$.
+        因此$A\sim B$有$|\lambda E-A|=|\lambda E-B|$.
+
+        我们知道特征多项式相同则特征值相同，迹等于所有特征值之和，行列式等于所有特征值之积，因此相似矩阵有相同的
+        迹，行列式，特征值.
+
+        相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同.
+    \end{proof}
+    \item 与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零
+    （但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
+
+    \begin{proof}
+        我们一边回顾上面这些特殊矩阵的定义一边证明结论：
+        \begin{enumerate}
+            \item 设$A$是幂等矩阵，则$A^2=A$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}AP=B$，因此$B$也是幂等矩阵，
+            即与幂等矩阵相似的仍幂等；
+            \item 设$A$是对合矩阵，则$A^2=E$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}EP=P^{-1}P=E$，
+            因此$B$也是对合矩阵，即与对合矩阵相似的仍对合；
+            \item 设$A$是幂零矩阵，则存在正整数$m$使得$A^m=O$，设$B=P^{-1}AP$，则$B^m=P^{-1}A^mP=P^{-1}OP=O$，
+            因此$B$也是幂零矩阵，即与幂零矩阵相似的仍幂零；
+            \item 设$A$是正交矩阵，则$A^{-1}=A^\mathrm{T}$，设$B=P^{-1}AP$，则
+            $B^{-1}=(P^{-1}AP)^{-1}=P^{-1}A^{-1}P=P^{-1}A^\mathrm{T}P$，只有当$P$是正交矩阵时，即$P^{-1}=P^\mathrm{T}$时，
+            $B^{-1}=P^{-1}A^\mathrm{T}P=P^\mathrm{T}A^\mathrm{T}(P^{-1})^\mathrm{T}=(P^{-1}AP)^\mathrm{T}=B^\mathrm{T}$，
+            因此与正交矩阵相似的不一定正交，只有过渡矩阵是正交矩阵时才一定正交.
+        \end{enumerate}
+    \end{proof}
+\end{enumerate}
+
+下面这个例子非常重要，在解决一些题目时使用这一结论会更便捷：
+\begin{example}
+    （教材定理$4.10$推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
+\end{example}
+\begin{proof}
+    
+\end{proof}
+
+最后我们谈一个拓展题型，我们考虑矩阵方程$AX-XB=O$，若$A,B$都是$n$阶方阵且$X$可逆，则方程可以改写为$X^{-1}AX=B$，即
+$A$与$B$相似.事实上，这一矩阵方程的解空间的维数实际上刻画了$A$与$B$的相似程度.我们有如下结论：
+\begin{theorem}
+    设$A,B$分别为数域$\mathbf{F}$上$n$阶、$m$阶方阵，则$A,B$有$r$个两两不等的公共特征值，则矩阵方程$AX-XB=O$有秩为
+    $r$的矩阵解.反之，若数域为复数域，矩阵方程$AX-XB=O$有秩为$r$的矩阵解，则$A,B$至少有$r$个公共的特征值
+    （计重数）.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 
+        \item 
+    \end{enumerate}
+\end{proof}
+
+由此可以看出，复数域上$n$阶、$m$阶方阵$A,B$的矩阵方程$AX=XB$只有零解的充要条件是$A,B$没有公共特征值.
+我们通过一个例子应用这一定理：
+\begin{example}
+    设$m$阶矩阵$A$与$n$阶矩阵$B$无公共复特征值，$C$为$m\times n$矩阵，则矩阵方程$AX-XB=C$存在唯一解.
+\end{example}
+\begin{proof}
+    
+\end{proof}
+
+\section{对角矩阵}
+在介绍完相似的概念和基本性质后，我们便可以讨论如何寻找一组基使得线性变换的矩阵表示是一个很简单的矩阵，
+因为其它不够简单的矩阵只是线性变换在其他基下的表示，因此其他矩阵都与这一很简单的矩阵相似，因此称这一
+很简单的矩阵为相似标准形.
+
+我们心中最简单的矩阵除了全零的矩阵外可能就是只有对角线非零的矩阵了.这样的矩阵我们称为对角矩阵，本节我们
+将探讨什么情况下线性变换可以找到一组基使得表示矩阵为对角矩阵，以及如何求解出对角矩阵以及对应的基.
+
+\subsection{对角化问题的一般解法}
+首先我们需要说明可对角化的定义，事实上线性变换和矩阵都有相应的定义：
+\begin{definition}
+    \begin{enumerate}
+        \item 线性变换可对角化：设$\sigma\in\mathcal{L}(V)$，如果存在$V$的一组基使得$\sigma$在这组基下的矩阵是对角矩阵，
+        则称$\sigma$可对角化；
+        \item 矩阵可对角化：设$A\in\mathbf{F}^{n\times n}$，如果存在可逆矩阵$P$使得$P^{-1}AP$是对角矩阵，则称$A$可对角化
+        （等价于$A$相似于对角矩阵）.
+    \end{enumerate}
+\end{definition}
+
+事实上这两者之间的关联是密不可分的.因为如果线性变换$\sigma$可对角化，则它的任意一组基$B_1$下的表示矩阵$A$都是可对角化的.
+原因在于$\sigma$在某组基$B_2$下的矩阵是对角矩阵$\Lambda$，因此$A$和$\Lambda$是$\sigma$在两组基下的表示矩阵，因此$A$
+相似于对角矩阵，故$A$可对角化.
+
+在本小节中，我们先探讨如下题型：我们假定线性映射$\sigma$和矩阵$A$可对角化，那么如何解出这一对角矩阵，以及解出
+\begin{enumerate}
+    \item $\sigma$在何组基下的矩阵是对角矩阵；
+    \item 什么样的矩阵$P$使得$P^{-1}AP$是对角矩阵.
+\end{enumerate}
+
+我们将分别进行讨论.我们先讨论矩阵的情况.
+将$P^{-1}AP=\Lambda$变形为$AP=P\Lambda$，并将矩阵$P$按列分块为$P=(X_1,X_2,\ldots,X_n)$，则有
+\[A(X_1,X_2,\ldots,X_n)=(X_1,X_2,\ldots,X_n)\diag(\lambda_1,\lambda_2,\ldots,\lambda_n),\]
+利用分块矩阵乘法我们有$AX_j=\lambda_jX_j\enspace(X_j\neq 0,\enspace j=1,2,\ldots,n)$.由于$P$是可逆矩阵，
+因此其列向量必然构成$\mathbf{F}^n$的一组基，即$A$相似于对角矩阵当且仅当$A$有$n$个线性无关的特征向量，并且
+这些特征向量按列排列就是我们要求解的$P$.
+
+对于线性变换我们也可以做类似的分析.
+事实上，若$\sigma$可对角化，我们可以简要做以下分析.设$\sigma$在$V$的一组基$\alpha_1,\ldots,\alpha_n$下的矩阵为对角矩阵
+$\Lambda=\diag(\lambda_1,\ldots,\lambda_n)$，由线性映射矩阵表示的定义，这等价于
+\[\sigma(\alpha_i)=\lambda_i\alpha_i\enspace(i=1,\ldots,n),\]
+即$\alpha_1,\ldots,\alpha_n$是$\sigma$的$n$个线性无关的特征向量，因此$\sigma$可对角化当且仅当$\sigma$有$n$个线性无关的
+特征向量，并且这$n$个特征向量就是使得$\sigma$矩阵表示为对角矩阵的那组基.
+
+然而，如果我们直接求解线性变换的对角问题有一个很大的问题，即我们实际上没有程序化的方法求解特征值和特征向量.如果给定的映射
+形式比较简单，可能可以试出结果，但很多时候我们很难解出特征值和特征向量.但回顾矩阵$A$的特征值只需求解$|\lambda E-A|=0$，特征向量
+只需要在得到$\lambda$后解线性方程组$AX=\lambda X$即可.但我们可以回顾上一讲中推导的线性变换和矩阵特征值、特征向量的关联，
+我们知道线性变换$\sigma$与其在任意一组基$B$下的矩阵$A$有相同的特征值，且$A$的特征向量是$\sigma$特征向量在$B$下的坐标.
+因此我们可以``曲线救国''，得到求解对角化问题的一般流程如下：
+
+\begin{enumerate}
+    \item 先任意写出$\sigma$在一组基$B$下的矩阵$A$，当然为了计算方便一般选取自然基；
+    \item 利用特征多项式$f(\lambda)=|\lambda E-A|=0$求出$A$的所有不同特征值；
+    \item 解线性方程组$AX=\lambda X$（$\lambda$是上一步求出的特征值）求出$A$在不同特征值下的线性无关特征向量；
+    \item 第三步中求得的所有向量就是$\sigma$的特征向量在基$B$下的坐标，根据前面的讨论，$\sigma$的特征向量也就是
+    使得$\sigma$的矩阵表示为对角矩阵的那组基.
+    \item 当然，如果题目中直接给出求$P$使得$P^{-1}AP$为对角矩阵，那么我们只需进行2、3两步，并将3中得到的向量
+    按列排列成矩阵$P$即可.
+\end{enumerate}
+
+下面我们来看几个例子练习一下上面的求解过程：
+\begin{example}
+    求矩阵
+    \[A=\begin{pmatrix}
+        0 & -1 & 1 \\
+        -1 & 0 & 1 \\
+        1 & 1 & 0
+    \end{pmatrix}\]
+    的所有特征值，对应的特征子空间，以及与 $A$ 相似的一个对角矩阵.
+\end{example}
+\begin{solution}
+
+\end{solution}
+
+\begin{example}
+    设 $T$ 是次数小于等于 $2$ 的实多项式线性空间 $V$ 上的变换，对任意 $f(x) \in V$，定义
+    \[T(f(x))=\frac{\textup{d}((x-2)f(x))}{\textup{d}x}\]
+    证明 $T$ 是 $V$ 上的线性变换，且$T$可对角化.
+\end{example}
+\begin{proof}
+    
+\end{proof}
+
+除此之外，我们还可以利用对角化求解矩阵的幂的问题.
+若一个矩阵$A$可对角化，即存在可逆矩阵$P$使得$A=P^{-1}\Lambda P$（其中$\Lambda$为对角矩阵），
+在这种形式下$A$的幂是很好求的，因为$A^k=P^{-1}\Lambda^kP$，$\Lambda$为对角矩阵，因此其幂是好求的.
+我们来看一个例子
+\begin{example}
+    已知$A=\begin{pmatrix}
+        0 & \cfrac{1}{2} & \cfrac{1}{2} \\ 1 & -\cfrac{1}{2} & \cfrac{1}{2} \\ 1 & -\cfrac{1}{2} & \cfrac{1}{2}
+    \end{pmatrix}$，求$A^n$.
+\end{example}
+\begin{solution}
+
+\end{solution}
+
+\subsection{可对角化的条件}
+在我们推导求解对角化问题的一般流程时，我们提到了一个条件：矩阵$A$可对角化当且仅当$A$有$n$个线性无关的特征向量，线性变换$\sigma$
+可对角化当且仅当$\sigma$有$n$个线性无关的特征向量.这一条件是非常重要的，基于这一观察我们可以扩展到下面这一定理：
+\begin{theorem}
+    设$V$是数域$\mathbf{F}$上的$n$维线性空间，$\sigma$是$V$上的线性变换，$\lambda_1,\lambda_2,\ldots,\lambda_s\in\mathbf{F}$
+    是$\sigma$的所有互异特征值，则以下条件等价：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\sigma$可对角化；
+        \item $\sigma$有$n$个线性无关的特征向量，它们构成$V$的一组基；
+        \item $V$有在$\sigma$下不变的一维子空间$U_1,\ldots,U_n$，使得$V=U_1\oplus\cdots\oplus U_n$.
+        \item $V=V_{\lambda_1}\oplus V_{\lambda_2}\oplus\cdots\oplus V_{\lambda_s}$；
+        \item $n=\dim V_{\lambda_1}+\dim V_{\lambda_2}+\cdots+\dim V_{\lambda_s}$；
+        \item $\sigma$每个特征值的代数重数等于几何重数.
+    \end{enumerate}
+\end{theorem}
+实际上对于矩阵我们有对应的定理（除了矩阵没有不变子空间外，其余将线性变换替换为矩阵即可），此处不再赘述.
+下面我们简要证明这一定理：
+
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $(1)\Rightarrow(2)$：根据我们在推导求解线性变换对角矩阵流程时的分析，这一结论是成立的；
+        \item $(2)\Rightarrow(3)$：由于$\sigma$有$n$个线性无关的特征向量，记为$\alpha_1,\ldots,\alpha_n$，则
+        令$U_i=\spa(\alpha_i)$，则$U_i$是$\sigma$的不变子空间（因为
+        $\sigma(\alpha_i)=\lambda\alpha_i\in U_i,\enspace\forall\alpha_i\in U_i$），且$V=U_1\oplus\cdots\oplus U_n$；
+        \item $(3)\Rightarrow(4)$：我们将这些$U_i$中包含的向量按属于哪个$\lambda_i$的特征向量进行分类，然后每一类内的$U_i$
+        进行直和即可得到特征子空间.根据\autoref{thm:4:多空间直和}可知结论成立；
+        \item $(4)\Rightarrow(5)$：根据直和的维数公式（\autoref{thm:4:直和等价命题}）显然成立；
+        \item $(5)\Rightarrow(6)$：设$\lambda_1,\ldots,\lambda_s$的代数重数为$r_1,\ldots,r_s$，则
+        $n=r_1+\cdots+r_s$，又根据\autoref{thm:18:代数重数与几何重数}，$\dim V_{\lambda_i}\leqslant r_i(i=1,\ldots,s)$，
+        因此由$n=\dim V_{\lambda_1}+\cdots+\dim V_{\lambda_s}$可知必须有$\dim V_{\lambda_i}=r_i(i=1,\ldots,s)$，
+        即每个特征值的代数重数等于几何重数；
+        \item $(6)\Rightarrow(1)$：由于每个特征值的代数重数等于几何重数，因此特征子空间维数之和为$n$，
+        故存在$n$个线性无关的特征向量，根据我们在推导求解线性变换对角矩阵流程时的分析，这表明$\sigma$可对角化.
+    \end{enumerate}
+\end{proof}
+
+我们有一个显然的推论如下：
+\begin{corollary}
+    若$n$维空间上的线性变换$\sigma$有$n$个不同的特征值，则$\sigma$可对角化.反之，$\sigma$可对角化不一定有$n$个特征值.
+\end{corollary}
+\begin{proof}
+    
+\end{proof}
+
+实际上由特征值的性质，我们容易知道数域$\mathbf{F}$上矩阵$A$可对角化，则$A^*$可对角化，对于数域$\mathbf{F}$上
+任意多项式$f(x)$，$f(A)$也可对角化，且$A$可逆时，$A^{-1}$也可对角化.
+
+\begin{proof}
+    
+\end{proof}
+
+下面我们来看一个例子，这一例子也给出了一个等价条件：
+\begin{example}
+    设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$.证明：$\sigma$可对角化当且仅当对每个$\lambda\in\mathbf{C}$有
+	$V=\ker(\sigma-\lambda I)\oplus\im(\sigma-\lambda I)$.
+\end{example}
+\begin{proof}
+    
+\end{proof}
+
+接下来我们将给出一些基本的例子来运用上面的定理：
+\begin{example}
+    线性变换 $T : \mathbf{R}^3 \to \mathbf{R}^3$ 的定义是：
+    \[T(x_1,\ x_2,\ x_3)=(4x_1+x_3,\ 2x_1+3x_2+2x_3,\ x_1+4x_3)\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求出$T$的特征多项式及特征值；
+        \item 判断$T$是否可对角化，并给出理由.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 
+        \item 
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    证明$r$阶上三角矩阵$(r>1)$
+    \[J_0=\begin{pmatrix}
+        \lambda_0 & 1 &  &  \\
+          & \lambda_0 & \ddots &  \\
+          &  & \ddots &  1 \\
+          &  &  &  \lambda_0
+    \end{pmatrix}\]
+    不与对角阵相似.
+\end{example}
+\begin{solution}
+
+\end{solution}
+
+\begin{example}
+    设$\alpha$和$\beta$是$\mathbf{R}^n\enspace (n>1)$中两个列向量，$A=\alpha\beta^\mathrm{T}\neq O$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$A$的特征值；
+
+        \item 证明：$\alpha^\mathrm{T}\beta=0\iff A$不可对角化.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 
+        \item 
+    \end{enumerate}
+\end{solution}
+
+事实上这一问题的结论与这一论述是等价的：秩为1的矩阵$A$可对角化的充要条件是$A$的迹不为0.
+
+下面我们来看一些非常经典的可对角化问题，希望读者能够熟知：
+\begin{example}
+    解决以下关于可对角化的基本问题：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 设$A$为$n$阶矩阵，且$A^2=2A$，证明：$A$可对角化；
+        \item 设$a\neq b$，且$(aE-A)(bE-A)=O$，证明：$A$可对角化（特例：对合矩阵）；
+        \item 设$A$为$n$阶非零矩阵，且$A^m=O(m\in\mathbf{N^+},m>1)$，
+        证明：$A$不可对角化；
+        \item 设$A$为二阶矩阵，非零向量$\alpha$不是$A$的特征向量，且$A^2\alpha-
+        3A\alpha+2\alpha=0$，证明：$\alpha$和$A\alpha$线性无关且$A$可对角化并求
+        与$A$相似的对角矩阵.
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 
+        \item 
+        \item 
+        \item 
+    \end{enumerate}
+\end{proof}
+
+最后需要说明一点，如果一个矩阵可对角化，那么我们可以将其表示为$A=P\Lambda P^{-1}$，其中
+$P$可逆.这就是所谓特征值分解，实际上之前相抵的讨论中我们也提到了类似的分解的技巧，它可以帮助我们解决很多问题.
+事实上，之后学习的若当标准形、相合等都有类似的表示思想，在解决一些问题时是重要的.
+\begin{example}
+    设三阶矩阵$A$的特征值为$\lambda_1=-2,\lambda_2=1,\lambda_3=2$，对应的特征向量分别为
+    $\alpha_1=(1,1,0)^\mathrm{T},\alpha_2=(1,0,1)^\mathrm{T},\alpha_3=(1,1,1)^\mathrm{T}$，求矩阵$A$.
+\end{example}
+\begin{solution}
+
+\end{solution}
+
+\begin{example}
+    设$A$相似于对角矩阵，$\lambda_0$是$A$的特征值，$X_0$是$A$对应于$\lambda_0$的特征向量，证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item $r(A-\lambda_0 E)^2=r(A-\lambda_0 E)$；
+        \item 不存在$Y$使得$(A-\lambda_0 E)Y=X_0$.
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 
+        \item 
+    \end{enumerate}
+\end{proof}
+
+事实上，在一般的教材中还会专门探讨实对称矩阵的对角化问题.这一问题涉及到后续要讲解的正交概念，因此我们会在内积空间上的
+线性变换中通过谱定理讨论这一问题.届时我们将讨论在内积空间中的线性变换满足什么条件时一定可以对角化.
+
+\subsection{幂等矩阵}
+本节我们专门讨论一个常见的特殊矩阵：幂等矩阵.若$n$阶方阵$A$满足$A^2=A$，则$A$称为幂等矩阵.
+幂等矩阵具有如下基本性质：
+\begin{enumerate}[label=(\arabic*)]
+    \item $A$是幂等矩阵等价于$r(A)+r(A-E)=n$；
+
+    \item $A$为幂等矩阵则一定可对角化，特征值为0和1，其中1的重数等于$r(A)$；
+
+    \item $A$是幂等矩阵时，$r(A)=\tr(A)$；
+
+    \item 所有秩为1迹也为1的矩阵均为幂等矩阵.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 
+        \item 
+        \item 
+        \item 
+    \end{enumerate}
+\end{proof}
+
+实际上，幂等矩阵还有很多其他的性质，我们可以回到映射的角度去理解这一矩阵，
+讨论其与投影变换的等价性，这一点我们将在后续内积空间讲解投影变换时中给出详细说明.
+下面是一个技巧性较强的题目，读者可以在此题中体会``幂等''这一性质的特点：
+\begin{example}
+    设$A$，$B$为两个$n$阶幂等矩阵，证明：
+    \begin{enumerate}
+        \item $A+B$为幂等矩阵当且仅当$AB=BA=O$；
+
+        \item $A-B$为幂等矩阵当且仅当$AB=BA=B$；
+
+        \item 若$AB=BA$，则$AB$为幂等矩阵. 反之，若$AB$为幂等矩阵，是否必有$AB=BA$；
+
+        \item 若$E-A-B$可逆，则$r(A)=r(B)$.
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    
+\end{proof}
+
+\vspace{2ex}
+\centerline{\heiti \Large 内容总结}
+
+\vspace{2ex}
+
+\centerline{\heiti \Large 习题}
+\vspace{2ex}
+{\kaishu }
+\begin{flushright}
+    \kaishu
+
+\end{flushright}
+\centerline{\heiti A组}
+\begin{enumerate}
+    \item 相抵但不相似.
+\end{enumerate}
+\centerline{\heiti B组}
+\begin{enumerate}
+    \item 证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似.对于不可对角化的矩阵来说，
+    这一结论还成立吗？
+    \item 设$A=\begin{pmatrix}
+        2 & 2 & 0 \\ 8 & 2 & a \\ 0 & 0 & 6
+    \end{pmatrix}$相似于对角矩阵，求常数$a$，并求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
+    \item 设$A=(a_{ij})_{n\times n}$是上三角矩阵.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$A$的全部特征值；
+
+        \item 若$A$主对角元互不相等，证明：$A$与对角阵相似；
+
+        \item 若$n$个主对角元相等且$A$不为对角矩阵，证明：$A$不与对角阵相似.
+    \end{enumerate}
+\end{enumerate}
+\centerline{\heiti C组}
+\begin{enumerate}
+    \item
+\end{enumerate}
