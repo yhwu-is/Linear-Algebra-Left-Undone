@@ -53,6 +53,8 @@
 
 \usepackage{mismath} % 包含 rank, span 等命令
 
+\usepackage{pdfpages}
+
 % hyperref 与 cleveref 需要最后引入
 \usepackage{hyperref}
 \usepackage{cleveref}
@@ -89,7 +91,9 @@
 
 \begin{document}
 \frontmatter
-\maketitle
+
+% 封面，代替 \maketitle
+\includepdf[pages={1}]{./figs/cover.pdf}
 
 \songti
 
