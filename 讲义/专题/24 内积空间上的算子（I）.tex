@@ -223,7 +223,212 @@
 
 \section{谱定理}
 
+算子的谱这个概念其实还是挺遥远的，想详细了解的话就得移步到泛函分析了. 
+不过在有限维的线性空间上，其可以被理解为算子的特征值的集合. 所以说，
+我们研究的谱定理其实是和特征值相关，而特征值是矩阵对角化的重要元素. 
+因而，线性代数研究的谱定理实际上是描述了一族符合某种性质
+而可在内积空间上借助标准正交基进行对角化的算子. 
+谱定理根据数域不同分为复谱定理和实谱定理，复数域上的处理更简单，条件更弱，我们先说它. 
 
+\subsection{复谱定理}
+
+有了 \ref{定理 24.8} 的铺垫，复谱定理描述的这样一族算子就呼之欲出了. 
+
+\begin{theorem} \keyterm{复谱定理}
+    设 $ \mathbf{F} = \mathbf{C} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
+    \begin{enumerate}
+        \item $ T $ 是正规的.
+        
+        \item $ V $ 有一个由 $ T $ 的特征向量构成的标准正交基.
+        
+        \item $ T $ 关于 $ V $ 的某个标准正交基具有对角矩阵. 
+    \end{enumerate}
+\end{theorem}
+
+2 和 3 的等价性我们在可对角化的条件中就已经论述过，所以我们只需要证明 1 和 3 的等价性就行了. 
+
+\begin{proof}
+    假设 3 成立，也就是 $ T $ 关于 $ V $ 的某个标准正交基具有对角矩阵，那么 $ T^* $
+    关于同一组基的矩阵是 $ T $ 的共轭转置，也是对角矩阵. 任意两个对角矩阵是可交换的，所以
+    $ T $ 和 $ T^* $ 是可交换的，所以 $ T $ 是正规的. 
+
+    假设 1 成立，即 $ T $ 是正规的. 由 \ref{定理 23.10 Schur 定理}，可知 $ V $ 上存在
+    一组标准正交基 $ (e_1, \ldots , e_n) $ 使得 $ T $ 关于其的矩阵是上三角矩阵，设为 $ A $.  
+    \[
+        A = 
+        \begin{pmatrix}
+            & a_{11} & \cdots & a_{1n} \\
+            & & \ddots & \vdots\\
+            &   0   &         & a_{nn} \\
+        \end{pmatrix}
+    \]
+    接下来的任务就是证明它其实是个对角矩阵.  
+    
+    我们逐个对向量进行讨论. 先考虑 $ e_1 $ ，从上面的矩阵得到
+    \[
+        \lVert Te_1 \rVert^2 = \lvert a_{11} \rvert^2.  
+    \]
+    而伴随映射的矩阵是原矩阵的共轭转置，所以
+    \[
+        \lVert T^*e_1 \rVert^2 = \lvert a_{11} \rvert^2 + \lvert a_{12} \rvert^2
+        + \cdots + \lvert a_{1n} \rvert^2.
+    \]
+    由 \ref{定理 24.6}，我们有 $ \lVert Te_1 \rVert = \lVert T^*e_1 \rVert $，所以
+    $ a_{1i} = 0, i = 2, \ldots , n $.
+    
+    现在考虑 $ e_2 $，因为证明了 $ a_{12} = 0 $，所以
+    \[
+        \lVert Te_2 \rVert^2 = \lvert a_{22} \rvert^2.
+    \]
+    且
+    \[
+        \lVert T^*e_2 \rVert^2 = \lvert a_{22} \rvert^2 + \lvert a_{23} \rvert^2
+        + \cdots + \lvert a_{2n} \rvert^2.
+    \]
+    同理有 $ a_{2i} = 0, i = 3, \ldots , n $. 
+
+    如此反复，最终证得 $ A $ 是对角矩阵. 
+\end{proof}
+
+借助复谱定理，我们也可以对正规算子和自伴算子的关系做更深入的理解. 
+
+\begin{example}
+    证明：复内积空间上的正规算子是自伴的当且仅当其所有的特征值都是实的. 
+\end{example}
+
+\subsection{实谱定理}
+
+实谱定理相对于复谱定理而言复杂了许多，我们需要几个引理先上手，并且从不变子空间的思路去证明它.
+不过，虽然实谱定理是针对实内积空间的，但这几条引理在复内积空间上也是适用的. 
+
+\begin{theorem}
+    设 $ T \in \mathcal{L}(V) $ 是自伴的，并设 $ b, c \in \mathbf{R} $ 
+    使得 $ b^2 < 4c $，则 
+    \[
+        T^2 + bT + cI    
+    \]
+    是可逆的. 
+\end{theorem}
+
+这个定理长的非常像实系数二次多项式恒大于 0 的定理，也进一步加强了自伴算子和实数的联系. 
+
+\begin{proof}
+    取 $ V $ 中的一非零向量 $ v $. 则
+    \begin{align*}
+        \langle (T^2 + bT + cI)v, v \rangle 
+        & = \langle T^2v, v \rangle + b\langle Tv, v \rangle + c\langle v, v \rangle \\
+        & = \langle Tv, Tv \rangle +  b\langle Tv, v \rangle + c\lVert v \rVert^2 \\
+        & \geqslant \lVert Tv \rVert^2 - \lvert b \rvert \lVert Tv \rVert \lVert v \rVert +  c\lVert v \rVert^2 \\
+        & = \left(\lVert Tv \rVert - \frac{\lvert b \rvert \lVert v \rVert}{2}\right)^2
+        + (c - \frac{b^2}{4})\lVert v \rVert^2 \\
+        & > 0
+    \end{align*}
+    从而 $ (T^2 + bT + cI)v \neq 0 $，$ T^2 + bT + cI $ 是单射，从而可逆. 
+\end{proof}
+
+它实际上是为了自伴算子的多项式在实内积空间上的分解做准备的. 也就是下面这个结论证明的预备定理. 
+
+\begin{theorem}
+    设 $ V \neq \{ \vec{0} \} $ 且 $ T \in \mathcal{L}(V) $ 是自伴算子，则 
+    $ T $ 恒有特征值.
+\end{theorem}
+
+复内积空间上无论算子自伴与否都有特征值，不再赘述，下面针对实内积空间进行证明. 
+
+\begin{proof}
+    设 $ V $ 是实内积空间，$ n = \mathrm{dim} V $. 取 $ v \in V, v \neq 0 $. 则
+    \[
+        v, Tv, \ldots , T^nv    
+    \]
+    必是线性相关的. 故存在不全为 0 的实数 $ a_0, \ldots , a_n $ 使得
+    \[
+        0 = a_0v + a_1Tv + \cdots + a_nT^nv.    
+    \]
+    以 $ a_0, \ldots , a_n $ 为系数构建一多项式，并将其在实数域上分解成
+    \[
+        a_0 + a_1x + \cdots + a_nx^n  = c(x^2 + b_1x + c_1)\cdots(x^2 + b_Mx + c_M)
+                            (x - \lambda_1)\cdots(x - \lambda_m),
+    \]
+    其中 $ c $ 是非零实数， $ b_j, c_j (j = 1, \ldots , M) $ ，
+    $ \lambda_i (i = 1, \ldots , m) $ 均是实数，且 $ b_j^2 < 4c_j , j = 1, \ldots , M $，
+    $ m + M \geqslant 1 $. 上式对 $ \forall x \in \mathbf{R} $ 均成立. 那么我们可以将算子多项式分解如下
+    \begin{align*}
+         0 & = a_0v + a_1Tv + \cdots + a_nT^nv \\
+           & = (a_0I + a_1T + \cdots + a_nT^n)v \\
+           & = c(T^2 + b_1T + c_1I)\cdots(T^2 + b_MT + c_MI)
+           (T - \lambda_1I)\cdots(T - \lambda_mI)v
+    \end{align*}
+    而由 \ref{定理 24.10} 可知，$ T^2 + b_jT + c_jI, j = 1, \ldots , M $ 均是可逆的. 
+    而 $ c \neq 0 $，所以 $ m > 0 $ 且
+    \[
+         0 = (T - \lambda_1I)\cdots(T - \lambda_mI)v. 
+    \]
+    所以 $ \exists i $ 使得 $ T - \lambda_iI $ 不是单射. 所以 $ T $ 必有特征值.  
+\end{proof}
+
+注意此证明中使用到的 $ v, Tv, \ldots , T^nv $ 构造线性相关，
+我们在证明复向量空间上的算子均有特征值时也使用到了. 
+
+有了特征值的存在，也就有了非平凡不变子空间的存在，进而有性质较好的限制算子的存在. 
+
+\begin{theorem}
+    设 $ T \in \mathcal{L}(V) $ 是自伴的，并设 $ U $ 是 $ V $ 在 $ T $ 下不变的子空间. 则
+    \begin{enumerate}
+        \item $ U^{\perp} $ 在 $ T $ 下不变；
+        
+        \item $ T|_U \in \mathcal{L}(U) $ 是自伴的；
+        
+        \item $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的. 
+    \end{enumerate} 
+\end{theorem}
+
+此处证明结合不变子空间和自伴算子定义即可. 
+
+忙活了这么久，接下来就到了最激动人心的时刻了. 
+
+\begin{theorem} \keyterm{实谱定理}
+    设 $ \mathbf{F} = \mathbf{R} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
+    \begin{enumerate}
+        \item $ T $ 是自伴的.
+        
+        \item $ V $ 有一个由 $ T $ 的特征向量构成的标准正交基.
+        
+        \item $ T $ 关于 $ V $ 的某个标准正交基具有对角矩阵. 
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    我们将采取 $ 3 \Rightarrow 1 \Rightarrow 2 \Rightarrow 3 $ 进行证明. 
+
+    $ 3 \Rightarrow 1 $: $ T $ 关于 $ V $ 的某个标准正交基具有对角矩阵，
+    实内积空间上对角矩阵等于其共轭转置，故 $ T^* = T $，$ T $ 是自伴的. 
+
+    $ 1 \Rightarrow 2 $: 采用数学归纳法. 
+    
+    $ \mathrm{dim}V = 1 $ 时显然成立. 
+        
+    设 $ \mathrm{dim}V > 1 $ 且在维数更小的实内积空间上成立. 
+    因为 \ref{定理 24.11}，设 $ T $ 有一个特征向量 $ u $ 且 $ \lVert u \rVert = 1 $，
+    $ U = \mathrm{span}(u) $，则 $ U $ 是 $ V $ 的一个一维子空间且在 $ T $ 下不变，
+    有 \ref{定理 24.12}，算子 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的. 
+        
+    由归纳假设，$ U^{\perp } $ 有一个由 $ T|_{U^{\perp }} $ 的特征向量构成的标准正交基. 
+    将 $ u $ 添加进这组基，就得到了 $ V $ 的一组由 $ T $ 的特征向量构成的标准正交基，得证. 
+    
+    $ 2 \Rightarrow 3 $ 这是 trivial 的. 
+\end{proof}
+
+下面这道题目则是实谱定理和复谱定理的对照.  
+
+\begin{example}
+    仿照实谱定理的证明方法，证明复谱定理. 
+\end{example}
+
+至此，谱定理的证明就完成了. 
+
+复谱定理给出了复向量空间上正规算子的完全描述，实谱定理给出了实向量空间上自伴算子的完全描述. 
+它们是非常强大的定理，因为它们给出的都是充要条件. 所以在处理内积空间上可对角化问题时，
+它们就是你最好的帮手. 
 
 可能很多同学对于行秩、列秩相等以及转置的几何意义很感兴趣.实际上我们有两种获得转置矩阵的
 方式，第一种来源于我们之前讨论的对偶空间上的线性映射对应的矩阵，这种方式可能不够直观.
@@ -291,7 +496,12 @@ $n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
-
+    本章基于内积引入了一种新的映射：伴随映射，并介绍了其相应的性质. 
+    之后我们将范围缩小到算子上，介绍了两类特殊的算子：自伴算子和正规算子. 
+    再然后便到了本书最重要的定理之一：谱定理. 它有复内积空间和实内积空间两个版本，
+    不仅解答了为什么要介绍自伴算子和正规算子，还给出了对应内积空间上可对角化的充要条件. 
+    希望大家能好好体会复谱定理和实谱定理的证明过程，都是相当精彩且优美的. 最后还有算子和数的类比，
+    这个伏笔我们会在之后的章节回收. 
 \vspace{2ex}
 
 \centerline{\heiti \Large 习题}
