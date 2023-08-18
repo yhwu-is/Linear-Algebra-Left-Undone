@@ -243,7 +243,124 @@ determinants），L.Gegenbauer、M-Lecat、L.H.Rice等在这个领域又进行�
 
 
 \section{进阶：（线性）代数的进一步发展}
-\subsection{抽象代数}
+\begin{quote}
+
+\kaishu
+对于模或者其它具备某种线性操作的数学结构, 例如稍后要介绍的Abel范畴中的
+对象, 复形及其上同调的研究是通称为同调代数的学科的经典内容; 这是本真意义的
+“线性代数” 的一个真子集, 也是本书核心。
+
+\rightline{——李文威《代数学方法》卷二：线性代数}
+    
+\end{quote}
+
+什么是线性代数？想必大部分读者都看过那张线性代数九宫格。当然，手抓饼也可以是线性代数。但是在此，为了使得我们的讨论不致过于冗长，准李文威老师的思路，我们以线性性作为基准，以此衡量何谓线性代数的发展。一切事关线性性的探讨都可以被称为线性代数，而我们在这里仅取一瓢之水，希望读者窥一斑可见全豹。
+
+\subsection{正定性：从数到矩阵，以及本世纪的矩阵论}
+
+二次型在这份讲义当中尚未被置于中心地位。往早期讲，它的研究缘起于费马大定理，而往晚近讲，二次型的代数理论研究几近一个完全的分支。我们在此抛开Witt理论之类的东西不谈，暂且只就谈正定性及其与矩阵论的关系，对于二次空间（quadratic space）的研究，及二次型与二次互反律（quadratic reciprocity law）的关系等等主题，读者自可参考志村五郎（Goro Shimura）的书《二次型的算术》（\textit{Arithmetic of Quadratic Forms}）。
+
+考虑第一个问题：如何判断一个多项式是非负的？从初中开始，我们就知道有配方法：如果能把一个多项式拆成一堆非负项的和，那么它当然就是非负的。很自然的，下面这个问题就被提出了：
+
+\begin{quote}
+\kaishu
+是不是任意一个非负多项式都能被拆成一系列多项式的平方和？
+\end{quote}
+
+答案是否定的。一个典型的反例在 Motzkin 196 7年出版的一本关于代数-几何不等式的书中给出：
+
+\[
+P(x, y, z) = x^6 + y^4z^2 + y^2z^4 -3x^2y^2z^2
+\]
+
+希尔伯特第十七问题就是这个问题的一个推广：
+
+\begin{quote}
+\kaishu
+是不是任意一个非负多项式都能被拆成一系列有理函数的平方和？
+\end{quote}
+
+这样的推广终归是成立的，它的证明由 E. Artin 在1927年给出，C. N. Delzell 在 1984 年甚至给出了一个算法以构造这样的平方和。但是，故事到这里还没有结束，把“数”推广到“矩阵”，有趣的事情发生了：
+
+\begin{theorem}[Helton, 2002]\label{helton2002}
+    对称的矩阵多项式是半正定的，当且仅当它能被拆成一组矩阵多项式的平方和。
+\end{theorem}
+
+当然，我们需要澄清一些概念：
+
+\begin{definition}
+    一个 $n$ 元的矩阵单项式是一个形如 $am_1m_2 \cdots m_k$ 的连乘积，其中 $a \in \R$，$m_i$ 为矩阵变元 $x_j, j \leqslant n$ 或其转置。一个 $n$ 元的矩阵多项式是有限个 $n$ 元矩阵单项式的乘积。
+\end{definition}
+
+\begin{definition}
+    一个 $n$ 元的矩阵多项式 $Q$ 的值域 $\im Q$ 被定义为
+
+    \[
+    \bigcup_{m = 1}^\infty\{Q(A_1, A_2, \cdots, A_n) | A_i \in M_m(\R)\}
+    \]
+
+    即在代入任意 $n$ 个 $m$ 阶方阵之后所能得到的结果。
+\end{definition}
+
+\begin{definition}
+    称一个矩阵多项式 $Q$ 是对称的，如果所有 $\im Q$ 中的矩阵都是对称的；称它是半正定的，如果所有 $\im Q$ 中的矩阵都是半正定的。
+\end{definition}
+
+\begin{definition}
+    所谓矩阵多项式的平方和，指的是如下形式的有限和：
+
+    \[
+    P(x_1, x_2, \cdots, x_n) = \sum_{i = 1}^k h_i(x_1, x_2, \cdots, x_n)h_i^T(x_1, x_2, \cdots, x_n)
+    \]
+
+    其中 $h_i$ 均为 $n$ 元矩阵多项式。显然，这个平方和一定是半正定的。
+\end{definition}
+
+\ref{helton2002} 的证明已经超出了这份讲义所能探讨的范畴。其原论文足有二十页，证明过程可谓相当详尽，有兴趣的读者可自行查阅。
+
+下面我们再给出一个将数推广到矩阵的相关问题，它在某种意义上也与正定性有关，而且也是本世纪的成果。最小二乘法在本讲义前面很早的地方就有介绍，同样将其推广到矩阵，就要求我们推广距离的概念：
+
+\begin{definition}
+    考虑 $n$ 阶正定矩阵 $A, B$，定义它们之间的迹度量距离（trace metric distance）为：
+
+    \[
+    \delta(A, B) = \sqrt{\sum_{i = 1}^n \log^2\lambda_i(A^{-1}B)}
+    \]
+
+    其中 $\lambda_i(M)$ 表示矩阵 $M$ 的第 $i$ 个特征值。
+\end{definition}
+
+\begin{definition}
+    $k$ 个矩阵 $A_1, A_2, \cdots, A_k$ 的 Karcher 均值（Karcher mean）指的是正定矩阵 $X$，使得 $X$ 到所有 $A_i$ 的迹度量距离的平方和最小，将其记作 $\sigma(A_1, A_2, \cdots, A_k)$
+\end{definition}
+
+这个概念由 Karcher 在 1973 年先引入到任意度量空间中，这里呈现的是 Moakher 在 2005 年将其引入到矩阵中的版本。在 2006 年，Bhatia 和 Holbrook 合作的论文呈现了它的一系列性质，并给出了一个猜想。这个猜想是对下面这个简单事实的推广：
+
+\begin{lemma}
+考虑 $x_1, x_2, \cdots, x_n, y_1, y_2, \cdots, y_n \in \R$，且 $\forall i \leqslant n, x_i \leqslant y_i$，记 $x, y$ 分别为使得
+
+\[
+\sum_{i = 1}^n (x - x_i)^2, \quad \sum_{i = 1}^n (x - x_i)^2
+\]
+
+取得极小值的 $x$ 和 $y$，则 $x \leqslant y$。
+\end{lemma}
+
+很显然，对吧？他们猜测，Karcher 均值也有这种美好的单调性，不过，首先要在正定矩阵上引进序关系：
+
+\begin{definition}
+    如果 $B - A$ 正定，则 $A \leqslant B$。
+\end{definition}
+
+\begin{theorem}[Bhatia-Holbrook, 2005, Lawson-Lim, 2011]
+    考虑 $A_1, A_2, \cdots, A_n, B_1, B_2, \cdots, B_n$ 为 $m$ 阶正定矩阵，如果 $\forall i \leqslant n, A_i \leqslant B_i$，则
+
+    \[
+    \sigma(A_1, A_2, \cdots, A_n) \leqslant \sigma(B_1, B_2, \cdots, B_n)
+    \]
+\end{theorem}
+
+等等，为什么是定理？正如我们已经暗示的，这个结果由 Lawson 和 Lim 在 2011 年成功证明了，其证明用到了 Loewner–Heinz 全局非正曲率度量空间（Loewner-Heinz globally nonpositively curved metric spaces）的一些性质，事实上这就是正定矩阵集合全体的复杂性带来的。
 
 
 \subsection{泛函分析}
