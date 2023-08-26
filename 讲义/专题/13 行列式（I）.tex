@@ -11,8 +11,9 @@
 历经数百年也逐渐发展出了许多重要的理论和应用，因此我们仍然需要完整的章节来讲述行列式的相关内容.
 
 \section{行列式的定义}
-很多教材采用``逆序数''定义行列式（感兴趣的同学可以参考丘维声《高等代数》等教材），但是本教材未提及，而且
-也缺乏直观，因此我们不展开描述. 本教材使用公理化定义（使用一些规则描述）并讲解了递归式定义（按行（列）展开）.
+很多教材采用``逆序数''定义行列式，但是本教材未提及，而且也缺乏直观，因此我们不在本讲展开描述. 
+我们会在史海拾遗中结合历史给出相关的定义，当然感兴趣的同学可以参考丘维声《高等代数》等教材.
+本教材使用公理化定义（使用一些规则描述）并讲解了递归式定义（按行（列）展开）.
 
 \subsection{公理化定义}
 \begin{definition} \label{def:13:公理化定义}
@@ -451,12 +452,150 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item 递归式定义推导公理化定义.
+    \item 设$\alpha_1,\alpha_2,\alpha_3$为三维列向量，令$A=(\alpha_1,\alpha_2,\alpha_3)$，
+	且$|A|=2$，求$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|$.
+	\item 求证以下命题：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 奇数阶反对称矩阵不可逆；
+        \item 若$A$是$n$阶可逆对称矩阵，$B$是$n$阶反对称矩阵，则当$n$为奇数时，齐次线性方程组$(AB)X=O$有非零解.
+    \end{enumerate}
+    \item 设$A$、$B$分别为$m$、$n$阶可逆矩阵，且$|A|=a$，$|B|=b$，求
+	$\begin{pmatrix}
+		A & O \\ O & B
+	\end{pmatrix}^*$和$\begin{pmatrix}
+		O & A \\ B & O
+	\end{pmatrix}^*$.
+	\item 证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 若$A$为幂等矩阵，则$A^*$也为幂等矩阵；$A$为幂零矩阵，则$A^*$也为幂零矩阵；
+        \item 若$A$为对称矩阵，则$A^*$也为对称矩阵；$A$为反对称矩阵，则$A^*$为偶数阶时也为反对称矩阵，奇数阶时为对称矩阵.
+    \end{enumerate}
+	\item 证明：上（下）三角矩阵的伴随矩阵是上（下）三角矩阵（对角矩阵为特例）.
+	\item 设$A$为$n$阶方阵，证明：若$|A|=0$，则$A$中任意两行（列）对应元素的代数余子式成比例.
+	\item 设向量$\alpha_1,\alpha_2,\alpha_3$线性无关，讨论向量$\alpha_1-\alpha_2-2\alpha_3,
+	2\alpha_1+\alpha_2-\alpha_3,3\alpha_1+\alpha_2+2\alpha_3$的线性相关性.
+	\item 设$W=L(\alpha_1,\alpha_2)$是$\mathbf{R}^4$的一个子空间，
+	其中$\alpha_1=(1,2,1,-1)^\mathrm{T}$，$\alpha_2=(1,4,-1,-1)^\mathrm{T}$，
+	试将$\alpha_1,\alpha_2$扩充为$\mathbf{R}^4$的基.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 设$D=\begin{vmatrix}
+		3 & 0 & 4 & 1 \\ 2 & 3 & 1 & 4 \\ 0 & -7 & 8 & 3 \\ 5 & 3 & -2 & 2
+	\end{vmatrix}$，求
+    \begin{enumerate}[label=(\arabic*)]
+        \item $A_{21}+A_{22}+A_{23}+A_{24}$；
+        \item $A_{31}+A_{33}$；
+        \item $M_{41}+M_{42}+M_{43}+M_{44}$.
+    \end{enumerate}
+	\item 求参数 $a,\ b$  的值，使得 $\begin{vmatrix}1 & 1 & 1 \\ x & y & z \\u & v & w\end{vmatrix}=1,\ \begin{vmatrix}1 & 2 & -5 \\ x & y & z \\u & v & w\end{vmatrix}=2,\ \begin{vmatrix}2 & 3 & b \\ x & y & z \\u & v & w\end{vmatrix}=a$ 都成立，并求$\begin{vmatrix}x & y & z \\ 1 & -1 & 5 \\u & v & w\end{vmatrix}$.
+	\item 设$A$，$B$为三阶矩阵，且$|A|=3$，$|B|=2$，且$|A^{-1}+B|=2$，求$|A+B^{-1}|$.
+	\item 设$A$为$n$阶正交矩阵，即$AA^\mathrm{T}=A^\mathrm{T}A=E$，且$|A|<0$，证明：$|E+A|=0$.
+	\item 已知齐次线性方程组
+    \[\begin{cases}
+		a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=0 \\
+		a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=0 \\
+		\cdots \\
+		a_{n-1,1}x_1+a_{n-1,2}x_2+\cdots+a_{n-1,n}x_n=0
+	\end{cases},\]
+    设$M_j(j=1,2,\cdots,n)$表示$A$划掉第$j$列所得的$n-1$阶子式，证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $(M_1,-M_2,\cdots,(-1)^{n-1}M_n)$是方程组的一个解；
+        \item 若$r(A)=n-1$，则方程组的解全是$(M_1,-M_2,\cdots,(-1)^{n-1}M_n)$的倍数.
+    \end{enumerate}
+    \item 设$A$，$B$均为$n$阶矩阵，且$|A|=2$，$|B|=1$，求$|2A^*B^*-A^{-1}B^{-1}|$.
+	\item 若$n$阶非零矩阵$A$满足$A^\mathrm{T}=A^*$，证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item $|A|>0$；
+        \item $|A|=1$（补充：若$A$第一行元素相等，求第一行元素的值）；
+        \item $A$为正交矩阵，即$AA^\mathrm{T}=A^\mathrm{T}A$；
+        \item $n>2$且为奇数时，$|E-A|=0$.
+    \end{enumerate}
+	\item 已知$A$是一个秩为$n-1$的$n(n \ge 2)$阶方阵，且已知某个元素$a_{ij}$的
+	代数余子式$A_{ij} \neq 0$，求方程组$AX=0$的基础解系.
+	\item 设$D=|a_{ij}|_{n \times n}$，$A_{ij}$是$a_{ij}$的代数余子式，求证：
+	\[\begin{vmatrix}
+		A_{11} & A_{12} & \cdots & A_{1,n-1} \\
+		A_{21} & A_{22} & \cdots & A_{2,n-1} \\
+		\vdots & \vdots &  & \vdots \\
+		A_{n-1,1} & A_{n-1,2} & \cdots & A_{n-1,n-1}
+	\end{vmatrix}=a_{nn}D^{n-2}.\]
+    \item 设$a_1,a_2,\cdots,a_n$为互不相等的实数，$b_1,b_2,\cdots,b_n$为任意给定的实数.证明：
+	存在唯一的$n-1$次多项式，满足$f(a_i)=b_i(i=1,2,\cdots,n)$.
+    \item 证明：$n$维向量组$\alpha_1,\alpha_2,\cdots,\cdots,\alpha_n$线性无关的充要条件是
+    \[\begin{vmatrix}
+		\alpha_1^\mathrm{T}\alpha_1 & \alpha_1^\mathrm{T}\alpha_2 & \cdots & \alpha_1^\mathrm{T}\alpha_n \\
+		\alpha_2^\mathrm{T}\alpha_1 & \alpha_2^\mathrm{T}\alpha_2 & \cdots & \alpha_2^\mathrm{T}\alpha_n \\
+		\vdots & \vdots &  & \vdots \\
+		\alpha_n^\mathrm{T}\alpha_1 & \alpha_n^\mathrm{T}\alpha_2 & \cdots & \alpha_n^\mathrm{T}\alpha_n
+	\end{vmatrix}\neq 0.\]
+	\item 设$a_1,\cdots,a_n$为$n$个$n$维向量，证明：向量组$a_1,\cdots,a_n$
+	线性无关的充要条件是任一个$n$维向量都可以由其线性表示（不使用线性空间维数的方式完成）.
+	\item 设$s \times n(s\le n)$矩阵为
+	\[\begin{pmatrix}
+		1 & a & a^2 & \cdots & a^{n-1} \\
+		1 & a^2 & a^4 & \cdots & a^{2(n-1)} \\
+		\cdots & \cdots & \cdots &  & \cdots \\
+		1 & a^s & a^{2s} & \cdots & a^{s(n-1)}
+	\end{pmatrix}\]
+	且$a^r\neq 1(0<r<n)$，求$A$的秩和它的列向量组的一个极大线性无关组.
+    \item 设$A,B,C,D \in \mathbf{F}^{n \times n}$，若
+	\[T:X \to AXB+CX+XD,\ \forall X \in \mathbf{F}^{n \times n}.\]
+	证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $T$为$\mathbf{F}^{n \times n}$上的线性变换；
+        \item 当$C=D=0$时，$T$可逆的充要条件是$|AB| \neq 0$.
+    \end{enumerate}
+    \item 设$A$为$n$阶矩阵，且$r(A) < n$，又$A_{11} \neq 0$，证明：存在常数$k$，使得
+	$(A^*)^2=kA^*$.
+    \item 设$V$是一个$n$维实线性空间，证明：存在$V$中的一个由可列无穷多个向量组成的向量组
+    $\{\alpha_i \mid i\in\mathbf{Z}_+\}$，使得其中任意$n$个向量组成的向量组都是$V$的一组基.
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 设$A$，$B$，$C$，$D$均为$n$阶方阵，且$AC=CA$，证明：
+	\[\begin{vmatrix}
+		A & B \\ C & D
+	\end{vmatrix} = |AD-CB|.\]
+
+	\item 设$A$为$n$阶可逆矩阵，$\alpha$，$\beta$为$n$维列向量，证明：
+	\[|A+\alpha\beta^{\mathrm{T}}|=|A|(1+\beta^\mathrm{T}A^{-1}\alpha).\]
+	\item 设$A$，$B$均为$n$阶方阵，证明：
+	\[\begin{vmatrix}
+		A & B \\ B & A
+	\end{vmatrix} = |A+B||A-B|.\]
+	\item 设$A$，$B$，$C$，$D$均为$n$阶方阵，且$r\begin{pmatrix}
+		A & B \\ C & D
+	\end{pmatrix}=n$，证明：
+	\[\begin{vmatrix}
+		|A| & |B| \\ |C| & |D|
+	\end{vmatrix} = 0.\]
+	\item （对角占优）设$A=(a_{ij})_{n \times n}$是一个$n$级矩阵，证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 若$A$为复矩阵，且$|a_{ii}|>\sum_{j \neq i}|a_{ij}|$，那么$|A|\neq 0$；
+        \item 若$A$为实矩阵，且$a_{ii}>\sum_{j \neq i}|a_{ij}|$，那么$|A|>0$；
+        \item （推论）存在充分大的实数$M$，使得$t>M$时，$tE+A$可逆.
+    \end{enumerate}
+    \item 求$\begin{pmatrix}
+		A & C \\ O & B
+	\end{pmatrix}^*$，并求当$A$可逆时的$\begin{pmatrix}
+		A & B \\ C & D
+	\end{pmatrix}^*$.
+	\item 下面三个小问探讨伴随矩阵的反问题，即对任意给定的$n$阶方阵$B$，是否存在
+	$n$阶方阵$A$使得$A^*=B$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：若$n=2$，则存在唯一的2阶方阵$A$使得$A^*=B$；
+        \item 证明：若$n > 2$，则存在$n$阶方阵$A$使得$A^*=B$的充要条件为$r(B)=0,1,n$，并且
+        \begin{enumerate}
+            \item $r(B)=n$时，$A=\sqrt[n-1]{|B|}B^{-1}$；
+            \item $r(B)=1$时，$A=Q^{-1}\begin{pmatrix}
+                0 & O \\ O & X_{n-1}
+            \end{pmatrix}P^{-1}$，且$|X_{n-1}|=|PQ|$，$B=P\begin{pmatrix}
+                1 & O \\ O & O
+            \end{pmatrix}Q$；
+        \end{enumerate}
+        \item 设$A=\begin{pmatrix}
+            1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1
+        \end{pmatrix}$，求矩阵$B$使得$B^*=A$.
+    \end{enumerate}
 \end{enumerate}

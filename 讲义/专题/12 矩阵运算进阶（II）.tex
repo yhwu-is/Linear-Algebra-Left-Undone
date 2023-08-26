@@ -312,13 +312,59 @@ $B$与$A-tE$相乘的计算过程更为简单（一般是使得0元素更多）�
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 设方阵$A$满足$A^2-A-2E=0$，证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item $A$和$E-A$都是可逆矩阵，并求它们的逆矩阵；
+        \item $A+E$和$A-2E$不可能同时可逆.
+    \end{enumerate}
+    \item 若$A$、$B$为两个$n$阶矩阵且满足$A+B=AB$，证明：
+    \begin{enumerate}
+        \item $A-E$和$B-E$均可逆；
+        \item $AB=BA$；
+        \item $r(A)=r(B)$.
+    \end{enumerate}
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 已知矩阵$A=\begin{pmatrix}
+		1 & 0 & 4 \\ 0 & 1 & 2 \\ 0 & 1 & 2
+	\end{pmatrix}$，求证：所有与$A$可交换的矩阵构成$M_3(\mathbf{R})$的一个子空间，
+    并求子空间的一组基.
+    \item 已知矩阵$A=\begin{pmatrix}
+		1 & 0 & 1 \\ 0 & 2 & 0 \\ 1 & 0 & 1
+	\end{pmatrix}$，
+	\begin{enumerate}
+        \item 求所有与$A$可交换的矩阵；
+        \item 若$AB+E=A^2+B$，求$B$.
+    \end{enumerate}
+    \item 设$A \in \mathbf{F}^{n \times n}$，令$C(A)=\{B \in \mathbf{F}^{n \times n}\ |\ AB=BA\}$.
+	\begin{enumerate}[label=(\arabic*)]
+        \item 证明：$C(A)$为$\mathbf{F}^{n \times n}$的一个子空间；
+        \item 当$A=E$时，求$C(A)$；
+        \item 当$A$为对角线上元素互不相等的对角阵时，求$C(A)$的维数和一组基.
+    \end{enumerate}
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 证明以下两个命题：
+	
+	（1）与矩阵$I=\begin{pmatrix}
+		0 & 1 & 0 & \cdots & 0 & 0 \\
+		0 & 0 & 1 & \cdots & 0 & 0 \\
+		0 & 0 & 0 & \cdots & 0 & 0 \\
+		\vdots & \vdots & \vdots &  & \vdots & \vdots \\
+		0 & 0 & 0 & \cdots & 0 & 1 \\
+		1 & 0 & 0 & \cdots & 0 & 0
+	\end{pmatrix}$可交换的矩阵$A$都可以写成$I$的一个多项式，即
+	$A=a_{11}E+a_{12}I+a_{13}I^2+\cdots+a_{1n}I^{n-1}$；
+	
+	（2）与矩阵$J=\begin{pmatrix}
+		0 & 1 & 0 & \cdots & 0 & 0 \\
+		0 & 0 & 1 & \cdots & 0 & 0 \\
+		0 & 0 & 0 & \cdots & 0 & 0 \\
+		\vdots & \vdots & \vdots &  & \vdots & \vdots \\
+		0 & 0 & 0 & \cdots & 0 & 1 \\
+		0 & 0 & 0 & \cdots & 0 & 0
+	\end{pmatrix}$可交换的矩阵$A$都可以写成$J$的一个多项式，即
+	$A=a_{11}E+a_{12}J+a_{13}J^2+\cdots+a_{1n}J^{n-1}$.
 \end{enumerate}

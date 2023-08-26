@@ -21,7 +21,7 @@
 通常而言更低维的空间处理起来也应当更为简单，事实上我们后面的很多工作都是在找这样的分解.但是这一分解应当
 满足一个条件，就是$\sigma$应当把每个$U_i$仍然映射到$U_i$本身，否则我们在找基的时候不能做到出发空间和到达空间的基一致.
 此时限制映射$\sigma\vert_{U_i}$就是一个线性变换（是$\mathcal{L}(U_i)$中的元素），我们称之为
-\keyterm{限制算子}[restriction operator].
+\keyterm{限制线性变换}[restriction operator].
 
 事实上，满足$\sigma\vert_{U_i}\in\mathcal{L}(U_i)$的子空间$U_i$非常重要，我们需要给予它一个定义：
 \begin{definition}
@@ -71,12 +71,12 @@
 
 除此之外，还有一些更为困难的问题我们将在讨论若当标准形之后进行讨论.
 
-最后我们再基于不变子空间讨论一个商算子的概念.事实上，
+最后我们再基于不变子空间讨论一个商线性变换的概念.事实上，
 如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换.我们严格定义如下：
 \begin{definition}
     设$\sigma\in \mathcal{L}(V)$，$U$是$\sigma$的不变子空间，定义映射$\sigma/U:V/U\to V/U$如下：
     \[(\sigma/U)(v+U)=\sigma v+U,\enspace\forall v\in V,\]
-    则称$\sigma/U$是$\sigma$在$U$上的\keyterm{商算子}[quotient operator].
+    则称$\sigma/U$是$\sigma$在$U$上的\keyterm{商线性变换}[quotient operator].
 \end{definition}
 
 定义映射后，我们自然的想法就失确认这一定义是不是合理的.首先这一定义的线性性容易验证：
@@ -88,7 +88,7 @@
 除了线性的要求外，我们可以回顾\autoref{ex:8:良定义}中提到的良定义(well-defined)的概念.因为这里又一次
 将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性.
 事实上，回顾\autoref{ex:8:良定义}，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值
-（否则不符合映射的定义）.商算子的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma v+U\neq \sigma w+U$
+（否则不符合映射的定义）.商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma v+U\neq \sigma w+U$
 的情况，这一定义描述的就不是映射，因此不是良定义.但我们可以验证这一映射是良定义：
 
 \begin{proof}
@@ -366,7 +366,7 @@ $\alpha_1,\ldots,\alpha_n$下的矩阵$A-\lambda E$也不可逆（其中$A$为$\
 的不同，即特征值的存在性可能存在差别.事实上，这是\autoref{thm:17:多项式分解}的必然结果，因为复数域上$n$次
 多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
 
-因此我们有必要分别讨论在复数域和实数域条件下特征值与特征向量的不同性质，事实上我们将在实空间上的算子一讲中
+因此我们有必要分别讨论在复数域和实数域条件下特征值与特征向量的不同性质，事实上我们将在实空间上的线性变换一讲中
 单独深入讨论这一主题，但现在我们需要几个定理来引入这一话题并为接下来的讨论作准备：
 \begin{theorem}\label{thm:18:复数域上的特征值}
     设$\sigma\in \mathcal{L}(V)$，$V$是$n$维复向量空间，则$\sigma$必有特征值.
@@ -409,7 +409,7 @@ $\alpha_1,\ldots,\alpha_n$下的矩阵$A-\lambda E$也不可逆（其中$A$为$\
 因此直观而言复特征值除了伸缩效应外也有旋转的效应.
 
 本题中两个特征向量可以写为$\alpha\pm i\beta$，则$T$在$(\alpha,\beta)$这组基下的矩阵表示就是一个
-表示旋转90°的矩阵乘以单位矩阵（表明伸缩为比例1），这表明算子对空间的伸缩作用与特征值模长对应，旋转作用与辐角
+表示旋转90°的矩阵乘以单位矩阵（表明伸缩为比例1），这表明线性变换对空间的伸缩作用与特征值模长对应，旋转作用与辐角
 对应（本题特征值$\pm i=1\cdot(\cos 90°\pm i\sin 90°)$）.
 
 我们还可以延伸到三维空间.设三阶矩阵$A=(a_{ij})_{3\times 3}$，设这一矩阵有三个互异特征值，则根据多项式的性质可知，
@@ -444,7 +444,37 @@ $x-y$平面上拉伸$r$倍，$z$方向拉伸$c$倍.这显然是二维结论的�
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 设$T\in L(V)$，证明：$T$是数乘变换的充要条件是$V$的每一个一维子空间都是$T$的不变子空间.
+	\item 设$S,T\in L(V)$满足$ST=TS$，证明：$\textup{null }S$和$\textup{range }S$都在$T$下不变.
+	\item 已知$\mathbf{R}^2$上线性变换$T$在基$e_1=(1,0),e_2=(0,1)$下的矩阵为
+    \[\begin{pmatrix}
+		2 & 1 \\ 0 & 2
+	\end{pmatrix}.\]证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 设$W_1$为由$e_1$张成的子空间，则$W_1$为$T$的不变子空间；
+        \item $R^2$不能表示为$T$的任何不变子空间$W_2$与$W_1$的直和.
+    \end{enumerate}
+	\item 定义线性变换$T\in L(\mathbf{F}^2)$为$T(x,y)=(y,0)$.令$U=\{(x,0)\ |\ x\in\mathbf{F}\}$.证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item $U$在$T$下不变，且$T|_{U}$是$U$上的零线性变换；
+        \item 不存在$\mathbf{F}^2$的在$T$下不变的子空间$W$使得$\mathbf{F}^2=U\oplus W$；
+        \item $T/U$是$\mathbf{F}^2/U$上的0线性变换.
+    \end{enumerate}
+	\item 设$V$是有限维的且$T\in L(V)$，设$\lambda_1,\cdots,\lambda_m$是非零互异特征值，证明：
+	$$\dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\le\dim\textup{range }T.$$
+    \item 设$\sigma$是线性空间$\mathbf{R}[x]_3$上的线性变换，它在基$1,x,x^2$下的矩阵为
+	$$A=\begin{pmatrix}
+		1 & 2 & 2 \\ 2 & 1 & 2 \\ 2 & 2 & 1
+	\end{pmatrix}.$$
+	求$\sigma$的特征值与特征子空间.
+	\item 设$A,P$都是3阶方阵，$P$可逆，已知$A$的特征值$\lambda_1=1,\lambda_2=-1,\lambda_3=2$，$B=A^3-5A^2$，
+	求$|B|$，$|A+5E|$，$|5E+P^{-1}AP|$.
+	\item 设$A=\begin{pmatrix}
+		a & -1 & c \\ 5 & b & 3 \\ 1-c & 0 & -a
+	\end{pmatrix}$，$|A|=-1$，$\alpha=(-1,-1,1)^\mathrm{T}$为$A^*$的特征向量，求$A^*$的特征值及$a,b,c$
+	和$A$对应的特征值$\mu$.
+	\item 设$A,B\in M_n(\mathbf{F})$，$AB=BA$，证明：若$X$是矩阵$A$属于特征值$\lambda_0$的特征向量，则
+	$BX\in V_{\lambda_0}$（注：本题是解决很多$AB=BA$类问题的基础）.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
@@ -455,8 +485,36 @@ $x-y$平面上拉伸$r$倍，$z$方向拉伸$c$倍.这显然是二维结论的�
 
         \item $\sigma/(\ker \sigma)$是单射$\iff \ker \sigma\cap\im \sigma=\{0\}$.
     \end{enumerate}
+    \item 设$V$是有限维的，$T\in L(V)$且$U$在$T$下不变.证明：$T/U$的每个特征值均为$T$的特征值.
+	\item 设$T\in L(V)$且$\dim\textup{range }T=k$.证明$T$至多有$k+1$个特征值.
+	\item 设$V$为$n$维复向量空间，$T\in L(V)$，$T$在$V$的一组基$e_1,e_2,\cdots,e_n$
+	下的矩阵为对角矩阵$\textup{diag}\{d_1,\cdots,d_n\}$，且$d_i\neq d_j(i\neq j)$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$T$的所有一维不变子空间；
+        \item 求$T$的所有不变子空间.
+    \end{enumerate}
+	\item 给定$R$上的2维线性空间$V$上的算子$T$，其在一组基$\{\alpha_1,\alpha_2\}$下的矩阵为
+	\[\begin{pmatrix}
+		0 & 1 \\ 1-a & 0
+	\end{pmatrix}.\]
+    求$T$的所有不变子空间.
+    \item 设$A,B$都是$n$阶矩阵，且$r(A)+r(B)<n$，证明：$A,B$有相同的特征值和特征向量.
+	\item 设$V(\mathbf{F})$是$n$维线性空间，$\sigma\in L(V,V)$，证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 若$\alpha,\beta$是$\sigma$的属于不同特征值的特征向量，则$c_1c_2\neq 0$时，$c_1\alpha+c_2\beta$
+        不是$\sigma$的特征向量；
+        \item $V$中的每一非零向量都是$\sigma$的特征向量$\iff\sigma=c_0I_V$，其中$c_0\in\mathbf{F}$是一个常数，
+        $I_V$是恒等变换.
+    \end{enumerate}
+	\item 设$A,B\in M_n(\mathbf{C})$，$B$的特征多项式$f(\lambda)=|\lambda E-B|$.证明：$f(A)$可逆的充要条件
+	是$B$的任一特征值都不是$A$的特征值.
+	\item 设$\lambda_1,\lambda_2,\cdots,\lambda_n$是矩阵$A=(a_{ij})_{n\times n}$的$n$个特征值，证明：
+	$\lambda_1^2,\lambda_2^2,\cdots,\lambda_n^2$是$A^2$的$n$个特征值，且$\sum\limits_{i=1}^{n}\lambda_i^2=
+	\sum\limits_{j=1}^{n}\sum\limits_{k=1}^{n}a_{jk}a_{kj}$.
+	\item 设$A$为$n$阶矩阵，$X_1,X_2,X_3$为$n$元列向量，且$AX_1=kX_1(X_1\neq 0),AX_2=lX_1+kX_2,
+	AX_3=lX_2+kX_3(l\neq 0)$，证明：$X_1,X_2,X_3$线性无关.
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 证明：若$AB=BA$，则$A$和$B$至少有一个共同的特征向量.
 \end{enumerate}

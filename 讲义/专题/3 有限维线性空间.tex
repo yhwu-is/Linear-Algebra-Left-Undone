@@ -454,7 +454,29 @@ $V$的一组基$B'=\{\alpha_1,\alpha_2,\ldots,\alpha_s,\alpha_{s+1},\ldots,\alph
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 
+    \item 请先完成教材P87-88第二章习题第10题的判断题；
+	\item 证明：如果向量组线性相关，把每个向量去掉$m$个位置一致的分量，得到的缩短组仍线性相关；
+	如果向量组线性无关，把每个向量添加$m$个位置一致的分量，得到的缩短组仍线性无关；
+	\item $a$取何值时，$\beta_1=(1,3,6,2)^\mathrm{T},\beta_2=(2,1,2,-1)^\mathrm{T},\beta_3=(1,-1,a,-2)^\mathrm{T}$
+	线性无关？
+	\item 设$\alpha_1,\alpha_2,\cdots,\alpha_n\in\mathbf{F}^n$，证明：$\alpha_1,\alpha_2,\cdots,\alpha_n$线性无关
+	的充要条件是$\mathbf{F}^n$中任一向量都可以由它们线性表示.
+	\item 设$S_1=\{\alpha_1,\cdots,\alpha_s\},S_2=\{\beta_1,\cdots,\beta_t\}$是向量空间$V$的两个线性无关的子集，证明：
+	$\alpha_1,\cdots,\alpha_s,\beta_1,\cdots,\beta_t$线性无关$\iff L(S_1)\cap L(S_2)=\{0\}$.
+    \item 已知$\alpha_1=(1,2,4,3),\alpha_2=(1,-1,-6,6),\alpha_3=(-2,-1,2,-9),\alpha_4=(1,1,-2,7),\beta=(4,2,4,a)$.
+	\begin{enumerate}[label=(\arabic*)]
+        \item 求子空间$L(\alpha_1,\alpha_2,\alpha_3,\alpha_4)$的维数和一组基；
+        \item 求$a$的值使得$\beta\in W$，并求$\beta$在（1）所选基下的坐标.
+    \end{enumerate}
+	\item 证明：$B=\{1,x-a,(x-a)^2\}(a\neq 0)$是$\mathbf{R}[x]_3$的一组基，并求$\mathbf{R}[x]_3$的
+	自然基$\{1,x,x^2\}$中每个向量关于基$B$的坐标.
+	\item 已知向量组$A=\{\alpha_1,\alpha_2,\alpha_3\},B=\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\},C=\{\alpha_1,\alpha_2,\alpha_3,\alpha_5\}$
+	的秩分别为$r(A)=r(B)=3,r(C)=4$，证明：$\{\alpha_1,\alpha_2,\alpha_3,\alpha_5-\alpha_4\}$的秩为4.
+	\item 设向量组$\alpha_1,\alpha_2,\cdots,\alpha_s$的秩为$r$，在其中任取$m$个向量$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{im}$，
+	证明：向量组$\alpha_{i1},\alpha_{i2},\cdots,\alpha_{im}$的秩$\ge r+m-s$.
+	\item 已知$\alpha_1,\alpha_2,\cdots,\alpha_n$线性无关，且$\alpha_1,\alpha_2,\cdots,\alpha_n,\beta,\gamma$线性相关，
+	证明：要么$\beta,\gamma$可以由$\alpha_1,\alpha_2,\cdots,\alpha_n$线性表示，要么$\alpha_1,\alpha_2,\cdots,\alpha_n,\beta$
+	与$\alpha_1,\alpha_2,\cdots,\alpha_n,\gamma$等价.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
@@ -465,8 +487,32 @@ $V$的一组基$B'=\{\alpha_1,\alpha_2,\ldots,\alpha_s,\alpha_{s+1},\ldots,\alph
         \item 设$U$和$W$都是$V$的非零子空间，如果$U\subseteq W$，那么$\dim U \leqslant \dim W$；
         \item 设$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U = \dim W$，则$U = W$.
     \end{enumerate}
+    \item 已知$\alpha_1\neq 0$，则$\alpha_1,\alpha_2,\cdots,\alpha_n$线性相关的充要条件是存在$i(2\le i\le n)$
+	使得$\alpha_i$可由$\alpha_1,\alpha_2,\cdots,\alpha_{i-1}$线性表示，且表示法唯一.
+	\item 设向量组$\alpha_1,\alpha_2,\cdots,\alpha_n$线性无关，在向量组$\beta,\alpha_1,\alpha_2,\cdots,\alpha_n$中至多有一个向量$\alpha_i(1\le i\le r)$
+	可被其前面的$i$个向量$\beta,\alpha_1,\alpha_2,\cdots,\alpha_{i-1}$线性表示.
+	\item 证明：$1,e^{\lambda_1\cdot x},e^{\lambda_2\cdot  x}(\lambda_1\neq\lambda_2$且均不为0$)$线性无关.
+	\item 设线性空间$V(\mathbf{F})$中，向量$\beta$是$\alpha_1,\cdots,\alpha_r$的线性组合，但不是$\alpha_1,\cdots,\alpha_{r-1}$的线性组合，
+	证明：$L(\alpha_1,\cdots,\alpha_{r-1},\alpha_r)=L(\alpha_1,\cdots,\alpha_{r-1},\beta)$.
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+	\item 已知$m$个向量$\alpha_1,\alpha_2,\cdots,\alpha_m$线性相关，但其中任意$m-1$个都线性无关，证明：
+	\begin{enumerate}
+        \item 若$k_1\alpha_1+\cdots+k_m\alpha_m=0$，则$k_1,\cdots,k_m$全为0或全不为0；
+        \item 若存在两个等式
+        \[k_1\alpha_1+\cdots+k_m\alpha_m=0,\]
+        \[l_1\alpha_1+\cdots+l_m\alpha_m=0,\]
+        其中$l_1\neq 0$，证明：$\cfrac{k_1}{l_1}=\cdots=\cfrac{k_m}{l_m}$.
+    \end{enumerate}
+    \item （替换定理）设$\alpha_1,\alpha_2,\cdots,\alpha_r$线性无关，且可以被
+	$\{\beta_1,\beta_2,\cdots,\beta_n\}$线性表示，则可以从$\{\beta_1,\beta_2,\cdots,\beta_n\}$
+	选出$r$个向量替换成$\alpha_1,\alpha_2,\cdots,\alpha_r$后得到与$\{\beta_1,\beta_2,\cdots,\beta_n\}$
+	等价的新向量组（注：可以使用数学归纳法证明）.
+	\item 设线性空间$V=\mathbf{F^n}$，证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 存在$V$的子空间$W$，使得$W$的任一非零向量的分量均不为0；
+        \item 若$V$的子空间$W$的任一非零向量的分量均不为0，则$\dim W=1$；
+        \item 若$V$的子空间$W$的任一非零向量的零分量个数均不超过$r$，则$\dim W \le r+1$.
+    \end{enumerate}
 \end{enumerate}

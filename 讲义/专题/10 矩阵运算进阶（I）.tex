@@ -436,13 +436,59 @@ $P_1P_2\cdots P_k=A^{-1}$，因此对$E$做相同的列变换有$EP_1P_2\cdots P
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 设$A$为三阶矩阵，将A的第二列加到第一列得到矩阵$B$，再对调$B$的$2$、$3$行得到单位矩阵，
+	令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$，
+	$P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用
+	$P_1$和$P_2$表示$A$.
+	\item 设$A$为可逆矩阵，将$A$的第$i$行和第$j$行对调得到矩阵$B$，证明矩阵$B$可逆并求$AB^{-1}$.
+	\item 设$A$为三阶可逆矩阵，且$P^{-1}AP=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$，
+	其中$P=(\alpha_1,\alpha_2,\alpha_3)$，令$Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，求$Q^{-1}AQ$.
+    \item 求下列矩阵的可逆的条件与逆矩阵：
+	$\begin{pmatrix}
+		A & B \\ O & D
+	\end{pmatrix},\ $
+	$\begin{pmatrix}
+		O & B \\ C & D
+	\end{pmatrix},\ $
+	$\begin{pmatrix}
+		O & B \\ C & O	
+	\end{pmatrix}$.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 
+    \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵
+	为$A=(a_{ij})_{3 \times 3}$，求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
+        \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
+        \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
+        \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
+    \end{enumerate}
+	\item 设$P=\begin{pmatrix}
+		1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
+	\end{pmatrix}$，$Q=\begin{pmatrix}
+		0 & 0 \\ 1 & 0
+	\end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$，
+    \begin{enumerate}
+        \item 验证$\sigma$是线性映射；
+        \item 求$\ker\sigma$和$\textup{Im }\sigma$；
+        \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
+    \end{enumerate}
+    \item 设$n$阶矩阵$A$分块为$A=\begin{pmatrix}
+		B & O \\ C & D
+	\end{pmatrix}$，其中$B$，$D$分别为$k$阶、$m$阶矩阵，证明：$A$可逆的充分必要条件为
+	$B$，$D$可逆，并求$A^{-1}$.
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在$n$阶下三角矩阵$B$，使得$BA$为上三角矩阵.
+    \item 设$A$是数域$\mathbf{F}$上的$n$阶可逆矩阵，把$A$和$A^{-1}$做如下分块：
+	\[A=\begin{pmatrix}
+		A_{11} & A_{12} \\ A_{21} & A_{22}
+	\end{pmatrix}，A^{-1}=\begin{pmatrix}
+		B_{11} & B_{12} \\ B_{21} & B_{22}
+	\end{pmatrix}\]
+	其中$A_{11}$是$l \times k$矩阵，$B_{11}$是$k \times l$矩阵，
+	$l$，$k$是小于$n$的正整数.用$W$表示$A_{12}X=0$的解空间，$U$表示$B_{12}Y=0$的解空间，
+	其中$X$和$Y$为列向量，证明$W$与$U$同构.
 \end{enumerate}
