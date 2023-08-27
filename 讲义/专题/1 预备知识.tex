@@ -402,7 +402,13 @@ $AX=\vec{b}$.
 \centerline{\heiti \Large 内容总结}
 
 本讲为了后续章节讲述方便引入了一些基本概念和算法. 尽管这是一门面向理工科应用的数学课，但我们仍然希望以最自然的方式引入
-概念，而非填鸭式地轰炸，因此我们首先从大家最熟悉的
+概念，而非填鸭式地轰炸，因此我们首先从大家最熟悉的实数集合开始，讨论在集合上定义运算的方法：我们逐步加强条件，引入了三种
+基本的代数结构——群、环和域，并且给出了一些例子，并简单讨论了定义代数系统的意义.事实上，下一讲开始要介绍的线性空间也是一种特殊的
+代数结构，因此首先引入代数结构对于我们自然展开接下来的讨论有很大的帮助，不至于让读者觉得非常突兀.
+
+接下来我们也从域的定义入手，构造了$\mathbf{R}^2$上的乘法运算使其构成了一个域，并且我们发现这里的定义与高中学习的复数乘法
+是完全一致的.之后我们引入了等价关系的概念，这一概念在后续的讲义中将会多次出现，其重要意义就是将一个集合划分成了几个等价的区域.
+最后我们讨论了高斯消元法的一般步骤，这是我们接下来解决线性空间中各类问题绕不开的算法.
 
 \vspace{2ex}
 \centerline{\heiti \Large 习题}
@@ -416,12 +422,33 @@ $AX=\vec{b}$.
 \begin{enumerate}
     \item 完善\autoref{thm:1:复数乘法构造} 中的证明，即证明$\mathbf{R}^2$在平面向量加法和如\autoref*{thm:1:复数乘法构造}
     定义的乘法下构成一个域.
+    \item 完成教材48页第13题.
+    \item 求齐次线性方程组$\begin{cases}
+		x_1+x_2+x_3+4x_4-3x_5=0 \\
+		2x_1+x_2+3x_3+5x_4-5x_5=0 \\
+		x_1-x_2+3x_3-2x_4-x_5=0 \\
+		3x_1+x_2+5x_3+6x_4-7x_5=0
+	\end{cases}$的通解.
+	\item 求非齐次线性方程组$\begin{cases}
+		x_1-x_2+2x_3-2x_4+3x_5=1 \\
+		2x_1-x_2+5x_3-9x_4+8x_5=-1 \\
+		3x_1-2x_2+7x_3-11x_4+11x_5=0 \\
+		x_1-x_2+-x_3-x_4+3x_5=3
+	\end{cases}$的通解.
+	\item 求解线性方程组$\begin{cases}
+		x_1+x_2+x_3=1 \\ x_1+2x_2-5x_3=2 \\ 2x_1+3x_2-4x_3=5
+	\end{cases}$.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
     \item 设$A$是一个Abel群，$A$的运算是加法. 在$A$中定义乘法运算为$ab=0\enspace(\forall a,b\in A)$，
     证明：$A$为一个环.（我们称这种环为零环）
-    \item
+    \item 证明：若集合$A$上的二元关系$R$满足
+    \begin{enumerate}
+        \item $aRa,\enspace\forall a\in A$；
+        \item $\forall a,b,c\in A$，若$aRb$且$aRc$，则$bRc$.
+    \end{enumerate}
+    则$R$为$A$上的等价关系.
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
@@ -429,4 +456,18 @@ $AX=\vec{b}$.
     （提示：无论$n$是否为素数，$n\in\mathbf{Z}$且$n\geqslant 2$时$\langle Z_n:\oplus,\circ\rangle$
     为含幺交换环，因此是否为素数将决定这一结构中每个元素是否有逆元. 在初等数论中，我们熟知的裴蜀定理
     可以解决这一问题）
+    \item 本讲我们构造了$\mathbf{R}^2$上的乘法，从而定义了复数域的乘法运算.本题希望探讨的是：$\mathbf{R}^3$
+    无法构造出乘法使其成为一个域.在高中的学习中我们知道，$\mathbf{R}^3$空间向量的一组基底为
+    $\{\vec{e}_1=(1,0,0),\vec{e}_2=(0,1,0),\vec{e}_3=(0,0,1)\}$.证明：$\mathbf{R}^3$没有乘法同时满足以下性质：
+    \begin{enumerate}
+        \item （单位元）$\vec{e}_1\cdot \vec{u}=\vec{u}\cdot \vec{e}_1\enspace(\forall \vec{u}\in\mathbf{R}^3)$；
+        \item （交换性）$\vec{u}\cdot \vec{v}=\vec{v}\cdot \vec{u}\enspace(\forall \vec{u},\vec{v}\in\mathbf{R}^3)$；
+        \item （长度可乘性）$|\vec{u}\cdot\vec{v}|=|\vec{u}||\vec{v}|\enspace(\forall \vec{u},\vec{v}\in\mathbf{R}^3)$.
+    \end{enumerate}
+    按照如下思路给出详细证明过程：反证，假设乘法存在，则
+    \begin{enumerate}
+        \item 通过计算$(\vec{e}_1+\vec{e}_2)\cdot(\vec{e}_1-\vec{e}_2)$，$(\vec{e}_1+\vec{e}_3)\cdot(\vec{e}_1-\vec{e}_3)$，
+        证明\[\vec{e}_2\cdot\vec{e}_2=\vec{e}_3\cdot\vec{e}_3=-\vec{e}_1.\]
+        \item 证明$(\vec{e}_2+\vec{e}_3)\cdot(\vec{e}_2-\vec{e}_3)=0$得出矛盾.
+    \end{enumerate}
 \end{enumerate}

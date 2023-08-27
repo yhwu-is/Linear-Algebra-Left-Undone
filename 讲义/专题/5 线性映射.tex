@@ -342,13 +342,68 @@ $\alpha=\lambda_1\alpha_1+\lambda_2\alpha_2+\ldots+\lambda_n\alpha_n$，于是�
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 设$\sigma: V_1\to V_2$是线性映射，证明：$\sigma(W_1)$和$\sigma^{-1}(W_2)$分别是$V_2$和$V_1$的子空间
+    \item 设$\sigma: V_1\to V_2$是线性映射，证明：$\sigma(W_1)$和$\sigma^{-1}(W_2)$分别是$V_2$和$V_1$的子空间.
+    \item 写出下列映射的出发空间和到达空间，并判断其是否为线性映射：
+	\begin{enumerate}[label=(\arabic*)]
+        \item $\sigma(x_1,x_2)=(x_1-x_2,x_1,x_1+x_2)$；
+        \item $\sigma(x_1,x_2)=(x_1x_2,x_1+x_2)$；
+        \item $\sigma(p(x))=p(x+1)-p(x),\ \forall p(x) \in \mathbf{R}[x]_n$；
+        \item $\sigma(p(x))=p(a),\ \forall p(x)$，其中$a$为常数；
+        \item $\sigma(\xi)=2\xi+\xi_0$，其中$\xi$是线性空间$V$中的一个固定向量.
+    \end{enumerate}
+	\item 设$\sigma,\tau \in L(V,V)$且$\sigma^2=\sigma$，$\tau^2=\tau$，证明：
+	\begin{enumerate}[label=(\arabic*)]
+        \item $\sigma^k=\sigma$（幂等变换）；
+        \item 若$(\sigma+\tau)^2=\sigma+\tau$，则$\sigma\tau=\theta$（零变换）；
+        \item 设$\sigma\tau=\tau\sigma$，则$(\sigma+\tau-\sigma\tau)^2=\sigma+\tau-\sigma\tau$.
+    \end{enumerate}
+	\item 是否存在$\mathbf{R}^3$到$\mathbf{R}^2$的线性映射$\sigma$使得$\sigma(1,-1,1)=(1,0)$，
+	$\sigma(1,1,1)=(0,1)$.
+    \item 是否存在$\mathbf{R}^2$到$\mathbf{R}^3$的线性映射$\sigma$使得$\sigma(3,2)=(1,0,0)$，$\sigma(1,5)=(1,1,0)$，$\sigma(-1,4)=(1,1,1)$.
+    \item 求$\sigma(x_1,x_2,\cdots,x_n)=(x_1,0,\cdots,0)$的像、核与秩.
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 已知
+	\[\alpha_1=(1,-1),\alpha_2=(2,-1),\alpha_3=(-3,2);\]
+	\[\beta_1=(1,0),\beta_2=(0,1),\beta_3=(1,1).\]
+	是否存在$\sigma\in L(\mathbf{R}^2,\mathbf{R}^2)$，使得$\sigma(\alpha_i)=\beta_i(i=1,2,3)$.
+	\item 设$\{\alpha_1,\alpha_2\}$是线性空间$V(\mathbf{F})$的一组基，$x_1\alpha_1+x_2\alpha_2 \in V$，
+	定义$T(x_1\alpha_1+x_2\alpha_2)=r_1x_1\alpha_1+r_2x_2\alpha_2$，其中$r_1,r_2$是域$F$中的两个常数，
+	证明：$T$是$V$上的一个线性变换，当$V=\mathbf{R}^2$时，说明$T$的几何意义.
+	\item 已知$\mathbf{R}$上的线性变换$\sigma(x_1,x_2)=(x_1-x_2,x_1+x_2)$，$\tau(x_1,x_2)=(x_1-x_2,x_1-x_2)$.
+	\begin{enumerate}[label=(\arabic*)]
+        \item 求$\sigma^2(x_1,x_2)$；
+        \item $\sigma$是否可逆？如可逆，求$\sigma^{-1}(x_1,x_2)$；
+        \item 求$\xi\in L(\mathbf{R}^2,\mathbf{R}^2)$，使得$\xi\tau=\theta$（零变换）.
+    \end{enumerate}
+    \item 已知$\mathbf{R}^3$上的两个线性变换$\sigma,\tau$为：
+	\[\sigma(x_1,x_2,x_3)=(x_3,0,0),\]
+	\[\tau(x_1,x_2,x_3)=(x_1+x_2+x_3,x_1-x_2,0).\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$r(\sigma)$，$r(\tau)$，$\textup{Im }\sigma$，$\ker\sigma$；
+        \item 求$r(\tau\sigma)$，$r(\sigma\tau)$，$r(\sigma+\tau)$；
+        \item 求$\textup{Im }\tau+\ker\tau$.
+    \end{enumerate}
+    \item 设 $\sigma$ 是线性空间 $V$ 上的线性变换，如果 $\sigma^{k-1}(\alpha) \neq 0$，但 $\sigma^{k}(\alpha) = 0$，证明：\newline
+	$\alpha,\ \sigma(\alpha),\ \dots,\ \sigma^{k-1}(\alpha)(k>0)$ 线性无关
+	（本题还有对应的矩阵版本，解法基本一致）.
+    \item 设$\mathbf{R}[x]_3$是次数小于3的实系数多项式和全体零多项式一起组成的集合
+	关于多项式加法和数乘多项式运算构成的实数域上的线性空间.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$W=\{f(x)\in \mathbf{R}[x]_3\ |\ f(1)=0\}$是$\mathbf{R}[x]_3$的一个子空间，并求$W$的维数和一组基；
+        \item 定义从$\mathbf{R}[x]_3$到$\mathbf{R}$的线性映射$\sigma(f(x))=f(1)$，证明：$\sigma$为线性映射，
+        并求$\textup{Im }\sigma$和$\dim\ker\sigma$；
+        \item 设$f,g,h \in \mathbf{R}[x]_3$且$f(1)=g(1)=h(1)=0$，证明：$f,g,h$线性相关.
+    \end{enumerate}
 \end{enumerate}
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 设 $V(\mathbf{F})$ 是一个 $n$ 维线性空间，$\sigma \in L(V,\ V)$，证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 的多项式 $p(x)$ 使 $p(\sigma)=0$；
+        \item $\sigma$ 可逆$\iff$有一常数项不为 $0$ 的多项式 $p(x)$ 使 $p(\sigma)=0$.
+    \end{enumerate}
+    \item 已知$\sigma_1,\sigma_2,\cdots,\sigma_s$是线性空间$V$上的$s$个两两不同的线性变换，证明：在$V$中
+	必存在向量$\alpha$使得$\sigma_1(\alpha),\sigma_2(\alpha),\cdots,\sigma_s(\alpha)$也两两不同.
 \end{enumerate}
