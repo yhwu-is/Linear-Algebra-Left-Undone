@@ -1,8 +1,8 @@
 \chapter{内积空间上的算子（II）}
 
-\section{正交矩阵和酉矩阵}
-
 前面我们对正规算子和自伴算子做了相当充分的工作，从这章开始我们准备对一般的算子做些工作. 
+
+\section{正交矩阵和酉矩阵}
 
 本节我们将唤醒一些沉睡的记忆，如果你已经忘了过渡矩阵或矩阵的相似，可以移步到前面的章节再回顾一下. 如果你还在这的话，那么坐稳，我们马上开始. 
 
@@ -132,7 +132,203 @@
     满足 $ Se_j = \lambda_je_j $，证明 $ S $ 是等距同构. 
 \end{example}
 
+然后来介绍一下等距同构的等价条件，虽然很多，但大部分都是我们刚才推理过程中已经得到的结果. 
+
+\begin{theorem}
+    设 $ S \in \mathcal{L}(V) $ ，则以下条件等价：
+    \begin{enumerate}
+        \item $ S $ 是等距同构；
+        
+        \item 对所有 $ u, v \in V $ 均有 $ \langle Su, Sv \rangle = \langle u, v \rangle $；
+        
+        \item 对 $ V $ 中的任意标准正交向量组 $ e_1, \ldots , e_m $ 均有 $ Se_1, \ldots , Se_m $ 是标准正交的；
+        
+        \item $ V $ 有规范正交基 $ e_1, \ldots ,e_n $ 使得 $ Se_1, \ldots , Se_n $ 是标准正交基；
+        
+        \item $ SS^* = S^*S = I $； 
+        
+        \item $ S^* $ 是等距同构；
+        
+        \item $ S $ 是可逆的且 $ S^{-1} = S^* $. 
+    \end{enumerate}
+\end{theorem}
+
+证明大部分都在上面的过程中证明过了，剩下的请大家自行验证. 
+
+我们关注第 3 个条件，即等距同构将标准正交组映射成标准正交组. 那么其对应的矩阵，
+即酉矩阵或正交矩阵也保有这样的性质，在基变换时它们能将标准正交基仍然变换成标准正交基，
+这正是我们所希望看到的，也就是酉相似（正交相似）的特殊之处.
+
+这样我们就可以用酉相似和正交相似对谱定理进行矩阵语言的刻画. 
+
+\begin{theorem}
+    \begin{enumerate}
+        \item 复方阵 $ A $ 酉相似于对角矩阵的充要条件是 $ A $ 是正规矩阵；
+        
+        \item 实方阵 $ A $ 正交相似于对角矩阵的充要条件是 $ A $ 是实对称矩阵. 
+    \end{enumerate}
+\end{theorem}
+
+继续关注第 5 个条件，很容易的就会发现，等距同构其实也是正规算子，那么其相较于
+正规算子又有什么加强呢？在复内积空间下，结合 \ref{例 25.1}，就会有下面这个优美的等价条件. 
+
+\begin{theorem}
+    设 $ V $ 是复内积空间，$ S \in \mathcal{L}(V) $. 则以下条件等价：
+    \begin{enumerate}
+        \item $ S $ 是等距同构
+        
+        \item $ V $ 有一个由 $ S $ 的特征向量构成的标准正交基，相应的特征值的绝对值均为 1. 
+    \end{enumerate}
+\end{theorem}
+
+几何意义其实是相当直观的，所有绝对值为 1 的复数作用在模为 1 的向量上都不会改变其模，而只是
+进行对称与旋转（事实上旋转也可以表为对称，之后会有所介绍）. 这在几何上的运用是相当广泛的.  
+
 \section{正定矩阵}
+
+在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定，正定还是负定还是半正定还是半负定. 
+
+那么，何为正定矩阵？这一定义在不同的数域下仍然有差异. 
+
+\begin{definition} 
+    \keyterm{正定矩阵} 
+    \begin{enumerate}
+        \item 实数域：对 $ n $ 阶实对称矩阵 $ M $，若对于所有非零实系数向量 $ z $，均有
+        $ z^{T}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵；
+        
+        \item 复数域：对 $ n $ 阶 Hermite 矩阵 $ M $，若对于所有非零向量 $ z $，
+        $ z^{H}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵. 
+    \end{enumerate}
+\end{definition}
+
+复数域上的定义合理性是由“对于 Hermite 矩阵 $ M $，$ z^{H}Mz $ 必为实数”保证的. 
+
+由实数域上的正定矩阵的定义，我们可以发现其与二次型的相关性，我们也可以利用从二次型
+中所学来判定实正定矩阵. 
+
+\begin{theorem}
+    设 $ A $ 为 $ n $ 阶实对称矩阵，则以下条件等价：
+    \begin{enumerate}
+        \item $ A $ 是正定矩阵；
+        
+        \item $ A $ 的正惯性指数为 $ n $，即 $ A \simeq E $；
+        
+        \item 存在可逆矩阵 $ P $，使得 $ A = P^{T}P $；
+        
+        \item $ A $ 的 $ n $ 个特征值 $ \lambda_1, \lambda_2, \ldots, \lambda_n $ 都大于零. 
+    \end{enumerate}
+\end{theorem}
+
+对应的复数域版本相信大家也很容易就能够联想得到，只需要将转置变为共轭转置即可. 
+
+以下是一些更深层次地判别矩阵是否正定的条件，同时它们也是正定矩阵的一些重要的性质. 
+
+\begin{theorem}
+    $ A $ 是 $ n $ 阶的 Hermite 矩阵. 以下条件等价. 
+    \begin{enumerate}
+        \item $ A $ 是正定矩阵；
+        
+        \item 双线性函数 $ \langle x, y \rangle = x^{H}Ay $ 
+        定义了一个 $ \mathcal{C}^{n} $ 上的一个内积.
+        事实上， $ \mathcal{C}^{n} $ 所有内积都可视作由某个正定矩阵以此方式得到；
+
+        \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathcal{C}^{k} $ 构成的
+        Gram 矩阵. 即 $ A = B^{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且
+        这种分解方式不唯一.  
+        
+        \item \keyterm{Cholesky decomposition} 存在唯一的下三角矩阵 $ L $，
+        其主对角元均为正数，使得 $ A = LL^{H} $
+
+        \item \keyterm{Sylvester's criterion} $ A $ 的所有顺序主子式均为正.
+        （但对于半正定矩阵而言，顺序主子式非负不能推出矩阵半正定）
+    \end{enumerate}
+\end{theorem} 
+
+像 2 就道出了正定矩阵和内积之间的关系，3 和 4 给出了正定矩阵的一些分解方式. 
+
+现在让我们跳开去，先去看看算子上的事情，不过出于更实用的原因，我们研究
+半正定矩阵对应的算子. 
+
+\begin{definition}
+    \keyterm{正算子}
+    设算子 $ T \in \mathcal{L}(V) $，如果 $ T $ 是自伴的且 $ \forall v \in V $
+    均有 $ \langle Tv, v \rangle \geqslant 0 $. 
+\end{definition}
+
+但对于正算子的定义似乎和对于半正定矩阵的定义方向完全不同，前者依托内积，
+后者则是依托二次型. 不过，若是你还记得我们曾经提到过内积本身是一种正定
+齐次双线性函数，以及二次型可以通过双线性函数引入，就可以捕获这其中的相关之处. 
+我们接下来进行推导. 
+
+\begin{proof}
+    设 $ V $ 的一组标准正交基为 $ e = (e_1, e_2, \ldots, e_n) $，任取向量 $ \alpha \in V $，
+    设其在 $ e $ 下的坐标为 $ x = (x_1, x_2, \ldots, x_n)^{T} $. 设正算子 $ T \in \mathcal{L}(V) $
+    在 $ e $ 下的矩阵为 $ A = (a_{ij})_{n \times n}$，则 
+    \begin{align*}
+        \langle Tv, v \rangle 
+        & = \langle Tex, ex \rangle = \langle eAx, ex \rangle \\ 
+        & = \langle 
+            (e_1, e_2, \ldots ,e_n)
+            \begin{pmatrix}
+                & a_{11} & a_{12} & \ldots & a_{1n} \\
+                & a_{21} & a_{22} & \ldots & a_{2n} \\
+                & \vdots & \vdots &        & \vdots \\
+                & a_{n1} & a_{n2} & \ldots & a_{nn} 
+            \end{pmatrix}
+            \begin{pmatrix}
+                x_1 \\
+                x_2 \\
+                \vdots \\
+                x_n
+            \end{pmatrix} ,
+            (e_1, e_2, \ldots ,e_n)
+            \begin{pmatrix}
+                x_1 \\
+                x_2 \\
+                \vdots \\
+                x_n
+            \end{pmatrix}
+        \rangle \\
+        & = \langle \sum_{i = 1}^{n}e_{i}\sum_{j = 1}^{n}a_{ij}x_{j}, \sum_{i = 1}^{n}x_{i}e_{i} \rangle
+        = \overline{x_1}\sum_{j = 1}^{n}a_{1j}x_{j} + \overline{x_2}\sum_{j = 1}^{n}a_{2j}x_{j} + \cdots + \overline{x_n}\sum_{j = 1}^{n}a_{nj}x_{j} \\
+        & = (\overline{x_1}, \overline{x_2}, \ldots, \overline{x_n})
+        \begin{pmatrix}
+            \sum_{j = 1}^{n}a_{1j}x_{j} \\
+            \sum_{j = 1}^{n}a_{2j}x_{j} \\
+            \vdots \\
+            \sum_{j = 1}^{n}a_{nj}x_{j}
+        \end{pmatrix}
+        = x^{H}Ax. 
+    \end{align*}
+
+    此对应复内积空间的情形，实内积空间的情形也就显然了. 
+\end{proof}
+
+我们定义出的正算子虽然名为正算子，但我们类比的时候它其实是类似于非负数，
+非负数很重要的一种运算就是开方运算. 类似的，我们也可以定义算子的平方根.
+
+\begin{definition}
+    \keyterm{平方根} 算子 $ R $ 被称为算子 $ T $ 的平方根，如果 $ R^{2} = T $. 
+\end{definition}
+
+以下是正算子的刻画. 
+
+\begin{theorem}
+    设 $ T \in \mathcal{L}(V) $. 则以下条件等价. 
+    \begin{enumerate}
+        \item $ T $ 是正的；
+        
+        \item $ T $ 是自伴的且 $ T $ 的所有特征值非负；
+        
+        \item $ T $ 有正的平方根；
+        
+        \item $ T $ 有自伴的平方根；
+        
+        \item 存在算子 $ R \in \mathcal{L}(V) $ 使得 $ T = R^{*}R $. 
+    \end{enumerate}
+\end{theorem}
+
+从这里我们进一步加深类比. 
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
@@ -148,7 +344,10 @@
 \end{flushright}
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 证明：上三角的酉矩阵必为对角矩阵. 
+    
+    \item 证明：任一 $ n $ 级可逆复矩阵 $ A $ 一定可以被唯一分解成 $ A = PB $，
+    其中 $ P $ 是 $ n $ 级酉矩阵，$ B $ 是主对角元均为正实数的 $ n $ 级上三角矩阵. 
 \end{enumerate}
 \centerline{\heiti B组}
 \begin{enumerate}
