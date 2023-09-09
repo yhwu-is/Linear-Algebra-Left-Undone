@@ -1,259 +1,237 @@
 \chapter{不变子空间}
 
-事实上，为了研究上一讲前言中提到的线性变换、矩阵和多项式之间的关系，我们需要一个重要的媒介，
-即不变子空间.相信读者这一点在接下来的章节中会逐渐体会到这一概念的桥梁作用.
+事实上，为了研究上一讲前言中提到的线性变换、矩阵和多项式之间的关系，我们需要一个重要的媒介，即不变子空间. 相信读者这一点在接下来的章节中会逐渐体会到这一概念的桥梁作用.
 
 \section{不变子空间的定义}
-回顾我们接下来讨论的目标，即找到一组基使得线性变换在这组基下的表示更简单.设$\sigma\in\mathcal{L}(V)$，
-如果$V$有直和分解
+
+回顾我们接下来讨论的目标，即找到一组基使得线性变换在这组基下的表示更简单. 设$\sigma\in\mathcal{L}(V)$，如果$V$有直和分解
 \[V=U_1\oplus U_2\oplus\cdots\oplus U_m,\]
-其中每个$U_i$都是$V$的真子空间，那么我们对于$\sigma$的研究可以分别在各个$U_i$上进行，即我们可以考虑$\sigma$
-在$U_i$下的限制映射，即$\sigma\vert_{U_i}$.我们给出标准的定义如下：
+其中每个$U_i$都是$V$的真子空间，那么我们对于$\sigma$的研究可以分别在各个$U_i$上进行，即我们可以考虑$\sigma$在$U_i$下的限制映射，即$\sigma\vert_{U_i}$. 我们给出标准的定义如下：
 \begin{definition}
-    设$V$是数域$\mathbf{F}$上的线性空间，$\sigma\in\mathcal{L}(V)$，我们在$V$的子空间$U$上定义映射
-    $\sigma\vert_U$如下：
+    设$V$是数域$\mathbf{F}$上的线性空间，$\sigma\in\mathcal{L}(V)$，我们在$V$的子空间$U$上定义映射$\sigma\vert_U$如下：
     \[\sigma\vert_U:U\to V,\enspace\sigma\vert_U(\alpha)=\sigma(\alpha),\enspace\forall \alpha\in U,\]
     则称$\sigma\vert_U$是$\sigma$在$U$上的\keyterm{限制映射}[restriction mapping].
 \end{definition}
 
 ``限制''一词十分形象，因为限制映射就是将原映射的定义域限制在更小的范围内，但原定义域上的映射值保持不变.
 
-通常而言更低维的空间处理起来也应当更为简单，事实上我们后面的很多工作都是在找这样的分解.但是这一分解应当
-满足一个条件，就是$\sigma$应当把每个$U_i$仍然映射到$U_i$本身，否则我们在找基的时候不能做到出发空间和到达空间的基一致.
-此时限制映射$\sigma\vert_{U_i}$就是一个线性变换（是$\mathcal{L}(U_i)$中的元素），我们称之为
-\keyterm{限制线性变换}[restriction operator].
+通常而言更低维的空间处理起来也应当更为简单，事实上我们后面的很多工作都是在找这样的分解. 但是这一分解应当满足一个条件，就是$\sigma$应当把每个$U_i$仍然映射到$U_i$本身，否则我们在找基的时候不能做到出发空间和到达空间的基一致. 此时限制映射$\sigma\vert_{U_i}$就是一个线性变换（是$\mathcal{L}(U_i)$中的元素），我们称之为\keyterm{限制线性变换}[restriction operator].
 
 事实上，满足$\sigma\vert_{U_i}\in\mathcal{L}(U_i)$的子空间$U_i$非常重要，我们需要给予它一个定义：
 \begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma\alpha\in U$，
-    则称$U$是$\sigma$的\keyterm{不变子空间}[invariant subspace]，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
+    设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma\alpha\in U$，则称$U$是$\sigma$的\keyterm{不变子空间}[invariant subspace]，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
 \end{definition}
-即不变子空间中的每一个向量经过线性变换后仍在这一空间中，因此这里的``不变''的含义也是非常直观的.
-根据定义我们可以验证或者求解一些很简单的不变子空间.
-教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述.教材8.20
-还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间.我们这里也简要书写一下，供读者
-熟悉如何利用定义验证不变子空间：
+即不变子空间中的每一个向量经过线性变换后仍在这一空间中，因此这里的``不变''的含义也是非常直观的. 根据定义我们可以验证或者求解一些很简单的不变子空间. 教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述. 教材8.20
+还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间. 我们这里也简要书写一下，供读者熟悉如何利用定义验证不变子空间：
 \begin{example}
-    若$\sigma\in\mathcal{L}(V)$且$p\in\mathbf{F}[x]$为多项式，则$\ker p(\sigma)$和$\im p(\sigma)$在$\sigma$
-    下不变.
+    若$\sigma\in\mathcal{L}(V)$且$p\in\mathbf{F}[x]$为多项式，则$\ker p(\sigma)$和$\im p(\sigma)$在$\sigma$下不变.
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 有时我们可能会遇到更为复杂的情形，如下面的例子：
-\begin{example}\label{ex:18:不变子空间}
+\begin{example} \label{ex:18:不变子空间}
     设$\mathbf{F}$为一数域，线性变换$\sigma\in\mathcal{L}(\mathbf{F}^2)$定义为
     \[\sigma(a,b)=(a,b)\begin{pmatrix}
-        1 & -1 \\ 2 & 2
-    \end{pmatrix}\]
+            1 & -1 \\ 2 & 2
+        \end{pmatrix}\]
     证明：
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item 当$\mathbf{F}=\mathbf{R}$时，$\mathbf{R}^2$无$\sigma$的非零真不变子空间；
 
         \item 当$\mathbf{F}=\mathbf{C}$时，$\mathbf{C}^2$有$\sigma$的非零真不变子空间.
     \end{enumerate}
 \end{example}
+
 \begin{proof}
-    事实上，由于$\sigma$定义在二维空间$\mathbf{F}^2$上，因此``非零真不变子空间''只能是一维子空间.
-    我们知道，一维线性空间中所有元素都是成比例的（可以理解为一条直线，或者一维空间是由一个向量线性扩张而来，
-    扩张过程中的线性组合一定保证后面生成的所有向量都互相成比例）.我们假设比例值为$\lambda$，即
+    事实上，由于$\sigma$定义在二维空间$\mathbf{F}^2$上，因此``非零真不变子空间''只能是一维子空间. 我们知道，一维线性空间中所有元素都是成比例的（可以理解为一条直线，或者一维空间是由一个向量线性扩张而来，扩张过程中的线性组合一定保证后面生成的所有向量都互相成比例）. 我们假设比例值为$\lambda$，即
     \[\sigma(a,b)=(a,b)\begin{pmatrix}
-        1 & -1 \\ 2 & 2
-    \end{pmatrix}=\lambda(a,b)=(\lambda a,\lambda b),\]
+            1 & -1 \\ 2 & 2
+        \end{pmatrix}=\lambda(a,b)=(\lambda a,\lambda b),\]
     将矩阵乘法展开，我们有
     \[(a+2b,-a+2b)=(\lambda a,\lambda b).\]
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
 除此之外，还有一些更为困难的问题我们将在讨论若当标准形之后进行讨论.
 
-最后我们再基于不变子空间讨论一个商线性变换的概念.事实上，
-如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换.我们严格定义如下：
+最后我们再基于不变子空间讨论一个商线性变换的概念. 事实上，如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换. 我们严格定义如下：
 \begin{definition}
     设$\sigma\in \mathcal{L}(V)$，$U$是$\sigma$的不变子空间，定义映射$\sigma/U:V/U\to V/U$如下：
     \[(\sigma/U)(v+U)=\sigma v+U,\enspace\forall v\in V,\]
     则称$\sigma/U$是$\sigma$在$U$上的\keyterm{商线性变换}[quotient operator].
 \end{definition}
 
-定义映射后，我们自然的想法就失确认这一定义是不是合理的.首先这一定义的线性性容易验证：
-\begin{enumerate}
-    \item 齐次性：
-    \item 加性：
-\end{enumerate}
+定义映射后，我们自然的想法就失确认这一定义是不是合理的. 首先这一定义的线性性容易验证：
+\begin{itemize}
+    \item[齐次性：]
 
-除了线性的要求外，我们可以回顾\autoref{ex:8:良定义}中提到的良定义(well-defined)的概念.因为这里又一次
-将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性.
-事实上，回顾\autoref{ex:8:良定义}，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值
-（否则不符合映射的定义）.商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma v+U\neq \sigma w+U$
-的情况，这一定义描述的就不是映射，因此不是良定义.但我们可以验证这一映射是良定义：
+    \item[加性：]
+\end{itemize}
+
+除了线性的要求外，我们可以回顾\autoref{ex:8:良定义} 中提到的良定义（well-defined）的概念. 因为这里又一次将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性. 事实上，回顾\autoref{ex:8:良定义}，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值（否则不符合映射的定义）. 商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma v+U\neq \sigma w+U$的情况，这一定义描述的就不是映射，因此不是良定义. 但我们可以验证这一映射是良定义：
 
 \begin{proof}
-    
+
 \end{proof}
 
 这一定义可能具有一定的抽象性，因此我们用更抽象的例子来加深理解：
 \begin{example}
-    设$\sigma\in \mathcal{L}(V,W)$，定义$\tilde{\sigma}:(V/(\ker \sigma))\to W$如下：
-    \[\tilde{\sigma}(v+\ker\sigma)=\sigma v.\]
-    \begin{enumerate}[label=(\arabic*)]
-        \item $\tilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
+    设$\sigma\in \mathcal{L}(V,W)$，定义$\widetilde{\sigma}:(V/(\ker \sigma))\to W$如下：
+    \[\widetilde{\sigma}(v+\ker\sigma)=\sigma v.\]
+    \begin{enumerate}
+        \item $\widetilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
 
-        \item $\tilde{\sigma}$是单射；
+        \item $\widetilde{\sigma}$是单射；
 
-        \item $\im \tilde{\sigma}=\im \sigma$；
+        \item $\im \widetilde{\sigma}=\im \sigma$；
 
         \item $V/(\ker \sigma)$同构于$\im \sigma$.
     \end{enumerate}
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \section{特征值与特征向量}
-事实上，在\autoref{ex:18:不变子空间}中，我们求解了一维不变子空间.根据一维空间中向量都成比例的性质，
-设$U$是$\sigma\in\mathcal{L}(V)$的一维不变子空间，我们有
-\[\exists\lambda\in\mathbf{F},\enspace\sigma\alpha=\lambda\alpha,\enspace\forall \alpha\in U,\]
-即任意向量作用线性变换后的结果与原向量成比例.这一性质将引入接下来的特征值与特征向量的概念，事实上它们对于
-获得简单矩阵的目标而言非常重要，因此我们需要特别研究一维不变子空间.
 
-在接下来的讨论中，我们很多定义都会有相应的矩阵和映射版本.回顾我们在\autoref{thm:11:线性映射对向量坐标的影响}
-中的讨论，我们提到了矩阵$A$和线性映射$\sigma(\alpha)=A\alpha$的统一性，提到我们未来将不区分矩阵和线性变换，
-这一点在本节过后将有更深刻的体会.
+事实上，在\autoref{ex:18:不变子空间} 中，我们求解了一维不变子空间. 根据一维空间中向量都成比例的性质，设$U$是$\sigma\in\mathcal{L}(V)$的一维不变子空间，我们有
+\[\exists\lambda\in\mathbf{F},\enspace\sigma\alpha=\lambda\alpha,\enspace\forall \alpha\in U,\]
+即任意向量作用线性变换后的结果与原向量成比例. 这一性质将引入接下来的特征值与特征向量的概念，事实上它们对于获得简单矩阵的目标而言非常重要，因此我们需要特别研究一维不变子空间.
+
+在接下来的讨论中，我们很多定义都会有相应的矩阵和映射版本. 回顾我们在\autoref{thm:11:线性映射对向量坐标的影响} 中的讨论，我们提到了矩阵$A$和线性映射$\sigma(\alpha)=A\alpha$的统一性，提到我们未来将不区分矩阵和线性变换，这一点在本节过后将有更深刻的体会.
 
 \subsection{特征值与特征向量的定义与求解}
+
 首先介绍线性变换和矩阵的特征值与特征向量的概念：
 \begin{definition}
-    设$\sigma$是线性空间$V(\mathbf{F})$上的一个线性变换，如果存在数$\lambda\in\mathbf{F}$
-    和非零向量$\xi\in V$使得$\sigma(\xi)=\lambda\xi$，则称数$\lambda$为$\sigma$的一个\keyterm{特征值}[eigenvalue]，
-    并称非零向量$\xi$为$\sigma$属于其特征值$\lambda$的\keyterm{特征向量}[eigenvector].
+    设$\sigma$是线性空间$V(\mathbf{F})$上的一个线性变换，如果存在数$\lambda\in\mathbf{F}$和非零向量$\xi\in V$使得$\sigma(\xi)=\lambda\xi$，则称数$\lambda$为$\sigma$的一个\keyterm{特征值}[eigenvalue]，并称非零向量$\xi$为$\sigma$属于其特征值$\lambda$的\keyterm{特征向量}[eigenvector].
 \end{definition}
-必须注意特征向量为非零向量，否则零向量对任意$\lambda$都满足上面定义，从而失去``特征''的含义.
-但是特征值可以为0，此时$\sigma(\xi)=0$，实际上全体特征向量的集合就是线性变换的核空间.
+必须注意特征向量为非零向量，否则零向量对任意$\lambda$都满足上面定义，从而失去``特征''的含义. 但是特征值可以为0，此时$\sigma(\xi)=\vec{0}$，实际上全体特征向量的集合就是线性变换的核空间.
 
-我们称关于同一个特征值$\lambda$的所有特征向量构成的集合记为$V_\lambda=\{\xi \mid \sigma(\xi)=\lambda\xi,\enspace\xi\in V\}$，
-称为$\sigma$关于其特征值$\lambda$的特征子空间.事实上，我们可以验证一个特征值对应的所有特征向量构成的集合的确是$V$的``子空间''：
+我们称关于同一个特征值$\lambda$的所有特征向量构成的集合记为$V_\lambda=\{\xi \mid \sigma(\xi)=\lambda\xi,\enspace\xi\in V\}$，称为$\sigma$关于其特征值$\lambda$的特征子空间. 事实上，我们可以验证一个特征值对应的所有特征向量构成的集合的确是$V$的``子空间''：
 \begin{example}
     证明：$V_\lambda$是$V$的子空间.
 \end{example}
+
 \begin{proof}
 
 \end{proof}
 
 上面是线性变换的特征值与特征向量的定义，事实上我们也有对应的矩阵的特征值与特征向量的定义：
 \begin{definition}
-    设矩阵$A\in \mathbf{M}_n(\mathbf{F})$，如果存在数$\lambda\in\mathbf{F}$和非零向量$X\in\mathbf{F}^n$使得
-    $AX=\lambda X$，则称数$\lambda$为$A$的一个特征值，称非零向量$X$为$A$属于其特征值$\lambda$的特征向量.
+    设矩阵$A\in \mathbf{M}_n(\mathbf{F})$，如果存在数$\lambda\in\mathbf{F}$和非零向量$X\in\mathbf{F}^n$使得$AX=\lambda X$，则称数$\lambda$为$A$的一个特征值，称非零向量$X$为$A$属于其特征值$\lambda$的特征向量.
 \end{definition}
+
 \begin{example}
     设$A=\begin{pmatrix}
-        1 & -1 & 0 \\ 2 & 0 & 1 \\ 1 & a & 0
-    \end{pmatrix}$，且存在非零向量$\alpha$使得$A\alpha=2\alpha$，求$\alpha$.
+            1 & -1 & 0 \\ 2 & 0 & 1 \\ 1 & a & 0
+        \end{pmatrix}$，且存在非零向量$\alpha$使得$A\alpha=2\alpha$，求$\alpha$.
 \end{example}
+
 \begin{solution}
 
 \end{solution}
 
-下面我们说明线性映射的特征值与特征向量和矩阵的特征值与特征向量之间的关系.实际上，假设$A$是$\sigma$在基
-$\alpha_1,\ldots,\alpha_n$下的表示矩阵，且$\xi=(\alpha_1,\ldots,\alpha_n)X$，即$X$是$\xi$在基
-$\alpha_1,\ldots,\alpha_n$下的坐标，则我们有
+下面我们说明线性映射的特征值与特征向量和矩阵的特征值与特征向量之间的关系. 实际上，假设$A$是$\sigma$在基$\alpha_1,\ldots,\alpha_n$下的表示矩阵，且$\xi=(\alpha_1,\ldots,\alpha_n)X$，即$X$是$\xi$在基$\alpha_1,\ldots,\alpha_n$下的坐标，则我们有
 \begin{align*}
-    \sigma(\xi)=\lambda\xi &\iff \sigma((\alpha_1,\ldots,\alpha_n)X)=\lambda(\alpha_1,\ldots,\alpha_n)X \\
-                           &\iff (\sigma(\alpha_1,\ldots,\alpha_n))X=(\lambda\alpha_1,\ldots,\lambda\alpha_n)X \\
-                           &\iff (\alpha_1,\ldots,\alpha_n)AX=(\alpha_1,\ldots,\alpha_n)(\lambda X) \\
-                           &\iff AX=\lambda X
+    \sigma(\xi)=\lambda\xi & \iff \sigma((\alpha_1,\ldots,\alpha_n)X)=\lambda(\alpha_1,\ldots,\alpha_n)X        \\
+                           & \iff (\sigma(\alpha_1,\ldots,\alpha_n))X=(\lambda\alpha_1,\ldots,\lambda\alpha_n)X \\
+                           & \iff (\alpha_1,\ldots,\alpha_n)AX=(\alpha_1,\ldots,\alpha_n)(\lambda X)            \\
+                           & \iff AX=\lambda X
 \end{align*}
-其中第一行与第二行间的等价关系用到了矩阵乘法一节中证明的性质
-$\sigma((\alpha_1,\ldots,\alpha_n)X)=(\sigma(\alpha_1,\ldots,\alpha_n))X$.
-由上述讨论可知$\lambda$同时是线性变换和矩阵的特征值，与基的选取无关.但矩阵的特征向量$X$是线性映射特征向量
-在基下的坐标，这与基的选取有关.
+其中第一行与第二行间的等价关系用到了矩阵乘法一节中证明的性质$\sigma((\alpha_1,\ldots,\alpha_n)X)=(\sigma(\alpha_1,\ldots,\alpha_n))X$. 由上述讨论可知$\lambda$同时是线性变换和矩阵的特征值，与基的选取无关. 但矩阵的特征向量$X$是线性映射特征向量在基下的坐标，这与基的选取有关.
 
-接下来我们讨论如何求解特征值与特征向量.我们首先需要证明一个定理：
+接下来我们讨论如何求解特征值与特征向量. 我们首先需要证明一个定理：
 \begin{theorem}
     设$\sigma$是$V(\mathbf{F})$上的线性变换，$I$为恒等映射，则下述条件等价：
     \begin{enumerate}[label=(\arabic*)]
-        \item $\lambda\in\mathbf{F}$是$\sigma$的特征值；
-        \item $\sigma-\lambda I$不是单射；
-        \item $\sigma-\lambda I$不是满射；
-        \item $\sigma-\lambda I$不可逆.
+        \item \label{item:18:特征值定义:1}
+              $\lambda\in\mathbf{F}$是$\sigma$的特征值；
+
+        \item \label{item:18:特征值定义:2}
+              $\sigma-\lambda I$不是单射；
+
+        \item \label{item:18:特征值定义:3}
+              $\sigma-\lambda I$不是满射；
+
+        \item \label{item:18:特征值定义:4}
+              $\sigma-\lambda I$不可逆.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item （$1\Rightarrow 2$）$\lambda\in\mathbf{F}$是$\sigma$的特征值，说明$\exists v\in V$且$v\neq 0$使得
-        $\sigma(v)=\lambda v$.因此$(\sigma-\lambda I)(v)=0$，即$\sigma-\lambda I$核空间不只有零元，
-        根据单射等价条件\autoref{thm:5:单射与核空间}，不单成立；
-        \item （$2\Rightarrow 3$）根据\autoref{thm:6:双射等价条件}可知，$\sigma-\lambda I$不满当且仅当$\sigma-\lambda I$不单；
-        \item （$3\Rightarrow 4$）根据\autoref{thm:6:双射等价条件}显然；
-        \item （$4\Rightarrow 1$）$\sigma-\lambda I$不可逆，根据\autoref{thm:6:双射等价条件}可知其不为单射，又根据
-        单射等价条件\autoref{thm:5:单射与核空间}可知$(\sigma-\lambda I)(v)=0$有非零解，即$\sigma(v)=\lambda v$，
-        其中$v\neq 0$，这与特征值定义一致.
-    \end{enumerate}
+    \begin{itemize}[leftmargin=.8in] % FIXME
+        \item[\ref*{item:18:特征值定义:1}$\implies$\ref*{item:18:特征值定义:2}] $\lambda\in\mathbf{F}$是$\sigma$的特征值，说明$\exists v\in V$且$v\neq 0$使得$\sigma(v)=\lambda v$. 因此$(\sigma-\lambda I)(v)=0$，即$\sigma-\lambda I$核空间不只有零元，根据单射等价条件\autoref{thm:5:单射与核空间}，不单成立；
+
+        \item[\ref*{item:18:特征值定义:2}$\implies$\ref*{item:18:特征值定义:3}] 根据\autoref{thm:6:双射等价条件} 可知，$\sigma-\lambda I$不满当且仅当$\sigma-\lambda I$不单；
+
+        \item[\ref*{item:18:特征值定义:3}$\implies$\ref*{item:18:特征值定义:4}] 根据\autoref*{thm:6:双射等价条件} 显然；
+
+        \item[\ref*{item:18:特征值定义:4}$\implies$\ref*{item:18:特征值定义:1}] $\sigma-\lambda I$不可逆，根据\autoref*{thm:6:双射等价条件} 可知其不为单射，又根据单射等价条件\autoref*{thm:5:单射与核空间} 可知$(\sigma-\lambda I)(v)=0$有非零解，即$\sigma(v)=\lambda v$，其中$v\neq 0$，这与特征值定义一致.
+    \end{itemize}
 \end{proof}
 
-由上述定理，$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$\sigma-\lambda I$不可逆，因此其在$V$的任意一组基
-$\alpha_1,\ldots,\alpha_n$下的矩阵$A-\lambda E$也不可逆（其中$A$为$\sigma$在这组基下的矩阵，$E$为单位矩阵），
-这又等价于$|A-\lambda E|=0$.
+由上述定理，$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$\sigma-\lambda I$不可逆，因此其在$V$的任意一组基$\alpha_1,\ldots,\alpha_n$下的矩阵$A-\lambda E$也不可逆（其中$A$为$\sigma$在这组基下的矩阵，$E$为单位矩阵），这又等价于$|A-\lambda E|=0$.
 
-因此$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$|\lambda E-A|=0$，
-故我们可以通过$|\lambda E-A|=0$求解特征值，其中$A$为$\sigma$在某组基下的矩阵，$E$为单位矩阵
-对于特征向量的求解，求出$(\lambda E-A)X=0$的非零解就是特征向量在基$\alpha_1,\ldots,\alpha_n$下的坐标，
-如果是矩阵的特征向量，那么$X$就是解.
+因此$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$|\lambda E-A|=0$，故我们可以通过$|\lambda E-A|=0$求解特征值，其中$A$为$\sigma$在某组基下的矩阵，$E$为单位矩阵对于特征向量的求解，求出$(\lambda E-A)X=0$的非零解就是特征向量在基$\alpha_1,\ldots,\alpha_n$下的坐标，如果是矩阵的特征向量，那么$X$就是解.
 
-上述求解特征向量的方法需要我们求解$f(\lambda)=|\lambda E-A|$的根，事实上$f(\lambda)=|\lambda E-A|$是在之后的讨论中
-有核心地位的概念，我们称其为矩阵$A$的\keyterm{特征多项式}[characteristic polynomial]，其$k$重根称为$k$重特征值
-（称$k$为代数重数），该特征值对应的特征子空间维数称为该特征值的几何重数.
+上述求解特征向量的方法需要我们求解$f(\lambda)=|\lambda E-A|$的根，事实上$f(\lambda)=|\lambda E-A|$是在之后的讨论中有核心地位的概念，我们称其为矩阵$A$的\keyterm{特征多项式}[characteristic polynomial]，其$k$重根称为$k$重特征值（称$k$为代数重数），该特征值对应的特征子空间维数称为该特征值的几何重数.
 
 我们展开特征多项式得到以下定理：
 \begin{theorem}\label{thm:18:特征多项式展开}
     对于$n$级矩阵$A=(a_{ij})$，记
-    \[f(\lambda)=|\lambda E-A|=a_0\lambda^n+a_1\lambda^{n-1}+\cdots+a_{n-1}\lambda+a_n.\]
+    \[f(\lambda)=|\lambda E-A|=a_0\lambda^n+a_1\lambda^{n-1}+\cdots+a_{n-1}\lambda+a_n\]
     则$a_0=1$，$a_n=(-1)^n|A|$，且$a_k$等于所有$k$级主子式之和乘以$(-1)^k$.
 \end{theorem}
+
 \begin{proof}
-    
+
 \end{proof}
 
-这一定理的证明事实上无需掌握，这里给出证明是为了补全教材中的空缺.这里我们主要掌握两个特例，
-即由韦达定理，我们有
+这一定理的证明事实上无需掌握，这里给出证明是为了补全教材中的空缺. 这里我们主要掌握两个特例，即由韦达定理，我们有
 \begin{enumerate}
     \item $\displaystyle\sum_{i=1}^{n}\lambda_i=\displaystyle\sum_{i=1}^{n}a_{ii}$；
+
     \item $\displaystyle\prod_{i=1}^{n}\lambda_i=|A|$.
 \end{enumerate}
-即特征值按重数求和为矩阵的迹（即矩阵对角线元素之和），特征值按重数求积为矩阵行列式.
-这一结论在解决某些问题时有一定作用.
+即特征值按重数求和为矩阵的迹（即矩阵对角线元素之和），特征值按重数求积为矩阵行列式. 这一结论在解决某些问题时有一定作用.
 
-事实上，我们这里给出的特征多项式只是矩阵的特征多项式的定义，关于线性变换特征多项式的定义以及进一步讨论
-将在后续章节进行，我们也会说明两种特征多项式的定义是统一的.
+事实上，我们这里给出的特征多项式只是矩阵的特征多项式的定义，关于线性变换特征多项式的定义以及进一步讨论将在后续章节进行，我们也会说明两种特征多项式的定义是统一的.
 
 \subsection{特征值的基本性质}
+
 关于特征值，我们有如下基本性质：
 \begin{enumerate}
     \item 设$\lambda$是线性空间$V(\mathbf{F})$上的线性变换$\sigma$的特征值，$\xi$是$\sigma$属于$\lambda$的特征向量，则
-    \begin{enumerate}
-        \item $k\lambda$是$k\sigma$的特征值，$\lambda^m$是$\sigma^m$的特征值，且$\xi$仍是相应特征向量；
-        \item 若$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$是$\mathbf{F}$上的多项式，则$f(\sigma)(\xi)=f(\lambda)\xi$；
-    \end{enumerate}
-    \item 设$\lambda$是$n$阶矩阵$A$的特征值，$A$可逆，则$\lambda^{-1}$是$A^{-1}$的特征值，$|A|\lambda^{-1}$是$A$的伴随矩阵
-    $A^*$的特征值，且特征向量不变.
+          \begin{enumerate}
+              \item $k\lambda$是$k\sigma$的特征值，$\lambda^m$是$\sigma^m$的特征值，且$\xi$仍是相应特征向量；
+
+              \item 若$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$是$\mathbf{F}$上的多项式，则$f(\sigma)(\xi)=f(\lambda)\xi$；
+          \end{enumerate}
+
+    \item 设$\lambda$是$n$阶矩阵$A$的特征值，$A$可逆，则$\lambda^{-1}$是$A^{-1}$的特征值，$|A|\lambda^{-1}$是$A$的伴随矩阵$A^*$的特征值，且特征向量不变.
 \end{enumerate}
+
 \begin{proof}
-    
+
 \end{proof}
 
-事实上，根据我们之前对线性变换特征值和矩阵特征值的讨论，我们知道上面的结论中``矩阵''和``线性变换''都可以互相替换（除了伴随矩阵
-没有定义相应的映射）.
+事实上，根据我们之前对线性变换特征值和矩阵特征值的讨论，我们知道上面的结论中``矩阵''和``线性变换''都可以互相替换（除了伴随矩阵没有定义相应的映射）.
 
 \begin{example}
     回答以下问题：
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item 设$A$为三阶矩阵，$A^2-A-2E=O$，$|A|=2$，求$|A^*+3E|$；
 
-        \item 设$A$为三阶矩阵，其特征值为$1,-2,-1$，求$|A|$，$A^*+3E$的特征值，$(A^{-1})^2+2E$的特征值
-            以及$|A^2-A+E|$；
+        \item 设$A$为三阶矩阵，其特征值为$1,-2,-1$，求$|A|$，$A^*+3E$的特征值，$(A^{-1})^2+2E$的特征值以及$|A^2-A+E|$；
 
         \item 设$\alpha=(1,0,-1)^\mathrm{T}$，且$A=\alpha\alpha^\mathrm{T}$，求$|6E-A^n|$；
 
@@ -262,45 +240,54 @@ $\alpha_1,\ldots,\alpha_n$下的矩阵$A-\lambda E$也不可逆（其中$A$为$\
         \item 设$A$为三阶实对称矩阵，$A^2=A$且$r(A)=2$，求$|A+2E|$.
     \end{enumerate}
 \end{example}
+
 \begin{solution}
-\begin{enumerate}[label=(\arabic*)]
-    \item 
-    \item 
-    \item 
-    \item 
-    \item 
-\end{enumerate}
+    \begin{enumerate}
+        \item
+
+        \item
+
+        \item
+
+        \item
+
+        \item
+    \end{enumerate}
 \end{solution}
 
 下面一个例子也是重要的结论，实际上在行列式一讲中已给出类似结论，但我们现在从特征值角度考虑这一结论：
 \begin{example}
     回答以下两个问题：
-    \begin{enumerate}[label=(\arabic*)]
-        \item 设$A,B$均为$n$阶矩阵，证明：$\lambda\neq 0$是$AB$的特征值，则$\lambda$也是$BA$的特征值；
+    \begin{enumerate}
+        \item \label{item:18:特征值相同:1}
+              设$A,B$均为$n$阶矩阵，证明：$\lambda\neq 0$是$AB$的特征值，则$\lambda$也是$BA$的特征值；
 
-        \item 设$A\in \mathbf{M}_{m\times n}(\mathbf{C}),\enspace B\in \mathbf{M}_{n\times m}(\mathbf{C})$，证明：
-        \[ \begin{pmatrix}
-            AB & O \\ B & O
-        \end{pmatrix}\sim\begin{pmatrix}
-            O & O \\ B & BA
-        \end{pmatrix} \]
-        并由此推出$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+        \item \label{item:18:特征值相同:2}
+              设$A\in \mathbf{M}_{m\times n}(\mathbf{C}),\enspace B\in \mathbf{M}_{n\times m}(\mathbf{C})$，证明：
+              \[ \begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}\sim\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix} \]
+              并由此推出$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
     \end{enumerate}
 \end{example}
+
 \begin{proof}
-\begin{enumerate}[label=(\arabic*)]
-    \item 
-    \item 
-\end{enumerate}
+    \begin{enumerate}
+        \item
+
+        \item
+    \end{enumerate}
 \end{proof}
 
-不难发现上述例子中（2）是（1）的推广.下面这一例子也是一些经典的结论，应当熟悉.
+不难发现上述例子中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广. 下面这一例子也是一些经典的结论，应当熟悉.
 \begin{example}
     对下列矩阵$A$的特征值，能做出怎样的断言？
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item $A$可逆/$A$不可逆/$E+A$可逆/$4E+A$不可逆；
 
-        \item $\det(E-A^2)=0$；
+        \item $|E-A^2|=0$；
 
         \item $AA^\mathrm{T}=A^\mathrm{T}A=E$（正交）/$A^2=E$（对合）/$A^2=A$（幂等）/$A^k=0$（幂零）；
 
@@ -309,211 +296,217 @@ $\alpha_1,\ldots,\alpha_n$下的矩阵$A-\lambda E$也不可逆（其中$A$为$\
         \item $A$为对角块矩阵，即$A=\diag(A_1,A_2,\ldots,A_m)$.
     \end{enumerate}
 \end{example}
+
 \begin{solution}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
-        \item 
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
+
+        \item
+
+        \item
+
+        \item
     \end{enumerate}
 \end{solution}
 
 \subsection{特征向量的基本性质}
+
 这一部分的定理与下一讲中得到简单矩阵的可对角化的等价条件直接相关，实际上有了本节的定理，可对角化条件是很显然的.
 \begin{theorem}
-	设$V$是有限维的，$\sigma\in L(V)$且$\lambda\in\mathbf{F}$，则
-	\begin{enumerate}[label=(\arabic*)]
+    设$V$是有限维的，$\sigma\in L(V)$且$\lambda\in\mathbf{F}$，则
+    \begin{enumerate}
         \item $\sigma$的不同特征值对应的特征向量线性无关；
+
         \item $\sigma$的不同特征值对应的特征子空间的和为直和，且维数直和小于等于$V$的维数；
+
         \item $\sigma$最多有$\dim V$个不同的特征值.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
 上述定理有如下推论：
 \begin{enumerate}
     \item 若$\lambda_1,\ldots,\lambda_m$是线性映射$\sigma$互异的特征值，则$V_{\lambda_i}\cap\sum\limits_{j\neq i}V_{\lambda_j}=\{0\}
-    \enspace(i=1,\ldots,m)$，则一个特征向量不能属于多个特征值.这一推论来源于直和的一个等价条件，线性空间运算一讲的习题中有涉及.
+              \enspace(i=1,\ldots,m)$，则一个特征向量不能属于多个特征值. 这一推论来源于直和的一个等价条件，线性空间运算一讲的习题中有涉及.
 
-    \item $\sigma$的不同特征值$\lambda_1,\ldots,\lambda_m$对应的特征子空间$V_{\lambda_1},\ldots,V_{\lambda_m}$的基向量
-    合在一起构成的向量组线性无关，且是$V_{\lambda_1}+V_{\lambda_2}+\cdots+V_{\lambda_m}$的基.
+    \item $\sigma$的不同特征值$\lambda_1,\ldots,\lambda_m$对应的特征子空间$V_{\lambda_1},\ldots,V_{\lambda_m}$的基向量合在一起构成的向量组线性无关，且是$V_{\lambda_1}+V_{\lambda_2}+\cdots+V_{\lambda_m}$的基.
 \end{enumerate}
 
 接下来这个定理讨论了代数重数和几何重数间的关系：
 \begin{theorem}\label{thm:18:代数重数与几何重数}
-    $n$维线性空间$V(\mathbf{F})$的线性变换$\sigma$的每个特征值$\lambda_i$的重数（代数重数）大于等于其特征子空间$V_{\lambda_i}$的维数
-    （几何重数）.
+    $n$维线性空间$V(\mathbf{F})$的线性变换$\sigma$的每个特征值$\lambda_i$的重数（代数重数）大于等于其特征子空间$V_{\lambda_i}$的维数（几何重数）.
 \end{theorem}
+
 \begin{proof}
-    
+
 \end{proof}
 
-事实上，由于$n$阶矩阵的特征多项式是$n$次的，因此所有特征值的代数重数之和等于$n$，但是根据上述定理可知
-所有特征值的几何重数之和小于等于$n$，即所有特征子空间的直和不一定能够得到原空间$V$.这将构成我们接下来讨论的一个核心：
-我们在下一讲中将要讨论代数重数和几何重数相等情况下的最简单的矩阵表示，以及二者不相等的时候如何对原空间进行分解
-（因为此时$V$不能被分解为特征子空间直和）使得我们可以获得较为简单的矩阵表示.
+事实上，由于$n$阶矩阵的特征多项式是$n$次的，因此所有特征值的代数重数之和等于$n$，但是根据上述定理可知所有特征值的几何重数之和小于等于$n$，即所有特征子空间的直和不一定能够得到原空间$V$. 这将构成我们接下来讨论的一个核心：我们在下一讲中将要讨论代数重数和几何重数相等情况下的最简单的矩阵表示，以及二者不相等的时候如何对原空间进行分解（因为此时$V$不能被分解为特征子空间直和）使得我们可以获得较为简单的矩阵表示.
 
 \subsection{实数域与复数域的讨论}
-在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）.实际上上面的讨论都是与数域无关的，
-即无论是什么数域上面的定理都是成立的.然而，从\autoref{ex:18:不变子空间}中我们看到实数域和复数域可能有本质
-的不同，即特征值的存在性可能存在差别.事实上，这是\autoref{thm:17:多项式分解}的必然结果，因为复数域上$n$次
-多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
 
-因此我们有必要分别讨论在复数域和实数域条件下特征值与特征向量的不同性质，事实上我们将在实空间上的线性变换一讲中
-单独深入讨论这一主题，但现在我们需要几个定理来引入这一话题并为接下来的讨论作准备：
+在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）. 实际上上面的讨论都是与数域无关的，即无论是什么数域上面的定理都是成立的. 然而，从\autoref{ex:18:不变子空间} 中我们看到实数域和复数域可能有本质的不同，即特征值的存在性可能存在差别. 事实上，这是\autoref{thm:17:多项式分解} 的必然结果，因为复数域上$n$次多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
+
+因此我们有必要分别讨论在复数域和实数域条件下特征值与特征向量的不同性质，事实上我们将在实空间上的线性变换一讲中单独深入讨论这一主题，但现在我们需要几个定理来引入这一话题并为接下来的讨论作准备：
 \begin{theorem}\label{thm:18:复数域上的特征值}
     设$\sigma\in \mathcal{L}(V)$，$V$是$n$维复向量空间，则$\sigma$必有特征值.
 \end{theorem}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \begin{theorem}\label{thm:18:特征值与不变子空间}
     任取$\sigma\in \mathcal{L}(V)$，$V$是$n$维向量空间（无论数域是实或复），则$\sigma$一定有一维或二维不变子空间.
 \end{theorem}
+
 \begin{proof}
-    
+
 \end{proof}
 
-最后我们讨论实数特征值和复数特征值几何意义的不同.比较显然的一点是，实数域上的
-特征值与特征向量的几何意义在于，某一线性变换的特征向量在经过变换后得到的向量与原先向量共线，
-因为若$\alpha\in V$为$\sigma$的特征向量，则存在$\lambda\in\mathbf{r}$有$\sigma(\alpha)=\lambda\alpha$，
-因此$\alpha$被线性变换作用后相当于简单的按比例伸缩.
+最后我们讨论实数特征值和复数特征值几何意义的不同. 比较显然的一点是，实数域上的特征值与特征向量的几何意义在于，某一线性变换的特征向量在经过变换后得到的向量与原先向量共线，因为若$\alpha\in V$为$\sigma$的特征向量，则存在$\lambda\in\mathbf{R}$有$\sigma(\alpha)=\lambda\alpha$，因此$\alpha$被线性变换作用后相当于简单的按比例伸缩.
 
-但是如果特征值是复数，那么情况并不会这么简单.我们接下来的讨论思路比较直观，不够严谨，但是可以帮助我们理解
-复数特征值的几何意义.我们首先来看一个例子：
+但是如果特征值是复数，那么情况并不会这么简单. 我们接下来的讨论思路比较直观，不够严谨，但是可以帮助我们理解复数特征值的几何意义. 我们首先来看一个例子：
 \begin{example}
     设$\sigma\in\mathcal{L}(\mathbf{F}^2)$定义为$\sigma(w,z)=(-z,w)$.
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item 当$\mathbf{F}=\mathbf{R}$时，求$\sigma$的特征值和特征向量；
+
         \item 当$\mathbf{F}=\mathbf{C}$时，求$\sigma$的特征值和特征向量.
     \end{enumerate}
 \end{example}
+
 \begin{solution}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
     \end{enumerate}
 \end{solution}
 
-事实上，我们在解题中发现，在实数域内这一变换$\sigma$就是
-将向量绕原点逆时针旋转90°，因此在实数域内无特征值（实特征值实际上只能将特征向量沿着原方向伸缩）.
-但为何复数域内有特征值呢？我们回忆复数的极坐标表示，任意复数$z$可表示为$z=re^{i\theta}$，
-因此直观而言复特征值除了伸缩效应外也有旋转的效应.
+事实上，我们在解题中发现，在实数域内这一变换$\sigma$就是将向量绕原点逆时针旋转90$^\circ$，因此在实数域内无特征值（实特征值实际上只能将特征向量沿着原方向伸缩）. 但为何复数域内有特征值呢？我们回忆复数的极坐标表示，任意复数$z$可表示为$z=re^{\i\theta}$，因此直观而言复特征值除了伸缩效应外也有旋转的效应.
 
-本题中两个特征向量可以写为$\alpha\pm i\beta$，则$T$在$(\alpha,\beta)$这组基下的矩阵表示就是一个
-表示旋转90°的矩阵乘以单位矩阵（表明伸缩为比例1），这表明线性变换对空间的伸缩作用与特征值模长对应，旋转作用与辐角
-对应（本题特征值$\pm i=1\cdot(\cos 90°\pm i\sin 90°)$）.
+本题中两个特征向量可以写为$\alpha\pm \i\beta$，则$T$在$(\alpha,\beta)$这组基下的矩阵表示就是一个表示旋转90$^\circ$的矩阵乘以单位矩阵（表明伸缩为比例1），这表明线性变换对空间的伸缩作用与特征值模长对应，旋转作用与辐角对应（本题特征值$\pm \i=1\cdot(\cos 90^\circ\pm \i\sin 90^\circ)$）.
 
-我们还可以延伸到三维空间.设三阶矩阵$A=(a_{ij})_{3\times 3}$，设这一矩阵有三个互异特征值，则根据多项式的性质可知，
-其中两个为共轭复数$\lambda_{1,2}=a\pm b$，还有一个实数$\lambda_3=c$，对应的特征向量为
-$v_{1,2}=\alpha\pm i\beta,v_3=\gamma$，则$T$在$\alpha,\beta,\gamma$下的矩阵表示为
-$$B=\begin{pmatrix}
-	a & b & 0 \\ -b & a & 0 \\ 0 & 0 & c
-\end{pmatrix},$$
+我们还可以延伸到三维空间. 设三阶矩阵$A=(a_{ij})_{3\times 3}$，设这一矩阵有三个互异特征值，则根据多项式的性质可知，其中两个为共轭复数$\lambda_{1,2}=a\pm b$，还有一个实数$\lambda_3=c$，对应的特征向量为$v_{1,2}=\alpha\pm \i\beta,v_3=\gamma$，则$T$在$\alpha,\beta,\gamma$下的矩阵表示为
+\[ B=\begin{pmatrix}
+        a & b & 0 \\ -b & a & 0 \\ 0 & 0 & c
+    \end{pmatrix}, \]
 我们令$r=\sqrt{a^2+b^2},a=r\cos\theta,b=r\sin\theta$，则有
-$$B=\begin{pmatrix}
-	\cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1
-\end{pmatrix}\begin{pmatrix}
-	r & 0 & 0 \\ 0 & r & 0 \\ 0 & 0 & c
-\end{pmatrix}.$$
-我们可以看到，这个变换被分解为两个变换，一个是在$x-y$平面上的旋转，另一个是拉伸，在
-$x-y$平面上拉伸$r$倍，$z$方向拉伸$c$倍.这显然是二维结论的自然推广.
+\[ B=\begin{pmatrix}
+        \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1
+    \end{pmatrix}\begin{pmatrix}
+        r & 0 & 0 \\ 0 & r & 0 \\ 0 & 0 & c
+    \end{pmatrix}. \]
+我们可以看到，这个变换被分解为两个变换，一个是在$x-y$平面上的旋转，另一个是拉伸，在$x-y$平面上拉伸$r$倍，$z$方向拉伸$c$倍. 这显然是二维结论的自然推广.
 
-在更高维的情况也是类似的，矩阵也可以表示为一个旋转向量的矩阵乘以一个伸缩向量的矩阵，旋转角度是复特征值的辐角，
-伸缩倍数是复特征值的模长.
+在更高维的情况也是类似的，矩阵也可以表示为一个旋转向量的矩阵乘以一个伸缩向量的矩阵，旋转角度是复特征值的辐角，伸缩倍数是复特征值的模长.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
 \vspace{2ex}
-
 \centerline{\heiti \Large 习题}
+
 \vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
 
 \end{flushright}
+
 \centerline{\heiti A组}
 \begin{enumerate}
     \item 设$T\in L(V)$，证明：$T$是数乘变换的充要条件是$V$的每一个一维子空间都是$T$的不变子空间.
-	\item 设$S,T\in L(V)$满足$ST=TS$，证明：$\textup{null }S$和$\textup{range }S$都在$T$下不变.
-	\item 已知$\mathbf{R}^2$上线性变换$T$在基$e_1=(1,0),e_2=(0,1)$下的矩阵为
-    \[\begin{pmatrix}
-		2 & 1 \\ 0 & 2
-	\end{pmatrix}.\]证明：
-	\begin{enumerate}[label=(\arabic*)]
-        \item 设$W_1$为由$e_1$张成的子空间，则$W_1$为$T$的不变子空间；
-        \item $R^2$不能表示为$T$的任何不变子空间$W_2$与$W_1$的直和.
-    \end{enumerate}
-	\item 定义线性变换$T\in L(\mathbf{F}^2)$为$T(x,y)=(y,0)$.令$U=\{(x,0)\ |\ x\in\mathbf{F}\}$.证明：
-	\begin{enumerate}[label=(\arabic*)]
-        \item $U$在$T$下不变，且$T|_{U}$是$U$上的零线性变换；
-        \item 不存在$\mathbf{F}^2$的在$T$下不变的子空间$W$使得$\mathbf{F}^2=U\oplus W$；
-        \item $T/U$是$\mathbf{F}^2/U$上的0线性变换.
-    \end{enumerate}
-	\item 设$V$是有限维的且$T\in L(V)$，设$\lambda_1,\cdots,\lambda_m$是非零互异特征值，证明：
-	$$\dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\le\dim\textup{range }T.$$
+
+    \item 设$S,T\in L(V)$满足$ST=TS$，证明：$\ker S$和$\im S$都在$T$下不变.
+
+    \item 已知$\mathbf{R}^2$上线性变换$T$在基$e_1=(1,0),e_2=(0,1)$下的矩阵为$\begin{pmatrix}2 & 1 \\ 0 & 2\end{pmatrix}$. 证明：
+          \begin{enumerate}
+              \item 设$W_1$为由$e_1$张成的子空间，则$W_1$为$T$的不变子空间；
+
+              \item $\mathbf{R}^2$不能表示为$T$的任何不变子空间$W_2$与$W_1$的直和.
+          \end{enumerate}
+
+    \item 定义线性变换$T\in \mathcal{L}(\mathbf{F}^2)$为$T(x,y)=(y,0)$. 令$U=\{(x,0) \mid x\in\mathbf{F}\}$. 证明：
+          \begin{enumerate}
+              \item $U$在$T$下不变，且$T|_{U}$是$U$上的零线性变换；
+
+              \item 不存在$\mathbf{F}^2$的在$T$下不变的子空间$W$使得$\mathbf{F}^2=U\oplus W$；
+
+              \item $T/U$是$\mathbf{F}^2/U$上的0线性变换.
+          \end{enumerate}
+
+    \item 设$V$是有限维的且$T\in L(V)$，设$\lambda_1,\ldots,\lambda_m$是非零互异特征值，证明：
+          \[ \dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\leqslant\dim\im T. \]
+
     \item 设$\sigma$是线性空间$\mathbf{R}[x]_3$上的线性变换，它在基$1,x,x^2$下的矩阵为
-	$$A=\begin{pmatrix}
-		1 & 2 & 2 \\ 2 & 1 & 2 \\ 2 & 2 & 1
-	\end{pmatrix}.$$
-	求$\sigma$的特征值与特征子空间.
-	\item 设$A,P$都是3阶方阵，$P$可逆，已知$A$的特征值$\lambda_1=1,\lambda_2=-1,\lambda_3=2$，$B=A^3-5A^2$，
-	求$|B|$，$|A+5E|$，$|5E+P^{-1}AP|$.
-	\item 设$A=\begin{pmatrix}
-		a & -1 & c \\ 5 & b & 3 \\ 1-c & 0 & -a
-	\end{pmatrix}$，$|A|=-1$，$\alpha=(-1,-1,1)^\mathrm{T}$为$A^*$的特征向量，求$A^*$的特征值及$a,b,c$
-	和$A$对应的特征值$\mu$.
-	\item 设$A,B\in M_n(\mathbf{F})$，$AB=BA$，证明：若$X$是矩阵$A$属于特征值$\lambda_0$的特征向量，则
-	$BX\in V_{\lambda_0}$（注：本题是解决很多$AB=BA$类问题的基础）.
+          \[ A=\begin{pmatrix}
+                  1 & 2 & 2 \\ 2 & 1 & 2 \\ 2 & 2 & 1
+              \end{pmatrix}\]
+          求$\sigma$的特征值与特征子空间.
+    \item 设$A,P$都是3阶方阵，$P$可逆，已知$A$的特征值$\lambda_1=1,\lambda_2=-1,\lambda_3=2$，$B=A^3-5A^2$，求$|B|$，$|A+5E|$，$|5E+P^{-1}AP|$.
+
+    \item 设$A=\begin{pmatrix}
+                  a & -1 & c \\ 5 & b & 3 \\ 1-c & 0 & -a
+              \end{pmatrix}$，$|A|=-1$，$\alpha=(-1,-1,1)^\mathrm{T}$为$A^*$的特征向量，求$A^*$的特征值及$a,b,c$和$A$对应的特征值$\mu$.
+    \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$AB=BA$，证明：若$X$是矩阵$A$属于特征值$\lambda_0$的特征向量，则$BX\in V_{\lambda_0}$（注：本题是解决很多$AB=BA$类问题的基础）.
 \end{enumerate}
+
 \centerline{\heiti B组}
 \begin{enumerate}
     \item 设$V$是$n$维复向量空间，$\sigma\in \mathcal{L}(V)$，若$\sigma$有$n$个互异的特征值，求$\sigma$的所有不变子空间的个数.
-    \item 设$\sigma\in \mathcal{L}(V)$，证明：
-    \begin{enumerate}[label=(\arabic*)]
-        \item $\sigma/(\im \sigma)=0$；
 
-        \item $\sigma/(\ker \sigma)$是单射$\iff \ker \sigma\cap\im \sigma=\{0\}$.
-    \end{enumerate}
-    \item 设$V$是有限维的，$T\in L(V)$且$U$在$T$下不变.证明：$T/U$的每个特征值均为$T$的特征值.
-	\item 设$T\in L(V)$且$\dim\textup{range }T=k$.证明$T$至多有$k+1$个特征值.
-	\item 设$V$为$n$维复向量空间，$T\in L(V)$，$T$在$V$的一组基$e_1,e_2,\cdots,e_n$
-	下的矩阵为对角矩阵$\textup{diag}\{d_1,\cdots,d_n\}$，且$d_i\neq d_j(i\neq j)$.
-    \begin{enumerate}[label=(\arabic*)]
-        \item 求$T$的所有一维不变子空间；
-        \item 求$T$的所有不变子空间.
-    \end{enumerate}
-	\item 给定$R$上的2维线性空间$V$上的算子$T$，其在一组基$\{\alpha_1,\alpha_2\}$下的矩阵为
-	\[\begin{pmatrix}
-		0 & 1 \\ 1-a & 0
-	\end{pmatrix}.\]
-    求$T$的所有不变子空间.
+    \item 设$\sigma\in \mathcal{L}(V)$，证明：
+          \begin{enumerate}
+              \item $\sigma/(\im \sigma)=0$；
+
+              \item $\sigma/(\ker \sigma)$是单射$\iff \ker \sigma\cap\im \sigma=\{0\}$.
+          \end{enumerate}
+
+    \item 设$V$是有限维的，$T\in L(V)$且$U$在$T$下不变. 证明：$T/U$的每个特征值均为$T$的特征值.
+
+    \item 设$T\in L(V)$且$\dim\im T=k$. 证明$T$至多有$k+1$个特征值.
+
+    \item 设$V$为$n$维复向量空间，$T\in L(V)$，$T$在$V$的一组基$e_1,e_2,\ldots,e_n$下的矩阵为对角矩阵$\diag\{d_1,\ldots,d_n\}$，且$d_i\neq d_j\enspace(i\neq j)$.
+          \begin{enumerate}
+              \item 求$T$的所有一维不变子空间；
+
+              \item 求$T$的所有不变子空间.
+          \end{enumerate}
+
+    \item 给定$\mathbf{R}$上的2维线性空间$V$上的算子$T$，其在一组基$\alpha_1,\alpha_2$下的矩阵为
+          \[\begin{pmatrix}
+                  0 & 1 \\ 1-a & 0
+              \end{pmatrix}.\]
+          求$T$的所有不变子空间.
     \item 设$A,B$都是$n$阶矩阵，且$r(A)+r(B)<n$，证明：$A,B$有相同的特征值和特征向量.
-	\item 设$V(\mathbf{F})$是$n$维线性空间，$\sigma\in L(V,V)$，证明：
-	\begin{enumerate}[label=(\arabic*)]
-        \item 若$\alpha,\beta$是$\sigma$的属于不同特征值的特征向量，则$c_1c_2\neq 0$时，$c_1\alpha+c_2\beta$
-        不是$\sigma$的特征向量；
-        \item $V$中的每一非零向量都是$\sigma$的特征向量$\iff\sigma=c_0I_V$，其中$c_0\in\mathbf{F}$是一个常数，
-        $I_V$是恒等变换.
-    \end{enumerate}
-	\item 设$A,B\in M_n(\mathbf{C})$，$B$的特征多项式$f(\lambda)=|\lambda E-B|$.证明：$f(A)$可逆的充要条件
-	是$B$的任一特征值都不是$A$的特征值.
-	\item 设$\lambda_1,\lambda_2,\cdots,\lambda_n$是矩阵$A=(a_{ij})_{n\times n}$的$n$个特征值，证明：
-	$\lambda_1^2,\lambda_2^2,\cdots,\lambda_n^2$是$A^2$的$n$个特征值，且$\sum\limits_{i=1}^{n}\lambda_i^2=
-	\sum\limits_{j=1}^{n}\sum\limits_{k=1}^{n}a_{jk}a_{kj}$.
-	\item 设$A$为$n$阶矩阵，$X_1,X_2,X_3$为$n$元列向量，且$AX_1=kX_1(X_1\neq 0),AX_2=lX_1+kX_2,
-	AX_3=lX_2+kX_3(l\neq 0)$，证明：$X_1,X_2,X_3$线性无关.
+
+    \item 设$V(\mathbf{F})$是$n$维线性空间，$\sigma\in L(V,V)$，证明：
+          \begin{enumerate}
+              \item 若$\alpha,\beta$是$\sigma$的属于不同特征值的特征向量，则$c_1c_2\neq 0$时，$c_1\alpha+c_2\beta$不是$\sigma$的特征向量；
+
+              \item $V$中的每一非零向量都是$\sigma$的特征向量$\iff\sigma=c_0I_V$，其中$c_0\in\mathbf{F}$是一个常数，$I_V$是恒等变换.
+          \end{enumerate}
+
+    \item 设$A,B\in \mathbf{M}_n(\mathbf{C})$，$B$的特征多项式$f(\lambda)=|\lambda E-B|$. 证明：$f(A)$可逆的充要条件是$B$的任一特征值都不是$A$的特征值.
+
+    \item 设$\lambda_1,\lambda_2,\ldots,\lambda_n$是矩阵$A=(a_{ij})_{n\times n}$的$n$个特征值，证明：$\lambda_1^2,\lambda_2^2,\ldots,\lambda_n^2$是$A^2$的$n$个特征值，且$\displaystyle\sum_{i=1}^{n}\lambda_i^2=\displaystyle\sum_{j=1}^{n}\displaystyle\sum_{k=1}^{n}a_{jk}a_{kj}$.
+
+    \item 设$A$为$n$阶矩阵，$X_1,X_2,X_3$为$n$元列向量，且$AX_1=kX_1\enspace(X_1\neq 0),AX_2=lX_1+kX_2,AX_3=lX_2+kX_3\enspace(l\neq 0)$. 证明：$X_1,X_2,X_3$线性无关.
 \end{enumerate}
+
 \centerline{\heiti C组}
 \begin{enumerate}
     \item 证明：若$AB=BA$，则$A$和$B$至少有一个共同的特征向量.
