@@ -2,232 +2,184 @@
 
 \section{自伴算子和正规算子}
 
-由前面一章，我们成功的给线性空间加上了度量，使其升格成了内积空间，认识了一些新朋友（投影映射），
-或是更了解了一些老朋友（线性泛函）. 但之前学的那些线性映射似乎还没搭上边，那么本章我们就要研究一下
-它们与内积有关的性质. 
+由前面一章，我们成功的给线性空间加上了度量，使其升格成了内积空间，认识了一些新朋友（投影映射），或是更了解了一些老朋友（线性泛函）. 但之前学的那些线性映射似乎还没搭上边，那么本章我们就要研究一下它们与内积有关的性质.
 
 \subsection{伴随}
 
-\begin{definition}
-    \keyterm{伴随} 设 $ T \in \mathcal{L}(V, W) $， $ T $ 的伴随满足如下条件 $ T^*: W \rightarrow V $
-    ： $ \forall v \in V, w \in W, \langle Tv, w \rangle = \langle v, T^*w \rangle$ 
+\begin{definition}[伴随]
+    设 $ T \in \mathcal{L}(V, W) $， $ T $ 的\keyterm{伴随}$ T^*: W \rightarrow V $满足如下条件： $ \forall v \in V, w \in W, \langle Tv, w \rangle = \langle v, T^*w \rangle$
 \end{definition}
 
-这样的一个东西定义出来，在本书的视角下一般先考虑以下问题：是个映射吗？良定义吗？线性吗？好消息是，对伴随而言，
-这三个问题都是肯定的. 这里就良定义做个解释，线性的验证留给读者. 
+这样的一个东西定义出来，在本书的视角下一般先考虑以下问题：是个映射吗？良定义吗？线性吗？好消息是，对伴随而言，这三个问题都是肯定的. 这里就良定义做个解释，线性的验证留给读者.
 
-我们考虑如下的线性泛函 $ \varphi : V \rightarrow F, \varphi (v) = \langle Tv, w \rangle $，那么利用一下刚学到的
-\ref{Riesz 表示定理}，存在唯一的 $ u \in W $，使得 $ \varphi (v) = \langle v, u \rangle $，再结合一下伴随的定义，
-只需要定义 $ T^*w = u $ 即可. % TODO 引用
+我们考虑如下的线性泛函 $ \varphi : V \rightarrow F, \enspace \varphi (v) = \langle Tv, w \rangle $，那么利用一下刚学到的\autoref{thm:23:Riesz}，存在唯一的 $ u \in W $，使得 $ \varphi (v) = \langle v, u \rangle $，再结合一下伴随的定义，只需要定义 $ T^*w = u $ 即可.
 
-讲完了定义就轮到了性质，伴随有如下的运算性质. 
+讲完了定义就轮到了性质，伴随有如下的运算性质.
 \begin{enumerate}
-    \item $ \forall S, T \in \mathcal{L}(V, W), (S + T)^* = S^* + T^* $;
+    \item $ \forall S, T \in \mathcal{L}(V, W),\enspace (S + T)^* = S^* + T^* $;
 
-    \item $  \forall \lambda \in \mathbf{F}, T \in \mathcal{L}(V, W), (\lambda T)^* = \overline{\lambda} T^* $;
+    \item $  \forall \lambda \in \mathbf{F},\enspace T \in \mathcal{L}(V, W),\enspace (\lambda T)^* = \overline{\lambda} T^* $;
 
-    \item $ \forall T \in \mathcal{L}(V, W), (T^*)^* = T $;
-    
+    \item $ \forall T \in \mathcal{L}(V, W),\enspace (T^*)^* = T $;
+
     \item 对 $ V $ 上的恒等算子 $ I $ 有 $ I^* = I $;
-    
-    \item $ \forall T \in \mathcal{L}(V, W), S \in \mathcal{L}(W, U), (ST)^* = T^*S^* $. 
+
+    \item $ \forall T \in \mathcal{L}(V, W),\enspace S \in \mathcal{L}(W, U),\enspace (ST)^* = T^*S^* $.
 \end{enumerate}
 
-接着再研究一下它的核空间和像空间. 
+接着再研究一下它的核空间和像空间.
 
 设 $ T \in \mathcal{L}(V, W) $. 则
 
 \begin{enumerate}
-    \item $ \mathrm{null} T^* = (\mathrm{range} T)^{\perp } $;
-    
-    \item $ \mathrm{range} T^* = (\mathrm{null} T)^{\perp } $;
-    
-    \item $ \mathrm{null} T = (\mathrm{range} T^*)^{\perp } $;
-    
-    \item $ \mathrm{range} T = (\mathrm{null} T^*)^{\perp } $. 
+    \item $ \ker T^* = (\im T)^{\perp} $;
+
+    \item $ \im T^* = (\ker T)^{\perp} $;
+
+    \item $ \ker T = (\im T^*)^{\perp} $;
+
+    \item $ \im T = (\ker T^*)^{\perp} $.
 \end{enumerate}
 
-以上性质均不难证明，大家可以自己试试，顺带回顾一下内积的运算方法和证明线性空间相等的方法. 
+以上性质均不难证明，大家可以自己试试，顺带回顾一下内积的运算方法和证明线性空间相等的方法.
 
-而关于特征值、不变子空间等等的性质，就先简单看两道例题，有一个最基本的了解. 
+而关于特征值、不变子空间等等的性质，就先简单看两道例题，有一个最基本的了解.
 
-\begin{example}
-    设 $ T \in \mathcal{L}(V), \lambda \in \mathbf{F} $. 证明：
-    $ \lambda $ 是 $ T $ 的特征值当且仅当 $ \overline{\lambda} $
-    是 $ T^* $ 的特征值. 
+\begin{example} \label{ex:24:伴随与特征值}
+    设 $ T \in \mathcal{L}(V),\enspace \lambda \in \mathbf{F} $. 证明：$ \lambda $ 是 $ T $ 的特征值当且仅当 $ \overline{\lambda} $是 $ T^* $ 的特征值.
 \end{example}
 
-\begin{example}
-    设 $ T \in \mathcal{L}(V) $ 且 $ U $ 是 $ V $ 的子空间. 证明：
-    $ U $ 在 $ T $ 下不变当且仅当 $ U^{\perp} $ 在 $ T^* $ 下不变. 
+\begin{example} \label{ex:24:伴随与不变子空间}
+    设 $ T \in \mathcal{L}(V) $ 且 $ U $ 是 $ V $ 的子空间. 证明：$ U $ 在 $ T $ 下不变当且仅当 $ U^{\perp} $ 在 $ T^* $ 下不变.
 \end{example}
 
-映射本身研究的差不多了，我们就该看看对应的矩阵有些什么性质了. 不过在此之前，我们要讨论一种
-新的对矩阵的操作. 
+映射本身研究的差不多了，我们就该看看对应的矩阵有些什么性质了. 不过在此之前，我们要讨论一种新的对矩阵的操作.
 
-\begin{definition} \keyterm{共轭转置}
-    $ m \times n $ 矩阵的共轭转置是先互换行和列，然后对每个元素取复共轭得到的 $ n \times m $ 矩阵. 
+\begin{definition}[共轭转置]
+    $ m \times n $ 矩阵的\keyterm{共轭转置}是先互换行和列，然后对每个元素取复共轭得到的 $ n \times m $ 矩阵.
 
     即矩阵 $ A = (a_{ij})_{m \times n} $，则 $ A $ 的共轭转置阵 $ \overline{A}^{\mathrm{T}} = (\overline{a_{ji}})_{n \times m} $
 \end{definition}
 
+有了这重铺垫，我们就可以好好讨论一下伴随映射对应的矩阵了.
 
-有了这重铺垫，我们就可以好好讨论一下伴随映射对应的矩阵了. 
-
-确定一个映射的矩阵都是要取定基的，而在内积空间上，我们取基的时候更喜欢用标准正交基，所以注意，
-下面这个定理只对标准正交基成立. 
+确定一个映射的矩阵都是要取定基的，而在内积空间上，我们取基的时候更喜欢用标准正交基，所以注意，下面这个定理只对标准正交基成立.
 
 \begin{theorem}
-    设 $ T \in \mathcal{L}(V, W) $，$ (e_1, \ldots , e_n) $ 是 $ V $ 的一组标准正交基，
-    $ (f_1, \ldots , f_m) $ 是 $ W $ 的一组标准正交基，有 $ T(e_1, \ldots , e_n) = (f_1, \ldots , f_m)A $，$ A = (a_{ij})_{m \times n} $，
-    $ T^*(f_1, \ldots , f_m) =(e_1, \ldots , e_n)B $，$ B = (b_{ij})_{n \times m} $，则 $ B $ 是 $ A $ 的共轭转置. 
+    设 $ T \in \mathcal{L}(V, W) $，$ e_1, \ldots , e_n $ 是 $ V $ 的一组标准正交基，$ f_1, \ldots , f_m $ 是 $ W $ 的一组标准正交基，有 $ T(e_1, \ldots , e_n) = (f_1, \ldots , f_m)A $，$ A = (a_{ij})_{m \times n} $，$ T^*(f_1, \ldots , f_m) =(e_1, \ldots , e_n)B $，$ B = (b_{ij})_{n \times m} $，则 $ B $ 是 $ A $ 的共轭转置.
 \end{theorem}
 
 \begin{proof}
-    首先确定矩阵 $ A $ 的元素. 因为 $ (f_1, \ldots , f_m) $ 是 $ W $ 的一组标准正交基，
-    所以有 
-    \[ 
-    Te_j = \langle Te_j, f_1 \rangle f_1 + \cdots + \langle Te_j, f_m \rangle f_m, \forall j = 1, \ldots , n.  
-    \]
-    也就是说，$ a_{ij} = \langle Te_j, f_i \rangle $. 
-    那么同理，对于矩阵 $ B $ 而言，$ b_{ij} = \langle T^*f_j, e_i \rangle $. 
-    所以有 
-    \[ 
-        a_{ij} = \langle Te_j, f_i \rangle = \langle e_j, T^*f_i \rangle
-        = \overline{\langle T^*f_i, e_j \rangle} = \overline{b_{ji}}.
-    \]
-    所以，矩阵 $ B $ 是 $ A $ 的共轭转置. 
+    首先确定矩阵 $ A $ 的元素. 因为 $ f_1, \ldots , f_m $ 是 $ W $ 的一组标准正交基，所以有
+    \[ Te_j = \langle Te_j, f_1 \rangle f_1 + \cdots + \langle Te_j, f_m \rangle f_m,\enspace \forall j = 1, \ldots , n. \]
+    也就是说，$ a_{ij} = \langle Te_j, f_i \rangle $. 那么同理，对于矩阵 $ B $ 而言，$ b_{ij} = \langle T^*f_j, e_i \rangle $. 所以有
+    \[ a_{ij} = \langle Te_j, f_i \rangle = \langle e_j, T^*f_i \rangle
+        = \overline{\langle T^*f_i, e_j \rangle} = \overline{b_{ji}}\]
+    所以，矩阵 $ B $ 是 $ A $ 的共轭转置.
 \end{proof}
 
-对于一般线性映射的伴随就介绍上面的这些了. 接下来还是看些限制更多、性质更好的线性映射，
-比如算子. 
+对于一般线性映射的伴随就介绍上面的这些了. 接下来还是看些限制更多、性质更好的线性映射，比如算子.
 
 \subsection{自伴算子}
 
-限制成算子的话，原本的算子与其伴随就被限制在同一块内积空间上了. 很自然的，我们就会
-开始思考一件事情，如果一个算子和它的伴随相等，那么会发生什么？
+限制成算子的话，原本的算子与其伴随就被限制在同一块内积空间上了. 很自然的，我们就会开始思考一件事情，如果一个算子和它的伴随相等，那么会发生什么？
 
-\begin{definition} \keyterm{自伴算子}
-    若算子 $ T \in \mathcal{L}(V) $ 满足 $ T = T^* $，则其被称为自伴算子.  
+\begin{definition}[自伴算子]
+    若算子 $ T \in \mathcal{L}(V) $ 满足 $ T = T^* $，则其被称为\keyterm{自伴算子}.
 \end{definition}
 
-写成内积的语言就是 $ \forall v, w \in V, \langle Tv, w \rangle = \langle v, Tw \rangle $.  
+写成内积的语言就是 $ \forall v, w \in V,\enspace \langle Tv, w \rangle = \langle v, Tw \rangle $.
 
-容易验证自伴算子对加法和数乘都是封闭的. 而根据上面对伴随的阐述，我们可以做一个类比：
-伴随在 $ \mathcal{L}(V) $ 上的作用如同复共轭在 $ \mathbf{C} $ 上的作用. 所以自伴算子
-可以类比为实数. 关于这方面的类比在实内积空间上的算子一章会进行更深入的阐述. 
+容易验证自伴算子对加法和数乘都是封闭的. 而根据上面对伴随的阐述，我们可以做一个类比：伴随在 $ \mathcal{L}(V) $ 上的作用如同复共轭在 $ \mathbf{C} $ 上的作用. 所以自伴算子可以类比为实数. 关于这方面的类比在实内积空间上的算子一章会进行更深入的阐述.
 
-那么，自伴算子有这么好的定义，自然也少不了几条优美的性质. 
+那么，自伴算子有这么好的定义，自然也少不了几条优美的性质.
 
 \begin{theorem}
-    自伴算子的特征值都是实数. 
+    自伴算子的特征值都是实数.
 \end{theorem}
 
-证明只需要结合特征值和自伴算子的定义就行了. 这条性质的几何意义就是自伴算子对
-特征向量方向上的向量仅仅是拉伸的作用，而不产生旋转或对称的作用. 
+证明只需要结合特征值和自伴算子的定义就行了. 这条性质的几何意义就是自伴算子对特征向量方向上的向量仅仅是拉伸的作用，而不产生旋转或对称的作用.
 
-以下的两条定理建立在复数域上，也是对复内积空间的结构进行一个初步的了解，以及加深一下
-算子和数的类比. 
+以下的两条定理建立在复数域上，也是对复内积空间的结构进行一个初步的了解，以及加深一下算子和数的类比.
+
+\begin{theorem} \label{thm:24:复内积空间}
+    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 若 $ \forall v \in V,\enspace
+        \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
+\end{theorem}
+
+证明利用的正是之前的\autoref{eq:23:内积和范数的性质4}.
 
 \begin{theorem}
-    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 若 $ \forall v \in V $，
-    $ \langle Tv, v \rangle = 0 $，则 $ T = 0 $. 
+    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 则 $ T $ 是自伴的当且仅当 $ \forall v \in V, \langle Tv, v \rangle \in \mathbf{R} $
 \end{theorem}
 
-证明利用的正是之前的 \ref{例22.2} 的 (4) 式. 
+证明利用的则是实数减去其共轭等于 0 推出的一系列等价变形. 这一定理也进一步地显示出自伴算子与实数的相似性.
+
+下面这个定理是\autoref{thm:24:复内积空间} 的一般情况.
 
 \begin{theorem}
-    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 则 $ T $ 是自伴的
-    当且仅当 $ \forall v \in V, \langle Tv, v \rangle \in \mathbf{R} $
+    若 $ T $ 是 $ V $ 上的自伴算子，$ \forall v \in V,\enspace
+        \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
 \end{theorem}
 
-证明利用的则是实数减去其共轭等于 0 推出的一系列等价变形. 这一定理也进一步地显示出
-自伴算子与实数的相似性. 
-
-下面这个定理是 \ref{定理 23.3} 的一般情况. 
-
-\begin{theorem}
-    若 $ T $ 是 $ V $ 上的自伴算子，$ \forall v \in V $，
-    $ \langle Tv, v \rangle = 0 $，则 $ T = 0 $. 
-\end{theorem}
-
-复内积空间上已经处理过了，实内积空间上利用 \ref{例22.2} 的 (2) 式与内积的对称性即可证明.  
-事实上，在实内积空间上能做到 $ \forall v \in V , \langle Tv, v \rangle = 0 $ 
-的算子绝大部分都是非自伴的，下面这道例题给出了其满足的性质. 
+复内积空间上已经处理过了，实内积空间上利用\autoref{eq:23:内积和范数的性质2} 与内积的对称性即可证明. 事实上，在实内积空间上能做到 $ \forall v \in V ,\enspace \langle Tv, v \rangle = 0 $的算子绝大部分都是非自伴的，下面这道例题给出了其满足的性质.
 
 \begin{example}
-    设 $ V $ 是实内积空间， $ T \in \mathcal{L}(V) $，
-    $ \forall v \in V, \langle Tv, v \rangle = 0 $.
-    证明：$ T^* = -T $
+    设 $ V $ 是实内积空间， $ T \in \mathcal{L}(V),\enspace
+        \forall v \in V,\enspace \langle Tv, v \rangle = 0 $. 证明：$ T^* = -T $.
 \end{example}
-   
-满足这样性质的算子在实内积空间上叫做反对称算子，如果我们故意将虚轴定义错误（即将 0 包括进去）的话，
-反对称算子就可以类比为“虚轴”上的数. 自伴算子和反对称算子的交集是 0 算子，就如同实轴与“虚轴”的交点是原点. 
+
+满足这样性质的算子在实内积空间上叫做反对称算子，如果我们故意将虚轴定义错误（即将 0 包括进去）的话，反对称算子就可以类比为``虚轴''上的数. 自伴算子和反对称算子的交集是 0 算子，就如同实轴与``虚轴''的交点是原点.
 
 \subsection{正规算子}
 
-自伴算子的讨论就先阐述这么多. 之前将算子和数进行了类比，着重关注了他们相似的地方，
-现在来看看它们的不同之处，而最大的不同应该就是算子对乘法并没有交换律. 所以，如果
-一个算子与其伴随的乘法是可交换的，它又会有些什么特殊之处呢？
+自伴算子的讨论就先阐述这么多. 之前将算子和数进行了类比，着重关注了他们相似的地方，现在来看看它们的不同之处，而最大的不同应该就是算子对乘法并没有交换律. 所以，如果一个算子与其伴随的乘法是可交换的，它又会有些什么特殊之处呢？
 
-\begin{definition} \keyterm{正规算子}
-    若算子 $ T \in \mathcal{L}(V) $ 满足 $ TT^* = T^*T $，则其被称为正规算子. 
+\begin{definition}[正规算子]
+    若算子 $ T \in \mathcal{L}(V) $ 满足 $ TT^* = T^*T $，则其被称为\keyterm{正规算子}.
 \end{definition}
 
-很显然，自伴算子其实也是正规算子. 
+很显然，自伴算子其实也是正规算子.
 
 和自伴算子一样，我们来简单研究一下正规算子的性质. 首先是正规算子的一个等价条件.
 
 \begin{theorem}
-    算子 $ T \in \mathcal{L}(V) $ 是正规的当且仅当 $ \forall v \in V,
-    \lVert Tv \rVert = \lVert T^*v \rVert $. 
+    算子 $ T \in \mathcal{L}(V) $ 是正规的当且仅当 $ \forall v \in V,\enspace
+        \lVert Tv \rVert = \lVert T^*v \rVert $.
 \end{theorem}
 
-这也表明，对于任意一个正规算子 $ T $ ，其核空间和其伴随映射的核空间相等. 
+这也表明，对于任意一个正规算子 $ T $ ，其核空间和其伴随映射的核空间相等.
 
-接下来的两条性质则是着重关注正规算子的特征向量. 
+接下来的两条性质则是着重关注正规算子的特征向量.
 
-\begin{theorem}
-    设 $ T \in \mathcal{L}(V) $ 是正规的，且 $ v \in V $ 是 $ T $ 相应于
-    特征值 $ \lambda $ 的特征向量，则 $ v $ 也是 $ T^* $ 相应于特征值
-    $ \overline{\lambda} $ 的特征向量. 
+\begin{theorem} \label{thm:24:正规算子的特征向量}
+    设 $ T \in \mathcal{L}(V) $ 是正规的，且 $ v \in V $ 是 $ T $ 相应于特征值 $ \lambda $ 的特征向量，则 $ v $ 也是 $ T^* $ 相应于特征值$ \overline{\lambda} $ 的特征向量.
 \end{theorem}
 
-这是 \ref{例 23.1} 在正规算子条件下的加强，它不仅反映了算子与其伴随的特征值
-在数值上的关系，也反映出了特征空间的关系. 从这里出发，你可以先思考一下正规算子
-的不变子空间是怎样的，如果有困难的话不妨结合一下 \ref{例 23.2}.
+这是\autoref{ex:24:伴随与特征值} 在正规算子条件下的加强，它不仅反映了算子与其伴随的特征值在数值上的关系，也反映出了特征空间的关系. 从这里出发，你可以先思考一下正规算子的不变子空间是怎样的，如果有困难的话不妨结合一下\autoref{ex:24:伴随与不变子空间}.
 
-在学特征值时我们就学过，同一映射的属于不同特征值的特征向量是线性无关的. 在正规算子条件下，
-这一结论也得到了加强，从原先的线性无关变为互相正交. 
+在学特征值时我们就学过，同一映射的属于不同特征值的特征向量是线性无关的. 在正规算子条件下，这一结论也得到了加强，从原先的线性无关变为互相正交.
 
 \begin{theorem}
-    设 $ T \in \mathcal{L}(V) $ 是正规的，则 $ T $ 的相应于不同特征值
-    的特征向量是正交的. 
+    设 $ T \in \mathcal{L}(V) $ 是正规的，则 $ T $ 的相应于不同特征值的特征向量是正交的.
 \end{theorem}
 
 \begin{proof}
-    设 $ \alpha, \beta $，是 $ T $ 的不同特征值，$ u, v $ 分别是相应的特征向量，
-    则 $ Tu = \alpha u, Tv = \beta v $. 由 \ref{定理 23.7} 有 $ T^*v = \overline{\beta} v $. 
-    从而 
+    设 $ \alpha, \beta $，是 $ T $ 的不同特征值，$ u, v $ 分别是相应的特征向量，则 $ Tu = \alpha u,\enspace Tv = \beta v $. 由\autoref{thm:24:正规算子的特征向量} 有$ T^*v = \overline{\beta} v $. 从而
     \begin{align*}
         (\alpha - \beta)\langle u, v \rangle
-        & = \langle \alpha u, v \rangle - \langle u, \overline{\beta}v \rangle \\
-        & = \langle Tu, v \rangle - \langle u, T^*v \rangle \\
-        & = 0. 
+         & = \langle \alpha u, v \rangle - \langle u, \overline{\beta}v \rangle \\
+         & = \langle Tu, v \rangle - \langle u, T^*v \rangle                    \\
+         & = 0.
     \end{align*}
-    而 $ \alpha \neq \beta $，所以 $ \langle u, v \rangle = 0 $，即 $ u, v $ 正交.          
+    而 $ \alpha \neq \beta $，所以 $ \langle u, v \rangle = 0 $，即 $ u, v $ 正交.
 \end{proof}
 
-这个定理很有意思，因为它既涉及了可对角化条件中的特征向量，也涉及了内积空间上的正交. 
-而这两条正是我们寻求在内积空间上算子对应矩阵简化表示的重要条件，将在下一节进行着重阐述. 
+这个定理很有意思，因为它既涉及了可对角化条件中的特征向量，也涉及了内积空间上的正交. 而这两条正是我们寻求在内积空间上算子对应矩阵简化表示的重要条件，将在下一节进行着重阐述.
 
 \section{谱定理}
 
-
-
-可能很多同学对于行秩、列秩相等以及转置的几何意义很感兴趣.实际上我们有两种获得转置矩阵的
-方式，第一种来源于我们之前讨论的对偶空间上的线性映射对应的矩阵，这种方式可能不够直观.
-另一种获得的方法基于伴随算子.接下来我们将说明这些定义的统一性，深刻理解转置的内涵.
+可能很多同学对于行秩、列秩相等以及转置的几何意义很感兴趣. 实际上我们有两种获得转置矩阵的方式，第一种来源于我们之前讨论的对偶空间上的线性映射对应的矩阵，这种方式可能不够直观. 另一种获得的方法基于伴随算子. 接下来我们将说明这些定义的统一性，深刻理解转置的内涵.
 
 我们可以研究矩阵及其转置的关系，我们可以用一个图形来表示：
 
@@ -236,79 +188,80 @@
     \small
     \begin{tikzpicture}
         \tikzset{->-/.style={decoration={
-            markings,
-            mark=at position .6 with {\arrow{stealth}}},postaction={decorate}}}
+                markings,
+                mark=at position .6 with {\arrow{stealth}}},postaction={decorate}}}
 
-        \draw[rotate=45] (0, 6) rectangle (-3, 3) rectangle (-5, 0)
+        \draw[thick,rotate=45] (0, 6) rectangle (-3, 3) rectangle (-5, 0)
             (-3, 3) rectangle(-3.35, 3.35)
             coordinate (xr) at (-2, 4)
             coordinate (xn) at (-4, 2)
             coordinate (x) at (-2, 2)
-            coordinate (0n) at (-3, 3)
-            node at (-1, 5) {行空间}
-            node at (-4, 1) {$A$的核空间}
-            node at (-1.5, 6.5) {$\dim r$}
-            node at (-4, 4) {$\mathbf{R}^n$}
-            node at (-6, 3) {$\dim n-r$};
+            coordinate (0n) at (-3, 3);
+        \node at (-1, 5) {行空间};
+        \node at (-4, 1) {$A$的核空间};
+        \node at (-1.5, 6.5) {$\dim r$};
+        \node at (-4, 4) {$\mathbf{R}^n$};
+        \node at (-6, 3) {$\dim n-r$};
 
-        \draw[rotate=30] (6, 2) rectangle (3.5, -2) rectangle (0, -4)
+        \draw[thick,rotate=30] (6, 2) rectangle (3.5, -2) rectangle (0, -4)
             (3.5, -2) rectangle (3.85, -2.35)
             coordinate (b) at (4.5, 0.5)
-            coordinate (0m) at (3.5, -2)
-            node at (5, 1.5) {列空间}
-            node at (2, -3) {$A^{\mathrm{T}}$的核空间}
-            node at (7, 0) {$\dim r$}
-            node at (5, -3) {$\mathbf{R}^m$}
-            node at (4, -4.5) {$\dim m-r$};
+            coordinate (0m) at (3.5, -2);
+        \node at (5, 1.5) {列空间};
+        \node at (2, -3) {$A^{\mathrm{T}}$的核空间};
+        \node at (7, 0) {$\dim r$};
+        \node at (5, -3) {$\mathbf{R}^m$};
+        \node at (4, -4.5) {$\dim m-r$};
 
         \foreach \point in {xr, x, xn, 0n, b, 0m}
             \fill[black] (\point) circle (1pt);
 
-        \node [left] at (xr) {$x_r$};
-        \node [below right] at (x) {$x=x_r+x_n$};
-        \node [left] at (xn) {$x_n$};
-        \node [right] at (0n) {0};
-        \node [right] at (b) {$b$};
+        \node[left] at (xr) {$x_r$};
+        \node[below right] at (x) {$x=x_r+x_n$};
+        \node[left] at (xn) {$x_n$};
+        \node[right] at (0n) {0};
+        \node[right] at (b) {$b$};
 
         \draw[->-,very thick] (xr) -- node[above,sloped] {$Ax_r = b$} (b);
         \draw[->-,very thick] (x) -- node[below,sloped] {$Ax = b$} (b);
         \draw[->-,very thick] (xn) -- node[below,sloped] {$Ax_n = 0$} (0m);
 
         \draw[dashed,thick] (xr) -- (x) -- (xn);
-
     \end{tikzpicture}
 \end{figure}
 
 我们观察到以下几点：
 \begin{enumerate}
     \item 矩阵的行空间与解空间（零空间）互为正交补（直观理解两个空间就是互相垂直且互为补空间），这一点应当是在正交的内容中有所提及的；
+
     \item 矩阵的列空间与其转置矩阵的零空间互为正交补，这一点实际与上一条等价.
 \end{enumerate}
 
-接下来我们来看行秩（列秩比较显然，此处不再详细展开）.我们首先得到解空间（$N(A)$）的维数，这可以直接
-根据维数公式得到：$\dim N(A) =n-r(A)$，根据正交补的性质，我们的可以得到行秩即为
-$n-(n-r(A))=r(A)$.于是我们得到了一个基于正交补的行秩解释.
+接下来我们来看行秩（列秩比较显然，此处不再详细展开）. 我们首先得到解空间$N(A)$的维数，这可以直接根据维数公式得到：$\dim N(A) = n-r(A)$，根据正交补的性质，我们的可以得到行秩即为$n-(n-r(A))=r(A)$. 于是我们得到了一个基于正交补的行秩解释.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
 \vspace{2ex}
-
 \centerline{\heiti \Large 习题}
+
 \vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
 
 \end{flushright}
+
 \centerline{\heiti A组}
 \begin{enumerate}
     \item
 \end{enumerate}
+
 \centerline{\heiti B组}
 \begin{enumerate}
     \item
 \end{enumerate}
+
 \centerline{\heiti C组}
 \begin{enumerate}
     \item
