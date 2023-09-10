@@ -1,242 +1,210 @@
 \chapter{多项式}
 
-穿过史海拾遗，从本章起，我们将进入一个全新的话题—，即如何找到一组基使得线性变换
-（即出发空间和到达空间要一致，因此这一组基同时是出发空间也是到达空间的基）
-在这组基下的矩阵越简单越好.这个``简单''的含义简而言之
-就是矩阵中的``0''的出现越多越好.深入讨论这一话题需要厘清三个重要概念之间的关联，即
-线性变换、矩阵和多项式.我们可以在此画一个三角形，各边连线上的内容大家可以在
-阅读过程中自己补全，在讨论的最后我们也会给出一个总结.
+穿过\hyperref[chap:史海拾遗]{史海拾遗}，从本章起，我们将进入一个全新的话题—，即如何找到一组基使得线性变换（即出发空间和到达空间要一致，因此这一组基同时是出发空间也是到达空间的基）在这组基下的矩阵越简单越好. 这个``简单''的含义简而言之就是矩阵中的``0''的出现越多越好. 深入讨论这一话题需要厘清三个重要概念之间的关联，即线性变换、矩阵和多项式. 我们可以在此画一个三角形，各边连线上的内容大家可以在阅读过程中自己补全，在讨论的最后我们也会给出一个总结.
 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \node (A) at (0,0) {矩阵};
-        \node (B) at (3,0) {多项式};
-        \node (C) at (1.5,2) {线性变换};
+        \node (A) at (0, 0) {矩阵};
+        \node (B) at (3, 0) {多项式};
+        \node (C) at (60:3) {线性变换};
         \draw[thick] (A) -- (B) -- (C) -- (A) -- cycle;
     \end{tikzpicture}
 \end{figure}
 
-线性变换和矩阵的基本性质我们在之前的章节已经详细展开，因此我们的准备工作只剩下
-对多项式的概念和性质作简要介绍了.需要注意的是，如果你的教材是《大学数学：代数与几何》，
-可以略过本讲，不影响你将要学习的部分，因此本讲中提到的教材都是指
-《线性代数应该这样学》.除此之外还要声明的是，本讲中对多项式的讨论
-较浅，仅仅是为了后面的内容铺垫（比《线性代数应该这样学》略深入），如果你有更深入的兴趣，
-可以参考丘维声老师的《高等代数》.
+线性变换和矩阵的基本性质我们在之前的章节已经详细展开，因此我们的准备工作只剩下对多项式的概念和性质作简要介绍了. 需要注意的是，如果你的教材是《大学数学：代数与几何》，可以略过本讲，不影响你将要学习的部分，因此本讲中提到的教材都是指《线性代数应该这样学》. 除此之外还要声明的是，本讲中对多项式的讨论较浅，仅仅是为了后面的内容铺垫（比《线性代数应该这样学》略深入），如果你有更深入的兴趣，可以参考丘维声老师的《高等代数》.
 
 \section{多项式的定义}
+
 我们首先介绍多项式的定义：
-\begin{definition}
-    对于函数 $p:\mathbf{F}\to\mathbf{F}$，若存在
-    $a_0,\ldots,a_m\in\mathbf{F}$使得对任意$z\in\mathbf{F}$有
+\begin{definition}[{\keyterm{多项式}[polynomial]}]
+    对于函数 $p:\mathbf{F}\to\mathbf{F}$，若存在$a_0,\ldots,a_m\in\mathbf{F}$使得对任意$z\in\mathbf{F}$有
     \begin{equation}\label{eq:17:多项式定义}
         p(z)=a_0+a_1z+\cdots+a_mz^m,
     \end{equation}
-    则称函数$p$为系数在$\mathbf{F}$中的多项式.
+    则称函数$p$为系数在$\mathbf{F}$中的\keyterm*{多项式}.
 \end{definition}
 
-对于一个定义，我们很关心它是否能带来一些简便，系数的唯一性便是一个很好的使得研究简便的性质，
-否则一个多项式能有多种写法是会给人带来很多迷惑的.事实上，我们有如下定理：
+对于一个定义，我们很关心它是否能带来一些简便，系数的唯一性便是一个很好的使得研究简便的性质，否则一个多项式能有多种写法是会给人带来很多迷惑的. 事实上，我们有如下定理：
 \begin{theorem}
-    设$a_0,\ldots,a_m\in\mathbf{F}$，若对任意$z\in\mathbf{F}$有$a_0+a_1z+\cdots+a_mz^m=0$，
-    则$a_0=\cdots=a_m=0$.
+    设$a_0,\ldots,a_m\in\mathbf{F}$，若对任意$z\in\mathbf{F}$有$a_0+a_1z+\cdots+a_mz^m=0$，则$a_0=\cdots=a_m=0$.
 \end{theorem}
+
 \begin{proof}
-    
+
 \end{proof}
 
-基于此我们可以得到多项式的系数必然唯一，否则两相等多项式之差为0却可以有非零系数.
-事实上我们也可以用其他方式理解这一结论：
+基于此我们可以得到多项式的系数必然唯一，否则两相等多项式之差为0却可以有非零系数. 事实上我们也可以用其他方式理解这一结论：
 \begin{enumerate}
-    \item 将$1,x,x^2,\ldots$视为多项式构成的线性空间的一组基，那么上面的系数实际上就是一个多项式
-    空间中一个元素在这组基下的坐标，而我们知道坐标是唯一的；
-    \item 回顾数学分析中学习的幂级数，我们知道任何一个函数都可以写成泰勒级数的形式，并且泰勒级数是
-    内闭绝对一致收敛于原函数的，并且泰勒展开式是唯一的，因此一个多项式函数的泰勒展开也是唯一的，即
-    上面的系数唯一.
+    \item 将$1,x,x^2,\ldots$视为多项式构成的线性空间的一组基，那么上面的系数实际上就是一个多项式空间中一个元素在这组基下的坐标，而我们知道坐标是唯一的；
+
+    \item 回顾数学分析中学习的幂级数，我们知道任何一个函数都可以写成泰勒级数的形式，并且泰勒级数是内闭绝对一致收敛于原函数的，并且泰勒展开式是唯一的，因此一个多项式函数的泰勒展开也是唯一的，即上面的系数唯一.
 \end{enumerate}
 
-回顾第一讲中我们提到的代数结构——环的概念，我们不难验证数域$\mathbf{F}$上的全体多项式组成的集合
-$\mathbf{F}[x]$关于一般的多项式加法和乘法构成一个环，这个环称为数域$\mathbf{F}$上的（一元）多项式环.
-具体的验证我们留作习题供读者练习.
+回顾第一讲中我们提到的代数结构——环的概念，我们不难验证数域$\mathbf{F}$上的全体多项式组成的集合$\mathbf{F}[x]$关于一般的多项式加法和乘法构成一个环，这个环称为数域$\mathbf{F}$上的（一元）多项式环. 具体的验证我们留作习题供读者练习.
 
-除此之外，如果多项式$p$可以写成\autoref{eq:17:多项式定义}的形式且$a_m\neq 0$，则称$p$是$m$次多项式，
-记为$\deg p=m$，称$a_m$为$p$的\keyterm{首项系数}[leading coefficient]，称$a_0$为$p$的\keyterm{常数项}[constant term].
-若$a_m=1$，则多项式首项系数为1，则称这一多项式为\keyterm{首一多项式}[monic polynomial].
-关于次数我们有如下非常基本的公式，我们将不加证明地直接给出结论：
+除此之外，如果多项式$p$可以写成\autoref{eq:17:多项式定义} 的形式且$a_m\neq 0$，则称$p$是$m$次多项式，记为$\deg p=m$，称$a_m$为$p$的\keyterm*{首项系数}[leading coefficient]，称$a_0$为$p$的\keyterm*{常数项}[constant term]. 若$a_m=1$，则多项式首项系数为1，则称这一多项式为\keyterm{首一多项式}[monic polynomial]. 关于次数我们有如下非常基本的公式，我们将不加证明地直接给出结论：
 \begin{theorem}
     设$p,q\in\mathbf{F}[x]$，则
     \begin{enumerate}
         \item $\deg(p+q)\leqslant \max\{\deg p,\deg q\}$；
+
         \item $\deg(pq)=\deg p+\deg q$.
     \end{enumerate}
 \end{theorem}
 
 \section{零点与因式}
-接下来我们研究多项式的零点与因式，从而可以引出多项式的分解.事实上多项式的分解在之后的讨论中
-是非常关键的.
+
+接下来我们研究多项式的零点与因式，从而可以引出多项式的分解. 事实上多项式的分解在之后的讨论中是非常关键的.
 \begin{definition}
-    我们称$s\in\mathbf{F}[x]$为多项式$p\in\mathbf{F}[x]$的因式，如果
-    存在多项式$q\in\mathbf{F}[x]$使得$p=sq$.
+    我们称$s\in\mathbf{F}[x]$为多项式$p\in\mathbf{F}[x]$的因式，如果存在多项式$q\in\mathbf{F}[x]$使得$p=sq$.
 \end{definition}
 
 事实上，很多时候一个多项式并不能整除另一个多项式，因此我们需要引入多项式的带余除法：
 \begin{theorem}
-    设$p,s\in\mathbf{F}[x]$且$s\neq 0$，则存在唯一的多项式$q,r\in\mathbf{F}[x]$，
-    使得$p=sq+r$，且$\deg r<\deg s$.
+    设$p,s\in\mathbf{F}[x]$且$s\neq 0$，则存在唯一的多项式$q,r\in\mathbf{F}[x]$，使得$p=sq+r$，且$\deg r<\deg s$.
 \end{theorem}
 
-这一定理即教材4.8，证明可以参考教材.这一定理的结论是非常重要的，事实上我们解决很多问题都是
-基于这一定理，例如
+这一定理即教材4.8，证明可以参考教材. 这一定理的结论是非常重要的，事实上我们解决很多问题都是基于这一定理，例如
 \begin{example}
-    设$g(x)=ax+b,a,b\in\mathbf{F},a\neq 0,
-	f(x)\in \mathcal{P}(\mathbf{F})$，证明：$g(x)$是$f^2(x)$的因式
-	的充要条件是$g(x)$是$f(x)$的因式.
+    设$g(x)=ax+b,\enspace a,b\in\mathbf{F},\enspace a\neq 0,\enspace
+        f(x)\in \mathbf{F}[x]$，证明：$g(x)$是$f^2(x)$的因式的充要条件是$g(x)$是$f(x)$的因式.
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \begin{example}
-    设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$.求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
+    设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$. 求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
 \end{example}
+
 \begin{solution}
 
 \end{solution}
 
-这一定理实际上是整数的带余除法的延伸.事实上我们可以验证全体整数关于加法和乘法也构成环，因此
-多项式和整数的结构具有一定的类似性.实际上我们会发现之后很多关于多项式的概念和定理都与
-数论中的结果非常类似.
+这一定理实际上是整数的带余除法的延伸. 事实上我们可以验证全体整数关于加法和乘法也构成环，因此多项式和整数的结构具有一定的类似性. 实际上我们会发现之后很多关于多项式的概念和定理都与数论中的结果非常类似.
 
 基于因式和带余除法的定义我们可以研究多项式零点和因式的性质，实际上与我们初中学习的因式分解是类似的：
 \begin{theorem}
     设$p\in\mathbf{F}[x]$.
     \begin{enumerate}
-        \item 若$\lambda\in\mathbf{F}$，则$p(\lambda)=0$当且仅当存在多项式
-            $q\in\mathbf{F}[x]$使得对每个$z\in\mathbf{F}$均有$p(z)=(z-\lambda)q(z)$；
+        \item 若$\lambda\in\mathbf{F}$，则$p(\lambda)=0$当且仅当存在多项式$q\in\mathbf{F}[x]$使得对每个$z\in\mathbf{F}$均有$p(z)=(z-\lambda)q(z)$；
 
         \item 若$p$是$m\enspace(m \geqslant 0)$次多项式，则$p$在$\mathbf{F}$上最多有$m$个互不相等的零点.
     \end{enumerate}
 \end{theorem}
 两者的证明都非常基本，但我们考虑到读者应当进一步熟悉带余除法的应用，因此再次给出证明：
+
 \begin{proof}
-    
+
 \end{proof}
 
-事实上，我们希望上述定理的第二点的``最多''能够在复数域的情况下取到，
-这需要接下来这一基本而伟大的定理——代数学基本定理作为支撑：
-\begin{theorem} \textbf{\heiti 代数学基本定理} \label{thm:17:代数学基本定理}
+事实上，我们希望上述定理的第二点的``最多''能够在复数域的情况下取到，这需要接下来这一基本而伟大的定理——代数学基本定理作为支撑：
+\begin{theorem}[{\keyterm{代数学基本定理}[fundamental theorem of algebra]}] \label{thm:17:代数学基本定理}
     非常数复多项式在复平面上必有零点.
 \end{theorem}
 
-代数基本定理最简单直接的证明来源于复分析中的刘维尔定理或柯西积分公式，感兴趣的同学可以学习
-复变函数进一步了解.事实上，历史上无数大数学家曾尝试为代数学基本定理这一古老、神秘而美妙的定理
-给出证明，但他们的工作都被认为是不严谨的，例如大家熟知的欧拉、拉格朗日等.第一个给出严谨证明
-的是数学天才高斯，但事实上他的证明方法在后来基于复分析的美妙而简洁证明出现后就变得黯淡许多.
-数学家J.P.塞尔曾经指出：代数基本定理的所有证明本质上都是拓扑的，因此很推荐对此感兴趣的读者
-学习拓扑学以及复变函数的知识，体会数学的美感.
+代数学基本定理最简单直接的证明来源于复分析中的刘维尔定理或柯西积分公式，感兴趣的同学可以学习复变函数进一步了解. 事实上，历史上无数大数学家曾尝试为代数学基本定理这一古老、神秘而美妙的定理给出证明，但他们的工作都被认为是不严谨的，例如大家熟知的欧拉、拉格朗日等. 第一个给出严谨证明的是数学天才高斯，但事实上他的证明方法在后来基于复分析的美妙而简洁证明出现后就变得黯淡许多. 数学家J.P. 塞尔曾经指出：代数基本定理的所有证明本质上都是拓扑的，因此很推荐对此感兴趣的读者学习拓扑学以及复变函数的知识，体会数学的美感.
 
-事实上，我们这里只需要承认这一定理，更重要的是基于代数学基本我们可以进行多项式的分解，
-我们分复数域和实数域进行讨论：
+事实上，我们这里只需要承认这一定理，更重要的是基于代数学基本我们可以进行多项式的分解. 我们分复数域和实数域进行讨论：
 \begin{theorem} \label{thm:17:多项式分解}
     设$p\in\mathbf{F}[x]$是非常数多项式，则$p$可以唯一分解（不计因式的次序）为
     \begin{enumerate}
-        \item $(\mathbf{F}=\mathbf{C})\quad p(z)=c(z-\lambda_1)\cdots(z-\lambda_m)$，
-        其中$c,\lambda_1,\ldots,\lambda_m\in\mathbf{C}$；
+        \item $(\mathbf{F}=\mathbf{C})\quad p(z)=c(z-\lambda_1)\cdots(z-\lambda_m)$，其中$c,\lambda_1,\ldots,\lambda_m\in\mathbf{C}$；
 
-        \item $(\mathbf{F}=\mathbf{R})\quad p(x)=c(x-\lambda_1)\cdots(x-\lambda_m)
-        (x^2+b_1x+c_1)\cdots(x^2+b_Mx+c_M)$，其中$c,\lambda_1,\ldots,\lambda_m,b_1,\ldots,b_M,
-        c_1,\ldots,c_M\in\mathbf{R}$，并且对每个$j$均有$b_j^2<4c_j$.
+        \item $(\mathbf{F}=\mathbf{R})\quad p(x)=c(x-\lambda_1)\cdots(x-\lambda_m)(x^2+b_1x+c_1)\cdots(x^2+b_Mx+c_M)$，其中$c,\lambda_1,\ldots,\lambda_m,b_1,\ldots,b_M,c_1,\ldots,c_M\in\mathbf{R}$，并且对每个$j$均有$b_j^2<4c_j$.
     \end{enumerate}
 \end{theorem}
-定理的证明并不困难，可以参考教材4.14-4.17，事实上结论更具重要性.实际上这就是我们初中阶段
-学习的因式分解的严谨版本，特别是实数版本叙述了初中阶段我们囿于实数域无法分解的情形.而复数版本
-则是代数学基本定理的直接推广，由这一分解我们知道：复数域上的$n$次多项式有且仅有$n$个零点.
+定理的证明并不困难，可以参考教材4.14--4.17，事实上结论更具重要性. 实际上这就是我们初中阶段学习的因式分解的严谨版本，特别是实数版本叙述了初中阶段我们囿于实数域无法分解的情形. 而复数版本则是代数学基本定理的直接推广，由这一分解我们知道：复数域上的$n$次多项式有且仅有$n$个零点.
 \begin{example}
     证明：每个奇数次的实系数多项式都有实的零点.
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \begin{example}
-    设$p\in\mathbf{F}[x]$且$q\neq 0$.证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
+    设$p\in\mathbf{F}[x]$且$q\neq 0$. 证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
     \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \section{整除与互素}
+
 提到因式我们很容易想到类似于整数的最大公因数的定义，这里我们依次引入整除、公因式和最大公因式的概念：
 \begin{definition}
-    设$p,q\in\mathbf{F}[x]$且$q\neq 0$，则$q$整除$p$或$p$能被$q$整除（记为$q \mid p$）当且仅当
-    $p$除以$q$的余式为0.
+    设$p,q\in\mathbf{F}[x]$且$q\neq 0$，则$q$整除$p$或$p$能被$q$整除（记为$q \mid p$）当且仅当$p$除以$q$的余式为0.
 \end{definition}
+
 \begin{example}
     设$p,q\in\mathbf{F}[x]$，证明：$p^2 \mid q^2\iff p \mid q$.
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \begin{definition}
-    在$\mathbf{F}[x]$中，若$s \mid p$且$s \mid q$，则称$s$是$p$和$q$的一个公因式.若$p$和$q$的公因式$s$
-    满足对$p$和$q$的任一公因式$s'$都有$s' \mid s$，则称$s$是$p$和$q$的一个最大公因式.
+    在$\mathbf{F}[x]$中，若$s \mid p$且$s \mid q$，则称$s$是$p$和$q$的一个公因式. 若$p$和$q$的公因式$s$满足对$p$和$q$的任一公因式$s'$都有$s' \mid s$，则称$s$是$p$和$q$的一个最大公因式.
 \end{definition}
-故我们可以看出，当$p$和$q$不为0时，最大公因式即为次数最大（首项系数也要最大）的公因式.相应的，我们也有最小公倍式的定义，这也类似于
-整数中的最小公倍数，我们不再赘述.
+故我们可以看出，当$p$和$q$不为0时，最大公因式即为次数最大（首项系数也要最大）的公因式. 相应的，我们也有最小公倍式的定义，这也类似于整数中的最小公倍数，我们不再赘述.
 
 类似于整数中的辗转相除法（或称欧几里得算法），对于多项式我们有如下结论：
 \begin{theorem}\label{thm:17:欧几里得算法}
-    设$p,q\in\mathbf{F}[x]$，存在它们的一个最大公因式$s$，则存在$u,v\in\mathbf{F}[x]$
-    使得\[s=up+vq.\]
+    设$p,q\in\mathbf{F}[x]$，存在它们的一个最大公因式$s$，则存在$u,v\in\mathbf{F}[x]$使得\[s=up+vq.\]
 \end{theorem}
 证明与欧几里得算法的构造是类似的，读者可以回顾初等数论的知识，这里也简要给出证明：
 
 \begin{proof}
-    
+
 \end{proof}
 
-在本节中我们更重视$p,q$最大公因式
-为1的情况，我们称之为\keyterm{互素}[coprime]，我们可以得到一个多项式互素的充要条件：
+在本节中我们更重视$p,q$最大公因式为1的情况，我们称之为\keyterm{互素}[coprime]，我们可以得到一个多项式互素的充要条件：
 \begin{theorem}\label{thm:17:裴蜀定理}
-    设$p,q\in\mathbf{F}[x]$，则$p$和$q$互素的充要条件是存在$u,v\in\mathbf{F}[x]$
-    使得\[up+vq=1.\]
+    设$p,q\in\mathbf{F}[x]$，则$p$和$q$互素的充要条件是存在$u,v\in\mathbf{F}[x]$使得\[up+vq=1.\]
 \end{theorem}
-这一定理称之为\keyterm{裴蜀定理}[B\'ezout's Lemma]，事实上在数论中也有相对应的结论，
-证明是非常自然的，读者可以体会：
+这一定理称之为\keyterm{裴蜀定理}[Bézout's Lemma]，事实上在数论中也有相对应的结论，证明是非常自然的，读者可以体会：
 
 \begin{proof}
-    
+
 \end{proof}
 
 \begin{example}
     证明：$\mathbf{F}[x]$中两个次数大于0的多项式没有公共复根的充要条件是它们互素.
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
 \vspace{2ex}
-
 \centerline{\heiti \Large 习题}
+
 \vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
 
 \end{flushright}
+
 \centerline{\heiti A组}
 \begin{enumerate}
     \item
 \end{enumerate}
+
 \centerline{\heiti B组}
 \begin{enumerate}
     \item
 \end{enumerate}
+
 \centerline{\heiti C组}
 \begin{enumerate}
     \item
