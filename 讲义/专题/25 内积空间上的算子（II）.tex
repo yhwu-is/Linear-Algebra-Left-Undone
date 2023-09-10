@@ -186,9 +186,12 @@
 
 \section{正定矩阵}
 
-在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定，正定还是负定还是半正定还是半负定. 
+在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定（definite Matrix），
+正定（positive definite）还是负定（negative definite）还是半正定（positive semidefinite）还是半负定（negative semidefinite）. 
 
-那么，何为正定矩阵？这一定义在不同的数域下仍然有差异. 
+有定可以被解释为无论这个非零向量是怎样的，其经过某种规定运算得到的数的符号是确定的. 
+正定矩阵自然就是指任何非零向量经某种运算后得到的实数一定是正的. 
+但这所谓的“某种运算”在不同的数域下仍然有差异. 
 
 \begin{definition} 
     \keyterm{正定矩阵} 
@@ -254,6 +257,8 @@
     设算子 $ T \in \mathcal{L}(V) $，如果 $ T $ 是自伴的且 $ \forall v \in V $
     均有 $ \langle Tv, v \rangle \geqslant 0 $. 
 \end{definition}
+
+如果 $ V $ 是复向量空间，则 $ T $ 自伴的条件可以从定义中去除. 
 
 但对于正算子的定义似乎和对于半正定矩阵的定义方向完全不同，前者依托内积，
 后者则是依托二次型. 不过，若是你还记得我们曾经提到过内积本身是一种正定
@@ -328,7 +333,70 @@
     \end{enumerate}
 \end{theorem}
 
-从这里我们进一步加深类比. 
+从这里我们进一步加深类比. 3 就相当于复数非负当且仅当其有非负的平方根，
+4 就相当于复数非负当且仅当其有实的平方根，5 就相当于复数 $ z $ 非负当且仅当
+存在复数 $ w $ 使得 $ z = \overline{w}w $. 
+
+每个非负数都有唯一的非负平方根，下面这个定理表明正算子也具有类似的性质. 
+
+\begin{theorem}
+    $ V $ 上每个正算子都有唯一的正平方根. 
+\end{theorem}
+
+这个涉及到唯一性的证明. 在我们最初学习线性代数的时候应该就涉及到了，
+如果线性映射在线性空间的一组基下的对应的像是确定的，则该线性映射是被唯一确定的. 
+而在内积空间上，我们倾向选用标准正交基，正算子以及其正平方根又是自伴的，
+所以证明借助了谱定理.
+
+\begin{proof}
+    设 $ T \in \mathcal{L}(V) $ 是正的，$ v \in V $ 是 $ T $ 的一个特征向量，
+    则有 $ \lambda \geqslant 0 $ 使得 $ Tv = \lambda v $. 
+    
+    设 $ R $ 是 $ T $ 的正平方根，我们只需要证明 $ Rv = \sqrt{\lambda} v $，
+    因为这样就代表 $ R $ 在 $ T $ 的特征向量上是唯一确定的，而 $ T $ 是自伴的，
+    $ V $ 上肯定有一组以 $ T $ 的特征向量构成的标准正交基，从而唯一确定 $ R $. 
+
+    设 $ V $ 上有一组以 $ R $ 的特征向量构成的标准正交基 $ e_1, \ldots , e_n $. 
+    $ R $ 是正算子，所以其特征值均非负，即存在非负数 $\lambda_1, \ldots , \lambda_n $
+    使得对每个 $ j = 1, \ldots , n $ 均有 $ Re_j = \sqrt{\lambda_j}e_j $. 
+
+    因为 $ e_1, \ldots , e_n $ 是 $ V $ 的一组标准正交基，所以有 $ a_1, \ldots , a_n \in \mathbf{F} $
+    使得 
+    \[
+        v = a_1e_1 + \cdots + a_ne_n.  
+    \]
+    
+    于是
+    \[
+        Rv = a_1\sqrt{\lambda_1}e_1 + \cdots + a_n\sqrt{\lambda_n}e_n.  
+    \]
+
+    从而
+    \[
+        Rv = a_1\lambda_1e_1 + \cdots + a_n\lambda_ne_n.  
+    \]
+
+    又 $ R^{2} = T $ 且 $ Tv = \lambda v $，所以有
+    \[
+        a_1\lambda e_1 + \cdots + a_n\lambda e_n = a_1\lambda_1e_1 + \cdots + a_n\lambda_ne_n
+    \]  
+    上式意味着对 $ j = 1, \ldots, n $ 有 $ a_j(\lambda - \lambda_j) = 0 $. 所以
+    \[
+        v = \sum_{\{j: \lambda_j = \lambda \}} a_je_j  
+    \]  
+
+    所以
+    \[
+        Rv = \sum_{\{j: \lambda_j = \lambda \}} a_j\sqrt{\lambda}e_j = \sqrt{\lambda}v. 
+    \]
+    
+    命题得证. 
+\end{proof}
+
+我们将正算子 $ T $ 的唯一正平方根记作 $ \sqrt{T} $.
+
+另外，虽然正算子与非负数相似之处很多，但也有差异. 
+比如正算子是可以有无穷多个平方根的，但非负数最多只能有两个. 
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
