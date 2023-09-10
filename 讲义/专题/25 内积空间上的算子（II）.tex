@@ -144,7 +144,7 @@
 \begin{theorem}
     设 $ V $ 是复内积空间，$ S \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
-        \item $ S $ 是等距同构
+        \item $ S $ 是等距同构；
 
         \item $ V $ 有一个由 $ S $ 的特征向量构成的标准正交基，相应的特征值的绝对值均为 1.
     \end{enumerate}
@@ -154,7 +154,7 @@
 
 \section{正定矩阵}
 
-在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定（definite Matrix），正定（positive definite）还是负定（negative definite）还是半正定（positive semidefinite）还是半负定（negative semidefinite）.
+在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定（definite matrix），正定（positive definite）还是负定（negative definite）还是半正定（positive semidefinite）还是半负定（negative semidefinite）.
 
 有定可以被解释为无论这个非零向量是怎样的，其经过某种规定运算得到的数的符号是确定的. 正定矩阵自然就是指任何非零向量经某种运算后得到的实数一定是正的. 但这所谓的``某种运算''在不同的数域下仍然有差异.
 
@@ -192,9 +192,9 @@
     \begin{enumerate}
         \item $ A $ 是正定矩阵；
 
-        \item 双线性函数 $ \langle x, y \rangle = x^{H}Ay $定义了一个 $ \mathcal{C}^{n} $ 上的一个内积. 事实上， $ \mathcal{C}^{n} $ 所有内积都可视作由某个正定矩阵以此方式得到；
+        \item 双线性函数 $ \langle x, y \rangle = x^{H}Ay $定义了一个 $ \mathbf{C}^n $ 上的一个内积. 事实上， $ \mathbf{C}^n $ 所有内积都可视作由某个正定矩阵以此方式得到；
 
-        \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathcal{C}^{k} $ 构成的
+        \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathbf{C}^k $ 构成的
               Gram 矩阵. 即 $ A = B^{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且这种分解方式不唯一.
 
         \item \keyterm{Cholesky decomposition} 存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^{H} $
@@ -207,8 +207,7 @@
 
 现在让我们跳开去，先去看看算子上的事情，不过出于更实用的原因，我们研究半正定矩阵对应的算子.
 
-\begin{definition}
-    \keyterm{正算子}
+\begin{definition}[\keyterm{正算子}]
     设算子 $ T \in \mathcal{L}(V) $，如果 $ T $ 是自伴的且 $ \forall v \in V $均有 $ \langle Tv, v \rangle \geqslant 0 $.
 \end{definition}
 

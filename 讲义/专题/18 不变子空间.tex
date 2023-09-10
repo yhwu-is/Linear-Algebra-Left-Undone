@@ -21,8 +21,7 @@
 \begin{definition}
     设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma\alpha\in U$，则称$U$是$\sigma$的\keyterm{不变子空间}[invariant subspace]，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
 \end{definition}
-即不变子空间中的每一个向量经过线性变换后仍在这一空间中，因此这里的``不变''的含义也是非常直观的. 根据定义我们可以验证或者求解一些很简单的不变子空间. 教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述. 教材8.20
-还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间. 我们这里也简要书写一下，供读者熟悉如何利用定义验证不变子空间：
+即不变子空间中的每一个向量经过线性变换后仍在这一空间中，因此这里的``不变''的含义也是非常直观的. 根据定义我们可以验证或者求解一些很简单的不变子空间. 教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述. 教材8.20还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间. 我们这里也简要书写一下，供读者熟悉如何利用定义验证不变子空间：
 \begin{example}
     若$\sigma\in\mathcal{L}(V)$且$p\in\mathbf{F}[x]$为多项式，则$\ker p(\sigma)$和$\im p(\sigma)$在$\sigma$下不变.
 \end{example}
@@ -456,11 +455,13 @@
                   1 & 2 & 2 \\ 2 & 1 & 2 \\ 2 & 2 & 1
               \end{pmatrix}\]
           求$\sigma$的特征值与特征子空间.
+
     \item 设$A,P$都是3阶方阵，$P$可逆，已知$A$的特征值$\lambda_1=1,\lambda_2=-1,\lambda_3=2$，$B=A^3-5A^2$，求$|B|$，$|A+5E|$，$|5E+P^{-1}AP|$.
 
     \item 设$A=\begin{pmatrix}
                   a & -1 & c \\ 5 & b & 3 \\ 1-c & 0 & -a
               \end{pmatrix}$，$|A|=-1$，$\alpha=(-1,-1,1)^\mathrm{T}$为$A^*$的特征向量，求$A^*$的特征值及$a,b,c$和$A$对应的特征值$\mu$.
+
     \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$AB=BA$，证明：若$X$是矩阵$A$属于特征值$\lambda_0$的特征向量，则$BX\in V_{\lambda_0}$（注：本题是解决很多$AB=BA$类问题的基础）.
 \end{enumerate}
 
@@ -491,6 +492,7 @@
                   0 & 1 \\ 1-a & 0
               \end{pmatrix}.\]
           求$T$的所有不变子空间.
+
     \item 设$A,B$都是$n$阶矩阵，且$r(A)+r(B)<n$，证明：$A,B$有相同的特征值和特征向量.
 
     \item 设$V(\mathbf{F})$是$n$维线性空间，$\sigma\in L(V,V)$，证明：
