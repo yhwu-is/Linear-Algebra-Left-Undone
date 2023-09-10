@@ -214,7 +214,7 @@
 
 标准正交基的性质十分美妙，但我们取出一组基使得其恰好是标准正交基是十分困难的，所幸前人已经研究出了一套算法，可以将所有线性无关组转变为标准正交组，且张成空间相同.
 
-\begin{theorem} \keyterm{Gram-Schmidt 过程}
+\begin{theorem}[\keyterm{Gram-Schmidt 过程}]
     设 $v_1, \ldots ,v_n$ 是 $ V $ 中的线性无关向量组. 设 $e_1 = \dfrac{v_1}{\lVert v_1 \rVert}$. 对于 $ j = 2, \ldots , m$，定义 $ e_j $ 如下：
     \[ e_j = \frac{v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} }{\lVert v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} \rVert}\]
     则 $e_1, \ldots , e_m $ 是 $ V $ 中的标准正交组，使得对 $ j = 1, \ldots , m $ 有
