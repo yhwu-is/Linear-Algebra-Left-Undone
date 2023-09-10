@@ -13,7 +13,7 @@
 
     \item 第一个位置的加性：$\forall u, v, w \in V, \enspace \langle u + v, w \rangle = \langle u, w \rangle + \langle v, w \rangle$；
 
-    \item 第一个位置的齐性：$\forall \lambda \in \mathbf{F}, \enspace \forall u, v \in V,\enspace \langle \lambda u, v \rangle = \lambda \langle u, v \rangle$；
+    \item 第一个位置的齐性：$\forall \lambda \in \mathbf{F}, \enspace \forall u, v \in V, \enspace \langle \lambda u, v \rangle = \lambda \langle u, v \rangle$；
 
     \item 共轭对称性：$\forall u, v \in V, \enspace \langle u, v \rangle = \overline{\langle v, u \rangle}$.
 \end{enumerate}
@@ -39,7 +39,7 @@
 \begin{enumerate}
     \item $\forall v \in V, \enspace \left\lVert v \right\rVert = 0 \iff v = \vec{0}$.
 
-    \item $\forall v \in V, \enspace \forall \lambda \in \mathbf{F},\enspace \left\lVert \lambda v \right\rVert  = \left\lvert \lambda \right\rvert \lVert v \rVert$.
+    \item $\forall v \in V, \enspace \forall \lambda \in \mathbf{F}, \enspace \left\lVert \lambda v \right\rVert  = \left\lvert \lambda \right\rvert \lVert v \rVert$.
 \end{enumerate}
 
 上述性质留给读者自证，从中我们也能发现一个普遍原理：处理范数的平方通常比直接处理范数更容易.
@@ -47,9 +47,9 @@
 以下给出几个内积和范数的示例：
 
 \begin{example} \label{ex:23:内积和范数}
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item $\mathbf{F}^{n}$ 上的欧几里得内积定义为：
-              \[\left\langle (w_1, \ldots, w_n), (z_1, \ldots, z_n)\right\rangle = w_1\overline{z_1} + \cdots + w_n\overline{z_n} = \vec{w}\overline{\vec{z}}^{\mathrm{T}}\]
+              \[\left\langle (w_1, \ldots, w_n), (z_1, \ldots, z_n)\right\rangle = w_1\overline{z_1} + \cdots + w_n\overline{z_n} = \vec{W}\overline{\vec{Z}}^{\mathrm{T}}\]
               对应范数：
               \[\left\lVert (z_1, \ldots, z_n) \right\rVert  = \sqrt{\lvert z^2_1 \rvert + \cdots + \lvert z^2_n \rvert}\]
 
@@ -65,8 +65,8 @@
 
 以下给出一个关键定义：
 
-\begin{definition}[{\keyterm{正交的}[orthogonal]}]
-    两个向量 $u, v \in V$ 称为\keyterm*{正交的}，如果 $\langle u, v\rangle = 0$.
+\begin{definition}
+    两个向量 $u, v \in V$ 称为\keyterm{正交的}[orthogonal]，如果 $\langle u, v\rangle = 0$.
 \end{definition}
 
 该定义中向量的次序是无关紧要的，因为 $\langle u, v\rangle = 0 \iff \langle v, u\rangle = 0$.
@@ -100,7 +100,7 @@
 从而便引进了正交分解：
 
 \begin{theorem}
-    设 $u, v \in V$ 且 $v \neq \vec{0}$. 令 $ c = \dfrac{\langle u, v\rangle}{\lVert v \rVert^2},\enspace w = u - \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}v$. 则 $\langle w, v\rangle = 0$且 $u = cv + w$.
+    设 $u, v \in V$ 且 $v \neq \vec{0}$. 令 $ c = \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}, \enspace w = u - \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}v$. 则 $\langle w, v\rangle = 0$且 $u = cv + w$.
 \end{theorem}
 
 而通过正交分解，我们可以证明一个数学中最重要的不等式（之一）：\keyterm{Cauchy-Schwarz 不等式}.
@@ -113,7 +113,7 @@
 
 借助 Cauchy-Schwarz 不等式，我们可以得到三角不等式：
 
-\begin{theorem}[三角不等式]
+\begin{theorem}
     设 $u, v \in V$. 则 $\lVert u, v \rVert \leqslant \lVert u \rVert + \lVert v \rVert$. 等号成立当且仅当 $u, v$ 之一是另一个的非负标量倍.
 \end{theorem}
 
@@ -135,7 +135,7 @@
         \item $\mathbf{F} = \mathbf{R}$ 时：
               \begin{gather}
                   \label{eq:23:内积和范数的性质1}
-                  \langle u, v\rangle  = \frac{1}{4}\left( \lVert u + v \rVert^2 - \lVert u - v \rVert^2\right) \\
+                  \langle u, v\rangle = \frac{1}{4}\left( \lVert u + v \rVert^2 - \lVert u - v \rVert^2\right) \\
                   \label{eq:23:内积和范数的性质2}
                   \langle Tu, v\rangle + \langle Tv, u\rangle = \frac{1}{2}\left(\langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle\right)
               \end{gather}
@@ -143,11 +143,11 @@
         \item $\mathbf{F} = \mathbf{C}$ 时：
               \begin{gather}
                   \label{eq:23:内积和范数的性质3}
-                  \langle u, v\rangle  = \frac{1}{4}\left( (\lVert u + v \rVert^2 - \lVert u - v \rVert^2) + \i(\lVert u + \i v \rVert^2 - \lVert u - \i v \rVert^2) \right) \\
+                  \langle u, v\rangle = \frac{1}{4}\left((\lVert u + v \rVert^2 - \lVert u - v \rVert^2) + \i(\lVert u + \i v \rVert^2 - \lVert u - \i v \rVert^2)\right) \\
                   \label{eq:23:内积和范数的性质4}
                   \begin{aligned}
-                      \langle Tu, v\rangle = & \frac{1}{4}  ((\langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle)     \\
-                                             & + \i(\langle T(u + \i v), u + \i v\rangle + \langle T(u - \i v), u - \i v\rangle)).
+                      \langle Tu, v\rangle ={} & \frac{1}{4}  ((\langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle)     \\
+                                               & + \i(\langle T(u + \i v), u + \i v\rangle + \langle T(u - \i v), u - \i v\rangle)).
                   \end{aligned}
               \end{gather}
     \end{enumerate}
@@ -158,18 +158,17 @@
 
 这一节我们将沿着正交的路径接着往下走，看看如果整个向量组乃至一组基都是单位化的且互相正交的话，会有怎样的性质. 我们也会讲解如何获取这样一组基的算法，并介绍 Riesz 表示定理，其揭示了线性泛函和内积的深刻联系.
 
-\begin{definition}[{\keyterm{标准正交}[orthonormal]}]
-    如果一个向量组的每个向量范数都是 1 且与其他向量正交则称这个向量组是\keyterm*{标准正交}（规范正交）的.
+\begin{definition}
+    如果一个向量组的每个向量范数都是 1 且与其他向量正交则称这个向量组是\keyterm{标准正交}[orthonormal]（规范正交）的.
 \end{definition}
 
 在本书的剩余部分中我们都称此性质为标准正交.
 
 由以上定义，我们得出：$ V $ 上的向量组 $ e_1, \ldots , e_n $ 是标准正交的，如果
-\[ \langle e_j, e_k \rangle = \delta_{jk} =
-    \begin{cases}
+\[ \langle e_j, e_k \rangle = \delta _{jk} = \begin{cases}
         1 & j = k    \\
         0 & j \neq k
-    \end{cases}\]
+    \end{cases} \]
 
 标准正交组的优势在于处理其线性组合的范数很方便.
 
@@ -186,7 +185,7 @@
 
 令其线性组合为 $ \vec{0} $ 即证.
 
-\begin{example} \label{ex:23:标准正交组}
+\begin{example} \label{ex:22:标准正交组}
     设 $e_1, \ldots , e_m$ 是 $ V $ 的标准正交组. 设 $ v \in V $. 证明
     \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2 \]
     当且仅当 $ v \in \spa(e_1, \ldots , e_m).$
@@ -204,16 +203,18 @@
 
 \begin{theorem}
     设 $e_1, \ldots e_n$ 是 $ V $ 标准正交基且 $ v \in V$. 则
-    \[ v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_n \rangle e_n \]
+    \begin{equation} \label{eq:23:Fourier展开}
+        v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_n \rangle e_n
+    \end{equation}
     且
     \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2. \]
 \end{theorem}
 
-此为\autoref{ex:23:标准正交组} 的特例.
+此为\autoref{ex:22:标准正交组} 的特例. \autoref{eq:23:Fourier展开} 也被称为 $ v $ 的 Fourier 展开，其中每个系数 $ \langle v, e_j \rangle $ 被称为 $ v $ 的 Fourier 系数.
 
 标准正交基的性质十分美妙，但我们取出一组基使得其恰好是标准正交基是十分困难的，所幸前人已经研究出了一套算法，可以将所有线性无关组转变为标准正交组，且张成空间相同.
 
-\begin{theorem}[\keyterm{Gram-Schmidt 过程}]
+\begin{theorem} \keyterm{Gram-Schmidt 过程}
     设 $v_1, \ldots ,v_n$ 是 $ V $ 中的线性无关向量组. 设 $e_1 = \dfrac{v_1}{\lVert v_1 \rVert}$. 对于 $ j = 2, \ldots , m$，定义 $ e_j $ 如下：
     \[ e_j = \frac{v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} }{\lVert v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} \rVert}\]
     则 $e_1, \ldots , e_m $ 是 $ V $ 中的标准正交组，使得对 $ j = 1, \ldots , m $ 有
@@ -229,7 +230,7 @@
 
 不难发现，Gram-Schmidt 过程实际上可以分成两部分：
 \begin{enumerate}
-    \item 正交化：定义 $ u_1 = v_1 , \enspace u_j = v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1},\enspace j = 2, \ldots , m$，此时 $u_1, \ldots , u_m$ 已经互相正交.
+    \item 正交化：定义 $ u_1 = v_1 , \enspace u_j = v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1}, \enspace j = 2, \ldots , m$，此时 $u_1, \ldots , u_m$ 已经互相正交.
 
     \item 单位化：$ e_j = \dfrac{u_j}{\lVert u_j \rVert} , \enspace j = 1, \ldots , m$，从而有 $\lVert e_j \rVert = 1, \enspace j = 1, \ldots , m$
 \end{enumerate}
@@ -242,6 +243,14 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 
     \item 设 $ V $ 是有限的. 则 $ V $ 中每个标准正交向量组都可以扩充成 $ V $ 的标准正交基.
 \end{enumerate}
+也可以得到这样一个定理.
+
+\begin{theorem}[\keyterm{Schur 定理}] \label{thm:23:Schur}
+    设 $ V $ 是有限维的复内积空间，且 $ T \in \mathcal{L}(V) $，则 $ T $ 关于 $ V $ 的某个标准正交基具有上三角矩阵.
+\end{theorem}
+
+证明并不复杂，只需要结合\autoref{thm:20:上三角矩阵存在} 和 Gram-Schmidt 过程即可. 虽然十分浅显，但它迈出了我们在内积空间上算子简化表示的第一步，在更进一步的结论中我们会运用到它.
+
 在此我们先打住，回忆一下内积的定义，其本质上就是一个函数，它把 $ V $ 中元素的每个有序对 $(u, v)$ 都映射成一个数$ \langle u, v \rangle \in \mathbf{F}$，而我们也很熟悉一类把 $ V $ 中元素映射成一个数的函数，即所谓的线性泛函. 那么这两者之间是否存在着某种联系？我们先借助几个例子观察一下.
 
 \begin{example}
@@ -275,7 +284,7 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
     对 $\forall v \in V$ 都有 $\varphi(v) = \langle v, u \rangle .$
 
     唯一性：设 $ u_1, u_2 \in V $ 使得对 $\forall v \in V $ 均有
-    \[\varphi(v) = \langle v, u_1 \rangle = \langle v, u_2 \rangle\]
+    \[\varphi(v) = \langle v, u_1 \rangle = \langle v, u_2 \rangle.\]
     则对 $\forall v \in V $ 均有
     \[ 0 = \langle v, u_1 \rangle - \langle v, u_2 \rangle = \langle v, u_1 - u_2 \rangle\]
     取 $ v = u_1 - u_2 $ 可得 $ u_1 - u_2 = 0 $，即 $ u_1 = u_2 $，唯一性得证.
@@ -295,7 +304,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
         \item 求 $ \mathbf{R}^3 $ 在 $ \langle \cdot, \cdot \rangle_V $ 下的一组标准正交基；
 
-        \item 求 $ \beta \in V $ 使得 $ \forall \vec{x} \in V,\enspace x_1 + 2x_2 = \langle \vec{x}, \beta \rangle_V $.
+        \item 求 $ \vec{\beta} \in V $ 使得 $ \forall \vec{x} \in V,\enspace x_1 + 2x_2 = \langle \vec{x}, \vec{\beta} \rangle_V $.
     \end{enumerate}
 \end{example}
 
@@ -305,8 +314,8 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
 \subsection{正交补 \quad 正交投影}
 
-\begin{definition}[{\keyterm{正交补}[orthogonal complement]}]
-    设 $ U $ 是 $ V $ 的子集，则 $ U $ 的\keyterm*{正交补}（记作 $ U^{\perp } $）是由 $ V $ 中与 $ U $ 的每个向量都正交的那些向量组成的集合：
+\begin{definition}
+    设 $ U $ 是 $ V $ 的子集，则 $ U $ 的\keyterm{正交补}[orthogonal complement]（记作 $ U^{\perp } $）是由 $ V $ 中与 $ U $ 的每个向量都正交的那些向量组成的集合：
     \[U^{\perp } = \{ v \in V \mid \forall u \in U, \enspace \langle v, u\rangle = 0\}\]
 \end{definition}
 
@@ -316,13 +325,13 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 \begin{enumerate}
     \item 若 $ U $ 是 $ V $ 的子集（注意使用的是子集），则 $ U^{\perp }$ 是 $ V $ 的子空间.
 
-    \item $ \{ 0 \}^{\perp } = V $.
+    \item $ \{ \vec{0} \}^{\perp } = V $.
 
-    \item $ V^{\perp } = \{ 0 \} $.
+    \item $ V^{\perp } = \{ \vec{0} \} $.
 
-    \item 若 $ U $ 是 $ V $ 的子集，则 $ U \cap U^{\perp } \subseteq \{ 0 \}$.
+    \item 若 $ U $ 是 $ V $ 的子集，则 $ U \cap U^{\perp } \subset \{ \vec{0} \}$.
 
-    \item 若 $ U $ 和 $ W $ 均为 $ V $ 的子集且 $ U \subseteq W $，则 $ W^{\perp } \subseteq U^{\perp }$.
+    \item 若 $ U $ 和 $ W $ 均为 $ V $ 的子集且 $ U \subset W $，则 $ W^{\perp } \subset U^{\perp }$.
 \end{enumerate}
 
 那么根据之前的几何示例，我们不难猜测，如果 $ U $ 上升成为了一个子空间，那么就可以诱导一个自然的直和分解.
@@ -340,8 +349,9 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 第二条的证明还是具有一定技巧性的，希望读者仔细品味.
 
 除去这两个结论，该直和分解为我们定义正交投影奠定了基础：
-\begin{definition}[{\keyterm{正交投影}[orthogonal projection]}]
-    设 $ U $ 是 $ V $ 的有限维子空间. 定义 $ V $ 到 $ U $ 上的\keyterm*{正交投影}为如下算子$ P_U \in \mathcal{L} (V)$：对 $ v \in V $ 将其写成 $ v = u + w $，其中$ u \in U $ 且 $ w \in U^{\perp }$，则 $ P_U v = u $.
+\begin{definition}
+    设 $ U $ 是 $ V $ 的有限维子空间. 定义 $ V $ 到 $ U $ 上的\keyterm{正交投影}[orthogonal projection]
+    为如下算子$ P_U \in \mathcal{L} (V)$：对 $ v \in V $ 将其写成 $ v = u + w $，其中$ u \in U $ 且 $ w \in U^{\perp }$，则 $ P_U v = u $.
 \end{definition}
 
 正交投影的性质相当之多，不过大部分是成对刻画以及简单的推理，在此仅作罗列不加证明：
@@ -360,14 +370,14 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
     \item $ v - P_U v \in U^{\perp}$；
 
-    \item \label{item:23:正交投影的性质:7}
+    \item \label{item:23:正交投影性质:7}
           $ {P_U}^{2} = P_U$；
 
     \item $ \lVert P_U v\rVert \leqslant \lVert v \rVert $；
 
     \item 对 $ U $ 的每个规范正交基 $e_1, \ldots , e_m$ 均有 $ P_U v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_m \rangle e_m$.
 \end{enumerate}
-其中由 \ref*{item:23:正交投影的性质:7} 我们知道正交投影存在一种矩阵表示是幂等的，且进一步可以证明在实空间上则是对称幂等的，这一性质在卡方分布中有着运用，此处仅仅介绍一下.
+其中由 \ref*{item:23:正交投影性质:7} 我们知道正交投影存在一种矩阵表示是幂等的，且进一步可以证明在实空间上则是对称幂等的，这一性质在卡方分布中有着运用，此处仅仅介绍一下.
 
 \begin{example}
     设 $ U $ 是实内积空间 $ V $ 的一个有限维子空间. 证明：正交投影 $ P_U $ 具有以下性质：
@@ -409,18 +419,17 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
         \end{aligned} \end{cases} \]
 中，方程个数 $ m $ 大于未知数个数 $ n $，该线性方程组可能无解. 于是我们的目标转为寻找一组数 $ c_1, \ldots , c_n $，使得
 \begin{align*}
-                    & \sum_{ i = 1 }^{m} (a_{i1}c_1 + \cdots + a_{in}c_n - b_i )^{2}                                                      \\
-    \leqslant \quad & \sum _{ i = 1 }^{m} (a_{i1}k_1 + \cdots  + a_{in}k_n - b_i )^{2}, \enspace \forall k_1, \ldots , k_n \in \mathbf{R}
+                    & \sum_{ i = 1 }^{m} (a_{i1}c_1 + \cdots + a_{in}c_n - b_i )^{2}                                                    \\
+    \leqslant \quad & \sum_{ i = 1 }^{m} (a_{i1}k_1 + \cdots + a_{in}k_n - b_i )^{2}, \enspace \forall k_1, \ldots , k_n \in \mathbf{R}
 \end{align*}
 此时我们把 $ (c_1, \ldots , c_n)^{\mathrm{T}} $ 称为该线性方程组的最小二乘解.
 
 鉴于上式两侧平方和的形式类似于欧几里得空间 $ \mathbf{R}^{m} $ 下范数的平方，该问题可被转化为一个极小化问题. 该向量的第 $ i $ 个分量为
 \[a_{i1}c_1 + \cdots  + a_{in}c_n - b_i, \enspace i = 1, \ldots , m\]
 将线性方程组的系数矩阵记为 $ \mathbf{A} $，其列向量组记为 $ \vec{\alpha} _1 , \ldots , \vec{\alpha} _n $，行向量组记为 $ \vec{\gamma} _1 , \ldots , \vec{\gamma} _m $. 令
-\[ \vec{x} = (k_1, \ldots , k_n)^{\mathrm{T}}, \enspace \vec{\beta} = (b_1, \ldots , b_n)^{\mathrm{T}}, \enspace\vec{\alpha} = (c_1, \ldots , c_n)^{\mathrm{T}}\]
+\[ \vec{x} = (k_1, \ldots , k_n)^{\mathrm{T}}, \enspace \vec{\beta} = (b_1, \ldots , b_n)^{\mathrm{T}}, \enspace \vec{\alpha} = (c_1, \ldots , c_n)^{\mathrm{T}}\]
 将分量形式合写为
-\[
-    \begin{pmatrix}
+\[ \begin{pmatrix}
         \vec{\gamma} _1\vec{\alpha} - b_1 \\
         \vec{\gamma} _2\vec{\alpha} - b_2 \\
         \vdots                            \\
@@ -440,25 +449,24 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
         \vdots \\
         b_m    \\
     \end{pmatrix}
-    = \mathbf{A}\vec{\alpha} - \vec{\beta}
-\]
+    = \mathbf{A}\vec{\alpha} - \vec{\beta} \]
 
 设 $ U = \spa(\vec{\alpha} _1 , \ldots , \vec{\alpha} _n)$，易知 $ \mathbf{A}\vec{\alpha} \in U , \enspace \mathbf{A}\vec{x} \in U , \enspace \forall k_1, \ldots , k_n \in \mathbf{R}$
 
 从而条件转化为
 \begin{align*}
-               & \lVert \mathbf{A}\vec{\alpha} - \vec{\beta} \rVert^{2} \leqslant \lVert \mathbf{A}\vec{x} - \vec{\beta} \rVert^{2},\enspace \vec{x} \in \mathbf{R}^{n} \\
-    \iff \quad & P_U \vec{\beta} = \mathbf{A}\vec{\alpha}                                                                                                               \\
-    \iff \quad & \vec{\beta} - \mathbf{A}\vec{\alpha} \in U^{\perp}                                                                                                     \\
-    \iff \quad & \langle \vec{\beta} - \mathbf{A}\vec{\alpha}, \vec{\alpha} _j \rangle = 0, \enspace j = 1, \ldots , n                                                  \\
-    \iff \quad & {\vec{\alpha} _j}^{\mathrm{T}}(\vec{\beta} - \mathbf{A}\vec{\alpha}) = 0, \enspace j = 1, \ldots , n                                                   \\
-    \iff \quad & \mathbf{A}^{\mathrm{T}}(\vec{\beta} - \mathbf{A}\vec{\alpha}) = \vec{0}                                                                                \\
+               & \lVert \mathbf{A}\vec{\alpha} - \vec{\beta} \rVert^{2} \leqslant \lVert \mathbf{A}\vec{x} - \vec{\beta} \rVert^{2}, \enspace \vec{x} \in \mathbf{R}^{n} \\
+    \iff \quad & P_U \vec{\beta} = \mathbf{A}\vec{\alpha}                                                                                                                \\
+    \iff \quad & \vec{\beta} - \mathbf{A}\vec{\alpha} \in U^{\perp}                                                                                                      \\
+    \iff \quad & \langle \vec{\beta} - \mathbf{A}\vec{\alpha}, \vec{\alpha} _j \rangle = 0, \enspace j = 1, \ldots , n                                                   \\
+    \iff \quad & {\vec{\alpha} _j}^{\mathrm{T}}(\vec{\beta} - \mathbf{A}\vec{\alpha}) = 0, \enspace j = 1, \ldots , n                                                    \\
+    \iff \quad & \mathbf{A}^{\mathrm{T}}(\vec{\beta} - \mathbf{A}\vec{\alpha}) = \vec{0}                                                                                 \\
     \iff \quad & \mathbf{A}^{\mathrm{T}}\mathbf{A}\vec{\alpha} = \mathbf{A}^{\mathrm{T}}\vec{\beta}
 \end{align*}
 
 由于
 \begin{gather*}
-    r(\mathbf{A}^{\mathrm{T}}\mathbf{A}, \mathbf{A}^{\mathrm{T}}\vec{\beta}) = r (\mathbf{A}^{\mathrm{T}}(\mathbf{A}, \vec{\beta})) \leqslant r(\mathbf{A}^{\mathrm{T}}) = r(\mathbf{A}^{\mathrm{T}}\mathbf{A}) \\
+    r(\mathbf{A}^{\mathrm{T}}\mathbf{A}, \mathbf{A}^{\mathrm{T}}\vec{\beta})= r (\mathbf{A}^{\mathrm{T}}(\mathbf{A}, \vec{\beta})) \leqslant r(\mathbf{A}^{\mathrm{T}}) = r(\mathbf{A}^{\mathrm{T}}\mathbf{A}) \\
     r(\mathbf{A}^{\mathrm{T}}\mathbf{A}, \mathbf{A}^{\mathrm{T}}\vec{\beta}) \geqslant r(\mathbf{A}^{\mathrm{T}}\mathbf{A})
 \end{gather*}
 
@@ -486,7 +494,9 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 设 $ (e_1, \ldots , e_m) $ 是复内积空间 $ V $ 的一个标准正交组，证明：$ \forall v \in V $，均有
+          \[ \sum_{j = 1}^{m} \lvert \langle v, e_j \rangle \rvert^2 \leqslant \lVert v \rVert^2, \]
+          等号成立当且仅当 $ v = \displaystyle\sum_{j = 1}^{m} \langle v, e_j \rangle e_j $. 这个不等式被称为 Bessel 不等式.
 \end{enumerate}
 
 \centerline{\heiti C组}

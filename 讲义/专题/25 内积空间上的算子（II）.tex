@@ -1,5 +1,7 @@
 \chapter{内积空间上的算子（II）}
 
+前面我们对正规算子和自伴算子做了相当充分的工作，从这章开始我们准备对一般的算子做些工作.
+
 \section{正交矩阵和酉矩阵}
 
 本节我们将唤醒一些沉睡的记忆，如果你已经忘了过渡矩阵或矩阵的相似，可以移步到前面的章节再回顾一下. 如果你还在这的话，那么坐稳，我们马上开始.
@@ -41,10 +43,7 @@
     \[ f_i = \sum_{j = 1}^{n} a_{ji}e_j , \enspace f_k = \sum_{j = 1}^{n} a_{jk}e_j. \]
 
     对两者做内积，有
-    \[
-        \langle f_i, f_k \rangle = \left\langle \sum_{j = 1}^{n} a_{ji}e_j, \sum_{j = 1}^{n} a_{jk}e_j \right\rangle
-        = \sum_{j = 1}^{n} a_{ji}\overline{a_{jk}}
-    \]
+    \[ \langle f_i, f_k \rangle = \left\langle \sum_{j = 1}^{n} a_{ji}e_j, \sum_{j = 1}^{n} a_{jk}e_j \right\rangle = \sum_{j = 1}^{n} a_{ji}\overline{a_{jk}} \]
 
     注意到 $ a_{ji},\enspace j = 1, \ldots , n $ 是 $ A^{\mathrm{T}} $ 的第 $ i $ 行的元素，$ \overline{a_{jk}},\enspace j = 1, \ldots , n $ 是 $ \overline{A} $ 的第 $ k $ 列的元素.
 
@@ -60,7 +59,6 @@
     由此可知 $ B = E $， $ \overline{B} = \overline{A}^{\mathrm{T}} A = \overline{E} = E $，即 $ A $ 是酉矩阵.
 
     充分性：将必要性证明推理过程倒写即可.
-
 \end{proof}
 
 如果这条定理中的 $ e_1, e_2, \ldots , e_n $ 取为该空间的自然基，就会有 $ (f_1, f_2, \ldots , f_n) = A $，我们便可以不太严谨地得到如下的这个结论
@@ -71,9 +69,7 @@
 
 证明是平凡的，就交给你自己验证了.
 
-那提到了过渡矩阵，我们也就不得不提与之息息相关的一个等价关系——相似了. 相信你已经回忆起来，相似实际上是同一个算子在不同基下的矩阵表示之间的关系，实现这个变化正是依赖于两组基之间的过渡矩阵，那么在内积空间上，我们最想看的就是一个算子在标准正交基下的矩阵表示形式能简化成什么样子，这就是内积空间上算子表示的主线.
-
-在此之前，让我们定义两个特殊一点的相似关系：
+那提到了过渡矩阵，我们也就不得不提与之息息相关的一个等价关系——相似了. 相信你已经回忆起来，相似实际上是同一个算子在不同基下的矩阵表示之间的关系，实现这个变化正是依赖于两组基之间的过渡矩阵. 而我们的主线正是依靠基变换实现的，只不过我们现在用的都是标准正交基，在基变换上也要有所升级. 所以，让我们先定义两个特殊一点的相似关系：
 
 \begin{definition}
     \begin{enumerate}
@@ -83,19 +79,11 @@
     \end{enumerate}
 \end{definition}
 
-有了两个相似关系，我们就可以开始我们简化算子在标准正交基上的矩阵表示的第一步了.
-
-\begin{theorem}[\keyterm{Schur 定理}]
-    设 $ V $ 是有限维的复内积空间，且 $ T \in \mathcal{L}(V) $，则 $ T $ 关于 $ V $ 的某个标准正交基具有上三角矩阵.
-\end{theorem}
-
-证明并不复杂，只需要结合\autoref{thm:20:上三角矩阵存在} 和 Gram-Schmidt 过程即可.
+它俩的特殊之处你可能一下子没看出来，不过没关系，我们可以先回到它们对应的算子上去看看.
 
 \subsection{等距同构}
 
-虽然我们成功定义了正交矩阵和酉矩阵，但这个定义总感觉怪怪的？它仅仅描述了满足如此性质的矩阵是正交矩阵和酉矩阵，但似乎并没有触及到更深层、更本质的事物，这显然是不能让我们满意的. 因此，我们决定回到与之对应的算子上去看一看.
-
-那么由之前一章，我们知道，算子与其伴随在同一组基下的矩阵表示是互为共轭对称的，所以设对应的算子是 $ S $，则其应该满足 $ S^*S = I $. 那么这个性质能将我们导向何处呢？
+由之前一章，我们知道，算子与其伴随在同一组标准正交基下的矩阵表示是互为共轭对称的，所以设对应的算子是 $ S $，则其应该满足 $ S^*S = I $. 那么这个性质能将我们导向何处呢？
 
 考虑两侧同时作用向量 $ u $，再与 向量 $ v $ 做内积，那么我们得到了如下的式子：
 \[ \langle S^*Su, v \rangle = \langle u, v \rangle. \]
@@ -112,11 +100,229 @@
 注意我们这里虽然使用了共轭对称，但是从伴随的角度上来说复内积空间和实内积空间其实是一样的，也就是说等距同构的概念在这两类空间上是一致的，只不过刻画上会有所差距，之后会有所介绍. 此外，也常称实内积空间上的等距同构为正交算子，复内积空间上的等距同构称为酉算子.
 
 让我们看道简单的例题加深一下对等距同构的印象.
-\begin{example}
+\begin{example} \label{ex:25:等距同构}
     设 $ \lambda_1, \ldots , \lambda_n $ 都是模为 1 的标量，$ e_1, \ldots , e_n $ 是 $ V $ 的标准正交基，$ S \in \mathcal{L}(V) $满足 $ Se_j = \lambda_je_j $，证明 $ S $ 是等距同构.
 \end{example}
 
+然后来介绍一下等距同构的等价条件，虽然很多，但大部分都是我们刚才推理过程中已经得到的结果.
+
+\begin{theorem}
+    设 $ S \in \mathcal{L}(V) $ ，则以下条件等价：
+    \begin{enumerate}
+        \item $ S $ 是等距同构；
+
+        \item 对所有 $ u, v \in V $ 均有 $ \langle Su, Sv \rangle = \langle u, v \rangle $；
+
+        \item 对 $ V $ 中的任意标准正交向量组 $ e_1, \ldots , e_m $ 均有 $ Se_1, \ldots , Se_m $ 是标准正交的；
+
+        \item $ V $ 有规范正交基 $ e_1, \ldots ,e_n $ 使得 $ Se_1, \ldots , Se_n $ 是标准正交基；
+
+        \item $ SS^* = S^*S = I $；
+
+        \item $ S^* $ 是等距同构；
+
+        \item $ S $ 是可逆的且 $ S^{-1} = S^* $.
+    \end{enumerate}
+\end{theorem}
+
+证明大部分都在上面的过程中证明过了，剩下的请大家自行验证.
+
+我们关注第 3 个条件，即等距同构将标准正交组映射成标准正交组. 那么其对应的矩阵，即酉矩阵或正交矩阵也保有这样的性质，在基变换时它们能将标准正交基仍然变换成标准正交基，这正是我们所希望看到的，也就是酉相似（正交相似）的特殊之处.
+
+这样我们就可以用酉相似和正交相似对谱定理进行矩阵语言的刻画.
+
+\begin{theorem}
+    \begin{enumerate}
+        \item 复方阵 $ A $ 酉相似于对角矩阵的充要条件是 $ A $ 是正规矩阵；
+
+        \item 实方阵 $ A $ 正交相似于对角矩阵的充要条件是 $ A $ 是实对称矩阵.
+    \end{enumerate}
+\end{theorem}
+
+继续关注第 5 个条件，很容易的就会发现，等距同构其实也是正规算子，那么其相较于正规算子又有什么加强呢？在复内积空间下，结合\autoref{ex:25:等距同构}，就会有下面这个优美的等价条件.
+
+\begin{theorem}
+    设 $ V $ 是复内积空间，$ S \in \mathcal{L}(V) $. 则以下条件等价：
+    \begin{enumerate}
+        \item $ S $ 是等距同构
+
+        \item $ V $ 有一个由 $ S $ 的特征向量构成的标准正交基，相应的特征值的绝对值均为 1.
+    \end{enumerate}
+\end{theorem}
+
+几何意义其实是相当直观的，所有绝对值为 1 的复数作用在模为 1 的向量上都不会改变其模，而只是进行对称与旋转（事实上旋转也可以表为对称，之后会有所介绍）. 这在几何上的运用是相当广泛的.
+
 \section{正定矩阵}
+
+在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定（definite Matrix），正定（positive definite）还是负定（negative definite）还是半正定（positive semidefinite）还是半负定（negative semidefinite）.
+
+有定可以被解释为无论这个非零向量是怎样的，其经过某种规定运算得到的数的符号是确定的. 正定矩阵自然就是指任何非零向量经某种运算后得到的实数一定是正的. 但这所谓的``某种运算''在不同的数域下仍然有差异.
+
+\begin{definition}[\keyterm{正定矩阵}]
+    \begin{enumerate}
+        \item 实数域：对 $ n $ 阶实对称矩阵 $ M $，若对于所有非零实系数向量 $ z $，均有$ z^{T}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵；
+
+        \item 复数域：对 $ n $ 阶 Hermite 矩阵 $ M $，若对于所有非零向量 $ z $，$ z^{H}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵.
+    \end{enumerate}
+\end{definition}
+
+复数域上的定义合理性是由``对于 Hermite 矩阵 $ M $，$ z^{H}Mz $ 必为实数''保证的.
+
+由实数域上的正定矩阵的定义，我们可以发现其与二次型的相关性，我们也可以利用从二次型中所学来判定实正定矩阵.
+
+\begin{theorem}
+    设 $ A $ 为 $ n $ 阶实对称矩阵，则以下条件等价：
+    \begin{enumerate}
+        \item $ A $ 是正定矩阵；
+
+        \item $ A $ 的正惯性指数为 $ n $，即 $ A \simeq E $；
+
+        \item 存在可逆矩阵 $ P $，使得 $ A = P^{T}P $；
+
+        \item $ A $ 的 $ n $ 个特征值 $ \lambda_1, \lambda_2, \ldots, \lambda_n $ 均为正.
+    \end{enumerate}
+\end{theorem}
+
+对应的复数域版本相信大家也很容易就能够联想得到，只需要将转置变为共轭转置即可.
+
+以下是一些更深层次地判别矩阵是否正定的条件，同时它们也是正定矩阵的一些重要的性质.
+
+\begin{theorem}
+    $ A $ 是 $ n $ 阶的 Hermite 矩阵. 以下条件等价.
+    \begin{enumerate}
+        \item $ A $ 是正定矩阵；
+
+        \item 双线性函数 $ \langle x, y \rangle = x^{H}Ay $定义了一个 $ \mathcal{C}^{n} $ 上的一个内积. 事实上， $ \mathcal{C}^{n} $ 所有内积都可视作由某个正定矩阵以此方式得到；
+
+        \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathcal{C}^{k} $ 构成的
+              Gram 矩阵. 即 $ A = B^{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且这种分解方式不唯一.
+
+        \item \keyterm{Cholesky decomposition} 存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^{H} $
+
+        \item \keyterm{Sylvester's criterion} $ A $ 的所有顺序主子式均为正. （但对于半正定矩阵而言，顺序主子式非负不能推出矩阵半正定）
+    \end{enumerate}
+\end{theorem}
+
+像 2 就道出了正定矩阵和内积之间的关系，3 和 4 给出了正定矩阵的一些分解方式.
+
+现在让我们跳开去，先去看看算子上的事情，不过出于更实用的原因，我们研究半正定矩阵对应的算子.
+
+\begin{definition}
+    \keyterm{正算子}
+    设算子 $ T \in \mathcal{L}(V) $，如果 $ T $ 是自伴的且 $ \forall v \in V $均有 $ \langle Tv, v \rangle \geqslant 0 $.
+\end{definition}
+
+如果 $ V $ 是复向量空间，则 $ T $ 自伴的条件可以从定义中去除.
+
+但对于正算子的定义似乎和对于半正定矩阵的定义方向完全不同，前者依托内积，后者则是依托二次型. 不过，若是你还记得我们曾经提到过内积本身是一种正定齐次双线性函数，以及二次型可以通过双线性函数引入，就可以捕获这其中的相关之处. 我们接下来进行推导.
+
+\begin{proof}
+    设 $ V $ 的一组标准正交基为 $ e = (e_1, e_2, \ldots, e_n) $，任取向量 $ \alpha \in V $，设其在 $ e $ 下的坐标为 $ x = (x_1, x_2, \ldots, x_n)^{T} $. 设正算子 $ T \in \mathcal{L}(V) $在 $ e $ 下的矩阵为 $ A = (a_{ij})_{n \times n}$，则
+    \begin{align*}
+        \langle Tv, v \rangle
+         & = \langle Tex, ex \rangle = \langle eAx, ex \rangle                                                                                       \\
+         & = \left\langle (e_1, e_2, \ldots ,e_n)
+        \begin{pmatrix}
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \ldots & a_{nn}
+        \end{pmatrix}
+        \begin{pmatrix}
+            x_1    \\
+            x_2    \\
+            \vdots \\
+            x_n
+        \end{pmatrix} ,(e_1, e_2, \ldots ,e_n)
+        \begin{pmatrix}
+            x_1    \\
+            x_2    \\
+            \vdots \\
+            x_n
+        \end{pmatrix} \right\rangle                                                                                                                  \\
+         & = \langle \sum_{i = 1}^{n}e_{i}\sum_{j = 1}^{n}a_{ij}x_{j}, \sum_{i = 1}^{n}x_{i}e_{i} \rangle
+        = \overline{x_1}\sum_{j = 1}^{n}a_{1j}x_{j} + \overline{x_2}\sum_{j = 1}^{n}a_{2j}x_{j} + \cdots + \overline{x_n}\sum_{j = 1}^{n}a_{nj}x_{j} \\
+         & = (\overline{x_1}, \overline{x_2}, \ldots, \overline{x_n})
+        \begin{pmatrix}
+            \sum\limits_{j = 1}^{n}a_{1j}x_{j} \\
+            \sum\limits_{j = 1}^{n}a_{2j}x_{j} \\
+            \vdots                             \\
+            \sum\limits_{j = 1}^{n}a_{nj}x_{j}
+        \end{pmatrix}
+        = x^{H}Ax.
+    \end{align*}
+
+    此对应复内积空间的情形，实内积空间的情形也就显然了.
+\end{proof}
+
+我们定义出的正算子虽然名为正算子，但我们类比的时候它其实是类似于非负数，非负数很重要的一种运算就是开方运算. 类似的，我们也可以定义算子的平方根.
+
+\begin{definition}[\keyterm{平方根}]
+    算子 $ R $ 被称为算子 $ T $ 的平方根，如果 $ R^{2} = T $.
+\end{definition}
+
+以下是正算子的刻画.
+
+\begin{theorem}
+    设 $ T \in \mathcal{L}(V) $. 则以下条件等价.
+    \begin{enumerate}
+        \item \label{item:25:正算子刻画:1}
+              $ T $ 是正的；
+
+        \item \label{item:25:正算子刻画:2}
+              $ T $ 是自伴的且 $ T $ 的所有特征值非负；
+
+        \item \label{item:25:正算子刻画:3}
+              $ T $ 有正的平方根；
+
+        \item \label{item:25:正算子刻画:4}
+              $ T $ 有自伴的平方根；
+
+        \item \label{item:25:正算子刻画:5}
+              存在算子 $ R \in \mathcal{L}(V) $ 使得 $ T = R^{*}R $.
+    \end{enumerate}
+\end{theorem}
+
+从这里我们进一步加深类比. \ref*{item:25:正算子刻画:3} 就相当于复数非负当且仅当其有非负的平方根，\ref*{item:25:正算子刻画:4} 就相当于复数非负当且仅当其有实的平方根，\ref*{item:25:正算子刻画:5} 就相当于复数 $ z $ 非负当且仅当存在复数 $ w $ 使得 $ z = \overline{w}w $.
+
+每个非负数都有唯一的非负平方根，下面这个定理表明正算子也具有类似的性质.
+
+\begin{theorem}
+    $ V $ 上每个正算子都有唯一的正平方根.
+\end{theorem}
+
+这个涉及到唯一性的证明. 在我们最初学习线性代数的时候应该就涉及到了，如果线性映射在线性空间的一组基下的对应的像是确定的，则该线性映射是被唯一确定的. 而在内积空间上，我们倾向选用标准正交基，正算子以及其正平方根又是自伴的，所以证明借助了谱定理.
+
+\begin{proof}
+    设 $ T \in \mathcal{L}(V) $ 是正的，$ v \in V $ 是 $ T $ 的一个特征向量，则有 $ \lambda \geqslant 0 $ 使得 $ Tv = \lambda v $.
+
+    设 $ R $ 是 $ T $ 的正平方根，我们只需要证明 $ Rv = \sqrt{\lambda} v $，因为这样就代表 $ R $ 在 $ T $ 的特征向量上是唯一确定的，而 $ T $ 是自伴的，$ V $ 上肯定有一组以 $ T $ 的特征向量构成的标准正交基，从而唯一确定 $ R $.
+
+    设 $ V $ 上有一组以 $ R $ 的特征向量构成的标准正交基 $ e_1, \ldots , e_n $. $ R $ 是正算子，所以其特征值均非负，即存在非负数 $\lambda_1, \ldots , \lambda_n $使得对每个 $ j = 1, \ldots , n $ 均有 $ Re_j = \sqrt{\lambda_j}e_j $.
+
+    因为 $ e_1, \ldots , e_n $ 是 $ V $ 的一组标准正交基，所以有 $ a_1, \ldots , a_n \in \mathbf{F} $使得
+    \[ v = a_1e_1 + \cdots + a_ne_n. \]
+
+    于是
+    \[ Rv = a_1\sqrt{\lambda_1}e_1 + \cdots + a_n\sqrt{\lambda_n}e_n. \]
+
+    从而
+    \[ Rv = a_1\lambda_1e_1 + \cdots + a_n\lambda_ne_n. \]
+
+    又 $ R^{2} = T $ 且 $ Tv = \lambda v $，所以有
+    \[ a_1\lambda e_1 + \cdots + a_n\lambda e_n = a_1\lambda_1e_1 + \cdots + a_n\lambda_ne_n \]
+    上式意味着对 $ j = 1, \ldots, n $ 有 $ a_j(\lambda - \lambda_j) = 0 $. 所以
+    \[ v = \sum_{\{j \mid \lambda_j = \lambda \}} a_je_j \]
+
+    所以
+    \[ Rv = \sum_{\{j \mid \lambda_j = \lambda \}} a_j\sqrt{\lambda}e_j = \sqrt{\lambda}v. \]
+
+    命题得证.
+\end{proof}
+
+我们将正算子 $ T $ 的唯一正平方根记作 $ \sqrt{T} $.
+
+另外，虽然正算子与非负数相似之处很多，但也有差异. 比如正算子是可以有无穷多个平方根的，但非负数最多只能有两个.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
@@ -133,7 +339,9 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 证明：上三角的酉矩阵必为对角矩阵.
+
+    \item 证明：任一 $ n $ 级可逆复矩阵 $ A $ 一定可以被唯一分解成 $ A = PB $，其中 $ P $ 是 $ n $ 级酉矩阵，$ B $ 是主对角元均为正实数的 $ n $ 级上三角矩阵.
 \end{enumerate}
 
 \centerline{\heiti B组}
