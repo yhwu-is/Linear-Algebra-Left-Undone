@@ -1,0 +1,11 @@
+{
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "files.eol": "\n"
+}

@@ -1,0 +1,8 @@
+# latexindent.pl config file
+
+defaultIndent: '    '
+
+modifyLineBreaks:
+  textWrapOptions:
+    columns: -1
+    multipleSpacesToSingle: 1
