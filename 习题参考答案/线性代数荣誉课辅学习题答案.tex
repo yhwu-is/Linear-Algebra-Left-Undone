@@ -33,6 +33,9 @@
 \usetikzlibrary{cd, arrows, arrows.meta, calc, intersections, decorations.pathreplacing, patterns, decorations.markings}
 \pgfplotsset{compat=1.17}
 
+\usepackage{titlesec}
+\titleformat{\section}{\centering\Large\bfseries}{\thesection}{1em}{}
+
 \usepackage{indentfirst}
 \setlength{\parindent}{2em}
 
@@ -149,21 +152,21 @@
 \frontmatter
 
 % 封面，代替 \maketitle
-\includepdf[pages={1}]{./figs/cover.pdf}
+% \includepdf[pages={1}]{./figs/cover.pdf}
 
-\songti
+% \songti
 
-{% 插入空页
-	\null
-	\thispagestyle{empty}
-	\clearpage
-	\thispagestyle{empty}
-	\input{./其它/扉页.tex}
-}
-\clearpage
-\setcounter{page}{1}
-\input{./其它/序.tex}
-\input{./其它/致读者.tex}
+% {% 插入空页
+% 	\null
+% 	\thispagestyle{empty}
+% 	\clearpage
+% 	\thispagestyle{empty}
+% 	\input{./其它/扉页.tex}
+% }
+% \clearpage
+% \setcounter{page}{1}
+% \input{./其它/序.tex}
+% \input{./其它/致读者.tex}
 
 \clearpage
 \pdfbookmark[0]{目录}{contents}
@@ -173,38 +176,37 @@
 
 \mainmatter
 \setcounter{page}{1} % 将页码计数设置为 1
-\input{./专题/1 预备知识.tex}
-\input{./专题/2 线性空间.tex}
-\input{./专题/3 有限维线性空间.tex}
-\input{./专题/4 线性空间的运算.tex}
-\input{./专题/5 线性映射.tex}
-\input{./专题/6 线性映射基本定理.tex}
-\input{./专题/7 线性映射矩阵表示（I）.tex}
-\input{./专题/8 线性映射矩阵表示（II）.tex}
-\input{./专题/9 线性映射矩阵表示（III）.tex}
-\input{./专题/10 矩阵运算进阶（I）.tex}
-\input{./专题/11 矩阵的秩.tex}
-\input{./专题/12 矩阵运算进阶（II）.tex}
-\input{./专题/13 行列式（I）.tex}
-\input{./专题/14 行列式计算进阶.tex}
-\input{./专题/15 朝花夕拾.tex}
-\input{./专题/16 史海拾遗.tex}
-\input{./专题/17 多项式.tex}
-\input{./专题/18 不变子空间.tex}
-\input{./专题/19 相似标准形（I）.tex}
-\input{./专题/20 相似标准形（II）.tex}
-\input{./专题/21 多项式的进一步讨论.tex}
-\input{./专题/22 若当标准形.tex}
-\input{./专题/23 内积空间.tex}
-\input{./专题/24 内积空间上的算子（I）.tex}
-\input{./专题/25 内积空间上的算子（II）.tex}
-\input{./专题/26 二次型.tex}
-\input{./专题/27 极分解与奇异值分解.tex}
-\input{./专题/28 实空间上的算子.tex}
-\input{./专题/29 行列式（II）.tex}
-\input{./专题/30 线性代数与解析几何基础.tex}
-\input{./专题/31 线性代数与多元微积分.tex}
-\input{./专题/32 线性代数与统计学.tex}
+% 线代I期中/练习
+\input{./历年卷/2020-2021-1extzy1.tex}
+\input{./历年卷/2020-2021-1extzy2.tex}
+\input{./历年卷/2020-2021-1midwzx.tex}
+\input{./历年卷/2021-2022-1exlks.tex}
+\input{./历年卷/2021-2022-1midwzx.tex}
+\input{./历年卷/2022-2023-1midlks.tex}
+\input{./历年卷/2022-2023-1midtzy.tex}
+\input{./历年卷/2022-2023-1midwzx.tex}
+
+% 线代I期末
+\input{./历年卷/2009-2010-1final.tex}
+\input{./历年卷/2010-2011-1final.tex}
+\input{./历年卷/2011-2012-1final.tex}
+\input{./历年卷/2012-2013-1final.tex}
+\input{./历年卷/2013-2014-1final.tex}
+\input{./历年卷/2014-2015-1final.tex}
+\input{./历年卷/2018-2019-1final.tex}
+\input{./历年卷/2019-2020-1final.tex}
+\input{./历年卷/2021-2022-1final.tex}
+\input{./历年卷/2022-2023-1final.tex}
+
+% 线代II期中/练习
+\input{./历年卷/2020-2021-2midlks.tex}
+\input{./历年卷/2020-2021-2midtzy.tex}
+\input{./历年卷/2022-2023-2midlks.tex}
+\input{./历年卷/2022-2023-2midwzx.tex}
+
+% 线代II期末
+\input{./历年卷/2022-2023-2finalex.tex}
+\input{./历年卷/2022-2023-2final.tex}
 
 \backmatter
 \pdfbookmark[0]{索引}{index}
