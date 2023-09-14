@@ -1,4 +1,48 @@
 \section*{2022-2023学年线性代数II（H）期末}
 \addcontentsline{toc}{section}{2022-2023学年线性代数II（H）期末}
 
+\begin{center}
+    任课老师：统一命卷\hspace{4em} 考试时长：120分钟
+\end{center}
+
+\begin{enumerate}
+	\item[一、]（15分）已知 $ T \in \mathcal{L}(\mathbf{C}^3) $，其对应矩阵为
+    \[ A = \begin{pmatrix} 0 & 0 & 0 \\ 2023 & 0 & 0 \\ 6 & 28 & 0 \end{pmatrix} \]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 $A$ 的 Jordan 标准形（不必求 Jordan 基）;
+        \item 证明不存在复矩阵 $B$ 使得 $B^2 = A$.
+    \end{enumerate}
+	\item[二、]（15分）已知直线 $ L_1 = \begin{cases} x + y + z - 1 = 0 \\ x - 2y + 2 = 0 \end{cases} $，$ L_2 = \begin{cases} x = 2t \\ y = t + a \\ z = bt + 1 \end{cases} $，试确定 $ a $，$ b $ 满足的条件使得 $ L_1 $，$ L_2 $ 是：
+	\begin{enumerate}[label=(\arabic*)]
+        \item 平行直线;
+        \item 异面直线.
+    \end{enumerate}
+	\item[三、]（18分）定义在 $ V = \mathbf{R}^3 $ 上的运算
+    \[ \langle \boldsymbol{x}, \boldsymbol{y} \rangle_V = x_1 y_1 + x_2 y_2 + (x_2 + x_3)(y_2 + y_3) \]
+    其中 $ \boldsymbol{x} = (x_1, x_2, x_3) $，$ \boldsymbol{y} = (y_1, y_2, y_3) $.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 验证 $ \langle \cdot, \cdot \rangle_V $ 是 $ \mathbf{R}^3 $ 上的一个内积;
+        \item 求 $ \mathbf{R}^3 $ 在 $ \langle \cdot, \cdot \rangle_V $ 下的一组标准正交基;
+        \item 求 $ \boldsymbol{\beta} \in V $ 使得 $ \forall \boldsymbol{x} \in V: x_1 + 2x_2 = \langle \boldsymbol{x}, \boldsymbol{\beta} \rangle_V $.
+    \end{enumerate}
+	\item[四、]（15分）$ T \in \mathcal{L}(V) $ 在一组基 $ \boldsymbol{\varepsilon} = (\varepsilon_1, \varepsilon_2, \varepsilon_3) $ 下的矩阵为
+    \[ T(\boldsymbol{\varepsilon}) = (\boldsymbol{\varepsilon}) \begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{pmatrix} \]
+    求 $ V $ 所有的 $ T $-不变子空间.
+	\item[五、]（20分）试给出下列命题的真伪. 若命题为真，请给出简要证明；若命题为假，请举出反例.
+	\begin{enumerate}[label=(\arabic*)]
+        \item $ T \in \mathcal{L}(V) $. 若子空间 $ W \in V $ 在 $ T $ 下不变，则其补空间 $ W' $ 在 $ T $ 下也不变;
+        \item 定义 $ T \in \mathcal{L}(V, W) : Tv = \langle v, \alpha \rangle \beta,\ \beta \in W $ 对 $ \forall v \in V $ 成立，则 $ T^* w = \langle w, \beta \rangle \alpha,\ \alpha \in V $ 对 $ \forall w \in W $ 成立;
+        \item $ T \in \mathcal{L}(V) $ 是非幂零算子，满足 $ \operatorname{null} T^{n - 1} \neq \operatorname{null} T^{n - 2} $. 则其极小多项式为
+        \[ m(\lambda) = \lambda^{n-1}(\lambda - a) \qquad 0 \neq a \in \mathbf{R} \]
+        \item $ A \in \mathbf{R}^{n \times n} $. $ S_1 = A^{\mathrm{T}} + A $，$ S_2 = A^{\mathrm{T}} - A $. 则 $ A $ 是正规矩阵当且仅当 $ S_1 S_2 = S_2 S_1 $.
+        \item $ A \in \mathbf{C}^{n \times n} $ 是正规矩阵，则 $ A $ 的实部矩阵和虚部矩阵是对称矩阵.
+    \end{enumerate}
+	\item[六、]（15分）$ T \in \mathcal{L}(V) $. 有极分解 $ T = S \sqrt{G} $，其中 $ S $ 是等距同构，$ G = T^* T $. 证明以下条件等价：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $ T $ 是正规算子;
+        \item $ GS = SG $;
+        \item $ G $ 的所有特征空间 $ E(\lambda, G) $ 都是 $ S $-不变的.
+    \end{enumerate}
+\end{enumerate}
+
 \newpage
