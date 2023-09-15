@@ -6,20 +6,57 @@
 \end{center}
 
 \begin{enumerate}
-	\item[一、]（10分）
-	\item[二、]（10分）
-	\item[三、]（10分）
-	\item[四、]（10分）
-	\item[五、]（10分）
-	\item[六、]（10分）
-	\item[七、]（10分）
-    \item[八、]（10分）
+	\item[一、]（10分）讨论当$a$取何值时，下列方程组有解？无解？
+	\[\begin{cases}
+        x_1+x_2+x_3+x_4+x_5=1 \\
+        3x_1+2x_2+x_3+x_4-3x_5=a \\
+        x_2+2x_3+2x_4+6x_5=3 \\
+        5x_1+4x_2+3x_3+3x_4-x_5=2
+    \end{cases}.\]
+	\item[二、]（10分）证明向量组$\{2\alpha_1+\alpha_2,2\alpha_2+\alpha_3,2\alpha_3+\alpha_1\}$线性无关的充分必要条件是向量组$\{\alpha_1,\alpha_2,\alpha_3\}$线性无关.
+	\item[三、]（10分）已知向量$\alpha_1=(1,2,4,3)^\mathrm{T},\enspace \alpha_2=(1,-1,-6,6)^\mathrm{T},\enspace \alpha_3=(-2,-1,2,-9)^\mathrm{T},\enspace \alpha_4=(1,1,-2,7)^\mathrm{T},\enspace \beta=(4,2,4,a)^\mathrm{T}.$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求子空间$W=\spa(\alpha_1,\alpha_2,\alpha_3,\alpha_4)$的维数和一组基；
+        \item 求$a$的值，使得$\beta\in W$，并求$\beta$在（1）中选取的基下的坐标.
+    \end{enumerate}
+	\item[四、]（10分）设$\{\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4\}$是欧式空间$V$的一组标准正交基，$W=\spa(\alpha_1,\alpha_2,\alpha_3)$，其中$\alpha_1=\varepsilon_1+\varepsilon_2+\varepsilon_3+\varepsilon_4,\alpha_2=3\varepsilon_1+3\varepsilon_2-\varepsilon3-\varepsilon_4,\alpha_3=-2\varepsilon_1+6\varepsilon_3+8\varepsilon_4$.
+	\begin{enumerate}[label=(\arabic*)]
+        \item 求$\alpha_1,\alpha_2$的夹角；
+        \item 求$W$的一组标准正交基.
+    \end{enumerate}
+	\item[五、]（10分）已知$f_1=1-x,f_2=1+x^2,f_3=x+2x^2$是$\mathbf{R}[x]_3$中三个元素，$\sigma$是$\mathbf{R}[x]_3$上的线性变换且满足$\sigma(f_1)=2+x^2,\sigma(f_2)=x,\sigma(f_3)=1+x+x^2$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$f_1,f_2,f_3$构成$\mathbf{R}[x]_3$的一组基；
+
+        \item 求$\sigma$在基$\{f_1,f_2,f_3\}$下的矩阵；
+
+        \item 设$f=1+2x+3x^2$，求$\sigma(f)$.
+    \end{enumerate}
+	\item[六、]（10分）已知$\mathbf{R}^3$的两个线性变换$\sigma,\tau$为
+	\[\sigma(x_1,x_2,x_3)=(x_1+2x_2+3x_3,-x_1+2x_2-x_3,0),\]
+    \[\tau(x_1,x_2,x_3)=(x_2,x_3,0).\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$r(\sigma+\tau)$和$r(\sigma\tau)$；
+        \item 求$\im\sigma+\ker\sigma$.
+    \end{enumerate}
+	\item[七、]（10分）设$M_n(\mathbf{R})$是实数域$\mathbf{R}$上所有$n$阶矩阵组成的集合.设$W=\{A\in M_n(\mathbf{R})\mid a_{ji}=ka_{ij},\enspace i\leqslant j\}$，求当$k=0,1,2$时，$W$的一组基和维数.
+    \item[八、]（10分）设$V$是域$\mathbf{F}$上的$n$维线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_n$是$V$的一组基，且
+    \begin{gather*}
+        V_1=\spa(\alpha_1+2\alpha_2+\cdots+n\alpha_n) \\
+        V_2=\left\{k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n \,\middle|\, k_1+\dfrac{k_2}{2}+\cdots+\dfrac{k_n}{n}=0\right\}
+    \end{gather*}
+    证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $V_2$是$V$的子空间；
+
+        \item $V=V_1\oplus V_2$.
+    \end{enumerate}
 	\item[九、]（20分）判断下列命题的真伪，若它是真命题，请给出简单的证明；若它是伪命题，给出理由或举反例将它否定.
     \begin{enumerate}[label=(\arabic*)]
-        \item
-        \item
-        \item
-        \item
+        \item $\forall n\geqslant 2$，不存在非零实线性映射$f:M_n(\mathbf{R})\to\mathbf{R}$使得$f(AB)=f(A)f(B)$；
+        \item 设$W_1,W_2$是线性空间$V$的两个子空间，$W_1\cup W_2=W_1+W_2$当且仅当$W_1\subseteq W_2$或$W_2\subseteq W_1$；
+        \item 设$\alpha,\beta$是欧式空间$V$中两个线性无关向量，且$\cfrac{2(\alpha,\beta)}{(\alpha,\alpha)}和\cfrac{2(\alpha,\beta)}{(\beta,\beta)}$都是不大于零的整数，则$\alpha$和$\beta$的夹角只可能是$\cfrac{\pi}{2}$，$\cfrac{2\pi}{3}$，$\cfrac{3\pi}{4}$，$\cfrac{5\pi}{6}$；
+        \item $n$是一个大于1的整数，$W=\{(x_1,x_2,\cdots,x_n)\in\mathbf{C}^n\mid x_1^2+x_2^2+\cdots+x_n^2=0\}$是复线性空间$\mathbf{C}^n$的一个子空间.
     \end{enumerate}
 \end{enumerate}
 

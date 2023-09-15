@@ -1,4 +1,53 @@
 \section*{2018-2019学年线性代数I（H）期末}
 \addcontentsline{toc}{section}{2018-2019学年线性代数I（H）期末}
 
+\begin{center}
+    任课老师：统一命卷\hspace{4em} 考试时长：120分钟
+\end{center}
+
+\begin{enumerate}
+	\item[一、]（10分）设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 $4$ 的多项式所构成的线性空间 ( 约定零多项式次数为 $-\infty$ )。$M_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 $2$ 阶方阵所构成的线性空间，定义 $T : \mathbf{R}[x]_4 \to M_2(\mathbf{R})$ 如下，对 $f(x) \in \mathbf{R}[x]_4$，
+    \[T(f(x))=\begin{pmatrix}f(0) & f(1) \\ f(-1) & f(0)\end{pmatrix}.\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求出 $T$ 的核空间 $N(T)$ 和像空间 $R(T)$；
+        \item 验证关于 $T$ 的维数公式.
+    \end{enumerate}
+	\item[二、]（10分）已知矩阵 $A$ 与 $B=\begin{pmatrix}2 & 8 & 6 & 5 \\ 0 & 0 & 3 & 2 \\ 0 & 0 & 1 & 7 \\ 0 & 0 & 0 & 9\end{pmatrix}$ 相似，求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 行列式 $|A^2-9A+4E_4|$ 的值；
+        \item $r(A^*)+r(9E_4-A)$，其中 $A^*$ 是 $A$ 的伴随矩阵.
+    \end{enumerate}
+	\item[三、]（10分）设 $\mathbf{R}^4$ 是 $4$ 维欧氏空间（标准内积），$\alpha=(1,\ 1,\ 1,\ 1),\ \beta=(-1,\ -1,\ 0,\ 2),\ \gamma=(1,\ -1,\ 0,\ 0) \in \mathbf{R}^4$，求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 与 $\alpha,\ \beta,\ \gamma$ 都正交的一个单位向量 $\delta$；
+        \item $||\alpha+\beta+\gamma+\delta||$.
+    \end{enumerate}
+	\item[四、]（10分）设实二次型 $f(x_1,\ x_2,\ x_3)=ax_1^2+2x_2^2-2x_3^2+2bx_1x_3(b > 0)$，二次型对应的矩阵 $A$ 的特征值之和为 $1$，特征值之积为 $-12$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求参数 $a,\ b$；
+        \item 用正交变换将二次型 $f$ 化为标准形，并写出所用的正交变换及标准形；
+        \item 判断此二次型是否是正定二次型.
+    \end{enumerate}
+	\item[五、]（10分）设 $A$ 是数域 $\mathbf{F}$ 上一个秩为 $r$ 的 $n$ 阶方阵，$\beta$ 是一个 $n$ 维非零列向量，$X_0$ 是线性方程组 $AX=\beta$ 的一个解，$X_1,\ \dots,\ X_s$ 是它的导出组 $AX=0$ 的一组线性无关解.
+    \begin{enumerate}
+        \item 证明：向量组 $\{X_0, X_1,\ \dots,\ X_s\}$ 线性无关；
+        \item 求出包含 $AX=\beta$ 解集的最小线性空间 $W$（需写出基和维数）.
+    \end{enumerate}
+	\item[六、]（10分）线性变换 $T : \mathbf{R}^3 \to \mathbf{R}^3$ 的定义是：
+    \[T(x_1,\ x_2,\ x_3)=(4x_1+x_3,\ 2x_1+3x_2+2x_3,\ x_1+4x_3).\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求出 $T$ 的特征多项式及特征值；
+        \item 判断 $T$ 是否可对角化，并给出理由.
+    \end{enumerate}
+	\item[七、]（10分）设 $A \in M_{m \times n}(\mathbf{F})$，$r(A)=r$，$k$ 是满足条件 $r \leq k \leq n$ 的任意整数，证明存在 $n$ 阶方阵 $B$，使得 $AB=0$，且 $r(A)+r(B)=k$.
+    \item[八、]（10分）设 $A$ 是数域 $\mathbf{F}$ 上一个 $n$ 阶方阵，$E$ 是 $n$ 阶单位矩阵，$\alpha_1 \in \mathbf{F}^n$ 是 $A$ 的属于特征值 $\lambda$ 的一个特征向量，向量组 $\alpha_1,\ \alpha_2,\ \dots,\ \alpha_s$ 按如下方式产生：$(A-\lambda E)\alpha_{i+1}=\alpha_i(i=1,\ 2,\ \dots,\ s-1)$。证明向量组 $\{\alpha_1,\ \alpha_2,\ \dots,\ \alpha_s\}$ 线性无关.
+	\item[九、]（20分）判断下列命题的真伪，若它是真命题，请给出简单的证明；若它是伪命题，给出理由或举反例将它否定.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 设 $n$ 阶方阵 $A$ 满足 $A^2-5A+5E_n=0$，则对所有的有理数 $r$，$A+rE_n$ 都是可逆阵；
+        \item 在 $5$ 维欧氏空间 $V$ 中，存在两组线性无关向量 $S_1=\{v_1,\ v_2,\ v_3\}$ 和 $S_2=\{w_1,\ w_2,\ w_3\}$，使其满足内积 $(v_i,\ w_j)=0\ (1 \leq i,\ j \leq 3)$；
+        \item 不存在 $2$ 阶方阵 $A$ 使得 $r(A)+r(A^*)=3$，其中$A^*$ 是 $A$ 的伴随矩阵；
+        \item 设 $n$ 阶方阵 $A$ 的每一行元素之和是 $10$，则 $2A^3+A+9E_n$ 的每一行元素之和是 $2019$.
+    \end{enumerate}
+\end{enumerate}
+
 \newpage
