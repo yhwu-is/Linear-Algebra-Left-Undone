@@ -89,6 +89,64 @@
           \end{proof}
 \end{enumerate}
 
+下面一个例子也是重要的结论，实际上在行列式一讲中已给出类似结论，但我们现在从特征值角度考虑这一结论：
+\begin{example}
+    回答以下两个问题：
+    \begin{enumerate}
+        \item \label{item:18:特征值相同:1}
+              设$A,B$均为$n$阶矩阵，证明：$\lambda\neq 0$是$AB$的特征值，则$\lambda$也是$BA$的特征值；
+
+        \item \label{item:18:特征值相同:2}
+              设$A\in \mathbf{M}_{m\times n}(\mathbf{C}),\enspace B\in \mathbf{M}_{n\times m}(\mathbf{C})$，证明：
+              \[ \begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}\sim\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix} \]
+              并由此推出$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 设$X$是$AB$属于$\lambda$的特征向量，则$ABX=\lambda X$，因此$B(ABX)=B(\lambda X)$，即$(BA)(BX)=\lambda(BX)$，因此$BX$是$BA$属于$\lambda$的特征向量，故$\lambda$也是$BA$的特征值.
+
+        实际上这里还有一点需要说明，就是$BX\neq 0$，否则它将不能作为特征向量.事实上证明是简单的，假设$BX=0$，则$ABX=0$，由于$\lambda\neq 0$，因此必然有$X=0$，但这与$X$是$AB$属于$\lambda$的特征向量矛盾，因此$BX\neq 0$.
+
+        \item 根据分块矩阵初等变换的性质，我们可以通过不断尝试选取到$P=\begin{pmatrix}
+            E_m & A \\ O & E_n
+        \end{pmatrix}$，其逆矩阵为$P^{-1}=\begin{pmatrix}
+            E_m & -A \\ O & E_n
+        \end{pmatrix}$，我们发现恰有
+        \[\begin{pmatrix}
+            E_m & -A \\ O & E_n
+        \end{pmatrix}\begin{pmatrix}
+            AB & O \\ B & O
+        \end{pmatrix}\begin{pmatrix}
+            E_m & A \\ O & E_n
+        \end{pmatrix}=\begin{pmatrix}
+            O & O \\ B & BA
+        \end{pmatrix}.\]
+        因此$\begin{pmatrix}
+            AB & O \\ B & O
+        \end{pmatrix}$与$\begin{pmatrix}
+            O & O \\ B & BA
+        \end{pmatrix}$相似，因此它们的特征多项式相同，即
+        \[\begin{vmatrix}
+            \lambda E_m-AB & O \\ -B & \lambda E_n
+        \end{vmatrix}=\begin{vmatrix}
+            \lambda E_m & O \\ -B & \lambda E_n-BA
+        \end{vmatrix}.\]
+        根据行列式的计算性质$\begin{vmatrix}
+            A & O \\ C & B
+        \end{vmatrix}=|A||B|$，我们有
+        \[|\lambda E_m-AB||\lambda E_n|=|\lambda E_m||\lambda E_n-BA|,\]
+        即$\lambda^n|\lambda E_m-AB|=\lambda^m|\lambda E_n-BA|$，因此$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+    \end{enumerate}
+\end{proof}
+
+不难发现上述例子中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广，因为由\ref*{item:18:特征值相同:2}我们得到了$|\lambda E-AB|=|\lambda E-BA|(\lambda\neq 0)$.
+
 下面这个例子非常重要，在解决一些题目时使用这一结论会更便捷：
 \begin{example}
     （教材定理$4.10$推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
