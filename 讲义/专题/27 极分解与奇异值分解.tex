@@ -1,151 +1,112 @@
 \chapter{极分解与奇异值分解}
 
-让我们稍微复习一下关于算子和数的类比. 自伴算子类似于实数，正算子类似于非负数，
-等距同构类似于模为 1 的复数. 那么我们的野心不止于此，在复数域的时候我们希望使用
-我们已经熟悉的数去描述所有复数. 同理，在算子上我们希望使用我们已经熟悉的算子
-去描述其他一般的算子. 
+让我们稍微复习一下关于算子和数的类比. 自伴算子类似于实数，正算子类似于非负数，等距同构类似于模为 1 的复数. 那么我们的野心不止于此，在复数域的时候我们希望使用我们已经熟悉的数去描述所有复数. 同理，在算子上我们希望使用我们已经熟悉的算子去描述其他一般的算子.
+
+% TODO section
 
 我们还是从数开始出发. 每个非零复数 $ z $ 都可以写成如下形式
-\[
-    z = \left(\frac{z}{\lvert z \rvert}\right)\lvert z \rvert 
-    = \left(\frac{z}{\lvert z \rvert}\right)\sqrt{\overline{z}z}.
-\]
+\[ z = \left(\frac{z}{\lvert z \rvert}\right)\lvert z \rvert = \left(\frac{z}{\lvert z \rvert}\right)\sqrt{\overline{z}z} \]
+其中 $ \dfrac{z}{\lvert z \rvert} $ 是一个单位复数. 那么由此我们可以类比得出一个对 $ V $ 上任意算子的漂亮的描述.
 
-其中 $ \frac{z}{\lvert z \rvert} $ 是一个单位复数. 
-那么由此我们可以类比得出一个对 $ V $ 上任意算子的漂亮的描述. 
-
-\begin{theorem}
-    \keyterm{极分解定理} 设 $ T \in \mathcal{L}(V) $，则存在一个等距同构 $ S \in \mathcal{L}(V) $，
-    使得 $ T = S\sqrt{T^*T} $. 
+\begin{theorem}[\keyterm{极分解定理}]
+    设 $ T \in \mathcal{L}(V) $，则存在一个等距同构 $ S \in \mathcal{L}(V) $，使得 $ T = S\sqrt{T^*T} $.
 \end{theorem}
 
-它之所以叫这个名字就是因为其形式类似于复数极坐标分解. 以下是证明. 
+它之所以叫这个名字就是因为其形式类似于复数极坐标分解. 以下是证明.
 
 \begin{proof}
-    首先 $ \forall T \in \mathcal{L}(V) $，$ T^{*}T $ 都是正算子，
-    所以 $ \sqrt{T^*T} $ 的定义是合理的. 
+    首先 $ \forall T \in \mathcal{L}(V) $，$ T^{*}T $ 都是正算子，所以 $ \sqrt{T^*T} $ 的定义是合理的.
 
     然后 $ \forall v \in V $，有
     \begin{align*}
-        \lVert Tv \rVert^2 = \langle Tv, Tv \rangle & = \langle T^*Tv, v \rangle \\
+        \lVert Tv \rVert^2 = \langle Tv, Tv \rangle & = \langle T^*Tv, v \rangle                   \\
                                                     & = \langle \sqrt{T^*T}\sqrt{T^*T}v, v \rangle \\
                                                     & = \langle \sqrt{T^*T}v, \sqrt{T^*T}v \rangle \\
                                                     & = \lVert \sqrt{T^*T}v \rVert^2.
     \end{align*}
 
-    所以 $ \forall v \in V $，$ \lVert Tv \rVert = \lVert \sqrt{T^*T}v \rVert $.
+    所以 $ \forall v \in V ,\enspace \lVert Tv \rVert = \lVert \sqrt{T^*T}v \rVert $.
 
-    由此我们定义一个线性映射 $ S_1: \mathrm{range}\sqrt{T^*T} \rightarrow \mathrm{range}T $ 为
-    \[
-        S_1(\sqrt{T^*T}v) = Tv.   
-    \]
+    由此我们定义一个线性映射 $ S_1: \im \sqrt{T^*T} \rightarrow \im T $ 为
+    \[ S_1(\sqrt{T^*T}v) = Tv. \]
 
-    接下来要做的就是把这个 $ S_1 $ 扩张成一个等距同构 $ S \in \mathcal{L}(V) $
-    使得 $ T = S\sqrt{T^*T} $. 不过在这之前得先验证 $ S_1 $ 是良定义的. 
-    
+    接下来要做的就是把这个 $ S_1 $ 扩张成一个等距同构 $ S \in \mathcal{L}(V) $使得 $ T = S\sqrt{T^*T} $. 不过在这之前得先验证 $ S_1 $ 是良定义的.
+
     设 $ v_1, v_2 \in V $ 使得 $ \sqrt{T^*T}v_1 = \sqrt{T^*T}v_2 $，则
     \begin{align*}
-        \lVert Tv_1 - Tv_2 \rVert & = \lVert T(v_1 - v_2) \rVert \\
-                                  & = \lVert \sqrt{T^*T}(v_1 - v_2)\rVert \\
+        \lVert Tv_1 - Tv_2 \rVert & = \lVert T(v_1 - v_2) \rVert                    \\
+                                  & = \lVert \sqrt{T^*T}(v_1 - v_2)\rVert           \\
                                   & = \lVert \sqrt{T^*T}v_1 - \sqrt{T^*T}x_2 \rVert \\
                                   & = 0,
     \end{align*}
 
-    得出 $ Tv_1 = Tv_2 $，所以 $ S_1 $ 是良定义的. 线性性结合范数便可以验证，不多赘述. 
+    得出 $ Tv_1 = Tv_2 $，所以 $ S_1 $ 是良定义的. 线性性结合范数便可以验证，不多赘述.
 
-    从而 $ \forall u \in \mathrm{range}\sqrt{T^*T} $ 有 $ \lVert S_1u \rVert = \lVert u \rVert $.
+    从而 $ \forall u \in \im \sqrt{T^*T} $ 有 $ \lVert S_1u \rVert = \lVert u \rVert $.
 
     特别地，$ S_1 $ 是单射，由线性映射基本定理可得
-    \[
-        \mathrm{dim} \enspace \mathrm{range}\sqrt{T^*T} = \mathrm{dim} \enspace \mathrm{range}T.
-    \]  
-    而这也代表着 $ \mathrm{dim}(\mathrm{range}\sqrt{T^*T})^{\perp} = \mathrm{dim}(\mathrm{range}T)^{\perp} $.
-    那么就可以取 $ (\mathrm{range}\sqrt{T^*T})^{\perp} $ 的一组标准正交基 $ e_1, \ldots , e_m $ 和 
-    $ (\mathrm{range}T)^{\perp} $ 的一组标准正交基 $ f_1, \ldots, f_m $. 因为两个空间的维数相同，
-    所以这两组标准正交基的长度相同（记为 $ m $）. 
+    \[ \dim \enspace \im \sqrt{T^*T} = \dim \enspace \im T. \]
+    而这也代表着 $ \dim(\im \sqrt{T^*T})^{\perp} = \dim(\im T)^{\perp} $. 那么就可以取 $ (\im \sqrt{T^*T})^{\perp} $ 的一组标准正交基 $ e_1, \ldots , e_m $ 和$ (\im T)^{\perp} $ 的一组标准正交基 $ f_1, \ldots, f_m $. 因为两个空间的维数相同，所以这两组标准正交基的长度相同（记为 $ m $）.
 
-    由此定义线性映射 $ S_2: (\mathrm{range}\sqrt{T^*T})^{\perp} \rightarrow (\mathrm{range}T)^{\perp} $ 为 
-    \[
-        S_2(a_1e_1 + \cdots + a_me_m) = a_1f_1 + \cdots + a_mf_m. 
-    \]
-    所以 $ \forall w \in (\mathrm{range}\sqrt{T^*T})^{\perp} $ 均有 $ \lVert S_2w \rVert = \lVert w \rVert $.
+    由此定义线性映射 $ S_2: (\im \sqrt{T^*T})^{\perp} \rightarrow (\im T)^{\perp} $ 为
+    \[ S_2(a_1e_1 + \cdots + a_me_m) = a_1f_1 + \cdots + a_mf_m. \]
+    所以 $ \forall w \in (\im \sqrt{T^*T})^{\perp} $ 均有 $ \lVert S_2w \rVert = \lVert w \rVert $.
 
-    到这里我们想要的等距同构 $ S $ 就已经呼之欲出了. 
-    $ \forall v \in V, v = u + w $，
-    其中 $ u \in \mathrm{range}\sqrt{T^*T} $，
-    $ w \in (\mathrm{range}\sqrt{T^*T})^{\perp} $，将 $ S $ 定义为
-    \[
-        Sv = S_1u + S_2w. 
-    \]
+    到这里我们想要的等距同构 $ S $ 就已经呼之欲出了. $ \forall v \in V, v = u + w $，其中 $ u \in \im \sqrt{T^*T} $，$ w \in (\im \sqrt{T^*T})^{\perp} $，将 $ S $ 定义为
+    \[ Sv = S_1u + S_2w. \]
 
-    $ \forall v \in V $ 均有 
-    \[
-        S(\sqrt{T^*T}v) = S_1(\sqrt{T^*T}v) = Tv,  
-    \]
-    
-    所以 $ T = S\sqrt{T^*T} $. 下面就是确确实实地证明 $ S $ 事实上是一个等距同构. 
-    
-    $ \forall v \in V $，有 
-    \[
-        \lVert Sv \rVert^2 = \lVert S_1u + S_2w \rVert^2 
-        = \lVert S_1u \rVert^2 + \lVert S_2w \rVert^2 = \lVert u \rVert^2 + \lVert w \rVert^2
-        = \lVert v \rVert^2  
-    \] 
-    
-    命题得证. 
+    $ \forall v \in V $ 均有
+    \[ S(\sqrt{T^*T}v) = S_1(\sqrt{T^*T}v) = Tv, \]
+
+    所以 $ T = S\sqrt{T^*T} $. 下面就是确确实实地证明 $ S $ 事实上是一个等距同构.
+
+    $ \forall v \in V $，有
+    \[ \lVert Sv \rVert^2 = \lVert S_1u + S_2w \rVert^2     = \lVert S_1u \rVert^2 + \lVert S_2w \rVert^2 = \lVert u \rVert^2 + \lVert w \rVert^2 = \lVert v \rVert^2 \]
+
+    命题得证.
 \end{proof}
 
-极分解定理将所有一般的算子表成了一个等距同构和一个正算子的乘积，
-而这两种算子我们之前的章节都已经给出了完全的描述，
-所以我们探讨的内积空间上算子的约化分解的最终结论就是极分解定理. 
+极分解定理将所有一般的算子表成了一个等距同构和一个正算子的乘积，而这两种算子我们之前的章节都已经给出了完全的描述，所以我们探讨的内积空间上算子的约化分解的最终结论就是极分解定理.
 
-特别地，考虑 $ \mathbf{F} = \mathbf{C} $ 的情况. 设 $ T \in \mathcal{L}(V) $，
-其有极分解 $ T = S\sqrt{T^*T} $，$ S $ 是等距同构. 则 $ V $ 有一个标准正交基使得
-$ S $ 关于这个基有对角矩阵，且 $ V $ 还有一组标准正交基使得 $ \sqrt{T^*T} $ 关于这组基有对角矩阵. 
-但很难有这样一组标准正交基满足 $ S $ 和 $ \sqrt{T^*T} $ 的同时对角化，不过这也给了我们一个思路，
-如果我们尝试用两组标准正交基对同一个算子描述可能会得到更简单的矩阵描述. 
- 
-为了与极分解配对，我们引入奇异值的概念. 
+特别地，考虑 $ \mathbf{F} = \mathbf{C} $ 的情况. 设 $ T \in \mathcal{L}(V) $，其有极分解 $ T = S\sqrt{T^*T} $，$ S $ 是等距同构. 则 $ V $ 有一个标准正交基使得$ S $ 关于这个基有对角矩阵，且 $ V $ 还有一组标准正交基使得 $ \sqrt{T^*T} $ 关于这组基有对角矩阵. 但很难有这样一组标准正交基满足 $ S $ 和 $ \sqrt{T^*T} $ 的同时对角化，不过这也给了我们一个思路，如果我们尝试用两组标准正交基对同一个算子描述可能会得到更简单的矩阵描述.
 
-\begin{definition}
-    \keyterm{奇异值} 设 $ T \in \mathcal{L}(V) $，则 $ T $ 的奇异值就是 $ \sqrt{T^*T} $
-    的特征值，且每个特征值 $ \lambda $ 要重复 $ \mathrm{dim}E(\lambda, \sqrt{T^*T}) $ 次.  
+为了与极分解配对，我们引入奇异值的概念.
+
+\begin{definition}[\keyterm{奇异值}]
+    设 $ T \in \mathcal{L}(V) $，则 $ T $ 的奇异值就是 $ \sqrt{T^*T} $的特征值，每个特征值 $ \lambda $ 重复 $ \dim E(\lambda, \sqrt{T^*T}) $ 次.
 \end{definition}
 
-显然算子的奇异值都是非负的，因为他们都是正算子 $ \sqrt{T^*T} $ 的特征值. 
-而且对 $ \sqrt{T^*T} $ 应用谱定理和可对角化条件可知，每个 $ T \in \mathcal{L}(V) $
-都有 $ \mathrm{dim}V $ 个奇异值. 
+显然算子的奇异值都是非负的，因为他们都是正算子 $ \sqrt{T^*T} $ 的特征值. 而且对 $ \sqrt{T^*T} $ 应用谱定理和可对角化条件可知，每个 $ T \in \mathcal{L}(V) $都有 $ \dim V $ 个奇异值.
 
 那么依托奇异值和两组标准正交基，我们可以对 $ V $ 上的每个算子都给出简洁的矩阵表示.
 
-\begin{theorem}
-    \keyterm{奇异值分解（Singular value decomposition）}
-    设 $ T \in \mathcal{L}(V) $ 有奇异值 $ s_1, \ldots , s_n $，则 $ V $ 存在两组标准正交基
-    $ e_1, \ldots, \e_n $ 和 $ f_1, \ldots, f_n $ 使得 $ \forall v \in V $ 均有
-    $ Tv = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_n \langle v, e_n \rangle f_n $.
+\begin{theorem}[{\keyterm{奇异值分解}[singular value decomposition]}]
+    设 $ T \in \mathcal{L}(V) $ 有奇异值 $ s_1, \ldots , s_n $，则 $ V $ 存在两组标准正交基$ e_1, \ldots, \e_n $ 和 $ f_1, \ldots, f_n $ 使得 $ \forall v \in V $ 均有$ Tv = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_n \langle v, e_n \rangle f_n $.
 \end{theorem}
-
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
 \vspace{2ex}
-
 \centerline{\heiti \Large 习题}
+
 \vspace{2ex}
 {\kaishu }
 \begin{flushright}
     \kaishu
 
 \end{flushright}
+
 \centerline{\heiti A组}
 \begin{enumerate}
     \item
 \end{enumerate}
+
 \centerline{\heiti B组}
 \begin{enumerate}
     \item
 \end{enumerate}
+
 \centerline{\heiti C组}
 \begin{enumerate}
     \item

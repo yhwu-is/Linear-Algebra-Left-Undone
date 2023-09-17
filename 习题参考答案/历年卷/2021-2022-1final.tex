@@ -1,0 +1,91 @@
+\section*{2021-2022学年线性代数I（H）期末}
+\addcontentsline{toc}{section}{2021-2022学年线性代数I（H）期末}
+
+\begin{center}
+    任课老师：统一命卷\hspace{4em} 考试时长：120分钟
+\end{center}
+
+\begin{enumerate}
+	\item[一、]（12分）定义实数域上的线性空间$\mathbf{R}^n$到自身的映射$T$如下：
+	\[\forall X=(x_1,x_2,\cdots,x_n)\in\mathbf{R}^n,\enspace T(X)=(x_1-x_2,x_2-x_3,\cdots,x_{n-1}-x_n,x_n-x_1).\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 验证$T\in\mathcal{L}(\mathbf{R}^n)$；
+        \item 求$T$的像空间，和$T$核空间的维数.
+    \end{enumerate}
+	\item[二、]（12分）设
+	\[A=\begin{pmatrix}
+        1 & 1 & -1 & -1 \\ 2 & 2 & 1 & 0 \\ 3 & 3 & 0 & -1 \\ 1 & 1 & 2 & 0
+    \end{pmatrix},\enspace b=\begin{pmatrix}
+        0 \\ 1 \\ 1 \\ 1
+    \end{pmatrix},\enspace X=\begin{pmatrix}
+        x_1 \\ x_2 \\ x_3 \\ x_4
+    \end{pmatrix}.\]
+    求线性方程组$AX=b$的一般解.
+	\item[三、]（12分）设三元二次齐次实多项式如下：
+	\[f(x,y,z)=x^2+2xy+y^2-6yz-4xz.\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求实对称矩阵$A$，使得$f(x,y,z)=\begin{pmatrix}
+            x & y & z
+        \end{pmatrix}A\begin{pmatrix}
+            x & y & z
+        \end{pmatrix}^\mathrm{T}$；
+        \item 求一个与$A$合同的对角矩阵；
+        \item 求$f(x,y,z)$的正惯性指数和负惯性指数.
+    \end{enumerate}
+	\item[四、]（12分）设$V=\mathbf{R}^{4\times 1}$，$W=\mathbf{R}^{3\times 1}$，定义映射$T:V\to W$如下：
+	\[T(X)=AX=\begin{pmatrix}
+        1 & -1 & 0 & 1 \\ 1 & 1 & 2 & 3 \\ 2 & 2 & 3 & 4
+    \end{pmatrix}\begin{pmatrix}
+        x_1 \\ x_2 \\ x_3 \\ x_4
+    \end{pmatrix},\enspace\forall X=\begin{pmatrix}
+        x_1 \\ x_2 \\ x_3 \\ x_4
+    \end{pmatrix}\in V.\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明$T$的秩为3；
+        \item 求$V$和$\im T$的基$\{\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4\}$和$\{\eta_1,\eta_2\}$，使得
+        \[T(\varepsilon_1)=\eta_1,T(\varepsilon_2)=\eta_2,T(\varepsilon_3)=T(\varepsilon_4)=(0,0,0)^\mathrm{T}.\]
+    \end{enumerate}
+	\item[五、]（12分）设 $V=\mathbb{R}^{2 \times 2}$ 是按矩阵加法和数乘构成的实数域上的线性空间.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 验证下列向量组构成 $V$ 的一组基：
+    \[B=\left\{\left[\begin{array}{ll}
+    1 & 0 \\ 0 & 0 \end{array}\right],\left[\begin{array}{ll}
+    0 & 1 \\ 0 & 0 \end{array}\right],\left[\begin{array}{ll}
+    1 & 1 \\ 1 & 0 \end{array}\right],\left[\begin{array}{ll}
+    1 & 1 \\ 1 & 1 \end{array}\right]\right\};\]
+        \item 在 $V$ 上定义运算
+        \[\sigma\left(\left(a_{ij}\right)_{2 \times 2},\left(b_{ij}\right)_{2 \times 2}\right)=a_{11} b_{11}+a_{12} b_{12}+a_{21} b_{21}+a_{22} b_{22}.\]
+
+        验证 $\sigma$ 是 $V$ 上一个内积，使得 $V$ 成为一个欧氏空间；
+        \item 将 Schmidt 正交化过程用于 $B$ 求出 $V$ 的一组单位正交基.
+    \end{enumerate}
+	\item[六、]（8分）求矩阵
+	\[A=\left[\begin{array}{ccc}
+    0 & -1 & 1 \\
+    -1 & 0 & 1 \\
+    1 & 1 & 0
+    \end{array}\right]\]
+    的所有特征值，对应的特征子空间，以及与 $A$ 相似的一个对角矩阵.
+	\item[七、]（16分）设 $V=\mathbb{R}^3$ 是具有自然内积的欧氏空间，$T \in L(V)$。设
+	\[\alpha_1=(1,2,0), \;\alpha_2=(0,1,2), \;\alpha_3=(2,0,1);\]
+    \[T\left(\alpha_1\right)=-(1,0,2), \;T\left(\alpha_2\right)=-(2,1,0), \;T\left(\alpha_3\right)=-(0,2,1).\]
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 $T$ 关于 $V$ 的自然基的矩阵；
+        \item 证明 $T$ 是一个正交变换；
+        \item 证明 $T$ 是一个镜面反射变换.（存在 $V$ 的单位正交基 $\{\eta,\; \beta,\; \gamma\}$ 使得 $T(\eta)=-\eta,\; T(\beta)=\beta,\; T(\gamma)=\gamma$，或等价地，存在单位向量 $\eta$ 使得 $T(\alpha)=\alpha-2(\alpha,\; \eta) \eta,\; \forall \alpha \in V）$
+    \end{enumerate}
+	\item[八、]（16分）判断下列命题的真伪，若它是真命题，请给出简单的证明；若它是伪命题，给出理由或举反例将它否定.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 设 $A$ 是实数域上 $m \times n$ 阶矩阵，则矩阵秩 $r\left(A^T A\right)=r(A)$；
+        \item 设 $A$ 是复数域上 $m \times n$ 阶矩阵，则矩阵秩 $r\left(A^T A\right)=r(A)$；
+        \item 设 $V, W$ 是数域 $F$ 上的线性空间，则 $V \cup W$ 是线性空间；
+        \item 实矩阵的下列性质有其二必有其三：
+        \begin{enumerate}
+            \item $A^T=A$；
+            \item $A^T A=E$（单位矩阵）；
+            \item $A^2=E$.
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\newpage

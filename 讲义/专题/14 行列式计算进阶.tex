@@ -1,15 +1,15 @@
 \chapter{行列式计算进阶}
 
 \section{化三角形法}
+
 \begin{example}
-    计算行列式
-    $D_{n+1}=\begin{vmatrix}
-    1 & a_{1} & a_{2} & \cdots & a_n \\
-    1 & a_{1}+b_{1} & a_{2} & \cdots & a_n \\
-    1 & a_{1} & a_{2}+b_{2} & \cdots & a_n \\
-    \vdots & \vdots & \vdots & \ddots & \vdots \\
-    1 & a_{1} & a_{2} & \cdots & a_n+b_{n}
-    \end{vmatrix}$.
+    计算行列式$D_{n+1}=\begin{vmatrix}
+            1      & a_{1}       & a_{2}       & \cdots & a_n       \\
+            1      & a_{1}+b_{1} & a_{2}       & \cdots & a_n       \\
+            1      & a_{1}       & a_{2}+b_{2} & \cdots & a_n       \\
+            \vdots & \vdots      & \vdots      & \ddots & \vdots    \\
+            1      & a_{1}       & a_{2}       & \cdots & a_n+b_{n}
+        \end{vmatrix}$.
 \end{example}
 
 解析：观察行列式的特点，主对角线下方的元素与第 1 行元素对应相同，故用第 1 行的 $-1$ 倍加到下面各行便可使主对角线下方的元素全部变为0，即化为上三角形.
@@ -17,101 +17,100 @@
 \begin{solution}
     将该行列式第 1 行的 $-1$ 倍分别加到第 $2,3,\ldots,n+1$ 行上去，可得
     \[ D_{n+1}=\begin{vmatrix}
-        1 & a_{1} & a_{2} & \ldots & a_n \\
-        0 & b_{1} & 0 & 0 & 0 \\
-        0 & 0 & b_{2} & 0 & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        0 & 0 & 0 & \cdots & b_{n}
-    \end{vmatrix}=\prod_{i=1}^n b_i \]
+            1 & a_{1} & a_{2} & \ldots & a_n   \\
+              & b_{1} &       &        &       \\
+              &       & b_{2} &        &       \\
+              &       &       & \ddots &       \\
+              &       &       &        & b_{n}
+        \end{vmatrix}=\prod_{i=1}^n b_i \]
 \end{solution}
 
 \section{连加法}
 
 \begin{example}
-    计算行列式
-    $D_n=\begin{vmatrix}
-    x_1-m & x_2 & \cdots & x_n \\
-    x_1 & x_2-m & \cdots & x_n \\
-    \vdots & \vdots & \ddots & \vdots \\
-    x_1 & x_2 & \cdots & x_n-m
-    \end{vmatrix}$.
+    计算行列式$D_n=\begin{vmatrix}
+            x_1-m  & x_2    & \cdots & x_n    \\
+            x_1    & x_2-m  & \cdots & x_n    \\
+            \vdots & \vdots & \ddots & \vdots \\
+            x_1    & x_2    & \cdots & x_n-m
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
     \begin{align*}
-        D_n&=\begin{vmatrix}
-            \displaystyle\sum_{i=1}^{n} x_i-m & x_2 & \cdots & x_n \\
-            \displaystyle\sum_{i=1}^{n} x_i-m & x_2-m & \cdots & x_n \\
+        D_n & =\begin{vmatrix}
+                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2    & \cdots & x_n    \\
+                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2-m  & \cdots & x_n    \\
+                   \vdots                            & \vdots & \ddots & \vdots \\
+                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2    & \cdots & x_n-m
+               \end{vmatrix} \\
+            & =\left(\sum_{i=1}^{n} x_i-m\right)
+        \begin{vmatrix}
+            1      & x_2    & \cdots & x_n    \\
+            1      & x_2-m  & \cdots & x_n    \\
             \vdots & \vdots & \ddots & \vdots \\
-            \displaystyle\sum_{i=1}^{n} x_i-m & x_2 & \cdots & x_n-m
-        \end{vmatrix} \\
-        &=\left(\sum_{i=1}^{n} x_i-m\right)
+            1      & x_2    & \cdots & x_n-m
+        \end{vmatrix}                                   \\
+            & =\left(\sum_{i=1}^{n} x_i-m\right)
         \begin{vmatrix}
             1 & x_2 & \cdots & x_n \\
-            1 & x_2-m & \cdots & x_n \\
-            \vdots & \vdots & \ddots & \vdots \\
-            1 & x_2 & \cdots & x_n-m
-        \end{vmatrix} \\
-        &=\left(\sum_{i=1}^{n} x_i-m\right)
-        \begin{vmatrix}
-            1 & x_2 & \cdots & x_n \\
-            0 & -m & \cdots & 0 \\
-            \vdots & \vdots & \ddots & \vdots \\
-            0 & 0 & \cdots & -m
-        \end{vmatrix}\\
-        &=(-m)^{n-1}\left(\sum_{i=1}^{n} x_1-m\right)
+              & -m  &        &     \\
+              &     & \ddots &     \\
+              &     &        & -m
+        \end{vmatrix}                                                \\
+            & =(-m)^{n-1}\left(\sum_{i=1}^{n} x_1-m\right)
     \end{align*}
 \end{solution}
 
 \section{滚动消去法}
+
 当行列式每两行的值比较接近时，可采用让邻行中的某一行减或者加上另一行的若干倍, 这种方法叫滚动消去法.
 
 \begin{example}
-    计算行列式
-    $D_n=\begin{vmatrix}
-        1 & 2 & 3 & \cdots & n-1 & n \\
-        2 & 1 & 2 & \cdots & n-2 & n-1 \\
-        3 & 2 & 1 & \cdots & n-3 & n-2 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        n-1 & n-2 & n-3 & \cdots & 1 & 2\\
-        n & n-1 & n-2 & \cdots & 2 & 1
-    \end{vmatrix},\enspace n \geq 2$.
+    计算行列式$D_n=\begin{vmatrix}
+            1      & 2      & 3      & \cdots & n-1    & n      \\
+            2      & 1      & 2      & \cdots & n-2    & n-1    \\
+            3      & 2      & 1      & \cdots & n-3    & n-2    \\
+            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+            n-1    & n-2    & n-3    & \cdots & 1      & 2      \\
+            n      & n-1    & n-2    & \cdots & 2      & 1
+        \end{vmatrix},\enspace n \geqslant 2$.
 \end{example}
 
 \begin{solution}
     从最后一行开始每行减去上一行
     \begin{align*}
-        D_n&=\begin{vmatrix}
-            1 & 2 & 3 & \cdots & n-1 & n \\
-            1 & -1 & -1 & \cdots & -1 & -1 \\
-            1 & 1 & -1 & \cdots & -1 & -1 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            1 & 1 & 1 & \cdots & -1 & -1\\
-            1 & 1 & 1 & \cdots & 1 & -1
-        \end{vmatrix}=\begin{vmatrix}
-            1 & 2 & 3 & \cdots & n-1 & n \\
-            2 & 0 & 0 & \cdots & 0 & -2 \\
-            2 & 2 & 0 & \cdots & 0 & -2 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            2 & 2 & 2 & \cdots & 0 & -2 \\
-            1 & 1 & 1 & \cdots & 1 & -1
-        \end{vmatrix} \\
-        &=\begin{vmatrix}
-            1 & 2 & 3 & \cdots & n-1 & n+1 \\
-            2 & 0 & 0 & \cdots & 0 & 0 \\
-            2 & 2 & 0 & \cdots & 0 & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            2 & 2 & 2 & \cdots & 0 & 0 \\
-            1 & 1 & 1 & \cdots & 1 & 0
-        \end{vmatrix}=2^{n-2}
+        D_n & =\begin{vmatrix}
+                   1      & 2      & 3      & \cdots & n-1    & n      \\
+                   1      & -1     & -1     & \cdots & -1     & -1     \\
+                   1      & 1      & -1     & \cdots & -1     & -1     \\
+                   \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                   1      & 1      & 1      & \cdots & -1     & -1     \\
+                   1      & 1      & 1      & \cdots & 1      & -1
+               \end{vmatrix}=\begin{vmatrix}
+                                 1      & 2      & 3      & \cdots & n-1    & n      \\
+                                 2      & 0      & 0      & \cdots & 0      & -2     \\
+                                 2      & 2      & 0      & \cdots & 0      & -2     \\
+                                 \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                 2      & 2      & 2      & \cdots & 0      & -2     \\
+                                 1      & 1      & 1      & \cdots & 1      & -1
+                             \end{vmatrix} \\
+            & =\begin{vmatrix}
+                   1      & 2      & 3      & \cdots & n-1    & n+1    \\
+                   2      & 0      & 0      & \cdots & 0      & 0      \\
+                   2      & 2      & 0      & \cdots & 0      & 0      \\
+                   \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                   2      & 2      & 2      & \cdots & 0      & 0      \\
+                   1      & 1      & 1      & \cdots & 1      & 0
+               \end{vmatrix}=2^{n-2}
         \begin{vmatrix}
-            1 & 2 & 3 & \cdots & n-1 & n+1 \\
-            1 & 0 & 0 & \cdots & 0 & 0 \\
-            1 & 1 & 0 & \cdots & 0 & 0 \\
+            1      & 2      & 3      & \cdots & n-1    & n+1    \\
+            1      & 0      & 0      & \cdots & 0      & 0      \\
+            1      & 1      & 0      & \cdots & 0      & 0      \\
             \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            1 & 1 & 1 & \cdots & 1 & 0
-        \end{vmatrix}\\
-        &=(-1)^{n+1}(n+1) 2^{n-2}
+            1      & 1      & 1      & \cdots & 1      & 0
+        \end{vmatrix}                      \\
+            & =(-1)^{n+1}(n+1) 2^{n-2}
     \end{align*}
 \end{solution}
 
@@ -120,243 +119,223 @@
 将高阶行列式化为低阶行列式再求解.
 
 \begin{example}
-    解行列式
-    $D_n=\begin{vmatrix}
-        x & -1 & 0 & \cdots & 0 & 0 \\
-        0 & x & -1 & \cdots & 0 & 0 \\
-        0 & 0 & x & \cdots & 0 & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        0 & 0 & 0 & \cdots & x & -1 \\
-        a_{0} & a_{1} & a_{2} &\cdots &a_{n-2}&a_{n-1}
-    \end{vmatrix}$
+    解行列式$D_n=\begin{vmatrix}
+            x     & -1    &        &         &         \\
+                  & x     & \ddots &         &         \\
+                  &       & \ddots & -1      &         \\
+                  &       &        & x       & -1      \\
+            a_{0} & a_{1} & \cdots & a_{n-2} & a_{n-1}
+        \end{vmatrix}$
 \end{example}
 
 \begin{solution}
     按最后一行展开，得
     \begin{align*}
-        D_n&=\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i\begin{vmatrix} A & O \\ O & B \end{vmatrix}
-            =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i|A||B|\\
-           &=\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i(x^i)\left((-1)^{n-1-i}\right)
-            =\sum_{i=0}^{n-1}a_i x^i
+        D_n & =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i\begin{vmatrix} A & O \\ O & B \end{vmatrix}
+        =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i|A||B|                                                        \\
+            & =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i(x^i)\left((-1)^{n-1-i}\right) =\sum_{i=0}^{n-1}a_i x^i
     \end{align*}
 
     其中$A\in \mathbf{M}_i(\mathbf{R}),\enspace B\in \mathbf{M}_{n-1-i}(\mathbf{R})$，
     \[ A=\begin{pmatrix}
-        x & -1 & 0 & \cdots & 0 &0\\
-        0 & x & -1 & \cdots & 0&0\\
-        0 & 0 & x & \cdots & 0&0\\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
-        0 & 0 & 0 & \cdots &x & -1\\
-        0 & 0 & 0 & \cdots &0 & x
-    \end{pmatrix},\enspace
-    B=\begin{pmatrix}
-        -1 & 0 & 0 & \cdots & 0 &0\\
-        x & -1 & 0 & \cdots & 0 &0\\
-        0 & x & -1 & \cdots & 0 &0\\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        0 & 0 & 0 & \cdots &-1 & 0\\
-        0 & 0 & 0 & \cdots &x & -1
-    \end{pmatrix} \]
+            x & -1 &        &    &    \\
+              & x  & \ddots &    &    \\
+              &    & \ddots & -1 &    \\
+              &    &        & x  & -1 \\
+              &    &        &    & x
+        \end{pmatrix},\enspace
+        B=\begin{pmatrix}
+            -1 &    &        &    &    \\
+            x  & -1 &        &    &    \\
+               & x  & \ddots &    &    \\
+               &    & \ddots & -1 &    \\
+               &    &        & x  & -1
+        \end{pmatrix} \]
 \end{solution}
 
 \begin{example}
-    解行列式
-    $D_n=\begin{vmatrix}
-        \lambda & a & a & a & \cdots & a \\
-        b & \gamma & \beta & \beta & \cdots & \beta \\
-        b & \beta & \gamma & \beta & \cdots & \beta \\
-        \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-        b & \beta & \beta & \beta & \cdots & \gamma
-    \end{vmatrix}$
+    解行列式$D_n=\begin{vmatrix}
+            \lambda & a      & a      & a      & \cdots & a      \\
+            b       & \gamma & \beta  & \beta  & \cdots & \beta  \\
+            b       & \beta  & \gamma & \beta  & \cdots & \beta  \\
+            \vdots  & \vdots & \vdots & \vdots & \ddots & \vdots \\
+            b       & \beta  & \beta  & \beta  & \cdots & \gamma
+        \end{vmatrix}$
 \end{example}
 
 \begin{solution}
     从第$n$行到第3行，每行都减去上一行；再从第3列到第$n$列，每列都加到第2列，得
 
     \begin{align*}
-        D_n&=
+        D_n & =
         \begin{vmatrix}
-            \lambda & a & a & a & \cdots & a \\
-            b & \gamma & \beta & \beta & \cdots & \beta \\
-            0 & \beta-\gamma & \gamma-\beta & 0 & \cdots & 0 \\
-            0 & 0 & \beta-\gamma & \gamma-\beta & \cdots & 0 \\
-            \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-            0 & 0 & 0 & 0 & \cdots & \gamma-\beta
-        \end{vmatrix}\\
-        &=\begin{vmatrix}
-            \lambda & (n-1)a & a & a & \cdots & a \\
-            b & \gamma+(n-2)\beta & \beta & \beta & \cdots & \beta \\
-            0 & 0 & \gamma-\beta & 0 & \cdots & 0 \\
-            0 & 0 & \beta-\gamma & \gamma-\beta & \cdots & 0 \\
-            \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-            0 & 0 & 0 & 0 & \cdots & \gamma-\beta
-        \end{vmatrix}\\
-        &=\begin{vmatrix}
-            \lambda & (n-1)a \\
-            b & \gamma+(n-2)\beta
-        \end{vmatrix} \cdot \begin{vmatrix}
-            \gamma-\beta & 0 & \cdots & 0 \\
-            \vdots & \vdots & \ddots & \vdots \\
-            0 & 0 & \cdots & \gamma-\beta
-        \end{vmatrix}\\
-        &=(\lambda \gamma+\lambda(n-2)\beta-(n-1)ab)(\gamma-\beta)^{n-2}
+            \lambda & a            & a            & a            & \cdots & a            \\
+            b       & \gamma       & \beta        & \beta        & \cdots & \beta        \\
+            0       & \beta-\gamma & \gamma-\beta & 0            & \cdots & 0            \\
+            0       & 0            & \beta-\gamma & \gamma-\beta & \cdots & 0            \\
+            \vdots  & \vdots       & \vdots       & \vdots       & \ddots & \vdots       \\
+            0       & 0            & 0            & 0            & \cdots & \gamma-\beta
+        \end{vmatrix}             \\
+            & =\begin{vmatrix}
+                   \lambda & (n-1)a            & a            & a            & \cdots & a            \\
+                   b       & \gamma+(n-2)\beta & \beta        & \beta        & \cdots & \beta        \\
+                   0       & 0                 & \gamma-\beta & 0            & \cdots & 0            \\
+                   0       & 0                 & \beta-\gamma & \gamma-\beta & \cdots & 0            \\
+                   \vdots  & \vdots            & \vdots       & \vdots       & \ddots & \vdots       \\
+                   0       & 0                 & 0            & 0            & \cdots & \gamma-\beta
+               \end{vmatrix} \\
+            & =\begin{vmatrix}
+                   \lambda & (n-1)a            \\
+                   b       & \gamma+(n-2)\beta
+               \end{vmatrix} \cdot \begin{vmatrix}
+                                       \gamma-\beta & 0            & \cdots & 0            \\
+                                       \beta-\gamma & \gamma-\beta & \cdots & 0            \\
+                                       \vdots       & \vdots       & \ddots & \vdots       \\
+                                       0            & 0            & \cdots & \gamma-\beta
+                                   \end{vmatrix}           \\
+            & =(\lambda \gamma+\lambda(n-2)\beta-(n-1)ab)(\gamma-\beta)^{n-2}
     \end{align*}
 \end{solution}
 
 \section{升阶法}
 
-升阶法就是把 $n$ 阶行列式增加一行一列变成 $n+1$ 阶行列式，再通过性质化简算出结果，这种计算行列式的方法叫做升阶法或加边法.
-升阶法的最大特点就是要找每行或每列相同的因子, 那么升阶之后, 就可以利用行列式的性质把绝大多数元素化为0，这样就达到简化计算的效果.
+升阶法就是把 $n$ 阶行列式增加一行一列变成 $n+1$ 阶行列式，再通过性质化简算出结果，这种计算行列式的方法叫做升阶法或加边法. 升阶法的最大特点就是要找每行或每列相同的因子, 那么升阶之后, 就可以利用行列式的性质把绝大多数元素化为0，这样就达到简化计算的效果.
 
 \begin{example}
     解行列式 $D=\begin{vmatrix}
-        0 & 1 & 1 & \cdots & 1 & 1 \\
-        1 & 0 & 1 & \cdots & 1 & 1 \\
-        1 & 1 & 0 & \cdots & 1 & 1 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        1 & 1 & 1 & \cdots & 0 & 1 \\
-        1 & 1 & 1 & \cdots & 1 & 0
-    \end{vmatrix}$.
+            0      & 1      & 1      & \cdots & 1      & 1      \\
+            1      & 0      & 1      & \cdots & 1      & 1      \\
+            1      & 1      & 0      & \cdots & 1      & 1      \\
+            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+            1      & 1      & 1      & \cdots & 0      & 1      \\
+            1      & 1      & 1      & \cdots & 1      & 0
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
     使行列式 $D$ 变成 $n+1$ 阶行列式, 即
     \[ D=\begin{vmatrix}
-            1 & 1 & 1 & \cdots & 1 & 1 \\
-            0 & 0 & 1 & \cdots & 1 & 1 \\
-            0 & 1 & 0 & \cdots & 1 & 1 \\
+            1      & 1      & 1      & \cdots & 1      & 1      \\
+            0      & 0      & 1      & \cdots & 1      & 1      \\
+            0      & 1      & 0      & \cdots & 1      & 1      \\
             \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            0 & 1 & 1 & \cdots & 0 & 1 \\
-            0 & 1 & 1 & \cdots & 1 & 0
-    \end{vmatrix} \]
+            0      & 1      & 1      & \cdots & 0      & 1      \\
+            0      & 1      & 1      & \cdots & 1      & 0
+        \end{vmatrix} \]
 
     再将第一行的 $-1$ 倍加到其他各行, 得:
-    \[ D=\begin{vmatrix}
-        1 & 1 & 1 & \cdots & 1 & 1 \\
-        -1 & -1 & 0 & \cdots & 0 & 0 \\
-        -1 & 0 & -1 & \cdots & 0 & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        -1 & 0 & 0 & \cdots & -1 & 0 \\
-        -1 & 0 & 0 & \cdots & 0 & -1
-    \end{vmatrix} \]
+    \[ D =\begin{vmatrix}
+            1      & 1  & \cdots & 1  \\
+            -1     & -1 &        &    \\
+            \vdots &    & \ddots &    \\
+            -1     &    &        & -1
+        \end{vmatrix} \]
 
     从第二列开始, 每列乘以 $-1$ 加到第一列, 得:
     \begin{align*}
-        D &=\begin{vmatrix}
-            -(n-1) & 1 & 1 & \cdots & 1 & 1 \\
-            0 & -1 & 0 & \cdots & 0 & 0 \\
-            0 & 0 & -1 & \cdots & 0 & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            0 & 0 & 0 & \cdots & -1 & 0 \\
-            0 & 0 & 0 & \cdots & 0 & -1
-            \end{vmatrix} \\
-        &=(-1)^{n+1}(n-1)
+        D & =\begin{vmatrix}
+                 -(n-1) & 1  & \cdots & 1  \\
+                        & -1 &        &    \\
+                        &    & \ddots &    \\
+                        &    &        & -1
+             \end{vmatrix} \\
+          & =(-1)^{n+1}(n-1)
     \end{align*}
 \end{solution}
 
-
 \section{数归/递推法}
 
-\begin{example} \label{ex:17:递推法}
-    计算行列式
-    $D_n=\begin{vmatrix}
-        \cos \beta & 1 & 0 & \cdots & 0 & 0 \\
-        1 & 2 \cos \beta & 1 & \cdots & 0 & 0 \\
-        0 & 1 & 2 \cos \beta & \cdots & 0 & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        0 & 0 & 0 & \cdots & 2 \cos \beta & 1 \\
-        0 & 0 & 0 & \cdots & 1 & 2 \cos \beta
-    \end{vmatrix}$.
+\begin{example} \label{ex:14:递推法}
+    计算行列式$D_n=\begin{vmatrix}
+            \cos \beta & 1            &        &              &              \\
+            1          & 2 \cos \beta & \ddots &              &              \\
+                       & 1            & \ddots & 1            &              \\
+                       &              & \ddots & 2 \cos \beta & 1            \\
+                       &              &        & 1            & 2 \cos \beta
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
     \begin{align*}
-        D_1&=\cos\beta \\
-        D_2&=\begin{vmatrix}
-        \cos\beta&1\\
-        1&2\cos\beta
-        \end{vmatrix}=2\cos^2\beta-1=\cos2\beta
+        D_1 & =\cos\beta                               \\
+        D_2 & =\begin{vmatrix}
+                   \cos\beta & 1          \\
+                   1         & 2\cos\beta
+               \end{vmatrix}=2\cos^2\beta-1=\cos2\beta
     \end{align*}
 
     猜想$D_n=\cos n\beta$. 数学归纳证明：
 
     假设当 $n=k$ 时，结论成立，即 $D_{k}=\cos k \beta$. 现证当 $n=k+1$ 时，结论也成立. $ n=k+1 $ 时，
-    \[ \begin{vmatrix}
-        \cos \beta & 1 & 0 & \cdots & 0 & 0 \\
-        1 & 2 \cos \beta & 1 & \cdots & 0 & 0 \\
-        0 & 1 & 2 \cos \beta & \cdots & 0 & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        0 & 0 & 0 & \cdots & 2 \cos \beta & 1 \\
-        0 & 0 & 0 & \cdots & 1 & 2 \cos \beta
-    \end{vmatrix} \]
+    \[ D_{k+1} = \begin{vmatrix}
+            \cos \beta & 1            &        &              &              \\
+            1          & 2 \cos \beta & \ddots &              &              \\
+                       & 1            & \ddots & 1            &              \\
+                       &              & \ddots & 2 \cos \beta & 1            \\
+                       &              &        & 1            & 2 \cos \beta
+        \end{vmatrix} \]
 
     将 $D_{k+1}$ 按最后一行展开, 得
     \begin{align*}
-        D_{k+1}=&(-1)^{k+1+k+1} \cdot 2 \cos \beta\begin{vmatrix}
-            \cos \beta & 1 & 0 & \cdots & 0 \\
-            1 & 2 \cos \beta & 1 & \cdots & 0 \\
-            0 & 1 & 2 \cos \beta & \cdots & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots \\
-            0 & 0 & 0 & \cdots & 2 \cos \beta
-        \end{vmatrix}\\
-        &+(-1)^{k+1+k}
+        D_{k+1}={} & (-1)^{k+1+k+1} \cdot 2 \cos \beta
         \begin{vmatrix}
-            \cos \beta & 1 & 0 & \cdots & 0 \\
-            1 & 2 \cos \beta & 1 & \cdots & 0 \\
-            0 & 1 & 2 \cos \beta & \cdots & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots \\
-            0 & 0 & 0 & \cdots & 1
-        \end{vmatrix}\\
-        =&2\cos\beta D_k-D_{k-1}
+            \cos \beta & 1            &        &              &              \\
+            1          & 2 \cos \beta & \ddots &              &              \\
+                       & 1            & \ddots & 1            &              \\
+                       &              & \ddots & 2 \cos \beta & 1            \\
+                       &              &        & 1            & 2 \cos \beta
+        \end{vmatrix} \\
+                   & +(-1)^{k+1+k}
+        \begin{vmatrix}
+            \cos \beta & 1            & 0            & \cdots & 0      \\
+            1          & 2 \cos \beta & 1            & \cdots & 0      \\
+            0          & 1            & 2 \cos \beta & \cdots & 0      \\
+            \vdots     & \vdots       & \vdots       & \ddots & \vdots \\
+            0          & 0            & 0            & \cdots & 1
+        \end{vmatrix}       \\
+        ={}        & 2\cos\beta D_k-D_{k-1}
     \end{align*}
 
     而$D_{k}=\cos k \beta,\enspace
-    D_{k-1}=\cos (k-1)\beta
-    =\cos (k \beta-\beta)
-    =\cos k \beta \cos \beta+\sin k \beta \sin \beta$.
-    所以有
+        D_{k-1}=\cos (k-1)\beta = \cos (k \beta-\beta) = \cos k \beta \cos \beta+\sin k \beta \sin \beta$. 所以有
     \begin{align*}
-    D_{k+1}&= 2 \cos \beta D_{k}-D_{k-1} \\
-    &=2 \cos \beta \cos k \beta-\cos k \beta \cos \beta-\sin k \beta \sin \beta \\
-    &=\cos k \beta \cos \beta-\sin k \beta \sin \beta \\
-    &=\cos (k+1) \beta
+        D_{k+1} & = 2 \cos \beta D_{k}-D_{k-1}                                               \\
+                & =2 \cos \beta \cos k \beta-\cos k \beta \cos \beta-\sin k \beta \sin \beta \\
+                & =\cos k \beta \cos \beta-\sin k \beta \sin \beta                           \\
+                & =\cos (k+1) \beta
     \end{align*}
 
     则证得$D_n=\cos n\beta,\enspace n\in \mathbf{N}$.
 \end{solution}
 
-下面介绍常系数线性递推数列，为了方便，只介绍二阶情况.
-如果$D_n$满足关系式
+下面介绍常系数线性递推数列，为了方便，只介绍二阶情况. 如果$D_n$满足关系式
 \[ aD_n+bD_{n-1}+cD_{n-2}=0 \]
 解特征方程
 \[ ar^2+br+c=0 \]
 会有三种根的情况.
-\begin{enumerate}[label=(\arabic*)]
+\begin{enumerate}
     \item $\Delta>0$, 有两个不等的实根$r_1, r_2$，则有
-    \[ D_n=C_1r_1^n+C_2r_2^n \]
+          \[ D_n=C_1r_1^n+C_2r_2^n \]
 
     \item $\Delta=0$, 有重实根$r$，则有
-    \[ D_n=(C_1+nC_2)r^n \]
+          \[ D_n=(C_1+nC_2)r^n \]
 
-    \item $\Delta<0$, 有共轭复根$r=\cos\beta\pm \mathrm{i}\sin\beta$，则有
-    \[ D_n=C_1\cos n\beta + C_2\sin n\beta \]
+    \item $\Delta<0$, 有共轭复根$r=\cos\beta\pm \i\sin\beta$，则有
+          \[ D_n=C_1\cos n\beta + C_2\sin n\beta \]
 \end{enumerate}
 以上式子中的$C_1,C_2$均为任意常数，可以令$n=1,2$获得.
 
-所以其实\autoref{ex:17:递推法} 也可以使用递推式求得答案（留作习题证明略）.
-不过一般遇到的还是特征根为实数的情况比较多，给出一道练习例题：
+所以其实\autoref{ex:14:递推法} 也可以使用递推式求得答案（留作习题证明略）. 不过一般遇到的还是特征根为实数的情况比较多，给出一道练习例题：
 
 \begin{example}
-    计算行列式
-    $D_n=
-    \begin{vmatrix}
-        9 & 5 & 0 & 0 & \cdots & 0 & 0 & 0 \\
-        4 & 9 & 5 & 0 & \cdots & 0 & 0 & 0 \\
-        0 & 4 & 9 & 5 & \cdots & 0 & 0 & 0 \\
-        \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
-        0 & 0 & 0 & 0 & \cdots & 4 & 9 & 5 \\
-        0 & 0 & 0 & 0 & \cdots & 0 & 4 & 9
-    \end{vmatrix}$.
+    计算行列式$D_n=
+        \begin{vmatrix}
+            9 & 5 &        &   &   \\
+            4 & 9 & \ddots &   &   \\
+              & 4 & \ddots & 5 &   \\
+              &   & \ddots & 9 & 5 \\
+              &   &        & 4 & 9
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
@@ -373,75 +352,66 @@
 
     当 $n=2$ 时，$61=16A+25B$.
 
-    解得
-    \[ A=-4,\enspace B=5 \]
-
-    所以
+    解得$A=-4,\enspace B=5$，所以
     \[ D_n=5^{n+1}-4^{n+1} \]
 \end{solution}
 
 \section{硬拆法}
 
 \begin{example}
-    计算行列式
-    $D_n=\begin{vmatrix}
-        1-a_{1} & a_{2} & 0 & \cdots & 0 & 0 \\
-        -1 & 1-a_{2} & a_{3} & \cdots & 0 & 0 \\
-        0 & -1 & 1-a_{3} & \cdots & 0 & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-        0 & 0 & 0 & \cdots & 1-a_{n-1} & a_n \\
-        0 & 0 & 0 & \cdots & -1 & 1-a_n
-    \end{vmatrix}$.
+    计算行列式$D_n=\begin{vmatrix}
+            1-a_{1} & a_{2}   &        &           &         \\
+            -1      & 1-a_{2} & \ddots &           &         \\
+                    & -1      & \ddots & a_{n-1}   &         \\
+                    &         & \ddots & 1-a_{n-1} & a_{n}   \\
+                    &         &        & -1        & 1-a_{n}
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
     把第一列的元素看成两项的和进行拆列, 得
     \begin{align*}
-        D_n=&\begin{vmatrix}
-            1-a_{1} & a_{2} & 0 & \cdots & 0 & 0 \\
-            -1+0 & 1-a_{2} & a_{3} & \cdots & 0 & 0 \\
-            0+0 & -1 & 1-a_{3} & \cdots & 0 & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            0+0 & 0 & 0 & \cdots & 1-a_{n-1} & a_n \\
-            0+0 & 0 & 0 & \cdots & -1 & 1-a_n
-        \end{vmatrix}\\
-        =&\begin{vmatrix}
-            1 & a_{2} & 0 & \cdots & 0 & 0 \\
-            -1 & 1-a_{2} & a_{3} & \cdots & 0 & 0 \\
-            0 & -1 & 1-a_{3} & \cdots & 0 & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            0 & 0 & 0 & \cdots & 1-a_{n-1} & a_n \\
-            0 & 0 & 0 & \cdots & -1 & 1-a_n
-        \end{vmatrix} \\
-        &+\begin{vmatrix}
-            -a_{1} & a_{2} & 0 & \cdots & 0 & 0 \\
-            0 & 1-a_{2} & a_{3} & \cdots & 0 & 0 \\
-            0 & -1 & 1-a_{3} & \cdots & 0 & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-            0 & 0 & 0 & \cdots & 1-a_{n-1} & a_n \\
-            0 & 0 & 0 & \cdots & -1 & 1-a_n
-        \end{vmatrix}
+        D_n= & \begin{vmatrix}
+                   1-a_{1} & a_{2}   &        &           &         \\
+                   -1      & 1-a_{2} & \ddots &           &         \\
+                   0 + 0   & -1      & \ddots & a_{n-1}   &         \\
+                   0 + 0   &         & \ddots & 1-a_{n-1} & a_{n}   \\
+                   0 + 0   &         &        & -1        & 1-a_{n}
+               \end{vmatrix}         \\
+        =    & \begin{vmatrix}
+                   1  & a_{2}   &        &           &         \\
+                   -1 & 1-a_{2} & \ddots &           &         \\
+                      & -1      & \ddots & a_{n-1}   &         \\
+                      &         & \ddots & 1-a_{n-1} & a_{n}   \\
+                      &         &        & -1        & 1-a_{n}
+               \end{vmatrix} + \begin{vmatrix}
+                                   -a_{1} & a_{2}   &        &           &         \\
+                                          & 1-a_{2} & \ddots &           &         \\
+                                          & -1      & \ddots & a_{n-1}   &         \\
+                                          &         & \ddots & 1-a_{n-1} & a_{n}   \\
+                                          &         &        & -1        & 1-a_{n}
+                               \end{vmatrix}
     \end{align*}
 
     上面第一个行列式的值为 1（从第 1 行开始，每一行依次加到下一行），所以
     \[ \begin{aligned}
-        D_n &=1-a_{1}\begin{vmatrix}
-        1-a_{2} & a_{3} & \cdots & 0 & 0 \\
-        -1 & 1-a_{3} & \cdots & 0 & 0 \\
-        \vdots & \vdots & \ddots & \vdots & \vdots \\
-        0 & 0 & \cdots & 1-a_{n-1} & a_n \\
-        0 & 0 & \cdots & -1 & 1-a_n
-        \end{vmatrix} \\
-        &=1-a_{1} D_{n-1} \cdot
-    \end{aligned} \]
+            D_n & =1-a_{1}\begin{vmatrix}
+                              1-a_{2} & a_{3}   &        &           &         \\
+                              -1      & 1-a_{3} & \ddots &           &         \\
+                                      & -1      & \ddots & a_{n-1}   &         \\
+                                      &         & \ddots & 1-a_{n-1} & a_{n}   \\
+                                      &         &        & -1        & 1-a_{n}
+                          \end{vmatrix} \\
+                & =1-a_{1} D_{n-1} \cdot
+        \end{aligned} \]
 
-    这个式子对任何 $n \geq 2$ 都成立, 因此有
+    这个式子对任何 $n \geqslant 2$ 都成立, 因此有
     \begin{align*}
-        D_n &=1-a_{1} D_{n-1} \\
-        &=1-a_{1}(1-a_{2} D_{n-2}) \\
-        &=\cdots \\
-        &=1-a_{1}+a_{1} a_{2}+\cdots+(-1)^n a_{1} a_{2} \cdots a_n \\
-        &=1+\sum_{i=1}^{n}(-1)^i \prod_{j=1}^i a_j
+        D_n & =1-a_{1} D_{n-1}                                          \\
+            & =1-a_{1}(1-a_{2} D_{n-2})                                 \\
+            & =\cdots                                                   \\
+            & =1-a_{1}+a_{1} a_{2}+\cdots+(-1)^n a_{1} a_{2} \cdots a_n \\
+            & =1+\sum_{i=1}^{n}(-1)^i \prod_{j=1}^i a_j
     \end{align*}
 \end{solution}
 
@@ -449,50 +419,48 @@
 
 \begin{example}
     计算行列式$\begin{vmatrix}
-        a_1 &1&1&\cdots&1\\
-        1&a_2\\
-        1&&a_3\\
-        \vdots&&&\ddots\\
-        1&&&&a_n
-    \end{vmatrix}$，其中$a_i\neq 0\enspace(i=1,2,\ldots,n)$.
+            a_1    & 1   & 1   & \cdots & 1   \\
+            1      & a_2                      \\
+            1      &     & a_3                \\
+            \vdots &     &     & \ddots       \\
+            1      &     &     &        & a_n
+        \end{vmatrix}$，其中$a_i\neq 0\enspace(i=1,2,\ldots,n)$.
 \end{example}
 
 \begin{solution}
     \[ \text{原式}=\begin{vmatrix}
-    a_1-\displaystyle\sum_{i=2}^n\frac{1}{a_i} &1&1&\cdots&1\\
-    0&a_2\\
-    0&&a_3\\
-    \vdots&&&\ddots\\
-    0&&&&a_n
-    \end{vmatrix}
-    =\left(\sum_{i=2}^n\frac{1}{a_i}\right)
-    \left(\prod_{j=2}^na_j\right) \]
+            a_1-\displaystyle\sum_{i=2}^n\frac{1}{a_i} & 1   & 1   & \cdots & 1   \\
+            0                                          & a_2                      \\
+            0                                          &     & a_3                \\
+            \vdots                                     &     &     & \ddots       \\
+            0                                          &     &     &        & a_n
+        \end{vmatrix} = \left(\sum_{i=2}^n\frac{1}{a_i}\right) \left(\prod_{j=2}^na_j\right) \]
 \end{solution}
 
 \section{Vandermonde 行列式}
 
 \begin{example}
     求行列式 $D_n=\begin{vmatrix}
-        1 & 1 & \cdots & 1 \\
-        x_1 & x_2 & \cdots & x_n \\
-        x_1^{2} & x_2^{2} & \cdots & x_n^{2} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        x_1^{n-2} & x_2^{n-2} & \cdots & x_n^{n-2} \\
-        x_1^{n} & x_2^{n} & \cdots & x_n^{n}
-    \end{vmatrix}$.
+            1         & 1         & \cdots & 1         \\
+            x_1       & x_2       & \cdots & x_n       \\
+            x_1^{2}   & x_2^{2}   & \cdots & x_n^{2}   \\
+            \vdots    & \vdots    & \ddots & \vdots    \\
+            x_1^{n-2} & x_2^{n-2} & \cdots & x_n^{n-2} \\
+            x_1^{n}   & x_2^{n}   & \cdots & x_n^{n}
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
     考虑构造一个$n+1$阶的Vandermonde行列式.
     \[ f(x)=\begin{vmatrix}
-        1 & 1 & \cdots & 1 & 1 \\
-        x_1 & x_2 & \cdots & x_n & x \\
-        x_1^{2} & x_2^{2} & \cdots & x_n^{2} & x^{2} \\
-        \vdots & \vdots & \ddots & \vdots & \vdots \\
-        x_1^{n-2} & x_2^{n-2} & \cdots & x_n^{n-2} & x^{n-2} \\
-        x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1} & x^{n-1} \\
-        x_1^{n} & x_2^{n} & \cdots & x_n^{n} & x^{n}
-    \end{vmatrix} \]
+            1         & 1         & \cdots & 1         & 1       \\
+            x_1       & x_2       & \cdots & x_n       & x       \\
+            x_1^{2}   & x_2^{2}   & \cdots & x_n^{2}   & x^{2}   \\
+            \vdots    & \vdots    & \ddots & \vdots    & \vdots  \\
+            x_1^{n-2} & x_2^{n-2} & \cdots & x_n^{n-2} & x^{n-2} \\
+            x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1} & x^{n-1} \\
+            x_1^{n}   & x_2^{n}   & \cdots & x_n^{n}   & x^{n}
+        \end{vmatrix} \]
 
     将 $f(x)$ 按第 $n+1$ 列展开, 得
     \[ f(x)=A_{1, n+1}+A_{2, n+1} x+\cdots+A_{n, n+1} x^{n-1}+A_{n+1, n+1} x^{n} \]
@@ -500,225 +468,230 @@
     \[ A_{n, n+1}=(-1)^{n+(n+1)} D_n=-D_n \]
 
     又根据 Vandermonde 行列式的结果知
-    \[ f(x)=(x-x_1)(x-x_2)\cdots(x-x_n) \prod_{1 \leq j<i \leq n}(x_i-x_j) \]
+    \[ f(x)=(x-x_1)(x-x_2)\cdots(x-x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j) \]
     由上式可求得 $x^{n-1}$ 的系数为
-    \[ -(x_1+x_2+\cdots+x_n) \prod_{1 \leq j<i \leq n}(x_i-x_j) \]
+    \[ -(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j) \]
     故有
-    \[ D_n=(x_1+x_2+\cdots+x_n) \prod_{1 \leq j<i \leq n}(x_i-x_j) \]
+    \[ D_n=(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j) \]
 \end{solution}
 
-\section{$^*$利用$|E_m-AB|=|E_n-BA|$} \label{sec:17:利用}
+\section{$^*$利用$|E_m-AB|=|E_n-BA|$} \label{sec:14:利用}
 
 \begin{example}
     求行列式 $\begin{vmatrix}
-        0&2a_1&3a_1&\cdots&na_1\\
-        a_2&a_2&3a_2&\cdots&na_2\\
-        a_3&2a_3&2a_3&\cdots&na_3\\
-        \vdots&\vdots&\vdots&\ddots&\vdots\\
-        a_n&2a_n&3a_n&\cdots&(n-1)a_n\\
-    \end{vmatrix}$.
+            0      & 2a_1   & 3a_1   & \cdots & na_1     \\
+            a_2    & a_2    & 3a_2   & \cdots & na_2     \\
+            a_3    & 2a_3   & 2a_3   & \cdots & na_3     \\
+            \vdots & \vdots & \vdots & \ddots & \vdots   \\
+            a_n    & 2a_n   & 3a_n   & \cdots & (n-1)a_n \\
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
     \[ \text{原式}=\prod_{i=1}^na_i \begin{vmatrix}
-        0&2&3&\cdots&n\\
-        1&1&3&\cdots&n\\
-        1&2&2&\cdots&n\\
-        \vdots&\vdots&\vdots&\ddots&\cdots\\
-        1&2&3&\cdots&n-1\\
-    \end{vmatrix} \]
+            0      & 2      & 3      & \cdots & n      \\
+            1      & 1      & 3      & \cdots & n      \\
+            1      & 2      & 2      & \cdots & n      \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            1      & 2      & 3      & \cdots & n-1    \\
+        \end{vmatrix} \]
 
     注意到
     \begin{align*}
         \begin{vmatrix}
-            0&2&3&\cdots&n\\
-            1&1&3&\cdots&n\\
-            1&2&2&\cdots&n\\
-            \vdots&\vdots&\vdots&\ddots&\vdots\\
-            1&2&3&\cdots&n-1
-        \end{vmatrix} &= \begin{vmatrix}(-1)\left(E_n-
-        \begin{pmatrix}
-            1&2&3&\cdots&n\\
-            1&2&3&\cdots&n\\
-            1&2&3&\cdots&n\\
-            \vdots&\vdots&\vdots&\ddots&\vdots\\
-            1&2&3&\cdots&n\\
-            \end{pmatrix}\right)\end{vmatrix}\\
-            &=(-1)^n\begin{vmatrix}E_n-
-            \begin{pmatrix}
-            1\\1\\1\\\vdots\\1
-        \end{pmatrix}\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}\end{vmatrix}
+            0      & 2      & 3      & \cdots & n      \\
+            1      & 1      & 3      & \cdots & n      \\
+            1      & 2      & 2      & \cdots & n      \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            1      & 2      & 3      & \cdots & n-1
+        \end{vmatrix}
+         & = \begin{vmatrix}(-1)\left(E_n-\begin{pmatrix}
+                1      & 2      & 3      & \cdots & n      \\
+                1      & 2      & 3      & \cdots & n      \\
+                1      & 2      & 3      & \cdots & n      \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                1      & 2      & 3      & \cdots & n
+            \end{pmatrix}\right)\end{vmatrix} \\
+         & =(-1)^n\begin{vmatrix}E_n-
+                      \begin{pmatrix}
+                1 \\1\\1\\\vdots\\1
+            \end{pmatrix}\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}\end{vmatrix}
     \end{align*}
 
     而 \[ \begin{vmatrix}E_n-\begin{pmatrix}
-        1\\1\\1\\\vdots\\1
-    \end{pmatrix}\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}\end{vmatrix}
-    =1-\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}
+                1 \\1\\1\\\vdots\\1
+            \end{pmatrix}\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}\end{vmatrix}
+        =1-\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}
         \begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}
-    =-\frac{n^2+n-2}{2} \]
+        =-\frac{n^2+n-2}{2} \]
 
     所以原式$\displaystyle =(-1)^{n+1}\frac{n^2+n-2}{2}\prod_{i=1}^na_i$.
 \end{solution}
 
-\section{拉普拉斯定理}
+\section{Laplace定理}
+\begin{theorem}\label{thm:14:Laplace定理}
+    在$n$阶行列式$|A|$中，取定$k$行：第$i_1,i_2,\ldots,i_k$行（$1\leqslant i_1<i_2<\cdots<i_k\leqslant n$，且$1\leqslant k<n$），则这$k$行元素形成的所有$k$阶子式与它们自己的代数余子式的乘积之和等于$|A|$.
 
+    若取定$k$列：第$j_1,j_2,\ldots,j_k$列（$1\leqslant j_1<j_2<\cdots<j_k\leqslant n$，且$1\leqslant k<n$），则这$k$列元素形成的所有$k$阶子式与它们自己的代数余子式的乘积之和等于$|A|$.
+\end{theorem}
+\vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
 希望以上的技巧不需要在考试中用到.
 
 \vspace{2ex}
-
 \centerline{\heiti \Large 习题}
+
 \vspace{2ex}
-{\kaishu 我总是尽我的精力和才能来摆脱那种繁重而单调的计算。}
+{\kaishu 我总是尽我的精力和才能来摆脱那种繁重而单调的计算. }
 \begin{flushright}
     \kaishu
     —— 约翰·纳皮尔
 \end{flushright}
+
 \centerline{\heiti A组}
 \begin{enumerate}
     \item $ D_n=\begin{vmatrix}
-        1&2&3&4&\cdots&n-1&n\\
-        x&1&2&3&\cdots&n-2&n-1\\
-        x&x&1&2&\cdots&n-3&n-2\\
-        x&x&x&1&\cdots&n-4&n-3\\
-        \vdots&\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
-        x&x&x&x&\cdots&1&2\\
-        x&x&x&x&\cdots&x&1\\
-    \end{vmatrix}$（提示：考虑滚动消去法）.
+                  1      & 2      & 3      & 4      & \cdots & n-1    & n      \\
+                  x      & 1      & 2      & 3      & \cdots & n-2    & n-1    \\
+                  x      & x      & 1      & 2      & \cdots & n-3    & n-2    \\
+                  x      & x      & x      & 1      & \cdots & n-4    & n-3    \\
+                  \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                  x      & x      & x      & x      & \cdots & 1      & 2      \\
+                  x      & x      & x      & x      & \cdots & x      & 1      \\
+              \end{vmatrix}$（提示：考虑滚动消去法）.
 
     \item $ D_n=\begin{vmatrix}
-        a_1&b_1&&&\\
-        &a_2&b_2&&\\
-        &&a_3&\ddots&\\
-        &&&\ddots&b_{n-1}\\
-        b_n&&&&a_n
-    \end{vmatrix}$.
+                  a_1 & b_1 &     &        &         \\
+                      & a_2 & b_2 &        &         \\
+                      &     & a_3 & \ddots &         \\
+                      &     &     & \ddots & b_{n-1} \\
+                  b_n &     &     &        & a_n
+              \end{vmatrix}$.
 
     \item $D_n=\begin{vmatrix}
-        a+b&ab&&&\\
-        1&a+b&\ddots&&\\
-        &1&\ddots&ab&\\
-        &&\ddots&a+b&ab\\
-        &&&1&a+b\\
-    \end{vmatrix}$.
+                  a+b & ab  &        &     &     \\
+                  1   & a+b & \ddots &     &     \\
+                      & 1   & \ddots & ab  &     \\
+                      &     & \ddots & a+b & ab  \\
+                      &     &        & 1   & a+b \\
+              \end{vmatrix}$.
 
-    \item 用递推法解\autoref{ex:17:递推法}.
+    \item 用递推法解\autoref{ex:14:递推法}.
 
     \item （P188 第4题）解行列式 $ \begin{vmatrix}
-        a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
-        b^{2} & (b+1)^{2} & (b+2)^{2} & (b+3)^{2} \\
-        c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
-        d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
-    \end{vmatrix} $.
+                  a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
+                  b^{2} & (b+1)^{2} & (b+2)^{2} & (b+3)^{2} \\
+                  c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
+                  d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
+              \end{vmatrix} $.
 
     \item (P189 第6题）设
-    \[ D=\begin{vmatrix}
-        1+a_1&1&\cdots&1\\
-        1&1+a_2&\cdots&1\\
-        \vdots&\vdots&\ddots&\vdots\\
-        1&1&\cdots&1+a_n
-    \end{vmatrix} \]
-    \begin{enumerate}[label=(\arabic*)]
-        \item 用递推公式计算行列式$D$；
-        \item 硬拆$D$为$2^n$个行列式，计算出结果.
-    \end{enumerate}
+          \[ D=\begin{vmatrix}
+                  1+a_1  & 1      & \cdots & 1      \\
+                  1      & 1+a_2  & \cdots & 1      \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  1      & 1      & \cdots & 1+a_n
+              \end{vmatrix} \]
+          \begin{enumerate}
+              \item 用递推公式计算行列式$D$；
+
+              \item 硬拆$D$为$2^n$个行列式，计算出结果.
+          \end{enumerate}
 
     \item （P189 第5题(2)）解行列式 $\begin{vmatrix}
-        a_{1}+a_{2} & a_{2}+a_{3} & \cdots & a_{n-1}+a_n & a_n+a_{1} \\
-        a_{1}^{2}+a_{2}^{2} & a_{2}^{2}+a_{3}^{2} & \cdots & a_{n-1}^{2}+a_n^{2} & a_n^{2}+a_{1}^{2} \\
-        \vdots & \vdots & \ddots & \vdots & \vdots \\
-        a_{1}^{n}+a_{2}^{n} & a_{2}^{n}+a_{3}^{n} & \cdots & a_{n-1}^{n}+a_n^{n} & a_n^{n}+a_{1}^{n}
-    \end{vmatrix}$.
+                  a_{1}+a_{2}         & a_{2}+a_{3}         & \cdots & a_{n-1}+a_n         & a_n+a_{1}         \\
+                  a_{1}^{2}+a_{2}^{2} & a_{2}^{2}+a_{3}^{2} & \cdots & a_{n-1}^{2}+a_n^{2} & a_n^{2}+a_{1}^{2} \\
+                  \vdots              & \vdots              & \ddots & \vdots              & \vdots            \\
+                  a_{1}^{n}+a_{2}^{n} & a_{2}^{n}+a_{3}^{n} & \cdots & a_{n-1}^{n}+a_n^{n} & a_n^{n}+a_{1}^{n}
+              \end{vmatrix}$.
 
     \item （P188 第1题 (5)--(8)）解行列式
-    \begin{enumerate}[label=(\arabic*)] \begin{multicols}{2}
-        \item $ D_1=\begin{vmatrix}
-            1&2&3&4\\2&3&4&1\\3&4&1&2\\4&1&2&3
-        \end{vmatrix} $
+          \begin{enumerate} \begin{multicols}{2}
+                  \item $ D_1=\begin{vmatrix}
+                          1 & 2 & 3 & 4 \\2&3&4&1\\3&4&1&2\\4&1&2&3
+                      \end{vmatrix} $
 
-        \item $ D_2=\begin{vmatrix}
-            \lambda+2&-1&-1&-1\\
-            -1&\lambda+2&-1&-1\\
-            -1&-1&\lambda+2&-1\\
-            -1&-1&-1&\lambda+2
-        \end{vmatrix} $
+                  \item $ D_2=\begin{vmatrix}
+                          \lambda+2 & -1        & -1        & -1        \\
+                          -1        & \lambda+2 & -1        & -1        \\
+                          -1        & -1        & \lambda+2 & -1        \\
+                          -1        & -1        & -1        & \lambda+2
+                      \end{vmatrix} $
 
-        \end{multicols} \begin{multicols}{2} % dirty hack
+              \end{multicols} \begin{multicols}{2} % dirty hack
 
-        \item $ D_3=\begin{vmatrix}
-            1^{2} & 2^{2} & 3^{2} & 4^{2} \\
-            2^{2} & 3^{2} & 4^{2} & 5^{2} \\
-            3^{2} & 4^{2} & 5^{2} & 6^{2} \\
-            4^{2} & 5^{2} & 6^{2} & 7^{2}
-        \end{vmatrix} $
+                  \item $ D_3=\begin{vmatrix}
+                          1^{2} & 2^{2} & 3^{2} & 4^{2} \\
+                          2^{2} & 3^{2} & 4^{2} & 5^{2} \\
+                          3^{2} & 4^{2} & 5^{2} & 6^{2} \\
+                          4^{2} & 5^{2} & 6^{2} & 7^{2}
+                      \end{vmatrix} $
 
-        \item $ D_4=\begin{vmatrix}
-            3&2&0&0\\
-            1&3&2&0\\
-            0&1&3&2\\
-            0&0&1&3
-        \end{vmatrix} $
-    \end{multicols} \end{enumerate}
+                  \item $ D_4=\begin{vmatrix}
+                          3 & 2 & 0 & 0 \\
+                          1 & 3 & 2 & 0 \\
+                          0 & 1 & 3 & 2 \\
+                          0 & 0 & 1 & 3
+                      \end{vmatrix} $
+              \end{multicols} \end{enumerate}
 
     \item （P190 第9题）解行列式
-    \begin{enumerate}[label=(\arabic*)]
-        \item $D=\begin{vmatrix}
-        1 & 2 & \cdots & 2 & 2 \\
-        2 & 2 & \cdots & 2 & 2 \\
-        \vdots & \vdots & \ddots & \vdots & \vdots \\
-        2 & 2 & \cdots & n-1 & 2 \\
-        2 & 2 & \cdots & 2 & n\end{vmatrix}$；
+          \begin{enumerate}
+              \item $D=\begin{vmatrix}
+                            1      & 2      & \cdots & 2      & 2      \\
+                            2      & 2      & \cdots & 2      & 2      \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            2      & 2      & \cdots & n-1    & 2      \\
+                            2      & 2      & \cdots & 2      & n\end{vmatrix}$；
 
-        \item $^*$ $D=\begin{vmatrix}
-            1 & 2 & \cdots & n-1 & n \\
-            2 & 3 & \cdots & n & 1 \\
-            3 & 4 & \cdots & 1 & 2 \\
-            \vdots & \vdots & \ddots & \vdots & \vdots \\
-            n & 1 & \cdots & n-2 & n-1
-        \end{vmatrix}$.
-    \end{enumerate}
+              \item $^*$ $D=\begin{vmatrix}
+                            1      & 2      & \cdots & n-1    & n      \\
+                            2      & 3      & \cdots & n      & 1      \\
+                            3      & 4      & \cdots & 1      & 2      \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            n      & 1      & \cdots & n-2    & n-1
+                        \end{vmatrix}$.
+          \end{enumerate}
 
-    \item （P190 第10题(2)）证明
-    $\begin{vmatrix}
-        a & c & c & \cdots & c \\
-        b & a & c & \cdots & c \\
-        b & b & a & \cdots & c \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        b & b & b & \cdots & a
-    \end{vmatrix}=\dfrac{b(a-c)^{n}-c(a-b)^{n}}{b-c}$，其中 $b \neq c$, 等式左端是 $n$ 阶行列式.
+    \item （P190 第10题(2)）证明$\begin{vmatrix}
+                  a      & c      & c      & \cdots & c      \\
+                  b      & a      & c      & \cdots & c      \\
+                  b      & b      & a      & \cdots & c      \\
+                  \vdots & \vdots & \vdots & \ddots & \vdots \\
+                  b      & b      & b      & \cdots & a
+              \end{vmatrix}=\dfrac{b(a-c)^{n}-c(a-b)^{n}}{b-c}$，其中 $b \neq c$, 等式左端是 $n$ 阶行列式.
 \end{enumerate}
+
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item $^*$ 设$A,B,C,D$都是$n$阶方阵，且$AC=CA$，证明$\begin{vmatrix} A&B \\ C&D \end{vmatrix}=|AD-CB|$
-    （为简化，可以只考虑$A$可逆的情况）.
+    \item $^*$ 设$A,B,C,D$都是$n$阶方阵，且$AC=CA$，证明$\begin{vmatrix} A&B \\ C&D \end{vmatrix}=|AD-CB|$（为简化，可以只考虑$A$可逆的情况）.
 
-    \item $A\in \mathbf{F}^{m\times n}, B\in \mathbf{F}^{n\times m}$，证明$|E_m-AB|=|E_n-BA|$（即\autoref{sec:17:利用} 中的结论）.
+    \item $A\in \mathbf{F}^{m\times n}, B\in \mathbf{F}^{n\times m}$，证明$|E_m-AB|=|E_n-BA|$（即\autoref{sec:14:利用} 中的结论）.
 
     \item $A\in \mathbf{F}^{m\times n}, B\in \mathbf{F}^{n\times m}$，证明$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$（为简化，$\lambda>0,\enspace m>n$）.
 \end{enumerate}
+
 \centerline{\heiti C组}
 \begin{enumerate}
     \item 解行列式
-    \begin{multicols}{2} \begin{enumerate}[label=(\arabic*)]
-        \item $D=\begin{vmatrix}
-        ax+by&ay+bz&az+bx\\
-        ay+bz&az+bx&ax+by\\
-        az+bx&ax+by&ay+bz
-        \end{vmatrix}$；
+          \begin{multicols}{2} \begin{enumerate}
+                  \item $D=\begin{vmatrix}
+                                ax+by & ay+bz & az+bx \\
+                                ay+bz & az+bx & ax+by \\
+                                az+bx & ax+by & ay+bz
+                            \end{vmatrix}$
 
-        \item $D=\begin{vmatrix}
-        x^2+1&xy&xz\\
-        xy&y^2+1&yz\\
-        xz&yz&z^2+1
-        \end{vmatrix}$.
-    \end{enumerate} \end{multicols}
+                  \item $D=\begin{vmatrix}
+                                x^2+1 & xy    & xz    \\
+                                xy    & y^2+1 & yz    \\
+                                xz    & yz    & z^2+1
+                            \end{vmatrix}$
+              \end{enumerate} \end{multicols}
 
-    \item $^*$ 计算行列式$|2E-\alpha_1^T\beta_1-\alpha_2^T\beta_2|$，
-    其中$\alpha_1=(a_1,a_2,\ldots,a_n),\enspace \beta_1=(b_1,b_2,\ldots,b_n),\enspace
-    \alpha_2=(c_1,c_2,\ldots,c_n),\enspace \beta_2 = (d_1,d_2,\ldots,d_n)$.（提示：利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$）
+    \item $^*$ 计算行列式$|2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|$，其中$\alpha_1=(a_1,a_2,\ldots,a_n),\enspace \beta_1=(b_1,b_2,\ldots,b_n),\enspace \alpha_2=(c_1,c_2,\ldots,c_n),\enspace \beta_2 = (d_1,d_2,\ldots,d_n)$.（提示：利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$）
 
     \item 已知$n$阶矩阵$A$满足
-    \[ AA^T=E,\enspace |A|=-1 \]
-    求证：$|E+A|=0$.
+          \[ AA^\mathrm{T}=E,\enspace |A|=-1 \]
+          求证：$|E+A|=0$.
 \end{enumerate}

@@ -1,16 +1,12 @@
 \chapter{相似标准形（II）}
 
-虽然对角矩阵十分简洁，但根据我们上一讲中讨论的等价条件可知，可对角化的条件是
-较为苛刻的，很多线性变换都不存在如此简洁的矩阵表示.我们考虑更为普遍但也能
-保持良好性质的情况，上三角矩阵一定是一个好的突破口.
+虽然对角矩阵十分简洁，但根据我们上一讲中讨论的等价条件可知，可对角化的条件是较为苛刻的，很多线性变换都不存在如此简洁的矩阵表示. 我们考虑更为普遍但也能保持良好性质的情况，上三角矩阵一定是一个好的突破口.
 
-但上三角矩阵含有的零的数量事实上不够多，因此我们还需进一步讨论分块对角矩阵.
-在此过程中我们也将系统性地介绍幂零矩阵，补全我们之前讨论的缺口.
+但上三角矩阵含有的零的数量事实上不够多，因此我们还需进一步讨论分块对角矩阵. 在此过程中我们也将系统性地介绍幂零矩阵，补全我们之前讨论的缺口.
 
 \section{上三角矩阵}
-我们从上三角矩阵出发，首先因为之前的讨论中上三角矩阵的一些优良性质大家已经非常熟悉，并且
-事实上，复向量空间中的所有线性变换都可以在某组基下得到上三角矩阵的矩阵表示.
-我们有如下定理：
+
+我们从上三角矩阵出发，首先因为之前的讨论中上三角矩阵的一些优良性质大家已经非常熟悉，并且事实上，复向量空间中的所有线性变换都可以在某组基下得到上三角矩阵的矩阵表示. 我们有如下定理：
 \begin{theorem}\label{thm:20:上三角矩阵存在}
     设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$，则
     \begin{enumerate}
@@ -21,50 +17,40 @@
         \item $\sigma$的特征值恰为$A$的主对角元.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
     \begin{enumerate}
-        \item 根据相似的定义，这一结论与``任意$n$阶复矩阵一定相似于一个上三角矩阵''是等同的，
-        我们可以使用分块矩阵结合数学归纳法的方法进行证明.$n=1$时结论显然，因为任意一阶矩阵
-        本身就是上三角矩阵.现假设$n-1$阶复矩阵都可以相似于上三角矩阵，设$A$为$n$阶复矩阵，
-        我们任取$A$的一个复特征值$\lambda_1$，设$\alpha_1$为$A$对应于$\lambda_1$的特征向量.
-        我们把$\alpha_1$扩充为$\mathbf{C}^n$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_n$，
-        记$P_1=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则$P_1$可逆，且
-        \[P_1^{-1}AP_1=\begin{pmatrix}
-            \lambda_1 & \alpha' \\ 0 & A_{n-1}
-        \end{pmatrix},\]
-        我们对$n-1$阶矩阵$A_{n-1}$应用归纳假设，因此存在可逆矩阵$P_2$使得$P_2^{-1}A_{n-1}P_2$为上三角矩阵，
-        取$P=P_1\begin{pmatrix}
-            1 & 0 \\ 0 & P_2
-        \end{pmatrix}$，直接有
-        \[P^{-1}AP=\begin{pmatrix}
-            \lambda_1 & \alpha'P_1 \\ 0 & P_2^{-1}A_{n-1}P_2
-        \end{pmatrix}\]
-        为上三角矩阵，因此$n$阶复矩阵一定相似于上三角矩阵.
+        \item 根据相似的定义，这一结论与``任意$n$阶复矩阵一定相似于一个上三角矩阵''是等同的，我们可以使用分块矩阵结合数学归纳法的方法进行证明. $n=1$时结论显然，因为任意一阶矩阵本身就是上三角矩阵. 现假设$n-1$阶复矩阵都可以相似于上三角矩阵，设$A$为$n$阶复矩阵，我们任取$A$的一个复特征值$\lambda_1$，设$\alpha_1$为$A$对应于$\lambda_1$的特征向量. 我们把$\alpha_1$扩充为$\mathbf{C}^n$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_n$，记$P_1=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则$P_1$可逆，且
+              \[P_1^{-1}AP_1=\begin{pmatrix}
+                      \lambda_1 & \alpha' \\ 0 & A_{n-1}
+                  \end{pmatrix},\]
+
+              我们对$n-1$阶矩阵$A_{n-1}$应用归纳假设，因此存在可逆矩阵$P_2$使得$P_2^{-1}A_{n-1}P_2$为上三角矩阵，取$P=P_1\begin{pmatrix}
+                      1 & 0 \\ 0 & P_2
+                  \end{pmatrix}$，直接有
+              \[P^{-1}AP=\begin{pmatrix}
+                      \lambda_1 & \alpha'P_1 \\ 0 & P_2^{-1}A_{n-1}P_2
+                  \end{pmatrix}\]
+              为上三角矩阵，因此$n$阶复矩阵一定相似于上三角矩阵.
+
         \item 这一结论在矩阵计算进阶一讲中已经讨论，此处不再赘述；
-        \item 利用线性映射的特征值等于表示矩阵的特征值，且表示矩阵的特征值就是$|\lambda E-A|=0$
-        的零点即可得到这一结论.
+
+        \item 利用线性映射的特征值等于表示矩阵的特征值，且表示矩阵的特征值就是$|\lambda E-A|=0$的零点即可得到这一结论.
     \end{enumerate}
 \end{proof}
 
-除此之外，在矩阵计算进阶中我们也提到上三角矩阵相乘结果中对角线上元素是原矩阵对角线上
-对应元素相乘的结果，其逆的对角线上元素是原矩阵对角线对应元素的逆.以上性质表明，
-上三角矩阵是所有线性变换都可以在某组基下得到的且有良好性质的矩阵类型.
+除此之外，在矩阵计算进阶中我们也提到上三角矩阵相乘结果中对角线上元素是原矩阵对角线上对应元素相乘的结果，其逆的对角线上元素是原矩阵对角线对应元素的逆. 以上性质表明，上三角矩阵是所有线性变换都可以在某组基下得到的且有良好性质的矩阵类型.
 
-事实上，我们在这里介绍这一证明的主要目的在于，这一证明给了我们一个求解线性变换（或矩阵）上三角化的方法.
-与对角化类似，线性变换的上三角化依赖于矩阵上三角化，因此我们这里只讨论矩阵的情况.根据上面的证明，
-我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，
-那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况.我们给出下面的例子
-供读者运用这一方法：
+事实上，我们在这里介绍这一证明的主要目的在于，这一证明给了我们一个求解线性变换（或矩阵）上三角化的方法. 与对角化类似，线性变换的上三角化依赖于矩阵上三角化，因此我们这里只讨论矩阵的情况. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
 \begin{example}
-    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x+y,5y+3z,8z)$，求$\mathbf{C}^3$的一组基使得
-    $\sigma$在这组基下的矩阵为上三角矩阵.
+    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x+y,5y+3z,8z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
 \end{example}
+
 \begin{solution}
 
 \end{solution}
 
-事实上，我们研究上三角矩阵（以及后续分块对角矩阵）的思路与研究对角矩阵是类似的，我们会讨论计算方法以及
-相关的等价条件.下面我们给出关于对角矩阵的一些等价条件：
+事实上，我们研究上三角矩阵（以及后续分块对角矩阵）的思路与研究对角矩阵是类似的，我们会讨论计算方法以及相关的等价条件. 下面我们给出关于对角矩阵的一些等价条件：
 \begin{theorem}\label{thm:20:上三角矩阵等价条件}
     设$\sigma\in \mathcal{L}(V)$，且$v_1,v_2,\ldots,v_n$是$V$的基，则以下条件等价：
     \begin{enumerate}
@@ -75,47 +61,45 @@
         \item 对每个$j=1,\ldots,n$有$\spa(v_1,\ldots,v_j)$在$\sigma$下不变.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
     \begin{enumerate}
-        \item 
-        \item 
-        \item 
+        \item
+
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
 这一定理给出了上三角矩阵的几个充要条件，基于这些充要条件我们可以有如下进一步的理解：
 \begin{enumerate}
-    \item 我们可以给出\autoref{thm:20:上三角矩阵存在}的另外两种证明，即《线性代数应该这样学》
-    5.27给出的两种证明.事实上5.27的证明也使用了数学归纳法，但是之前分块矩阵的归纳是针对矩阵的
-    阶数，这里是针对线性变换所在线性空间的维数.我们这给出证明，以便深刻体会数学归纳法的思想：
-    
-    \begin{proof}
-        \begin{enumerate}
-            \item 
-            \item 
-        \end{enumerate}
-    \end{proof}
-    
-    \item 比较对角矩阵的充要条件中要求存在一维不变子空间的分解，这里的等价条件表明上三角矩阵
-    要求线性变换存在任意维数的不变子空间即可（对角矩阵的条件实际上蕴含这一条件，因为存在一维不变子空间直和分解，
-    我们任意通过直和运算合并这些一维不变子空间就可以得到任意维数的不变子空间，因此对角矩阵的要求
-    更强，上三角矩阵不需要这些任意维数的不变子空间能拆解成一维不变子空间的直和）.
-    
-    事实上，因为任意复向量空间上的线性变换都存在一组基使得矩阵表示为上三角矩阵，因此
-    任意复向量空间上的线性变换都存在任意维数的不变子空间.因此下面这一例子的结论是显然的：
-    \begin{example}
-        设$V$是$n$维复向量空间. $\sigma\in \mathcal{L}(V)$，证明：对任意的正整数
-        $r\enspace(1\leqslant r\leqslant n)$，$\sigma$有$r$维不变子空间.
-    \end{example}
-    \begin{proof}
-        
-    \end{proof}
+    \item 我们可以给出\autoref{thm:20:上三角矩阵存在} 的另外两种证明，即《线性代数应该这样学》
+          5.27给出的两种证明. 事实上5.27的证明也使用了数学归纳法，但是之前分块矩阵的归纳是针对矩阵的阶数，这里是针对线性变换所在线性空间的维数. 我们这给出证明，以便深刻体会数学归纳法的思想：
+
+          \begin{proof}
+              \begin{enumerate}
+                  \item
+
+                  \item
+              \end{enumerate}
+          \end{proof}
+
+    \item 比较对角矩阵的充要条件中要求存在一维不变子空间的分解，这里的等价条件表明上三角矩阵要求线性变换存在任意维数的不变子空间即可（对角矩阵的条件实际上蕴含这一条件，因为存在一维不变子空间直和分解，我们任意通过直和运算合并这些一维不变子空间就可以得到任意维数的不变子空间，因此对角矩阵的要求更强，上三角矩阵不需要这些任意维数的不变子空间能拆解成一维不变子空间的直和）.
+
+          事实上，因为任意复向量空间上的线性变换都存在一组基使得矩阵表示为上三角矩阵，因此任意复向量空间上的线性变换都存在任意维数的不变子空间. 因此下面这一例子的结论是显然的：
+          \begin{example}
+              设$V$是$n$维复向量空间. $\sigma\in \mathcal{L}(V)$，证明：对任意的正整数$r\enspace(1\leqslant r\leqslant n)$，$\sigma$有$r$维不变子空间.
+          \end{example}
+          \begin{proof}
+
+          \end{proof}
 \end{enumerate}
 
-接下来我们要讨论一个特别的问题，即线性变换/矩阵可交换的性质.我们有如下定理：
+接下来我们要讨论一个特别的问题，即线性变换/矩阵可交换的性质. 我们有如下定理：
 \begin{theorem}
     设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，则
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item $\sigma$的每个特征子空间都是$\tau$的不变子空间；
 
         \item $\sigma,\tau$有公共的特征向量.
@@ -124,199 +108,204 @@
 将这一定理的线性变换改为矩阵实际上是等价的.
 
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
 接下来我们希望应用这上述定理解决下面的问题：
 \begin{example}
     设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，证明：
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item 若$\sigma$有$s$个不同的特征值，则$\sigma,\tau$至少有$s$个公共且线性无关的特征向量；
 
         \item 存在$V$的一组基，使得$\sigma$和$\tau$在这组基下的矩阵均为上三角矩阵.
     \end{enumerate}
 \end{example}
+
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
-这一例子的结论告诉我们：线性变换可交换对应于同时上三角化.例中 2 的结论如果换为矩阵表述应当是：
-设$A,B$是复数域上的两个$n$阶矩阵，且$AB=BA$，则存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$
-同时为上三角矩阵.
+这一例子的结论告诉我们：线性变换可交换对应于同时上三角化. 例中 2 的结论如果换为矩阵表述应当是：设$A,B$是复数域上的两个$n$阶矩阵，且$AB=BA$，则存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$同时为上三角矩阵.
 
 \section{核空间的性质 \quad 幂零矩阵}
+
 这一节我们将为后续讨论分块对角矩阵做准备，同时幂零矩阵一节中也将讨论这一特殊矩阵的很多特别的、有趣的性质.
 
 \subsection{核空间的性质}
-事实上，根据可对角化的等价条件，我们知道一个线性变换不可对角化实际上是因为它没有足够多的
-线性无关的特征向量，也即特征子空间直和后比原空间略小.事实上，我们知道$\sigma$在特征值
-$\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$.我们回顾\autoref{thm:6:核空间性质}：
+
+事实上，根据可对角化的等价条件，我们知道一个线性变换不可对角化实际上是因为它没有足够多的线性无关的特征向量，也即特征子空间直和后比原空间略小. 事实上，我们知道$\sigma$在特征值$\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$. 我们回顾\autoref{thm:6:核空间性质}：
 \begin{theorem}\label{thm:20:核空间性质}
     设$\sigma\in \mathcal{L}(V)$，则有
     \begin{enumerate}
-        \item $\{0\}=\ker \sigma^0\subset\ker \sigma^1\subset\cdots\subset
-        \ker \sigma^k\subset\ker \sigma^{k+1}\subset\cdots$；
+        \item $\{0\}=\ker \sigma^0\subseteq\ker \sigma^1\subseteq\cdots\subseteq\ker \sigma^k\subseteq\ker \sigma^{k+1}\subseteq\cdots$；
 
         \item 设$m$是非负整数使得$\ker \sigma^m=\ker \sigma^{m+1}$，则
-        \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
+              \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
 
         \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+1}=\cdots$.
     \end{enumerate}
 \end{theorem}
 
-我们发现，如果我们提高线性变换的幂次，那么我们可以获得更大的核空间，这样扩张后的核空间的
-直和是否可以张成整个原空间呢？我们可以提前给出答案：可以，具体的说明我们在讨论完下面的
-幂零矩阵之后将会详细展开.
+我们发现，如果我们提高线性变换的幂次，那么我们可以获得更大的核空间，这样扩张后的核空间的直和是否可以张成整个原空间呢？我们可以提前给出答案：可以，具体的说明我们在讨论完下面的幂零矩阵之后将会详细展开.
 
 \subsection{幂零矩阵}
+
 基于上面核空间的讨论，并为了方便后面小节的研究，我们将讲解幂零线性变换与幂零矩阵的相关准备知识.
-\begin{definition}
+\begin{definition}[{\keyterm{幂零}[nilpotent]}]
     \begin{enumerate}
-        \item 一个线性变换称为\keyterm{幂零}[nilpotent]的，如果它的某个幂等于零映射（即将所有向量都
-        映射到0的映射）；
+        \item 一个线性变换称为\keyterm*{幂零}的，如果它的某个幂等于零映射（即将所有向量都映射到0的映射）；
+
         \item 一个矩阵$A$称为幂零的，如果存在正整数$m$使得$A^m=O$.
     \end{enumerate}
 \end{definition}
 
-根据线性映射矩阵表示很容易知道，幂零线性变换在任意一组基下的矩阵表示都是幂零矩阵.
-我们接下来首先讨论幂零线性变换的一些基本性质：
+根据线性映射矩阵表示很容易知道，幂零线性变换在任意一组基下的矩阵表示都是幂零矩阵. 我们接下来首先讨论幂零线性变换的一些基本性质：
 \begin{theorem} \label{thm:20:幂零线性变换性质}
     设线性变换$N\in \mathcal{L}(V)$是幂零的，则
-    \begin{enumerate}[label=(\arabic*)]
-        \item $N$的所有特征值均为0（等价定义）；
+    \begin{enumerate}
+        \item \label{item:20:幂零线性变换性质:1}
+              $N$的所有特征值均为0（等价定义）；
 
-        \item $N^{\dim V}$=0；
+        \item \label{item:20:幂零线性变换性质:2}
+              $N^{\dim V}$=0；
 
-        \item $V$有一组基使得$N$关于这组基的矩阵对角线和对角线下方元素均为0（等价定义）；
+        \item \label{item:20:幂零线性变换性质:3}
+              $V$有一组基使得$N$关于这组基的矩阵对角线和对角线下方元素均为0（等价定义）；
 
-        \item $N\pm I$可逆.
+        \item \label{item:20:幂零线性变换性质:4}
+              $N\pm I$可逆.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 这一结论我们将在下一讲中介绍哈密顿-凯莱定理后给出证明；
-        \item 
-        \item 
-        \item 
+    \begin{enumerate}
+        \item 这一结论我们将在下一讲中介绍 \hyperref[thm:21:HC]{Hamilton-Cayley 定理}后给出证明；
+
+        \item
+
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
-事实上第1、2、4点都有相应的矩阵的结论，我们将线性变换替换为它的矩阵表示即可，此处不再赘述.
-而第三点则解释了我们在求矩阵的幂时将一些矩阵分解为一个矩阵加一个对角线上全为0的矩阵的合理性，
-因为后者一定是幂零的.接下来我们通过几个例子进一步讨论、运用幂零矩阵、幂零线性变换的性质：
+事实上 \ref*{item:20:幂零线性变换性质:1},\ref*{item:20:幂零线性变换性质:2},\ref*{item:20:幂零线性变换性质:4} 都有相应的矩阵的结论，我们将线性变换替换为它的矩阵表示即可，此处不再赘述. 而第三点则解释了我们在求矩阵的幂时将一些矩阵分解为一个矩阵加一个对角线上全为0的矩阵的合理性，因为后者一定是幂零的. 接下来我们通过几个例子进一步讨论、运用幂零矩阵、幂零线性变换的性质：
 \begin{example}
-    证明：$A$为幂零矩阵$\iff \forall k \in N^+$，\textup{tr}$(A^k)$=\textup{0}.
+    证明：$A$为幂零矩阵$\iff \forall k \in \mathbf{N}_+,\enspace\tr(A^k)=0$.
 \end{example}
+
 \begin{proof}
 
 \end{proof}
 
 \begin{example}
-	若$A$、$B$为两个$n$阶矩阵且满足$AB-BA=A$，证明：
-    \begin{enumerate}[label=(\arabic*)]
+    若$A,B$为两个$n$阶矩阵且满足$AB-BA=A$，证明：
+    \begin{enumerate}
         \item $A$不可逆；
+
         \item $A$是幂零矩阵.
     \end{enumerate}
 \end{example}
+
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
 \section{分块对角矩阵}
+
 \subsection{广义特征子空间与分块对角矩阵}
-上一节中我们已经讨论了不可对角化线性变换获得简化矩阵的一般思想，即试图利用核空间增长的性质扩张
-特征子空间，使得扩张后的特征子空间（称为广义特征子空间）的直和为原空间.下面我们给出严谨定义：
+
+上一节中我们已经讨论了不可对角化线性变换获得简化矩阵的一般思想，即试图利用核空间增长的性质扩张特征子空间，使得扩张后的特征子空间（称为广义特征子空间）的直和为原空间. 下面我们给出严谨定义：
 \begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$\sigma$的特征值，若向量$v\neq 0$且存在正整数$j$使得
-    $(\sigma-\lambda I)^jv=0$，则称$v$为$\sigma$对应于$\lambda$的\keyterm{广义特征向量}[generalized eigenvector].
-    $\sigma$对应于$\lambda$的全体广义特征向量与0向量构成的集合称为$\sigma$相应于$\lambda$的\keyterm{广义特征子空间}[generalized eigenspace]，记为$G(\lambda,\sigma)$.
+    设$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$\sigma$的特征值，若向量$v\neq 0$且存在正整数$j$使得$(\sigma-\lambda I)^jv=0$，则称$v$为$\sigma$对应于$\lambda$的\keyterm{广义特征向量}[generalized eigenvector]. $\sigma$对应于$\lambda$的全体广义特征向量与0向量构成的集合称为$\sigma$相应于$\lambda$的\keyterm{广义特征子空间}[generalized eigenspace]，记为$G(\lambda,\sigma)$.
 \end{definition}
-注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，
-$(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
+注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，$(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
 
-实际上，根据\autoref{thm:20:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$.
-需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为
-广义特征子空间的维数，几何重数定义为特征子空间的维数.实际上在不变子空间一讲中我们有类似的定义，我们将在下一讲中
-讲解它们的关联.
+实际上，根据\autoref{thm:20:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$. 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为广义特征子空间的维数，几何重数定义为特征子空间的维数. 实际上在不变子空间一讲中我们有类似的定义，我们将在下一讲中讲解它们的关联.
 
-我们接下来的目标转向我们的主线，即证明任意线性变换的广义特征子空间的和为直和且和为原空间.下面这一定理读者可以回顾
-特征值、特征向量的性质以及可对角化的等价条件，我们会发现这些定理具有很大的相似性，因此记忆难度并不大：
+我们接下来的目标转向我们的主线，即证明任意线性变换的广义特征子空间的和为直和且和为原空间. 下面这一定理读者可以回顾特征值、特征向量的性质以及可对角化的等价条件，我们会发现这些定理具有很大的相似性，因此记忆难度并不大：
 \begin{theorem} \label{thm:20:广义特征性质}
-    设$V$是有限维的，$\sigma\in \mathcal{L}(V)$.用$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值.
+    设$V$是有限维的，$\sigma\in \mathcal{L}(V)$. 用$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值.
     \begin{enumerate}[label=(\arabic*)]
         \item $\sigma$对应于不同特征值的广义特征向量线性无关；
 
-        \item $\sigma$不同特征值对应的广义特征子空间的和为直和，且$V=G(\lambda_1,\sigma)\oplus\cdots\oplus
-        G(\lambda_m,\sigma)$；
+        \item \label{item:20:广义特征性质:2}
+              $\sigma$不同特征值对应的广义特征子空间的和为直和，且$V=G(\lambda_1,\sigma)\oplus\cdots\oplus
+                  G(\lambda_m,\sigma)$；
 
         \item $V$有一个由$\sigma$的广义特征向量组成的基；
 
         \item 每个$G(\lambda_i,\sigma)$在$\sigma$下都是不变的；
 
-        \item 每个$(\sigma-\lambda_j I)\vert_{G(\lambda_j,\sigma)}$都是幂零的.
+        \item \label{item:20:广义特征性质:5}
+              每个$(\sigma-\lambda_j I)\vert_{G(\lambda_j,\sigma)}$都是幂零的.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
-        \item 
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
+
+        \item
+
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
 上述定理更重要的结果在于它我们可以得到任何复向量空间上的线性变换都有如下的分块对角矩阵的标准形：
 \begin{theorem}
-    设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$.设$\lambda_1,\cdots,\lambda_m$是$\sigma$的所有互不相同的特征值，重数分别为
-    $d_1,\cdots,d_m$，则$V$有一组基使得$\sigma$关于这组基的有分块对角矩阵
+    设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$. 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的所有互不相同的特征值，重数分别为$d_1,\ldots,d_m$，则$V$有一组基使得$\sigma$关于这组基的有分块对角矩阵
     \[\begin{pmatrix}
-        A_1 &  & O \\  & \ddots &  \\ O &  & A_m
-    \end{pmatrix}\]
+            A_1 &  & O \\  & \ddots &  \\ O &  & A_m
+        \end{pmatrix}\]
     其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
     \[A_j=\begin{pmatrix}
-        \lambda_j &  & * \\  & \ddots &  \\ O &  & \lambda_j
-    \end{pmatrix}\]
+            \lambda_j &  & * \\  & \ddots &  \\ O &  & \lambda_j
+        \end{pmatrix}\]
 \end{theorem}
+
 \begin{proof}
-    
+
 \end{proof}
 
-由此我们得到了一个相比于上三角矩阵更为简单，并且所有线性变换都可以获得的标准形.
-在介绍完其存在性后，我们按照惯例需要讨论如何将这一标准形求解出来.事实上，根据上述定理
-的证明，我们发现每个对角块都是从一个广义特征子空间得来的，因此我们只需求出各个广义特征子空间的
-基，然后写出对应的矩阵即可.如果得到的对角块不是上三角矩阵，我们可以使用在上三角矩阵求法中
-讲解的方法进行调整.我们来看一个例子：
+由此我们得到了一个相比于上三角矩阵更为简单，并且所有线性变换都可以获得的标准形. 在介绍完其存在性后，我们按照惯例需要讨论如何将这一标准形求解出来. 事实上，根据上述定理的证明，我们发现每个对角块都是从一个广义特征子空间得来的，因此我们只需求出各个广义特征子空间的基，然后写出对应的矩阵即可. 如果得到的对角块不是上三角矩阵，我们可以使用在上三角矩阵求法中讲解的方法进行调整. 我们来看一个例子：
 \begin{example}
     设$\sigma\in \mathcal{L}(\mathbf{C}^3)$定义为
     \[\sigma(z_1,z_2,z_3)=(6z_1+3z_2+4z_3,6z_2+2z_3,7z_3),\]求一组基使其有分块对角矩阵并写出对应的分块对角矩阵.
 \end{example}
+
 \begin{solution}
 
 \end{solution}
 
-事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难.因为
-当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，
-是很困难的，但事实上根据核空间停止增长的性质可以知道，我们只需要不断提升矩阵的幂次，直到得到的
-广义特征子空间不再发生改变就能够停止计算.
+事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难. 因为当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，是很困难的，但事实上根据核空间停止增长的性质可以知道，我们只需要不断提升矩阵的幂次，直到得到的广义特征子空间不再发生改变就能够停止计算.
 
 \begin{example}
     设$\sigma,\tau\in \mathcal{L}(V)$可逆，证明：$\sigma$和$\tau^{-1}\sigma\tau$有相同的特征值，且重数也相同.
 \end{example}
+
 \begin{proof}
-    
+
 \end{proof}
 
 \subsection{平方根问题}
+
 在进入下一个话题前，我们先简单介绍线性变换平方根的概念，这一概念在之后内积空间线性变换会进一步说明.
 \begin{definition}
     我们称线性变换$\sigma\in \mathcal{L}(V)$的平方根是满足$\tau^2=\sigma$的线性变换$\tau\in \mathcal{L}(V)$.
@@ -324,54 +313,56 @@ $(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次�
 在复向量空间中，我们有如下两个结论：
 \begin{theorem} \label{thm:20:幂零平方根}
     设$V$是复向量空间.
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item 设$N\in \mathcal{L}(V)$幂零，则$(I+N)$有平方根；
-        \item 若$\sigma\in \mathcal{L}(V)$可逆，则$\sigma$有平方根.
+
+        \item \label{item:20:幂零平方根:2}
+              若$\sigma\in \mathcal{L}(V)$可逆，则$\sigma$有平方根.
     \end{enumerate}
 \end{theorem}
+
 \begin{proof}
-    \begin{enumerate}[label=(\arabic*)]
-        \item 
-        \item 
+    \begin{enumerate}
+        \item
+
+        \item
     \end{enumerate}
 \end{proof}
 
-我们发现，这一定理的证明思路基于$\sqrt{1+x}$的泰勒展开，我们不是第一次看到使用泰勒展开的情况，
-在求解矩阵的逆的进阶方法中，求逆的分式思想中也使用了$\cfrac{1}{1-x}$的泰勒展开，足以
-体现一些数学直觉对于我们解决一些问题的重要性.
+我们发现，这一定理的证明思路基于$\sqrt{1+x}$的泰勒展开，我们不是第一次看到使用泰勒展开的情况，在求解矩阵的逆的进阶方法中，求逆的分式思想中也使用了 $\vphantom{\cfrac{1}{1-x}}\dfrac{1}{1-x}$的泰勒展开，足以体现一些数学直觉对于我们解决一些问题的重要性.
+
 \begin{example}
     定义$N\in \mathcal{L}(\mathbf{F}^5)$为
     \[N(x_1,x_2,x_3,x_4,x_5)=(2x_2,3x_3,-x_4,4x_5,0)\]
     求$(I+N)$的一个平方根.
 \end{example}
+
 \begin{solution}
 
 \end{solution}
 
-最后，在开始习题内容前，我们需要讲解一类特殊的题型，即举例或举反例的问题.
-一般而言，我们有如下两种思路：
+最后，在开始习题内容前，我们需要讲解一类特殊的题型，即举例或举反例的问题. 一般而言，我们有如下两种思路：
 \begin{enumerate}
-	\item 考虑几何意义：例如旋转矩阵，特征值的几何意义等
-	\begin{example}
-		找出有限维实向量空间的一个线性变换$\sigma$，使得$0$是$\sigma$仅有的特征值但$\sigma$不是幂零线性变换.
-	\end{example}
-	\begin{example}
-		找出一个$\sigma\in L(\mathbf{R}^2)$使得$\sigma^4=-I$.
-	\end{example}
-	\item 考虑简单的情况：例如考虑2阶、3阶的简单线性变换/矩阵
-	\begin{example}
-		证明或给出反例：$V$上的幂零线性变换的集合是$L(V)$的子空间.
-	\end{example}
-	很多时候一些反例很难构想就选择记住这一构造思想即可.一些反例可能基于一些简单的结论，但如果未
-	思考到位可能很难构造.
+    \item 考虑几何意义：例如旋转矩阵，特征值的几何意义等
+          \begin{example}
+              找出有限维实向量空间的一个线性变换$\sigma$，使得$0$是$\sigma$仅有的特征值但$\sigma$不是幂零线性变换.
+          \end{example}
+          \begin{example}
+              找出一个$\sigma\in L(\mathbf{R}^2)$使得$\sigma^4=-I$.
+          \end{example}
+    \item 考虑简单的情况：例如考虑2阶、3阶的简单线性变换/矩阵
+          \begin{example}
+              证明或给出反例：$V$上的幂零线性变换的集合是$L(V)$的子空间.
+          \end{example}
+          很多时候一些反例很难构想就选择记住这一构造思想即可. 一些反例可能基于一些简单的结论，但如果未思考到位可能很难构造.
 \end{enumerate}
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
 \vspace{2ex}
-
 \centerline{\heiti \Large 习题}
+
 \vspace{2ex}
 {\kaishu }
 \begin{flushright}
@@ -383,10 +374,12 @@ $(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次�
 \begin{enumerate}
     \item 相抵但不相似.
 \end{enumerate}
+
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 
+    \item
 \end{enumerate}
+
 \centerline{\heiti C组}
 \begin{enumerate}
     \item
