@@ -117,6 +117,35 @@
     \end{enumerate}
 \end{example}
 
+\begin{solution}
+    \begin{enumerate}
+        \item 只需证明$\mathbf{R}[x]_2 \subseteq \mathbf{R}[x]_3$，以及$\mathbf{R}[x]_2$对$\mathbf{R}[x]_3$中的加法和数乘封闭即可.
+
+              $\forall v \in \mathbf{R}[x]_2$，可被写作$v=a+bx,a,b \in \mathbf{R}$. 又有$\mathbf{R}[x]_3=\{a+bx+cx^2,a,b,c \in \mathbf{R}\}$，取$c=0$，有$v=a+bx \in \mathbf{R}[x]_3$，因此$\mathbf{R}[x]_2 \subseteq \mathbf{R}[x]_3$.
+
+              对于$\mathbf{R}[x]_3$中的加法和数乘：
+              \[mv_1+nv_2=m(a_1+b_1x)+n(a_2+b_2x)=(ma_1+na_2)+(mb_1+nb_2)x \in \mathbf{R}[x]_3\]
+              所以$\mathbf{R}[x]_2$是$\mathbf{R}[x]_3$的子空间.
+
+        \item 对 $W_1$: 引入参数$t$，
+              \[W_1=\left\{(3t,2t,t) \,\middle|\, \frac{x}{3} = \frac{y}{2} = z = t\right\}\]
+              对于$\forall v_1, v_2 \in W_1, v_1 = (3t_1, 2t_1, t_1), v_2 = (3t_2, 2t_2, t_2)$，有
+              \begin{align*}
+                  av_1 + bv_2 & = (3at_1 + 3bt_2, 2at_1 + 2bt_2, at_1 + bt_2)           \\
+                              & = (3(at_1 + bt_2), 2(at_1 + bt_2), at_1 + bt_2) \in W_1
+              \end{align*}
+              故$W_1$封闭，是 $\mathbf{R}^3$ 的子空间.
+
+              对 $W_2$: 有反例. 取 $u_1 = (1, 0, 0), u_2 = (0, 0, 1) \in W_2$，但 $W_1 + W_2 = (1, 0, 1)$ 不满足 $x + y + z = 1$，故 $W_2$ 不封闭，不是 $\mathbf{R}^3$ 的子空间.
+
+        \item 设齐次线性方程组 $AX=0$ 的解构成的集合是 $W_1$，$\forall X_1, X_2 \in W_1$，有 $AX_1 = AX_2 = 0$，所以 $\forall a, b \in \mathbf{F}$，
+              \[A(a X_1 + b X_2) = A(a X_1) + A(b X_2) = a AX_1 + b AX_2 = 0\]
+              故 $W_1$ 封闭，是 $\mathbf{F}^n$ 的子空间.
+
+              设非齐次线性方程组 $AX = \beta,\enspace \beta \in \mathbf{F}^m,\enspace \beta \neq 0$ 的解构成的集合是 $W_2$，$\forall X_1, X_2 \in W_2$，有 $AX_1 = AX_2 = \beta$，所以 $A(X_1 + X_2) = AX_1 + AX_2 = 2\beta \neq \beta$. 故 $W_2$ 不封闭，不是 $\mathbf{F}^n$ 的子空间.
+    \end{enumerate}
+\end{solution}
+
 上例中 \ref*{item:2:常见子空间:2} 表明过原点的直线/平面构成三维空间的子空间，不过原点的无法保持线性性. 事实上 \ref*{item:2:常见子空间:2} 和 \ref*{item:2:常见子空间:3} 在表述同一个问题，\ref*{item:2:常见子空间:2} 从几何角度描述了 \ref*{item:2:常见子空间:3} 中齐次/非齐次线性方程组的解集. 事实上，在定义了子空间后， 如果一个线性空间的子集也构成线性空间，我们就可以对其进行同样的研究. 这一想法在我们后续的内容中十分重要， 现在需要大家先熟知子空间的定义和判别.
 
 最后我们需要注意一个名词的定义. 线性空间有两个子空间称为平凡子空间，即仅含零元的子集$\{0\}$和其自身$V$. 而其它子空间称为非平凡子空间.
