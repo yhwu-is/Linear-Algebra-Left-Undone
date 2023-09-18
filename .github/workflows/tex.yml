@@ -1,14 +1,15 @@
 name: LaTeX Document
 
 on:
+  workflow_dispatch:
   push:
     paths-ignore:
         - "**.md"
-        - "**.yml"
+        - "latexindent.yaml"
   pull_request:
     paths-ignore:
         - "**.md"
-        - "**.yml"
+        - "latexindent.yaml"
 
 jobs:
   build:
@@ -19,16 +20,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Compile LaTeX
+      - name: Build - 讲义
         uses: xu-cheng/latex-action@v2
         with:
           args:  -xelatex -interaction=nonstopmode -file-line-error -output-directory=build
           working_directory: 讲义
           root_file: 线性代数荣誉课辅学讲义.tex
 
+      - name: Build - 习题参考答案
+        uses: xu-cheng/latex-action@v2
+        with:
+          args: -xelatex -interaction=nonstopmode -file-line-error -output-directory=build
+          working_directory: 习题参考答案
+          root_file: 线性代数荣誉课辅学习题答案.tex
+
+      - name: Post Build
+        id: post-build
+        working-directory: ${{ github.workspace }}
+        run: |
+          echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          mkdir -p ${{ github.workspace }}/build
+          cp ${{ github.workspace }}/*/build/*.pdf ${{ github.workspace }}/build/
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: 线性代数荣誉课辅学讲义-${{ github.run_number }}.pdf
-          path: |
-            ${{ github.workspace }}/讲义/build/线性代数荣誉课辅学讲义.pdf
+          name: LALU-build-${{ github.run_number }}-${{ steps.post-build.outputs.sha }}
+          if-no-files-found: error
+          path: ${{ github.workspace }}/build/*.pdf
