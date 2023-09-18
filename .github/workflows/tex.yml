@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Compile LaTeX
+      - name: Build - 讲义
         uses: xu-cheng/latex-action@v2
         with:
           args:  -xelatex -interaction=nonstopmode -file-line-error -output-directory=build
@@ -38,13 +38,13 @@ jobs:
         id: post-build
         working-directory: ${{ github.workspace }}
         run: |
-          mv ${{ github.workspace }}/*/build/*.pdf ${{ github.workspace }}
           echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          mkdir -p ${{ github.workspace }}/build
+          mv ${{ github.workspace }}/*/build/*.pdf ${{ github.workspace }}/build/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: LALU-build-${{ github.run_number }}-${{ steps.post-build.outputs.sha }}
           if-no-files-found: error
-          path: |
-            *.pdf
+          path: ${{ github.workspace }}/build/*.pdf
