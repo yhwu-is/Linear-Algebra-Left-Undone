@@ -40,7 +40,7 @@ jobs:
         run: |
           echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           mkdir -p ${{ github.workspace }}/build
-          mv ${{ github.workspace }}/*/build/*.pdf ${{ github.workspace }}/build/
+          cp ${{ github.workspace }}/*/build/*.pdf ${{ github.workspace }}/build/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
