@@ -167,16 +167,21 @@
 \frontmatter
 
 % 封面，代替 \maketitle
-\includepdf[pages={1}]{./figs/cover.pdf}
+\includepdf[
+    pages={1},
+    noautoscale=true,
+    trim=0 0 0 10mm,
+    clip,
+]{./figs/cover-16k.pdf}
 
 \songti
 
 {% 插入空页
-	\null
-	\thispagestyle{empty}
-	\clearpage
-	\thispagestyle{empty}
-	\input{./其它/扉页.tex}
+\null
+\thispagestyle{empty}
+\clearpage
+\thispagestyle{empty}
+\input{./其它/扉页.tex
 }
 \clearpage
 \setcounter{page}{1}
