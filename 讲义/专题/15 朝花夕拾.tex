@@ -27,7 +27,7 @@
 \end{example}
 
 \begin{solution}
-
+    无解；$|A|\neq 0$可知$r(A)=n$，$r(A_1)=n-1$，因此系数矩阵$A_1$的秩小于增广矩阵$A$的秩$n$，故无解.
 \end{solution}
 
 \subsection{齐次线性方程组解的一般理论}
@@ -54,7 +54,7 @@
 \end{example}
 
 \begin{proof}
-
+    由\autoref{thm:15:齐次维数}，$r(A)=n-\dim N(A)$，$r(B)=n-\dim N(B)$，由于$AX=\vec{0}$的解都是$BX=\vec{0}$的解，即$N(A) \subset N(B)$，因此$\dim N(A) \leqslant \dim N(B)$，故$r(B) \leqslant r(A)$.
 \end{proof}
 
 实际上在前面的讨论中，无论是\autoref{thm:15:有解条件} 的结论，都与列向量组成的线性空间有关，仿佛从未出现过行向量有关的定理. 事实上，我们将在未来讨论了内积空间正交性后展开对行向量空间的讨论，现在囿于概念上的缺乏无法叙述相关定理.
@@ -70,10 +70,12 @@
     x_1\beta_1+x_2\beta_2+\cdots+x_n\beta_n=\vec{0}
 \end{equation}
 称为其导出组，则我们有：
-\begin{theorem}
+\begin{theorem}\label{thm:15:通解加特解}
     如果$n$元非齐次线性方程组有解，则它的解集$U=\{\gamma_0+\eta \mid \eta \in W\}$.
 \end{theorem}
-其中$\gamma_0$为\autoref{eq:15:非齐次} 的一个解（称为特解），$W$为\autoref{eq:15:齐次} 的解空间（\autoref*{eq:15:齐次} 的解称为通解）. 对于通解+特解的结构，如果读者在此之前学习了商空间一节，那么我们就会发现$U$实际上就是$W$的一个仿射子集. 当然如果没有学习相关概念，我们可以想象一个三元非齐次线性方程$ax + by + cz = d$ 和齐次线性方程$ax + by + cz = 0$. 非齐次线性方程的解显然对应一个不过原点的平面，而齐次则过原点. 我们便可以认为是齐次线性方程解平面沿着特解对应的向量平移到非齐次线性方程的解平面，这便是这一结论的几何解释. 同时我们可以得到下述结论：
+其中$\gamma_0$为\autoref{eq:15:非齐次} 的一个解（称为特解），$W$为\autoref{eq:15:齐次} 的解空间（\autoref*{eq:15:齐次} 的解称为通解）. 更具体地，设非齐次线性方程组$AX=b$有特解$X_0$，方程$AX=0$的基础解系为$X_1,\cdots,X_n$，则这一定理告诉我们$AX=b$的任何一个解都可以写为
+\[X=X_0+k_1X_1+k_2X_2+\cdots+k_nX_n,\]
+的形式. 事实上，对于这种通解+特解的结构，如果读者在此之前学习了商空间一节，那么我们就会发现$U$实际上就是$W$的一个仿射子集. 当然如果没有学习相关概念，我们可以想象一个三元非齐次线性方程$ax + by + cz = d$ 和齐次线性方程$ax + by + cz = 0$. 非齐次线性方程的解显然对应一个不过原点的平面，而齐次则过原点. 我们便可以认为是齐次线性方程解平面沿着特解对应的向量平移到非齐次线性方程的解平面，这便是这一结论的几何解释. 同时我们可以得到下述结论：
 \begin{enumerate}
     \item $n$元非齐次线性方程组 \ref*{eq:15:非齐次} 的两个解的差是它的导出组 \ref*{eq:15:齐次} 的一个解；
 
@@ -91,8 +93,8 @@
     \end{enumerate}
 \end{proof}
 实际上根据上述几何描述形象理解这两个结论也不困难. 下面我们将通过一些例子进一步探讨非齐次线性方程组解的结构问题：
-\begin{example}
-    若$X_0$是$AX=\vec{b}$的一个特解，$X_1,\ldots,X_p$是$AX=\vec{0}$的基础解系，证明：
+\begin{example}\label{ex:15:非齐次解的进一步结构}
+    若$X_0$是非齐次线性方程组$AX=\vec{b}$的一个特解，$X_1,\ldots,X_p$是$AX=\vec{0}$的基础解系，证明：
     \begin{enumerate}
         \item $X_0,X_1,X_2,\ldots,X_p$线性无关；
 
@@ -105,15 +107,50 @@
 \end{example}
 
 \begin{proof}
+    \begin{enumerate}
+        \item 设$k_0X_0+k_1X_1+k_2X_2+\cdots+k_pX_p=\vec{0}$，则
+        \[A(k_0X_0+k_1X_1+k_2X_2+\cdots+k_pX_p)=\vec{0}.\]
+        因为$X_1,\ldots,X_p$是$AX=\vec{0}$的基础解系，所以
+        $AX_i=\vec{0}$，$i=1,2,\ldots,p$，故$k_0AX_0=k_0\vec{b}=\vec{0}$，由于$\vec{b}\neq \vec{0}$，因此$k_0=0$. 因此
+        \[k_1X_1+k_2X_2+\cdots+k_pX_p=\vec{0},\]
+        因为$X_1,\ldots,X_p$是$AX=\vec{0}$的基础解系，所以它们线性无关，故$k_1=k_2=\cdots=k_p=0$，故$k_0=k_1=k_2=\cdots=k_p=0$，故$X_0,X_1,X_2,\ldots,X_p$线性无关.
 
+        \item 设$k_0X_0+k_1(X_0+X_1)+k_2(X_0+X_2)+\cdots+k_p(X_0+X_p)=\vec{0}$，则
+        \[(k_0+k_1+k_2+\cdots+k_p)X_0+k_1X_1+k_2X_2+\cdots+k_pX_p=\vec{0}.\]
+        由上一问知，$X_0,X_1,X_2,\ldots,X_p$线性无关，故
+        $\begin{cases}
+            k_0+k_1+k_2+\cdots+k_p=0 \\
+            k_1=k_2=\cdots=k_p=0
+        \end{cases}$
+        因此$k_0=k_1=k_2=\cdots=k_p=0$，故$X_0,X_0+X_1,X_0+X_2,\ldots,X_0+X_p$线性无关.
+
+        \item 设$X$是$AX=\vec{b}$的任一个解，则由\autoref{thm:15:通解加特解}可知，$X$可以被表示为
+        \begin{align*}
+            X   &=X_0+k_1X_1+k_2X_2+\cdots+k_pX_p \\
+                &=(1-k_1-k_2-\cdots-k_p)X_0+k_1(X_0+X_1)+k_2(X_0+X_2)+\cdots+k_p(X_0+X_p)
+        \end{align*}
+        令$k_0=1-k_1-k_2-\cdots-k_p$，则$k_0+k_1+k_2+\cdots+k_p=1$，命题得证.
+    \end{enumerate}
 \end{proof}
 
-\begin{example}
+本例说明了非齐次线性方程组的特解事实上与对应的齐次线性方程组的基础解系也是线性无关的. 事实上本例的结论和解决思路都是非常重要，请读者务必掌握.
+
+\begin{example}\label{ex:15:非齐次线性无关解}
     设$A$为$s \times n$矩阵，且$r(A)=r$，证明：非齐次线性方程组$AX=\vec{b}$至多存在$n-r+1$个线性无关的解向量.
 \end{example}
 
 \begin{proof}
+    当$AX=\vec{b}$无解时有0个解向量，我们知道$r\leqslant n$，因此$n-r+1\geqslant 1$，故命题成立.
 
+    当$AX=\vec{b}$有解时，设$X_0$是非齐次线性方程组$AX=\vec{b}$的一个特解，根据\autoref{thm:15:齐次维数}知，$AX=\vec{0}$的解空间维数为$n-r$，故设$X_1,\ldots,X_{n-r}$是$AX=\vec{0}$的基础解系，则由\autoref{ex:15:非齐次解的进一步结构} 知，$X_0,X_0+X_1,X_0+X_2,\ldots,X_0+X_{n-r}$线性无关，并且它们都是$AX=\vec{b}$的解，因此非齐次线性方程组$AX=\vec{b}$存在$n-r+1$个线性无关的解向量.
+
+    下面要说明$AX=\vec{b}$任意$n-r+2$个解向量必定线性相关. 利用反证法，设$\eta_1,\eta_2,\ldots,\eta_{n-r+2}$是$AX=\vec{b}$的$n-r+2$个线性无关解向量，则$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-r+2}-\eta_1$均为$AX=\vec{0}$的解向量. 设
+    \[k_1(\eta_2-\eta_1)+k_2(\eta_3-\eta_1)+\cdots+k_{n-r+1}(\eta_{n-r+2}-\eta_1)=\vec{0},\]
+    即
+    \[k_1\eta_2+k_2\eta_3+\cdots+k_{n-r+1}\eta_{n-r+2}-(k_1+k_2+\cdots+k_{n-r+1})\eta_1=\vec{0},\]
+    因为$\eta_1,\eta_2,\ldots,\eta_{n-r+2}$线性无关，所以
+    \[k_1=k_2=\cdots=k_{n-r+1}=0,\]
+    即$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-r+2}-\eta_1$线性无关，因此$AX=\vec{0}$的解向量至少有$n-r+1$个线性无关，这与$AX=\vec{0}$的解空间维数为$n-r$矛盾，故假设不成立，命题得证.
 \end{proof}
 
 \section{理论应用}
@@ -122,25 +159,56 @@
 \begin{example}\label{ex:15:线性方程组理论与秩不等式}
     利用线性方程组解的一般理论，证明以下命题：
     \begin{enumerate}
+        \item  设$A,B$分别是$m \times n$和$n \times s$矩阵，则$r(AB)\leqslant\min\{r(A),r(B)\}$；
+
         \item 设$A,B$分别是$m \times n$和$n \times s$矩阵，且$AB=O$，证明：$r(A)+r(B)\leqslant n$；
 
         \item 设$A$是$m \times n$实矩阵，证明：$r(A^\mathrm{T}A)=r(A)$；
 
-        \item 设$A,B$分别是$m \times n$和$n \times s$矩阵，则$r(AB)\leqslant\min\{r(A),r(B)\}$；
-
-        \item $A^2=A \iff r(A)+r(E-A)=n$，$A^2=E \iff r(A+E)+r(A-E)=n$.
+        \item $A^2=A \iff r(A)+r(E-A)=n$.
     \end{enumerate}
 \end{example}
 
 \begin{proof}
     \begin{enumerate}
-        \item
+        \item 因为$BX=\vec{0}$可以导出$ABX=\vec{0}$，因此$N(B)\subset N(AB)$，因此$\dim N(B)\leqslant\dim N(AB)$，因此$r(AB)=n-\dim N(AB)\leqslant n-\dim N(B)=r(B)$
 
-        \item
+        又由$r(AB)=r((AB)^{\mathrm{T}})=r(B^{\mathrm{T}}A^{\mathrm{T}})\leqslant r(A^{\mathrm{T}})=r(A)$（最后一个小于等于理由同上面证明$r(AB)\leqslant r(B)$），因此$r(AB)\leqslant\min\{r(A),r(B)\}$.
 
-        \item
+        \item 将$B$按列分块为$(B_1,B_2,\ldots,B_s)$，则$AB=(AB_1,AB_2,\ldots,AB_s)=O$，因此$AB_i=\vec{0}$，$i=1,2,\ldots,s$，因此每个$B_i$都是齐次线性方程组$AX=\vec{0}$的解，因此$B$的列向量张成的空间包含于$AX=\vec{0}$的解空间，因此$r(B)\leqslant n-r(A)$，即$r(A)+r(B)\leqslant n$.
 
-        \item
+        \item 由前证$r(AB)\leqslant\min\{r(A),r(B)\}$，可知$r(AA^\mathrm{T})\leqslant r(A)$，因此只需证明$r(AA^\mathrm{T})\geqslant r(A)$，即只需证$N(AA^\mathrm{T})\subset N(A)$.
+
+        设$AA^\mathrm{T}X=\vec{0}$，因此$X^\mathrm{T}(A^\mathrm{T}A)X=0$，即$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=0$. 由于$A^\mathrm{T}X\in\mathbf{R}^n$，我们设$A^\mathrm{T}X=(a_1,a_2,\ldots,a_n)^\mathrm{T}$，则$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=a_1^2+a_2^2+\cdots+a_n^2=0$可得$a_1=a_2=\cdots=a_n=0$，即$A^\mathrm{T}X=\vec{0}$，因此$X \in N(A)$，因此$N(AA^\mathrm{T})\subset N(A)$，得证.
+
+        \item 对于$A^2=A$，考虑分块矩阵$\begin{pmatrix}
+            A & O \\ O & A-E
+        \end{pmatrix}$，对其进行如下分块矩阵初等变换：
+        \begin{align*}
+            \begin{pmatrix}
+                A & O \\ O & A-E
+            \end{pmatrix}&\to\begin{pmatrix}
+                A & E-A \\ O & A-E
+            \end{pmatrix}
+            \to\begin{pmatrix}
+                A & E \\ O & A-E
+            \end{pmatrix}
+            \to\begin{pmatrix}
+                O & E \\ -A(A-E) & A-E
+            \end{pmatrix}\\
+            &\to\begin{pmatrix}
+                O & E \\ -A(A-E) & O
+            \end{pmatrix}.
+        \end{align*}
+        事实上第一次变换是第二行乘以$-E$加到第一行，第二次变换是第一列加到第二列，第三次变换是第二列乘以$-A$加到第一列，第四次变换是第一行乘以$E-A$加到第二行，注意每一步都是分块矩阵初等变换，因此不改变矩阵的秩，因此有
+        \[r(\begin{pmatrix}
+                A & O \\ O & A-E
+            \end{pmatrix})=r(\begin{pmatrix}
+                O & E \\ -A(A-E) & O
+            \end{pmatrix}).\]
+        即$r(A)+r(A-E)=n+r(-A(A-E))$，故$r(A)+r(A-E)=n$等价于$r(-A(A-E))=0$，即$-A(A-E)=O$，即$A^2=A$，得证.
+
+        事实上，如果我们只需要证明$A^2=A\Rightarrow r(A)+r(E-A)=n$，我们可以用如下方法：由$A^2=A$可知$A(A-E)=O$，由本例第二问知$r(A)+r(A-E)\leqslant n$，又根据秩不等式$r(A)+r(B)\geqslant r(A+B)$，因此$r(A)+r(E-A)=\geqslant r(A+(E-A))=r(E)=n$. 综上可知，$r(A)+r(E-A)=n$.
     \end{enumerate}
 \end{proof}
 
@@ -153,7 +221,15 @@
 \end{example}
 
 \begin{proof}
+    \begin{enumerate}
+        \item 当$r(A)=n$时，$A$可逆，因此$A^*=|A|A^{-1}$，因此$r(A^*)=r(|A|A^{-1})=r(A^{-1})=n$.
 
+        \item 当$r(A)=n-1$时，$|A|=0$，因此$AA^*=|A|E=O$，即$A^*$的列向量都是方程$AX=0$的解，故$A^*$列向量张成的空间包含于$AX=0$的解空间，因此$r(A^*)\leqslant n-r(A)=1$.
+
+        而$r(A)=n-1$表明$A$中存在非零的$n-1$阶子式，因此存在$A$的代数余子式$A_{ij}$不为0，因此$A^*$不为0，因此$r(A^*)\geqslant 1$，因此$r(A^*)=1$.
+
+        \item 当$r(A)<n-1$时，$A$的任意一个$n-1$阶子式都等于0，即任意一个代数余子式$A_{ij}$都等于0，因此$A^*=O$，因此$r(A^*)=0$.
+    \end{enumerate}
 \end{proof}
 
 \section{线性方程组拓展题型}
@@ -166,13 +242,37 @@
 
 事实上，利用\autoref{thm:15:方程组解} 在有解情况下只需计算行列式判断非常方便，但判断无解需要利用\autoref{thm:15:有解条件}，其中线性相关性的判断通常仍然需要我们对系数矩阵进行高斯消元法. 我们来看一个简单的例子：
 \begin{example}
-    讨论下面方程组的解的情况，并在有解的情况下求解：
+    当$k$取何值时，方程组：
     \[\begin{cases}
-            x_1+x_2-x_3=1 \\ 2x_1+3x_2+kx_3=3 \\ x_1+kx_2+3x_3=2
+            x_1+x_2+kx_3=4 \\ -x_1+kx_2+x_3=k^2 \\ x_1-x_2+2x_3=-4
         \end{cases}\]
+    有唯一解、无解、有无穷多解？在有解的情况下，求出方程组的全部解.
 \end{example}
 \begin{solution}
+    对于有无解的区别，我们一般都考虑直接使用高斯消元法. 由高斯消元法有（省略中间步骤直接得到阶梯矩阵）：
+    \[\begin{pmatrix}
+            1 & 1 & k & 4  \\
+            -1 & k & 1 & k^2 \\
+            1 & -1 & 2 & -4
+        \end{pmatrix}\to\begin{pmatrix}
+            1 & 1 & k & 4  \\
+            0 & 2 & k-2 & 8 \\
+            0 & 0 & \dfrac{1}{2}(k+1)(4-k) & k(k-4)
+        \end{pmatrix}.\]
+    \begin{enumerate}
+        \item 当$k=-1$时，增广矩阵秩为3，系数矩阵秩为2（或者说最后一行出现矛盾方程），无解；
+        \item 当$k=4$时，增广矩阵和系数矩阵秩均为2，方程有无穷多解，解得同解为$k_1(-3,-1,1)^{\mathrm{T}}+(0,4,0)^{\mathrm{T}}(k_1\in\mathbf{R})$；
+        \item 当$k\neq-1,4$时，增广矩阵和系数矩阵秩均为3，方程有唯一解，解为
+        \[(\dfrac{k^2+2k}{k+1},\dfrac{k^2+2k+4}{k+1},-\dfrac{2k}{k+1})^{\mathrm{T}}.\]
+    \end{enumerate}
 
+    事实上，本题方程个数与未知数个数相等，因此可以运用\autoref{thm:13:Cramer}解决. 首先求解系数矩阵$A$的行列式为
+    \[|A|=\begin{vmatrix}
+            1 & 1 & k  \\
+            -1 & k & 1  \\
+            1 & -1 & 2
+        \end{vmatrix}=(k+1)(4-k),\]
+    由Cramer法则，当$|A|\neq 0$时，方程组有唯一解，当$|A|=0$时，方程组无解或有无穷多解，其余关于有无解的讨论与上面一致.
 \end{solution}
 
 \subsection{线性方程组同解问题}
@@ -192,7 +292,29 @@
 \end{theorem}
 
 \begin{proof}
+\begin{enumerate}
+    \item 必要性：事实上$\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}X=0\iff AX=0,BX=0$，因此由$AX=0,BX=0$同解可知，$\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}X=0\iff AX=0$，因此$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=r(A)$，同理可证$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=r(B)$，因此$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=r(A)=r(B)$.
 
+    \item 充分性：事实上$\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}X=0$的解一定是$AX=0$的解，设这两个方程的解空间依次为$U_1,U_2$，因此$U_1$是$U_2$的子空间. 而$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=r(A)$表明$U_1=U_2$，即$\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}X=0$和$AX=0$同解. 同理可知$\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}X=0$和$BX=0$同解，因此$A,B$同解.
+\end{enumerate}
 \end{proof}
 
 \begin{theorem}
@@ -209,10 +331,34 @@
 \end{theorem}
 
 \begin{proof}
-
+事实上两个条件分别对应于两方程均有解和均无解的情况，无解情况显然正确，下面讨论有解情况：
+\begin{enumerate}
+    \item 必要性：事实上$\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}X=0\iff AX=\vec{b},BX=\vec{d}$，因此由$AX=\vec{b},BX=\vec{d}$同解可知，$\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}X=0\iff AX=\vec{b}$，因此$r\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}=r(A,\vec{b})$，同理可证$r\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}=r(B,\vec{d})$，因此$r\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}=r(A,\vec{b})=r(B,\vec{d})$，由于此时对应有解情况，故$r\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}=r(A,\vec{b})=r(B,\vec{d})=r(A)=r(B)$.
+    \item 充分性：事实上$\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}X=0$的解一定是$AX=\vec{b}$的解，设这两个方程的解集合（此时非齐次线性方程组不是子空间）分别为$S_1,S_2$，因此$S_1$是$S_2$的子集. 且由\autoref{ex:15:非齐次线性无关解}可知，$S_1$的秩为$n-r\begin{pmatrix}
+                A \\ B
+            \end{pmatrix}+1$，$S_2$的秩为$n-r(A)+1$，因此$S_1=S_2$，即$\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}X=0$和$AX=\vec{b}$同解. 同理可知$\begin{pmatrix}
+                A & \vec{b} \\ B & \vec{d}
+            \end{pmatrix}X=0$和$BX=\vec{d}$同解，得证.
+\end{enumerate}
 \end{proof}
 
-我们来看一个例子来运用上述定理：
+事实上，在了解上述定理证明后我们会发现这些条件都是非常自然的. 我们来看一个例子来运用上述定理：
 \begin{example}
     已知方程组\begin{gather*}
         \begin{cases}
@@ -228,7 +374,23 @@
     同解，求$a,b,c$的值.
 \end{example}
 \begin{solution}
+    设第一个方程系数矩阵为$A$，第二个方程系数矩阵为$B$，则
+    \[\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=\begin{pmatrix}
+        1 & 2 & 3 \\ 2 & 3 & 5 \\ 1 & 1 & a \\ 1 & b & c \\ 2 & b^2 & c+1
+    \end{pmatrix}\to\begin{pmatrix}
+        1 & 0 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & a-2 \\ 0 & 0 & c-b-1 \\ 0 & 0 & c-b^2-1
+    \end{pmatrix},\]
+    因此由同解条件$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=r(A)=r(B)$可知必有$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}=r(A)=r(B)=2$（因为$r(B)\leqslant 2$，$r\begin{pmatrix}
+        A \\ B
+    \end{pmatrix}\geqslant 2$）.
 
+    从而有$a-2=c-b-1=c-b^2-1=0$. 因此$a=2,b=0,c=1$或$a=2,b=1,c=2$.当$a=2,b=0,c=1$时，$r(B)=1\neq r(A)=2$，舍去. 故$a=2,b=1,c=2$.
 \end{solution}
 
 \subsection{线性方程组公共解问题}
@@ -241,15 +403,56 @@
 
         \item 设$\eta_1,\eta_2,\ldots,\eta_s\enspace(s=n-r(B))$是 (2) 的基础解系，则(1) 与 (2) 有非零公共解的充要条件是$A\eta_1,A\eta_2,\ldots,A\eta_s$线性相关；
 
-        \item 设$\gamma_1,\gamma_2,\ldots,\gamma_t\enspace(t=n-r(A))$是(1) 的基础解系，$\eta_1,\eta_2,\ldots,\eta_s\enspace(s=n-r(B))$是 (2) 的基础解系，则(1) 与 (2) 有非零公共解的充要条件是$\gamma_1,\gamma_2,\ldots,\gamma_t,\eta_1,\eta_2,\ldots,\eta_s$线性相关.
+        \item 设$\gamma_1,\gamma_2,\ldots,\gamma_t\enspace(t=n-r(A))$是(1) 的基础解系，$\eta_1,\eta_2,\ldots,\eta_s\enspace(s=n-r(B))$是 (2) 的基础解系，则(1) 与 (2) 有非零公共解的充要条件是
+        \[\gamma_1,\gamma_2,\ldots,\gamma_t,\eta_1,\eta_2,\ldots,\eta_s\]
+        线性相关.
     \end{enumerate}
 \end{theorem}
 
 \begin{proof}
+    \begin{enumerate}
+        \item 必要性：设$X_0$是两方程组的非零公共解，即$AX_0=\vec{0}$且$BX_0=\vec{0}$，因此$X_0$是$\begin{pmatrix}
+                      A \\ B
+                  \end{pmatrix}X=\vec{0}$的解，即线性方程组$\begin{pmatrix}
+                    A \\ B
+                \end{pmatrix}X=\vec{0}$有非零解，因此$r\begin{pmatrix}
+                      A \\ B
+                  \end{pmatrix}\leqslant n$.
 
+        充分性：由$r\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}\leqslant n$可知线性方程组$\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}X=\vec{0}$有非零解，设为$X_0$，因此有$AX_0=\vec{0}$且$BX_0=\vec{0}$，即$X_0$是两方程组的非零公共解，得证.
+
+        \item 必要性：设$X_0$是两方程组的非零公共解，则$X_0$可由$\eta_1,\eta_2,\ldots,\eta_s$线性表示，即
+        \[X_0=k_1\eta_1+k_2\eta_2+\cdots+k_s\eta_s,\]
+        其中$k_1,k_2,\ldots,k_s$不全为0，因此$AX_0=A(k_1\eta_1+k_2\eta_2+\cdots+k_s\eta_s)=k_1A\eta_1+k_2A\eta_2+\cdots+k_sA\eta_s=\vec{0}$，由于$k_1,k_2,\ldots,k_s$不全为0，因此$A\eta_1,A\eta_2,\ldots,A\eta_s$线性相关.
+
+        充分性：由$A\eta_1,A\eta_2,\ldots,A\eta_s$线性相关知，存在不全为0的$k_1,k_2,\ldots,k_s$使得
+        \[k_1A\eta_1+k_2A\eta_2+\cdots+k_sA\eta_s=\vec{0},\]
+        因此$A(k_1\eta_1+k_2\eta_2+\cdots+k_s\eta_s)=\vec{0}$，因此$X_0=k_1\eta_1+k_2\eta_2+\cdots+k_s\eta_s$是$AX=\vec{0}$的非零解（非零的原因在于如果$X_0$为零向量，那么因为$\eta_1,\eta_2,\ldots,\eta_s$线性无关，则$k_1,k_2,\ldots,k_s$均为0，矛盾）.
+
+        又$X_0$是$BX=\vec{0}$的解（因为表示为了$BX=\vec{0}$基础解系的线性组合），因此$X_0$是两方程组的非零公共解，得证.
+
+        \item 必要性：设$X_0$是两方程组的非零公共解，则$X_0$可由$\gamma_1,\gamma_2,\ldots,\gamma_t$和$\eta_1,\eta_2,\ldots,\eta_s$线性表示，即
+        \begin{align*}
+            X_0&=k_1\gamma_1+k_2\gamma_2+\cdots+k_t\gamma_t \\
+            &=l_1\eta_1+l_2\eta_2+\cdots+l_s\eta_s
+        \end{align*}
+        其中$k_1,k_2,\ldots,k_t,l_1,l_2,\ldots,l_s$不全为0，因此
+        \[k_1\gamma_1+k_2\gamma_2+\cdots+k_t\gamma_t-l_1\eta_1-l_2\eta_2-\cdots-l_s\eta_s=\vec{0},\]
+        因此$\gamma_1,\gamma_2,\ldots,\gamma_t,\eta_1,\eta_2,\ldots,\eta_s$线性相关.
+
+        充分性：由$\gamma_1,\gamma_2,\ldots,\gamma_t,\eta_1,\eta_2,\ldots,\eta_s$线性相关知，存在不全为0的
+        \[k_1,k_2,\ldots,k_t,l_1,l_2,\ldots,l_s\]
+        使得
+        \[k_1\gamma_1+k_2\gamma_2+\cdots+k_t\gamma_t+l_1\eta_1+l_2\eta_2+\cdots+l_s\eta_s=\vec{0},\]
+        令$X_0=k_1\gamma_1+k_2\gamma_2+\cdots+k_t\gamma_t=-(l_1\eta_1+l_2\eta_2+\cdots+l_s\eta_s)$，因此$X_0$是$AX=\vec{0}$和$BX=\vec{0}$的非零公共解（非零的原因在于如果$X_0$为零向量，那么因为$\gamma_1,\gamma_2,\ldots,\gamma_t,\eta_1,\eta_2,\ldots,\eta_s$线性无关，则$k_1,k_2,\ldots,k_t,l_1,l_2,\ldots,l_s$均为0，矛盾）.
+    \end{enumerate}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:15:非齐次线性方程组公共解}
     对于$n$元非齐次线性方程组(1) $A_{m_1 \times n}X=\vec{b}$与 (2) $B_{m_2 \times n}X=\vec{d}$，若(1) 与 (2) 都有解，则
     \begin{enumerate}
         \item (1) 与 (2) 有公共解的充要条件是$r\begin{pmatrix}
@@ -269,10 +472,99 @@
 \end{theorem}
 
 \begin{proof}
+    \begin{enumerate}
+        \item 必要性：设$X_0$是两方程组的公共解，即$AX_0=\vec{b}$且$BX_0=\vec{d}$，因此$X_0$是$\begin{pmatrix}
+                      A \\ B
+                  \end{pmatrix}X=\begin{pmatrix}
+                      \vec{b} \\ \vec{d}
+                  \end{pmatrix}$的解，因此这一方程系数矩阵和增广矩阵的秩相等，故$r\begin{pmatrix}
+                      A \\ B
+                    \end{pmatrix}=r\begin{pmatrix}
+                        A & \vec{b} \\ B & \vec{d}
+                    \end{pmatrix}$.
 
+        充分性：由$r\begin{pmatrix}
+            A \\ B
+          \end{pmatrix}=r\begin{pmatrix}
+              A & \vec{b} \\ B & \vec{d}
+          \end{pmatrix}$可知，方程$\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}X=\begin{pmatrix}
+            \vec{b} \\ \vec{d}
+        \end{pmatrix}$有解（根据\autoref{thm:15:有解条件}），记为$X_0$，则
+        \[\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}X_0=\begin{pmatrix}
+            \vec{b} \\ \vec{d}
+        \end{pmatrix},\]
+        因此$AX_0=\vec{b}$且$BX_0=\vec{d}$，即$X_0$是两方程组的公共解，得证.
+
+        \item 首先说明，$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-s+1}-\eta_1$是$BX=\vec{0}$的基础解系. 事实上，由于$\eta_1,\eta_2,\ldots,\eta_{n-s+1}$线性无关，因此$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-s+1}-\eta_1$线性无关，否则存在不全为0的$k_2,k_3,\ldots,k_{n-s+1}$使得
+        \[k_2(\eta_2-\eta_1)+k_3(\eta_3-\eta_1)+\cdots+k_{n-s+1}(\eta_{n-s+1}-\eta_1)=\vec{0},\]
+        即$k_2\eta_2+k_3\eta_3+\cdots+k_{n-s+1}\eta_{n-s+1}=(k_2+k_3+\cdots+k_{n-s+1})\eta_1$，因此$\eta_1,\eta_2,\ldots,\eta_{n-s+1}$线性相关，矛盾. 因此$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-s+1}-\eta_1$是$BX=\vec{0}$的基础解系.
+
+        必要性：设$X_0$是两方程组的公共解，则$X_0$可表示为
+        \[X_0=\eta_1+k_2(\eta_2-\eta_1)+k_3(\eta_3-\eta_1)+\cdots+k_{n-s+1}(\eta_{n-s+1}-\eta_1),\]
+        因此
+        \begin{align*}
+            AX_0&=A\eta_1+k_2(\eta_2-\eta_1)+k_3(\eta_3-\eta_1)+\cdots+k_{n-s+1}(\eta_{n-s+1}-\eta_1)) \\
+            &=A\eta_1+k_2A(\eta_2-\eta_1)+k_3A(\eta_3-\eta_1)+\cdots+k_{n-s+1}A(\eta_{n-s+1}-\eta_1) \\
+            &=(1-k_2-k_3-\cdots-k_{n-s+1})A\eta_1+k_2A\eta_2+k_3A\eta_3+\cdots+k_{n-s+1}A\eta_{n-s+1} \\
+            &=\vec{b}.
+        \end{align*}
+        令$k_1=1-k_2-k_3-\cdots-k_{n-s+1}$，则$b$是$A\eta_1,A\eta_2,\ldots,A\eta_{n-s+1}$的凸组合，即存在数$k_1,k_2,\ldots,k_{n-s+1}$使得
+        \[\vec{b}=k_1A\eta_1+k_2A\eta_2+\cdots+k_{n-s+1}A\eta_{n-s+1},\]
+        其中$k_1+k_2+\cdots+k_{n-s+1}=1$.
+
+        充分性：由存在数$k_1,k_2,\ldots,k_{n-s+1}$使得
+        \[\vec{b}=k_1A\eta_1+k_2A\eta_2+\cdots+k_{n-s+1}A\eta_{n-s+1},\]
+        其中$k_1+k_2+\cdots+k_{n-s+1}=1$可知
+        \[k_1=1-k_2-k_3-\cdots-k_{n-s+1},\]
+        故有
+        \begin{align*}
+            \vec{b}&=(1-k_2-k_3-\cdots-k_{n-s+1})A\eta_1+k_2A\eta_2+k_3A\eta_3+\cdots+k_{n-s+1}A\eta_{n-s+1} \\
+            &=A(\eta_1+k_2(\eta_2-\eta_1)+k_3(\eta_3-\eta_1)+\cdots+k_{n-s+1}(\eta_{n-s+1}-\eta_1))
+        \end{align*}
+        令$X_0=\eta_1+k_2(\eta_2-\eta_1)+k_3(\eta_3-\eta_1)+\cdots+k_{n-s+1}(\eta_{n-s+1}-\eta_1)$，则$AX_0=\vec{b}$，且
+        \begin{align*}
+            BX_0&=B(\eta_1+k_2(\eta_2-\eta_1)+k_3(\eta_3-\eta_1)+\cdots+k_{n-s+1}(\eta_{n-s+1}-\eta_1)) \\
+            &=B\eta_1+k_2B(\eta_2-\eta_1)+k_3B(\eta_3-\eta_1)+\cdots+k_{n-s+1}B(\eta_{n-s+1}-\eta_1) \\
+            &=\vec{d},
+        \end{align*}
+        因此$X_0$是两方程组的公共解，证毕.
+
+        \item 同2的证明知，$\gamma_2-\gamma_1,\gamma_3-\gamma_1,\ldots,\gamma_{n-t+1}-\gamma_1$是$AX=\vec{0}$的基础解系，$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-s+1}-\eta_1$是$BX=\vec{0}$的基础解系.
+
+        必要性：设$X_0$是两方程组的公共解，则$X_0$可表示为
+        \begin{align*}
+            X_0&=\gamma_1+k_2(\gamma_2-\gamma_1)+k_3(\gamma_3-\gamma_1)+\cdots+k_{n-t+1}(\gamma_{n-t+1}-\gamma_1) \\
+            &=\eta_1+l_2(\eta_2-\eta_1)+l_3(\eta_3-\eta_1)+\cdots+l_{n-s+1}(\eta_{n-s+1}-\eta_1),
+        \end{align*}
+        因此
+        \begin{align*}
+            \gamma_1+k_2(\gamma_2-\gamma_1)+k_3(\gamma_3-\gamma_1)+\cdots+k_{n-t+1}(\gamma_{n-t+1}-\gamma_1)-\eta_1-l_2(\eta_2-\eta_1)\\-l_3(\eta_3-\eta_1)-\cdots-l_{n-s+1}(\eta_{n-s+1}-\eta_1)=\vec{0},
+        \end{align*}
+        即
+        \begin{align*}
+            (1-k_2-k_3-\cdots-k_{n-t+1})\gamma_1+k_2\gamma_2+k_3\gamma_3+\cdots+k_{n-t+1}\gamma_{n-t+1}\\-(1-l_2-l_3-\cdots-l_{n-s+1})\eta_1-l_2\eta_2-l_3\eta_3-\cdots-l_{n-s+1}\eta_{n-s+1}=\vec{0},
+        \end{align*}
+        令$k_1=1-k_2-k_3-\cdots-k_{n-t+1}$，$l_1=1-l_2-l_3-\cdots-l_{n-s+1}$，则
+        \[k_1\gamma_1+k_2\gamma_2+k_3\gamma_3+\cdots+k_{n-t+1}\gamma_{n-t+1}-l_1\eta_1-l_2\eta_2-l_3\eta_3-\cdots-l_{n-s+1}\eta_{n-s+1}=\vec{0},\]
+        其中$k_1+k_2+\cdots+k_{n-t+1}=1$，$l_1+l_2+\cdots+l_{n-s+1}=1$，得证.
+
+        充分性：由$k_1+k_2+\cdots+k_{n-t+1}=1$，$l_1+l_2+\cdots+l_{n-s+1}=1$可知
+        \[k_1=1-k_2-k_3-\cdots-k_{n-t+1},\enspace l_1=1-l_2-l_3-\cdots-l_{n-s+1},\]
+        因此
+        \begin{align*}
+            \vec{0}&=k_1\gamma_1+k_2\gamma_2+k_3\gamma_3+\cdots+k_{n-t+1}\gamma_{n-t+1}\\&-l_1\eta_1-l_2\eta_2-l_3\eta_3-\cdots-l_{n-s+1}\eta_{n-s+1} \\
+            &=(1-k_2-k_3-\cdots-k_{n-t+1})\gamma_1+k_2\gamma_2+k_3\gamma_3+\cdots+k_{n-t+1}\gamma_{n-t+1}\\&-(1-l_2-l_3-\cdots-l_{n-s+1})\eta_1-l_2\eta_2-l_3\eta_3-\cdots-l_{n-s+1}\eta_{n-s+1} \\
+            &=\gamma_1+k_2(\gamma_2-\gamma_1)+k_3(\gamma_3-\gamma_1)+\cdots+k_{n-t+1}(\gamma_{n-t+1}-\gamma_1)\\&-\eta_1-l_2(\eta_2-\eta_1)-l_3(\eta_3-\eta_1)-\cdots-l_{n-s+1}(\eta_{n-s+1}-\eta_1).
+        \end{align*}
+        令$X_0=\gamma_1+k_2(\gamma_2-\gamma_1)+k_3(\gamma_3-\gamma_1)+\cdots+k_{n-t+1}(\gamma_{n-t+1}-\gamma_1)=\eta_1+l_2(\eta_2-\eta_1)+l_3(\eta_3-\eta_1)+\cdots+l_{n-s+1}(\eta_{n-s+1}-\eta_1)$，则$AX_0=\vec{b}$且$BX_0=\vec{d}$，因此$X_0$是两方程组的公共解，证毕.
+    \end{enumerate}
 \end{proof}
 
-这两个定理看起来非常长，实则无需记忆（最多记住二者的第一条），只需要通过证明理解其含义即可. 下面我们看一个简单的例子：
+这两个定理看起来非常长，实则无需特别去记忆，只需要通过证明理解其含义即可，有时候做题甚至可以直接暴力解方程然后比较两方程组的解也能完成求解. 下面我们看一个简单的例子：
 \begin{example}
     设四元齐次线性方程组(1) 为\[\begin{cases}
             2x_1+3x_2-x_3=0 \\ x_1+2x_2+x_3-x_4=0
@@ -286,7 +578,25 @@
 \end{example}
 
 \begin{solution}
-
+    \begin{enumerate}
+        \item 直接给出结论：方程组 (1) 的一个基础解系为
+              \[\beta_1=(5,-3,1,0)^{\mathrm{T}},\enspace\beta_2=(-3,2,0,1)^{\mathrm{T}}.\]
+        \item 根据前述定理，两方程由非零公共解当且仅当$\alpha_1,\alpha_2,\beta_1,\beta_2$线性相关，事实上我们可以将这$\beta_1,\beta_2,\alpha_1,\alpha_2$按列排成矩阵
+        \[A=\begin{pmatrix}
+            5 & -3 & 2 & -1 \\ -3 & 2 & -1 & 2 \\ 1 & 0 & a+2 & 4 \\ 0 & 1 & 1 & a+8
+        \end{pmatrix},\]
+        事实上，要求两方程组公共解事实上就是求两个子空间$W_1=\spa(\beta_1,\beta_2)$和$W_2=\spa(\alpha_1,\alpha_2)$的交集. 回顾我们在之前所学习的知识，我们可以利用求解极大线性无关组的思想，首先对$A$进行初等行变换得到阶梯矩阵
+        \[\begin{pmatrix}
+            1 & 0 & a+2 & 4 \\ 0 & 1 & 1 & a+8 \\ 0 & 0 & 3a+3 & -2a-2 \\ 0 & 0 & -5a-5 & 3a+3
+        \end{pmatrix},\]
+        使得$\alpha_1,\alpha_2,\beta_1,\beta_2$线性相关，则必有$r(A)<4$，即$|A|=0$，由此解得$a=-1$.此时阶梯矩阵为
+        \[\begin{pmatrix}
+            1 & 0 & 1 & 4 \\ 0 & 1 & 1 & 7 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
+        \end{pmatrix},\]
+        不难看出$\beta_1,\beta_2$是向量组$\beta_1,\beta_2,\alpha_1,\alpha_2$的极大线性无关组，因此$\alpha_1,\alpha_2$可以完全由$\beta_1,\beta_2$线性表示，故$W_1\cap W_2=W\spa(\alpha_1,\alpha_2)$，即公共解为$\alpha_1,\alpha_2$的线性组合，即
+        \[k_1\alpha_1+k_2\alpha_2=(2k_1-k_2,-k_1+2k_2,2k_1+4k_2,k_1+k_2)^\mathrm{T},\]
+        其中$k_1,k_2$为任意常数.
+    \end{enumerate}
 \end{solution}
 
 \subsection{线性方程组反问题}
@@ -297,7 +607,9 @@
 \end{example}
 
 \begin{solution}
-
+    设所求的齐次线性方程组为$AX=0$，令$B=(\alpha_1,\cdots,\alpha_s)$，则$B$为$n\times s$矩阵且$AB=O$，于是$B^\mathrm{T}A^\mathrm{T}=O$，解线性方程组$B^\mathrm{T}X=0$，得到其基础解系为
+    \[\beta_1,\beta_2,\ldots,\beta_{n-s},\]
+    令$A^\mathrm{T}=(\beta_1,\beta_2,\ldots,\beta_{n-s}$即可，因为此时$B^\mathrm{T}A^\mathrm{T}=O$，故$AB=O$.
 \end{solution}
 
 \begin{example}
@@ -305,10 +617,10 @@
 \end{example}
 
 \begin{solution}
-
+    根据\autoref{thm:15:非齐次线性方程组公共解}，$\alpha_2-\alpha_1,\ldots,\alpha_s-\alpha_1$是$AX=\vec{0}$的基础解系，因此根据齐次线性方程组反问题的解法可以得到$A$，然后令$b=A\alpha_1$即可符合题意.
 \end{solution}
 
-下面我们来看一个更为一般的例子来运用上面介绍的方法：
+下面我们来看一个具体的例子来运用上面介绍的方法：
 \begin{example}
     已知$\alpha_1=(1,2,-1,0,4)^\mathrm{T},\enspace\alpha_2=(-1,3,2,4,1)^\mathrm{T},\enspace\alpha_3=(2,9,-1,4,13)^\mathrm{T}$，且有$W=\spa(\alpha_1,\alpha_2,\alpha_3)$.
     \begin{enumerate}
@@ -319,8 +631,28 @@
 \end{example}
 
 \begin{solution}
+    首先我们通过求解极大线性无关组的方法可以得到，$\alpha_1,\alpha_2,\alpha_3$的极大线性无关组是$\alpha_1,\alpha_2$. 然后我们基于此根据前面两个例题介绍的方法，我们有如下求解过程：
+    \begin{enumerate}
+        \item 设所求的齐次线性方程组为$AX=0$，令$B=(\alpha_1,\alpha_2)$，解线性方程组$B^\mathrm{T}X=0$，得到其基础解系为
+        \[\beta_1=(7,-1,5,0,0)^\mathrm{T},\enspace\beta_2=(8,-4,0,5,0)^\mathrm{T},\enspace\beta_3=(-2,-1,0,0,1)^\mathrm{T},\]
+        令$A^\mathrm{T}=(\beta_1,\beta_2,\beta_3)$即可，即
+        \[A=\begin{pmatrix}
+                7 & -1 & 5 & 0 & 0 \\ 8 & -4 & 0 & 5 & 0 \\ -2 & -1 & 0 & 0 & 1
+            \end{pmatrix}.\]
+        故所求的线性方程组为
+        $\begin{cases}
+                7x_1-x_2+5x_3=0 \\ 8x_1-4x_2+5x_4=0 \\ -2x_1-x_2+x_5=0
+            \end{cases}.$
 
+        \item 这一问可以利用前面例子中给出的方法，具体步骤不在此赘述（注意因为$\eta$不在$W$中，因此$W'$中可以有三个线性无关向量，不可想当然认为只有$\alpha_2-\alpha_1$是$AX=0$（设$A$为本题要求的方程组的系数矩阵）的解）. 我们这里给出更简单的方法，读者只需回顾根据\autoref{thm:15:通解加特解}即可发现奥秘. 事实上，将$x_1=1,x_2=2,x_3=1,x_4=2,x_5=1$代入有$7x_1-x_2+5x_3=10$，$8x_1-4x_2+5x_4=10$，$-2x_1-x_2+x_5=-3$，因此$\eta$就是方程组
+        $\begin{cases}
+                7x_1-x_2+5x_3=10 \\ 8x_1-4x_2+5x_4=10 \\ -2x_1-x_2+x_5=-3
+            \end{cases}$
+        的一个特解，从而根据\autoref{thm:15:通解加特解}可以知道上述方程组符合题意.
+    \end{enumerate}
 \end{solution}
+
+事实上，这里求出的线性方程组不一定唯一，但我们会发现解出的不同线性方程组的系数矩阵之间都可以通过初等行变换相互转化，即这些线性方程组是等价的.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
@@ -439,6 +771,8 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
+    \item 证明：$A^2=E \iff r(A+E)+r(A-E)=n$.
+
     \item 设$A$为$m \times n$矩阵，$r(A)=m$，$B$是$m$阶可逆矩阵，已知$A$的行空间$R(A^\mathrm{T})$是方程组$CX=\vec{0}$的解空间，证明：$BA$的行向量也是$CX=\vec{0}$的一个基础解系.
 
     \item 设$A$是$n$阶矩阵，且$A_{11}\neq 0$，证明：方程组$AX=\vec{b}$（$\vec{b}$为非零向量）有无穷多解的充要条件为$A^*\vec{b}=\vec{0}$.
