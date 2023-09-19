@@ -26,7 +26,7 @@
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{float}
-\usepackage[framemethod=TikZ]{mdframed} % 若编译缓慢，可去掉 [framemethod=TikZ]
+\usepackage{mdframed}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -77,17 +77,27 @@
     pdftitle={线性代数荣誉课辅学讲义},
 }
 
-\newenvironment{proof}{{\noindent\bfseries\heiti 证明}\quad\fangsong}{\hspace*{\fill}$\square$\par}
-\newenvironment{solution}{{\noindent\bfseries\heiti 解}\quad\fangsong}{\par}
+\newenvironment{proof}{\fangsong}{\hspace*{\fill}$\square$\par}
+\newenvironment{solution}{\fangsong}{\par}
+
+\mdfsetup{
+    nobreak=false,
+}
 
 \mdfdefinestyle{framestyle}{
     ntheorem=true,
-    roundcorner=10pt,
-    frametitlerule=false,
-    linewidth=0.4pt,
+    % roundcorner=10pt,
     innertopmargin=\topskip,
     theoremseparator={},
     theoremspace=\quad,
+    frametitlerulewidth=.5pt,
+    frametitlerule=true,
+    linewidth=.5pt,
+    leftline=false,
+    rightline=false,
+    topline=true,
+    bottomline=true,
+    frametitlealignment=\raggedright\noindent,
 }
 
 \mdtheorem[
@@ -118,10 +128,18 @@
 \surroundwithmdframed[
     style=framestyle,
     linecolor=teal!80!black,
+    frametitlebackgroundcolor=teal!5,
+    frametitle={\noindent\bfseries\heiti 证明},
+    % frametitleaboveskip=\topskip,
+    % frametitlebelowskip=\topskip,
 ]{proof}
 \surroundwithmdframed[
     style=framestyle,
     linecolor=teal!80!black,
+    frametitlebackgroundcolor=teal!5,
+    frametitle={\noindent\bfseries\heiti 解},
+    % frametitleaboveskip=\topskip,
+    % frametitlebelowskip=\topskip,
 ]{solution}
 
 \renewcommand{\figureautorefname}{图}
@@ -149,16 +167,21 @@
 \frontmatter
 
 % 封面，代替 \maketitle
-\includepdf[pages={1}]{./figs/cover.pdf}
+\includepdf[
+    pages={1},
+    noautoscale=true,
+    trim=0 0 0 10mm,
+    clip,
+]{./figs/cover-16k.pdf}
 
 \songti
 
 {% 插入空页
-	\null
-	\thispagestyle{empty}
-	\clearpage
-	\thispagestyle{empty}
-	\input{./其它/扉页.tex}
+\null
+\thispagestyle{empty}
+\clearpage
+\thispagestyle{empty}
+\input{./其它/扉页.tex
 }
 \clearpage
 \setcounter{page}{1}

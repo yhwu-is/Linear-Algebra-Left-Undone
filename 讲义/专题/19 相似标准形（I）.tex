@@ -553,32 +553,7 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 考虑分块矩阵$\begin{pmatrix}
-            A & O \\ O & A-E
-        \end{pmatrix}$，对其进行如下分块矩阵初等变换：
-        \begin{align*}
-            \begin{pmatrix}
-                A & O \\ O & A-E
-            \end{pmatrix}&\to\begin{pmatrix}
-                A & E-A \\ O & A-E
-            \end{pmatrix}
-            \to\begin{pmatrix}
-                A & E \\ O & A-E
-            \end{pmatrix}
-            \to\begin{pmatrix}
-                O & E \\ -A(A-E) & A-E
-            \end{pmatrix}\\
-            &\to\begin{pmatrix}
-                O & E \\ -A(A-E) & O
-            \end{pmatrix}.
-        \end{align*}
-        事实上第一次变换是第二行乘以$-E$加到第一行，第二次变换是第一列加到第二列，第三次变换是第二列乘以$-A$加到第一列，第四次变换是第一行乘以$E-A$加到第二行，注意每一步都是分块矩阵初等变换，因此不改变矩阵的秩，因此有
-        \[r(\begin{pmatrix}
-                A & O \\ O & A-E
-            \end{pmatrix})=r(\begin{pmatrix}
-                O & E \\ -A(A-E) & O
-            \end{pmatrix}).\]
-        即$r(A)+r(A-E)=n+r(-A(A-E))$，故$r(A)+r(A-E)=n$等价于$r(-A(A-E))=0$，即$-A(A-E)=O$，即$A^2=A$，因此$r(A)+r(A-E)=n$等价于$A$是幂等矩阵.
+        \item 参考\autoref{ex:15:线性方程组理论与秩不等式}第四点的证明即可.
 
         \item 与\autoref{ex:19:可对角化经典例题}第一问中解法类似可得$A$为幂等矩阵则一定可对角化，且特征值为0和1. 因为$A$可对角化，故0和1的代数重数等于几何重数（统称重数），且二者重数之和为$n$. 由于0的重数（从几何重数的角度看）就等于$AX=0$的解空间维数，即等于$n-r(A)$，因此1的重数等于$n-(n-r(A))=r(A)$.
 
