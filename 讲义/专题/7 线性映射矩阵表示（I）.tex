@@ -223,7 +223,7 @@
 \end{example}
 
 \begin{solution}
-
+    见教材126页例1.
 \end{solution}
 
 教材125页下方也介绍了几个矩阵运算的基本性质：
@@ -356,23 +356,31 @@
 \end{example}
 
 \begin{solution}
-
+    由于$A$与$E$是可交换的，并且$A^nE^m=A^n$显然成立，因此我们结合中学学过的二项式展开，得到结果：
+    \begin{align*}
+        (A+\lambda E)^n & =\sum_{i=0}^nC_n^iA^i(\lambda E)^{n-i} \\
+                        & =\sum_{i=0}^nC_n^i\lambda^{n-i}A^iE^{n-i} \\
+                        & =\sum_{i=0}^nC_n^i\lambda^{n-i}A^i.
+    \end{align*}
 \end{solution}
 
 \begin{example}\label{ex:7:矩阵多项式可交换}
     设$f(x),g(x) \in \mathbf{F}[x],\enspace A,B \in \mathbf{M}_n(\mathbf{F})$. 证明：
-    \[f(A)g(A)=g(A)f(A)\]
     \begin{enumerate}
-        \item 如果$AB=BA$，则$f(A)g(B)=g(B)f(A)$；
+        \item $f(A)g(A)=g(A)f(A)$；
 
-        \item 设$f(x)=1+x+\cdots+x^{m-1}$，$g(x)=1-x$，$A=\begin{pmatrix}
-                      a & b \\ 0 & a
-                  \end{pmatrix}$，计算$f(A)g(A)$.
+        \item 如果$AB=BA$，则$f(A)g(B)=g(B)f(A)$；
     \end{enumerate}
 \end{example}
 
 \begin{solution}
-
+    我们可以直接证明第二点，因为第一点是第二点的特例.设$f(x)=\sum\limits_{i=0}^ma_ix^i$，$g(x)=\sum\limits_{j=0}^sb_jx^j$，$A^0=B^0=E$，则
+    \begin{align*}
+        f(A)g(B)&=\sum\limits_{i=0}^ma_iA^i\cdot \sum\limits_{j=0}^sb_jB^j(AB=BA) \\
+        &=\sum\limits_{k=0}^{m+s}\sum\limits_{i+j=k}a_ib_jA^iB^j=\sum\limits_{k=0}^{m+s}\sum\limits_{i+j=k}b_ja_iB^jA^i \\
+        &=g(B)f(A).
+    \end{align*}
+    事实上由于$A\cdot A=A\cdot A$，因此$f(A)g(A)=g(A)f(A)$只是上面证明的结论的特例.
 \end{solution}
 
 \section{一组例题}
@@ -404,11 +412,41 @@
 \begin{example}\label{ex:7:矩阵表示3}
     已知3阶矩阵$A=\begin{pmatrix}
             1 & 0 & 1 \\ 0 & -1 & 0 \\ -1 & 1 & -1
-        \end{pmatrix}$. 定义$\mathbf{F}^{3 \times 3}$上的线性变换$\sigma(X)=AX,\enspace X \in \mathbf{F}^{3 \times 3}$. 求$\sigma$的像和核.
+        \end{pmatrix}$. 定义$\mathbf{R}^{3 \times 3}$上的线性变换$\sigma(X)=AX,\enspace X \in \mathbf{R}^{3 \times 3}$. 求$\sigma$的像和核.
 \end{example}
 
 \begin{solution}
+    核空间求解较为简单，我们先求解核空间. 我们首先求解线性方程组$AY=0$，其中$Y$为列向量，解得其基础解系为$\eta=(1,0,-1)^\mathrm{T}$.
 
+    记$X=(X_1,X_2,X_3)$，则$X\in\ker\sigma$即$AX=(AX_1,AX_2,AX_3)=O$，即$AX_1=AX_2=AX_3=0$，因此$X_1,X_2,X_3$都能由$\eta$线性表出，故
+    \[X=(k_1\eta,k_2\eta,k_3\eta)=\begin{pmatrix}
+            k_1 & k_2 & k_3 \\ 0 & 0 & 0 \\ -k_1 & -k_2 & -k_3
+        \end{pmatrix},\enspace k_1,k_2,k_3\in\mathbf{R},\]
+    即$X=k_1\begin{pmatrix}
+        1 & 0 & 0 \\ 0 & 0 & 0 \\ -1 & 0 & 0
+    \end{pmatrix}+k_2\begin{pmatrix}
+        0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & -1 & 0
+    \end{pmatrix}+k_3\begin{pmatrix}
+        0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & -1
+    \end{pmatrix}$，即$\ker\sigma$中所有元素均可由这三个矩阵线性表示，并且这三个矩阵显然线性无关，因此核空间就是这三个矩阵的线性组合，且核空间维数为3.
+
+    注意到$\mathbf{R}^{3 \times 3}$的一组基为$E_{11},E_{12},E_{13},E_{21},E_{22},E_{23},E_{31},E_{32},E_{33}$，其中$E_{ij}$表示第$i$行第$j$列元素为1，其余元素为0的矩阵，例如$E_{23}=\begin{pmatrix}
+            0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
+        \end{pmatrix}$.
+
+    根据$\sigma$的定义我们可以求得$\sigma(E_{11})=\sigma(E_{31})=\begin{pmatrix}
+            1 & 0 & 0 \\ 0 & 0 & 0 \\ -1 & 0 & 0
+        \end{pmatrix},\enspace \sigma(E_{12})=\sigma(E_{32})=\begin{pmatrix}
+            0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & -1 & 0
+        \end{pmatrix},\enspace \sigma(E_{13})=\sigma(E_{33})=\begin{pmatrix}
+            0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & -1
+        \end{pmatrix},\sigma(E_{21})=\begin{pmatrix}
+            0 & 0 & 0 \\ -1 & 0 & 0 \\ 1 & 0 & 0
+        \end{pmatrix},\enspace \sigma(E_{22})=\begin{pmatrix}
+            0 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 1 & 0
+        \end{pmatrix},\enspace \sigma(E_{23})=\begin{pmatrix}
+            0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 0 & 1
+        \end{pmatrix}$. 所以$\sigma$的像空间为上述六个矩阵线性扩张而成的空间，即$\im\sigma=\spa(\sigma(E_{11}),\sigma(E_{12}),\sigma(E_{13}),\sigma(E_{21}),\sigma(E_{22}),\sigma(E_{23}))$. 又由\autoref{thm:6:线性映射基本定理}可知，$\dim\im\sigma=n-\dim\ker\sigma=6$，因此像空间就是这六个矩阵线性扩张而成的空间.
 \end{solution}
 
 实际上，\autoref{ex:7:矩阵表示2} 和\autoref{ex:7:矩阵表示3} 都属于已知映射求像和核的题目，求解方法仍然是原先介绍的方法，只是\autoref*{ex:7:矩阵表示2} 没有像\autoref{ex:7:矩阵表示1} 或\autoref*{ex:7:矩阵表示3} 给出了线性映射的定义，而是给出矩阵表示，但这也完全不影响我们的求解.

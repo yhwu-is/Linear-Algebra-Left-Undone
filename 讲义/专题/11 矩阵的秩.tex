@@ -82,6 +82,41 @@
 
 我们需要注意，虽然之前证明矩阵的秩=列秩时我们将列秩和像空间的秩等同，但这里列满秩是和单射等同的，不要混淆. 事实上先证明出单射等价于列满秩，再利用\autoref{cor:9:对偶映射单满射} 可知满射等价于行满秩，因为综合可得$\sigma$是单射$\iff\sigma^*$是满射$\iff A$是列满秩矩阵$\iff A^\mathrm{T}$是行满秩矩阵，结合$A^\mathrm{T}$是$\sigma^*$的表示矩阵可知满射等价于行满秩.
 
+事实上，通过矩阵的秩的学习我们还总结可逆矩阵的几个等价条件：
+\begin{theorem}\label{thm:11:可逆等价条件}
+    设$A \in \mathbf{M}_n(\mathbf{F})$，则下列命题等价：
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{item:11:可逆等价条件:1}
+              $A$可逆；
+
+        \item \label{item:11:可逆等价条件:2}
+              $r(A)=n$；
+
+        \item \label{item:11:可逆等价条件:3}
+              $A$的$n$个行（列）向量线性无关；
+
+        \item \label{item:11:可逆等价条件:4}
+              齐次线性方程组$AX=0$只有零解.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    相信读者以及在学习数学分析或微积分等课程时以及了解了如何推导等价条件，即只需要找到一条逻辑循环链路即可.
+    \begin{itemize}
+        \item[\ref*{item:11:可逆等价条件:1}$\implies$\ref*{item:11:可逆等价条件:2}] $A$可逆我们有$A$对应的线性映射为可逆映射（既单又满），由\autoref{thm:11:单满射与行列秩} 可知$A$的行列秩都为$n$，即$r(A)=n$；
+
+        \item[\ref*{item:11:可逆等价条件:2}$\implies$\ref*{item:11:可逆等价条件:3}] $r(A)=n$，则$A$的行列秩都为$n$，即$A$的$n$个行（列）向量线性无关；
+
+        \item[\ref*{item:11:可逆等价条件:3}$\implies$\ref*{item:11:可逆等价条件:4}] 设$A$的$n$个列向量为$\beta_1,\ldots,\beta_n$，则$AX=0$等价于$x_1\beta_1+\cdots+x_n\beta_n=0$，由于$\beta_1,\ldots,\beta_n$线性无关，故$x_1=\cdots=x_n=0$，即$AX=0$只有零解；
+
+        \item[\ref*{item:11:可逆等价条件:4}$\implies$\ref*{item:11:可逆等价条件:1}] 只有零解表示$A$经过初等行变换$P_1,\ldots,P_s$后得到了单位矩阵$E$，即
+            \[P_s\cdots P_1A=E\]
+            又初等矩阵可逆，则$A=(P_s\cdots P_1)^{-1}$，又由可逆矩阵的乘积仍然可逆，则$A$可逆.
+    \end{itemize}
+\end{proof}
+
+事实上，在学完行列式后这一命题还可以增加一个行列式$|A|\neq 0$的等价条件.
+
 \section{三个重要的定理}
 
 这一讲我们将讨论三个容易混淆但各有十分重要内涵的定理. 其中第一个定理引入过渡矩阵且与矩阵的秩有较大关联，后面两个定理放在一起讨论是为了说明这三个看起来很类似的定理的本质区别. 在讨论第一个定理前我们首先介绍过渡矩阵（变换矩阵）的概念.
@@ -140,7 +175,15 @@
 \end{example}
 
 \begin{solution}
-
+    事实上，$(\beta_1,\beta_2,\beta_3)=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}
+            0 & 1 & 1 \\
+            1 & 0 & 1 \\
+            1 & 1 & 0
+        \end{pmatrix}$，而$\begin{pmatrix}
+            0 & 1 & 1 \\
+            1 & 0 & 1 \\
+            1 & 1 & 0
+        \end{pmatrix}$可逆（可以由\autoref{thm:11:可逆等价条件}（3）（4）很容易验证），故$\alpha_1,\alpha_2,\alpha_3$与$\beta_1,\beta_2,\beta_3$等价.
 \end{solution}
 
 有了上述内容的铺垫，我们可以开始介绍本节三个重要定理中的第一个：
@@ -197,7 +240,9 @@
 \end{example}
 
 \begin{solution}
+    设$\mathbf{F}^n$和$\mathbf{F}^m$的自然基分别为$\varepsilon_1,\ldots,\varepsilon_n$和$\eta_1,\ldots,\eta_m$，其中$\varepsilon_i$和$\eta_j$分别是第$i$个和第$j$个位置为1，其余位置为0的向量.
 
+    由于$\sigma(\varepsilon_i)=A\varepsilon_i=(a_{1i},\ldots,a_{mi})^\mathrm{T}=(eta_1,\ldots,\eta_m)A_i$，其中$A_i$是$A$的第$i$列，故$\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)=(\eta_1,\ldots,\eta_m)A$，即$\sigma$在$\mathbf{F}^n$和$\mathbf{F}^m$自然基下的表示矩阵为$A$.
 \end{solution}
 
 我们会惊奇地发现，定义成$\sigma(X)=AX$的映射在向量空间自然基下的矩阵表示就是$A$！即我们讨论的$\tau:V\to W$和$\sigma$不仅可以视为同步进行的映射，它们的矩阵表示也是一致的，只要$\sigma$取在自然基下的矩阵. 有了这样一个结论后，从今往后我们只要看到一个矩阵$A$，要联系它的线性映射时，我们都可以认为$A$来源于映射$\sigma(X)=AX$在自然基下矩阵，因为其它所有的映射$\tau$经过上图中的坐标同构变换后都与这一映射完全对应.
@@ -237,7 +282,80 @@
 \end{example}
 
 \begin{solution}
+    \begin{enumerate}
+        \item 对新的一组基，使用过渡矩阵进行表达如下：
+        \[\left(\beta_{1}, \beta_{2}, \beta_{3}\right)=\left(\alpha_{1}, \alpha_{2}, \alpha_{3}\right)\left(\begin{array}{ccc}
+            2 & 1 & -1 \\
+            1 & 1 & 1 \\
+            3 & 2 & 1
+        \end{array}\right)=\left(\alpha_{1}, \alpha_{2}, \alpha_{3}\right) C,\]
+        其中 $C$ 是可逆矩阵，且
+        \[\left(\alpha_{1},\ \alpha_{2},\ \alpha_{3}\right)=\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right) C^{-1},\]
+        将上式代入已知条件得
+        \[\sigma\left(\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right) C^{-1}\right)=\left(\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right) C^{-1}\right) A,\]
+        容易验证（只需利用线性变换和矩阵的等价性然后利用矩阵乘法结合律即可）上式左端等于 $\left(\sigma\left(\beta_{1}, \beta_{2}, \beta_{3}\right)\right) C^{-1}$，所以
+        \[\left(\sigma\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right)\right) C^{-1}=\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right)\left(C^{-1} A\right),\]
+        从而得 $\sigma\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right)=\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right)\left(C^{-1} A C\right)$，故 $\sigma$ 关于基 $\left\{\beta_{1},\ \beta_{2},\ \beta_{3}\right\}$ 下对应的矩阵 $B=C^{-1} A C=$
+        \[\left(\begin{array}{ccc}
+            2 & 1 & -1 \\
+            1 & 1 & 1 \\
+            3 & 2 & 1
+            \end{array}\right)^{-1}\left(\begin{array}{ccc}
+            1 & 2 & -1 \\
+            2 & 1 & 0 \\
+            3 & 0 & 1
+            \end{array}\right)\left(\begin{array}{ccc}
+            2 & 1 & -1 \\
+            1 & 1 & 1 \\
+            3 & 2 & 1
+            \end{array}\right)=\left(\begin{array}{ccc}
+            2 & 0 & 1 \\
+            0 & 2 & 1 \\
+            3 & 1 & -1
+            \end{array}\right).\]
 
+        \item  $\sigma$的值域是 $A$ 列向量组的极大线性无关组，由于 $A $ 的第 $1$ 列可以由第 $2$ 列和第 $3$ 列线性表示，从而 $\sigma(V)=L\left(2 \alpha_{1}+\alpha_{2},\ -\alpha_{1}+\alpha_{3}\right)$.
+
+        \item 由于 $\alpha_{1}$ 不能由 $2 \alpha_{1}+\alpha_{2}$ 和 $-\alpha_{1}+\alpha_{3}$ 线性表示，可以把 $\sigma(V)$ 的基扩充为 $V$ 的基 $\left\{\alpha_{1},\ 2 \alpha_{1}+\alpha_{2},\ -\alpha_{1}+\alpha_{3}\right\}$，$\sigma$ 在这个基下对应的矩阵是
+        \[\left(\begin{array}{ccc}
+        1 & 2 & -1 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+        \end{array}\right)^{-1}\left(\begin{array}{ccc}
+        1 & 2 & -1 \\
+        2 & 1 & 0 \\
+        3 & 0 & 1
+        \end{array}\right)\left(\begin{array}{ccc}
+        1 & 2 & -1 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+        \end{array}\right)=\left(\begin{array}{ccc}
+        0 & 0 & 0 \\
+        2 & 5 & -2 \\
+        3 & 6 & -2
+        \end{array}\right).\]
+
+        \item 由于 $\alpha_{1},\ \alpha_{2}$ 不能由 $\alpha_{1}-2 \alpha_{2}-3 \alpha_{3}$ 线性表示，可以把 $\operatorname{Ker} \sigma$ 的基扩 充为 $V$ 的基 $\left\{\alpha_{1},\ \alpha_{2},\ \alpha_{1}-2 \alpha_{2}-3 \alpha_{3}\right\}$，$\sigma$ 在这个基下对应的矩阵是
+        \[\left(\begin{array}{ccc}
+            1 & 0 & 1 \\
+            0 & 1 & -2 \\
+            0 & 0 & -3
+            \end{array}\right)^{-1}\left(\begin{array}{ccc}
+            1 & 2 & -1 \\
+            2 & 1 & 0 \\
+            3 & 0 & 1
+            \end{array}\right)\left(\begin{array}{ccc}
+            1 & 0 & 1 \\
+            0 & 1 & -2 \\
+            0 & 0 & -3
+            \end{array}\right)=\left(\begin{array}{ccc}
+            2 & 2 & 0 \\
+            0 & 1 & 0 \\
+
+            1 & 0 & 0
+
+            \end{array}\right).\]
+    \end{enumerate}
 \end{solution}
 
 \section{相抵标准形}
@@ -342,7 +460,18 @@
 \end{example}
 
 \begin{solution}
+    \begin{enumerate}
+        \item 利用求解极大线性无关组的方法可以解得$r=2$，因此对应的相抵标准形为\[\begin{pmatrix}
+            1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0
+        \end{pmatrix}.\]
 
+        \item 实际上就是求解如何通过初等变换得到相抵标准形，所有行变换相乘得到$P$，所有列变换相乘得到$Q$，此处略去步骤，给出答案为
+        \[P=\begin{pmatrix}
+            1 & 0 & 0 \\ -2 & 1 & 0 \\ -1 & 1 & 1
+        \end{pmatrix},\enspace Q=\begin{pmatrix}
+            1 & 0 & 2 & -4 \\ 0 & 1 & 1 & -2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1
+        \end{pmatrix}.\]
+    \end{enumerate}
 \end{solution}
 
 关于相抵标准形，我们需要在此补充一个常用的技术，即相抵标准形的分解. 事实上将来讨论其它标准形时我们都会讨论分解问题，因为这能在实际问题中大大降低计算难度，便于我们进一步讨论.
@@ -386,63 +515,30 @@
 \end{example}
 
 \begin{proof}
-
+    由前述分解可知，此处$r=1$，则有存在可逆矩阵 $P=\left(p_{i j}\right)_{n \times n},\ Q=\left(q_{i j}\right)_{n \times n}$，使得
+    \[A=P\left(\begin{array}{cccc}
+        1 & & & \\
+        & 0 & & \\
+        & & \ddots & \\
+        & & & 0
+    \end{array}\right) Q=P\left(\begin{array}{c}
+        1 \\ 0 \\ \vdots \\ 0
+    \end{array}\right)\left(\begin{array}{llll}
+        1 & 0 & \cdots & 0
+    \end{array}\right) Q=\widetilde{P} \widetilde{Q},\]
+    其中$\widetilde{P}=P\left(\begin{array}{c}
+        1 \\ 0 \\ \vdots \\ 0
+    \end{array}\right)$，$\widetilde{Q}=\left(\begin{array}{llll}
+        1 & 0 & \cdots & 0
+    \end{array}\right) Q$，则我们可以通过暴力计算不难验证：
+    \[\widetilde{Q} \widetilde{P}=\sum_{k=1}^{n} p_{i k} q_{k j}=\operatorname{tr}(A),\]
+    从而
+    \[A^{2}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q}=\operatorname{tr}(A) \widetilde{P} \widetilde{Q}=\operatorname{tr}(A) A,\]
+    进一步地
+    \[A^{k}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q} \cdots \widetilde{P} \widetilde{Q}=\operatorname{tr}(A)^{k-1} \widetilde{P} \widetilde{Q}=\operatorname{tr}(A)^{k-1} A.\]
 \end{proof}
 
-除此之外，我们还可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明：
-\begin{example}\label{ex:11:分块秩不等式}
-    证明以下矩阵的秩不等式：
-    \begin{enumerate}
-        \item $r\begin{pmatrix}
-                      A & O \\ O & B
-                  \end{pmatrix}=r(A)+r(B)$.
-
-        \item $r\begin{pmatrix}
-                      A & D \\ O & B
-                  \end{pmatrix}\geqslant r(A)+r(B),\enspace r\begin{pmatrix}
-                      A & O \\ C & B
-                  \end{pmatrix}\geqslant r(A)+r(B)$.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-
-\end{proof}
-
-最后，通过矩阵的秩的学习我们还总结可逆矩阵的几个等价条件：
-\begin{theorem}\label{thm:11:可逆等价条件}
-    设$A \in \mathbf{M}_n(\mathbf{F})$，则下列命题等价：
-    \begin{enumerate}[label=(\arabic*)]
-        \item \label{item:11:可逆等价条件:1}
-              $A$可逆；
-
-        \item \label{item:11:可逆等价条件:2}
-              $r(A)=n$；
-
-        \item \label{item:11:可逆等价条件:3}
-              $A$的$n$个行（列）向量线性无关；
-
-        \item \label{item:11:可逆等价条件:4}
-              齐次线性方程组$AX=0$只有零解.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    相信读者以及在学习数学分析或微积分等课程时以及了解了如何推导等价条件，即只需要找到一条逻辑循环链路即可.
-    \begin{itemize}
-        \item[\ref*{item:11:可逆等价条件:1}$\implies$\ref*{item:11:可逆等价条件:2}] $A$可逆我们有$A$对应的线性映射为可逆映射（既单又满），由\autoref{thm:11:单满射与行列秩} 可知$A$的行列秩都为$n$，即$r(A)=n$；
-
-        \item[\ref*{item:11:可逆等价条件:2}$\implies$\ref*{item:11:可逆等价条件:3}] $r(A)=n$，则$A$的行列秩都为$n$，即$A$的$n$个行（列）向量线性无关；
-
-        \item[\ref*{item:11:可逆等价条件:3}$\implies$\ref*{item:11:可逆等价条件:4}] 设$A$的$n$个列向量为$\beta_1,\ldots,\beta_n$，则$AX=0$等价于$x_1\beta_1+\cdots+x_n\beta_n=0$，由于$\beta_1,\ldots,\beta_n$线性无关，故$x_1=\cdots=x_n=0$，即$AX=0$只有零解；
-
-        \item[\ref*{item:11:可逆等价条件:4}$\implies$\ref*{item:11:可逆等价条件:1}] 只有零解表示$A$经过初等行变换$P_1,\ldots,P_s$后得到了单位矩阵$E$，即
-            \[P_s\cdots P_1A=E\]
-            又初等矩阵可逆，则$A=(P_s\cdots P_1)^{-1}$，又由可逆矩阵的乘积仍然可逆，则$A$可逆.
-    \end{itemize}
-\end{proof}
-
-事实上，在学完行列式后这一命题还可以增加一个行列式$|A|\neq 0$的等价条件.
+除此之外，我们还可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明，具体应用见\autoref{ex:11:分块秩不等式}.
 
 \section{秩不等式}
 
@@ -471,19 +567,113 @@
 
           注：这一结论非常重要，即可逆矩阵乘以（不管左乘还是右乘）任何矩阵都是不改变矩阵的秩的.
 
+    基于此，我们可以推导如下分块矩阵秩的相关公式：
+
+    \begin{example}\label{ex:11:分块秩不等式}
+        证明以下矩阵的秩不等式：
+        \begin{enumerate}
+            \item $r\begin{pmatrix}
+                        A & O \\ O & B
+                    \end{pmatrix}=r(A)+r(B)$.
+
+            \item $r(A)+r(B)+r(D)\geqslant r\begin{pmatrix}
+                        A & D \\ O & B
+                    \end{pmatrix}\geqslant r(A)+r(B),\enspace r(A)+r(B)+r(C)\geqslant r\begin{pmatrix}
+                        A & O \\ C & B
+                    \end{pmatrix}\geqslant r(A)+r(B)$.
+        \end{enumerate}
+    \end{example}
+
+    \begin{proof}
+    \begin{enumerate}
+        \item 对于$A$和$B$，分别存在可逆矩阵$P_1,Q_1$和$P_2,Q_2$，使得
+        \[P_1AQ_1=\begin{pmatrix}
+                E_r & O \\ O & O
+            \end{pmatrix},\enspace P_2BQ_2=\begin{pmatrix}
+                E_s & O \\ O & O
+            \end{pmatrix},\]
+        其中$r$和$s$分别为矩阵$A$和$B$的秩，于是我们有
+        \begin{align*}
+            \begin{pmatrix}
+                P_1 & O \\ O & P_2
+            \end{pmatrix}\begin{pmatrix}
+                A & O \\ O & B
+            \end{pmatrix}\begin{pmatrix}
+                Q_1 & O \\ O & Q_2
+            \end{pmatrix}&=\begin{pmatrix}
+                P_1AQ_1 & O \\ O & P_2BQ_2
+            \end{pmatrix}\\
+            &=\begin{pmatrix}
+                E_r & O & O & O \\ O & O & O & O \\ O & O & E_s & O \\ O & O & O & O
+            \end{pmatrix}\\&\xrightarrow{\text{初等变换}}\begin{pmatrix}
+                E_r & O & O & O \\ O & E_s & O & O \\ O & O & O & O \\ O & O & O & O
+            \end{pmatrix},
+        \end{align*}
+        又$\begin{pmatrix}
+                P_1 & O \\ O & P_2
+            \end{pmatrix}$和$\begin{pmatrix}
+                Q_1 & O \\ O & Q_2
+            \end{pmatrix}$都是可逆矩阵，故$r\begin{pmatrix}
+                A & O \\ O & B
+            \end{pmatrix}=r(A)+r(B)$.
+
+        \item 同上一问的假设，此时有
+        \begin{align*}
+            \begin{pmatrix}
+                P_1 & O \\ C & P_2
+            \end{pmatrix}\begin{pmatrix}
+                A & O \\ C & B
+            \end{pmatrix}\begin{pmatrix}
+                Q_1 & O \\ O & Q_2
+            \end{pmatrix}&=\begin{pmatrix}
+                E_r & O & O & O \\ O & O & O & O \\ C_{11} & C_{12} & E_s & O \\ C_{21} & C_{22} & O & O
+            \end{pmatrix},
+        \end{align*}
+        其中$\begin{pmatrix}
+            C_{11} & C_{12} \\ C_{21} & C_{22}
+        \end{pmatrix}$是$P_2CQ_1$的一种分块。结合$E_r$和$E_s$都是单位矩阵，因此我们可以通过初等变换消去与它们同行、同列的$C_{11},C_{12},C_{21}$，即
+        \begin{align*}
+            \begin{pmatrix}
+                E_r & O & O & O \\ O & O & O & O \\ C_{11} & C_{12} & E_s & O \\ C_{21} & C_{22} & O & O
+            \end{pmatrix}&\xrightarrow{\text{初等变换}}\begin{pmatrix}
+                E_r & O & O & O \\ O & E_s & O & O \\ O & O & O & O \\ O & C_{22} & O & O
+            \end{pmatrix} \\
+            &\xrightarrow{\text{初等变换}}\begin{pmatrix}
+                E_r & O & O & O \\ O & E_s & O & O \\ O & C_{22} & O & O \\ O & O & O & O
+            \end{pmatrix},
+        \end{align*}
+        故可以得到$r(A)+r(B)+r(C)\geqslant r\begin{pmatrix}
+                A & O \\ C & B
+            \end{pmatrix}\geqslant r(A)+r(B)$，同理可证$r(A)+r(B)+r(D)\geqslant r\begin{pmatrix}
+                A & D \\ O & B
+            \end{pmatrix}\geqslant r(A)+r(B)$.
+    \end{enumerate}
+    \end{proof}
     \item $|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)$.
 
           \begin{proof}
+            左侧的不等号我们放在习题中供读者思考，此处证明右侧不等式. 事实上我们只需要证明$r(A+B)\leqslant r(A)+r(B)$即可，因为如果上式成立，则$r(A-B)=r(A+(-B))\leqslant r(A)+r(-B)=r(A)+r(B)$.
 
+            下面我们证明$r(A+B)\leqslant r(A)+r(B)$，这里我们站在线性映射的角度证明（事实上接下来第3、5个不等式也是如此，主要思路与教材3.4节一致）. 设$A,B$分别是线性映射$\sigma,\tau\in\mathcal{L}(V_1,V_2)$在基下表示矩阵. 事实上，矩阵的秩的定义就来源于线性映射的秩，即$r(A)=r(\sigma)$，$r(B)=r(\tau)$，因此我们只需要证明
+            \[r(\sigma+\tau)\leqslant r(\sigma)+r(\tau),\]
+            又根据线性映射的秩的定义，只需证明
+            \[\dim(\sigma+\tau)(V_1)\leqslant \dim\sigma(V_1)+\dim\tau(V_1),\]
+            事实上，$\forall\beta\in(\sigma+\tau)(V_1)$，$\exists\alpha\in V_1$，使得$\beta=(\sigma+\tau)\alpha=\sigma(\alpha)+\tau(\alpha)\in\sigma(V_1)+\tau(V_1)$，因此$(\sigma+\tau)(V_1)\subseteq\sigma(V_1)+\tau(V_1)$，故$\dim(\sigma+\tau)(V_1)\leqslant \dim(\sigma(V_1)+\tau(V_1))\leqslant \dim\sigma(V_1)+\dim\tau(V_1)$，得证（最后一个不等号来源于\autoref{thm:4:维数公式}）.
           \end{proof}
 
     \item $r(AB) \leqslant \min\{r(A), r(B)\}$.
 
-          和上一个不等式类似，我们首先考虑不等式的线性映射版本，即
+          和上一个不等式类似，我们首先考虑不等式的线性映射版本，设$A,B$分别是线性映射$\sigma\in\mathcal{L}(V_1,V_2),\tau\in\mathcal{L}(V_2,V_3)$在基下表示矩阵，我们只需证
+            \[r(\tau\sigma)\leqslant \min\{r(\sigma), r(\tau)\}\]
+          即可，证明如下：
 
           \begin{proof}
+            我们有$\sigma(V_1)\subseteq V_2$（回忆像空间是到达空间的子空间），故$(\tau\sigma)(V_1)\subseteq\tau(V_2)$，因此$\dim(\tau\sigma)(V_1)\leqslant\dim\tau(V_2)$，即$r(\tau\sigma)\leqslant r(\tau)$.
 
+            因为$(\tau\sigma)(V_1)=\tau(\sigma(V_1))$，我们知道线性映射不能把低维空间满射到更高维的空间，因此$\dim(\tau\sigma)(V_1)=\dim\tau(\sigma(V_1))\leqslant\dim\sigma(V_1)$，即$r(\tau\sigma)\leqslant r(\sigma)$，综上$r(\tau\sigma)\leqslant \min\{r(\sigma), r(\tau)\}$，得证.
           \end{proof}
+
+          事实上，这一不等式我们将在\hyperref[chap:朝花夕拾]{朝花夕拾}中用线性方程组的理论再给出一个证明.
 
     \item $r(A)=r(A^\mathrm{T})=r(AA^\mathrm{T})=r(A^\mathrm{T}A)$.
 
@@ -492,7 +682,24 @@
     \item $A \in \mathbf{F}^{s \times n}$，$B \in \mathbf{F}^{n \times m}$，则$r(AB) \geqslant r(A)+r(B)-n$
 
           \begin{proof}
-
+            设$A,B$分别是线性映射$\sigma\in\mathcal{L}(V_1,V_2),\tau\in\mathcal{L}(V_2,V_3)$在基下表示矩阵，其中$V_1,V_2,V_3$分别是$m,n,s$维线性空间，我们只需证
+            \[r(\tau\sigma)\geqslant r(\sigma)+r(\tau)-n.\]
+            事实上，根据\autoref{thm:6:线性映射基本定理}，我们有
+            \begin{align*}
+                r(\tau\sigma)&=m-\dim\ker(\tau\sigma) \\
+                &\geqslant m-(\dim\ker\sigma+\dim\ker\tau) \\
+                &=m-\dim\ker\sigma+n-\dim\ker\tau-n \\
+                &=r(\sigma)+r(\tau)-n.
+            \end{align*}
+            其中第二行不等号来源于：
+            \begin{align*}
+                \dim\ker(\tau\sigma)&=n-\dim(\tau\sigma)(V_1) \\
+                &=n-\dim\tau(\sigma(V_1)) \\
+                &=n-(\dim\sigma(V_1)-\dim(\ker\tau\cap\sigma(V_1))) \\
+                &=(n-\dim\sigma(V_1))+\dim(\ker\tau\cap\sigma(V_1)) \\
+                &\leqslant\dim\ker\sigma+\dim\ker\tau.
+            \end{align*}
+            这里2-3行将$\tau$视为$\mathcal{L}(\sigma(V_1),V_3)$中的线性映射，利用了\autoref{thm:6:线性映射基本定理}.
           \end{proof}
 
           这一不等式有一个特例，即当$AB=O$时有$r(A)+r(B)\leqslant n$. 这一结论在\hyperref[chap:朝花夕拾]{朝花夕拾}中我们将用其他方法给出证明.
@@ -500,15 +707,28 @@
     \item $r(ABC) \geqslant r(AB)+r(BC)-r(B)$
 
           \begin{proof}
-              我们使用分块矩阵初等变换证明.
+              我们使用分块矩阵初等变换证明. 事实上我们有
+              \begin{align*}
+                r(ABC)+r(B)&=r\begin{pmatrix}
+                    ABC & O \\ O & B
+                \end{pmatrix} \\
+                &=r\begin{pmatrix}
+                    ABC & O \\ BC & B
+                \end{pmatrix}=r\begin{pmatrix}
+                    O & -AB \\ BC & B
+                \end{pmatrix}\\
+                &\geqslant r(AB)+r(BC).
+              \end{align*}
           \end{proof}
+
+          上述证明中第二行的两个等号都是由于分块矩阵初等变换不改变矩阵的秩得到的，第一行和第三行的等号和不等号是由之前给出的分块矩阵秩不等式得到的.
 
           这一不等式称为西尔维斯特不等式（或称费罗贝尼乌斯不等式）. 我们还可以得到一种特例，即$A,B,C$相等的特殊情况：
           \[r(A^3) \geqslant 2r(A^2)-r(A).\]
           除此之外，若$B=E_n$即单位矩阵时我们有$r(AC) \geqslant r(A)+r(C)-n$，这与第五个不等式一致. 因此只要证明了这一个不等式，很多的结论都只是其推论而已.
 \end{enumerate}
 
-分块矩阵的相关公式在\autoref{ex:11:分块秩不等式} 中已经书写过，此处不再重复. 在下面的例子以及习题中我们将给出更多的例子供读者熟练上面的证明思想与技巧.
+在下面的例子以及习题中我们将给出更多的例子供读者熟练上面的证明思想与技巧.
 \begin{example}
     若$A,B$为两个$n$阶矩阵，则
     \begin{enumerate}[label=\Alph*.]
@@ -523,7 +743,36 @@
 \end{example}
 
 \begin{solution}
+    选择B项.
+    \begin{enumerate}[label=\Alph*.]
+        \item 要注意分块矩阵$(A\enspace B)$的转置是
+            \[\begin{pmatrix}
+                    A^\mathrm{T} \\ B^\mathrm{T}
+                \end{pmatrix}.\]
+            由于分块矩阵初等变换不改变矩阵的秩，这里给出的$(A^\mathrm{T}\enspace B^\mathrm{T})$并不是，因此秩不一定相等. 事实上我们很好举出例子来说明这一点，例如
+            \[A=\begin{pmatrix}
+                1 & 0 \\ 0 & 0
+            \end{pmatrix},\enspace B=\begin{pmatrix}
+                0 & 0 \\ 1 & 0
+            \end{pmatrix}.\]
 
+        \item 我们在矩阵乘法一节中介绍过，左乘矩阵相当于做初等行变换，右乘矩阵相当于做初等列变换，因此$AB$相当于对$A$做了初等列变换，考察$(A\enspace AB)$的列向量组，显然$AB$的列向量组是$A$的列向量组的线性组合，因此$r(A,AB)=r(A)$.
+
+        当然我们也可以有另一种证明方式.事实上直接看列向量组，显然$(A,AB)$的列向量组包括了$A$的列向量组，因此$r(A,AB)\geqslant r(A)$. 反过来，$r(A,AB)=r(A(E,B))\leqslant r(A)$，其中$E$是$n$阶单位矩阵，综上$r(A,AB)=r(A)$.
+
+        \item 显然$r(A,B)\geqslant \max\{r(A), r(B)\}$，这只需要看矩阵列向量组的秩即可轻松看出.
+
+        \item 可以将$BA$理解为对$A$做初等行变换，但行变换不能像B选项那样直接得出秩相关的结论，因为$A$和$BA$的行混在一起，无法判断二者行秩的关系.
+
+        另一方面，B选项的另一种证明也不可使用，因为下列写法根据分块矩阵乘法块的匹配规则是不合法的：$(A,BA)=(E,B)A$，因为$(E,B)$是$1\times 2$分块，后面应该乘以一个两行分块.
+
+        我们直接举反例否定这一结论，例如
+        \[A=\begin{pmatrix}
+            1 & 0 \\ 0 & 0
+        \end{pmatrix},\enspace B=\begin{pmatrix}
+            1 & 1 \\ 1 & 1
+        \end{pmatrix}.\]
+    \end{enumerate}
 \end{solution}
 
 \vspace{2ex}
