@@ -92,6 +92,71 @@
     \end{enumerate}
 \end{example}
 
+\begin{solution}
+    \begin{enumerate}
+        \item 出发空间为 $ \mathbf{R}^2 $，到达空间为 $ \mathbf{R}^3 $. $ \sigma $ 是线性映射.
+
+        $ \forall (x_1, x_2), (y_1, y_2) \in \mathbf{R}^2,\enspace k_1, k_2 \in \mathbf{R} $, 有
+        \begin{align*}
+            & \sigma(k_1(x_1, x_2) + k_2(y_1, y_2)) \\
+            ={} & ((k_1 x_1 + k_2 y_1) - (k_1 x_2 + k_2 y_2), k_1 x_1 + k_2 y_1, (k_1 x_1 + k_2 y_1) + (k_1 x_2 + k_2 y_2)) \\
+            ={} & k_1(x_1 - x_2, x_1, x_1 + x_2) + k_2(y_1 - y_2, y_1, y_1 + y_2) \\
+            ={} & k_1 \sigma(x_1, x_2) + k_2 \sigma(y_1, y_2)
+        \end{align*}
+
+        \item 出发空间为 $ \mathbf{R}^2 $，到达空间为 $ \mathbf{R}^2 $. $ \sigma $ 不是线性映射.
+
+        $ \forall (x_1, x_2), (y_1, y_2) \in \mathbf{R}^2,\enspace k_1, k_2 \in \mathbf{R} $, 有
+        \begin{align*}
+            \sigma((x_1, x_2) + (y_1, y_2)) &= \sigma(x_1 + y_1, x_2 + y_2) \\
+            &= ((x_1 + y_1)(x_2 + y_2), ((x_1 + y_1) + (x_2 + y_2)) \\
+            &= (x_1 x_2 + x_1 y_2 + y_1 x_2 + y_1 y_2, x_1 + y_1 + x_2 + y_2) \\
+            &= (x_1 x_2 + y_1 y_2, x_1 + y_1 + x_2 + y_2) + (x_1 y_2 + y_1 x_2, 0) \\
+            &= \sigma(x_1, x_2) + \sigma(y_1, y_2) + (x_1 y_2 + y_1 x_2, 0) \\
+            &\neq \sigma(x_1, x_2) + \sigma(y_1, y_2)
+        \end{align*}
+
+        \item 出发空间为 $ \mathbf{R}[x]_n $，到达空间为 $ \mathbf{R}[x]_{n - 1} $. $ \sigma $ 是线性映射.
+
+        $ \forall p_1(x), p_2(x) \in \mathbf{R}[x]_n,\enspace k_1, k_2 \in \mathbf{R} $, 有
+        \begin{align*}
+            & \sigma(k_1 p_1(x) + k_2 p_2(x)) \\
+            ={} & (k_1 p_1 + k_2 p_2)(x + 1) - (k_1 p_1 + k_2 p_2)(x) \\
+            ={} & k_1(p_1(x + 1) - p_1(x)) + k_2(p_2(x + 1) - p_2(x)) \\
+            ={} & k_1 \sigma(p_1(x)) + k_2 \sigma(p_2(x))
+        \end{align*}
+
+        \item 出发空间为 $ \mathbf{R}[x] $，到达空间为 $ \mathbf{R}[x] $. $ \sigma $ 是线性映射.
+
+        $ \forall p_1(x), p_2(x) \in \mathbf{R}[x],\enspace k_1, k_2 \in \mathbf{R} $, 有
+        \begin{align*}
+            & \sigma(k_1 p_1(x) + k_2 p_2(x)) \\
+            ={} & (k_1 p_1 + k_2 p_2)(a) \\
+            ={} & k_1 p_1(a) + k_2 p_2(a) \\
+            ={} & k_1 \sigma(p_1(x)) + k_2 \sigma(p_2(x))
+        \end{align*}
+
+        \item 出发空间为 $ V $，到达空间为 $ V $. 当 $ \xi_0 = \vec{0} $ 时， $ \sigma(\xi) = 2 \xi $ 是线性映射.
+
+        $ \forall \xi_1, \xi_2 \in V $, 有
+        \begin{align*}
+            \sigma(\xi_1 + \xi_2) &= 2(\xi_1 + \xi_2) \\
+            &= 2 \xi_1 + 2 \xi_2 \\
+            &= \sigma(\xi_1) + \sigma(\xi_2)
+        \end{align*}
+
+        当 $ \xi_0 \neq \vec{0} $ 时， $ \sigma $ 不是线性映射.
+
+        $ \forall \xi_1, \xi_2 \in V $, 有
+        \begin{align*}
+            \sigma(\xi_1 + \xi_2) &= 2(\xi_1 + \xi_2) + \xi_0 \\
+            &= 2 \xi_1 + 2 \xi_2 + \xi_0 \\
+            &= \sigma(\xi_1) + \sigma(\xi_2) - \xi_0 \\
+            &\neq \sigma(\xi_1) + \sigma(\xi_2)
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
 \subsection{线性映射的基本运算}
 
 我们在之前的学习中已经了解，连续函数关于函数的加法数乘运算可以构成线性空间，事实上线性映射可以视为特殊的函数，因此我们希望在本节讨论怎样的运算定义能使其构成线性空间，除此之外也介绍线性映射乘法（即复合）和逆运算.
@@ -275,19 +340,6 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item 设$\sigma: V_1\to V_2$是线性映射. 证明：$\sigma(W_1)$和$\sigma^{-1}(W_2)$分别是$V_2$和$V_1$的子空间.
-
-    \item 写出下列映射的出发空间和到达空间，并判断其是否为线性映射：
-          \begin{enumerate}
-              \item $\sigma(x_1,x_2)=(x_1-x_2,x_1,x_1+x_2)$；
-
-              \item $\sigma(x_1,x_2)=(x_1x_2,x_1+x_2)$；
-
-              \item $\sigma(p(x))=p(x+1)-p(x),\enspace\forall p(x) \in \mathbf{R}[x]_n$；
-
-              \item $\sigma(p(x))=p(a),\enspace\forall p(x)$，其中$a$为常数；
-
-              \item $\sigma(\xi)=2\xi+\xi_0$，其中$\xi_0$是线性空间$V$中的一个固定向量.
-          \end{enumerate}
 
     \item 设$\sigma,\tau \in \mathcal{L}(V,V)$且$\sigma^2=\sigma$，$\tau^2=\tau$. 证明：
           \begin{enumerate}
