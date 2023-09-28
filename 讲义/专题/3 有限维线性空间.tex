@@ -201,11 +201,15 @@
     \end{equation}
     因此$\alpha_j$可由$\alpha_1,\alpha_2,\ldots,\alpha_{j-1}$线性表示，即$\alpha_j\in\spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1})$，故 \ref*{item:3:线性相关性引理:1} 得证.
 
-    接下来我们证明 \ref*{item:3:线性相关性引理:2}. 首先$\spa(\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)\subseteq\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)$是显然的，因为任意被$\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m$线性表示的向量实际上也是被$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示了，只是$\alpha_j$前的系数恒为0.
+    接下来我们证明 \ref*{item:3:线性相关性引理:2}. 首先$\spa(\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)\subseteq\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)$是显然的，因为任意被$\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m$线性表示的向量实际上也是被
+    \[\alpha_1,\alpha_2,\ldots,\alpha_m\]
+    线性表示了，只是$\alpha_j$前的系数恒为0.
 
-    然后证明另一边包含关系，即$\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)\subseteq\spa(\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)$. 任取$\beta\in\spa(\alpha_1,\ldots,\alpha_m)$，则存在$\mu_1,\mu_2,\ldots,\mu_m$使得
+    然后证明另一边包含关系，即
+    \[\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)\subseteq\spa(\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m).\]
+    任取$\beta\in\spa(\alpha_1,\ldots,\alpha_m)$，则存在$\mu_1,\mu_2,\ldots,\mu_m$使得
     \[\beta=\mu_1\alpha_1+\mu_2\alpha_2+\cdots+\mu_m\alpha_m.\]
-    将$\alpha_j$用\autoref{eq:3:线性相关性引理} 表示，代入上式可得任意$\spa(\alpha_1,\ldots,\alpha_m)$中的向量都可以由$\alpha_1,\ldots,\alpha_{j-1}$,\\$\alpha_{j+1},\ldots,\alpha_m$线性表示，因此$\beta\in\spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)$，故引理得证.
+    将$\alpha_j$用\autoref{eq:3:线性相关性引理} 表示，代入上式可得任意$\spa(\alpha_1,\ldots,\alpha_m)$中的向量都可以由\[\alpha_1,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m\]线性表示，因此$\beta\in\spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1},\alpha_{j+1},\ldots,\alpha_m)$，故引理得证.
 \end{proof}
 
 事实上 \ref*{item:3:线性相关性引理:1} 中证明最核心的步骤就是取$j$是$1,2,\ldots,m$中使得$\lambda_j\neq 0$的最大者，这一最大者是一定存在的，因为首先存在$\lambda_i\neq 0$，其次$\lambda_i\neq 0$的个数是有限的，因此一定存在最大者. 这一证明的技巧十分重要，通俗的记忆方法为``从右往左检查，找到第一个不为0的系数（即最大的不为0的系数）''. 我们给出一个推论，推论的证明思想就是如此，我们放在习题中供读者练习：
@@ -372,7 +376,7 @@
 
 \subsection{极大线性无关组的求法}
 
-我们在前述讲解中实际上已经给出一个求解极大线性无关组的方法，但那一方法适用于证明极大线性无关组一定存在，如果考试中要求取极大线性无关组我们应当考虑教材71页给出的``通用而简便''的方法. 事实上教材中给出的方法以及解释已经非常细致，我们只总结其关键步骤，读者可以参考教材中进行细致的学习.
+我们在前述讲解中实际上已经给出一个求解极大线性无关组的方法，即不断丢弃线性相关的向量，最后一次从向量组中丢弃向量（并保证张成的空间不变）后，剩余的向量组恰好线性无关时即可停止丢弃. 但这一方法适用于证明极大线性无关组一定存在，如果考试中要求取极大线性无关组我们应当考虑教材71页给出的``通用而简便''的方法. 事实上教材中给出的方法以及解释已经非常细致，我们只总结其关键步骤，读者可以参考教材中进行细致的学习.
 \begin{lemma}[极大线性无关组的求法]
 
     我们将题目给定的向量按列排成矩阵，然后将矩阵作初等变换化成阶梯矩阵，找到主元所在的列，提取出原矩阵对应列的向量即可.
@@ -485,20 +489,24 @@
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-本节内容相对而言概念和定理非常多，涉及的题型也很多，因此我们在这里给出一个思维导图，供读者捋顺思路：% TODO
+本节内容相对而言概念和定理非常多，涉及的题型也很多，因此我们在这里给出一个思维导图，供读者捋顺思路（读者也可以将其他看到过的，例如习题中的命题进一步加入思维导图）.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.6]{figs/3-1.png}
+\end{figure}
 
 事实上，与其他内容风格不一样的是，本讲中很大一部分的定理我们都给出了证明，一方面是为了提升阅读体验，防止在初学时就被多个``显然''等词汇困惑，另一方面也是希望读者能够从这些比较规范的证明中得到一些证明的技巧.
 
-也许读到这里很多读者都会有些迷惑与焦急——为什么我们仿佛在学习很多看起来十分抽象而且似乎没什么实际应用的知识呢？（抽象金字塔）
+也许读到这里很多读者都会有些迷惑与焦急——为什么我们仿佛在学习很多看起来十分抽象而且似乎没什么实际应用的知识呢？或许我们需要在这里给读者一个``定心丸''. 事实上，我们在上一讲中定义的线性空间运算法则就是从一般向量加法数乘运算法则抽象而来的最为抽象和基本的内容，我们仅仅建立在这一基础上，伴随着线性表示、线性扩张、线性相关等概念的提出，导出了（有限维）线性空间都具有一种统一的本质结构描述——基和维数，由此我们从抽象的运算规则走到了比较具体的结构. 在此基础上，我们基本上将单个线性空间的研究完成，之后我们将会讨论线性空间之间的关系——一方面可以定义线性空间之间的运算，我们将在下一讲详细介绍，另一方面可以建立两个线性空间之间的某种映射，在关于这种映射的讨论中我们会发现线性空间的本质结构是维数，甚至基之间的差异都可以完全被遮蔽（只需通过本讲介绍的坐标即可），然后我们对线性空间的认识便可以从某种比较抽象的结构走向大家熟悉的一定长度的向量，接下来便可以定义更为具象的矩阵. 这一路上我们实际上是从最为抽象的内容逐步定义概念，说明定理，走向具象的内容. 不同于一般线性代数从行列式、矩阵开始，这样的思路一定能让读者对线性代数有更为深刻的认识.
 
 \vspace{2ex}
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-{\kaishu }
+{\kaishu 给我五个系数，我讲画出一头大象；给我六个系数，大象将会摇动尾巴。}
 \begin{flushright}
     \kaishu
-
+    ——柯西
 \end{flushright}
 
 \centerline{\heiti A组}
