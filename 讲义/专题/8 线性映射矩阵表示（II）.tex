@@ -74,7 +74,7 @@
 \end{example}
 
 \begin{solution}
-
+    见教材132页例3.
 \end{solution}
 
 关于逆矩阵的求解问题，我们将在介绍完初等变换后介绍第二种基本方法，剩余的进阶解法将在\hyperref[chap:矩阵运算进阶（II）]{矩阵运算进阶（II）}中介绍更多手段，以及我们会介绍矩阵方程求解的方法. 本节我们囿于一些计算技巧和基本概念暂未引入所以无法完全展开这些技巧.
@@ -172,7 +172,11 @@
 有的读者可能看见这题就会觉得非常简单，因为有限维线性空间的前提下二者维数显然相同，然而我们这里并未限定有限维线性空间，因此需要读者自己构造同构映射.
 
 \begin{solution}
+    $\forall f\in \mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$，我们定义$f_i:V_i\to W(i=1,2,\cdots,m)$满足
+    \[f_i(v_i)=f(0,\ldots,0,v_i,0,\ldots,0),\]
+    其中$v_i$位于第$i$个位置，其余位置为零向量.
 
+    定义$\varphi:\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)\to \mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$，使得$\varphi(f)=(f_1,f_2,\ldots,f_m)$，则接下来我们要验证$\varphi$就是我们要求的同构映射.
 \end{solution}
 
 \section{线性空间的商}

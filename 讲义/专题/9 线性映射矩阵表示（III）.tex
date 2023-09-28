@@ -290,13 +290,35 @@
 \end{example}
 
 \begin{solution}
-
+    注意到
+    \[B=A\left(\begin{array}{ccc}
+        1 & & \\ 2 & 1 & \\ & & 1
+    \end{array}\right)\left(\begin{array}{ccc}
+        1 & & \\ & 1 & \\ & -3 & 1
+    \end{array}\right)\left(\begin{array}{ccc}
+        1 & & \\ & 1 & \\ & & -1
+    \end{array}\right),\]
+    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面
+    \[left=X+\left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1}=X+B,\]
+    另一方面
+    \[right=X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A+B)=X A^{-1}(A+B),\]
+    于是 $X=A=(A^{-1})^{-1}=\begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}\\
+    \frac{2}{3} & \frac{1}{3} & -\frac{2}{3} \\
+    -2 & -1 & 1
+    \end{pmatrix}$.
 \end{solution}
 
 关于转置我们还有一个重要的例题需要同学们掌握：
 \begin{example}\label{ex:9:转置求幂}
-    设$\alpha=(1,-1,2)^\mathrm{T},\enspace\beta=(2,1,1)^\mathrm{T},\enspace A=\alpha\beta^\mathrm{T}$，求$A^n$.
+    设$\alpha=(1,-1,2)^\mathrm{T},\enspace\beta=(3,1,-2)^\mathrm{T},\enspace A=\alpha\beta^\mathrm{T}$，求$A^n$.
 \end{example}
+
+\begin{solution}
+    由于$A^2=\alpha\beta^\mathrm{T}\alpha\beta^\mathrm{T}=\alpha(\beta^\mathrm{T}\alpha)\beta^\mathrm{T}=kA$，其中$k=\beta^\mathrm{T}\alpha=-2$，则$A^2=-2A$. 则可递推得到$A^n=(-2)^{n-1}A=(-2)^{n-1}\begin{pmatrix}
+        3 & 1 & -2 \\ -3 & -1 & 2 \\ 6 & 2 & -4
+    \end{pmatrix}$，原因在于$A^n$展开后中间会出现$n-1$个$\beta^\mathrm{T}\alpha$.
+\end{solution}
 
 \subsection{对阵矩阵与反对称矩阵}
 
@@ -320,7 +342,13 @@
 \end{example}
 
 \begin{solution}
-
+    \begin{enumerate}
+        \item 由于$A$为反对称矩阵，因此根据定义有$a_{ii}=-a_{ii}$，即$a_{ii}=0$；
+        \item 由于$(AA^\mathrm{T})^\mathrm{T}=(A^\mathrm{T})^\mathrm{T}A^\mathrm{T}=AA^\mathrm{T}$，因此$AA^\mathrm{T}$为对称矩阵；同理可证$A^\mathrm{T}A$为对称矩阵；
+        \item 由于$A,B$分别为对称和反对称矩阵，因此$(AB+BA)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}+A^\mathrm{T}B^\mathrm{T}=-AB-BA=-(AB+BA)$，因此$AB+BA$为反对称矩阵；
+        \item 注意$(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}=BA$，因为矩阵乘法不一定可交换，因此$AB$不一定对称；
+        \item 因为$A$可逆有$(A^{-1})^\mathrm{T}=(A^\mathrm{T})^{-1}=A^{-1}$，因此$A^{-1}$为对称矩阵；同理可证$A$反对称的情况.
+    \end{enumerate}
 \end{solution}
 
 我们已经看到转置和对称矩阵之间的关联，因此我们在之后在处理一些对称性很强的问题时，实际上都可以考虑利用转置来解决，例如：
@@ -337,7 +365,15 @@
 \end{example}
 
 \begin{solution}
-
+    设$A=\begin{pmatrix}
+        a & b \\ c & d
+    \end{pmatrix}$，则有
+    \[AA^\mathrm{T}=\begin{pmatrix}
+            a^2+b^2 & ac+bd \\ ac+bd & c^2+d^2
+        \end{pmatrix},\enspace A^\mathrm{T}A=\begin{pmatrix}
+            a^2+c^2 & ab+cd \\ ab+cd & b^2+d^2
+        \end{pmatrix}.\]
+    因此题中的充要条件可以转化为$AA^\mathrm{T}=E$是$A^\mathrm{T}A=E$的充要条件. 这是显然的，因为$AA^\mathrm{T}=E\iff A^{-1}=A^\mathrm{T}\iff A^\mathrm{T}A=E$成立.
 \end{solution}
 
 \vspace{2ex}
