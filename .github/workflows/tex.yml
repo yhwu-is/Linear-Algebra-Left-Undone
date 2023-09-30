@@ -25,6 +25,7 @@ jobs:
         id: build
         working-directory: ${{ github.workspace }}
         run: |
+          git config --system --add safe.directory $(pwd -P)
           echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           make gh-actions
 
