@@ -10,8 +10,8 @@
 
 \subsection{公理化定义}
 
-\begin{definition}[{\keyterm{行列式}[determinant]}] \label{def:13:公理化定义}
-    数域$\mathbf{F}$上的一个$n$阶\keyterm*{行列式}是取值于$\mathbf{F}$的$n$个$n$维向量$\alpha_1,\alpha_2,\ldots,\alpha_n \in \mathbf{F}^n$的一个函数，且$\forall \alpha_i,\beta_i \in \mathbf{F}^n$和$\forall \lambda \in \mathbf{F}$，满足下列规则：
+\begin{definition}[行列式] \label{def:13:公理化定义} \index{hanglieshi@行列式 (determinant)}
+    数域$\mathbf{F}$上的一个$n$阶\term{行列式}是取值于$\mathbf{F}$的$n$个$n$维向量$\alpha_1,\alpha_2,\ldots,\alpha_n \in \mathbf{F}^n$的一个函数，且$\forall \alpha_i,\beta_i \in \mathbf{F}^n$和$\forall \lambda \in \mathbf{F}$，满足下列规则：
     \begin{enumerate}
         \item \label{item:13:齐性}
               (齐性) $D(\alpha_1,\ldots,\lambda\alpha_i,\ldots,\alpha_n)=\lambda D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_n)$；
@@ -105,7 +105,7 @@
 
 首先我们需要引入余子式和代数余子式的概念：
 \begin{definition} \label{def:13:余子式}
-    在$n$阶行列式$D=|a_{ij}|_{n \times n}$中，去掉元素$a_{ij}$所在的第$i$行和第$j$列的所有元素而得到的$n-1$阶行列式称为元素$a_{ij}$的\keyterm{余子式}[minor]，记作$M_{ij}$，并把数$A_{ij}=(-1)^{i+j}M_{ij}$称为元素$a_{ij}$的\keyterm{代数余子式}[cofactor].
+    在$n$阶行列式$D=|a_{ij}|_{n \times n}$中，去掉元素$a_{ij}$所在的第$i$行和第$j$列的所有元素而得到的$n-1$阶行列式称为元素$a_{ij}$的\term{余子式}\index{yuzishi@余子式 (minor)}，记作$M_{ij}$，并把数$A_{ij}=(-1)^{i+j}M_{ij}$称为元素$a_{ij}$的\term{代数余子式}\index{yuzishi!daishu@代数余子式 (cofactor)}.
 \end{definition}
 注意，虽然余子式和代数余子式在名称中含有式，但实际上他们是一个值. 实际上行列式也称为``式''，但这些``式''只是形状上有个形式，实际上只是一个值.
 \begin{example} \label{ex:13:余子式}
@@ -385,13 +385,13 @@
 \section{伴随矩阵}
 
 伴随矩阵是一个重要的概念，它给出了逆矩阵与原矩阵的关联，并且其性质都比较经典，很适合于练习.
-\begin{definition}[{\keyterm{伴随矩阵}[adjugate matrix]}]
+\begin{definition}[伴随矩阵] \index{bansuijuzhen@伴随矩阵 (adjugate matrix)}
     称矩阵$A^*=\begin{pmatrix}
             A_{11} & A_{21} & \cdots & A_{n1} \\
             A_{12} & A_{22} & \cdots & A_{n2} \\
             \vdots & \vdots & \ddots & \vdots \\
             A_{1n} & A_{2n} & \cdots & A_{nn}
-        \end{pmatrix}$为$A$的\keyterm*{伴随矩阵}，其中$A_{ij}$是元素$a_{ij}$的代数余子式.
+        \end{pmatrix}$为$A$的\term{伴随矩阵}，其中$A_{ij}$是元素$a_{ij}$的代数余子式.
 \end{definition}
 我们要特别注意伴随矩阵代数余子式的下标与通常矩阵下标不一致，与转置下标一致. 伴随矩阵具有以下几个重要性质，我们将给出大部分性质的证明，部分性质我们放在朝花夕拾中证明：
 \begin{example} \label{ex:13:伴随矩阵}
@@ -462,7 +462,7 @@
 \section{Cramer法则}
 
 从历史角度来开，引入行列式是用于求解线性方程组的. 瑞士数学家克莱姆（Cramer）于1750年在他的《线性代数分析导言》中发表了这一方法. 事实上莱布尼兹〔1693〕，以及麦克劳林〔1748〕亦研究了这一法则，但他们的记法不如克莱姆清晰. 接下来我们介绍这一充满历史底蕴的定理：
-\begin{theorem}[\keyterm{Cramer法则}] \label{thm:13:Cramer}
+\begin{theorem}[Cramer法则] \label{thm:13:Cramer} \index{Cramer@Cramer 法则 (Cramer's rule)}
     对线性方程组
     \begin{gather}
         \label{eq:13:线性方程组1}
@@ -584,7 +584,7 @@
         \end{vmatrix}\]
     称为矩阵$A$的一个$k$阶子式，若子式等于0则称$k$阶零子式，否则称非零子式.
 
-    当$A$为方阵且$i_t=j_t\enspace(t=1,2,\ldots,k)$（即选取相同行列）时，称为$A$的$k$阶\keyterm{主子式}[principal minor]. 若$i_t=j_t=t\enspace(t=1,2,\ldots,k)$，称为$A$的$k$阶\keyterm{顺序主子式}[leading principal minor]（取前$k$行$k$列的左上角主子式）.
+    当$A$为方阵且$i_t=j_t\enspace(t=1,2,\ldots,k)$（即选取相同行列）时，称为$A$的$k$阶\term{主子式}\index{zhuzishi@主子式 (principal minor)}. 若$i_t=j_t=t\enspace(t=1,2,\ldots,k)$，称为$A$的$k$阶\term{顺序主子式}\index{zhuzishi!shunxu@顺序主子式 (leading principal minor)}（取前$k$行$k$列的左上角主子式）.
 \end{definition}
 
 \begin{example}

@@ -7,8 +7,8 @@
 \subsection{基本概念}
 
 要引入矩阵的逆的概念，我们需要首先讨论线性映射的逆. 我们这里给出线性映射的逆的定义：
-\begin{definition}[线性映射的逆] \label{def:8:可逆映射}
-    设$\sigma \in \mathcal{L}(V_1,V_2)$. 若存在$\tau \in \mathcal{L}(V_2,V_1)$使得$\sigma \tau = I_{V_2}$且$\tau \sigma = I_{V_1}$，则称$\sigma$\keyterm{可逆}[invertible]，并称$\tau$为$\sigma$的逆映射.
+\begin{definition}[线性映射的逆] \label{def:8:可逆映射} \index{ni@逆 (inverse)}
+    设$\sigma \in \mathcal{L}(V_1,V_2)$. 若存在$\tau \in \mathcal{L}(V_2,V_1)$使得$\sigma \tau = I_{V_2}$且$\tau \sigma = I_{V_1}$，则称$\sigma$\term{可逆}\index{ni!ke@可逆 (invertible)}，并称$\tau$为$\sigma$的逆映射\index{ni!yingshe@映射 (inverse map)}.
 \end{definition}
 其中$I_{V_1}$和$I_{V_2}$分别是$V_1$和$V_2$上的恒等映射.
 
@@ -30,9 +30,9 @@
 
 我们知道线性映射的复合对应矩阵乘法，因此$\tau\sigma:V_1\to V_1$关于$V_1$的基$B_1$和$\sigma\tau:V_2\to V_2$关于$V_2$的基$B_2$对应的矩阵分别为$BA$和$AB$，而我们很容易证明恒等映射关于任何基的矩阵均为单位矩阵，因此我们有$BA=E$和$AB=E$. 由此我们从可逆映射的角度引入矩阵的逆的概念：
 \begin{definition}[矩阵的逆]
-    设$A \in \mathbf{M}_n(\mathbf{F})$. 若存在$B \in \mathbf{M}_n(\mathbf{F})$使得$AB=BA=E$，则称矩阵$A$可逆，并把$B$称为$A$的\keyterm{逆矩阵}[inverse matrix]，记作 $ B = A^{-1} $.
+    设$A \in \mathbf{M}_n(\mathbf{F})$. 若存在$B \in \mathbf{M}_n(\mathbf{F})$使得$AB=BA=E$，则称矩阵$A$可逆，并把$B$称为$A$的\term{逆矩阵}\index{ni!juzhen@矩阵 (inverse matrix)}，记作 $ B = A^{-1} $.
 \end{definition}
-在一些比较经典的教材中可逆矩阵也被称为非奇异矩阵，不可逆矩阵被称为\keyterm{奇异矩阵}[singular matrix].
+在一些比较经典的教材中可逆矩阵也被称为非奇异矩阵，不可逆矩阵被称为\term{奇异矩阵}\index{qiyijuzhen@奇异矩阵 (singular matrix)}.
 
 注意，逆矩阵定义基于方阵，非方阵没有上述逆矩阵. 广义逆矩阵允许非方阵，但那是另一个定义，我们不需要掌握. 对于可逆矩阵，注意以下两个定理：
 \begin{theorem}
@@ -198,8 +198,8 @@
 证明只用到了线性空间的加法单位元、逆元性质且运算封闭. 接下来我们可以基于此定义这一等价关系的等价类：
 \[\overline{\alpha}=\{\beta\in V \mid \beta\,R\,\alpha\}=\{\beta\in V \mid \beta-\alpha\in U\}=\{\beta\in V \mid \beta=\alpha+\gamma,\enspace\gamma\in U\}\]
 最后一个集合还可以进一步写成$\{\alpha+\gamma \mid \gamma\in U\}$，我们记为$\alpha+U$，称之为$V$的仿射子集. 我们给出如下完整的定义：
-\begin{definition}[{\keyterm{仿射子集}[affine subset]}]
-    设$v\in V$，$U$是$V$的子空间，则$V$的\keyterm*{仿射子集}是$V$的形如$v+U$的子集，其中$v+U$定义为
+\begin{definition}[仿射子集] \index{fangsheziji@仿射子集 (affine subset)}
+    设$v\in V$，$U$是$V$的子空间，则$V$的\term{仿射子集}是$V$的形如$v+U$的子集，其中$v+U$定义为
     \[v+U=\{v+u \mid u\in U\}.\]
 \end{definition}
 根据我们之前的讨论，仿射子集就是我们在线性空间上定义的等价关系的等价类. 基于等价类的性质，我们有如下定理：

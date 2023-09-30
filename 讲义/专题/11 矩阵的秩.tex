@@ -6,7 +6,7 @@
 
 我们首先给出矩阵的三个秩的定义：
 \begin{definition}
-    设$A$是线性映射$\sigma$对应的矩阵，我们把$\sigma$的秩也称为矩阵$A$的秩，记为$r(A)$，有时也简记为$r$. 我们将矩阵$A$的所有行向量组成的秩称为$A$的\keyterm*{行秩}[row rank]，常记为$r_r$. 所有列向量组成的向量组的秩称为$A$的\keyterm*{列秩}[column rank]，常记为$r_c$.
+    设$A$是线性映射$\sigma$对应的矩阵，我们把$\sigma$的秩也称为矩阵$A$的秩，记为$r(A)$，有时也简记为$r$. 我们将矩阵$A$的所有行向量组成的秩称为$A$的\term{行秩}\index{zhi!hang@行秩 (row rank)}，常记为$r_r$. 所有列向量组成的向量组的秩称为$A$的\term{列秩}\index{zhi!lie@列秩 (column rank)}，常记为$r_c$.
 \end{definition}
 对于以上定义的三个秩，我们有定理如下，这一定理无论是证明还是结果都非常关键：
 \begin{theorem}
@@ -505,8 +505,8 @@
     \end{pmatrix}$是$s\times r$矩阵，且秩为$r$，列满秩.$P$可逆且为$s\times s$矩阵，因此$P_1$仍然是$s\times r$矩阵. 由于可逆矩阵可以写成若干初等矩阵乘积，初等变换不改变矩阵的秩，故$r(P)=r(P_1)=r$，又矩阵列秩=秩，故$P_1$列满秩.
 
 接下来我们来看一个例子进行应用，在介绍这一例子前我们需要首先引入一个概念，即矩阵的迹：
-\begin{definition}[{\keyterm{迹}[trace]}]
-    $A=(a_{ij})_{n\times n}$是$n$阶方阵，$A$的主对角线上的元素之和称为$A$的\keyterm*{迹}，记为$\tr(A)$，即
+\begin{definition}[迹] \index{ji@迹 (trace)}
+    $A=(a_{ij})_{n\times n}$是$n$阶方阵，$A$的主对角线上的元素之和称为$A$的\term{迹}，记为$\tr(A)$，即
     \[\tr(A)=\sum_{i=1}^n a_{ii}\]
 \end{definition}
 

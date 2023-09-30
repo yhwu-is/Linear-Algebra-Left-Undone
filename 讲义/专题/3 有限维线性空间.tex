@@ -7,10 +7,10 @@
 \subsection{线性相关性的定义}
 
 本节我们将形式化定义在引言中我们提到的``可相互消去的关系''——线性相关性，同时这一定义也可以解决引言中提到的关于有限维线性空间至少需要多少个向量张成的问题.
-\begin{definition}
+\begin{definition} \index{xianxingxiangguan@线性相关 (linearly dependent)} \index{xianxingwuguan@线性无关 (linearly independent)}
     设$V(\mathbf{F})$是一个线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_m\in V$，若存在不全为0的$\lambda_1,\lambda_2,\ldots,\lambda_m\in\mathbf{F}$，使得
     \[\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m=0\]
-    成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$\keyterm{线性相关}[linearly dependent]，否则称\keyterm{线性无关}[linearly independent]（即系数只能为0）.
+    成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$\term{线性相关}，否则称\term{线性无关}（即系数只能为0）.
 \end{definition}
 
 很显然，\autoref{ex:2:线性空间引入} 中的方程组1系数矩阵的三个行向量$\alpha_1,\alpha_2,\alpha_3$满足$\alpha_1+\alpha_2-\alpha_3=0$，因此满足线性相关的定义，方程组2的系数矩阵三个行向量$\beta_1,\beta_2,\beta_3$的线性组合则只有$0\cdot\beta_1+0\cdot\beta_2+0\cdot\beta_3$等于0，因此符合线性无关的定义.
@@ -224,7 +224,7 @@
 
 在上述过程中我们可以引入两个重要的概念，即向量组的秩和极大线性无关组：
 \begin{definition}
-    设向量组$S=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$张成的线性空间为$V$，若存在$S$的一个线性无关向量组$B=\{\alpha_{k1},\alpha_{k2},\ldots,\alpha_{kr}\}$，使得$V=\spa(B)$，则称$B$为$S$的一个\keyterm{极大线性无关组}[maximal linearly independent system]，并称极大线性无关组的长度$r=r(S)$为$S$的\keyterm{秩}[rank].
+    设向量组$S=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$张成的线性空间为$V$，若存在$S$的一个线性无关向量组$B=\{\alpha_{k1},\alpha_{k2},\ldots,\alpha_{kr}\}$，使得$V=\spa(B)$，则称$B$为$S$的一个\term{极大线性无关组}\index{jidaxianxing@极大线性无关组 (maximal linearly independent system)}，并称极大线性无关组的长度$r=r(S)$为$S$的\term{秩}\index{zhi@秩 (rank)}.
 \end{definition}
 定义中``极大''一词我们只需简单思考前述过程即可明白其含义，因为我们要求丢弃后的向量组一旦线性无关就要停止继续丢弃向量，因此这一剩余向量组的长度一定是所有线性无关向量组中最大的.
 
@@ -250,7 +250,7 @@
     即
     \[\sum_{j = 1}^s x_j\beta_j = \sum_{j = 1}^s x_j\left(\sum_{i = 1}^r \lambda_{ij} \alpha_i\right) = \sum_{i = 1}^r \left(\sum_{j = 1}^s \lambda_{ij}x_j\right)\alpha_i = 0\]
     注意到若 $\alpha_i$ 前的系数均取 $0$，则此方程必然成立，而我们也没必要去求出所有解，只需要通解即可，所以有
-    \[\sum_{j = 1}^s \lambda_{ij}x_j = 0 \qquad i = 1, \ldots, r\]
+    \[\sum_{j = 1}^s \lambda_{ij}x_j = 0 i = 1, \ldots, r\]
     此为关于 $x_1, x_2, \ldots, x_s$ 的齐次线性方程组，其方程个数 $r$ 小于未知数数量 $s$，因此此方程组必然有非零解，即存在不全为零的 $x_1, x_2, \ldots, x_s$ 使式子成立，故 $ \beta_1,\beta_2,\ldots,\beta_s $ 线性相关.
 \end{proof}
 

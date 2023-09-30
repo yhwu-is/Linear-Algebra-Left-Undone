@@ -27,7 +27,7 @@
 
 \section{线性空间的定义}
 
-线性空间是我们接触的第一个核心概念，作为一种代数结构，它需要在非空集合$V$上定义运算. 其中第一个运算是我们熟知的加法$+$. 在线性空间的定义中，我们要求$\langle V:+\rangle$构成Abel群，即其中元素满足如下运算律：
+\term{线性空间}\index{xianxingkongjian@线性空间 (linear space)}是我们接触的第一个核心概念，作为一种代数结构，它需要在非空集合$V$上定义运算. 其中第一个运算是我们熟知的加法$+$. 在线性空间的定义中，我们要求$\langle V:+\rangle$构成Abel群，即其中元素满足如下运算律：
 \begin{enumerate}
     \item (结合律) $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma,\enspace\forall \alpha,\beta,\gamma \in V$；
 
@@ -308,8 +308,8 @@
 \section{线性子空间}
 
 我们首先介绍线性子空间的定义：
-\begin{definition}[{\keyterm{线性子空间}[linear subspace]}]
-    设$W$是线性空间$V(\mathbf{F})$的非空子集，如果$W$对$V$中的运算也构成域$\mathbf{F}$上的线性空间，则称$W$是$V$的\keyterm*{线性子空间}（简称\keyterm*{子空间}[subspace]）.
+\begin{definition}[线性子空间] \index{xianxingkongjian!zi@线性子空间 (linear subspace), 子空间 (subspace)}
+    设$W$是线性空间$V(\mathbf{F})$的非空子集，如果$W$对$V$中的运算也构成域$\mathbf{F}$上的线性空间，则称$W$是$V$的\term{线性子空间}（简称\term{子空间}）.
 \end{definition}
 
 请一定注意定义中的非空子集，建议验证子空间时先验证非空. 接下来自然的问题便是，什么时候$V$的子集$W$对$V$中的运算也构成域$\mathbf{F}$上的线性空间？事实上这一条件是惊人地简单与美观的：
@@ -381,10 +381,10 @@
     设$V(\mathbf{F})$是一个线性空间，$\alpha_i\in V,\enspace\lambda_i\in \mathbf{F}\enspace(i=1,2,\ldots,m)$，则向量$\alpha=\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m$称为向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$在域$\mathbf{F}$的线性组合，或说$\alpha$在域$\mathbf{F}$上可用向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性表示.
 \end{definition}
 这和我们高中所学的用向量的基底表示其他向量是完全一致的. 基于此，我们给出线性扩张的定义：
-\begin{definition}[{\keyterm{线性扩张}[linear span]}]
+\begin{definition}[线性扩张] \index{xianxingkuozhang@线性扩张 (linear span)}
     设$S$是线性空间$V(\mathbf{F})$的非空子集，我们称
     \[ \spa(S)=\{\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k \mid \lambda_1,\ldots,\lambda_k\in\mathbf{F},\enspace\alpha_1,\ldots,\alpha_k\in S,\enspace k\in\mathbf{N}_+\} \]
-    为$S$的\keyterm*{线性扩张}，即$S$中所有有限子集在域$\mathbf{F}$上的一切线性组合组成的$V(\mathbf{F})$的子集.
+    为$S$的\term{线性扩张}，即$S$中所有有限子集在域$\mathbf{F}$上的一切线性组合组成的$V(\mathbf{F})$的子集.
 \end{definition}
 注意，$\spa$参考的是《线性代数应该这样学》的记号，《大学数学——代数与几何》中使用$L$表示线性扩张. 考虑到本讲义记号统一性，我们采用更加常用并且不会与之后其它定义的记号冲突的$\spa$.
 

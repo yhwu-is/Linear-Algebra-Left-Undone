@@ -159,9 +159,9 @@
 \subsection{幂零矩阵}
 
 基于上面核空间的讨论，并为了方便后面小节的研究，我们将讲解幂零线性变换与幂零矩阵的相关准备知识.
-\begin{definition}[{\keyterm{幂零}[nilpotent]}]
+\begin{definition}[幂零] \index{miling@幂零 (nilpotent)}
     \begin{enumerate}
-        \item 一个线性变换称为\keyterm*{幂零}的，如果它的某个幂等于零映射（即将所有向量都映射到0的映射）；
+        \item 一个线性变换称为\term{幂零}的，如果它的某个幂等于零映射（即将所有向量都映射到0的映射）；
 
         \item 一个矩阵$A$称为幂零的，如果存在正整数$m$使得$A^m=O$.
     \end{enumerate}
@@ -229,7 +229,7 @@
 
 上一节中我们已经讨论了不可对角化线性变换获得简化矩阵的一般思想，即试图利用核空间增长的性质扩张特征子空间，使得扩张后的特征子空间（称为广义特征子空间）的直和为原空间. 下面我们给出严谨定义：
 \begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$\sigma$的特征值，若向量$v\neq 0$且存在正整数$j$使得$(\sigma-\lambda I)^jv=0$，则称$v$为$\sigma$对应于$\lambda$的\keyterm{广义特征向量}[generalized eigenvector]. $\sigma$对应于$\lambda$的全体广义特征向量与0向量构成的集合称为$\sigma$相应于$\lambda$的\keyterm{广义特征子空间}[generalized eigenspace]，记为$G(\lambda,\sigma)$.
+    设$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$\sigma$的特征值，若向量$v\neq 0$且存在正整数$j$使得$(\sigma-\lambda I)^jv=0$，则称$v$为$\sigma$对应于$\lambda$的\term{广义特征向量}\index{tezhengxiangliang!guangyi@广义 (generalized eigenvector)}. $\sigma$对应于$\lambda$的全体广义特征向量与0向量构成的集合称为$\sigma$相应于$\lambda$的\term{广义特征子空间}\index{tezhengzikongjian!guangyi@广义 (generalized eigenspace)}，记为$G(\lambda,\sigma)$.
 \end{definition}
 注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，$(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
 

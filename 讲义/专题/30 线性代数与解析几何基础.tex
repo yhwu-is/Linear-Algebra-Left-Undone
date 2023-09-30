@@ -4,7 +4,7 @@
 
 \section{欧几里得空间}
 
-在前面的学习中我们已经较为全面地学习了内积空间的相关知识，而在解析几何中，我们在更多情况下会研究\keyterm{欧几里得空间}[Euclidean space]下的问题.
+在前面的学习中我们已经较为全面地学习了内积空间的相关知识，而在解析几何中，我们在更多情况下会研究\term{欧几里得空间}\index{oujilidekongjian@欧几里得空间 (Euclidean space)}下的问题.
 \begin{definition}[欧几里得空间]
     欧几里得空间（欧氏空间）是一个有限维实内积空间.
 \end{definition}
@@ -13,13 +13,13 @@
 \section{欧氏空间上的运算}
 
 我们也已经基本掌握了模、内积、夹角等在内积空间中的基本概念，在此我们引入一些在先前的学习中接触较少的概念.
-\begin{definition}[{\keyterm{点积}[dot product]}]
-    \keyterm*{点积}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\cdot\vec{b}$表示. 两向量点积得到的数值等于两向量模长的乘积与两向量夹角的余弦的乘积.
+\begin{definition}[点积] \index{dianji@点积 (dot product)}
+    \term{点积}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\cdot\vec{b}$表示. 两向量点积得到的数值等于两向量模长的乘积与两向量夹角的余弦的乘积.
 \end{definition}
 特别的，三维欧氏空间中的向量点积$(a_1,a_2,a_3)\cdot(b_1,b_2,b_3)$可以表示为\[a_1b_1+a_2b_2+a_3b_3\]
 由点积的计算，我们可以很方便地得到两向量夹角的余弦，即\[\cos\theta=\frac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}\]
-\begin{definition}[{\keyterm{叉乘}[cross product]}]
-    \keyterm*{叉乘}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\times\vec{b}$表示. 两向量叉乘得到的向量垂直于两向量，方向遵循右手定则，其模长为两向量的模的乘积与两向量夹角的正弦的乘积.
+\begin{definition}[叉乘] \index{chacheng@叉乘 (cross product)}
+    \term{叉乘}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\times\vec{b}$表示. 两向量叉乘得到的向量垂直于两向量，方向遵循右手定则，其模长为两向量的模的乘积与两向量夹角的正弦的乘积.
 \end{definition}
 由定义可知，叉乘仅在三维欧氏空间中有定义，且叉乘的结果是一个向量，而不是一个数. 关于叉乘向量的计算有另一种更常用的用行列式表示的计算方法，即
 \[(a_1,a_2,a_3)\times(b_1,b_2,b_3)=\begin{vmatrix}
@@ -30,8 +30,8 @@
 其中$\vec{i},\vec{j},\vec{k}$为三维欧氏空间的自然基.
 
 在解析几何中，叉乘的一个重要应用是求解与两向量垂直的向量.
-\begin{definition}[{\keyterm{混合积}[mixed product]}]
-    \keyterm*{混合积}（或称\keyterm*{标量三重积}，不同于\keyterm*{矢量三重积}）是三维欧氏空间中对三个向量的运算，用$[\vec{a},\vec{b},\vec{c}]$表示，等价于$(\vec{a}\times\vec{b})\cdot\vec{c}$.
+\begin{definition}[混合积] \index{hunheji@混合积 (mixed product)} \index{biaoliangsancongji@标量三重积 (scalar triple product)}
+    \term{混合积}（或称\term{标量三重积}，不同于\term{矢量三重积}）是三维欧氏空间中对三个向量的运算，用$[\vec{a},\vec{b},\vec{c}]$表示，等价于$(\vec{a}\times\vec{b})\cdot\vec{c}$.
 \end{definition}
 混合积的几何意义是以$\vec{a},\vec{b},\vec{c}$为邻边的平行六面体的体积，可以用行列式表示为
 \[[(a_1,a_2,a_3),(b_1,b_2,b_3),(c_1,c_2,c_3)]=\begin{vmatrix}
@@ -59,7 +59,7 @@
     \end{cases}\]
 这就是平面的参数方程，其中$k_1,k_2$是参数.
 
-此外，平面还可以由平面上一点和平面的法向量来表示. 假设已知平面上一点$P(x_0,y_0,z_0)$和平面的法向量$\vec{n}=(A,B,C)$，则平面上的任意一点$Q(x,y,z)$都满足向量$\overrightarrow{PQ}$与$\vec{n}$垂直，即点积为$0$. 由此可得其方程为\[A(x-x_0)+B(y-y_0)+C(z-z_0)=0\]这种表示方法称为\keyterm*{点法式}.
+此外，平面还可以由平面上一点和平面的法向量来表示. 假设已知平面上一点$P(x_0,y_0,z_0)$和平面的法向量$\vec{n}=(A,B,C)$，则平面上的任意一点$Q(x,y,z)$都满足向量$\overrightarrow{PQ}$与$\vec{n}$垂直，即点积为$0$. 由此可得其方程为\[A(x-x_0)+B(y-y_0)+C(z-z_0)=0\]这种表示方法称为\term{点法式}.
 
 我们发现这跟平面的一般方程十分相似，实际上，我们可以直接通过平面的一般方程得到平面的法向量.
 
@@ -82,7 +82,7 @@
 
 假设已知直线上的一点$A_0(x_0,y_0,z_0)$和直线的方向向量$\vec{l}=(a,b,c)$，则直线上的任意一点$A(x,y,z)$都满足$\overrightarrow{AA_0}$与$\vec{l}$平行，用具体的方程则表示为
 \[\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\]
-其中$a,b,c$不为零. 这种表示方法称为\keyterm*{点向式}.
+其中$a,b,c$不为零. 这种表示方法称为\term{点向式}.
 
 如果我们对上述式子进行替换，令\[t=\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\]
 则可得
