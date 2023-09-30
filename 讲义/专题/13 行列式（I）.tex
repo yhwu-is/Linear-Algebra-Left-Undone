@@ -771,7 +771,7 @@
                                                                     & \vdotswithin{=} \\
                       a_{n-1,1}x_1+a_{n-1,2}x_2+\cdots+a_{n-1,n}x_n & = 0
                   \end{aligned} \end{cases}\]
-          设$M_j\enspace(j=1,2,\ldots,n)$表示$A$划掉第$j$列所得的$n-1$阶子式，证明：
+          设$M_j\enspace(j=1,2,\ldots,n)$表示$A=(a_{ij})_{n-1 \times n}$划掉第$j$列所得的$n-1$阶子式，证明：
           \begin{enumerate}
               \item $(M_1,-M_2,\ldots,(-1)^{n-1}M_n)$是方程组的一个解；
 
@@ -822,8 +822,8 @@
               \end{pmatrix}\]
           且$a^r\neq 1\enspace(0<r<n)$，求$A$的秩和它的列向量组的一个极大线性无关组.
 
-    \item 设$A,B,C,D \in \mathbf{F}^{n \times n}$，若
-          \[T:X \to AXB+CX+XD,\enspace \forall X \in \mathbf{F}^{n \times n}\]
+    \item 设$A,B,C,D \in \mathbf{F}^{n \times n}$，定义变换 $ T : \mathbf{F}^{n \times n} \to \mathbf{F}^{n \times n}$ 为
+          \[ T(X) = AXB+CX+XD \]
           证明：
           \begin{enumerate}
               \item $T$为$\mathbf{F}^{n \times n}$上的线性变换；
