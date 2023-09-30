@@ -34,7 +34,4 @@
 
 ## 手动编译
 
-请在`讲义`目录下使用 `XeLaTeX` 编译 PDF.
-```sh
-latexmk -xelatex -interaction=nonstopmode -file-line-error -output-directory=build *.tex
-```
+在仓库目录下运行 `make` 编译讲义与习题参考答案，运行 `make main` 或 `make ans` 分别编译，或在对应文件夹下运行 `make`. 编译完成的 PDF 位于对应文件夹下.
