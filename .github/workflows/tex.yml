@@ -15,36 +15,22 @@ jobs:
   build:
     name: Build document
     runs-on: ubuntu-latest
+    container: mfisherman/texlive-full:latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build - 讲义
-        uses: xu-cheng/latex-action@v2
-        with:
-          args:  -xelatex -interaction=nonstopmode -file-line-error -output-directory=build
-          working_directory: 讲义
-          root_file: 线性代数荣誉课辅学讲义.tex
-
-      - name: Build - 习题参考答案
-        uses: xu-cheng/latex-action@v2
-        with:
-          args: -xelatex -interaction=nonstopmode -file-line-error -output-directory=build
-          working_directory: 习题参考答案
-          root_file: 线性代数荣誉课辅学习题答案.tex
-
-      - name: Post Build
-        id: post-build
+      - name: Build
+        id: build
         working-directory: ${{ github.workspace }}
         run: |
           echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          mkdir -p ${{ github.workspace }}/build
-          cp ${{ github.workspace }}/*/build/*.pdf ${{ github.workspace }}/build/
+          make gh-actions
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: LALU-build-${{ github.run_number }}-${{ steps.post-build.outputs.sha }}
+          name: LALU-build-${{ github.run_number }}-${{ steps.build.outputs.sha }}
           if-no-files-found: error
-          path: ${{ github.workspace }}/build/*.pdf
+          path: ${{ github.workspace }}/gh-actions-build/*.pdf

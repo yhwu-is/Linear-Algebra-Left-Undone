@@ -3,6 +3,7 @@
 讲义/*.pdf
 习题参考答案/*.pdf
 build
+gh-actions-build
 
 ## VSCode workspace settings
 .vscode/settings.json
