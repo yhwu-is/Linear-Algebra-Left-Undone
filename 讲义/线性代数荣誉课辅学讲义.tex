@@ -17,6 +17,7 @@
 \usepackage{bm}
 \usepackage{graphicx} % 添加图片
 \usepackage{amsmath}
+\usepackage{mathrsfs}
 \renewcommand{\vec}[1]{\boldsymbol{#1}} % 生成粗体向量，而非带箭头的向量
 \usepackage{amssymb}
 \usepackage{booktabs} % Excel 导出的大表格
@@ -27,6 +28,8 @@
 \usepackage{multicol}
 \usepackage{float}
 \usepackage{mdframed}
+\usepackage{diagbox}
+\usepackage{caption}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -124,6 +127,11 @@
     style=framestyle,
     linecolor=green!50!black,
     frametitlebackgroundcolor=green!5,
+]{axiom}{公理}[chapter]
+\mdtheorem[
+    style=framestyle,
+    linecolor=green!50!black,
+    frametitlebackgroundcolor=green!5,
 ]{corollary}{推论}[chapter]
 \surroundwithmdframed[
     style=framestyle,
@@ -151,6 +159,7 @@
 \newcommand{\corollaryautorefname}{推论}
 \newcommand{\exampleautorefname}{例}
 \newcommand{\definitionautorefname}{定义}
+\newcommand{\axiomautorefname}{公理}
 \crefrangeformat{equation}{式~#3#1#4--#5#2#6}
 \crefrangeformat{example}{例~#3#1#4--#5#2#6}
 
