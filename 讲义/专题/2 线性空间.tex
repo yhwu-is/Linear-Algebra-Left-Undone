@@ -51,18 +51,53 @@
 
 基于此，我们完整定义了一个线性空间，我们一般称集合$V$关于上述两种运算在域$\mathbf{F}$上构成一个线性空间，简称为$V$在域$\mathbf{F}$上的线性空间，记作$V(\mathbf{F})$. 如果$\mathbf{F}$是实（复）数域，则称$V$为实（复）数域上的线性空间. 关于线性空间的定义，我们还有如下说明：
 \begin{enumerate}
-    \item 由于加法运算构成Abel群，因此加法零元和逆元是唯一的，我们可以定义减法运算为加上一个元素的逆，即$\alpha-\beta=\alpha+(-\beta)$；
-
-    \item 综合上述性质我们有方程$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=0$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$；
-
     \item 线性空间还有一个重要的概念是运算封闭，即线性空间中的元素进行加法或数乘运算后，得到的元素仍然是属于线性空间的. 这一点是定义要求的，加法封闭是 Abel 群的要求，数乘注意前述定义中数乘运算``取值于$V$''的要求；
 
-    \item 或许同学们会疑惑为什么线性空间会要求上述这8条性质（加法、数乘各4条）而不能增减其中几条，对这一问题感兴趣的同学可以学习抽象代数中的模论，那时这一定义会显得非常自然. 这门课只要求你记忆这8条性质，并请务必牢记于心，考试可能要求你验证线性空间. 记忆难度也并不大，Abel 群4条性质都有名称标注，数乘运算也是易于记忆的结合律和分配律加单位元性质；
-
     \item 特别注意线性空间定义在非空集合上，事实上根据加法构成Abel群的要求，最小的线性空间也必须至少包含加法单位元（可以记为$V=\{0\}$）.
+
+    \item 结合我们上一讲对公理化的研究，事实上我们到目前为止也只定义了上面的加法、数乘运算和几条规则，我们需要忘记其他任何规则，由此出发进行推导出一些看似显然但公理没有直接给出的重要运算性质：
+    \begin{enumerate}
+        \item 由于加法运算构成Abel群，因此加法零元和逆元是唯一的，并且我们可以定义减法运算为加上一个元素的逆，即$\alpha-\beta=\alpha+(-\beta)$；
+
+        \item 事实上，根据公理中的性质，我们可以逐步得到$\lambda(\alpha-\beta)+\lambda\beta=\lambda((\alpha-\beta)+\beta)=\lambda((\alpha+(-\beta))+\beta)=\lambda(\alpha+((-\beta)+\beta))=\lambda(\alpha+\vec{0})=\lambda\alpha$，两边分别加$-(\lambda\beta)$即可以得到
+        \begin{equation}\label{eq:2:线性空间运算性质1}
+            \lambda(\alpha-\beta)=\lambda\alpha-\lambda\beta.
+        \end{equation}
+        上面推导过程中第一个等号来源于数乘分配律，第二个等号来源于减法的定义（加上逆元），第三个等号来源于加法结合律，第四个等号来源于逆元的定义（加起来等于向量加法零元$\vec{0}$），最后一个等号来源于加法单位元的定义. 事实上这一过程是非常清晰的. 需要注意的一点是，接下来为了区分$V$中的零元和数域中的数0，我们将$V$中零元加粗，请读者务必仔细区分.
+
+        除此之外，$(\lambda-\mu)\alpha+\mu\alpha=(\lambda-\mu+\mu)\alpha=\lambda\alpha$，两边分别加$-(\mu\alpha)$即可以得到
+        \begin{equation}\label{eq:2:线性空间运算性质2}
+            (\lambda-\mu)\alpha=\lambda\alpha-\mu\alpha.
+        \end{equation}
+        事实上，\autoref{eq:2:线性空间运算性质1}和\autoref{eq:2:线性空间运算性质2}可以视为数乘运算对减法也满足分配律（但我们必须时刻牢记在心，数的减法是常规的，向量的减法是加上向量的逆元）.
+
+        \item 在\autoref{eq:2:线性空间运算性质1}中分别令$\alpha=\beta$和$\alpha=\vec{0}$，在\autoref{eq:2:线性空间运算性质2}分别令$\lambda=\mu$和$\lambda=0$有如下四条性质：
+        \begin{enumerate}
+            \item $\lambda\cdot \vec{0}=\vec{0}$；
+
+            \item $\lambda(-\beta)=-(\lambda\beta)$；
+
+            \item $0\cdot \alpha=\vec{0}$；
+
+            \item $(-\mu)\alpha=-(\mu\alpha)$.
+        \end{enumerate}
+        我们详细证明前两条如何根据公理一步步推导得到，后两条请读者依照此自行证明.
+        \begin{proof}
+            \begin{enumerate}
+                \item 在\autoref{eq:2:线性空间运算性质1}中令$\alpha=\beta$，则$\lambda(\alpha-\alpha)=\lambda\alpha-\lambda\alpha$，根据减法定义有$\alpha-\alpha=\alpha+(-\alpha)=\vec{0}$，且$\lambda\alpha-\lambda\alpha=\lambda\alpha+(-(\lambda\alpha))=\vec{0}$，因此$\lambda\cdot \vec{0}=\vec{0}$.
+                \item 在\autoref{eq:2:线性空间运算性质1}中令$\alpha=\vec{0}$有$\lambda(\vec{0}-\beta)=\lambda\vec{0}-\lambda\beta$，根据减法定义有$\vec{0}-\beta=\vec{0}+(-\beta)=-\beta$（第二个等号来源于加法单位元性质），且$\lambda\vec{0}-\lambda\beta=\vec{0}-\lambda\beta=\vec{0}+(-(\lambda\beta))=-(\lambda\beta)$（第一个等号来源于刚刚证明的$\lambda\cdot \vec{0}=\vec{0}$，第二个等号来源于减法的定义，第三个等号来源于加法单位元性质），因此$\lambda(-\beta)=-(\lambda\beta)$.
+            \end{enumerate}
+        \end{proof}
+        特别地，当$\mu=1$时有$(-1)\alpha=-\alpha$. 即$-1$数乘一个元素可以得到该元素的逆元（虽然代入一般平面向量这一点非常显然，但是我们只能基于公理一步步推导得到这一显然的性质）.
+        \item 若$\lambda\alpha=\vec{0}$，则$\lambda=0$或$\alpha=\vec{0}$，这一点也是显然的，因为如果$\lambda\neq 0$，则$\lambda^{-1}$存在，从而$\alpha=1\alpha=(\lambda^{-1}\lambda)\alpha=\lambda^{-1}(\lambda\alpha)=\lambda^{-1}\vec{0}=\vec{0}$（这里的每一个等号都是能找到对应的，请读者自行判断）.
+
+        最后，综合上述性质我们有方程$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=\vec{0}$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$. 我们放在习题中供读者练习.
+    \end{enumerate}
 \end{enumerate}
 
-事实上我们发现线性空间中定义的运算规则与我们高中学习的平面向量的加法和数乘是非常类似的，我们回顾未竟专题一关于公理化的讨论，实际上这就可以视为从简单的向量加法和数乘抽象出来的一些规则，使得我们可以不仅仅在向量集合的背景下定义线性空间，使得我们可以将对于很多结构的研究都转化为对于线性空间的研究. 接下来我们给出一些与向量无关的线性空间的例子：
+或许同学们会疑惑为什么线性空间会要求上述这8条性质（加法、数乘各4条）而不能增减其中几条. 事实上，我们发现线性空间中定义的运算规则与我们高中学习的平面向量的加法和数乘是非常类似的，我们回顾未竟专题一关于公理化的讨论，实际上这就可以视为从简单的向量加法和数乘抽象出来的一些规则. 而公理的诞生应当是要尽可能简洁，而且有足够的表达力——这一点我们将来基于这一定义不断推出线性空间的性质时就会发现非常足够，因此皮亚诺在1888年正式给出这一定义并沿用至今，但他的工作也是基于前人（如格拉斯曼）的工作不断修正而来的，只是我们被动接受这一概念使得这一自然的过程变得很突兀. 当然这门课只要求你记忆这8条性质，并请务必牢记于心，考试可能要求你验证线性空间. 记忆难度也并不大，Abel 群4条性质都有名称标注，数乘运算也是易于记忆的结合律和分配律加单位元性质.
+
+除此之外，公理化定义还有一个很重要的作用就是使得我们可以不仅仅在向量集合的背景下定义线性空间，这使得我们可以将对于很多结构的研究都转化为对于线性空间的研究. 接下来我们给出一些与向量无关的线性空间的例子：
 
 \begin{example}
     几种非常常见的线性空间，希望读者能熟知其性质：
@@ -443,6 +478,7 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
+    \item 证明：已知线性空间$V(\mathbf{F})$，$\lambda,\lambda_1,\cdots,\lambda_r\in\mathbf{F}$，$\beta,\alpha_1,\cdots,\alpha_r\in V$，有$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=\vec{0}$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$.
     \item 设$V$是一个线性空间，$W$是$V$的子集，证明：$W$是$V$的子空间$\iff \spa(W)=W$.
 \end{enumerate}
 
