@@ -76,14 +76,6 @@
 % 首行缩进 2 字符
 \setlength{\parindent}{2em}
 
-% 标题格式
-\ctexset{
-    chapter = {format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
-    section = {format={\raggedright\Large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}}},
-    subsection = {format={\raggedright\large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}}},
-    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
-}
-
 % 定理字体
 \theoremheaderfont{\bfseries\heiti}
 \theorembodyfont{\fangsong}
@@ -106,7 +98,7 @@
     twoside,
     asymmetric, % 单双数页不分
     % bindingoffset = 18pt,
-    }}{}
+}}{}
 
 \IfStrEq{\@LALU@geometry}{a4}{% 载入 a4 版面设置
 \geometry{
@@ -203,9 +195,8 @@
     \hypersetup{
         unicode,
         bookmarksnumbered,
+        hypertexnames = false,
         pdfborder = {0 0 0},
-        pdfauthor = {吴一航},
-        pdftitle = {线性代数荣誉课辅学讲义},
     }
 
     % 按 colors 的 Bool 值设置链接色彩.
