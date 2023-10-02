@@ -7,7 +7,7 @@
 \subsection{线性相关性的定义}
 
 本节我们将形式化定义在引言中我们提到的``可相互消去的关系''——线性相关性，同时这一定义也可以解决引言中提到的关于有限维线性空间至少需要多少个向量张成的问题.
-\begin{definition} \index{xianxingxiangguan@线性相关 (linearly dependent)} \index{xianxingwuguan@线性无关 (linearly independent)}
+\begin{definition}[线性相关性] \index{xianxingxiangguan@线性相关 (linearly dependent)} \index{xianxingwuguan@线性无关 (linearly independent)}
     设$V(\mathbf{F})$是一个线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_m\in V$，若存在不全为0的$\lambda_1,\lambda_2,\ldots,\lambda_m\in\mathbf{F}$，使得
     \[\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m=0\]
     成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$\term{线性相关}，否则称\term{线性无关}（即系数只能为0）.
@@ -267,7 +267,7 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item $B_1$ 可被其极大线性无关组 $A_1$ 表示，$B_2$ 可被其极大线性无关组 $A_2$ 表示，所以原条件等价于 $A_1$ 可以被 $A_2$ 线性表示.而由极大线性无关组的定义，$A_1, A_2$ 中的向量个数分别是 $r(B_1), r(B_2)$，根据\autoref{thm:3:线性表示}，有 $r(B_1)\leqslant r(B_2)$.
+        \item $B_1$ 可被其极大线性无关组 $A_1$ 表示，$B_2$ 可被其极大线性无关组 $A_2$ 表示，所以原条件等价于 $A_1$ 可以被 $A_2$ 线性表示. 而由极大线性无关组的定义，$A_1, A_2$ 中的向量个数分别是 $r(B_1), r(B_2)$，根据\autoref{thm:3:线性表示}，有 $r(B_1)\leqslant r(B_2)$.
 
         \item 因为 $B_1, B_2$ 可以互相表示，所以 $r(B_1) \leqslant r(B_2),r(B_2) \leqslant r(B_1)$，所以 $r(B_1) = r(B_2)$. 又极大线性无关组的秩就是其向量个数，所以 $B_1, B_2$ 长度相等.
     \end{enumerate}
@@ -279,7 +279,7 @@
 
     \item 对称性：设向量组 $B_1$ 等价于向量组 $B_2$，则向量组 $B_2$ 等价于向量组 $B_1$，因为它们可以相互表示；
 
-    \item 传递性：设向量组 $B_1$ 等价于向量组 $B_2$，向量组 $B_2$ 等价于向量组 $B_3$，则向量组 $B_1$ 等价于向量组 $B_3$.因为 $B_1$ 和 $B_2$ 可以相互表示，$B_2$ 和 $B_3$ 可以相互表示就有 $B_1$ 和 $B_3$ 可以相互表示.
+    \item 传递性：设向量组 $B_1$ 等价于向量组 $B_2$，向量组 $B_2$ 等价于向量组 $B_3$，则向量组 $B_1$ 等价于向量组 $B_3$. 因为 $B_1$ 和 $B_2$ 可以相互表示，$B_2$ 和 $B_3$ 可以相互表示就有 $B_1$ 和 $B_3$ 可以相互表示.
 \end{enumerate}
 三个条件的成立是显然的，我们不再赘述，接下来我们基于等价向量组的定义给出\autoref{thm:3:线性表示} 的进一步结论，直至证明向量组的秩唯一：
 \begin{corollary}
@@ -459,6 +459,7 @@
 
 \begin{solution}
     通过待定系数法解方程即可.
+
     在 $B_1$ 下：$(a_0, a_1, a_2)$. 在 $B_2$ 下：$(a_0 + a_1 + a_2, a_1 + 2a_2, a_2)$.
 \end{solution}
 关于向量的定义我们有以下几点需要强调：

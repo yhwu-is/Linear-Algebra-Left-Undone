@@ -96,64 +96,65 @@
     \begin{enumerate}
         \item 出发空间为 $ \mathbf{R}^2 $，到达空间为 $ \mathbf{R}^3 $. $ \sigma $ 是线性映射.
 
-        $ \forall (x_1, x_2), (y_1, y_2) \in \mathbf{R}^2,\enspace k_1, k_2 \in \mathbf{R} $, 有
-        \begin{align*}
-            & \sigma(k_1(x_1, x_2) + k_2(y_1, y_2)) \\
-            ={} & ((k_1 x_1 + k_2 y_1) - (k_1 x_2 + k_2 y_2), k_1 x_1 + k_2 y_1, (k_1 x_1 + k_2 y_1) + (k_1 x_2 + k_2 y_2)) \\
-            ={} & k_1(x_1 - x_2, x_1, x_1 + x_2) + k_2(y_1 - y_2, y_1, y_1 + y_2) \\
-            ={} & k_1 \sigma(x_1, x_2) + k_2 \sigma(y_1, y_2)
-        \end{align*}
+              $ \forall (x_1, x_2), (y_1, y_2) \in \mathbf{R}^2,\enspace k_1, k_2 \in \mathbf{R} $, 有
+              \begin{align*}
+                      & \sigma(k_1(x_1, x_2) + k_2(y_1, y_2))                                                                     \\
+                  ={} & ((k_1 x_1 + k_2 y_1) - (k_1 x_2 + k_2 y_2), k_1 x_1 + k_2 y_1, (k_1 x_1 + k_2 y_1) + (k_1 x_2 + k_2 y_2)) \\
+                  ={} & k_1(x_1 - x_2, x_1, x_1 + x_2) + k_2(y_1 - y_2, y_1, y_1 + y_2)                                           \\
+                  ={} & k_1 \sigma(x_1, x_2) + k_2 \sigma(y_1, y_2)
+              \end{align*}
 
         \item 出发空间为 $ \mathbf{R}^2 $，到达空间为 $ \mathbf{R}^2 $. $ \sigma $ 不是线性映射.
 
-        $ \forall (x_1, x_2), (y_1, y_2) \in \mathbf{R}^2,\enspace k_1, k_2 \in \mathbf{R} $, 有
-        \begin{align*}
-            \sigma((x_1, x_2) + (y_1, y_2)) &= \sigma(x_1 + y_1, x_2 + y_2) \\
-            &= ((x_1 + y_1)(x_2 + y_2), ((x_1 + y_1) + (x_2 + y_2)) \\
-            &= (x_1 x_2 + x_1 y_2 + y_1 x_2 + y_1 y_2, x_1 + y_1 + x_2 + y_2) \\
-            &= (x_1 x_2 + y_1 y_2, x_1 + y_1 + x_2 + y_2) + (x_1 y_2 + y_1 x_2, 0) \\
-            &= \sigma(x_1, x_2) + \sigma(y_1, y_2) + (x_1 y_2 + y_1 x_2, 0) \\
-            &\neq \sigma(x_1, x_2) + \sigma(y_1, y_2)
-        \end{align*}
+              $ \forall (x_1, x_2), (y_1, y_2) \in \mathbf{R}^2,\enspace k_1, k_2 \in \mathbf{R} $, 有
+              \begin{align*}
+                  \sigma((x_1, x_2) + (y_1, y_2))
+                   & = \sigma(x_1 + y_1, x_2 + y_2)                                        \\
+                   & = ((x_1 + y_1)(x_2 + y_2), ((x_1 + y_1) + (x_2 + y_2))                \\
+                   & = (x_1 x_2 + x_1 y_2 + y_1 x_2 + y_1 y_2, x_1 + y_1 + x_2 + y_2)      \\
+                   & = (x_1 x_2 + y_1 y_2, x_1 + y_1 + x_2 + y_2) + (x_1 y_2 + y_1 x_2, 0) \\
+                   & = \sigma(x_1, x_2) + \sigma(y_1, y_2) + (x_1 y_2 + y_1 x_2, 0)        \\
+                   & \neq \sigma(x_1, x_2) + \sigma(y_1, y_2)
+              \end{align*}
 
         \item 出发空间为 $ \mathbf{R}[x]_n $，到达空间为 $ \mathbf{R}[x]_{n - 1} $. $ \sigma $ 是线性映射.
 
-        $ \forall p_1(x), p_2(x) \in \mathbf{R}[x]_n,\enspace k_1, k_2 \in \mathbf{R} $, 有
-        \begin{align*}
-            & \sigma(k_1 p_1(x) + k_2 p_2(x)) \\
-            ={} & (k_1 p_1 + k_2 p_2)(x + 1) - (k_1 p_1 + k_2 p_2)(x) \\
-            ={} & k_1(p_1(x + 1) - p_1(x)) + k_2(p_2(x + 1) - p_2(x)) \\
-            ={} & k_1 \sigma(p_1(x)) + k_2 \sigma(p_2(x))
-        \end{align*}
+              $ \forall p_1(x), p_2(x) \in \mathbf{R}[x]_n,\enspace k_1, k_2 \in \mathbf{R} $, 有
+              \begin{align*}
+                      & \sigma(k_1 p_1(x) + k_2 p_2(x))                     \\
+                  ={} & (k_1 p_1 + k_2 p_2)(x + 1) - (k_1 p_1 + k_2 p_2)(x) \\
+                  ={} & k_1(p_1(x + 1) - p_1(x)) + k_2(p_2(x + 1) - p_2(x)) \\
+                  ={} & k_1 \sigma(p_1(x)) + k_2 \sigma(p_2(x))
+              \end{align*}
 
         \item 出发空间为 $ \mathbf{R}[x] $，到达空间为 $ \mathbf{R}[x] $. $ \sigma $ 是线性映射.
 
-        $ \forall p_1(x), p_2(x) \in \mathbf{R}[x],\enspace k_1, k_2 \in \mathbf{R} $, 有
-        \begin{align*}
-            & \sigma(k_1 p_1(x) + k_2 p_2(x)) \\
-            ={} & (k_1 p_1 + k_2 p_2)(a) \\
-            ={} & k_1 p_1(a) + k_2 p_2(a) \\
-            ={} & k_1 \sigma(p_1(x)) + k_2 \sigma(p_2(x))
-        \end{align*}
+              $ \forall p_1(x), p_2(x) \in \mathbf{R}[x],\enspace k_1, k_2 \in \mathbf{R} $, 有
+              \begin{align*}
+                      & \sigma(k_1 p_1(x) + k_2 p_2(x))         \\
+                  ={} & (k_1 p_1 + k_2 p_2)(a)                  \\
+                  ={} & k_1 p_1(a) + k_2 p_2(a)                 \\
+                  ={} & k_1 \sigma(p_1(x)) + k_2 \sigma(p_2(x))
+              \end{align*}
 
         \item 出发空间为 $ V $，到达空间为 $ V $. 当 $ \xi_0 = \vec{0} $ 时， $ \sigma(\xi) = 2 \xi $ 是线性映射.
 
-        $ \forall \xi_1, \xi_2 \in V $, 有
-        \begin{align*}
-            \sigma(\xi_1 + \xi_2) &= 2(\xi_1 + \xi_2) \\
-            &= 2 \xi_1 + 2 \xi_2 \\
-            &= \sigma(\xi_1) + \sigma(\xi_2)
-        \end{align*}
+              $ \forall \xi_1, \xi_2 \in V $, 有
+              \begin{align*}
+                  \sigma(\xi_1 + \xi_2) & = 2(\xi_1 + \xi_2)              \\
+                                        & = 2 \xi_1 + 2 \xi_2             \\
+                                        & = \sigma(\xi_1) + \sigma(\xi_2)
+              \end{align*}
 
-        当 $ \xi_0 \neq \vec{0} $ 时， $ \sigma $ 不是线性映射.
+              当 $ \xi_0 \neq \vec{0} $ 时， $ \sigma $ 不是线性映射.
 
-        $ \forall \xi_1, \xi_2 \in V $, 有
-        \begin{align*}
-            \sigma(\xi_1 + \xi_2) &= 2(\xi_1 + \xi_2) + \xi_0 \\
-            &= 2 \xi_1 + 2 \xi_2 + \xi_0 \\
-            &= \sigma(\xi_1) + \sigma(\xi_2) - \xi_0 \\
-            &\neq \sigma(\xi_1) + \sigma(\xi_2)
-        \end{align*}
+              $ \forall \xi_1, \xi_2 \in V $, 有
+              \begin{align*}
+                  \sigma(\xi_1 + \xi_2) & = 2(\xi_1 + \xi_2) + \xi_0              \\
+                                        & = 2 \xi_1 + 2 \xi_2 + \xi_0             \\
+                                        & = \sigma(\xi_1) + \sigma(\xi_2) - \xi_0 \\
+                                        & \neq \sigma(\xi_1) + \sigma(\xi_2)
+              \end{align*}
     \end{enumerate}
 \end{solution}
 

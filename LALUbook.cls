@@ -84,28 +84,28 @@
 
 % 设置页面尺寸
 \IfStrEq{\@LALU@geometry}{16k}{% 载入 16k 版面设置
-\geometry{
-    paperheight = 260mm,
-    paperwidth = 185mm,
-    top = 23mm,
-    bottom = 23mm,
-    left = 20mm,
-    right = 20mm,
-    headheight = 5ex,
-    headsep = 5ex,
-    textwidth = 132mm,
-    textheight = 198mm,
-    twoside,
-    asymmetric, % 单双数页不分
-    % bindingoffset = 18pt,
-}}{}
+    \geometry{
+        paperheight = 260mm,
+        paperwidth = 185mm,
+        top = 23mm,
+        bottom = 23mm,
+        left = 20mm,
+        right = 20mm,
+        headheight = 5ex,
+        headsep = 5ex,
+        textwidth = 132mm,
+        textheight = 198mm,
+        twoside,
+        asymmetric, % 单双数页不分
+        % bindingoffset = 18pt,
+    }}{}
 
 \IfStrEq{\@LALU@geometry}{a4}{% 载入 a4 版面设置
-\geometry{
-    a4paper,
-    twoside,
-    asymmetric,
-}}{}
+    \geometry{
+        a4paper,
+        twoside,
+        asymmetric,
+    }}{}
 
 % 使空页恒空
 \fancypagestyle{plain}{
@@ -195,22 +195,20 @@
     \hypersetup{
         unicode,
         bookmarksnumbered,
-        hypertexnames = false,
         pdfborder = {0 0 0},
     }
 
     % 按 colors 的 Bool 值设置链接色彩.
     \if@LALU@colors
         \hypersetup{
-        colorlinks = true,
-        % linkcolor = blue,
-        % citecolor = red,
-        % urlcolor = teal
+            colorlinks,
+            % linkcolor = blue,
+            % citecolor = red,
+            % urlcolor = teal
         }
     \else
         \hypersetup{hidelinks}
     \fi
-
 
     \renewcommand{\figureautorefname}{图}
     \renewcommand{\tableautorefname}{表}

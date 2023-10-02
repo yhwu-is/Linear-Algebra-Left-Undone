@@ -111,41 +111,41 @@
     \begin{enumerate}
         \item 设$X$是$AB$属于$\lambda$的特征向量，则$ABX=\lambda X$，因此$B(ABX)=B(\lambda X)$，即$(BA)(BX)=\lambda(BX)$，因此$BX$是$BA$属于$\lambda$的特征向量，故$\lambda$也是$BA$的特征值.
 
-        实际上这里还有一点需要说明，就是$BX\neq 0$，否则它将不能作为特征向量.事实上证明是简单的，假设$BX=0$，则$ABX=0$，由于$\lambda\neq 0$，因此必然有$X=0$，但这与$X$是$AB$属于$\lambda$的特征向量矛盾，因此$BX\neq 0$.
+              实际上这里还有一点需要说明，就是$BX\neq 0$，否则它将不能作为特征向量. 事实上证明是简单的，假设$BX=0$，则$ABX=0$，由于$\lambda\neq 0$，因此必然有$X=0$，但这与$X$是$AB$属于$\lambda$的特征向量矛盾，因此$BX\neq 0$.
 
         \item 根据分块矩阵初等变换的性质，我们可以通过不断尝试选取到$P=\begin{pmatrix}
-            E_m & A \\ O & E_n
-        \end{pmatrix}$，其逆矩阵为$P^{-1}=\begin{pmatrix}
-            E_m & -A \\ O & E_n
-        \end{pmatrix}$，我们发现恰有
-        \[\begin{pmatrix}
-            E_m & -A \\ O & E_n
-        \end{pmatrix}\begin{pmatrix}
-            AB & O \\ B & O
-        \end{pmatrix}\begin{pmatrix}
-            E_m & A \\ O & E_n
-        \end{pmatrix}=\begin{pmatrix}
-            O & O \\ B & BA
-        \end{pmatrix}.\]
-        因此$\begin{pmatrix}
-            AB & O \\ B & O
-        \end{pmatrix}$与$\begin{pmatrix}
-            O & O \\ B & BA
-        \end{pmatrix}$相似，因此它们的特征多项式相同，即
-        \[\begin{vmatrix}
-            \lambda E_m-AB & O \\ -B & \lambda E_n
-        \end{vmatrix}=\begin{vmatrix}
-            \lambda E_m & O \\ -B & \lambda E_n-BA
-        \end{vmatrix}.\]
-        根据行列式的计算性质$\begin{vmatrix}
-            A & O \\ C & B
-        \end{vmatrix}=|A||B|$，我们有
-        \[|\lambda E_m-AB||\lambda E_n|=|\lambda E_m||\lambda E_n-BA|,\]
-        即$\lambda^n|\lambda E_m-AB|=\lambda^m|\lambda E_n-BA|$，因此$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+                      E_m & A \\ O & E_n
+                  \end{pmatrix}$，其逆矩阵为$P^{-1}=\begin{pmatrix}
+                      E_m & -A \\ O & E_n
+                  \end{pmatrix}$，我们发现恰有
+              \[\begin{pmatrix}
+                      E_m & -A \\ O & E_n
+                  \end{pmatrix}\begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}\begin{pmatrix}
+                      E_m & A \\ O & E_n
+                  \end{pmatrix}=\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix}.\]
+              因此$\begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}$与$\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix}$相似，因此它们的特征多项式相同，即
+              \[\begin{vmatrix}
+                      \lambda E_m-AB & O \\ -B & \lambda E_n
+                  \end{vmatrix}=\begin{vmatrix}
+                      \lambda E_m & O \\ -B & \lambda E_n-BA
+                  \end{vmatrix}.\]
+              根据行列式的计算性质$\begin{vmatrix}
+                      A & O \\ C & B
+                  \end{vmatrix}=|A||B|$，我们有
+              \[|\lambda E_m-AB||\lambda E_n|=|\lambda E_m||\lambda E_n-BA|,\]
+              即$\lambda^n|\lambda E_m-AB|=\lambda^m|\lambda E_n-BA|$，因此$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
     \end{enumerate}
 \end{proof}
 
-不难发现上述例子中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广，因为由\ref*{item:18:特征值相同:2}我们得到了$|\lambda E-AB|=|\lambda E-BA|(\lambda\neq 0)$.
+不难发现上述例子中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广，因为由\ref*{item:18:特征值相同:2} 我们得到了$|\lambda E-AB|=|\lambda E-BA|(\lambda\neq 0)$.
 
 下面这个例子非常重要，在解决一些题目时使用这一结论会更便捷：
 \begin{example}
@@ -177,7 +177,7 @@
 \end{example}
 
 \begin{proof}
-    设$V$是所有$m\times n$矩阵构成的线性空间，定义$V$上的线性变换$\sigma(X)=AX-XB,\enspace X\in V$. 由于$A$和$B$无公共复特征值，所以$\sigma(X)=AX-XB=O$只有零解，即$\sigma$为$V$上单射，由\autoref{thm:6:双射等价条件}可知$\sigma$是满射且是同构映射.于是，对任意的$C\in V$，都存在唯一的$X_0\in V$使得$\sigma(X_0)=C$，即矩阵方程$AX-XB=C$存在唯一解$X_0$.
+    设$V$是所有$m\times n$矩阵构成的线性空间，定义$V$上的线性变换$\sigma(X)=AX-XB,\enspace X\in V$. 由于$A$和$B$无公共复特征值，所以$\sigma(X)=AX-XB=O$只有零解，即$\sigma$为$V$上单射，由\autoref{thm:6:双射等价条件} 可知$\sigma$是满射且是同构映射. 于是，对任意的$C\in V$，都存在唯一的$X_0\in V$使得$\sigma(X_0)=C$，即矩阵方程$AX-XB=C$存在唯一解$X_0$.
 \end{proof}
 
 \section{对角矩阵}
@@ -256,22 +256,22 @@
 \begin{proof}
     首先证明这是线性变换. 首先验证线性性，对于任意$f(x),g(x)\in V$，$a,b\in\mathbf{R}$，我们有
     \begin{align*}
-        T(af(x)+bg(x)) & =\frac{\mathrm{d}((x-2)(af(x)+bg(x)))}{\mathrm{d}x} \\
-                       & =\frac{\mathrm{d}(axf(x)-2af(x)+bxg(x)-2bg(x))}{\mathrm{d}x} \\
+        T(af(x)+bg(x)) & =\frac{\mathrm{d}((x-2)(af(x)+bg(x)))}{\mathrm{d}x}                                    \\
+                       & =\frac{\mathrm{d}(axf(x)-2af(x)+bxg(x)-2bg(x))}{\mathrm{d}x}                           \\
                        & =a\frac{\mathrm{d}((x-2)f(x))}{\mathrm{d}x}+b\frac{\mathrm{d}((x-2)g(x))}{\mathrm{d}x} \\
                        & =aT(f(x))+bT(g(x)).
     \end{align*}
     然后说明这是$V$上的线性变换，即该映射的到达空间是$V$，即$T(f(x))\in V$， 因为$f(x)$是次数小于等于2的实多项式，设$f(x)=ax^2+bx+c$，则
     \begin{align*}
-        T(f(x)) & =\frac{\mathrm{d}((x-2)(ax^2+bx+c))}{\mathrm{d}x} \\
+        T(f(x)) & =\frac{\mathrm{d}((x-2)(ax^2+bx+c))}{\mathrm{d}x}          \\
                 & =\frac{\mathrm{d}(ax^3+(b-2a)x^2+(c-2b)x-2c)}{\mathrm{d}x} \\
                 & =3ax^2+2(b-2a)x+(c-2b)\in V.
     \end{align*}
     因此$T$是$V$上的线性变换.
 
     下面我们来判断$T$是否可对角化. 线性变换的可对角化问题第一步要转化为任意一组基下的矩阵，然后判断矩阵是否可对角化，因此我们先任意选取一组基，为方便我们选取自然基$\{1,x,x^2\}$，然后求出$T$在这组基下的矩阵$A=\begin{pmatrix}
-        1 & -2 & 0 \\ 0 & 2 & -4 \\ 0 & 0 & 3
-    \end{pmatrix}$，然后求出其特征多项式$f(\lambda)=|\lambda E-A|=(\lambda-1)(\lambda-2)(\lambda-3)$，令$f(\lambda)=0$，解得特征值为 $\lambda_1=1,\lambda_2=2,\lambda_3=3$. 即该3阶矩阵有3个不同的特征值，因此由\autoref{cor:19:可对角化必要条件}可知$A$可对角化，即$T$可对角化.
+            1 & -2 & 0 \\ 0 & 2 & -4 \\ 0 & 0 & 3
+        \end{pmatrix}$，然后求出其特征多项式$f(\lambda)=|\lambda E-A|=(\lambda-1)(\lambda-2)(\lambda-3)$，令$f(\lambda)=0$，解得特征值为 $\lambda_1=1,\lambda_2=2,\lambda_3=3$. 即该3阶矩阵有3个不同的特征值，因此由\autoref{cor:19:可对角化必要条件} 可知$A$可对角化，即$T$可对角化.
 \end{proof}
 
 除此之外，我们还可以利用对角化求解矩阵的幂的问题. 若一个矩阵$A$可对角化，即存在可逆矩阵$P$使得$A=P^{-1}\varLambda P$（其中$\varLambda$为对角矩阵），在这种形式下$A$的幂是很好求的，因为$A^k=P^{-1}\varLambda^kP$，$\varLambda$为对角矩阵，因此其幂是好求的. 我们来看一个例子
@@ -297,11 +297,11 @@
     所以记$P=(\eta_1,\eta_2,\eta_3)$，则$A=P\diag(0,1,-1)P^{-1}$，因此
     \[A^n=P\diag(0^n,1^n,(-1)^n)P^{-1},\]
     进一步计算得到
-    \[A^n=\cfrac{1}{2}\begin{pmatrix}
-        1+(-1)^n & (-1)^{n+1} & 1 \\
-        1+(-1)^{n+1} & (-1)^n & 1 \\
-        1+(-1)^{n+1} & (-1)^n & 1
-    \end{pmatrix}.\]
+    \[A^n=\frac{1}{2}\begin{pmatrix}
+            1+(-1)^n     & (-1)^{n+1} & 1 \\
+            1+(-1)^{n+1} & (-1)^n     & 1 \\
+            1+(-1)^{n+1} & (-1)^n     & 1
+        \end{pmatrix}.\]
 \end{solution}
 
 \subsection{可对角化的条件}
@@ -425,20 +425,20 @@
     \begin{enumerate}
         \item 我们知道，$r(A)\leqslant\min{\{r(\alpha),r(\beta)\}}=1$，并且$A\neq O$因此$r(A)>0$，故$A$的秩为1. 而$n>1$，因此$A$一定不可逆，故0一定是$A$的特征值，且对应的特征子空间维数为$AX=0$的解空间维数，即为$n-1$.
 
-        由此我们知道$A$最多有两个特征值，因为0的代数重数（即作为$n$次特征多项式的零点次数）必然大于等于其几何重数$n-1$，当期代数重数为$n-1$时可能还有一个一重特征值. 我们利用特征值之和等于$A$的迹来找出可能的第二个特征值. 我们设$\alpha=(a_1,a_2,\ldots,a_n)^\mathrm{T},\beta=(b_1,b_2,\ldots,b_n)^\mathrm{T}$，则$A=\alpha\beta^\mathrm{T}=\begin{pmatrix}
-                a_1b_1 & a_1b_2 & \cdots & a_1b_n \\
-                a_2b_1 & a_2b_2 & \cdots & a_2b_n \\
-                \vdots & \vdots & \ddots & \vdots \\
-                a_nb_1 & a_nb_2 & \cdots & a_nb_n
-            \end{pmatrix}$，因此$A$的迹为$\sum\limits_{i=1}^na_ib_i=\alpha^\mathrm{T}\beta=\sum\limits_{i=1}^n\lambda_i$，其中$\lambda_i$为$A$的特征值. 若$\alpha^\mathrm{T}\beta\neq 0$，则$\lambda_i=0,\enspace i=1,\cdots,n-1$，$\lambda_n=\alpha^\mathrm{T}\beta$. 若$\alpha^\mathrm{T}\beta=0$，则$A$的所有特征值均为0.
+              由此我们知道$A$最多有两个特征值，因为0的代数重数（即作为$n$次特征多项式的零点次数）必然大于等于其几何重数$n-1$，当期代数重数为$n-1$时可能还有一个一重特征值. 我们利用特征值之和等于$A$的迹来找出可能的第二个特征值. 我们设$\alpha=(a_1,a_2,\ldots,a_n)^\mathrm{T},\beta=(b_1,b_2,\ldots,b_n)^\mathrm{T}$，则$A=\alpha\beta^\mathrm{T}=\begin{pmatrix}
+                      a_1b_1 & a_1b_2 & \cdots & a_1b_n \\
+                      a_2b_1 & a_2b_2 & \cdots & a_2b_n \\
+                      \vdots & \vdots & \ddots & \vdots \\
+                      a_nb_1 & a_nb_2 & \cdots & a_nb_n
+                  \end{pmatrix}$，因此$A$的迹为$\sum\limits_{i=1}^na_ib_i=\alpha^\mathrm{T}\beta=\sum\limits_{i=1}^n\lambda_i$，其中$\lambda_i$为$A$的特征值. 若$\alpha^\mathrm{T}\beta\neq 0$，则$\lambda_i=0,\enspace i=1,\cdots,n-1$，$\lambda_n=\alpha^\mathrm{T}\beta$. 若$\alpha^\mathrm{T}\beta=0$，则$A$的所有特征值均为0.
 
         \item 由上一小问可知，若$\alpha^\mathrm{T}\beta=0$即$A$的全部特征值为0，因此只有一个$n-1$维的特征子空间，故特征子空间直和不等于$V$，故不可对角化.
 
-        反之，若$A$不可对角化，我们用反证法. 假设$\alpha^\mathrm{T}\beta\neq 0$，则$A$有两个特征值，一个为0，一个为$\alpha^\mathrm{T}\beta$，因此$A$有两个特征子空间，一个是0对应的$n-1$维特征子空间，一个是$\alpha^\mathrm{T}\beta$对应的一维特征子空间，因此$V$可分解为两个特征子空间的直和，与$A$不可对角化矛盾，因此$\alpha^\mathrm{T}\beta=0$.
+              反之，若$A$不可对角化，我们用反证法. 假设$\alpha^\mathrm{T}\beta\neq 0$，则$A$有两个特征值，一个为0，一个为$\alpha^\mathrm{T}\beta$，因此$A$有两个特征子空间，一个是0对应的$n-1$维特征子空间，一个是$\alpha^\mathrm{T}\beta$对应的一维特征子空间，因此$V$可分解为两个特征子空间的直和，与$A$不可对角化矛盾，因此$\alpha^\mathrm{T}\beta=0$.
     \end{enumerate}
 \end{solution}
 
-本例非常经典，请读者务必掌握本例的结论和解决方法.事实上这一例题的结论与这一论述是等价的：秩为1的矩阵$A$可对角化的充要条件是$A$的迹不为0.
+本例非常经典，请读者务必掌握本例的结论和解决方法. 事实上这一例题的结论与这一论述是等价的：秩为1的矩阵$A$可对角化的充要条件是$A$的迹不为0.
 
 下面我们来看一些非常经典的可对角化问题，希望读者能够熟知：
 \begin{example}\label{ex:19:可对角化经典例题}
@@ -454,22 +454,22 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 由题意$A^2-2A=O$，因此$A$的特征值$\lambda$满足\autoref{ex:18:特征值的性质}第三问中提到的形式，因此$A$的特征值就是方程$\lambda^2-2\lambda=0$的解，即$\lambda_1=0,\lambda_2=2$.
+        \item 由题意$A^2-2A=O$，因此$A$的特征值$\lambda$满足\autoref{ex:18:特征值的性质} 第三问中提到的形式，因此$A$的特征值就是方程$\lambda^2-2\lambda=0$的解，即$\lambda_1=0,\lambda_2=2$.
 
-        接下来我们需要说明0和2对应的特征子空间维数之和为$n$，即$\dim V_0+\dim V_2=n$，其中$V_0$和$V_2$分别为0和2对应的特征子空间. 事实上，由$A^2=2A$可知$A(A-2E)=O$，由\autoref{ex:15:线性方程组理论与秩不等式}知$r(A)+r(A-2E)\leqslant n$，又根据秩不等式$r(A)+r(B)\geqslant r(A+B)$，因此$r(A)+r(A-2E)=r(A)+r(2E-A)\geqslant r(A+(2E-A))=r(2E)=n$. 综上可知，$r(A)+r(A-2E)=n$.
+              接下来我们需要说明0和2对应的特征子空间维数之和为$n$，即$\dim V_0+\dim V_2=n$，其中$V_0$和$V_2$分别为0和2对应的特征子空间. 事实上，由$A^2=2A$可知$A(A-2E)=O$，由\autoref{ex:15:线性方程组理论与秩不等式} 知$r(A)+r(A-2E)\leqslant n$，又根据秩不等式$r(A)+r(B)\geqslant r(A+B)$，因此$r(A)+r(A-2E)=r(A)+r(2E-A)\geqslant r(A+(2E-A))=r(2E)=n$. 综上可知，$r(A)+r(A-2E)=n$.
 
-        实际上，$V_0$就是$AX=0$的解空间，$V_2$就是$(A-2E)X=0$的解空间，因此$\dim V_0=n-r(A),\dim V_2=n-r(A-2E)$，因此由$r(A)+r(A-2E)=n$可知$\dim V_0+\dim V_2=2n-n=n$，即0和2对应的特征子空间维数之和为$n$，因此$A$可对角化.
+              实际上，$V_0$就是$AX=0$的解空间，$V_2$就是$(A-2E)X=0$的解空间，因此$\dim V_0=n-r(A),\dim V_2=n-r(A-2E)$，因此由$r(A)+r(A-2E)=n$可知$\dim V_0+\dim V_2=2n-n=n$，即0和2对应的特征子空间维数之和为$n$，因此$A$可对角化.
 
         \item 设$\lambda$是$A$的特征值，由题意$\lambda^m=0$，即$\lambda=0$，因此$A$的所有特征值都为0. 但$r(A)>0$（因为$A$不是零矩阵），因此0对应的特征子空间维数为$n-r(A)<n$，因此$A$不可对角化.
 
-        \item 反证法，假设$\alpha$和$A\alpha$线性相关，则存在不全为零的常数$k_1,k_2$使得$k_1\alpha+k_2A\alpha=0$. 显然$k_2\neq 0$，因为假设$k_2=0$，则$k_1\alpha=0$，由于$\alpha\neq 0$，故$k_1=0$，这与$k_1,k_2$不全为0矛盾.因此我们有$A\alpha=-\dfrac{k_1}{k_2}\alpha$，即$\alpha$是$A$的特征向量，这与题设矛盾，因此$\alpha$和$A\alpha$线性无关.
+        \item 反证法，假设$\alpha$和$A\alpha$线性相关，则存在不全为零的常数$k_1,k_2$使得$k_1\alpha+k_2A\alpha=0$. 显然$k_2\neq 0$，因为假设$k_2=0$，则$k_1\alpha=0$，由于$\alpha\neq 0$，故$k_1=0$，这与$k_1,k_2$不全为0矛盾. 因此我们有$A\alpha=-\dfrac{k_1}{k_2}\alpha$，即$\alpha$是$A$的特征向量，这与题设矛盾，因此$\alpha$和$A\alpha$线性无关.
 
-        由题意，$A^2\alpha-3A\alpha+2\alpha=0$，即$(A^2-3A+2E)\alpha=0$，又$\alpha\neq 0$，因此$A^2-3A+2E$不可逆，从而$|A^2-3A+2E|=|E-A||2E-A|=0$，故$|E-A|=0$或$|2E-A|=0$.
+              由题意，$A^2\alpha-3A\alpha+2\alpha=0$，即$(A^2-3A+2E)\alpha=0$，又$\alpha\neq 0$，因此$A^2-3A+2E$不可逆，从而$|A^2-3A+2E|=|E-A||2E-A|=0$，故$|E-A|=0$或$|2E-A|=0$.
 
-        若$|E-A|\neq 0$，则$E-A$可逆，因此$(A^2-3A+2E)\alpha=(E-A)((2E-A)\alpha)=0$可知$(2E-A)\alpha=0$，即$A\alpha=2\alpha$，故$\alpha$为$A$的特征向量，这与条件矛盾，因此$|E-A|=0$. 同理，$|2E-A|=0$，因此$A$有两个特征值1和2，又$A$是2阶矩阵，因此由\autoref{cor:19:可对角化必要条件}可知$A$一定可对角化，且对角矩阵为$\begin{pmatrix}
-                1 & 0 \\
-                0 & 2
-            \end{pmatrix}$.
+              若$|E-A|\neq 0$，则$E-A$可逆，因此$(A^2-3A+2E)\alpha=(E-A)((2E-A)\alpha)=0$可知$(2E-A)\alpha=0$，即$A\alpha=2\alpha$，故$\alpha$为$A$的特征向量，这与条件矛盾，因此$|E-A|=0$. 同理，$|2E-A|=0$，因此$A$有两个特征值1和2，又$A$是2阶矩阵，因此由\autoref{cor:19:可对角化必要条件} 可知$A$一定可对角化，且对角矩阵为$\begin{pmatrix}
+                      1 & 0 \\
+                      0 & 2
+                  \end{pmatrix}$.
     \end{enumerate}
 \end{proof}
 
@@ -493,9 +493,9 @@
             0  & 1 & 0 \\
             0  & 0 & 2
         \end{pmatrix}\begin{pmatrix}
-            1 & 0 & -1 \\
-            1 & -1 & 0 \\
-            -1 & 1 & 1
+            1  & 0  & -1 \\
+            1  & -1 & 0  \\
+            -1 & 1  & 1
         \end{pmatrix}=\begin{pmatrix}
             -3 & 1 & 4 \\
             -4 & 2 & 4 \\
@@ -515,24 +515,24 @@
 \begin{proof}
     \begin{enumerate}
         \item 由已知，设$A$的$n$个特征值为$\lambda_0,\lambda_1,\ldots,\lambda_{n-1}$，故$A$相似于对角矩阵$\varLambda=\diag(\lambda_0,\lambda_1,\cdots,\lambda_{n-1})$，设$P^{-1}AP=\varLambda$，因此
-        \[A-\lambda_0 E=P\varLambda P^{-1}-\lambda_0 PP^{-1}=P\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0)P^{-1},\]
-        从而
-        \[(A-\lambda_0 E)^2=P\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2)P^{-1},\]
-        由于$\lambda_i-\lambda_0=0$的充要条件是$(\lambda_i-\lambda_0)^2=0$，所以
-        \begin{align*}
-            r((A-\lambda_0 E)^2)&=r(P\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2)P^{-1})\\
-            &=r(\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2))\\
-            &=r(\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0))\\
-            &=r(P\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0)P^{-1})\\
-            &=r(A-\lambda_0 E).
-        \end{align*}
-        故命题得证.
+              \[A-\lambda_0 E=P\varLambda P^{-1}-\lambda_0 PP^{-1}=P\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0)P^{-1},\]
+              从而
+              \[(A-\lambda_0 E)^2=P\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2)P^{-1},\]
+              由于$\lambda_i-\lambda_0=0$的充要条件是$(\lambda_i-\lambda_0)^2=0$，所以
+              \begin{align*}
+                  r((A-\lambda_0 E)^2) & =r(P\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2)P^{-1}) \\
+                                       & =r(\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2))        \\
+                                       & =r(\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0))                \\
+                                       & =r(P\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0)P^{-1})         \\
+                                       & =r(A-\lambda_0 E).
+              \end{align*}
+              故命题得证.
 
         \item 反证法，假设存在$Y$使得$(A-\lambda_0 E)Y=X_0$，则$(A-\lambda_0 E)^2Y=(A-\lambda_0 E)X_0=0$（因为$X_0$是$A$对应于$\lambda_0$的特征向量）.
 
-        由于$r((A-\lambda_0 E)^2)=r(A-\lambda_0 E)$，因此$(A-\lambda_0 E)^2X=0$与$(A-\lambda_0 E)X=0$的解空间维数相同，又$(A-\lambda_0 E)X=0$的解显然一定也是$(A-\lambda_0 E)^2X=0$的解，因此实际上两方程组同解（回顾$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U=\dim W$，则$U=W$）.
+              由于$r((A-\lambda_0 E)^2)=r(A-\lambda_0 E)$，因此$(A-\lambda_0 E)^2X=0$与$(A-\lambda_0 E)X=0$的解空间维数相同，又$(A-\lambda_0 E)X=0$的解显然一定也是$(A-\lambda_0 E)^2X=0$的解，因此实际上两方程组同解（回顾$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U=\dim W$，则$U=W$）.
 
-        由于$(A-\lambda_0 E)^2Y=0$，因此也有$(A-\lambda_0 E)Y=0$，但已知$(A-\lambda_0 E)Y=X_0\neq 0$，矛盾，因此不存在$Y$使得$(A-\lambda_0 E)Y=X_0$.
+              由于$(A-\lambda_0 E)^2Y=0$，因此也有$(A-\lambda_0 E)Y=0$，但已知$(A-\lambda_0 E)Y=X_0\neq 0$，矛盾，因此不存在$Y$使得$(A-\lambda_0 E)Y=X_0$.
     \end{enumerate}
 \end{proof}
 
@@ -553,15 +553,15 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 参考\autoref{ex:15:线性方程组理论与秩不等式}第四点的证明即可.
+        \item 参考\autoref{ex:15:线性方程组理论与秩不等式} 第四点的证明即可.
 
-        \item 与\autoref{ex:19:可对角化经典例题}第一问中解法类似可得$A$为幂等矩阵则一定可对角化，且特征值为0和1. 因为$A$可对角化，故0和1的代数重数等于几何重数（统称重数），且二者重数之和为$n$. 由于0的重数（从几何重数的角度看）就等于$AX=0$的解空间维数，即等于$n-r(A)$，因此1的重数等于$n-(n-r(A))=r(A)$.
+        \item 与\autoref{ex:19:可对角化经典例题} 第一问中解法类似可得$A$为幂等矩阵则一定可对角化，且特征值为0和1. 因为$A$可对角化，故0和1的代数重数等于几何重数（统称重数），且二者重数之和为$n$. 由于0的重数（从几何重数的角度看）就等于$AX=0$的解空间维数，即等于$n-r(A)$，因此1的重数等于$n-(n-r(A))=r(A)$.
 
         \item 事实上$\tr(A)$等于$A$的所有特征值之和. 事实上由上面的结论，幂等矩阵$A$特征值由$n-r(A)$个0和$r(A)$个1组成，即与幂等矩阵相似的对角矩阵为$\varLambda=\diag(0,\cdots,0,1,\cdots,1)$，其中有$r(A)$个1. 又因为相似矩阵有相同的特征值，因此对于任意的幂等矩阵$A$都有$\tr(A)=\tr(\varLambda)=r(A)$.
 
-        \item 根据我们在相抵标准形中讨论的分解可知，所有秩为1的矩阵都可分解为一个列向量乘以行向量的形式，即$A=\alpha\beta^\mathrm{T}$，其中$\alpha,\beta$都是列向量. 并且同\autoref{ex:19:秩1矩阵可对角化}中的讨论，$A$的迹即为$\alpha^\mathrm{T}\beta=\beta^\mathrm{T}\alpha=1$，因此
-        \[A^2=(\alpha\beta^\mathrm{T})(\alpha\beta^\mathrm{T})=\alpha(\beta^\mathrm{T}\alpha)\beta^\mathrm{T}=\alpha\beta^\mathrm{T}=A,\]
-        因此$A$是幂等矩阵.
+        \item 根据我们在相抵标准形中讨论的分解可知，所有秩为1的矩阵都可分解为一个列向量乘以行向量的形式，即$A=\alpha\beta^\mathrm{T}$，其中$\alpha,\beta$都是列向量. 并且同\autoref{ex:19:秩1矩阵可对角化} 中的讨论，$A$的迹即为$\alpha^\mathrm{T}\beta=\beta^\mathrm{T}\alpha=1$，因此
+              \[A^2=(\alpha\beta^\mathrm{T})(\alpha\beta^\mathrm{T})=\alpha(\beta^\mathrm{T}\alpha)\beta^\mathrm{T}=\alpha\beta^\mathrm{T}=A,\]
+              因此$A$是幂等矩阵.
     \end{enumerate}
 \end{proof}
 
@@ -582,39 +582,39 @@
 \begin{proof}
     \begin{enumerate}
         \item 必要性：由于$A+B$幂等，所以
-        \[A+B=(A+B)^2=A^2+AB+BA+B^2=A+B+AB+BA,\]
-        因此$AB+BA=O$，即$AB=-BA$. 又由于$A$和$B$均幂等，因此$AB=BA=O$，即$AB=-BA$. 从而也有
-        \[AB=A^2B=A(AB)=A(-BA)=-(AB)A=(BA)A=BA^2=BA.\]
-        于是有$AB=BA=O$.
+              \[A+B=(A+B)^2=A^2+AB+BA+B^2=A+B+AB+BA,\]
+              因此$AB+BA=O$，即$AB=-BA$. 又由于$A$和$B$均幂等，因此$AB=BA=O$，即$AB=-BA$. 从而也有
+              \[AB=A^2B=A(AB)=A(-BA)=-(AB)A=(BA)A=BA^2=BA.\]
+              于是有$AB=BA=O$.
 
-        充分性：由于$AB=BA=O$，因此
-        \[(A+B)^2=A^2+AB+BA+B^2=A+B.\]
-        因此$A+B$幂等.
+              充分性：由于$AB=BA=O$，因此
+              \[(A+B)^2=A^2+AB+BA+B^2=A+B.\]
+              因此$A+B$幂等.
 
         \item 必要性：由于$A-B$幂等，所以
-        \[A-B=(A-B)^2=A^2-AB-BA+B^2=A+B-AB-BA,\]
-        因此$AB+BA=2B$，即$AB=2B-BA$，从而也有
-        \[AB=AB^2=(2B-BA)B=2B^2-B(AB)=2B^2-B(2B-BA)=B^2A=BA.\]
-        于是有$AB=BA=B$.
+              \[A-B=(A-B)^2=A^2-AB-BA+B^2=A+B-AB-BA,\]
+              因此$AB+BA=2B$，即$AB=2B-BA$，从而也有
+              \[AB=AB^2=(2B-BA)B=2B^2-B(AB)=2B^2-B(2B-BA)=B^2A=BA.\]
+              于是有$AB=BA=B$.
 
-        充分性：由于$AB=BA=B$，因此
-        \[(A-B)^2=A^2-AB-BA+B^2=A-B.\]
-        因此$A-B$幂等.
+              充分性：由于$AB=BA=B$，因此
+              \[(A-B)^2=A^2-AB-BA+B^2=A-B.\]
+              因此$A-B$幂等.
 
         \item 由于$AB=BA$，因此
-        \[(AB)^2=ABAB=A(BA)B=A^2B^2=AB,\]
-        因此$AB$幂等.反之，取
-        \[A=\begin{pmatrix}
-            1 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0
-        \end{pmatrix},\enspace B=\begin{pmatrix}
-            1 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
-        \end{pmatrix},\]
-        可以验证$AB$幂等，但$AB=B\neq A=BA$.
+              \[(AB)^2=ABAB=A(BA)B=A^2B^2=AB,\]
+              因此$AB$幂等. 反之，取
+              \[A=\begin{pmatrix}
+                      1 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+                  \end{pmatrix},\enspace B=\begin{pmatrix}
+                      1 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+                  \end{pmatrix},\]
+              可以验证$AB$幂等，但$AB=B\neq A=BA$.
 
         \item 由于$E-A-B$可逆，因此
-        \[r(A)=r(A(E-A-B))=r(A-A^2-AB)=r(AB)\leqslant r(B);\]
-        \[r(B)=r(B(E-A-B))=r(B-B^2-BA)=r(BA)\leqslant r(A).\]
-        因此$r(A)=r(B)$.
+              \[r(A)=r(A(E-A-B))=r(A-A^2-AB)=r(AB)\leqslant r(B);\]
+              \[r(B)=r(B(E-A-B))=r(B-B^2-BA)=r(BA)\leqslant r(A).\]
+              因此$r(A)=r(B)$.
     \end{enumerate}
 \end{proof}
 
@@ -640,11 +640,11 @@
     \item 请举例：存在两个矩阵相抵但不相似.
 
     \item 求矩阵
-          \[A=\left(\begin{array}{ccc}
-                      0  & -1 & 1 \\
-                      -1 & 0  & 1 \\
-                      1  & 1  & 0
-                  \end{array}\right)\]
+          \[A = \begin{pmatrix}
+                  0  & -1 & 1 \\
+                  -1 & 0  & 1 \\
+                  1  & 1  & 0
+              \end{pmatrix}\]
           的所有特征值，对应的特征子空间，以及与 $A$ 相似的一个对角矩阵.
 
     \item 设$A=\begin{pmatrix}
@@ -657,7 +657,9 @@
           \end{enumerate}
 
     \item 设$A=\begin{pmatrix}
-                  1 & 1 & a \\ 1 & a & 1 \\ a & 1 & 1
+                  1 & 1 & a \\
+                  1 & a & 1 \\
+                  a & 1 & 1
               \end{pmatrix}$，$\beta=\begin{pmatrix}
                   1 \\ 1 \\ -2
               \end{pmatrix}$，方程组$AX=\beta$有解但不唯一.
@@ -758,6 +760,7 @@
 \centerline{\heiti C组}
 \begin{enumerate}
     \item 设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$. 证明：$\sigma$可对角化当且仅当对每个$\lambda\in\mathbf{C}$有$V=\ker(\sigma-\lambda I)\oplus\im(\sigma-\lambda I)$.
+
     \item 设$B=\alpha\alpha^\mathrm{T}$，其中$\alpha=(a_1,\ldots,a_n)^\mathrm{T}\neq 0\enspace(a_i\in\mathbf{R},\enspace i=1,2,\ldots,n)$.
           \begin{enumerate}
               \item 证明：$B^k=tB$，其中$k$为正整数，$t$为常数，并求$t$；

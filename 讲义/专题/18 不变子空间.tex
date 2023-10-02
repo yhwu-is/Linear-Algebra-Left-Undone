@@ -23,7 +23,7 @@
     \includegraphics[scale=0.7]{figs/18-1.png}
 \end{figure}
 
-但是我们需要注意，\autoref{eq:18:直和分解}这一分解应当满足一个基本的条件，就是$\sigma$应当把每个$U_i$仍然映射到$U_i$本身，否则我们在讨论$\sigma\vert_{U_i}$的时候它不是一个线性变换，这与我们讨论的主题不一致，即我们希望限制映射$\sigma\vert_{U_i}$是一个线性变换（是$\mathcal{L}(U_i)$中的元素），我们称之为\term{限制线性变换}\index{xianxingbianhuan!xianzhi@限制线性变换 (restriction operator)}.
+但是我们需要注意，\autoref{eq:18:直和分解} 这一分解应当满足一个基本的条件，就是$\sigma$应当把每个$U_i$仍然映射到$U_i$本身，否则我们在讨论$\sigma\vert_{U_i}$的时候它不是一个线性变换，这与我们讨论的主题不一致，即我们希望限制映射$\sigma\vert_{U_i}$是一个线性变换（是$\mathcal{L}(U_i)$中的元素），我们称之为\term{限制线性变换}\index{xianxingbianhuan!xianzhi@限制线性变换 (restriction operator)}.
 
 事实上，满足$\sigma\vert_{U_i}\in\mathcal{L}(U_i)$的子空间$U_i$非常重要，我们需要给予它一个定义：
 \begin{definition}
@@ -38,12 +38,12 @@
     我们只需验证$\ker p(\sigma)$和$\im p(\sigma)$中的元素经过$\sigma$映射后仍在这一空间中即可.
     \begin{enumerate}
         \item $\forall \alpha\in \ker p(\sigma),\enspace p(\sigma)\alpha=0$，因此
-        \[(p(\sigma))(\sigma(\alpha))=\sigma(p(\sigma)\alpha)=\sigma(0)=0,\]
-        即$\sigma(\alpha)\in \ker p(\sigma)$，因此$\ker p(\sigma)$在$\sigma$下不变；
+              \[(p(\sigma))(\sigma(\alpha))=\sigma(p(\sigma)\alpha)=\sigma(0)=0,\]
+              即$\sigma(\alpha)\in \ker p(\sigma)$，因此$\ker p(\sigma)$在$\sigma$下不变；
 
         \item $\forall \alpha\in \im p(\sigma),\enspace \exists \beta\in V,\enspace \alpha=p(\sigma)\beta$，因此
-        \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)(\sigma(\beta))\in \im p(\sigma),\]
-        即$\im p(\sigma)$在$\sigma$下不变.
+              \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)(\sigma(\beta))\in \im p(\sigma),\]
+              即$\im p(\sigma)$在$\sigma$下不变.
     \end{enumerate}
     事实上，对于$\ker p(\sigma)$，我们有
     \[ p(\sigma)(\alpha)=p(\sigma)\alpha=p(\sigma(\alpha))=p(0)=0,\]
@@ -75,7 +75,7 @@
         \end{pmatrix}=\lambda(a,b)=(\lambda a,\lambda b),\]
     将矩阵乘法展开，我们有
     \[(a+2b,-a+2b)=(\lambda a,\lambda b).\]
-    由于$\alpha=(a,b)\neq 0$，因此$\lambda\neq 0$，基于此解方程得到$\lambda^2-3\lambda+4=0$.这一方程在实数域范围内无解，复数域内有两个共轭的解，因此，我们有
+    由于$\alpha=(a,b)\neq 0$，因此$\lambda\neq 0$，基于此解方程得到$\lambda^2-3\lambda+4=0$. 这一方程在实数域范围内无解，复数域内有两个共轭的解，因此，我们有
     \begin{enumerate}
         \item 当$\mathbf{F}=\mathbf{R}$时，$\mathbf{R}^2$无$\sigma$的非零真不变子空间；
 
@@ -231,7 +231,7 @@
     \[f(\lambda)=|\lambda E-A|=\begin{vmatrix}
             \lambda e_1-\alpha_1 & \lambda e_2-\alpha_2 & \cdots & \lambda e_n-\alpha_n
         \end{vmatrix}.\]
-    其中$e_1,\ldots,e_n$为$\mathbf{F}^n$的标准基，因此根据行列式的\autoref{def:13:公理化定义}的加性，$f(\lambda)$可以拆成$2^n$个行列式的和，它们是
+    其中$e_1,\ldots,e_n$为$\mathbf{F}^n$的标准基，因此根据行列式的\autoref{def:13:公理化定义} 的加性，$f(\lambda)$可以拆成$2^n$个行列式的和，它们是
     \begin{equation}\label{eq:18:特征多项式展开}
         (-\alpha_1,\cdots,-\alpha_{j_1-1},\lambda e_{j_1},-\alpha_{j_1+1},\cdots,-\alpha_{j_2-1},\lambda e_{j_2},-\alpha_{j_2+1},\cdots,-\lambda e_{j_{n-k}},\cdots,-\alpha_n),
     \end{equation}
@@ -239,7 +239,7 @@
 
     上式初看会显得非常复杂，但实际上利用行列式定义的加性去拆分就是每列有两种拆出来的选择，一种是选择$\lambda e_{j_i}$，另一种是选择$-\alpha_{j_i}$，这就是$2^n$种拆分方式的来由. 其中取出$k$列$-\alpha_{j_i}$，剩余$n-k$列选择$\lambda e_{j_i}$的就可以表示为上式的形式.
 
-    利用\autoref{thm:14:Laplace定理}对\autoref{eq:18:特征多项式展开}第$j_1,\ldots,j_{n-k}$列展开，我们发现这$n-k$列元素组成的$n-k$阶子式只有一个不为0：
+    利用\autoref{thm:14:Laplace定理} 对\autoref{eq:18:特征多项式展开} 第$j_1,\ldots,j_{n-k}$列展开，我们发现这$n-k$列元素组成的$n-k$阶子式只有一个不为0：
     \[\begin{vmatrix}
             \lambda & 0       & \cdots & 0       \\
             0       & \lambda & \cdots & 0       \\
@@ -248,16 +248,17 @@
         \end{vmatrix}=\lambda^{n-k},\]
     这个不等于0的$n-k$阶子式对应的代数余子式为
     \begin{align*}
-        &(-1)^{(j_1+\cdots+j_{n-k})+(j_1+\cdots+j_{n-k})}(-A)\begin{pmatrix}
+         & (-1)^{(j_1+\cdots+j_{n-k})+(j_1+\cdots+j_{n-k})}(-A)
+        \begin{pmatrix}
             j_1' & j_2' & \cdots & j_k' \\
             j_1' & j_2' & \cdots & j_k'
-        \end{pmatrix} \\
-        &= (-1)^kA\begin{pmatrix}
-            j_1' & j_2' & \cdots & j_k' \\
-            j_1' & j_2' & \cdots & j_k'
-        \end{pmatrix}
+        \end{pmatrix}                             \\
+         & = (-1)^kA\begin{pmatrix}
+                        j_1' & j_2' & \cdots & j_k' \\
+                        j_1' & j_2' & \cdots & j_k'
+                    \end{pmatrix}
     \end{align*}
-    其中$j_1',\ldots,j_k'$为$1,\ldots,n$中除去$j_1,\ldots,j_{n-k}$的$k$个数按递增顺序排列的结果，这一点通过余子式的定义是显然的. 因此\autoref{eq:18:特征多项式展开}的值为
+    其中$j_1',\ldots,j_k'$为$1,\ldots,n$中除去$j_1,\ldots,j_{n-k}$的$k$个数按递增顺序排列的结果，这一点通过余子式的定义是显然的. 因此\autoref{eq:18:特征多项式展开} 的值为
     \[(-1)^kA\begin{pmatrix}
             j_1' & j_2' & \cdots & j_k' \\
             j_1' & j_2' & \cdots & j_k'
@@ -295,26 +296,25 @@
 \end{enumerate}
 
 \begin{proof}
-\begin{enumerate}
-    \item
     \begin{enumerate}
-        \item 由于$\sigma(\xi)=\lambda\xi$，则$(k\sigma)(\xi)=k\lambda\xi$，即$k\lambda$是$k\sigma$的特征值，$\xi$仍是相应特征向量.
+        \item \begin{enumerate}
+                  \item 由于$\sigma(\xi)=\lambda\xi$，则$(k\sigma)(\xi)=k\lambda\xi$，即$k\lambda$是$k\sigma$的特征值，$\xi$仍是相应特征向量.
 
-        而$\sigma^m(\xi)=\sigma^{m-1}(\sigma(\xi))=\sigma^{m-1}(\lambda\xi)=\lambda\sigma^{m-1}(\xi)=\cdots=\lambda^m\xi$，即$\lambda^m$是$\sigma^m$的特征值，$\xi$仍是相应特征向量.
+                        而$\sigma^m(\xi)=\sigma^{m-1}(\sigma(\xi))=\sigma^{m-1}(\lambda\xi)=\lambda\sigma^{m-1}(\xi)=\cdots=\lambda^m\xi$，即$\lambda^m$是$\sigma^m$的特征值，$\xi$仍是相应特征向量.
 
-        \item 利用前述$\sigma^m$的相关性质，我们有
-        \begin{align*}
-            f(\sigma)(\xi) &= (a_n\sigma^n+a_{n-1}\sigma^{n-1}+\cdots+a_1\sigma+a_0I)(\xi) \\
-                           &= a_n\sigma^n(\xi)+a_{n-1}\sigma^{n-1}(\xi)+\cdots+a_1\sigma(\xi)+a_0I(\xi) \\
-                           &= a_n\lambda^n\xi+a_{n-1}\lambda^{n-1}\xi+\cdots+a_1\lambda\xi+a_0\xi \\
-                           &= f(\lambda)\xi.
-        \end{align*}
+                  \item 利用前述$\sigma^m$的相关性质，我们有
+                        \begin{align*}
+                            f(\sigma)(\xi) & = (a_n\sigma^n+a_{n-1}\sigma^{n-1}+\cdots+a_1\sigma+a_0I)(\xi)              \\
+                                           & = a_n\sigma^n(\xi)+a_{n-1}\sigma^{n-1}(\xi)+\cdots+a_1\sigma(\xi)+a_0I(\xi) \\
+                                           & = a_n\lambda^n\xi+a_{n-1}\lambda^{n-1}\xi+\cdots+a_1\lambda\xi+a_0\xi       \\
+                                           & = f(\lambda)\xi.
+                        \end{align*}
+              \end{enumerate}
+
+        \item 设$\xi$是$A$的特征值，即$A\xi=\lambda\xi$，则$\xi=A^{-1}A\xi=A^{-1}\lambda\xi$，即$A^{-1}\xi=\lambda^{-1}\xi$，因此$\lambda^{-1}$是$A^{-1}$的特征值，$\xi$仍是相应特征向量.
+
+              又由于$A$可逆时$A^*=|A|A^{-1}$，根据前面关于$k\sigma$和$A^{-1}$特征值的讨论可知，$|A|\lambda^{-1}$是$A$的伴随矩阵$A^*$的特征值，$\xi$仍是相应特征向量.
     \end{enumerate}
-
-    \item 设$\xi$是$A$的特征值，即$A\xi=\lambda\xi$，则$\xi=A^{-1}A\xi=A^{-1}\lambda\xi$，即$A^{-1}\xi=\lambda^{-1}\xi$，因此$\lambda^{-1}$是$A^{-1}$的特征值，$\xi$仍是相应特征向量.
-
-    又由于$A$可逆时$A^*=|A|A^{-1}$，根据前面关于$k\sigma$和$A^{-1}$特征值的讨论可知，$|A|\lambda^{-1}$是$A$的伴随矩阵$A^*$的特征值，$\xi$仍是相应特征向量.
-\end{enumerate}
 \end{proof}
 
 事实上，根据我们之前对线性变换特征值和矩阵特征值的讨论，我们知道上面的结论中``矩阵''和``线性变换''都可以互相替换（除了伴随矩阵没有定义相应的映射）.
@@ -337,30 +337,30 @@
 
 \begin{solution}
     \begin{enumerate}
-        \item $A$可逆时有$|A|=\lambda_1\cdots\lambda_n\neq 0$，因此$A$的特征值都不为0.同理，$A$不可逆同理表明存在特征值等于0，$E+A$可逆表明$-1$不是$A$的特征值，$4E+A$不可逆表明$-4$是$A$的特征值.
+        \item $A$可逆时有$|A|=\lambda_1\cdots\lambda_n\neq 0$，因此$A$的特征值都不为0. 同理，$A$不可逆同理表明存在特征值等于0，$E+A$可逆表明$-1$不是$A$的特征值，$4E+A$不可逆表明$-4$是$A$的特征值.
 
         \item $|E-A^2|=|E-A||E+A|=0$，因此$\pm 1$都是$A$的特征值.
 
         \item 我们首先考虑对合矩阵，接下来的同理可以得到类似结论. 由于$A^2=E$，设$AX=\lambda X$，则$A^2X=\lambda^2X=X$，因此$\lambda^2=1$，即$\lambda=\pm 1$，因此$\pm 1$都是$A$的特征值.
 
-        但这里我们需要强调的是，不同于前两问，前两问中我们都是说某些值是$A$的特征值，但无法保证$A$的特征值只能是某些值，但在本题这样给出矩阵方程的情况下，我们可以得到$A$的特征值恰好就是$\pm 1$，没有其他值.我们用反证法，假设存在$\lambda_0\neq\pm 1$是$A$的特征值，即$AX=\lambda_0X$，则$A^2X=\lambda_0^2X\neq X$（因为$X$不是零向量），导出矛盾.
+              但这里我们需要强调的是，不同于前两问，前两问中我们都是说某些值是$A$的特征值，但无法保证$A$的特征值只能是某些值，但在本题这样给出矩阵方程的情况下，我们可以得到$A$的特征值恰好就是$\pm 1$，没有其他值. 我们用反证法，假设存在$\lambda_0\neq\pm 1$是$A$的特征值，即$AX=\lambda_0X$，则$A^2X=\lambda_0^2X\neq X$（因为$X$不是零向量），导出矛盾.
 
-        注：本题解决过程中告诉我们一个解题技巧，如果看到$A$的多项式$f(A)=O$这种形式的表达式，事实上$A$的特征值就是$f(\lambda)=0$的根，如上题中$f(A)=A^2-E$，则$f(\lambda)=\lambda^2-1$，因此$A$的特征值就是$\pm 1$.
+              注：本题解决过程中告诉我们一个解题技巧，如果看到$A$的多项式$f(A)=O$这种形式的表达式，事实上$A$的特征值就是$f(\lambda)=0$的根，如上题中$f(A)=A^2-E$，则$f(\lambda)=\lambda^2-1$，因此$A$的特征值就是$\pm 1$.
 
-        同理，我们可以知道幂等矩阵的特征值只能是0和1，幂零矩阵的特征值只能是0（这是一个重要的幂零矩阵等价条件，未来我们会再次遇到），正交矩阵的特征值只能是1和-1.
+              同理，我们可以知道幂等矩阵的特征值只能是0和1，幂零矩阵的特征值只能是0（这是一个重要的幂零矩阵等价条件，未来我们会再次遇到），正交矩阵的特征值只能是1和-1.
 
         \item 设$BX=\lambda_iX_i(X_i\neq 0,\enspace i=1,\ldots,n)$，则$AX_i=\lambda_0X_i+BX_i=\lambda_0X_i+\lambda_iX_i=(\lambda_0+\lambda_i)X_i$，因此$\lambda_0+\lambda_i(i=1,\cdots,n)$都是$A$的特征值.
 
         \item \begin{align*}
-            |\lambda E-A|&=\begin{vmatrix}
-                \lambda E_1-A_1 & 0 & \cdots & 0 \\
-                0 & \lambda E_2-A_2 & \cdots & 0 \\
-                \vdots & \vdots & \ddots & \vdots \\
-                0 & 0 & \cdots & \lambda E_m-A_m
-            \end{vmatrix}
-            &=\prod_{i=1}^{m}|\lambda E_i-A_i|=0
-        \end{align*}
-        因此，$A_i(i=1,\ldots,m)$的特征值都是$A$的特征值.
+                  |\lambda E-A| & =\begin{vmatrix}
+                                       \lambda E_1-A_1 & 0               & \cdots & 0               \\
+                                       0               & \lambda E_2-A_2 & \cdots & 0               \\
+                                       \vdots          & \vdots          & \ddots & \vdots          \\
+                                       0               & 0               & \cdots & \lambda E_m-A_m
+                                   \end{vmatrix}
+                                & =\prod_{i=1}^{m}|\lambda E_i-A_i|=0
+              \end{align*}
+              因此，$A_i(i=1,\ldots,m)$的特征值都是$A$的特征值.
     \end{enumerate}
 \end{solution}
 
@@ -381,14 +381,14 @@
 \begin{solution}
     \begin{enumerate}
         \item 事实上$A=\alpha\alpha^\mathrm{T}=\begin{pmatrix}
-            1 & 0 & -1 \\ 0 & 0 & 0 \\ -1 & 0 & 1
-        \end{pmatrix}$，由$|\lambda E-A|=0$解得$A$的特征值为$\lambda_1=\lambda_2=0,\lambda_3=2$，而根据$A^n$的特征值性质和\autoref{ex:18:特征值的性质}可知，$6E-A^n$的特征值为$6-\lambda_1^n,6-\lambda_2^n,6-\lambda_3^n$，即$6,6,6-2^n$，因此$|6E-A^n|=6^2(6-2^n)=36(6-2^n)$.
+                      1 & 0 & -1 \\ 0 & 0 & 0 \\ -1 & 0 & 1
+                  \end{pmatrix}$，由$|\lambda E-A|=0$解得$A$的特征值为$\lambda_1=\lambda_2=0,\lambda_3=2$，而根据$A^n$的特征值性质和\autoref{ex:18:特征值的性质} 可知，$6E-A^n$的特征值为$6-\lambda_1^n,6-\lambda_2^n,6-\lambda_3^n$，即$6,6,6-2^n$，因此$|6E-A^n|=6^2(6-2^n)=36(6-2^n)$.
 
         \item 由于$A$的特征值为$1,-2,-1$，因此$|A|=1\times(-2)\times(-1)=2$，而$A^*$的特征值为$|A|\lambda^{-1}$，因此$A^*$的特征值为$2,-1,-2$，故$A^*+3E$的特征值为$A^*$的特征值加3（根据\autoref{ex:18:特征值的性质}），即为$5,2,1$，又根据$A^{-1}$和$A^2$特征值的性质可知，$(A^{-1})^2+2E$的特征值为$1^2+2,(-1/2)^2+2,(-1)^2+2$，即为$3,9/4,3$，而$A^2-A+E$的特征值根据$f(\sigma)$特征值性质的讨论可知为$1^2-1+1,(-2)^2-(-2)+1,(-1)^2-(-1)+1$，即为$1,7,3$，因此$|A^2-A+E|=1\times 7\times 3=21$.
 
-        \item 设$AX=\lambda X(X\neq 0)$，则$(A^2-A-2E)X=(\lambda^2-\lambda-2)X=O$，因此$\lambda=-1$或$\lambda=2$，根据\autoref{ex:18:特征值的性质}中关于对合矩阵的讨论可知，$A$的特征值恰为-1和2.又$|A|=2$，且$A$为3阶矩阵，因此$A$的3个特征值必为-1，-1，2.
+        \item 设$AX=\lambda X(X\neq 0)$，则$(A^2-A-2E)X=(\lambda^2-\lambda-2)X=O$，因此$\lambda=-1$或$\lambda=2$，根据\autoref{ex:18:特征值的性质} 中关于对合矩阵的讨论可知，$A$的特征值恰为-1和2. 又$|A|=2$，且$A$为3阶矩阵，因此$A$的3个特征值必为-1，-1，2.
 
-        又$A^*$的特征值为$|A|\lambda^{-1}$，因此$A^*$的特征值为$1,-2,-2$，又根据\autoref{ex:18:特征值的性质}的结论，$A^*+3E$的特征值为$A^*$的特征值加3，即$\lambda_1=\lambda_2=1,\lambda_3=4$，故$|A^*+3E|=\lambda_1\lambda_2\lambda_3=4$.
+              又$A^*$的特征值为$|A|\lambda^{-1}$，因此$A^*$的特征值为$1,-2,-2$，又根据\autoref{ex:18:特征值的性质} 的结论，$A^*+3E$的特征值为$A^*$的特征值加3，即$\lambda_1=\lambda_2=1,\lambda_3=4$，故$|A^*+3E|=\lambda_1\lambda_2\lambda_3=4$.
 
         \item 由题意知$|A|=5$，故$A^*$的特征值为$|A|\lambda^{-1}$即为$\mu_1=\mu_2=-5,\mu_3=1$，而$A_{11}+A_{22}+A_{33}$就是$A^*$的迹（即矩阵对角线元素之和），因此$A_{11}+A_{22}+A_{33}=\mu_1+\mu_2+\mu_3=-9$.
     \end{enumerate}
@@ -410,23 +410,23 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的互异特征值，$\xi_1,\ldots,\xi_m$是相应的特征向量. 反证法，我们假设$\xi_1,\ldots,\xi_m$线性相关，由\autoref{lem:3:线性相关性引理}可知，存在$k$是使得
-        \[\xi_k\in\spa(\xi_1,\ldots,\xi_{k-1})\]
-        成立的最小整数，则存在$c_1,\ldots,c_{k-1}$使得
-        \begin{equation*}\label{eq:18:特征向量线性无关}
-            \xi_k=c_1\xi_1+\cdots+c_{k-1}\xi_{k-1}.
-        \end{equation*}
-        将$T$作用到上式两边，我们有
-        \[\lambda_k\xi_k=c_1\lambda_1\xi_1+\cdots+c_{k-1}\lambda_{k-1}\xi_{k-1}.\]
-        将\autoref{eq:18:特征向量线性无关}两边乘以$\lambda_k$，然后减去上式，我们有
-        \[0=c_1(\lambda_k-\lambda_1)\xi_1+\cdots+c_{k-1}(\lambda_k-\lambda_{k-1})\xi_{k-1}.\]
-        由于我们选取的$k$是满足$\xi_k\in\spa(\xi_1,\ldots,\xi_{k-1})$的最小整数，因此$\xi_1,\ldots,\xi_{k-1}$线性无关，故$a_1=\cdots=a_{k-1}=0$，因此$\xi_k=0$，这与$\xi_k$是特征向量矛盾，因此$\xi_1,\ldots,\xi_m$线性无关.
+        \item 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的互异特征值，$\xi_1,\ldots,\xi_m$是相应的特征向量. 反证法，我们假设$\xi_1,\ldots,\xi_m$线性相关，由\autoref{lem:3:线性相关性引理} 可知，存在$k$是使得
+              \[\xi_k\in\spa(\xi_1,\ldots,\xi_{k-1})\]
+              成立的最小整数，则存在$c_1,\ldots,c_{k-1}$使得
+              \begin{equation*}\label{eq:18:特征向量线性无关}
+                  \xi_k=c_1\xi_1+\cdots+c_{k-1}\xi_{k-1}.
+              \end{equation*}
+              将$T$作用到上式两边，我们有
+              \[\lambda_k\xi_k=c_1\lambda_1\xi_1+\cdots+c_{k-1}\lambda_{k-1}\xi_{k-1}.\]
+              将\autoref{eq:18:特征向量线性无关} 两边乘以$\lambda_k$，然后减去上式，我们有
+              \[0=c_1(\lambda_k-\lambda_1)\xi_1+\cdots+c_{k-1}(\lambda_k-\lambda_{k-1})\xi_{k-1}.\]
+              由于我们选取的$k$是满足$\xi_k\in\spa(\xi_1,\ldots,\xi_{k-1})$的最小整数，因此$\xi_1,\ldots,\xi_{k-1}$线性无关，故$a_1=\cdots=a_{k-1}=0$，因此$\xi_k=0$，这与$\xi_k$是特征向量矛盾，因此$\xi_1,\ldots,\xi_m$线性无关.
 
-        \item 回忆直和的证明方法，我们在\autoref{thm:4:直和等价命题}中选取合适等价命题进行证明.假设
-        \begin{equation}\label{eq:18:特征子空间直和}
-            \xi_1+\cdots+\xi_m=0,
-        \end{equation}
-        其中$\xi_i\in V_{\lambda_i}$，由于$\sigma$的不同特征值对应的特征向量线性无关，因此$\xi_1,\cdots,\xi_m$不可能是特征向量，否则由\autoref{eq:18:特征子空间直和}可知它们线性相关，故必有$\xi_1=\cdots=\xi_m=0$，这表明$\sigma$的不同特征值对应的特征子空间的和为直和.
+        \item 回忆直和的证明方法，我们在\autoref{thm:4:直和等价命题} 中选取合适等价命题进行证明. 假设
+              \begin{equation}\label{eq:18:特征子空间直和}
+                  \xi_1+\cdots+\xi_m=0,
+              \end{equation}
+              其中$\xi_i\in V_{\lambda_i}$，由于$\sigma$的不同特征值对应的特征向量线性无关，因此$\xi_1,\cdots,\xi_m$不可能是特征向量，否则由\autoref{eq:18:特征子空间直和} 可知它们线性相关，故必有$\xi_1=\cdots=\xi_m=0$，这表明$\sigma$的不同特征值对应的特征子空间的和为直和.
 
         \item 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的互异特征值，$\xi_1,\ldots,\xi_m$是相应的特征向量. 前面已经证明了$\xi_1,\ldots,\xi_m$线性无关，因此$\dim V\geqslant m$，得证.
     \end{enumerate}
@@ -452,16 +452,17 @@
 
     定义$n$阶可逆矩阵$U=(\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n)$，根据$A\xi_i=\lambda_0\xi_i(i=1,\cdots,r)$，我们有
     \begin{align*}
-        A(\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n) &= (\lambda_0\xi_1,\ldots,\lambda_0\xi_r,A\xi_{r+1},\ldots,A\xi_n) \\
-        &= (\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n)\begin{pmatrix}
+        A(\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n) & = (\lambda_0\xi_1,\ldots,\lambda_0\xi_r,A\xi_{r+1},\ldots,A\xi_n) \\
+                                                     & = (\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n)
+        \begin{pmatrix}
             \lambda_0 E_r & B \\ O & C
         \end{pmatrix}
     \end{align*}
-    其中$B$是$r\times(n-r)$矩阵，$C$是$(n-r)\times(n-r)$矩阵，$O$是零矩阵.记$D=\begin{pmatrix}
-        \lambda_0 E_r & B \\ O & C
-    \end{pmatrix}$，则$AU=UD\Rightarrow A=UDU^{-1}$.
+    其中$B$是$r\times(n-r)$矩阵，$C$是$(n-r)\times(n-r)$矩阵，$O$是零矩阵. 记$D=\begin{pmatrix}
+            \lambda_0 E_r & B \\ O & C
+        \end{pmatrix}$，则$AU=UD\Rightarrow A=UDU^{-1}$.
 
-    考虑特征多项式$|\lambda E-A|=|\lambda E-UDU^{-1}|=|U(\lambda E_n-D)U^{-1}|=|U||\lambda E_n-D||U^{-1}|=|\lambda E_n-D|$，故$|\lambda E-A|=|\lambda E_n-D|$.进一步地，$|\lambda E-D|=|\lambda E_r-\lambda_0 E_r||\lambda E_{n-r}-C|=(\lambda-\lambda_0)^r|\lambda E_{n-r}-C|$，因此$\lambda_0$作为特征多项式$|\lambda E-A|$的根的重数至少为$r$，即$\lambda_0$的代数重数大于等于其特征子空间$V_{\lambda}$的维数.
+    考虑特征多项式$|\lambda E-A|=|\lambda E-UDU^{-1}|=|U(\lambda E_n-D)U^{-1}|=|U||\lambda E_n-D||U^{-1}|=|\lambda E_n-D|$，故$|\lambda E-A|=|\lambda E_n-D|$. 进一步地，$|\lambda E-D|=|\lambda E_r-\lambda_0 E_r||\lambda E_{n-r}-C|=(\lambda-\lambda_0)^r|\lambda E_{n-r}-C|$，因此$\lambda_0$作为特征多项式$|\lambda E-A|$的根的重数至少为$r$，即$\lambda_0$的代数重数大于等于其特征子空间$V_{\lambda}$的维数.
 \end{proof}
 
 事实上，由于$n$阶矩阵的特征多项式是$n$次的，因此所有特征值的代数重数之和等于$n$，但是根据上述定理可知所有特征值的几何重数之和小于等于$n$，即所有特征子空间的直和不一定能够得到原空间$V$. 这将构成我们接下来讨论的一个核心：我们在下一讲中将要讨论代数重数和几何重数相等情况下的最简单的矩阵表示，以及二者不相等的时候如何对原空间进行分解（因为此时$V$不能被分解为特征子空间直和）使得我们可以获得较为简单的矩阵表示.
@@ -469,24 +470,24 @@
 最后我们再通过一个例子体会特征向量和特征子空间的一些性质：
 \begin{example}
     设$V(\mathbf{F})$是$n$维线性空间，$\sigma\in \mathcal{L}(V)$，证明：
-          \begin{enumerate}
-              \item 若$\alpha,\beta$是$\sigma$的属于不同特征值的特征向量，则$c_1c_2\neq 0$时，$c_1\alpha+c_2\beta$不是$\sigma$的特征向量；
+    \begin{enumerate}
+        \item 若$\alpha,\beta$是$\sigma$的属于不同特征值的特征向量，则$c_1c_2\neq 0$时，$c_1\alpha+c_2\beta$不是$\sigma$的特征向量；
 
-              \item $V$中的每一非零向量都是$\sigma$的特征向量$\iff\sigma=c_0I_V$，其中$c_0\in\mathbf{F}$是一个常数，$I_V$是恒等变换.
-          \end{enumerate}
+        \item $V$中的每一非零向量都是$\sigma$的特征向量$\iff\sigma=c_0I_V$，其中$c_0\in\mathbf{F}$是一个常数，$I_V$是恒等变换.
+    \end{enumerate}
 \end{example}
 
 \begin{proof}
     \begin{enumerate}
         \item 设$\sigma(\alpha)=\lambda_1\alpha,\sigma(\beta)=\lambda_2\beta$，其中$\lambda_1\neq\lambda_2$，并假设$c_1\alpha+c_2\beta$是$\sigma$的特征向量，即存在$\lambda_0\in\mathbf{F}$使得
-        \[\sigma(c_1\alpha+c_2\beta)=\lambda_0(c_1\alpha+c_2\beta).\]
-        展开括号，我们有
-        \[c_1\sigma(\alpha)+c_2\sigma(\beta)=c_1\lambda_0\alpha+c_2\lambda_0\beta.\]
-        即$c_1\lambda_1\alpha+c_2\lambda_2\beta=c_1\lambda_0\alpha+c_2\lambda_0\beta$，即$(\lambda_1-\lambda_0)c_1\alpha+(\lambda_2-\lambda_0)c_2\beta=0$，由于$\alpha,\beta$线性无关，因此
-        \[c_1(\lambda_1-\lambda_0)=c_2(\lambda_2-\lambda_0)=0.\]
-        当$c_1c_2\neq 0$时，我们有$\lambda_1=\lambda_0=\lambda_2$，这与$\lambda_1\neq\lambda_2$矛盾，因此$c_1\alpha+c_2\beta$不是$\sigma$的特征向量.
+              \[\sigma(c_1\alpha+c_2\beta)=\lambda_0(c_1\alpha+c_2\beta).\]
+              展开括号，我们有
+              \[c_1\sigma(\alpha)+c_2\sigma(\beta)=c_1\lambda_0\alpha+c_2\lambda_0\beta.\]
+              即$c_1\lambda_1\alpha+c_2\lambda_2\beta=c_1\lambda_0\alpha+c_2\lambda_0\beta$，即$(\lambda_1-\lambda_0)c_1\alpha+(\lambda_2-\lambda_0)c_2\beta=0$，由于$\alpha,\beta$线性无关，因此
+              \[c_1(\lambda_1-\lambda_0)=c_2(\lambda_2-\lambda_0)=0.\]
+              当$c_1c_2\neq 0$时，我们有$\lambda_1=\lambda_0=\lambda_2$，这与$\lambda_1\neq\lambda_2$矛盾，因此$c_1\alpha+c_2\beta$不是$\sigma$的特征向量.
 
-        \item 右推左显然，我们只考虑左推右的证明.由上一小问结论可知，若$V$中的每一非零向量都是$\sigma$的特征向量，$\sigma$不可能有不同的特征值（因为有不同的特征值就有不同特征值对应的特征向量，但它们的线性组合一定仍在$V$中，这与从第一问中得到的结论，即它不是$\sigma$的特征向量矛盾）.设$c_0$是$\sigma$的唯一的特征值，则对于任意$\alpha\in V$，我们有$\sigma(\alpha)=c_0\alpha$，即$\sigma$在任意元素上的像都已经唯一确定，则显然在$V$的一组基上的像也唯一确定，由\autoref{thm:5:线性映射唯一确定}可知这样的线性映射是唯一的，$\sigma=c_0I_V$符合要求，因此它就是我们要找的线性映射.
+        \item 右推左显然，我们只考虑左推右的证明. 由上一小问结论可知，若$V$中的每一非零向量都是$\sigma$的特征向量，$\sigma$不可能有不同的特征值（因为有不同的特征值就有不同特征值对应的特征向量，但它们的线性组合一定仍在$V$中，这与从第一问中得到的结论，即它不是$\sigma$的特征向量矛盾）. 设$c_0$是$\sigma$的唯一的特征值，则对于任意$\alpha\in V$，我们有$\sigma(\alpha)=c_0\alpha$，即$\sigma$在任意元素上的像都已经唯一确定，则显然在$V$的一组基上的像也唯一确定，由\autoref{thm:5:线性映射唯一确定} 可知这样的线性映射是唯一的，$\sigma=c_0I_V$符合要求，因此它就是我们要找的线性映射.
     \end{enumerate}
 \end{proof}
 
@@ -519,7 +520,7 @@
     令$U=\spa(\alpha,\beta)$，则$U$是$\sigma$的不变子空间，且$\dim U=1$或$\dim U=2$，具体取值取决于$\alpha$和$\beta$是否线性相关.
 \end{proof}
 
-这里讨论实空间的情况时，我们用到了一个很特别的思想，即首先考虑了复特征值和特征向量，然后通过将复数表示为$a+b\textup{i}(a,b\in\mathbf{R})$的形式转回了实空间上的研究.这一思想我们称之为``复化''，我们将在本讲义后面的章节中更为完整地讨论这一思想.
+这里讨论实空间的情况时，我们用到了一个很特别的思想，即首先考虑了复特征值和特征向量，然后通过将复数表示为$a+b\textup{i}(a,b\in\mathbf{R})$的形式转回了实空间上的研究. 这一思想我们称之为``复化''，我们将在本讲义后面的章节中更为完整地讨论这一思想.
 
 最后我们讨论实数特征值和复数特征值几何意义的不同. 比较显然的一点是，实数域上的特征值与特征向量的几何意义在于，某一线性变换的特征向量在经过变换后得到的向量与原先向量共线，因为若$\alpha\in V$为$\sigma$的特征向量，则存在$\lambda\in\mathbf{R}$有$\sigma(\alpha)=\lambda\alpha$，因此$\alpha$被线性变换作用后相当于简单的按比例伸缩.
 
@@ -541,11 +542,12 @@
     则其特征多项式$f(\lambda)=|\lambda E-A|=\lambda^2+1$，因此
     \begin{enumerate}
         \item 在实数域上无特征值和特征向量；
+
         \item 复数域上特征值为$\pm\textup{i}$，其中$\textup{i}$对应的特征向量为$(w,-wi)$，$-\textup{i}$对应的特征向量为$(w,wi)$，其中$w\in\mathbf{R}$且$w\neq 0$.
     \end{enumerate}
 \end{solution}
 
-这里需要强调的一点是，$\mathbf{C}^2$也是二维线性空间，原因在于这里的$\mathbf{C}^2$的含义是定义在复数域上的，即是$\mathbf{C}^2(\mathbf{C})$，而不是$\mathbf{C}^2(\mathbf{R})$，因此维数为2而非4. 事实上在\autoref{ex:3:不同数域的维数}中读者应当就已经理解了这一点，此处不再做详细解释.
+这里需要强调的一点是，$\mathbf{C}^2$也是二维线性空间，原因在于这里的$\mathbf{C}^2$的含义是定义在复数域上的，即是$\mathbf{C}^2(\mathbf{C})$，而不是$\mathbf{C}^2(\mathbf{R})$，因此维数为2而非4. 事实上在\autoref{ex:3:不同数域的维数} 中读者应当就已经理解了这一点，此处不再做详细解释.
 
 事实上，我们可以抛开程序式的解题步骤，仔细观察这里的映射定义，我们会发现，在实数域内这一变换$\sigma$就是二维平面中将向量绕原点逆时针旋转90$^\circ$的旋转变换，因此在实数域内无特征值（实特征值实际上只能将特征向量沿着原方向伸缩）. 但为何复数域内有特征值呢？我们回忆复数的极坐标表示，任意复数$z$可表示为$z=re^{\i\theta}$，因此直观而言复特征值除了伸缩效应外也有旋转的效应.
 
@@ -570,7 +572,7 @@
 
 在本讲中我们首先从降低维数方便讨论的角度引入了对线性空间直和分解为更小的子空间的思想，引入了限制映射，最后要求限制映射是线性变换从而引出不变子空间的概念，并通过简单的例子验证、求解了不变子空间，更多的例子我们将会在学完若当标准形后见到.
 
-接下来我们从一维不变子空间入手，引入了特征值、特征向量以及特征子空间的概念，讨论了线性变换与矩阵在特征值、特征向量上的统一性，并分别研究了它们的性质.在特征值中，我们首先说明了特征多项式的根就是特征值，特征值就是特征多项式的根，然后在\autoref{thm:18:特征多项式展开}中讨论了特征多项式的展开式，特别是了解了特征值之和等于矩阵的迹，特征值之积等于矩阵的行列式的结论，并结合后面推导的有关于线性映射（矩阵）的倍数、幂次、逆、伴随、多项式的特征值的性质结论，在例题中体会了特征值性质的运用. 而对于特征向量和特征子空间，我们证明了不同特征值对应的特征向量是线性无关的，不同特征子空间之间是直和关系. 接下来我们结合了特征值和特征向量，证明了代数重数（特征多项式求解得到的特征值作为根的重数）大于等于几何重数（特征子空间的维数）的定理，也通过例题说明了即便所有特征子空间的直和等于全空间$V$，这也不表明$V$中所有向量都是特征向量，只有特征值唯一时才能做到这一点.
+接下来我们从一维不变子空间入手，引入了特征值、特征向量以及特征子空间的概念，讨论了线性变换与矩阵在特征值、特征向量上的统一性，并分别研究了它们的性质. 在特征值中，我们首先说明了特征多项式的根就是特征值，特征值就是特征多项式的根，然后在\autoref{thm:18:特征多项式展开} 中讨论了特征多项式的展开式，特别是了解了特征值之和等于矩阵的迹，特征值之积等于矩阵的行列式的结论，并结合后面推导的有关于线性映射（矩阵）的倍数、幂次、逆、伴随、多项式的特征值的性质结论，在例题中体会了特征值性质的运用. 而对于特征向量和特征子空间，我们证明了不同特征值对应的特征向量是线性无关的，不同特征子空间之间是直和关系. 接下来我们结合了特征值和特征向量，证明了代数重数（特征多项式求解得到的特征值作为根的重数）大于等于几何重数（特征子空间的维数）的定理，也通过例题说明了即便所有特征子空间的直和等于全空间$V$，这也不表明$V$中所有向量都是特征向量，只有特征值唯一时才能做到这一点.
 
 最后我们讨论了实数域和复数域上的一些共性和差异性，首先是因为特征多项式在实数、复数域上解的情况不同导致的差别，但我们也通过``复化''的思想证明了即便实数域上可能没有特征值（即无一维不变子空间），但此时一定存在二维不变子空间. 最后我们还通过一个例子引入了实特征值和复特征值几何意义的不同（是单纯的长度放缩还是结合了旋转），尽管我们的讨论不完全严谨，但能提供一个良好的几何直观.
 

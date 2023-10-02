@@ -1,6 +1,6 @@
 \chapter{线性空间}
 
-本讲我们将开始回答上一讲中最后留下的问题，即线性方程组有唯一解、无穷解或无解的本质原因. 这段旅程或许有些漫长，中间会有很多的铺垫，我们将从其中最为基础的概念——线性空间出发进行探讨.
+本讲我们将开始回答第 1 讲最后留下的问题，即线性方程组有唯一解、无穷解或无解的本质原因. 这段旅程或许有些漫长，中间会有很多的铺垫，我们将从其中最为基础的概念——线性空间出发进行探讨.
 
 回忆高斯消元法，方程组中每一行或一列都可以视为向量. 我们可以先看下面这个例子：
 \begin{example}\label{ex:2:线性空间引入}
@@ -69,9 +69,9 @@
         \begin{equation}\label{eq:2:线性空间运算性质2}
             (\lambda-\mu)\alpha=\lambda\alpha-\mu\alpha.
         \end{equation}
-        事实上，\autoref{eq:2:线性空间运算性质1}和\autoref{eq:2:线性空间运算性质2}可以视为数乘运算对减法也满足分配律（但我们必须时刻牢记在心，数的减法是常规的，向量的减法是加上向量的逆元）.
+        事实上，\autoref{eq:2:线性空间运算性质1} 和\autoref{eq:2:线性空间运算性质2} 可以视为数乘运算对减法也满足分配律（但我们必须时刻牢记在心，数的减法是常规的，向量的减法是加上向量的逆元）.
 
-        \item 在\autoref{eq:2:线性空间运算性质1}中分别令$\alpha=\beta$和$\alpha=\vec{0}$，在\autoref{eq:2:线性空间运算性质2}分别令$\lambda=\mu$和$\lambda=0$有如下四条性质：
+        \item 在\autoref{eq:2:线性空间运算性质1} 中分别令$\alpha=\beta$和$\alpha=\vec{0}$，在\autoref{eq:2:线性空间运算性质2} 分别令$\lambda=\mu$和$\lambda=0$有如下四条性质：
         \begin{enumerate}
             \item $\lambda\cdot \vec{0}=\vec{0}$；
 
@@ -84,11 +84,13 @@
         我们详细证明前两条如何根据公理一步步推导得到，后两条请读者依照此自行证明.
         \begin{proof}
             \begin{enumerate}
-                \item 在\autoref{eq:2:线性空间运算性质1}中令$\alpha=\beta$，则$\lambda(\alpha-\alpha)=\lambda\alpha-\lambda\alpha$，根据减法定义有$\alpha-\alpha=\alpha+(-\alpha)=\vec{0}$，且$\lambda\alpha-\lambda\alpha=\lambda\alpha+(-(\lambda\alpha))=\vec{0}$，因此$\lambda\cdot \vec{0}=\vec{0}$.
-                \item 在\autoref{eq:2:线性空间运算性质1}中令$\alpha=\vec{0}$有$\lambda(\vec{0}-\beta)=\lambda\vec{0}-\lambda\beta$，根据减法定义有$\vec{0}-\beta=\vec{0}+(-\beta)=-\beta$（第二个等号来源于加法单位元性质），且$\lambda\vec{0}-\lambda\beta=\vec{0}-\lambda\beta=\vec{0}+(-(\lambda\beta))=-(\lambda\beta)$（第一个等号来源于刚刚证明的$\lambda\cdot \vec{0}=\vec{0}$，第二个等号来源于减法的定义，第三个等号来源于加法单位元性质），因此$\lambda(-\beta)=-(\lambda\beta)$.
+                \item 在\autoref{eq:2:线性空间运算性质1} 中令$\alpha=\beta$，则$\lambda(\alpha-\alpha)=\lambda\alpha-\lambda\alpha$，根据减法定义有$\alpha-\alpha=\alpha+(-\alpha)=\vec{0}$，且$\lambda\alpha-\lambda\alpha=\lambda\alpha+(-(\lambda\alpha))=\vec{0}$，因此$\lambda\cdot \vec{0}=\vec{0}$.
+
+                \item 在\autoref{eq:2:线性空间运算性质1} 中令$\alpha=\vec{0}$有$\lambda(\vec{0}-\beta)=\lambda\vec{0}-\lambda\beta$，根据减法定义有$\vec{0}-\beta=\vec{0}+(-\beta)=-\beta$（第二个等号来源于加法单位元性质），且$\lambda\vec{0}-\lambda\beta=\vec{0}-\lambda\beta=\vec{0}+(-(\lambda\beta))=-(\lambda\beta)$（第一个等号来源于刚刚证明的$\lambda\cdot \vec{0}=\vec{0}$，第二个等号来源于减法的定义，第三个等号来源于加法单位元性质），因此$\lambda(-\beta)=-(\lambda\beta)$.
             \end{enumerate}
         \end{proof}
         特别地，当$\mu=1$时有$(-1)\alpha=-\alpha$. 即$-1$数乘一个元素可以得到该元素的逆元（虽然代入一般平面向量这一点非常显然，但是我们只能基于公理一步步推导得到这一显然的性质）.
+
         \item 若$\lambda\alpha=\vec{0}$，则$\lambda=0$或$\alpha=\vec{0}$，这一点也是显然的，因为如果$\lambda\neq 0$，则$\lambda^{-1}$存在，从而$\alpha=1\alpha=(\lambda^{-1}\lambda)\alpha=\lambda^{-1}(\lambda\alpha)=\lambda^{-1}\vec{0}=\vec{0}$（这里的每一个等号都是能找到对应的，请读者自行判断）.
 
         最后，综合上述性质我们有方程$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=\vec{0}$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$. 我们放在习题中供读者练习.
@@ -169,6 +171,7 @@
                     \end{align*}
                 \end{enumerate}
             但是对\[\mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F},a_i\neq 0\}\]不构成线性空间，其原因在于我们无法找到一个零元$p_0(x)$满足$p(x) + p_0(x) = p_0(x) + p(x) = p(x)$.
+
         \item 同理对八条性质逐条验证.
                 \begin{enumerate}
                     \item $\forall \alpha_1 = a_1+b_1\i , \alpha_2 = a_2+b_2\i , \alpha_3 = a_3+b_3\i \in \mathbf{C},a_i, b_i \in \mathbf{R}, i = 1, 2, 3,$

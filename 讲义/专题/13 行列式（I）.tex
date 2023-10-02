@@ -48,42 +48,44 @@
 \begin{proof}
     \begin{enumerate}
         \item 由于行列式满足\autoref{def:13:公理化定义} 的\ref*{item:13:齐性}，设行列式第$i$列为零向量，因此
-        \begin{align*}
-            D(\alpha_1,\cdots,0,\cdots,\alpha_n) &=D(\alpha_1,\cdots,0\cdot\alpha_i,\cdots,\alpha_n) \\
-            &=0\cdot D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_n) \\
-            &=0
-        \end{align*}
+              \begin{align*}
+                  D(\alpha_1,\ldots,0,\ldots,\alpha_n) & =D(\alpha_1,\ldots,0\cdot\alpha_i,\ldots,\alpha_n)  \\
+                                                       & =0\cdot D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_n) \\
+                                                       & =0
+              \end{align*}
 
         \item 由于行列式满足\autoref{def:13:公理化定义} 的\ref*{item:13:反对称性}，设行列式第$i$列和第$j$列元素相同，因此
-        \begin{align*}
-            D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_j,\cdots,\alpha_n) &=D(\alpha_1,\cdots,\alpha_j,\cdots,\alpha_i,\cdots,\alpha_n) \\
-            &=-D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_j,\cdots,\alpha_n)
-        \end{align*}
-        从而$D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_j,\cdots,\alpha_n)=0$.
+              \begin{align*}
+                  D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n) & =D(\alpha_1,\ldots,\alpha_j,\ldots,\alpha_i,\ldots,\alpha_n)  \\
+                                                                              & =-D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)
+              \end{align*}
+              从而$D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)=0$.
 
         \item 由于行列式满足\autoref{def:13:公理化定义} 的\ref*{item:13:齐性}，设行列式第$i$列和第$j$列元素成比例，$\alpha_i=k\alpha_j$，因此
-        \begin{align*}
-            D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_j,\cdots,\alpha_n) &=D(\alpha_1,\cdots,k\alpha_j,\cdots,\alpha_j,\cdots,\alpha_n) \\
-            &=kD(\alpha_1,\cdots,\alpha_j,\cdots,\alpha_j,\cdots,\alpha_n) \\
-            &=0
-        \end{align*}
-        其中最后一个等号用到了本例的第二条结论.
+              \begin{align*}
+                  D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)
+                   & =D(\alpha_1,\ldots,k\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n) \\
+                   & =kD(\alpha_1,\ldots,\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n) \\
+                   & =0
+              \end{align*}
+              其中最后一个等号用到了本例的第二条结论.
 
-        \item 事实上，根据\autoref{def:13:公理化定义}的\ref*{item:13:加性}以及本例第3条结论，我们可以得到
-        \begin{align*}
-            D(\alpha_1,\cdots,\alpha_i+k\alpha_j,\cdots,\alpha_j,\cdots,\alpha_n) &=D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_j,\cdots,\alpha_n)\\&+D(\alpha_1,\cdots,k\alpha_j,\cdots,\alpha_j,\cdots,\alpha_n) \\
-            &=D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_j,\cdots,\alpha_n)+0 \\
-            &=D(\alpha_1,\cdots,\alpha_i,\cdots,\alpha_j,\cdots,\alpha_n).
-        \end{align*}
+        \item 事实上，根据\autoref{def:13:公理化定义} 的\ref*{item:13:加性} 以及本例第3条结论，我们可以得到
+              \begin{align*}
+                  D(\alpha_1,\ldots,\alpha_i+k\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n)
+                   & =D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)   \\&+D(\alpha_1,\ldots,k\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n) \\
+                   & =D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)+0 \\
+                   & =D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n).
+              \end{align*}
 
         \item 设$\alpha_1,\alpha_2,\ldots,\alpha_n$线性相关，因此存在不全为0的数$k_1,k_2,\ldots,k_n$使得$k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n=0$，不妨设$k_1 \neq 0$，因此
-        \[\alpha_1=-\frac{k_2}{k_1}\alpha_2-\frac{k_3}{k_1}\alpha_3-\cdots-\frac{k_n}{k_1}\alpha_n,\]
-        因此
-        \begin{align*}
-            D(\alpha_1,\alpha_2,\ldots,\alpha_n) &=D(-\frac{k_2}{k_1}\alpha_2-\frac{k_3}{k_1}\alpha_3-\cdots-\frac{k_n}{k_1}\alpha_n,\alpha_2,\ldots,\alpha_n) \\
-            &=-\frac{k_2}{k_1}D(\alpha_2,\alpha_2,\ldots,\alpha_n)-\cdots-\frac{k_n}{k_1}D(\alpha_n,\alpha_2,\ldots,\alpha_n) \\
-            &=0.
-        \end{align*}
+              \[\alpha_1=-\frac{k_2}{k_1}\alpha_2-\frac{k_3}{k_1}\alpha_3-\cdots-\frac{k_n}{k_1}\alpha_n,\]
+              因此
+              \begin{align*}
+                  D(\alpha_1,\alpha_2,\ldots,\alpha_n) & =D(-\frac{k_2}{k_1}\alpha_2-\frac{k_3}{k_1}\alpha_3-\cdots-\frac{k_n}{k_1}\alpha_n,\alpha_2,\ldots,\alpha_n)     \\
+                                                       & =-\frac{k_2}{k_1}D(\alpha_2,\alpha_2,\ldots,\alpha_n)-\cdots-\frac{k_n}{k_1}D(\alpha_n,\alpha_2,\ldots,\alpha_n) \\
+                                                       & =0.
+              \end{align*}
     \end{enumerate}
 \end{proof}
 
@@ -94,10 +96,10 @@
 \begin{solution}
     $2A+3B=(2\alpha_1+3\alpha_1,2\alpha_2+3\alpha_2,2\beta_1+3\beta_2)=(5\alpha_1,5\alpha_2,2\beta_1+3\beta_2)$，因此
     \begin{align*}
-        |2A+3B| &=|5\alpha_1,5\alpha_2,2\beta_1+3\beta_2| \\
-        &=25|\alpha_1,\alpha_2,2\beta_1+3\beta_2| \\
-        &=25(2|\alpha_1,\alpha_2,\beta_1|+3|\alpha_1,\alpha_2,\beta_2|) \\
-        &=25(2|A|+3|B|)=300. \\
+        |2A+3B| & =|5\alpha_1,5\alpha_2,2\beta_1+3\beta_2|                       \\
+                & =25|\alpha_1,\alpha_2,2\beta_1+3\beta_2|                       \\
+                & =25(2|\alpha_1,\alpha_2,\beta_1|+3|\alpha_1,\alpha_2,\beta_2|) \\
+                & =25(2|A|+3|B|)=300.                                            \\
     \end{align*}
 \end{solution}
 
@@ -119,7 +121,7 @@
 \begin{solution}
     我们只举一个例子，第二行第一列元素$-1$的余子式和代数余子式. 根据定义，它的余子式是去掉第二行和第一列所有元素剩余的二阶行列式
     \[\begin{vmatrix}
-            1 & 3 \\
+            1 & 3  \\
             5 & -2
         \end{vmatrix}=-17,\]
     因此它的代数余子式是$A_{21}=(-1)^{2+1}(-17)=17$. 读者可以自行计算其他元素的余子式和代数余子式.
@@ -145,17 +147,17 @@
 \begin{solution}
     我们选取$i=2$进行按行展开，由\autoref{def:13:余子式} 可知$A_{21}=17,A_{22}=-7,A_{23}=-9$，因此
     \begin{align*}
-        D &=\sum_{k=1}^{3}a_{2k}A_{2k} \\
-          &=a_{21}A_{21}+a_{22}A_{22}+a_{23}A_{23} \\
-          &=(-1) \cdot 17+0 \cdot (-7)+2 \cdot (-9) \\
-          &=-35.
+        D & =\sum_{k=1}^{3}a_{2k}A_{2k}              \\
+          & =a_{21}A_{21}+a_{22}A_{22}+a_{23}A_{23}  \\
+          & =(-1) \cdot 17+0 \cdot (-7)+2 \cdot (-9) \\
+          & =-35.
     \end{align*}
     同理，我们选取$j=3$进行按列展开，由\autoref{def:13:余子式} 可知$A_{13}=-5,A_{23}=-9,A_{33}=1$，因此
     \begin{align*}
-        D &=\sum_{k=1}^{3}a_{k3}A_{k3} \\
-          &=a_{13}A_{13}+a_{23}A_{23}+a_{33}A_{33} \\
-          &=3 \cdot (-5)+2 \cdot (-9)+(-2) \cdot 1 \\
-          &=-35.
+        D & =\sum_{k=1}^{3}a_{k3}A_{k3}             \\
+          & =a_{13}A_{13}+a_{23}A_{23}+a_{33}A_{33} \\
+          & =3 \cdot (-5)+2 \cdot (-9)+(-2) \cdot 1 \\
+          & =-35.
     \end{align*}
     读者可以自行计算按其他行列展开的结果.
 \end{solution}
@@ -181,10 +183,10 @@
 \begin{solution}
     例如我们选取第一行元素和第二行的代数余子式，由\autoref{def:13:余子式} 可知$A_{21}=17,A_{22}=-7,A_{23}=-9$，因此
     \begin{align*}
-        D &=\sum_{k=1}^{3}a_{1k}A_{2k} \\
-          &=a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23} \\
-          &=2 \cdot 17+1 \cdot (-7)+3 \cdot (-9) \\
-          &=0.
+        D & =\sum_{k=1}^{3}a_{1k}A_{2k}             \\
+          & =a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23} \\
+          & =2 \cdot 17+1 \cdot (-7)+3 \cdot (-9)   \\
+          & =0.
     \end{align*}
 \end{solution}
 
@@ -197,14 +199,14 @@
     \item 一般情况下，$|A \pm B| \neq |A|\pm|B|$；
 
     \item $|kA|=k^n|A|$；
-    \begin{proof}
-        由\autoref{def:13:公理化定义} 的\ref*{item:13:齐性}，设$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则
-        \begin{align*}
-            |kA| &=|k\alpha_1,k\alpha_2,\ldots,k\alpha_n| \\
-                 &=k^n|\alpha_1,\alpha_2,\ldots,\alpha_n| \\
-                 &=k^n|A|.
-        \end{align*}
-    \end{proof}
+          \begin{proof}
+              由\autoref{def:13:公理化定义} 的\ref*{item:13:齐性}，设$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则
+              \begin{align*}
+                  |kA| & =|k\alpha_1,k\alpha_2,\ldots,k\alpha_n| \\
+                       & =k^n|\alpha_1,\alpha_2,\ldots,\alpha_n| \\
+                       & =k^n|A|.
+              \end{align*}
+          \end{proof}
 
     \item \label{item:13:行列式性质:4}
           初等矩阵行列式（注意初等矩阵不分行列，左乘右乘区分初等行列变换）：\\
@@ -219,9 +221,9 @@
     \item 利用 \ref*{item:13:行列式性质:4} 中的结论可以得到上、下三角矩阵行列式均为主对角线元素的乘积；
 
     \item 利用 \ref*{item:13:行列式性质:4} 中的结论（求出初等矩阵逆矩阵行列式）可以得到若$A$可逆，则$|A^{-1}|=|A|^{-1}$.
-    \begin{proof}
-        由$|AB|=|A||B|$，设$B=A^{-1}$，则$|E|=|AA^{-1}|=|A||A^{-1}|$，因此$|A||A^{-1}|=1$，从而$|A^{-1}|=|A|^{-1}$.
-    \end{proof}
+          \begin{proof}
+              由$|AB|=|A||B|$，设$B=A^{-1}$，则$|E|=|AA^{-1}|=|A||A^{-1}|$，因此$|A||A^{-1}|=1$，从而$|A^{-1}|=|A|^{-1}$.
+          \end{proof}
 \end{enumerate}
 
 以上性质都可以基于定义或上述其他性质得到，其中3-6条可参考教材5.3节，7可参考教材172页例3. 这些性质结论希望读者熟悉，实际上推导过程重要性不大，虽然也并不复杂. 下面介绍的性质需要用到``打洞法''（分块矩阵初等变换）来证明：
@@ -236,9 +238,9 @@
               \end{vmatrix} = |A||B|,\enspace\begin{vmatrix}
                   O & A \\ B & C
               \end{vmatrix} = (-1)^{kr}|A||B|$；
-    \begin{proof}
-        证明从略，感兴趣的读者可以参考教材179页例2，实际上我们很多时候只需要基于这些结论证明进一步的性质.
-    \end{proof}
+          \begin{proof}
+              证明从略，感兴趣的读者可以参考教材179页例2，实际上我们很多时候只需要基于这些结论证明进一步的性质.
+          \end{proof}
 
     \item 当$A$可逆时，有$\begin{vmatrix}
                   A & B \\ C & D
@@ -249,57 +251,59 @@
               \end{vmatrix} = (-1)^{mn}|B||C-DB^{-1}A|$，当$C$可逆时，有$\begin{vmatrix}
                   A & B \\ C & D
               \end{vmatrix} = (-1)^{mn}|C||B-AC^{-1}D|$；
-    \begin{proof}
-        由于
-        \[\begin{pmatrix}
-            E & O \\ -CA^{-1} & E
-        \end{pmatrix}\begin{pmatrix}
-            A & B \\ C & D
-        \end{pmatrix}= \begin{pmatrix}
-            A & B \\ O & D-CA^{-1}B
-        \end{pmatrix},\]
-        两边取行列式，并注意到
-        \[\begin{vmatrix}
-            E & O \\ -CA^{-1} & E
-        \end{vmatrix}=1,\]
-        因此
-        \[\begin{vmatrix}
-            A & B \\ C & D
-        \end{vmatrix}=\begin{vmatrix}
-            A & B \\ O & D-CA^{-1}B
-        \end{vmatrix}=|A||D-CA^{-1}B|.\]
+          \begin{proof}
+              由于
+              \[\begin{pmatrix}
+                      E & O \\ -CA^{-1} & E
+                  \end{pmatrix}\begin{pmatrix}
+                      A & B \\ C & D
+                  \end{pmatrix}= \begin{pmatrix}
+                      A & B \\ O & D-CA^{-1}B
+                  \end{pmatrix},\]
+              两边取行列式，并注意到
+              \[\begin{vmatrix}
+                      E & O \\ -CA^{-1} & E
+                  \end{vmatrix}=1,\]
+              因此
+              \[\begin{vmatrix}
+                      A & B \\ C & D
+                  \end{vmatrix}=\begin{vmatrix}
+                      A & B \\ O & D-CA^{-1}B
+                  \end{vmatrix}=|A||D-CA^{-1}B|.\]
 
-        读者会发现，我们在上面的证明中多次使用$\begin{vmatrix}
-            A & O \\ C & B
-        \end{vmatrix} = \begin{vmatrix}
-            A & D \\ O & B
-        \end{vmatrix} = |A||B|$这一性质，因此这一性质是相当重要的，需要读者熟悉.
+              读者会发现，我们在上面的证明中多次使用$\begin{vmatrix}
+                      A & O \\ C & B
+                  \end{vmatrix} = \begin{vmatrix}
+                      A & D \\ O & B
+                  \end{vmatrix} = |A||B|$这一性质，因此这一性质是相当重要的，需要读者熟悉.
 
-        本条的其他结论推导类似于上方，在此不再赘述，感兴趣的读者可以自行推导，实际上结论并不是很重要，重要的是在于领悟使用行列式分块计算性质和打洞法的基本方法.
-    \end{proof}
+              本条的其他结论推导类似于上方，在此不再赘述，感兴趣的读者可以自行推导，实际上结论并不是很重要，重要的是在于领悟使用行列式分块计算性质和打洞法的基本方法.
+          \end{proof}
 
     \item 设$A,B$分别是$n \times m$和$m \times n$矩阵，则$|E_n \pm AB|=|E_m \pm BA|$，且 \\
           $|\lambda E_n \pm AB|=\lambda^{n-m}|\lambda E_m \pm BA|,\enspace n \geqslant m$.
-    \begin{proof}
-        由前述第二条性质直接可得
-        \[|E_n \pm AB|=\begin{vmatrix}
-            E_n & A \\ \mp B & E_m
-        \end{vmatrix}=|E_m \pm BA|,\]
-        也有
-        \begin{align*}
-            |\lambda E_n \pm AB| &=\begin{vmatrix}
-                \lambda E_n & A \\ \mp B & E_m
-            \end{vmatrix}=\lambda^n\begin{vmatrix}
-                E_n & \lambda^{-1}A \\ \mp B & E_m
-            \end{vmatrix}=\lambda^{n-m}\begin{vmatrix}
-                E_n & A \\ \mp B & E_m
-            \end{vmatrix}\\
-            &= \lambda^{n-m}|\lambda E_m \pm BA|.
-        \end{align*}
-        其中第一行第二个等号来源于前$n$行每行提出一个$\lambda$，第一行第三个等号来源于后$m$列每列乘以$\lambda$.
-    \end{proof}
+          \begin{proof}
+              由前述第二条性质直接可得
+              \[|E_n \pm AB|=\begin{vmatrix}
+                      E_n & A \\ \mp B & E_m
+                  \end{vmatrix}=|E_m \pm BA|,\]
+              也有
+              \begin{align*}
+                  |\lambda E_n \pm AB|
+                   & =\begin{vmatrix}
+                          \lambda E_n & A \\ \mp B & E_m
+                      \end{vmatrix}=\lambda^n
+                  \begin{vmatrix}
+                      E_n & \lambda^{-1}A \\ \mp B & E_m
+                  \end{vmatrix}=\lambda^{n-m}\begin{vmatrix}
+                                                 E_n & A \\ \mp B & E_m
+                                             \end{vmatrix} \\
+                   & = \lambda^{n-m}|\lambda E_m \pm BA|.
+              \end{align*}
+              其中第一行第二个等号来源于前$n$行每行提出一个$\lambda$，第一行第三个等号来源于后$m$列每列乘以$\lambda$.
+          \end{proof}
 
-    事实上，这里的结果在特征值与特征向量的部分中我们会给出更深入的解释.
+          事实上，这里的结果在特征值与特征向量的部分中我们会给出更深入的解释.
 \end{enumerate}
 
 还有一部分由这些性质可以推导的其他性质将出现在C组习题中供参考. 这部分主要是技巧性内容，可以选择性完成.
@@ -322,27 +326,30 @@
         \item （公理化定义与性质）参考教材171页例2的方法，此处展开较为复杂不再赘述，也不推荐使用这一方法.
 
         \item （公式法，实际上就是逆序数定义）我们知道三阶行列式的计算公式为（直接展开也很容易验证）$D=\begin{vmatrix}
-                a_{11} & a_{12} & a_{13} \\
-                a_{21} & a_{22} & a_{23} \\
-                a_{31} & a_{32} & a_{33}
-            \end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$，因此$D=1 \cdot 3 \cdot 2+2 \cdot 1 \cdot 3+3 \cdot 2 \cdot 1-3 \cdot 3 \cdot 3-2 \cdot 2 \cdot 2-1 \cdot 1 \cdot 1=-18$.
+                      a_{11} & a_{12} & a_{13} \\
+                      a_{21} & a_{22} & a_{23} \\
+                      a_{31} & a_{32} & a_{33}
+                  \end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$，因此$D=1 \cdot 3 \cdot 2+2 \cdot 1 \cdot 3+3 \cdot 2 \cdot 1-3 \cdot 3 \cdot 3-2 \cdot 2 \cdot 2-1 \cdot 1 \cdot 1=-18$.
 
         \item （化为上三角形式）参考教材172页例4，具体过程不在此展开.
 
         \item （递归式定义展开）我们对第一行展开，由\autoref{def:13:递归式定义} 可知
               \begin{align*}
-                  D &=1 \cdot \begin{vmatrix}
+                  D & =1 \cdot
+                  \begin{vmatrix}
                       3 & 1 \\
                       1 & 2
-                  \end{vmatrix}-2 \cdot \begin{vmatrix}
-                      2 & 1 \\
-                      3 & 2
-                  \end{vmatrix}+3 \cdot \begin{vmatrix}
-                      2 & 3 \\
-                      3 & 1
-                  \end{vmatrix} \\
-                    &=1 \cdot (6-1)-2 \cdot (4-3)+3 \cdot (2-9) \\
-                    &=-18.
+                  \end{vmatrix}-2
+                  \cdot \begin{vmatrix}
+                            2 & 1 \\
+                            3 & 2
+                        \end{vmatrix}+3
+                  \cdot \begin{vmatrix}
+                            2 & 3 \\
+                            3 & 1
+                        \end{vmatrix}                           \\
+                    & =1 \cdot (6-1)-2 \cdot (4-3)+3 \cdot (2-9) \\
+                    & =-18.
               \end{align*}
     \end{enumerate}
 \end{solution}
@@ -419,24 +426,24 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 由\autoref{eq:13:递归式定义3}和\autoref{eq:13:递归式定义4}，$AA^*$的第$i$行第$j$列元素为
-        \[\sum_{k=1}^{n}a_{ik}A_{kj}=\begin{cases}
-                |A| & i=j     \\
-                0   & i \neq j
-            \end{cases}\]
-        因此$AA^*=|A|E$，同理可证$A^*A=|A|E$.
+        \item 由\autoref{eq:13:递归式定义3} 和\autoref{eq:13:递归式定义4}，$AA^*$的第$i$行第$j$列元素为
+              \[\sum_{k=1}^{n}a_{ik}A_{kj}=\begin{cases}
+                      |A| & i=j      \\
+                      0   & i \neq j
+                  \end{cases}\]
+              因此$AA^*=|A|E$，同理可证$A^*A=|A|E$.
 
-        若$A$可逆，则$|A| \neq 0$，从而由$AA^*=|A|E$可知$A^{-1}=|A|^{-1}A^*$，$A^*=|A|A^{-1}$，$(A^*)^{-1}=|A|^{-1}A$.
+              若$A$可逆，则$|A| \neq 0$，从而由$AA^*=|A|E$可知$A^{-1}=|A|^{-1}A^*$，$A^*=|A|A^{-1}$，$(A^*)^{-1}=|A|^{-1}A$.
 
-        而我们知道$(A^{-1})^*A^{-1}=|A^{-1}|E=|A|^{-1}E$，因此$(A^{-1})^*=|A|^{-1}A$.
+              而我们知道$(A^{-1})^*A^{-1}=|A^{-1}|E=|A|^{-1}E$，因此$(A^{-1})^*=|A|^{-1}A$.
 
         \item 由$AA^*=|A|E$，$|AA^*|=|A||A^*|=|A|^n$，因此$|A^*|=|A|^{n-1}$.
 
         \item 只证明$A$和$B$可逆的情况，由$A^*=|A|A^{-1}$可知，$(AB)^*=|AB|(AB)^{-1}=|A||B|B^{-1}A^{-1}=B^*A^*$.
 
-        由$(A^\mathrm{T})^*=|A^\mathrm{T}|(A^\mathrm{T})^{-1}=|A|(A^{-1})^\mathrm{T}=(|A|A^{-1})^\mathrm{T}=(A^*)^\mathrm{T}$.
+              由$(A^\mathrm{T})^*=|A^\mathrm{T}|(A^\mathrm{T})^{-1}=|A|(A^{-1})^\mathrm{T}=(|A|A^{-1})^\mathrm{T}=(A^*)^\mathrm{T}$.
 
-        由$(kA)^*=|kA|(kA)^{-1}=k^n|A|\cdot k^{-1}A^{-1}=k^{n-1}A^*$.
+              由$(kA)^*=|kA|(kA)^{-1}=k^n|A|\cdot k^{-1}A^{-1}=k^{n-1}A^*$.
 
         \item 由$(A^*)^*=|A^*|A^{*-1}$，$|A^*|=|A|^{n-1}$，$(A^*)^{-1}=|A|^{-1}A$，可知$(A^*)^*=|A|^{n-2}A$. 由$|(A^*)^*|=||A|^{n-2}A|^{n-1}=|A|^{n(n-2)+1}=|A|^{(n-1)^2}$.
 
@@ -510,23 +517,23 @@
 
 \begin{proof}
     我们不区分齐次与非齐次方程组进行证明，实际上齐次的结论只是下面证明的特例. 事实上，对于任意线性方程组$AX=b$，其中$b$可以是零向量，若$D=|A|\neq 0$，则$A$可逆，因此方程组有解
-    \[X=A^{-1}b=\cfrac{1}{|A|}A^*b=\cfrac{1}{D}A^*b,\]
+    \[X=A^{-1}b=\frac{1}{|A|}A^*b=\frac{1}{D}A^*b,\]
     即
     \[\begin{pmatrix}
-        x_1 \\ x_2 \\ \vdots \\ x_n
-    \end{pmatrix}= \cfrac{1}{D}\begin{pmatrix}
-        A_{11} & A_{21} & \cdots & A_{n1} \\
-        A_{12} & A_{22} & \cdots & A_{n2} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        A_{1n} & A_{2n} & \cdots & A_{nn}
-    \end{pmatrix}\begin{pmatrix}
-        b_1 \\ b_2 \\ \vdots \\ b_n
-    \end{pmatrix},\]
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix}= \dfrac{1}{D}\begin{pmatrix}
+            A_{11} & A_{21} & \cdots & A_{n1} \\
+            A_{12} & A_{22} & \cdots & A_{n2} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            A_{1n} & A_{2n} & \cdots & A_{nn}
+        \end{pmatrix}\begin{pmatrix}
+            b_1 \\ b_2 \\ \vdots \\ b_n
+        \end{pmatrix},\]
     于是$x_i=\dfrac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$（根据\autoref{def:13:递归式定义}）.
 
     事实上此时解唯一，因为可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
 
-    反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:6:双射等价条件}可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$.综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
+    反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:6:双射等价条件} 可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$. 综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
 
     剩下的无解、无穷解的结论就很显然了. 若$AX=b$无解或有无穷解，反证法，若$D\neq 0$，则$A$可逆，从而$AX=b$有唯一解，矛盾，故$D=0$. 反之，若$D=0$，则$A$不可逆，反证法，若$AX=b$有唯一解，$A$可逆，矛盾，故$AX=b$无解或有无穷解（完全就是前面$AX=b$有唯一解$\iff D=|A|\neq 0$的推论）.
 \end{proof}
@@ -543,25 +550,25 @@
 \begin{solution}
     $a_1,a_2,a_3$两两不等时，我们有
     \[D=\begin{vmatrix}
-            1      & 1      & 1      \\
-            a_1    & a_2    & a_3    \\
-            a_1^2  & a_2^2  & a_3^2
+            1     & 1     & 1     \\
+            a_1   & a_2   & a_3   \\
+            a_1^2 & a_2^2 & a_3^2
         \end{vmatrix}=(a_2-a_1)(a_3-a_1)(a_3-a_2)\neq 0,\]
     根据Cramer法则，方程组有唯一解，且
     \[D_1=\begin{vmatrix}
-            1      & 1      & 1      \\
-            0      & a_2    & a_3    \\
-            0      & a_2^2  & a_3^2
+            1 & 1     & 1     \\
+            0 & a_2   & a_3   \\
+            0 & a_2^2 & a_3^2
         \end{vmatrix}=(a_3-a_2)a_2a_3,\]
     \[D_2=\begin{vmatrix}
-            1      & 1      & 1      \\
-            a_1    & 0      & a_3    \\
-            a_1^2  & 0      & a_3^2
+            1     & 1 & 1     \\
+            a_1   & 0 & a_3   \\
+            a_1^2 & 0 & a_3^2
         \end{vmatrix}=(a_1-a_3)a_1a_3,\]
     \[D_3=\begin{vmatrix}
-            1      & 1      & 1      \\
-            a_1    & a_2    & 0      \\
-            a_1^2  & a_2^2  & 0
+            1     & 1     & 1 \\
+            a_1   & a_2   & 0 \\
+            a_1^2 & a_2^2 & 0
         \end{vmatrix}=(a_2-a_1)a_1a_2,\]
     因此
     \[x_1=\dfrac{D_1}{D}=\dfrac{a_2a_3}{(a_2-a_1)(a_3-a_1)},\]\[x_2=\dfrac{D_2}{D}=\dfrac{a_1a_3}{(a_1-a_2)(a_3-a_2)},\]\[x_3=\dfrac{D_3}{D}=\dfrac{a_1a_2}{(a_1-a_3)(a_2-a_3)}.\]
@@ -596,6 +603,7 @@
 \begin{solution}
     \begin{enumerate}
         \item 一阶子式：根据子式定义，任意1行1列交点组成的1个元素就是一阶子式，即所有的元素本身都是一阶子式；
+
         \item 二阶子式：根据子式定义，任意2行2列交点组成的4个元素排成的行列式就是二阶子式，即
               \[\begin{vmatrix}
                       1 & 5 \\
@@ -607,33 +615,35 @@
                       5 & -2 \\
                       3 & 4
                   \end{vmatrix},\begin{vmatrix}
-                      1 & 5 \\
+                      1  & 5  \\
                       -1 & -3
-                \end{vmatrix},\begin{vmatrix}
-                    1 & -2 \\
-                    -1 & 0
-                \end{vmatrix},\]\[\begin{vmatrix}
-                    5 & -2 \\
-                    -3 & 0
-                \end{vmatrix},\begin{vmatrix}
-                    2 & 3 \\
-                    -1 & -3
-                \end{vmatrix},\begin{vmatrix}
-                    2 & 4 \\
-                    -1 & 0
-                \end{vmatrix},\begin{vmatrix}
-                    3 & 4 \\
-                    -3 & 0
-                \end{vmatrix};\]
+                  \end{vmatrix},\begin{vmatrix}
+                      1  & -2 \\
+                      -1 & 0
+                  \end{vmatrix},\]\[\begin{vmatrix}
+                      5  & -2 \\
+                      -3 & 0
+                  \end{vmatrix},\begin{vmatrix}
+                      2  & 3  \\
+                      -1 & -3
+                  \end{vmatrix},\begin{vmatrix}
+                      2  & 4 \\
+                      -1 & 0
+                  \end{vmatrix},\begin{vmatrix}
+                      3  & 4 \\
+                      -3 & 0
+                  \end{vmatrix};\]
+
         \item 主子式：根据主子式定义，要求取的行列号相同，故一阶主子式就是1行1列、2行2列、3行3列的元素，二阶主子式就是选取1、2/1、3/2、3行与列构成的子式，即
-        \[\begin{vmatrix}
-            1 & 5 \\ 2 & 3
-        \end{vmatrix},\begin{vmatrix}
-            1 & -2 \\ -1 & 0
-        \end{vmatrix},\begin{vmatrix}
-            3 & 4 \\ -3 & 0
-        \end{vmatrix};\]
-        三阶主子式就是矩阵本身对应的行列式，不再赘述.
+              \[\begin{vmatrix}
+                      1 & 5 \\ 2 & 3
+                  \end{vmatrix},\begin{vmatrix}
+                      1 & -2 \\ -1 & 0
+                  \end{vmatrix},\begin{vmatrix}
+                      3 & 4 \\ -3 & 0
+                  \end{vmatrix};\]
+              三阶主子式就是矩阵本身对应的行列式，不再赘述.
+
         \item 顺序主子式根据定义，一阶就是第一行第一列的元素，二阶就是前两行前两节元素构成的子式，三阶就是本身的行列式.
     \end{enumerate}
 \end{solution}
@@ -646,7 +656,7 @@
 \begin{theorem}\label{thm:13:行列式秩等于行列式秩}
     矩阵$A$的秩$r(A)=r \iff A$的行列式的秩为$r$.
 \end{theorem}
-我们可以得到上一个专题中矩阵的秩的等价定义.这一定理的证明见教材183页，事实上是很简单的. 我们可以这么理解，最高非零子式的阶数实际上就是矩阵行、列向量极大线性无关组的长度（更多行、列向量就会使得子式等于0，此时必不满秩），那么这一定理就很显然了.
+我们可以得到上一个专题中矩阵的秩的等价定义. 这一定理的证明见教材183页，事实上是很简单的. 我们可以这么理解，最高非零子式的阶数实际上就是矩阵行、列向量极大线性无关组的长度（更多行、列向量就会使得子式等于0，此时必不满秩），那么这一定理就很显然了.
 
 \begin{definition}
     矩阵$A$的非零子式的最高阶数$r$称为矩阵$A$的秩，记为$r(A)$.
@@ -660,10 +670,10 @@
 \end{example}
 
 \begin{solution}
-    记该矩阵为$A$，由于$A$为3行4列矩阵，因此$r(A)\leqslant 3$.又我们可以发现其三阶子式
+    记该矩阵为$A$，由于$A$为3行4列矩阵，因此$r(A)\leqslant 3$. 又我们可以发现其三阶子式
     \[\begin{vmatrix}
-        1 & -1 & 3 \\ 1 & 1 & 1 \\ 2 & 0 & 4
-    \end{vmatrix}=-4\neq 0,\]
+            1 & -1 & 3 \\ 1 & 1 & 1 \\ 2 & 0 & 4
+        \end{vmatrix}=-4\neq 0,\]
     故$r(A)\geqslant 3$，因此$r(A)=3$.
 \end{solution}
 

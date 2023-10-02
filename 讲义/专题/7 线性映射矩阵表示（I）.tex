@@ -307,17 +307,19 @@
               \end{pmatrix}\]
           则
           \begin{align*}
-              (\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))\begin{pmatrix}
-                                                                            b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
-                                                                        \end{pmatrix}
+              (\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))
+              \begin{pmatrix}
+                  b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
+              \end{pmatrix}
                & =(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))\begin{pmatrix}
                                                                                                 b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
                                                                                             \end{pmatrix} \\
-               & =b_{1k}\sigma(\varepsilon_1)+b_{2k}\sigma(\varepsilon_2)+\cdots+b_{nk}\sigma(\varepsilon_n)                     \\
-               & =\sigma(b_{1k}\varepsilon_1+b_{2k}\varepsilon_2+\cdots+b_{nk}\varepsilon_n)                                     \\
-               & =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)\begin{pmatrix}
-                                                                               b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
-                                                                           \end{pmatrix})
+               & =b_{1k}\sigma(\varepsilon_1)+b_{2k}\sigma(\varepsilon_2)+\cdots+b_{nk}\sigma(\varepsilon_n)                    \\
+               & =\sigma(b_{1k}\varepsilon_1+b_{2k}\varepsilon_2+\cdots+b_{nk}\varepsilon_n)                                    \\
+               & =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)
+              \begin{pmatrix}
+                  b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
+              \end{pmatrix})
           \end{align*}
           故得证.
 \end{enumerate}
@@ -358,7 +360,7 @@
 \begin{solution}
     由于$A$与$E$是可交换的，并且$A^nE^m=A^n$显然成立，因此我们结合中学学过的二项式展开，得到结果：
     \begin{align*}
-        (A+\lambda E)^n & =\sum_{i=0}^nC_n^iA^i(\lambda E)^{n-i} \\
+        (A+\lambda E)^n & =\sum_{i=0}^nC_n^iA^i(\lambda E)^{n-i}    \\
                         & =\sum_{i=0}^nC_n^i\lambda^{n-i}A^iE^{n-i} \\
                         & =\sum_{i=0}^nC_n^i\lambda^{n-i}A^i.
     \end{align*}
@@ -374,11 +376,11 @@
 \end{example}
 
 \begin{solution}
-    我们可以直接证明第二点，因为第一点是第二点的特例.设$f(x)=\sum\limits_{i=0}^ma_ix^i$，$g(x)=\sum\limits_{j=0}^sb_jx^j$，$A^0=B^0=E$，则
+    我们可以直接证明第二点，因为第一点是第二点的特例. 设$f(x)=\displaystyle\sum_{i=0}^ma_ix^i$，$g(x)=\displaystyle\sum_{j=0}^sb_jx^j$，$A^0=B^0=E$，则
     \begin{align*}
-        f(A)g(B)&=\sum\limits_{i=0}^ma_iA^i\cdot \sum\limits_{j=0}^sb_jB^j(AB=BA) \\
-        &=\sum\limits_{k=0}^{m+s}\sum\limits_{i+j=k}a_ib_jA^iB^j=\sum\limits_{k=0}^{m+s}\sum\limits_{i+j=k}b_ja_iB^jA^i \\
-        &=g(B)f(A).
+        f(A)g(B) & =\displaystyle\sum_{i=0}^ma_iA^i\cdot \displaystyle\sum_{j=0}^sb_jB^j(AB=BA)                                               \\
+                 & =\displaystyle\sum_{k=0}^{m+s}\displaystyle\sum_{i+j=k}a_ib_jA^iB^j=\displaystyle\sum_{k=0}^{m+s}\displaystyle\sum_{i+j=k}b_ja_iB^jA^i \\
+                 & =g(B)f(A).
     \end{align*}
     事实上由于$A\cdot A=A\cdot A$，因此$f(A)g(A)=g(A)f(A)$只是上面证明的结论的特例.
 \end{solution}
@@ -423,12 +425,12 @@
             k_1 & k_2 & k_3 \\ 0 & 0 & 0 \\ -k_1 & -k_2 & -k_3
         \end{pmatrix},\enspace k_1,k_2,k_3\in\mathbf{R},\]
     即$X=k_1\begin{pmatrix}
-        1 & 0 & 0 \\ 0 & 0 & 0 \\ -1 & 0 & 0
-    \end{pmatrix}+k_2\begin{pmatrix}
-        0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & -1 & 0
-    \end{pmatrix}+k_3\begin{pmatrix}
-        0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & -1
-    \end{pmatrix}$，即$\ker\sigma$中所有元素均可由这三个矩阵线性表示，并且这三个矩阵显然线性无关，因此核空间就是这三个矩阵的线性组合，且核空间维数为3.
+            1 & 0 & 0 \\ 0 & 0 & 0 \\ -1 & 0 & 0
+        \end{pmatrix}+k_2\begin{pmatrix}
+            0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & -1 & 0
+        \end{pmatrix}+k_3\begin{pmatrix}
+            0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & -1
+        \end{pmatrix}$，即$\ker\sigma$中所有元素均可由这三个矩阵线性表示，并且这三个矩阵显然线性无关，因此核空间就是这三个矩阵的线性组合，且核空间维数为3.
 
     注意到$\mathbf{R}^{3 \times 3}$的一组基为$E_{11},E_{12},E_{13},E_{21},E_{22},E_{23},E_{31},E_{32},E_{33}$，其中$E_{ij}$表示第$i$行第$j$列元素为1，其余元素为0的矩阵，例如$E_{23}=\begin{pmatrix}
             0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
@@ -446,7 +448,7 @@
             0 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 1 & 0
         \end{pmatrix},\enspace \sigma(E_{23})=\begin{pmatrix}
             0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 0 & 1
-        \end{pmatrix}$. 所以$\sigma$的像空间为上述六个矩阵线性扩张而成的空间，即$\im\sigma=\spa(\sigma(E_{11}),\sigma(E_{12}),\sigma(E_{13}),\sigma(E_{21}),\sigma(E_{22}),\sigma(E_{23}))$. 又由\autoref{thm:6:线性映射基本定理}可知，$\dim\im\sigma=n-\dim\ker\sigma=6$，因此像空间就是这六个矩阵线性扩张而成的空间.
+        \end{pmatrix}$. 所以$\sigma$的像空间为上述六个矩阵线性扩张而成的空间，即$\im\sigma=\spa(\sigma(E_{11}),\sigma(E_{12}),\sigma(E_{13}),\sigma(E_{21}),\sigma(E_{22}),\sigma(E_{23}))$. 又由\autoref{thm:6:线性映射基本定理} 可知，$\dim\im\sigma=n-\dim\ker\sigma=6$，因此像空间就是这六个矩阵线性扩张而成的空间.
 \end{solution}
 
 实际上，\autoref{ex:7:矩阵表示2} 和\autoref{ex:7:矩阵表示3} 都属于已知映射求像和核的题目，求解方法仍然是原先介绍的方法，只是\autoref*{ex:7:矩阵表示2} 没有像\autoref{ex:7:矩阵表示1} 或\autoref*{ex:7:矩阵表示3} 给出了线性映射的定义，而是给出矩阵表示，但这也完全不影响我们的求解.

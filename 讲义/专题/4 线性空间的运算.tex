@@ -76,7 +76,7 @@
 
 \section{维数公式}
 
-\begin{theorem}\label{thm:4:维数公式}
+\begin{theorem}[维数公式]\label{thm:4:维数公式}
     设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间，则
     \[\dim W_1+\dim W_2=\dim(W_1+W_2)+\dim(W_1\cap W_2).\]
 \end{theorem}
@@ -112,9 +112,9 @@
 
     记$V_1=\{X\mid BX=0\},\enspace V_2=\{X\mid ABX=0\}$，则$V_1\subseteq V_2$，因为$\forall X\in V_1$，有$BX=0$，因此$ABX=A0=0$，即$X\in V_2$，因此$V_1\subseteq V_2$. 利用``设小扩大''的思想，取$V_1$的一组基$\alpha_1,\ldots,\alpha_r$，则可以扩充为$V_2$的一组基，记为$\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\ldots,\alpha_n$，则$r=n-r(B)$，$s=n-r(AB)$，于是
     \begin{align*}
-        V&=\{BX\mid ABX=0\} \\
-         & =\spa(B\alpha_1,\ldots,B\alpha_r,B\alpha_{r+1},\ldots,B\alpha_n) \\
-            & =\spa(B\alpha_{r+1},\ldots,B\alpha_n).
+        V & =\{BX\mid ABX=0\}                                                \\
+          & =\spa(B\alpha_1,\ldots,B\alpha_r,B\alpha_{r+1},\ldots,B\alpha_n) \\
+          & =\spa(B\alpha_{r+1},\ldots,B\alpha_n).
     \end{align*}
     下面证明$B\alpha_{r+1},\ldots,B\alpha_n$线性无关. 为此，设
     \[c_{r+1}B\alpha_{r+1}+\cdots+c_nB\alpha_n=0,\]
@@ -166,14 +166,14 @@
 
 \begin{proof}
     首先证明和. 事实上，对于任意矩阵$A\in V$，有
-    \[A=B+C,\enspace B=\cfrac{1}{2}(A+A^T),\enspace C=\cfrac{1}{2}(A-A^T),\]
+    \[A=B+C,\enspace B=\frac{1}{2}(A+A^T),\enspace C=\frac{1}{2}(A-A^T),\]
     其中$B$是对称矩阵，$C$是反对称矩阵，即$B\in V_1$，$C\in V_2$，因此$V_1+V_2=V$（因为$V$中任意元素都可以写成$V_1$和$V_2$元素和的形式，根据和的定义可知成立）.
 
-    下面证明直和.我们有如下三种方法：
+    下面证明直和. 我们有如下三种方法：
     \begin{enumerate}
         \item 利用零向量分解唯一：设$O$是$n$阶零矩阵，设$O=B+C$，其中$B$是对称矩阵，$C$是反对称矩阵. 由于$B$是对称矩阵，因此$B^T=B$，由于$C$是反对称矩阵，因此$C^T=-C$，因此
-        \[O=O^T=(B+C)^T=B^T+C^T=B-C,\]
-        解得$B=C=O$，因此零向量分解唯一，故直和得证；
+              \[O=O^T=(B+C)^T=B^T+C^T=B-C\]
+              解得$B=C=O$，因此零向量分解唯一，故直和得证；
 
         \item 利用$V_1\cap V_2=\{0\}$：设$A\in V_1\cap V_2$，则$A=A^T=-A$，因此$A=-A$，即$A=O$，因此$V_1\cap V_2=\{0\}$，故直和得证；
 
