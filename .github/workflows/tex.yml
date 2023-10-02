@@ -15,7 +15,7 @@ jobs:
   build:
     name: Build document
     runs-on: ubuntu-latest
-    container: mfisherman/texlive-full:latest
+    # container: mfisherman/texlive-full:latest
 
     steps:
       - name: Checkout
@@ -25,7 +25,9 @@ jobs:
         id: build
         working-directory: ${{ github.workspace }}
         run: |
-          git config --system --add safe.directory $(pwd -P)
+          sudo apt-get update
+          sudo apt-get install -y texlive-full make xindy
+          sudo git config --system --add safe.directory $(pwd -P)
           echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           make gh-actions
 
