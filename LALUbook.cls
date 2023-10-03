@@ -38,7 +38,6 @@
 \RequirePackage{ctex}
 \RequirePackage{geometry}
 \RequirePackage{fontspec}
-\RequirePackage[Bjornstrup]{fncychap} % found on Internet
 
 \RequirePackage{bm}
 \RequirePackage{mathrsfs}
@@ -188,6 +187,8 @@
 ]{solution}
 
 \AtEndPreamble{
+    \RequirePackage[Bjornstrup]{fncychap} % found on Internet
+
     % hyperref 与 cleveref 需要最后引入
     \RequirePackage{hyperref}
     \RequirePackage{cleveref}
