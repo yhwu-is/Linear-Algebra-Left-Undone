@@ -1,176 +1,83 @@
-\documentclass{ctexbook}
+\makeatletter
+   \def\input@path{{..}}
+\makeatother
 
-\usepackage{geometry}
-\geometry{
-    % a4paper,
-    paperheight=260mm,
-    paperwidth=185mm,
-    top=23mm,
-    bottom=23mm,
-    left=20mm,
-    right=20mm,
-}
-% \usepackage[UTF8, heading = false, scheme = plain]{ctex} % 格式
-\usepackage{ctex}
-\usepackage[Bjornstrup]{fncychap} % found on Internet
-\usepackage[utf8]{inputenc}
-\usepackage{bm}
-\usepackage{graphicx} % 添加图片
-\usepackage{amsmath}
-\usepackage{mathrsfs}
-\renewcommand{\vec}[1]{\boldsymbol{#1}} % 生成粗体向量，而非带箭头的向量
-\usepackage{amssymb}
+\documentclass[
+    % colors = false,
+    geometry = 16k,
+]{LALUbook}
+
 \usepackage{booktabs} % Excel 导出的大表格
 \usepackage{rotating}
 \usepackage{extarrows}
-\usepackage{enumitem}
-\usepackage{xcolor}
-\usepackage{multicol}
+
 \usepackage{float}
-\usepackage{mdframed}
 \usepackage{diagbox}
 \usepackage{caption}
 
-\usepackage{tikz}
 \usepackage{pgfplots}
 \usetikzlibrary{cd, arrows, arrows.meta, calc, intersections, decorations.pathreplacing, patterns, decorations.markings}
-\pgfplotsset{compat=1.17}
+\pgfplotsset{compat=newest}
 
-\usepackage{indentfirst}
-\setlength{\parindent}{2em}
-
-\usepackage{ntheorem}
-\theoremheaderfont{\bfseries\heiti}
-\theorembodyfont{\fangsong}
-
-\usepackage{makeidx} % 名词索引
-\makeindex % TODO 拼音排序
-
-\usepackage{xparse}
-% \keyterm{关键词}[英文] - 生成索引
-% \keyterm*{关键词}[英文] - 不生成索引
-\NewDocumentCommand{\keyterm}{smo}{%
-    {\sffamily\heiti\bfseries{#2}%
-    \IfNoValueF{#3}{（{#3}）}}%
-    \IfBooleanF{#1}{\index{#2}}%
-}
-
-\usepackage{zhnumber}
-
-% chapter 标题修改为第 * 讲
-\ctexset{
-    chapter={format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
-    section={format={\raggedright\Large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}}},
-    subsection={format={\raggedright\large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}}},
-    subsubsection={format={\raggedright\normalsize\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
-}
-
-\usepackage{mismath} % 包含 rank, span 等命令
-
-\usepackage{pdfpages}
-
-% hyperref 与 cleveref 需要最后引入
-\usepackage{hyperref}
-\usepackage{cleveref}
-\hypersetup{
-    colorlinks,
-    pdfborder={0 0 0},
-    bookmarksnumbered,
-    pdfauthor={吴一航},
-    pdftitle={线性代数荣誉课辅学讲义},
-}
-
-\newenvironment{proof}{\fangsong}{\hspace*{\fill}$\square$\par}
-\newenvironment{solution}{\fangsong}{\par}
-
-\mdfsetup{
-    nobreak=false,
-}
-
-\mdfdefinestyle{framestyle}{
-    ntheorem=true,
-    % roundcorner=10pt,
-    innertopmargin=\topskip,
-    theoremseparator={},
-    theoremspace=\quad,
-    frametitlerulewidth=.5pt,
-    frametitlerule=true,
-    linewidth=.5pt,
-    leftline=false,
-    rightline=false,
-    topline=true,
-    bottomline=true,
-    frametitlealignment=\raggedright\noindent,
-}
-
-\mdtheorem[
-    style=framestyle,
-    linecolor=red!50!black,
-    frametitlebackgroundcolor=red!5,
-]{definition}{定义}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=blue!50!black,
-    frametitlebackgroundcolor=blue!5,
-]{example}{例}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=orange!50!black,
-    frametitlebackgroundcolor=orange!5,
-]{lemma}{引理}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=violet!50!black,
-    frametitlebackgroundcolor=violet!5,
-]{theorem}{定理}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=green!50!black,
-    frametitlebackgroundcolor=green!5,
-]{axiom}{公理}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=green!50!black,
-    frametitlebackgroundcolor=green!5,
-]{corollary}{推论}[chapter]
-\surroundwithmdframed[
-    style=framestyle,
-    linecolor=teal!80!black,
-    frametitlebackgroundcolor=teal!5,
-    frametitle={\noindent\bfseries\heiti 证明},
-    % frametitleaboveskip=\topskip,
-    % frametitlebelowskip=\topskip,
-]{proof}
-\surroundwithmdframed[
-    style=framestyle,
-    linecolor=teal!80!black,
-    frametitlebackgroundcolor=teal!5,
-    frametitle={\noindent\bfseries\heiti 解},
-    % frametitleaboveskip=\topskip,
-    % frametitlebelowskip=\topskip,
-]{solution}
-
-\renewcommand{\figureautorefname}{图}
-\renewcommand{\tableautorefname}{表}
-\renewcommand{\equationautorefname}{式}
-\renewcommand{\theoremautorefname}{定理}
-\renewcommand{\sectionautorefname}{节}
-\newcommand{\lemmaautorefname}{引理}
-\newcommand{\corollaryautorefname}{推论}
-\newcommand{\exampleautorefname}{例}
-\newcommand{\definitionautorefname}{定义}
-\newcommand{\axiomautorefname}{公理}
-\crefrangeformat{equation}{式~#3#1#4--#5#2#6}
-\crefrangeformat{example}{例~#3#1#4--#5#2#6}
-
-\DeclareMathOperator{\diag}{diag}
-
-\title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学讲义}
-\author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
+\usepackage[xindy, splitindex]{imakeidx}
+\makeindex[
+    columns=1,
+    program=truexindy,
+    intoc=true,
+    options=-M texindy -I xelatex -C utf8,
+    title={名词索引}
+] % 名词索引
+\makeindex[
+    columns=3,
+    program=truexindy,
+    intoc=true,
+    options=-M numeric-sort -M latex -M latex-loc-fmts -M makeindex -I xelatex -C utf8,
+    name=sym,
+    title={符号索引}
+] % 符号索引
 
 % 嵌套 enumerate 环境的 label
 \setlist[enumerate,2]{label=(\arabic*)}
 \setlist[enumerate,3]{label=\roman*.}
+
+\usepackage{xparse}
+\NewDocumentCommand{\term}{m}{{\sffamily\heiti\bfseries{#1}}}
+
+% 标题格式
+% \ResetChapterNumberingStyle 重置章节编号为正常样式
+% \SetLUChapterNumberingStyle 设置章节编号为未竟专题样式
+% 参数为下一章节编号减一
+\NewDocumentCommand{\ResetChapterNumberingStyle}{m}{%
+\setcounter{chapter}{#1}
+\ctexset{
+    chapter = {format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
+    section = {format={\raggedright\Large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}}},
+    subsection = {format={\raggedright\large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}}},
+    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
+}
+\renewcommand{\thechapter}{\arabic{chapter}}
+}
+\NewDocumentCommand{\SetLUChapterNumberingStyle}{m}{%
+\setcounter{chapter}{#1}
+\ctexset{
+    chapter = {format={\centering\Huge\bfseries},name={未竟专题,},number=\zhnumber{\arabic{chapter}}},
+    section = {format={\raggedright\Large\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}}},
+    subsection = {format={\raggedright\large\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}.\arabic{subsection}}},
+    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
+}
+\renewcommand{\thechapter}{\arabic{chapter}$\boldsymbol{\varepsilon}$}
+}
+
+\ResetChapterNumberingStyle{0}
+
+\title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学讲义}
+\author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
+
+\AtEndPreamble{\hypersetup{
+    % hypertexnames = false,
+    pdfauthor = {吴一航},
+    pdftitle = {线性代数荣誉课辅学讲义},
+}}
 
 \begin{document}
 \frontmatter
@@ -190,7 +97,7 @@
 \thispagestyle{empty}
 \clearpage
 \thispagestyle{empty}
-\input{./其它/扉页.tex
+\input{./其它/扉页.tex}
 }
 \clearpage
 \setcounter{page}{1}
@@ -240,7 +147,9 @@
 \input{./专题/32 线性代数与统计学.tex}
 
 \backmatter
-\pdfbookmark[0]{索引}{index}
+{\small
 \printindex
+\printindex[sym]
+}
 
 \end{document}

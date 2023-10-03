@@ -68,20 +68,23 @@
 \begin{proof}
     使用数学归纳法. $n=1$时结论显然成立，现在假设命题对$n-1$成立，即$n-1$个对角元都为0的$n-1$阶上三角矩阵的乘积为零矩阵，下面考虑$n$的情况：给定$A_1,A_2,\cdots,A_n$是$n$个对角元都为0的上三角矩阵，记
     \[A=\begin{pmatrix}
-        B_i & * \\ O & 0
-    \end{pmatrix},\enspace i=1,2,\cdots,n.\]
+            B_i & * \\ O & 0
+        \end{pmatrix},\enspace i=1,2,\cdots,n.\]
     其中$B_i$是对角元都为0的$n-1$阶上三角矩阵，由归纳假设可知
     \[B_1B_2\cdots B_{n-1}=O,\]
     于是
     \begin{align*}
-        A_1A_2\cdots A_n&=\begin{pmatrix}
-            B_1B_2\cdots B_{n-1} & * \\ O & 0
-        \end{pmatrix}\begin{pmatrix}
+        A_1A_2\cdots A_n
+         & =\begin{pmatrix}
+                B_1B_2\cdots B_{n-1} & * \\ O & 0
+            \end{pmatrix}
+        \begin{pmatrix}
             B_n & * \\ O & 0
-        \end{pmatrix} \\
-        &=\begin{pmatrix}
-            O & * \\ O & 0
-        \end{pmatrix}\begin{pmatrix}
+        \end{pmatrix}                      \\
+         & =\begin{pmatrix}
+                O & * \\ O & 0
+            \end{pmatrix}
+        \begin{pmatrix}
             B_n & * \\ O & 0
         \end{pmatrix}=  O.
     \end{align*}
@@ -130,7 +133,7 @@
         \end{pmatrix},\]
     则
     \[AB=\begin{pmatrix}
-            a & b & c \\
+            a    & b    & c    \\
             d+2g & e+2h & f+2i \\
             d-2g & e-2h & f-2i
         \end{pmatrix}=BA=\begin{pmatrix}
@@ -140,20 +143,20 @@
         \end{pmatrix}.\]
     由此可得
     \[\begin{cases}
-        b=b+c \\
-        c=2b-2c \\
-        d+2g=d \\
-        e+2h=e+f \\
-        f+2i=2e-2f \\
-        d-2g=g \\
-        e-2h=h+i \\
-        f-2i=2h-2i
-    \end{cases},\]
+            b=b+c      \\
+            c=2b-2c    \\
+            d+2g=d     \\
+            e+2h=e+f   \\
+            f+2i=2e-2f \\
+            d-2g=g     \\
+            e-2h=h+i   \\
+            f-2i=2h-2i
+        \end{cases},\]
     很容易解得$b=c=d=g=0$，且$f=2h,\enspace e=3h+i$，因此
     \[B=\begin{pmatrix}
-            a & 0 & 0 \\
+            a & 0    & 0  \\
             0 & 3h+i & 2h \\
-            0 & h & i
+            0 & h    & i
         \end{pmatrix}.\]
 \end{solution}
 
@@ -169,12 +172,12 @@
 \end{example}
 
 \begin{solution}
-    由前述分析，取$t=3$可以使得$A-3E$对角线上元素全为0，便于计算，因此我们只需求与$A-3E$可交换的矩阵即可. 与\autoref{ex:12:可交换矩阵1}同样的设未知数法，具体过程省略得到与$A$可交换的矩阵为
+    由前述分析，取$t=3$可以使得$A-3E$对角线上元素全为0，便于计算，因此我们只需求与$A-3E$可交换的矩阵即可. 与\autoref{ex:12:可交换矩阵1} 同样的设未知数法，具体过程省略得到与$A$可交换的矩阵为
     \[B=\begin{pmatrix}
-        a & 0 & 0 \\
-        b & a & 0 \\
-        c & b & a
-    \end{pmatrix}.\]
+            a & 0 & 0 \\
+            b & a & 0 \\
+            c & b & a
+        \end{pmatrix}.\]
 \end{solution}
 
 事实上，我们有如下关于可交换矩阵更一般的结论：
@@ -192,17 +195,17 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，由\autoref{thm:12:对角矩阵的性质}可知，$AB$是$B$的第$i(i=1,2,\cdots,n)$行元素都乘以$\lambda_i$的矩阵，其中$\lambda_i$是$A$的第$i$个对角元素，同理$BA$是$B$的第$j$列元素都乘以$\lambda_j$的矩阵，因此考察$AB=BA$第$i$行$j$列元素可知
-        \[\lambda_ib_{ij}=\lambda_jb_{ij}(i,j=1,2,\cdots,n),\]
-        由于$i\neq j$时$\lambda_i\neq\lambda_j$，因此$b_{ij}=0$，即$B$是对角矩阵.
+        \item 设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，由\autoref{thm:12:对角矩阵的性质} 可知，$AB$是$B$的第$i(i=1,2,\cdots,n)$行元素都乘以$\lambda_i$的矩阵，其中$\lambda_i$是$A$的第$i$个对角元素，同理$BA$是$B$的第$j$列元素都乘以$\lambda_j$的矩阵，因此考察$AB=BA$第$i$行$j$列元素可知
+              \[\lambda_ib_{ij}=\lambda_jb_{ij}(i,j=1,2,\cdots,n),\]
+              由于$i\neq j$时$\lambda_i\neq\lambda_j$，因此$b_{ij}=0$，即$B$是对角矩阵.
 
         \item 设$A=\diag{\lambda_1E_1,\lambda_2E_2,\cdots,\lambda_sE_s}$，其中$E_i$是$m_i$阶单位矩阵，$m_1+m_2+\cdots+m_k=n$，设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，将$B$做与$A$一样的分块，事实上由于分块矩阵乘法和一般乘法的相似性，我们可以完全套用第一点的证明完成这里的证明，这里不再赘述.
 
         \item 设$C$与所有$n$级可逆矩阵可交换，由前述1可知$C$至少是对角矩阵，因为$C$起码要与主对角元两两互异的对角矩阵可交换.
 
-        我们将$C$记为$\diag{k_1,k_2,\cdots,k_n}$，进一步地，取可逆矩阵$B=E_{12}+E_{23}+\cdots+E_{n-1,n}+E_{n1}$（回顾第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$），则$BC=CB$可知
-        \[k_1E_{12}+k_2E_{23}+\cdots+k_{n-1}E_{n-1,n}+k_nE_{n1}=k_2E_{12}+k_3E_{23}+\cdots+k_nE_{n-1,n}+k_1E_{n1},\]
-        由此可得$k_1=k_2=\cdots=k_n$，即$C=k_1E$是数量矩阵.
+              我们将$C$记为$\diag{k_1,k_2,\cdots,k_n}$，进一步地，取可逆矩阵$B=E_{12}+E_{23}+\cdots+E_{n-1,n}+E_{n1}$（回顾第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$），则$BC=CB$可知
+              \[k_1E_{12}+k_2E_{23}+\cdots+k_{n-1}E_{n-1,n}+k_nE_{n1}=k_2E_{12}+k_3E_{23}+\cdots+k_nE_{n-1,n}+k_1E_{n1},\]
+              由此可得$k_1=k_2=\cdots=k_n$，即$C=k_1E$是数量矩阵.
 
         \item 设$C$与所有$n$级矩阵可交换，由前述3可知$C$至少是数量矩阵，因为$C$起码要与所有$n$级可逆矩阵可交换. 事实上我们也不难验证数量矩阵与任意矩阵可交换，因为$AkE=kEA=kA$，其中$k$是任意数，$E$是$n$级单位矩阵，$A$是任意$n$级矩阵. 因此与所有$n$级矩阵可交换的矩阵是数量矩阵.
     \end{enumerate}
@@ -239,12 +242,12 @@
               由数学归纳法易证$(XY^\mathrm{T})^k=2^{k-1}(XY^\mathrm{T})$.
 
         \item 事实上，
-        \begin{align*}
-            A^2&=(E+XY^\mathrm{T})^2=E+2XY^\mathrm{T}+(XY^\mathrm{T})^2 \\
-            &=E+2XY^\mathrm{T}+2XY^\mathrm{T}=E+4XY^\mathrm{T} \\
-            &=4E-3A,
-        \end{align*}
-        因此$A^2-4A+3E=O$，即$A(A-4E)=-3E$，因此$A$可逆，且$A^{-1}=\dfrac{1}{3}(4E-A)$.
+              \begin{align*}
+                  A^2 & =(E+XY^\mathrm{T})^2=E+2XY^\mathrm{T}+(XY^\mathrm{T})^2 \\
+                      & =E+2XY^\mathrm{T}+2XY^\mathrm{T}=E+4XY^\mathrm{T}       \\
+                      & =4E-3A,
+              \end{align*}
+              因此$A^2-4A+3E=O$，即$A(A-4E)=-3E$，因此$A$可逆，且$A^{-1}=\dfrac{1}{3}(4E-A)$.
     \end{enumerate}
 \end{proof}
 
@@ -258,12 +261,12 @@
 \begin{proof}
     根据分块矩阵初等变换不改变矩阵的秩，我们有
     \[r\begin{pmatrix}
-        E\pm BA & O \\ A & E
-    \end{pmatrix}=r\begin{pmatrix}
-        E & \mp B \\ A & E
-    \end{pmatrix}=r\begin{pmatrix}
-        E & \mp B \\ O & E\pm AB
-    \end{pmatrix},\]
+            E\pm BA & O \\ A & E
+        \end{pmatrix}=r\begin{pmatrix}
+            E & \mp B \\ A & E
+        \end{pmatrix}=r\begin{pmatrix}
+            E & \mp B \\ O & E\pm AB
+        \end{pmatrix},\]
     故$E\pm AB$可逆$\iff E\pm BA$可逆（因为此时上式所有矩阵都可逆）.
 \end{proof}
 
@@ -274,12 +277,12 @@
 \begin{proof}
     类似于上例，有
     \[r\begin{pmatrix}
-        A+BC & B \\ O & E_m
-    \end{pmatrix}=r\begin{pmatrix}
-        A & B \\ -C & E_m
-    \end{pmatrix}=r\begin{pmatrix}
-        A & B \\ O & E_m+CA^{-1}B
-    \end{pmatrix},\]
+            A+BC & B \\ O & E_m
+        \end{pmatrix}=r\begin{pmatrix}
+            A & B \\ -C & E_m
+        \end{pmatrix}=r\begin{pmatrix}
+            A & B \\ O & E_m+CA^{-1}B
+        \end{pmatrix},\]
     故$E_m+CA^{-1}B$可逆$\iff A+BC$可逆.
 \end{proof}
 
@@ -312,9 +315,9 @@
 \begin{proof}
     我们猜测
     \begin{align*}
-        (E_m-BA)^{-1}&=E_m+(BA)+(BA)^2+\cdots \\
-        &=E_m+B(E_n+AB+(AB)^2+\cdots)A \\
-        &=E_m+B(E_n-AB)^{-1}A.
+        (E_m-BA)^{-1} & =E_m+(BA)+(BA)^2+\cdots       \\
+                      & =E_m+B(E_n+AB+(AB)^2+\cdots)A \\
+                      & =E_m+B(E_n-AB)^{-1}A.
     \end{align*}
     事实上经过验证这一结论是正确的（具体过程省略），因此$E_m \pm BA$可逆，且$(E_m-BA)^{-1}=E_m+B(E_n-AB)^{-1}A$.
 \end{proof}
@@ -344,23 +347,22 @@
           本质而言此类题目只需要发现中间多次出现的乘积$QP$是很容易处理的矩阵（\autoref{ex:9:转置求幂} 中甚至是一个数）即可解决.
 
           \begin{solution}
-            事实上，$QP=E$（$E$是单位矩阵），令$B=PAQ$，则
-            $B^2=PA(QP)AQ=PA^2Q$，利用归纳法可得，
-            \[B^k=PA^kQ=\begin{pmatrix}
-                2^{k+2}+3(-1)^{k+1} & -3\cdot 2^{k+1}+6\cdot (-1)^k \\
-                2^{k+1}+2(-1)^{k+1} & -3\cdot 2^k+4\cdot (-1)^k
-            \end{pmatrix}.\]
+              事实上，$QP=E$（$E$是单位矩阵），令$B=PAQ$，则$B^2=PA(QP)AQ=PA^2Q$，利用归纳法可得，
+              \[B^k=PA^kQ=\begin{pmatrix}
+                      2^{k+2}+3(-1)^{k+1} & -3\cdot 2^{k+1}+6\cdot (-1)^k \\
+                      2^{k+1}+2(-1)^{k+1} & -3\cdot 2^k+4\cdot (-1)^k
+                  \end{pmatrix}.\]
           \end{solution}
 
           \begin{example}
               设$A=\begin{pmatrix}0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix},\enspace P^{-1}AP=B$，求$B^{2004}-2A^2$.
           \end{example}
           \begin{solution}
-            事实上，$A^2=\begin{pmatrix}
-                -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1
-            \end{pmatrix}$，因此$A^4=E$，于是$A^{2004}=(A^4)^{501}=E$，因此$B^{2004}-2A^2=E-2A^2=\begin{pmatrix}
-                3 & 0 & 0 \\ 0 & 3  & 0 \\ 0 & 0 & -1
-            \end{pmatrix}$.
+              事实上，$A^2=\begin{pmatrix}
+                      -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1
+                  \end{pmatrix}$，因此$A^4=E$，于是$A^{2004}=(A^4)^{501}=E$，因此$B^{2004}-2A^2=E-2A^2=\begin{pmatrix}
+                      3 & 0 & 0 \\ 0 & 3  & 0 \\ 0 & 0 & -1
+                  \end{pmatrix}$.
           \end{solution}
 
           还有一种找规律基于幂等矩阵（满足$A^2=A$的矩阵，根据数学归纳法可证明$A$的任意次方都是$A$），显然幂等矩阵的任意次方都与其本身相等是很好的性质，另一种找规律基于对合矩阵，即平方等于单位矩阵的矩阵，我们这里主要与大家分享另一种关于幂零矩阵（矩阵某次幂可以得到零矩阵）的方法，例子如下：
@@ -370,21 +372,21 @@
           在上例中，我们采用将矩阵分为$A=tE+B$的方法，会发现矩阵$B$为上三角矩阵且对角线上全为0，这是需要读者记忆的典型的幂零矩阵，未来在幂零矩阵的讨论中我们将严格证明这一点，现在我们只需利用这一性质快速解题.
 
           \begin{solution}
-            设$B=\begin{pmatrix}
-                0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0
-            \end{pmatrix}$，故有
-            \[B^2=\begin{pmatrix}
-                0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
-            \end{pmatrix},\enspace B^3=\begin{pmatrix}
-                0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
-            \end{pmatrix},\enspace B^4=O,\]
-            因此
-            \begin{align*}
-                A^n&=(aE+B)^n=\sum\limits_{k=0}^nC_n^ka^{n-k}E^kB^k \\
-                &=\begin{pmatrix}
-                    a^n & C_n^1a^{n-1} & C_n^2a^{n-2} & C_n^3a^{n-3} \\ 0 & a^n & C_n^1a^{n-0} & C_n^2a^{n-2} \\ 0 & 0 & a^n & C_n^1a^{n-1} \\ 0 & 0 & 0 & a^n
-                \end{pmatrix}.
-            \end{align*}
+              设$B=\begin{pmatrix}
+                      0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0
+                  \end{pmatrix}$，故有
+              \[B^2=\begin{pmatrix}
+                      0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
+                  \end{pmatrix},\enspace B^3=\begin{pmatrix}
+                      0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
+                  \end{pmatrix},\enspace B^4=O,\]
+              因此
+              \begin{align*}
+                  A^n & =(aE+B)^n=\sum\limits_{k=0}^nC_n^ka^{n-k}E^kB^k                                                                \\
+                      & =\begin{pmatrix}
+                             a^n & C_n^1a^{n-1} & C_n^2a^{n-2} & C_n^3a^{n-3} \\ 0 & a^n & C_n^1a^{n-0} & C_n^2a^{n-2} \\ 0 & 0 & a^n & C_n^1a^{n-1} \\ 0 & 0 & 0 & a^n
+                         \end{pmatrix}.
+              \end{align*}
           \end{solution}
 
     \item 数学归纳法
@@ -394,15 +396,15 @@
           这一问题对应我们常见的旋转变换（所以建议要求读者记忆这一矩阵形式），$n$次方就是旋转$n$次. 当然这是直观而言的结论，严谨说明可以通过数学归纳法证：
 
           \begin{solution}
-            事实上，当$n=1$时结论显然成立，假设$n=k$时结论成立，即
-            \[A^k=\begin{pmatrix}\cos k\alpha & \sin k\alpha \\ -\sin k\alpha & \cos k\alpha\end{pmatrix}.\]
-            当$n=k+1$时，有
-            \begin{align*}
-                A^{k+1}&=A^kA=\begin{pmatrix}\cos k\alpha & \sin k\alpha \\ -\sin k\alpha & \cos k\alpha\end{pmatrix}\begin{pmatrix}\cos\alpha & \sin\alpha \\ -\sin\alpha & \cos\alpha\end{pmatrix} \\
-                &=\begin{pmatrix}\cos k\alpha\cos\alpha-\sin k\alpha\sin\alpha & \cos k\alpha\sin\alpha+\sin k\alpha\cos\alpha \\ -\sin k\alpha\cos\alpha-\cos k\alpha\sin\alpha & -\sin k\alpha\sin\alpha+\cos k\alpha\cos\alpha\end{pmatrix} \\
-                &=\begin{pmatrix}\cos(k+1)\alpha & \sin(k+1)\alpha \\ -\sin(k+1)\alpha & \cos(k+1)\alpha\end{pmatrix}.
-            \end{align*}
-            因此结论对于$n=k+1$也成立，由数学归纳法可知结论对于任意正整数$n$都成立.
+              事实上，当$n=1$时结论显然成立，假设$n=k$时结论成立，即
+              \[A^k=\begin{pmatrix}\cos k\alpha & \sin k\alpha \\ -\sin k\alpha & \cos k\alpha\end{pmatrix}.\]
+              当$n=k+1$时，有
+              \begin{align*}
+                  A^{k+1} & =A^kA=\begin{pmatrix}\cos k\alpha & \sin k\alpha \\ -\sin k\alpha & \cos k\alpha\end{pmatrix}\begin{pmatrix}\cos\alpha & \sin\alpha \\ -\sin\alpha & \cos\alpha\end{pmatrix}                                                  \\
+                          & =\begin{pmatrix}\cos k\alpha\cos\alpha-\sin k\alpha\sin\alpha & \cos k\alpha\sin\alpha+\sin k\alpha\cos\alpha \\ -\sin k\alpha\cos\alpha-\cos k\alpha\sin\alpha & -\sin k\alpha\sin\alpha+\cos k\alpha\cos\alpha\end{pmatrix} \\
+                          & =\begin{pmatrix}\cos(k+1)\alpha & \sin(k+1)\alpha \\ -\sin(k+1)\alpha & \cos(k+1)\alpha\end{pmatrix}.
+              \end{align*}
+              因此结论对于$n=k+1$也成立，由数学归纳法可知结论对于任意正整数$n$都成立.
           \end{solution}
 
           \begin{example}
@@ -413,32 +415,34 @@
                   \end{pmatrix}$.
           \end{example}
           \begin{proof}
-                事实上，当$n=1$时结论显然成立，假设$n=k$时结论成立，即
-                \[\begin{pmatrix}
-                        a & c \\ 0 & b
-                    \end{pmatrix}^k=\begin{pmatrix}
-                        a^k & (a^{k-1}+a^{k-2}b+\dots+b^{k-1})c \\ 0 & b^k
-                    \end{pmatrix}.\]
-                当$n=k+1$时，有
-                \begin{align*}
-                    \begin{pmatrix}
-                        a & c \\ 0 & b
-                    \end{pmatrix}^{k+1}&=\begin{pmatrix}
-                        a & c \\ 0 & b
-                    \end{pmatrix}^k\begin{pmatrix}
-                        a & c \\ 0 & b
-                    \end{pmatrix} \\
-                    &=\begin{pmatrix}
-                        a^k & (a^{k-1}+a^{k-2}b+\dots+b^{k-1})c \\ 0 & b^k
-                    \end{pmatrix}\begin{pmatrix}
-                        a & c \\ 0 & b
-                    \end{pmatrix} \\
-                    &=\begin{pmatrix}
-                        a^{k+1} & (a^k+a^{k-1}b+\dots+b^k)c \\
-                        0 & b^{k+1}
-                    \end{pmatrix}.
-                \end{align*}
-                因此结论对于$n=k+1$也成立，由数学归纳法可知结论对于任意正整数$n$都成立.
+              事实上，当$n=1$时结论显然成立，假设$n=k$时结论成立，即
+              \[\begin{pmatrix}
+                      a & c \\ 0 & b
+                  \end{pmatrix}^k=\begin{pmatrix}
+                      a^k & (a^{k-1}+a^{k-2}b+\dots+b^{k-1})c \\ 0 & b^k
+                  \end{pmatrix}.\]
+              当$n=k+1$时，有
+              \begin{align*}
+                  \begin{pmatrix}
+                      a & c \\ 0 & b
+                  \end{pmatrix}^{k+1}
+                   & =\begin{pmatrix}
+                          a & c \\ 0 & b
+                      \end{pmatrix}^k
+                  \begin{pmatrix}
+                      a & c \\ 0 & b
+                  \end{pmatrix}                                         \\
+                   & =\begin{pmatrix}
+                          a^k & (a^{k-1}+a^{k-2}b+\dots+b^{k-1})c \\ 0 & b^k
+                      \end{pmatrix}\begin{pmatrix}
+                                       a & c \\ 0 & b
+                                   \end{pmatrix} \\
+                   & =\begin{pmatrix}
+                          a^{k+1} & (a^k+a^{k-1}b+\dots+b^k)c \\
+                          0       & b^{k+1}
+                      \end{pmatrix}.
+              \end{align*}
+              因此结论对于$n=k+1$也成立，由数学归纳法可知结论对于任意正整数$n$都成立.
           \end{proof}
 
     \item 利用秩为1的矩阵
@@ -448,19 +452,20 @@
               已知$M$是秩为 1 的矩阵，记$\tr(M)=b$，讨论$(aE+M)^n$的计算结果.
           \end{example}
           \begin{solution}
-            事实上，由\autoref{ex:11:相抵分解}可知，$M^k=b^{k-1}M$，因此
-            \begin{enumerate}
-                \item 当$b=0$时，$M^k=O(k\geqslant 2)$，因此
-                \[(aE+M)^n=a^nE+na^{n-1}M.\]
-                \item 当$b\neq 0$时有
-                \begin{align*}
-                    (aE+M)^n&=\sum\limits_{k=0}^nC_n^ka^{n-k}M^k \\
-                    &=\sum\limits_{k=0}^nC_n^ka^{n-k}b^{k-1}M \\
-                    &=a^nE+\cfrac{1}{b}\sum\limits_{k=1}^nC_n^ka^{n-k}b^kM \\
-                    &=a^nE+\cfrac{1}{b}(\sum\limits_{k=0}^nC_n^ka^{n-k}b^k-a^n)M \\
-                    &=a^nE+\cfrac{(a+b)^n-a^n}{b}M \\
-                \end{align*}
-            \end{enumerate}
+              事实上，由\autoref{ex:11:相抵分解} 可知，$M^k=b^{k-1}M$，因此
+              \begin{enumerate}
+                  \item 当$b=0$时，$M^k=O(k\geqslant 2)$，因此
+                        \[(aE+M)^n=a^nE+na^{n-1}M.\]
+
+                  \item 当$b\neq 0$时有
+                        \begin{align*}
+                            (aE+M)^n & =\sum_{k=0}^nC_n^ka^{n-k}M^k                         \\
+                                     & =\sum_{k=0}^nC_n^ka^{n-k}b^{k-1}M                    \\
+                                     & =a^nE+\dfrac{1}{b}\sum_{k=1}^nC_n^ka^{n-k}b^kM       \\
+                                     & =a^nE+\dfrac{1}{b}\left(\sum_{k=0}^nC_n^ka^{n-k}b^k-a^n\right)M \\
+                                     & =a^nE+\dfrac{(a+b)^n-a^n}{b}M
+                        \end{align*}
+              \end{enumerate}
           \end{solution}
 
           \begin{example}
@@ -469,10 +474,11 @@
           事实上，将来我们讨论幂零矩阵的时候将会进一步推广本例的结论.
 
           \begin{proof}
-            \begin{enumerate}
-                \item 若$l\leqslant 2$，则$A^2=O$显然成立；
-                \item 若$l>2$，则由$A^l=O$可知$A$不可逆，故$r(A)\leqslant 1$，又$A\neq O$，因此$r(A)=1$，故$A^l=(\tr(A))^{l-1}A=O$，因此$\tr(A)=0$，故$A^2=\tr(A)A=O$.
-            \end{enumerate}
+              \begin{enumerate}
+                  \item 若$l\leqslant 2$，则$A^2=O$显然成立；
+
+                  \item 若$l>2$，则由$A^l=O$可知$A$不可逆，故$r(A)\leqslant 1$，又$A\neq O$，因此$r(A)=1$，故$A^l=(\tr(A))^{l-1}A=O$，因此$\tr(A)=0$，故$A^2=\tr(A)A=O$.
+              \end{enumerate}
           \end{proof}
 
     \item 利用初等矩阵的性质
@@ -486,7 +492,7 @@
               求$A^{2024}$.
           \end{example}
           \begin{solution}
-            事实上$A=PBP^{-1}$，因此$A^{2024}=PB^{2024}P^{-1}$，由于$B^2=E$，因此$B^{2024}=(B^2)^{1012}=E$，因此$A^{2024}=PEP^{-1}=E$.
+              事实上$A=PBP^{-1}$，因此$A^{2024}=PB^{2024}P^{-1}$，由于$B^2=E$，因此$B^{2024}=(B^2)^{1012}=E$，因此$A^{2024}=PEP^{-1}=E$.
           \end{solution}
 
           事实上本题一个关键的洞察在于我们很容易看出$B$这一非常简单的矩阵作为初等矩阵复合的情况（交换1、3行以及每一行都乘以-1），因此其平方为$E$.
@@ -531,8 +537,8 @@
 \centerline{\heiti B组}
 \begin{enumerate}
     \item 设$f(x)=1+x+\cdots+x^{m-1}$，$g(x)=1-x$，$A=\begin{pmatrix}
-        a & b \\ 0 & a
-    \end{pmatrix}$，计算$f(A)g(A)$.
+                  a & b \\ 0 & a
+              \end{pmatrix}$，计算$f(A)g(A)$.
 
     \item 已知矩阵$A=\begin{pmatrix}
                   1 & 0 & 4 \\ 0 & 1 & 2 \\ 0 & 1 & 2
@@ -556,22 +562,24 @@
               \item 当$A$为对角线上元素互不相等的对角阵时，求$C(A)$的维数和一组基.
           \end{enumerate}
 
-      \item 设$A$是$n$阶矩阵，$A^k=O$对某个正整数$k$成立，求证下列方阵可逆，并求它们的逆：
-    \begin{enumerate}
-        \item $E+A$；
-        \item $E-A$；
-        \item $E+A+\cfrac{1}{2!}A^2+\cdots+\cfrac{1}{(k-1)!}A^{k-1}$.
-    \end{enumerate}
+    \item 设$A$是$n$阶矩阵，$A^k=O$对某个正整数$k$成立，求证下列方阵可逆，并求它们的逆：
+          \begin{enumerate}
+              \item $E+A$；
+
+              \item $E-A$；
+
+              \item $E+A+\dfrac{1}{2!}A^2+\cdots+\dfrac{1}{(k-1)!}A^{k-1}$.
+          \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item 已知数列$\{a_n\},\enspace\{b_n\}$满足$a_0=-1,\enspace b_0=3$，且
-    \[\begin{cases}
-            a_n=3a_{n-1}+b_{n-1}+2^{n-1} \\
-            b_n=2a_{n-1}+4b_{n-1}+2^n
-        \end{cases}\]
-    求$\{a_n\},\enspace\{b_n\}$的通项公式.
+    \item 已知数列$\{a_n\},\{b_n\}$满足$a_0=-1,\enspace b_0=3$，且
+          \[\begin{cases}
+                  a_n=3a_{n-1}+b_{n-1}+2^{n-1} \\
+                  b_n=2a_{n-1}+4b_{n-1}+2^n
+              \end{cases}\]
+          求$\{a_n\},\{b_n\}$的通项公式.
 
     \item 证明以下两个命题：
           \begin{enumerate}

@@ -2,14 +2,14 @@
 
 \section{二次型的定义}
 
-\begin{definition}[{\keyterm{二次型}[quadratic form]}]
+\begin{definition}[二次型] \index{ercixing@二次型 (quadratic form)}
     $n$个元$x_1,x_2,\ldots,x_n$的二次齐次多项式
     \begin{align*}
         f(x_1,x_2,\ldots,x_n) & = \sum_{i=1}^{n}a_{ii}x_i^2+\sum\limits_{1\leqslant i<j\leqslant n}2a_{ij}x_ix_j    \\
                               & = a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2                                        \\
                               & \quad +2a_{12}x_1x_2+\cdots+2a_{1n}x_1x_n+2a_{23}x_2x_3+\cdots+2a_{n-1,n}x_{n-1}x_n
     \end{align*}
-    称为数域$\mathbf{F}$上的$n$元二次型（简称二次型）.
+    称为数域$\mathbf{F}$上的$n$元二次型（简称\term{二次型}）.
 \end{definition}
 本学期研究的主要是实二次型. 若令$a_{ij}=a_{ji}\enspace(1\leqslant i<j\leqslant n)$，则二次型可表示为
 \[f(x_1,x_2,\ldots,x_n)=\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j=X^\mathrm{T}AX\]
@@ -117,7 +117,7 @@
 
 惯性定理的``惯性''二字与物理中的惯性有关，实际上透露着某种不变性. 根据惯性定理，我们有如下结论：
 \begin{enumerate}
-    \item 我们可以按相合关系对全体$n$阶实对称矩阵分类，因为实对称矩阵相合意味着规范形唯一，我们可以按照$+1$、$-1$、0个数的不同划分为$\vphantom{\cfrac{(n+1)(n+2)}{2}}\dfrac{(n+1)(n+2)}{2}$个等价类（相抵、相似也是等价关系，可以思考划分等价类的方式与个数）；
+    \item 我们可以按相合关系对全体$n$阶实对称矩阵分类，因为实对称矩阵相合意味着规范形唯一，我们可以按照$+1$、$-1$、0个数的不同划分为$\vphantom{\cfrac{n+1}{2}}\dfrac{(n+1)(n+2)}{2}$个等价类（相抵、相似也是等价关系，可以思考划分等价类的方式与个数）；
 
     \item 实数域上两个实对称矩阵相合的充要条件是它们有相同的正负惯性指数，两个对角矩阵相合的充要条件是对角线上正、负、零个数相同.
 \end{enumerate}

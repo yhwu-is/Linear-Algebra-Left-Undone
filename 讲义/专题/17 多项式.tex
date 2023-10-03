@@ -17,12 +17,12 @@
 \section{多项式的定义}
 
 我们首先介绍多项式的定义：
-\begin{definition}[{\keyterm{多项式}[polynomial]}]
+\begin{definition}[多项式] \index{duoxiangshi@多项式 (polynomial)}
     对于函数 $p:\mathbf{F}\to\mathbf{F}$，若存在$a_0,\ldots,a_m\in\mathbf{F}$使得对任意$z\in\mathbf{F}$有
     \begin{equation}\label{eq:17:多项式定义}
         p(z)=a_0+a_1z+\cdots+a_mz^m,
     \end{equation}
-    则称函数$p$为系数在$\mathbf{F}$中的\keyterm*{多项式}.
+    则称函数$p$为系数在$\mathbf{F}$中的\term{多项式}.
 \end{definition}
 
 对于一个定义，我们很关心它是否能带来一些简便，系数的唯一性便是一个很好的使得研究简便的性质，否则一个多项式能有多种写法是会给人带来很多迷惑的. 事实上，我们有如下定理：
@@ -43,7 +43,7 @@
 
 回顾第一讲中我们提到的代数结构——环的概念，我们不难验证数域$\mathbf{F}$上的全体多项式组成的集合$\mathbf{F}[x]$关于一般的多项式加法和乘法构成一个环，这个环称为数域$\mathbf{F}$上的（一元）多项式环. 具体的验证我们留作习题供读者练习.
 
-除此之外，如果多项式$p$可以写成\autoref{eq:17:多项式定义} 的形式且$a_m\neq 0$，则称$p$是$m$次多项式，记为$\deg p=m$，称$a_m$为$p$的\keyterm*{首项系数}[leading coefficient]，称$a_0$为$p$的\keyterm*{常数项}[constant term]. 若$a_m=1$，则多项式首项系数为1，则称这一多项式为\keyterm{首一多项式}[monic polynomial]. 关于次数我们有如下非常基本的公式，我们将不加证明地直接给出结论：
+除此之外，如果多项式$p$可以写成\autoref{eq:17:多项式定义} 的形式且$a_m\neq 0$，则称$p$是$m$次多项式，记为$\deg p=m$，称$a_m$为$p$的\term{首项系数}\index{duoxiangshi!shouxiangxishu@首项系数 (leading coefficient)}，称$a_0$为$p$的\term{常数项}\index{duoxiangshi!changshuxiang@常数项 (constant term)}. 若$a_m=1$，则多项式首项系数为1，则称这一多项式为\term{首一多项式}\index{duoxiangshi!shouyi@首一 (monic polynomial)}. 关于次数我们有如下非常基本的公式，我们将不加证明地直接给出结论：
 \begin{theorem}
     设$p,q\in\mathbf{F}[x]$，则
     \begin{enumerate}
@@ -101,7 +101,7 @@
 \end{proof}
 
 事实上，我们希望上述定理的第二点的``最多''能够在复数域的情况下取到，这需要接下来这一基本而伟大的定理——代数学基本定理作为支撑：
-\begin{theorem}[{\keyterm{代数学基本定理}[fundamental theorem of algebra]}] \label{thm:17:代数学基本定理}
+\begin{theorem}[代数学基本定理] \label{thm:17:代数学基本定理} \index{daishuxuejibendingli@代数学基本定理 (Fundamental Theorem of Algebra)}
     非常数复多项式在复平面上必有零点.
 \end{theorem}
 
@@ -164,11 +164,11 @@
 
 \end{proof}
 
-在本节中我们更重视$p,q$最大公因式为1的情况，我们称之为\keyterm{互素}[coprime]，我们可以得到一个多项式互素的充要条件：
+在本节中我们更重视$p,q$最大公因式为1的情况，我们称之为\term{互素}\index{husu@互素 (coprime)}，我们可以得到一个多项式互素的充要条件：
 \begin{theorem}\label{thm:17:裴蜀定理}
     设$p,q\in\mathbf{F}[x]$，则$p$和$q$互素的充要条件是存在$u,v\in\mathbf{F}[x]$使得\[up+vq=1.\]
 \end{theorem}
-这一定理称之为\keyterm{裴蜀定理}[Bézout's Lemma]，事实上在数论中也有相对应的结论，证明是非常自然的，读者可以体会：
+这一定理称之为\term{裴蜀定理}\index{peishudingli@裴蜀定理 (Bézout's Lemma)}，事实上在数论中也有相对应的结论，证明是非常自然的，读者可以体会：
 
 \begin{proof}
 

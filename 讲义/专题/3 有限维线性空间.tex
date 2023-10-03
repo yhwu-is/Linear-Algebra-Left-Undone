@@ -7,10 +7,10 @@
 \subsection{线性相关性的定义}
 
 本节我们将形式化定义在引言中我们提到的``可相互消去的关系''——线性相关性，同时这一定义也可以解决引言中提到的关于有限维线性空间至少需要多少个向量张成的问题.
-\begin{definition}
+\begin{definition}[线性相关性] \index{xianxingxiangguan@线性相关 (linearly dependent)} \index{xianxingwuguan@线性无关 (linearly independent)}
     设$V(\mathbf{F})$是一个线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_m\in V$，若存在不全为0的$\lambda_1,\lambda_2,\ldots,\lambda_m\in\mathbf{F}$，使得
     \[\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_m\alpha_m=0\]
-    成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$\keyterm{线性相关}[linearly dependent]，否则称\keyterm{线性无关}[linearly independent]（即系数只能为0）.
+    成立，则称$\alpha_1,\alpha_2,\ldots,\alpha_m$\term{线性相关}，否则称\term{线性无关}（即系数只能为0）.
 \end{definition}
 
 很显然，\autoref{ex:2:线性空间引入} 中的方程组1系数矩阵的三个行向量$\alpha_1,\alpha_2,\alpha_3$满足$\alpha_1+\alpha_2-\alpha_3=0$，因此满足线性相关的定义，方程组2的系数矩阵三个行向量$\beta_1,\beta_2,\beta_3$的线性组合则只有$0\cdot\beta_1+0\cdot\beta_2+0\cdot\beta_3$等于0，因此符合线性无关的定义.
@@ -183,7 +183,7 @@
     设$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，则有$j\in\{1,2,\ldots,m\}$使得：
     \begin{enumerate}
         \item \label{item:3:线性相关性引理:1}
-              $\alpha_j\in\spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1})$；
+              $\alpha_j \in \spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1})$；
 
         \item \label{item:3:线性相关性引理:2}
               从$\alpha_1,\alpha_2,\ldots,\alpha_m$中删去向量$\alpha_j$，剩余向量张成空间仍等于$\spa(\alpha_1,\alpha_2,\ldots,\alpha_m)$.
@@ -224,7 +224,7 @@
 
 在上述过程中我们可以引入两个重要的概念，即向量组的秩和极大线性无关组：
 \begin{definition}
-    设向量组$S=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$张成的线性空间为$V$，若存在$S$的一个线性无关向量组$B=\{\alpha_{k1},\alpha_{k2},\ldots,\alpha_{kr}\}$，使得$V=\spa(B)$，则称$B$为$S$的一个\keyterm{极大线性无关组}[maximal linearly independent system]，并称极大线性无关组的长度$r=r(S)$为$S$的\keyterm{秩}[rank].
+    设向量组$S=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$张成的线性空间为$V$，若存在$S$的一个线性无关向量组$B=\{\alpha_{k1},\alpha_{k2},\ldots,\alpha_{kr}\}$，使得$V=\spa(B)$，则称$B$为$S$的一个\term{极大线性无关组}\index{jidaxianxing@极大线性无关组 (maximal linearly independent system)}，并称极大线性无关组的长度$r=r(S)$为$S$的\term{秩}\index{zhi@秩 (rank)}.
 \end{definition}
 定义中``极大''一词我们只需简单思考前述过程即可明白其含义，因为我们要求丢弃后的向量组一旦线性无关就要停止继续丢弃向量，因此这一剩余向量组的长度一定是所有线性无关向量组中最大的.
 
@@ -250,7 +250,7 @@
     即
     \[\sum_{j = 1}^s x_j\beta_j = \sum_{j = 1}^s x_j\left(\sum_{i = 1}^r \lambda_{ij} \alpha_i\right) = \sum_{i = 1}^r \left(\sum_{j = 1}^s \lambda_{ij}x_j\right)\alpha_i = 0\]
     注意到若 $\alpha_i$ 前的系数均取 $0$，则此方程必然成立，而我们也没必要去求出所有解，只需要通解即可，所以有
-    \[\sum_{j = 1}^s \lambda_{ij}x_j = 0 \qquad i = 1, \ldots, r\]
+    \[\sum_{j = 1}^s \lambda_{ij}x_j = 0 i = 1, \ldots, r\]
     此为关于 $x_1, x_2, \ldots, x_s$ 的齐次线性方程组，其方程个数 $r$ 小于未知数数量 $s$，因此此方程组必然有非零解，即存在不全为零的 $x_1, x_2, \ldots, x_s$ 使式子成立，故 $ \beta_1,\beta_2,\ldots,\beta_s $ 线性相关.
 \end{proof}
 
@@ -267,7 +267,7 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item $B_1$ 可被其极大线性无关组 $A_1$ 表示，$B_2$ 可被其极大线性无关组 $A_2$ 表示，所以原条件等价于 $A_1$ 可以被 $A_2$ 线性表示.而由极大线性无关组的定义，$A_1, A_2$ 中的向量个数分别是 $r(B_1), r(B_2)$，根据\autoref{thm:3:线性表示}，有 $r(B_1)\leqslant r(B_2)$.
+        \item $B_1$ 可被其极大线性无关组 $A_1$ 表示，$B_2$ 可被其极大线性无关组 $A_2$ 表示，所以原条件等价于 $A_1$ 可以被 $A_2$ 线性表示. 而由极大线性无关组的定义，$A_1, A_2$ 中的向量个数分别是 $r(B_1), r(B_2)$，根据\autoref{thm:3:线性表示}，有 $r(B_1)\leqslant r(B_2)$.
 
         \item 因为 $B_1, B_2$ 可以互相表示，所以 $r(B_1) \leqslant r(B_2),r(B_2) \leqslant r(B_1)$，所以 $r(B_1) = r(B_2)$. 又极大线性无关组的秩就是其向量个数，所以 $B_1, B_2$ 长度相等.
     \end{enumerate}
@@ -279,7 +279,7 @@
 
     \item 对称性：设向量组 $B_1$ 等价于向量组 $B_2$，则向量组 $B_2$ 等价于向量组 $B_1$，因为它们可以相互表示；
 
-    \item 传递性：设向量组 $B_1$ 等价于向量组 $B_2$，向量组 $B_2$ 等价于向量组 $B_3$，则向量组 $B_1$ 等价于向量组 $B_3$.因为 $B_1$ 和 $B_2$ 可以相互表示，$B_2$ 和 $B_3$ 可以相互表示就有 $B_1$ 和 $B_3$ 可以相互表示.
+    \item 传递性：设向量组 $B_1$ 等价于向量组 $B_2$，向量组 $B_2$ 等价于向量组 $B_3$，则向量组 $B_1$ 等价于向量组 $B_3$. 因为 $B_1$ 和 $B_2$ 可以相互表示，$B_2$ 和 $B_3$ 可以相互表示就有 $B_1$ 和 $B_3$ 可以相互表示.
 \end{enumerate}
 三个条件的成立是显然的，我们不再赘述，接下来我们基于等价向量组的定义给出\autoref{thm:3:线性表示} 的进一步结论，直至证明向量组的秩唯一：
 \begin{corollary}
@@ -459,6 +459,7 @@
 
 \begin{solution}
     通过待定系数法解方程即可.
+
     在 $B_1$ 下：$(a_0, a_1, a_2)$. 在 $B_2$ 下：$(a_0 + a_1 + a_2, a_1 + 2a_2, a_2)$.
 \end{solution}
 关于向量的定义我们有以下几点需要强调：
@@ -556,7 +557,7 @@
 
     \item 设$\mathbf{R}_+$是所有正实数组成的集合，加法和数乘定义如下：
           \[ \forall a,b \in \mathbf{R}_+,\enspace k\in \mathbf{R}\colon\enspace a\oplus b = ab,\enspace k\odot a = a^k \]
-          则 $\mathbf{R}_+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}_+$的一组基；
+          则 $\mathbf{R}_+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}_+$的一组基.
 \end{enumerate}
 
 \centerline{\heiti C组}
