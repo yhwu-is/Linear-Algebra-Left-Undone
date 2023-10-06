@@ -3,10 +3,10 @@
 在前面的讲解中我们讨论了如何利用核空间的性质将线性空间分解为若干个线性变换的不变子空间，得到广义特征子空间和分块对角矩阵的结论. 从本讲起我们希望变换一个角度，从多项式出发推导出这一结论，并由此出发深入讨论多项式与相似标准形的关联.
 
 为了接下来讨论的方便，我们首先介绍一个接下来常用的一类特殊的多项式，它将线性变换（矩阵）代入后多项式值为0. 这样的多项式我们称为线性变换（矩阵）的零化多项式，我们的严谨定义如下：
-\begin{definition}[{\keyterm{零化多项式}[annihilating polynomial]}]
+\begin{definition}[零化多项式] \index{duoxiangshi!linghua@零化 (annihilating polynomial)}
     我们有线性变换和矩阵的零化多项式定义如下：
     \begin{enumerate}
-        \item 设$\sigma\in \mathcal{L}(V)$，若$p\in\mathbf{F}[x]$使得$p(\sigma)=0$，则称$p$为$\sigma$的一个\keyterm*{零化多项式}；
+        \item 设$\sigma\in \mathcal{L}(V)$，若$p\in\mathbf{F}[x]$使得$p(\sigma)=0$，则称$p$为$\sigma$的一个\term{零化多项式}；
 
         \item 设$A\in\mathbf{F}^{n\times n}$，若$p\in\mathbf{F}[x]$使得$p(A)=0$，则称$p$为$A$的一个零化多项式.
     \end{enumerate}
@@ -15,12 +15,12 @@
 \section{特征多项式 \quad Hamilton-Cayley 定理}
 
 接下来我们首先讨论线性变换的特征多项式，事实上我们在不变子空间一讲中实际上已经提到过矩阵的特征多项式，这里我们将给出线性变换的相关定义并讨论二者关联：
-\begin{definition}[{\keyterm{特征多项式}[characteristic polynomial]}]
+\begin{definition}[特征多项式] \index{duoxiangshi!tezheng@特征 (characteristic polynomial)}
     设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$. 令$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值，重数（即对应的广义特征子空间的维数）分别为$d_1,\ldots,d_m$，则多项式
     \begin{equation}\label{eq:21:线性变换特征多项式}
         p(z)=(z-\lambda_1)^{d_1}\cdots(z-\lambda_m)^{d_m}
     \end{equation}
-    称为$\sigma$的\keyterm*{特征多项式}.
+    称为$\sigma$的\term{特征多项式}.
 \end{definition}
 
 根据这一定义，我们有两个直接的结论：
@@ -48,8 +48,8 @@
 
 我们首先要引入 Hamilton-Cayley 定理. 我们的动机是获得零化多项式，使我们向着目标前进. 观察矩阵$A=\begin{pmatrix}
         1 & 2 \\ 0 & -1
-    \end{pmatrix}$，我们容易验证$A^2-I=0$，因此$\lambda^2-1$是$A$的一个零化多项式，同时我们发现这是$A$的特征多项式，因此我们可以猜想，是否对于所有的矩阵都有特征多项式是零化多项式呢？事实上，这就是著名的 \keyterm{Hamilton-Cayley 定理}：
-\begin{theorem}[Hamilton-Cayley 定理] \label{thm:21:HC}
+    \end{pmatrix}$，我们容易验证$A^2-I=0$，因此$\lambda^2-1$是$A$的一个零化多项式，同时我们发现这是$A$的特征多项式，因此我们可以猜想，是否对于所有的矩阵都有特征多项式是零化多项式呢？事实上，这就是著名的 \term{Hamilton-Cayley 定理}：
+\begin{theorem}[Hamilton-Cayley 定理] \label{thm:21:HC} \index{Hamilton@Hamilton-Cayley 定理 (Cayley-Hamilton theorem)}
     设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$. 令$q$表示$\sigma$的特征多项式，则$q(\sigma)=0$.
 \end{theorem}
 定理的证明我们将从前面讨论的三个相似标准形：对角矩阵，上三角矩阵和分块对角矩阵三个角度给出三个证明. 通过这三个证明我们可以体会到标准形与多项式背后的联系.
@@ -164,7 +164,7 @@
 
     \item 对合线性变换：$\sigma\in \mathcal{L}(V)$且$\sigma^2=I$，极小多项式为$\lambda^2-1$或$\lambda+1$或$\lambda-1$；
 
-    \item 引入\keyterm{若当块}. 若域$\mathbf{F}$上的一个$r$级矩阵形如\[\begin{pmatrix}
+    \item 引入\term{若当块}\index{ruodangkuai@若当块 (Jordan block)}. 若域$\mathbf{F}$上的一个$r$级矩阵形如\[\begin{pmatrix}
                   a & 1 &        &   \\
                     & a & \ddots &   \\
                     &   & \ddots & 1 \\
@@ -248,7 +248,7 @@
 
 这一结论的应用或许并不直接，但如果我们考虑线性变换在不变子空间直和分解下的分块对角矩阵，那么这一分块对角矩阵的极小多项式实际上就等于各个分块的极小多项式的最小公倍式.
 \begin{example} \label{thm:21:若当形矩阵极小多项式}
-    我们在此继续引入\keyterm{若当形矩阵}，即由若干个若当块组成的分块对角矩阵. 设$A$为若当形矩阵，$A=\diag(J_{r_1}(a),\ldots,J_{r_s}(a),J_{t_1}(b),\ldots,J_{t_m}(b))$，其中$r_1\leqslant\cdots\leqslant r_s$，$t_1\leqslant\cdots\leqslant t_m$，则$A$的极小多项式$p$为$\lcm((\lambda-a)^{r_1},\ldots,(\lambda-a)^{r_s},(\lambda-b)^{t_1},(\lambda-b)^{t_m})$，即为$(\lambda-a)^{r_s}(\lambda-b)^{t_m}$. 实际上，这一结论还可以进一步推广，但描述较为繁杂，读者只需从此例理解基本思想即可.
+    我们在此继续引入\term{若当形矩阵}\index{ruodangxingjuzhen@若当形矩阵 (Jordan matrix)}，即由若干个若当块组成的分块对角矩阵. 设$A$为若当形矩阵，$A=\diag(J_{r_1}(a),\ldots,J_{r_s}(a),J_{t_1}(b),\ldots,J_{t_m}(b))$，其中$r_1\leqslant\cdots\leqslant r_s$，$t_1\leqslant\cdots\leqslant t_m$，则$A$的极小多项式$p$为$\lcm((\lambda-a)^{r_1},\ldots,(\lambda-a)^{r_s},(\lambda-b)^{t_1},(\lambda-b)^{t_m})$，即为$(\lambda-a)^{r_s}(\lambda-b)^{t_m}$. 实际上，这一结论还可以进一步推广，但描述较为繁杂，读者只需从此例理解基本思想即可.
 \end{example}
 在\autoref{thm:21:极小多项式与分解} 中我们了解了极小多项式中因子幂次与广义特征子空间的关联. 加入极小多项式的各个因式的次数均为1，这与可对角化线性变换的不变子空间分解是一致的！因此我们可以得到下面的结论：
 \begin{theorem}

@@ -8,7 +8,7 @@
 \[ z = \left(\frac{z}{\lvert z \rvert}\right)\lvert z \rvert = \left(\frac{z}{\lvert z \rvert}\right)\sqrt{\overline{z}z} \]
 其中 $ \dfrac{z}{\lvert z \rvert} $ 是一个单位复数. 那么由此我们可以类比得出一个对 $ V $ 上任意算子的漂亮的描述.
 
-\begin{theorem}[\keyterm{极分解定理}]
+\begin{theorem}[极分解定理] \index{jifenjiedingli@极分解定理 (polar decomposition theorem)}
     设 $ T \in \mathcal{L}(V) $，则存在一个等距同构 $ S \in \mathcal{L}(V) $，使得 $ T = S\sqrt{T^*T} $.
 \end{theorem}
 
@@ -72,7 +72,7 @@
 
 为了与极分解配对，我们引入奇异值的概念.
 
-\begin{definition}[\keyterm{奇异值}]
+\begin{definition}[奇异值] \index{qiyizhi@奇异值 (singular value)}
     设 $ T \in \mathcal{L}(V) $，则 $ T $ 的奇异值就是 $ \sqrt{T^*T} $的特征值，每个特征值 $ \lambda $ 重复 $ \dim E(\lambda, \sqrt{T^*T}) $ 次.
 \end{definition}
 
@@ -80,7 +80,7 @@
 
 那么依托奇异值和两组标准正交基，我们可以对 $ V $ 上的每个算子都给出简洁的矩阵表示.
 
-\begin{theorem}[{\keyterm{奇异值分解}[singular value decomposition]}]
+\begin{theorem}[奇异值分解] \index{qiyizhi!fenjie@奇异值 (singular value decomposition)}
     设 $ T \in \mathcal{L}(V) $ 有奇异值 $ s_1, \ldots , s_n $，则 $ V $ 存在两组标准正交基$ e_1, \ldots, \e_n $ 和 $ f_1, \ldots, f_n $ 使得 $ \forall v \in V $ 均有$ Tv = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_n \langle v, e_n \rangle f_n $.
 \end{theorem}
 

@@ -24,8 +24,8 @@
 
 共轭转置说清楚后，便可以由此定义正交矩阵和酉矩阵.
 
-\begin{definition}
-    在复数域（实数域）上，矩阵 $ A $ 满足 $ \overline{A}^{\mathrm{T}} A = E $（ $ {A}^{\mathrm{T}} A = E $ ），则矩阵 $ A $ 被称为\keyterm{酉矩阵}[unitary matrix]（\keyterm{正交矩阵}[orthogonal matrix]）.
+\begin{definition} \index{youjuzhen@酉矩阵 (unitary matrix)} \index{zhengjiaojuzhen@正交矩阵 (orthogonal matrix)}
+    在复数域（实数域）上，矩阵 $ A $ 满足 $ \overline{A}^{\mathrm{T}} A = E $（ $ {A}^{\mathrm{T}} A = E $ ），则矩阵 $ A $ 被称为\term{酉矩阵}（\term{正交矩阵}）.
 \end{definition}
 
 而如何刻画正交矩阵和酉矩阵的性质呢？下面的一个定理揭示了其与标准正交基的关系，可以从中窥得一些性质.
@@ -73,9 +73,9 @@
 
 \begin{definition}
     \begin{enumerate}
-        \item \keyterm{酉相似}：复内积空间上，若 $ B = P^{-1}AP = \overline{P}^{\mathrm{T}}AP $，则称矩阵 $ A $ 与矩阵 $ B $ 酉相似.
+        \item \term{酉相似}：复内积空间上，若 $ B = P^{-1}AP = \overline{P}^{\mathrm{T}}AP $，则称矩阵 $ A $ 与矩阵 $ B $ 酉相似.
 
-        \item \keyterm{正交相似}：实内积空间上，若 $ B = P^{-1}AP = {P}^{\mathrm{T}}AP $，则称矩阵 $ A $ 与矩阵 $ B $ 正交相似.
+        \item \term{正交相似}：实内积空间上，若 $ B = P^{-1}AP = {P}^{\mathrm{T}}AP $，则称矩阵 $ A $ 与矩阵 $ B $ 正交相似.
     \end{enumerate}
 \end{definition}
 
@@ -93,8 +93,8 @@
 \[ \lVert Su \rVert = \lVert u \rVert \]
 算子 $ S $ 保持范数.
 
-\begin{definition}[等距同构]
-    算子 $ S \in \mathcal{L}(V) $ 称为\keyterm{等距同构}，如果 $ \forall v \in V $都有 $ \lVert Su \rVert = \lVert u \rVert $.
+\begin{definition}[等距同构] \index{tonggou!dengju@等距同构 (isometric isomorphism)}
+    算子 $ S \in \mathcal{L}(V) $ 称为\term{等距同构}，如果 $ \forall v \in V $都有 $ \lVert Su \rVert = \lVert u \rVert $.
 \end{definition}
 
 注意我们这里虽然使用了共轭对称，但是从伴随的角度上来说复内积空间和实内积空间其实是一样的，也就是说等距同构的概念在这两类空间上是一致的，只不过刻画上会有所差距，之后会有所介绍. 此外，也常称实内积空间上的等距同构为正交算子，复内积空间上的等距同构称为酉算子.
@@ -158,7 +158,7 @@
 
 有定可以被解释为无论这个非零向量是怎样的，其经过某种规定运算得到的数的符号是确定的. 正定矩阵自然就是指任何非零向量经某种运算后得到的实数一定是正的. 但这所谓的``某种运算''在不同的数域下仍然有差异.
 
-\begin{definition}[\keyterm{正定矩阵}]
+\begin{definition}[正定矩阵] \index{zhengdingjuzhen@正定矩阵 (positive definite matrix)}
     \begin{enumerate}
         \item 实数域：对 $ n $ 阶实对称矩阵 $ M $，若对于所有非零实系数向量 $ z $，均有$ z^{T}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵；
 
@@ -197,9 +197,9 @@
         \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathbf{C}^k $ 构成的
               Gram 矩阵. 即 $ A = B^{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且这种分解方式不唯一.
 
-        \item \keyterm{Cholesky decomposition} 存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^{H} $
+        \item \term{Cholesky 分解}\index{Cholesky@Cholesky 分解 (Cholesky decomposition)}：存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^{H} $
 
-        \item \keyterm{Sylvester's criterion} $ A $ 的所有顺序主子式均为正. （但对于半正定矩阵而言，顺序主子式非负不能推出矩阵半正定）
+        \item \term{Sylvester 定理}\index{Sylvester@Sylvester 定理 (Sylvester's criterion)}：$ A $ 的所有顺序主子式均为正. （但对于半正定矩阵而言，顺序主子式非负不能推出矩阵半正定）
     \end{enumerate}
 \end{theorem}
 
@@ -207,7 +207,7 @@
 
 现在让我们跳开去，先去看看算子上的事情，不过出于更实用的原因，我们研究半正定矩阵对应的算子.
 
-\begin{definition}[\keyterm{正算子}]
+\begin{definition}[正算子] \index{zhengsuanzi@正算子 (positive operator)}
     设算子 $ T \in \mathcal{L}(V) $，如果 $ T $ 是自伴的且 $ \forall v \in V $均有 $ \langle Tv, v \rangle \geqslant 0 $.
 \end{definition}
 
@@ -256,7 +256,7 @@
 
 我们定义出的正算子虽然名为正算子，但我们类比的时候它其实是类似于非负数，非负数很重要的一种运算就是开方运算. 类似的，我们也可以定义算子的平方根.
 
-\begin{definition}[\keyterm{平方根}]
+\begin{definition}[平方根] \index{pingfanggen@平方根 (square root)}
     算子 $ R $ 被称为算子 $ T $ 的平方根，如果 $ R^{2} = T $.
 \end{definition}
 

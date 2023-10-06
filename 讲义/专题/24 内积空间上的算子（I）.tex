@@ -6,8 +6,8 @@
 
 \subsection{伴随}
 
-\begin{definition}[伴随]
-    设 $ T \in \mathcal{L}(V, W) $， $ T $ 的\keyterm{伴随} $ T^*: W \rightarrow V $满足如下条件： $ \forall v \in V, w \in W, \langle Tv, w \rangle = \langle v, T^*w \rangle$
+\begin{definition}[伴随] \index{bansui@伴随 (adjoint)}
+    设 $ T \in \mathcal{L}(V, W) $， $ T $ 的\term{伴随} $ T^*: W \rightarrow V $满足如下条件： $ \forall v \in V, w \in W, \langle Tv, w \rangle = \langle v, T^*w \rangle$
 \end{definition}
 
 这样的一个东西定义出来，在本书的视角下一般先考虑以下问题：是个映射吗？良定义吗？线性吗？好消息是，对伴随而言，这三个问题都是肯定的. 这里就良定义做个解释，线性的验证留给读者.
@@ -55,8 +55,8 @@
 
 映射本身研究的差不多了，我们就该看看对应的矩阵有些什么性质了. 不过在此之前，我们要讨论一种新的对矩阵的操作.
 
-\begin{definition}[共轭转置]
-    $ m \times n $ 矩阵的\keyterm{共轭转置}是先互换行和列，然后对每个元素取复共轭得到的 $ n \times m $ 矩阵.
+\begin{definition}[共轭转置] \index{gongezhuanzhi@共轭转置 (conjugate transpose)}
+    $ m \times n $ 矩阵的\term{共轭转置}是先互换行和列，然后对每个元素取复共轭得到的 $ n \times m $ 矩阵.
 
     即矩阵 $ A = (a_{ij})_{m \times n} $，则 $ A $ 的共轭转置阵 $ \overline{A}^{\mathrm{T}} = (\overline{a_{ji}})_{n \times m} $
 \end{definition}
@@ -83,8 +83,8 @@
 
 限制成算子的话，原本的算子与其伴随就被限制在同一块内积空间上了. 很自然的，我们就会开始思考一件事情，如果一个算子和它的伴随相等，那么会发生什么？
 
-\begin{definition}[自伴算子]
-    若算子 $ T \in \mathcal{L}(V) $ 满足 $ T = T^* $，则其被称为\keyterm{自伴算子}.
+\begin{definition}[自伴算子] \index{zibansuanzi@自伴算子 (self-adjoint operator)}
+    若算子 $ T \in \mathcal{L}(V) $ 满足 $ T = T^* $，则其被称为\term{自伴算子}.
 \end{definition}
 
 写成内积的语言就是 $ \forall v, w \in V,\enspace \langle Tv, w \rangle = \langle v, Tw \rangle $.
@@ -131,8 +131,8 @@
 
 自伴算子的讨论就先阐述这么多. 之前将算子和数进行了类比，着重关注了他们相似的地方，现在来看看它们的不同之处，而最大的不同应该就是算子对乘法并没有交换律. 所以，如果一个算子与其伴随的乘法是可交换的，它又会有些什么特殊之处呢？
 
-\begin{definition}[正规算子]
-    若算子 $ T \in \mathcal{L}(V) $ 满足 $ TT^* = T^*T $，则其被称为\keyterm{正规算子}.
+\begin{definition}[正规算子] \index{zhengguisuanzi@正规算子 (normal operator)}
+    若算子 $ T \in \mathcal{L}(V) $ 满足 $ TT^* = T^*T $，则其被称为\term{正规算子}.
 \end{definition}
 
 很显然，自伴算子其实也是正规算子.
@@ -180,7 +180,7 @@
 
 有了\autoref{thm:24:正规算子的特征向量正交} 的铺垫，复谱定理描述的这样一族算子就呼之欲出了.
 
-\begin{theorem} \keyterm{复谱定理}
+\begin{theorem}[复谱定理] \label{thm:24:复谱定理} \index{pudingli@谱定理 (spectral theorem)!fu@复谱定理}
     设 $ \mathbf{F} = \mathbf{C} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
         \item \label{item:24:复谱定理:1}
@@ -299,7 +299,7 @@
 
 忙活了这么久，接下来就到了最激动人心的时刻了.
 
-\begin{theorem}[\keyterm{实谱定理}]
+\begin{theorem}[实谱定理] \label{thm:24:实谱定理} \index{pudingli!shi@实谱定理}
     设 $ \mathbf{F} = \mathbf{R} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
         \item \label{item:24:实谱定理:1}

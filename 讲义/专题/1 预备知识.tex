@@ -19,10 +19,10 @@
 
 上面的定义中出现了一个新的记号，即两个集合之间出现了乘号，这实际上是集合的笛卡尔积运算，定义如下：
 
-\begin{definition}
+\begin{definition}[笛卡尔积] \index{dikaerji@笛卡尔积 (Cartesian product)}
     设$A$和$B$是两个非空集合，我们把集合
     \[A\times B=\{(a,b) \mid a\in A, b\in B\}\]
-    称为集合$A$和$B$的\keyterm{笛卡尔积}[Cartesian product].
+    称为集合$A$和$B$的\term{笛卡尔积}.
 \end{definition}
 
 因此我们很容易理解$\mathbf{R}\times\mathbf{R}$是一个集合，它的元素是形如$(a,b)$的有序对，其中$a,b\in\mathbf{R}$. 事实上，我们可以将$\mathbf{R}\times\mathbf{R}$看作平面上的点集，其中的点$(a,b)$对应于平面上的一个点，这一点的横坐标为$a$，纵坐标为$b$.
@@ -30,8 +30,8 @@
 我们回到运算的映射表示，我们发现$+$和$\times$两个映射以两个实数作为函数的自变量，函数值也是一个实数. 或许读者看到这里还是对运算的定义有些许迷茫，但如果我们回忆映射的基本定义$f:A\to B$，$a\mapsto f(a)$，并将加法乘法写成$+(2,3)=5$，$\times(2,3)=6$，想必就会恍然大悟：$+$和$\times$实际上就是函数名，函数做的事情就是输入两个自变量然后进行加法/乘法运算得到函数值.
 
 在上述讨论中，我们所做的事情很简单，就是给定一个集合，然后在这一集合的元素之间定义运算. 实际上这就是代数系统的定义：
-\begin{definition}[{\keyterm{代数系统}[algebraic system]}]
-    一般地，我们把一个非空集合$X$和在$X$上定义的若干代数运算$f_1,\ldots,f_k$组成的系统称为\keyterm*{代数系统}（简称代数系），记作$\langle X : f_1,\ldots,f_k\rangle$.
+\begin{definition}[代数系统] \index{daishuxitong@代数系统 (algebraic system)}
+    一般地，我们把一个非空集合$X$和在$X$上定义的若干代数运算$f_1,\ldots,f_k$组成的系统称为\term{代数系统}（简称代数系），记作$\langle X : f_1,\ldots,f_k\rangle$.
 \end{definition}
 
 特别注意的是，代数系统上定义的运算必须保证封闭性，也就是运算后的结果必须仍然在集合$X$中.
@@ -59,14 +59,14 @@
 \end{example}
 
 事实上，我们可以对上面的定义做进一步的抽象. 我们可以忽略集合中元素的差异（元素可以是实数，也可以是上述例子中的平面向量等），同时也可以忽略运算定义的差异，只关心运算作用于集合元素的性质. 对于一般的代数系统$\langle G:\circ\rangle$，我们有如下定义：
-\begin{definition}[群] \label{def:1:群}
-    若运算$\circ$满足结合律，则称代数系统$\langle G:\circ\rangle$为\keyterm{半群}[semigroup]；若在半群基础上存在单位元，则称之为\keyterm{含幺半群}[monoid]；若在含幺半群基础上每个元素存在逆元，则称之为\keyterm{群}[group]；若在群的基础上运算还满足交换律，则称之为\keyterm{Abel群}[Abelian group]，也称\keyterm{交换群}[commutative group].
+\begin{definition}[群] \label{def:1:群} \index{qun@群 (group)}
+    若运算$\circ$满足结合律，则称代数系统$\langle G:\circ\rangle$为\term{半群}\index{qun!banqun@半群 (semigroup)}；若在半群基础上存在单位元，则称之为\term{含幺半群}\index{qun!hanyaobanqun@含幺半群 (monoid)}；若在含幺半群基础上每个元素存在逆元，则称之为\term{群}；若在群的基础上运算还满足交换律，则称之为\term{Abel 群}，也称\term{交换群}\index{qun!abel@Abel 群 (Abelian group), 交换群 (commutative group)}.
 \end{definition}
 
 \autoref{def:1:群} 给出了我们本节第一个要讨论的代数结构——群的定义. 简而言之，代数结构就是在集合上定义具有某些特定性质的运算后得到的一类代数系统. 事实上，教材中42--44页给出了大量抽象的例子有助于同学们理解上述一系列群的定义，并且我们在后续学习矩阵的时候也会遇到一些群结构，相信这些实例能使读者体会到``在集合上定义运算''的方式的多样与抽象.
 
 为方便书写，对于\autoref{def:1:群} 定义的群$\langle G:\circ\rangle$我们可以简写为群$G$. 除此之外，我们还需要指出以下两点：
-\begin{theorem}
+\begin{theorem}\label{thm:1:群的单位元逆元唯一}
     \begin{enumerate}
         \item 群的单位元唯一；
 
@@ -84,11 +84,11 @@
     \end{enumerate}
 \end{proof}
 
-其中第一点的证明直接使用了单位元的性质，第二点的证明则使用了结合律和逆元的性质. 这里关于唯一性的证明是非常重要的，在之后证明矩阵的逆唯一等问题时也会用到，因此此处特别给出证明强调.
+其中第一点的证明直接使用了单位元的性质，第二点的证明则使用了结合律和逆元的性质. 这里关于唯一性的证明是非常重要的：我们只需假设要证明唯一的东西有两个，然后说明这两个必然相等即可. 这一思想在之后证明矩阵的逆唯一等问题时也会用到，因此此处特别给出证明强调.
 
 事实上，在很多集合上我们不仅可以定义一种运算，也可以定义两种甚至更多运算，在代数结构中我们仅讨论最多两种运算的情况. 事实上，我们最开始的实数集合定义加法和乘法的例子便可以引入一个新的代数结构——域：
-\begin{definition}[{\keyterm{域}[field]}]
-    我们称代数系统$\langle F:+,\circ\rangle$为一个\keyterm*{域}，如果
+\begin{definition}[域] \index{yu@域 (field)}
+    我们称代数系统$\langle F:+,\circ\rangle$为一个\term{域}，如果
     \begin{enumerate}
         \item $\langle F:+\rangle$是交换群，其单位元记作0；
 
@@ -115,8 +115,8 @@
 上述定理的证明可见教材46页. 事实上，如果加法和乘法的定义不是数的加法和乘法，我们可以定义除了数域之外的域，我们将在本讲介绍完等价类的概念后给出这样的例子.
 
 当然，还有一种代数结构对于$\circ$运算的要求有所降低，但也有广泛的应用，这就是环：
-\begin{definition}[环]
-    我们称代数系统$\langle R:+,\circ\rangle$为一个\keyterm{环}[ring]，如果
+\begin{definition}[环] \index{huan@环 (ring)}
+    我们称代数系统$\langle R:+,\circ\rangle$为一个\term{环}，如果
     \begin{enumerate}
         \item $\langle R:+\rangle$是交换群，其单位元记作0；
 
@@ -129,7 +129,7 @@
               \end{gather*}
     \end{enumerate}
 
-    若关于$\circ$存在单位元，则称之为\keyterm{含幺环}[ring with identity]，若进一步每个非0（$+$运算单位元）元素关于$\circ$都有逆元，则称之为\keyterm{除环}[division ring]. 另外，若上述定义中$\circ$运算满足交换律，则称为\keyterm{交换环}[commutative ring]，结合上述除环和交换环两个定义，我们可以发现，交换除环即为域.
+    若关于$\circ$存在单位元，则称之为\term{含幺环}\index{huan!hanyao@含幺环 (ring with identity)}，若进一步每个非0（$+$运算单位元）元素关于$\circ$都有逆元，则称之为\term{除环}\index{huan!chu@除环 (division ring)}. 另外，若上述定义中$\circ$运算满足交换律，则称为\term{交换环}\index{huan!jiaohuan@交换环 (commutative ring)}，结合上述除环和交换环两个定义，我们可以发现，交换除环即为域.
 \end{definition}
 
 \begin{example}
@@ -256,7 +256,7 @@
     \overline{1}=\{3k+1\mid k\in\mathbf{Z}\} \\
     \overline{2}=\{3k+2\mid k\in\mathbf{Z}\}
 \end{gather*}
-且它们的并集就是原集合，即这三个等价类构成了原集合的一个\keyterm{分划}[partition]（即分为并为原集合且互不相交的子集）. 这一结论对所有等价类都成立，是很直观的结论：
+且它们的并集就是原集合，即这三个等价类构成了原集合的一个\term{分划}\index{fenhua@分划 (partition)}（即分为并为原集合且互不相交的子集）. 这一结论对所有等价类都成立，是很直观的结论：
 \begin{theorem}\label{thm:1:等价类的性质}
     设$R$是集合$A$的等价关系，则由所有不同的等价类构成的子集族$\{\overline{a}\}$是$A$的分划. 反之，我们也可以基于分划在$A$中定义等价关系.
 \end{theorem}
@@ -268,14 +268,19 @@
 这一引理说明$a$和$b$等价当且仅当它们等价类相同，或者说在同一个等价类中，相信根据等价类的定义这是很显然的结论.
 
 这一引理还有一个重要的推论：
-\begin{corollary}
-    设$R$是集合$A$的等价关系，$a,b\in A$，则$\overline{a}\cap\overline{b}\neq\varnothing\iff\overline{a}=\overline{b}$.
+\begin{corollary}\label{cor:1:等价类的性质}
+    设$R$是集合$A$的等价关系，$a,b\in A$，则下面二者必成立其一：
+    \begin{enumerate}
+        \item $\overline{a}\cap\overline{b}=\varnothing$；
+
+        \item $\overline{a}=\overline{b}$.
+    \end{enumerate}
 \end{corollary}
 即等价类要么相等要么不相交，这一结论也是非常自然的，且由这一结论我们很容易证明\autoref{thm:1:等价类的性质}. 如果对这些定理的证明细节感兴趣的读者可以参看教材第5页的定理1.1和1.2.
 
 进一步此我们可以定义商集的概念：
-\begin{definition}[{\keyterm{商集}[quotient set]}]
-    设$R$是集合$A$的等价关系，以关于$R$的等价类为元素的集合（实际上是集合构成的集合，又称集族）$\{\overline{a}\}$称为$A$对$R$的\keyterm*{商集}，记为$A/R$. 由
+\begin{definition}[商集] \index{shangji@商集 (quotient set)}
+    设$R$是集合$A$的等价关系，以关于$R$的等价类为元素的集合（实际上是集合构成的集合，又称集族）$\{\overline{a}\}$称为$A$对$R$的\term{商集}，记为$A/R$. 由
     \[\pi(a) = \overline{a}, \enspace \forall a\in A\]
     定义的$A$到$A/R$上的映射$\pi$称为$A$到$A/R$上的自然映射.
 \end{definition}
@@ -390,7 +395,7 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 设$A$是一个Abel群，$A$的运算是加法. 在$A$中定义乘法运算为$ab=0,\enspace\forall a,b\in A$. 证明：$A$为一个环（我们称这种环为\keyterm*{零环}[zero ring]）.
+    \item 设$A$是一个Abel群，$A$的运算是加法. 在$A$中定义乘法运算为$ab=0,\enspace\forall a,b\in A$. 证明：$A$为一个环（我们称这种环为\term{零环}\index{huan!ling@零环 (zero ring)}）.
 
     \item 证明：若集合$A$上的二元关系$R$满足
           \begin{enumerate}
