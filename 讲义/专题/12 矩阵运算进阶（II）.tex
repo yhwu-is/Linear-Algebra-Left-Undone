@@ -199,11 +199,11 @@
               \[\lambda_ib_{ij}=\lambda_jb_{ij}(i,j=1,2,\cdots,n),\]
               由于$i\neq j$时$\lambda_i\neq\lambda_j$，因此$b_{ij}=0$，即$B$是对角矩阵.
 
-        \item 设$A=\diag{\lambda_1E_1,\lambda_2E_2,\cdots,\lambda_sE_s}$，其中$E_i$是$m_i$阶单位矩阵，$m_1+m_2+\cdots+m_k=n$，设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，将$B$做与$A$一样的分块，事实上由于分块矩阵乘法和一般乘法的相似性，我们可以完全套用第一点的证明完成这里的证明，这里不再赘述.
+        \item 设$A=\diag{(\lambda_1E_1,\lambda_2E_2,\cdots,\lambda_sE_s)}$，其中$E_i$是$m_i$阶单位矩阵，$m_1+m_2+\cdots+m_k=n$，设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，将$B$做与$A$一样的分块，事实上由于分块矩阵乘法和一般乘法的相似性，我们可以完全套用第一点的证明完成这里的证明，这里不再赘述.
 
         \item 设$C$与所有$n$级可逆矩阵可交换，由前述1可知$C$至少是对角矩阵，因为$C$起码要与主对角元两两互异的对角矩阵可交换.
 
-              我们将$C$记为$\diag{k_1,k_2,\cdots,k_n}$，进一步地，取可逆矩阵$B=E_{12}+E_{23}+\cdots+E_{n-1,n}+E_{n1}$（回顾第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$），则$BC=CB$可知
+              我们将$C$记为$\diag{(k_1,k_2,\cdots,k_n)}$，进一步地，取可逆矩阵$B=E_{12}+E_{23}+\cdots+E_{n-1,n}+E_{n1}$（回顾第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$），则$BC=CB$可知
               \[k_1E_{12}+k_2E_{23}+\cdots+k_{n-1}E_{n-1,n}+k_nE_{n1}=k_2E_{12}+k_3E_{23}+\cdots+k_nE_{n-1,n}+k_1E_{n1},\]
               由此可得$k_1=k_2=\cdots=k_n$，即$C=k_1E$是数量矩阵.
 
