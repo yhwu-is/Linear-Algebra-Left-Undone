@@ -1,5 +1,6 @@
-% FIXME: PDF 书签仍然链接到上一讲
+\begingroup
 \SetLUChapterNumberingStyle{0}
+\def\theHchapter{\arabic{chapter}ε}
 
 \chapter{预备思想}
 
@@ -280,7 +281,7 @@
 
 接下来我们来看皮亚诺是如何基于一些从直觉而来的原理，转化为少数几条公理使其能够构成一个完备的自然数理论体系的. 我们先从一个直觉性的不正式的定义出发，然后看皮亚诺如何将其公理化.
 
-\begin{definition}%[非正式的自然数定义]
+\begin{definition}%[非正式的自然数定义] %FIXME
     自然数是指集合
     \[\mathbf{N}=\{0,1,2,3,4,\ldots\}\]
     中的元素，此集合是由从0开始无休止地往前数所得到的一切数的集合. 我们将$\mathbf{N}$称为自然数集.
@@ -495,3 +496,4 @@
 \end{enumerate}
 
 \ResetChapterNumberingStyle{1}
+\endgroup
