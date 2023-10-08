@@ -46,7 +46,8 @@
 % 标题格式
 % \ResetChapterNumberingStyle 重置章节编号为正常样式
 % \SetLUChapterNumberingStyle 设置章节编号为未竟专题样式
-% 参数为下一章节编号减一
+% 参数为其上一章节的编号
+\newcounter{LUchapter}
 \NewDocumentCommand{\ResetChapterNumberingStyle}{m}{%
 \setcounter{chapter}{#1}
 \ctexset{
@@ -59,8 +60,9 @@
 }
 \NewDocumentCommand{\SetLUChapterNumberingStyle}{m}{%
 \setcounter{chapter}{#1}
+\refstepcounter{LUchapter}
 \ctexset{
-    chapter = {format={\centering\Huge\bfseries},name={未竟专题,},number=\zhnumber{\arabic{chapter}}},
+    chapter = {format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUchapter}}}},
     section = {format={\raggedright\Large\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}}},
     subsection = {format={\raggedright\large\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}.\arabic{subsection}}},
     subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
@@ -74,7 +76,7 @@
 \author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
 
 \AtEndPreamble{\hypersetup{
-    % hypertexnames = false,
+    hypertexnames = true,
     pdfauthor = {吴一航},
     pdftitle = {线性代数荣誉课辅学讲义},
 }}
