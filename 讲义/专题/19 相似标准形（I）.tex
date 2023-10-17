@@ -678,7 +678,7 @@
 \begin{enumerate}
     \item 设$a\neq b$，且$(aE-A)(bE-A)=O$. 证明：$A$可对角化（特例：对合矩阵）；
 
-    \item 设$T\in L(\mathbf{C}^3)$使得6和7是$T$的特征值，且$T$不可对角化. 证明：存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
+    \item 设$T\in \mathcal{L}(\mathbf{C}^3)$使得6和7是$T$的特征值，且$T$不可对角化. 证明：存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
 
     \item 证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似. 对于不可对角化的矩阵来说，这一结论还成立吗？
 
@@ -733,8 +733,6 @@
                   3 & 4 & 0 & 0 \\ 4 & -3 & 0 & 0 \\ 0 & 0 & 2 & 4 \\ 0 & 0 & 0 & 2
               \end{pmatrix}$，求$A^n(n\in\mathbf{N}_+)$.
 
-    \item 设$A$为$n$阶实对称幂等矩阵，$r(A)=r$，求$|A-2E|$.
-
     \item 已知三阶矩阵$A$和三元列向量$X$，使得向量组$X,AX,A^2X$线性无关，且满足
           \[A^3X=3AX-2A^2X.\]
           \begin{enumerate}
@@ -742,19 +740,6 @@
 
               \item 计算行列式$|A+E|$.
           \end{enumerate}
-
-    \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
-          \begin{enumerate}
-              \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
-
-              \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
-
-              \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
-          \end{enumerate}
-
-    \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量（推论：若$A,B$均可对角化，$AB=BA$，则对角化的过渡矩阵可以相同）.
-
-    \item 计算矩阵 $B=\begin{pmatrix}1 & 0 & 0 & 0 & 0 \\ -1 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & -1 & -1 \\ 0 & 0 & -2 & -2 & 2 \\ 0 & 0 & -3 & -3 & 3\end{pmatrix}^n$，其中 $n\in\mathbf{N}$.
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -767,6 +752,15 @@
 
               \item 求可逆阵$P$使得$P^{-1}BP$为对角矩阵，并写出该对角矩阵.
           \end{enumerate}
+
+    \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
+    \begin{enumerate}
+        \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
+
+        \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
+
+        \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
+    \end{enumerate}
 
     \item 设$A,B$为$n$阶矩阵，且$A+B=AB$，求证：
           \begin{enumerate}
@@ -781,11 +775,11 @@
 
           {\kaishu 注：实际上相似这一性质与数域无关，本题是这一结论的特例.}
 
-    \item （数学归纳法）证明：对任一$n$阶矩阵$A\in \mathbf{M}_n(\mathbf{C})$，存在可逆矩阵$P$使得$P^{-1}AP$为上三角矩阵.
+
+    \item \begin{enumerate}
+        \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量；
+        \item 若$A,B$均可对角化，且$AB=BA$，则对角化的过渡矩阵可以相同.
+    \end{enumerate}
 
     \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，且$AB=BA$. 证明：存在次数小于等于$n-1$的多项式$f(x)$使得$B=f(A)$.
-
-    \item （矩阵可交换与同时对角化）设$V$为$n$维复向量空间，$S,T\in \mathcal{L}(V)$，$ST=TS$. 证明：存在$V$的一组基，使得$S$和$T$在这组基下的矩阵均为对角矩阵.
-
-    \item 设$T\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$. 证明：对$V$的每个使得$T$有上三角矩阵的基，$\lambda$出现在$T$的矩阵的对角线上的次数等于$\lambda$作为$T$的特征值的重数.
 \end{enumerate}
