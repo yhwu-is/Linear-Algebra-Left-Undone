@@ -592,8 +592,6 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 设$T\in \mathcal{L}(V)$，证明：$T$是数乘变换（即$T=cI_V$，其中$c$为非零常数，$I_V$为$V$上的恒等映射）的充要条件是$V$的每一个一维子空间都是$T$的不变子空间.
-
     \item 设$S,T\in \mathcal{L}(V)$满足$ST=TS$，证明：$\ker S$和$\im S$都在$T$下不变.
 
     \item 已知$\mathbf{R}^2$上线性变换$T$在基$e_1=(1,0),e_2=(0,1)$下的矩阵为$\begin{pmatrix}2 & 1 \\ 0 & 2\end{pmatrix}$. 证明：
@@ -615,6 +613,8 @@
     \item 设$V$是有限维的且$T\in \mathcal{L}(V)$，设$\lambda_1,\ldots,\lambda_m$是非零互异特征值，证明：
           \[ \dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\leqslant\dim\im T. \]
 
+    \item 设$T\in \mathcal{L}(V)$且$\dim\im T=k$. 证明$T$至多有$k+1$个特征值.
+
     \item 设$\sigma$是线性空间$\mathbf{R}[x]_3$上的线性变换，它在基$1,x,x^2$下的矩阵为
           \[ A=\begin{pmatrix}
                   1 & 2 & 2 \\ 2 & 1 & 2 \\ 2 & 2 & 1
@@ -625,14 +625,14 @@
 
     \item 设$A=\begin{pmatrix}
                   a & -1 & c \\ 5 & b & 3 \\ 1-c & 0 & -a
-              \end{pmatrix}$，$|A|=-1$，$\alpha=(-1,-1,1)^\mathrm{T}$为$A^*$的特征向量，求$A^*$的特征值及$a,b,c$和$A$对应的特征值$\mu$.
+              \end{pmatrix}$，$|A|=-1$，$\alpha=(-1,-1,1)^\mathrm{T}$为$A^*$的特征向量，求$A^*$对应于$\alpha$的特征值及$a,b,c$和$A$对应于$\alpha$的特征值$\mu$.
 
     \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$AB=BA$，证明：若$X$是矩阵$A$属于特征值$\lambda_0$的特征向量，则$BX\in V_{\lambda_0}$（注：本题是解决很多$AB=BA$类问题的基础）.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 设$V$是$n$维复向量空间，$\sigma\in \mathcal{L}(V)$，若$\sigma$有$n$个互异的特征值，求$\sigma$的所有不变子空间的个数.
+    \item 设$T\in \mathcal{L}(V)$，证明：$T$是数乘变换（即$T=cI_V$，其中$c$为非零常数，$I_V$为$V$上的恒等映射）的充要条件是$V$的每一个一维子空间都是$T$的不变子空间.
 
     \item 设$\sigma\in \mathcal{L}(V)$，证明：
           \begin{enumerate}
@@ -643,13 +643,11 @@
 
     \item 设$V$是有限维的，$T\in \mathcal{L}(V)$且$U$在$T$下不变. 证明：$T/U$的每个特征值均为$T$的特征值.
 
-    \item 设$T\in \mathcal{L}(V)$且$\dim\im T=k$. 证明$T$至多有$k+1$个特征值.
-
     \item 设$V$为$n$维复向量空间，$T\in \mathcal{L}(V)$，$T$在$V$的一组基$e_1,e_2,\ldots,e_n$下的矩阵为对角矩阵$\diag\{d_1,\ldots,d_n\}$，且$d_i\neq d_j\enspace(i\neq j)$.
           \begin{enumerate}
               \item 求$T$的所有一维不变子空间；
 
-              \item 求$T$的所有不变子空间.
+              \item 求$T$的所有不变子空间与个数.
           \end{enumerate}
 
     \item 给定$\mathbf{R}$上的2维线性空间$V$上的算子$T$，其在一组基$\alpha_1,\alpha_2$下的矩阵为
@@ -658,11 +656,7 @@
               \end{pmatrix}.\]
           求$T$的所有不变子空间.
 
-    \item 设$A$为三阶实对称矩阵，$A^2=A$且$r(A)=2$，求$|A+2E|$.
-
     \item 设$A,B$都是$n$阶矩阵，且$r(A)+r(B)<n$，证明：$A,B$有相同的特征值和特征向量.
-
-    \item 设$A,B\in \mathbf{M}_n(\mathbf{C})$，$B$的特征多项式$f(\lambda)=|\lambda E-B|$. 证明：$f(A)$可逆的充要条件是$B$的任一特征值都不是$A$的特征值.
 
     \item 设$\lambda_1,\lambda_2,\ldots,\lambda_n$是矩阵$A=(a_{ij})_{n\times n}$的$n$个特征值，证明：$\lambda_1^2,\lambda_2^2,\ldots,\lambda_n^2$是$A^2$的$n$个特征值，且$\displaystyle\sum_{i=1}^{n}\lambda_i^2=\displaystyle\sum_{j=1}^{n}\displaystyle\sum_{k=1}^{n}a_{jk}a_{kj}$.
 
@@ -671,5 +665,7 @@
 
 \centerline{\heiti C组}
 \begin{enumerate}
+    \item 设$A,B\in \mathbf{M}_n(\mathbf{C})$，$B$的特征多项式$f(\lambda)=|\lambda E-B|$. 证明：$f(A)$可逆的充要条件是$B$的任一特征值都不是$A$的特征值.
+
     \item 证明：若$AB=BA$，则$A$和$B$至少有一个共同的特征向量.
 \end{enumerate}
