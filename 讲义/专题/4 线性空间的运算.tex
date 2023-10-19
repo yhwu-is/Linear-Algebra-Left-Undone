@@ -59,7 +59,7 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 当$s=2$时，由于$V_1,V_2$是非平凡子空间，因此$V$中存在$\alpha\notin V_1$. 若$\alpha\notin V_2$，则结论已经成立. 若$\alpha\in V_2$，由$V_2$非平凡知存在$\beta\notin V_2$. 我们考虑$\alpha+\beta$和$2\alpha+\beta$，则必有这两个向量都不属于$V_2$（否则有$\beta\in V_1$），并且这两个向量也不能同时属于$V_1$（否则两个向量相减等于$\alpha$也属于$V_1$，矛盾）. 这就说明这两个向量中至少有一个既不在$V_1$中也不在$V_2$中，因此结论成立.
+        \item 当$s=2$时，由于$V_1,V_2$是非平凡子空间，因此$V$中存在$\alpha\notin V_1$. 若$\alpha\notin V_2$，则结论已经成立. 若$\alpha\in V_2$，由$V_2$非平凡知存在$\beta\notin V_2$. 我们考虑$\alpha+\beta$和$2\alpha+\beta$，则必有这两个向量都不属于$V_2$（否则有$\beta\in V_2$），并且这两个向量也不能同时属于$V_1$（否则两个向量相减等于$\alpha$也属于$V_1$，矛盾）. 这就说明这两个向量中至少有一个既不在$V_1$中也不在$V_2$中，因此结论成立.
 
         \item 对于$s>2$，假设命题对$s-1$个子空间成立，即$V$中存在向量$\alpha\notin V_1\cup V_2\cup\cdots\cup V_{s-1}$. 若$\alpha\notin V_s$，则结论成立. 若$\alpha\in V_s$，由$V_s$非平凡知存在$\beta\notin V_s$. 我们考虑$\alpha+\beta,2\alpha+\beta,\ldots,s\alpha+\beta$，则与归纳基础中同样的原因，必有这$s$个向量都不属于$V_s$，且这$s$个向量中不可能存在两个向量同属于一个$V_i\enspace(i=1,2,\ldots,s-1)$，因此这$s$个向量中至少有一个不在$V_1\cup V_2\cup\cdots\cup V_s$中，因此结论成立.
     \end{enumerate}
@@ -133,7 +133,9 @@
 
 我们将来证明或者利用和空间时，很多时候都是利用和空间定义进行向量分解. 我们特别重视分解唯一时的情形，因为这对我们的研究很有帮助，这时的和即为直和. 严谨而言，我们有如下定义：
 \begin{definition}
-    设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间. 若$W_1 \cap W_2=\{0\}$，则$W_1+W_2$叫做$W_1$与$W_2$的\term{直和}\index{zhihe@直和 (direct sum)}，记作$W_1\oplus W_2$. 此时称$W_1,W_2$为\term{互补子空间}\index{xianxingkongjian!hubu@互补子空间 (complementary subspaces)}，或$W_1$是$W_2$的补空间，或$W_2$是$W_1$的补空间.
+    设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间. 若$W_1 \cap W_2=\{0\}$，则$W_1+W_2$叫做$W_1$与$W_2$的\term{直和}\index{zhihe@直和 (direct sum)}，记作$W_1\oplus W_2$.
+
+    进一步地，若$V=W_1\oplus W_2$，则称$W_1,W_2$为\term{互补子空间}\index{xianxingkongjian!hubu@互补子空间 (complementary subspaces)}，或$W_1$是$W_2$的补空间，或$W_2$是$W_1$的补空间.
 \end{definition}
 
 直和有以下等价的命题，我们证明或者利用直和都可以任意选择：

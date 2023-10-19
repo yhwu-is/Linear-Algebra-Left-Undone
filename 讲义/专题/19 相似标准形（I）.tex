@@ -444,7 +444,7 @@
 \begin{example}\label{ex:19:可对角化经典例题}
     解决以下关于可对角化的基本问题：
     \begin{enumerate}
-        \item 设$A$为$n$阶矩阵，且$A^2=2A$. 证明：$A$可对角化；
+        \item 设$A$为$n$阶矩阵，且$A^2=2A$. 证明：$A$可对角化，并求出与之相似的对角矩阵（注：本题结论可推广到任意的$A^2=kA$）；
 
         \item 设$A$为$n$阶非零矩阵，且$A^m=O\enspace(m\in\mathbf{N}_+,\enspace m>1)$. 证明：$A$不可对角化；
 
@@ -459,6 +459,8 @@
               接下来我们需要说明0和2对应的特征子空间维数之和为$n$，即$\dim V_0+\dim V_2=n$，其中$V_0$和$V_2$分别为0和2对应的特征子空间. 事实上，由$A^2=2A$可知$A(A-2E)=O$，由\autoref{ex:15:线性方程组理论与秩不等式} 知$r(A)+r(A-2E)\leqslant n$，又根据秩不等式$r(A)+r(B)\geqslant r(A+B)$，因此$r(A)+r(A-2E)=r(A)+r(2E-A)\geqslant r(A+(2E-A))=r(2E)=n$. 综上可知，$r(A)+r(A-2E)=n$.
 
               实际上，$V_0$就是$AX=0$的解空间，$V_2$就是$(A-2E)X=0$的解空间，因此$\dim V_0=n-r(A),\dim V_2=n-r(A-2E)$，因此由$r(A)+r(A-2E)=n$可知$\dim V_0+\dim V_2=2n-n=n$，即0和2对应的特征子空间维数之和为$n$，因此$A$可对角化.
+
+              由于可对角化矩阵代数重数等于几何重数，因此特征值0对应的代数重数为$n-r(A)$，特征值2对应的代数重数为$r(A)$，因此我们可以得到与$A$相似的对角矩阵为$\diag(0,\ldots,0,2,\ldots,2)$，其中0的个数为$n-r(A)$，2的个数为$r(A)$.
 
         \item 设$\lambda$是$A$的特征值，由题意$\lambda^m=0$，即$\lambda=0$，因此$A$的所有特征值都为0. 但$r(A)>0$（因为$A$不是零矩阵），因此0对应的特征子空间维数为$n-r(A)<n$，因此$A$不可对角化.
 
@@ -678,7 +680,9 @@
 \begin{enumerate}
     \item 设$a\neq b$，且$(aE-A)(bE-A)=O$. 证明：$A$可对角化（特例：对合矩阵）；
 
-    \item 设$T\in L(\mathbf{C}^3)$使得6和7是$T$的特征值，且$T$不可对角化. 证明：存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
+    \item 设$A$为三阶矩阵，$A^2=A$且$r(A)=r$，求$|A-2E|$.
+
+    \item 设$T\in \mathcal{L}(\mathbf{C}^3)$使得6和7是$T$的特征值，且$T$不可对角化. 证明：存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
 
     \item 证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似. 对于不可对角化的矩阵来说，这一结论还成立吗？
 
@@ -733,8 +737,6 @@
                   3 & 4 & 0 & 0 \\ 4 & -3 & 0 & 0 \\ 0 & 0 & 2 & 4 \\ 0 & 0 & 0 & 2
               \end{pmatrix}$，求$A^n(n\in\mathbf{N}_+)$.
 
-    \item 设$A$为$n$阶实对称幂等矩阵，$r(A)=r$，求$|A-2E|$.
-
     \item 已知三阶矩阵$A$和三元列向量$X$，使得向量组$X,AX,A^2X$线性无关，且满足
           \[A^3X=3AX-2A^2X.\]
           \begin{enumerate}
@@ -742,19 +744,6 @@
 
               \item 计算行列式$|A+E|$.
           \end{enumerate}
-
-    \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
-          \begin{enumerate}
-              \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
-
-              \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
-
-              \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
-          \end{enumerate}
-
-    \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量（推论：若$A,B$均可对角化，$AB=BA$，则对角化的过渡矩阵可以相同）.
-
-    \item 计算矩阵 $B=\begin{pmatrix}1 & 0 & 0 & 0 & 0 \\ -1 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & -1 & -1 \\ 0 & 0 & -2 & -2 & 2 \\ 0 & 0 & -3 & -3 & 3\end{pmatrix}^n$，其中 $n\in\mathbf{N}$.
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -767,6 +756,15 @@
 
               \item 求可逆阵$P$使得$P^{-1}BP$为对角矩阵，并写出该对角矩阵.
           \end{enumerate}
+
+    \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
+    \begin{enumerate}
+        \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
+
+        \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
+
+        \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
+    \end{enumerate}
 
     \item 设$A,B$为$n$阶矩阵，且$A+B=AB$，求证：
           \begin{enumerate}
@@ -781,11 +779,11 @@
 
           {\kaishu 注：实际上相似这一性质与数域无关，本题是这一结论的特例.}
 
-    \item （数学归纳法）证明：对任一$n$阶矩阵$A\in \mathbf{M}_n(\mathbf{C})$，存在可逆矩阵$P$使得$P^{-1}AP$为上三角矩阵.
+
+    \item \begin{enumerate}
+        \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量；
+        \item 若$A,B$均可对角化，且$AB=BA$，则对角化的过渡矩阵可以相同.
+    \end{enumerate}
 
     \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，且$AB=BA$. 证明：存在次数小于等于$n-1$的多项式$f(x)$使得$B=f(A)$.
-
-    \item （矩阵可交换与同时对角化）设$V$为$n$维复向量空间，$S,T\in \mathcal{L}(V)$，$ST=TS$. 证明：存在$V$的一组基，使得$S$和$T$在这组基下的矩阵均为对角矩阵.
-
-    \item 设$T\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$. 证明：对$V$的每个使得$T$有上三角矩阵的基，$\lambda$出现在$T$的矩阵的对角线上的次数等于$\lambda$作为$T$的特征值的重数.
 \end{enumerate}
