@@ -5,7 +5,107 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 证明：\begin{enumerate}
+        \item （线性性）直接将公理化定义用递归式对第i列展开：
+        \begin{align*}
+            & D(\alpha_1,\ldots,\lambda\alpha_{i}+\mu\beta_i,\ldots,\alpha_n)\\
+            ={}& \sum_{k=1}^{n}(\lambda a_{ki}+\mu b_{ki})A_{ki}\\
+            ={}& \lambda \cdot \sum_{k=1}^{n}a_{ki}A_{ki}+\mu \cdot \sum_{k=1}^{n}b_{ki}A_{ki}\\
+            ={}& \lambda D(\alpha_1,\ldots,\alpha_{i},\ldots,\alpha_n)+\mu D(\alpha_1,\ldots,\beta_i,\ldots,\alpha_n)
+        \end{align*}
+        则线性性得证.
+        \item （反对称性）使用数归方法证明：\\显然可得，$D(\alpha_1,\alpha_2)=-D(\alpha_2,\alpha_1)$，然后做出归纳假设：对于任意正整数$i,j$，$i,j \in [1,n-1]$且$i \neq j$，有：
+        \[ D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_{n-1})=-D(\alpha_1,\ldots,\alpha_j,\ldots,\alpha_i,\ldots,\alpha_{n-1}) \]
+        由此做出递推，对交换前后的行列式的首行做展开：
+        \begin{align*}
+            D(\alpha_1,\ldots,\alpha_{i},\ldots,\alpha_{j},\ldots,\alpha_n)
+            & =\sum_{k=1}^{n}a_{1k}A_{1k}\\
+            D(\alpha_1,\ldots,\alpha_{j},\ldots,\alpha_{i},\ldots,\alpha_n)
+            & =\sum_{k=1}^{n}a'_{1k}A'_{1k}
+        \end{align*}
+        其中，除第$i,j$项外，由归纳假设，其余项都满足$a_{1k}=a'_{1k},A_{1k}=-A'_{1k}$，则有$a_{1k}A_{1k}=-a'_{1k}A'_{1k},k\neq i,j$.因此主要考察$a_{1i}A_{1i}+a_{1j}A_{1j}$与$a'_{1i}A'_{1i}+a'_{1j}A'_{1j}$这两项.首先有$a'_{1i}=a_{1j},a'_{1j}=a_{1i}$.然后将$A_{1i}$与$A'_{1j}$两项展开对比：
+        \begin{align*}
+            A_{1i}&=(-1)^{1+i}(\alpha'_{1},\ldots,\alpha'_{i-1},\alpha'_{i+1},\ldots,\alpha'_{j},\ldots,\alpha'_{n})\\
+            A'_{1j}&=(-1)^{1+j}(\alpha'_{1},\ldots,\alpha'_{i-1},\alpha'_{j},\alpha'_{i+1},\ldots,\alpha'_{j-1},\alpha'_{j+1},\ldots,\alpha'_{n})
+        \end{align*}
+        式中的$\alpha'_k$表示原列向量去掉首行元素后剩余$n-1$个元素组成的新列向量.可以发现，$A'_{1j}$向左交换$j-(i+1)$次后与$A_{1i}$是绝对值一致的.则根据归纳假设，有$(-1)^{j-(i+1)}A'_{1j}=(-1)^{1+j-(1+i)}A_{1i}$，即有$A'_{1j}=-A_{1i}$，所以$a_{1i}A_{1i}+a_{1j}A_{1j}=-(a'_{1j}A'_{1j}+a'_{1i}A'_{1i})$.综上可证：
+        \[ D(\alpha_1,\ldots,\alpha_{i},\ldots,\alpha_{j},\ldots,\alpha_n)=D(\alpha_1,\ldots,\alpha_{j},\ldots,\alpha_{i},\ldots,\alpha_n) \]
+        \item （规范性）只需使用递归式定义，逐次展开即可.
+    \end{enumerate}
+    \item 使用倍加列变换的性质，可得$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|=6|\alpha_1,\alpha_2,\alpha_3|=12$
+    \item \begin{enumerate}
+        \item 首先由反对称矩阵的性质，有$A^T=-A$，其次由矩阵与行列式的性质，可得$|A^T|=|A|$，则可推出$|A|=|-A|=(-1)^n|A|$，又n为奇数，故$|A|=0$，矩阵$A$不可逆.
+        \item 只需证明$AB$的秩小于$n$，即$|AB|=0$即可.$B$是奇数阶反对称矩阵,$|B|=0$,则$|AB|=|A||B|=0$得证.
+    \end{enumerate}
+    \item 根据伴随矩阵的性质，$\begin{pmatrix}
+        A & O \\ O & B
+    \end{pmatrix}^* = \begin{vmatrix}
+        A & O \\ O & B
+    \end{vmatrix} \cdot \begin{pmatrix}
+        A & O \\ O & B
+    \end{pmatrix}^{-1}$.其中，对$\begin{vmatrix}
+        A & O \\ O & B
+    \end{vmatrix}$做递归式展开，有$\begin{vmatrix}
+        A & O \\ O & B
+    \end{vmatrix}=\sum_{k=1}^{m}(-1)^{1+k}a_{1k}\begin{vmatrix}
+        M_{1k} & O \\ O & B
+    \end{vmatrix}$，依此逐次展开可得$\begin{vmatrix}
+        A & O \\ O & B
+    \end{vmatrix}=|A||B|=ab$.又$ab\begin{pmatrix}
+        A & O \\ O & B
+    \end{pmatrix}^{-1}=ab\begin{pmatrix}
+        A^{-1} & O \\ O & B^{-1}
+    \end{pmatrix}=\begin{pmatrix}
+        b\cdot aA^{-1} & O \\ O & a\cdot bB^{-1}
+    \end{pmatrix}$，最终可得$\begin{pmatrix}
+        A & O \\ O & B
+    \end{pmatrix}^* = \begin{pmatrix}
+        bA^* & O \\ O & aB^*
+    \end{pmatrix}$.
+
+    与前一个式子的展开类似，$\begin{pmatrix}
+        O & A \\ B & O
+    \end{pmatrix}^*=\begin{vmatrix}
+        O & A \\ B & O
+    \end{vmatrix}\cdot \begin{pmatrix}
+        O & A \\ B & O
+    \end{pmatrix}^{-1}$，其中对前一步推导做少量修正后可得$\begin{vmatrix}
+        O & A \\ B & O
+    \end{vmatrix}=(-1)^{mn}|A||B|=(-1)^{mn}ab$,则$(-1)^{mn}ab\begin{pmatrix}
+        O & A \\ B & O
+    \end{pmatrix}^{-1}=(-1)^{mn}\begin{pmatrix}
+        O & a\cdot bB^{-1} \\ b\cdot aA^{-1} & O
+    \end{pmatrix}$，最终可得$\begin{pmatrix}
+        O & A \\ B & O
+    \end{pmatrix}^*=(-1)^{mn}\begin{pmatrix}
+        O & aB^* \\ bA^* & O
+    \end{pmatrix}$.
+    \item 证明；\begin{enumerate}
+        \item 对正整数$k$，有$(A^k)^*=(A^*)^k$.从而若$A^m=A$，则$(A^*)^m=(A^m)^*=A^*$.即$A$是幂等矩阵，则$A^*$也是幂等矩阵.同样，若$A^m=0$，则$(A^*)^m=(A^m)^*=0$.即$A$是幂零矩阵，则$A^*$也是幂零矩阵.
+        \item $(A^*)^T=(A^T)^*=A^*$.从而若$A$是对称矩阵，则$A^*$也是对称矩阵.$(A^*)^T=(A^T)^*=(-A)^*=(-1)^{n-1}A^*$.从而若$A^*$为偶数阶时也为反对称矩阵，奇数阶时为对称矩阵.
+    \end{enumerate}
+    \item 对于上三角矩阵，只需看其伴随矩阵的下半部分元素，即$A_{ij},j>i$.对这些代数余子式，要么有一整行或整列为零，要么对角线存在零元素，则这些余子式均为零，伴随矩阵是上三角矩阵.\par 或者使用另法，当$A$是可逆矩阵，即$A$对角线元素不为零，则$A^*=|A|\cdot A^{-1}$，其中$A^{-1}$也是上三角矩阵，因此伴随矩阵$A^*$是上三角矩阵.
+    \item $|A|=0$，则$r(A)<n$，故$r(A^*)=\begin{cases}
+        1,&r(A)=n-1\\
+        0,&r(A)<n-1
+    \end{cases}$.当$r(A^*)=0$时，答案显然成立；当$r(A^*)=1$时，由矩阵秩的定义，任意两行（列）必成比例，否则秩大于1，矛盾.综上，原题得证.
+    \item $(\alpha_1-\alpha_2-2\alpha_3,2\alpha_1+\alpha_2-\alpha_3,3\alpha_1+\alpha_2+2\alpha_3)=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}
+        1 & 2 & 3 \\ -1 & 1 & 1 \\ -2 & -1 & 2
+    \end{pmatrix}$，又$\begin{vmatrix}
+        1 & 2 & 3 \\ -1 & 1 & 1 \\ -2 & -1 & 2
+    \end{vmatrix}=12\neq 0$，因此该矩阵可逆，则$(\alpha_1-\alpha_2-2\alpha_3,2\alpha_1+\alpha_2-\alpha_3,3\alpha_1+\alpha_2+2\alpha_3)$与$(\alpha_1,\alpha_2,\alpha_3)$秩相等，因此这三个向量线性无关.
+    \item 只要取$\alpha_3,\alpha_4 \in \mathbf{R}^4$，使得$D(\alpha_1,\alpha_2,\alpha_3,\alpha_4) \neq 0$即可.易得$\begin{vmatrix}
+        1 & 1 & 0 & 0 \\
+        2 & 4 & 0 & 0 \\
+        1 & -1 & 1 & 0 \\
+        -1 & 1 & 0 & 1
+    \end{vmatrix}=\begin{vmatrix}
+        1 & 1 \\
+        2 & 4
+    \end{vmatrix} \cdot \begin{vmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{vmatrix}=2 \neq 0$.于是可取$\alpha_3=(0,0,1,0)^T,\alpha_4=(0,0,0,1)^T$，能使得${\alpha_1,\alpha_2,\alpha_3,\alpha_4}$为$\mathbf{R}^4$的一组基.
 \end{enumerate}
 
 \centerline{\heiti B组}
