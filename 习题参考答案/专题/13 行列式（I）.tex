@@ -110,12 +110,552 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item \begin{enumerate}
+        \item 这三小问实际上都是对原行列式中的某一行进行了替换进行计算。
+        \begin{align*}
+            A_{21}+A_{22}+A_{23}+A_{24} ={} & \begin{vmatrix}
+                3 & 0 & 4 & 1 \\
+                1 & 1 & 1 & 1 \\
+                0 & -7 & 8 & 3 \\
+                5 & 3 & -2 & 2
+            \end{vmatrix} = \begin{vmatrix}
+                3 & -3 & 1 & -2 \\
+                1 & 0 & 0 & 0 \\
+                0 & -7 & 8 & 3 \\
+                5 & -2 & -7 & -3
+            \end{vmatrix} \\
+            ={} & (-1)^{2+1} \begin{vmatrix}
+                -3 & 1 & -1 \\
+                -7 & 8 & 3 \\
+                -2 & -7 & -3
+            \end{vmatrix} = 148
+        \end{align*}
+        \item \begin{align*}
+            A_{31}+A_{33} ={} & 1A_{31}+0A_{32}+1A_{33}+0A_{34} = \begin{vmatrix}
+                3 & 0 & 4 & 1 \\
+                2 & 3 & 1 & 4 \\
+                1 & 0 & 1 & 0 \\
+                5 & 3 & -2 & 2
+            \end{vmatrix} = 3 \begin{vmatrix}
+                3 & 0 & 4 & 1 \\
+                2 & 1 & 1 & 4 \\
+                1 & 0 & 1 & 0 \\
+                5 & 1 & -2 & 2
+            \end{vmatrix} \\
+            ={} & 3 \begin{vmatrix}
+                3 & 0 & 1 & 1 \\
+                2 & 1 & -1 & 4 \\
+                1 & 0 & 0 & 0 \\
+                5 & 3 & -7 & 2
+            \end{vmatrix} = 3 \cdot (-1)^{3+1} \begin{vmatrix}
+                0 & 1 & 1 \\
+                1 & -1 & 4 \\
+                3 & -7 & 2
+            \end{vmatrix} = -12
+        \end{align*}
+        \item \begin{align*}
+            M_{41}+M_{42}+M_{43}+M_{44} ={} & -A_{41}+A_{42}-A_{43}+A_{44} = \begin{vmatrix}
+                3 & 0 & 4 & 1 \\
+                2 & 3 & 1 & 4 \\
+                0 & -7 & 8 & 3 \\
+                -1 & 1 & -1 & 1
+            \end{vmatrix} \\ ={} & \begin{vmatrix}
+                3 & 3 & 1 & 4 \\
+                2 & 5 & -1 & 6 \\
+                0 & -7 & 8 & 3 \\
+                -1 & 0 & 0 & 0
+            \end{vmatrix} = {-1}^{4+1} \cdot (-1) \begin{vmatrix}
+                3 & 1 & 4 \\
+                5 & -1 & 6 \\
+                -7 & 8 & 3
+            \end{vmatrix} = -78
+        \end{align*}
+    \end{enumerate}
+    \item 有问题，之后可能会考虑修改题目，此处略.
+    \item \begin{align*}
+        \lvert A+B^{-1} \rvert ={} & \lvert B^{-1}BA+B^{-1}E \rvert = \lvert B^{-1} \rvert \cdot \lvert BA+E \rvert \\ ={} & \frac{1}{2} \lvert BA+A^{-1}A \rvert = \frac{1}{2} \lvert B+A^{-1} \rvert \cdot \lvert A \rvert \\ ={} & \frac{3}{2} \lvert A^{-1}+B \rvert = 3
+    \end{align*}
+    \item 正交矩阵满足 $AA^{\mathrm{T}} = A^{\mathrm{T}}A = E$，所以 $\lvert AA^{T} \rvert = \lvert A \rvert^2 = \lvert E \rvert = 1$. 而 $\lvert A \rvert < 0$，所以 $\lvert A \rvert = -1$.
+    \[\lvert E+A \rvert = \lvert AA^{\mathrm{T}}+A \rvert = \lvert A \rvert \cdot \lvert A^{\mathrm{T}}+E \rvert = -\lvert (A+E)^{\mathrm{T}} \rvert = -\lvert E+A \rvert.\]
+    故 $\lvert E+A \rvert = 0$.
+
+    以上两道题都多次运用了 $E = AA^{-1} = A^{-1}A$ 的技巧，请大家留意.
+
+    \item \begin{enumerate}
+        \item 由于行列式 \[ D = \begin{vmatrix}
+            a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+            a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & a_{23} & \cdots & a_{2n} \\
+            \vdots & \vdots & \vdots &        & \vdots \\
+            a_{n-1, 1} & a_{n-1, 2} & a_{n-1, 3} & \cdots & a_{n-1, n}
+        \end{vmatrix} = 0\]
+        而 $M_1, -M_2, \ldots, (-1)^{n-1}M_n$ 恰是 $D$ 的第一行元素的代数余子式，所以将 $D$ 按第一行展开，可知\[a_{11}M_1+a_{12}(-M_2)+\cdots+a_{1n}(-1)^{n-1}M_n=0.\]
+        而 $D$ 的其他行元素与第一行元素的代数余子式乘积之和为 0，于是结论成立.
+        \item 因为 $r(A) = n-1$，所以 $M_1, -M_2, \ldots, (-1)^{n-1}M_n$，不全为 0. 且该方程组解空间维数为 1，$M_1, -M_2, \ldots, (-1)^{n-1}M_n$ 正是该方程组的非零解，结论成立.
+    \end{enumerate}
+
+    \item $A^* = \lvert A \rvert A^{-1} = 2A^{-1}, B^* = \lvert B \rvert B^{-1} = B^{-1}$，故 \[\lvert 2A^*B^*-A^{-1}B^{-1} \rvert = \lvert 4A^{-1}B^{-1}-A^{-1}B^{-1} \rvert = \lvert 3A^{-1}B^{-1} \rvert = \dfrac{3^n}{\lvert A \rvert \lvert B \rvert} = \dfrac{3^n}{2}.\]
+    \item \begin{enumerate}
+        \item 设 $A = (a_{ij})$，则 $A^* = (A_{ji})$（$A^*$ 的表达式）. 而 $A^T = A^*$，有 $a_{ij} = A_{ij}, \forall i, j = 1, 2, \ldots, n$. 而 $A$ 非零，故 $\exists a_{kl} \neq 0$，从而有 \[ \lvert A \rvert = a_{k1}A_{k1}+\cdots+a_{kn}A_{kn} = a_{k1}^2+\cdots+a_{kn}^2 > 0.\]
+        \item $\lvert A \rvert > 0$ 有 $A$ 是可逆的，故 $A^* = \lvert A \rvert A^{-1} = A^{\mathrm{T}}$，从而 $A^{\mathrm{T}}A = \lvert A \rvert E$. 两侧取行列式有 $\lvert A \rvert^2 = \lvert A \rvert^n $，结合 $\lvert A \rvert > 0$ 有 $\lvert A \rvert = 1$.
+        \item $\lvert A \rvert = 1$，故 $A^{-1} = A^{\mathrm{T}}$，$A$ 是正交矩阵.
+        \item \[\lvert E-A \rvert = \lvert AA^{\mathrm{T}}-AE \rvert = \lvert A \rvert \lvert A^{\mathrm{T}}-E\rvert = \lvert A^{\mathrm{T}}-E\rvert = \lvert (A-E)^{\mathrm{T}} \rvert = \lvert A-E \rvert = (-1)^n\lvert E-A \rvert.\]
+        $n$ 为奇数，则 $\lvert E-A \rvert = -\lvert E-A \rvert$，即 $\lvert E-A \rvert = 0$.
+    \end{enumerate}
+    \item $r(A) = n-1$，则 $\lvert A \rvert = 0$ 且 $AX = 0$ 的解空间的维数为 $1$. 而考虑 $AA^* = \lvert A \rvert E = 0$，且 $\exists A_{ij} \neq 0$，所以 $(A_{i1}, A_{i2}, \ldots , A_{in})^{\mathrm{T}}$ 是所求的基础解系.
+    \item 设 \[A = \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots &        & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nn} \\
+    \end{pmatrix}\]
+    则 \[A^* = \begin{pmatrix}
+        A_{11} & A_{21} & \cdots & A_{n-1, 1} & A_{n1} \\
+        A_{12} & A_{22} & \cdots & A_{n-1, 2} & A_{n2} \\
+        \vdots & \vdots &        & \vdots     & \vdots \\
+        A_{1, n-1} & A_{2, n-1} & \cdots & A_{n-1, n-1} & A_{n, n-1} \\
+        A_{1n} & A_{2n} & \cdots & A_{n-1, n} & A_{nn} \\
+    \end{pmatrix}\]
+    注意到目标行列式是 $A^*$ 中元素 $A_{nn}$ 的代数余子式，也就是 $(A^*)^*$ 中 $(n, n)$ 位置的元素. 由 \ref*{例13.9(4)} $(A^*)^* = \lvert A \rvert^{n-2}A$ 可知结论成立.
+    \item 设 $f(x) = c_0+c_1x+c_2x^2+\cdots+c_{n-1}x^{n-1}$，则有 \[\begin{cases}
+        c_0+c_1a_1+c_2a_1^2+\cdots+c_{n-1}a_1^{n-1} & = b_1, \\
+        c_0+c_1a_2+c_2a_2^2+\cdots+c_{n-1}a_2^{n-1} & = b_2, \\
+                                                    & \vdots  \\ %格式修一下
+        c_0+c_1a_n+c_2a_n^2+\cdots+c_{n-1}a_n^{n-1} & = b_n. \\
+    \end{cases}\] 注意此处我们研究的对象是 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$. 因为系数行列式 \[D = \begin{vmatrix}
+        1 & a_1 & \cdots & a_1^{n-1} \\
+        1 & a_2 & \cdots & a_2^{n-1} \\
+        \vdots & \vdots & & \vdots \\
+        1 & a_n & \cdots & a_n^{n-1} \\
+    \end{vmatrix} = \prod_{1 \leqslant j < i \leqslant n} (a_i-a_j) \neq 0.\] 所以由 Cramer 法则，上述关于 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$ 的方程组有唯一解，所以满足条件的多项式函数 $f$ 是唯一存在的.
+    \item 令 $A = (\alpha_1, \alpha_2, \ldots, \alpha_n), B = \begin{pmatrix}
+        \alpha_1^{\mathrm{T}}\alpha_1 & \alpha_1^{\mathrm{T}}\alpha_2 & \cdots & \alpha_1^{\mathrm{T}}\alpha_n \\
+        \alpha_2^{\mathrm{T}}\alpha_1 & \alpha_2^{\mathrm{T}}\alpha_2 & \cdots & \alpha_2^{\mathrm{T}}\alpha_n \\
+        \vdots & \vdots & & \vdots \\
+        \alpha_n^{\mathrm{T}}\alpha_1 & \alpha_n^{\mathrm{T}}\alpha_2 & \cdots & \alpha_n^{\mathrm{T}}\alpha_n \\
+    \end{pmatrix}$，显然 $B = A^{\mathrm{T}}A$，由 \ref*{11.4 秩不等式第 4 个} 有 $r(B) = r(A)$. 进而 $n$ 维向量组 $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ 线性无关等价于 $r(A) = n$，也就等价于 $r(B) = n$，进而等价于 $\lvert B \rvert \neq 0$，命题得证.
+    \item $(\Rightarrow)$ 记 $A = (\alpha_1, \alpha_2, \ldots, \alpha_n), \varepsilon _i = (0, \ldots, 1, 0, \ldots, 0)^{\mathrm{T}}$(第 $i$ 个为 1)，$E = (\varepsilon _1, \varepsilon _2, \ldots, \varepsilon _n)$. 因为 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 是 $n$ 维线性无关的向量组，故 $\lvert A \rvert \neq 0$，即 $A$ 可逆，$A = EA, AA^{-1} = E$,\[(\alpha_1, \alpha_2, \ldots, \alpha_n) = (\varepsilon _1, \varepsilon _2, \ldots, \varepsilon _n)A, (\varepsilon _1, \varepsilon _2, \ldots, \varepsilon _n) = (\alpha_1, \alpha_2, \ldots, \alpha_n)A^{-1}.\] 即 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 与 $\varepsilon _1, \varepsilon _2, \ldots, \varepsilon _n$ 等价. $\varepsilon _1, \varepsilon _2, \ldots, \varepsilon _n$ 为 $\mathbf{R}^n$ 的一个基，能表出任一 $n$ 维向量，故 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 能表出 $\mathbf{R}^n$ 中任一 $n$ 维向量.  \\
+    $(\Leftarrow)$ 若 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 能表出任一 $n$ 维向量，则 $\varepsilon_i = \lambda_{i1}\alpha_1+\cdots+\lambda_{in}\alpha_n, i = 1, 2, \ldots, n$. 即 \[E = (\varepsilon _1, \varepsilon _2, \ldots, \varepsilon _n) = (\alpha_1, \alpha_2, \ldots, \alpha_n)\begin{pmatrix}
+        \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+        \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+        \vdots       & \vdots       &        & \vdots       \\
+        \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+    \end{pmatrix}.\] 进而 $\lvert \alpha_1, \alpha_2, \ldots, \alpha_n \rvert \begin{vmatrix}
+        \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+        \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+        \vdots       & \vdots       &        & \vdots       \\
+        \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+    \end{vmatrix} = 1$，所以 $\lvert \alpha_1, \alpha_2, \ldots, \alpha_n \rvert \neq 0$，$\alpha_1, \alpha_2, \ldots, \alpha_n$ 线性无关.
+    \item $A$ 的前 $s$ 列组成的 $s$ 阶子式为范德蒙行列式 \[D = \begin{vmatrix}
+        1 & a & a^2 & \cdots & a^{n-1} \\
+        1 & a^2 & a^4 & \cdots & a^{2(n-1)} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & a^s & a^{2s} & \cdots & a^{s(n-1)} \\
+    \end{vmatrix}.\] 由于当 $0 < r < n$ 时，$a^r \neq 1$，因此 $a, a^2, \ldots, a^s$ 两两不同，进而 $D \neq 0$，于是 $r(A) \geqslant s$. 又因为 $A$ 的行数是 $s$，所以 $r(A) \leqslant s$. 从而 $r(A) = s$.
+    \item \begin{enumerate}
+        \item 线性变换的验证省略.
+        \item $(\Rightarrow)$ 若 $\lvert AB \rvert = 0$，则 $\lvert A \rvert = 0$ 或 $\lvert B \rvert = 0$，故 $A$ 或 $B$ 不可逆. 不妨假设 $A$ 不可逆，则存在 $X_0 \neq 0$ 使得 $AX_0 = 0$，$T(X_0) = AX_0B = 0$. 但 $T$ 是可逆的，所以 $T$ 是单射，$T(X) = 0 \Leftrightarrow X = 0$，矛盾. \\
+        $(\Leftarrow)$ $\lvert AB \rvert \neq 0$ 则 $A, B$ 可逆，故 $T(X) = AXB$ 的逆映射为 $T^{-1}(X) = A^{-1}XB^{-1}$.
+    \end{enumerate}
+    \item 因为 $r(A) < n, A_{11} \neq 0$，所以 $r(A) = n-1$，进而由 \ref*{例13.9(6)} 可知 $r(A^*) = 1$，所以有 \[A^* = \begin{pmatrix}
+        a_1 \\
+        a_2 \\
+        \vdots \\
+        a_n
+    \end{pmatrix} (\lambda_1, \lambda_2, \ldots, \lambda_n).\] 设 $(\lambda_1, \lambda_2, \ldots, \lambda_n) \begin{pmatrix}
+        a_1 \\
+        a_2 \\
+        \vdots \\
+        a_n
+    \end{pmatrix} = k$，则 \begin{align*}
+        (A^*)^2 ={} & \begin{pmatrix}
+            a_1 \\
+            a_2 \\
+            \vdots \\
+            a_n
+        \end{pmatrix} (\lambda_1, \lambda_2, \ldots, \lambda_n)\begin{pmatrix}
+            a_1 \\
+            a_2 \\
+            \vdots \\
+            a_n
+        \end{pmatrix} (\lambda_1, \lambda_2, \ldots, \lambda_n) \\ ={} & \begin{pmatrix}
+            a_1 \\
+            a_2 \\
+            \vdots \\
+            a_n
+        \end{pmatrix} \cdot k \cdot (\lambda_1, \lambda_2, \ldots, \lambda_n) = k \begin{pmatrix}
+            a_1 \\
+            a_2 \\
+            \vdots \\
+            a_n
+        \end{pmatrix} (\lambda_1, \lambda_2, \ldots, \lambda_n) = kA^*
+    \end{align*}
+    \item $\forall a_i \in \mathbf{R}, i \in \mathbf{Z}_{+}$ 满足 若 $i \neq j$，则 $a_i \neq a_j$，考虑以范德蒙行列式的形式进行排布. 设 \[ A = \begin{pmatrix}
+        1 & 1 & \cdots & 1 & \cdots \\
+        a_1 & a_2 & \cdots & a_k & \cdots \\
+        a_1^2 & a_2^2 & \cdots & a_k^2 & \cdots \\
+        \vdots & \vdots &      & \vdots &       \\
+        a_1^{n-1} & a_2^{n-1} & \cdots & a_k^{n-1} & \cdots
+    \end{pmatrix}\] 考虑 $A$ 的任意 $n$ 阶主子式 $D_n$，其均构成范德蒙行列式，又 $i \neq j$ 有 $a_i \neq a_j$，所以值均不为 0，也就是说任意 $n$ 个向量都线性无关，其个数也恰好为 $n$，构成 $V$ 的一组基，命题得证.
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 对原矩阵进行分块初等变换化为上三角块矩阵后进行计算. 因为 $\lvert A \rvert \neq 0$，所以 $A$ 可逆，进而有如下变换：\[\begin{pmatrix}
+        E & O \\
+        -CA^{-1} & \\ E
+    \end{pmatrix} \begin{pmatrix}
+        A & B \\
+        C & D \\
+    \end{pmatrix} = \begin{pmatrix}
+        A & B \\
+        O & D-CA^{-1}B
+    \end{pmatrix},\] 所以 \begin{align*}
+        & \begin{vmatrix}
+            A & B \\
+            C & D \\
+        \end{vmatrix} = \begin{vmatrix}
+            E & O \\
+            -CA^{-1} & E \\
+        \end{vmatrix} \begin{vmatrix}
+            A & B \\
+            C & D \\
+        \end{vmatrix} \\ ={} & \begin{vmatrix}
+            A & B \\
+            O & D-CA^{-1}B
+        \end{vmatrix} = \lvert A \rvert \lvert D-CA^{-1}B \rvert = \lvert AD-ACA^{-1}B \rvert.
+    \end{align*} 由于 $AC = CA$，所以有 $ACA^{-1} = CAA^{-1} = C$，所以 \[\begin{vmatrix}
+        A & B \\
+        C & D \\
+    \end{vmatrix} = \lvert AD-CB \rvert.\]
+    \item 这道题目我们利用了一个分块矩阵作为中间“桥梁”使得其通过分块初等变换之后能分别得到两个方向上的结果. 考虑矩阵 $\begin{pmatrix}
+        A & \alpha \\
+        -\beta^{\mathrm{T}} & 1
+    \end{pmatrix}$，有 \[\begin{pmatrix}
+        A & \alpha \\
+        -\beta^{\mathrm{T}} & 1
+    \end{pmatrix} \begin{pmatrix}
+        E & O \\
+        \beta^{\mathrm{T}} & E
+    \end{pmatrix} = \begin{pmatrix}
+        A+\alpha \beta^{\mathrm{T}} & \alpha \\
+        O & 1
+    \end{pmatrix}，\] 所以 \[\begin{vmatrix}
+        A & \alpha \\
+        -\beta^{\mathrm{T}} & 1
+    \end{vmatrix} = \begin{vmatrix}
+        A & \alpha \\
+        -\beta^{\mathrm{T}} & 1
+    \end{vmatrix} \begin{vmatrix}
+        E & O \\
+        \beta^{\mathrm{T}} & E
+    \end{vmatrix} = \begin{vmatrix}
+        A+\alpha \beta^{\mathrm{T}} & \alpha \\
+        O & 1
+    \end{vmatrix} = \lvert A+\alpha \beta^{\mathrm{T}} \rvert.\] 另一方面，\[\begin{pmatrix}
+        E & O \\
+        \beta^{\mathrm{T}}A^{-1} & 1
+    \end{pmatrix} \begin{pmatrix}
+        A & \alpha \\
+        -\beta^{\mathrm{T}} & 1
+    \end{pmatrix} = \begin{pmatrix}
+        A & \alpha \\
+        O & 1+\beta^{\mathrm{T}}A^{-1}\alpha
+    \end{pmatrix}.\] 注意 $\beta^{\mathrm{T}}A^{-1}\alpha$ 的最终结果是一个数. 进而 \[\begin{vmatrix}
+        A & \alpha \\
+        -\beta^{\mathrm{T}} & 1
+    \end{vmatrix} = \begin{vmatrix}
+        E & O \\
+        \beta^{\mathrm{T}}A^{-1} & 1
+    \end{vmatrix} \begin{vmatrix}
+        A & \alpha \\
+        -\beta^{\mathrm{T}} & 1
+    \end{vmatrix} = \begin{vmatrix}
+        A & \alpha \\
+        O & 1+\beta^{\mathrm{T}}A^{-1}\alpha
+    \end{vmatrix} = \lvert A \rvert(1+\beta^{\mathrm{T}}A^{-1}\alpha).\] 所以有 \[\lvert A+\alpha \beta^{\mathrm{T}} \rvert = \lvert A \rvert(1+\beta^{\mathrm{T}}A^{-1}\alpha)\]
+    \item 依旧是对分块矩阵做初等分块变换. 考虑到 \[\left(\begin{pmatrix}
+        E & E \\
+        O & E
+    \end{pmatrix} \begin{pmatrix}
+        A & B \\
+        B & A
+    \end{pmatrix} \right)\begin{pmatrix}
+        E & -E \\
+        O & E
+    \end{pmatrix} = \begin{pmatrix}
+        A+B & A+B \\
+        B & A
+    \end{pmatrix} \begin{pmatrix}
+        E & -E \\
+        O & E
+    \end{pmatrix} = \begin{pmatrix}
+        A+B & O \\
+        B & A-B
+    \end{pmatrix}，\] 所以有 \begin{align*}
+        \begin{vmatrix}
+            A & B \\
+            B & A
+        \end{vmatrix} ={} & \begin{vmatrix}
+            E & E \\
+            O & E
+        \end{vmatrix} \begin{vmatrix}
+            A & B \\
+            B & A
+        \end{vmatrix} \begin{vmatrix}
+            E & -E \\
+            O & E
+        \end{vmatrix} = \begin{vmatrix}
+            A+B & O \\
+            B & A-B
+        \end{vmatrix} \\ ={} & \lvert (A+B)(A-B) \rvert = \lvert A+B \rvert \lvert A-B \rvert
+    \end{align*}
+    \item 首先有 $\begin{vmatrix}
+        \lvert A \rvert & \lvert B \rvert \\
+        \lvert C \rvert & \lvert D \rvert
+    \end{vmatrix} = \lvert A \rvert \lvert D \rvert-\lvert B \rvert \lvert C \rvert$.
+    \begin{enumerate}
+        \item 若 $\lvert A \rvert \neq 0$，即 $A$ 可逆. 因为矩阵的初等变换不改变矩阵的秩，所以由 \[\begin{pmatrix}
+            E & O \\
+            -CA^{-1} & E
+        \end{pmatrix} \begin{pmatrix}
+            A & B \\
+            C & D
+        \end{pmatrix} \begin{pmatrix}
+            E & -A^{-1}B \\
+            O & E \\
+        \end{pmatrix} = \begin{pmatrix}
+            A & O \\
+            O & D-CA^{-1}B
+        \end{pmatrix}，\] 条件 $r\left(\begin{pmatrix}
+            A & B \\
+            C & D
+        \end{pmatrix}\right) = n$ 以及 $A$ 可逆，可以得到 \[D-CA^{-1}B = O.\] 即若 $A$ 可逆，则 $D = CA^{-1}B$，并且 \[\begin{vmatrix}
+            \lvert A \rvert & \lvert B \rvert \\
+            \lvert C \rvert & \lvert D \rvert
+        \end{vmatrix} = \lvert A \rvert \lvert CA^{-1}B \rvert-\lvert B \rvert \lvert C \rvert = \lvert A \rvert \lvert C \rvert \lvert A^{-1} \rvert \lvert B \rvert-\lvert B \rvert \lvert C \rvert = 0.\]
+        \item 若 $\lvert A \rvert = 0$，只需证 $\lvert B \rvert \lvert C \rvert = 0$. 若 $\lvert B \rvert \neq 0$，则由 \[\begin{pmatrix}
+            E & O \\
+            -DB^{-1} & E
+        \end{pmatrix} \begin{pmatrix}
+            A & B \\
+            C & D
+        \end{pmatrix} \begin{pmatrix}
+            E & O \\
+            -B^{-1}A & E
+        \end{pmatrix} = \begin{pmatrix}
+            O & B \\
+            C-DB^{-1}A & O
+        \end{pmatrix}，\] 有 $C-DB^{-1}A = O$. 注意到 $\lvert A \rvert = 0$，故 \[\lvert C \rvert = \lvert DB^{-1}A \rvert = \lvert D \rvert \lvert B^{-1} \rvert \lvert A \rvert = 0.\] 同理可证若 $\lvert C \rvert \neq 0$，则 $\lvert B \rvert = 0$.
+    \end{enumerate}
+    综上，结论成立.
+    \item \begin{enumerate}
+        \item 采用反证法. 设 $\lvert A \rvert = 0$，则线性方程组 $AX = 0$ 有非零解，设为 $X_0 = (x_1, x_2, \ldots, x_n)^{\mathrm{T}}$，记 \[\lvert x_k \rvert = \mathrm{max} \{\lvert x_1 \rvert, \lvert x_2 \rvert, \ldots, \lvert x_n \rvert\}.\] 由 $X_0 \neq 0$ 可知 $\lvert x_k \rvert > 0$，考虑 $AX = 0$ 的第 $k$ 个方程，有 $\sum_{j=1}^n a_{kj}x_j = 0$，于是 \[\lvert a_{kk} \rvert \lvert x_k \rvert = \lvert -\sum_{j \neq k}a_{kj}x_j \rvert \leqslant \sum_{j \neq k}\lvert a_{kj} \rvert \lvert x_k \rvert.\] 约去 $\lvert x_k \rvert$ 后可得 $\lvert a_{kk} \rvert \leqslant \sum_{j \neq k} \lvert a_{kj} \rvert$，这与条件矛盾. 所以 $\lvert A \rvert \neq 0$.
+        \item 构造实函数 \[f(t) = \begin{vmatrix}
+            a_{11} & ta_{12} & ta_{13} & \cdots & ta_{1n} \\
+            ta_{21} & a_{22} & ta_{23} & \cdots & ta_{2n} \\
+            ta_{31} & ta_{32} & a_{33} & \cdots & ta_{3n} \\
+            \vdots & \vdots & \vdots &          & \vdots \\
+            ta_{n1} & ta_{n2} & ta_{n3} & \cdots & a_{nn} \\
+        \end{vmatrix}\] 由于 $A$ 是实矩阵，所以 $f(t)$ 是关于 $t$ 的一个实系数多项式（连续）函数，同时 \[f(0) = a_{11}a_{22}\cdots a_{nn} > 0.\] 当 $t \in [0, 1]$ 时，还有 \[a_{ii} > \sum_{j \neq i} \lvert a_{ij} \rvert \leqslant \sum_{j \neq i} \lvert ta_{ij} \rvert.\] 由 (1) 可知 $f(t)$ 在 $[0, 1]$ 上非零，由连续函数的介值定理可知 $f(1) > 0$，即 $\lvert A \rvert > 0.$
+        \item 此为直接推论不再赘述.
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item 设 $\begin{pmatrix}
+            A & C \\
+            O & B
+        \end{pmatrix}$ 的伴随矩阵为 $\begin{pmatrix}
+            X & Y \\
+            Z & W
+        \end{pmatrix}$. 而 $\begin{vmatrix}
+            A & C \\
+            O & B
+        \end{vmatrix} = \lvert A\rvert \lvert B \rvert$，所以有 \[\begin{pmatrix}
+            A & C \\
+            O & B
+        \end{pmatrix} \begin{pmatrix}
+            X & Y \\
+            Z & W
+        \end{pmatrix} = \lvert A\rvert \lvert B \rvert \begin{pmatrix}
+            E & O \\
+            O & E
+        \end{pmatrix}.\] 得到方程组 \[\begin{cases}
+            AX+CZ & {}= \lvert A \rvert \lvert B \rvert E \\
+            AY+CW & {}= O \\
+            BZ & {}= O \\
+            BW & {}= \lvert A \rvert \lvert B \rvert E
+        \end{cases}\] 考虑一般情况，我们不再单独讨论 $B$ 是否等于 $O$. 所以 $Z = O$, $X = \lvert B \rvert A^*$, $W = \lvert A \rvert B^*$, $Y = -A^*CB^*$. 即 \[\begin{pmatrix}
+            A & C \\
+            O & B
+        \end{pmatrix}^* = \begin{pmatrix}
+            \lvert B \rvert A^* & -A^*CB^* \\
+            O & \lvert A \rvert B^*
+        \end{pmatrix}\]
+        \item 若 $A$ 可逆，则可以通过以下的初等分块变换将其化为上三角块矩阵. \[\begin{pmatrix}
+            E & O \\
+            -CA^{-1} & E
+        \end{pmatrix} \begin{pmatrix}
+            A & B \\
+            C & D
+        \end{pmatrix} = \begin{pmatrix}
+            A & B \\
+            O & D-CA^{-1}B
+        \end{pmatrix}.\] 两侧取伴随有 \begin{align*}
+            & \left(\begin{pmatrix}
+                E & O \\
+                -CA^{-1} & E
+            \end{pmatrix} \begin{pmatrix}
+                A & B \\
+                C & D
+            \end{pmatrix}\right)^* = \begin{pmatrix}
+                A & B \\
+                C & D
+            \end{pmatrix}^* \begin{pmatrix}
+                E & O \\
+                -CA^{-1} & E
+            \end{pmatrix}^* \\ ={} & \begin{pmatrix}
+                A & B \\
+                O & D-CA^{-1}B
+            \end{pmatrix}^* = \begin{pmatrix}
+                \lvert D-CA^{-1}B \rvert A^* & -A^*B(D-CA^{-1}B)^* \\
+                O & \lvert A \rvert (D-CA^{-1}B)^*
+            \end{pmatrix}
+        \end{align*} 而 \[\begin{pmatrix}
+            E & O \\
+            -CA^{-1} & E
+        \end{pmatrix}^* \begin{pmatrix}
+            E & O \\
+            -CA^{-1} & E
+        \end{pmatrix} = \begin{vmatrix}
+            E & O \\
+            -CA^{-1} & E
+        \end{vmatrix} \begin{pmatrix}
+            E & O \\
+            O & E
+        \end{pmatrix} = \begin{pmatrix}
+            E & O \\
+            O & E
+        \end{pmatrix}\] 所以 \begin{align*}
+            \begin{pmatrix}
+                A & B \\
+                C & D
+            \end{pmatrix}^* ={} & \begin{pmatrix}
+                \lvert D-CA^{-1}B \rvert A^* & -A^*B(D-CA^{-1}B)^* \\
+                O & \lvert A \rvert (D-CA^{-1}B)^*
+            \end{pmatrix} \begin{pmatrix}
+                E & O \\
+                -CA^{-1} & E
+            \end{pmatrix} \\ ={} & \begin{pmatrix}
+                \lvert D-CA^{-1}B \rvert A^*+A^*B(D-CA^{-1}B)^*CA^{-1} & -A^*B(D-CA^{-1}B)^* \\
+                -\lvert A \rvert (D-CA^{-1}B)^*CA^{-1} & \lvert A \rvert (D-CA^{-1}B)^*
+            \end{pmatrix}&
+        \end{align*}
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item 因为 $n=2$ 时 $(A^*)^* = A$，所以 $B = (B^*)^* = A^*$，而 $B$ 的伴随矩阵是唯一的，所以存在唯一的2 阶方阵 $A = B^*$ 使得 $A^* = B$.
+        \item $(\Leftarrow)$ 由 \ref*{例13.9(6)} 可得.\\
+        $(\Rightarrow)$ \begin{enumerate}
+            \item $r(B) = n$ 时，若存在 $A$ 使得 $A^* = B$，则由 $(A^*)^* = \lvert A \rvert^{n-2}A$，有 \[A = \dfrac{1}{\lvert A \rvert^{n-2}}(A^*)^* = \dfrac{1}{\lvert A \rvert^{n-2}}B^* = \dfrac{1}{\lvert A \rvert^{n-2}}\lvert B \rvert B^{-1}，\] 而 \[\lvert B \rvert = \lvert A^* \rvert = \lvert A \rvert^{n-1}，\] 代入上式可得 \[A = \lvert A \rvert B^{-1} = \sqrt[n-1]{\lvert B \rvert} B^{-1}.\] 从而满足 $A^* = B$ 的矩阵 $A$ 存在，且有 $n-1$ 个.
+            \item $r(B) = 1$ 时，存在可逆矩阵 $P, Q$ 使得 \[B = P\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix}Q.\] 若存在 $A$ 满足 $A^{*} = B$，则 $r(A) = n-1$，从而存在可逆矩阵 $G, H$ 使得 \[A = G\begin{pmatrix}
+                0 & O \\
+                O & E_{n-1}
+            \end{pmatrix}H，\] 则 \[A^* = H^*\begin{pmatrix}
+                0 & O \\
+                O & E_{n-1}
+            \end{pmatrix}^*G^* = H^*\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix}G^* = \lvert HG \rvert H^{-1}\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix}G^{-1}，\] 由 $A^* = B$ 可得 \[\lvert HG \rvert H^{-1}\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix}G^{-1} = P\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix}Q，\] 即 \[\lvert HG \rvert\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix} = HP\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix}QG，\] 记 $C = HP$, $D = QG$，且分块为 $C = \begin{pmatrix}
+                C_{11} & C_{12} \\
+                C_{21} & C_{22}
+            \end{pmatrix}$, $D = \begin{pmatrix}
+                D_{11} & D_{12} \\
+                D_{21} & D_{22}
+            \end{pmatrix}$，其中 $C_{22}, D_{22}$ 是 $n-1$ 阶矩阵，则 \[\lvert HG \rvert\begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix} = \begin{pmatrix}
+                C_{11} & C_{12} \\
+                C_{21} & C_{22}
+            \end{pmatrix} \begin{pmatrix}
+                1 & O \\
+                O & O \\
+            \end{pmatrix} \begin{pmatrix}
+                D_{11} & D_{12} \\
+                D_{21} & D_{22}
+            \end{pmatrix} = \begin{pmatrix}
+                C_{11}D_{11} & C_{11}D_{12} \\
+                C_{21}D_{11} & C_{21}D_{12}
+            \end{pmatrix}，\] 于是 \[\lvert HG \rvert = C_{11}D_{11}, C_{11}D_{12} = O, C_{21}D_{11} = O, C_{21}D_{12} = O.\] 因为 $H, G$ 可逆，所以 $C_{11} \neq 0, D_{11} \neq 0$，于是 $C_{21} = O = D_{12}$. 从而 \begin{align*}
+                A ={} & G\begin{pmatrix}
+                    0 & O \\
+                    O & E_{n-1}
+                \end{pmatrix}H = Q^{-1}D\begin{pmatrix}
+                    0 & O \\
+                    O & E_{n-1}
+                \end{pmatrix}CP^{-1} \\ ={} &Q^{-1}\begin{pmatrix}
+                    D_{11} & O \\
+                    D_{21} & D_{22}
+                \end{pmatrix} \begin{pmatrix}
+                    0 & O \\
+                    O & E_{n-1}
+                \end{pmatrix} \begin{pmatrix}
+                    C_{11} & C_{12} \\
+                    O & C_{22}
+                \end{pmatrix} P^{-1} \\ ={} & Q^{-1} \begin{pmatrix}
+                    0 & O \\
+                    O & D_{22}C_{22}
+                \end{pmatrix} P^{-1}.
+            \end{align*} 又 \[C_{11}D_{11} = \lvert HG \rvert = \lvert CP^{-1}Q^{-1}D \rvert = \dfrac{1}{\lvert PQ \rvert}\lvert DC \rvert.\] 接下来转为求 $\lvert DC \rvert$. 而 \[DC = \begin{pmatrix}
+                D_{11} & O \\
+                D_{21} & D_{22}
+            \end{pmatrix} \begin{pmatrix}
+                C_{11} & C_{12} \\
+                O & C_{22}
+            \end{pmatrix} = \begin{pmatrix}
+                D_{11}C_{11} & D_{11}C_{12} \\
+                D_{21}C_{11} & D_{21}C_{12}+D_{22}C_{22}
+            \end{pmatrix}.\] 考虑初等分块变换 \begin{align*}
+                \begin{pmatrix}
+                    1 & O \\
+                    -D_{21}D_{11}^{-1} & E_{n-1}
+                \end{pmatrix}DC ={} & \begin{pmatrix}
+                    1 & O \\
+                    -D_{21}D_{11}^{-1} & E_{n-1}
+                \end{pmatrix} \begin{pmatrix}
+                    D_{11}C_{11} & D_{11}C_{12} \\
+                    D_{21}C_{11} & D_{21}C_{12}+D_{22}C_{22}
+                \end{pmatrix} \\ ={} & \begin{pmatrix}
+                    D_{11}C_{11} & D_{11}C_{12} \\
+                    O & D_{22}C_{22}
+                \end{pmatrix}，
+            \end{align*} 故 \[C_{11}D_{11} = \dfrac{1}{\lvert PQ \rvert}\lvert DC \rvert = \dfrac{1}{\lvert PQ \rvert}D_{11}C_{11} \lvert D_{22}C_{22} \rvert，\] 从而 \[\dfrac{1}{\lvert PQ \rvert} \lvert D_{22}C_{22} \rvert = 1，\] 即 \[\lvert D_{22}C_{22} \rvert = \lvert PQ \rvert.\] 命题得证.
+            \item $r(B) = 0$ 则是平凡情况，其是所有 $r \leqslant n-2$ 矩阵的伴随矩阵.
+        \end{enumerate}
+        \item 由 $r(B^*) = r(A) = 1$ 可知 $r(B) = 2$. $B^*B = \lvert B \rvert E = 0$，由此可知 $B$ 的列向量为方程组 $B^*X = 0$ 的解，其基础解系为 \[\alpha_1 = (-1, 1, 0)^{\mathrm{T}}, \alpha_2 = (-1, 0, 1)^{\mathrm{T}}.\] 令 $B = (\alpha_1, \alpha_2, \alpha_3)$，其中 $\alpha_3 = k_1\alpha_1+k_2\alpha_2 = (k_1+k_2, -k_1, -k_2)^{\mathrm{T}}$. 由 $BB^* = 0$ 解得 $k_1 = k_2 = 1$，从而 \[B = \begin{pmatrix}
+            -1 & -1 & 2 \\
+            1 & 0 & -1 \\
+            0 & 1 & -1
+        \end{pmatrix}.\]
+    \end{enumerate}
 \end{enumerate}
 
 \clearpage
