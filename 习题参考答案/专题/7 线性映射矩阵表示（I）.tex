@@ -11,6 +11,85 @@
 \centerline{\heiti B组}
 \begin{enumerate}
     \item
+    \item
+    \item
+    \item
+    \item
+    \item
+        \begin{enumerate}
+            \item
+                对非齐次线性方程组$AX=\xi_1$，\\
+                $\bar{A}=\begin{pmatrix}
+                    1 & -1 & -1 & -1 \\
+                    -1 & 1 & 1 & 1 \\
+                    0 & -4 & -2 & -2
+                \end{pmatrix}
+                \rightarrow\begin{pmatrix}
+                    1 & -1 & -1 & -1 \\
+                    0 & 1 & \frac 12 & \frac 12 \\
+                    0 & 0 & 0 & 0
+                \end{pmatrix}
+                \rightarrow\begin{pmatrix}
+                    1 & 0 & -\frac 12 & -\frac 12 \\
+                    0 & 1 & \frac 12 & \frac 12 \\
+                    0 & 0 & 0 & 0
+                \end{pmatrix}$，则\\
+                $\xi_2=C_1\begin{pmatrix}
+                    \frac 12 \\
+                    -\frac 12 \\
+                    1
+                \end{pmatrix} + \begin{pmatrix}
+                    -\frac 12 \\
+                    \frac 12 \\
+                    0
+                \end{pmatrix}=\frac 12\begin{pmatrix}
+                    C_1 - 1 \\
+                    -C_1 + 1 \\
+                    2C_1
+                \end{pmatrix}$（其中$C_1$为任意常数）.\\
+                $A^2=\begin{pmatrix}
+                    2 & 2 & 0 \\
+                    -2 & -2 & 0 \\
+                    4 & 4 & 0
+                \end{pmatrix}$，对齐次线性方程组$A^2X=\xi_1$，\\
+                $\bar{B}=\begin{pmatrix}
+                    A^2 & \xi_1
+                \end{pmatrix}=\begin{pmatrix}
+                    2 & 2 & 0 & 1 \\
+                    -2 & -2 & 0 & 1 \\
+                    4 & 4 & 0 & -2
+                \end{pmatrix}
+                \rightarrow\begin{pmatrix}
+                    1 & 1 & 0 & -\frac 12 \\
+                    0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0
+                \end{pmatrix}$，\\
+                则$A^2X=\xi_1$的通解\\
+                $\xi_3=C_2\begin{pmatrix}
+                    -1 \\
+                    1 \\
+                    0
+                \end{pmatrix}+C_3\begin{pmatrix}
+                    0 \\
+                    0 \\
+                    1
+                \end{pmatrix}+\begin{pmatrix}
+                    -\frac 12 \\
+                    0 \\
+                    0
+                \end{pmatrix}=\begin{pmatrix}
+                    -C_2 - \frac 12 \\
+                    C_2 \\
+                    C_3
+                \end{pmatrix}$（其中$C_2, C_3$为任意常数）.
+            \item
+                因为$|\xi_1,\xi_2,\xi_3|=\frac 12\begin{vmatrix}
+                    -1 & C_1 - 1 & -C_2 - \frac 12 \\
+                    1 & -C_1 + 1 & C_2 \\
+                    -2 & 2C_1 & C_3
+                \end{vmatrix}=-\frac 12\neq 0$，\\
+                所以$\xi_1,\xi_2,\xi_3$线性无关.
+        \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
