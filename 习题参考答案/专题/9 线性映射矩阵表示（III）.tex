@@ -5,17 +5,36 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item $\alpha = (x_1,x_2,x_3)^{\mathrm{T}},\beta = (y_1,y_2,y_3)^{\mathrm{T}},\alpha^{\mathrm{T}}\beta=x_1y_1+x_2y_2+x_3y_3$，实际上是 $\alpha\beta^{\mathrm{T}}$ 对角线元素之和，故 $\alpha^{\mathrm{T}}\beta=-5$.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item $A=(a_{ij})_{n\times n}$，$A^\mathrm{T}A$ 对角线元素为 $\sum\limits_{i=1}^na_{i1}^2,\sum\limits_{i=1}^na_{i2}^2,\cdots,\sum\limits_{i=1}^na_{in}^2$ 均为 $0$，
+    故 $A$ 中所有元素均为 $0$，可得 $A=O$.
+    另一方法：由于 $r(A^\mathrm{T}A) = r(A)$，又 $r(A^\mathrm{T}A)=0$，所以 $r(A)=0$，从而 $A=O$.
+    \item \begin{enumerate}
+        \item 根据定义易证.
+        \item 令 $E_{ij}$ 表示第 $i$ 行第 $j$ 列位置是 $1$，其余位置都是 $0$ 的 $n$ 阶方阵，则 $V$ 的一组基是
+        \[E_{11},\cdots,E_{nn},E_{12}+E_{21},\cdots,E_{n-1,n}+E_{n,n-1}\]
+        故 $V$ 的维数是 $1+2+\cdots+n=\dfrac{n(n+1)}{2}$.
+        \end{enumerate}
+    \item 观察对称性有
+    \[AA^{\mathrm{T}}=(a^2+b^2+c^2+d^2)E\]
+    从而有 $A^{-1}=\dfrac{1}{a^2+b^2+c^2+d^2}A^{\mathrm{T}}$.
+    \item 设 $E_{ij}$ 表示第 $i$ 行第 $j$ 列位置是 $1$，其余位置都是 $0$ 的 $n$ 阶方阵.
+        \begin{enumerate}
+            \item $k=0$ 时，$W$ 为主对角线全为 $0$ 的上三角矩阵全体，则 $B_1=\{E_{ij}\ |\ i>j\}$ 为 $W$ 的一组基，且 $\mathrm{dim}W=\dfrac{n(n-1)}{2}$.
+            \item $k=1$ 时，$W$ 为对称矩阵全体，$\forall A\in W,A = \sum\limits_{i=1}^n\sum\limits_{j=1}^na_{ij}E_{ij}=\sum\limits_{i<j}a_{ij}(E_{ij}+E_{ji})+\sum\limits_{i=1}^na_{ii}E_{ii}$，
+            而 $B_2=\{E_{ij}+E_{ji},E_{kk}\ |\ 1\leq i,j,k\leq n,i<j\}$ 线性无关，故 $B_2$ 是 $W$ 的一组基，$\mathrm{dim}W=\dfrac{n(n+1)}{2}$.
+            \item $k=2$ 时，可得 $a_{ii}=2a_{ii},a_{ii}=0$，故 $\forall A\in W,A = \sum\limits_{i=1}^n\sum\limits_{j=1}^na_{ij}E_{ij}=\sum\limits_{i<j}a_{ij}(E_{ij}+2E_{ji})$，
+            而 $B_3=\{E_{ij}+2E_{ji}\ |\ i<j\}$ 线性无关，故 $B_3$ 是 $W$ 的一组基，$\mathrm{dim}W=\dfrac{n(n-1)}{2}$.
+        \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 
 \end{enumerate}
 
 \clearpage
