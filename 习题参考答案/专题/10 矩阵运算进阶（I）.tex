@@ -5,17 +5,50 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 由题意有 $P_2AP_1 = E$，从而有 $A=P_2^{-1}P_1^{-1}=P_2P_1^{-1}$.
+    \item 由题意知 $B = E_{ij}A$，所以 $BA^{-1}=E_{ij}$ 从而 $B$ 可逆，同时可得 $AB^{-1}=A(A^{-1}E_{ij}^{-1})=E_{ij}$.
+    \item $Q = (\alpha_1+\alpha_2,\alpha_2,\alpha_3)=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}=P\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$.
+    
+    记 $E_{21}=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$，有 $Q^{-1}AQ=E_{21}^{-1}P^{-1}APE_{21}=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$.
+    \item 见本章例 10.5，此处不赘述.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 此处仅给出答案，具体过程略.
+    \begin{enumerate}
+        \item $\begin{pmatrix}a_{21} & a_{22} & a_{23} \\ a_{11} & a_{12} & a_{13} \\ a_{31} & a_{32} & a_{33}\end{pmatrix}$.
+        \item $\begin{pmatrix}-a_{11} & -a_{12} & -a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}\end{pmatrix}$.
+        \item $\begin{pmatrix}-a_{13} & -a_{12} & a_{11} \\ a_{23} & a_{22} & -a_{21} \\ a_{33} & a_{32} & -a_{31}\end{pmatrix}$.
+        \item $\begin{pmatrix}-a_{11}-a_{12} & -a_{12}-a_{13} & -a_{13}-a_{11} \\ a_{21}+a_{22} & a_{22}+a_{23} & a_{23}+a_{21} \\ a_{31}+a_{32} & a_{32}+a_{33} & a_{33}+a_{31}\end{pmatrix}$.
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item 略.
+        \item 设 $A=(a_{ij})_{3\times 2}$，$e_{ij}$ 为 $\mathbf{R}^{3\times 2}$ 的自然基。因为 $PAQ = \begin{pmatrix}a_{12}+a_{22} & 0 \\ a_{22} & 0 \\ 0 & 0\end{pmatrix}$，
+        所以 $\sigma(e_{12}) = e_{11},\sigma(e_{22}) = e_{11}+e_{21},\sigma(e_{11})=\sigma(e_{21})=\sigma(e_{31})=\sigma(e_{32})=0$.
+        
+        于是 $\mathrm{Ker}\sigma = \mathrm{span}(e_{11},e_{21},e_{31},e_{32}),\mathrm{Im}\sigma = \mathrm{span}(e_{11},e_{11}+e_{21})$. 
+        \item 令 $B_1=\{e_{12},e_{22},e_{11},e_{21},e_{31},e_{32}\},B_2=\{e_{11},e_{11}+e_{21},e_{12},e_{22},e_{31},e_{32}\}$，则均为 $\mathbf{R^{3\times 2}}$ 的基，且 $\sigma(\epsilon)=(\eta)\begin{pmatrix}E_2 & 0 \\ 0 & 0\end{pmatrix}$.
+    \end{enumerate}
+    \item 见教材 P147/例 5
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 使用数学归纳法。当 $n=1$ 时，$A=\begin{pmatrix}a\end{pmatrix}(a\neq 0)$，$B$ 取任意一阶矩阵均成立；
+    假设 $n-1$ 阶成立，$A = \begin{pmatrix}A_1 & \alpha \\ \beta & a_{nn}\end{pmatrix}$，其中 $A_1$ 为 $n-1$ 阶矩阵且存在 $n-1$ 阶下三角矩阵 $B_1$ 使得 $B_1A_1$ 为上三角矩阵，则有 
+    \[\begin{pmatrix}B_1 & O \\ O & 1\end{pmatrix}\begin{pmatrix}A_1 & \alpha \\ O & a_{nn}-\beta A^{-1}\alpha\end{pmatrix} = \begin{pmatrix}B_1A_1 & B_1\alpha \\ O & a_{nn}-\beta A_1^{-1}\alpha\end{pmatrix}\]为上三角矩阵.
+    而 \[\begin{pmatrix}E_{n-1} & O \\ -\beta A_1^{-1} & 1\end{pmatrix}\begin{pmatrix}A_1 & \alpha \\ \beta & a_{nn}\end{pmatrix}=\begin{pmatrix}A_1 & \alpha \\ O & a_{nn}-\beta A_1^{-1} \alpha\end{pmatrix}\]
+    故 $B=\begin{pmatrix}B_1 & O \\ O & 1\end{pmatrix}\begin{pmatrix}E_{n-1} & O \\ -\beta A_1^{-1} & 1\end{pmatrix}$ 符合条件（$B_1$ 为下三角矩阵，故 $B$ 也是）.
+    \item 任取 $\alpha\in W$，有 $A_{12}\alpha=0$.
+    \[\begin{pmatrix}O_{k\times 1} \\ \alpha\end{pmatrix}=A^{-1}A\begin{pmatrix}O_{k\times 1} \\ \alpha\end{pmatrix}=A^{-1}\begin{pmatrix}A_{11} & A_{12} \\ A_{21} & A_{22}\end{pmatrix}\begin{pmatrix}O_{k\times 1} \\ \alpha\end{pmatrix}=A^{-1}\begin{pmatrix}O_{l\times 1} \\ A_{22}\alpha\end{pmatrix}\]
+    \[=\begin{pmatrix}B_{11} & B_{12} \\ B_{21} & B_{22}\end{pmatrix}\begin{pmatrix}O_{l\times 1} \\ A_{22}\alpha\end{pmatrix}=\begin{pmatrix}B_{12}A_{22}\alpha \\ B_{22}A_{22}\alpha\end{pmatrix}\]
+    故 $B_{12}A_{22}\alpha=0$，故我们可以推测以下定义：$\sigma\in L(W,U),\sigma(\alpha)=A_{22}\alpha$.
+    证明单射、满射即可.
+
+    单射：$\sigma(\alpha)=\sigma(\beta)\Rightarrow A_{22}(\alpha-\beta)=0$. 又有 $A_{12}\alpha=A_{12}\beta=0\Rightarrow A_{12}(\alpha-\beta)=0$，可得 $\begin{pmatrix}A_{12} \\ A_{22}\end{pmatrix}(\alpha-\beta) = 0$. 由于 $\begin{pmatrix}A_{12} \\ A_{22}\end{pmatrix}$ 列满秩，故有 $\alpha=\beta$. 成立.
+
+    满射：$\forall \gamma\in U,B_{12}\gamma = 0.$ 类似我们一开始的步骤，$\begin{pmatrix}O_{l\times 1} \\ \gamma\end{pmatrix}=AA^{-1}\begin{pmatrix}O_{l\times 1} \\ \gamma\end{pmatrix}= \cdots = \begin{pmatrix}A_{12}B_{22}\gamma \\ A_{22}B_{22}\gamma\end{pmatrix}$，故 $\exists B_{22}\gamma \in W,A_{22}B_{22}\gamma=\gamma\in U$. 故满射成立，证毕.
 \end{enumerate}
 
 \clearpage
