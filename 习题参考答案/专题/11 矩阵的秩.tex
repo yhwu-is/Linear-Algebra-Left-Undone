@@ -5,17 +5,140 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 取 $\mathbf{R^4}$ 标准基 $\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4$.
+    那么 $(\alpha_1,\alpha_2,\alpha_3,\alpha_4)=(\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4)A,(\beta_1,\beta_2,\beta_3,\beta_4)=(\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4)B.$
+    其中 \[A=\begin{pmatrix}1 & 1 & 1 & 1 \\ 1 & 1 & -1 & -1 \\ 1 & -1 & 1 & -1 \\ 1 & -1 & -1 & 1\end{pmatrix},B=\begin{pmatrix}1 & 2 & 1 & 0 \\ 1 & 1 & 1 & 1 \\ 0 & 3 & 0 & -1 \\ 1 & 1 & 0 & -1\end{pmatrix}.\] 
+    由此可知 \[(\beta_1,\beta_2,\beta_3,\beta_4)=(\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4)B=(\alpha_1,\alpha_2,\alpha_3,\alpha_4)A^{-1}B.\]
+    过渡矩阵 \[A^{-1}B=\dfrac{1}{4}\begin{pmatrix}3 & 7 & 2 & -1 \\ 1 & -1 & 2 & 3 \\ -1 & 3 & 0 & -1 \\ 1 & -1 & 0 & -1\end{pmatrix}\]
+    另外，容易求得 $\xi$ 在 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 下的坐标为 $\begin{pmatrix}0 \\ \frac{1}{2} \\ \frac{1}{2} \\ 0\end{pmatrix}$
+    \item 证明：考虑矩阵 $A$ 的行向量组的极大线性无关组，若添加的一行可由其极大线性无关组线性表示，则秩不变. 否则秩增加 $1$. 
+    \item 证明：设 $A$ 的行向量组为 $\{\alpha_1,\alpha_2,\cdots,\alpha_s\}$，$r(A)=r$; $B$ 的行向量组为 $\{\alpha_1,\alpha_2,\cdots,\alpha_m\},r(B)=k$.
+    不妨设：$B$ 的行向量组的极大线性无关组为 $\{\alpha_1,\alpha_2,\cdots,\alpha_k,\alpha_{i_1},\cdots,\alpha_{i_{r-k}}\}$，其中 $\{\alpha_{i_1},\cdots,\alpha_{i_{r-k}}\}$（共 $r-k$ 个向量）是包含在 $\{\alpha_{m+1},\cdots,\alpha_s\}$（共 $s-m$ 个向量）之中的. 显然有
+    \[r-k \leq s-m,\]
+    即
+    \[r(B)=k\ge r+m-s=r(A)+m-s.\]
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 已知 $r(A+B) \leq r(A)+r(B)$，把 $B$ 写成 $-B$ 则有 $r(A-B) \leq r(A)+r(-B)=r(A)+r(B)$. 不等式右半部分得证.
+    
+    另外，$r(A)=r(A-B+B) \leq r(A-B)+r(B)$，从而 $r(A-B) \ge r(A)-r(B)$，当然，加个绝对值也是没有问题的：$r(A-B) \ge \lvert r(A)-r(B) \rvert$. 同理，有 $r(A+B) \ge \lvert r(A)+r(B) \rvert$. 证毕.
+    \item $V$ 的基 $B_1$ 到 $B_2$ 的过渡矩阵 $P$ 具有下述形式：
+    \[P=\begin{pmatrix}\mathrm{Im} & B_1 \\ 0 & B_2\end{pmatrix}\]
+    其中 $B_1,B_2$ 分别是域 $\mathbf{F}$ 上 $m\times (n-m),(n-m)\times (n-m)$ 矩阵，
+    \[\beta_j=b_{j1}\delta_1+\cdots+b_{jm}\delta_m+b_{j,m+1}\delta_{m+1}+\cdots+b_{jn}a_n\]
+    其中 $j=m+1,\cdots,n$. 于是
+    \[\beta_j+W=b_{j,m+1}(\alpha_{m+1}+W)+\cdots+b_{jn}(\alpha_n+W)\]
+    因此商空间 $V/W$ 的基 $\alpha_{m+1}+W,\cdots,\alpha_n+W$ 到 $\beta_{m+1}+W,\cdots,\beta_n+W$ 的过渡矩阵是 $B_2$.
+    \item 设 $\beta_1=\alpha_1+\alpha_2,\cdots,\beta_{n-1}=\alpha_{n-1}+\alpha_n,\beta_n=\alpha_n+\alpha_1$. 由于
+    \[(\beta_1,\beta_2,\cdots,\beta_n) = (\alpha_1,\alpha_2,\cdots,\alpha_n)A,\]
+    其中
+    \[A=\begin{pmatrix}1 & & & & 1 \\ 1 & 1 & & & \\ & 1 & \ddots & & \\ & & \ddots & 1 & \\ & & & 1 & 1\end{pmatrix}.\]
+    则有 $\lvert A \rvert = 1 + (-1)^{n+1}=2\neq 0$，所以 $A$ 可逆，可得 $\{\beta_1,\beta_2,\cdots,\beta_n\}$ 和 $\{\alpha_1,\alpha_2,\cdots,\alpha_n\}$ 等价. 这就说明了 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 线性无关的充要条件是 $\beta_1,\beta_2,\cdots,\beta_n$ 线性无关.
+    \item 记 $B_1=\{e_{11},e_{12},e_{21},e_{22}\},B_2=\{g_1,g_2,g_3,g_4\}$.\begin{enumerate}
+        \item 设 $k_1g_1+k_2g_2+k_3g_3+k_4g_4=O$，可得 $k_1=k_2=k_3=k_4=0$，所以 $g_1,g_2,g_3,g_4$ 线性无关，从而是 $M_2(\mathbf{R})$ 的一组基.
+        \item 由 $M_2(\mathbf{R}) \cong \mathbf{R^4}$，所以 $\{e_{11},e_{12},e_{21},e_{22}\}$ 可以表示为 $\mathbf{R^4}$ 中的自然基 $\{e_1,e_2,e_3,e_4\}$，而 $\{g_1,g_2,g_3,g_4\}$ 可表示为 $\{(1,0,0,0)^{\mathbf{T}},(1,1,0,0)^{\mathbf{T}},(1,1,1,0)^{\mathbf{T}},(1,1,1,1)^{\mathbf{T}}\}$.
+        
+        于是，由 \[\begin{pmatrix}g_1 & g_2 & g_3 & g_4\end{pmatrix}=\begin{pmatrix}e_{11} & e_{12} & e_{21} & e_{22}\end{pmatrix}C\]
+        得 \[\begin{pmatrix}e_{11} & e_{12} & e_{21} & e_{22}\end{pmatrix}=\begin{pmatrix}g_1 & g_2 & g_3 & g_4\end{pmatrix}C^{-1}\]
+        所以基 $B_2$ 变为 $B_1$ 的变换矩阵为 $C^{-1}=\begin{pmatrix}1 & -1 & 0 & 0 \\ 0 & 1 & -1 & 0 \\ 0 & 0 & 1 & -1 \\ 0 & 0 & 0 & 1\end{pmatrix}$.
+        \item 考虑从 $A^2=A$ 中选取较为简单的矩阵，例如由
+        \[\begin{pmatrix}a & b \\ 0 & 0\end{pmatrix}^2=\begin{pmatrix}a^2 & ab \\ 0 & 0\end{pmatrix}=\begin{pmatrix}a & b \\ 0 & 0\end{pmatrix}\]
+        取 $a=1,b=0$ 或 $1$，得 $A_1=\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix},A_2=\begin{pmatrix}1 & 1 \\ 0 & 0\end{pmatrix}$
+
+        类似地，可取 $A_3=\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix},A_4=\begin{pmatrix}0 & 0 \\ 1 & 1\end{pmatrix}$.
+
+        这就取出了一组满足 $A^2=A$ 的线性无关的 $\{A_1,A_2,A_3,A_4\}$，是 $M_2(\mathbf{R})$ 的一组基 $B_3$.
+        \item 先记 $B_2$ 变为 $B_3$ 的变换矩阵为 $D$，即 \[\begin{pmatrix}A_1 & A_2 & A_3 & A_4\end{pmatrix}=\begin{pmatrix}g_1 & g_2 & g_3 & g_4\end{pmatrix}D\]\
+        按题 $(2)$ 中所述，此时有 \[\begin{pmatrix}1 & 1 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 1\end{pmatrix}=\begin{pmatrix}1 & 1 & 1 & 1 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 1 & 1 \\ 0 & 0 & 0 & 1\end{pmatrix}D\]
+        由于上式右端已知矩阵的逆矩阵为上面的 $C^{-1}$，所以在上式两边左乘 $C^{-1}$，可得 \[D = \begin{pmatrix}1 & 0 & 0 & 0 \\ 0 & 1 & 0 & -1 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 1 & 1\end{pmatrix}\]
+        由于矩阵 $A$ 关于 $B_2$ 的坐标为 $(1,1,1,1)^{\mathbf{T}}$，所以 $A$ 关于 $B_3$ 的坐标为
+        \[Y=D^{-1}X=\begin{pmatrix}1 \\ 3 \\ -1 \\ 2\end{pmatrix}.\]
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item 初等变换即可.
+        \item 同上.
+        \item 矩阵 $A$ 秩为 $r$ 可写作 $A=P\begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix}Q = P(E_{11}+E_{22}+\cdots+E_{rr})Q$（$E_r$ 是 $r\times r$ 的单位矩阵，$E_{ii}$ 是 $n\times n$ 的只有第 $i$ 行 $i$ 列的这个元素为 $1$，其他元素均为 $0$ 的矩阵）. 
+        每个 $PE_{ii}Q$ 都是秩为 $1$ 的矩阵，故得证.
+        \item 记 $r(A)=r$，把 $A$ 写成 $P\begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix}Q$ 的形式. 构造 $B=Q^{-1}\begin{pmatrix}E_r & 0 \\ 0 & 0\end{pmatrix}P^{-1}$ 可以发现其满足条件，故得证.
+    \end{enumerate}
+    \item $r(BC)\leq r(B) \leq 1$，得证. 
+    
+    反之，若 $A$ 是秩为 $1$ 的 $3\times 3$ 矩阵，则存在可逆矩阵 $P,Q$ 使得 $A=P^{-1}E_{11}Q^{-1}$，其中 $E_{11}=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0\end{pmatrix}=\begin{pmatrix}1 \\ 0 \\ 0\end{pmatrix}\begin{pmatrix}1 & 0 & 0\end{pmatrix}$.
+    则取 $B=P^{-1}\begin{pmatrix}1 \\ 0 \\ 0\end{pmatrix},C=\begin{pmatrix}1 & 0 & 0\end{pmatrix}Q^{-1}$，有 $A=BC$，证毕.
+    \item \begin{enumerate}
+        \item $r(\alpha \alpha^{\mathbf{T}})\leq r(\alpha) = 1,r(\beta \beta^{\mathbf{T}})\leq r(\beta) = 1$. 由 $r(A+B) \leq r(A)+r(B)$ 得 $r(A)=r(\alpha \alpha^{\mathbf{T}}+\beta \beta^{\mathbf{T}}) \leq r(\alpha)+r(\beta)=2.$
+        \item 若 $\alpha,\beta$ 均为 $\mathbf{0}$ 向量，显然. 否则假设 $\alpha$ 不为 $0$，则由于两向量线性相关，必有确定的 $k$ 使得 $\beta = k\alpha$，把 $\beta$ 用 $\alpha$ 表示之后易证.
+    \end{enumerate}
+    \item $r(A)=r$ 则 $AX=0$ 的解空间维数 $\mathrm{dim}N(A) = n-r$. 由 $r(A)+r(B)=k$ 得 $r(B)=k-r \leq n-r=\mathrm{dim}N(A)$. 要求 $AB=O$，说明 $B$ 的列向量均为 $AX=0$ 的解，那么只需要选择合适的列向量组拼接成 $B$ 即可（这一定能做到，因为 $B$ 维数不会超过解空间维数）.
+    \item 由于 $A$ 是 $m\times n$ 矩阵，$r(A)=m$，可知对于矩阵 $A$ 做初等列变换，可使其前 $m$ 列变为单位矩阵，后 $n-m$ 列变为全 $0$ 列.
+    因此，存在 $n$ 阶可逆矩阵 $P$ 使得
+    \[AP=\begin{pmatrix}E_m & O_{m\times (n-m)}\end{pmatrix}\]
+    于是\[AP(AP)^{\mathrm{T}} = \begin{pmatrix}E & O\end{pmatrix} \begin{pmatrix}E \\ O\end{pmatrix}=E_m\]
+    所以存在 $B=(PP^{\mathrm{T}}A^{\mathrm{T}})$ 为 $n\times m$ 矩阵，使 $AB=E$.
+    \item 利用 $A,B$ 的相抵标准形. 存在 $n$ 阶可逆矩阵 $P_1,Q_1,P_2,Q_2$ 使得
+    \[P_1AQ_1=\begin{pmatrix}E_{r_A} & O \\ O & O\end{pmatrix},P_2BQ_2=\begin{pmatrix}O & O \\ O & E_{r_B}\end{pmatrix}\]
+    于是 \[AQ_1=P_1^{-1}\begin{pmatrix}E_{r_A} & O \\ O & O\end{pmatrix},P_2B=\begin{pmatrix}O & O \\ O & E_{r_B}\end{pmatrix}Q_2^{-1}\]
+    所以 \[AQ_1P_2B=P_1^{-1}\begin{pmatrix}E_{r_A} & O \\ O & O\end{pmatrix}\begin{pmatrix}O & O \\ O & E_{r_B}\end{pmatrix}Q_2^{-1}=O\]
+    取 $M=Q_1P_2$ 即可.
+    \item \begin{enumerate}
+        \item 易证，此处略去.
+        \item 注意到 $B$ 的列向量均为 $AX=0$ 的解，设 $AX=0$ 的基础解系为 $\alpha_1,\cdots,\alpha_t(t=n-r)$，则易知
+        \[B_{11}=(\alpha_1,0,\cdots,0),B_{12}=(0,\alpha_1,\cdots,0),\cdots,B_{1n}=(0,0,\cdots,\alpha_1),\]
+        \[B_{21}=(\alpha_2,0,\cdots,0),B_{22}=(0,\alpha_2,\cdots,0),\cdots,B_{2n}=(0,0,\cdots,\alpha_2),\]
+        \[\vdots\]
+        \[B_{t1}=(\alpha_t,0,\cdots,0),B_{t2}=(0,\alpha_t,\cdots,0),\cdots,B_{tn}=(0,0,\cdots,\alpha_t)\]
+        为 $S(A)$ 的一组基，故 $\mathrm{dim}S(A)=n(n-r)$.
+    \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 对 $\begin{pmatrix}E_n & A' \\ A & E_s\end{pmatrix}$ 利用打洞原理有
+    \[\begin{pmatrix}E_n-A'A & O \\ O & E_s\end{pmatrix} \leftarrow \begin{pmatrix}E_n & A' \\ A & E_s\end{pmatrix} \rightarrow \begin{pmatrix}E_n & O \\ O & E_s-AA'\end{pmatrix}\]
+    所以 $r\begin{pmatrix}E_n-A'A & O \\ O & E_s\end{pmatrix}=r\begin{pmatrix}E_n & O \\ O & E_s-AA'\end{pmatrix}$，即 $s+r(E_n-A'A)=n+r(E_s-AA')$，即
+    \[r(E_n-A'A)-r(E_s-AA')=n-s.\]
+    \item \begin{enumerate}
+        \item 由 \[\begin{pmatrix}A & 0 \\ 0 & B\end{pmatrix}\rightarrow \begin{pmatrix}A & AC \\ 0 & B\end{pmatrix}\rightarrow \begin{pmatrix}A & AC+BD \\ 0 & B\end{pmatrix}=\begin{pmatrix}A & E \\ 0 & B\end{pmatrix}\]
+        \[\rightarrow \begin{pmatrix}0 & E \\ -AB & B\end{pmatrix}\rightarrow \begin{pmatrix}0 & E \\ AB & 0\end{pmatrix}\]
+        可得.
+    \item 用分块矩阵的方法，我们知道 
+    \[\begin{pmatrix}A & O \\ O & B\end{pmatrix}\rightarrow \begin{pmatrix}A & O \\ A & B\end{pmatrix}\rightarrow \begin{pmatrix}A & A \\ A & A+B\end{pmatrix}\]
+    结合 $AB=BA$，我们知道
+    \[\begin{pmatrix}A & A \\ A & A+B\end{pmatrix}\begin{pmatrix}A+B & O \\ -A & E\end{pmatrix}=\begin{pmatrix}AB & A \\ O & A+B\end{pmatrix}\]
+    于是
+    \[r(A)+r(B)=r\begin{pmatrix}A & O \\ O & B\end{pmatrix}=r\begin{pmatrix}A & A \\ A & A+B\end{pmatrix}\ge \begin{pmatrix}AB & A \\ O & A+B\end{pmatrix}\ge r(AB)+r(A+B)\] 
+    \end{enumerate}
+    \item 略有超纲，使用贝祖定理，
+    \[\exists u(x),v(x),u(x)f_1(x)+v(x)f_2(x)=1\]
+    \[r\begin{pmatrix}f_1(A) & O \\ O & f_2(A)\end{pmatrix}=r\begin{pmatrix}f_1(A) & f_1(A)u(A)+f_2(A)v(A) \\ O & f_2(A)\end{pmatrix}=r\begin{pmatrix}f_1(A) & E \\ O & f_2(A)\end{pmatrix}\] 
+    \[=r\begin{pmatrix}f_1(A) & E \\ -f_2(A)f_1(A) & O\end{pmatrix}=r\begin{pmatrix}O & E \\ f(A) & O\end{pmatrix}\]
+    \item 由于 $A$ 是列满秩矩阵，$B$ 是行满秩矩阵，知存在可逆矩阵 $P_{3\times 3},Q_{2\times 2}$ 使得
+    \[A=P\begin{pmatrix}E_2 \\ O\end{pmatrix},B=\begin{pmatrix}E_2 & O\end{pmatrix}Q\]
+    于是 \[BA=\begin{pmatrix}E_2 & O\end{pmatrix}QP\begin{pmatrix}E_2 \\ O\end{pmatrix}\]
+    由 $(AB)^2=9AB$ 有 \[P\begin{pmatrix}E_2 \\ O\end{pmatrix}\begin{pmatrix}E_2 & O\end{pmatrix}QP\begin{pmatrix}E_2 \\ O\end{pmatrix}\begin{pmatrix}E_2 & O\end{pmatrix}Q=9P\begin{pmatrix}E_2 \\ O\end{pmatrix}\begin{pmatrix}E_2 & O\end{pmatrix}Q\]
+    即 \[\begin{pmatrix}E_2 \\ O\end{pmatrix}BA\begin{pmatrix}E_2 & O\end{pmatrix}=9\begin{pmatrix}E_2 \\ O\end{pmatrix}\begin{pmatrix}E_2 & O\end{pmatrix}\]
+    也就是 \[\begin{pmatrix}BA & O \\ O & O\end{pmatrix}=\begin{pmatrix}9E_2 & 0 \\ 0 & 0\end{pmatrix}\]
+    所以 $BA=9E_2$.
+    \item 本题求核空间困难，但只需要求维数，我们考虑求像空间之后求出像空间维数，然后用维数公式求解.
+    
+    取 $F^{n\times p}$ 的自然基 $\{e_{11},e_{12},\cdots,e_{np}\}$（$e_{ij}$ 表示仅有第 $i$ 行第 $j$ 列的元素为 $1$，其他均为 $0$ 的矩阵）
+
+    则 $\mathrm{Im}\ \sigma=\mathrm{span}(\sigma(e_{11}),\cdots,\sigma(e_{np}))$.
+
+    取 $A$ 的列向量，写成 $A=\begin{pmatrix}\alpha_1,\alpha_2,\cdots,\alpha_n\end{pmatrix}$，则 $\sigma(e_{ij})$ 可排列如下：
+    \[(\alpha_1,0,\cdots,0),(0,\alpha_1,\cdots,0),\cdots,(0,0,\cdots,\alpha_1)\]
+    \[(\alpha_2,0,\cdots,0),(0,\alpha_2,\cdots,0),\cdots,(0,0,\cdots,\alpha_2)\]
+    \[\cdots\]
+    \[(\alpha_n,0,\cdots,0),(0,\alpha_n,\cdots,0),\cdots,(0,0,\cdots,\alpha_n)\]
+    由于 $r(A)=r$，故 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 的极大线性无关组有 $r$ 个向量，不妨设为 $\alpha_1,\alpha_2,\cdots,\alpha_r$. 则下列向量：
+    \[(\alpha_{r+1},0,\cdots,0),(0,\alpha_{r+1},\cdots,0),\cdots,(0,0,\cdots,\alpha_{r+1})\]
+    \[\cdots\]
+    \[(\alpha_n,0,\cdots,0),(0,\alpha_n,\cdots,0),\cdots,(0,0,\cdots,\alpha_n)\]
+    均可以被其他向量线性表出. 观察除了上述向量的剩下的向量，可以发现这 $r\times p$ 个向量线性无关，从而 $\mathrm{dim}(\mathrm{Im}\ \sigma) = r\times p$.
+
+    故由维数公式，得 $\mathrm{dim}(\mathrm{Ker}\ \sigma) = \mathrm{dim}F^{n\times p}-\mathrm{dim}(\mathrm{Im} \ \sigma) = (n-r)p$.
 \end{enumerate}
 
 \clearpage
