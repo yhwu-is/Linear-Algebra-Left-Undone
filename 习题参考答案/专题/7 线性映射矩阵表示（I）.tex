@@ -5,16 +5,46 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 教材 P154/9，此处略.
+    \item 教材 P154/10，此处略.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
+    \item $T(\beta_1,\beta_2,\cdots,\beta_n)=(\beta_1,\beta_2,\cdots,\beta_n)\begin{pmatrix}0 & 0 & 0 & \cdots & 0 & a_1 \\ 1 & 0 & 0 & \cdots & 0 & a_2 \\ 0 & 1 & 0 & \cdots & 0 & a_3 \\ \vdots & \vdots & \vdots & & \vdots & \vdots \\ 0 & 0 & 0 & \cdots & 1 & a_n\end{pmatrix}$
+    所以 $A=\begin{pmatrix}0 & 0 & 0 & \cdots & 0 & a_1 \\ 1 & 0 & 0 & \cdots & 0 & a_2 \\ 0 & 1 & 0 & \cdots & 0 & a_3 \\ \vdots & \vdots & \vdots & & \vdots & \vdots \\ 0 & 0 & 0 & \cdots & 1 & a_n\end{pmatrix}$ 是 $T$ 关于基 $B$ 的表示矩阵.
+
+    $T$ 是同构 $\Leftrightarrow$ $T$ 是双射 $\Leftrightarrow$ $r(T) = n$，所以 $A$ 满秩即 $a_1\neq 0$ 时 $T$ 是同构映射.
+    \item \begin{enumerate}
+        \item 略.
+        \item 设 $(\sigma(f_1),\sigma(f_2),\sigma(f_3))=(f_1,f_2,f_3)A$，可用待定系数法解得 $A=\begin{pmatrix}-1 & -2 & -2 \\ 3 & 2 & 3 \\ -1 & -1 & -1\end{pmatrix}$.
+        \item 用待定系数求出 $f=-2f_1+3f_2$，故 $\sigma(f)=-2\sigma(f_1)+3\sigma(f_2)=-4+3x+2x^2$.
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item 略.
+        \item $\lambda \neq -1$ 时，$A,B$ 均可逆，故 $\varphi^{-1}(X)=A^{-1}XB^{-1}$.
+        \item 取 $V$ 的一组基 $\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix},\begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix},\begin{pmatrix}0 & 0 \\ 1 & 0\end{pmatrix},\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$，有
+        \[\mathrm{Im}\sigma = \mathrm{span}(\varphi(\alpha_1),\varphi(\alpha_2),\varphi(\alpha_3),\varphi(\alpha_4))=\mathrm{span}(\begin{pmatrix}1 & 2 \\ -1 & -2\end{pmatrix},\begin{pmatrix}-1 & -1 \\ 1 & 1\end{pmatrix})\]
+        \[\mathrm{Ker}\sigma = \mathrm{span}(\begin{pmatrix}2 & -3 \\ 0 & 1\end{pmatrix},\begin{pmatrix}1 & 0 \\ 1 & 0\end{pmatrix})\]
+        （省略步骤，答案不唯一）
+        \item 取 $\begin{pmatrix}1 & 2 \\ -1 & -2\end{pmatrix},\begin{pmatrix}-1 & -1 \\ 1 & 1\end{pmatrix},\begin{pmatrix}0 & 0 \\ 1 & 0\end{pmatrix},\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$ 即可.
+        
+        此时矩阵为 $\begin{pmatrix}2 & -2 & -1 & 0 \\ 4 & -2 & 0 & -1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0\end{pmatrix}$（答案不唯一）.
+    \end{enumerate}
+    \item 求基的过程与求 $V=\{X\in \mathbf{R}^4\ |\ x_1+x_2+x_3=0\}$ 类似，求 $V$ 的基只需求解方程组 $x_1+x_2+x_3=0$ 即可，得到基础解系 $\begin{pmatrix}-1 \\ 0 \\ 1 \\ 0\end{pmatrix},\begin{pmatrix}-1 \\ 1 \\ 0 \\ 0\end{pmatrix},\begin{pmatrix}0 \\ 0 \\ 0 \\ 1\end{pmatrix}$.
+    
+    换回本题，有基为 $A_1=\begin{pmatrix}-1 & 0 \\ 1 & 0\end{pmatrix},A_2=\begin{pmatrix}-1 & 1 \\ 0 & 0\end{pmatrix},A_3=\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$.
+    而 $\sigma(A_1)=A_1+A_2,\sigma(A_2)=A_1+A_2,\sigma(A_3)=2A_3$，可得 $\sigma(A_1+A_2)=2(A_1+A_2),\sigma(A_1-A_2)=0,\sigma(A_3)=2A_3$.
+
+    所以取基 $\{A_1-A_2,A_1+A_2,A_3\}$ 有
+    \[(\sigma(A_1-A_2),\sigma(A_1+A_2),\sigma(A_3))=(A_1-A_2,A_1+A_2,A_3)\begin{pmatrix}0 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 2\end{pmatrix}\]
+    为对角矩阵.
+    \item \begin{enumerate}
+        \item 求核空间：设 $f(x)=ax^3+bx^2+cx+d$，由 $f(-1)=f(0)=f(1)=0$ 解得 $f(x)=a(x^3-x)$. 故 $N(T)=\mathrm{span}(x^3-x)$.
+        
+        求像空间：取常用基 $\{1,x,x^2,x^3\}$，我们要求 $T(1),T(x),T(x^2),T(x^3)$ 的极大线性无关组，我们发现 $T(x)=T(x^3)$，故先舍弃 $T(x^3)$，然后令 $k_1T(1)+k_2T(x)+k_3T(x^2)=0$，可解得 $k_1=k_2=k_3=0$，故 $T(1),T(x),T(x^2)$ 线性无关，故 $R(T)=\mathrm{span}(\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix},\begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix},\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix})$.
+        \item 由上一问有 $\mathrm{dim}N(T)=1,\mathrm{dim}R(T)=3$，又有 $\mathrm{dim}\mathbf{R}[x]_4=4$. 则维数公式成立.
+    \end{enumerate}
     \item
         \begin{enumerate}
             \item
@@ -90,6 +120,29 @@
                 \end{vmatrix}=-\frac 12\neq 0$，\\
                 所以$\xi_1,\xi_2,\xi_3$线性无关.
         \end{enumerate}
+    \item \begin{enumerate}
+        \item 对新的一组基，使用过渡矩阵进行表达如下：
+        \[(\beta_{1}, \beta_{2}, \beta_{3})=(\alpha_{1}, \alpha_{2}, \alpha_{3})\begin{pmatrix}
+        2 & 1 & -1 \\
+        1 & 1 & 1 \\
+        3 & 2 & 1    
+        \end{pmatrix}=(\alpha_{1}, \alpha_{2}, \alpha_{3}) C\]
+        其中 $C$ 是可逆矩阵，且
+        \[(\alpha_{1},\ \alpha_{2},\ \alpha_{3})=(\beta_{1},\ \beta_{2},\ \beta_{3}) C^{-1}\]
+        将上式代入已知条件得
+        \[\sigma\left(\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right) C^{-1}\right)=\left(\left(\beta_{1},\ \beta_{2},\ \beta_{3}\right) C^{-1}\right) A\]
+        容易验证（只需利用线性变换和矩阵的等价性然后利用矩阵乘法结合律即可）上式左端等于 $(\sigma(\beta_{1}, \beta_{2}, \beta_{3})) C^{-1}$，所以
+        \[(\sigma(\beta_{1},\ \beta_{2},\ \beta_{3})) C^{-1}=(\beta_{1},\ \beta_{2},\ \beta_{3})(C^{-1} A)\]
+        从而得 $\sigma(\beta_{1},\ \beta_{2},\ \beta_{3})=(\beta_{1},\ \beta_{2},\ \beta_{3})(C^{-1} A C)$，故 $\sigma$ 关于基 $\{\beta_{1},\ \beta_{2},\ \beta_{3}\}$ 下对应的矩阵 $B=C^{-1} A C=\begin{pmatrix}2 & 0 & 1 \\ 0 & 2 & 1 \\ 3 & 1 & -1\end{pmatrix}$.
+        \item $\sigma$ 的值域是 $A$ 列向量组的极大线性无关组，由于 $A $ 的第 $1$ 列可以由第 $2$ 列和第 $3$ 列线性表示，从而 $\sigma(V)=L(2 \alpha_{1}+\alpha_{2},\ -\alpha_{1}+\alpha_{3})$.$\operatorname{Ker} \sigma$ 是线性方程组 $AX=0$ 的解空间，从而 $\mathrm{Ker} \sigma=\mathrm{span}(\alpha_{1}-2 \alpha_{2}-3 \alpha_{3})$.
+        \item 由于 $\alpha_{1}$ 不能由 $2 \alpha_{1}+\alpha_{2}$ 和 $-\alpha_{1}+\alpha_{3}$ 线性表示，可以把 $\sigma(V)$ 的基扩充为 $V$ 的基 $\{\alpha_{1},\ 2 \alpha_{1}+\alpha_{2},\ -\alpha_{1}+\alpha_{3}\}$，$\sigma$ 在这个基下对应的矩阵是 $\begin{pmatrix}0 & 0 & 0 \\ 2 & 5 & -2 \\ 3 & 6 & -2\end{pmatrix}$.
+        \item 由于 $\alpha_{1},\ \alpha_{2}$ 不能由 $\alpha_{1}-2 \alpha_{2}-3 \alpha_{3}$ 线性表示，可以把 $\mathrm{Ker} \sigma$ 的基扩充为 $V$ 的基 $\{\alpha_{1},\ \alpha_{2},\ \alpha_{1}-2 \alpha_{2}-3 \alpha_{3}\}$，$\sigma$ 在这个基下对应的矩阵是 $\begin{pmatrix}2 & 2 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 0\end{pmatrix}$.
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item 因为 $A^k=\begin{pmatrix}\lambda_1^k & 0 \\ 0 & \lambda_2^k\end{pmatrix}$，所以 $f(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E = \begin{pmatrix}f(\lambda_1) & 0 \\ 0 & f(\lambda_2)\end{pmatrix}$.
+        \item $A=PBP^{-1}$，则 $A^2=(PBP^{-1})(PBP^{-1})=PB^2P^{-1}$. 由归纳法得 $A^k=PB^kP^{-1}$，于是
+        \[f(A)=a_mPB^mP^{-1}+a_{m-1}PB^{m-1}P^{-1}+\cdots+a_0=P\begin{pmatrix}f(\lambda_1) & 0 \\ 0 & f(\lambda_2)\end{pmatrix}P^{-1}=Pf(B)P^{-1}\]
+    \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
