@@ -6,16 +6,703 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item
+        \begin{enumerate}
+            \item 参考教材定理$6.1$.
+            \item 提示. 考虑$A=\begin{pmatrix}
+                a_{11} & a_{12} & \cdots & a_{1n} \\
+                a_{21} & a_{22} & \cdots & a_{2n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{m1} & a_{m2} & \cdots & a_{mn}
+            \end{pmatrix}.$
+            令$\alpha_1=\begin{pmatrix}
+                a_{11} \\
+                a_{21} \\
+                \vdots \\
+                a_{m1}
+            \end{pmatrix},\cdots,\alpha_n=\begin{pmatrix}
+                a_{1n} \\
+                a_{2n} \\
+                \vdots \\
+                a_{mn}
+            \end{pmatrix}.$
+            $AX=0\implies x_1\alpha_1+\cdots+x_n\alpha_n=0$\\
+            只有零解表明$\alpha_1,\cdots,alpha_n$线性无关，故$A$列满秩，$r(A)=n$.\\
+            有非零解（无穷解）则相反.
+            \item 提示同上.
+            \item 参考教材定理$6.2$.
+            \item $A(k_1X_1+\cdots+k_sX_s)=k_1AX_1+\cdots+k_sAX_s=0+\cdots+0=0.$
+            \item $A(k_1X_1+\cdots+k_sX_s+\eta_0)=k_1AX_1+\cdots+k_sAX_s+A\eta_0=b$
+            \item $A(\eta_1-\eta_2)=A\eta_1-A\eta_2=b-b=0$
+            \item
+                令$\bar{X}=k_1X_1+\cdots+k_sX_s$，有
+                \begin{align*}
+                    A\bar{X}=b&\iff A(k_1X_1+\cdots+k_sX_s)=b\\
+                    &\iff k_1AX_1+\cdots+k_sAX_s=b\\
+                    &\iff (k_1+\cdots+k_s)b=b\\
+                    &\iff k_1+\cdots+k_2=1\quad (b\neq 0).
+                \end{align*}
+            \item 类似上题.
+            \item
+                错误.\\
+                必要性正确. 令$A$为$m\times n$的矩阵，则$AX=b$有唯一解表明$r(A)=n$. 而$r(A)=n\implies AX=0$只有零解成立.\\
+                充分性错误. 注意到$AX=0$只有零解$\implies r(A)=n$. 但$r(A)=m$不代表$AX=b$有唯一解，因为还有无解的可能.\\
+                （齐次线性方程组一定有解，但非齐次线性方程组不一定有解，一定要注意这个差别）\\
+                简单的反例如$A=\begin{pmatrix}
+                    1 & 0 \\
+                    0 & 1 \\
+                    0 & 0
+                \end{pmatrix},b=\begin{pmatrix}
+                    0 \\
+                    0 \\
+                    1
+                \end{pmatrix}$
+            \item
+                正确. 令$B=(\beta_1,\cdots,\beta_s)$. $AB=0\implies A(\beta_1,\cdots,\beta_s)=0$，即$(A\beta_1, \cdots, A\beta_s)=0$，故$B$的列向量为方程组$AX=0$的解.
+                （注：$A(\beta_1,\cdots,\beta_s)=(A\beta_1, \cdots, A\beta_s)$利用分块矩阵性质即可）
+            \item 利用上一题的结论易知正确.
+            \item 设$A$的解空间为$N(A)$，$B$的解空间为$N(B)$，则由题意有$N(A)\subseteq N(B)$，故$\dim{N(A)}\leqslant \dim{N(B)}$. 而$r(A)+\dim{N(A)}=r(B)+\dim{N(B)}$（参考第1题），故$r(A)\geqslant r(B)$正确.
+            \item
+                错误.\\
+                必要性正确. $AX=0$与$BX=0$为同解方程组可得$N(A)=N(B)\implies\dim{N(A)}=\dim{N(B)}$. 同上一题，可得$r(A)=r(B)$.\\
+                充分性错误. 反例有$A=\begin{pmatrix}
+                    1 & 0 & 0 \\
+                    0 & 1 & 0
+                \end{pmatrix}, B=\begin{pmatrix}
+                    1 & 0 & 0 \\
+                    0 & 0 & 1
+                \end{pmatrix}$.\\
+                实际上，只需考虑解空间均为$\mathbf{R}^n$的子空间，$\mathbf{R}^n=\spa(\alpha_1,\cdots,\alpha_n)$. 令$N(A)=\spa(\alpha_i), N(B)=\spa(\alpha+j),i\neq j$即为反例.
+        \end{enumerate}
+    \item
+        $r(A^*)=
+        \begin{cases}
+            1, & r(A)=3 \\
+            0, & r(A)<3
+        \end{cases}$，而已知$A_{21}\neq 0$，故$r(A^*)=1$，故$r(A)=3$，故$AX = 0$解空间维数为$4-r(A)=1$. 而$|A|=0$，由行列式展开可知
+        \begin{equation*}
+            a_{i1}A_{21}+a_{i2}A_{22}+a_{i3}A_{23}+a_{i4}A_{24}=0 \ (i=1,2,3,4)
+        \end{equation*}
+        故解为$k(A_{21},A_{22},A_{23},A_{24})^\mathrm{T}\ (k\in \mathbf{R})$.
+    \item
+        由题意得$r(A)=3<4$且$\alpha_1-4\alpha_3=0$，或$\alpha_1=4\alpha_3$.
+        由$r(A)=3$得$r(A^*)=1$，$A^*X=0$的基础解系含$3$个线性无关的解向量.
+        由$A*A=|A|E=O$得$\alpha_1,\alpha_2,\alpha_3,\alpha_4$为$A^*X=0$的解，从而$\alpha_1,\alpha_2,\alpha_4$或$\alpha_2,\alpha_3,\alpha_4$为$A^*X=0$的基础解系.
+    \item $\forall \alpha \in \mathbf{R}^n, \alpha^\mathrm{T}A\beta =0\implies A\beta =0.$
+    \item
+        $r(A)=3\implies \dim{N(A)}=4-r(A)=1$.\\
+        $\beta = x_1\alpha_1+x_2\alpha_2+x_3\alpha_3+x_4\alpha_4\implies$特解为$(1,-1,0,3)^\mathrm{T}$\\
+        $\alpha_1-2\alpha_2+\alpha_3=0\implies$导出组基础解系为$(1,-2,1,0)^\mathrm{T}$.\\
+        故通解为$k(1,-2,1,0)^\mathrm{T}+(1,-1,0,3)^\mathrm{T} \ (k\in\mathbf{R})$
+    \item
+        设方程组$Ax=b$，由$r(A)=3$知其导出组$Ax=0$的基础解系只含一个解向量.\\
+        而$A\eta_1=b,A(\eta_2+\eta_3)=2b$，故$2\eta_1-(\eta_2+\eta_3)=(3,4,5,6)^\mathrm{T}$为$Ax=0$的基础解系，从而所求通解为
+        \begin{equation*}
+            x = \eta_1+c(3,4,5,6)^\mathrm{T} = (2,3,4,5)^\mathrm{T} + c(3,4,5,6)^\mathrm{T},
+        \end{equation*}
+        其中$c$为任意常数.
+    \item
+        \begin{enumerate}
+            \item 取$\beta_1-\beta_2,\beta_1-\beta_3$（取法不唯一），有$A(\beta_1-\beta_2)=A(\beta_1-\beta_3)=0$且$\beta_1-\beta_2,\beta_1-\beta_3$线性无关，否则$\beta_1,\beta_2,\beta_3$线性相关.
+            \item 取$2\beta_1+k_1(\beta_1+\beta_2)+k_2(\beta_2+\beta_3)$可行（取法不唯一）.
+        \end{enumerate}
+    \item
+        对于任意的$b_{s\times 1}$，$AX=b$都有解，说明$A$的列向量可以线性表出出任意$s$维向量$b$，从而$r(A)\geqslant s$，而$r(A)\leqslant s$，所以$r(A)=s$.\\
+        反之，如果$r(A)=s$，则$A$有$s$个线性无关的列向量，它们就是$s$维空间$V$的一组基，对于$V$中任意向量$b$，都可以由$A$的列向量线性表出，从而$AX=b$有解.\\
+        当然，也可以直接用秩不等式：$s=r(A)\leqslant r(A,b)\leqslant s$得到$r(A,b)=s$，所以$AX=b$有解.
+    \item
+        $AB=0\implies r(A)+r(B)\leqslant n,r(B)=n\implies r(A)\leqslant 0\implies A=O.$
+    \item
+        必要性. 有条件可知$V_1\cap V_2=\{0\}$，$\begin{pmatrix}A\\B\end{pmatrix}\in\mathbf{F}^{n\times n}$，而$\begin{pmatrix}A\\B\end{pmatrix}x=0$只有零解，故$\begin{pmatrix}A\\B\end{pmatrix}$可逆，从而$r(A)=m,r(B)=n-m$，于是
+        \begin{align*}
+            \dim V_1&=n-r(A)=n-m, \\
+            \dim V_2&=n-r(B)=n-(n-m)=m.
+        \end{align*}
+        又$V_1+V_2$是$\mathbf{F}^n$的子空间，且$\dim(V_1+V_2)=\dim V_1+\dim V_2-\dim(V_1\cap V_2)=\dim\mathbf{F}^n$，故$\mathbf{F}^n=V_1\oplus V_2$.\\
+        充分性. 若$\begin{pmatrix}A\\B\end{pmatrix}x=0$有非零解$x_1$，则$x_1\in V_1\cap\V_2.$这与$\mathbf{F}^n=V_1\oplus V_2$矛盾.
+    \item
+        \begin{enumerate}
+            \item
+                由条件知，方程组系数矩阵的为$2$，系数矩阵
+                \begin{equation*}
+                    A=\begin{pmatrix}
+                        0 & 1 & a & b \\
+                        -1 & 0 & c & d \\
+                        a & c & 0 & -e \\
+                        b & d & e & 0
+                    \end{pmatrix}\rightarrow
+                    \begin{pmatrix}
+                        0 & 1 & a & b \\
+                        -1 & 0 & c & d \\
+                        0 & 0 & 0 & ad-e-bc \\
+                        0 & 0 & -(ad-e-bc) & 0
+                    \end{pmatrix},
+                \end{equation*}
+                故$ad-e-bc=0$.
+            \item 易求得基础解系为$(c,-a,1,0)^\mathrm{T},(d,-b,0,1)^\mathrm{T}$.
+        \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
+    \item 见教材P210第10题.
     \item
+        由$r(A)=m$可知，$A$的$m$个行向量（$A^\mathrm{T}$的$m$个列向量）线性无关，它们是方程组$CX=0$的一个基础解系. 由$CA^\mathrm{T}=O$和$n-r(C)=m$，得$r(C)=n-m$. 因此，由$CA^\mathrm{T}B^\mathrm{T}=C(BA^\mathrm{T})=O$，可知$(BA)^\mathrm{T}$的$m$个行向量线性无关，它们也是$CX=0$的一个基础解系.
+    \item
+        必要性：设$AX=b$有无穷多解，则$r(A)<n$，从而$|A|=0$，于是$A^*b=A^*AX=|A|X=0.$\\
+        充分性：设$A^*b=0$，即方程组$A^*b=0$有非零解，则$r(A^*)<n$，又$A_{11}\neq 0$，所以$r(A)=n-1$.\\
+        令$A=(\alpha_1,\alpha_2,\cdots,\alpha_n)$，因为$A^*A=|A|E=O$，所以$\alpha_1,\alpha_2,\cdots,\alpha_n$为方程组$A^*X=0$的解，又因为$A_{11}\neq 0$，所以$\alpha_1,\alpha_2,\cdots,\alpha_n$线性无关.\\
+        由$r(A^*)=1$，得方程组$A^*X=0$的基础解系含有$n-1$个线性无关的解向量，所以$\alpha_2,\alpha_3,\cdots,\alpha_n$为方程组$A^*X=0$的一个基础解系.\\
+        因为$A^*b=0$，所以$b$为方程组$A^*X=0$的一个解，从而$b$可由$\alpha_2,\alpha_3,\cdots,\alpha_n$线性表示，$b$也可由$\alpha_1,\alpha_2,\cdots,\alpha_n$线性表示，于是$r(A) = r\begin{pmatrix}A & b\end{pmatrix}=n-1<n$，故方程组$AX=b$有无穷多解.
+    \item
+        由各列的元素之和等于$0$，得$|A|=0$.
+        利用教材第$6$章习题$7$的结论：\\
+        如果$r(A)<n-1$，则$r(A^*)=0$，$A^*=O$，所以，$A_{ij}=0\ (i,j=1,2,\cdots,n)$；\\
+        如果$r(A)=n-1$，则$r(A^*)=1$，且$AA^*=O$，于是$A^*$的每一列$\left[A_{i1},A_{i2},\cdots A_{in}\right]^\mathrm{T} \ (i=1,2,\cdots,n)$都是$AX=0$的解.\\
+        由于$AX=0$的解空间的维数为\begin{equation*} n-r(A)=n-(n-1)=1 \end{equation*}
+        所以，$AX=0$的任意两个解成比例. 又元素全部为$1$的$n$元向量$e=(1,1,\cdots,1)^\mathrm{T}$满足方程组$AX=0$，因此$A^*$任意一列都与$e$成比例，即
+        \begin{equation*}
+            A_{i1}=A_{i2}=\cdots=A_{in} \ (i=1,2,\cdots,n).
+        \end{equation*}
+        所以，$A^*$的每一列元素（即$|A|$的每一行元素的代数余子式）都相等.\\
+        同理，$(A^\mathrm{T})^*$的每一列元素（即$|A^\mathrm{T}|$的每一行元素，也是$|A|$的每一列元素的代数余子式）都相等，即
+        \begin{equation*}
+            A_{1j}=A_{2j}=\cdots=A_{nj} \ (j=1,2,\cdots,n).
+        \end{equation*}
+    \item 见2019-2020学年线性代数I（H）期末第五题.
+    \item 令原方程组$AX=0$，解系组成矩阵$B$. 则新方程组为$B^\mathrm{T}X=0$. 而$B^\mathrm{T}A^\mathrm{T}=(AB)^\mathrm{T}=0$，推测$A^\mathrm{T}$的列向量为基础解系. 而由维数公式，
+    \begin{equation*}
+        r(A)=\dim V-\dim\ker(A) = 2n-n=n.
+    \end{equation*}
+    故$A^\mathrm{T}$列空间维数为$n$，即$r_c(A^\mathrm{T})=n$. 而由题意$r(B)=n$（否则不是基础解系），故
+    \begin{equation*}
+        \dim{\ker(B)}=\dim{V^{\prime}}-r(B)=2n-n=n=r_c(A^\mathrm{T}).
+    \end{equation*}
+    猜想成立.
+    \item
+        \begin{enumerate}
+            \item 略.
+            \item
+                \begin{align*}
+                    \dim(V_1+V_2) &=\dim V_1+\dim V_2-\dim(V_1\cap V_2)\\
+                                  &=n(n-r)+n(n-s)-n(n-k).
+                \end{align*}
+        \end{enumerate}
+    \item
+        \begin{enumerate}
+            \item 容易计算$|aE=bA|=(a+nb)a^{n-1}$.
+            \item
+                由$1<r(aE+bA)<n$知$|aE+bA|=0$. 故$a\neq 0$，且$a+nb=0$，此时$aE+bA$左上角的$n-1$阶子式
+                \begin{equation*}
+                    \begin{vmatrix}
+                        a+b & b & \cdots & b \\
+                        b & a+b & \cdots & b \\
+                        \vdots & \vdots & \ddots & \vdots \\
+                        b & b & \cdots & a+b
+                    \end{vmatrix}=[a+(n-1)b]a^{n-2}=\frac{a^{n-1}}{n}\neq 0,
+                \end{equation*}
+                故$\dim{W}=n-r(aE+bA)=n-(n-1)=1$.
+        \end{enumerate}
+    \item
+        设系数矩阵为$A$，第二个矩阵为$B$. 由于$(A,b)$为$B$子矩阵，故$r(A)\leqslant r(A,b)\leqslant r(B)$，而$r(A)=r(B)$，故$r(A)=r(A,b)$成立.
+    \item 见教材P213第6题.
+    \item 假. 取$A=\begin{pmatrix}
+        1-i & 1+i \\
+        1+i & -1+i
+    \end{pmatrix}$，有$A^\mathrm{T}A=0$.
+    \item 见教材P214第8题.
+    \item
+        由$XA=0$与$XAA^{\mathrm{T}}=0$同解. 又由条件知$(C-B)AA^\mathrm{T}=0$，故$(C-B)A=0$. 即$CA=BA$.
+    \item 由$r(A)+r(E-A)=n \iff A^2=A$, 易证.
+    \item
+        \textbf{方法一.}用分块矩阵的方法，我们知道
+        \begin{equation*}
+            \begin{pmatrix}
+                A & O \\
+                O & B
+            \end{pmatrix}
+            \rightarrow
+            \begin{pmatrix}
+                A & O \\
+                A & B
+            \end{pmatrix}
+            \rightarrow
+            \begin{pmatrix}
+                A & A \\
+                A & A+B
+            \end{pmatrix}.
+        \end{equation*}
+        结合$AB=BA$，我们知道
+        \begin{equation*}
+            \begin{pmatrix}
+                A & A \\
+                A & A+B
+            \end{pmatrix}
+            \underbrace{
+                \begin{pmatrix}
+                    A+B & O \\
+                    -A & E
+                \end{pmatrix}
+            }_{\text{非广义初等变换，难以想到}}
+            =
+            \begin{pmatrix}
+                AB & A \\
+                O & A+B
+            \end{pmatrix}.
+        \end{equation*}
+        于是
+        \begin{equation*}
+            r(A)+r(B)=r
+            \begin{pmatrix}
+                A & O \\
+                O & B
+            \end{pmatrix}=
+            \begin{pmatrix}
+                A & A \\
+                A & A+B
+            \end{pmatrix}\geqslant r
+            \begin{pmatrix}
+                AB & A \\
+                O & A+B
+            \end{pmatrix}\geqslant
+            r(AB)+r(A+B).
+        \end{equation*}
+        \textbf{方法二.}设方程组$AX=0$与$BX=0$的解空间分别是$V_1, V_2$，方程组$ABX=BAX=0$与$(A+B)X=0$的解空间分别为$W_1, W_2$，则$V_1\subseteq W_1, V_2\subseteq W_1$，从而$V_1+V_2\subseteq W_1$，同时$V_1\cap V_2\subseteq W_1$，同时$V_1\cap V_2\subseteq W_2$，利用维数公式就有
+        \begin{equation*}
+            \dim V_1+\dim V_2=\dim(V_1+V_2)+\dim(V_1\cap V_2)\leqslant \dim W_1+\dim W_2.
+        \end{equation*}
+        即
+        \begin{equation*}
+            (n-r(A))+(n-r(B))\leqslant (n-r(AB))+(n-r(A+B)).
+        \end{equation*}
+        化简便知$r(A)+r(B)\geqslant r(AB)+r(A+B)$.
+    \item
+        \begin{enumerate}
+            \item
+                必要性：$ABX=0$与$BX=0$同解可知它们基础解系所含向量个数相同，即
+                \begin{equation*}
+                    n-r(AB)=n-r(B)\implies r(AB)=r(B).
+                \end{equation*}
+                充分性：由必要性，当$r(AB)=r(B)$时，$ABX=0$与$BX=0$的基础解系所含向量个数相同，而$BX=0$的解都是$ABX=0$的解，所以$ABX=0$与$BX=0$同解.
+            \item
+                $r(AB)=r(B)$说明$ABX=0$与$BX=0$同解，用$CX$代替$X$就得到$ABCX=0$与$BCX=0$同解，从而有$r(ABC)=r(BC)$.\\
+                \textbf{推论.}设$A$是一个方阵，且存在正整数$k$使得$r(A^{k+1})=r(A^k)$，递推就有
+                \begin{equation*}
+                    r(A^k)=r(A^{k+1})=r(A^{k+2})=\cdots.
+                \end{equation*}
+            \item
+                当$A$可逆时，结论是显然的.
+                当$A$不可逆时，有$r(A)\leqslant n-1$，现在考虑$n+1$个矩阵$A,A^2,\cdots,A^{n+1}$，有
+                \begin{equation*}
+                    n-1\geqslant r(A)\geqslant r(A^2)\geqslant\cdots\geqslant r(A^n)\geqslant r(A^{n+1})\geqslant 0.
+                \end{equation*}
+                这$n+1$个矩阵的秩只能从$0,1,\cdots,n-1$这$n$个数中取，所以必有两个矩阵的秩相同，即存在$m(1\leqslant m\leqslant n)$使得$r(A^m)=r(A^{m+1})$，由上面的推论可得：
+                \begin{equation*}
+                    r(A^m)=r(A^{m+1})=\cdots=r(A^{n})=r(A^{n+1})=\cdots.
+                \end{equation*}
+                特别的，对于任意的正整数$k$有$r(A^n)=r(A^{n+k})$.
+        \end{enumerate}
+    \item
+        增广矩阵
+        $A=\begin{pmatrix}
+            1 & 1 & b & -1 & 1 \\
+            2 & 3 & 1 & 1 & -2 \\
+            0 & 1 & a & 3 & -4 \\
+            -3 & -3 & -3b & b & a+2
+        \end{pmatrix}.$由解空间维数为$3$可知，$r(A)=2$.由于
+        $\beta_1=\begin{pmatrix}
+            1 \\
+            2 \\
+            0 \\
+            3
+        \end{pmatrix}
+        \beta_2=\begin{pmatrix}
+            1 \\
+            3 \\
+            1 \\
+            -3
+        \end{pmatrix}$线性无关，则后三列必能被其表示.对于
+        $\alpha_2=\begin{pmatrix}
+            -1 \\
+            1 \\
+            3 \\
+            b
+        \end{pmatrix}=k_1\beta_1+k_2\beta_2\implies k_1=-4,k_2=3\implies b=3$\\
+        $\alpha_3=\begin{pmatrix}
+            1 \\
+            -2 \\
+            -4 \\
+            a+2
+        \end{pmatrix}=k_1\beta_1+k_2\beta_2\implies k_1=5,k_2=1\implies a=-25.$\\
+        而$\alpha_1=\begin{pmatrix}
+            b \\
+            1 \\
+            a \\
+            -3b
+        \end{pmatrix}=\begin{pmatrix}
+            3 \\
+            1 \\
+            -5 \\
+            -9
+        \end{pmatrix}=k_1\beta_1+k_2\beta_2\implies k_1=8,k_2=-5$成立.故$a=-5,b=3$.解空间的基略.\\
+        若解空间为$2$维，则$r(A)=3$，令
+        $A=\begin{pmatrix}
+            \alpha_1 \\
+            \alpha_2 \\
+            \alpha_3 \\
+            \alpha_4
+        \end{pmatrix}$，由于$\alpha_1,\alpha_2$必线性无关，故$\alpha_3,\alpha_4$中有且仅有一个可被$\alpha_1,\alpha_2$表示.若为$\alpha_3$，$\alpha_2-2\alpha_1=(0,1,1-2b,3,-4)=(0,1,4,3,-4)$，则$a=1-2b$.故$a+2b=1$，且$\alpha_4$不能被表示，故$\alpha_4\neq -3\alpha_1\implies b\neq 3, a\neq -5$.
+        故$\begin{cases}
+            a+2b=1 \\
+            b\neq 3, a\neq -5
+        \end{cases}$即可.
+    \item
+        $W_1\cap W_2:\begin{pmatrix}
+            A \\ B
+        \end{pmatrix}X=0.$\qquad
+        $W_1+ W_2:\begin{cases}
+            AX = 0\\
+            BX = 0
+        \end{cases}.$
+    \item
+        \textbf{方法一.}令$x_4=t$，则方程组
+        $\begin{cases}
+            x_1+x_4=-1 \\
+            x_2-2x_4=d \\
+            x_3+x_4=e
+        \end{cases}$的一般解为
+        $\begin{cases}
+            x_1=-1-t \\
+            x_2=d+2t \\
+            x_3=e-t \\
+            x_4=t.
+        \end{cases}$ \\
+        代入方程组
+        $\begin{cases}
+            x_1+x_2+ax_3+x_4=1 \\
+            -x_1+x_2-x_3+bx_4=2 \\
+            2x_1+x_2+x_3+x_4=c
+        \end{cases}$，可得
+        $\begin{cases}
+            (2-a)t=2-d-ae \\
+            (b+4)t=1-d+e \\
+            0=c-d-e+2.
+        \end{cases}$
+        由$t$的任意性，可得$a=2,b=-4$.从而
+        $\begin{cases}
+            0=2-d-2e \\
+            0=1-d+e \\
+            0=c-d-e+2.
+        \end{cases}$
+        解得$d=\frac 43,e=\frac 13,c=-\frac 13$.\\
+        \textbf{方法二.}由于
+        $$\begin{pmatrix}
+            A & b \\
+            B & d
+        \end{pmatrix}=
+        \begin{pmatrix}
+            1 & 1 & a & 1 & 1 \\
+            -1 & 1 & -1 & b & 2 \\
+            2 & 1 & 1 & 1 & c \\
+            1 & 0 & 0 & 1 & -1 \\
+            0 & 1 & 0 & -2 & d \\
+            0 & 0 & 1 & 1 & e
+        \end{pmatrix}\rightarrow
+        \begin{pmatrix}
+            1 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & b-a+6 & 3-2d+(1-a)e \\
+            0 & 0 & 0 & 2a-4 & c-2+d(2a-1)e \\
+            0 & 0 & 0 & a-2 & d-2+ae \\
+            0 & 1 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 0
+        \end{pmatrix}.$$
+        易知$r(B)=3$，由
+        $r\begin{pmatrix}
+            A & b \\
+            B & d
+        \end{pmatrix}=r(B)$可得
+        $\begin{cases}
+            a-2=0 \\
+            2a-4=0 \\
+            b-a+6=0 \\
+            3-2d+(1-a)e=0 \\
+            c-2+d(2a-1)e=0 \\
+            d-2+ae=0
+        \end{cases}$，解得
+        $\begin{cases}
+            a=2 \\
+            b=-4 \\
+            c=-\frac 13 \\
+            d=\frac 43 \\
+            e=\frac 13
+        \end{cases}.$
+    \item
+        注意如果$X$是两个方程组的公共解，这等价于存在$t_1,t_2,k_1,k_2$使得
+        \begin{equation*}
+            X=\gamma+t_1\eta_1+t_2\eta_2=\delta+k_1\xi_1+k_2\xi_2.
+        \end{equation*}
+        从而对应有
+        \begin{equation*}
+            t_1\eta_1+t_2\eta_2-k_1\xi_1-k_2\xi_2=\gamma-\delta.
+        \end{equation*}
+        将$t_1,t_2,k_1,k_2$设为未知量，对上述方程组的增广矩阵进行初等行变换，可得
+        \begin{equation*}
+            (\eta_1,\eta_2,-\xi_1,-\xi_2,\delta-\gamma)=
+            \begin{pmatrix}
+                -6 & -5 & -8 & -10 & -16 \\
+                5 & 4 & 1 & 2 & 6 \\
+                1 & 0 & -1 & 0 & 0 \\
+                0 & 1 & 0 & -1 & 0
+            \end{pmatrix}\rightarrow
+            \begin{pmatrix}
+                1 & 0 & -1 & 0 & 0 \\
+                0 & 1 & 0 & -1 & 0 \\
+                0 & 0 & 1 & 1 & 1 \\
+                0 & 0 & 0 & 1 & 2.
+            \end{pmatrix}
+        \end{equation*}
+        故$(t_1,t_2,k_1,k_2)^\prime$有唯一解$(-1,2,-1,2)^\prime$.因此公共解为
+        \begin{equation*}
+            X=\gamma-\eta_1+2\eta_2=\delta-\xi_1+2\xi_2=(1,0,-1,2)^\prime.
+        \end{equation*}
+    \item
+        方程组（1）、（2）有公共解，即方程组$\begin{cases}
+            x_1+2x_2+ax_3=0,\\
+            x_1+4x_2+a^2x_3=0,\\
+            x_1+2x_2+x_3=a-1
+        \end{cases}$有解，对其增广矩阵进行初等行变换，
+        \begin{align*}
+            \bar{A}=&\begin{pmatrix}
+                1 & 1 & 1 & 0 \\
+                1 & 2 & a & 0 \\
+                1 & 4 & a^2 & 0 \\
+                1 & 2 & 1 & a-1
+            \end{pmatrix}\rightarrow\begin{pmatrix}
+                1 & 1 & 1 & 0 \\
+                0 & 1 & a-1 & 0 \\
+                0 & 3 & a^2-1 & 0 \\
+                0 & 1 & 0 & a-1
+            \end{pmatrix}\rightarrow\\&\begin{pmatrix}
+                1 & 1 & 1 & 0 \\
+                0 & 1 & a-1 & 0\\
+                0 & 0 & a^2-3a+2 & 0\\
+                0 & 0 & 1-a & a-1
+            \end{pmatrix}\rightarrow\begin{pmatrix}
+                1 & 1 & 1 & 0\\
+                0 & 1 & a-1 & 0 \\
+                0 & 0 & 1-a & a-1\\
+                0 & 0 & 0 & (a-1)(a-2)
+            \end{pmatrix}.
+        \end{align*}
+        当$a\neq 1$且$a\neq 2$时，方程组（1）、（2）没有公共解.\\
+        当$a=1$时，$\bar{A}\rightarrow\begin{pmatrix}
+            1 & 1 & 1 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}\rightarrow\begin{pmatrix}
+            1 & 0 & 1 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}$，因为$r(A)=r(\bar{A})=2$，所以方程组（1）、（2）有公共解，公共解为$X=C\begin{pmatrix}
+            -1 \\
+            0 \\
+            1
+        \end{pmatrix}$（其中$C$为任意常数）.\\
+        当$a=1$时，$\bar{A}\rightarrow\begin{pmatrix}
+            1 & 1 & 1 & 0 \\
+            0 & 1 & 1 & 0 \\
+            0 & 0 & -1 & 1 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}\rightarrow\begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 1 \\
+            0 & 0 & 1 & -1 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}$，方程组（1）、（2）有唯一的公共解为$X=\begin{pmatrix}
+            0 \\
+            1 \\
+            -1
+        \end{pmatrix}.$
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
     \item
+        令$f(x)=a_nx^n+\cdots+a_1x+a_0$为一个$n$次多项式，设$\lambda_1,\cdots,\lambda_{n+1}$为$f(x)$的$n+1$个不同的根，则有齐次线性方程组
+        $\left\{\begin{array}{cl}
+            \lambda_1^n a_n+\cdots+\lambda_1a_1+a_0&=0, \\
+            \lambda_2^n a_n+\cdots+\lambda_2a_1+a_0&=0, \\
+            \vdots& \\
+            \lambda_{n+1}^n a_n+\cdots+\lambda_{n+1}a_1+a_0&=0.
+        \end{array}\right.$
+        其系数矩阵为
+            $A=\begin{pmatrix}
+                \lambda_1^n & \lambda_1^{n-1} & \cdots & 1 \\
+                \lambda_2^n & \lambda_2^{n-1} & \cdots & 1 \\
+                \vdots & \vdots & \ddots & \vdots \\
+                \lambda_{n+1}^n & \lambda_{n+1}^{n-1} & \cdots & 1
+            \end{pmatrix}$.
+        显然$|A|\neq 0$，从而$a_n=a_{n-1}=\cdots=a_1=a_0=0$，这与$f(x)$是$n$次多项式矛盾.
+    \item 见教材P214第7题.
+    \item
+        \begin{enumerate}
+            \item
+                由于$r(A)=n$，所以$A$可逆，由打洞原理可知$|B|=|A|(0-\beta^\prime A^{-1}\beta)=-|A|\beta^\prime A^{-1}\beta$，从而$B$可逆的充要条件为$\beta^\prime A^{-1}\beta\neq 0$.
+            \item
+                必要性. 由于
+                \begin{equation*}
+                    r=r(A)\leqslant r(A,\beta)\leqslant r\begin{pmatrix}
+                        A & \beta \\
+                        \beta^\prime & 0
+                    \end{pmatrix}=r(B)=r.
+                \end{equation*}
+                再结合$A^\prime=A$，可知
+                \begin{equation*}
+                    r\begin{pmatrix}
+                        A & \beta \\
+                        \beta^\prime & 0
+                    \end{pmatrix}
+                    =r(A,\beta)=r\begin{pmatrix}
+                        A\\
+                        \beta^\prime
+                    \end{pmatrix}.
+                \end{equation*}
+                于是由定理$15.1$可知方程组$\begin{pmatrix}
+                    A\\
+                    \beta^\prime
+                \end{pmatrix}X=\begin{pmatrix}
+                    \beta\\
+                    0
+                \end{pmatrix}$有解，即$\begin{cases}
+                    AX=\beta, \\
+                    \beta^\prime X=0.
+                \end{cases}$有解.\\
+                充分性. 由于$\begin{cases}
+                    AX=\beta, \\
+                    \beta^\prime X=0.
+                \end{cases}$有解，从而$AX=\beta$也有解，即有$r(A)=r(A,\beta)$. 另外$\begin{cases}
+                    AX=\beta, \\
+                    \beta^\prime X=0.
+                \end{cases}$有解也说明$\begin{pmatrix}
+                    A\\
+                    \beta^\prime
+                \end{pmatrix}X=\begin{pmatrix}
+                    \beta\\
+                    0
+                \end{pmatrix}$有解，于是结合定理$15.1$可知$r\begin{pmatrix}
+                    A & \beta \\
+                    \beta^\prime & 0
+                \end{pmatrix}=r\begin{pmatrix}
+                    A\\
+                    \beta^\prime
+                \end{pmatrix}.$而显然$r\begin{pmatrix}
+                    A\\
+                    \beta^\prime
+                \end{pmatrix}=r(A,\beta)=r(A)$，于是$r(B)=r\begin{pmatrix}
+                    A & \beta \\
+                    \beta^\prime & 0
+                \end{pmatrix}=r.$
+            \item
+                必要性. 若$B$可逆，则$B$的行向量组线性无关，从而$r(A,\beta)=n$，又由于$r(A)=n-1$，所以$r(A,\beta)=r(A)+1$，从而由定理$15.1$知$AX=\beta$无解.\\
+                充分性. 由于$r(A)=n-1$，若$AX=\beta$无解，则由定理$15.1$可知$r(A,\beta)=r(A)+1=n$，于是
+                \begin{equation*}
+                    r(B)=r\begin{pmatrix}
+                        A & \beta \\
+                        \beta^\prime & 0
+                    \end{pmatrix}\geqslant r(A,\beta)=n.
+                \end{equation*}
+                若$r(B)=n$，则$r(B)=r\begin{pmatrix}
+                    A & \beta \\
+                    \beta^\prime & 0
+                \end{pmatrix}=r(A,\beta)$，取转置结合$A^\prime=A$有$r\begin{pmatrix}
+                    A & \beta \\
+                    \beta^\prime & 0
+                \end{pmatrix}=r\begin{pmatrix}
+                    A\\
+                    \beta^\prime
+                \end{pmatrix}$，再次结合定理$15.1$可知方程组$\begin{cases}
+                    AX=\beta, \\
+                    \beta^\prime X=0.
+                \end{cases}$
+                有解，特别地，$AX=\beta$也有解，这就与已知产生了矛盾.所以$r(B)=n+1$，即$B$可逆.
+        \end{enumerate}
+    \item
+        \begin{enumerate}
+            \item
+                当$n$为偶数时，将增广矩阵$\bar{A}$的第$i(i=1,2,\cdots,n-1)$行乘以$(-1)^i$加到最后一行，得
+                \begin{equation*}
+                    \bar{A}\rightarrow\begin{pmatrix}
+                        1 & 1 & \cdots & 0 & 0 & b_1 \\
+                        0 & 1 & \cdots & 0 & 0 & b_2 \\
+                        0 & 0 & \cdots & 0 & 0 & b_3 \\
+                        \vdots & \vdots &  & \vdots & \vdots & \vdots \\
+                        0 & 0 & \cdots & 1 & 1 & b_{n-1} \\
+                        0 & 0 & \cdots & 0 & 0 & \sum\limits_{i=1}^{n}(-1)^ib_i
+                    \end{pmatrix}.
+                \end{equation*}
+                故当$\sum\limits_{i=1}^{n}(-1)^ib_i=0$时，方程组有无穷多解，一般解为
+                $$\begin{cases}
+                    x_1&=\sum\limits_{i=1}^{n-1}(-1)^{i-1}b_i+(-1)^1x_n, \\
+                    x_2&=\sum\limits_{i=2}^{n-1}(-1)^{i-2}b_i+(-1)^2x_n, \\
+                    &\vdots \\
+                    x_{n-2}&=b_{n-2}-b_{n-1}+(-1)^{n-2}x_n, \\
+                    x_{n-1}&=b_{n-1}+(-1)^{n-1}x_n, \\
+                \end{cases}$$
+                其中$x_n$为自由未知量.\\
+            \item
+                当$n$为奇数时，有
+                \begin{equation*}
+                    \bar{A}\rightarrow\begin{pmatrix}
+                        1 & 1 & \cdots & 0 & 0 & b_1 \\
+                        0 & 1 & \cdots & 0 & 0 & b_2 \\
+                        0 & 0 & \cdots & 0 & 0 & b_3 \\
+                        \vdots & \vdots &  & \vdots & \vdots & \vdots \\
+                        0 & 0 & \cdots & 1 & 1 & b_{n-1} \\
+                        0 & 0 & \cdots & 0 & 2 & b_n+\sum\limits_{i=1}^{n-1}(-1)^ib_i
+                    \end{pmatrix}.
+                \end{equation*}
+                此时无论$b_1,b_2,\cdots,b_n(n\geqslant 2)$取何值，方程组都有唯一解为
+                $$\begin{cases}
+                    x_1&=\sum\limits_{i=1}^{n-1}(-1)^{i-1}b_i+(-1)^{n-1}x_n,\\
+                    x_2&=\sum\limits_{i=2}^{n-1}(-1)^{i-2}b_i+(-1)^{n-2}x_n,\\
+                    &vdots\\
+                    x_{n-2}&=b_{n-2}-b_{n-1}+(-1)^2x_n,\\
+                    x_{n-1}&=b_{n-1}+(-1)^1x_n,\\
+                    x_n&=\frac 12b_n+\sum\limits_{i=1}^{n-1}(-1)^ib_i.
+                \end{cases}$$
+        \end{enumerate}
+    \item
+        \begin{enumerate}
+            \item
+                必要性. 设$A$的行向量为$\alpha_1,\alpha_2,\cdots,\alpha_s$，$B$的行向量为$\beta_1,\beta_2,\cdots,\beta_m$，由$AX=0$与$BX=0$同解得$AX=0$与$\begin{pmatrix}
+                    A\\
+                    B
+                \end{pmatrix}=0$同解，从而系数矩阵的秩相同，即行向量$\alpha_1,\alpha_2,\cdots,\alpha_s$与$\alpha_1,\alpha_2,\cdots,\alpha_s,\beta_1,\beta_2,\cdots,\beta_m$秩相同，%“由命题3.2.5知道”？
+                因此$\alpha_1,\alpha_2,\cdots,\alpha_s$与$\alpha_1,\alpha_2,\cdots,\alpha_s,\beta_1,\beta_2,\cdots,\beta_m$等价，即有$\beta_1,\beta_2,\cdots,\beta_m$可由$\alpha_1,\alpha_2,\cdots,\alpha_s$线性表出. 同理，$\alpha_1,\alpha_2,\cdots,\alpha_s$可由$\beta_1,\beta_2,\cdots,\beta_m$线性表出，即$A$与$B$的行向量等价.\\
+                充分性可由必要性的证明得到. 但是由于$A,B$列向量的维数都可能不同，所以不存在等价关系.
+            \item
+                提示. $V_1\subseteq V_2$等价于$AX=0$与$\begin{pmatrix}
+                    A \\
+                    B
+                \end{pmatrix}X=0$同解.
+            \item
+                必要性. 由题意可知$AX=a$与$\begin{pmatrix}
+                    A \\
+                    B
+                \end{pmatrix}X=\begin{pmatrix}
+                    a \\
+                    b
+                \end{pmatrix}$同解，从而它们的增广矩阵秩相同，即$r(A,a)=r\begin{pmatrix}
+                    A & a \\
+                    B & b
+                \end{pmatrix}$，可知$(A,a)$与$\begin{pmatrix}
+                    A & a \\
+                    B & b
+                \end{pmatrix}$的行向量组等价，从而$(B,b)$的每一个行向量都可以由$(A,a)$的行向量线性表出.\\
+                充分性可由必要性得到.
+            \item 证明留给读者.
+        \end{enumerate}
 \end{enumerate}
 
 \clearpage
