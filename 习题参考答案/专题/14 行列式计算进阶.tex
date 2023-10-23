@@ -139,25 +139,27 @@
                         D_n & =\begin{vmatrix}
                                    D_{n-1} & a   \\
                                    b       & a_n
-                               \end{vmatrix},a=(0, \ldots, 0, -a_{n-1})^\mathrm{T}, b=(1, \ldots, 1)                      \\
+                               \end{vmatrix},a=(0, \ldots, 0, -a_{n-1})^\mathrm{T}, b=(1, \ldots, 1) \\
                             & =a_nD_{n-1}+a_{n-1}\begin{vmatrix}
                                                      D_{n-2} & 1_{n-2} \\
                                                      1_{n-2} & 1
-                                                 \end{vmatrix} \quad \text{($1_{n-2}$表示由$(n-2)$个1构成的行/列向量)}    \\
-                            & =a_nD_{n-1}+a_{n-1}\begin{vmatrix}
-                                                     a_1    & 0      & 0      & \ldots & 0       & 1      \\
-                                                     0      & a_2    & 0      & \ldots & 0       & 1      \\
-                                                     0      & 0      & a_3    & \ldots & 0       & 1      \\
-                                                     \vdots & \vdots & \vdots & \ddots & \vdots  & \vdots \\
-                                                     0      & 0      & 0      & \ldots & a_{n-2} & 1      \\
-                                                     0      & 0      & 0      & \ldots & 0       & 1      \\
-                                                 \end{vmatrix} \quad \text{($1-n$列用第$n$列减)} \\
+                                                 \end{vmatrix}
+                        \quad \text{($1_{n-2}$表示由$(n-2)$个1构成的行/列向量)}                      \\
+                            & =a_nD_{n-1}+a_{n-1}
+                        \begin{vmatrix}
+                            a_1    & 0      & 0      & \ldots & 0       & 1      \\
+                            0      & a_2    & 0      & \ldots & 0       & 1      \\
+                            0      & 0      & a_3    & \ldots & 0       & 1      \\
+                            \vdots & \vdots & \vdots & \ddots & \vdots  & \vdots \\
+                            0      & 0      & 0      & \ldots & a_{n-2} & 1      \\
+                            0      & 0      & 0      & \ldots & 0       & 1      \\
+                        \end{vmatrix} \quad \text{($1-n$列用第$n$列减)}     \\
                             & =a_nD_{n-1}+\prod_{i=1}^{n-1}a_i
                     \end{align*}
                     递推可得$\displaystyle D_n=\left(\prod_{k=1}^na_k\right)
                         \left(1+\sum_{i=1}^n\frac{1}{a_i}\right)$.
 
-              \item 将 1 写成 $1+0$, 将 $D$ 硬拆成 $2^{n}$ 个行列式, 只有如下的 $n+1$ 个 行列式非 0：
+              \item 将 1 写成 $1+0$, 将 $D$ 硬拆成 $2^{n}$ 个行列式, 只有如下的 $n+1$ 个行列式非 0：
                     \begin{align*}
                         D_n = & \begin{vmatrix}
                                     1      &       &        &       \\
