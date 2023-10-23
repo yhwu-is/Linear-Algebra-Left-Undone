@@ -7,96 +7,114 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item \begin{enumerate}
-        \item 有理数集 $Q$ 关于实数乘法不封闭，不构成实数域上的线性空间.
-        \item $\mathbf{R}^2$ 关于通常向量加法构成交换群，封闭性也显然成立. 再看数乘.
-        \begin{enumerate}
-            \item $\exists \lambda=1$ 使得 $\lambda\cdot(x,y)=(\lambda x,y)=(x,y)$.
-            \item $\lambda(\mu\cdot(x,y))=\lambda\cdot(\mu x,y)=((\lambda\mu)x,y)=(\lambda\mu)\cdot(x,y)$.
-            \item $(\lambda+\mu)\cdot(x,y)=((\lambda+\mu)x,y)=(\lambda x,y)+(\mu x,y)$.因此$(\lambda+\mu)\cdot(x,y)=\lambda\cdot(x,y)+\mu\cdot(x,y)$ 成立.
-            \item $\lambda((x_1,y_1)+(x_2,y_2))=\lambda\cdot(x_1+x_2,y_1+y_2)=(\lambda x_1+\lambda x_2,y_1+y_2)=(\lambda x_1,y_1)+(\lambda x_2,y_2)$，因此$\lambda((x_1,y_1)+(x_2,y_2))=(\lambda x_1,y_1)+(\lambda x_2,y_2)$.
-            \item （封闭性）$\forall \lambda \in \mathbf{R},\lambda\cdot(x,y)=(\lambda x,y)\in \mathbf{R}^2$，封闭性满足.
+              \item 有理数集 $Q$ 关于实数乘法不封闭，不构成实数域上的线性空间.
 
-            综上，$\mathbf{R}^2$ 关于通常向量加法与该数乘构成实数域上的向量空间.
-        \end{enumerate}
+              \item $\mathbf{R}^2$ 关于通常向量加法构成交换群，封闭性也显然成立. 再看数乘.
+                    \begin{enumerate}
+                        \item $\exists \lambda=1$ 使得 $\lambda\cdot(x,y)=(\lambda x,y)=(x,y)$.
 
-        \item \begin{enumerate}
-            \item 对于加法，显然，封闭性，结合律，交换律成立. 存在加法单位元 $(1,1,\cdots,1)$ 有
-            \begin{align*}
-                (1,1,\cdots,1)+(a_1,a_2,\cdots,a_n)&=(a_1,a_2,\cdots,a_n)+(1,1,\cdots,1)\\ &=(a_1,a_2,\cdots,a_n).
-            \end{align*}
-            由于为正实数向量，则对于 $(a_1,\cdots,a_n)$，存在唯一的逆元 $(\dfrac 1{a_1},\cdots,\dfrac 1{a_n})$，使得 $(a_1,\cdots,a_n)+(\dfrac 1{a_1},\cdots,\dfrac 1{a_n})=(1,\cdots,1)$.
-            \item 对于数乘，显然有封闭性成立，乘法单位元为 $\lambda_0=1$. 又有
-            \begin{enumerate}
-                \item \begin{align*}
-                    \lambda(\mu\cdot(a_1,\cdots,a_n))&=\lambda\cdot(a_1^\mu,\cdots,a_n^\mu)\\ &=((a_1^\mu)^\lambda,\cdots,(a_n^\mu)^\lambda)=(a_1^{\lambda\mu},\cdots,a_n^{\lambda\mu}),
-                \end{align*}
-                因此 $\lambda(\mu\cdot(a_1,\cdots,a_n))=(\lambda\mu)\cdot(a_1,\cdots,a_n)$ 成立.
-                \item \begin{align*}
-                    (\lambda+\mu)\cdot(a_1,\cdots,a_n)&=(a_1^{\mu+\lambda},\cdots,a_n^{\mu+\lambda})=(a_1^\lambda a_1^\mu,\cdots,a_n^\lambda a_n^\mu)\\&=(a_1^\lambda,\cdots,a_n^\lambda)+(a_1^\mu,\cdots,a_n^\mu),
-                \end{align*}
-                因此 $(\lambda+\mu)\cdot(a_1,\cdots,a_n)=\lambda\cdot(a_1,\cdots,a_n)+\mu(a_1,\cdots,a_n)$，第一个加号为数的加法，第二个加号为定义的向量加法.
-                \item $\lambda\cdot((a_1,\cdots,a_n)+(b_1,\cdots,b_n))=\lambda\cdot(a_1b_1,\cdots,a_nb_n)=(a_1^\lambda b_1^\lambda,\cdots,a_n^\lambda b_n^\lambda)=(a_1^\lambda,\cdots,a_n^\lambda)+(b_1^\lambda,\cdots,b_n^\lambda)$，因此 $\lambda\cdot((a_1,\cdots,a_n)+(b_1,\cdots,b_n))=\lambda\cdot(a_1,\cdots,a_n)+\lambda\cdot(b_1,\cdots,b_n)$.
-            \end{enumerate}
-            综上有 $\mathbf{R}_+^n$ 对如下加法和数乘构成实数域线性空间.
-        \end{enumerate}
-        \item （教材第二章，习题第一题 $9\sim 11$ 小题，仅验证部分性质，其余请读者自行完成，或对照《大学数学·代数与几何课后习题解答》进行求解）
+                        \item $\lambda(\mu\cdot(x,y))=\lambda\cdot(\mu x,y)=((\lambda\mu)x,y)=(\lambda\mu)\cdot(x,y)$.
 
-        \textbf{第 $9$ 小题：}
+                        \item $(\lambda+\mu)\cdot(x,y)=((\lambda+\mu)x,y)=(\lambda x,y)+(\mu x,y)$. 因此$(\lambda+\mu)\cdot(x,y)=\lambda\cdot(x,y)+\mu\cdot(x,y)$ 成立.
 
-        当 $\lambda<0$ 时，$(\lambda\circ f)(x)=\lambda f(x)\le 0$，是函数值 $\le0$ 的实变量函数，则 $\lambda f(x)\not\in V$，即关于数乘不封闭，不构成线性空间.
+                        \item $\lambda((x_1,y_1)+(x_2,y_2))=\lambda\cdot(x_1+x_2,y_1+y_2)=(\lambda x_1+\lambda x_2,y_1+y_2)=(\lambda x_1,y_1)+(\lambda x_2,y_2)$，因此$\lambda((x_1,y_1)+(x_2,y_2))=(\lambda x_1,y_1)+(\lambda x_2,y_2)$.
 
-        \textbf{第 $10$ 小题：}
+                        \item （封闭性）$\forall \lambda \in \mathbf{R},\lambda\cdot(x,y)=(\lambda x,y)\in \mathbf{R}^2$，封闭性满足.
 
-        $V_1$ 是奇函数集合，只需验证 $V_1$ 对加法和数乘封闭即可. 这显然成立. 则 $V_1$ 构成线性空间.对于 $V_2$：当 $\lambda\ne 1$，有 $(\lambda\circ f)(0)=\lambda f(0)=\lambda\ne 1$. 则 $(\lambda\circ f)(x)\in V_2$，$V_2$ 不封闭，不构成线性空间.
+                              综上，$\mathbf{R}^2$ 关于通常向量加法与该数乘构成实数域上的向量空间.
+                    \end{enumerate}
 
-        \textbf{第 $11$ 小题：}
+              \item \begin{enumerate}
+                        \item 对于加法，显然，封闭性，结合律，交换律成立. 存在加法单位元 $(1,1,\ldots,1)$ 有
+                              \begin{align*}
+                                  (1,1,\ldots,1)+(a_1,a_2,\ldots,a_n) & = (a_1,a_2,\ldots,a_n)+(1,1,\ldots,1) \\
+                                                                      & = (a_1,a_2,\ldots,a_n)
+                              \end{align*}
+                              由于为正实数向量，则对于 $(a_1,\ldots,a_n)$，存在唯一的逆元 $\left(\dfrac 1{a_1},\ldots,\dfrac 1{a_n}\right)$，使得 $(a_1,\ldots,a_n)+\left(\dfrac 1{a_1},\ldots,\dfrac 1{a_n}\right)=(1,\ldots,1)$.
 
-        先验证 $V$ 非空：有 $f(x)=0,\forall x\in \mathbf{R}$，则 $f(x)\in V$，即 $V$ 非空. 再验证封闭性：对于 $(f\oplus g)(x)$，有 $(f\oplus g)(-x)=f(-x)+g(-x)=\overline{f(x)}+\overline{g(x)}=\overline{f(x)+g(x)}=\overline{(f\oplus g)(x)}$. 对于 $(\lambda\circ f)(x)$，有 $(\lambda\circ f)(-x)=\lambda f(-x)=\lambda\overline{f(x)}$. 由于 $\lambda \in \mathbf{R}$，则 $\lambda \overline{f(x)}=\overline{\lambda f(x)}=\overline{(\lambda\circ f)(x)}$. 因此 $V$ 关于 $\mathbf{R}$ 的函数加法和数乘封闭. 再给出加法零元 $f(x)=0$，数乘单位元 $\lambda=1$. 其余性质还请读者自行验证. 总之，$V$ 构成 $\mathbf{R}$ 上线性空间.
-    \end{enumerate}
+                        \item 对于数乘，显然有封闭性成立，乘法单位元为 $\lambda_0=1$. 又有
+                              \begin{enumerate}
+                                  \item \begin{align*}
+                                                & \lambda(\mu\cdot(a_1,\ldots,a_n))            \\
+                                            ={} & \lambda\cdot(a_1^\mu,\ldots,a_n^\mu)         \\
+                                            ={} & ((a_1^\mu)^\lambda,\ldots,(a_n^\mu)^\lambda) \\
+                                            ={} & (a_1^{\lambda\mu},\ldots,a_n^{\lambda\mu})
+                                        \end{align*}
+                                        因此 $\lambda(\mu\cdot(a_1,\ldots,a_n))=(\lambda\mu)\cdot(a_1,\ldots,a_n)$ 成立.
+
+                                  \item \begin{align*}
+                                                & (\lambda+\mu)\cdot(a_1,\ldots,a_n)                         \\
+                                            ={} & (a_1^{\mu+\lambda},\ldots,a_n^{\mu+\lambda})               \\
+                                            ={} & (a_1^\lambda a_1^\mu,\ldots,a_n^\lambda a_n^\mu)           \\
+                                            ={} & (a_1^\lambda,\ldots,a_n^\lambda)+(a_1^\mu,\ldots,a_n^\mu),
+                                        \end{align*}
+                                        因此 $(\lambda+\mu)\cdot(a_1,\ldots,a_n)=\lambda\cdot(a_1,\ldots,a_n)+\mu(a_1,\ldots,a_n)$，第一个加号为数的加法，第二个加号为定义的向量加法.
+
+                                  \item $\lambda\cdot((a_1,\ldots,a_n)+(b_1,\ldots,b_n))=\lambda\cdot(a_1b_1,\ldots,a_nb_n)=(a_1^\lambda b_1^\lambda,\ldots,a_n^\lambda b_n^\lambda)=(a_1^\lambda,\ldots,a_n^\lambda)+(b_1^\lambda,\ldots,b_n^\lambda)$，因此 $\lambda\cdot((a_1,\ldots,a_n)+(b_1,\ldots,b_n))=\lambda\cdot(a_1,\ldots,a_n)+\lambda\cdot(b_1,\ldots,b_n)$.
+                              \end{enumerate}
+                              综上有 $\mathbf{R}_+^n$ 对如下加法和数乘构成实数域线性空间.
+                    \end{enumerate}
+
+              \item （教材第二章，习题第一题 9--11 小题，仅验证部分性质，其余请读者自行完成，或对照《大学数学·代数与几何课后习题解答》进行求解）
+                    \begin{enumerate}[start=9,label={(\arabic*)}]
+                        \item 当 $\lambda<0$ 时，$(\lambda\circ f)(x)=\lambda f(x)\leqslant 0$，是函数值 $\le0$ 的实变量函数，则 $\lambda f(x)\not\in V$，即关于数乘不封闭，不构成线性空间.
+
+                        \item $V_1$ 是奇函数集合，只需验证 $V_1$ 对加法和数乘封闭即可. 这显然成立. 则 $V_1$ 构成线性空间. 对于 $V_2$：当 $\lambda\neq 1$，有 $(\lambda\circ f)(0)=\lambda f(0)=\lambda\neq 1$. 则 $(\lambda\circ f)(x)\in V_2$，$V_2$ 不封闭，不构成线性空间.
+
+                        \item 先验证 $V$ 非空：有 $f(x)=0,\forall x\in \mathbf{R}$，则 $f(x)\in V$，即 $V$ 非空. 再验证封闭性：对于 $(f\oplus g)(x)$，有 $(f\oplus g)(-x)=f(-x)+g(-x)=\overline{f(x)}+\overline{g(x)}=\overline{f(x)+g(x)}=\overline{(f\oplus g)(x)}$. 对于 $(\lambda\circ f)(x)$，有 $(\lambda\circ f)(-x)=\lambda f(-x)=\lambda\overline{f(x)}$. 由于 $\lambda \in \mathbf{R}$，则 $\lambda \overline{f(x)}=\overline{\lambda f(x)}=\overline{(\lambda\circ f)(x)}$. 因此 $V$ 关于 $\mathbf{R}$ 的函数加法和数乘封闭. 再给出加法零元 $f(x)=0$，数乘单位元 $\lambda=1$. 其余性质还请读者自行验证. 总之，$V$ 构成 $\mathbf{R}$ 上线性空间.
+                    \end{enumerate}
+          \end{enumerate}
+
     \item \begin{enumerate}
-        \item $\forall (x_1,\cdots,x_n),(y_1,\cdots,y_n)\in W,\lambda,\mu\in F$，我们有$\lambda(x_1,\cdots,x_n)+\mu(y_1,\cdots,y_n)=(\lambda x_1+\mu y_1,\cdots,\lambda x_n+\mu y_n)$. 则 $a_1(\lambda x_1+\mu y_1)+\cdots+a_n(\lambda x_n+\mu y_n)=\lambda(a_1x_1+\cdots+a_nx_n)+\mu(a_1y_1+\cdots+a_ny_n)=0$. 因此 $\lambda(x_1,\cdots,x_n)+\mu(y_1,\cdots,y_n)\in W$，故 $W$ 关于 $F^n$ 的加法与数乘封闭，是其子空间.
+              \item $\forall (x_1,\ldots,x_n),(y_1,\ldots,y_n)\in W,\lambda,\mu\in \mathbf{F}$，我们有$\lambda(x_1,\ldots,x_n)+\mu(y_1,\ldots,y_n)=(\lambda x_1+\mu y_1,\ldots,\lambda x_n+\mu y_n)$. 则 $a_1(\lambda x_1+\mu y_1)+\cdots+a_n(\lambda x_n+\mu y_n)=\lambda(a_1x_1+\cdots+a_nx_n)+\mu(a_1y_1+\cdots+a_ny_n)=0$. 因此 $\lambda(x_1,\ldots,x_n)+\mu(y_1,\ldots,y_n)\in W$，故 $W$ 关于 $\mathbf{F}^n$ 的加法与数乘封闭，是其子空间.
 
-        \item \begin{enumerate}
-            \item $(x,1,0)+(x,1,0)=(2x,2,0)\not\in W_1$，则 $W_1$ 不封闭，不是子空间. 其对应几何图形直线为 $\begin{cases}
-                y=1 \\ z=0
-            \end{cases}$.
-            \item $\lambda\cdot(x_1,y_1,0)+\mu(x_2,y_2,0)=(\lambda x_1+\mu x_2,\lambda y_1+\mu y_2,0)\in W_2$，则 $W_2$ 封闭，是 $\mathbf{R}^3$ 的子空间，其对应几何图形为平面 $z=0$.
-        \end{enumerate}
+              \item \begin{enumerate}
+                        \item $(x,1,0)+(x,1,0)=(2x,2,0)\not\in W_1$，则 $W_1$ 不封闭，不是子空间. 其对应几何图形直线为 $\begin{cases}
+                                      y=1 \\
+                                      z=0
+                                  \end{cases}$.
 
-        \item \begin{enumerate}
-            \item 这是题（1）的一个实例，根据题（1）可知 $W_1$ 是 $\mathbf{R}^3$ 的子空间，这是一个过原点的平面 $x-3y+z=0$.
-            \item 对于 $(x,y,z)\in W_2$，有 $(x,y,z)+(x,y,z)=(2x,2y,2z)$，而 $2x-3\cdots 2y+2z=2(x-3y+z)=2$，因此 $(2x,2y,2z)\not \in W_2$，$W_2$ 不封闭，不是子空间. 这是一个不过原点的平面 $x-3y+z=1$.
-        \end{enumerate}
+                        \item $\lambda\cdot(x_1,y_1,0)+\mu(x_2,y_2,0)=(\lambda x_1+\mu x_2,\lambda y_1+\mu y_2,0)\in W_2$，则 $W_2$ 封闭，是 $\mathbf{R}^3$ 的子空间，其对应几何图形为平面 $z=0$.
+                    \end{enumerate}
 
-        \item \begin{enumerate}
-            \item 对于 $(x,y,z)\in W_1$，有 $\dfrac x2=\dfrac{y-4}1=\dfrac{z-1}3$. 取 $\lambda \in \mathbf{R}$ 且 $\lambda\ne 1$，则对 $\lambda(x,y,z)$，明显有 $\dfrac{\lambda x}2\ne\dfrac{\lambda y-4}1$，因此 $W_1$ 不封闭，不是子空间，这是一条不过原点的直线.
-            \item 根据题（1）推出，$W_2$ 封闭，是子空间. 这是一条过原点的直线 $\dfrac x1=\dfrac y1=\dfrac z{-2}$.
-        \end{enumerate}
+              \item \begin{enumerate}
+                        \item 这是题 (1) 的一个实例，根据题 (1) 可知 $W_1$ 是 $\mathbf{R}^3$ 的子空间，这是一个过原点的平面 $x-3y+z=0$.
 
-        \item \begin{enumerate}
-            \item $p(x)=0,\forall x\in \mathbf{R}$，则有 $p(x)\in W_1$，$W_1$ 非空. $\forall p(x),q(x)\in W_1,\lambda \in\mathbf{R}$，有 $(\lambda\cdot(p+q))(1)=\lambda\cdot(p(1)+q(1))=0$，故$(\lambda\cdot(p+q))(x)\in W_1$，即 $W_1$ 封闭，构成 $\mathbf{R}[x]$ 上子空间.
-            \item $W_2$ 非空也是显然的，$\forall p(x),q(x)\in W_2, \lambda \in \mathbf{R}$ 有 $(\lambda\cdot(p+q))(1)=\lambda\cdot(p(1)+q(1))=0=\lambda\cdot(p(0)+q(0))=(\lambda\cdot(p+q))(0)$，因此 $(\lambda\cdot(p+q))(x)\in W_2$，即$W_2$ 封闭. 构成 $\mathbf{R}[x]$ 上子空间.
-        \end{enumerate}
+                        \item 对于 $(x,y,z)\in W_2$，有 $(x,y,z)+(x,y,z)=(2x,2y,2z)$，而 $2x-3\cdots 2y+2z=2(x-3y+z)=2$，因此 $(2x,2y,2z)\not \in W_2$，$W_2$ 不封闭，不是子空间. 这是一个不过原点的平面 $x-3y+z=1$.
+                    \end{enumerate}
 
-        \item 也就是问所有偶函数构成集合是否封闭，显然是封闭的. 因为 $(\lambda\cdot(f+g))(-x)=\lambda\cdot(f(-x)+g(-x))=\lambda\cdot(f(x)+g(x))=(\lambda\cdot(f+g))(x)$.
-    \end{enumerate}
+              \item \begin{enumerate}
+                        \item 对于 $(x,y,z)\in W_1$，有 $\vspace{1ex}\dfrac x2=\dfrac{y-4}1=\dfrac{z-1}3$. 取 $\lambda \in \mathbf{R}$ 且 $\lambda\neq 1$，则对 $\lambda(x,y,z)$，明显有 $\vspace{1ex}\dfrac{\lambda x}2\neq\dfrac{\lambda y-4}1$，因此 $W_1$ 不封闭，不是子空间，这是一条不过原点的直线.
+
+                        \item 根据题 (1) 推出，$W_2$ 封闭，是子空间. 这是一条过原点的直线 $\vspace{1ex}\dfrac x1=\dfrac y1=\dfrac z{-2}$.
+                    \end{enumerate}
+
+              \item \begin{enumerate}
+                        \item $p(x)=0,\forall x\in \mathbf{R}$，则有 $p(x)\in W_1$，$W_1$ 非空. $\forall p(x),q(x)\in W_1,\lambda \in\mathbf{R}$，有 $(\lambda\cdot(p+q))(1)=\lambda\cdot(p(1)+q(1))=0$，故$(\lambda\cdot(p+q))(x)\in W_1$，即 $W_1$ 封闭，构成 $\mathbf{R}[x]$ 上子空间.
+
+                        \item $W_2$ 非空也是显然的，$\forall p(x),q(x)\in W_2, \lambda \in \mathbf{R}$ 有 $(\lambda\cdot(p+q))(1)=\lambda\cdot(p(1)+q(1))=0=\lambda\cdot(p(0)+q(0))=(\lambda\cdot(p+q))(0)$，因此 $(\lambda\cdot(p+q))(x)\in W_2$，即$W_2$ 封闭. 构成 $\mathbf{R}[x]$ 上子空间.
+                    \end{enumerate}
+
+              \item 也就是问所有偶函数构成集合是否封闭，显然是封闭的. 因为 $(\lambda\cdot(f+g))(-x)=\lambda\cdot(f(-x)+g(-x))=\lambda\cdot(f(x)+g(x))=(\lambda\cdot(f+g))(x)$.
+          \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
     \item 暂略.
-    \item $W$ 是 $V$ 的子空间等价于 $\forall \alpha_1,\cdots,\alpha_k\in W$，$\forall \lambda_1,\cdots,\lambda_k\in F$（$F$ 是 $V$ 对应数域）有 $\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k\in W$. 根据线性扩张的定义，以上描述等价于 $\spa(W)\subseteq W$，又 $\spa(W)$ 是 $W$ 的线性扩张，即 $w\subseteq\spa(W)$，故$\spa(W)\subseteq W\Leftrightarrow \spa(W)=W$. 综上 $W$ 是 $V$ 的子空间，得证.
+
+    \item $W$ 是 $V$ 的子空间等价于 $\forall \alpha_1,\ldots,\alpha_k\in W$，$\forall \lambda_1,\ldots,\lambda_k\in \mathbf{F}$（$\mathbf{F}$ 是 $V$ 对应数域）有 $\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k\in W$. 根据线性扩张的定义，以上描述等价于 $\spa(W)\subseteq W$，又 $\spa(W)$ 是 $W$ 的线性扩张，即 $W\subseteq\spa(W)$，故$\spa(W)\subseteq W \iff \spa(W)=W$. 综上 $W$ 是 $V$ 的子空间，得证.
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
     \item \begin{enumerate}
-        \item 此处仅验证数乘封闭性，其余性质留给读者. $\forall \alpha\in F,\lambda\in E$.由于$E\subseteq F$，因此$\lambda\in F$.由于 $F$ 本身是封闭的，故$\lambda\alpha\in F$，则 $F$ 构成 $E$ 上的线性空间.例： $\mathbf{C}$ 构成 $\mathbf{R}$ 上的线性空间.
+              \item 此处仅验证数乘封闭性，其余性质留给读者. $\forall \alpha\in \mathbf{F},\lambda\in \mathbf{E}$. 由于$\mathbf{E}\subseteq \mathbf{F}$，因此$\lambda\in \mathbf{F}$. 由于 $\mathbf{F}$ 本身是封闭的，故$\lambda\alpha\in F$，则 $F$ 构成 $\mathbf{E}$ 上的线性空间. 例： $\mathbf{C}$ 构成 $\mathbf{R}$ 上的线性空间.
 
-        \item 例如：$\mathbf{R}$ 不是 $\mathbf{C}$ 上的线性空间.因为 $\forall a\in\mathbf{R}$，有 $i\cdot a=a\cdot i\not\in\mathbf{R}$. 故数乘不封闭，不构成线性空间.
+              \item 例如：$\mathbf{R}$ 不是 $\mathbf{C}$ 上的线性空间. 因为 $\forall a\in\mathbf{R}$，有 $i\cdot a=a\cdot i\not\in\mathbf{R}$. 故数乘不封闭，不构成线性空间.
 
-        \item $\forall\lambda\in E$ 有 $\lambda\in F$，则 $V$ 关于 $E$ 的数乘运算肯定是封闭的，其余性质与在 $F$ 上一致. 又 $E$ 本身也封闭，则 $V$ 也是 $E$ 上的一个线性空间，得证.
-    \end{enumerate}
+              \item $\forall\lambda\in \mathbf{E}$ 有 $\lambda\in \mathbf{F}$，则 $V$ 关于 $\mathbf{E}$ 的数乘运算肯定是封闭的，其余性质与在 $\mathbf{F}$ 上一致. 又 $\mathbf{E}$ 本身也封闭，则 $V$ 也是 $\mathbf{E}$ 上的一个线性空间，得证.
+          \end{enumerate}
 \end{enumerate}
 
 \clearpage
