@@ -7,16 +7,209 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item
+
+    \item \begin{enumerate}
+              \item 使用数学归纳法证明即可.
+
+              \item 由 $ (\sigma + \tau)^2 = \sigma + \tau $，
+                    \[ (\sigma + \tau)^2 = \sigma^2 + + \sigma \tau + \tau \sigma + \tau^2 = \sigma + \tau \]
+                    得
+                    \begin{equation} \label{eq:5:A:2:1}
+                        \sigma \tau + \tau \sigma = \theta
+                    \end{equation}
+                    \autoref{eq:5:A:2:1} 两边左乘 $ \sigma $ 得
+                    \begin{align}
+                        \sigma(\sigma \tau + \tau \sigma) & = \sigma^2 \tau + \sigma \tau \sigma = \sigma \theta \notag    \\
+                                                          & = \sigma \tau + \sigma \tau \sigma = \theta \label{eq:5:A:2:2}
+                    \end{align}
+                    \autoref{eq:5:A:2:1} 两边右乘 $ \sigma $ 得
+                    \begin{align}
+                        (\sigma \tau + \tau \sigma)\sigma & = \sigma \tau \sigma + \tau \sigma^2 = \theta \sigma \notag    \\
+                                                          & = \sigma \tau \sigma + \tau \sigma = \theta \label{eq:5:A:2:3}
+                    \end{align}
+                    \autoref{eq:5:A:2:3} 减去\autoref{eq:5:A:2:2} 得
+                    \begin{equation}
+                        \sigma \tau - \tau \sigma = \theta \label{eq:5:A:2:4}
+                    \end{equation}
+                    由\autoref{eq:5:A:2:1} 与\autoref{eq:5:A:2:4} 得
+                    \[ \sigma \tau = \theta \]
+
+              \item 若 $ \sigma \tau = \tau \sigma $，则
+                    \begin{align*}
+                            & (\sigma + \tau - \sigma \tau)^2                                                                                             \\
+                        ={} & \sigma^2 + \tau^2 + 2 \sigma \tau - \sigma \tau \sigma - \sigma \tau^2 - \sigma^2 \tau - \tau \sigma \tau + \sigma^2 \tau^2 \\
+                        ={} & \sigma + \tau + 2 \sigma \tau - \sigma \tau \sigma - \sigma \tau - \sigma \tau - \tau \sigma - \sigma \tau + \sigma \tau    \\
+                        ={} & \sigma + \tau - \sigma \tau
+                    \end{align*}
+          \end{enumerate}
+
+    \item 存在. 设
+          \begin{align}
+              \sigma(1, -1, 1) & = \sigma(\vec{e}_1 - \vec{e}_2 + \vec{e}_3) \notag                 \\
+                               & = \sigma(\vec{e}_1) - \sigma(\vec{e}_2) + \sigma(\vec{e}_3) \notag \\
+                               & = (1, 0) = \vec{\varepsilon}_1 \label{eq:5:A:3:1}
+          \end{align} \\
+          \begin{align}
+              \sigma(1, 1, 1) & = \sigma(\vec{e}_1 + \vec{e}_2 + \vec{e}_3) \notag                 \\
+                              & = \sigma(\vec{e}_1) + \sigma(\vec{e}_2) + \sigma(\vec{e}_3) \notag \\
+                              & = (0, 1) = \vec{\varepsilon}_2 \label{eq:5:A:3:2}
+          \end{align}
+          可取 $ \sigma(\vec{e}_3) = (0, 0) $. 联立\autoref{eq:5:A:3:1} 与\autoref{eq:5:A:3:2} 解得
+          \begin{align*}
+              \sigma(\vec{e}_1) & = \frac{1}{2} (\vec{\varepsilon}_1 + \vec{\varepsilon}_2) \\
+              \sigma(\vec{e}_2) & = \frac{1}{2} (\vec{\varepsilon}_1 - \vec{\varepsilon}_2)
+          \end{align*}
+          因此存在线性映射 $ \sigma : \mathbf{R}^3 \to \mathbf{R}^2 $ 满足题设条件，其关于 $ \mathbf{R}^3 $ 基的像为
+          \begin{align*}
+              \sigma(\vec{e}_1) & = \frac{1}{2} (\vec{\varepsilon}_1 + \vec{\varepsilon}_2) \\
+              \sigma(\vec{e}_2) & = \frac{1}{2} (\vec{\varepsilon}_1 - \vec{\varepsilon}_2) \\
+              \sigma(\vec{e}_3) & = (0, 0)
+          \end{align*}
+
+    \item 不存在. 不存在从 $ \mathbf{R}^2 $ 到 $ \mathbf{R}^3 $ 的满射.
+
+    \item \[ \sigma(x_1, x_2, \ldots, x_n) = x_1(1, 0, \ldots, 0) \]
+          所以
+          \begin{gather*}
+              \sigma(V) = \spa(\vec{e}_1) \\
+              r(\sigma) = 1
+          \end{gather*}
+          由于 $ \sigma(\vec{e}_1) = \vec{e}_1,\enspace \sigma(\vec{e}_2) = \cdots = \sigma(\vec{e}_n) = \vec{0} $，所以
+          \begin{gather*}
+              \ker \sigma = \spa(\vec{e}_2, \vec{e}_3, \ldots, \vec{e}_n) \\
+              \dim \ker \sigma = n - 1
+          \end{gather*}
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 不存在. 假设存在，则由 $ \alpha_1 + \alpha_2 + \alpha_3 = \vec{0} $ 有
+          \begin{align*}
+              \sigma(\vec{0}) & = \sigma(\alpha_1 + \alpha_2 + \alpha_3)                 \\
+                              & = \sigma(\alpha_1) + \sigma(\alpha_2) + \sigma(\alpha_3) \\
+                              & = \beta_1 + \beta_2 + \beta_3 = \vec{0}
+          \end{align*}
+          这与 $ \beta_1 + \beta_2 + \beta_3 = (2, 2) $ 矛盾.
+
+    \item $ \forall x_1, x_2, y_1, y_2, k_1, k_2 \in \mathbf{F} $，有
+          \begin{align*}
+                  & T(k_1(x_1 \alpha_1 + x_2 \alpha_2) + k_2(y_1 \alpha_1 + y_2 \alpha_2))                \\
+              ={} & r_1(k_1 x_1 + k_2 y_1) \alpha_1 + r_2(k_1 x_2 + k_2 y_2) \alpha_2                     \\
+              ={} & k_1 (r_1 x_1 \alpha_1 + r_2 x_2 \alpha_2) + k_2 (r_1 y_1 \alpha_1 + r_2 y_2 \alpha_2) \\
+              ={} & k_1 T(x_1 \alpha_1 + x_2 \alpha_2) + k_2 T(y_1 \alpha_1 + y_2 \alpha_2)
+          \end{align*}
+          因此 $ T $ 是线性映射. 其几何意义：将 $ \mathbf{R}^2 $ 中向量沿 $ x, y $ 轴分别变为原来的 $ r_1, r_2 $ 倍.
+
+    \item \begin{enumerate}
+              \item \begin{align*}
+                        \sigma^2(x_1, x_2) & = \sigma(\sigma(x_1, x_2))                               \\
+                                           & = \sigma(x_1 - x_2, x_1 + x_2)                           \\
+                                           & = ((x_1 - x_2) - (x_1 + x_2), (x_1 - x_2) + (x_1 + x_2)) \\
+                                           & = (-2 x_2, 2 x_1)
+                    \end{align*}
+
+              \item $ \sigma $ 可逆的充分必要条件是存在线性变换 $ \tau $ 使得 $ \sigma \tau = I $. 于是，$ \forall \alpha \in \mathbf{R}^2 $，令 $ (\tau \sigma)(\alpha) = \alpha $，即
+                    \[ (\tau \sigma)(x_1, x_2) = \tau(x_1 - x_2, x_1 + x_2) = \tau(y_1, y_2) = (x_1, x_2) \]
+                    解得
+                    \begin{gather*}
+                        x_1 = \frac{y_1 + y_2}{2} \\
+                        x_2 = \frac{y_1 - y_2}{2}
+                    \end{gather*}
+                    所以
+                    \[ \tau(x_1, x_2) = \sigma^{-1}(x_1, x_2) = \left(\frac{x_1 + x_2}{2}, \frac{x_1 - x_2}{2}\right) \]
+
+              \item 当 $ \xi = \theta $ 时，显然满足 $ \xi \tau = \theta $. 当 $ \xi \neq \theta $ 时，
+                    \[ \xi \tau(x_1, x_2) = \xi(x_1 - x_2, x_2 - x_1) = (0, 0) \]
+                    记 $ y_1 = x_1 - x_2,\enspace y_2 = x_2 - x_1 $. 由于 $ y_1 + y_2 = 0 $，
+                    \[ \tau(y_1, y_2) = (y_1 + y_2, y_1 + y_2) \]
+                    即 $ \tau(x_1, x_2) = (x_1 + x_2, x_1 + x_2) $ 满足 $ \xi \tau = \theta $.
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item \begin{align*}
+                        r(\theta)   & = 1                          \\
+                        r(\tau)     & = 2                          \\
+                        \im \theta  & = \spa(\vec{e}_1)            \\
+                        \ker \theta & = \spa(\vec{e}_1, \vec{e}_2)
+                    \end{align*}
+
+              \item \begin{gather*}
+                        (\sigma \tau)(x_1, x_2, x_3) = \sigma(x_1 + x_2 + x_3, x_1 - x_2, 0) = (0, 0, 0) \\
+                        r(\sigma \tau) = 0
+                    \end{gather*}
+                    \begin{gather*}
+                        (\tau \sigma)(x_1, x_2, x_3) = \tau(x_3, 0, 0) = (x_3, x_3, 0) \\
+                        \tau \sigma \neq \theta = \sigma \tau
+                    \end{gather*}
+                    求 $ r(\tau \sigma) $，方法 1：
+                    \begin{gather*}
+                        (\tau \sigma)(V) = \spa((1, 1, 0)) \\
+                        r(\tau \sigma) = 1
+                    \end{gather*}
+                    方法 2：由 $ \tau \sigma \neq \theta $ 知
+                    \[ 1 \leqslant r(\tau \sigma) \leqslant \min\{r(\tau), r(\sigma)\} = 1 \]
+                    因此 $ r(\tau \sigma) = 1 $.
+
+                    \begin{gather*}
+                        \begin{aligned}
+                            (\sigma + \tau)(x_1, x_2, x_3) & = \sigma(x_1, x_2, x_3) + \tau(x_1, x_2, x_3) \\
+                                                           & = (x_1 + x_2 + 2 x_3, x_1 - x_2, 0)           \\
+                                                           & = x_1(1, 1, 0) + x_2(1, -1, 0) + x_3(2, 0, 0)
+                        \end{aligned} \\
+                        r(\sigma + \tau) = r\{(1, 1, 0), (1, -1, 0), (2, 0, 0)\} = 2
+                    \end{gather*}
+
+              \item \begin{gather*}
+                        \begin{aligned}
+                            \im \tau & = \spa((1, 1, 0), (1, -1, 0), (2, 0, 0)) \\
+                                     & = \spa((1, 1, 0), (1, -1, 0))
+                        \end{aligned} \\
+                        \ker \tau = \spa((1, 1, -2))
+                    \end{gather*}
+                    可得
+                    \[ \im \tau + \ker \tau = \spa((1, 1, 0), (1, -1, 0), (1, 1, -2)) = \mathbf{R}^3 \]
+          \end{enumerate}
+
+    \item 使用反证法. 假设 $ \alpha, \sigma(\alpha), \ldots, \sigma^{k - 1}(\alpha) $ 线性相关，则存在不全为 0 的 $ l_0, l_1, \ldots, l_{k - 1} $ 使得
+          \[ l_0 \alpha + l_1 \sigma(\alpha) + \cdots + l_{k - 1} \sigma^{k - 1}(\alpha) = \vec{0} \]
+          记 $ i = \min\{k \mid l_k \neq 0\} $，则
+          \[ l_i \sigma^{i}(\alpha) + l_{i + 1} \sigma^{i + 1}(\alpha) + \cdots + l_{k - 1} \sigma^{k - 1}(\alpha) = \vec{0} \]
+          两边同时作用 $ \sigma^{k - i - 1} $. 由于 $ \sigma^{k}(\alpha) = \vec{0} $，故 $ \sigma^{k + 1}(\alpha) = \sigma^{k + 2}(\alpha) = \cdots = \vec{0} $，上式成为
+          \[ l_i \sigma^{k - 1}(\alpha) = \vec{0} \]
+          而 $ l_i \neq 0,\enspace \sigma^{k - 1}(\alpha) \neq \vec{0} $，矛盾！
+
+    \item 见 \hyperref[sec:2022-2023-1midtzy]{2022-2023学年线性代数I（H）期中（谈之奕老师）}.
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item \begin{enumerate}
+              \item \label{item:5:C:1:1}
+                    $ \mathcal{L}(V, V) $ 是 $ n^2 $ 维线性空间，其中 $ n^2 + 1 $ 个元素 $ I, \sigma, \sigma^2, \ldots, \sigma^{n^2} $ 线性相关，即 $ \exists a_i\enspace (i = 1, 2, \ldots, n^2) $ 使得
+                    \[ a_0 I + a_1 \sigma + \ldots + a_{n^2} \sigma^{n^2} = \theta \]
+                    于是 $ \exists p(x) = a_0 + a_1 x + \ldots + a_{n^2} x^{n^2} \in \mathbf{F}[x] $ 使得 $ p(\sigma) = \theta $.
+
+              \item 必要性：设有一常数项不为 0 的多项式
+                    \[ p(x) = a_0 + a_1 x + \cdots + a_k x^k \qquad a_0 \neq 0 \]
+                    满足
+                    \[ p(\sigma) = a_0 I + a_1 \sigma + \cdots + a_k \sigma^k = \theta \]
+                    所以
+                    \[ \sigma(a_1 I + a_2 \sigma + \cdots + a_k \sigma^{k - 1}) = -a_0 I \]
+                    因此
+                    \[ \sigma^{-1} = -a_0^{-1} (a_1 I + a_2 \sigma + \cdots + a_k \sigma^{k - 1}) \]
+
+                    充分性：由 \ref*{item:5:C:1:1} 可知存在次数 $ k \leqslant n^2 $ 的多项式
+                    \[ p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_k x^k \]
+                    满足
+                    \[ p(\sigma) = a_0 I + a_1 \sigma + \cdots + a_k \sigma^k = \theta \]
+                    若 $ a_0 \neq 0 $，则 $ p(x) $ 即为所求多项式.
+
+                    若 $ a_0 = a_1 = \cdots = a_{i - 1} = 0,\enspace a_i \neq 0 $，即
+                    \[ a_i I + a_{i + 1} \sigma + \cdots + a_k \sigma^{k - i} = \theta \]
+                    于是
+                    \[ P(x) = a_i + a_{i + 1} x + \cdots + a_k x^{k - i} \qquad a_i \neq 0 \]
+                    为所求的多项式.
+          \end{enumerate}
 \end{enumerate}
 
 \clearpage
