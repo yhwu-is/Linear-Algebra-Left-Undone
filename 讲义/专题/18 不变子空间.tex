@@ -155,7 +155,7 @@
 
 需要注意的是，线性变换$\sigma$的特征值$\lambda$对应的特征子空间除了用$V_{\lambda}$表示以外，我们也可以记为$E(\lambda,\sigma)$. 这是为了之后介绍广义特征子空间的记号统一而做的准备.
 
-事实上，我们通过之后的例子会知道，$V_\lambda$的维数不一定是1，而至少是1. 那么我们之前引入特征值特征向量时所说的``一维不变子空间''是什么呢？事实上，我们可以取$V_\lambda$的任一组基$\alpha_1,\ldots,\alpha_n$，则其中任一向量进行扩张得到的子空间$U_i=\spa(\alpha_i)(i=1,\cdots,n)$就是一维不变子空间，因为$\forall u_i\in U_i,\enspace \sigma(u_i)=\lambda u_i\in U_i$，即$U_i$在$\sigma$下不变. 我们还需要注意，一维不变子空间的选取是不唯一的，因为$V_\lambda$的基的选取是不唯一的，因此$U_i$的选取也是不唯一的，实际上对于任意的$\alpha\in\V_{\lambda}$，$\spa(\alpha)$都是一维不变子空间.
+事实上，我们通过之后的例子会知道，$V_\lambda$的维数不一定是1，而至少是1. 那么我们之前引入特征值特征向量时所说的``一维不变子空间''是什么呢？事实上，我们可以取$V_\lambda$的任一组基$\alpha_1,\ldots,\alpha_n$，则其中任一向量进行扩张得到的子空间$U_i=\spa(\alpha_i),\enspace i=1,\ldots,n$就是一维不变子空间，因为$\forall u_i\in U_i,\enspace \sigma(u_i)=\lambda u_i\in U_i$，即$U_i$在$\sigma$下不变. 我们还需要注意，一维不变子空间的选取是不唯一的，因为$V_\lambda$的基的选取是不唯一的，因此$U_i$的选取也是不唯一的，实际上对于任意的$\alpha\in\V_{\lambda}$，$\spa(\alpha)$都是一维不变子空间.
 
 上面是线性变换的特征值与特征向量的定义，事实上我们也有对应的矩阵的特征值与特征向量的定义：
 \begin{definition}
@@ -235,7 +235,7 @@
         \end{vmatrix}.\]
     其中$e_1,\ldots,e_n$为$\mathbf{F}^n$的标准基，因此根据行列式的\autoref{def:13:公理化定义} 的加性，$f(\lambda)$可以拆成$2^n$个行列式的和，它们是
     \begin{equation}\label{eq:18:特征多项式展开}
-        (-\alpha_1,\cdots,-\alpha_{j_1-1},\lambda e_{j_1},-\alpha_{j_1+1},\cdots,-\alpha_{j_2-1},\lambda e_{j_2},-\alpha_{j_2+1},\cdots,-\lambda e_{j_{n-k}},\cdots,-\alpha_n),
+        (-\alpha_1,\ldots,-\alpha_{j_1-1},\lambda e_{j_1},-\alpha_{j_1+1},\ldots,-\alpha_{j_2-1},\lambda e_{j_2},-\alpha_{j_2+1},\ldots,-\lambda e_{j_{n-k}},\ldots,-\alpha_n),
     \end{equation}
     其中$1\leqslant j_1<j_2<\cdots<j_{n-k}\leqslant n,\enspace k=0,2,\ldots,n$.
 
@@ -351,7 +351,7 @@
 
               同理，我们可以知道幂等矩阵的特征值只能是0和1，幂零矩阵的特征值只能是0（这是一个重要的幂零矩阵等价条件，未来我们会再次遇到），正交矩阵的特征值只能是1和-1.
 
-        \item 设$BX=\lambda_iX_i(X_i\neq 0,\enspace i=1,\ldots,n)$，则$AX_i=\lambda_0X_i+BX_i=\lambda_0X_i+\lambda_iX_i=(\lambda_0+\lambda_i)X_i$，因此$\lambda_0+\lambda_i(i=1,\cdots,n)$都是$A$的特征值.
+        \item 设$BX=\lambda_iX_i(X_i\neq 0,\enspace i=1,\ldots,n)$，则$AX_i=\lambda_0X_i+BX_i=\lambda_0X_i+\lambda_iX_i=(\lambda_0+\lambda_i)X_i$，因此$\lambda_0+\lambda_i\enspace(i=1,\ldots,n)$都是$A$的特征值.
 
         \item \begin{align*}
                   |\lambda E-A| & =\begin{vmatrix}
@@ -362,7 +362,7 @@
                                    \end{vmatrix}
                                 & =\prod_{i=1}^{m}|\lambda E_i-A_i|=0
               \end{align*}
-              因此，$A_i(i=1,\ldots,m)$的特征值都是$A$的特征值.
+              因此，$A_i,\enspace i=1,\ldots,m$的特征值都是$A$的特征值.
     \end{enumerate}
 \end{solution}
 
@@ -428,7 +428,7 @@
               \begin{equation}\label{eq:18:特征子空间直和}
                   \xi_1+\cdots+\xi_m=0,
               \end{equation}
-              其中$\xi_i\in V_{\lambda_i}$，由于$\sigma$的不同特征值对应的特征向量线性无关，因此$\xi_1,\cdots,\xi_m$不可能是特征向量，否则由\autoref{eq:18:特征子空间直和} 可知它们线性相关，故必有$\xi_1=\cdots=\xi_m=0$，这表明$\sigma$的不同特征值对应的特征子空间的和为直和.
+              其中$\xi_i\in V_{\lambda_i}$，由于$\sigma$的不同特征值对应的特征向量线性无关，因此$\xi_1,\ldots,\xi_m$不可能是特征向量，否则由\autoref{eq:18:特征子空间直和} 可知它们线性相关，故必有$\xi_1=\cdots=\xi_m=0$，这表明$\sigma$的不同特征值对应的特征子空间的和为直和.
 
         \item 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的互异特征值，$\xi_1,\ldots,\xi_m$是相应的特征向量. 前面已经证明了$\xi_1,\ldots,\xi_m$线性无关，因此$\dim V\geqslant m$，得证.
     \end{enumerate}
@@ -452,7 +452,7 @@
 
     设$\lambda_0$对应的特征子空间维数为$r$，则存在$V_{\lambda_0}$的一组基$\xi_1,\ldots,\xi_r$，并将其扩充为$V$的一组基$\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n$.
 
-    定义$n$阶可逆矩阵$U=(\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n)$，根据$A\xi_i=\lambda_0\xi_i(i=1,\cdots,r)$，我们有
+    定义$n$阶可逆矩阵$U=(\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n)$，根据$A\xi_i=\lambda_0\xi_i\enspace(i=1,\ldots,r)$，我们有
     \begin{align*}
         A(\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n) & = (\lambda_0\xi_1,\ldots,\lambda_0\xi_r,A\xi_{r+1},\ldots,A\xi_n) \\
                                                      & = (\xi_1,\ldots,\xi_r,\xi_{r+1},\ldots,\xi_n)
@@ -462,7 +462,7 @@
     \end{align*}
     其中$B$是$r\times(n-r)$矩阵，$C$是$(n-r)\times(n-r)$矩阵，$O$是零矩阵. 记$D=\begin{pmatrix}
             \lambda_0 E_r & B \\ O & C
-        \end{pmatrix}$，则$AU=UD\Rightarrow A=UDU^{-1}$.
+        \end{pmatrix}$，则$AU=UD\implies A=UDU^{-1}$.
 
     考虑特征多项式$|\lambda E-A|=|\lambda E-UDU^{-1}|=|U(\lambda E_n-D)U^{-1}|=|U||\lambda E_n-D||U^{-1}|=|\lambda E_n-D|$，故$|\lambda E-A|=|\lambda E_n-D|$. 进一步地，$|\lambda E-D|=|\lambda E_r-\lambda_0 E_r||\lambda E_{n-r}-C|=(\lambda-\lambda_0)^r|\lambda E_{n-r}-C|$，因此$\lambda_0$作为特征多项式$|\lambda E-A|$的根的重数至少为$r$，即$\lambda_0$的代数重数大于等于其特征子空间$V_{\lambda}$的维数.
 \end{proof}

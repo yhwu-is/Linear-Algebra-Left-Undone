@@ -533,7 +533,7 @@
 
 为了描述这一定理，我们需要首先将单个元素的余子式和代数余子式的概念推广到子式的余子式和代数余子式. 为此，我们先给出一个定义：
 \begin{definition}
-    $n$阶行列式$|A|$中任意取定$k$行、$k$列$(1\leqslant k<n)$，记为$i_1,\cdots,i_k$行，$j_1,\cdots,j_k$列，位于这些行和列的交叉处的$k^2$个元素所构成的$k$阶子式称为$|A|$的一个$k$阶子式，这一$k$阶子式记为$A\begin{pmatrix}
+    $n$阶行列式$|A|$中任意取定$k$行、$k$列$(1\leqslant k<n)$，记为$i_1,\ldots,i_k$行，$j_1,\ldots,j_k$列，位于这些行和列的交叉处的$k^2$个元素所构成的$k$阶子式称为$|A|$的一个$k$阶子式，这一$k$阶子式记为$A\begin{pmatrix}
             i_1 & \cdots & i_k \\
             j_1 & \cdots & j_k
         \end{pmatrix}$.
@@ -543,14 +543,14 @@
             i_1' & \cdots & i_{n-k}' \\
             j_1' & \cdots & j_{n-k}'
         \end{pmatrix},\]
-    其中$\{i_1',\cdots,i_{n-k}'\}=\{1,\cdots,n\}\setminus\{i_1,\cdots,i_k\}$，$\{j_1',\cdots,j_{n-k}'\}=\{1,\cdots,n\}\setminus\{j_1,\cdots,j_k\}$，且$i_1'<\cdots<i_{n-k}'$，$j_1'<\cdots<j_{n-k}'$. 它前面乘以$(-1)^{(i_1+\cdots+i_k)+(j_1+\cdots+j_k)}$所得的数称为这个$k$阶子式的代数余子式.
+    其中$\{i_1',\ldots,i_{n-k}'\}=\{1,\ldots,n\}\setminus\{i_1,\ldots,i_k\}$，$\{j_1',\ldots,j_{n-k}'\}=\{1,\ldots,n\}\setminus\{j_1,\ldots,j_k\}$，且$i_1'<\cdots<i_{n-k}'$，$j_1'<\cdots<j_{n-k}'$. 它前面乘以$(-1)^{(i_1+\cdots+i_k)+(j_1+\cdots+j_k)}$所得的数称为这个$k$阶子式的代数余子式.
 \end{definition}
 
-事实上上面关于子式的定义与上一讲给出的完全一致，只是多了一个记号，而子式的余子式实际上也只是单个元素余子式到多行多列的自然扩展. 举个简单的例子，对于$3$阶行列式$|A|=\begin{vmatrix}
+事实上上面关于子式的定义与上一讲给出的完全一致，只是多了一个记号，而子式的余子式实际上也只是单个元素余子式到多行多列的自然扩展. 举个简单的例子，对于3阶行列式$|A|=\begin{vmatrix}
         a_{11} & a_{12} & a_{13} \\
         a_{21} & a_{22} & a_{23} \\
         a_{31} & a_{32} & a_{33}
-    \end{vmatrix}$，取定第$1,3$行，第$1,2$列，那么这个$2$阶子式为$A\begin{pmatrix}
+    \end{vmatrix}$，取定第1,3行，第1,2列，那么这个2阶子式为$A\begin{pmatrix}
         1 & 3 \\
         1 & 2
     \end{pmatrix}=\begin{vmatrix}
@@ -586,7 +586,7 @@
 
     在\autoref{eq:14:Laplace定理} 右侧任取一项：
     \[(-1)^{\tau(\mu_1\cdots\mu_k)}a_{i_1\mu_1}\cdots a_{i_k\mu_k}(-1)^{(i_1+\cdots+i_k)+(j_1+\cdots+j_k)}(-1)^{\tau(\nu_1\cdots\nu_{n-k})}a_{i_1'\nu_1}\cdots a_{i_{n-k}'\nu_{n-k}'},\]
-    其中$\mu_1,\cdots,\mu_k$为$j_1,\cdots,j_k$的一个排列，$\nu_1,\cdots,\nu_{n-k}$为$j_1',\cdots,j_{n-k}'$的一个排列，$\tau$代表置换的符号（在朝花夕拾一讲中有介绍）.
+    其中$\mu_1,\ldots,\mu_k$为$j_1,\ldots,j_k$的一个排列，$\nu_1,\ldots,\nu_{n-k}$为$j_1',\ldots,j_{n-k}'$的一个排列，$\tau$代表置换的符号（在朝花夕拾一讲中有介绍）.
 
     而在\autoref{eq:14:Laplace定理} 左侧有如下一项：
     \[(-1)^{\tau(i_1\cdots i_ki_1'\cdots i_{n-k}')+\tau(\mu_1\cdots\mu_k\nu_1\cdots\nu_{n-k})}a_{i_1\mu_1}\cdots a_{i_k\mu_k}a_{i_1'\nu_1}\cdots a_{i_{n-k}'\nu_{n-k}'},\]

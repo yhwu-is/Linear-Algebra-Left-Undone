@@ -501,7 +501,7 @@
 
 我们简要解释$P_1$列满秩的原因，$Q_1$行满秩类似不再赘述. 由于$\begin{pmatrix}
         E_r \\ O
-    \end{pmatrix}$是$s\times r$矩阵，且秩为$r$，列满秩.$P$可逆且为$s\times s$矩阵，因此$P_1$仍然是$s\times r$矩阵. 由于可逆矩阵可以写成若干初等矩阵乘积，初等变换不改变矩阵的秩，故$r(P)=r(P_1)=r$，又矩阵列秩=秩，故$P_1$列满秩.
+    \end{pmatrix}$是$s\times r$矩阵，且秩为$r$，列满秩. $P$可逆且为$s\times s$矩阵，因此$P_1$仍然是$s\times r$矩阵. 由于可逆矩阵可以写成若干初等矩阵乘积，初等变换不改变矩阵的秩，故$r(P)=r(P_1)=r$，又矩阵列秩=秩，故$P_1$列满秩.
 
 接下来我们来看一个例子进行应用，在介绍这一例子前我们需要首先引入一个概念，即矩阵的迹：
 \begin{definition}[迹] \index{ji@迹 (trace)}
@@ -510,7 +510,7 @@
 \end{definition}
 
 \begin{example}\label{ex:11:相抵分解}
-    已知 $n$ 阶矩阵 $A$ 的秩为 $1$ ，证明：$A^k=\tr(A)^{k-1}A$.
+    已知 $n$ 阶矩阵 $A$ 的秩为 1 ，证明：$A^k=\tr(A)^{k-1}A$.
 \end{example}
 
 \begin{proof}
@@ -609,7 +609,7 @@
                             \end{pmatrix}
                              & =\begin{pmatrix}
                                     P_1AQ_1 & O \\ O & P_2BQ_2
-                                \end{pmatrix}            \\
+                                \end{pmatrix}             \\
                              & =\begin{pmatrix}
                                     E_r & O & O   & O \\
                                     O   & O & O   & O \\
@@ -649,7 +649,7 @@
                         \end{align*}
                         其中$\begin{pmatrix}
                                 C_{11} & C_{12} \\ C_{21} & C_{22}
-                            \end{pmatrix}$是$P_2CQ_1$的一种分块。结合$E_r$和$E_s$都是单位矩阵，因此我们可以通过初等变换消去与它们同行、同列的$C_{11},C_{12},C_{21}$，即
+                            \end{pmatrix}$是$P_2CQ_1$的一种分块. 结合$E_r$和$E_s$都是单位矩阵，因此我们可以通过初等变换消去与它们同行、同列的$C_{11},C_{12},C_{21}$，即
                         \begin{align*}
                             \begin{pmatrix}
                                 E_r    & O      & O   & O \\
@@ -677,6 +677,7 @@
                             \end{pmatrix}\geqslant r(A)+r(B)$.
               \end{enumerate}
           \end{proof}
+
     \item $|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)$.
 
           \begin{proof}
@@ -777,7 +778,7 @@
               \[\begin{pmatrix}
                       A^\mathrm{T} \\ B^\mathrm{T}
                   \end{pmatrix}\]
-                  而非这里给出的$(A^\mathrm{T}, B^\mathrm{T})$. 因此不能应用``分块矩阵初等变换不改变矩阵的秩''，秩不一定相等. 事实上我们很好举出例子来说明这一点，例如
+              而非这里给出的$(A^\mathrm{T}, B^\mathrm{T})$. 因此不能应用``分块矩阵初等变换不改变矩阵的秩''，秩不一定相等. 事实上我们很好举出例子来说明这一点，例如
               \[A=\begin{pmatrix}
                       1 & 0 \\ 0 & 0
                   \end{pmatrix},\enspace B=\begin{pmatrix}
@@ -816,7 +817,7 @@
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-{\kaishu 也许我可以并非不适当地要求获得数学上亚当这一称号，因为我相信数学理性创造物由我命名比起同时代其它数学家加在一起还要多。}
+{\kaishu 也许我可以并非不适当地要求获得数学上亚当这一称号，因为我相信数学理性创造物由我命名比起同时代其它数学家加在一起还要多.}
 \begin{flushright}
     \kaishu
     ——西尔维斯特
@@ -884,7 +885,7 @@
 
               \item 设$B_1,B_2$为$s \times n$行满秩矩阵，证明：存在$n$阶可逆矩阵$C$使得$B_2=B_1C$；
 
-              \item 任意秩为$r$的矩阵都可以被分解为$r$个秩为$1$的矩阵之和；
+              \item 任意秩为$r$的矩阵都可以被分解为$r$个秩为1的矩阵之和；
 
               \item 已知$A$是$n$阶方阵，证明：存在$n$阶方阵$B$使得$A=ABA,\enspace B=BAB$.
           \end{enumerate}
