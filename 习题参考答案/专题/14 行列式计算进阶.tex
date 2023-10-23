@@ -7,446 +7,454 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item 考虑滚动消去法，每行减下一行，得
-    \[
-    \begin{vmatrix}
-    1-x&1&1&1&\ldots&1&1\\
-    0&1-x&1&1&\ldots&1&1\\
-    0&0&1-x&1&\ldots&1&1\\
-    0&0&0&1-x&\ldots&1&1\\
-    \vdots&\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
-    0&0&0&0&\ldots&1-x&1\\
-    x&x&x&x&\ldots&x&1\\
-    \end{vmatrix},\]
-    第一行乘$(-x)$到第$n$行，得\[\begin{vmatrix}
-    1-x&1&1&1&\ldots&1&1\\
-    0&1-x&1&1&\ldots&1&1\\
-    0&0&1-x&1&\ldots&1&1\\
-    0&0&0&1-x&\ldots&1&1\\
-    \vdots&\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
-    0&0&0&0&\ldots&1-x&1\\
-    x^2&0&0&0&\ldots&0&1-x\\
-    \end{vmatrix},\]
-    按第$n$行展开，得原式等于$(1-x)^n+(-1)^{n+1}x^2T_{n-1}$，其中\[T_{n-1}=\begin{vmatrix}
-    1&1&1&\ldots&1&1\\
-    1-x&1&1&\ldots&1&1\\
-    0&1-x&1&\ldots&1&1\\
-    \vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
-    0&0&0&\ldots&1&1\\
-    0&0&0&\ldots&1-x&1\\
-    \end{vmatrix},\]
-    按第$n-1$行展开$T_{n-1}$，有$T_{n-1}=T_{n-2}+(-1)(1-x)T_{n-2}=xT_{n-2}$.由$T_2=\begin{vmatrix}
-    1&1\\1-x&1\end{vmatrix}=x$，递推得$T_{n-1}=x^{n-2}$.代入可解得原式$=(1-x)^n-(-x)^n$
+          \[ \begin{vmatrix}
+                  1-x    & 1      & 1      & 1      & \ldots & 1      & 1      \\
+                  0      & 1-x    & 1      & 1      & \ldots & 1      & 1      \\
+                  0      & 0      & 1-x    & 1      & \ldots & 1      & 1      \\
+                  0      & 0      & 0      & 1-x    & \ldots & 1      & 1      \\
+                  \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                  0      & 0      & 0      & 0      & \ldots & 1-x    & 1      \\
+                  x      & x      & x      & x      & \ldots & x      & 1      \\
+              \end{vmatrix} \]
+          第一行乘$(-x)$到第$n$行，得
+          \[\begin{vmatrix}
+                  1-x    & 1      & 1      & 1      & \ldots & 1      & 1      \\
+                  0      & 1-x    & 1      & 1      & \ldots & 1      & 1      \\
+                  0      & 0      & 1-x    & 1      & \ldots & 1      & 1      \\
+                  0      & 0      & 0      & 1-x    & \ldots & 1      & 1      \\
+                  \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                  0      & 0      & 0      & 0      & \ldots & 1-x    & 1      \\
+                  x^2    & 0      & 0      & 0      & \ldots & 0      & 1-x    \\
+              \end{vmatrix}\]
+          按第$n$行展开，得原式等于$(1-x)^n+(-1)^{n+1}x^2T_{n-1}$，其中
+          \[T_{n-1}=\begin{vmatrix}
+                  1      & 1      & 1      & \ldots & 1      & 1      \\
+                  1-x    & 1      & 1      & \ldots & 1      & 1      \\
+                  0      & 1-x    & 1      & \ldots & 1      & 1      \\
+                  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                  0      & 0      & 0      & \ldots & 1      & 1      \\
+                  0      & 0      & 0      & \ldots & 1-x    & 1      \\
+              \end{vmatrix}\]
+          按第$n-1$行展开$T_{n-1}$，有$T_{n-1}=T_{n-2}+(-1)(1-x)T_{n-2}=xT_{n-2}$. 由$T_2=\begin{vmatrix}
+                  1&1\\1-x&1\end{vmatrix}=x$，递推得$T_{n-1}=x^{n-2}$. 代入可解得原式$=(1-x)^n-(-x)^n$
 
-    \item 按第一列展开，得$D_n=\prod_{i=1}^na_i+(-1)^{n+1}\prod_{i=1}^nb_i$.
+    \item 按第一列展开，得$D_n=\displaystyle\prod_{i=1}^na_i+(-1)^{n+1}\displaystyle\prod_{i=1}^nb_i$.
 
-    \item 按第一列展开，得\[\begin{aligned}
-    D_{n}&=(a+b) D_{n-1}-\left|\begin{array}{ccccccc}
-    a b & 0 & 0 & 0 & \cdots & 0 & 0 \\
-    1 & a+b & a b & 0 & \cdots & 0 & 0 \\
-    0 & 1 & a+b & a b & \cdots & 0 & 0 \\
-    \vdots & \vdots & \vdots & a+b & \ddots & \vdots & \vdots \\
-    0 & 0 & 0 & 0 & \cdots & a+b & a b \\
-    0 & 0 & 0 & 0 & \cdots & 1 & a+b
-    \end{array}\right| \\
-    &=(a+b) D_{n-1}-a b D_{n-2}
-    \end{aligned}.\]
-    \begin{enumerate}
-        \item 法一：特征方程法. 有特征方程$r^2-(a+b)r+ab=(r-a)(r-b)=0$，先考虑$a\neq b$，则$D_n=C_1a^n+C_2b^n$，$D_{1}=a+b$，$D_{2}=a^{2}+a b+b^{2}$，则有
-        \[\begin{cases}
-            C_1a+C_2b=a+b\\
-            C_1a^2+C_2b^2=a^2+ab+b^2
-            \end{cases},\]
-        考虑Cramer法则，首先判断系数行列式$\begin{vmatrix}
-            a&b\\
-            a^2&b^2
-        \end{vmatrix}=ab(b-a)$，若$a=b=0$，原行列式为0；若$a=0,b\neq 0$，则有$C_2=1$，$D_n=b^n$；同理若$a=0,b\neq 0$，$D_n=a^n$.考虑$a\neq 0,b\neq 0$，则系数行列式非0，根据Cramer法则可以解得
-        \[C_1=\frac{\begin{vmatrix}
-            a+b&b\\
-            a^2+ab+b^2&b^2
-            \end{vmatrix}}{ab(b-a)}=\frac{a}{a-b},\quad
-            C_2=\frac{\begin{vmatrix}
-            a&a+b\\
-            a^2&a^2+ab+b^2
-            \end{vmatrix}}{ab(b-a)}=-\frac{b}{a-b}\]
-        故$D_n=\displaystyle\frac{a^{n+1}-b^{n+1}}{a-b}$.考虑到$a$或$b$为0时也符合该公式，故合并为同一公式. 再考虑$a=b$，则$D_n=(C_1+C_2n)a^n$，有方程
-        \[\begin{cases}
-            (C_1+C_2)a=2a\\
-            (C_1+2C_2)a^2=3a^2
-            \end{cases},\]
-        $a=0$，则$D_n=0$；$a\neq 0$，可以解得$C_1=C_2=1$，有$D_n=(n+1)a^n$. 考虑到$a=0$时$D_n$也符合该式，故合并.综上有
-        \[D_n=\begin{cases}
-            \displaystyle\frac{a^{n+1}-b^{n+1}}{a-b},&a\neq b\\
-            (n+1)a^n,&a=b
-            \end{cases}.\]
+    \item 按第一列展开，得
+          \begin{align*}
+              D_{n} & =(a+b) D_{n-1}-\begin{vmatrix}
+                                         a b    & 0      & 0      & 0   & \cdots & 0      & 0      \\
+                                         1      & a+b    & a b    & 0   & \cdots & 0      & 0      \\
+                                         0      & 1      & a+b    & a b & \cdots & 0      & 0      \\
+                                         \vdots & \vdots & \vdots & a+b & \ddots & \vdots & \vdots \\
+                                         0      & 0      & 0      & 0   & \cdots & a+b    & a b    \\
+                                         0      & 0      & 0      & 0   & \cdots & 1      & a+b
+                                     \end{vmatrix} \\
+                    & =(a+b) D_{n-1}-a b D_{n-2}
+          \end{align*}
+          \begin{enumerate}
+              \item 方法一：特征方程法. 有特征方程$r^2-(a+b)r+ab=(r-a)(r-b)=0$，先考虑$a\neq b$，则$D_n=C_1a^n+C_2b^n$，$D_{1}=a+b$，$D_{2}=a^{2}+a b+b^{2}$，则有
+                    \[\begin{cases}
+                            C_1a+C_2b=a+b \\
+                            C_1a^2+C_2b^2=a^2+ab+b^2
+                        \end{cases},\]
+                    考虑Cramer法则，首先判断系数行列式$\begin{vmatrix}
+                            a   & b   \\
+                            a^2 & b^2
+                        \end{vmatrix}=ab(b-a)$，若$a=b=0$，原行列式为0；若$a=0,b\neq 0$，则有$C_2=1$，$D_n=b^n$；同理若$a=0,b\neq 0$，$D_n=a^n$. 考虑$a\neq 0,b\neq 0$，则系数行列式非0，根据Cramer法则可以解得
+                    \[C_1=\frac{\begin{vmatrix}
+                                a+b        & b   \\
+                                a^2+ab+b^2 & b^2
+                            \end{vmatrix}}{ab(b-a)}=\frac{a}{a-b},\quad
+                        C_2=\frac{\begin{vmatrix}
+                                a   & a+b        \\
+                                a^2 & a^2+ab+b^2
+                            \end{vmatrix}}{ab(b-a)}=-\frac{b}{a-b}\]
+                    故$D_n=\displaystyle\frac{a^{n+1}-b^{n+1}}{a-b}$. 考虑到$a$或$b$为0时也符合该公式，故合并为同一公式. 再考虑$a=b$，则$D_n=(C_1+C_2n)a^n$，有方程
+                    \[\begin{cases}
+                            (C_1+C_2)a=2a \\
+                            (C_1+2C_2)a^2=3a^2
+                        \end{cases},\]
+                    $a=0$，则$D_n=0$；$a\neq 0$，可以解得$C_1=C_2=1$，有$D_n=(n+1)a^n$. 考虑到$a=0$时$D_n$也符合该式，故合并. 综上有
+                    \[D_n=\begin{cases}
+                            \displaystyle\frac{a^{n+1}-b^{n+1}}{a-b}, & a\neq b \\
+                            (n+1)a^n,                                 & a=b
+                        \end{cases}.\]
 
-        \item 法二：递推式变形法. 递推式变形, 得
-        \[\mathrm{D}_{n}-a D_{n-1}=b\left(D_{n-1}-a D_{n-2}\right),\]
-        由于 $D_{1}=a+b, D_{2}=a^{2}+a b+b^{2}$,从而利用上述递推公式得
-        \[\begin{aligned}
-            \mathrm{D}_{n}-a D_{n-1}&=b\left(D_{n-1}-a D_{n-2}\right)\\
-            &=b^{2}\left(D_{n-2}-a D_{n-3}\right)\\
-            &=\cdots=b^{n-2}\left(D_{2}-a D_{1}\right)=b^{n}
-            \end{aligned},\]
-        故\[\begin{aligned}
-            D_{n}&=a D_{n-1}+b^{n}=a\left(a D_{n-2}+b^{n-1}\right)+b^{n}\\
-            &=\cdots=a^{n-1} D_{1}+a^{n-2} b^{2}+\cdots+a b^{n-1}+b^{n} \\
-            &=a^{n}+a^{n-1} b+\cdots+a b^{n-1}+b^{n}\\
-            &=\begin{cases}
-            \displaystyle\frac{a^{n+1}-b^{n+1}}{a-b},&a\neq b\\
-            (n+1)a^n,&a=b
-            \end{cases}
-            \end{aligned}.\]
-    \end{enumerate}
+              \item 方法二：递推式变形法. 递推式变形, 得
+                    \[\mathrm{D}_{n}-a D_{n-1}=b\left(D_{n-1}-a D_{n-2}\right),\]
+                    由于 $D_{1}=a+b, D_{2}=a^{2}+a b+b^{2}$,从而利用上述递推公式得
+                    \begin{align*}
+                        \mathrm{D}_{n}-a D_{n-1} & =b\left(D_{n-1}-a D_{n-2}\right)                \\
+                                                 & =b^{2}\left(D_{n-2}-a D_{n-3}\right)            \\
+                                                 & =\cdots=b^{n-2}\left(D_{2}-a D_{1}\right)=b^{n}
+                    \end{align*}
+                    故\begin{align*}
+                        D_{n} & =a D_{n-1}+b^{n}=a\left(a D_{n-2}+b^{n-1}\right)+b^{n}     \\
+                              & =\cdots=a^{n-1} D_{1}+a^{n-2} b^{2}+\cdots+a b^{n-1}+b^{n} \\
+                              & =a^{n}+a^{n-1} b+\cdots+a b^{n-1}+b^{n}                    \\
+                              & =\begin{cases}
+                                     \displaystyle\frac{a^{n+1}-b^{n+1}}{a-b}, & a\neq b \\
+                                     (n+1)a^n,                                 & a=b
+                                 \end{cases}
+                    \end{align*}
+          \end{enumerate}
 
     \item 略.
 
     \item \begin{enumerate}
-        \item 法一：慢慢消去. \[\begin{aligned}
-            \left|\begin{array}{llll}
-            a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
-            b^{2} & (b+1)^{2} & (b+2)^{2} & (b+3)^{2} \\
-            c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
-            d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
-            \end{array}\right|&=
-            \left|\begin{array}{llll}
-            a^{2} & 2a+1 & 4a+4 & 6a+9 \\
-            b^{2} & 2b+1 & 4b+4 & 6b+9 \\
-            c^{2} & 2c+1 & 4c+4 & 6c+9 \\
-            d^{2} & 2d+1 & 4d+4 & 6d+9
-            \end{array}\right|\\&=
-            \left|\begin{array}{llll}
-            a^{2} & 2a+1 & 4a+4 & 4 \\
-            b^{2} & 2b+1 & 4b+4 & 4 \\
-            c^{2} & 2c+1 & 4c+4 & 4 \\
-            d^{2} & 2d+1 & 4d+4 & 4
-            \end{array}\right|\\
-            &=4\left|\begin{array}{llll}
-            a^{2} & 2a & 4a & 1 \\
-            b^{2} & 2b & 4b & 1 \\
-            c^{2} & 2c & 4c & 1 \\
-            d^{2} & 2d & 4d & 1
-            \end{array}\right|=0
-            \end{aligned}.\]
-        \item 关注到行列式中只有$(a^2, b^2, c^2, d^2)^\mathrm{T}, (a, b, c, d)^\mathrm{T}$和$(1, 1, 1, 1)^\mathrm{T}$三个线性无关列向量，
-        则一眼看出线性相关. 因此设原行列式为$|\alpha_1, \alpha_2, \alpha_3, \alpha_4|$，有$\alpha_4=\alpha_1-3\alpha_2+3\alpha_3$，因此原行列式值为0.
-    \end{enumerate}
+              \item 方法一：慢慢消去.
+                    \begin{align*}
+                        \begin{vmatrix}
+                            a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
+                            b^{2} & (b+1)^{2} & (b+2)^{2} & (b+3)^{2} \\
+                            c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
+                            d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
+                        \end{vmatrix}
+                         & = \begin{vmatrix}
+                                 a^{2} & 2a+1 & 4a+4 & 6a+9 \\
+                                 b^{2} & 2b+1 & 4b+4 & 6b+9 \\
+                                 c^{2} & 2c+1 & 4c+4 & 6c+9 \\
+                                 d^{2} & 2d+1 & 4d+4 & 6d+9
+                             \end{vmatrix} \\
+                         & = \begin{vmatrix}
+                                 a^{2} & 2a+1 & 4a+4 & 4 \\
+                                 b^{2} & 2b+1 & 4b+4 & 4 \\
+                                 c^{2} & 2c+1 & 4c+4 & 4 \\
+                                 d^{2} & 2d+1 & 4d+4 & 4
+                             \end{vmatrix}    \\
+                         & = 4\begin{vmatrix}
+                                  a^{2} & 2a & 4a & 1 \\
+                                  b^{2} & 2b & 4b & 1 \\
+                                  c^{2} & 2c & 4c & 1 \\
+                                  d^{2} & 2d & 4d & 1
+                              \end{vmatrix}=0
+                    \end{align*}
+
+              \item 关注到行列式中只有$(a^2, b^2, c^2, d^2)^\mathrm{T}, (a, b, c, d)^\mathrm{T}$和$(1, 1, 1, 1)^\mathrm{T}$三个线性无关列向量，则一眼看出线性相关. 因此设原行列式为$|\alpha_1, \alpha_2, \alpha_3, \alpha_4|$，有$\alpha_4=\alpha_1-3\alpha_2+3\alpha_3$，因此原行列式值为0.
+          \end{enumerate}
 
     \item \begin{enumerate}
-        \item \[\begin{aligned}
-        D_n&=\begin{vmatrix}
-        D_{n-1}&a\\
-        b&a_n
-        \end{vmatrix},a=(0, \cdots, 0, -a_{n-1})^\mathrm{T}, b=(1, \cdots, 1)\\
-        &=a_nD_{n-1}+a_{n-1}\begin{vmatrix}
-        D_{n-2}&1_{n-2}\\
-        1_{n-2}&1
-        \end{vmatrix}, 1_{n-2}\text{表示由}(n-2)\text{个1构成的行/列向量}\\
-        &=a_nD_{n-1}+a_{n-1}\begin{vmatrix}
-        a_1&0&0&\ldots&0&1\\
-        0&a_2&0&\ldots&0&1\\
-        0&0&a_3&\ldots&0&1\\
-        \vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
-        0&0&0&\ldots&a_{n-2}&1\\
-        0&0&0&\ldots&0&1\\
-        \end{vmatrix}(1-n\text{列用第}n\text{列减})\\
-        &=a_nD_{n-1}+\prod_{i=1}^{n-1}a_i
-        \end{aligned},\]
-        递推可得$\displaystyle D_n=\left(\prod_{k=1}^na_k\right)
-        \left(1+\sum_{i=1}^n\frac{1}{a_i}\right)$.
+              \item \begin{align*}
+                        D_n & =\begin{vmatrix}
+                                   D_{n-1} & a   \\
+                                   b       & a_n
+                               \end{vmatrix},a=(0, \ldots, 0, -a_{n-1})^\mathrm{T}, b=(1, \ldots, 1)                      \\
+                            & =a_nD_{n-1}+a_{n-1}\begin{vmatrix}
+                                                     D_{n-2} & 1_{n-2} \\
+                                                     1_{n-2} & 1
+                                                 \end{vmatrix} \quad \text{($1_{n-2}$表示由$(n-2)$个1构成的行/列向量)}    \\
+                            & =a_nD_{n-1}+a_{n-1}\begin{vmatrix}
+                                                     a_1    & 0      & 0      & \ldots & 0       & 1      \\
+                                                     0      & a_2    & 0      & \ldots & 0       & 1      \\
+                                                     0      & 0      & a_3    & \ldots & 0       & 1      \\
+                                                     \vdots & \vdots & \vdots & \ddots & \vdots  & \vdots \\
+                                                     0      & 0      & 0      & \ldots & a_{n-2} & 1      \\
+                                                     0      & 0      & 0      & \ldots & 0       & 1      \\
+                                                 \end{vmatrix} \quad \text{($1-n$列用第$n$列减)} \\
+                            & =a_nD_{n-1}+\prod_{i=1}^{n-1}a_i
+                    \end{align*}
+                    递推可得$\displaystyle D_n=\left(\prod_{k=1}^na_k\right)
+                        \left(1+\sum_{i=1}^n\frac{1}{a_i}\right)$.
 
-        \item 将 1 写成 $1+0$, 将 $D$ 硬拆成 $2^{n}$ 个行列式, 只有如下的 $n+1$ 个 行列式非 0 :
-        \[\begin{aligned}
-        D_n =&\begin{vmatrix}
-        1 & & & \\
-        1 & a_{2} & & \\
-        \vdots & & \ddots & \\
-        1 & & & a_{n}
-        \end{vmatrix}
-        +\begin{vmatrix}
-        a_{1} & 1 & \\
-        & 1 & \\
-        & \vdots & \ddots & \\
-        & 1 & & a_{n}
-        \end{vmatrix}+\cdots+\\
-        &\begin{vmatrix}
-        a_{1} & & &1 \\
-        & a_{2} & & 1 \\
-        & & \ddots & \vdots \\
-        & & & 1
-        \end{vmatrix}+\begin{vmatrix}
-        a_{1} &  \\
-        &a_{2}&\\
-        & & \ddots & \\
-        &&&a_n
-        \end{vmatrix}\\
-        =&\left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}} \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n} \frac{1}{a_{i}}\right)
-        \end{aligned}.\]
-    \end{enumerate}
+              \item 将 1 写成 $1+0$, 将 $D$ 硬拆成 $2^{n}$ 个行列式, 只有如下的 $n+1$ 个 行列式非 0：
+                    \begin{align*}
+                        D_n = & \begin{vmatrix}
+                                    1      &       &        &       \\
+                                    1      & a_{2} &        &       \\
+                                    \vdots &       & \ddots &       \\
+                                    1      &       &        & a_{n}
+                                \end{vmatrix}
+                        +\begin{vmatrix}
+                             a_{1} & 1      &                \\
+                                   & 1      &                \\
+                                   & \vdots & \ddots &       \\
+                                   & 1      &        & a_{n}
+                         \end{vmatrix}+\cdots+              \\
+                              & \begin{vmatrix}
+                                    a_{1} &       &        & 1      \\
+                                          & a_{2} &        & 1      \\
+                                          &       & \ddots & \vdots \\
+                                          &       &        & 1
+                                \end{vmatrix}
+                        +\begin{vmatrix}
+                             a_{1} &                      \\
+                                   & a_{2} &              \\
+                                   &       & \ddots &     \\
+                                   &       &        & a_n
+                         \end{vmatrix}                 \\
+                        =     & \left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}}
+                        \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n} \frac{1}{a_{i}}\right)
+                    \end{align*}
+          \end{enumerate}
 
-    \item 暴力拆成$2^n$个行列式，其中只有2个每列各不相同，其他都因为有相同列而为0. 因此有\[
-    \begin{aligned}
-    \text{原式}&=\begin{vmatrix}
-    a_{1} & a_{2} & \cdots & a_{n-1} & a_{n} \\
-    a_{1}^{2}& a_{2}^{2} & \cdots & a_{n-1}^{2} & a_{n}^{2} \\
-    \vdots & & & & \vdots \\
-    a_{1}^{n} & a_{2}^{n} & \cdots & a_{n-1}^{n} & a_{n}^{n}
-    \end{vmatrix}+
-    \begin{vmatrix}
-    a_{2} & a_{3} & \cdots & a_{n} & a_{1} \\
-    a_{2}^{2} & a_{3}^{2} & \cdots & a_{n}^{2} & a_{1}^{2} \\
-    \vdots & & & & \vdots \\
-    a_{2}^{n} & a_{3}^{n} & \cdots & a_{n}^{n} & a_{1}^{n}
-    \end{vmatrix}\\
-    &=[1+(-1)^{n-1}]\begin{vmatrix}
-    a_{1} & a_{2} & \cdots & a_{n-1} & a_{n} \\
-    a_{1}^{2}& a_{2}^{2} & \cdots & a_{n-1}^{2} & a_{n}^{2} \\
-    \vdots & & & & \vdots \\
-    a_{1}^{n} & a_{2}^{n} & \cdots & a_{n-1}^{n} & a_{n}^{n}
-    \end{vmatrix}\\&=[1+(-1)^{n-1}]\prod_{i=1}^na_i
-    \begin{vmatrix}
-    1 & 1 & \cdots & 1 & 1 \\
-    a_{1}& a_{2} & \cdots & a_{n-1} & a_{n} \\
-    \vdots & & & & \vdots \\
-    a_{1}^{n-1} & a_{2}^{n-1} & \cdots & a_{n-1}^{n-1} & a_{n}^{n-1}
-    \end{vmatrix}\\
-    &=[1+(-1)^{n-1}]\left(\prod_{i=1}^na_i\right)\prod_{1\leqslant i<j\leqslant n}(a_j-a_i)\\
-    \end{aligned}.\]
-
-    \item \begin{enumerate}
-        \item 连加法得结果为160；
-        \item 连加法得结果为$(\lambda-1)(\lambda+3)^3$；
-        \item 如果对数据敏感能看出线性相关，可以直接由$\alpha_4-\alpha_1=3(\alpha_3-\alpha_2)$证得其线性相关，则为0. 也可以使用滚动消去法，如\[
-        \begin{vmatrix}
-        1&4&9&16\\
-        3&5&7&9\\
-        5&7&9&11\\
-        7&9&11&13
-        \end{vmatrix}=\begin{vmatrix}
-        1&4&9&16\\
-        3&5&7&9\\
-        2&2&2&2\\
-        2&2&2&2
-        \end{vmatrix}=0.\]
-        \item 当然是递推法的常见形式，但是只有4阶，所以可以暴算，转化为上三角行列式，如\[
-        \begin{vmatrix}
-        3&2&0&0\\
-        0&\frac{7}{3}&2&0\\
-        0&0&\frac{15}{7}&2\\
-        0&0&0&\frac{31}{15}
-        \end{vmatrix}=31.\]
-    \end{enumerate}
+    \item 暴力拆成$2^n$个行列式，其中只有2个每列各不相同，其他都因为有相同列而为0. 因此有
+          \begin{align*}
+              \text{原式} & =\begin{vmatrix}
+                                 a_{1}     & a_{2}     & \cdots & a_{n-1}     & a_{n}     \\
+                                 a_{1}^{2} & a_{2}^{2} & \cdots & a_{n-1}^{2} & a_{n}^{2} \\
+                                 \vdots    & \vdots    & \ddots & \vdots      & \vdots    \\
+                                 a_{1}^{n} & a_{2}^{n} & \cdots & a_{n-1}^{n} & a_{n}^{n}
+                             \end{vmatrix}+
+              \begin{vmatrix}
+                  a_{2}     & a_{3}     & \cdots & a_{n}     & a_{1}     \\
+                  a_{2}^{2} & a_{3}^{2} & \cdots & a_{n}^{2} & a_{1}^{2} \\
+                  \vdots    & \vdots    & \ddots & \vdots    & \vdots    \\
+                  a_{2}^{n} & a_{3}^{n} & \cdots & a_{n}^{n} & a_{1}^{n}
+              \end{vmatrix}                                \\
+                          & =(1+(-1)^{n-1})\begin{vmatrix}
+                                               a_{1}     & a_{2}     & \cdots & a_{n-1}     & a_{n}     \\
+                                               a_{1}^{2} & a_{2}^{2} & \cdots & a_{n-1}^{2} & a_{n}^{2} \\
+                                               \vdots    & \vdots    & \ddots & \vdots      & \vdots    \\
+                                               a_{1}^{n} & a_{2}^{n} & \cdots & a_{n-1}^{n} & a_{n}^{n}
+                                           \end{vmatrix} \\
+                          & =(1+(-1)^{n-1})\prod_{i=1}^na_i
+              \begin{vmatrix}
+                  1           & 1           & \cdots & 1             & 1           \\
+                  a_{1}       & a_{2}       & \cdots & a_{n-1}       & a_{n}       \\
+                  \vdots      & \vdots      & \ddots & \vdots        & \vdots      \\
+                  a_{1}^{n-1} & a_{2}^{n-1} & \cdots & a_{n-1}^{n-1} & a_{n}^{n-1}
+              \end{vmatrix}                      \\
+                          & =(1+(-1)^{n-1})\left(\prod_{i=1}^na_i\right)\prod_{1\leqslant i<j\leqslant n}(a_j-a_i)      \\
+          \end{align*}
 
     \item \begin{enumerate}
-        \item 行列式中2比较多，用全是2的第二行去消，然后按第2行展开.\[D=\begin{vmatrix}
-        -1 & 0 & \cdots & 0 & 0 \\
-        2 & 2 & \cdots & 2 & 2 \\
-        \vdots & & & & \vdots \\
-        0 & 0 & \cdots & n-3 & 0 \\
-        0 & 0 & \cdots & 0 & n-2
-        \end{vmatrix}=
-        =2\cdot(-1)\cdot(n-2)!=-2(n-2)!.\]
+              \item 连加法得结果为160；
 
-        \item \begin{enumerate}
-            \item 法一：考虑滚动消去法，有
-            \[\begin{aligned}
-            D&=\begin{vmatrix}
-            1 & 2 & 3 &\cdots & n-1 & n \\
-            1 & 1 & 1 &\cdots & 1 & 1-n \\
-            1 & 1 & 1 &\cdots & 1-n & 1 \\
-            \vdots & & & & & \vdots \\
-            1 & 1 & 1-n &\cdots & 1 & 1\\
-            1 & 1-n & 1 &\cdots & 1 & 1
-            \end{vmatrix}\\&=\begin{vmatrix}
-            0 & n+1 & 2 &\cdots & n-2 & n-1 \\
-            0 & n & 0 &\cdots & 0 & -n \\
-            0 & n & 0 &\cdots & -n & 0 \\
-            \vdots & & & & & \vdots \\
-            0 & n & -n &\cdots & 0 & 0\\
-            1 & 1-n & 1 &\cdots & 1 & 1
-            \end{vmatrix}\\
-            &=(-1)^{n+1}\begin{vmatrix}
-            n+1 & 2 &\cdots & n-2 & n-1 \\
-            n & 0 &\cdots & 0 & -n \\
-            n & 0 &\cdots & -n & 0 \\
-            \vdots & & & & \vdots \\
-            n & -n &\cdots & 0 & 0
-            \end{vmatrix}\\
-            &=(-1)^{n+1}(-1)^{\frac{(n-2)(n-3)}{2}}
-            \begin{vmatrix}
-            n+1 & n-1 &\cdots & 3 & 2 \\
-            n & -n &\cdots & 0 & 0 \\
-            n & 0 &\cdots & 0 & 0 \\
-            \vdots & & & & \vdots \\
-            n & 0 &\cdots & 0 & -n
-            \end{vmatrix}\\
-            &=(-1)^{\frac{n^2-3n+8}{2}}\begin{vmatrix}
-            \frac{n(n+1)}{2} & n-1 &\cdots & 3 & 2 \\
-            0 & -n &\cdots & 0 & 0 \\
-            0 & 0 &\cdots & 0 & 0 \\
-            \vdots & & & & \vdots \\
-            0 & 0 &\cdots & 0 & -n
-            \end{vmatrix}=(-1)^{\frac{n^2-n+12}{2}}\frac{n^{n-1}(n+1)}{2}
-            \end{aligned}.\]
+              \item 连加法得结果为$(\lambda-1)(\lambda+3)^3$；
 
-            \item 法二：考虑连加法. 将第 $2,3, \cdots, n$ 列都加到第 1 列, 提出公因子 $\frac{1}{2} n(n+1)$, 再依次将第 $n-1$ 行乘 $(-1)$ 加到第 $n$ 行, $\cdots$, 第 2 行乘 $(-1)$ 加到第 3 行, 第 1 行乘 $(-1)$ 加到第 2 行, 然后对第 1 列展开, 得到一个 $n-1$ 阶行列式, 它的副对角元为 $1-$ $n$, 其余元素均为 1 . 再把它的各列加到第 1 列, 并把它的第 1 行乘 $(-1)$ 加到其 余各行, 得
-            \[\begin{aligned}
-            D &=\frac{n(n+1)}{2}\left|\begin{array}{ccccc}
-            1 & 2 & \cdots & n-1 & n \\
-            1 & 3 & \cdots & n & 1 \\
-            1 & 4 & \cdots & 1 & 2 \\
-            \vdots & \vdots & & \vdots & \vdots \\
-            1 & 1 & \cdots & n-2 & n-1
-            \end{array}\right| \\
-            &=\frac{n(n+1)}{2}\left|\begin{array}{ccccc}
-            1 & 2 & 3 & \cdots & n \\
-            0 & 1 & 1 & \cdots & 1-n \\
-            \vdots & \vdots & \vdots & & \vdots \\
-            0 & 1 & 1-n & \cdots & 1 \\
-            0 & 1-n & 1 & \cdots & 1
-            \end{array}\right|_{n} \\
-            &=\frac{n(n+1)}{2}
-            \begin{vmatrix}
-            1 & 1 & \cdots & 1 & 1-n \\
-            \vdots & \vdots & & \vdots & 1 & \vdots \\
-            1 & 1-n & \cdots & 1 & 1 \\
-            1-n & 1 & \cdots & 1 & 1
-            \end{vmatrix}
-            \end{aligned},\]
-            \[
-            =\frac{n(n+1)}{2}\left|\begin{array}{ccccc}
-            -1 & 1 & \cdots & 1 & 1-n \\
-            0 & 0 & \cdots & -n & n \\
-            \vdots & \vdots & & \vdots & \vdots \\
-            0 & -n & \cdots & 0 & n \\
-            0 & 0 & \cdots & 0 & n
-            \end{array}\right|_{n-1},\]
-            将上式先对第 1 列展开, 得到一个 $n-2$ 阶行列式, 再将它对最后一行展开, 得
-            \[\begin{aligned}
-            D &=\frac{-n(n+1)}{2} n\left|\begin{array}{ccccc}
-            0 & 0 & \cdots & 0 & -n \\
-            0 & 0 & \cdots & -n & 0 \\
-            \vdots & \vdots & & \vdots & \vdots \\
-            0 & -n & \cdots & 0 & 0 \\
-            -n & 0 & \cdots & 0 & 0
-            \end{array}\right|_{n-3} \\
-            &=-\frac{n^{2}(n+1)}{2}(-1)^{\frac{(n-3)(n-4)}{2}}(-n)^{n-3} \\
-            &=(-1)^{\frac{n(n-1)}{2} }\frac{(n+1) n^{n-1}}{2}
-            \end{aligned}.\]
-            事实上，两种方法得到的答案是等价的.
-        \end{enumerate}
-    \end{enumerate}
+              \item 如果对数据敏感能看出线性相关，可以直接由$\alpha_4-\alpha_1=3(\alpha_3-\alpha_2)$证得其线性相关，则为0. 也可以使用滚动消去法，如\[
+                        \begin{vmatrix}
+                            1 & 4 & 9  & 16 \\
+                            3 & 5 & 7  & 9  \\
+                            5 & 7 & 9  & 11 \\
+                            7 & 9 & 11 & 13
+                        \end{vmatrix}=\begin{vmatrix}
+                            1 & 4 & 9 & 16 \\
+                            3 & 5 & 7 & 9  \\
+                            2 & 2 & 2 & 2  \\
+                            2 & 2 & 2 & 2
+                        \end{vmatrix}=0.\]
 
-    \item 若 $b=c$, 则每行行和都相等, 考虑连加法, 把第 $2,3, \cdots, n$ 列都加到第 1 列, 提出公 因子 $a+(n-1) c$, 再将第 1 行乘 $(-1)$ 加到其余各行, 得到上三角行列式. 于是
-    \[\begin{aligned}
-    D_{n} &=[a+(n-1) c]\left|\begin{array}{ccccc}
-    1 & c & c & \cdots & c \\
-    1 & a & c & \cdots & c \\
-    1 & c & a & \cdots & c \\
-    \vdots & \vdots & \vdots & & \vdots \\
-    1 & c & c & \cdots & a
-    \end{array}\right| \\
-    &=[a+(n-1) c]\left|\begin{array}{ccccc}
-    1 & c & c & \cdots & c \\
-    0 & a-c & 0 & \cdots & 0 \\
-    0 & 0 & a-c & \cdots & 0 \\
-    \vdots & \vdots & \vdots & & \vdots \\
-    0 & 0 & 0 & \cdots & a-c
-    \end{array}\right| \\
-    &=[a+(n-1) c](a-c)^{n-1} .
-    \end{aligned},\]
-    若 $b \neq c$, 第 $i$ 行乘 $(-1)$ 加到第 $i-1$ 行 $(i$ 依次取 $n, n-1, \cdots, 2)$, 再对第 1 列 展开,
-    \[D_{n}=\left|\begin{array}{ccccc}
-    a-b & c-a & 0 & \cdots & 0 \\
-    0 & a-b & c-a & \cdots & 0 \\
-    \vdots & \vdots & \vdots & & \vdots \\
-    0 & 0 & 0 & \cdots & c-a \\
-    b & b & b & \cdots & a
-    \end{array}\right|=(a-b)D_{n-1}+(-1)^{n+1}b(c-a)^{n-1},\]
-    有了递推式，但是递推式中有$(-1)^{n+1}$，递推比较麻烦可能还需要处理. 如果用数归证明的话应该可以直接下手了，但是有更聪明的办法:取转置，有$D_n^\mathrm{T}=D_n$，同理有$D_n=(a-c)D_{n-1}+(-1)^{n+1}c(b-a)^{n-1}$.
+              \item 当然是递推法的常见形式，但是只有4阶，所以可以暴算，转化为上三角行列式，如\[
+                        \begin{vmatrix}
+                            3 & 2           & 0            & 0             \\
+                            0 & \frac{7}{3} & 2            & 0             \\
+                            0 & 0           & \frac{15}{7} & 2             \\
+                            0 & 0           & 0            & \frac{31}{15}
+                        \end{vmatrix}=31.\]
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item 行列式中2比较多，用全是2的第二行去消，然后按第2行展开.
+                    \[D=\begin{vmatrix}
+                            -1     & 0      & \cdots & 0      & 0      \\
+                            2      & 2      & \cdots & 2      & 2      \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            0      & 0      & \cdots & n-3    & 0      \\
+                            0      & 0      & \cdots & 0      & n-2
+                        \end{vmatrix}=2\cdot(-1)\cdot(n-2)!=-2(n-2)!.\]
+
+              \item \begin{enumerate}
+                        \item 方法一：考虑滚动消去法，有
+                              \begin{align*}
+                                  D & =\begin{vmatrix}
+                                           1      & 2      & 3      & \cdots & n-1    & n      \\
+                                           1      & 1      & 1      & \cdots & 1      & 1-n    \\
+                                           1      & 1      & 1      & \cdots & 1-n    & 1      \\
+                                           \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                           1      & 1      & 1-n    & \cdots & 1      & 1      \\
+                                           1      & 1-n    & 1      & \cdots & 1      & 1
+                                       \end{vmatrix}                            \\&=\begin{vmatrix}
+                                      0      & n+1    & 2      & \cdots & n-2    & n-1    \\
+                                      0      & n      & 0      & \cdots & 0      & -n     \\
+                                      0      & n      & 0      & \cdots & -n     & 0      \\
+                                      \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                      0      & n      & -n     & \cdots & 0      & 0      \\
+                                      1      & 1-n    & 1      & \cdots & 1      & 1
+                                  \end{vmatrix}\\
+                                    & =(-1)^{n+1}\begin{vmatrix}
+                                                     n+1    & 2      & \cdots & n-2    & n-1    \\
+                                                     n      & 0      & \cdots & 0      & -n     \\
+                                                     n      & 0      & \cdots & -n     & 0      \\
+                                                     \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                                     n      & -n     & \cdots & 0      & 0
+                                                 \end{vmatrix}                          \\
+                                    & =(-1)^{n+1}(-1)^{\frac{(n-2)(n-3)}{2}}
+                                  \begin{vmatrix}
+                                      n+1    & n-1    & \cdots & 3      & 2      \\
+                                      n      & -n     & \cdots & 0      & 0      \\
+                                      n      & 0      & \cdots & 0      & 0      \\
+                                      \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                      n      & 0      & \cdots & 0      & -n
+                                  \end{vmatrix}                                         \\
+                                    & =(-1)^{\frac{n^2-3n+8}{2}}\begin{vmatrix}
+                                                                    \frac{n(n+1)}{2} & n-1    & \cdots & 3      & 2      \\
+                                                                    0                & -n     & \cdots & 0      & 0      \\
+                                                                    0                & 0      & \cdots & 0      & 0      \\
+                                                                    \vdots           & \vdots & \ddots & \vdots & \vdots \\
+                                                                    0                & 0      & \cdots & 0      & -n
+                                                                \end{vmatrix}=(-1)^{\frac{n^2-n+12}{2}}\frac{n^{n-1}(n+1)}{2}
+                              \end{align*}
+
+                        \item 方法二：考虑连加法. 将第 $2,3, \ldots, n$ 列都加到第 1 列, 提出公因子 $\dfrac{1}{2} n(n+1)$, 再依次将第 $n-1$ 行乘 $(-1)$ 加到第 $n$ 行, $\cdots$, 第 2 行乘 $(-1)$ 加到第 3 行, 第 1 行乘 $(-1)$ 加到第 2 行, 然后对第 1 列展开, 得到一个 $n-1$ 阶行列式, 它的副对角元为 $1-$ $n$, 其余元素均为 1 . 再把它的各列加到第 1 列, 并把它的第 1 行乘 $(-1)$ 加到其余各行, 得
+                              \begin{align*}
+                                  D & =\frac{n(n+1)}{2}\begin{vmatrix}
+                                                           1      & 2      & \cdots & n-1    & n      \\
+                                                           1      & 3      & \cdots & n      & 1      \\
+                                                           1      & 4      & \cdots & 1      & 2      \\
+                                                           \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                                           1      & 1      & \cdots & n-2    & n-1
+                                                       \end{vmatrix} \\
+                                    & =\frac{n(n+1)}{2}\begin{vmatrix}
+                                                           1      & 2      & 3      & \cdots & n      \\
+                                                           0      & 1      & 1      & \cdots & 1-n    \\
+                                                           \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                                           0      & 1      & 1-n    & \cdots & 1      \\
+                                                           0      & 1-n    & 1      & \cdots & 1
+                                                       \end{vmatrix}_{n} \\
+                                    & =\frac{n(n+1)}{2}
+                                  \begin{vmatrix}
+                                      1      & 1      & \cdots & 1      & 1-n \\
+                                      \vdots & \vdots & \ddots & \vdots & 1   \\
+                                      1      & 1-n    & \cdots & 1      & 1   \\
+                                      1-n    & 1      & \cdots & 1      & 1
+                                  \end{vmatrix}                         \\
+                                    & =\frac{n(n+1)}{2}\begin{vmatrix}
+                                                           -1     & 1      & \cdots & 1      & 1-n    \\
+                                                           0      & 0      & \cdots & -n     & n      \\
+                                                           \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                                           0      & -n     & \cdots & 0      & n      \\
+                                                           0      & 0      & \cdots & 0      & n
+                                                       \end{vmatrix}_{n-1}
+                              \end{align*}
+                              将上式先对第 1 列展开, 得到一个 $n-2$ 阶行列式, 再将它对最后一行展开, 得
+                              \begin{align*}
+                                  D & =\frac{-n(n+1)}{2} n
+                                  \begin{vmatrix}
+                                      0      & 0      & \cdots & 0      & -n     \\
+                                      0      & 0      & \cdots & -n     & 0      \\
+                                      \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                      0      & -n     & \cdots & 0      & 0      \\
+                                      -n     & 0      & \cdots & 0      & 0
+                                  \end{vmatrix}_{n-3} \\
+                                    & =-\frac{n^{2}(n+1)}{2}(-1)^{\frac{(n-3)(n-4)}{2}}(-n)^{n-3} \\
+                                    & =(-1)^{\frac{n(n-1)}{2} }\frac{(n+1) n^{n-1}}{2}
+                              \end{align*}
+                              事实上，两种方法得到的答案是等价的.
+                    \end{enumerate}
+          \end{enumerate}
+
+    \item 若 $b=c$, 则每行行和都相等, 考虑连加法, 把第 $2,3, \ldots, n$ 列都加到第 1 列, 提出公因子 $a+(n-1) c$, 再将第 1 行乘 $(-1)$ 加到其余各行, 得到上三角行列式. 于是
+          \begin{align*}
+              D_{n} & =(a+(n-1) c)\begin{vmatrix}
+                                      1      & c      & c      & \cdots & c      \\
+                                      1      & a      & c      & \cdots & c      \\
+                                      1      & c      & a      & \cdots & c      \\
+                                      \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                      1      & c      & c      & \cdots & a
+                                  \end{vmatrix} \\
+                    & =(a+(n-1) c)\begin{vmatrix}
+                                      1      & c      & c      & \cdots & c      \\
+                                      0      & a-c    & 0      & \cdots & 0      \\
+                                      0      & 0      & a-c    & \cdots & 0      \\
+                                      \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                      0      & 0      & 0      & \cdots & a-c
+                                  \end{vmatrix} \\
+                    & =(a+(n-1) c)(a-c)^{n-1} .
+          \end{align*}
+          若 $b \neq c$, 第 $i$ 行乘 $(-1)$ 加到第 $i-1$ 行（$i$ 依次取 $n, n-1, \ldots, 2$），再对第 1 列展开,
+          \[D_{n}=\begin{vmatrix}
+                  a-b    & c-a    & 0      & \cdots & 0      \\
+                  0      & a-b    & c-a    & \cdots & 0      \\
+                  \vdots & \vdots & \vdots & \ddots & \vdots \\
+                  0      & 0      & 0      & \cdots & c-a    \\
+                  b      & b      & b      & \cdots & a
+              \end{vmatrix}=(a-b)D_{n-1}+(-1)^{n+1}b(c-a)^{n-1},\]
+          有了递推式，但是递推式中有$(-1)^{n+1}$，递推比较麻烦可能还需要处理. 如果用数归证明的话应该可以直接下手了，但是有更聪明的办法：取转置，有$D_n^\mathrm{T}=D_n$，同理有$D_n=(a-c)D_{n-1}+(-1)^{n+1}c(b-a)^{n-1}$.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
     \item \begin{enumerate}
-        \item 可以硬拆成8个行列式，其中只有2个非零，则得到
-        \[D=\begin{vmatrix}
-            ax&ay&az\\
-            ay&az&ax\\
-            az&ax&ay
-            \end{vmatrix}+\begin{vmatrix}
-            by&bz&bx\\
-            bz&bx&by\\
-            bx&by&bz\\
-            \end{vmatrix}=(a+b)\begin{vmatrix}
-            x&y&z\\
-            y&z&x\\
-            z&x&y\\
-            \end{vmatrix}=(a^3+b^3)(3xyz-\sum x^2),\]
-        另解：分解成两个矩阵相乘再各自求行列式.这其实是看出这是一种线性变换的本质之后的做法:
-        \[D=\begin{vmatrix}
-            \begin{pmatrix}
-            a&b&0\\
-            0&a&b\\
-            b&0&a\\
-            \end{pmatrix}
-            \begin{pmatrix}
-            x&y&z\\
-            y&z&x\\
-            z&x&y\\
-            \end{pmatrix}
-            \end{vmatrix}.\]
-        \item 其实直接用三阶行列式的公式也不错，这里介绍基于硬拆的方法
-        \[
-        \begin{aligned}
-        D&=x\begin{vmatrix}
-        x&xy&xz\\
-        y&y^2+1&yz\\
-        z&yz&z^2+1
-        \end{vmatrix}+\begin{vmatrix}
-        1&xy&xz\\
-        0&y^2+1&yz\\
-        0&yz&z^2+1
-        \end{vmatrix}\\
-        &=x\begin{vmatrix}
-        x&0&0\\
-        y&1&0\\
-        z&0&1
-        \end{vmatrix}+\begin{vmatrix}
-        y^2+1&yz\\
-        yz&z^2+1
-        \end{vmatrix}
-        =\sum x^2+1
-        \end{aligned}.\]
-    \end{enumerate}
+              \item 可以硬拆成8个行列式，其中只有2个非零，则得到
+                    \[D=\begin{vmatrix}
+                            ax & ay & az \\
+                            ay & az & ax \\
+                            az & ax & ay
+                        \end{vmatrix}+\begin{vmatrix}
+                            by & bz & bx \\
+                            bz & bx & by \\
+                            bx & by & bz \\
+                        \end{vmatrix}=(a+b)\begin{vmatrix}
+                            x & y & z \\
+                            y & z & x \\
+                            z & x & y \\
+                        \end{vmatrix}=(a^3+b^3)(3xyz-\sum x^2),\]
+                    另解：分解成两个矩阵相乘再各自求行列式. 这其实是看出这是一种线性变换的本质之后的做法：
+                    \[D=\begin{vmatrix}
+                            \begin{pmatrix}
+                                a & b & 0 \\
+                                0 & a & b \\
+                                b & 0 & a \\
+                            \end{pmatrix}
+                            \begin{pmatrix}
+                                x & y & z \\
+                                y & z & x \\
+                                z & x & y \\
+                            \end{pmatrix}
+                        \end{vmatrix}.\]
+
+              \item 其实直接用三阶行列式的公式也不错，这里介绍基于硬拆的方法
+                    \begin{align*}
+                        D & =x\begin{vmatrix}
+                                  x & xy    & xz    \\
+                                  y & y^2+1 & yz    \\
+                                  z & yz    & z^2+1
+                              \end{vmatrix}+\begin{vmatrix}
+                                                1 & xy    & xz    \\
+                                                0 & y^2+1 & yz    \\
+                                                0 & yz    & z^2+1
+                                            \end{vmatrix} \\
+                          & =x\begin{vmatrix}
+                                  x & 0 & 0 \\
+                                  y & 1 & 0 \\
+                                  z & 0 & 1
+                              \end{vmatrix}+\begin{vmatrix}
+                                                y^2+1 & yz    \\
+                                                yz    & z^2+1
+                                            \end{vmatrix}
+                        =\sum x^2+1
+                    \end{align*}
+          \end{enumerate}
 
     \item 利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$
-    \[\begin{aligned}
-    |2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|
-    &=\begin{vmatrix}
-    2E-\begin{pmatrix}
-    \alpha_1^\mathrm{T}&\alpha_2^\mathrm{T}
-    \end{pmatrix}\begin{pmatrix}
-    \beta_1\\\beta_2
-    \end{pmatrix}
-    \end{vmatrix}
-    =2^{n-2}\begin{vmatrix}
-    2E-\begin{pmatrix}
-    \beta_1\\\beta_2
-    \end{pmatrix}\begin{pmatrix}
-    \alpha_1^\mathrm{T}&\alpha_2^\mathrm{T}
-    \end{pmatrix}
-    \end{vmatrix}\\
-    &=2^{n-2}\begin{vmatrix}
-    2-\beta_1\alpha_1^\mathrm{T}&-\beta_1\alpha_2^\mathrm{T}\\
-    -\beta_2\alpha_1^\mathrm{T}&2-\beta_2\alpha_2^\mathrm{T}
-    \end{vmatrix}\\
-    &=2^{n-2}
-    \left[\left(2-\sum_{i=1}^na_ib_i\right)
-    \left(2-\sum_{i=1}^nc_id_i\right)
-    -\left(\sum_{i=1}^na_id_i\right)
-    \left(\sum_{i=1}^nb_ic_i\right)\right]
-    \end{aligned}.
-    \]
+          \begin{align*}
+              |2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|
+               & =\begin{vmatrix}
+                      2E-\begin{pmatrix}
+                         \alpha_1^\mathrm{T} & \alpha_2^\mathrm{T}
+                     \end{pmatrix}\begin{pmatrix}
+                                      \beta_1 \\\beta_2
+                                  \end{pmatrix}
+                  \end{vmatrix}
+              =2^{n-2}\begin{vmatrix}
+                          2E-\begin{pmatrix}
+                         \beta_1 \\\beta_2
+                     \end{pmatrix}\begin{pmatrix}
+                                      \alpha_1^\mathrm{T} & \alpha_2^\mathrm{T}
+                                  \end{pmatrix}
+                      \end{vmatrix}         \\
+               & =2^{n-2}\begin{vmatrix}
+                             2-\beta_1\alpha_1^\mathrm{T} & -\beta_1\alpha_2^\mathrm{T}  \\
+                             -\beta_2\alpha_1^\mathrm{T}  & 2-\beta_2\alpha_2^\mathrm{T}
+                         \end{vmatrix} \\
+               & =2^{n-2}
+              \left(\left(2-\sum_{i=1}^na_ib_i\right)
+              \left(2-\sum_{i=1}^nc_id_i\right)
+              -\left(\sum_{i=1}^na_id_i\right)
+              \left(\sum_{i=1}^nb_ic_i\right)\right)
+          \end{align*}
 
     \item 由条件有$|E+A|=|AA^\mathrm{T}+A|=|A(A^\mathrm{T}+E)|=|A||A^\mathrm{T}+E|=-|A^\mathrm{T}+E|$，然而，由$(E+A)^\mathrm{T}=E+A^\mathrm{T}$，有$|E+A|=|A^\mathrm{T}+E|$，综上两式就有$|E+A|=0$.
 \end{enumerate}
