@@ -1,3 +1,4 @@
+\phantomsection
 \section*{4 线性空间的运算}
 \addcontentsline{toc}{section}{4 线性空间的运算}
 
@@ -6,126 +7,233 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item \begin{enumerate}
-        \item 显然任意$\alpha\in v,\beta \in w$, 有 $\alpha,\beta\in \mathbb R^4$ 成立，因此只需证明 $v,w$ 封闭即可.由于 $v,w$ 内向量的约束条件都是齐次线性方程，封闭性自然满足，则 $v,w$ 都是 $\mathbb R^4$ 的子空间.
-        \item \begin{enumerate}
-            \item $V\cap W=\{(a_1,a_2,a_3,a_4)|a_1+a_2+a_3+a_4=0,a_1-a_2-a_3+a_4=0,a_1+a_2+a_3-a_4=0\}$ 或者是 $\{(0,a,-a,0)|\alpha\in \mathbb R\}$.
-            \item 由维数公式：$\dim V+\dim W=\dim (V\cap W)+\dim (V+W)$，易得$\dim V=3，\dim W=2，\dim (V\cap W)=1$，因此$\dim (V+W)=4$，则有$V+W=\mathbb R^4$.
-            \item 先得到$W$的基：列出齐次线性方程组：
-            \[\begin{cases}a_1-a_2-a_3+a_4=0\\a_1+a_2+a_3-a_4=0\end{cases},\]
-            高斯消元得到行阶梯矩阵
-            \[\begin{pmatrix}1&0&0&0\\0&1&1&-1\end{pmatrix},\]
-            秩为$2$，基分别为$\beta_1= (0,-1,1,0)$，$\beta_2= (0,1,0,1)$，则$W$的补空间维数是$\dim \mathbb R^4-\dim W=2$. 利用基的扩张求其补空间的基. 也即求$\beta_1,\beta_2,e_1，e_2，e_3,e_4$的极大无关组，其中$e_1,e_2,e_3,e_4$是自然基.
-            \[\begin{pmatrix}0&0&1&0&0&0\\-1&1&0&1&0&0\\1&0&0&0&1&0\\0&1&0&0&0&1\end{pmatrix}\rightarrow\begin{pmatrix}1&0&0&0&1&0\\0&1&0&1&1&0\\0&0&1&0&0&0\\0&0&0&1&1&-1\end{pmatrix},\]
-            则$\beta_1,\beta_2,e_1,e_2$即是扩张后的基，因此$W$的补空间的一组为$\{e_1,e_2\}$.
-        \end{enumerate}
-    \end{enumerate}
+              \item 显然任意$\alpha\in v,\beta \in w$, 有 $\alpha,\beta\in \mathbf{R}^4$ 成立，因此只需证明 $v,w$ 封闭即可. 由于 $v,w$ 内向量的约束条件都是齐次线性方程，封闭性自然满足，则 $v,w$ 都是 $\mathbf{R}^4$ 的子空间.
+
+              \item \begin{enumerate}
+                        \item $V\cap W=\{(a_1,a_2,a_3,a_4) \mid a_1+a_2+a_3+a_4=0,a_1-a_2-a_3+a_4=0,a_1+a_2+a_3-a_4=0\}$ 或者是 $\{(0,a,-a,0) \mid \alpha\in \mathbf{R}\}$.
+
+                        \item 由维数公式：$\dim V+\dim W=\dim (V\cap W)+\dim (V+W)$，易得$\dim V=3,\enspace \dim W=2,\enspace \dim (V\cap W)=1$，因此$\dim (V+W)=4$，则有$V+W=\mathbf{R}^4$.
+
+                        \item 先得到$W$的基：列出齐次线性方程组：
+                              \[\begin{cases}
+                                      a_1-a_2-a_3+a_4=0 \\
+                                      a_1+a_2+a_3-a_4=0\end{cases}
+                              \]
+                              高斯消元得到行阶梯矩阵
+                              \[\begin{pmatrix}
+                                      1 & 0 & 0 & 0  \\
+                                      0 & 1 & 1 & -1
+                                  \end{pmatrix}\]
+                              秩为2，基分别为$\beta_1= (0,-1,1,0)$，$\beta_2= (0,1,0,1)$，则$W$的补空间维数是$\dim \mathbf{R}^4 - \dim W=2$.
+
+                              利用基的扩张求其补空间的基. 也即求$\beta_1,\beta_2,e_1,e_2,e_3,e_4$的极大无关组，其中$e_1,e_2,e_3,e_4$是自然基.
+                              \[\begin{pmatrix}
+                                      0  & 0 & 1 & 0 & 0 & 0 \\
+                                      -1 & 1 & 0 & 1 & 0 & 0 \\
+                                      1  & 0 & 0 & 0 & 1 & 0 \\
+                                      0  & 1 & 0 & 0 & 0 & 1
+                                  \end{pmatrix}\rightarrow
+                                  \begin{pmatrix}1 & 0 & 0 & 0 & 1 & 0  \\
+               0 & 1 & 0 & 1 & 1 & 0  \\
+               0 & 0 & 1 & 0 & 0 & 0  \\
+               0 & 0 & 0 & 1 & 1 & -1
+                                  \end{pmatrix}\]
+                              则$\beta_1,\beta_2,e_1,e_2$即是扩张后的基，因此$W$的补空间的一组基为$e_1,e_2$.
+                    \end{enumerate}
+          \end{enumerate}
+
     \item \begin{enumerate}
-        \item 先将各向量用坐标表示：
-        \[f_1=(-1,1,0,0),f_2=(1,0,-1,0),f_3=(1,0,0,-1),g_1=(0,1,-1,0),g_2=(0,1,0,1),\]
-        \[V_1+V_2=\spa(f_1,f_2,f_3,g_1,g_2),\]
-        只需求 $f_1,f_2,f_3,g_1,g_2$ 的极大无关组即可.
-        \[\begin{pmatrix}-1&1&1&0&0\\1&0&0&1&1\\0&-1&0&-1&0\\0&0&-1&0&1\end{pmatrix}\rightarrow\begin{pmatrix}1&-1&-1&0&0\\0&1&1&1&1\\0&0&1&0&1\\0&0&0&0&1\end{pmatrix},\]
-        则极大无关组为 $f_1,f_2,f_3,g_2$，因此 $V_1+V_2$ 的基为 $f_1,f_2,f_3,g_2$，维数为$4$.
-        \item 易得$\dim V_1=3$，$\dim V_2=2$. 则$\dim (V_1\cap V_2)= \dim V_1+\dim V_2-\dim (V_1+V_2)=1$. 只需找到属于$V_1\cap V_2$的一个向量，其就是$V_1\cap V_2$的基.
-        \[U=\lambda_1f_1+\lambda_2f_2+\lambda_3f_3= \mu_1g_1+\mu_2g_2,\]
-        已知$g_1$可被$f_1,f_2,f_3,g_2$表示，则只需取$\mu_1=1$，再求解其它系数即解得：
-        \[\lambda_1=1,\lambda_2=1,\lambda_3=0,\mu_2=0,\]
-        因此$u=g_1=(0,1,-1,0)$或者$x-x^2$是$V_1\cap V_2$的一组基.
-        \item 只需求$g_1,g_2,e_1,e_2,e_3,e_4$的极大无关组即可.
-        \[\begin{pmatrix}0&0&1&0&0&0\\1&1&0&1&0&0\\-1&0&0&0&1&0\\0&1&0&0&0&1\end{pmatrix}\rightarrow\begin{pmatrix}1&1&0&1&0&0\\0&1&0&1&1&0\\0&0&1&0&0&0\\0&0&0&1&1&-1\end{pmatrix},\]
-        则$g_1,g_2,e_1,e_2$是一组极大无关组.
-        $V_2$在$\mathbb R[x]_4$的补是$\spa(e_1,e_2)$
-        其中$e_1=1,e_2=x$.
-    \end{enumerate}
+              \item 先将各向量用坐标表示：
+                    \begin{gather*}
+                        f_1=(-1,1,0,0),f_2=(1,0,-1,0),f_3=(1,0,0,-1) \\
+                        g_1=(0,1,-1,0),g_2=(0,1,0,1) \\
+                        V_1+V_2=\spa(f_1,f_2,f_3,g_1,g_2)
+                    \end{gather*}
+                    只需求 $f_1,f_2,f_3,g_1,g_2$ 的极大线性无关组即可.
+                    \[\begin{pmatrix}
+                            -1 & 1  & 1  & 0  & 0 \\
+                            1  & 0  & 0  & 1  & 1 \\
+                            0  & -1 & 0  & -1 & 0 \\
+                            0  & 0  & -1 & 0  & 1
+                        \end{pmatrix}\rightarrow
+                        \begin{pmatrix}1 & -1 & -1 & 0 & 0 \\
+               0 & 1  & 1  & 1 & 1 \\
+               0 & 0  & 1  & 0 & 1 \\
+               0 & 0  & 0  & 0 & 1
+                        \end{pmatrix}\]
+                    则极大线性无关组为 $f_1,f_2,f_3,g_2$，因此 $V_1+V_2$ 的基为 $f_1,f_2,f_3,g_2$，维数为4.
+
+              \item 易得$\dim V_1=3,\enspace \dim V_2=2$. 则$\dim (V_1\cap V_2)= \dim V_1+\dim V_2-\dim (V_1+V_2)=1$. 只需找到属于$V_1\cap V_2$的一个向量，其就是$V_1\cap V_2$的基.
+                    \[U=\lambda_1f_1+\lambda_2f_2+\lambda_3f_3= \mu_1g_1+\mu_2g_2,\]
+                    已知$g_1$可被$f_1,f_2,f_3,g_2$表示，则只需取$\mu_1=1$，再求解其它系数即解得：
+                    \[\lambda_1=1,\lambda_2=1,\lambda_3=0,\mu_2=0,\]
+                    因此$u=g_1=(0,1,-1,0)$或者$x-x^2$是$V_1\cap V_2$的一组基.
+
+              \item 只需求$g_1,g_2,e_1,e_2,e_3,e_4$的极大无关组即可.
+                    \[\begin{pmatrix}
+                            0  & 0 & 1 & 0 & 0 & 0 \\
+                            1  & 1 & 0 & 1 & 0 & 0 \\
+                            -1 & 0 & 0 & 0 & 1 & 0 \\
+                            0  & 1 & 0 & 0 & 0 & 1\end{pmatrix}\rightarrow
+                        \begin{pmatrix}
+                            1 & 1 & 0 & 1 & 0 & 0  \\
+                            0 & 1 & 0 & 1 & 1 & 0  \\
+                            0 & 0 & 1 & 0 & 0 & 0  \\
+                            0 & 0 & 0 & 1 & 1 & -1\end{pmatrix}\]
+                    则$g_1,g_2,e_1,e_2$是一组极大无关组. $V_2$在$\mathbf{R}[x]_4$的补是$\spa(e_1,e_2)$其中$e_1=1,e_2=x$.
+          \end{enumerate}
+
     \item 设$W=V_1+V_2$. 对于任意向量$\alpha$属于$V_1\cap V_2$，有条件：
-	\[\begin{cases}\alpha_1+\cdots +\alpha_n=0\\
-	\alpha_1= \cdots  =\alpha_n \end{cases}\Rightarrow \alpha_1= \cdots  =\alpha_n =0,\]
-	即$\alpha=0$. 由直和条件可知，$W=V_1\oplus V_2$. 下证$W=F^n$. 只需证明维数相同即可求解$V_1$的维数，求方程组的解可得：
-	\[u_1=(-1,1,0,\cdots ,0),u_2=(-1,0,1,\cdots,0),u_{n-1}=(-1,0,\cdots ,0,1),\]
-	是$V_1$的一组基，则$\dim V_1=n-1$. 求解$V_2$的维数：$V= (1,1,\cdots ,1)$是$V_2$的基，有$\dim V_2=1$. 综上，由于$W=V_1\oplus V_2$，因此$\dim W=\dim V_1+\dim V_2$. 所以$\dim W=n=\dim F^n$，且$W\subset F^n$，则$V_1\oplus V_2=W=F^n$，得证.
+          \[\begin{cases}
+                  \alpha_1+\cdots +\alpha_n=0 \\
+                  \alpha_1= \cdots  =\alpha_n
+              \end{cases}\implies \alpha_1 = \cdots = \alpha_n = 0,\]
+          即$\alpha=0$. 由直和条件可知，$W=V_1\oplus V_2$. 下证$W=\mathbf{F}^n$. 只需证明维数相同即可求解$V_1$的维数，求方程组的解可得：
+          \[u_1=(-1,1,0,\ldots ,0),u_2=(-1,0,1,\ldots,0),u_{n-1}=(-1,0,\ldots ,0,1),\]
+          是$V_1$的一组基，则$\dim V_1=n-1$. 求解$V_2$的维数：$V= (1,1,\ldots ,1)$是$V_2$的基，有$\dim V_2=1$. 综上，由于$W=V_1\oplus V_2$，因此$\dim W=\dim V_1+\dim V_2$. 所以$\dim W=n=\dim \mathbf{F}^n$，且$W\subset \mathbf{F}^n$，则$V_1\oplus V_2=W=\mathbf{F}^n$，得证.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
     \item \begin{enumerate}
-        \item $V_1\cap V_2$ 即是两组方程组合并后的解空间.
-        \[\begin{pmatrix}3&4&-5&7\\4&11&-13&16\\2&-3&3&-2\\7&-2&1&3\end{pmatrix}\rightarrow\begin{pmatrix}1&7&-8&9\\0&-17&19&-20\\0&0&0&0\\0&0&0&0\end{pmatrix},\]
-        则解向量$u_1=(\frac 3{17},\frac{19}{17},1,0)^T,u_2=(\frac{13}{17},-\frac{20}{17},0,1)^T$.
-        $\{u_1,u_2\}$是$V_1\cap V_2$的基，则其维数为$2$.
-        \item 易得$\dim V_1=2,\dim V_2=2$，则由维数公式$\dim (V_1+V_2)=\dim V_1+\dim V_2-\dim (V_1\cap V_2)= 2$
-        又$V_1\cap V_2\subseteq V_1+V_2$，且二者维数相等. 则$V_1\cap V_2=V_1+V_2$，亦即$V_1=V_2$. 所以$V_1+V_2$的基也是$\{u_1,u_2\}$，同$V_1\cap V_2$.
-    \end{enumerate}
+              \item $V_1\cap V_2$ 即是两组方程组合并后的解空间.
+                    \[\begin{pmatrix}
+                            3 & 4  & -5  & 7  \\
+                            4 & 11 & -13 & 16 \\
+                            2 & -3 & 3   & -2 \\
+                            7 & -2 & 1   & 3
+                        \end{pmatrix}\rightarrow
+                        \begin{pmatrix}1 & 7   & -8 & 9   \\
+               0 & -17 & 19 & -20 \\
+               0 & 0   & 0  & 0   \\
+               0 & 0   & 0  & 0
+                        \end{pmatrix}\]
+                    则解向量$u_1=\left(\dfrac {3}{17},\dfrac{19}{17},1,0\right)^T,u_2=\left(\dfrac{13}{17},-\dfrac{20}{17},0,1\right)^T$. $u_1,u_2$是$V_1\cap V_2$的基，则其维数为2.
 
-    \item 首先证明（1）（2）等价. 显然（2）可以直接推出（1），下证（1）可推出（2）成立. 反证法：若存在$\alpha\in W_1$，有$\alpha\not\in W_2$，并且存在$\beta \in W_2$,有$\beta \not\in W_1$. 则$\alpha\in W_1\cup W_2$，且$\beta \in W_1\cup W_2$. 但$\alpha+\beta \not\in W_1$且$\alpha+\beta \not\in W_2$，即$\alpha+\beta \not\in W_1\cup W_2$.
-	这与$W_1\cup W_2$是子空间矛盾. 因此任意$\alpha\in W_1$,有$\alpha\not\in W_2$，或者任意$\beta \in W_2$,有$\beta\not\in W_1$. 即$W_1\subseteq W_2$或者$W_2\subseteq W_1$.
+              \item 易得$\dim V_1=2,\dim V_2=2$，则由维数公式$\dim (V_1+V_2)=\dim V_1+\dim V_2-\dim (V_1\cap V_2)= 2$又$V_1\cap V_2\subseteq V_1+V_2$，且二者维数相等. 则$V_1\cap V_2=V_1+V_2$，亦即$V_1=V_2$. 所以$V_1+V_2$的基也是$u_1,u_2$，同$V_1\cap V_2$.
+          \end{enumerate}
 
-	接下来证明（1）（3）等价：显然（3）可以直接推出（1），下证（1）推出（3）：因为$W_1\cup W_2$是$V$的子空间，对于$\forall\alpha\in W_1,\forall	\beta \in W_2,\alpha\in W_1\cup W_2$且$\beta \in W1\cup W_2$，则 $\lambda\alpha+\mu\beta\in W_1\cup W_2$. 这与和空间的定义是完全一致的. 因此，$W_1\cup W_2=W_1+W_2$ 得证. 综上，以上三命题是等价的.
+    \item 首先证明 (1) (2) 等价. 显然 (2) 可以直接推出 (1)，下证 (1) 可推出 (2) 成立. 反证法：若存在$\alpha\in W_1$，有$\alpha\not\in W_2$，并且存在$\beta \in W_2$,有$\beta \not\in W_1$. 则$\alpha\in W_1\cup W_2$，且$\beta \in W_1\cup W_2$. 但$\alpha+\beta \not\in W_1$且$\alpha+\beta \not\in W_2$，即$\alpha+\beta \not\in W_1\cup W_2$. 这与$W_1\cup W_2$是子空间矛盾. 因此任意$\alpha\in W_1$,有$\alpha\not\in W_2$，或者任意$\beta \in W_2$,有$\beta\not\in W_1$. 即$W_1\subseteq W_2$或者$W_2\subseteq W_1$.
 
-    （2）（3）的等价性留待读者自行验证，与证明（1）（2）等价是基本一致的.
+          接下来证明 (1) (3) 等价：显然 (3) 可以直接推出 (1)，下证 (1) 推出 (3) ：因为$W_1\cup W_2$是$V$的子空间，对于$\forall\alpha\in W_1,\forall	\beta \in W_2,\alpha\in W_1\cup W_2$且$\beta \in W1\cup W_2$，则 $\lambda\alpha+\mu\beta\in W_1\cup W_2$. 这与和空间的定义是完全一致的. 因此，$W_1\cup W_2=W_1+W_2$ 得证. 综上，以上三命题是等价的.
 
-    \item \begin{enumerate}
-        \item 只需证明 $W_1$ 封闭即可. 对于 $A=\begin{pmatrix}
-            x&-x\\y&z
-        \end{pmatrix},A'=\begin{pmatrix}
-        x'&-x'\\y'&z'
-        \end{pmatrix}$ 有 $\lambda A+\mu A'=\begin{pmatrix}
-            \lambda x+\mu x'&-(\lambda x+\mu x')\\\lambda y+\mu y&\lambda z+\mu z
-        \end{pmatrix}$，则$W_1$封闭，$W_1$是$M_2(F)$的子空间.	$W_2$同理可证.
-        \item $W_1$的基：$B_1=\begin{pmatrix}1&-1\\0&0\end{pmatrix},B_2=\begin{pmatrix}0&0\\1&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
-
-        $W_2$的基：$B_1=\begin{pmatrix}1&0\\-1&0\end{pmatrix},B_2=\begin{pmatrix}0&1\\0&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
-
-        则$\dim W_1=3,\dim W_2=3$. 要求$\dim  (W_1+W_2)$，只需求$B_1,B_2,\cdots ,B_6$的极大无关组即可. 可知 $B_1,B_2,B_3,B_4$是极大无关组.	$\dim  (W_1+W_2)=4$. 根据维数公式$\dim (W_1\cap W_2)=\dim W_1+\dim W_2-\dim (W_1+W_2)=2.$
-        \item $W_1\cap W_2=\{\begin{pmatrix}x&-x\\-x&y\end{pmatrix}|x,y\in F\}$. 则一组基为$E_1=\begin{pmatrix}1&-1\\-1&0\end{pmatrix},E_2=\begin{pmatrix}0&0\\0&1\end{pmatrix}$. $A$ 的坐标即为 $(3,1)$.
-    \end{enumerate}
+          (2) (3) 的等价性留待读者自行验证，与证明 (1) (2) 等价是基本一致的.
 
     \item \begin{enumerate}
-        \item 显然$V_2\subseteq V$，只需证明$V_2$封闭即可. 对于$v=k_1\alpha_1+\cdots+k_n\alpha_n,v'=k_1'\alpha_1+\cdots+k_n'\alpha_n$. $\lambda v+\mu v'=(\lambda k_1+\mu k_1')\alpha_1+\cdots+(\lambda k_n+\mu k'_n)\alpha_n$，因此  $\lambda v+\mu v'\in V_2\in V_2$，$V_2$ 封闭，则$V_2$是$V$的子空间.
-        \item 设$W=V_1+V_2$. 对任意 $v\in V_1,v=\lambda \alpha_1+2\lambda\alpha_2+\cdots+n\lambda\alpha_n$，则 $\lambda+2\frac{\lambda}2+\cdots+n\frac{\lambda}n=n\lambda$，因此当$v\ne 0$时，$v\not\in v_2$，则 $V_1\cap V_2=\{0\}$，有$W=V_1\oplus V_2$.
+              \item 只需证明 $W_1$ 封闭即可. 对于 $A=\begin{pmatrix}x & -x \\ y & z\end{pmatrix},A'=\begin{pmatrix} x' & -x' \\ y' & z' \end{pmatrix}$ 有 $\lambda A+\mu A'=\begin{pmatrix}
+                            \lambda x+\mu x' & -(\lambda x+\mu x') \\
+                            \lambda y+\mu y  & \lambda z+\mu z
+                        \end{pmatrix}$，则$W_1$封闭，$W_1$是$\mathbf{M}_2(\mathbf{F})$的子空间.	$W_2$同理可证.
 
-        下证$W=V$，易得$\dim V_1=1$. 对于$V_2$，写成坐标形式，则其是一个方程组的解空间，系数矩阵 $A=\begin{pmatrix}1 &\frac 12&\cdots&\frac 1n\\0&&&0\\ \vdots&&&\\ \vdots\\ 0&&\cdots& 0\end{pmatrix}$. 方程组为 $AK=0$，则 $\dim V_2=n-r(A)=n-1$，因此$\dim W=\dim V_1+\dim V_2=n=\dim V$，又$W\subseteq V$,则$W=V$得证，综上$V=V_1\oplus V_2$.
-    \end{enumerate}
+              \item $W_1$的基：$B_1=\begin{pmatrix}1&-1\\0&0\end{pmatrix},B_2=\begin{pmatrix}0&0\\1&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
 
-    \item \begin{enumerate}
-        \item 只需证明 $V_1,V_2,V_3$ 的封闭性，以 $V_3$ 为例，$\forall A,B\in V_3$,有 $A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\0&\cdots&0\\ \vdots& &\vdots\\0&\cdots& a_{nn}\end{pmatrix},B=\begin{pmatrix}b_{11}&\cdots&b_{1n}\\0&\cdots&0\\ \vdots& &\vdots\\0&\cdots& b_{nn}\end{pmatrix}$，则 $\lambda A+\mu B=\begin{pmatrix}\lambda a_{11}+\mu b_{11}&\cdots&a\lambda a_{1n}+\mu b_{1n}\\ \vdots& &\vdots\\0&\cdots& \lambda a_{nn}+\mu b_{nn}\end{pmatrix}$，$V_3$ 封闭得证.	其余 $V_1,V_2$ 也同理可证.（通过之后的学习会了解$V_1$对称矩阵、$V_2$反对称矩阵的更多性质）
-        \item $\forall A\in F^{n\times n},A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\ \vdots& &\vdots\\a_{n1}&\cdots&a_{nn}\end{pmatrix}$，总可将$A$写成 $\begin{pmatrix}a_{11}&a_{21}\cdots&a_{n1}\\ \vdots& &\vdots\\a_{n1}&\cdots&a_{nn}\end{pmatrix}+\begin{pmatrix}a0&a_{12}-a_{21}\cdots&a_{1n}-a_{n1}\\ \vdots& &\vdots\\a_{n1}&\cdots&a_{nn}\end{pmatrix}$ 的形式. 又左边矩阵属于 $V_1$，右边矩阵属于 $V_3$，则$F^{n×n}=V_1+V_3$.
-        但对于 $I=\begin{pmatrix}1&\cdots&0\\ \vdots& &\vdots\\0&\cdots&1\end{pmatrix} $ ,$I∈V_1$且$I∈V_3$，则$V_1\cap V_3\ne\{0\}$，不是直和. 总可将$A$写成 $A_1+A_2$ 的形式，其中
-        \[A_1=\begin{pmatrix}0&-a_{21}&\cdots&-a_{n1}\\ a_{21}&&&\vdots\\ \vdots&& &\vdots\\a_{n1}&\cdots&a_{n(n-1)}&0\end{pmatrix},A_2=\begin{pmatrix}a_{11}&\cdots&a_{1n}+a_{n1}\\ \vdots& &\vdots\\0&\cdots&a_{nn}\end{pmatrix},\]
-        $A_1\in V_2,A_2\in V_3,F^{n\times n}=V_2+V_3$. 又对于 $\forall B\in V_2\cap V_3$, $B$ 是反对称的. 并且 $B$ 是上三角的. 综合可得  $B=0$. 因此 $V_2\cap V_3=\{0\}$，$F_{n\times n}=V_2\oplus V_3$ 得证.
-    \end{enumerate}
+                    $W_2$的基：$B_1=\begin{pmatrix}1&0\\-1&0\end{pmatrix},B_2=\begin{pmatrix}0&1\\0&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
 
-    \item \begin{enumerate}
-        \item 法一：反证法. 如果$\exists v_1\in V_1,v_1\not\in V_2$,且 $\exists v_2\in V_2,v_2\not\in V_1$，则有 $v_1,v_2\not \in V_1\cap V_2$ 并且 $v_1,v_2$ 线性无关. 设 $A=\{\alpha_1,\cdots ,\alpha_n\}$是 $V_1\cap V_2$的基. 由基扩张，设$B=\{\alpha_1,\cdots ,\alpha_n,\alpha_{n+1},\cdots ,\alpha_{n+k}\}$是$V_1+V_2$的基. 由于$v_1,v_2$不在$V_1\cap V_2$中，因此$A$无法表出$v_1,v_2$. 则$\alpha_1,\cdots ,\alpha_n,v_1,v_2$ 线性无关. 又$v_1,v_2\in V_1+V_2$，则$\alpha_1,\cdots ,\alpha_n,v_1,v_2$可由$\alpha_1,\cdots ,\alpha_{n+k}$ 线性表出. 由定理 $3.3$ 得 $n+2\le n+k$，即 $\dim (V_1+V_2)\ge\dim (V_1\cap V_2)+2$，这与条件矛盾. 因此，$\forall v_1\in V_1,v_1\in V_2$ 或 $\forall v_2\in V_2,v_2\in V_1$. 即 $V_1\subseteq V_2$ 或 $V_2\subseteq V_1$，得证.
-        \item 法二：维数公式. $\dim V_1+\dim V_2=\dim  (V_1+V_2)+\dim  (V_1\cap V_2)=2\dim  (V_1\cap V_2)+1$，即 $(\dim V_1-\dim  (V_1\cap V_2))+ (\dim V_2-\dim  (V_1\cap V_2))=1$. 于是，要么 $\dim V_1-\dim  (V_1\cap V_2)=0$，要么 $\dim V_2-\dim  (V_1\cap V_2)=0$，即 $V_1\subseteq V_2$ 或 $V_2\subseteq V_1$，得证.
-    \end{enumerate}
+                    则$\dim W_1=3,\dim W_2=3$. 要求$\dim  (W_1+W_2)$，只需求$B_1,B_2,\ldots ,B_6$的极大无关组即可. 可知 $B_1,B_2,B_3,B_4$是极大线性无关组.	$\dim(W_1+W_2)=4$. 根据维数公式$\dim (W_1\cap W_2)=\dim W_1+\dim W_2-\dim (W_1+W_2)=2$.
+
+              \item $W_1\cap W_2=\left\{\begin{pmatrix}x&-x\\-x&y\end{pmatrix} \mid x,y\in \mathbf{F}\right\}$. 则一组基为$E_1=\begin{pmatrix}1&-1\\-1&0\end{pmatrix},E_2=\begin{pmatrix}0&0\\0&1\end{pmatrix}$. $A$ 的坐标即为 $(3,1)$.
+          \end{enumerate}
 
     \item \begin{enumerate}
-        \item 充分性：已知 $V_i\cap \sum_{j=1}^{i-1}V_j=\{0\}$. 设 $0=\alpha_1+\cdots+\alpha_s,\alpha_i\in V_i$，则 $\alpha_s=0,\alpha_1+\cdots+\alpha_{s-1}=0$，则$\alpha_s=0,\alpha_1+\cdots+\alpha_{s-1}=0$. 递推可得 $\alpha_s=\alpha_{s-1}=\cdots=\alpha_1=0$，因此零向量分解唯一. $\sum_{i=1}^sV_i$ 是直和.
-        \item 必要性：$\sum_{i=1}^sV_i$ 是直和，则两两相交均为 $\{0\}$，则 $V_i\cap \sum_{j=1}^{i-1}V_j=\{0\}$.
-    \end{enumerate}
+              \item 显然$V_2\subseteq V$，只需证明$V_2$封闭即可. 对于$v=k_1\alpha_1+\cdots+k_n\alpha_n,v'=k_1'\alpha_1+\cdots+k_n'\alpha_n$. $\lambda v+\mu v'=(\lambda k_1+\mu k_1')\alpha_1+\cdots+(\lambda k_n+\mu k'_n)\alpha_n$，因此  $\lambda v+\mu v'\in V_2\in V_2$，$V_2$ 封闭，则$V_2$是$V$的子空间.
+
+              \item 设$W=V_1+V_2$. 对任意 $v\in V_1,v=\lambda \alpha_1+2\lambda\alpha_2+\cdots+n\lambda\alpha_n$，则 $\lambda+2\dfrac{\lambda}2+\allowbreak\cdots+n\dfrac{\lambda}n=n\lambda$，因此当$v\ne 0$时，$v\not\in v_2$，则 $V_1\cap V_2=\{0\}$，有$W=V_1\oplus V_2$.
+
+                    下证$W=V$，易得$\dim V_1=1$. 对于$V_2$，写成坐标形式，则其是一个方程组的解空间，系数矩阵 $A=\begin{pmatrix}
+                            1 & \frac 12 & \cdots & \frac 1n \\
+                            0 &          &        &          \\
+                              & \ddots   &        &          \\
+                              &          & \ddots &          \\
+                              &          &        & 0
+                        \end{pmatrix}$. 方程组为 $AK=0$，则 $\dim V_2=n-r(A)=n-1$，因此$\dim W=\dim V_1+\dim V_2=n=\dim V$，又$W\subseteq V$,则$W=V$得证，综上$V=V_1\oplus V_2$.
+          \end{enumerate}
 
     \item \begin{enumerate}
-        \item 正确，若$\alpha\in V$，则$\alpha \in V_1\cup V_2\cdots \cup V_s$，即$\alpha \in V\cap (V_1\cup V_2\cdots \cup V_s)$，则$\alpha \in (V\cap V_1)\cup \cdots \cup (V\cap V_s)$，则$V\subseteq(V_1\cap V)\cup \cdots \cup (V_s\cap V)$. 另一边类似的同样成立，则有 $V=(V_1\cap V)\cup \cdots \cup (V_s\cap V)$ 得证.
-        \item 错误，反例：设 $V_1,V_2,V_3$ 是平面$K$上三条过原点$O$的不重合直线，则$V\subseteq K=V_1+V_2$，但$V\cap V_1=\{0\},V\cap V_2=\{0\}$，$V\ne (V\cap V_1)+(V\cap V_2)$.
-    \end{enumerate}
+              \item 只需证明 $V_1,V_2,V_3$ 的封闭性，以 $V_3$ 为例，$\forall A,B\in V_3$,有 $A=\begin{pmatrix}
+                            a_{11} & \cdots & a_{1n} \\
+                            0      & \cdots & 0      \\
+                            \vdots &        & \vdots \\
+                            0      & \cdots & a_{nn}
+                        \end{pmatrix},B=\begin{pmatrix}
+                            b_{11} & \cdots & b_{1n} \\
+                            0      & \cdots & 0      \\
+                            \vdots &        & \vdots \\
+                            0      & \cdots & b_{nn}
+                        \end{pmatrix}$，则 $\lambda A+\mu B=\begin{pmatrix}
+                            \lambda a_{11}+\mu b_{11} & \cdots & a\lambda a_{1n}+\mu b_{1n} \\
+                            \vdots                    &        & \vdots                     \\
+                            0                         & \cdots & \lambda a_{nn}+\mu b_{nn}
+                        \end{pmatrix}$，$V_3$ 封闭得证. 其余 $V_1,V_2$ 也同理可证.（通过之后的学习会了解$V_1$对称矩阵、$V_2$反对称矩阵的更多性质）
+
+              \item $\forall A\in \mathbf{F}^{n\times n},A=\begin{pmatrix}
+                            a_{11} & \cdots & a_{1n} \\
+                            \vdots &        & \vdots \\
+                            a_{n1} & \cdots & a_{nn}
+                        \end{pmatrix}$，总可将$A$写成 $\begin{pmatrix}
+                            a_{11} & a_{21} & \cdots & a_{n1} \\
+                            \vdots &        &        & \vdots \\
+                            a_{n1} & \cdots & \cdots & a_{nn}
+                        \end{pmatrix}+\begin{pmatrix}
+                            a0     & a_{12}-a_{21} & \cdots & a_{1n}-a_{n1} \\
+                            \vdots &               &        & \vdots        \\
+                            a_{n1} & \cdots        & \cdots & a_{nn}
+                        \end{pmatrix}$ 的形式. 又左边矩阵属于 $V_1$，右边矩阵属于 $V_3$，则$\mathbf{F}^{n \times n}=V_1+V_3$. 但对于 $I=\begin{pmatrix}
+                            1      & \cdots & 0      \\
+                            \vdots &        & \vdots \\
+                            0      & \cdots & 1
+                        \end{pmatrix} $ $,I \in V_1$且$I \in V_3$，则$V_1\cap V_3\ne\{0\}$，不是直和. 总可将$A$写成 $A_1+A_2$ 的形式，其中
+                    \[A_1=\begin{pmatrix}
+                            0      & -a_{21} & \cdots     & -a_{n1} \\
+                            a_{21} &         &            & \vdots  \\
+                            \vdots &         &            & \vdots  \\
+                            a_{n1} & \cdots  & a_{n(n-1)} & 0
+                        \end{pmatrix},A_2=\begin{pmatrix}
+                            a_{11} & \cdots & a_{1n}+a_{n1} \\
+                            \vdots &        & \vdots        \\
+                            0      & \cdots & a_{nn}
+                        \end{pmatrix},\]
+                    $A_1\in V_2,A_2\in V_3,\mathbf{F}^{n\times n}=V_2+V_3$. 又对于 $\forall B\in V_2\cap V_3$, $B$ 是反对称的. 并且 $B$ 是上三角的. 综合可得  $B=0$. 因此 $V_2\cap V_3=\{0\}$，$F_{n\times n}=V_2\oplus V_3$ 得证.
+          \end{enumerate}
 
     \item \begin{enumerate}
-        \item 充分性：显然，若$V_1=V_2$，则$V_1^c=V_2=\empty$ 是唯一的.
-        \item 必要性：反证法，如果$V_1\ne V_2$,即$V_1\not\subseteqq V$. 设$V_1$的基是$\alpha_1,\cdots ,\alpha_m$，将其扩张为$V$的基，$\alpha_1,\cdots  ,\alpha_m,\alpha_{m+1},\cdots ,\alpha_n$. 则$V=V_1\oplus \spa(\alpha_{m+1},\cdots ,\alpha_n)$，$=V_1\oplus \spa(\alpha_{m+1}+\alpha_ 1,\alpha_{m+2},\cdots ,\alpha_n)$. 又$\spa(\alpha_{m+1},\cdots ,\alpha_n)\ne \spa(\alpha_{m+1}+\alpha_1,\cdots,\alpha_n)$, 矛盾，则$V_1=V$得证.
-    \end{enumerate}
+              \item 法一：反证法. 如果$\exists v_1\in V_1,v_1\not\in V_2$,且 $\exists v_2\in V_2,v_2\not\in V_1$，则有 $v_1,v_2\not \in V_1\cap V_2$ 并且 $v_1,v_2$ 线性无关. 设 $A=\{\alpha_1,\ldots ,\alpha_n\}$是 $V_1\cap V_2$的基. 由基扩张，设$B=\{\alpha_1,\ldots ,\alpha_n,\alpha_{n+1},\ldots ,\alpha_{n+k}\}$是$V_1+V_2$的基. 由于$v_1,v_2$不在$V_1\cap V_2$中，因此$A$无法表出$v_1,v_2$. 则$\alpha_1,\ldots ,\alpha_n,v_1,v_2$ 线性无关. 又$v_1,v_2\in V_1+V_2$，则$\alpha_1,\ldots ,\alpha_n,v_1,v_2$可由$\alpha_1,\ldots ,\alpha_{n+k}$ 线性表出. 由定理 $3.3$ 得 $n+2\leqslant n+k$，即 $\dim (V_1+V_2)\ge\dim (V_1\cap V_2)+2$，这与条件矛盾. 因此，$\forall v_1\in V_1,v_1\in V_2$ 或 $\forall v_2\in V_2,v_2\in V_1$. 即 $V_1\subseteq V_2$ 或 $V_2\subseteq V_1$，得证.
+
+              \item 法二：维数公式. $\dim V_1+\dim V_2=\dim  (V_1+V_2)+\dim  (V_1\cap V_2)=2\dim  (V_1\cap V_2)+1$，即 $(\dim V_1-\dim  (V_1\cap V_2))+ (\dim V_2-\dim  (V_1\cap V_2))=1$. 于是，要么 $\dim V_1-\dim  (V_1\cap V_2)=0$，要么 $\dim V_2-\dim  (V_1\cap V_2)=0$，即 $V_1\subseteq V_2$ 或 $V_2\subseteq V_1$，得证.
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item 充分性：已知 $V_i\cap \displaystyle\sum_{j=1}^{i-1}V_j=\{0\}$. 设 $0=\alpha_1+\cdots+\alpha_s,\alpha_i\in V_i$，则 $\alpha_s=0,\alpha_1+\cdots+\alpha_{s-1}=0$，则$\alpha_s=0,\alpha_1+\cdots+\alpha_{s-1}=0$. 递推可得 $\alpha_s=\alpha_{s-1}=\cdots=\alpha_1=0$，因此零向量分解唯一. $\displaystyle\sum_{i=1}^sV_i$ 是直和.
+
+              \item 必要性：$\displaystyle\sum_{i=1}^sV_i$ 是直和，则两两相交均为 $\{0\}$，则 $V_i\cap \displaystyle\sum_{j=1}^{i-1}V_j=\{0\}$.
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item 正确，若$\alpha\in V$，则$\alpha \in V_1\cup V_2\cdots \cup V_s$，即$\alpha \in V\cap (V_1\cup V_2\cdots \cup V_s)$，则$\alpha \in (V\cap V_1)\cup \cdots \cup (V\cap V_s)$，则$V\subseteq(V_1\cap V)\cup \cdots \cup (V_s\cap V)$. 另一边类似的同样成立，则有 $V=(V_1\cap V)\cup \cdots \cup (V_s\cap V)$ 得证.
+
+              \item 错误，反例：设 $V_1,V_2,V_3$ 是平面$K$上三条过原点$O$的不重合直线，则$V\subseteq K=V_1+V_2$，但$V\cap V_1=\{0\},V\cap V_2=\{0\}$，$V\ne (V\cap V_1)+(V\cap V_2)$.
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item 充分性：显然，若$V_1=V_2$，则$V_1^c=V_2=\empty$ 是唯一的.
+
+              \item 必要性：反证法，如果$V_1\ne V_2$,即$V_1\not\subseteqq V$. 设$V_1$的基是$\alpha_1,\ldots ,\alpha_m$，将其扩张为$V$的基$\alpha_1,\ldots  ,\alpha_m,\alpha_{m+1},\ldots ,\alpha_n$. 则$V=V_1\oplus \spa(\alpha_{m+1},\ldots ,\alpha_n)$，$=V_1\oplus \spa(\alpha_{m+1}+\alpha_ 1,\alpha_{m+2},\ldots ,\alpha_n)$. 又$\spa(\alpha_{m+1},\ldots ,\alpha_n)\ne \spa(\alpha_{m+1}+\alpha_1,\ldots,\alpha_n)$, 矛盾，则$V_1=V$得证.
+          \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item 注：$\text{tr}$是矩阵的迹，可以写作对角元素之和.
-	\begin{enumerate}
-        \item 根据定义可知$\text{tr}$是线性的，有 $\text{tr}(\lambda A+\mu B)=\lambda\text{tr}(A)+\mu\text{tr}(B)=0$，则$U$是封闭的，又$W$封闭是显然的，则 $U,W$ 是 $V$ 的子空间.
-        \item 对于$W$,基为$\{E\}$,$\dim W=1$. 对于$u$,设$E_{ij}$是 $a_{ij}=1$，其余元素为$0$的$n$阶方阵. 则由于$u$是对称矩阵，在非对角线元素上，$u$的基包含$E_{12}+E_{21},E_{13}+E_{31},\cdots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
-        \[\begin{pmatrix}a_{11}\\ \vdots\\ a_{nn}	\end{pmatrix}=k_1\begin{pmatrix}1 \\ -1 \\ 0\\ \vdots \\0	\end{pmatrix}=k_2\begin{pmatrix}1 \\ 0 \\ -1\\ \vdots \\0	\end{pmatrix}+\cdots+k_{n-1}\begin{pmatrix}1 \\ 0 \\ 0\\ \vdots \\-1	\end{pmatrix}.\]
-        则还有$n-1$个基$E_{11}-E_{22}，E_{11}-E_{33},\cdots ,E_{11}-E_{nn}$. 故 $\dim U=\frac{n^2-n}2+n-2=\frac{n^2+n-2}2$.
-        \item 设$V'=U+W$. 先证明直和，即$U\cap W=\{0\}$. 这是显然的，因为$\text{tr}(\lambda E)=n\lambda$，仅当 $\lambda=0$ 时 $\lambda E\in U$ 即 $U\cap W=\{0\}$得证. 又$\dim U+\dim W=\dim V’=n=\dim V$，则$V=V’=U\oplus W$得证.
-    \end{enumerate}
-    \item 由前 $B$ 组第 $8$ 题的证明可知 $W_0=(W_1\cap W_2)\cup\cdots\cup(W_s\cap W_0)$. 由于$W_1\cap W_2\cdots W_s\cap W_0$都是$W_0$的子空间，根据覆盖定理，必存在$i$，使得$W_0=W_i\cap W_0$，即 $W_0\subseteq W_i$ 得证.
+    \item 注：$\tr$是矩阵的迹，定义为矩阵对角元素之和.
+          \begin{enumerate}
+              \item 根据定义可知$\tr$是线性的，有 $\tr(\lambda A+\mu B)=\lambda\tr(A)+\mu\tr(B)=0$，则$U$是封闭的，又$W$封闭是显然的，则 $U,W$ 是 $V$ 的子空间.
+
+              \item 对于$W$,基为$\{E\}$，$\dim W=1$. 对于$u$,设$E_{ij}$是 $a_{ij}=1$，其余元素为0的$n$阶方阵. 则由于$u$是对称矩阵，在非对角线元素上，$u$的基包含$E_{12}+E_{21},E_{13}+E_{31},\ldots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
+                    \[\begin{pmatrix}a_{11}\\ \vdots\\ a_{nn}	\end{pmatrix}=k_1\begin{pmatrix}1 \\ -1 \\ 0\\ \vdots \\0	\end{pmatrix}=k_2\begin{pmatrix}1 \\ 0 \\ -1\\ \vdots \\0	\end{pmatrix}+\cdots+k_{n-1}\begin{pmatrix}1 \\ 0 \\ 0\\ \vdots \\-1	\end{pmatrix}.\]
+                    则还有$n-1$个基$E_{11}-E_{22},E_{11}-E_{33},\ldots ,E_{11}-E_{nn}$. 故 $\dim U=\dfrac{n^2-n}2+n-2=\dfrac{n^2+n-2}2$.
+
+              \item 设$V'=U+W$. 先证明直和，即$U\cap W=\{0\}$. 这是显然的，因为$\tr(\lambda E)=n\lambda$，仅当 $\lambda=0$ 时 $\lambda E\in U$ 即 $U\cap W=\{0\}$得证. 又$\dim U+\dim W=\dim V'=n=\dim V$，则$V=V'=U\oplus W$得证.
+          \end{enumerate}
+
+    \item 由前 $B$ 组第 8 题的证明可知 $W_0=(W_1\cap W_2)\cup\cdots\cup(W_s\cap W_0)$. 由于$W_1\cap W_2\cdots W_s\cap W_0$都是$W_0$的子空间，根据覆盖定理，必存在$i$，使得$W_0=W_i\cap W_0$，即 $W_0\subseteq W_i$ 得证.
 \end{enumerate}
 
 \clearpage

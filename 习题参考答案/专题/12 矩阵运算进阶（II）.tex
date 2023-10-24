@@ -1,3 +1,4 @@
+\phantomsection
 \section*{12 矩阵运算进阶（II）}
 \addcontentsline{toc}{section}{12 矩阵运算进阶（II）}
 
@@ -5,17 +6,185 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item \begin{enumerate}
+              \item 若 $ AB = kE \enspace(k \neq 0) $，则 $ A^{-1} = \dfrac{1}{k} B $. 由
+                    \[ A^2 - A - 2E = A(A - E) - 2E = O \]
+                    可得
+                    \[ A(A - E) = 2E \text{~或~} A(E - A) = -2E \]
+                    所以
+                    \[ A^{-1} = \frac{1}{2}(A-E),\enspace (E - A)^{-1} = -\frac{1}{2}A \]
+
+              \item 由
+                    \[  A^2 - A - 2E = (A - 2E)(A + E) = O \]
+                    可知，$ A + E $ 和 $ A - 2E $ 不能同时可逆，否则 $ A^2 - A - 2E $ 为零矩阵可逆，矛盾.
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item \begin{align*}
+                        (A - E)(B - E) & = AB - AE - EB + E^2 \\
+                                       & = AB - A - B + E     \\
+                                       & = AB - (A + B) + E   \\
+                                       & = AB - AB + E        \\
+                                       & = E
+                    \end{align*}
+                    所以 $ A - E $ 与 $ B - E $ 互为逆矩阵.
+
+              \item 由于 $ A - E $ 与 $ B - E $ 互为逆矩阵，所以
+                    \begin{align*}
+                        (B - E)(A - E) & = E              \\
+                                       & = BA - B - A + E \\
+                                       & = BA - AB + E
+                    \end{align*}
+                    所以 $ BA - AB = O $，即 $ AB = BA $.
+
+              \item 由 $ A = AB - B = B(A - E) $ 可得 $ r(A) \leqslant r(B) $，同理可得 $ r(B) \leqslant r(A) $，所以 $ r(A) = r(B) $.
+          \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item \begin{align*}
+              f(A) g(A) & = (E + A + A^2 + \cdots + A^{m - 1})(E - A) \\
+                        & = E - A^m = \begin{pmatrix}
+                                          1 - a^m & -mba^{m - 1} \\
+                                          0       & 1 - a^m
+                                      \end{pmatrix}
+          \end{align*}
+
+    \item 求与 $ A $ 可交换的矩阵等价于求与 $ A - E $ 可交换的矩阵 $ X $. 可解得
+          \begin{align*}
+              X & = \begin{pmatrix}
+                        x_{11} & -2x_{11} - 2x_{32} + 2x_{33} & 4x_{32} \\
+                        0      & -x_{32} + x_{33}             & 2x_{32} \\
+                        0      & x_{32}                       & x_{33}
+                    \end{pmatrix} \\
+                & = x_{11} \begin{pmatrix}
+                               1 & -2 & 0 \\
+                               0 & 0  & 0 \\
+                               0 & 0  & 0
+                           \end{pmatrix}
+              + x_{32} \begin{pmatrix}
+                           0 & -2 & 4 \\
+                           0 & -1 & 2 \\
+                           0 & 1  & 0
+                       \end{pmatrix}
+              + x_{33} \begin{pmatrix}
+                           0 & 2 & 0 \\
+                           0 & 1 & 0 \\
+                           0 & 0 & 1
+                       \end{pmatrix}
+          \end{align*}
+          其中 $ x_{11}, x_{32}, x_{33} $ 为任意实数. 由此我们也得到了 $ A $ 可交换的矩阵构成的子空间的一组基.
+
+    \item \begin{enumerate}
+              \item 不妨设 $ B = (b_{ij})_{3 \times 3} $ 与 $ A $ 可交换，即 $ AB = BA $，这等价于 $ (A - E)B = B(A - E) $，即
+                    \[ \begin{pmatrix}
+                              &   & 1 \\
+                              & 1 &   \\
+                            1 &   &
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                            b_{11} & b_{12} & b_{13} \\
+                            b_{21} & b_{22} & b_{23} \\
+                            b_{31} & b_{32} & b_{33}
+                        \end{pmatrix} =
+                        \begin{pmatrix}
+                            b_{11} & b_{12} & b_{13} \\
+                            b_{21} & b_{22} & b_{23} \\
+                            b_{31} & b_{32} & b_{33}
+                        \end{pmatrix}
+                        \begin{pmatrix}
+                              &   & 1 \\
+                              & 1 &   \\
+                            1 &   &
+                        \end{pmatrix} \]
+                    于是
+                    \[ \begin{pmatrix}
+                            b_{31} & b_{32} & b_{33} \\
+                            b_{21} & b_{22} & b_{23} \\
+                            b_{11} & b_{12} & b_{13}
+                        \end{pmatrix} = \begin{pmatrix}
+                            b_{11} & b_{12} & b_{13} \\
+                            b_{21} & b_{22} & b_{23} \\
+                            b_{31} & b_{32} & b_{33}
+                        \end{pmatrix} \]
+                    对应元素相等，可得 $ b_{31} = b_{13}, b_{32} = b_{12}, b_{33} = b_{11}, b_{21} = b_{23} $，即所有与 $ A $ 可交换的矩阵为
+                    \[ \begin{pmatrix}
+                            b_{11} & b_{12} & b_{13} \\
+                            b_{21} & b_{22} & b_{21} \\
+                            b_{13} & b_{12} & b_{11}
+                        \end{pmatrix} \]
+                    其中 $ b_{11}, b_{12}, b_{13}, b_{21}, b_{22} $ 为任意实数.
+
+              \item 由于 $ AB + E = A^2 + B $，所以
+                    \[ (A - E)B = A^2 - E = (A - E)(A + E) \]
+                    又由于 $ |A - E| = -1 \neq 0 $，所以 $ A - E $ 可逆，进而
+                    \[ B = A + E = \begin{pmatrix}
+                            2 & 0 & 1 \\
+                            0 & 3 & 0 \\
+                            1 & 0 & 2
+                        \end{pmatrix} \]
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item 首先有 $ E \in C(A) $，所以 $ C(A) $ 非空. $ \forall B_1, B_2 \in C(A), \lambda \in \mathbf{F} $，有
+                    \begin{gather*}
+                        A(B_1 + B_2) = AB_1 + AB_2 = B_1A + B_2A = (B_1 + B_2)A \\
+                        A(\lambda B_1) = \lambda AB_1 = \lambda B_1A = (\lambda B_1)A
+                    \end{gather*}
+                    所以 $ C(A) $ 是 $ \mathbf{F}^{n \times n} $ 的子空间.
+
+              \item $ C(E) = \mathbf{F}^{n \times n} $.
+
+              \item 我们有结论：$ C(A) $ 为全体对角矩阵构成的集合. 故 $ \dim C(A) = n $. 基矩阵 $ B_k = (b_{ij})_{n \times n} $，其中 $ b_{ij} = \delta_{ij} \delta_{jk} $. $ B_1, B_2, \ldots, B_n $ 为一组基.
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item 由 $ A^k = O $ 有
+                    \[ E = E - A^k = (E - A)(E + A + \cdots + A^{k - 1}) \]
+                    故 $ E - A $ 可逆，且
+                    \[ (E - A)^{-1} = E + A + \cdots + A^{k - 1} \]
+
+              \item 若 $ k $ 为偶数，设 $ k = 2m $，由 $ A^k = O $ 有
+                    \[ E = E - A^{2m} = (E + A)(E - A)(E + A^2 + A^4 + \cdots + A^{2m - 2}) \]
+                    故 $ E + A $ 可逆，且
+                    \[ (E + A)^{-1} = (E - A)(E + A^2 + A^4 + \cdots + A^{2m - 2}) \]
+
+                    若 $ k $ 为奇数，设 $ k = 2m + 1 $，由 $ A^k = O $ 有
+                    \[ E = E - A^{2m + 1} = (E - A)(E + A + A^2 + \cdots + A^{2m - 1} + A^{2m}) \]
+                    故 $ E - A $ 可逆，且
+                    \[ (E - A)^{-1} = E + A + A^2 + \cdots + A^{2m - 1} + A^{2m} \]
+
+              \item 由于 $ A^k = O $，于是
+                    \[ e^A = E + A + \frac{1}{2!} A^2 + \cdots + \frac{1}{(k - 1)!} A^{k - 1} \]
+                    由 $ e^A e^{-A} = E $ 知 $ E + A + \dfrac{1}{2!} A^2 + \cdots + \dfrac{1}{(k - 1)!} A^{k - 1} $ 可逆，且
+                    \[ (E + A + \frac{1}{2!} A^2 + \cdots + \frac{1}{(k - 1)!} A^{k - 1})^{-1} = e^{-A} \]
+          \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item \begin{align*}
+              \begin{pmatrix} a_n \\ b_n \\ 2^n \end{pmatrix}
+               & = \begin{pmatrix}
+                       3 & 1 & 1 \\
+                       2 & 4 & 2 \\
+                       0 & 0 & 2
+                   \end{pmatrix} \begin{pmatrix} a_{n - 1} \\ b_{n - 1} \\ 2^{n - 1} \end{pmatrix} \\
+               & = \cdots                                                                                 \\
+               & = \begin{pmatrix}
+                       3 & 1 & 1 \\
+                       2 & 4 & 2 \\
+                       0 & 0 & 2
+                   \end{pmatrix}^n \begin{pmatrix} a_0 \\ b_0 \\ 1 \end{pmatrix}
+              = \left(2E + \begin{pmatrix}
+                               1 & 1 & 1 \\
+                               2 & 2 & 2 \\
+                               0 & 0 & 0
+                           \end{pmatrix}\right)^n \begin{pmatrix} -1 \\ 3 \\ 1 \end{pmatrix}
+          \end{align*}
+
+    \item 略. 感兴趣的同学可以通过设未知数，利用初等变换计算.
 \end{enumerate}
 
 \clearpage

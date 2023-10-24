@@ -1,3 +1,4 @@
+\phantomsection
 \section*{2013-2014学年线性代数I（H）期末}
 \addcontentsline{toc}{section}{2013-2014学年线性代数I（H）期末}
 
@@ -9,54 +10,75 @@
     \item [一、]（10分）映射 $T:\mathbf{R^3} \to \mathbf{R^2}$ 由 $T(x_1,x_2,x_3)=(2x_1+3x_2-x_3,x_1+x_3)$ 定义.
     \begin{enumerate}[label=(\arabic*)]
         \item 证明 $T$ 是线性映射.
+
         \item 给出 $T$ 关于 $\mathbf{R^3}$ 和 $\mathbf{R^2}$ 的标准基的矩阵表示.
-        \item 给出 $T$ 的核 $\mathrm{Ker}(T)$ 的一组基.
+
+        \item 给出 $T$ 的核 $\ker(T)$ 的一组基.
     \end{enumerate}
-    \item [二、]（10分）记 $V=\{f:\mathbf{R}\to \mathbf{R}|f$ 可导 $\}$，即 $V$ 是由实数导自身的全体可导函数所构成的集合.
+
+\item [二、]（10分）记 $V=\{f:\mathbf{R}\to \mathbf{R}|f$ 可导 $\}$，即 $V$ 是由实数导自身的全体可导函数所构成的集合.
     \begin{enumerate}[label=(\arabic*)]
         \item 试给出 $V$ 上加法和数乘运算，使 $V$ 成为实线性空间，并写出 $V$ 中的零向量.
+
         \item 记 $S=\{f_1,f_2,f_3\}$，其中
         \[f_1(x)=x;f_2(x)=\sin x;f_3(x)=e^x,\forall x \in \mathbf{R}.\]
         证明 $S$ 是 $V$ 的线性无关子集.
     \end{enumerate}
-    \item [三、]（10分）设 $(\ ,\ )$ 是实线性空间 $V$ 的内积，$B=\{v_1,v_2,\cdots,v_n\}$ 是 $V$ 的一组单位正交基.
+
+\item [三、]（10分）设 $(\ ,\ )$ 是实线性空间 $V$ 的内积，$B=\{v_1,v_2,\ldots,v_n\}$ 是 $V$ 的一组单位正交基.
     \begin{enumerate}[label=(\arabic*)]
-        \item 证明：对任意的 $x,y \in V$，有 $(x,y) = \sum\limits_{i=1}^n(x,v_i)(y,v_i).$
+        \item 证明：对任意的 $x,y \in V$，有 $(x,y) = \sum\limits_{i=1}^n(x,v_i)(y,v_i)$.
+
         \item 设 $x=\sum\limits_{i=1}^n(-1)^iv_i$ 和 $y=\sum\limits_{i=1}^nv_i$ 的夹角是 $\theta$，求 $\cos \theta$，并指出 $x$ 和 $y$ 是否正交.
     \end{enumerate}
-    \item [四、]（10分）设 $\alpha_1,\alpha_2,\alpha_3,\beta_1,\beta_2$ 都是 $4$ 维实线性空间 $\mathbf{R^4}$ 的列向量，已知 $4$ 阶行列式
-    $\lvert (\alpha_1,\alpha_2,\alpha_3,\beta_1) \rvert=d_1,\lvert (\beta_2,\alpha_3,\alpha_2,\alpha_1) \rvert = d_2.$ 求下面 $4$ 阶方阵的行列式.
+
+\item [四、]（10分）设 $\alpha_1,\alpha_2,\alpha_3,\beta_1,\beta_2$ 都是 4 维实线性空间 $\mathbf{R^4}$ 的列向量，已知 4 阶行列式$\lvert (\alpha_1,\alpha_2,\alpha_3,\beta_1) \rvert=d_1,\lvert (\beta_2,\alpha_3,\alpha_2,\alpha_1) \rvert = d_2$.  求下面 4 阶方阵的行列式.
     \begin{enumerate}[label=(\arabic*)]
-        \item $A=(3\alpha_1-100\alpha_2,7\alpha_2,\alpha_3,\beta_1).$
-        \item $B=(5\beta_1+6\beta_2,\alpha_1,\alpha_2,\alpha_3).$
+        \item $A=(3\alpha_1-100\alpha_2,7\alpha_2,\alpha_3,\beta_1)$.
+
+        \item $B=(5\beta_1+6\beta_2,\alpha_1,\alpha_2,\alpha_3)$.
     \end{enumerate}
-    \item [五、]（10分）设域 $\mathbf{F}$ 上 $n$ 维线性空间 $V$ 的非零向量都是线性映射 $T:V\to V$ 的特征向量.
+
+\item [五、]（10分）设域 $\mathbf{F}$ 上 $n$ 维线性空间 $V$ 的非零向量都是线性映射 $T:V\to V$ 的特征向量.
     \begin{enumerate}[label=(\arabic*)]
-        \item 证明 $T$ 是数乘映射，即存在 $\lambda \in \mathbf{F}$，使得对于任何 $v \in V$，有 $T(v)=\lambda v.$
-        \item 给出 $T$ 的秩和零度 ($T$ 的零度 $=\mathrm{dim}(\mathrm{Ker}(T))$).
+        \item 证明 $T$ 是数乘映射，即存在 $\lambda \in \mathbf{F}$，使得对于任何 $v \in V$，有 $T(v)=\lambda v$.
+
+        \item 给出 $T$ 的秩和零度 ($T$ 的零度 $=\mathrm{dim}(\ker(T))$).
     \end{enumerate}
-    \item [六、]（10分）令 $A=\begin{pmatrix}0 & -1 & -1 \\ 1 & 1 & 0 \\ 1 & x & y\end{pmatrix}$，其特征多项式 $f(\lambda) = \lambda^3+\lambda+2.$
+
+\item [六、]（10分）令 $A=\begin{pmatrix}0 & -1 & -1 \\ 1 & 1 & 0 \\ 1 & x & y\end{pmatrix}$，其特征多项式 $f(\lambda) = \lambda^3+\lambda+2$.
     \begin{enumerate}[label=(\arabic*)]
         \item 求 $x$ 和 $y$ 的值.
+
         \item 若将 $A$ 看作实矩阵，$A$ 是否可对角化？为什么？
+
         \item 若将 $A$ 看作复矩阵，$A$ 是否可对角化？为什么？
     \end{enumerate}
-    \item [七、]（10分）设 $A$ 和 $B$ 分别是 $m\times n$ 和 $n\times m$ 矩阵.
+
+\item [七、]（10分）设 $A$ 和 $B$ 分别是 $m\times n$ 和 $n\times m$ 矩阵.
     \begin{enumerate}[label=(\arabic*)]
         \item 设 $\lambda \neq 0$. 证明 $\lambda$ 是 $m\times m$ 矩阵 $AB$ 的特征值当且仅当 $\lambda$ 是 $n\times n$ 矩阵 $BA$ 的特征值.
+
         \item 证明 $I_m-AB$ 是可逆矩阵当且仅当 $I_n-BA$ 是可逆矩阵($I_m$ 是 $m$ 阶单位矩阵，$I_n$ 是 $n$ 阶单位矩阵).
     \end{enumerate}
-    \item [八、]（10分）设实二次型 $f(x_1,x_2,x_3) = 2x_1^2+x_2^2-4x_1x_2-4x_2x_3.$
+
+\item [八、]（10分）设实二次型 $f(x_1,x_2,x_3) = 2x_1^2+x_2^2-4x_1x_2-4x_2x_3$.
     \begin{enumerate}[label=(\arabic*)]
-        \item 求实对称矩阵 $A$，使 $f(x_1,x_2,x_3)=(x_1,x_2,x_3)A(x_1,x_2,x_3)^{\mathbf{T}}.$
+        \item 求实对称矩阵 $A$，使 $f(x_1,x_2,x_3)=(x_1,x_2,x_3)A(x_1,x_2,x_3)^{\mathbf{T}}$.
+
         \item 求可逆矩阵 $P$，使 $P^\mathbf{T}AP$ 是 $A$ 的相合规范形.
+
         \item 给出 $f$ 的正惯性指数和负惯性指数，并指出 $f$ 是否正定或负定.
     \end{enumerate}
-    \item [九、]（20分）判断下面命题的真伪. 若它是真命题，给出一个简单证明；若它是伪命题，举一个具体的反例将它否定.
+
+\item [九、]（20分）判断下面命题的真伪. 若它是真命题，给出一个简单证明；若它是伪命题，举一个具体的反例将它否定.
     \begin{enumerate}[label=(\arabic*)]
         \item 域 $\mathbf{F}$ 上所有 $n$ 阶不可逆方阵所构成的集合是 $n$ 阶矩阵空间 $M_n(\mathbf{F})$ 的子空间.
+
         \item 对称矩阵 $A$ 的伴随矩阵 $A^*$ 也是对称矩阵.
-        \item 设 $A$ 是 $m\times n$ 矩阵，$I_m$ 是 $m$ 阶单位阵，$B=(A|I_m)$ 是 $A$ 的增广矩阵，则 $B$ 的秩 $r(B)=m.$
+
+        \item 设 $A$ 是 $m\times n$ 矩阵，$I_m$ 是 $m$ 阶单位阵，$B=(A|I_m)$ 是 $A$ 的增广矩阵，则 $B$ 的秩 $r(B)=m$.
+
         \item 若 $\mathrm{dim}(V) = n,\mathrm{dim}(W) = m$，且 $n < m$，则任何线性映射 $T:V\to W$ 都不可能是满射.
     \end{enumerate}
 \end{enumerate}

@@ -1,3 +1,4 @@
+\phantomsection
 \section*{2020-2021学年线性代数I（H）期中}
 \addcontentsline{toc}{section}{2020-2021学年线性代数I（H）期中（吴志祥老师）}
 
@@ -18,12 +19,15 @@
 	\item[二、]（10分）设 $V=\{(a_{ij})_{n \times n}\ |\ \forall i,\ j,\ a_{ij}=a_{ji}\}$
     \begin{enumerate}[label=(\arabic*)]
         \item 证明：$V$ 为 $F^{n \times n}$ 的子空间；
+
         \item 求 $V$ 的基和维数.
     \end{enumerate}
 	\item[三、]（10分）设 $f_1=-1+x,\ f_2=1-x^2,\ f_3=1-x^3,\ g_1=x-x^2,\ g_2=x+x^3,\ V_1=L\left(f_1,\ f_2,\ f_3\right),\ V_2=L\left(g_1,\ g_2\right)$，求：
     \begin{enumerate}[label=(\arabic*)]
         \item $V_1+V_2$ 的基和维数；
+
         \item $V_1 \cap V_2$ 的基和维数；
+
         \item $V_2$ 在 $\mathbf{R}[x]_4$ 空间的补.
     \end{enumerate}
 	\item[四、]（10分）设 $\epsilon_1,\ \epsilon_2$ 为 $n$ 维欧氏空间 $V$ 的两个单位正交向量，定义
@@ -31,31 +35,40 @@
     证明：
     \begin{enumerate}
         \item $\sigma$ 是 $V$ 上的线性变换；
+
         \item $\forall \alpha,\ \beta \in V,\ \left(\sigma (\alpha),\sigma (\beta) \right)=\left(\alpha,\beta\right)$.
     \end{enumerate}
-	\item[五、]（10分）已知 $n$ 阶矩阵 $A$ 的秩为 $1$ ，证明：$A^k=\textup{tr}(A)^{k-1}A$.（注：$\textup{tr}$ 为矩阵的迹，即矩阵的对角线元素之和）
-	\item[六、] （10分）已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，且已知矩阵$B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$。求矩阵 $X$ 满足：
+	\item[五、]（10分）已知 $n$ 阶矩阵 $A$ 的秩为 1 ，证明：$A^k=\textup{tr}(A)^{k-1}A$.（注：$\textup{tr}$ 为矩阵的迹，即矩阵的对角线元素之和）
+	\item[六、] （10分）已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，且已知矩阵$B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$. 求矩阵 $X$ 满足：
     \[X+(B(A^\mathrm{T}B^2)^{-1}A^\mathrm{T})^{-1}=X(A^2(B^\mathrm{T}A)^{-1}B^\mathrm{T})^{-1}(A+B).\]
 	\item[七、]（10分）设 $V(\mathbf{F})$ 是一个 $n$ 维线性空间，$\sigma \in L(V,V)$，证明：
     \begin{enumerate}[label=(\arabic*)]
         \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 的多项式 $p(x)$ 使 $p(\sigma)=0$；
-        \item $\sigma$ 可逆$\iff$有一常数项不为 $0$ 的多项式 $p(x)$ 使 $p(\sigma)=0$.
+
+        \item $\sigma$ 可逆$\iff$有一常数项不为 0 的多项式 $p(x)$ 使 $p(\sigma)=0$.
     \end{enumerate}
-    \item[八、]（10分）已知三维线性空间 $V$ 的线性变换 $\sigma$ 关于基 $\{\alpha_1,\alpha_2,\alpha_3\}$ 所对应的矩阵为
+
+\item[八、]（10分）已知三维线性空间 $V$ 的线性变换 $\sigma$ 关于基 $\{\alpha_1,\alpha_2,\alpha_3\}$ 所对应的矩阵为
     \[\begin{pmatrix}1 & 2 & -1 \\ 2 & 1 & 0 \\ 3 & 0 & 1\end{pmatrix}\]
     \begin{enumerate}[label=(\arabic*)]
         \item 求 $\sigma$ 在基 $\{\beta_1,\ \beta_2,\ \beta_3\}$ 下对应的矩阵 $B$，其中：
         \[\beta_1=2\alpha_1+\alpha_2+3\alpha_3,\ \beta_2=\alpha_1+\alpha_2+2\alpha_3,\ \beta_3=-\alpha_1+\alpha_2+\alpha_3\]
+
         \item 求 $\sigma$ 的值域 $\sigma(V)$ 和核 $\textup{ker}\sigma$；
+
         \item 把 $\sigma(V)$ 的基扩充为 $V$ 的基，并求 $\sigma$ 在这组基下对应的矩阵；
+
         \item 把 $\textup{ker}\sigma$ 的基扩充为 $V$ 的基，并求 $\sigma$ 在这组基下对应的矩阵.
     \end{enumerate}
 	\item[九、]（20分）判断下列命题的真伪，若它是真命题，请给出简单的证明；若它是伪命题，给出理由或举反例将它否定.
     \begin{enumerate}[label=(\arabic*)]
         \item 若 $\alpha_1,\ \alpha_2,\ \alpha_3$ 线性相关，则 $\alpha_1+\alpha_2,\ \alpha_2+\alpha_3,\ \alpha_3+\alpha_1$ 也线性相关；
+
         \item 一个有限维线性空间只包含有限个子空间；
+
         \item 已知 $\sigma \in L(V,\ V)$，$\textup{dim}V=n$，则由 $r(\sigma)+\textup{dim(ker}\sigma)=n$ 可得$\textup{Im}\sigma+\textup{ker}\sigma=V$；
-        \item 若对于任何正整数 $n$，方阵 $A$ ( 阶数大于 $1$ ) 的 $n$ 次乘积 $A^n$ 都是非零方阵，则 $A$ 是可逆的.
+
+        \item 若对于任何正整数 $n$，方阵 $A$ ( 阶数大于 1 ) 的 $n$ 次乘积 $A^n$ 都是非零方阵，则 $A$ 是可逆的.
     \end{enumerate}
 \end{enumerate}
 
