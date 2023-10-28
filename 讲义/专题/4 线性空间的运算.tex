@@ -52,7 +52,7 @@
 \section{覆盖定理}
 
 \begin{theorem}[覆盖定理] \label{thm:4:覆盖定理} \index{fugaidingli@覆盖定理}
-    设$V_1,V_2,\ldots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V.$
+    设$V_1,V_2,\ldots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V$.
 \end{theorem}
 
 覆盖定理表明任何一个线性空间都不能被自身有限个非平凡子空间通过并得到. 初看可能有些不够自然，但我们可以从简单的几何意义获得直观的理解：有限条直线的并不可能是一个平面. 下面我们利用数学归纳法进行证明.
@@ -179,7 +179,7 @@
 
         \item 利用$V_1\cap V_2=\{0\}$：设$A\in V_1\cap V_2$，则$A=A^T=-A$，因此$A=-A$，即$A=O$，因此$V_1\cap V_2=\{0\}$，故直和得证；
 
-        \item 利用$\dim V_1+\dim V_2=\dim V$：这一方法较为复杂，我们简单阐述思想. 设$E_{ij}$是第$i$行第$j$列元素为1，其余元素为0的矩阵，则$V$的一组基为$E_{ij},\enspace i,j=1,2,\ldots,n$，$V_1$的一组基为$E_{ij}+E_{ji},\enspace i<j$和$E_{ii},\enspace i=1,2,\cdots,n$，$V_2$的一组基为$E_{ij}-E_{ji},\enspace i<j$，则$\dim V_1=\dfrac{n(n-1)}{2},\enspace \dim V_2=\dfrac{n(n-1)}{2}$，因此$\dim V_1+\dim V_2=n^2$，因此$\dim V_1+\dim V_2=\dim V$，故直和得证.
+        \item 利用$\dim V_1+\dim V_2=\dim V$：这一方法较为复杂，我们简单阐述思想. 设$E_{ij}$是第$i$行第$j$列元素为1，其余元素为0的矩阵，则$V$的一组基为$E_{ij},\enspace i,j=1,2,\ldots,n$，$V_1$的一组基为$E_{ij}+E_{ji},\enspace i<j$和$E_{ii},\enspace i=1,2,\ldots,n$，$V_2$的一组基为$E_{ij}-E_{ji},\enspace i<j$，则$\dim V_1=\dfrac{n(n-1)}{2},\enspace \dim V_2=\dfrac{n(n-1)}{2}$，因此$\dim V_1+\dim V_2=n^2$，因此$\dim V_1+\dim V_2=\dim V$，故直和得证.
     \end{enumerate}
 \end{proof}
 

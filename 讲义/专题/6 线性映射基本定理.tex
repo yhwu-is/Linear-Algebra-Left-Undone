@@ -166,13 +166,13 @@
 
                   \item $(4)\implies(5)$：根据线性映射的秩的定义（等于像空间维数）显然；
 
-                  \item $(5)\implies(1)$：利用先证明和为直和（即交为$\{0\}$）再证等号成立的方法. 事实上$r(\sigma^2)=r(\sigma)$即$\dim\im\sigma^2=\dim\im\sigma$，又$(3)\implies(4)$证明了$\im\sigma^2\subseteq\im\sigma$，故$\im \sigma=\im \sigma^2$. 事实上，设$\beta_1,\cdots,\beta_s$为$\im\sigma$的一组基，则
-                        \[\im\sigma^2=\spa(\sigma(\beta_1),\cdots,\sigma(\beta_s)),\]
-                        由$\dim\im\sigma^2=\dim\im\sigma$可知$\sigma(\beta_1),\cdots,\sigma(\beta_s)$是$\im\sigma^2$的一组基，由$\im \sigma=\im \sigma^2$可知这也是$\im\sigma$的一组基.$\forall\alpha\in\ker\sigma\cap\im\sigma$，设
+                  \item $(5)\implies(1)$：利用先证明和为直和（即交为$\{0\}$）再证等号成立的方法. 事实上$r(\sigma^2)=r(\sigma)$即$\dim\im\sigma^2=\dim\im\sigma$，又$(3)\implies(4)$证明了$\im\sigma^2\subseteq\im\sigma$，故$\im \sigma=\im \sigma^2$. 事实上，设$\beta_1,\ldots,\beta_s$为$\im\sigma$的一组基，则
+                        \[\im\sigma^2=\spa(\sigma(\beta_1),\ldots,\sigma(\beta_s)),\]
+                        由$\dim\im\sigma^2=\dim\im\sigma$可知$\sigma(\beta_1),\ldots,\sigma(\beta_s)$是$\im\sigma^2$的一组基，由$\im \sigma=\im \sigma^2$可知这也是$\im\sigma$的一组基$. \forall\alpha\in\ker\sigma\cap\im\sigma$，设
                         \[\alpha=k_1\beta_1+\cdots+k_s\beta_s,\]
                         由于
                         \[0=\sigma(\alpha)=k_1\sigma(\beta_1)+\cdots+k_s\sigma(\beta_s),\]
-                        由$\sigma(\beta_1),\cdots,\sigma(\beta_s)$是一组基可知$k_1=\cdots=k_s=0$，因此$\alpha=0$，故$\ker\sigma\cap\im\sigma=\{0\}$，因此和为直和. 又由\autoref{thm:6:线性映射基本定理} 可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
+                        由$\sigma(\beta_1),\ldots,\sigma(\beta_s)$是一组基可知$k_1=\cdots=k_s=0$，因此$\alpha=0$，故$\ker\sigma\cap\im\sigma=\{0\}$，因此和为直和. 又由\autoref{thm:6:线性映射基本定理} 可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
               \end{enumerate}
           \end{proof}
 
@@ -308,21 +308,21 @@
 
 \begin{solution}
     \begin{enumerate}
-        \item 同构，因为二者维数均为$n$. 同构映射非常简单，因为$\mathbf{R}[x]_n$在基$\{1,x,\cdots,x^{n-1}\}$下的坐标就在$\mathbf{R}^n$中，因此同构映射就是这一坐标映射：
-              \[\sigma:\mathbf{R}[x]_n\to\mathbf{R}^n,\quad a_0+a_1x+\cdots+a_{n-1}x^{n-1}\mapsto(a_0,a_1,\cdots,a_{n-1}).\]
+        \item 同构，因为二者维数均为$n$. 同构映射非常简单，因为$\mathbf{R}[x]_n$在基$\{1,x,\ldots,x^{n-1}\}$下的坐标就在$\mathbf{R}^n$中，因此同构映射就是这一坐标映射：
+              \[\sigma:\mathbf{R}[x]_n\to\mathbf{R}^n,\quad a_0+a_1x+\cdots+a_{n-1}x^{n-1}\mapsto(a_0,a_1,\ldots,a_{n-1}).\]
               我们很容易验证这一映射是线性双射，因此是同构映射.
 
-        \item 同构，因为二者维数均为$2$（回忆\autoref{ex:3:不同数域的维数}）. 这一同构映射同上一小问理，$\mathbf{C}(\mathbf{R})$在基$\{1,i\}$下的坐标就在$\mathbf{R}^2$中，因此同构映射就是这一坐标映射：
+        \item 同构，因为二者维数均为2（回忆\autoref{ex:3:不同数域的维数}）. 这一同构映射同上一小问理，$\mathbf{C}(\mathbf{R})$在基$\{1,i\}$下的坐标就在$\mathbf{R}^2$中，因此同构映射就是这一坐标映射：
               \[\sigma:\mathbf{C}(\mathbf{R})\to\mathbf{R}^2,\quad a+bi\mapsto(a,b).\]
               事实上这就是将复数在二维平面中的表示，我们很容易验证这一映射是线性双射，因此是同构映射..
 
-        \item 同构，因为二者维数均为$4$. 这一同构映射也非常简单，因为$\mathbf{C}^2(\mathbf{R})$在基
+        \item 同构，因为二者维数均为4. 这一同构映射也非常简单，因为$\mathbf{C}^2(\mathbf{R})$在基
               \[\{(1,0),(i,0),(0,1),(0,i)\}\]
               下的坐标和$\mathbf{R}[x]_4$在基$\{1,x,x^2,x^3\}$下的坐标都在$\mathrm{R}^n$中，可以将它们一一对应，因此同构映射就是这一坐标映射：
               \[\sigma:\mathbf{C}^2(\mathbf{R})\to\mathbf{R}[x]_4,\quad (a+bi,c+di)\mapsto a+bx+cx^2+dx^3.\]
               我们很容易验证这一映射是线性双射，因此是同构映射.
 
-        \item 不同构，因为$\mathbf{C}^2(\mathbf{C})$的维数为$2$，而$\mathcal{L}(\mathbf{R}^4,\mathbf{R})$的维数为$4$.
+        \item 不同构，因为$\mathbf{C}^2(\mathbf{C})$的维数为2，而$\mathcal{L}(\mathbf{R}^4,\mathbf{R})$的维数为4.
     \end{enumerate}
 \end{solution}
 

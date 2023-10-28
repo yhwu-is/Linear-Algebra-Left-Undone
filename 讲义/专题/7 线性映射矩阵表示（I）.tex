@@ -314,8 +314,8 @@
                & =(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))\begin{pmatrix}
                                                                                                 b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
                                                                                             \end{pmatrix} \\
-               & =b_{1k}\sigma(\varepsilon_1)+b_{2k}\sigma(\varepsilon_2)+\cdots+b_{nk}\sigma(\varepsilon_n)                    \\
-               & =\sigma(b_{1k}\varepsilon_1+b_{2k}\varepsilon_2+\cdots+b_{nk}\varepsilon_n)                                    \\
+               & =b_{1k}\sigma(\varepsilon_1)+b_{2k}\sigma(\varepsilon_2)+\cdots+b_{nk}\sigma(\varepsilon_n)                      \\
+               & =\sigma(b_{1k}\varepsilon_1+b_{2k}\varepsilon_2+\cdots+b_{nk}\varepsilon_n)                                      \\
                & =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)
               \begin{pmatrix}
                   b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
@@ -378,7 +378,7 @@
 \begin{solution}
     我们可以直接证明第二点，因为第一点是第二点的特例. 设$f(x)=\displaystyle\sum_{i=0}^ma_ix^i$，$g(x)=\displaystyle\sum_{j=0}^sb_jx^j$，$A^0=B^0=E$，则
     \begin{align*}
-        f(A)g(B) & =\displaystyle\sum_{i=0}^ma_iA^i\cdot \displaystyle\sum_{j=0}^sb_jB^j(AB=BA)                                               \\
+        f(A)g(B) & =\displaystyle\sum_{i=0}^ma_iA^i\cdot \displaystyle\sum_{j=0}^sb_jB^j(AB=BA)                                                           \\
                  & =\displaystyle\sum_{k=0}^{m+s}\displaystyle\sum_{i+j=k}a_ib_jA^iB^j=\displaystyle\sum_{k=0}^{m+s}\displaystyle\sum_{i+j=k}b_ja_iB^jA^i \\
                  & =g(B)f(A).
     \end{align*}
@@ -462,7 +462,7 @@
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-{\kaishu 在数学的天地里，重要的不是我们知道什么，而是我们怎么知道什么。}
+{\kaishu 在数学的天地里，重要的不是我们知道什么，而是我们怎么知道什么.}
 \begin{flushright}
     \kaishu
     ——毕达哥拉斯
@@ -511,7 +511,7 @@
           \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
           V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
 
-    \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 $4$ 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T : \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
+    \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 4 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T : \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
           \[T(f(x))=\begin{pmatrix}f(0) & f(1) \\ f(-1) & f(0)\end{pmatrix}\]
           \begin{enumerate}
               \item 求出 $T$ 的核空间 $N(T)$ 和像空间 $R(T)$；

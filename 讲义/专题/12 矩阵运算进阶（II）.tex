@@ -66,10 +66,10 @@
 \end{example}
 
 \begin{proof}
-    使用数学归纳法. $n=1$时结论显然成立，现在假设命题对$n-1$成立，即$n-1$个对角元都为0的$n-1$阶上三角矩阵的乘积为零矩阵，下面考虑$n$的情况：给定$A_1,A_2,\cdots,A_n$是$n$个对角元都为0的上三角矩阵，记
+    使用数学归纳法. $n=1$时结论显然成立，现在假设命题对$n-1$成立，即$n-1$个对角元都为0的$n-1$阶上三角矩阵的乘积为零矩阵，下面考虑$n$的情况：给定$A_1,A_2,\ldots,A_n$是$n$个对角元都为0的上三角矩阵，记
     \[A=\begin{pmatrix}
             B_i & * \\ O & 0
-        \end{pmatrix},\enspace i=1,2,\cdots,n.\]
+        \end{pmatrix},\enspace i=1,2,\ldots,n.\]
     其中$B_i$是对角元都为0的$n-1$阶上三角矩阵，由归纳假设可知
     \[B_1B_2\cdots B_{n-1}=O,\]
     于是
@@ -195,15 +195,15 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，由\autoref{thm:12:对角矩阵的性质} 可知，$AB$是$B$的第$i(i=1,2,\cdots,n)$行元素都乘以$\lambda_i$的矩阵，其中$\lambda_i$是$A$的第$i$个对角元素，同理$BA$是$B$的第$j$列元素都乘以$\lambda_j$的矩阵，因此考察$AB=BA$第$i$行$j$列元素可知
-              \[\lambda_ib_{ij}=\lambda_jb_{ij}(i,j=1,2,\cdots,n),\]
+        \item 设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，由\autoref{thm:12:对角矩阵的性质} 可知，$AB$是$B$的第$i(i=1,2,\ldots,n)$行元素都乘以$\lambda_i$的矩阵，其中$\lambda_i$是$A$的第$i$个对角元素，同理$BA$是$B$的第$j$列元素都乘以$\lambda_j$的矩阵，因此考察$AB=BA$第$i$行$j$列元素可知
+              \[\lambda_ib_{ij}=\lambda_jb_{ij}\qquad i,j=1,2,\ldots,n\]
               由于$i\neq j$时$\lambda_i\neq\lambda_j$，因此$b_{ij}=0$，即$B$是对角矩阵.
 
-        \item 设$A=\diag{(\lambda_1E_1,\lambda_2E_2,\cdots,\lambda_sE_s)}$，其中$E_i$是$m_i$阶单位矩阵，$m_1+m_2+\cdots+m_k=n$，设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，将$B$做与$A$一样的分块，事实上由于分块矩阵乘法和一般乘法的相似性，我们可以完全套用第一点的证明完成这里的证明，这里不再赘述.
+        \item 设$A=\diag{(\lambda_1E_1,\lambda_2E_2,\ldots,\lambda_sE_s)}$，其中$E_i$是$m_i$阶单位矩阵，$m_1+m_2+\cdots+m_k=n$，设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，将$B$做与$A$一样的分块，事实上由于分块矩阵乘法和一般乘法的相似性，我们可以完全套用第一点的证明完成这里的证明，这里不再赘述.
 
         \item 设$C$与所有$n$级可逆矩阵可交换，由前述1可知$C$至少是对角矩阵，因为$C$起码要与主对角元两两互异的对角矩阵可交换.
 
-              我们将$C$记为$\diag{(k_1,k_2,\cdots,k_n)}$，进一步地，取可逆矩阵$B=E_{12}+E_{23}+\cdots+E_{n-1,n}+E_{n1}$（回顾第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$），则$BC=CB$可知
+              我们将$C$记为$\diag{(k_1,k_2,\ldots,k_n)}$，进一步地，取可逆矩阵$B=E_{12}+E_{23}+\cdots+E_{n-1,n}+E_{n1}$（回顾第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$），则$BC=CB$可知
               \[k_1E_{12}+k_2E_{23}+\cdots+k_{n-1}E_{n-1,n}+k_nE_{n1}=k_2E_{12}+k_3E_{23}+\cdots+k_nE_{n-1,n}+k_1E_{n1},\]
               由此可得$k_1=k_2=\cdots=k_n$，即$C=k_1E$是数量矩阵.
 
@@ -382,9 +382,12 @@
                   \end{pmatrix},\enspace B^4=O,\]
               因此
               \begin{align*}
-                  A^n & =(aE+B)^n=\sum\limits_{k=0}^nC_n^ka^{n-k}E^kB^k                                                                \\
+                  A^n & =(aE+B)^n=\sum\limits_{k=0}^nC_n^ka^{n-k}E^kB^k                        \\
                       & =\begin{pmatrix}
-                             a^n & C_n^1a^{n-1} & C_n^2a^{n-2} & C_n^3a^{n-3} \\ 0 & a^n & C_n^1a^{n-0} & C_n^2a^{n-2} \\ 0 & 0 & a^n & C_n^1a^{n-1} \\ 0 & 0 & 0 & a^n
+                             a^n & C_n^1a^{n-1} & C_n^2a^{n-2} & C_n^3a^{n-3} \\
+                             0   & a^n          & C_n^1a^{n-0} & C_n^2a^{n-2} \\
+                             0   & 0            & a^n          & C_n^1a^{n-1} \\
+                             0   & 0            & 0            & a^n
                          \end{pmatrix}.
               \end{align*}
           \end{solution}
@@ -459,9 +462,9 @@
 
                   \item 当$b\neq 0$时有
                         \begin{align*}
-                            (aE+M)^n & =\sum_{k=0}^nC_n^ka^{n-k}M^k                         \\
-                                     & =\sum_{k=0}^nC_n^ka^{n-k}b^{k-1}M                    \\
-                                     & =a^nE+\dfrac{1}{b}\sum_{k=1}^nC_n^ka^{n-k}b^kM       \\
+                            (aE+M)^n & =\sum_{k=0}^nC_n^ka^{n-k}M^k                                    \\
+                                     & =\sum_{k=0}^nC_n^ka^{n-k}b^{k-1}M                               \\
+                                     & =a^nE+\dfrac{1}{b}\sum_{k=1}^nC_n^ka^{n-k}b^kM                  \\
                                      & =a^nE+\dfrac{1}{b}\left(\sum_{k=0}^nC_n^ka^{n-k}b^k-a^n\right)M \\
                                      & =a^nE+\dfrac{(a+b)^n-a^n}{b}M
                         \end{align*}
@@ -495,7 +498,7 @@
               事实上$A=PBP^{-1}$，因此$A^{2024}=PB^{2024}P^{-1}$，由于$B^2=E$，因此$B^{2024}=(B^2)^{1012}=E$，因此$A^{2024}=PEP^{-1}=E$.
           \end{solution}
 
-          事实上本题一个关键的洞察在于我们很容易看出$B$这一非常简单的矩阵作为初等矩阵复合的情况（交换1、3行以及每一行都乘以-1），因此其平方为$E$.
+          事实上本题一个关键的洞察在于我们很容易看出$B$这一非常简单的矩阵作为初等矩阵复合的情况（交换1、3行以及每一行都乘以$-1$），因此其平方为$E$.
 
     \item 利用对角化和若当标准形：我们将在后续相应章节中讲解.
 \end{enumerate}
@@ -509,8 +512,7 @@
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-{\kaishu 尽管⼀批教授和教科书编者⽤关于矩阵的荒唐⾄极的计算内容掩盖了线性代数的简明性，但是鲜有与之相较更为初等的理论。
-}
+{\kaishu 尽管⼀批教授和教科书编者⽤关于矩阵的荒唐⾄极的计算内容掩盖了线性代数的简明性，但是鲜有与之相较更为初等的理论.}
 \begin{flushright}
     ——Jean Dieudonne
 \end{flushright}

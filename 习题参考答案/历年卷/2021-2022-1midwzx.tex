@@ -1,3 +1,4 @@
+\phantomsection
 \section*{2021-2022学年线性代数I（H）期中}
 \addcontentsline{toc}{section}{2021-2022学年线性代数I（H）期中（吴志祥老师）}
 
@@ -12,39 +13,47 @@
     \end{pmatrix}$，$b=\begin{pmatrix}
         3 \\ 9 \\ -6
     \end{pmatrix}$，且$AX=b$无解，求$a$.
-	\item[二、]（10分）证明替换定理：设向量组$\alpha_1,\cdots,\alpha_s$线性无关，$\beta=b_1\alpha_1+\cdots+b_s\alpha_s$.如果$\beta_i\neq 0$，则$\beta$可替换$\alpha_1,\cdots,\alpha_s$中的某个向量成为一个新的线性无关向量组.
+	\item[二、]（10分）证明替换定理：设向量组$\alpha_1,\ldots,\alpha_s$线性无关，$\beta=b_1\alpha_1+\cdots+b_s\alpha_s$. 如果$\beta_i\neq 0$，则$\beta$可替换$\alpha_1,\ldots,\alpha_s$中的某个向量成为一个新的线性无关向量组.
 	\item[三、]（10分）设$\{\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4,\varepsilon_5\}$是欧式空间$V$的一组标准正交基，$W=\spa(\alpha_1,\alpha_2,\alpha_3)$，其中$\alpha_1=2\varepsilon_1+\varepsilon_2+\varepsilon_3,\alpha_2=\varepsilon_1+\varepsilon_2+\varepsilon_5,\alpha_3=\varepsilon_1-\varepsilon_2+\varepsilon_4$.
 	\begin{enumerate}[label=(\arabic*)]
         \item 求$\alpha_1,\alpha_2$的夹角；
+
         \item 求$W$的一组标准正交基.
     \end{enumerate}
-	\item[四、]（10分）证明：如果向量组$\{\alpha_1,\cdots,\alpha_m\}$的秩为$r$，那么该向量组中任意$s$个向量组成的子集的秩大于等于$r+s-m$.
+	\item[四、]（10分）证明：如果向量组$\{\alpha_1,\ldots,\alpha_m\}$的秩为$r$，那么该向量组中任意$s$个向量组成的子集的秩大于等于$r+s-m$.
 	\item[五、]（10分）在$\mathbf{R}^3$中取三个向量
 	\[\alpha_1=(1,-2,0),\alpha_2=(-3,0,-2),\alpha_3=(2,4,3),\]
     设$\sigma$是满足$\sigma(\alpha_i)=\e_i(i=1,2,3)$的线性变换，其中$\{e_1,e_2,e_3\}$是$\mathbf{R}^3$的自然基.
     \begin{enumerate}[label=(\arabic*)]
         \item 求$\sigma$关于自然基所对应的矩阵；
+
         \item 求向量$\alpha_1=(-2,5,6)$在$\sigma$下的像.
     \end{enumerate}
 	\item[六、] （10分）已知$\mathbf{R}[x]_n$的线性变换$\sigma$满足$\sigma(p(x))=p(x+1)-p(x),\enspace p(x)\in\mathbf{R}[x]_n$.
 	\begin{enumerate}[label=(\arabic*)]
         \item 求$\sigma$的秩与核；
+
         \item 求所有可能的$p(x)\in\mathbf{R}[x]_n$和$\lambda\in\mathbf{R}$使得$\sigma(p(x))=\lambda p(x)$.
     \end{enumerate}
 	\item[七、]（10分）设$B=\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\}$是4维线性空间$V$的一组基，$\sigma$关于基$B$的矩阵为
     \[A=\begin{pmatrix}1 & 0 & 2 & 1 \\ -1 & 2 & 1 & 3 \\ 1 & 2 & 5 & 5 \\ 2 & -2 & 1 & -2\end{pmatrix},\]
     求$\sigma$的像与核.
-    \item[八、]（10分）域$\mathbf{F}$上所有$m\times n$矩阵组成的集合$M_{m\times n}(\mathbf{F})$是域$\mathbf{F}$上的线性空间.定义$V_i=\{Ae_{ii}\mid A\in M_{m\times n}(\mathbf{F})\}(i=1,2,\cdots,n)$，其中$e_{ij}$是第$i$行第$j$列元素为$1$，其余元素均为$0$的$n$阶矩阵，证明：
+
+    \item[八、]（10分）域$\mathbf{F}$上所有$m\times n$矩阵组成的集合$M_{m\times n}(\mathbf{F})$是域$\mathbf{F}$上的线性空间. 定义$V_i=\{Ae_{ii}\mid A\in M_{m\times n}(\mathbf{F})\}(i=1,2,\ldots,n)$，其中$e_{ij}$是第$i$行第$j$列元素为1，其余元素均为0的$n$阶矩阵，证明：
     \begin{enumerate}[label=(\arabic*)]
         \item $V_i$是$M_{m\times n}(\mathbf{F})$的子空间；
+
         \item $M_{m\times n}(\mathbf{F})=V_1\oplus V_2\oplus\cdots\oplus V_n$.
     \end{enumerate}
 	\item[九、]（20分）判断下列命题的真伪，若它是真命题，请给出简单的证明；若它是伪命题，给出理由或举反例将它否定.
     \begin{enumerate}[label=(\arabic*)]
         \item 正整数集$\mathbf{R}^+$对如下定义的加法和数量乘法构成整数$\mathbf{Z}$上的线性空间：
         \[a\oplus b=ab,\enspace\lambda\circ a=a^\lambda,\enspace\forall a,b\in\mathbf{R}^+,\lambda\in\mathbf{Z};\]
-        \item 设$\sigma\in\mathcal{L}(V)$，$\{\alpha_1,\cdots,\alpha_n\}$是$V$的一组基，则$\sigma$可逆当且仅当$\{\sigma(\alpha_1),\cdots,\sigma(\alpha_n)\}$是$V$的一组基；
-        \item 对任意实数域$\mathbf{R}$上线性空间$V$，都能找到有限个$V$的非平凡子空间$V_1,\cdots,V_m$使得$V_1\cup\cdots\cup V_m$；
+
+        \item 设$\sigma\in\mathcal{L}(V)$，$\{\alpha_1,\ldots,\alpha_n\}$是$V$的一组基，则$\sigma$可逆当且仅当$\{\sigma(\alpha_1),\ldots,\sigma(\alpha_n)\}$是$V$的一组基；
+
+        \item 对任意实数域$\mathbf{R}$上线性空间$V$，都能找到有限个$V$的非平凡子空间$V_1,\ldots,V_m$使得$V_1\cup\cdots\cup V_m$；
+
         \item 与所有$n$阶矩阵可交换的矩阵一定是$n$阶数量矩阵.
     \end{enumerate}
 \end{enumerate}

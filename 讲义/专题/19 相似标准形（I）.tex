@@ -73,6 +73,7 @@
 
               相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同.
           \end{proof}
+
     \item 与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零（但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
 
           \begin{proof}
@@ -248,7 +249,7 @@
 \end{solution}
 
 \begin{example}
-    设 $T$ 是次数小于等于 $2$ 的实多项式线性空间 $V$ 上的变换，对任意 $f(x) \in V$，定义
+    设 $T$ 是次数小于等于 2 的实多项式线性空间 $V$ 上的变换，对任意 $f(x) \in V$，定义
     \[T(f(x))=\frac{\mathrm{d}((x-2)f(x))}{\mathrm{d}x}\]
     证明 $T$ 是 $V$ 上的线性变换，且$T$可对角化.
 \end{example}
@@ -389,7 +390,7 @@
                       1         & 0         & 4-\lambda
                   \end{vmatrix}=-(\lambda-3)^2(\lambda-5)$，$T$的特征值为$f(\lambda)=0$的解，即为$\lambda_1=\lambda_2=3,\lambda_3=5$.
 
-        \item 对于$\lambda=3$，我们求解$(T-3I)\alpha$得到特征向量（其中令$\alpha=(x_1,x_2,x_3)$），解得$\alpha_1=(1,0,-1)^\mathrm{T},\alpha_2=(0,1,0)^\mathrm{T}$，因此$T$在$\lambda=3$时的特征子空间为$V_3=\spa(\alpha_1,\alpha_2)$，维数为$2$，因此$\lambda=3$时代数重数与几何重数相等. 而$\lambda=5$是一重特征值，因此也必有代数重数与几何重数相等（因为一定有特征向量，那么特征子空间维数至少为1，再结合代数重数大于等于几何重数可知，特征子空间维数恰为1）. 因此$T$可对角化.
+        \item 对于$\lambda=3$，我们求解$(T-3I)\alpha$得到特征向量（其中令$\alpha=(x_1,x_2,x_3)$），解得$\alpha_1=(1,0,-1)^\mathrm{T},\alpha_2=(0,1,0)^\mathrm{T}$，因此$T$在$\lambda=3$时的特征子空间为$V_3=\spa(\alpha_1,\alpha_2)$，维数为2，因此$\lambda=3$时代数重数与几何重数相等. 而$\lambda=5$是一重特征值，因此也必有代数重数与几何重数相等（因为一定有特征向量，那么特征子空间维数至少为1，再结合代数重数大于等于几何重数可知，特征子空间维数恰为1）. 因此$T$可对角化.
     \end{enumerate}
 \end{solution}
 
@@ -430,7 +431,7 @@
                       a_2b_1 & a_2b_2 & \cdots & a_2b_n \\
                       \vdots & \vdots & \ddots & \vdots \\
                       a_nb_1 & a_nb_2 & \cdots & a_nb_n
-                  \end{pmatrix}$，因此$A$的迹为$\sum\limits_{i=1}^na_ib_i=\alpha^\mathrm{T}\beta=\sum\limits_{i=1}^n\lambda_i$，其中$\lambda_i$为$A$的特征值. 若$\alpha^\mathrm{T}\beta\neq 0$，则$\lambda_i=0,\enspace i=1,\cdots,n-1$，$\lambda_n=\alpha^\mathrm{T}\beta$. 若$\alpha^\mathrm{T}\beta=0$，则$A$的所有特征值均为0.
+                  \end{pmatrix}$，因此$A$的迹为$\sum\limits_{i=1}^na_ib_i=\alpha^\mathrm{T}\beta=\sum\limits_{i=1}^n\lambda_i$，其中$\lambda_i$为$A$的特征值. 若$\alpha^\mathrm{T}\beta\neq 0$，则$\lambda_i=0,\enspace i=1,\ldots,n-1$，$\lambda_n=\alpha^\mathrm{T}\beta$. 若$\alpha^\mathrm{T}\beta=0$，则$A$的所有特征值均为0.
 
         \item 由上一小问可知，若$\alpha^\mathrm{T}\beta=0$即$A$的全部特征值为0，因此只有一个$n-1$维的特征子空间，故特征子空间直和不等于$V$，故不可对角化.
 
@@ -516,16 +517,16 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 由已知，设$A$的$n$个特征值为$\lambda_0,\lambda_1,\ldots,\lambda_{n-1}$，故$A$相似于对角矩阵$\varLambda=\diag(\lambda_0,\lambda_1,\cdots,\lambda_{n-1})$，设$P^{-1}AP=\varLambda$，因此
-              \[A-\lambda_0 E=P\varLambda P^{-1}-\lambda_0 PP^{-1}=P\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0)P^{-1},\]
+        \item 由已知，设$A$的$n$个特征值为$\lambda_0,\lambda_1,\ldots,\lambda_{n-1}$，故$A$相似于对角矩阵$\varLambda=\diag(\lambda_0,\lambda_1,\ldots,\lambda_{n-1})$，设$P^{-1}AP=\varLambda$，因此
+              \[A-\lambda_0 E=P\varLambda P^{-1}-\lambda_0 PP^{-1}=P\diag(0,\lambda_1-\lambda_0,\ldots,\lambda_{n-1}-\lambda_0)P^{-1},\]
               从而
-              \[(A-\lambda_0 E)^2=P\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2)P^{-1},\]
+              \[(A-\lambda_0 E)^2=P\diag(0,(\lambda_1-\lambda_0)^2,\ldots,(\lambda_{n-1}-\lambda_0)^2)P^{-1},\]
               由于$\lambda_i-\lambda_0=0$的充要条件是$(\lambda_i-\lambda_0)^2=0$，所以
               \begin{align*}
-                  r((A-\lambda_0 E)^2) & =r(P\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2)P^{-1}) \\
-                                       & =r(\diag(0,(\lambda_1-\lambda_0)^2,\cdots,(\lambda_{n-1}-\lambda_0)^2))        \\
-                                       & =r(\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0))                \\
-                                       & =r(P\diag(0,\lambda_1-\lambda_0,\cdots,\lambda_{n-1}-\lambda_0)P^{-1})         \\
+                  r((A-\lambda_0 E)^2) & =r(P\diag(0,(\lambda_1-\lambda_0)^2,\ldots,(\lambda_{n-1}-\lambda_0)^2)P^{-1}) \\
+                                       & =r(\diag(0,(\lambda_1-\lambda_0)^2,\ldots,(\lambda_{n-1}-\lambda_0)^2))        \\
+                                       & =r(\diag(0,\lambda_1-\lambda_0,\ldots,\lambda_{n-1}-\lambda_0))                \\
+                                       & =r(P\diag(0,\lambda_1-\lambda_0,\ldots,\lambda_{n-1}-\lambda_0)P^{-1})         \\
                                        & =r(A-\lambda_0 E).
               \end{align*}
               故命题得证.
@@ -559,7 +560,7 @@
 
         \item 与\autoref{ex:19:可对角化经典例题} 第一问中解法类似可得$A$为幂等矩阵则一定可对角化，且特征值为0和1. 因为$A$可对角化，故0和1的代数重数等于几何重数（统称重数），且二者重数之和为$n$. 由于0的重数（从几何重数的角度看）就等于$AX=0$的解空间维数，即等于$n-r(A)$，因此1的重数等于$n-(n-r(A))=r(A)$.
 
-        \item 事实上$\tr(A)$等于$A$的所有特征值之和. 事实上由上面的结论，幂等矩阵$A$特征值由$n-r(A)$个0和$r(A)$个1组成，即与幂等矩阵相似的对角矩阵为$\varLambda=\diag(0,\cdots,0,1,\cdots,1)$，其中有$r(A)$个1. 又因为相似矩阵有相同的特征值，因此对于任意的幂等矩阵$A$都有$\tr(A)=\tr(\varLambda)=r(A)$.
+        \item 事实上$\tr(A)$等于$A$的所有特征值之和. 事实上由上面的结论，幂等矩阵$A$特征值由$n-r(A)$个0和$r(A)$个1组成，即与幂等矩阵相似的对角矩阵为$\varLambda=\diag(0,\ldots,0,1,\ldots,1)$，其中有$r(A)$个1. 又因为相似矩阵有相同的特征值，因此对于任意的幂等矩阵$A$都有$\tr(A)=\tr(\varLambda)=r(A)$.
 
         \item 根据我们在相抵标准形中讨论的分解可知，所有秩为1的矩阵都可分解为一个列向量乘以行向量的形式，即$A=\alpha\beta^\mathrm{T}$，其中$\alpha,\beta$都是列向量. 并且同\autoref{ex:19:秩1矩阵可对角化} 中的讨论，$A$的迹即为$\alpha^\mathrm{T}\beta=\beta^\mathrm{T}\alpha=1$，因此
               \[A^2=(\alpha\beta^\mathrm{T})(\alpha\beta^\mathrm{T})=\alpha(\beta^\mathrm{T}\alpha)\beta^\mathrm{T}=\alpha\beta^\mathrm{T}=A,\]
@@ -631,7 +632,7 @@
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-{\kaishu 事类相推，各有攸归，故枝条虽分而同本干知，发其一端而已。}
+{\kaishu 事类相推，各有攸归，故枝条虽分而同本干知，发其一端而已.}
 \begin{flushright}
     \kaishu
     ——刘徽，《九章算术注·原序》
@@ -758,13 +759,13 @@
           \end{enumerate}
 
     \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
-    \begin{enumerate}
-        \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
+          \begin{enumerate}
+              \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
 
-        \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
+              \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
 
-        \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
-    \end{enumerate}
+              \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
+          \end{enumerate}
 
     \item 设$A,B$为$n$阶矩阵，且$A+B=AB$，求证：
           \begin{enumerate}
@@ -779,11 +780,11 @@
 
           {\kaishu 注：实际上相似这一性质与数域无关，本题是这一结论的特例.}
 
-
     \item \begin{enumerate}
-        \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量；
-        \item 若$A,B$均可对角化，且$AB=BA$，则对角化的过渡矩阵可以相同.
-    \end{enumerate}
+              \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量；
+
+              \item 若$A,B$均可对角化，且$AB=BA$，则对角化的过渡矩阵可以相同.
+          \end{enumerate}
 
     \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，且$AB=BA$. 证明：存在次数小于等于$n-1$的多项式$f(x)$使得$B=f(A)$.
 \end{enumerate}
