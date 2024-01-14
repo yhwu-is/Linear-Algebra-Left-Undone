@@ -1,0 +1,773 @@
+\chapter{矩阵运算基础}
+
+上一节我们将前面逐步搭建的线性空间与线性映射的抽象转变为具象的表达——矩阵——这是我们上一节最后内容总结中提到的利用坐标映射同构到最简单的向量空间的优越性的体现.
+
+同时，从本章起到行列式的内容也是为将来双线齐下，结合抽象的线性映射理论和具象的矩阵理论进一步研究线性代数中的问题的基础. 抽象
+本节我们将介绍矩阵和线性映射矩阵表示的定义，讨论如何利用线性映射的运算和矩阵表示来引入矩阵的三种基本运算：加法、数乘和乘法，并探讨它们的基本性质.
+
+\section{矩阵乘法}
+
+\subsection{矩阵乘法的定义与基本性质}
+
+我们首先给出矩阵乘法的定义：
+\begin{definition}
+    设$A=(a_{ij})_{p\times m},B=(b_{ij})_{m\times n}$，我们定义$A$与$B$的乘积矩阵$C=AB=(c_{ij})_{p\times n}$是一个$p\times n$矩阵，其中它的第$i$行第$j$列元素为矩阵$A$的第$i$行与矩阵$B$的第$j$列对应位置元素相乘后求和的结果，即
+    \[c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj}\enspace(i=1,\ldots,p,\enspace j=1,\ldots,n).\]
+\end{definition}
+
+事实上，这一定义带给我们的感受与我们在上一讲定义矩阵加法和数乘时的直观不同，在我们初看这一定义时必然会产生一个疑惑：为什么矩阵乘法定义得如此复杂，为什么不定义成两个矩阵对应元素相乘就可以了呢？事实上，这是因为矩阵乘法的定义来源于线性映射的复合的矩阵表示. 教材124--125页的推导通过线性映射的复合运算定义了矩阵的乘法运算，由于篇幅的限制，我们这里不再将教材中已有的内容重复. 在此我们给出两个线性映射的角度来理解矩阵乘法：
+\begin{enumerate}
+    \item 回顾上一节中提到的旋转$\theta$角的线性映射对应的矩阵$M_{\theta}=\begin{pmatrix}
+        \cos\theta & -\sin\theta \\
+        \sin\theta & \cos\theta
+    \end{pmatrix}$. 我们考虑先旋转$\theta_1$，然后旋转$\theta_2$对应的两个变换$\sigma_1,\sigma_2$的复合$\sigma_2\sigma_1$，实际上就是旋转$\theta_1+\theta_2$角度，其矩阵表示为$M_{\theta_1+\theta_2}$，而矩阵乘法
+    \begin{align*}
+        M_{\theta_2}M_{\theta_1}&=\begin{pmatrix}
+            \cos\theta_2 & -\sin\theta_2 \\
+            \sin\theta_2 & \cos\theta_2
+        \end{pmatrix}\begin{pmatrix}
+            \cos\theta_1 & -\sin\theta_1 \\
+            \sin\theta_1 & \cos\theta_1
+        \end{pmatrix}\\ &=\begin{pmatrix}
+            \cos\theta_2\cos\theta_1-\sin\theta_2\sin\theta_1 &-\cos\theta_2\sin\theta_1-\sin\theta_2\cos\theta_1 \\
+            \sin\theta_2\cos\theta_1+\cos\theta_2\sin\theta_1 & -\sin\theta_2\sin\theta_1+\cos\theta_2\cos\theta_1
+        \end{pmatrix}\\ &=\begin{pmatrix}
+            \cos(\theta_1+\theta_2) & -\sin(\theta_1+\theta_2) \\
+            \sin(\theta_1+\theta_2) & \cos(\theta_1+\theta_2)
+        \end{pmatrix}=M_{\theta_1+\theta_2},
+    \end{align*}
+    这表明矩阵乘法$M_{\theta_2}M_{\theta_1}$的结果确实与$\sigma_2\sigma_1$的矩阵表示$M_{\theta_1+\theta_2}$一致.
+
+    \item 回顾线性映射的复合，若复合$\sigma_1\sigma_2$符合定义，则必须有$\sigma_2$的到达空间恰好是$\sigma_1$的出发空间，故两空间维数一致，那么$\sigma_1$对应的矩阵$A$的列数和$\sigma_2$对应的矩阵$B$的行数一致，这也是我们要求两个矩阵$A,B$可乘的重要条件的来源. 而最后乘法的结果行数等于$A$的行数，列数等于$B$的列数，这也与$\sigma_1\sigma_2$出发空间为$\sigma_2$出发空间（对应于$B$的列数），到达空间为$\sigma_1$到达空间（对应于$A$的行数）一致.
+\end{enumerate}
+
+\begin{example}
+    设$A=\begin{pmatrix}
+            1 & 0 & -1 \\
+            1 & 1 & -3
+        \end{pmatrix}, B=\begin{pmatrix}
+            0 & 3 \\
+            1 & 2 \\
+            3 & 1
+        \end{pmatrix}$，求$AB$和$BA$.
+\end{example}
+
+\begin{solution}
+    见教材126页例1.
+\end{solution}
+
+教材125页下方也介绍了几个矩阵运算的基本性质：
+\begin{enumerate}
+    \item $(AB)C=A(BC)$（结合律）
+
+    \item $\lambda(AB)=(\lambda A)B=A(\lambda B),\enspace \lambda \in \mathbf{F}$
+
+    \item $A(B+C)=AB+AC$（左分配律）
+
+    \item $(B+C)P=BP+CP$（右分配律）
+\end{enumerate}
+证明方法十分简单暴力：直接设出矩阵元素然后暴力计算证明等号两边对应位置（如第$i$行第$j$列元素）相等即可. 125页下方给出了结合律的证明，感兴趣的同学可以参考，实际上记住结论即可.
+
+实际上，由矩阵加法和乘法满足的运算律可知，全体$n$阶方阵构成的集合$\mathbf{F}^{n\times n}$关于矩阵加法和乘法构成环.
+
+在本节最后，我们有四个非常重要的问题需要仔细探讨：
+\begin{enumerate}
+    \item 在有了矩阵乘法的定义后，高斯消元法中我们将线性方程组简记为$AX=b$实际上是相当自然的，除此之外，我们将向量坐标表示为列向量的形式，例如
+          \[\vec{\alpha}=(\alpha_1,\alpha_2,\ldots,\alpha_n)\begin{pmatrix}
+                  x_1 \\ x_2 \\ \vdots \\ x_n
+              \end{pmatrix}\]
+          这也是符合矩阵乘法定义的一种习惯（虽然基一般不是数域$\mathbf{F}$中的元素）.
+
+    \item 事实上，在这里我们可以看出求解线性方程组和线性映射之间的关联. 我们设$AX=b$的解为
+          \[X=\begin{pmatrix}
+                  x_1 \\ x_2 \\ \vdots \\ x_n
+              \end{pmatrix}\]
+          由$AX=b$和线性映射矩阵表示，我们有
+          \begin{equation}\label{eq:7:方程组与核空间1}
+              (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))\begin{pmatrix}
+                  x_1 \\ x_2 \\ \vdots \\ x_n
+              \end{pmatrix}=(\alpha_1,\alpha_2,\ldots,\alpha_m)A\begin{pmatrix}
+                  x_1 \\ x_2 \\ \vdots \\ x_n
+              \end{pmatrix}=b
+          \end{equation}
+          即$x_1\sigma(\varepsilon_1)+x_2\sigma(\varepsilon_2)+\cdots+x_n\sigma(\varepsilon_n)=b$，即
+          \begin{equation}\label{eq:7:方程组与核空间2}
+              \sigma(x_1\varepsilon_1+x_2\varepsilon_2+\cdots+x_n\varepsilon_n)=b.
+          \end{equation}
+          由此我们将线性方程组的求解问题和找到线性映射到达空间中某个向量在出发空间中原像的坐标联系起来了，即将求解$AX=b$和求解$\sigma(a)=b$联系起来了，只是我们求解后者后还需要求出$a$在矩阵表示基下的坐标.
+
+          若前述$b=0$，则我们将齐次线性方程组的解空间与线性映射的核空间联系起来了，即线性映射的核空间中元素在一组基下的向量就是这一线性映射在这组基下的矩阵表示作为系数矩阵的线性方程组的解. 这一联系将在\hyperref[chap:朝花夕拾]{朝花夕拾}中有更深入的讨论.
+
+    \item 我们可以更进一步理解矩阵乘法. 假设矩阵$A=(a_{ij})_{m\times n}$与$B=(b_{ij})_{n\times l}$相乘，我们有如下结论：
+          \begin{enumerate}
+              \item 乘积的第$k$列等于$A$乘以$B$的第$k$列，乘积的第$j$行等于$A$的第$j$行乘以$B$，这一点根据矩阵乘法计算方式显然，我们可以利用这一性质证明下面例子的结论：
+              \begin{example}
+                设$A,B$都是由非负实数组成的矩阵且$AB$有一行等于0，证明：或者$A$有一行为0，或者$B$有一行为0.
+              \end{example}
+              \begin{proof}
+                设$A=(a_{ij})_{m\times n}$，$B=(b_{ij})_{n\times l}$，且设$AB=(c_{ij})_{m\times l}$的第$i$行为0，则根据前面的讨论可知就是$A$的第$i$行乘以$B$得到了全0行向量. 因此若$A$的第$i$行为0，则结论成立；否则$A$的第$i$行中存在某个元素大于0，不妨设$a_{ik}>0$，则此时$B$的第$k$行各元素必须均为0，否则若$b_{kj}>0$，我们有
+                \[c_{ij}=a_{i1}b_{1j}+\cdots+a_{ik}b_{kj}+\cdots+a_{in}b_{nj}>0,\]
+                综上可知结论成立.
+              \end{proof}
+
+              \item 乘积的每一列都是矩阵$A$各列的线性组合，每一行都是矩阵$B$各行的线性组合. 我们简要说明前者，后者理由类似. 我们考察乘积的每一列，由1可知乘积的第$k$列等于$A$乘以$B$的第$k$列，我们展开写乘积矩阵$C=(c_{ij})_{m\times l}$第$k$列的结果：
+                    \begin{align*}
+                        c_{1k} & =a_{11}b_{1k}+a_{12}b_{2k}+\cdots+a_{1n}b_{nk} \\
+                        c_{2k} & =a_{21}b_{1k}+a_{22}b_{2k}+\cdots+a_{2n}b_{nk} \\
+                               & \vdotswithin{=}                                \\
+                        c_{mk} & =a_{m1}b_{1k}+a_{m2}b_{2k}+\cdots+a_{mn}b_{nk}
+                    \end{align*}
+                    我们将上面的行进行组合，写成列向量形式，即
+                    \[\begin{pmatrix}
+                            c_{1k} \\ c_{2k} \\ \vdots \\ c_{mk}
+                        \end{pmatrix}=b_{1k}\begin{pmatrix}
+                            a_{11} \\ a_{21} \\ \vdots \\ a_{m1}
+                        \end{pmatrix}+b_{2k}\begin{pmatrix}
+                            a_{12} \\ a_{22} \\ \vdots \\ a_{m2}
+                        \end{pmatrix}+\cdots+b_{nk}\begin{pmatrix}
+                            a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn}
+                        \end{pmatrix}\]
+                    由此我们将乘积的列表示成了矩阵$A$各列的线性组合.
+          \end{enumerate}
+
+    \item 之后我们会经常看见两种记号，即
+          \begin{align*}
+              (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)) & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A \\
+              \sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)                   & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A
+          \end{align*}
+          教材中两个记号是等价的，这只是记号上的差别，含义完全相同. 但是在之后我们还会看到一个很特别的书写方式
+          \[(\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))B=\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)B)\]
+          教材不加解释地使用了这一等式，这容易导致读者的困惑，因此我们这里简要说明它们的确是等价的，从而接下来读者可以放心地自由使用这一结论.
+
+          根据上述的第一个性质可知，我们只需要证明对$B$的某一列上式成立即可，因为乘法结果是列与列对应的. 我们设$B$的第$k$列为
+          \[B_k=\begin{pmatrix}
+                  b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
+              \end{pmatrix}\]
+          则
+          \begin{align*}
+              (\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))
+              \begin{pmatrix}
+                  b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
+              \end{pmatrix}
+               & =(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))\begin{pmatrix}
+                                                                                                b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
+                                                                                            \end{pmatrix} \\
+               & =b_{1k}\sigma(\varepsilon_1)+b_{2k}\sigma(\varepsilon_2)+\cdots+b_{nk}\sigma(\varepsilon_n)                      \\
+               & =\sigma(b_{1k}\varepsilon_1+b_{2k}\varepsilon_2+\cdots+b_{nk}\varepsilon_n)                                      \\
+               & =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)
+              \begin{pmatrix}
+                  b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
+              \end{pmatrix})
+          \end{align*}
+          故得证.
+\end{enumerate}
+
+事实上矩阵乘法有很多和数的乘法重要的不同，我们在此特别指出供读者参考：
+\begin{enumerate}[label=(\arabic*)]
+    \item 矩阵乘法不一定满足交换律（即$AB$不一定等于$BA$，事实上随手写两个矩阵，很大的概率就是不交换的，甚至交换过来不可乘）. 因此实数的完全平方公式代入矩阵不一定成立，即很多时候$(A+B)^2=A^2+AB+BA+B^2\neq A^2+2AB+B^2$；
+
+    \item 但是注意数量矩阵（即对角线上元素都相等，其余均为0，单位矩阵是其特例）和任何矩阵相乘都是可交换的，这一点在矩阵求幂时很有用；
+
+    \item \label{item:7:矩阵乘法:3}
+          $A\neq O$且$B\neq O$不能推出$AB\neq O$. 例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$.
+
+    \item 消去律也不一定满足：即$AB = AC$不一定$A = B$. 原因在于$AB=AC \implies A(B-C)=O$，由 \ref*{item:7:矩阵乘法:3} 可知不一定$B = C$.
+\end{enumerate}
+
+\subsection{矩阵多项式}
+
+我们在线性空间中已经介绍过，我们一般用$\mathbf{F}[x]_{m+1}$表示数域$\mathbf{F}$上的次数最高为$m$的多项式全体，其中的元素我们一般记为
+\[p(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0,\enspace a_i\in\mathbf{F}\enspace(i=1,2,\ldots,m)\]
+事实上这里的自变量不一定需要是一个数，也可以是线性映射或者矩阵. 例如线性映射$\sigma:V\to V$构成的$m$次多项式可以记为
+\[p(\sigma)=a_m\sigma^m+a_{m-1}\sigma^{m-1}+\cdots+a_1\sigma+a_0I\]
+其中$\sigma^i$表示$\sigma$复合$i$次，$I$表示恒等映射. 我们很容易说明当$\sigma$在$V$的一组基下矩阵表示为$A$时，$p(\sigma)$在同一组基下的矩阵表示为
+\[p(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E,\]
+其中$E$表示单位矩阵. 由此我们便得到了矩阵多项式的定义，我们有如下几点需要强调：
+\begin{enumerate}
+    \item 这里我们要求$\sigma$是线性变换（即出发空间和到达空间一致），事实上也并不必要，只需出发空间和到达空间维数相同即可，因为我们的目的是保证矩阵的幂次可以定义（即$A$和$A$可乘，因此$A$的行列数一致）；
+
+    \item 上面的定义隐含：$\sigma^0 = I$，$A^0=E$；
+
+    \item $A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$，其中$A$为方阵，$k,m$为任意整数. 负整数对应于逆矩阵的情况，接下来可逆的部分会作进一步解释.
+\end{enumerate}
+
+\begin{example}
+    展开矩阵多项式$(A+\lambda E)^n$.
+\end{example}
+
+\begin{solution}
+    由于$A$与$E$是可交换的，并且$A^nE^m=A^n$显然成立，因此我们结合中学学过的二项式展开，得到结果：
+    \begin{align*}
+        (A+\lambda E)^n & =\sum_{i=0}^nC_n^iA^i(\lambda E)^{n-i}    \\
+                        & =\sum_{i=0}^nC_n^i\lambda^{n-i}A^iE^{n-i} \\
+                        & =\sum_{i=0}^nC_n^i\lambda^{n-i}A^i.
+    \end{align*}
+\end{solution}
+
+\begin{example}\label{ex:7:矩阵多项式可交换}
+    设$f(x),g(x) \in \mathbf{F}[x],\enspace A,B \in \mathbf{M}_n(\mathbf{F})$. 证明：
+    \begin{enumerate}
+        \item $f(A)g(A)=g(A)f(A)$；
+
+        \item 如果$AB=BA$，则$f(A)g(B)=g(B)f(A)$；
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    我们可以直接证明第二点，因为第一点是第二点的特例. 设$f(x)=\displaystyle\sum_{i=0}^ma_ix^i$，$g(x)=\displaystyle\sum_{j=0}^sb_jx^j$，$A^0=B^0=E$，则
+    \begin{align*}
+        f(A)g(B) & =\displaystyle\sum_{i=0}^ma_iA^i\cdot \displaystyle\sum_{j=0}^sb_jB^j(AB=BA)                                                           \\
+                 & =\displaystyle\sum_{k=0}^{m+s}\displaystyle\sum_{i+j=k}a_ib_jA^iB^j=\displaystyle\sum_{k=0}^{m+s}\displaystyle\sum_{i+j=k}b_ja_iB^jA^i \\
+                 & =g(B)f(A).
+    \end{align*}
+    事实上由于$A\cdot A=A\cdot A$，因此$f(A)g(A)=g(A)f(A)$只是上面证明的结论的特例.
+\end{solution}
+
+\section{一组例题}
+
+在介绍了矩阵乘法后，我们可以进一步审视线性映射矩阵表示的定义. 我们来看一组初学时可能混淆或者不理解的例子，从而加深对概念的理解：
+\begin{example}\label{ex:7:矩阵表示2}
+    设$A=\begin{pmatrix}1 & 0 & 2 \\ -1 & 2 & 1 \\ 1 & 2 & 5\end{pmatrix}$为两个三维线性空间之间的线性映射$\sigma$对应的矩阵，求$\sigma$的像空间和核空间.
+\end{example}
+（注：本题没有给出线性映射出发空间和到达空间的基，读者可以任意假设.）
+
+\begin{solution}
+    求解像空间和核空间，仍然是原先介绍的方法，虽然本题没有给出线性映射的直接定义，但矩阵表示也能给我们足够的信息. 我们设这一矩阵表示的线性映射为$\sigma$，且
+    \[(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\sigma(\varepsilon_3))=(\alpha_1,\alpha_2,\alpha_3)A\]
+    根据线性映射矩阵表示的定义，我们知道矩阵表示就是线性映射在出发空间一组基下的像在到达空间一组基下的坐标按列排列，因此
+    \begin{align*}
+        \sigma(\varepsilon_1) & =\alpha_1-\alpha_2+\alpha_3   \\
+        \sigma(\varepsilon_2) & =2\alpha_2+2\alpha_3          \\
+        \sigma(\varepsilon_3) & =2\alpha_1+\alpha_2+5\alpha_3
+    \end{align*}
+    因此$\im\sigma=\spa(\alpha_1-\alpha_2+\alpha_3,2\alpha_2+2\alpha_3,2\alpha_1+\alpha_2+5\alpha_3)$，然后求解极大线性无关组即可，结果为$\im\sigma=\spa(\alpha_1-\alpha_2+\alpha_3,2\alpha_2+2\alpha_3)$
+
+    这里求解极大线性无关组的方法我们可以回忆\autoref{ex:3:转化为坐标}，我们先将三个向量转化为到达空间基下坐标，然后求解极大线性无关组，最后把基添加回来即可. 实际上我们会发现，这里的三个坐标就是矩阵$A$的三个列向量（因为矩阵表示就是线性映射在出发空间一组基下的像在到达空间一组基下的坐标按列排列），因此我们只需要求解矩阵$A$的列向量的极大线性无关组$(1,-1,1),(0,2,2)$，然后再将到达空间的基添加回来即可.
+
+    然后求解核空间，我们设$\sigma(\varepsilon)=0$，将$\varepsilon$写成出发空间基的表示后事实上就是\autoref{eq:7:方程组与核空间2} 的形式，我们已说明这一形式与\autoref{eq:7:方程组与核空间1} 等价，因此我们只需求解$AX=0$然后代回出发空间的基即可，最终结果为$\ker\sigma=\spa(4\varepsilon_1+3\varepsilon_2-2\varepsilon_3)$.
+\end{solution}
+
+总结一下，此类题目求解像空间实际上就是求出矩阵列向量的极大线性无关组，然后记得把基添加回来. 求解核空间只需求解齐次线性方程组$AX=0$即可.
+
+\begin{example}\label{ex:7:矩阵表示3}
+    已知3阶矩阵$A=\begin{pmatrix}
+            1 & 0 & 1 \\ 0 & -1 & 0 \\ -1 & 1 & -1
+        \end{pmatrix}$. 定义$\mathbf{R}^{3 \times 3}$上的线性变换$\sigma(X)=AX,\enspace X \in \mathbf{R}^{3 \times 3}$. 求$\sigma$的像和核.
+\end{example}
+
+\begin{solution}
+    核空间求解较为简单，我们先求解核空间. 我们首先求解线性方程组$AY=0$，其中$Y$为列向量，解得其基础解系为$\eta=(1,0,-1)^\mathrm{T}$.
+
+    记$X=(X_1,X_2,X_3)$，则$X\in\ker\sigma$即$AX=(AX_1,AX_2,AX_3)=O$，即$AX_1=AX_2=AX_3=0$，因此$X_1,X_2,X_3$都能由$\eta$线性表出，故
+    \[X=(k_1\eta,k_2\eta,k_3\eta)=\begin{pmatrix}
+            k_1 & k_2 & k_3 \\ 0 & 0 & 0 \\ -k_1 & -k_2 & -k_3
+        \end{pmatrix},\enspace k_1,k_2,k_3\in\mathbf{R},\]
+    即$X=k_1\begin{pmatrix}
+            1 & 0 & 0 \\ 0 & 0 & 0 \\ -1 & 0 & 0
+        \end{pmatrix}+k_2\begin{pmatrix}
+            0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & -1 & 0
+        \end{pmatrix}+k_3\begin{pmatrix}
+            0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & -1
+        \end{pmatrix}$，即$\ker\sigma$中所有元素均可由这三个矩阵线性表示，并且这三个矩阵显然线性无关，因此核空间就是这三个矩阵的线性组合，且核空间维数为3.
+
+    注意到$\mathbf{R}^{3 \times 3}$的一组基为$E_{11},E_{12},E_{13},E_{21},E_{22},E_{23},E_{31},E_{32},E_{33}$，其中$E_{ij}$表示第$i$行第$j$列元素为1，其余元素为0的矩阵，例如$E_{23}=\begin{pmatrix}
+            0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
+        \end{pmatrix}$.
+
+    根据$\sigma$的定义我们可以求得$\sigma(E_{11})=\sigma(E_{31})=\begin{pmatrix}
+            1 & 0 & 0 \\ 0 & 0 & 0 \\ -1 & 0 & 0
+        \end{pmatrix},\enspace \sigma(E_{12})=\sigma(E_{32})=\begin{pmatrix}
+            0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & -1 & 0
+        \end{pmatrix},\enspace \sigma(E_{13})=\sigma(E_{33})=\begin{pmatrix}
+            0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & -1
+        \end{pmatrix},\sigma(E_{21})=\begin{pmatrix}
+            0 & 0 & 0 \\ -1 & 0 & 0 \\ 1 & 0 & 0
+        \end{pmatrix},\enspace \sigma(E_{22})=\begin{pmatrix}
+            0 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 1 & 0
+        \end{pmatrix},\enspace \sigma(E_{23})=\begin{pmatrix}
+            0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 0 & 1
+        \end{pmatrix}$. 所以$\sigma$的像空间为上述六个矩阵线性扩张而成的空间，即$\im\sigma=\spa(\sigma(E_{11}),\sigma(E_{12}),\sigma(E_{13}),\sigma(E_{21}),\sigma(E_{22}),\sigma(E_{23}))$. 又由\autoref{thm:6:线性映射基本定理} 可知，$\dim\im\sigma=n-\dim\ker\sigma=6$，因此像空间就是这六个矩阵线性扩张而成的空间.
+\end{solution}
+
+实际上，\autoref{ex:7:矩阵表示2} 和\autoref{ex:7:矩阵表示3} 都属于已知映射求像和核的题目，求解方法仍然是原先介绍的方法，只是\autoref*{ex:7:矩阵表示2} 没有像\autoref{ex:7:矩阵表示1} 或\autoref*{ex:7:矩阵表示3} 给出了线性映射的定义，而是给出矩阵表示，但这也完全不影响我们的求解.
+
+\section{矩阵的逆}
+
+\subsection{可逆的基本概念}
+
+要引入矩阵的逆的概念，我们需要首先讨论线性映射的逆. 我们这里给出线性映射的逆的定义：
+\begin{definition}[线性映射的逆] \label{def:8:可逆映射} \index{ni@逆 (inverse)}
+    设$\sigma \in \mathcal{L}(V_1,V_2)$. 若存在$\tau \in \mathcal{L}(V_2,V_1)$使得$\sigma \tau = I_{V_2}$且$\tau \sigma = I_{V_1}$，则称$\sigma$\term{可逆}\index{ni!ke@可逆 (invertible)}，并称$\tau$为$\sigma$的逆映射\index{ni!yingshe@映射 (inverse map)}.
+\end{definition}
+其中$I_{V_1}$和$I_{V_2}$分别是$V_1$和$V_2$上的恒等映射.
+
+在之前有关线性映射基本定理的讨论中，我们提到了双射的概念. 事实上，在映射的语境下，双射与可逆是完全等价的. 我们有如下定理：
+\begin{theorem}
+    设$\sigma \in \mathcal{L}(V_1,V_2)$，则$\sigma$可逆$\iff \sigma$是双射.
+\end{theorem}
+
+因此在本讲义的语境下，双射与可逆是完全等价的. 关于这一定理我们有如下说明：
+\begin{enumerate}
+    \item 定理证明不属于本讲义需要覆盖的内容，一般的微积分或数学分析教材都会涉及；
+
+    \item 这一定理事实上不一定针对线性映射，对于函数而言也有双射与可逆等价，只是在函数的语境下逆映射被称为反函数；
+
+    \item 由于双射要求单射和满射，而单射性与核空间维数为0等价，由线性映射基本定理，双射应有出发空间维数等于像空间维数，而满射性要求像空间维数等于到达空间维数，因此双射要求出发空间和到达空间必须维数相同.
+\end{enumerate}
+
+在\autoref{def:8:可逆映射} 的语境下，我们取$V_1$的一组基$B_1=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$，$V_2$的一组基$B_2=\{\beta_1,\beta_2,\ldots,\beta_n\}$（特别注意根据我们上述讨论两个空间维数一致），则$\sigma$关于$B_1$和$B_2$的矩阵为$A=(a_{ij})_{m \times n}$，$\tau$关于$B_2$和$B_1$的矩阵为$B=(b_{ij})_{n \times m}$.
+
+我们知道线性映射的复合对应矩阵乘法，因此$\tau\sigma:V_1\to V_1$关于$V_1$的基$B_1$和$\sigma\tau:V_2\to V_2$关于$V_2$的基$B_2$对应的矩阵分别为$BA$和$AB$，而我们很容易证明恒等映射关于任何基的矩阵均为单位矩阵，因此我们有$BA=E$和$AB=E$. 由此我们从可逆映射的角度引入矩阵的逆的概念：
+\begin{definition}[矩阵的逆]
+    设$A \in \mathbf{M}_n(\mathbf{F})$. 若存在$B \in \mathbf{M}_n(\mathbf{F})$使得$AB=BA=E$，则称矩阵$A$可逆，并把$B$称为$A$的\term{逆矩阵}\index{ni!juzhen@矩阵 (inverse matrix)}，记作 $ B = A^{-1} $.
+\end{definition}
+在一些比较经典的教材中可逆矩阵也被称为非奇异矩阵，不可逆矩阵被称为\term{奇异矩阵}\index{qiyijuzhen@奇异矩阵 (singular matrix)}.
+
+注意，逆矩阵定义基于方阵，非方阵没有上述逆矩阵（具体原因将在未来讨论）. 广义逆矩阵允许非方阵，但那是另一个定义，我们不需要掌握. 对于可逆矩阵，注意以下两个定理：
+\begin{theorem}
+    可逆矩阵$A$的逆矩阵唯一.
+\end{theorem}
+
+\begin{theorem}
+    设$A,B\in \mathbf{M}_n(\mathbf{F})$，则$AB=E \iff A$与$B$互为逆矩阵（即对于方阵而言，$AB=E\iff BA=E\iff A,B$可逆）.
+\end{theorem}
+这两个定理的证明见教材130页. 特别注意唯一性的证明，我们在证明群的单位元唯一时使用了完全一致的思想，请务必掌握.
+
+\subsection{基本性质}
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 主对角元都是非零数的对角矩阵一定可逆，且逆矩阵就是对角线上元素取倒数（单位矩阵即为特例，其逆矩阵是其自身）；
+
+    \item \label{item:8:逆矩阵性质:2}
+          注意没有加法性质（例如$A$可逆（则$-A$也可逆），但$A+(-A)=O$不可逆），对于数乘有$(\lambda A)^{-1}=\lambda^{-1}A^{-1}$；
+
+    \item \label{item:8:逆矩阵性质:3}
+          $(AB)^{-1}=B^{-1}A^{-1},\enspace (A_1A_2\cdots A_k)^{-1}=A_k^{-1}\cdots A_2^{-1}A_1^{-1}$；注意这一点和 \ref*{item:8:逆矩阵性质:2} 的证明都只需要直接验证结果即可，即因为$ABB^{-1}A^{-1}=AA^{-1}=E$，所以根据逆的唯一性可知$(AB)^{-1}=B^{-1}A^{-1}$一定成立；
+
+    注意，这种验证逆的相关性质思想（即直接验证相乘是否为单位矩阵，然后利用逆的唯一性的方法）在之后的讨论中也是非常常见的，希望读者掌握.
+
+    \item $(A^k)^{-1}=(A^{-1})^k,\enspace A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$；注意这里的$k$和$m$不一定需要非负，事实上负数就是逆矩阵的幂次或幂次的逆，如$A^{-2}=(A^{-1})^2=(A^2)^{-1}$；
+
+    \item 若$A$和$B$可逆，则$A\neq O$且$B\neq O$能推出$AB\neq O$，并且$A$可逆且$AB=O$可以推出$B=O$. 除此之外还有消去律成立，即$A \neq O$则有$AB=AC \implies B=C$成立.
+\end{enumerate}
+
+需要强调的是，我们之后讨论运算性质的时候都是循着类似的思路，考虑加法、数乘、乘法（2个相乘，$n$个相乘，矩阵的幂）、逆、转置、共轭等，所以虽然每个地方给出的性质都很多，但实际上大致研究思路是一致的.
+
+\subsection{逆矩阵的求解（基本方法I）}
+
+在介绍完性质后我们非常关心如何给定一个具体的矩阵求出它的逆的问题，这里我们给出第一种基本方法，即基于解方程的方法.
+
+事实上，我们在矩阵乘法一节中就将$AX=b$和$\sigma(a)=b$联系在一起，其中$\sigma$在某组基下表示矩阵为$A$. 回顾本讲开头引入可逆矩阵的过程，可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
+
+事实上我们可以很简便地表达出这个解. 我们在$AX=b$左右同时左乘$A^{-1}$（矩阵乘法不可交换所以必须在同一侧乘），有$A^{-1}AX=A^{-1}b$，即$X=A^{-1}b$.
+
+因此，当$A$可逆时，对于任意的$b$线性方程组都有唯一解，且解可以被表示为$X=A^{-1}b$的形式. 因此我们可以通过解线性方程组的方法求解逆矩阵. 我们将通过下面这个例子详细介绍这种方法的计算过程：
+\begin{example}
+    用上述方法求矩阵$A=\begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$的逆矩阵.
+\end{example}
+
+\begin{solution}
+    见教材132页例3.
+\end{solution}
+
+关于逆矩阵的求解问题，我们将在介绍完初等变换后介绍第二种基本方法，剩余的进阶解法将在\hyperref[chap:矩阵运算进阶（II）]{矩阵运算进阶（II）}中介绍更多手段，以及我们会介绍矩阵方程求解的方法. 本节我们囿于一些计算技巧和基本概念暂未引入所以无法完全展开这些技巧.
+
+\subsection{广义逆矩阵}
+
+在本节开头我们提到，逆矩阵是基于方阵定义的. 对于非方阵而言，我们有如下广义逆的定义，当然不要求读者在这门课中掌握. 对于每一个$m \times n$阶矩阵$A$，都存在唯一的$n \times m$阶矩阵$X$，使得：
+\begin{enumerate}
+    \item $AXA=A$；
+
+    \item $XAX=X$；
+
+    \item $AX$和$XA$均为共轭对称矩阵.
+\end{enumerate}
+我们称$X$为矩阵$A$的Moore-Penrose广义逆矩阵，记作$X=A^\dagger$. 此处不赘述其证明和算法，感兴趣的同学可以自行查阅相关资料. 我们可以从两个角度认识这一定义，首先是取$A$为可逆矩阵，发现此定义是相容的，其次是通过这一矩阵可以获得线性方程组$AX=b$最小二乘解$X=A^\dagger b$. 广义逆矩阵在各个领域的研究中应用很广泛，所以在此提一下它的概念.
+
+\section{矩阵的转置}
+
+接下来我们转入具象的矩阵运算中，讨论转置这一运算的性质. 我们首先给出一些基本的性质：
+
+\subsection{基本性质}
+
+\begin{enumerate}
+    \item $(A^\mathrm{T})^\mathrm{T}=A$
+
+    \item $(A+B)^\mathrm{T}=A^\mathrm{T}+B^\mathrm{T}$
+
+    \item $(\lambda A)^\mathrm{T}=\lambda A^\mathrm{T},\enspace \lambda \in \mathbf{F}$
+
+    \item $(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T},\enspace(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T},\enspace(A^\mathrm{T})^m=(A^m)^\mathrm{T}$
+
+    \item $(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$
+\end{enumerate}
+关于上述性质我们有如下说明：
+\begin{itemize}
+    \item[1.] 从计算角度来看是显然的，简而言之就是矩阵第$i$行变成第$i$列后又变回了第$i$行，因此矩阵不变；
+
+    \item[2--4.] 考虑从计算角度验证只需暴力计算即可，至于4的$n$个矩阵的情况只需要从两个相乘的情况出发数学归纳即可，最后的幂的性质实际上将$(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T}$中的$A_i$全部取成$A$即可；
+
+    \item[5.] 请不要忘记验证逆的运算性质的一般方法，我们只需要看到$(A^{-1})^\mathrm{T}A^\mathrm{T}=(AA^{-1})^\mathrm{T}=E$，这里第一个等号运用了上面第4点转置乘法的性质. 从这一式中我们看到$(A^{-1})^\mathrm{T}$是$A^\mathrm{T}$的逆矩阵，因此利用逆的唯一性即可得到$(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$；
+\end{itemize}
+
+在熟悉了矩阵的基本运算性质后，我们可以来看下面这个例题进行综合练习：
+\begin{example}
+    已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，\\
+    $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$. 求矩阵 $X$ 满足：
+
+    \[X+\left(B(A^\mathrm{T}B^2)^{-1}A^\mathrm{T}\right)^{-1}=X\left(A^2(B^\mathrm{T}A)^{-1}B^\mathrm{T}\right)^{-1}(A+B)\]
+\end{example}
+
+\begin{solution}
+    注意到
+    \[B=A\begin{pmatrix}
+            1 &  & \\ 2 & 1 & \\ & & 1
+        \end{pmatrix} \begin{pmatrix}
+            1 &  & \\ & 1 & \\ & -3 & 1
+        \end{pmatrix} \begin{pmatrix}
+            1 &  & \\ & 1 & \\ & & -1
+        \end{pmatrix},\]
+    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面
+    \[\textbf{LHS}=X+\left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1}=X+B,\]
+    另一方面
+    \[\textbf{RHS}=X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A+B)=X A^{-1}(A+B),\]
+    于是 $X=A=(A^{-1})^{-1}=\begin{pmatrix}
+            -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}  \\
+            \frac{2}{3}  & \frac{1}{3} & -\frac{2}{3} \\
+            -2           & -1          & 1
+        \end{pmatrix}$.
+\end{solution}
+
+关于转置我们还有一个重要的例题需要读者掌握：
+\begin{example}\label{ex:9:转置求幂}
+    设$\alpha=(1,-1,2)^\mathrm{T},\enspace\beta=(3,1,-2)^\mathrm{T},\enspace A=\alpha\beta^\mathrm{T}$，求$A^n$.
+\end{example}
+
+\begin{solution}
+    由于$A^2=\alpha\beta^\mathrm{T}\alpha\beta^\mathrm{T}=\alpha(\beta^\mathrm{T}\alpha)\beta^\mathrm{T}=kA$，其中$k=\beta^\mathrm{T}\alpha=-2$，则$A^2=-2A$. 则可递推得到$A^n=(-2)^{n-1}A=(-2)^{n-1}\begin{pmatrix}
+            3 & 1 & -2 \\ -3 & -1 & 2 \\ 6 & 2 & -4
+        \end{pmatrix}$，原因在于$A^n$展开后中间会出现$n-1$个$\beta^\mathrm{T}\alpha$.
+\end{solution}
+
+事实上，在将来讲解矩阵运算技巧时我们还会大量运用本题的技巧，因此请读者务必重视本题.
+
+\subsection{对阵矩阵与反对称矩阵}
+
+\begin{definition}
+    设$A=(a_{ij})_{n \times n}$，如果$\forall i,j\in\{1,2,\ldots,n\}$均有$a_{ij}=a_{ji}$，则称$A$为对称矩阵. 若均有$a_{ij}=-a_{ji}$，则称$A$为反对称矩阵.
+\end{definition}
+由定义易知$A$为对称矩阵的充要条件为$A=A^\mathrm{T}$，$A$为反对称矩阵的充要条件为$A=-A^\mathrm{T}$.
+\begin{example}
+    证明以下几点性质：
+    \begin{enumerate}
+        \item 反对称矩阵主对角元均为0；
+
+        \item $AA^\mathrm{T}$和$A^\mathrm{T}A$均为对称矩阵；
+
+        \item 设$A,B$为$n$阶对称和反对称矩阵，则$AB+BA$是反对称矩阵；
+
+        \item 对称矩阵的乘积不一定对称；
+
+        \item 可逆的对称（反对称）矩阵的逆矩阵也是对称（反对称）矩阵.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item 由于$A$为反对称矩阵，因此根据定义有$a_{ii}=-a_{ii}$，即$a_{ii}=0$；
+
+        \item 由于$(AA^\mathrm{T})^\mathrm{T}=(A^\mathrm{T})^\mathrm{T}A^\mathrm{T}=AA^\mathrm{T}$，因此$AA^\mathrm{T}$为对称矩阵；同理可证$A^\mathrm{T}A$为对称矩阵；
+
+        \item 由于$A,B$分别为对称和反对称矩阵，因此$(AB+BA)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}+A^\mathrm{T}B^\mathrm{T}=-AB-BA=-(AB+BA)$，因此$AB+BA$为反对称矩阵；
+
+        \item 注意$(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}=BA$，因为矩阵乘法不一定可交换，因此$AB$不一定对称；
+
+        \item 因为$A$可逆有$(A^{-1})^\mathrm{T}=(A^\mathrm{T})^{-1}=A^{-1}$，因此$A^{-1}$为对称矩阵；同理可证$A$反对称的情况.
+    \end{enumerate}
+\end{solution}
+
+事实上，关于对称矩阵和反对称矩阵的性质还有很多，我们将它们放在习题中供读者作为练习. 经过前面的讨论，我们已经看到转置和对称矩阵之间的关联，因此我们在之后在处理一些对称性很强的问题时，实际上都可以考虑利用转置来解决，例如：
+\begin{example}
+    $a,b,c,d$是四个实数. 证明$\begin{cases}
+            a^2+b^2=1 \\
+            c^2+d^2=1 \\
+            ac+bd=0
+        \end{cases}$成立的充分必要条件是$\begin{cases}
+            a^2+c^2=1 \\
+            b^2+d^2=1 \\
+            ab+cd=0
+        \end{cases}$.
+\end{example}
+
+\begin{solution}
+    设$A=\begin{pmatrix}
+            a & b \\ c & d
+        \end{pmatrix}$，则有
+    \[AA^\mathrm{T}=\begin{pmatrix}
+            a^2+b^2 & ac+bd \\ ac+bd & c^2+d^2
+        \end{pmatrix},\enspace A^\mathrm{T}A=\begin{pmatrix}
+            a^2+c^2 & ab+cd \\ ab+cd & b^2+d^2
+        \end{pmatrix}.\]
+    因此题中的充要条件可以转化为$AA^\mathrm{T}=E$是$A^\mathrm{T}A=E$的充要条件. 这是显然的，因为$AA^\mathrm{T}=E\iff A^{-1}=A^\mathrm{T}\iff A^\mathrm{T}A=E$成立.
+\end{solution}
+
+\section{矩阵的共轭}
+
+在将来的讨论中我们有时还会涉及到复矩阵的情况（即矩阵中元素为复数），因此我们需要引入矩阵的共轭的概念. 我们首先给出矩阵的共轭的定义（研究其对应的线性映射的意义不大，因此此处不介绍）：
+\begin{definition}
+    设$A=(a_{ij})_{m \times n}$，则$A$的\term{共轭矩阵}\index{gongzhoujuzhen@共轭矩阵 (conjugate matrix)}为$\overline{A}=(\overline{a_{ij}})_{m \times n}$.
+\end{definition}
+
+由此可见，复矩阵的共轭就是对其中每个元素取了共轭. 我们可以很容易地验证共轭矩阵的运算性质：
+\begin{enumerate}
+    \item $\overline{A+B}=\overline{A}+\overline{B}$
+
+    \item $\overline{\lambda A}=\overline{\lambda}\overline{A}$
+
+    \item $\overline{AB}=\overline{A}\overline{B}$（$n$个矩阵同理）；$\overline{A^m}=\overline{A}^m$
+
+    \item $\overline{A^\mathrm{T}}=(\overline{A})^\mathrm{T}$
+
+    \item $\overline{A^{-1}}=\overline{A}^{-1}$
+\end{enumerate}
+
+\section{分块矩阵}
+
+矩阵分块在矩阵计算中是非常核心的一种手段，这可以使得我们将大矩阵分为更容易处理的小矩阵，结合并行计算等工具能大大加速矩阵计算. 除此之外，基于分块矩阵的初等变换也是研究矩阵求逆、矩阵的秩以及矩阵分解等多个问题的重要工具.
+
+\begin{definition}
+    一般地，对于$m \times n$矩阵$A$，如果在行的方向分成$s$块，在列的方向分成$t$块，就得到$A$的一个$s \times t$\term{分块矩阵}\index{fenkuaijuzhen@分块矩阵 (block matrix)}，记作$A=(A_{kl})_{s \times t}$，其中$A_{kl}\enspace(k=1,\ldots,s,\enspace l=1,\ldots,t)$称为$A$的子块.
+\end{definition}
+实际上上述表示方法就是将一般矩阵表示$A=(a_{ij})_{m \times n}$中的$a_{ij}$替换为了小块矩阵,字母含义并无变化，内层代表索引，外层代表总行列数（只是分块矩阵是块索引和块数）. 我们接下来考察分块矩阵的运算性质.
+\begin{enumerate}
+    \item 分块矩阵的加法：设分块矩阵$A=(A_{kl})_{s \times t},\enspace B=(B_{kl})_{s \times t}$. 如果$A$与$B$对应的子块$A_{kl}$和$B_{kl}$都是同型矩阵，则
+          \[A+B=(A_{kl}+B_{kl})_{s \times t}\]
+          由此我们看到分块矩阵加法要求小块形状和行列分块数都一致，实际上回顾一般矩阵加法要求矩阵完全同型即可理解这一要求.
+
+    \item 分块矩阵的数乘：设分块矩阵$A=(A_{kl})_{s \times t}$，$\lambda$是一个数，则
+          \[\lambda A=(\lambda A_{kl})_{s \times t}\]
+          实际上数乘最好理解，因为如此计算的效果相当于一般矩阵数乘的效果，即给每个元素都乘以一个常数$\lambda$.
+
+    \item 分块矩阵的乘法：设$A=(a_{ij})_{m \times n},\enspace B=(b_{ij})_{n \times p}$，如果把$A,B$分别分块为$r \times s$和$s \times t$分块矩阵，且$A$的列分块法与$B$的行分块法相同（注意这些条件始终保证可乘性成立），则
+          \[AB=\begin{pmatrix}
+                  A_{11} & A_{12} & \cdots & A_{1s} \\
+                  A_{21} & A_{22} & \cdots & A_{2s} \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  A_{r1} & A_{r2} & \cdots & A_{rs}
+              \end{pmatrix}\begin{pmatrix}
+                  B_{11} & B_{12} & \cdots & B_{1t} \\
+                  B_{21} & B_{22} & \cdots & B_{2t} \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  B_{s1} & B_{s2} & \cdots & B_{st}
+              \end{pmatrix}=C=(C_{kl})_{r \times t}\]
+          其中$C$是$r \times t$分块矩阵，且$C_{kl}$与一般矩阵计算类似，即为$A$第$k$行块$B$的$l$列块对应元素相乘后相加，即
+          \[C_{kl}=A_{k1}B_{1l}+A_{k2}B_{2l}+\cdots+A_{ks}B_{sl},\enspace k=1,\ldots,r,\enspace l=1,\ldots,t\]
+
+    \item 分块矩阵的转置：大、小矩阵都要转置，这是分块矩阵与普通矩阵的一大性质差异；即$s \times t$分块矩阵$A=(A_{kl})_{s \times t}$转置后$A^\mathrm{T}=(B_{lk})_{t \times s}$为$t \times s$分块矩阵，且$B_{lk}=A_{kl}^\mathrm{T}$. 例如$\begin{pmatrix}
+                  A_{11} & A_{12} \\ A_{21} & A_{22}
+              \end{pmatrix}^\mathrm{T}=\begin{pmatrix}
+                  A_{11}^\mathrm{T} & A_{21}^\mathrm{T} \\ A_{12}^\mathrm{T} & A_{22}^\mathrm{T}
+              \end{pmatrix}$.
+
+    \item 分块矩阵的共轭：事实上就是每个小分块都取共轭即可：
+            \[\overline{A}=(\overline{A_{kl}})_{s \times t}\]
+\end{enumerate}
+
+补充以下注意事项：
+\begin{enumerate}
+    \item 常见的行列分块方法：将矩阵按行/列分块，注意$A(\beta_1,\ldots,\beta_n)=(A\beta_1,\ldots,A\beta_n)$成立，但当$A$在右侧时并不可乘，因为$\beta$是列向量，只有当$A$为行向量时才能使$\beta A$乘法是有意义的. 事实上按行分块也有对称的结论，即写成
+          \[A=\begin{pmatrix}
+                  A_1 \\ \vdots \\ A_s
+              \end{pmatrix}\]
+          时，我们有
+          \[AB=\begin{pmatrix}
+                  A_1B \\ \vdots \\ A_sB
+              \end{pmatrix}.\]
+
+    \item 分块矩阵求逆通常有两种方法，其一直接使用设未知数的方式完成，我们下面将给出例子，当然也可以利用后续介绍的分块矩阵初等变换进行解决：
+          \begin{example}
+              设$n$阶矩阵$A$分块为$A=\begin{pmatrix}
+                      B & O \\ C & D
+                  \end{pmatrix}$，其中$B,D$分别为$k$阶、$m$阶矩阵，求当$B,D$可逆时的$A^{-1}$.
+          \end{example}
+
+          \begin{solution}
+              本题我们使用的方法非常直接，就是直接设出$A^{-1}$的形式，然后验证即可. 之后我们还会学习一种基于分块矩阵初等变换的进阶方法（事实上考试如果考察的话基本是本题的解法，分块矩阵初等变换是在教材中是小字部分）. 设$A^{-1}=\begin{pmatrix}
+                      X & Y \\ Z & T
+                  \end{pmatrix}$，其中$X,T$分别为$k,m$阶矩阵，那么我们有
+              \[\begin{pmatrix}
+                      B & O \\ C & D
+                  \end{pmatrix}\begin{pmatrix}
+                      X & Y \\ Z & T
+                  \end{pmatrix}=\begin{pmatrix}
+                      BX & BY \\ CX+DZ & CY+DT
+                  \end{pmatrix}=\begin{pmatrix}
+                      E_k & O \\ O & E_m
+                  \end{pmatrix},\]
+              又由题意$A$可逆有$B,D$可逆，因此$BX=E_k$可得$X=B^{-1}$，$BY=O$可得$Y=O$，$CY+DT=DT=E_m$可得$T=D^{-1}$，$CX+DZ=CB^{-1}+DZ=O$可得$Z=-D^{-1}CB^{-1}$，因此
+              \[A^{-1}=\begin{pmatrix}
+                      B^{-1} & O \\ -D^{-1}CB^{-1} & D^{-1}
+                  \end{pmatrix}.\]
+          \end{solution}
+
+    \item 分析分块矩阵与普通矩阵的运算性质的异同：
+          \begin{enumerate}
+              \item 分块矩阵转置需要注意大矩阵小分块都要转置；
+
+              \item 分块矩阵每一块不一定是数，而是矩阵，因此小分块中出现$^{-1}$表示小分块求逆，但如果是一般矩阵就是矩阵元素直接求倒数即可；
+
+              \item 分块矩阵加法乘法一定要保证块大小对应，否则不可加、不可乘；
+
+              \item 其他很多性质都是将单个元素推广为一块，例如满足可加、可乘后的加法、乘法计算.
+          \end{enumerate}
+\end{enumerate}
+
+\begin{example}
+    设\[A=\begin{pmatrix}
+            1 & 2 & 0  & 0  & 0  \\
+            2 & 5 & 0  & 0  & 0  \\
+            0 & 0 & -2 & 1  & 0  \\
+            0 & 0 & 0  & -2 & 1  \\
+            0 & 0 & 0  & 0  & -2
+        \end{pmatrix},\enspace B=\begin{pmatrix}
+            1  & 0 & 1 & 0 \\
+            -1 & 2 & 3 & 0 \\
+            1  & 2 & 0 & 4 \\
+            0  & 1 & 2 & 4 \\
+            0  & 0 & 1 & 4
+        \end{pmatrix}\]
+    利用分块矩阵的方法，求$A^2,\enspace AB,\enspace A^\mathrm{T},\enspace A^{-1}$.
+\end{example}
+
+\begin{solution}
+    将$A$和$B$分别分块为
+    \[A=\begin{pmatrix}
+            A_1 & O \\ O & A_2
+        \end{pmatrix},\enspace B=\begin{pmatrix}
+            B_1 & B_2 \\ B_3 & B_4
+        \end{pmatrix},\]
+    其中$A_1=\begin{pmatrix}
+            1 & 2 \\ 2 & 5
+        \end{pmatrix},\enspace A_2=\begin{pmatrix}
+            -2 & 1 & 0 \\ 0 & -2 & 1 \\ 0 & 0 & -2
+        \end{pmatrix},\enspace B_1=\begin{pmatrix}
+            1 & 0 \\ -1 & 2
+        \end{pmatrix},\enspace B_2=\begin{pmatrix}
+            1 & 0 \\ 3 & 0
+        \end{pmatrix},\enspace B_3=\begin{pmatrix}
+            1 & 2 \\ 0 & 1 \\ 0 & 0
+        \end{pmatrix},\enspace B_4=\begin{pmatrix}
+            0 & 4 \\ 2 & 4 \\ 1 & 4
+        \end{pmatrix}$. 因此$A^2=\begin{pmatrix}
+            A_1^2 & O \\ O & A_2^2
+        \end{pmatrix},\enspace AB=\begin{pmatrix}
+            A_1B_1 & A_1B_2 \\ A_2B_3 & A_2B_4
+        \end{pmatrix},\enspace A^\mathrm{T}=\begin{pmatrix}
+            A_1^\mathrm{T} & O \\ O & A_2^\mathrm{T}
+        \end{pmatrix},\enspace A^{-1}=\begin{pmatrix}
+            A_1^{-1} & O \\ O & A_2^{-1}
+        \end{pmatrix}$. 上面的具体展开计算略过，我们这里只需要体会分块矩阵的运算性质即可.
+\end{solution}
+
+在这个例子中我们可以得到一个很关键的经验：分块对角矩阵求逆实际上就是对每一个分块求逆.
+
+\vspace{2ex}
+\centerline{\heiti \Large 内容总结}
+
+引入矩阵后，我们一方面可以成功将线性方程组（矩阵表达的形式）解的本质理论的探究与之前所学习的线性空间、线性映射结合，从而迈出了里程碑式的一步；另一方面有形的矩阵表达使得我们可以引入更多的计算技巧和工具，使我们未来的研究相对于前述章节而言更为具象.
+
+本讲是至关重要的一讲，因为我们尝试利用坐标映射将之前抽象的线性空间和线性映射转化为具象的数字表达，使得我们之后的研究更加具体. 我们首先介绍了线性映射矩阵表示的概念，给出了一个重要的例子，同时从反面给出了错误解法，希望读者务必厘清这其中涉及的各种概念和方法. 接下来我们证明了线性映射构成的线性空间与矩阵构成的线性空间同构，同时引入了矩阵的加法和数乘——这与线性映射的加法和数乘是完全对应的. 最后我们通过线性映射的复合引入了矩阵乘法，介绍了矩阵乘法的性质（特别注意与数的乘法不同的点，例如不一定交换，不一定可消去等），介绍了矩阵多项式的计算——这与中学里学习的因式分解、二项式展开等较为相关. 当然介绍矩阵乘法时我们也说明了线性方程组如何用矩阵乘法表示，说明了矩阵乘法左乘和右乘与行、列线性组合的关联，也阐释了两个记号的统一性，这些都是希望读者能够理解的，因为一般教材对于这些内容都持``默认''态度，但实践中发现同学们存在较多问题，因此在此都进行了详细讲解.
+
+\vspace{2ex}
+\centerline{\heiti \Large 习题}
+
+\vspace{2ex}
+{\kaishu 在数学的天地里，重要的不是我们知道什么，而是我们怎么知道什么.}
+\begin{flushright}
+    \kaishu
+    ——毕达哥拉斯
+\end{flushright}
+
+\centerline{\heiti A组}
+\begin{enumerate}
+    \item 证明：若$AB=BA$，$AC=CA$，则$A,B,C$为同阶方阵，且
+          \[A(BC)=(BC)A,\enspace A(B+C)=(B+C)A.\]
+
+    \item $A,B$都是$n$阶矩阵，求下列等式成立的充分条件：
+          \begin{enumerate}
+              \item $(A+B)^3=A^3+3A^2B+3AB^2+B^3$；
+
+              \item $(A+B)(A-B)=A^2-B^2$.
+          \end{enumerate}
+
+    \item 设$A$是$n$阶方阵且$A^n=O$，证明：
+    \[(E_n-A)(E_n+A+A^2+\cdots+A^{n-1})=E_n.\]
+\end{enumerate}
+
+\centerline{\heiti B组}
+\begin{enumerate}
+    \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in L(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
+
+    \item 已知$f_1=1-x,f_2=1+x^2,f_3=x+2x^2$是$\mathbf{R}[x]_3$中三个元素，$\sigma$是$\mathbf{R}[x]_3$上的线性变换且满足$\sigma(f_1)=2+x^2,\sigma(f_2)=x,\sigma(f_3)=1+x+x^2$.
+          \begin{enumerate}
+              \item 证明：$f_1,f_2,f_3$构成$\mathbf{R}[x]_3$的一组基；
+
+              \item 求$\sigma$在基$f_1,f_2,f_3$下的矩阵；
+
+              \item 设$f=1+2x+3x^2$，求$\sigma(f)$.
+          \end{enumerate}
+
+    \item 设$V=\mathbf{M}_2(\mathbf{R})$是$\mathbf{R}$上所有$2 \times 2$矩阵构成的实数域上的线性空间. 已知
+          \[A=\begin{pmatrix}1 & -1 \\ \lambda & 1 \end{pmatrix}(\lambda \in \mathbf{R}),\enspace B=\begin{pmatrix}1 & 2 \\ -1 & -1 \end{pmatrix}\]
+          \begin{enumerate}
+              \item 证明：$\varphi(X)=AXB$为$V$上的线性变换；
+
+              \item 证明：$\lambda\neq-1$时，$\varphi$为可逆线性变换；
+
+              \item \label{item:7:B:1}
+                    $\lambda=-1$时，求$\varphi$的像空间和核空间；
+
+              \item 将 \ref*{item:7:B:1} 中的值域扩充为$V$的一组基，并求$\varphi$在这组基下的矩阵.
+          \end{enumerate}
+
+    \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
+          \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
+          V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
+
+    \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 4 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T : \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
+          \[T(f(x))=\begin{pmatrix}f(0) & f(1) \\ f(-1) & f(0)\end{pmatrix}\]
+          \begin{enumerate}
+              \item 求出 $T$ 的核空间 $N(T)$ 和像空间 $R(T)$；
+
+              \item 求$T$在$\mathbf{R}[x]_4$和$\mathbf{M}_2(\mathbf{R})$的基下的矩阵表示.
+          \end{enumerate}
+
+    \item 设$A=\begin{pmatrix}
+                  1 & -1 & -1 \\ -1 & 1 & 1 \\ 0 & -4 & 2
+              \end{pmatrix},\enspace\xi_1=(-1,1,-2)^\mathrm{T}$.
+          \begin{enumerate}
+              \item 求满足$A\xi_2=\xi_1$及$A^2\xi_3=\xi_1$的所有$\xi_2,\xi_3$；
+
+              \item 证明：$\xi_1,\xi_2,\xi_3$线性无关.
+          \end{enumerate}
+
+    \item 若$f(x)$是$x$的实系数$m$次多项式：
+          \[f(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0\]
+          则有矩阵多项式：
+          \[f(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E\]
+          其中 $A^0=E$.
+          \begin{enumerate}
+              \item 若$A$为对角矩阵$B=\begin{pmatrix}
+                            \lambda_1 & 0 \\ 0 & \lambda_2
+                        \end{pmatrix}$，证明：$f(A)=\begin{pmatrix}
+                            f(\lambda_1) & 0 \\ 0 & f(\lambda_2)
+                        \end{pmatrix}$；
+
+              \item 若$A=P^{-1}BP$，证明：$f(A)=Pf(B)P^{-1}$.
+          \end{enumerate}
+\end{enumerate}
+
+\centerline{\heiti C组}
+\begin{enumerate}
+    \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
+\end{enumerate}

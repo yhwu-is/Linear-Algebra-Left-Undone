@@ -1,6 +1,258 @@
-\chapter{线性映射矩阵表示（III）}
+\chapter{商与对偶}
 
-本讲我们将介绍线性映射矩阵表示的最后两个主题——转置和初等变换. 为了引入转置我们将首先介绍线性空间和线性映射的对偶，
+关于矩阵运算进阶的两讲我们将讲述线性代数这门课中关于矩阵计算问题的一些进阶内容. 需要注意的是，本节除了一些基本概念在之后讨论矩阵的秩时还有关键作用之外，大都是技巧性的内容，基本都已经脱离了之前描述的抽象空间和映射. 但我们仍需承认这些内容的重要性，因为运算技巧将会使得未来的很多性质的研究更为便捷. 同时我们也应当感到欣慰，我们终于从抽象空间一步一步如同搭积木一般走到了具象的运算，并且这是建立在了充分理解了矩阵背后的内在含义的基础上的.
+
+本节我们首先介绍有关初等矩阵、分块矩阵和矩阵方程的相关内容. 本节是之后讨论矩阵的秩的重要基础，并且涉及一些很重要的算法和技巧，需要引起重视.
+
+\section{线性空间的商}
+
+\subsection{商空间的引入与仿射子集}
+
+我们继续循着数学概念学习的自然路径，再来审视一个新的概念——商空间. 在第一讲中我们描述了一个非常重要的概念——等价类. 我们希望在一个线性空间$V$中构造等价类组成商集，并在商集中引入加法和数乘运算，使得商集构成线性空间，这便是本节要讨论的商空间的来由. 总结一下，我们这里有两个需求：其一是构造合适的等价关系，其二是构造合理的加法和数乘运算.
+
+回忆集合的等价关系的建立，都是元素之间的关系. 例如等于关系是实数集合中的实数之间的关系，因此要在线性空间中建立等价关系，我们需要考虑两个元素（即向量）的关系. 我们可以考虑$V$的子空间$U$，并将关系$R$定义为
+\[\forall\alpha,\beta\in V,\enspace\alpha\,R\,\beta\iff \alpha-\beta\in U.\]
+即两个向量的差向量在一个规定的子空间中时称它们等价. 我们会很容易地验证出这个关系就是等价关系：
+\begin{enumerate}
+    \item (自反性) $\forall \alpha\in V,\enspace\alpha-\alpha=0\in U$，故$\alpha\,R\,\alpha$；
+
+    \item (对称性) $\forall \alpha,\beta\in V,\enspace\alpha\,R\,\beta\implies \alpha-\beta\in U\implies \beta-\alpha=-(\alpha-\beta)\in U\implies \beta\,R\,\alpha$；
+
+    \item (传递性) $\forall \alpha,\beta,\gamma\in V,\enspace\alpha\,R\,\beta,\enspace\beta\,R\,\gamma\implies \alpha-\beta\in U,\enspace\beta-\gamma\in U\implies \alpha-\gamma=(\alpha-\beta)+(\beta-\gamma)\in U\implies \alpha\,R\,\gamma$.
+\end{enumerate}
+证明只用到了线性空间的加法单位元、逆元性质且运算封闭. 接下来我们可以基于此定义这一等价关系的等价类：
+\[\overline{\alpha}=\{\beta\in V \mid \beta\,R\,\alpha\}=\{\beta\in V \mid \beta-\alpha\in U\}=\{\beta\in V \mid \beta=\alpha+\gamma,\enspace\gamma\in U\}\]
+最后一个集合还可以进一步写成$\{\alpha+\gamma \mid \gamma\in U\}$，我们记为$\alpha+U$，称之为$V$的仿射子集. 我们给出如下完整的定义：
+\begin{definition}[仿射子集] \index{fangsheziji@仿射子集 (affine subset)}
+    设$v\in V$，$U$是$V$的子空间，则$V$的\term{仿射子集}是$V$的形如$v+U$的子集，其中$v+U$定义为
+    \[v+U=\{v+u \mid u\in U\}.\]
+\end{definition}
+根据我们之前的讨论，仿射子集就是我们在线性空间上定义的等价关系的等价类. 基于等价类的性质，我们有如下定理：
+\begin{theorem}
+    设$U$是$V$的子空间，$v,w\in V$，则以下陈述等价：
+    \begin{enumerate}
+        \item $v-w\in U$；
+
+        \item $v+U=w+U$；
+
+        \item $(v+U)\cap(w+U)\neq \varnothing$.
+    \end{enumerate}
+\end{theorem}
+
+还需要强调的一点是，$(v+U)+(w+U)$与$(v+w)+U$是完全相同的集合，等价性是显然的，我们只需要展开写出仿射子集定义然后证明两个集合互相包含即可. 当然更一般的情形为
+\[(v_1+U_1)+(v_2+U_2)+\cdots+(v_n+U_n)=(v_1+v_2+\cdots+v_n)+U_1+U_2+\cdots+U_n.\]
+
+按照我们之前所说的学习数学的基本思路，在学习一个新的概念后我们会尝试考察它是否具有某些特别的性质，从而可以更深入地理解这一概念. 类似于线性空间我们介绍过原点的直线、平面然后介绍一般线性空间的基本结构是基和维数，我们从直观入手，然后逐步考察仿射子集的基本结构.
+
+相信读者对``仿射''一词并不完全陌生，仿射变换实际上就是形如\[\vec{y}=A\vec{x}+\vec{b}\]的映射，其中$\vec{y},\vec{x},\vec{b}$为向量，$A$是一个矩阵. 实际上一元向量的情况就对应着一条斜率为$A$截距为$b$的直线.
+
+事实上，若$V$为二维空间（平面），$U$为$V$的一维子空间，则其几何意义就是一条过原点的直线，而集合$v+U$实际上将原集合所有点沿着$v$的方向平移，可以得到截距不为0的直线，这就体现了``仿射''一词的意义. 高维空间则是同理，只是我们很难直观地看到这一点. 因此，我们也可以称仿射子集$v+U$\textbf{\heiti 平行于}$U$.
+
+下面的例子给出了仿射子集的一种等价描述，基于此我们可以对仿射子集中向量的结构有更进一步的了解：
+\begin{example}\label{ex:8:仿射子集性质}
+    证明：$V$的非空子集$A$是$V$的仿射子集当且仅当对所有的$v,w\in A$和$\lambda\in\mathbf{F}$均有$\lambda v+(1-\lambda)w\in A$.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+事实上，结合我们之前所说的仿射子集几何意义，这一结论在平面上来看正是我们高中学习的平面向量中学习的三点共线的等价条件的同义表达：
+\begin{theorem}
+    设$P,A,B,C$是平面上四点，$P$与$A,B$不共线，则$C$与$A,B$共线等价于存在$\lambda\in\mathbf{R}$使得$\overrightarrow{PC}=\lambda\overrightarrow{PA}+(1-\lambda)\overrightarrow{PB}$.
+\end{theorem}
+同时我们发现仿射子集实际上是我们在数学分析或微积分学习的凸集的特殊形式，在凸集中我们只要求$\lambda\in[0,1]$，这里我们要求整个数域上的点都要有\autoref{ex:8:仿射子集性质} 所述的性质. 因此凸集的性质我们也可以用来研究仿射子集. 当然这不是线性代数中研究的内容，感兴趣的同学可以学习凸优化的相关课程进一步了解.
+
+事实上在习题中我们将给出\autoref*{ex:8:仿射子集性质} 更一般的形式，我们可以回忆\autoref{thm:2:线性扩张构造子空间}，就会发现仿射子集的结构和线性空间保留了一些相似性，即虽然不能像线性空间一样保证加法数乘运算封闭，但仿射子集一定是保证凸组合封闭的集合.
+
+\subsection{商空间}
+
+定义了等价类（即仿射子集）后，我们可以定义相应的商集（即由全体等价类构成的集合），我们称之为商空间：
+\begin{definition}
+    设$U$是$V$的子空间，则商空间$V/U$是指$V$的所有平行于$U$的仿射子集的集合，即
+    \[V/U=\{v+U \mid v\in V\}.\]
+\end{definition}
+我们希望这些这一商集（商空间）真的构成线性空间，因此还需要定义加法和数乘运算. 定义是非常直接的：
+\begin{definition}
+    设$U$是$V$的子空间，则商空间$V/U$上的加法和数乘运算定义为：$\forall \alpha,\beta\in V$和$\lambda\in\mathbf{F}$，
+    \begin{gather*}
+        (\alpha+U)+(\beta+U)=(\alpha+\beta)+U, \\
+        \lambda(\alpha+U)=(\lambda\alpha)+U.
+    \end{gather*}
+\end{definition}
+我们很容易根据线性空间8条性质验证商空间在上述加法和数乘运算定义下构成线性空间，在此不再赘述. 特别注意这一线性空间的零向量是特别的，应当为$U$（即$\vec{0}+U$，一定注意不是$\vec{0}$，读者在验证商空间是线性空间时就会发现）.
+
+正常而言，在定义了一个线性空间后我们自然地想了解它的基本结构——基和维数，商空间也不例外. 我们通过下面这个定理来研究：
+\begin{theorem}\label{thm:8:商空间维数}
+    设$U$是有限维线性空间$V$的子空间，则
+    \[\dim V/U=\dim V-\dim U.\]
+\end{theorem}
+这一定理的证明完全类似线性映射基本定理的证明，因此我之前一再强调这一思想的重要性. 我们的想法还是``设小扩大''：
+
+\begin{proof}
+    取$U$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_s$，将其扩充为$V$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_s,\alpha_{s+1},\ldots,\alpha_n$. 于是我们要证的转化为$\dim V/U=n-s$，即证明$V/U$的一组基的长度为$n-s$.
+
+    类似于线性映射基本定理的证明，我们可以依靠直觉猜想. 我们猜想$V/U$的一组基为$\{\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U\}$. 这是很自然的想法. 我们只需要验证这组基的两个条件：线性无关和张成性：
+    \begin{enumerate}
+        \item 线性无关：设$\lambda_{s+1},\lambda_{s+2},\ldots,\lambda_n\in\mathbf{F}$，使得
+              \[\lambda_{s+1}(\alpha_{s+1}+U)+\lambda_{s+2}(\alpha_{s+2}+U)+\cdots+\lambda_n(\alpha_n+U)=U.\]
+              特别注意这里的零元是$\vec{0}+U=U$，实际上，上式等价于
+              \[(\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n)+U=U.\]
+              根据仿射子集定义，$\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n\in U$，因此可以被表示为$U$的基的线性组合，即
+              \[\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n=\mu_1\alpha_1+\mu_2\alpha_2+\cdots+\mu_s\alpha_s.\]
+              于是我们有
+              \[\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n-\mu_1\alpha_1-\mu_2\alpha_2-\cdots-\mu_s\alpha_s=0.\]
+              由于$\alpha_1,\alpha_2,\ldots,\alpha_n$是$V$的一组基，因此我们有$\lambda_{s+1}=\lambda_{s+2}=\cdots=\lambda_n=\mu_1=\mu_2=\cdots=\mu_s=0$. 从而$\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U$线性无关；
+
+        \item 张成空间：$\forall\alpha+U\in V/U$，其中$\alpha\in V$，我们有$\alpha$可以被$V$的基线性表示为
+              \[\alpha=\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n.\]
+              于是
+              \begin{align*}
+                  \alpha+U & =(\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n)+U         \\
+                           & =(\lambda_1\alpha_1+U)+(\lambda_2\alpha_2+U)+\cdots+(\lambda_n\alpha_n+U) \\
+                           & =\lambda_1(\alpha_1+U)+\lambda_2(\alpha_2+U)+\cdots+\lambda_n(\alpha_n+U)
+              \end{align*}
+              因此$V/U$中任意元素均可被$\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U$线性表示，即$\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U$张成$V/U$.
+    \end{enumerate}
+\end{proof}
+
+由此我们知道了商空间的维数表达式，也在通过证明过程知道了如何得到商空间的一组基. 事实上，上述证明中线性无关的部分和\hyperref[thm:6:线性映射基本定理]{线性映射基本定理}的证明完全类似. 事实上有了这一结论后，我们可以将线性映射基本定理
+\[\dim\im\varphi=\dim V-\dim\ker\varphi\]
+写成
+\[V/\ker\varphi\cong\im\varphi.\]
+
+\begin{example}
+    设$A$是$\mathbf{R}$上的$2\times 3$矩阵：
+    \[A=\begin{pmatrix}
+            1 & -1 & 2 \\ 1 & 0 & -1
+        \end{pmatrix}.\]
+    \begin{enumerate}
+        \item 求齐次线性方程组$AX=0$的解空间$W$的一组基；
+
+        \item 求商空间$\mathbf{R}^3/W$的维数和一组基.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+\begin{example}
+    设$U$和$W$是线性空间$V$的子空间. 构造同构映射证明：若$V=U\oplus W$，则$U$和$V/W$同构.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+\subsection{商映射}
+
+接下来我们循着等价类的思路定义自然映射，在商空间的语境下我们称之为商映射：
+\begin{definition}
+    设$U$是$V$的子空间，商映射$\pi$是如下定义的线性映射$\pi:V\to V/U$：对任意的$\alpha\in V$，
+    \[\pi(v)=v+U.\]
+\end{definition}
+显然这一定义就是基于自然映射的，因为它将原集合（线性空间）中的元素（向量）映射到它所在的等价类（仿射子集）. 一般而言，我们定义映射的目标就是希望利用线性映射基本定理等来进一步研究线性空间的一些性质. 这里也不例外，我们利用线性映射基本定理就可以直接得到\autoref{thm:8:商空间维数} 的结论（除了不能知道基的结构）.
+
+\begin{proof}
+    设$\pi$是$V$到$V/U$的商映射. 我们知道$\ker\pi=U$，因为根据仿射子集定义$\pi(v)=v+U=\vec{0}+U\iff v\in U$. 另一方面，$\pi$的定义蕴含了它是满射，因为$\forall v+U\in V/U$，$\pi(v)=v+U$，即每个像空间中的元素都有原像，因此$\im\pi=V/U$.
+
+    综合上述讨论以及线性映射基本定理，我们知道$\dim\im\pi=\dim V-\dim\ker\pi$，即$\dim V/U=\dim V-\dim U$.
+\end{proof}
+
+由此我们似乎可以更容易地得到商空间的维数，但是我们并不能从这一证明中知道商空间的基的形式. 当然我们结合两个证明，我们会发现这一定理直接应用了线性映射基本定理，而\autoref{thm:8:商空间维数} 中相当于重新证明了线性映射基本定理然后用于说明商空间的基和维数的特点.
+
+\begin{example}\label{ex:8:良定义}
+
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
+最后我们再基于不变子空间讨论一个商线性变换的概念. 事实上，如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换. 我们严格定义如下：
+\begin{definition}
+    设$\sigma\in \mathcal{L}(V)$，$U$是$\sigma$的不变子空间，定义映射$\sigma/U:V/U\to V/U$如下：
+    \[(\sigma/U)(v+U)=\sigma(v)+U,\enspace\forall v\in V,\]
+    则称$\sigma/U$是$\sigma$在$U$上的\term{商线性变换}\index{xianxingbianhuan@shang!商线性变换 (quotient operator)}.
+\end{definition}
+
+定义映射后，我们自然的想法就失确认这一定义是不是合理的. 首先这一定义的线性性容易验证，我们只需要用到商空间中定义的运算性质即可：
+\begin{itemize}
+    \item 齐次性：$(\sigma/U)(\lambda(v+U))=(\sigma/U)(\lambda v+U)=\sigma(\lambda v)+U=\lambda\sigma(v)+U=\lambda(\sigma/U)(v+U)$；
+
+    \item 加性：$(\sigma/U)((v_1+U)+(v_2+U))=(\sigma/U)(v_1+v_2+U)=\sigma(v_1+v_2)+U=\sigma(v_1)+\sigma(v_2)+U=(\sigma/U)(v_1+U)+(\sigma/U)(v_2+U)$.
+\end{itemize}
+
+除了线性的要求外，还有一个很重要的合理性来源于\autoref{ex:8:良定义} 中提到的良定义（well-defined）的概念. 因为这里又一次将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性. 事实上，回顾\autoref{ex:8:良定义}，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值（否则不符合映射的定义）. 商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma(v)+U\neq \sigma(w)+U$的情况，这一定义描述的就不是映射（因为映射要求一个自变量只能映到一个值上），因此不是良定义. 但我们可以验证这一映射是良定义的：
+
+\begin{proof}
+    设$v+U=w+U$，即$v-w\in U$，由于$U$在$\sigma$下不变，则$\sigma(v-w)\in U$，即$\sigma(v)-\sigma(w)\in U$，因此$\sigma(v)+U=\sigma(w)+U$，即$\sigma/U$是良定义的.
+\end{proof}
+
+这一定义可能具有一定的抽象性，因此我们用更抽象的例子来加深理解：
+\begin{example}
+    设$\sigma\in \mathcal{L}(V,W)$，定义$\widetilde{\sigma}:(V/(\ker \sigma))\to W$如下：
+    \[\widetilde{\sigma}(v+\ker\sigma)=\sigma(v).\]
+    \begin{enumerate}
+        \item $\widetilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
+
+        \item $\widetilde{\sigma}$是单射；
+
+        \item $\im \widetilde{\sigma}=\im \sigma$；
+
+        \item $V/(\ker \sigma)$同构于$\im \sigma$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
+最后我们用一张图来总结商空间这一节的基本思路（可以类比其他等价类如同余或等价标准形代入理解）：
+
+\begin{figure}[H]
+    \centering
+    \large
+    \begin{tikzpicture}
+        \draw node at (3, 3.5) {$\pi$}
+            node (set) at (2, 2) {$\{a,b,c,d,\ldots\}$}
+            node [below of=set] {\normalsize$(a - d \in U)$}
+            node (Ka) at (4.5, 3.5) {$K_a$}
+            node (Kb) at (5, 1) {$K_b$}
+            node (Kc) at (6.5, 0.5) {$K_c$}
+            coordinate (a) at (1.1, 2.2)
+            coordinate (b) at (1.5, 1.8)
+            coordinate (c) at (1.9, 1.8)
+            coordinate (d) at (2.3, 2.3);
+
+        % \foreach \x in {1, 1.5, ..., 9}
+        %     \foreach \y in {0, 0.5, ..., 4}
+        %         \fill[black] (\x, \y) circle (1pt);
+
+        % \foreach \pt in {a, b, c, d}
+        %     \fill[red] (\pt) circle (1pt);
+
+        \draw[thick] (4, 0) rectangle (9, 4)
+            (4, 2) -- (6, 4)
+            (5, 3) -- (6, 0)
+            (5.5, 1.5) -- (8, 0);
+
+        \draw[thick,violet,-latex] (a) to[out=45, in=180] (4, 3);
+        \draw[thick,violet,-latex] (b) to[out=-30, in=180] (4, 1.5);
+        \draw[thick,violet,-latex] (c) to[out=-15, in=90] (Kc);
+        \draw[thick,violet,-latex] (d) to[out=10, in=180] (4, 2.7);
+    \end{tikzpicture}
+
+    \normalsize
+    等价类：仿射子集（如何进一步描述其结构）
+
+    商集：仿射子集构成的集合；商空间：商集上定义加法和数乘
+
+    商映射：自然映射
+
+    商空间的基与维数：两种方法
+\end{figure}
 
 \section{对偶空间与对偶映射}
 
@@ -252,181 +504,79 @@
 
 除此之外，在这一讲中笔者也反复强调，面对这一抽象的内容我们不要畏惧，我们可以先从是什么开始，熟练概念，然后理解相关的性质，例如我们在定义对偶映射的时候就强调先记住很好记忆的定义式，然后我们再说明它的出发空间、到达空间是什么，具有什么样的性质，不能一开始就妄图直接装下所有的概念、性质，这样只能使思维混乱且不知道自己学了什么. 我们应当学会将抽象的概念通过拆解成大家从小就习惯的``是什么''的教育和研究中更感兴趣的内容两部分进行梳理，从而更快地理解.
 
-\section{转置的计算性质}
-
-接下来我们转入具象的矩阵运算中，讨论转置这一运算的性质. 我们首先给出一些基本的性质：
-
-\subsection{基本性质}
-
-\begin{enumerate}
-    \item $(A^\mathrm{T})^\mathrm{T}=A$
-
-    \item $(A+B)^\mathrm{T}=A^\mathrm{T}+B^\mathrm{T}$
-
-    \item $(\lambda A)^\mathrm{T}=\lambda A^\mathrm{T},\enspace \lambda \in \mathbf{F}$
-
-    \item $(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T},\enspace(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T}$
-
-    \item $(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$
-
-    \item $(A^\mathrm{T})^m=(A^m)^\mathrm{T}$
-\end{enumerate}
-关于上述性质我们有如下说明：
-\begin{itemize}
-    \item[1.] 从计算角度来看是显然的，简而言之就是矩阵第$i$行变成第$i$列后又变回了第$i$行，因此矩阵不变；但如果从映射矩阵表示的角度来看，我们需要验证对偶映射的对偶映射在双重对偶基下的矩阵仍是原映射在原空间基下的矩阵. 这一点我们放在习题中供感兴趣的读者验证；
-
-    \item[2--4.] 考虑从计算角度验证只需暴力计算即可，从映射角度之前已经说明了映射对偶运算的三条性质，因此这里也是显然的. 至于4的最后$n$个矩阵的情况只需要从两个相乘的情况出发数学归纳即可；
-
-    \item[5.] 请不要忘记验证逆的运算性质的一般方法，我们只需要看到$(A^{-1})^\mathrm{T}A^\mathrm{T}=(AA^{-1})^\mathrm{T}=E$，这里第一个等号运用了上面第4点转置乘法的性质. 从这一式中我们看到$(A^{-1})^\mathrm{T}$是$A^\mathrm{T}$的逆矩阵，因此利用逆的唯一性即可得到$(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$；
-
-    \item[6.] 实际上将$(A_1A_2\cdots A_n)^\mathrm{T}=A_n^\mathrm{T}\cdots A_2^\mathrm{T}A_1^\mathrm{T}$中的$A_i$全部取成$A$即可.
-\end{itemize}
-
-在熟悉了矩阵的基本运算性质后，我们可以来看下面这个例题进行综合练习：
-\begin{example}
-    已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，\\
-    $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$. 求矩阵 $X$ 满足：
-
-    \[X+\left(B(A^\mathrm{T}B^2)^{-1}A^\mathrm{T}\right)^{-1}=X\left(A^2(B^\mathrm{T}A)^{-1}B^\mathrm{T}\right)^{-1}(A+B)\]
-\end{example}
-
-\begin{solution}
-    注意到
-    \[B=A\begin{pmatrix}
-            1 &  & \\ 2 & 1 & \\ & & 1
-        \end{pmatrix} \begin{pmatrix}
-            1 &  & \\ & 1 & \\ & -3 & 1
-        \end{pmatrix} \begin{pmatrix}
-            1 &  & \\ & 1 & \\ & & -1
-        \end{pmatrix},\]
-    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面
-    \[left=X+\left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1}=X+B,\]
-    另一方面
-    \[right=X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A+B)=X A^{-1}(A+B),\]
-    于是 $X=A=(A^{-1})^{-1}=\begin{pmatrix}
-            -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}  \\
-            \frac{2}{3}  & \frac{1}{3} & -\frac{2}{3} \\
-            -2           & -1          & 1
-        \end{pmatrix}$.
-\end{solution}
-
-关于转置我们还有一个重要的例题需要同学们掌握：
-\begin{example}\label{ex:9:转置求幂}
-    设$\alpha=(1,-1,2)^\mathrm{T},\enspace\beta=(3,1,-2)^\mathrm{T},\enspace A=\alpha\beta^\mathrm{T}$，求$A^n$.
-\end{example}
-
-\begin{solution}
-    由于$A^2=\alpha\beta^\mathrm{T}\alpha\beta^\mathrm{T}=\alpha(\beta^\mathrm{T}\alpha)\beta^\mathrm{T}=kA$，其中$k=\beta^\mathrm{T}\alpha=-2$，则$A^2=-2A$. 则可递推得到$A^n=(-2)^{n-1}A=(-2)^{n-1}\begin{pmatrix}
-            3 & 1 & -2 \\ -3 & -1 & 2 \\ 6 & 2 & -4
-        \end{pmatrix}$，原因在于$A^n$展开后中间会出现$n-1$个$\beta^\mathrm{T}\alpha$.
-\end{solution}
-
-\subsection{对阵矩阵与反对称矩阵}
-
-\begin{definition}
-    设$A=(a_{ij})_{n \times n}$，如果$\forall i,j\in\{1,2,\ldots,n\}$均有$a_{ij}=a_{ji}$，则称$A$为对称矩阵. 若均有$a_{ij}=-a_{ji}$，则称$A$为反对称矩阵.
-\end{definition}
-由定义易知$A$为对称矩阵的充要条件为$A=A^\mathrm{T}$，$A$为反对称矩阵的充要条件为$A=-A^\mathrm{T}$.
-\begin{example}
-    证明以下几点性质：
-    \begin{enumerate}
-        \item 反对称矩阵主对角元均为0；
-
-        \item $AA^\mathrm{T}$和$A^\mathrm{T}A$均为对称矩阵；
-
-        \item 设$A,B$为$n$阶对称和反对称矩阵，则$AB+BA$是反对称矩阵；
-
-        \item 对称矩阵的乘积不一定对称；
-
-        \item 可逆的对称（反对称）矩阵的逆矩阵也是对称（反对称）矩阵.
-    \end{enumerate}
-\end{example}
-
-\begin{solution}
-    \begin{enumerate}
-        \item 由于$A$为反对称矩阵，因此根据定义有$a_{ii}=-a_{ii}$，即$a_{ii}=0$；
-
-        \item 由于$(AA^\mathrm{T})^\mathrm{T}=(A^\mathrm{T})^\mathrm{T}A^\mathrm{T}=AA^\mathrm{T}$，因此$AA^\mathrm{T}$为对称矩阵；同理可证$A^\mathrm{T}A$为对称矩阵；
-
-        \item 由于$A,B$分别为对称和反对称矩阵，因此$(AB+BA)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}+A^\mathrm{T}B^\mathrm{T}=-AB-BA=-(AB+BA)$，因此$AB+BA$为反对称矩阵；
-
-        \item 注意$(AB)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}=BA$，因为矩阵乘法不一定可交换，因此$AB$不一定对称；
-
-        \item 因为$A$可逆有$(A^{-1})^\mathrm{T}=(A^\mathrm{T})^{-1}=A^{-1}$，因此$A^{-1}$为对称矩阵；同理可证$A$反对称的情况.
-    \end{enumerate}
-\end{solution}
-
-我们已经看到转置和对称矩阵之间的关联，因此我们在之后在处理一些对称性很强的问题时，实际上都可以考虑利用转置来解决，例如：
-\begin{example}
-    $a,b,c,d$是四个实数. 证明$\begin{cases}
-            a^2+b^2=1 \\
-            c^2+d^2=1 \\
-            ac+bd=0
-        \end{cases}$成立的充分必要条件是$\begin{cases}
-            a^2+c^2=1 \\
-            b^2+d^2=1 \\
-            ab+cd=0
-        \end{cases}$.
-\end{example}
-
-\begin{solution}
-    设$A=\begin{pmatrix}
-            a & b \\ c & d
-        \end{pmatrix}$，则有
-    \[AA^\mathrm{T}=\begin{pmatrix}
-            a^2+b^2 & ac+bd \\ ac+bd & c^2+d^2
-        \end{pmatrix},\enspace A^\mathrm{T}A=\begin{pmatrix}
-            a^2+c^2 & ab+cd \\ ab+cd & b^2+d^2
-        \end{pmatrix}.\]
-    因此题中的充要条件可以转化为$AA^\mathrm{T}=E$是$A^\mathrm{T}A=E$的充要条件. 这是显然的，因为$AA^\mathrm{T}=E\iff A^{-1}=A^\mathrm{T}\iff A^\mathrm{T}A=E$成立.
-\end{solution}
-
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-本讲我们从对偶引入转置运算，并介绍了转置运算的基本性质，也介绍了对称矩阵与反对称矩阵的概念与性质，希望读者通过例子和习题体验转置中蕴含的``对称性''在习题中的运用.
+事实上，这一讲是本讲义第一次接触技巧性较强的内容，我们的重点从之前对于定理的证明以及用例子巩固定理的应用转变为了对于一些技巧性的处理. 我们首先介绍了三类初等变换（请务必注意正文中强调的几个定义的细节），证明了任意可逆矩阵都可以被表示成若干初等矩阵的乘积，也基于此引出了第二种求解逆矩阵的方法——初等变换法，这也是我们未来最常用的方法. 除此之外，我们也联系了线性映射矩阵表示和初等变换，研究了高斯消元法背后的合理性.
+
+接下来我们介绍了分块矩阵的基本运算性质，比较了分块矩阵和一般矩阵运算的异同（特别是乘法和转置），介绍了两种分块矩阵求逆的方法：其一直接设出逆矩阵，其二利用所谓打洞法（分块矩阵初等变换），其中打洞法是一个很重要的技巧，虽然教材列为小字部分，考试中一般不考察，但拥有这一技巧对我们未来证明很多结论都有很大的帮助. 最后我们介绍了矩阵方程的求解方法，本质而言介绍了几种基于初等变换的求解方法，读者理解其内涵即可.
 
 \vspace{2ex}
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-{\kaishu 一个没有几分诗人才能的数学家决不会成为一个完全的数学家. }
+{\kaishu 龙生龙，凤生凤，华罗庚的学生会打洞.}
 \begin{flushright}
     \kaishu
-    ——魏尔斯特拉斯
+    ——线性代数教学俗语
 \end{flushright}
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 设$\alpha,\beta$为三维列向量，且$\alpha\beta^\mathrm{T}=\begin{pmatrix}
-                  -1 & 2  & 1  \\
-                  1  & -2 & -1 \\
-                  2  & -4 & -2
-              \end{pmatrix}$，求$\alpha^\mathrm{T}\beta$.
+    \item 设$A$为三阶矩阵，将$A$的第二列加到第一列得到矩阵$B$，再对调$B$的2、3行得到单位矩阵. 令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\enspace
+              P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用$P_1$和$P_2$表示$A$.
+
+    \item 设$A$为可逆矩阵，将$A$的第$i$行和第$j$行对调得到矩阵$B$，证明矩阵$B$可逆并求$AB^{-1}$.
+
+    \item 设$A$为三阶可逆矩阵，且$P^{-1}AP=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$，其中$P=(\alpha_1,\alpha_2,\alpha_3)$，令$Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，求$Q^{-1}AQ$.
+
+    \item 求下列矩阵的可逆的条件与逆矩阵：$\begin{pmatrix}
+                  A & B \\ O & D
+              \end{pmatrix},\enspace \begin{pmatrix}
+                  O & B \\ C & D
+              \end{pmatrix}$.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 设$A$为$n$阶实矩阵，且$A^\mathrm{T}A=O$. 证明：$A=O$.
-
-    \item 设 $V=\{(a_{ij})_{n \times n} \mid \forall i,j,\enspace a_{ij}=a_{ji}\}$.
+    \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵为$A=(a_{ij})_{3 \times 3}$，求：
           \begin{enumerate}
-              \item 证明：$V$为$\mathbf{F}^{n \times n}$的子空间；
+              \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
 
-              \item 求$V$的基和维数.
+              \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
+
+              \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
+
+              \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
           \end{enumerate}
 
-    \item 求矩阵$\begin{pmatrix}
-                  a  & b  & c  & d  \\
-                  -b & a  & d  & -c \\
-                  -c & -d & a  & b  \\
-                  -d & c  & -b & a
-              \end{pmatrix}$的逆.
+    \item 设$P=\begin{pmatrix}
+                  1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
+              \end{pmatrix}$，$Q=\begin{pmatrix}
+                  0 & 0 \\ 1 & 0
+              \end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$.
+          \begin{enumerate}
+              \item 验证$\sigma$是线性映射；
 
-    \item $\mathbf{M}_n(\mathbf{R})$表示所有实$n$阶方阵构成的集合. 设$W=\{A\in \mathbf{M}_n(\mathbf{R}) \mid a_{ji}=ka_{ij},\enspace i \leqslant j\}$，求当$k=0,1,2$时，$W$的一组基和维数.
+              \item 求$\ker\sigma$和$\im \sigma$；
+
+              \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
+          \end{enumerate}
+
+    \item % 新题，需要答案
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在$n$阶下三角矩阵$B$，使得$BA$为上三角矩阵.
+
+    \item 设$A$是数域$\mathbf{F}$上的$n$阶可逆矩阵，把$A$和$A^{-1}$做如下分块：
+          \[A=\begin{pmatrix}
+                  A_{11} & A_{12} \\ A_{21} & A_{22}
+              \end{pmatrix},\enspace A^{-1}=\begin{pmatrix}
+                  B_{11} & B_{12} \\ B_{21} & B_{22}
+              \end{pmatrix}\]
+          其中$A_{11}$是$l \times k$矩阵，$B_{11}$是$k \times l$矩阵，$l$，$k$是小于$n$的正整数. 用$W$表示$A_{12}X=0$的解空间，$U$表示$B_{12}Y=0$的解空间，其中$X$和$Y$为列向量，证明$W$与$U$同构.
+
+    \item $A$的Schur补以及商等式$A/B=(A/C)/(B/C)$% 新题，需要答案
 \end{enumerate}

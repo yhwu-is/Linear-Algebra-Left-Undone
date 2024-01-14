@@ -101,242 +101,312 @@
 
 我们发现线性空间中定义的运算规则与我们高中学习的平面向量的加法和数乘是非常类似的，我们回顾未竟专题一关于公理化的讨论，实际上这就可以视为从简单的向量加法和数乘抽象出来的一些规则. 而公理的诞生应当是要尽可能简洁，而且有足够的表达力——这一点我们将来基于这一定义不断推出线性空间的性质时就会发现非常足够（事实上你现在就能通过我们上面证明的运算性质初步感知到这一点，因为7条公理中任何一条的缺失都会使得上面某条显然而合理的性质不再满足，而我们未来需要的性质都可以由此导出），因此皮亚诺在1888年正式给出这一定义并沿用至今. 但我们需要知道他的工作也是基于前人（如格拉斯曼）的工作不断修正而来的，只是我们被动接受这一概念使得这一自然的过程变得很突兀. 当然这门课只要求你记忆这8条性质，并请务必牢记于心，考试可能要求你验证线性空间. 记忆难度也并不大，Abel 群4条性质都有名称标注，数乘运算也是易于记忆的结合律和分配律加单位元性质.
 
-除此之外，公理化定义还有一个很重要的作用就是使得我们可以不仅仅在向量集合的背景下定义线性空间，这使得我们可以将对于很多结构的研究都转化为对于线性空间的研究. 接下来我们给出一些与向量无关的线性空间的例子：
+除此之外，公理化定义还有一个很重要的作用就是使得我们可以不仅仅在向量集合的背景下定义线性空间，这使得我们可以将对于很多结构的研究都转化为对于线性空间的研究. 接下来我们给出一些与向量无关的线性空间的例子，它们分别代表着线性空间在某些方面的抽象，希望读者仔细体会：
 
 \begin{example}
-    几种非常常见的线性空间，希望读者能熟知其性质：
-    \begin{enumerate}
-        \item （多项式）$\mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$关于多项式的加法和数乘构成线性空间，但
+    （平凡的常识：多项式）$\mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$关于多项式的加法和数乘构成线性空间，具体展开而言便是
+    \[(p_1+p_2)(x)=p_1(x)+p_2(x),\enspace(\lambda p)(x)=\lambda p(x),\enspace\forall p_1,p_2,p\in\mathbf{F}[x]_{n+1},\enspace\forall \lambda\in\mathbf{F}.\]
+    这也能解释常见记号的含义：$(k_1p_1+k_2p_2)(x)=k_1p_1(x)+k_2p_2(x)$.
+    但我们需要注意
               \[\mathbf{F}[x]'_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}, a_n\neq 0\}\]
               不构成线性空间.
 
               注：书上常将多项式记为$\mathbf{F}[x]_{n+1}$，表示次数不超过$n$的多项式的集合，而《线性代数应该这样学》中使用 $\mathcal{P}_n(\mathbf{F})$ 表示相同的集合.
+\end{example}
 
-              注意常见记号：$(k_1p_1+k_2p_2)(x)=k_1p_1(x)+k_2p_2(x)$.
+\begin{proof}
+    我们对八条性质进行逐条验证即可.
+    \begin{enumerate}
+        \item $\forall p_1(x), p_2(x), p_3(x) \in \mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$，有
+            \begin{align*}
+                    & (p_1(x) + p_2(x)) + p_3(x)                                                                                \\
+                ={} & ((a_{10} + a_{11}x + \cdots  + a_{1n}x^n) + (a_{20} + a_{21}x + \cdots  + a_{2n}x^n))                     \\
+                +{} & (a_{30} + a_{31}x + \cdots  + a_{3n}x^n)                                                                  \\
+                ={} & ((a_{10} + a_{20}) + (a_{11} + a_{21}) x + \cdots  + (a_{1n} + a_{2n}) x^n)                               \\
+                +{} & (a_{30} + a_{31}x + \cdots  + a_{3n}x^n)                                                                  \\
+                ={} & (((a_{10} + a_{20}) + a_{30}) + ((a_{11} + a_{21}) + a_{31})x + \cdots + ((a_{1n} + a_{2n}) + a_{3n})x^n) \\
+                ={} & ((a_{10} + (a_{20} + a_{30})) + (a_{11} + (a_{21} + a_{31}))x + \cdots + (a_{1n} + (a_{2n} + a_{3n}))x^n) \\
+                ={} & (a_{10} + a_{11}x + \cdots  + a_{1n}x^n)                                                                  \\
+                +{} & ((a_{20} + a_{21}x + \cdots  + a_{2n}x^n) + (a_{30} + a_{31}x + \cdots  + a_{3n}x^n))                     \\
+                ={} & p_1(x) + (p_2(x) + p_3(x))
+            \end{align*}
+            注意，在证明过程中，我们用了形式的加法定义（逐次数将系数相加），并诉诸域 $\mathbf{F}$ 上的结合律，这种诉诸基域性质的方式在以后的证明中会经常碰上.
 
-        \item （复数与实数）可以验证：复数集$\mathbf{C}$是数域$\mathbf{C}$或数域$\mathbf{R}$上的线性空间. 此处一定注意复数集$\mathbf{C}$在此处同时出现在集合和数域中.
+        \item 取定 $p_0(x) = 0 \in V$ 则有 $\forall p(x) \in \mathbf{F}[x]_{n+1}, p(x) + p_0(x) = p_0(x) + p(x)$.
 
-              注意：这一例子表明，同一集合可以在不同数域上构成不同的线性空间，在下一讲接触维数的定义后，我们也将知道二者的维数是不一样的（见\autoref{ex:3:不同数域的维数}）.
+        \item $\forall p(x) = a_0 + a_1x + \cdots + a_nx^n \in \mathbf{F}[x]_{n+1}, \exists p^*(x) = -a_0 - a_1x - \cdots - a_nx^n \in \mathbf{F}[x]_{n+1}, p(x) + p^*(x) = p^*(x) + p(x) = p_0(x) = 0$.
 
-              当然，不同的集合也可以在同一个数域上构成不同的线性空间，例如$\mathbf{C(R)}$和$\mathbf{R(R)}$.
+        \item $\forall p_1(x), p_2(x) \in \mathbf{F}[x]_{n+1}$有
+            \begin{align*}
+                p_1(x) + p_2(x)
+                    & = (a_{10} + a_{11}x + \cdots + a_{1n}x^n) + (a_{20} + a_{21}x + \cdots + a_{2n}x^n) \\
+                    & = (a_{10} + a_{20}) + (a_{11} + a_{21})x + \cdots + (a_{1n} + a_{2n})x^n            \\
+                    & = (a_{20} + a_{10}) + (a_{21} + a_{11})x + \cdots + (a_{2n} + a_{1n})x^n            \\
+                    & = (a_{20} + a_{21}x + \cdots + a_{2n}x^n) + (a_{10} + a_{11}x + \cdots + a_{1n}x^n) \\
+                    & = p_2(x) + p_1(x).
+            \end{align*}
 
-        \item 对$n$维实非零系数向量空间$V$定义如下加法运算
-              \begin{gather*}
-                  \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n) \in V = \mathbf{R}_{+}^n, \\
-                  \alpha \oplus \beta = (a_1b_1, a_2b_2, \ldots, a_nb_n).
-              \end{gather*}
-              定义如下数乘运算
-              \[\forall \lambda \in \mathbf{R}, \lambda \circ \alpha = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda).\]
-              则$V$构成线性空间.
+        \item 取定 $\lambda = 1 \in \mathbf{F},\forall p(x) \in \mathbf{F}[x]_{n+1}, \lambda \cdot p(x) = p(x)$.
 
-        \item $V=\{f \mid x \in \mathbf{R}, f(x) \in \mathbf{C}$（即$f$是实变量复值函数），且$f(-x)=\overline{f(x)}$（后者为$f(x)$的共轭复数）$\}$，定义如下的加法和数乘运算：
-              \begin{gather*}
-                  (f \oplus g)(x) = f(x) + g(x) \\
-                  (\lambda \circ f)(x) = \lambda f(x).
-              \end{gather*}
-              则$V$构成线性空间.
+        \item $\forall \lambda, \mu \in \mathbf{F}, p(x) \in \mathbf{F}[x]_{n+1}$有
+            \begin{align*}
+                \lambda(\mu p(x)) & = \lambda(\mu(a_0 + a_1x + \cdots + a_nx^n)) = \lambda(\mu a_0 + \mu a_1x + \cdots + \mu a_nx^n)                  \\
+                                    & = \lambda \mu a_0 + \lambda \mu a_1x + \cdots + \lambda \mu a_nx^n = (\lambda \mu) (a_0 + a_1x + \cdots + a_nx^n) \\
+                                    & = (\lambda \mu)p(x).
+            \end{align*}
+
+        \item $\forall \lambda, \mu \in \mathbf{F}, p(x) \in \mathbf{F}[x]_{n+1}$有
+            \begin{align*}
+                (\lambda + \mu) p(x)
+                    & = (\lambda + \mu)(a_0 + a_1x + \cdots + a_nx^n)                                         \\
+                    & = (\lambda + \mu)a_0 + (\lambda + \mu)a_1x + \cdots + (\lambda + \mu)a_nx^n             \\
+                    & = \lambda a_0 + \mu a_0 + \lambda a_1x + \mu a_1x+ \cdots + \lambda a_nx^n + \mu a_nx^n \\
+                    & = \lambda(a_0 + a_1x + \cdots + a_nx^n) + \mu(a_0 + a_1x + \cdots + a_nx^n)             \\
+                    & = \lambda p(x) + \mu p(x).
+            \end{align*}
+            这里的第二行到第三行并没有诉诸对单项式的分配律，而是利用了性质 6 和域 $\mathbf{F}$ 上的分配律.
+
+        \item $\forall p_1(x), p_2(x) \in \mathbf{F}[x]_{n+1}, \lambda \in \mathbf{F}$有
+            \begin{align*}
+                    & \lambda(p_1(x) + p_2(x))                                                                        \\
+                ={} & \lambda((a_{10} + a_{11}x + \cdots + a_{1n}x^n) + (a_{20} + a_{21}x + \cdots + a_{2n}x^n))      \\
+                ={} & \lambda((a_{10} + a_{20}) + (a_{11} + a_{21})x + \cdots + (a_{1n} + a_{2n})x^n)                 \\
+                ={} & \lambda(a_{10} + a_{20}) + \lambda(a_{11} + a_{21})x + \cdots + \lambda(a_{1n} + a_{2n})x^n     \\
+                ={} & \lambda(a_{10} + a_{11}x + \cdots + a_{1n}x^n) + \lambda(a_{20} + a_{21}x + \cdots + a_{2n}x^n) \\
+                ={} & \lambda p_1(x) + \lambda p_2(x).
+            \end{align*}
+    \end{enumerate}
+    但是对\[\mathbf{F}[x]'_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}, a_n\neq 0\}\]不构成线性空间，其原因在于我们加法不封闭，例如我们取$\mathbf{F}[x]'_{n+1}$中的两个元素$x^n$和$-x^n$，它们的和为$0$，不再满足$\mathbf{F}[x]'_{n+1}$中关于$a_n\neq 0$的条件，因此运算不封闭，不构成线性空间.
+\end{proof}
+
+第一个例子实际上是与向量有很大的联系的，因为次数不高于$n-1$次的多项式中，我们可以把所有系数$a_i(i=1,\cdots,n-1)$拼成向量$\alpha=(a_1,\cdots,a_{n-1})$，因此多项式和向量实际上是很类似的，所以这一例子是平凡的，并且应当作为常识，因为日后会非常常见. 并且请特别注意不构成线性空间的例子，这里我们使用运算不封闭这一条件否认，这是非常常用的，在习题中我们还会见到这样的例子.
+
+\begin{example} \label{ex:2:函数和数列线性空间}
+    （向量层面的抽象）线性空间定义中$V$中的元素可以不是向量，也不是类似于上例中多项式的常规的、平凡的形式，可以是非常抽象的与我们认知中``向量''一次相去甚远的，例如：
+    \begin{enumerate}
+        \item 设$V=C[a,b]$为定义在闭区间$[a,b]$上的连续实值函数全体，定义$V(\mathbf{R})$，其中加法运算定义为
+              \[(f+g)(x)=f(x)+g(x),\enspace\forall f,g\in C[a,b].\]
+              数乘运算定义为
+              \[(\lambda f)(x)=\lambda f(x),\enspace\forall f\in C[a,b],\enspace\forall \lambda\in\mathbf{R}.\]
+              则$C[a,b]$构成实数域上的线性空间.
+
+        \item 设$V$是以$0$为极限的实数数列全体，定义$V(\mathbf{R})$，其中两个数列的加法和数乘定义为
+        \[\{a_n\}+\{b_n\}=\{a_n+b_n\},\enspace\lambda\{a_n\}=\{\lambda a_n\},\enspace\forall \{a_n\},\{b_n\}\in V,\enspace\forall \lambda\in\mathbf{R},\]
+        则$V$构成实数域上的线性空间.
     \end{enumerate}
 \end{example}
 
-\begin{solution}
+本例的证明我们不再像多项式的例子一样展开，因为方法类似. 我们只需要强调$C[a,b]$中的零元就是$f(x)=0,\enspace\forall x\in[a,b]$的恒等于$0$的函数，而极限为0的数列中的零元就是每一项都为$0$的全零数列.
+
+\begin{example}
+    （数域层面的抽象）复数集$\mathbf{C}$是数域$\mathbf{C}$或数域$\mathbf{R}$上的线性空间，实数集$\mathbf{R}$是实数域$\mathbf{R}$上的线性空间，但实数集$\mathbf{R}$不是复数域$\mathbf{C}$上的线性空间. 除此之外，定义在整数集$\mathbf{Z}$上的全体实数$\mathbf{R}$不构成线性空间.
+
+    总结而言就是，$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$以及$\mathbf{R(R)}$都构成线性空间，但$\mathbf{R}(\mathbf{C})$和$\mathbf{R}(\mathbf{Z})$不构成线性空间.
+\end{example}
+
+这一例子表明，同一集合可以在不同数域上构成不同的线性空间，在下一讲接触维数的定义后，我们也将知道构成线性空间的$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$二者的维数是不一样的（见\autoref{ex:3:不同数域的维数}）. 当然，不同的集合也可以在同一个数域上构成不同的线性空间，例如$\mathbf{C(R)}$和$\mathbf{R(R)}$.
+
+关于数域我们需要强调的并不多，只有一条非常关键的，那就是数域在线性空间$V(\mathbf{F})$中的作用只与数乘运算有关，加法运算与数域没有关系，只和集合$V$中的元素有关，这一点根据定义是显然的. 因此在验证线性空间的过程中，例如$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$之间的差别只在于数域不同，故加法性质是共同满足的，只需各自验证数乘的性质.
+
+\begin{proof}
+    这里我们验证$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$都构成线性空间，$\mathbf{R(R)}$证明类似. 我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}:+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
     \begin{enumerate}
-        \item 我们对八条性质进行逐条验证即可.
-              \begin{enumerate}
-                  \item $\forall p_1(x), p_2(x), p_3(x) \in \mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$，有
-                        \begin{align*}
-                                & (p_1(x) + p_2(x)) + p_3(x)                                                                                \\
-                            ={} & ((a_{10} + a_{11}x + \cdots  + a_{1n}x^n) + (a_{20} + a_{21}x + \cdots  + a_{2n}x^n))                     \\
-                            +{} & (a_{30} + a_{31}x + \cdots  + a_{3n}x^n)                                                                  \\
-                            ={} & ((a_{10} + a_{20}) + (a_{11} + a_{21}) x + \cdots  + (a_{1n} + a_{2n}) x^n)                               \\
-                            +{} & (a_{30} + a_{31}x + \cdots  + a_{3n}x^n)                                                                  \\
-                            ={} & (((a_{10} + a_{20}) + a_{30}) + ((a_{11} + a_{21}) + a_{31})x + \cdots + ((a_{1n} + a_{2n}) + a_{3n})x^n) \\
-                            ={} & ((a_{10} + (a_{20} + a_{30})) + (a_{11} + (a_{21} + a_{31}))x + \cdots + (a_{1n} + (a_{2n} + a_{3n}))x^n) \\
-                            ={} & (a_{10} + a_{11}x + \cdots  + a_{1n}x^n)                                                                  \\
-                            +{} & ((a_{20} + a_{21}x + \cdots  + a_{2n}x^n) + (a_{30} + a_{31}x + \cdots  + a_{3n}x^n))                     \\
-                            ={} & p_1(x) + (p_2(x) + p_3(x))
-                        \end{align*}
-                        注意，在证明过程中，我们用了形式的加法定义（逐次数将系数相加），并诉诸域 $\mathbf{F}$ 上的结合律，这种诉诸基域性质的方式在以后的证明中会经常碰上.
+        \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
 
-                  \item 取定 $p_0(x) = 0 \in V$ 则有 $\forall p(x) \in \mathbf{F}[x]_{n+1}, p(x) + p_0(x) = p_0(x) + p(x)$.
+        \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
+            \begin{align*}
+                \lambda(\mu \alpha) = \lambda(\mu (a+b\i)) = \lambda(\mu a+\mu b\i) = \lambda \mu a + \lambda \mu b\i = (\lambda \mu)(a+b\i) = (\lambda \mu)\alpha.
+            \end{align*}
 
-                  \item $\forall p(x) = a_0 + a_1x + \cdots + a_nx^n \in \mathbf{F}[x]_{n+1}, \exists p^*(x) = -a_0 - a_1x - \cdots - a_nx^n \in \mathbf{F}[x]_{n+1}, p(x) + p^*(x) = p^*(x) + p(x) = p_0(x) = 0$.
+        \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
+            \begin{align*}
+                (\lambda + \mu) \alpha
+                    & = (\lambda a + \lambda b\i) + (\mu a + \mu b\i)            \\
+                    & = \lambda(a+b\i)+\mu(a+b\i) = \lambda \alpha + \mu \alpha.
+            \end{align*}
 
-                  \item $\forall p_1(x), p_2(x) \in \mathbf{F}[x]_{n+1}$有
-                        \begin{align*}
-                            p_1(x) + p_2(x)
-                             & = (a_{10} + a_{11}x + \cdots + a_{1n}x^n) + (a_{20} + a_{21}x + \cdots + a_{2n}x^n) \\
-                             & = (a_{10} + a_{20}) + (a_{11} + a_{21})x + \cdots + (a_{1n} + a_{2n})x^n            \\
-                             & = (a_{20} + a_{10}) + (a_{21} + a_{11})x + \cdots + (a_{2n} + a_{1n})x^n            \\
-                             & = (a_{20} + a_{21}x + \cdots + a_{2n}x^n) + (a_{10} + a_{11}x + \cdots + a_{1n}x^n) \\
-                             & = p_2(x) + p_1(x).
-                        \end{align*}
-
-                  \item 取定 $\lambda = 1 \in \mathbf{F},\forall p(x) \in \mathbf{F}[x]_{n+1}, \lambda \cdot p(x) = p(x)$.
-
-                  \item $\forall \lambda, \mu \in \mathbf{F}, p(x) \in \mathbf{F}[x]_{n+1}$有
-                        \begin{align*}
-                            \lambda(\mu p(x)) & = \lambda(\mu(a_0 + a_1x + \cdots + a_nx^n)) = \lambda(\mu a_0 + \mu a_1x + \cdots + \mu a_nx^n)                  \\
-                                              & = \lambda \mu a_0 + \lambda \mu a_1x + \cdots + \lambda \mu a_nx^n = (\lambda \mu) (a_0 + a_1x + \cdots + a_nx^n) \\
-                                              & = (\lambda \mu)p(x).
-                        \end{align*}
-
-                  \item $\forall \lambda, \mu \in \mathbf{F}, p(x) \in \mathbf{F}[x]_{n+1}$有
-                        \begin{align*}
-                            (\lambda + \mu) p(x)
-                             & = (\lambda + \mu)(a_0 + a_1x + \cdots + a_nx^n)                                         \\
-                             & = (\lambda + \mu)a_0 + (\lambda + \mu)a_1x + \cdots + (\lambda + \mu)a_nx^n             \\
-                             & = \lambda a_0 + \mu a_0 + \lambda a_1x + \mu a_1x+ \cdots + \lambda a_nx^n + \mu a_nx^n \\
-                             & = \lambda(a_0 + a_1x + \cdots + a_nx^n) + \mu(a_0 + a_1x + \cdots + a_nx^n)             \\
-                             & = \lambda p(x) + \mu p(x).
-                        \end{align*}
-                        这里的第二行到第三行并没有诉诸对单项式的分配律，而是利用了性质 6 和域 $\mathbf{F}$ 上的分配律.
-
-                  \item $\forall p_1(x), p_2(x) \in \mathbf{F}[x]_{n+1}, \lambda \in \mathbf{F}$有
-                        \begin{align*}
-                                & \lambda(p_1(x) + p_2(x))                                                                        \\
-                            ={} & \lambda((a_{10} + a_{11}x + \cdots + a_{1n}x^n) + (a_{20} + a_{21}x + \cdots + a_{2n}x^n))      \\
-                            ={} & \lambda((a_{10} + a_{20}) + (a_{11} + a_{21})x + \cdots + (a_{1n} + a_{2n})x^n)                 \\
-                            ={} & \lambda(a_{10} + a_{20}) + \lambda(a_{11} + a_{21})x + \cdots + \lambda(a_{1n} + a_{2n})x^n     \\
-                            ={} & \lambda(a_{10} + a_{11}x + \cdots + a_{1n}x^n) + \lambda(a_{20} + a_{21}x + \cdots + a_{2n}x^n) \\
-                            ={} & \lambda p_1(x) + \lambda p_2(x).
-                        \end{align*}
-              \end{enumerate}
-              但是对\[\mathbf{F}[x]'_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}, a_n\neq 0\}\]不构成线性空间，其原因在于我们无法找到一个零元$p_0(x)$满足$p(x) + p_0(x) = p_0(x) + p(x) = p(x)$.
-
-        \item 同理我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}:+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
-              \begin{enumerate}
-                  \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
-
-                  \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
-                        \begin{align*}
-                            \lambda(\mu \alpha) = \lambda(\mu (a+b\i)) = \lambda(\mu a+\mu b\i) = \lambda \mu a + \lambda \mu b\i = (\lambda \mu)(a+b\i) = (\lambda \mu)\alpha.
-                        \end{align*}
-
-                  \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
-                        \begin{align*}
-                            (\lambda + \mu) \alpha
-                             & = (\lambda a + \lambda b\i) + (\mu a + \mu b\i)            \\
-                             & = \lambda(a+b\i)+\mu(a+b\i) = \lambda \alpha + \mu \alpha.
-                        \end{align*}
-
-                  \item $\forall \lambda \in \mathbf{R},\enspace \alpha_1 = a_1+b_1\i, \alpha_2 = a_2+b_2\i \in \mathbf{C},\enspace a_i, b_i \in \mathbf{R},\enspace i = 1, 2$,
-                        \begin{align*}
-                            \lambda(\alpha_1+\alpha_2)
-                             & = \lambda((a_1+b_1\i)+(a_2+b_2\i)) = \lambda((a_1+a_2)+(b_1+b_2)\i)                             \\
-                             & = \lambda(a_1+a_2)+\lambda(b_1+b_2)\i = (\lambda a_1+\lambda b_1\i)+(\lambda a_2+\lambda b_2\i) \\
-                             & = \lambda(a_1+b_1\i)+\lambda(a_2+b_2\i) = \lambda \alpha_1 + \lambda \alpha_2.
-                        \end{align*}
-              \end{enumerate}
-              所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间.
-
-        \item 这里定义的``加法''和``数乘''与一般的不同，不过也只需要验证八条性质就行.
-              \begin{enumerate}
-                  \item $\forall \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n), \gamma = (c_1, c_2, \ldots, c_n) \in V, $
-                        \begin{align*}
-                            (\alpha \oplus \beta) \oplus \gamma
-                             & = ((a_1, a_2, \ldots, a_n)\oplus (b_1, b_2, \ldots, b_n)) \oplus (c_1, c_2, \ldots, c_n)  \\
-                             & = (a_1b_1, a_2b_2, \ldots, a_nb_n) \oplus (c_1, c_2, \ldots, c_n)                         \\
-                             & = (a_1b_1c_1, a_2b_2c_2, \ldots, a_nb_nc_n)                                               \\
-                             & = (a_1, a_2, \ldots, a_n)\oplus (b_1c_1, b_2c_2, \ldots, b_nc_n)                          \\
-                             & = (a_1, a_2, \ldots, a_n) \oplus ((b_1, b_2, \ldots, b_n) \oplus (c_1, c_2, \ldots, c_n)) \\
-                             & = \alpha \oplus (\beta \oplus \gamma)
-                        \end{align*}
-
-                  \item 取定 $e = (1, 1, \ldots , 1) \in V,\enspace \forall \alpha = (a_1, a_2, \ldots, a_n) \in V$,
-                        \begin{align*}
-                            e \oplus \alpha & =(1, 1, \ldots , 1) \oplus (a_1, a_2, \ldots, a_n) =(a_1, a_2, \ldots, a_n) = \alpha \\
-                                            & =(a_1, a_2, \ldots, a_n) \oplus (1, 1, \ldots , 1) =\alpha \oplus e.
-                        \end{align*}
-
-                  \item $\forall \alpha = (a_1, a_2, \ldots, a_n) \in V,\enspace \exists \beta = \left(\dfrac{1}{a_1}, \dfrac{1}{a_2}, \ldots, \dfrac{1}{a_n}\right),\enspace \alpha \oplus \beta = \beta \oplus \alpha = e$.
-
-                  \item $\forall \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n) \in V$,
-                        \begin{align*}
-                            \alpha \oplus \beta
-                             & = (a_1, a_2, \ldots, a_n) \oplus (b_1, b_2, \ldots, b_n) = (a_1b_1, a_2b_2, \ldots, a_nb_n)                        \\
-                             & = (b_1a_1, b_2a_2, \ldots, b_na_n) = (b_1, b_2, \ldots, b_n) \oplus (a_1, a_2, \ldots, a_n) = \beta \oplus \alpha.
-                        \end{align*}
-
-                  \item 取定 $\lambda = 1 \in \mathbf{R},\enspace \forall \alpha = (a_1, a_2, \ldots, a_n) \in V$,
-                        \[\lambda \circ \alpha = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) = (a_1, a_2, \ldots, a_n) = \alpha.\]
-
-                  \item $\forall \lambda, \mu \in \mathbf{R}, \forall \alpha \in = (a_1, a_2, \ldots, a_n) \in V$,
-                        \begin{align*}
-                            \lambda \circ(\mu \circ \alpha)
-                             & = \lambda \circ(\mu \circ (a_1, a_2, \ldots, a_n)) = \lambda \circ (a_1^\mu, a_2^\mu, \ldots, a_n^\mu) \\
-                             & = (a_1^{\lambda\mu}, a_2^{\lambda\mu}, \ldots, a_n^{\lambda\mu}) = (\lambda \mu)\circ \alpha.
-                        \end{align*}
-
-                  \item $\forall \lambda, \mu \in \mathbf{R},\enspace \forall \alpha \in = (a_1, a_2, \ldots, a_n) \in V$,
-                        \begin{align*}
-                            (\lambda + \mu) \circ \alpha
-                             & = (\lambda + \mu) \circ (a_1, a_2, \ldots, a_n) = (a_1^{\lambda + \mu}, a_2^{\lambda + \mu}, \ldots, a_n^{\lambda + \mu})                                              \\
-                             & = (a_1^\lambda a_1^\mu, a_2^\lambda a_2^\mu, \ldots, a_n^\lambda a_n^\mu) = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) \oplus (a_1^\mu, a_2^\mu, \ldots, a_n^\mu) \\
-                             & = (\lambda \circ (a_1, a_2, \ldots, a_n)) \oplus (\mu \circ (a_1, a_2, \ldots, a_n))                                                                                   \\
-                             & = (\lambda \circ \alpha) \oplus (\mu \circ \alpha).
-                        \end{align*}
-
-                  \item $\forall \lambda \in \mathbf{R},\enspace \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n) \in V$,
-                        \begin{align*}
-                            \lambda \circ (\alpha \oplus \beta)
-                             & = \lambda \circ ((a_1, a_2, \ldots, a_n) \oplus (b_1, b_2, \ldots, b_n))                                            \\
-                             & = \lambda \circ (a_1b_1, a_2b_2, \ldots , a_nb_n) = ((a_1b_1)^\lambda, (a_2b_2)^\lambda, \ldots , (a_nb_n)^\lambda) \\
-                             & = (a_1^\lambda b_1^\lambda, a_2^\lambda b_2^\lambda, \ldots , a_n^\lambda b_n^\lambda)                              \\
-                             & = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) \oplus (b_1^\lambda, b_2^\lambda, \ldots, b_n^\lambda)            \\
-                             & = (\lambda \circ (a_1, a_2, \ldots, a_n)) \oplus (\lambda \circ (b_1, b_2, \ldots, b_n))                            \\
-                             & = (\lambda \circ \alpha) \oplus (\lambda \circ \beta).
-                        \end{align*}
-              \end{enumerate}
-              所以$V$构成在此``加法''和``数乘''下的线性空间.
-
-        \item 这题主要注意需要验证封闭的性质是什么就可以了.
-              \begin{enumerate}
-                  \item $\forall f, g, h \in V$,
-                        \begin{align*}
-                            ((f \oplus g) \oplus h)(x) & = (f \oplus g)(x)+h(x)                                \\
-                                                       & = (f(x)+g(x))+h(x) = f(x)+(g(x)+h(x))                 \\
-                                                       & = f(x)+ (g \oplus h)(x) = (f \oplus (g \oplus h))(x).
-                        \end{align*}
-
-                  \item 取定 $e(x)=0,\enspace \forall x \in \mathbf{R},\enspace e(-x)=0=\overline{e(x)},\enspace \forall f \in V$,
-                        \begin{align*}
-                            (f \oplus e)(x) = f(x) + e(x) = f(x) = e(x) + f(x) = (e \oplus f)(x).
-                        \end{align*}
-
-                  \item $\forall f \in V,\enspace \exists g \in V,\enspace g(x) := -f(x),\enspace \forall x \in \mathbf{R}$,
-                        \begin{gather*}
-                            g(-x) = -f(-x) = -\overline{f(x)} = \overline{g(x)} \\
-                            (f \oplus g)(x) = f(x)+g(x) = 0 = e(x) = g(x) + f(x) = (g \oplus f)(x).
-                        \end{gather*}
-
-                  \item $\forall f, g \in V,\enspace (f \oplus g)(x) = f(x)+g(x) = g(x)+f(x) = (g \oplus f)(x)$.
-
-                  \item 取定 $\lambda = 1 \in \mathbf{R},\enspace \forall f \in V,\enspace (\lambda \circ f)(x) = \lambda f(x) = f(x)$.
-
-                  \item $\forall \lambda, \mu \in \mathbf{R},\enspace f \in V$,
-                        \[(\lambda \circ (\mu \circ f))(x) = \lambda((\mu \circ f)(x)) = \lambda (\mu f(x)) = (\lambda \mu) f(x) = ((\lambda \mu) \circ f)(x).\]
-
-                  \item $\forall \lambda, \mu \in \mathbf{R},\enspace f \in V$,
-                        \begin{align*}
-                                & ((\lambda + \mu) \circ f)(x) = (\lambda + \mu)f(x) = \lambda f(x) + \mu f(x)           \\
-                            ={} & (\lambda \circ f)(x) + (\mu \circ f)(x) = ((\lambda \circ f) \oplus (\mu \circ f))(x).
-                        \end{align*}
-
-                  \item $\forall \lambda \in \mathbf{R},\enspace f, g \in V$,
-                        \begin{align*}
-                                & (\lambda \circ (f \oplus g))(x) = \lambda((f \oplus g)(x)) = \lambda (f(x)+g(x)) = \lambda f(x) + \lambda g(x) \\
-                            ={} & (\lambda \circ f)(x) + (\lambda \circ g)(x) = ((\lambda \circ f) \oplus (\lambda \circ g))(x).
-                        \end{align*}
-              \end{enumerate}
-              所以$V$构成在此``加法''和``数乘''下的线性空间.
+        \item $\forall \lambda \in \mathbf{R},\enspace \alpha_1 = a_1+b_1\i, \alpha_2 = a_2+b_2\i \in \mathbf{C},\enspace a_i, b_i \in \mathbf{R},\enspace i = 1, 2$,
+            \begin{align*}
+                \lambda(\alpha_1+\alpha_2)
+                    & = \lambda((a_1+b_1\i)+(a_2+b_2\i)) = \lambda((a_1+a_2)+(b_1+b_2)\i)                             \\
+                    & = \lambda(a_1+a_2)+\lambda(b_1+b_2)\i = (\lambda a_1+\lambda b_1\i)+(\lambda a_2+\lambda b_2\i) \\
+                    & = \lambda(a_1+b_1\i)+\lambda(a_2+b_2\i) = \lambda \alpha_1 + \lambda \alpha_2.
+            \end{align*}
     \end{enumerate}
-\end{solution}
+    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间.同理我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}:+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
+    \begin{enumerate}
+        \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
 
-在上例以及习题中我们可以看到很多特殊的线性空间，它们集合中的元素不一定是数或向量，运算也不一定是熟知的数的运算和向量的数乘，对这些空间我们需要学会熟练判断，从而加深对``在集合上定义运算''的理解.
+        \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
+            \begin{align*}
+                \lambda(\mu \alpha) = \lambda(\mu (a+b\i)) = \lambda(\mu a+\mu b\i) = \lambda \mu a + \lambda \mu b\i = (\lambda \mu)(a+b\i) = (\lambda \mu)\alpha.
+            \end{align*}
+
+        \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
+            \begin{align*}
+                (\lambda + \mu) \alpha
+                    & = (\lambda a + \lambda b\i) + (\mu a + \mu b\i)            \\
+                    & = \lambda(a+b\i)+\mu(a+b\i) = \lambda \alpha + \mu \alpha.
+            \end{align*}
+
+        \item $\forall \lambda \in \mathbf{R},\enspace \alpha_1 = a_1+b_1\i, \alpha_2 = a_2+b_2\i \in \mathbf{C},\enspace a_i, b_i \in \mathbf{R},\enspace i = 1, 2$,
+            \begin{align*}
+                \lambda(\alpha_1+\alpha_2)
+                    & = \lambda((a_1+b_1\i)+(a_2+b_2\i)) = \lambda((a_1+a_2)+(b_1+b_2)\i)                             \\
+                    & = \lambda(a_1+a_2)+\lambda(b_1+b_2)\i = (\lambda a_1+\lambda b_1\i)+(\lambda a_2+\lambda b_2\i) \\
+                    & = \lambda(a_1+b_1\i)+\lambda(a_2+b_2\i) = \lambda \alpha_1 + \lambda \alpha_2.
+            \end{align*}
+    \end{enumerate}
+    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间.
+
+    对于$\mathbf{R(R)}$的验证同理，下面考察$\mathbf{R}(\mathbf{C})$，它与$\mathbf{R(R)}$定义的集合一致，都是实数集合$\mathbf{R}$，因此加法性质共同满足，因此我们只需验证数乘运算不满足要求即可. 事实上仍然是运算不封闭导致的，回顾封闭的要求$\mathbf{F}\times V\to V$，现在$\mathbf{R(C)}$中的$V=\mathbf{R}$，数域$\mathbf{F}=\mathbf{C}$，我们取复数$i$与实数$1$进行数乘，结果为$i\notin\mathbf{R}$，破坏了封闭性，故$\mathbf{R(C)}$不构成线性空间.
+
+    最后我们考察$\mathbf{R(Z)}$，事实上我们会发现运算封闭以及与运算规律都是满足的，那为何不是线性空间呢？事实上这里开了个小玩笑，这是因为$\mathbf{Z}$不是数域！我们知道最小的数域是有理数域$\mathbf{Q}$，因而$\mathbf{Z}\subsetneq\mathbf{Q}$不是数域，因此$\mathbf{R(Z)}$不构成线性空间.
+\end{proof}
+
+\begin{example} \label{ex:2:运算与同构}
+    （运算层面的抽象）$V$是正实数全体$\mathbf{R}^+$，定义$V(\mathbf{R})$上的加法和数乘为
+    \begin{gather*}
+        a\oplus b=ab \\
+        \lambda\circ a=a^\lambda
+    \end{gather*}
+    则如上定义的$V(\mathbf{R})$是$\mathbf{R}$上的线性空间.
+\end{example}
+
+这一例子给出了一个非常不自然的运算定义，当然证明时仍然是按照运算封闭和八条性质逐条验证即可，我们留作下一讲的习题供读者验证，这里给出另一种基于同构的理解其构成线性空间的方式.
+
+我们可以定义映射$\varphi:\mathbf{R}\to\mathbf{R}^+$，其中$\phi(x)=e^x$，则$\varphi$是一个双射（这是一个有反函数$\ln x$的可逆映射）. 我们如何理解这个双射呢？实际上在两个集合之间建立双射就说明两个集合之间的元素具有一一对应的关系，例如每个$\mathbf{R}$中的元素$a$对应唯一的一个$\mathbf{R}^+$中的元素$e^a$，反之每个$\mathbf{R}^+$中的元素$b$对应唯一的一个$\mathbf{R}$中的元素$\ln b$. 例如$\mathbf{R}$中的元素$0$唯一对应于$\mathbf{R}^+$中的1，而$\mathbf{R}^+$中的1又反过来唯一与$\mathbf{R}$中的$0$对应，事实上两个集合中所有元素都可以像$0$和$1$这样两两凑对（例如$(1,e)$也能凑对，可以记为$(a,\varphi(a))$），这就是双射``一一对应''的意义.
+
+除此之外，映射$\varphi$还有另一个重要的性质. 我们不难发现，
+\begin{gather*}
+    \varphi(x+y)=e^{x+y}=e^x\cdot e^y=\varphi(x)\oplus\varphi(y),\enspace\forall x,y\in\mathbf{R} \\
+    \varphi(\lambda x)=e^{\lambda x}=(e^x)^\lambda=\lambda\circ\varphi(x),\enspace\forall x,\lambda\in\mathbf{R}
+\end{gather*}
+
+这两条性质将进一步加深``一一对应''的含义. 第一条关于加法的性质实际上说明了，在$\mathbf{R}$中任意两个元素$x$和$y$做$\mathbf{R}$中的加法的结果，与$x$和$y$``凑对''的元素$\varphi(x)$和$\varphi(y)$做$\mathbf{R}^+$中的加法的结果也是``凑对''的，也就是说，$\mathbf{R}$中两个元素做了加法，正好对应于$\mathbf{R}^+$中的两个元素也做了加法. 例如，$\mathbf{R}$中元素$2$和$3$做加法后结果为$5$，而$\mathbf{R}^+$中元素$e^2$和$e^3$做$\mathbf{R}^+$中加法后结果为$e^5$，所有参与加法的三个元素是完全对应的. 事实上数乘也是如此，对$\mathbf{R}$中元素的数乘运算也对应于$\mathbf{R}^+$中对应的元素做数乘运算. 具有这样保持两个代数结构运算的性质的映射$\varphi$我们称之为``同态''，特别地，若代数结构为线性空间，则称之为``线性映射''. 更进一步地，若映射$\varphi$是双射，则称之为``同构''，特别地，若代数结构为线性空间，则称之为``线性同构''（或者在线性代数的讨论场景下，不产生歧义时简称同构）. 我们在此给出一个初步的定义：
+\begin{definition} \label{def:2:同构}
+    设$V(\mathbf{F})$和$W(\mathbf{F})$是数域$\mathbf{F}$上的线性空间，若映射$\varphi:V(\mathbf{F})\to W(\mathbf{F})$满足
+    \begin{gather*}
+        \varphi(\alpha+\beta)=\varphi(\alpha)+\varphi(\beta),\enspace\forall\alpha,\beta\in V(\mathbf{F}) \\
+        \varphi(\lambda\alpha)=\lambda\varphi(\alpha),\enspace\forall\alpha\in V(\mathbf{F}),\enspace\forall\lambda\in\mathbf{F}
+    \end{gather*}
+    则称$\varphi$是从$V(\mathbf{F})$到$W(\mathbf{F})$的一个\textbf{同态}，若$\varphi$是双射，则称$\varphi$是从$V(\mathbf{F})$到$W(\mathbf{F})$的一个\textbf{同构}，若$\varphi$是从$V(\mathbf{F})$到$W(\mathbf{F})$的一个同构，则称线性空间$V(\mathbf{F})$和$W(\mathbf{F})$是\textbf{同构的}，记为$V(\mathbf{F})\cong W(\mathbf{F})$.
+\end{definition}
+
+与之前的讨论对应的，我们需要注意\autoref{def:2:同构}中，$\alpha+\beta$中的加法是线性空间$V$中的加法，而$\varphi(\alpha)+\varphi(\beta)$中的加法是线性空间$W$中的加法，数乘也是类似的. 这一点在定义中没有直接体现，但它是``同态''的本质，即保持运算，因此非常重要. 例如\autoref{ex:2:运算与同构}中两个线性空间的加法数乘运算的定义差别很大，但我们可以构造出一个同构映射$\varphi$，使得$\varphi$保持了两个空间加法和数乘的完美对应.
+
+我们将在后续章节中进一步讨论同构的性质，现在我们可以总结经过这一例子对于同构的认识：事实上同构就是两个线性空间之间元素有了一一对应的关系，并且其中一个线性空间的元素做了加法和数乘的运算，另一个线性空间对应的元素也做了加法和数乘运算（这两个运算分别是两个线性空间中对应的），因此这样两个线性空间事实上可以看成是``一模一样的''，因为我们可以集合上做元素的对应，然后它们运算也是有对应关系，这已经将线性空间``在集合上定义运算''的所有要素集齐，故可以说是``一模一样''的. 因此通过构建了$\varphi$这一映射，我们发现在这一奇特的运算定义下，$\mathbf{R}^+$事实上拥有了和$\mathbf{R}$一样的结构，所以它自然就是一个线性空间，本质上无需多余的验证. 当然，如果觉得上面这段话无法完全说服你，那在后续正式讨论同构之后我们再回过头看想必会有更深的理解.
+
+% \begin{solution}
+%     \begin{enumerate}
+%         \item 这里定义的``加法''和``数乘''与一般的不同，不过也只需要验证八条性质就行.
+%               \begin{enumerate}
+%                   \item $\forall \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n), \gamma = (c_1, c_2, \ldots, c_n) \in V, $
+%                         \begin{align*}
+%                             (\alpha \oplus \beta) \oplus \gamma
+%                              & = ((a_1, a_2, \ldots, a_n)\oplus (b_1, b_2, \ldots, b_n)) \oplus (c_1, c_2, \ldots, c_n)  \\
+%                              & = (a_1b_1, a_2b_2, \ldots, a_nb_n) \oplus (c_1, c_2, \ldots, c_n)                         \\
+%                              & = (a_1b_1c_1, a_2b_2c_2, \ldots, a_nb_nc_n)                                               \\
+%                              & = (a_1, a_2, \ldots, a_n)\oplus (b_1c_1, b_2c_2, \ldots, b_nc_n)                          \\
+%                              & = (a_1, a_2, \ldots, a_n) \oplus ((b_1, b_2, \ldots, b_n) \oplus (c_1, c_2, \ldots, c_n)) \\
+%                              & = \alpha \oplus (\beta \oplus \gamma)
+%                         \end{align*}
+
+%                   \item 取定 $e = (1, 1, \ldots , 1) \in V,\enspace \forall \alpha = (a_1, a_2, \ldots, a_n) \in V$,
+%                         \begin{align*}
+%                             e \oplus \alpha & =(1, 1, \ldots , 1) \oplus (a_1, a_2, \ldots, a_n) =(a_1, a_2, \ldots, a_n) = \alpha \\
+%                                             & =(a_1, a_2, \ldots, a_n) \oplus (1, 1, \ldots , 1) =\alpha \oplus e.
+%                         \end{align*}
+
+%                   \item $\forall \alpha = (a_1, a_2, \ldots, a_n) \in V,\enspace \exists \beta = \left(\dfrac{1}{a_1}, \dfrac{1}{a_2}, \ldots, \dfrac{1}{a_n}\right),\enspace \alpha \oplus \beta = \beta \oplus \alpha = e$.
+
+%                   \item $\forall \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n) \in V$,
+%                         \begin{align*}
+%                             \alpha \oplus \beta
+%                              & = (a_1, a_2, \ldots, a_n) \oplus (b_1, b_2, \ldots, b_n) = (a_1b_1, a_2b_2, \ldots, a_nb_n)                        \\
+%                              & = (b_1a_1, b_2a_2, \ldots, b_na_n) = (b_1, b_2, \ldots, b_n) \oplus (a_1, a_2, \ldots, a_n) = \beta \oplus \alpha.
+%                         \end{align*}
+
+%                   \item 取定 $\lambda = 1 \in \mathbf{R},\enspace \forall \alpha = (a_1, a_2, \ldots, a_n) \in V$,
+%                         \[\lambda \circ \alpha = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) = (a_1, a_2, \ldots, a_n) = \alpha.\]
+
+%                   \item $\forall \lambda, \mu \in \mathbf{R}, \forall \alpha \in = (a_1, a_2, \ldots, a_n) \in V$,
+%                         \begin{align*}
+%                             \lambda \circ(\mu \circ \alpha)
+%                              & = \lambda \circ(\mu \circ (a_1, a_2, \ldots, a_n)) = \lambda \circ (a_1^\mu, a_2^\mu, \ldots, a_n^\mu) \\
+%                              & = (a_1^{\lambda\mu}, a_2^{\lambda\mu}, \ldots, a_n^{\lambda\mu}) = (\lambda \mu)\circ \alpha.
+%                         \end{align*}
+
+%                   \item $\forall \lambda, \mu \in \mathbf{R},\enspace \forall \alpha \in = (a_1, a_2, \ldots, a_n) \in V$,
+%                         \begin{align*}
+%                             (\lambda + \mu) \circ \alpha
+%                              & = (\lambda + \mu) \circ (a_1, a_2, \ldots, a_n) = (a_1^{\lambda + \mu}, a_2^{\lambda + \mu}, \ldots, a_n^{\lambda + \mu})                                              \\
+%                              & = (a_1^\lambda a_1^\mu, a_2^\lambda a_2^\mu, \ldots, a_n^\lambda a_n^\mu) = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) \oplus (a_1^\mu, a_2^\mu, \ldots, a_n^\mu) \\
+%                              & = (\lambda \circ (a_1, a_2, \ldots, a_n)) \oplus (\mu \circ (a_1, a_2, \ldots, a_n))                                                                                   \\
+%                              & = (\lambda \circ \alpha) \oplus (\mu \circ \alpha).
+%                         \end{align*}
+
+%                   \item $\forall \lambda \in \mathbf{R},\enspace \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n) \in V$,
+%                         \begin{align*}
+%                             \lambda \circ (\alpha \oplus \beta)
+%                              & = \lambda \circ ((a_1, a_2, \ldots, a_n) \oplus (b_1, b_2, \ldots, b_n))                                            \\
+%                              & = \lambda \circ (a_1b_1, a_2b_2, \ldots , a_nb_n) = ((a_1b_1)^\lambda, (a_2b_2)^\lambda, \ldots , (a_nb_n)^\lambda) \\
+%                              & = (a_1^\lambda b_1^\lambda, a_2^\lambda b_2^\lambda, \ldots , a_n^\lambda b_n^\lambda)                              \\
+%                              & = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) \oplus (b_1^\lambda, b_2^\lambda, \ldots, b_n^\lambda)            \\
+%                              & = (\lambda \circ (a_1, a_2, \ldots, a_n)) \oplus (\lambda \circ (b_1, b_2, \ldots, b_n))                            \\
+%                              & = (\lambda \circ \alpha) \oplus (\lambda \circ \beta).
+%                         \end{align*}
+%               \end{enumerate}
+%               所以$V$构成在此``加法''和``数乘''下的线性空间.
+
+%         \item 这题主要注意需要验证封闭的性质是什么就可以了.
+%               \begin{enumerate}
+%                   \item $\forall f, g, h \in V$,
+%                         \begin{align*}
+%                             ((f \oplus g) \oplus h)(x) & = (f \oplus g)(x)+h(x)                                \\
+%                                                        & = (f(x)+g(x))+h(x) = f(x)+(g(x)+h(x))                 \\
+%                                                        & = f(x)+ (g \oplus h)(x) = (f \oplus (g \oplus h))(x).
+%                         \end{align*}
+
+%                   \item 取定 $e(x)=0,\enspace \forall x \in \mathbf{R},\enspace e(-x)=0=\overline{e(x)},\enspace \forall f \in V$,
+%                         \begin{align*}
+%                             (f \oplus e)(x) = f(x) + e(x) = f(x) = e(x) + f(x) = (e \oplus f)(x).
+%                         \end{align*}
+
+%                   \item $\forall f \in V,\enspace \exists g \in V,\enspace g(x) := -f(x),\enspace \forall x \in \mathbf{R}$,
+%                         \begin{gather*}
+%                             g(-x) = -f(-x) = -\overline{f(x)} = \overline{g(x)} \\
+%                             (f \oplus g)(x) = f(x)+g(x) = 0 = e(x) = g(x) + f(x) = (g \oplus f)(x).
+%                         \end{gather*}
+
+%                   \item $\forall f, g \in V,\enspace (f \oplus g)(x) = f(x)+g(x) = g(x)+f(x) = (g \oplus f)(x)$.
+
+%                   \item 取定 $\lambda = 1 \in \mathbf{R},\enspace \forall f \in V,\enspace (\lambda \circ f)(x) = \lambda f(x) = f(x)$.
+
+%                   \item $\forall \lambda, \mu \in \mathbf{R},\enspace f \in V$,
+%                         \[(\lambda \circ (\mu \circ f))(x) = \lambda((\mu \circ f)(x)) = \lambda (\mu f(x)) = (\lambda \mu) f(x) = ((\lambda \mu) \circ f)(x).\]
+
+%                   \item $\forall \lambda, \mu \in \mathbf{R},\enspace f \in V$,
+%                         \begin{align*}
+%                                 & ((\lambda + \mu) \circ f)(x) = (\lambda + \mu)f(x) = \lambda f(x) + \mu f(x)           \\
+%                             ={} & (\lambda \circ f)(x) + (\mu \circ f)(x) = ((\lambda \circ f) \oplus (\mu \circ f))(x).
+%                         \end{align*}
+
+%                   \item $\forall \lambda \in \mathbf{R},\enspace f, g \in V$,
+%                         \begin{align*}
+%                                 & (\lambda \circ (f \oplus g))(x) = \lambda((f \oplus g)(x)) = \lambda (f(x)+g(x)) = \lambda f(x) + \lambda g(x) \\
+%                             ={} & (\lambda \circ f)(x) + (\lambda \circ g)(x) = ((\lambda \circ f) \oplus (\lambda \circ g))(x).
+%                         \end{align*}
+%               \end{enumerate}
+%               所以$V$构成在此``加法''和``数乘''下的线性空间.
+%     \end{enumerate}
+% \end{solution}
+
+在上例以及习题中我们可以看到很多特殊的线性空间，它们集合中的元素不一定是数或向量，运算也不一定是熟知的数的运算和向量的数乘，对这些空间我们需要学会熟练判断，从而加深对``在集合上定义运算''的理解. 除此之外我们也简单引入了同构的概念遮蔽了两个线性空间之间运算的不同，因此即使运算变得面目全非，$\mathbf{R}^+$仍然构成了线性空间. 需要注意的是，同构是线性空间中非常重要的概念，我们将在后续详细讨论.
 
 \section{线性子空间}
 
-我们首先介绍线性子空间的定义：
+对于一个代数结构，一个很自然地问题是：这个代数结构的子集是否也具有相同的结构呢？因此我们将介绍线性子空间的定义：
 \begin{definition}[线性子空间] \index{xianxingkongjian!zi@线性子空间 (linear subspace), 子空间 (subspace)}
     设$W$是线性空间$V(\mathbf{F})$的非空子集，如果$W$对$V$中的运算也构成域$\mathbf{F}$上的线性空间，则称$W$是$V$的\term{线性子空间}（简称\term{子空间}）.
 \end{definition}
@@ -364,7 +434,7 @@
               判断$W_1=\left\{(x,y,z) \,\middle|\, \dfrac{x}{3}=\dfrac{y}{2}=z\right\},\enspace W_2=\{(x,y,z) \mid x+y+z=1,\enspace x-y+z=1\}$是否为$\mathbf{R}^3$的子空间；
 
         \item \label{item:2:常见子空间:3}
-              （线性方程组的解）试说明齐次线性方程组$AX=0$的解集是线性空间$\mathbf{F}^n$的一个子空间，但非齐次线性方程组的解不再构成线性空间（因为加法运算不封闭，具体见教材P62的2.2节开头的例子以及P86习题3(3).
+              （线性方程组的解）试说明齐次线性方程组$AX=0$的解集是线性空间$\mathbf{F}^n$的一个子空间，但非齐次线性方程组的解不再构成线性空间.
     \end{enumerate}
 \end{example}
 
@@ -378,7 +448,19 @@
               \[mv_1+nv_2=m(a_1+b_1x)+n(a_2+b_2x)=(ma_1+na_2)+(mb_1+nb_2)x \in \mathbf{R}[x]_3\]
               所以$\mathbf{R}[x]_2$是$\mathbf{R}[x]_3$的子空间.
 
-        \item 对 $W_1$: 引入参数$t$，
+        \item 对于此类给出条件求解子空间的问题，实际上很容易理解，因为$W_1$实际上就是所有满足方程组
+                \[\begin{cases}
+                        x-3z=0 \\
+                        y-2z=0
+                    \end{cases}\]
+                的向量，而$W_2$实际上就是所有满足方程组
+                \[\begin{cases}
+                        x+y+z=1 \\
+                        x-y+z=1
+                    \end{cases}\]
+                的向量. 因此我们只需要验证这两个方程组的解集是否对加法和数乘封闭即可.
+
+              对 $W_1$: 引入参数$t$，
               \[W_1=\left\{(3t,2t,t) \,\middle|\, \frac{x}{3} = \frac{y}{2} = z = t\right\}\]
               对于$\forall v_1, v_2 \in W_1, v_1 = (3t_1, 2t_1, t_1), v_2 = (3t_2, 2t_2, t_2)$，有
               \begin{align*}
@@ -467,6 +549,8 @@
         \item 对于$\mathbf{R}[x]$，我们只需证明其任意有限子集都无法张成其本身. 我们取其任意有限子集，则其中多项式元素的次数一定有最大值，我们记为$m$，那么$z^{m+1}$以及更高次数的无法被表示，因此$\mathbf{R}[x]$是无限维线性空间.
     \end{enumerate}
 \end{proof}
+
+事实上，基于这一例子我们也可以说明定义在$[a,b]$上的连续实值函数全体$C[a,b]$在实数域上构成的线性空间是无限维的，因为$C[a,b]$包含全体多项式，而全体多项式都无法被有限个向量表示，更不用说全体连续函数了. 当然，事实上\autoref{ex:2:函数和数列线性空间}中的另一个数列的例子也构成无限维线性空间，这一点我们将在行列式一节作为习题，因为使用范德蒙行列式的结论更为便捷.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}

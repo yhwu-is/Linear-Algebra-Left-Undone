@@ -170,7 +170,7 @@
               \end{equation}
               事实上，我们只需将\autoref{eq:3:线性无关等价推论1} 两边乘以任意的$k\in\mathbf{F}$（$\mathbf{F}$为向量组所在线性空间定义的数域），然后加到\autoref{eq:3:线性无关等价推论2} 的两边即可得到
               \[\beta=(\mu_1+k\lambda_1)\alpha_1+(\mu_2+k\lambda_2)\alpha_2+\cdots+(\mu_m+k\lambda_m)\alpha_m.\]
-              因此表示方式不唯一（且有无穷多种），与假设矛盾，因此向量组线性无关. 事实上这一证明也将 \ref*{item:3:线性无关等价表示唯一:2} 中向量组线性无关$\implies$表示方式有无穷多种证明给出，\ref*{item:3:线性无关等价表示唯一:2} 的另一边同样用反证法可以回到 \ref*{item:3:线性无关等价表示唯一:1} 的证明，由此推论得证.
+              因此表示方式不唯一（且有无穷多种），与假设矛盾，因此向量组线性无关. 事实上这一证明也将 \ref*{item:3:线性无关等价表示唯一:2} 中向量组线性相关$\implies$表示方式有无穷多种证明给出，\ref*{item:3:线性无关等价表示唯一:2} 的另一边同样用反证法可以回到 \ref*{item:3:线性无关等价表示唯一:1} 的证明，由此推论得证.
           \end{proof}
 \end{enumerate}
 
@@ -370,7 +370,7 @@
 \begin{theorem}
     如果$W$是$n$维线性空间$V$的一个子空间，则$W$的基可以扩充为$V$的基.
 \end{theorem}
-这一定理的应用非常广泛，事实上笔者认为这一定理结论重要性高于证明，因此不在此给出证明，对证明感兴趣的读者可以参看教材70页.
+这一定理的应用非常广泛，我们未来会经常使用扩基的方式进行研究. 这一定理的正确性我们将在介绍极大线性无关组的方法后通过算法的形式给出，即我们会说明这样的扩基一定能通过一个简单的流程得到.
 
 实际上还有关于向量组的秩、基与维数有关的很多结论，事实上都可以由前述的定理推导而来，很多结论事实上都非常自然，我们将习题中展示. 考虑到本讲概念、定理内容多而杂. 我们在本讲最后也会给出一个思维导图，读者可以参考.
 
@@ -470,11 +470,26 @@
           \[\alpha=a_1\beta_1+a_2\beta_2+\cdots+a_n\beta_n,\]
           但当前没有学习矩阵乘法，因此我们只能将其视为一种记号.
 
-    \item 坐标与向量是一一对应的：一个坐标可以确定唯一的向量，一个向量在基下表示的系数也必然唯一（因为基是线性无关的）；
+    \item 回顾坐标的定义，事实上取向量的坐标相当于将一个$n$维线性空间$V$中的元素$\alpha$转化为$\mathbf{F}^n$中的元素$\alpha_B$. 因此我们可以将求向量坐标的过程视为一个映射$\varphi$，即从原线性空间$V(\mathbf{F})$到$\mathbf{F}^n$的坐标映射，那么我们很容易看到以下结果：
+    \begin{enumerate}
+        \item 同态性：设$n$维线性空间$V$的一组基为$B=\{\beta_1,\ldots,\beta_n\}$，则对于任意的$\alpha,\beta\in V$，有
+        \begin{gather*}
+            \alpha=a_1\beta_1+\cdots+a_n\beta_n,\quad\beta=b_1\beta_1+\cdots+b_n\beta_n,\\
+            \alpha+\beta=(a_1+b_1)\beta_1+\cdots+(a_n+b_n)\beta_n,\\
+            \lambda\alpha=(\lambda a_1)\beta_1+\cdots+(\lambda a_n)\beta_n,
+        \end{gather*}
+        则有
+        \begin{gather*}
+            \varphi(\alpha+\beta)=(a_1+b_1,\ldots,a_n+b_n)=(a_1,\ldots,a_n)+(b_1,\ldots,b_n)=\varphi(\alpha)+\varphi(\beta),\\
+            \varphi(\lambda\alpha)=(\lambda a_1,\ldots,\lambda a_n)=\lambda(a_1,\ldots,a_n)=\lambda\varphi(\alpha).
+        \end{gather*}
+        因此坐标映射保持原向量与坐标运算一致，即是一个同态映射.
 
-    \item 坐标保持元素间的线性运算关系不变：$(\alpha+\beta)_B=\alpha_B+\beta_B$和$(\lambda\alpha)_B=\lambda\alpha_B$成立，例如$\mathbf{R}[x]_3$中的向量$\alpha=x^2+2x+1$和$\beta=2x^2+3x+1$，则$\alpha+\beta=3x^2+5x+2$，对应于向量运算，我们有$(\alpha+\beta)_B=(3,5,2)=(1,2,0)+(2,3,2)=\alpha_B+\beta_B$.
+        \item 双射性：即坐标与向量是一一对应的：一个坐标可以确定唯一的向量，一个向量在基下表示的系数（即向量的坐标）也必然唯一（因为基是线性无关的）.
+    \end{enumerate}
+    由此我们发现，坐标映射$\varphi$实际上是一个同构映射，这表明任意一个$n$维线性空间$V(\mathbf{F})$都与$\mathbf{F}^n$同构，这表明任意的线性空间的元素都可以与一个向量空间中的一般向量（即它的坐标）一一对应，并且它们之间的运算也是完全一致的. 因此我们研究任意的$n$维线性空间都可以转化为研究$\mathbf{F}^n$这一非常基本的空间. 这是十分有趣的事情，因为我们当时以抽象公理定义线性空间便是希望将几何上普通向量的性质抽象出来也能应用于其它的集合，现在我们发现任意线性空间都可以视为一个普通几何上的向量组成的线性空间. 于是，这些被公理化纳入线性空间研究范畴的集合，例如多项式、矩阵等，都可以在坐标的视角下视为普通向量组成的线性空间，从而可以更加方便地研究它们的性质.
 
-    \item 由以上两点我们可以知道：我们对各种各样的$n$维线性空间的研究都可以首先通过坐标转化为$\mathbf{F}^n$中的元素进行研究，例如
+    \item 由以上讨论我们可以知道：我们对各种各样的$n$维线性空间的研究都可以首先通过坐标转化为$\mathbf{F}^n$中的元素进行研究，例如
           \begin{example}\label{ex:3:转化为坐标}
               求$\mathbf{R}[x]_4$中向量组$\{p_1=x^3-x^2+2x+4,p_2=3x^2+x+2,p_3=3x^3+7x+14,p_4=x^3-x^2+2x,p_5=2x^3+x^2+5x+6\}$的极大线性无关组.
           \end{example}
@@ -555,9 +570,9 @@
 
     \item 设线性空间$V(\mathbf{F})$中，向量$\beta$是$\alpha_1,\ldots,\alpha_r$的线性组合，但不是$\alpha_1,\ldots,\alpha_{r-1}$的线性组合. 证明：$\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$.
 
-    \item 设$\mathbf{R}_+$是所有正实数组成的集合，加法和数乘定义如下：
+    \item 设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：
           \[ \forall a,b \in \mathbf{R}_+,\enspace k\in \mathbf{R}\colon\enspace a\oplus b = ab,\enspace k\odot a = a^k \]
-          则 $\mathbf{R}_+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}_+$的一组基.
+          则 $\mathbf{R}^+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}^+$的一组基.
 \end{enumerate}
 
 \centerline{\heiti C组}

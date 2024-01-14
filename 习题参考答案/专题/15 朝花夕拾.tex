@@ -436,6 +436,7 @@
           \[ X=\gamma-\eta_1+2\eta_2=\delta-\xi_1+2\xi_2=(1,0,-1,2)'. \]
 
     \item 方程组 (1)、(2) 有公共解，即方程组$\begin{cases}
+                  x_1+x_2+x_3=0,     \\
                   x_1+2x_2+ax_3=0,   \\
                   x_1+4x_2+a^2x_3=0, \\
                   x_1+2x_2+x_3=a-1
@@ -480,7 +481,7 @@
                   0 & 0 & 0 & 0
               \end{pmatrix}$，因为$r(A)=r(\bar{A})=2$，所以方程组 (1)、(2) 有公共解，公共解为$X=C\begin{pmatrix} -1 \\ 0  \\ 1 \end{pmatrix}$（其中$C$为任意常数）.
 
-          当$a=1$时，$\bar{A}\rightarrow\begin{pmatrix}
+          当$a=2$时，$\bar{A}\rightarrow\begin{pmatrix}
                   1 & 1 & 1  & 0 \\
                   0 & 1 & 1  & 0 \\
                   0 & 0 & -1 & 1 \\
@@ -607,6 +608,30 @@
 
               \item 证明留给读者.
           \end{enumerate}
+
+          \item \begin{enumerate}
+            \item \label{item:13:B:5:1}
+                  采用反证法. 设 $\lvert A \rvert = 0$，则线性方程组 $AX = 0$ 有非零解，设为 $X_0 = (x_1, x_2, \ldots, x_n)^{\mathrm{T}}$，记
+                  \[\lvert x_k \rvert = \max \{\lvert x_1 \rvert, \lvert x_2 \rvert, \ldots, \lvert x_n \rvert\}.\]
+                  由 $X_0 \neq 0$ 可知 $\lvert x_k \rvert > 0$，考虑 $AX = 0$ 的第 $k$ 个方程，有 $\displaystyle\sum_{j=1}^n a_{kj}x_j = 0$，于是
+                  \[\lvert a_{kk} \rvert \lvert x_k \rvert = \lvert -\displaystyle\sum_{j \neq k}a_{kj}x_j \rvert \leqslant \displaystyle\sum_{j \neq k}\lvert a_{kj} \rvert \lvert x_k \rvert.\]
+                  约去 $\lvert x_k \rvert$ 后可得 $\lvert a_{kk} \rvert \leqslant \displaystyle\sum_{j \neq k} \lvert a_{kj} \rvert$，这与条件矛盾. 所以 $\lvert A \rvert \neq 0$.
+
+            \item 构造实函数
+                  \[f(t) = \begin{vmatrix}
+                          a_{11}  & ta_{12} & ta_{13} & \cdots & ta_{1n} \\
+                          ta_{21} & a_{22}  & ta_{23} & \cdots & ta_{2n} \\
+                          ta_{31} & ta_{32} & a_{33}  & \cdots & ta_{3n} \\
+                          \vdots  & \vdots  & \vdots  & \ddots & \vdots  \\
+                          ta_{n1} & ta_{n2} & ta_{n3} & \cdots & a_{nn}  \\
+                      \end{vmatrix}\]
+                  由于 $A$ 是实矩阵，所以 $f(t)$ 是关于 $t$ 的一个实系数多项式（连续）函数，同时
+                  \[f(0) = a_{11}a_{22}\cdots a_{nn} > 0.\] 当$t \in [0, 1]$ 时，还有
+                  \[a_{ii} > \sum_{j \neq i} \lvert a_{ij} \rvert \leqslant \sum_{j \neq i} \lvert ta_{ij} \rvert.\]
+                  由 \ref*{item:13:B:5:1} 可知 $f(t)$ 在 $[0, 1]$ 上非零，由连续函数的介值定理可知 $f(1) > 0$，即 $\lvert A \rvert > 0$.
+
+            \item 此为直接推论不再赘述.
+        \end{enumerate}
 \end{enumerate}
 
 \clearpage

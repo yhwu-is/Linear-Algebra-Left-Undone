@@ -1,0 +1,1184 @@
+\chapter{矩阵运算进阶}
+
+\section{特殊矩阵}
+
+\subsection{对角矩阵}
+
+我们一般记主对角矩阵为$\diag(d_1,d_2,\dots,d_n)$，准对角矩阵为$\diag(A_1,A_2,\dots,A_n)$.
+\begin{theorem}\label{thm:12:对角矩阵的性质}
+    设$A$是一个$s \times n$矩阵，把$A$写成列向量与行向量的形式，分别为
+
+    \[ A = \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix} = \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_n \end{pmatrix} \]
+    则
+    \begin{gather*}
+        \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix}
+        \begin{pmatrix}
+            d_1 &     &        &     \\
+                & d_2 &        &     \\
+                &     & \ddots &     \\
+                &     &        & d_n
+        \end{pmatrix} = \begin{pmatrix}d_1\alpha_1 & d_2\alpha_2 & \cdots & d_n\alpha_n\end{pmatrix} \\
+        \begin{pmatrix}
+            d_1 &     &        &     \\
+                & d_2 &        &     \\
+                &     & \ddots &     \\
+                &     &        & d_n
+        \end{pmatrix} \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_n \end{pmatrix} = \begin{pmatrix} d_1\beta_1 \\ d_2\beta_2 \\ \vdots \\ d_n\beta_n \end{pmatrix}
+    \end{gather*}
+
+    即$A$右乘对角矩阵$\diag(d_1,d_2,\ldots,d_n)$相当于给$A$的第$i$列元素都乘以$d_i$，$A$左乘对角矩阵$\diag(d_1,d_2,\ldots,d_n)$相当于给$A$的第$i$行元素都乘以$d_i$，其中 $i=1,2,\ldots,n$.
+\end{theorem}
+
+\begin{theorem}
+    对角矩阵和分块对角矩阵的性质：
+    \begin{enumerate}
+        \item 对角矩阵$\diag(d_1,d_2,\ldots,d_n)$可逆当且仅当对角线上元素均不为0，且此时逆矩阵为$\diag(d_1^{-1},d_2^{-1},\ldots,d_n^{-1})$.
+
+        \item 分块对角矩阵$\diag(A_1,A_2,\ldots,A_n)$可逆当且仅当每个分块$A_i$可逆，且此时逆矩阵为$\diag(A_1^{-1},A_2^{-1},\ldots,A_n^{-1})$.
+
+        \item 两个对角矩阵$A=\diag(a_1,a_2,\ldots,a_n),\enspace B=\diag(b_1,b_2,\ldots,b_n)$的乘积仍然是对角矩阵，且$AB=\diag(a_1b_1,a_2b_2,\ldots,a_nb_n)$.
+
+              对于乘方运算，有$A^k=\diag(a_1^k,a_2^k,\ldots,a_n^k)$.
+
+        \item 两个准对角矩阵$A=\diag(A_1,A_2,\ldots,A_n),\enspace B=\diag(B_1,B_2,\ldots,B_n)$中$A_i$和$B_i$是同级方阵，则乘积仍然是准对角矩阵，且$AB=\diag(A_1B_1,A_2B_2,\ldots,A_nB_n)$.
+    \end{enumerate}
+\end{theorem}
+
+这里需要说明的是，本节定理都是通过简单计算即可验证的，因此在此不给出证明.
+
+\subsection{上（下）三角矩阵}
+
+\begin{theorem}\label{thm:12:上三角矩阵的性质}
+    已知$A,B$都是上三角矩阵，且设$A$的主对角元素分别为$a_{11},\ldots,a_{nn}$，$B$的主对角元素分别为$b_{11},\ldots,b_{nn}$，则
+    \begin{enumerate}
+        \item $A^{\mathrm{T}}, B^\mathrm{T}$都是下三角矩阵；
+
+        \item $AB$仍然是上三角矩阵，且$AB$的主对角元素为$a_{11}b_{11},\ldots,a_{nn}b_{nn}$；
+
+        \item $A$可逆的充要条件是其主对角元均不为0，且$A$可逆时，$A^{-1}$也是上三角矩阵，并且$A^{-1}$的主对角元素分别为$a_{11}^{-1},\ldots,a_{nn}^{-1}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    已知$A_1,\ldots,A_n$是$n$个对角元都为0的上三角矩阵，证明：$A_1A_2\cdots A_n=O$.
+\end{example}
+
+\begin{proof}
+    使用数学归纳法. $n=1$时结论显然成立，现在假设命题对$n-1$成立，即$n-1$个对角元都为0的$n-1$阶上三角矩阵的乘积为零矩阵，下面考虑$n$的情况：给定$A_1,A_2,\ldots,A_n$是$n$个对角元都为0的上三角矩阵，记
+    \[A_i=\begin{pmatrix}
+            B_i & * \\ O & 0
+        \end{pmatrix},\enspace i=1,2,\ldots,n.\]
+    其中$B_i$是对角元都为0的$n-1$阶上三角矩阵，由归纳假设可知
+    \[B_1B_2\cdots B_{n-1}=O,\]
+    于是
+    \begin{align*}
+        A_1A_2\cdots A_n
+         & =\begin{pmatrix}
+                B_1B_2\cdots B_{n-1} & * \\ O & 0
+            \end{pmatrix}
+        \begin{pmatrix}
+            B_n & * \\ O & 0
+        \end{pmatrix}                      \\
+         & =\begin{pmatrix}
+                O & * \\ O & 0
+            \end{pmatrix}
+        \begin{pmatrix}
+            B_n & * \\ O & 0
+        \end{pmatrix}=  O.
+    \end{align*}
+    证毕.
+\end{proof}
+
+\subsection{基本矩阵}
+
+只有一个元素为1，其余元素全为0的矩阵称为基本矩阵，第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$，它们具有如下性质（可以联系左右乘对应行列变换进行记忆）：
+\begin{theorem}
+    基本矩阵计算具有如下性质：
+    \begin{enumerate}
+        \item $AE_{ij}$的结果就是把$A$的第$i$列移到第$j$列的位置，其余元素都为0的矩阵；
+
+        \item $E_{ij}B$的结果就是把$B$的第$j$行移到第$i$行的位置，其余元素都为0的矩阵；
+
+        \item $E_{ik}E_{lj} = \begin{cases}
+                      E_{ij} & k = l    \\
+                      O      & k \neq l
+                  \end{cases}$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{其他矩阵}
+
+其他特殊矩阵如正交矩阵、置换矩阵、幂等矩阵、幂零矩阵等，我们将在后续讲义合适的位置描述它们的性质，那时我们的讨论不局限于本节的运算性质，会有更多的其它性质.
+
+\section{矩阵可交换问题}
+
+首先我们需要强调一点：一般来说在本课程中此类问题直接设可交换矩阵的每一个元素都是未知数即可. 我们来看下面的例子：
+\begin{example}\label{ex:12:可交换矩阵1}
+    求所有与$A$可交换的矩阵，其中
+    \[A=\begin{pmatrix}
+            1 & 0 & 0  \\
+            0 & 1 & 2  \\
+            0 & 1 & -2
+        \end{pmatrix}.\]
+\end{example}
+
+\begin{solution}
+    设$B$为与$A$可交换的矩阵，设
+    \[B=\begin{pmatrix}
+            a & b & c \\
+            d & e & f \\
+            g & h & i
+        \end{pmatrix},\]
+    则
+    \[AB=\begin{pmatrix}
+            a    & b    & c    \\
+            d+2g & e+2h & f+2i \\
+            d-2g & e-2h & f-2i
+        \end{pmatrix}=BA=\begin{pmatrix}
+            a & b+c & 2b-2c \\
+            d & e+f & 2e-2f \\
+            g & h+i & 2h-2i
+        \end{pmatrix}.\]
+    由此可得
+    \[\begin{cases}
+            b=b+c      \\
+            c=2b-2c    \\
+            d+2g=d     \\
+            e+2h=e+f   \\
+            f+2i=2e-2f \\
+            d-2g=g     \\
+            e-2h=h+i   \\
+            f-2i=2h-2i
+        \end{cases},\]
+    很容易解得$b=c=d=g=0$，且$f=2h,\enspace e=3h+i$，因此
+    \[B=\begin{pmatrix}
+            a & 0    & 0  \\
+            0 & 3h+i & 2h \\
+            0 & h    & i
+        \end{pmatrix}.\]
+\end{solution}
+
+对于一些矩阵直接设未知数计算比较复杂，这里我们讨论一个基本的技巧，即利用
+\[\forall t,\enspace AB=BA \iff (A-tE)B=B(A-tE).\]
+这一等式成立是显然的. 运用时难点主要在决定$t$的值，我们要根据矩阵的对角线上元素来决定，原则是使得$B$与$A-tE$相乘的计算过程更为简单（一般是使得0元素更多），这样解方程也会更轻松. 我们看一个简单的例子来体会：
+\begin{example}
+    求与矩阵$A=\begin{pmatrix}
+            3  & 0  & 0 \\
+            -1 & 3  & 0 \\
+            0  & -1 & 3
+        \end{pmatrix}$可交换的矩阵.
+\end{example}
+
+\begin{solution}
+    由前述分析，取$t=3$可以使得$A-3E$对角线上元素全为0，便于计算，因此我们只需求与$A-3E$可交换的矩阵即可. 与\autoref{ex:12:可交换矩阵1} 同样的设未知数法，具体过程省略得到与$A$可交换的矩阵为
+    \[B=\begin{pmatrix}
+            a & 0 & 0 \\
+            b & a & 0 \\
+            c & b & a
+        \end{pmatrix}.\]
+\end{solution}
+
+事实上，我们有如下关于可交换矩阵更一般的结论：
+\begin{theorem}
+    \begin{enumerate}
+        \item 与主对角元两两互异的对角矩阵可交换的方阵只能是对角矩阵；
+
+        \item 准对角矩阵$A$每个对角分块内对角线元素相同，但不同对角块之间不同，则与$A$可交换的矩阵只能是准对角矩阵；
+
+        \item 与所有$n$级可逆矩阵可交换的矩阵为数量矩阵；
+
+        \item 与所有$n$级矩阵可交换的矩阵为数量矩阵.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，由\autoref{thm:12:对角矩阵的性质} 可知，$AB$是$B$的第$i(i=1,2,\ldots,n)$行元素都乘以$\lambda_i$的矩阵，其中$\lambda_i$是$A$的第$i$个对角元素，同理$BA$是$B$的第$j$列元素都乘以$\lambda_j$的矩阵，因此考察$AB=BA$第$i$行$j$列元素可知
+              \[\lambda_ib_{ij}=\lambda_jb_{ij}\qquad i,j=1,2,\ldots,n\]
+              由于$i\neq j$时$\lambda_i\neq\lambda_j$，因此$b_{ij}=0$，即$B$是对角矩阵.
+
+        \item 设$A=\diag{(\lambda_1E_1,\lambda_2E_2,\ldots,\lambda_sE_s)}$，其中$E_i$是$m_i$阶单位矩阵，$m_1+m_2+\cdots+m_k=n$，设$B=(b_{ij})_{n\times n}$是与$A$可交换的矩阵，将$B$做与$A$一样的分块，事实上由于分块矩阵乘法和一般乘法的相似性，我们可以完全套用第一点的证明完成这里的证明，这里不再赘述.
+
+        \item 设$C$与所有$n$级可逆矩阵可交换，由前述1可知$C$至少是对角矩阵，因为$C$起码要与主对角元两两互异的对角矩阵可交换.
+
+              我们将$C$记为$\diag{(k_1,k_2,\ldots,k_n)}$，进一步地，取可逆矩阵$B=E_{12}+E_{23}+\cdots+E_{n-1,n}+E_{n1}$（回顾第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$），则$BC=CB$可知
+              \[k_1E_{12}+k_2E_{23}+\cdots+k_{n-1}E_{n-1,n}+k_nE_{n1}=k_2E_{12}+k_3E_{23}+\cdots+k_nE_{n-1,n}+k_1E_{n1},\]
+              由此可得$k_1=k_2=\cdots=k_n$，即$C=k_1E$是数量矩阵.
+
+        \item 设$C$与所有$n$级矩阵可交换，由前述3可知$C$至少是数量矩阵，因为$C$起码要与所有$n$级可逆矩阵可交换. 事实上我们也不难验证数量矩阵与任意矩阵可交换，因为$AkE=kEA=kA$，其中$k$是任意数，$E$是$n$级单位矩阵，$A$是任意$n$级矩阵. 因此与所有$n$级矩阵可交换的矩阵是数量矩阵.
+    \end{enumerate}
+\end{proof}
+
+除此之外我们还有一些和特殊的矩阵可交换的结论，我们将在习题中见到它们. 因为技巧性过强正文中不展开叙述，感兴趣的同学可以参考习题C组进行了解.
+
+\section{矩阵的逆进阶求法}
+
+\subsection{给定多项式求逆矩阵}
+
+此类题目出现最为频繁，实际上就是通过一些初中所学的因式分解等基本变换得到需要求逆的矩阵与另一个矩阵相乘可以得到单位矩阵（的一个倍数）.
+\begin{example}
+    设$A$为非零矩阵，且$A^3=O$，证明：$E+A$和$E-A$都可逆.
+\end{example}
+
+\begin{proof}
+    事实上$E=E+A^3=(E+A)(E-A+A^2)$，因此$E+A$可逆（因为可以写出$(E+A)^{-1}=E-A+A^2$），同理$E=E-A^3=(E-A)(E+A+A^2)$，因此$E-A$可逆（因为可以写出$(E-A)^{-1}=E+A-A^2$）.
+\end{proof}
+
+\begin{example}
+    若$X,Y$是两个列向量，且$X^\mathrm{T}Y=2$，证明：
+    \begin{enumerate}
+        \item $(XY^\mathrm{T})^k=2^{k-1}(XY^{\mathrm{T}})$；
+
+        \item 如果$A=E+XY^\mathrm{T}$，则$A$可逆，并求其逆矩阵.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 事实上$Y^\mathrm{T}X=X^\mathrm{T}Y=2$，因此
+              \[(XY^\mathrm{T})^2=X(Y^\mathrm{T}X)Y^\mathrm{T}=2XY^\mathrm{T},\]
+              由数学归纳法易证$(XY^\mathrm{T})^k=2^{k-1}(XY^\mathrm{T})$.
+
+        \item 事实上，
+              \begin{align*}
+                  A^2 & =(E+XY^\mathrm{T})^2=E+2XY^\mathrm{T}+(XY^\mathrm{T})^2 \\
+                      & =E+2XY^\mathrm{T}+2XY^\mathrm{T}=E+4XY^\mathrm{T}       \\
+                      & =4A-3E,
+              \end{align*}
+              因此$A^2-4A+3E=O$，即$A(A-4E)=-3E$，因此$A$可逆，且$A^{-1}=\dfrac{1}{3}(4E-A)$.
+    \end{enumerate}
+\end{proof}
+
+\subsection{利用分块矩阵初等变换}
+
+在分块矩阵中，我们已经讲解了分块矩阵初等变换打洞法的基础题型，这里再给出一些更一般的例子：
+\begin{example}\label{ex:12:打洞法求逆1}
+    设$A,B$为$n$阶矩阵，证明：$E\pm AB$可逆$\iff E\pm BA$可逆.
+\end{example}
+
+\begin{proof}
+    根据分块矩阵初等变换不改变矩阵的秩，我们有
+    \[r\begin{pmatrix}
+            E\pm BA & O \\ A & E
+        \end{pmatrix}=r\begin{pmatrix}
+            E & \mp B \\ A & E
+        \end{pmatrix}=r\begin{pmatrix}
+            E & \mp B \\ O & E\pm AB
+        \end{pmatrix},\]
+    故$E\pm AB$可逆$\iff E\pm BA$可逆（因为此时上式所有矩阵都可逆）.
+\end{proof}
+
+\begin{example}
+    设$A$为$n$阶矩阵，$B,C$分别为$n \times m$和$m \times n$阶矩阵. 证明：$E_m+CA^{-1}B$可逆$\iff A+BC$可逆.
+\end{example}
+
+\begin{proof}
+    类似于上例，有
+    \[r\begin{pmatrix}
+            A+BC & B \\ O & E_m
+        \end{pmatrix}=r\begin{pmatrix}
+            A & B \\ -C & E_m
+        \end{pmatrix}=r\begin{pmatrix}
+            A & B \\ O & E_m+CA^{-1}B
+        \end{pmatrix},\]
+    故$E_m+CA^{-1}B$可逆$\iff A+BC$可逆.
+\end{proof}
+
+事实上，总结上述两题的解决方法，都是将待证明的一个矩阵构成分块矩阵的一部分，然后利用初等变换变出另一个矩阵，使得这两个矩阵的可逆性相同，从而得到结论.
+
+\subsection{求逆的分式思想}
+
+虽然矩阵没有除法运算，但是我们如果将$(E-A)^{-1}$写成$\dfrac{E}{E-A}$，再类比泰勒展开
+\[\frac{1}{1-x}=1+\sum_{n=1}^\infty x^n \qquad x\in (-1,1)\]
+我们可以得到（不严谨！只能用来解题的时候当作初步的思路！）
+\[(E-A)^{-1}=\frac{E}{E-A}=E+A+A^2+\cdots\]
+
+\begin{example}
+    已知方阵$A$满足$A^k=O$，其中$k$是一个正整数，求$E-A$的逆.
+\end{example}
+
+\begin{solution}
+    根据我们前面的分析，结合$A^k=O$，我们猜测
+    \[(E-A)^{-1}=E+A+A^2+\cdots+A^{k-1}.\]
+    事实上我们直接验证
+    \[(E-A)(E+A+A^2+\cdots+A^{k-1})=E-A^k=E.\]
+    因此$(E-A)^{-1}=E+A+A^2+\cdots+A^{k-1}$.
+\end{solution}
+
+\begin{example}
+    设$A,B$分别是$n \times m$和$m \times n$的矩阵，且$E_n \pm AB$可逆，则$E_m \pm BA$可逆.
+\end{example}
+不难发现这一例是\autoref{ex:12:打洞法求逆1} 的推广，因为此处不再限制方阵.
+
+\begin{proof}
+    我们猜测
+    \begin{align*}
+        (E_m-BA)^{-1} & =E_m+(BA)+(BA)^2+\cdots       \\
+                      & =E_m+B(E_n+AB+(AB)^2+\cdots)A \\
+                      & =E_m+B(E_n-AB)^{-1}A.
+    \end{align*}
+    事实上经过验证这一结论是正确的（具体过程省略），因此$E_m \pm BA$可逆，且$(E_m-BA)^{-1}=E_m+B(E_n-AB)^{-1}A$.
+\end{proof}
+
+\subsection{提逆思想}
+
+这一思想的来源是矩阵逆没有加减相关的运算法则（即没有$(A+B)^{-1}=A^{-1}+B^{-1}$这样的性质），因此我们需要提逆产生一些乘积项来解决问题.
+\begin{example}
+    设$A$是$n$阶方阵，且$E-A$，$E+A$和$A$都可逆，证明：$(E-A^{-1})^{-1}+(E-A)^{-1}=E$.
+\end{example}
+
+\begin{proof}
+    由于$(E-A^{-1})^{-1}=(A^{-1}(A-E))^{-1}=(A-E)^{-1}A$，因此
+    \[(E-A^{-1})^{-1}+(E-A)^{-1}=(A-E)^{-1}A+(E-A)^{-1}=(E-A)^{-1}(E-A)=E.\]
+\end{proof}
+
+\section{矩阵的幂} \label{sec:12:矩阵的幂}
+
+\begin{enumerate}
+    \item 找规律
+
+          在矩阵的转置\autoref{ex:9:转置求幂} 中我们已经见识了一种找规律的方式，下面是一种类似的题型：
+          \begin{example}
+              计算$(PAQ)^k$，其中
+              \[P=\begin{pmatrix}2 & 3 \\ 1 & 2\end{pmatrix},\enspace A=\begin{pmatrix}2 & 0 \\ 0 & -1\end{pmatrix},\enspace Q=\begin{pmatrix}2 & -3 \\ -1 & 2\end{pmatrix}\]
+          \end{example}
+          本质而言此类题目只需要发现中间多次出现的乘积$QP$是很容易处理的矩阵（\autoref{ex:9:转置求幂} 中甚至是一个数）即可解决.
+
+          \begin{solution}
+              事实上，$QP=E$（$E$是单位矩阵），令$B=PAQ$，则$B^2=PA(QP)AQ=PA^2Q$，利用归纳法可得，
+              \[B^k=PA^kQ=\begin{pmatrix}
+                      2^{k+2}+3(-1)^{k+1} & -3\cdot 2^{k+1}+6\cdot (-1)^k \\
+                      2^{k+1}+2(-1)^{k+1} & -3\cdot 2^k+4\cdot (-1)^k
+                  \end{pmatrix}.\]
+          \end{solution}
+
+          \begin{example}
+              设$A=\begin{pmatrix}0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix},\enspace P^{-1}AP=B$，求$B^{2004}-2A^2$.
+          \end{example}
+          \begin{solution}
+              事实上，$A^2=\begin{pmatrix}
+                      -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1
+                  \end{pmatrix}$，因此$A^4=E$，于是$A^{2004}=(A^4)^{501}=E$，因此$B^{2004}-2A^2=E-2A^2=\begin{pmatrix}
+                      3 & 0 & 0 \\ 0 & 3  & 0 \\ 0 & 0 & -1
+                  \end{pmatrix}$.
+          \end{solution}
+
+          还有一种找规律基于幂等矩阵（满足$A^2=A$的矩阵，根据数学归纳法可证明$A$的任意次方都是$A$），显然幂等矩阵的任意次方都与其本身相等是很好的性质，另一种找规律基于对合矩阵，即平方等于单位矩阵的矩阵，我们这里主要与大家分享另一种关于幂零矩阵（矩阵某次幂可以得到零矩阵）的方法，例子如下：
+          \begin{example}
+              求$A=\begin{pmatrix}a & 1 & 0 & 0 \\ 0 & a & 1 & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a \end{pmatrix}^n$.
+          \end{example}
+          在上例中，我们采用将矩阵分为$A=tE+B$的方法，会发现矩阵$B$为上三角矩阵且对角线上全为0，这是需要读者记忆的典型的幂零矩阵，未来在幂零矩阵的讨论中我们将严格证明这一点，现在我们只需利用这一性质快速解题.
+
+          \begin{solution}
+              设$B=\begin{pmatrix}
+                      0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0
+                  \end{pmatrix}$，故有
+              \[B^2=\begin{pmatrix}
+                      0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
+                  \end{pmatrix},\enspace B^3=\begin{pmatrix}
+                      0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
+                  \end{pmatrix},\enspace B^4=O,\]
+              因此
+              \begin{align*}
+                  A^n & =(aE+B)^n=\sum\limits_{k=0}^nC_n^ka^{n-k}E^kB^k                        \\
+                      & =\begin{pmatrix}
+                             a^n & C_n^1a^{n-1} & C_n^2a^{n-2} & C_n^3a^{n-3} \\
+                             0   & a^n          & C_n^1a^{n-1} & C_n^2a^{n-2} \\
+                             0   & 0            & a^n          & C_n^1a^{n-1} \\
+                             0   & 0            & 0            & a^n
+                         \end{pmatrix}.
+              \end{align*}
+          \end{solution}
+
+    \item 数学归纳法
+          \begin{example}
+              求$A=\begin{pmatrix}\cos\alpha & \sin\alpha \\ -\sin\alpha & \cos\alpha\end{pmatrix}^n$.
+          \end{example}
+          这一问题对应我们常见的旋转变换（所以建议要求读者记忆这一矩阵形式），$n$次方就是旋转$n$次. 当然这是直观而言的结论，严谨说明可以通过数学归纳法证：
+
+          \begin{solution}
+              事实上，当$n=1$时结论显然成立，假设$n=k$时结论成立，即
+              \[A^k=\begin{pmatrix}\cos k\alpha & \sin k\alpha \\ -\sin k\alpha & \cos k\alpha\end{pmatrix}.\]
+              当$n=k+1$时，有
+              \begin{align*}
+                  A^{k+1} & =A^kA=\begin{pmatrix}\cos k\alpha & \sin k\alpha \\ -\sin k\alpha & \cos k\alpha\end{pmatrix}\begin{pmatrix}\cos\alpha & \sin\alpha \\ -\sin\alpha & \cos\alpha\end{pmatrix}                                                  \\
+                          & =\begin{pmatrix}\cos k\alpha\cos\alpha-\sin k\alpha\sin\alpha & \cos k\alpha\sin\alpha+\sin k\alpha\cos\alpha \\ -\sin k\alpha\cos\alpha-\cos k\alpha\sin\alpha & -\sin k\alpha\sin\alpha+\cos k\alpha\cos\alpha\end{pmatrix} \\
+                          & =\begin{pmatrix}\cos(k+1)\alpha & \sin(k+1)\alpha \\ -\sin(k+1)\alpha & \cos(k+1)\alpha\end{pmatrix}.
+              \end{align*}
+              因此结论对于$n=k+1$也成立，由数学归纳法可知结论对于任意正整数$n$都成立.
+          \end{solution}
+
+          \begin{example}
+              证明$\begin{pmatrix}
+                      a & c \\ 0 & b
+                  \end{pmatrix}^n=\begin{pmatrix}
+                      a^n & (a^{n-1}+a^{n-2}b+\dots+b^{n-1})c \\ 0 & b^n
+                  \end{pmatrix}$.
+          \end{example}
+          \begin{proof}
+              事实上，当$n=1$时结论显然成立，假设$n=k$时结论成立，即
+              \[\begin{pmatrix}
+                      a & c \\ 0 & b
+                  \end{pmatrix}^k=\begin{pmatrix}
+                      a^k & (a^{k-1}+a^{k-2}b+\dots+b^{k-1})c \\ 0 & b^k
+                  \end{pmatrix}.\]
+              当$n=k+1$时，有
+              \begin{align*}
+                  \begin{pmatrix}
+                      a & c \\ 0 & b
+                  \end{pmatrix}^{k+1}
+                   & =\begin{pmatrix}
+                          a & c \\ 0 & b
+                      \end{pmatrix}^k
+                  \begin{pmatrix}
+                      a & c \\ 0 & b
+                  \end{pmatrix}                                         \\
+                   & =\begin{pmatrix}
+                          a^k & (a^{k-1}+a^{k-2}b+\dots+b^{k-1})c \\ 0 & b^k
+                      \end{pmatrix}\begin{pmatrix}
+                                       a & c \\ 0 & b
+                                   \end{pmatrix} \\
+                   & =\begin{pmatrix}
+                          a^{k+1} & (a^k+a^{k-1}b+\dots+b^k)c \\
+                          0       & b^{k+1}
+                      \end{pmatrix}.
+              \end{align*}
+              因此结论对于$n=k+1$也成立，由数学归纳法可知结论对于任意正整数$n$都成立.
+          \end{proof}
+
+    \item 利用秩为1的矩阵
+
+          这一方法的核心是利用上一讲中\autoref{ex:11:相抵分解} 的结论，我们来看下面的例子进行体会：
+          \begin{example}
+              已知$M$是秩为 1 的矩阵，记$\tr(M)=b$，讨论$(aE+M)^n$的计算结果.
+          \end{example}
+          \begin{solution}
+              事实上，由\autoref{ex:11:相抵分解} 可知，$M^k=b^{k-1}M$，因此
+              \begin{enumerate}
+                  \item 当$b=0$时，$M^k=O(k\geqslant 2)$，因此
+                        \[(aE+M)^n=a^nE+na^{n-1}M.\]
+
+                  \item 当$b\neq 0$时有
+                        \begin{align*}
+                            (aE+M)^n & =\sum_{k=0}^nC_n^ka^{n-k}M^k                                    \\
+                                     & =\sum_{k=0}^nC_n^ka^{n-k}b^{k-1}M                               \\
+                                     & =a^nE+\dfrac{1}{b}\sum_{k=1}^nC_n^ka^{n-k}b^kM                  \\
+                                     & =a^nE+\dfrac{1}{b}\left(\sum_{k=0}^nC_n^ka^{n-k}b^k-a^n\right)M \\
+                                     & =a^nE+\dfrac{(a+b)^n-a^n}{b}M
+                        \end{align*}
+              \end{enumerate}
+          \end{solution}
+
+          针对本例我们可以给出一个更加具体的例子供读者练习：
+        \begin{example}
+            求矩阵的幂$A^n=\begin{pmatrix}
+                1 & -1 & -1 & -1 \\
+                -1 & 1 & -1 & -1 \\
+                -1 & -1 & 1 & -1 \\
+                -1 & -1 & -1 & 1
+            \end{pmatrix}^n$.
+        \end{example}
+        \begin{solution}
+            很显然我们可以将$A$分为一个数量矩阵秩1矩阵的和，即\[A=2E+\begin{pmatrix}
+                -1 & -1 & -1 & -1 \\
+                -1 & -1 & -1 & -1 \\
+                -1 & -1 & -1 & -1 \\
+                -1 & -1 & -1 & -1
+            \end{pmatrix},\]
+            然后我们利用上例的结论即可（或者不记得结论也可以将$\begin{pmatrix}
+                -1 & -1 & -1 & -1 \\
+                -1 & -1 & -1 & -1 \\
+                -1 & -1 & -1 & -1 \\
+                -1 & -1 & -1 & -1
+            \end{pmatrix}$分解成$\begin{pmatrix}
+                -1 \\ -1 \\ \vdots \\ -1
+            \end{pmatrix}\begin{pmatrix}
+                1 & 1 & \cdots & 1
+            \end{pmatrix}$然后现场推导）.
+        \end{solution}
+
+          \begin{example}
+              已知$A$是数域$P$上的一个2阶方阵，且存在正整数$l$使得$A^l=O$，证明：$A^2=O$.
+          \end{example}
+          事实上，将来我们讨论幂零矩阵的时候将会进一步推广本例的结论.
+
+          \begin{proof}
+              \begin{enumerate}
+                  \item 若$l\leqslant 2$，则$A^2=O$显然成立；
+
+                  \item 若$l>2$，则由$A^l=O$可知$A$不可逆，故$r(A)\leqslant 1$，又$A\neq O$，因此$r(A)=1$，故$A^l=(\tr(A))^{l-1}A=O$，因此$\tr(A)=0$，故$A^2=\tr(A)A=O$.
+              \end{enumerate}
+          \end{proof}
+
+    \item 利用初等矩阵的性质
+          \begin{example}
+              设$A$为三阶矩阵，$P$为三阶可逆矩阵，$P^{-1}AP=B$，其中
+              \[P=\begin{pmatrix}
+                      0 & 2 & -1 \\ 1 & 1 & 2 \\ -1 & -1 & -1
+                  \end{pmatrix},\enspace B=\begin{pmatrix}
+                      0 & 0 & -1 \\ 0 & -1 & 0 \\ -1 & 0 & 0
+                  \end{pmatrix},\]
+              求$A^{2024}$.
+          \end{example}
+          \begin{solution}
+              事实上$A=PBP^{-1}$，因此$A^{2024}=PB^{2024}P^{-1}$，由于$B^2=E$，因此$B^{2024}=(B^2)^{1012}=E$，因此$A^{2024}=PEP^{-1}=E$.
+          \end{solution}
+
+          事实上本题一个关键的洞察在于我们很容易看出$B$这一非常简单的矩阵作为初等矩阵复合的情况（交换1、3行以及每一行都乘以$-1$），因此其平方为$E$.
+
+    \item 利用对角化和若当标准形：我们将在后续相应章节中讲解.
+\end{enumerate}
+
+\section{分块矩阵初等变换（打洞法）}
+
+\subsection{基本概念}
+分块矩阵的初等变换实际上可以视为一般矩阵初等变换的推广，实际上也有三种相应的推广形式：
+\begin{enumerate}
+    \item 交换分块矩阵两分块行（列）（实际上对应于交换原矩阵若干行/列）；
+
+    \item 对分块的某一分块行（列），左（右）乘一个可逆矩阵（对应于普通矩阵初等变换就是对普通矩阵的一行乘以非零数）；
+
+    \item 将分块矩阵中的某一分块行（列），左（右）乘矩阵后加到另一分块行（对应于普通矩阵初等变换就是将一行乘以非零数加到另一行）.
+\end{enumerate}
+
+回顾一般矩阵的初等矩阵，就是对单位矩阵做了一次初等变换得到的. 在分块初等矩阵中，我们记$E$为分块单位矩阵（事实上就是对单位矩阵做了分块，每个分块是阶数更小的单位矩阵），于是三类分块矩阵初等变换对应的分块初等矩阵分别就是：
+\begin{enumerate}
+    \item 对调$E$的第$i$个分块行（列）与第$j$个分块行（列）得到的矩阵；
+    \item 以可逆矩阵$C$左（右）乘$E$的第$i$个分块行（列）得到的矩阵；
+    \item 以矩阵$B$左乘$E$的第$i$个分块行加到第$j$个分块行得到的矩阵，或者以矩阵$B$右乘$E$的第$j$个分块列加到第$i$个分块列得到的矩阵.
+\end{enumerate}
+
+容易验证分块初等矩阵都是可逆矩阵，并且矩阵的分块初等行（列）变换就相当于用同类分块初等矩阵左（右）乘以被变换的矩阵. 除此之外，我们还需要强调分块矩阵初等变换也是不改变矩阵的秩的，实际上这一结论很直观，例如分块行（列）对换，实际上可以看成一次性做了多次普通的行列对换，其它情况也可以类似分析，严谨证明此处略去.
+
+当然，在实际应用时我们一般只会出现$2\times 2$的情况，因此我们进行详细的讨论. $2\times 2$分块矩阵对应的三种分块初等矩阵为对单位矩阵
+\[\begin{pmatrix}
+        E & O \\ O & E
+    \end{pmatrix}\]做了三种初等变换得到的矩阵，即：
+\begin{enumerate}
+    \item 交换分块矩阵的两行（列），对应的矩阵均为：
+          \[\begin{pmatrix}
+                  O & E \\ E & O
+              \end{pmatrix}\]
+          该矩阵左（右）乘以分块矩阵相当于对分块矩阵交换两行（列）；
+
+    \item 倍乘矩阵：
+          \[\begin{pmatrix}
+                  C & O \\ O & E
+              \end{pmatrix},\enspace\begin{pmatrix}
+                  E & O \\ O & C
+              \end{pmatrix}\]
+          其中$C$为可逆矩阵，左（右）乘以上述第一个分块矩阵相当于对分块矩阵的第一行（列）乘以$C$，第二个矩阵则对应第二行（列）的倍乘；
+
+    \item 倍加矩阵：
+          \[\begin{pmatrix}
+                  E & O \\ B & E
+              \end{pmatrix},\enspace\begin{pmatrix}
+                  E & B \\ O & E
+              \end{pmatrix}\]
+          \begin{enumerate}
+              \item 左乘第一个矩阵相当于对分块矩阵的第一行乘以$B$后加到第二行，右乘第一个矩阵相当于对分块矩阵的第二列乘以$B$后加到第一列；
+
+              \item 右乘第一个矩阵相当于对分块矩阵的第二列乘以$B$后加到第一列，左乘第一个矩阵相当于对分块矩阵的第一列乘以$B$后加到第二列.
+          \end{enumerate}
+\end{enumerate}
+
+事实上我们并不需要特别记忆，因为这和之前普通的初等变换并无本质区别，只需要注意左乘右乘即可. 除此之外，上述矩阵的逆矩阵也是同理可得的，只需要思考什么样的逆变换能变回单位矩阵即可，此处不再赘述，后面会有例题进行练习.
+
+\subsection{分块矩阵求逆}
+
+分块矩阵初等行变换的一个重要的应用就是``打洞法''，常用于分块矩阵求逆的运算，在之后行列式的一些技巧性处理中也很常见. 这一方法非常形象，因为打洞就是使得矩阵出现一些零分块，成为分块对角矩阵（或者分块三角矩阵）后更加易于处理，例如：
+\begin{enumerate}
+    \item 当$A$可逆时，我们可以通过初等行变换消去$C$：
+          \[ \begin{pmatrix}
+                  E & O \\ -CA^{-1} & E
+              \end{pmatrix}\begin{pmatrix}
+                  A & B \\ C & D
+              \end{pmatrix}=\begin{pmatrix}
+                  A & B \\ O & D-CA^{-1}B
+              \end{pmatrix} \]
+          可以继续做列变换消去$B$：
+          \[ \begin{pmatrix}
+                  A & B \\ O & D-CA^{-1}B
+              \end{pmatrix}\begin{pmatrix}
+                  E & -A^{-1}B \\ O & E
+              \end{pmatrix}=\begin{pmatrix}
+                  A & O \\ O & D-CA^{-1}B
+              \end{pmatrix} \]
+          这里读者可能第一次接触这样的写法，笔者还是在此进行以下耐心的解释. 第一步我们希望消去$C$，对于分块矩阵而言，由于已知$A$可逆，如果我们采用行变换，我们就给第一行左乘$-CA^{-1}$使$A$变为$-C$然后加到第二行，这样第二行的$C$就会变为$O$. 这里的思考是很直接的，然后我们就可以根据我们之前想要做的行变换写出初等矩阵左乘在原矩阵上即可. 特别注意这里有两层左乘：第一层是小块内要左乘$-CA^{-1}$，如果这里思考成了右乘就会错写为乘以$-A^{-1}C$才能使$A$变为$-C$，第二层是初等矩阵$\begin{pmatrix}
+                  E & O \\ -CA^{-1} & E
+              \end{pmatrix}$要左乘原分块矩阵. 第二步的思考是同理的，只是我们使用了列变换，需要注意右乘. 我们每一次的变换都希望将整个分块变为零矩阵，事实上这就像是在矩阵上挖了个洞填0，因此打洞法这一名字的来由便显得更为清楚了.
+
+    \item 特别地，对于对称矩阵$\begin{pmatrix}A & B \\ B^\mathrm{T} & D\end{pmatrix}$，其中$A$和$D$也是对称方阵，则$A$可逆时，可以通过下述变换（称为合同变换）消除$B$和$B^\mathrm{T}$，即
+          \[ \begin{pmatrix}
+                  E & -A^{-1}B \\ O & E
+              \end{pmatrix}^\mathrm{T}\begin{pmatrix}
+                  A & B \\ B^\mathrm{T} & D
+              \end{pmatrix}\begin{pmatrix}
+                  E & -A^{-1}B \\ O & E
+              \end{pmatrix}=\begin{pmatrix}
+                  A & O \\ O & D-B^\mathrm{T}A^{-1}B
+              \end{pmatrix} \]
+\end{enumerate}
+
+事实上，根据前述内容，我们能利用初等变换得到分块对角矩阵，这对于我们求解分块矩阵的逆十分有帮助. 回顾初等变换求解一般矩阵的逆的过程，主要过程就是
+\[\left(\begin{array}{c:c}
+    A & E
+\end{array}\right)\xrightarrow{\text{初等行变换}}\left(\begin{array}{c:c}
+    E & A^{-1}
+\end{array}\right),\]
+事实上这里的初等行变换换成分块初等行变换也完全没有问题，因为原理都是对$A$和$E$做了相同的初等行变换，当$A$变为$E$时，表明初等行变换综合作用效果为左乘$A^{-1}$，因此单位矩阵此时就变成了$A^{-1}$. 我们来看一个经典的例子：
+
+\begin{example}
+    当$D$和$A-BD^{-1}C$可逆时，通过分块矩阵初等变换求$P=\begin{pmatrix}A & B \\ C & D\end{pmatrix}$的逆矩阵.
+\end{example}
+
+\begin{solution}
+    设$A$和$D$分别是$m$、$n$阶矩阵，根据前面的讨论，我们的想法就是对$P$和$E$同时做初等变换使得$P$变为单位矩阵，那么我们自然会想到打洞法，利用$D$可逆的条件消去左下角和右上角的矩阵. 我们首先对第二个分块行左乘$-BD^{-1}$加到第一个分块行，有
+    \[\left(\begin{array}{cc:cc}
+        A & B & E_m & O \\ C & D & O & E_n
+    \end{array}\right)\rightarrow\left(\begin{array}{cc:cc}
+        A-BD^{-1}C & O & E_m & -BD^{-1} \\ C & D & O & E_n
+    \end{array}\right),\]
+    这样消去了右上角的分块阵，接下来消去左下角的（当然也可以换个顺序消去，效果一致），我们此时利用$A-BD^{-1}C$可逆（继续利用$D$可逆得到的结果不具代表性，故不展开），将第一个分块行左乘$-C(A-BD^{-1}C)^{-1}$加到第二个分块行，得到
+    \[\left(\begin{array}{cc:cc}
+        A-BD^{-1}C & O & E_m & -BD^{-1} \\ O & D & -C(A-BD^{-1}C)^{-1} & E_n+C(A-BD^{-1}C)^{-1}BD^{-1}
+    \end{array}\right),\]
+    最后用$(A-BD^{-1}C)^{-1}$和$D^{-1}$分别左乘第一分块行和第二分块行，得到
+    \[\left(\begin{array}{cc:cc}
+        E_m & O & (A-BD^{-1}C)^{-1} & -(A-BD^{-1}C)^{-1}BD^{-1} \\ O & E_n & -D^{-1}C(A-BD^{-1}C)^{-1} & D^{-1}+D^{-1}C(A-BD^{-1}C)^{-1}BD^{-1}
+    \end{array}\right),\]
+    由此可得原矩阵的逆就是上述虚线右侧的
+    \[\begin{pmatrix}
+            (A-BD^{-1}C)^{-1} & -(A-BD^{-1}C)^{-1}BD^{-1} \\ -D^{-1}C(A-BD^{-1}C)^{-1} & D^{-1}+D^{-1}C(A-BD^{-1}C)^{-1}BD^{-1}
+        \end{pmatrix}.\]
+\end{solution}
+
+注意到本例中我们专门给出了条件$A-BD^{-1}C$可逆，然后在结果中也看到这一形式的大量出现. 基于这一性质，我们称其为$P$矩阵中$D$矩阵的Schur补（因为此时$D$可逆，若$A$可逆完全可以定义出$A$的Schur补），记为$P/D$. 于是矩阵$P$的逆可以写成
+\[\begin{pmatrix}
+    (P/D)^{-1} & -(P/D)^{-1}BD^{-1} \\ -D^{-1}C(P/D)^{-1} & D^{-1}+D^{-1}C(P/D)^{-1}BD^{-1}
+\end{pmatrix}.\]
+我们在之后讨论分块矩阵行列式的相关运算技巧时还会遇到Schur补，由此可见其在矩阵计算中的重要性. 我们会在很多习题中遇到类似于Schur补的形式，希望读者都能认出并指明其本质只是为了打洞而做初等变换得到的.
+
+\subsection{分块矩阵与数学归纳法}
+
+分块矩阵经常运用在数学归纳法中，我们在之后的课程中也会经常用到这样的思想来证明一些结论，这一思想基于以下内容：
+
+对于$\begin{pmatrix}
+        A_1 & \alpha \\ \beta & a_{nn}
+    \end{pmatrix}$，假设$A_1$可逆，我们有
+\[\begin{pmatrix}
+        E_{n-1} & O \\ -\beta A_1^{-1} & 1
+    \end{pmatrix}\begin{pmatrix}
+        A_1 & \alpha \\ \beta & a_{nn}
+    \end{pmatrix}=\begin{pmatrix}
+        A_1 & \alpha \\ O & a_{nn}-\beta A_1^{-1}\alpha
+    \end{pmatrix}\]
+需要注意的是，通过这一变换我们也可以知道，当$A_1$可逆时矩阵$\begin{pmatrix}
+    A_1 & \alpha \\ \beta & a_{nn}
+\end{pmatrix}$可逆的充要条件为$a_{nn}\neq \beta A_1^{-1}\alpha$（因为矩阵满秩当且仅当最后一行不等于零）. 我们通过一个例子来体会如何利用上式结合数学归纳法得到一些矩阵分析中的结论：
+\begin{example}
+    若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在主对角元全为1的下三角矩阵$L$和上三角矩阵$U$，使得$A=LU$（$LU$分解）.
+\end{example}
+
+\begin{solution}
+    由于主对角元全为1的下三角矩阵可逆，其逆矩阵也是主对角元全为1的下三角矩阵，因此只要证明存在主对角元全为1的下三角矩阵$S$使得$SA=U$，我们可以利用数学归纳法来证明这一结论.
+
+    当$n=1$时，结论显然成立. 假设命题对$n-1$阶矩阵成立. 对$n$阶矩阵$A$，将$A$分块为
+    \[A=\begin{pmatrix}
+            A_1 & \alpha_1 \\ \alpha_2 & a_{nn}
+        \end{pmatrix},\]
+    其中$A_1$为满足命题条件的$n-1$阶矩阵，根据归纳假设，存在$n-1$阶主对角元全为1的下三角矩阵$S_1$和上三角矩阵$U_1$使得$S_1A_1=U_1$. 根据我们前面的讨论，我们可以对$A$做分块矩阵初等变换将其化为上三角块矩阵，即
+    \[PA=\begin{pmatrix}
+            E_{n-1} & O \\ -\alpha_2A_1^{-1} & 1
+        \end{pmatrix}A=\begin{pmatrix}
+            A_1 & \alpha \\ O & a_{nn}-\alpha_2A_1^{-1}\alpha_1
+        \end{pmatrix},\]
+    再取$Q=\begin{pmatrix}
+            S_1 & O \\ O & 1
+        \end{pmatrix}$，即得
+    \[QPA=\begin{pmatrix}
+            U_1 & S_1\alpha_1 \\ O & a_{nn}-\alpha_2A_1^{-1}\alpha_1
+        \end{pmatrix}=U.\]
+    其中$U$为上三角矩阵，$S=QP$是主对角元全为1的下三角矩阵，故存在$L=S^{-1}$和$U$使得$A=LU$.
+\end{solution}
+
+事实上，本例给出的$LU$分解是我们介绍的第一种矩阵分解. 事实上，矩阵分解是一种处理矩阵问题的重要手段，无论是对解题，或是计算数学研究，还是各个学科的应用都有非常重要的意义，例如我们将来会学习矩阵的相抵、相似、相合分解，这些是基于标准形的分解，还有其它常用的如$QR$分解、谱分解、极分解、奇异值分解等，它们在不同的领域都有着重要的应用. 在这里我们简要介绍$LU$分解的应用——这一方法常用于求解线性方程组. 事实上，根据$LU$分解，我们可以将线性方程组$Ax=b$写成$LUx=b$的形式，此时我们可以定义一个辅助变量$c=Ux$，于是方程组的求解转化为以下两个子问题：
+\begin{enumerate}
+    \item 求解$Lc=b$得到$c$；
+    \item 求解$Ux=c$得到$x$.
+\end{enumerate}
+我们知道$L$和$U$都是三角矩阵，因此可以很容易地求解出$x$. 我们在此给一个例子供读者体会求解$LU$分解的基本方法（因为上面的证明过程并没有给出具体的分解求解的方法）以及利用分解求解方程组的过程：
+\begin{example}
+    设矩阵$A=\begin{pmatrix}
+        1 & 2 & -1 \\ 2 & 1 & -2 \\ -3 & 1 & 1
+    \end{pmatrix}$，求$A$的$LU$分解，并利用$LU$分解求解方程组$Ax=b$，其中$b=(3,3,-6)^\mathrm{T}$.
+\end{example}
+
+\begin{solution}
+    对于$A$，我们可以通过下述三个初等变换化为上三角矩阵：
+    \begin{enumerate}
+        \item 第一行乘以$-2$加到第二行；
+        \item 第一行乘以$3$加到第三行；
+        \item 第二行乘以$\dfrac{7}{3}$加到第三行.
+    \end{enumerate}
+    记三个初等变换对应的矩阵依次为$P_1,P_2,P_3$，则上述初等变换过程可以写为
+    \begin{equation}\label{eq:10:LU分解}
+        P_3P_2P_1A=\begin{pmatrix}
+            1 & 2 & -1 \\ 0 & -3 & 0 \\ 0 & 0 & -2
+        \end{pmatrix}=U.
+    \end{equation}
+    即$A=(P_3P_2P_1)^{-1}U$，其中$U$为上三角矩阵，我们希望$L=(P_3P_2P_1)^{-1}$为下三角矩阵（事实上我们做的初等变换保证了这一点），因此我们只需要求出$L$即可. 由于$P_1,P_2,P_3$均为初等矩阵，因此它们的逆矩阵也是初等矩阵，我们可以很容易地求出它们的逆矩阵为$L=(P_3P_2P_1)^{-1}=P_1^{-1}P_2^{-1}P_3^{-1}=\begin{pmatrix}
+            1 & 0 & 0 \\ 2 & 1 & 0 \\ -3 & -\dfrac{7}{3} & 1
+    \end{pmatrix}$. 因此根据\autoref{eq:10:LU分解}可知我们得到了$A$的$LU$分解为
+    \[A=\begin{pmatrix}
+            1 & 0 & 0 \\ 2 & 1 & 0 \\ -3 & -\dfrac{7}{3} & 1
+    \end{pmatrix}\begin{pmatrix}
+        1 & 2 & -1 \\ 0 & -3 & 0 \\ 0 & 0 & -2
+    \end{pmatrix}=LU.\]
+    接下来我们利用分解求解方程组$Ax=b$. 我们首先令$c=Ux$，则方程组可以化为$Lc=b$，写成方程组的形式即为
+    \[\begin{cases}
+        c_1=3 \\ 2c_1+c_2=3 \\ -3c_1-\dfrac{7}{3}c_2-c_3=-6
+    \end{cases},\]
+    从第一个方程开始解很容易得到$c_1=3,c_2=-3,c_3=-4$，因此我们得到了$c=(3,-3,-4)^\mathrm{T}$. 最后我们利用$Ux=c$求解出$x$，即
+    \[\begin{cases}
+        x_1+2x_2-x_3=3 \\ -3x_2=-3 \\ -2x_3=-4
+    \end{cases},\]
+    从第三个方程开始解很容易得到$x_1=3,x_2=1,x_3=2$，因此我们得到了$x=(3,1,2)^\mathrm{T}$.
+\end{solution}
+
+总结而言，求解$LU$分解事实上就是做合适的初等变换将矩阵化为上三角矩阵，但这一过程要保证这些初等变换对应初等矩阵的乘积的逆矩阵为下三角矩阵. 事实上这是很容易保证的，首先一个矩阵的逆矩阵为下三角矩阵，根据三角矩阵的性质（在\autoref{thm:12:上三角矩阵的性质}详细讨论）可知这些初等变换对应初等矩阵的乘积也必定是下三角矩阵，并且根据下三角矩阵乘积仍然是下三角矩阵可知我们只需保证每次做的初等变换对应的初等矩阵是下三角的即可，即进行如下两种变换：
+\begin{enumerate}
+    \item 倍乘变换：只会改变对角线元素，因此不改变下三角性质；
+    \item 倍加变换：必须是上方的行乘以非零数加到下方的行，这样才不会改变下三角性质.
+\end{enumerate}
+基于此我们便可以得到矩阵的$LU$分解并基于此很顺利地解出方程——在例子中我们很明显地体会到了三阶矩阵对于解方程的便捷性的提升，我们只需要从未知数少的方程往未知数多的方程逐步求解即可. 更重要的是，$LU$分解的求解过程中对于方程$Ax=b$中的$b$完全没有做任何变换，这大大节省了高斯消元法法中的一个重要的计算量来源，并且求解$LU$分解的过程也仅仅是初等变换，相对于高斯消元法没有多余的步骤，因此在解决如下问题时：
+\begin{gather*}
+    Ax=b_1 \\ Ax=b_2 \\ \cdots \\ Ax=b_n
+\end{gather*}
+当$n$很大时，如果利用$LU$分解，我们只需对$A$做一次分解，就可以解出所有方程，但高斯消元法则需要每个方程都和每个$b_i(i=1,2,\cdots,n)$构成增广矩阵一起消元，计算量会增大许多.
+
+\section{矩阵方程}
+
+本节我们将讨论矩阵方程这一概念，即矩阵作为未知量的方程.
+\begin{enumerate}
+    \item 设$A,B,C,X$为矩阵，且$A,B$可逆，考虑以下情形：
+          \begin{enumerate}
+              \item $AX=B \implies X=A^{-1}B, \enspace XA=B \implies X=BA^{-1}$；
+
+              \item $AXB=C \implies X=A^{-1}CB^{-1}$；
+          \end{enumerate}
+
+    \item 考虑以下情形：$AX=B$但$A$不可逆（$X$不一定是列向量），根据矩阵乘法的性质``$A$和$X$乘积的第$k$列等于$A$乘以$X$的第$k$列''直接对$B$逐列解方程即可；
+
+    \item 考虑以下求解方式的合理性：
+          \begin{enumerate}
+              \item 若求$A^{-1}$，只需对$\left(\begin{array}{c:c}
+                A & E
+            \end{array}\right)$只做初等行变换，可以得到$\left(\begin{array}{c:c}
+                E & A^{-1}
+            \end{array}\right)$；
+
+              \item 若求$A^{-1}B$，只需对$\left(\begin{array}{c:c}
+                A & B
+            \end{array}\right)$只做初等行变换，可以得到$\left(\begin{array}{c:c}
+                E & A^{-1}B
+            \end{array}\right)$；
+
+              \item 若求$BA^{-1}$，只需对$\left(\begin{array}{c}
+                A \\ \hdashline B
+            \end{array}\right)$只做初等列变换，可以得到$\left(\begin{array}{c}
+                E \\ \hdashline BA^{-1}
+            \end{array}\right)$；
+
+              \item 对$\begin{pmatrix}
+                            A & E_n \\ E_n & O
+                        \end{pmatrix}$的前$n$行与$n$列做相同的行列变换，可以得到$\begin{pmatrix}
+                            P^\mathrm{T}AP & P^\mathrm{T} \\ P & O
+                        \end{pmatrix}$.
+          \end{enumerate}
+          前三点的证明与利用初等变换求解矩阵的逆的方法引理证明一致，此处不再赘述. 第四点需要用到分块矩阵，我们简要说明：
+
+          \begin{proof}
+              事实上，对前$n$行做初等行变换需要的初等矩阵就是对单位矩阵前$n$行做了一次初等行变换后得到的矩阵，我们可以记为
+              \[Q=\begin{pmatrix}
+                      P & O \\ O & E
+                  \end{pmatrix}\]
+              我们应当将其左乘原矩阵从而相对于对原矩阵做了初等行变换. 回顾前述初等矩阵转置前后分别对应于相同的行列变换，我们对原矩阵右乘$Q^{\mathrm{T}}=\begin{pmatrix}
+                      P^\mathrm{T} & O \\ O & E
+                  \end{pmatrix}$（回顾分块矩阵转置）就相当于对原矩阵做了和初等行变换相对应的同样的初等列变换，因此我们有
+              \[\begin{pmatrix}
+                      P^\mathrm{T} & O \\ O & E
+                  \end{pmatrix}\begin{pmatrix}
+                      A & E_n \\ E_n & O
+                  \end{pmatrix}\begin{pmatrix}
+                      P & O \\ O & E
+                  \end{pmatrix}=\begin{pmatrix}
+                      P^\mathrm{T}AP & P^\mathrm{T} \\ P & O
+                  \end{pmatrix}\]
+              这与上面第四点的叙述是一致的.
+          \end{proof}
+\end{enumerate}
+
+\begin{example}
+    设$A=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1\end{pmatrix},\ B=\begin{pmatrix}0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0\end{pmatrix}$，求矩阵$X$满足：
+    \[AXA+BXB=AXB+BXA+A(A-B)\]
+\end{example}
+
+\begin{solution}
+    由$AXA+BXB=AXB+BXA+A(A-B)$得$(A-B)X(A-B)=A(A-B)$，又$A-B=\begin{pmatrix}
+            1 & -1 & -1 \\ 0 & 1 & -1 \\ 0 & 0 & 1
+        \end{pmatrix}$，很容易判断$A-B$可逆（可以参考\autoref{thm:11:可逆等价条件}），因此$(A-B)X=A$，即$X=(A-B)^{-1}A$.
+
+    我们直接对$(A-B,A)$做初等行变换，有
+    \[\left(\begin{array}{ccc:ccc}
+            1 & -1 & -1 & 1 & 0 & 0 \\
+            0 & 1  & -1 & 1 & 1 & 0 \\
+            0 & 0  & 1  & 1 & 1 & 1
+        \end{array}\right)\xrightarrow{\text{初等行变换}}\left(\begin{array}{ccc:ccc}
+            1 & 0 & 0 & 4 & 3 & 2 \\
+            0 & 1 & 0 & 2 & 2 & 1 \\
+            0 & 0 & 1 & 1 & 1 & 1
+        \end{array}\right),\]
+    因此$X=\begin{pmatrix}
+            4 & 3 & 2 \\ 2 & 2 & 1 \\ 1 & 1 & 1
+        \end{pmatrix}$.
+\end{solution}
+
+事实上如果记不住简便方法也不一定要$A-B$和$A$同时做初等变换，我们也可以直接求出$A-B$的逆矩阵.
+
+\section{秩等式与不等式}
+
+本节我们将讨论一些秩的等式与不等式，事实上有一定的难度，不仅在于技巧也在于理解. 一般而言，解决较为复杂的秩的问题时，我们可以采用如下方法：
+\begin{enumerate}
+    \item 回到线性映射的视角进行考察，证明不等式的线性映射版本；
+
+    \item 利用向量组线性相关性：因为行秩和列秩的定义就是基于向量组线性相关性的；
+
+    \item 利用线性方程组解的一般理论（将在专题五讲解）；
+
+    \item 利用（分块）矩阵初等变换：这一方法基于分块矩阵初等变换也是不改变矩阵的秩这一事实；
+
+    \item 利用已知的矩阵秩的等式和不等式；
+
+    \item 如果证明的是等式，我们考虑初等变换不改变矩阵的秩（推论就是乘以可逆矩阵也不改变，下面将会证明），也经常用两个不等号夹逼得到等号.
+\end{enumerate}
+
+我们首先给出一些最常见的秩相关的不等式或等式，希望读者能熟练推导理解.
+\begin{enumerate}
+    \item $r(A)=r(PA)=r(AQ)=r(PAQ)$，其中$P,Q$可逆.
+
+          \begin{proof}
+              由于可逆矩阵可以写成若干初等矩阵乘积，且初等变换不改变矩阵的秩，综合而言上述等式必然成立.
+          \end{proof}
+
+          注：这一结论非常重要，即可逆矩阵乘以（不管左乘还是右乘）任何矩阵都是不改变矩阵的秩的. 基于此，我们可以推导如下分块矩阵秩的相关公式：
+
+          \begin{example}\label{ex:11:分块秩不等式}
+              证明以下矩阵的秩不等式：
+              \begin{enumerate}
+                  \item $r\begin{pmatrix}
+                                A & O \\ O & B
+                            \end{pmatrix}=r(A)+r(B)$.
+
+                  \item $r(A)+r(B)+r(D)\geqslant r\begin{pmatrix}
+                                A & D \\ O & B
+                            \end{pmatrix}\geqslant r(A)+r(B),\enspace r(A)+r(B)+r(C)\geqslant r\begin{pmatrix}
+                                A & O \\ C & B
+                            \end{pmatrix}\geqslant r(A)+r(B)$.
+              \end{enumerate}
+          \end{example}
+
+          \begin{proof}
+              \begin{enumerate}
+                  \item 对于$A$和$B$，分别存在可逆矩阵$P_1,Q_1$和$P_2,Q_2$，使得
+                        \[P_1AQ_1=\begin{pmatrix}
+                                E_r & O \\
+                                O   & O
+                            \end{pmatrix},\enspace P_2BQ_2=\begin{pmatrix}
+                                E_s & O \\
+                                O   & O
+                            \end{pmatrix},\]
+                        其中$r$和$s$分别为矩阵$A$和$B$的秩，于是我们有
+                        \begin{align*}
+                            \begin{pmatrix}
+                                P_1 & O   \\
+                                O   & P_2
+                            \end{pmatrix}
+                            \begin{pmatrix}
+                                A & O \\
+                                O & B
+                            \end{pmatrix}
+                            \begin{pmatrix}
+                                Q_1 & O   \\
+                                O   & Q_2
+                            \end{pmatrix}
+                             & =\begin{pmatrix}
+                                    P_1AQ_1 & O \\ O & P_2BQ_2
+                                \end{pmatrix}             \\
+                             & =\begin{pmatrix}
+                                    E_r & O & O   & O \\
+                                    O   & O & O   & O \\
+                                    O   & O & E_s & O \\
+                                    O   & O & O   & O
+                                \end{pmatrix} \\
+                             & \xrightarrow{\text{初等变换}}
+                            \begin{pmatrix}
+                                E_r & O   & O & O \\
+                                O   & E_s & O & O \\
+                                O   & O   & O & O \\
+                                O   & O   & O & O
+                            \end{pmatrix},
+                        \end{align*}
+                        又$\begin{pmatrix}
+                                P_1 & O \\ O & P_2
+                            \end{pmatrix}$和$\begin{pmatrix}
+                                Q_1 & O \\ O & Q_2
+                            \end{pmatrix}$都是可逆矩阵，故$r\begin{pmatrix}
+                                A & O \\ O & B
+                            \end{pmatrix}=r(A)+r(B)$.
+
+                  \item 同上一问的假设，此时有
+                        \begin{align*}
+                            \begin{pmatrix}
+                                P_1 & O \\ C & P_2
+                            \end{pmatrix}
+                            \begin{pmatrix}
+                                A & O \\ C & B
+                            \end{pmatrix}
+                            \begin{pmatrix}
+                                Q_1 & O \\ O & Q_2
+                            \end{pmatrix}
+                             & =\begin{pmatrix}
+                                    E_r & O & O & O \\ O & O & O & O \\ C_{11} & C_{12} & E_s & O \\ C_{21} & C_{22} & O & O
+                                \end{pmatrix},
+                        \end{align*}
+                        其中$\begin{pmatrix}
+                                C_{11} & C_{12} \\ C_{21} & C_{22}
+                            \end{pmatrix}$是$P_2CQ_1$的一种分块. 结合$E_r$和$E_s$都是单位矩阵，因此我们可以通过初等变换消去与它们同行、同列的$C_{11},C_{12},C_{21}$，即
+                        \begin{align*}
+                            \begin{pmatrix}
+                                E_r    & O      & O   & O \\
+                                O      & O      & O   & O \\
+                                C_{11} & C_{12} & E_s & O \\
+                                C_{21} & C_{22} & O   & O
+                            \end{pmatrix}
+                             & \xrightarrow{\text{初等变换}}\begin{pmatrix}
+                                                                E_r & O      & O & O \\
+                                                                O   & E_s    & O & O \\
+                                                                O   & O      & O & O \\
+                                                                O   & C_{22} & O & O
+                                                            \end{pmatrix} \\
+                             & \xrightarrow{\text{初等变换}}\begin{pmatrix}
+                                                                E_r & O      & O & O \\
+                                                                O   & E_s    & O & O \\
+                                                                O   & C_{22} & O & O \\
+                                                                O   & O      & O & O
+                                                            \end{pmatrix},
+                        \end{align*}
+                        故可以得到$r(A)+r(B)+r(C)\geqslant r\begin{pmatrix}
+                                A & O \\ C & B
+                            \end{pmatrix}\geqslant r(A)+r(B)$，同理可证$r(A)+r(B)+r(D)\geqslant r\begin{pmatrix}
+                                A & D \\ O & B
+                            \end{pmatrix}\geqslant r(A)+r(B)$.
+              \end{enumerate}
+          \end{proof}
+
+    \item $|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)$.
+
+          \begin{proof}
+              左侧的不等号我们放在习题中供读者思考，此处证明右侧不等式. 事实上我们只需要证明$r(A+B)\leqslant r(A)+r(B)$即可，因为如果上式成立，则$r(A-B)=r(A+(-B))\leqslant r(A)+r(-B)=r(A)+r(B)$.
+
+              下面我们证明$r(A+B)\leqslant r(A)+r(B)$，这里我们站在线性映射的角度证明（事实上接下来第3、5个不等式也是如此，主要思路与教材3.4节一致）. 设$A,B$分别是线性映射$\sigma,\tau\in\mathcal{L}(V_1,V_2)$在基下表示矩阵. 事实上，矩阵的秩的定义就来源于线性映射的秩，即$r(A)=r(\sigma)$，$r(B)=r(\tau)$，因此我们只需要证明
+              \[r(\sigma+\tau)\leqslant r(\sigma)+r(\tau),\]
+              又根据线性映射的秩的定义，只需证明
+              \[\dim(\sigma+\tau)(V_1)\leqslant \dim\sigma(V_1)+\dim\tau(V_1),\]
+              事实上，$\forall\beta\in(\sigma+\tau)(V_1)$，$\exists\alpha\in V_1$，使得$\beta=(\sigma+\tau)\alpha=\sigma(\alpha)+\tau(\alpha)\in\sigma(V_1)+\tau(V_1)$，因此$(\sigma+\tau)(V_1)\subseteq\sigma(V_1)+\tau(V_1)$，故$\dim(\sigma+\tau)(V_1)\leqslant \dim(\sigma(V_1)+\tau(V_1))\leqslant \dim\sigma(V_1)+\dim\tau(V_1)$，得证（最后一个不等号来源于\autoref{thm:4:维数公式}）.
+          \end{proof}
+
+    \item $r(AB) \leqslant \min\{r(A), r(B)\}$.
+
+          和上一个不等式类似，我们首先考虑不等式的线性映射版本，设$A,B$分别是线性映射$\sigma\in\mathcal{L}(V_1,V_2),\tau\in\mathcal{L}(V_2,V_3)$在基下表示矩阵，我们只需证
+          \[r(\tau\sigma)\leqslant \min\{r(\sigma), r(\tau)\}\]
+          即可，证明如下：
+
+          \begin{proof}
+              我们有$\sigma(V_1)\subseteq V_2$（回忆像空间是到达空间的子空间），故$(\tau\sigma)(V_1)\subseteq\tau(V_2)$，因此$\dim(\tau\sigma)(V_1)\leqslant\dim\tau(V_2)$，即$r(\tau\sigma)\leqslant r(\tau)$.
+
+              因为$(\tau\sigma)(V_1)=\tau(\sigma(V_1))$，我们知道线性映射不能把低维空间满射到更高维的空间，因此$\dim(\tau\sigma)(V_1)=\dim\tau(\sigma(V_1))\leqslant\dim\sigma(V_1)$，即$r(\tau\sigma)\leqslant r(\sigma)$，综上$r(\tau\sigma)\leqslant \min\{r(\sigma), r(\tau)\}$，得证.
+          \end{proof}
+
+          事实上，这一不等式我们将在\hyperref[chap:朝花夕拾]{朝花夕拾}中用线性方程组的理论再给出一个证明.
+
+    \item $r(A)=r(A^\mathrm{T})=r(AA^\mathrm{T})=r(A^\mathrm{T}A)$.
+
+          注意第二个等号需要实矩阵作为前提条件，等式证明我们将在\hyperref[chap:朝花夕拾]{朝花夕拾}中讲解.
+
+    \item （Sylvester不等式）$A \in \mathbf{F}^{s \times n}$，$B \in \mathbf{F}^{n \times m}$，则$r(AB) \geqslant r(A)+r(B)-n$
+
+          \begin{proof}
+              设$A,B$分别是线性映射$\sigma\in\mathcal{L}(V_1,V_2),\tau\in\mathcal{L}(V_2,V_3)$在基下表示矩阵，其中$V_1,V_2,V_3$分别是$m,n,s$维线性空间，我们只需证
+              \[r(\tau\sigma)\geqslant r(\sigma)+r(\tau)-n.\]
+              事实上，根据\autoref{thm:6:线性映射基本定理}，我们有
+              \begin{align*}
+                  r(\tau\sigma) & =m-\dim\ker(\tau\sigma)                   \\
+                                & \geqslant m-(\dim\ker\sigma+\dim\ker\tau) \\
+                                & =m-\dim\ker\sigma+n-\dim\ker\tau-n        \\
+                                & =r(\sigma)+r(\tau)-n.
+              \end{align*}
+              其中第二行不等号来源于：
+              \begin{align*}
+                  \dim\ker(\tau\sigma) & =n-\dim(\tau\sigma)(V_1)                           \\
+                                       & =n-\dim\tau(\sigma(V_1))                           \\
+                                       & =n-(\dim\sigma(V_1)-\dim(\ker\tau\cap\sigma(V_1))) \\
+                                       & =(n-\dim\sigma(V_1))+\dim(\ker\tau\cap\sigma(V_1)) \\
+                                       & \leqslant\dim\ker\sigma+\dim\ker\tau.
+              \end{align*}
+              这里2-3行将$\tau$视为$\mathcal{L}(\sigma(V_1),V_3)$中的线性映射，利用了\autoref{thm:6:线性映射基本定理}.
+          \end{proof}
+
+          这一不等式有一个特例，即当$AB=O$时有$r(A)+r(B)\leqslant n$. 这一结论在\hyperref[chap:朝花夕拾]{朝花夕拾}中我们将用其他方法给出证明.
+
+    \item （Frobenius不等式）$r(ABC) \geqslant r(AB)+r(BC)-r(B)$
+
+          \begin{proof}
+              我们使用分块矩阵初等变换证明. 事实上我们有
+              \begin{align*}
+                  r(ABC)+r(B) & =r\begin{pmatrix}
+                                      ABC & O \\ O & B
+                                  \end{pmatrix}                 \\
+                              & =r\begin{pmatrix}
+                                      ABC & O \\ BC & B
+                                  \end{pmatrix}=r\begin{pmatrix}
+                                                     O & -AB \\ BC & B
+                                                 \end{pmatrix} \\
+                              & \geqslant r(AB)+r(BC).
+              \end{align*}
+          \end{proof}
+
+          上述证明中第二行的两个等号都是由于分块矩阵初等变换不改变矩阵的秩得到的，第一行和第三行的等号和不等号是由之前给出的分块矩阵秩不等式得到的.
+
+          利用这一不等式，我们还可以得到一种特例，即$A,B,C$相等的特殊情况：
+          \[r(A^3) \geqslant 2r(A^2)-r(A).\]
+          除此之外，若$B=E_n$即单位矩阵时我们有$r(AC) \geqslant r(A)+r(C)-n$. 因此只要证明了这一个不等式，很多的结论都只是其推论而已.
+\end{enumerate}
+
+在下面的例子以及习题中我们将给出更多的例子供读者熟练上面的证明思想与技巧.
+\begin{example}
+    若$A,B$为两个$n$阶矩阵，则
+    \begin{enumerate}[label=\Alph*.]
+        \item $r(A,B)=r(A^\mathrm{T},B^\mathrm{T})$
+
+        \item $r(A,AB)=r(A)$
+
+        \item $r(A,B)=\max\{r(A), r(B)\}$
+
+        \item $r(A,BA)=r(A)$
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    选择B项.
+    \begin{enumerate}[label=\Alph*.]
+        \item 要注意分块矩阵$(A\enspace B)$的转置是
+              \[\begin{pmatrix}
+                      A^\mathrm{T} \\ B^\mathrm{T}
+                  \end{pmatrix}\]
+              而非这里给出的$(A^\mathrm{T}, B^\mathrm{T})$. 因此不能应用``分块矩阵初等变换不改变矩阵的秩''，秩不一定相等. 事实上我们很好举出例子来说明这一点，例如
+              \[A=\begin{pmatrix}
+                      1 & 0 \\ 0 & 0
+                  \end{pmatrix},\enspace B=\begin{pmatrix}
+                      0 & 0 \\ 1 & 0
+                  \end{pmatrix}.\]
+
+        \item 我们在矩阵乘法一节中介绍过，左乘矩阵相当于做初等行变换，右乘矩阵相当于做初等列变换，因此$AB$相当于对$A$做了初等列变换，考察$(A\enspace AB)$的列向量组，显然$AB$的列向量组是$A$的列向量组的线性组合，因此$r(A,AB)=r(A)$.
+
+              当然我们也可以有另一种证明方式. 事实上直接看列向量组，显然$(A,AB)$的列向量组包括了$A$的列向量组，因此$r(A,AB)\geqslant r(A)$. 反过来，$r(A,AB)=r(A(E,B))\leqslant r(A)$，其中$E$是$n$阶单位矩阵，综上$r(A,AB)=r(A)$.
+
+        \item 显然$r(A,B)\geqslant \max\{r(A), r(B)\}$，这只需要看矩阵列向量组的秩即可轻松看出.
+
+        \item 可以将$BA$理解为对$A$做初等行变换，但行变换不能像B选项那样直接得出秩相关的结论，因为$A$和$BA$的行混在一起，无法判断二者行秩的关系.
+
+              另一方面，B选项的另一种证明也不可使用，因为下列写法根据分块矩阵乘法块的匹配规则是不合法的：$(A,BA)=(E,B)A$，因为$(E,B)$是$1\times 2$分块，后面应该乘以一个两行分块.
+
+              我们直接举反例否定这一结论，例如
+              \[A=\begin{pmatrix}
+                      1 & 0 \\ 0 & 0
+                  \end{pmatrix},\enspace B=\begin{pmatrix}
+                      1 & 1 \\ 1 & 1
+                  \end{pmatrix}.\]
+    \end{enumerate}
+\end{solution}
+
+\vspace{2ex}
+\centerline{\heiti \Large 内容总结}
+
+本讲我们从对偶引入转置运算，并介绍了转置运算的基本性质，也介绍了对称矩阵与反对称矩阵的概念与性质，希望读者通过例子和习题体验转置中蕴含的``对称性''在习题中的运用.
+
+\vspace{2ex}
+\centerline{\heiti \Large 习题}
+
+\vspace{2ex}
+{\kaishu 一个没有几分诗人才能的数学家决不会成为一个完全的数学家. }
+\begin{flushright}
+    \kaishu
+    ——魏尔斯特拉斯
+\end{flushright}
+
+\centerline{\heiti A组}
+\begin{enumerate}
+    \item 设$\alpha,\beta$为三维列向量，且$\alpha\beta^\mathrm{T}=\begin{pmatrix}
+                  -1 & 2  & 1  \\
+                  1  & -2 & -1 \\
+                  2  & -4 & -2
+              \end{pmatrix}$，求$\alpha^\mathrm{T}\beta$.
+\end{enumerate}
+
+\centerline{\heiti B组}
+\begin{enumerate}
+    \item 证明以下两个命题：
+    \begin{enumerate}
+        \item 证明：任一$n$阶方阵都可以表示为一个对称矩阵与一个反对称矩阵的和.
+        \item 设$A$是$n$阶复矩阵，若$\overline{A}^\mathrm{T}=A$，则称$A$是一个Hermite矩阵. 若$\overline{A}^\mathrm{T}=-A$，则称$A$是一个斜Hermite矩阵. 证明：任一$n$阶复矩阵都可以表示为一个Hermite矩阵与一个斜Hermite矩阵的和.
+    \end{enumerate}
+
+    \item 证明以下两个命题：
+    \begin{enumerate}
+        \item 设$A$为$m\times n$阶实矩阵，则$A^\mathrm{T}A=O$的充要条件为$A=O$.
+        \item 设$A$为$m\times n$阶复矩阵，则$\overline{A^\mathrm{T}}A=O$的充要条件为$A=O$.
+    \end{enumerate}
+
+    \item 证明以下两个命题：
+    \begin{enumerate}
+        \item 设$A$为$n$阶对称矩阵，证明：$A$是零矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
+        \item 设$A$为$n$阶方阵，证明：$A$为反对称矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
+    \end{enumerate}
+
+    \item 证明：设$A$是实对称矩阵，若$A^2=O$，则$A=O$.
+
+    \item 设$A,B$为$n$阶方阵，证明：
+    \begin{enumerate}
+        \item 若$A,B$为对称矩阵，则$AB$为对称矩阵的充要条件为$AB=BA$，$AB$为反对称矩阵的充要条件为$AB=-BA$.
+        \item 若$A$为对称矩阵，$B$为反对称矩阵，则$AB$为反对称矩阵的充要条件为$AB=BA$，$AB$为对称矩阵的充要条件为$AB=-BA$.
+    \end{enumerate}
+
+    \item 求矩阵$\begin{pmatrix}
+                  a  & b  & c  & d  \\
+                  -b & a  & d  & -c \\
+                  -c & -d & a  & b  \\
+                  -d & c  & -b & a
+              \end{pmatrix}$的逆.
+
+    \item 设 $V=\{(a_{ij})_{n \times n} \mid \forall i,j,\enspace a_{ij}=a_{ji}\}$.
+    \begin{enumerate}
+        \item 证明：$V$为$\mathbf{F}^{n \times n}$的子空间；
+
+        \item 求$V$的基和维数.
+    \end{enumerate}
+
+    \item $\mathbf{M}_n(\mathbf{R})$表示所有实$n$阶方阵构成的集合. 设$W=\{A\in \mathbf{M}_n(\mathbf{R}) \mid a_{ji}=ka_{ij},\enspace i \leqslant j\}$，求当$k=0,1,2$时，$W$的一组基和维数.
+\end{enumerate}
+
+\centerline{\heiti C组}
+\begin{enumerate}
+    \item
+\end{enumerate}

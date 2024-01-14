@@ -12,9 +12,21 @@
 
     \item $Q = (\alpha_1+\alpha_2,\alpha_2,\alpha_3)=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}=P\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$.
 
-          记 $E_{21}=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$，有 $Q^{-1}AQ=E_{21}^{-1}P^{-1}APE_{21}=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$.
+    记 $E_{12}(1)=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$，有 $Q^{-1}AQ=E_{12}(1)^{-1}P^{-1}APE_{12}(1)=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$.
 
-    \item 见本章例 10.5，此处不赘述.
+    \item 我们只求解第一个矩阵的逆，第二个方法类似. 事实上正文例题中也有类似的，本题甚至更简单，因为左下角已经是零矩阵，所以不再需要``打这个洞''. 设$A$和$D$分别是$m$、$n$阶矩阵，我们首先将第二个分块行左乘$-BD^{-1}$加到第一个分块行，目的很明确，就是把右上角的洞打出来：
+    \[\left(\begin{array}{cc:cc}
+        A & B & E_m & O \\ O & D & O & E_n
+    \end{array}\right)\rightarrow\left(\begin{array}{cc:cc}
+        A & O & E_m & -BD^{-1} \\ O & D & O & E_n
+    \end{array}\right),\]
+    接下来再用$A^{-1}$和$D^{-1}$分别左乘第一分块行和第二分块行，得到
+    \[\left(\begin{array}{cc:cc}
+        E_m & O & A^{-1} & -A^{-1}BD^{-1} \\ O & E_n & O & D^{-1}
+    \end{array}\right),\]
+    由此可得原矩阵的逆就是上述虚线右侧的$\begin{pmatrix}
+            A^{-1} & -A^{-1}BD^{-1} \\ O & D^{-1}
+        \end{pmatrix}$.
 \end{enumerate}
 
 \centerline{\heiti B组}

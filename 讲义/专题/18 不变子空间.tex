@@ -2,58 +2,6 @@
 
 事实上，为了研究上一讲前言中提到的线性变换、矩阵和多项式之间的关系，我们需要一个重要的媒介，即不变子空间. 相信读者这一点在接下来的章节中会逐渐体会到这一概念的桥梁作用.
 
-\section{不变子空间的定义}
-
-回顾我们接下来讨论的目标，即找到一组基使得线性变换在这组基下的表示更简单. 设$\sigma\in\mathcal{L}(V)$，如果$V$有直和分解
-\begin{equation}\label{eq:18:直和分解}
-    V=U_1\oplus U_2\oplus\cdots\oplus U_m,
-\end{equation}
-其中每个$U_i$都是$V$的真子空间，那么我们对于$\sigma$的研究可以分别在各个$U_i$上进行. 这其中的基本原理在于直觉告诉我们（并且实际上通常而言）更低维的空间处理起来应当更为简单，事实上我们后面的很多工作都是在找这样的分解.
-
-为了在低维空间上进行研究，我们需要引入一个新的概念，即$\sigma$在$U_i$下的限制映射$\sigma\vert_{U_i}$. 我们给出标准的定义如下：
-\begin{definition} \index{xianxingyingshe!xianzhi@限制 (restriction map)}
-    设$V$是数域$\mathbf{F}$上的线性空间，$\sigma\in\mathcal{L}(V)$，我们在$V$的子空间$U$上定义映射$\sigma\vert_U$如下：
-    \[\sigma\vert_U:U\to V,\enspace\sigma\vert_U(\alpha)=\sigma(\alpha),\enspace\forall \alpha\in U,\]
-    则称$\sigma\vert_U$是$\sigma$在$U$上的\term{限制映射}.
-\end{definition}
-
-``限制''一词十分形象（如下图所示），因为限制映射就是将原映射的定义域限制在更小的范围内，但原定义域上的映射值保持不变.
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.7]{figs/18-1.png}
-\end{figure}
-
-但是我们需要注意，\autoref{eq:18:直和分解} 这一分解应当满足一个基本的条件，就是$\sigma$应当把每个$U_i$仍然映射到$U_i$本身，否则我们在讨论$\sigma\vert_{U_i}$的时候它不是一个线性变换，这与我们讨论的主题不一致，即我们希望限制映射$\sigma\vert_{U_i}$是一个线性变换（是$\mathcal{L}(U_i)$中的元素），我们称之为\term{限制线性变换}\index{xianxingbianhuan!xianzhi@限制线性变换 (restriction operator)}.
-
-事实上，满足$\sigma\vert_{U_i}\in\mathcal{L}(U_i)$的子空间$U_i$非常重要，我们需要给予它一个定义：
-\begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma(\alpha)\in U$，则称$U$是$\sigma$的\term{不变子空间}\index{xianxingkongjian!zi!bubian@不变子空间 (invariant subspace)}，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
-\end{definition}
-即不变子空间中的每一个向量经过映射后仍在这一空间中，因此这里的``不变''的含义也是非常直观的. 根据定义我们可以验证或者求解一些很简单的不变子空间. 教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述. 教材8.20还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间. 我们这里也简要书写一下，供读者熟悉如何利用定义验证不变子空间：
-\begin{example}
-    若$\sigma\in\mathcal{L}(V)$且$p\in\mathbf{F}[x]$为多项式，则$\ker p(\sigma)$和$\im p(\sigma)$在$\sigma$下不变.
-\end{example}
-
-\begin{proof}
-    我们只需验证$\ker p(\sigma)$和$\im p(\sigma)$中的元素经过$\sigma$映射后仍在这一空间中即可.
-    \begin{enumerate}
-        \item $\forall \alpha\in \ker p(\sigma),\enspace p(\sigma)\alpha=0$，因此
-              \[(p(\sigma))(\sigma(\alpha))=\sigma(p(\sigma)\alpha)=\sigma(0)=0,\]
-              即$\sigma(\alpha)\in \ker p(\sigma)$，因此$\ker p(\sigma)$在$\sigma$下不变；
-
-        \item $\forall \alpha\in \im p(\sigma),\enspace \exists \beta\in V,\enspace \alpha=p(\sigma)\beta$，因此
-              \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)(\sigma(\beta))\in \im p(\sigma),\]
-              即$\im p(\sigma)$在$\sigma$下不变.
-    \end{enumerate}
-    事实上，对于$\ker p(\sigma)$，我们有
-    \[ p(\sigma)(\alpha)=p(\sigma)\alpha=p(\sigma(\alpha))=p(0)=0,\]
-    因此$\sigma(\alpha)\in \ker p(\sigma)$，即$\ker p(\sigma)$在$\sigma$下不变. 对于$\im p(\sigma)$，我们有
-    \[\forall \alpha\in \im p(\sigma),\enspace \exists \beta\in V,\enspace \alpha=p(\sigma)\beta,\]
-    因此
-    \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)\sigma(\beta)\in \im p(\sigma),\]
-    即$\im p(\sigma)$在$\sigma$下不变.
-\end{proof}
-
 有时我们可能会遇到更为复杂的情形，如下面的例子：
 \begin{example} \label{ex:18:不变子空间}
     设$\mathbf{F}$为一数域，线性变换$\sigma\in\mathcal{L}(\mathbf{F}^2)$定义为
@@ -84,45 +32,6 @@
 \end{proof}
 
 除此之外，还有一些更为困难的问题我们将在讨论若当标准形之后进行讨论.
-
-最后我们再基于不变子空间讨论一个商线性变换的概念. 事实上，如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换. 我们严格定义如下：
-\begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，$U$是$\sigma$的不变子空间，定义映射$\sigma/U:V/U\to V/U$如下：
-    \[(\sigma/U)(v+U)=\sigma(v)+U,\enspace\forall v\in V,\]
-    则称$\sigma/U$是$\sigma$在$U$上的\term{商线性变换}\index{xianxingbianhuan@shang!商线性变换 (quotient operator)}.
-\end{definition}
-
-定义映射后，我们自然的想法就失确认这一定义是不是合理的. 首先这一定义的线性性容易验证，我们只需要用到商空间中定义的运算性质即可：
-\begin{itemize}
-    \item 齐次性：$(\sigma/U)(\lambda(v+U))=(\sigma/U)(\lambda v+U)=\sigma(\lambda v)+U=\lambda\sigma(v)+U=\lambda(\sigma/U)(v+U)$；
-
-    \item 加性：$(\sigma/U)((v_1+U)+(v_2+U))=(\sigma/U)(v_1+v_2+U)=\sigma(v_1+v_2)+U=\sigma(v_1)+\sigma(v_2)+U=(\sigma/U)(v_1+U)+(\sigma/U)(v_2+U)$.
-\end{itemize}
-
-除了线性的要求外，还有一个很重要的合理性来源于\autoref{ex:8:良定义} 中提到的良定义（well-defined）的概念. 因为这里又一次将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性. 事实上，回顾\autoref{ex:8:良定义}，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值（否则不符合映射的定义）. 商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma(v)+U\neq \sigma(w)+U$的情况，这一定义描述的就不是映射（因为映射要求一个自变量只能映到一个值上），因此不是良定义. 但我们可以验证这一映射是良定义的：
-
-\begin{proof}
-    设$v+U=w+U$，即$v-w\in U$，由于$U$在$\sigma$下不变，则$\sigma(v-w)\in U$，即$\sigma(v)-\sigma(w)\in U$，因此$\sigma(v)+U=\sigma(w)+U$，即$\sigma/U$是良定义的.
-\end{proof}
-
-这一定义可能具有一定的抽象性，因此我们用更抽象的例子来加深理解：
-\begin{example}
-    设$\sigma\in \mathcal{L}(V,W)$，定义$\widetilde{\sigma}:(V/(\ker \sigma))\to W$如下：
-    \[\widetilde{\sigma}(v+\ker\sigma)=\sigma(v).\]
-    \begin{enumerate}
-        \item $\widetilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
-
-        \item $\widetilde{\sigma}$是单射；
-
-        \item $\im \widetilde{\sigma}=\im \sigma$；
-
-        \item $V/(\ker \sigma)$同构于$\im \sigma$.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-
-\end{proof}
 
 \section{特征值与特征向量}
 
@@ -203,7 +112,7 @@
 
 由上述定理，$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$\sigma-\lambda I$不可逆，因此其在$V$的任意一组基$\alpha_1,\ldots,\alpha_n$下的矩阵$A-\lambda E$也不可逆（其中$A$为$\sigma$在这组基下的矩阵，$E$为单位矩阵），这又等价于$|A-\lambda E|=0$.
 
-因此$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$|\lambda E-A|=0$，故我们可以通过$|\lambda E-A|=0$求解特征值，其中$A$为$\sigma$在某组基下的矩阵，$E$为单位矩阵对于特征向量的求解，求出$(\lambda E-A)X=0$的非零解就是特征向量在基$\alpha_1,\ldots,\alpha_n$下的坐标，如果是矩阵的特征向量，那么$X$就是解.
+因此$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$|\lambda E-A|=0$，故我们可以通过$|\lambda E-A|=0$求解特征值，其中$A$为$\sigma$在某组基下的矩阵，$E$为单位矩阵. 对于特征向量的求解，求出$(\lambda E-A)X=0$的非零解就是特征向量在基$\alpha_1,\ldots,\alpha_n$下的坐标，如果是矩阵的特征向量，那么$X$就是解.
 
 上述求解特征向量的方法需要我们求解$f(\lambda)=|\lambda E-A|$的根，事实上$f(\lambda)=|\lambda E-A|$是在之后的讨论中有核心地位的概念，我们称其为矩阵$A$的\term{特征多项式}{tezhengduoxiangshi@特征多项式 (characteristic polynomial)}，其$k$重根称为$k$重特征值（称$k$为代数重数），该特征值对应的特征子空间维数称为该特征值的几何重数.
 
@@ -415,10 +324,10 @@
         \item 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的互异特征值，$\xi_1,\ldots,\xi_m$是相应的特征向量. 反证法，我们假设$\xi_1,\ldots,\xi_m$线性相关，由\autoref{lem:3:线性相关性引理} 可知，存在$k$是使得
               \[\xi_k\in\spa(\xi_1,\ldots,\xi_{k-1})\]
               成立的最小整数，则存在$c_1,\ldots,c_{k-1}$使得
-              \begin{equation*}\label{eq:18:特征向量线性无关}
+              \begin{equation}\label{eq:18:特征向量线性无关}
                   \xi_k=c_1\xi_1+\cdots+c_{k-1}\xi_{k-1}.
-              \end{equation*}
-              将$T$作用到上式两边，我们有
+              \end{equation}
+              将$\sigma$作用到上式两边，我们有
               \[\lambda_k\xi_k=c_1\lambda_1\xi_1+\cdots+c_{k-1}\lambda_{k-1}\xi_{k-1}.\]
               将\autoref{eq:18:特征向量线性无关} 两边乘以$\lambda_k$，然后减去上式，我们有
               \[0=c_1(\lambda_k-\lambda_1)\xi_1+\cdots+c_{k-1}(\lambda_k-\lambda_{k-1})\xi_{k-1}.\]

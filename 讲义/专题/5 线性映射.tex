@@ -26,7 +26,9 @@
 
 另一方面，如果我们不将一次函数视为映射，而将视为平面点集（不过原点的一条直线），我们可以回顾线性子空间中的描述，我们说过原点的直线构成平面的线性子空间，但不过原点的直线不是，我们判断的依据是不过原点的直线内的两点关于加法和数乘不封闭——仔细一想，是不是与线性映射定义中不满足加性、齐次性是同样的道理呢？
 
-事实上，``线性性''在数学中是一个非常基本的性质，下一小节的例子中我们将认识到这一点.
+最后，我们需要强调一个非常容易被忽视但却很重要的一点. 事实上我们在\autoref{ex:2:运算与同构}中关于$\mathbf{R}$与$\mathbf{R}^+$同构的讨论，以及坐标同构的讨论中已经引出了这一点，即线性映射$\sigma:V_1\to V_2$满足的表达式
+\[\sigma(\alpha+\beta)=\sigma(\alpha)+\sigma(\beta)\]
+中左边的加法是出发空间$V_1$中定义的加法运算，右边是到达空间$V_2$中定义的加法运算，二者并不是同一个加法，数乘也类似. %TODO: 同构
 
 本小节最后我们讨论线性映射的两个重要的性质：
 \begin{theorem}\label{thm:5:线性映射零元性质}
@@ -58,7 +60,7 @@
 
 \subsection{线性映射举例}
 
-我们首先来看以下几个在数学中非常基本的概念，它们都是线性映射的例子：
+事实上，``线性性''在数学中是一个非常基本的性质，我们首先来看以下几个在数学中非常基本的概念，它们都是线性映射的例子：
 \begin{example}
     数学分析与概率论中的线性映射：
     \begin{enumerate}
@@ -324,6 +326,415 @@
 需要注意的是题目中$\sigma(e_3)$不一定要定义为$(0,0)$，这样只是为了计算方便，事实上定义成任何值都可以得到$\sigma$在一组基下的像，从而根据\autoref*{thm:5:线性映射构造} 得到这一线性映射存在. 如果题目要求我们写出映射也并不复杂，根据我们在\autoref*{thm:5:线性映射构造} 中的构造方法，我们可以写出$\forall\alpha=(x,y,z)=xe_1+ye_2+ze_3$，
 \[\sigma(\alpha)=\sigma(xe_1+ye_2+ze_3)=x\sigma(e_1)+y\sigma(e_2)+z\sigma(e_3)=\dfrac{1}{2} (x-y,x+y)\]
 符合题目条件. 事实上根据$\sigma(e_3)$定义的不唯一，我们可以得到不同的线性映射，这里只是给出一种可能的解.
+
+\section{线性映射基本定理}
+
+本节将要介绍的定理是线性代数最重要的定理之一，因其重要性也被冠以（有限维线性空间）线性映射基本定理的名号. 为了介绍这一定理，我们需要首先引入一个概念：线性映射的秩. 在线性映射像求解的讨论中我们有$\im \sigma=\sigma(V_1)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$. 我们基于此定义线性映射的秩：
+\begin{definition}
+    设$\sigma\in \mathcal{L}(V_1,V_2)$，如果$\sigma(V_1)$是$V_2$的有限维子空间，则$\sigma(V_1)$的维数称为$\sigma$的秩，记作$r(\sigma)$，即$r(\sigma)=\dim \sigma(V_1)$.
+\end{definition}
+
+这一定义是平凡的，简单理解线性映射的秩即为线性映射像空间的维数. 基于这一定理我们便可以介绍本节的核心定理：
+
+\begin{theorem}[线性映射基本定理]\label{thm:6:线性映射基本定理}
+    设$\sigma \in \mathcal{L}(V_1,V_2)$，若$\dim V_1=n$，则
+    \[r(\sigma)+\dim\ker\sigma=n.\]
+\end{theorem}
+简而言之，这一定理表明：线性映射的秩（或者说线性映射像空间维数）与核空间维数之和等于出发空间的维数. 这一定理的证明非常重要，在之后的很多讨论中还会用到这一思想，因此我们给出详细的证明并阐述其中的思想：
+
+\begin{proof}
+    证明的思路和\hyperref[thm:4:维数公式]{线性空间维数公式}的证明思路类似，即``设小扩大''.
+
+    我们设$\dim\ker\sigma=k$，并设$\ker\sigma$的一组基为$\alpha_1,\alpha_2,\ldots,\alpha_k$. 我们将其扩充为$V_1$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_k,\alpha_{k+1},\ldots,\alpha_n$.
+
+    根据定理要证明的等式和前述假设，我们只需证$r(\sigma)=n-k$，即证明像空间维数为$n-k$. 我们知道像空间为$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$，其中根据我们的假设，$\sigma(\alpha_1)=\sigma(\alpha_2)=\cdots=\sigma(\alpha_k)=0$（因为它们是核空间的基），因此像空间为$\spa(\sigma(\alpha_{k+1}),\ldots,\sigma(\alpha_n))$. 我们只需证明这一向量组是线性无关的即可，因为这样这$n-k$个向量就可以构成像空间的一组基，从而证明了$r(\sigma)=n-k$.
+
+    我们设$c_{k+1}\sigma(\alpha_{k+1})+\cdots+c_n\sigma(\alpha_n)=0$，即
+    \[\sigma(c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n)=0\]
+    故$c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n \in \ker\sigma$，因此可以被$\alpha_1,\alpha_2,\ldots,\alpha_k$线性表示. 于是有
+    \[c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n=c_1\alpha_1+\cdots+c_k\alpha_k\]
+    即
+    \[c_1\alpha_1+\cdots+c_k\alpha_k-c_{k+1}\alpha_{k+1}-\cdots-c_n\alpha_n=0\]
+    由于$\alpha_1,\alpha_2,\ldots,\alpha_n$是$V_1$的一组基，因此$c_1=\cdots=c_k=c_{k+1}=\cdots=c_n=0$，故$\sigma(\alpha_{k+1}),\ldots,\sigma(\alpha_n)$线性无关，命题得证.
+\end{proof}
+
+事实上这一定理也被称为线性映射``维数公式''，但为了与\hyperref[thm:4:维数公式]{线性空间维数公式}区分，本讲义中我们称这一定理为线性映射基本定理. 读者可以比较一下两个``维数公式''的证明，二者都使用了``设小扩大''的思想，都将要证明的结论转化为证明一组向量是线性无关的，但其中证明线性无关的方法略有不同，读者可以仔细体会.
+
+下面我们给出一个证明思想上类似的例子供读者练习：
+\begin{example}
+    设$\sigma$为有限维线性空间$V$上的线性变换，$W$是$V$的子空间，证明：
+    \[\dim\sigma(W)+\dim(\ker\sigma \cap W)=\dim W.\]
+\end{example}
+
+\begin{proof}
+    与\autoref{thm:6:线性映射基本定理} 证明类似，我们``设小扩大''. 设$\dim W=n,\enspace\dim\ker\sigma\cap W=k$，设$\ker\sigma\cap W$的一组基为$\alpha_1,\alpha_2,\ldots,\alpha_k$，我们将其扩充为$W$的一组基，记为
+    \[\alpha_1,\alpha_2,\ldots,\alpha_k,\alpha_{k+1},\ldots,\alpha_n.\]
+
+    根据定理要证明的等式和前述假设，我们只需证$\dim\sigma(W)=n-k$. 我们知道像空间为$\sigma(W)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$，其中根据我们的假设，$\sigma(\alpha_1)=\sigma(\alpha_2)=\cdots=\sigma(\alpha_k)=0$，因此像空间为$\spa(\sigma(\alpha_{k+1}),\ldots,\sigma(\alpha_n))$. 我们只需证明这一向量组是线性无关的即可，因为这样这$n-k$个向量就可以构成像空间的一组基，从而证明了$\dim\sigma(W)=n-k$.
+
+    我们设
+    \[c_{k+1}\sigma(\alpha_{k+1})+\cdots+c_n\sigma(\alpha_n)=0,\]
+    即$\sigma(c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n)=0$，故$c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n\in\ker\sigma$，因此可以被$\alpha_1,\alpha_2,\ldots,\alpha_k$线性表示. 于是有
+    \[c_{k+1}\alpha_{k+1}+\cdots+c_n\alpha_n=c_1\alpha_1+\cdots+c_k\alpha_k,\]
+    即
+    \[c_1\alpha_1+\cdots+c_k\alpha_k-c_{k+1}\alpha_{k+1}-\cdots-c_n\alpha_n=0,\]
+    由于$\alpha_1,\alpha_2,\ldots,\alpha_n$是$W$的一组基，因此$c_1=\cdots=c_k=c_{k+1}=\cdots=c_n=0$，故$\sigma(\alpha_{k+1}),\ldots,\sigma(\alpha_n)$线性无关，命题得证.
+\end{proof}
+
+基于线性映射基本定理，我们可以得到如下定理：
+\begin{theorem}\label{thm:6:双射等价条件}
+    对$\sigma \in \mathcal{L}(V_1,V_2)$且$\dim V_1=\dim V_2=n$，下列条件等价：
+    \begin{enumerate}
+        \item \label{item:6:双射等价条件:1}
+              $\ker \sigma=\{0\}$；
+
+        \item \label{item:6:双射等价条件:2}
+              $\sigma$为单射；
+
+        \item $\sigma$为满射；
+
+        \item $\sigma$为双射（可逆）；
+
+        \item $r(\sigma)=n$.
+    \end{enumerate}
+\end{theorem}
+
+我们需要注意的是，上述 \ref*{item:6:双射等价条件:1} 与 \ref*{item:6:双射等价条件:2} 等价不是基于线性映射基本定理得到的，而是在前述\autoref{thm:5:单射与核空间} 中已经证明的. 其余等价性的证明也是非常简单，只需要简单套用维数公式即可.
+
+实际上，线性映射基本定理还隐藏着一个我们之前以及介绍过的结论，即不可能存在从低维空间到高维空间的满射. 利用反证法，假设存在这样的映射$\sigma:V_1\to V_2$，则核空间维数$\dim\ker\sigma=n-r(\sigma)=\dim V_1-\dim V_2<0$，这显然是不合理的. 当然这一结论有一对称形式也成立，即不存在高维空间到低维空间的单射，证明类似，不再赘述.
+
+还需注意的是，这一定理前提要求是有限维空间上的线性变换，因为我们可以给出如下例子：
+
+\begin{example}
+    设$V$是全体定义在实数域，取值于实数域的连续函数关于一般的函数加法和数乘构成的线性空间，$\sigma:V\to V$定义为$\sigma(f)=f'$，即求导变换，则$\sigma$是线性变换，且显然$\sigma$是满射（因为任意连续函数$g$一定黎曼可积，所以一定能在$V$中找到原函数使得原函数的导数为$g$），但$\sigma$不是单射，例如对于$g(x)=2x$有$f(x)=x^2+C$（$C$为任意常数）都可以有$f'(x)=g(x)$. 因此我们发现这里定义在无限维线性空间$V$中的线性变换使得上面的定理中单射满射不等价.
+\end{example}
+
+\section{像与核的进一步讨论}
+
+关于线性变换的像和核有很多的包含关系或等式等结论，实际上很多问题都来源于线性映射基本定理及其推论，本节我们主要探讨这一话题.
+
+我们首先说明几个重要的原则：
+\begin{enumerate}
+    \item 解决此类问题大多需要综合利用维数公式及其推论，需要将题给条件转化为合适的等价表述然后解决；
+
+    \item 注意集合相等的证明方式，实际上就是两个集合互相包含. 实际上很多时候一边的包含是显然的，只需证明另一边；
+
+    \item 时刻注意线性映射的像和核的定义，线性空间的交、和与直和的概念，例如看到像需要想到其存在原像，看到和与直和要想到将向量分拆等.
+\end{enumerate}
+
+接下来我们看一些经典的结论（已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$），其中结论 \ref*{item:6:像与核的进一步讨论:1} 最为常见：
+
+\begin{enumerate}
+    \item \label{item:6:像与核的进一步讨论:1}
+          若$\sigma$为幂等变换（即$\sigma^2=\sigma$）有$V=\ker\sigma\oplus\im \sigma$；
+
+          \begin{proof}
+              回忆直和的证明方法，我们这里利用先证明和为直和（即交为$\{0\}$）再证等号成立的方法. 设$\alpha\in\ker\sigma\cap\im \sigma$，则$\sigma(\alpha)=0$，且存在$\beta\in V$使得$\sigma(\beta)=\alpha$，因此利用$\sigma^2=\sigma$有
+              \[0=\sigma(\alpha)=\sigma(\sigma(\beta))=\sigma^2(\beta)=\sigma(\beta)=\alpha,\]
+              即$\ker\sigma\cap\im \sigma=\{0\}$，因此和为直和. 又由\autoref{thm:6:线性映射基本定理} 可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
+          \end{proof}
+
+    \item 关于核空间，我们有如下定理，这一定理在之后讨论矩阵标准形的时候非常有用：
+          \begin{theorem} \label{thm:6:核空间性质}
+              我们有如下关于核空间增长与停止增长的性质：
+              \begin{enumerate}
+                  \item $\{0\}=\ker \sigma^0\subseteq\ker \sigma^1\subseteq\cdots\subseteq \ker \sigma^k\subseteq\ker \sigma^{k+1}\subseteq\cdots$；
+
+                  \item 设$m$是非负整数使得$\ker \sigma^m=\ker \sigma^{m+1}$，则
+                        \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
+
+                  \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+1}=\cdots$.
+              \end{enumerate}
+          \end{theorem}
+
+          \begin{proof}
+              \begin{enumerate}
+                  \item 设$i>j\geqslant 0$，则$\forall\alpha\in\ker\sigma^j$，即$\sigma^j(\alpha)=0$，则$\sigma^i(\alpha)=\sigma^{i-j}(\sigma^j(\alpha))=0$，即$\alpha\in\ker\sigma^i$，因此$\ker\sigma^j\subseteq\ker\sigma^i$，故$\ker \sigma^0\subseteq\ker \sigma^1\subseteq\cdots\subseteq \ker \sigma^k\subseteq\ker \sigma^{k+1}\subseteq\cdots$.
+
+                        这一点表明核空间随着线性变换的幂次增长而增长（至少不减），下面一点将说明这一不减序列一旦某个包含符号可以取等号，那么此后的项都相等.
+
+                  \item 任取$k>0$，由（1）可知$\ker \sigma^{m+k}\subseteq\ker \sigma^{m+k+1}$，故只需证$\ker \sigma^{m+k+1}\subseteq\ker\sigma^{m+k}$. 事实上，设$\alpha\in\ker \sigma^{m+k+1}$，则$0=\sigma^{m+k+1}(\alpha)=\sigma^{m+1}(\sigma^k(\alpha))$，即$\sigma^k(\alpha)\in\ker\sigma^{m+1}$. 又$\ker \sigma^m=\ker \sigma^{m+1}$，则$\sigma^k(\alpha)\in\ker\sigma^m\implies\sigma^m(\sigma^k(\alpha))=0\implies\sigma^{m+k}(\alpha)=0\implies\alpha\in\ker\sigma^{m+k}$，故$\ker \sigma^{m+k+1}\subseteq\ker\sigma^{m+k}$，因此$\ker \sigma^{m+k+1}=\ker\sigma^{m+k}$，故$\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots$.
+
+                  \item 由上一点知我们只需证$\ker \sigma^n=\ker \sigma^{n+1}$. 反证法，若$\{0\}=\ker\sigma^0\subsetneqq\ker\sigma^1\subsetneqq\cdots\subsetneqq\ker\sigma^{n+1}$，则这一递增链条每处严格包含于的维数必然增加1，因此$\dim\ker\sigma^{n+1}\geqslant n+1>n$，但我们知道$\ker\sigma^{n+1}$是$V$的子空间，因此矛盾！故命题成立.
+              \end{enumerate}
+          \end{proof}
+          对于像空间而言也有类似于\autoref{thm:6:核空间性质} 的定理，证明方法也是类似的，我们放在习题中供读者思考.
+
+    \item 存在正整数$m$使得$V=\im \sigma^m+\ker\sigma^m$（和前述性质思想类似，我们放在习题中供读者思考）；
+
+    \item 下列条件等价：
+          \begin{enumerate}
+              \item $V=\ker\sigma\oplus\im \sigma$；
+
+              \item $\ker\sigma \cap \im \sigma=\{0\}$；
+
+              \item $\ker\sigma=\ker\sigma^2$；
+
+              \item $\im \sigma=\im \sigma^2$；
+
+              \item $r(\sigma^2)=r(\sigma)$.
+          \end{enumerate}
+
+          \begin{proof}
+              \begin{enumerate}
+                  \item $(1)\implies(2)$：由直和的定义显然；
+
+                  \item $(2)\implies(3)$：由\autoref{thm:6:核空间性质} 可知$\ker\sigma\subseteq\ker\sigma^2$，又任取$\alpha\in\ker\sigma^2$，则
+                        \[0=\sigma^2(\alpha)=\sigma(\sigma(\alpha)),\]故$\sigma(\alpha)\in\ker\sigma\cap\im\sigma$，即$\sigma(\alpha)=0$，因此$\alpha\in\ker\sigma$，故$\ker\sigma^2\subseteq\ker\sigma$，因此$\ker\sigma=\ker\sigma^2$；
+
+                  \item $(3)\implies(4)$：令$\alpha\in\im\sigma^2$，故存在$\beta\in v$使得$\alpha=\sigma^2(\beta)=\sigma(\sigma(\beta))$，即$\alpha\in\im\sigma$，因此$\im\sigma^2\subseteq\im\sigma$，又由（3）知
+                        \[\dim\im\sigma^2=n-\dim\ker\sigma^2=n-\dim\ker\sigma=\dim\im\sigma,\]
+                        因此$\im\sigma^2=\im\sigma$；
+
+                  \item $(4)\implies(5)$：根据线性映射的秩的定义（等于像空间维数）显然；
+
+                  \item $(5)\implies(1)$：利用先证明和为直和（即交为$\{0\}$）再证等号成立的方法. 事实上$r(\sigma^2)=r(\sigma)$即$\dim\im\sigma^2=\dim\im\sigma$，又$(3)\implies(4)$证明了$\im\sigma^2\subseteq\im\sigma$，故$\im \sigma=\im \sigma^2$. 事实上，设$\beta_1,\ldots,\beta_s$为$\im\sigma$的一组基，则
+                        \[\im\sigma^2=\spa(\sigma(\beta_1),\ldots,\sigma(\beta_s)),\]
+                        由$\dim\im\sigma^2=\dim\im\sigma$可知$\sigma(\beta_1),\ldots,\sigma(\beta_s)$是$\im\sigma^2$的一组基，由$\im \sigma=\im \sigma^2$可知这也是$\im\sigma$的一组基$. \forall\alpha\in\ker\sigma\cap\im\sigma$，设
+                        \[\alpha=k_1\beta_1+\cdots+k_s\beta_s,\]
+                        由于
+                        \[0=\sigma(\alpha)=k_1\sigma(\beta_1)+\cdots+k_s\sigma(\beta_s),\]
+                        由$\sigma(\beta_1),\ldots,\sigma(\beta_s)$是一组基可知$k_1=\cdots=k_s=0$，因此$\alpha=0$，故$\ker\sigma\cap\im\sigma=\{0\}$，因此和为直和. 又由\autoref{thm:6:线性映射基本定理} 可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
+              \end{enumerate}
+          \end{proof}
+
+    \item $\dim(\ker\sigma+\im \sigma) \geqslant \dfrac{n}{2}$，等号成立充要条件为$\ker\sigma=\im \sigma$.
+
+          \begin{proof}
+              这一结论的证明需要结合两个维数公式. 事实上，由线性空间维数公式有
+              \[\dim(\ker\sigma+\im \sigma)=\dim\ker\sigma+\dim\im \sigma-\dim(\ker\sigma \cap \im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)\]
+              因此只需证明$\dim(\ker\sigma+\im \sigma) \geqslant \dfrac{n}{2}$.
+
+              我们用反证法，我们知道$\ker\sigma\cap \im \sigma$是$\ker\sigma$和$\im\sigma$的子空间，因此
+              \begin{gather*}
+                  \dim(\ker\sigma\cap \im \sigma) \leqslant \dim\ker\sigma \\
+                  \dim(\ker\sigma\cap \im \sigma) \leqslant \dim\im\sigma
+              \end{gather*}
+              故若$\dim(\ker\sigma+\im \sigma)>\dfrac{n}{2}$，则有
+              \[\dim\ker\sigma+\dim\im \sigma>n\]
+              与线性映射基本定理矛盾，因此$\dim(\ker\sigma+\im \sigma) \geqslant \dfrac{n}{2}$成立.
+
+              接下来我们讨论取等条件. 充分性显然，因为此时
+              \begin{gather*}
+                  \dim\ker\sigma=\dim\im\sigma=\dfrac{n}{2} \\
+                  \ker\sigma\cap \im \sigma=\ker\sigma=\im\sigma
+              \end{gather*}
+              故
+              \[\dim(\ker\sigma+\im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)=\dfrac{n}{2}\]
+              成立.
+
+              接下来我们讨论必要性. 由
+              \[\dim(\ker\sigma+\im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)\]
+              可知$\dim(\ker\sigma\cap \im \sigma)=\dfrac{n}{2}$，由$\ker\sigma\cap \im \sigma$是$\ker\sigma$和$\im\sigma$的子空间可知
+              \begin{align*}
+                  \dim\ker\sigma & \geqslant\dfrac{n}{2} \\
+                  \dim\im \sigma & \geqslant\dfrac{n}{2}
+              \end{align*}
+              又由线性映射基本定理，$\dim\ker\sigma+\dim\im \sigma=n$，因此
+              \[\dim\ker\sigma=\dim\im \sigma=\dfrac{n}{2}\]
+              即子空间维数与原空间相等，故必有$\ker\sigma=\im \sigma=\ker\sigma\cap \im \sigma$成立（回顾线性空间$U\subseteq V$且$\dim U=\dim V$则$U=V$）.
+          \end{proof}
+\end{enumerate}
+
+\section{可逆与同构}
+
+同构是直至目前线性代数中最重要的概念，本节中我们只讨论基本的概念和性质，在下一讲中我们将结合线性映射矩阵表示深入探讨同构的深层意义.
+
+\subsection{线性空间同构的概念}
+
+\begin{definition}[同构] \index{tonggou@同构 (isomorphism)}
+    如果由线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$存在一个线性双射$\sigma$，则称$V_1(\mathbf{F})$和$V_2(\mathbf{F})$是\term{同构的}，记作$V_1(\mathbf{F}) \cong V_2(\mathbf{F})$. $\sigma$称为$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的一个\term{同构映射}\index{tonggou!yingshe@映射 (isomorphism map)}.
+\end{definition}
+
+根据定义我们发现，同构映射实际上就是线性双射. 关于同构的概念，我们有以下几点需要强调：
+\begin{enumerate}
+    \item 特别注意：同构是线性空间之间的关系，同构映射才是描述线性映射的；
+
+    \item 事实上，同构也是一种等价关系，这一点很容易验证，读者可以自行尝试（可能传递性略有困难，实际上只需说明线性双射复合后仍是线性双射即可）；
+
+    \item 同构映射的逆映射也是同构映射，即线性双射的逆映射仍然是线性双射. 除此之外，两个同构映射的复合也是同构的. 这两个性质证明是容易的，我们放在习题中供读者验证.
+
+    \item 对同构映射$\sigma$，$V_1$中向量组$ \alpha_1,\alpha_2,\ldots,\alpha_m $与$V_2$中对应的$ \sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m) $有相同的线性相关性.
+
+          \begin{proof}
+              我们已知一般的线性映射将线性相关的向量组映射为线性相关的向量组，因此对于同构映射，我们只需证明它能将线性无关的向量组映射为线性无关的向量组即可.
+
+              设$V_1$中$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，我们考察$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m)$的线性相关性. 设
+              \[c_1\sigma(\alpha_1)+c_2\sigma(\alpha_2)+\cdots+c_m\sigma(\alpha_m)=0,\]
+              即
+              \[\sigma(c_1\alpha_1+c_2\alpha_2+\cdots+c_m\alpha_m)=0.\]
+              因为$\sigma$是线性双射，因此$\sigma$首先必须是单射，因此$\ker\sigma=\{0\}$，所以
+              \[c_1\alpha_1+c_2\alpha_2+\cdots+c_m\alpha_m=0\]
+              由$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关，故$c_1=c_2=\cdots=c_m=0$，即$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m)$线性无关，证毕.
+          \end{proof}
+
+          这一结论比一般的线性映射更强，对于一般的线性映射只有将线性相关的向量组映射为线性相关的向量组，无法保证将线性无关的向量组映射为线性无关的向量组，但同构映射可以保证，因为它是线性双射. 这一性质也是本质的，因为双射具有``一一对应''的属性，因此直觉也告诉我们，线性空间的基在线性双射（同构映射）下的像应当对应于像空间的一组基.
+
+          我们可以更进一步得到下面的结论：
+          \begin{theorem}\label{thm:6:同构保秩}
+              设$\sigma$是$V_1$到$V_2$的同构映射，$S_1=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$是$V_1$的任意一组向量，$S_2=\{\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_m)\}$，则$r(S_1)=r(S_2)$，即同构映射保持映射前后向量组秩不变.
+          \end{theorem}
+          \begin{proof}
+              反证法. 假设$r(S_1)\neq r(S_2)$，我们从以下两方面导出矛盾：
+              \begin{enumerate}
+                  \item 若$r(S_1)>r(S_2)$，取$S_1$的极大线性无关组，记为$S_1'$，则$r(S_1')=r(S_1)>r(S_2)$. 又$S_1'$在$\sigma$下的像$S_2'$为$S_2$的子向量组，因此$r(S_2')\leqslant r(S_2)$. 但我们有同构映射保持线性无关性，因此$r(S_2')=r(S_1')=r(S_1)>r(S_2)$，矛盾！因此这种情况不可能；
+
+                  \item 若$r(S_1)<r(S_2)$，取$S_2$的极大线性无关组，记为$S_2'$，则$r(S_2')=r(S_2)>r(S_1)$. 如前所述，同构映射的逆仍为同构映射，考虑$\sigma$的逆$\sigma^{-1}$，$S_2'$在$\sigma^{-1}$下的像$S_1'$为$S_1$的子向量组，因此$r(S_1')\leqslant r(S_1)$. 但我们有同构映射保持线性无关性，因此$r(S_1')=r(S_2')=r(S_2)>r(S_1)$，矛盾！因此这种情况不可能.
+              \end{enumerate}
+          \end{proof}
+\end{enumerate}
+
+我们讨论几个经典的一一对应的例子.
+\begin{enumerate}
+    \item 第一个例子是坐标映射：在有限维向量空间的向量的坐标一节中，我们说明了一个向量在一组基下坐标唯一，而一个坐标对应唯一一个向量，并且也证明了坐标运算的线性性，因此坐标映射是同构映射，并且是经典的同构映射. 它可以建立起任何一个$n$维线性空间$V(\mathbf{F})$与几何向量空间$\mathbf{F}^n$之间的一一对应（同构映射），即任意$n$维线性空间$V(\mathbf{F})\cong\mathbf{F}^n$. 这一点之后会强调多次，需牢记；
+
+    \item 第二个例子将在本节后续线性映射矩阵表示中描述并证明，目前我们只给出结论，读者不必惊恐于不理解其中的记号，因为接下来的核心任务之一就是证明存在这一同构映射：若$\dim V_1(\mathbf{F})=m$，$\dim V_2(\mathbf{F})=n$，则$\mathcal{L}(V_1,V_2) \cong \mathbf{F}^{m \times n}$.
+\end{enumerate}
+
+\subsection{同构的等价条件}
+
+下面我们给出同构的等价条件：
+\begin{theorem}\label{thm:6:同构的等价条件}
+    两个线性空间$V_1(\mathbf{F})$和$V_2(\mathbf{F})$同构的充要条件是它们的维数相等.
+\end{theorem}
+
+\begin{proof}
+    必要性：设$V_1(\mathbf{F})$和$V_2(\mathbf{F})$同构，即存在线性双射（故至少是单射）$\sigma:V_1\to V_2$. 由线性映射基本定理，
+    \[\dim V_1=\dim\ker\sigma+\dim\im\sigma=\dim\im\sigma=\dim V_2.\]
+    故必要性成立.
+
+    下证明充分性，即证两维数相等的线性空间之间存在线性双射. 设$\dim V_1=\dim V_2=n$，设$V_1$的一组基为$\alpha_1,\alpha_2,\ldots,\alpha_n$，$V_2$的一组基为$\beta_1,\beta_2,\ldots,\beta_n$，根据\autoref{thm:5:线性映射构造} 可知，我们可以定义线性映射$\sigma:V_1\to V_2$，使得
+    \begin{equation}\label{eq:6:构造同构}
+        \sigma(\alpha_1)=\beta_1,\sigma(\alpha_2)=\beta_2,\ldots,\sigma(\alpha_n)=\beta_n.
+    \end{equation}
+    接下来只需证明$\sigma$是线性双射即可. 事实上$\sigma$是单射是显然的，因为若$\sigma(\alpha)=0$，其中$\alpha\in V_1$，则$\alpha$可以写为$\alpha=k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n$，则有
+    \[\sigma(\alpha)=\sigma(k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n)=k_1\sigma(\alpha_1)+k_2\sigma(\alpha_2)+\cdots+k_n\sigma(\alpha_n)=0,\]
+    又由\autoref{eq:6:构造同构} 以及$\beta_1,\beta_2,\ldots,\beta_n$线性无关可知$k_1=k_2=\cdots=k_n=0$，因此$\alpha=0$，即$\sigma$是单射. 由\autoref{thm:6:双射等价条件}（或直接根据线性映射基本定理）可知，$\sigma$是线性双射，证毕.
+\end{proof}
+
+我们需要指出，同构是目前为止最重要的概念. 它统一了前面所学的所有主干内容，将线性空间可以按维数划分为不同的等价类，并将抽象再升一层，表明线性空间最本质的特点在于维数，因为我们可以通过同构建立起对所有维数相同的线性空间之间的一一对应. 更重要的是我们可以通过坐标映射建立起任何一个$n$维线性空间$V(\mathbf{F})$与几何向量空间$\mathbf{F}^n$之间的同构映射，从而遮蔽所有线性空间自身基的特色（例如有的线性空间中的元素是矩阵、函数、数列等），进而可以将所有对有限维线性空间的研究转为对简单向量空间的研究. 从此以后的大部分研究中，我们再提到线性空间，我们只需要说出线性空间的维数，就相当于给出了几乎所有的信息. 或许目前对上面的说法的认识还不够深刻，但在下一讲中我们将通过线性映射矩阵表示的讨论进一步加深理解.
+
+下面我们通过几个例题来应用同构的等价条件，也同时进一步了解几个常见的同构的例子：
+\begin{example}
+    指出下面各组内的两个线性空间是否同构，若同构可以进一步思考同构映射的构造：
+    \begin{enumerate}
+        \item 最高次不超过$n-1$的多项式构成的线性空间$\mathbf{R}[x]_n$与$\mathbf{R}^n$；
+
+        \item 全体复数在实数域上的线性空间$\mathbf{C}(\mathbf{R})$与$\mathbf{R}^2$；
+
+        \item 全体二元复向量$\mathbf{C}^2$在实数域上构成的线性空间$\mathbf{C}^2(\mathbf{R})$与$\mathbf{R}[x]_4$；
+
+        \item 全体二元复向量$\mathbf{C}^2$在复数域上构成的线性空间$\mathbf{C}^2(\mathbf{C})$与$\mathcal{L}(\mathbf{R}^4,\mathbf{R})$.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item 同构，因为二者维数均为$n$. 同构映射非常简单，因为$\mathbf{R}[x]_n$在基$\{1,x,\ldots,x^{n-1}\}$下的坐标就在$\mathbf{R}^n$中，因此同构映射就是这一坐标映射：
+              \[\sigma:\mathbf{R}[x]_n\to\mathbf{R}^n,\quad a_0+a_1x+\cdots+a_{n-1}x^{n-1}\mapsto(a_0,a_1,\ldots,a_{n-1}).\]
+              我们很容易验证这一映射是线性双射，因此是同构映射.
+
+        \item 同构，因为二者维数均为2（回忆\autoref{ex:3:不同数域的维数}）. 这一同构映射同上一小问理，$\mathbf{C}(\mathbf{R})$在基$\{1,i\}$下的坐标就在$\mathbf{R}^2$中，因此同构映射就是这一坐标映射：
+              \[\sigma:\mathbf{C}(\mathbf{R})\to\mathbf{R}^2,\quad a+bi\mapsto(a,b).\]
+              事实上这就是将复数在二维平面中的表示，我们很容易验证这一映射是线性双射，因此是同构映射..
+
+        \item 同构，因为二者维数均为4. 这一同构映射也非常简单，因为$\mathbf{C}^2(\mathbf{R})$在基
+              \[\{(1,0),(i,0),(0,1),(0,i)\}\]
+              下的坐标和$\mathbf{R}[x]_4$在基$\{1,x,x^2,x^3\}$下的坐标都在$\mathrm{R}^n$中，可以将它们一一对应，因此同构映射就是这一坐标映射：
+              \[\sigma:\mathbf{C}^2(\mathbf{R})\to\mathbf{R}[x]_4,\quad (a+bi,c+di)\mapsto a+bx+cx^2+dx^3.\]
+              我们很容易验证这一映射是线性双射，因此是同构映射.
+
+        \item 不同构，因为$\mathbf{C}^2(\mathbf{C})$的维数为2，而$\mathcal{L}(\mathbf{R}^4,\mathbf{R})$的维数为4.
+    \end{enumerate}
+\end{solution}
+
+\section{线性空间的积}
+
+接下来的两节我们将综合应用之前所学习的基本知识，介绍两个重要的线性空间，即积空间和商空间，以及其上定义的线性映射. 在这两节中我们将完整地展示从定义的引入开始，如何研究一个线性空间，如何合理定义线性映射，如何应用前述知识综合地给出一些空间和映射的性质，这对于我们是一个重要的思维训练.
+
+\subsection{线性空间的积的定义与性质研究}
+
+我们首先探讨线性空间的积，或者积空间. 熟知集合有笛卡尔积运算，而线性空间是定义在集合上的代数结构，因此我们有一个自然的问题，即我们能否在多个线性空间的对应的集合的笛卡尔积上定义加法和数乘运算，使其成为一个线性空间？
+
+答案是肯定的，但我们需要首先声明的一点是，构成笛卡尔积的这些线性空间必须定义在同一个数域上，否则新集合上的数乘我们将很难定义，因为数域不同我们将很难选择数乘的常数应该选择来自于哪个线性空间的数域.
+\begin{definition}\label{def:8:积空间}
+    设$V_1,V_2,\ldots,V_n$是数域$\mathbf{F}$上的线性空间，我们有如下三个定义：
+    \begin{enumerate}
+        \item 线性空间的积：
+              \[V_1 \times V_2 \times \cdots \times V_n=\{(v_1,v_2,\ldots,v_n)\mid v_i \in V_i,\enspace i=1,2,\ldots,n\};\]
+
+        \item 规定$V_1 \times V_2 \times \cdots \times V_n$上加法和数乘运算：
+              \begin{enumerate}
+                  \item 加法：$(v_1,v_2,\ldots,v_n)+(u_1,u_2,\ldots,u_n)=(v_1+u_1,v_2+u_2,\ldots,v_n+u_n)$；
+
+                  \item 数乘：$\lambda(v_1,v_2,\ldots,v_n)=(\lambda v_1,\lambda v_2,\ldots,\lambda v_n)$.
+              \end{enumerate}
+    \end{enumerate}
+\end{definition}
+
+事实上我们很容易验证上述定义的线性空间的积在定义的加法和数乘运算下构成线性空间，我们将放在习题中供读者练习. 接下来我们要研究这一线性空间的性质. 事实上，我们早在有限维线性空间一节中就说明了，一个线性空间的核心结构就是其基和维数，因此我们首先研究它们. 事实上，对于积空间，它的基和维数的确定是非常符合我们的直觉的，我们来看一个例子：
+\begin{example}
+    求积空间$\mathbf{R}[x]_3\times\mathbf{R}^2$的一组基.
+\end{example}
+
+\begin{solution}
+    我们知道$\mathbf{R}[x]_3$的一组基为$1,x,x^2$，而$\mathbf{R}^2$的一组基为$(1,0),(0,1)$. 很自然的想法是：我们可以先取$\mathbf{R}[x]_3$的一组基，$\mathbf{R}^2$的位置置零，然后反之取$\mathbf{R}^2$的一组基，$\mathbf{R}[x]_3$的位置置零，即$(1,(0,0)),\ (x,(0,0)),\ (x^2,(0,0)),\ (0,(1,0)),\ (0,(0,1))$. 我们很容易可以证明上述向量组满足基的两个条件：线性无关和张成空间.
+\end{solution}
+
+上述例子中的基的构造方法是很自然的，而且我们会发现，在这样取基的情况下积空间的维数很显然就是各个线性空间的维数之和. 我们可以很容易地推广到一般情况：
+\begin{theorem}\label{thm:8:积空间维数}
+    设$V_1,V_2,\ldots,V_n$是数域$\mathbf{F}$上的有限维线性空间，则$V_1 \times V_2 \times \cdots \times V_n$是有限维线性空间，且
+    \[\dim(V_1 \times V_2 \times \cdots \times V_n)=\dim V_1+\dim V_2+\cdots+\dim V_n.\]
+\end{theorem}
+
+\begin{proof}
+    我们取$V_i$的一组基，对这组基中每个向量，我们取$V_1 \times V_2 \times \cdots \times V_n$中的这样的向量：其中第$j$个位置为此向量，其余位置为零向量，这样我们遍历所有$V_i$和每个$V_i$的基向量我们就得到了$V_1 \times V_2 \times \cdots \times V_n$的一组基（线性无关和张成性是很容易验证的），这组基的长度（即维数）为$\dim V_1+\dim V_2+\cdots+\dim V_n$.
+\end{proof}
+
+\subsection{线性空间的积与直和}
+
+本节我们将通过线性空间的积的角度来讨论直和的维数特点. 事实上，我们的手段就是构造线性映射，然后利用线性映射基本定理来得到结论.
+\begin{theorem}\label{thm:8:积与直和}
+    设$U_1,U_2,\ldots,U_n$是$V$的子空间，我们定义线性映射$\sigma:U_1 \times U_2 \times \cdots \times U_n \to U_1+U_2+\cdots+U_n$，使得$\sigma(u_1,u_2,\ldots,u_n)=u_1+u_2+\cdots+u_n$，则$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \sigma$是双射.
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 充分性：设$\sigma$是双射，则$\sigma$首先是单射. 根据单射的等价条件，我们有$\ker \sigma=\{0\}$，即$u_1+u_2+\cdots+u_n=0$必须有$u_1=u_2=\cdots=u_n=0$，而这正是\autoref{thm:4:直和等价命题} 中直和的等价条件；
+
+        \item 必要性：设$U_1+U_2+\cdots+U_n$是直和，我们证明$\sigma$是单的、满的：
+              \begin{enumerate}
+                  \item 单射：设$\sigma(u_1,u_2,\ldots,u_n)=0$，即$u_1+u_2+\cdots+u_n=0$，由直和的等价条件可知$u_1=u_2=\cdots=u_n=0$，即$\sigma$的核空间只有出发空间零元，故是单射；
+
+                  \item 满射：实际上是由这个线性映射的定义直接保证的. $\forall u \in U_1+U_2+\cdots+U_n$，根据和的定义一定有分解$u=u_1+u_2+\cdots+u_n$，其中$u_i \in U_i$，因此根据$\sigma$的定义$\sigma(u_1,u_2,\ldots,u_n)=u$，即任意$u$我们都可找到原像，故是满射.
+              \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+事实上在证明中我们看到，$\sigma$的定义保证了其满射性，因此定理中最后的双射改为单射也是统一的. 通过这一定理我们可以直接得出以下结论：
+\begin{theorem}
+    设$U_1,U_2,\ldots,U_n$是有限维线性空间$V$的子空间，则$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \dim(U_1+U_2+\cdots+U_n)=\dim U_1+\dim U_2+\cdots+\dim U_n$.
+\end{theorem}
+
+\begin{proof}
+    根据\autoref{thm:8:积与直和}，$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \sigma$是双射. 我们很容易验证$\sigma$是线性映射，而线性双射我们又称同构映射，同构映射的出发空间和到达空间维数相等，因此$\sigma$是双射$\iff \dim(U_1 \times U_2 \times \cdots \times U_n)=\dim(U_1+U_2+\cdots+U_n)$，最后根据\autoref{thm:8:积空间维数} 积空间的维数可知定理成立.
+\end{proof}
+
+这里我们用同构映射完成证明，如果对同构不熟悉的可以回顾定义和等价条件，或者自己用线性映射基本定理进行推导. 由此，我们通过在积空间上定义映射，结合\hyperref[thm:6:线性映射基本定理]{线性映射基本定理}（或同构）得到了\autoref{thm:4:直和等价命题} 中关于维数的命题. 总结而言，在积空间的讨论中我们展现了一个比较完整地学习路径：从定义积空间的想法（来源于集合的笛卡尔积），到如何自然地定义出这一空间的加法和数乘运算，然后研究构造出的空间的基本结构有什么特点，然后进一步构造其上线性映射，得到一些其他的结论. 这一路径的每一步都是非常自然的，而且是学习一个数学概念的常见思路，希望读者不仅是在线性代数中体会到这种学习路径，在其他数学课甚至其他学科中都能总结出这样一条引入—定义—性质—应用的自然路径.
+
+最后我们再看一个拓展的问题，我们希望进一步看到构造同构映射带来的研究问题的方便性：
+\begin{example}
+    设$V_1,V_2,\ldots,V_n,W$是数域$\mathbf{F}$上的线性空间，证明：$\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$与$\mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$同构.
+\end{example}
+有的读者可能看见这题就会觉得非常简单，因为有限维线性空间的前提下二者维数显然相同，然而我们这里并未限定有限维线性空间，因此需要读者自己构造同构映射.
+
+\begin{solution}
+    $\forall f\in \mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$，我们定义$f_i:V_i\to W(i=1,2,\ldots,m)$满足
+    \[f_i(v_i)=f(0,\ldots,0,v_i,0,\ldots,0),\]
+    其中$v_i$位于第$i$个位置，其余位置为零向量.
+
+    定义$\varphi:\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)\to \mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$，使得$\varphi(f)=(f_1,f_2,\ldots,f_m)$，则接下来我们要验证$\varphi$就是我们要求的同构映射.
+\end{solution}
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}

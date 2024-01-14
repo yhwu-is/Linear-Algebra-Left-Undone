@@ -21,7 +21,7 @@
         \item 如果$A$的秩小于$n$，则方程组有无穷多个解.
     \end{enumerate}
 \end{theorem}
-实际上，这一定理就是\autoref{thm:13:Cramer} 结论的一部分，因此我们不再赘述其证明. 实际上，通过上面两个定理我们首先了解了线性方程组有无解的一般准则，然后讨论了有解前提下唯一解、无穷解对应于什么情况. 事实上，有关线性方程组解的情况的讨论至此文意已尽. 无论是理论层面或是解决题目的方面，这两个定理都为我们提供了足量的信息.
+实际上，当系数矩阵为方阵时，这一定理就是\autoref{thm:13:Cramer}（Cramer法则） 结论的一部分，我们不再赘述其证明. 实际上，通过上面两个定理我们首先了解了线性方程组有无解的一般准则，然后讨论了有解前提下唯一解、无穷解对应于什么情况. 事实上，有关线性方程组解的情况的讨论至此文意已尽. 无论是理论层面或是解决题目的方面，这两个定理都为我们提供了足量的信息.
 \begin{example}
     设$n$阶矩阵$A$的行列式$|A|\neq 0$，记$A$的前$n-1$列形成的矩阵为$A_1$，$A$的第$n$列为$\vec{b}$，问：线性方程组$A_1X=\vec{b}$是否有解？
 \end{example}
@@ -777,7 +777,7 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 证明：$A^2=E \iff r(A+E)+r(A-E)=n$.
+    \item 设$A$为方阵，证明：$A^2=E \iff r(A+E)+r(A-E)=n$.
 
     \item 设$A$为$m \times n$矩阵，$r(A)=m$，$B$是$m$阶可逆矩阵，已知$A$的行空间$R(A^\mathrm{T})$是方程组$CX=\vec{0}$的解空间，证明：$BA$的行向量也是$CX=\vec{0}$的一个基础解系.
 
@@ -928,4 +928,13 @@
 
               \item 线性方程组$AX=\vec{a}$与$BX=\vec{b}$同解的充要条件是$(A,\vec{a})$与$(B,\vec{b})$行向量等价.
           \end{enumerate}
+
+    \item （对角占优）设$A=(a_{ij})_{n \times n}$是一个$n$级矩阵，证明：
+    \begin{enumerate}
+        \item 若$A$为复矩阵，且$|a_{ii}|>\displaystyle\sum_{j \neq i}|a_{ij}|$，那么$|A|\neq 0$；
+
+        \item 若$A$为实矩阵，且$a_{ii}>\displaystyle\sum_{j \neq i}|a_{ij}|$，那么$|A|>0$；
+
+        \item （推论）存在充分大的实数$M$，使得$t>M$时，$tE+A$可逆.
+    \end{enumerate}
 \end{enumerate}
