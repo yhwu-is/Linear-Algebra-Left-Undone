@@ -27,29 +27,33 @@
 
 \section{线性空间的定义}
 
-\term{线性空间}\index{xianxingkongjian@线性空间 (linear space)}是我们接触的第一个核心概念，作为一种代数结构，它需要在非空集合$V$上定义运算. 其中第一个运算是我们熟知的加法$+$. 在线性空间的定义中，我们要求$\langle V:+\rangle$构成Abel群，即其中元素满足如下运算律：
-\begin{enumerate}
-    \item (结合律) $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma,\enspace\forall \alpha,\beta,\gamma \in V$；
+\term{线性空间}\index{xianxingkongjian@线性空间 (linear space)}是我们接触的第一个核心概念，作为一种代数结构，它需要在非空集合$V$上定义运算. 我们写下其定义，然后给出解读：
+\begin{definition}[线性空间]
+    设$V$是一个非空集合，$\mathbf{F}$是一个数域，我们定义两种运算，其中第一个运算是我们熟知的加法$+$. 在线性空间的定义中，我们要求$\langle V:+\rangle$构成Abel群，即其中元素满足如下运算律：
+    \begin{enumerate}
+        \item (结合律) $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma,\enspace\forall \alpha,\beta,\gamma \in V$；
 
-    \item (加法单位元) $\exists 0 \in V$使得$\forall\alpha\in V$ 有 $\alpha+0=0+\alpha$；
+        \item (加法单位元) $\exists 0 \in V$使得$\forall\alpha\in V$ 有 $\alpha+0=0+\alpha$；
 
-    \item (逆元) $\forall\alpha\in V,\enspace \exists \beta \in V$，有$\alpha+\beta=\beta+\alpha=0$，记$\beta=-\alpha$；
+        \item (逆元) $\forall\alpha\in V,\enspace \exists \beta \in V$，有$\alpha+\beta=\beta+\alpha=0$，记$\beta=-\alpha$；
 
-    \item (交换律) $\forall\alpha, \beta\in V,\enspace \alpha+\beta=\beta+\alpha$.
-\end{enumerate}
+        \item (交换律) $\forall\alpha, \beta\in V,\enspace \alpha+\beta=\beta+\alpha$.
+    \end{enumerate}
 
-第二种运算和之前学习的其他代数结构不同，我们需要首先引入一个数域$\mathbf{F}$，接下来在$\mathbf{F}\times V$上定义取值于$V$的数乘运算，即$\mathbf{F}\times V$中的每个元素$(\lambda,\alpha)\mapsto \lambda\alpha\in V$，并且数乘运算满足以下性质：$\forall \alpha,\beta \in V,\enspace\forall \lambda,\mu\in\mathbf{F}$以及$\mathbf{F}$上的乘法单位元1，有
-\begin{enumerate}
-    \item $1\cdot \alpha=\alpha$；
+    第二种运算和之前学习的其他代数结构不同，我们需要首先引入一个数域$\mathbf{F}$，接下来在$\mathbf{F}\times V$上定义取值于$V$的数乘运算，即$\mathbf{F}\times V$中的每个元素$(\lambda,\alpha)\mapsto \lambda\alpha\in V$，并且数乘运算满足以下性质：$\forall \alpha,\beta \in V,\enspace\forall \lambda,\mu\in\mathbf{F}$以及$\mathbf{F}$上的乘法单位元1，有
+    \begin{enumerate}
+        \item $1\cdot \alpha=\alpha$；
 
-    \item $\lambda(\mu\alpha)=(\lambda\mu)\alpha$；
+        \item $\lambda(\mu\alpha)=(\lambda\mu)\alpha$；
 
-    \item $(\lambda+\mu)\alpha=\lambda\alpha+\mu\alpha$；
+        \item $(\lambda+\mu)\alpha=\lambda\alpha+\mu\alpha$；
 
-    \item $\lambda(\alpha+\beta)=\lambda\alpha+\lambda\beta$.
-\end{enumerate}
+        \item $\lambda(\alpha+\beta)=\lambda\alpha+\lambda\beta$.
+    \end{enumerate}
 
-基于此，我们完整定义了一个线性空间，我们一般称集合$V$关于上述两种运算在域$\mathbf{F}$上构成一个线性空间，简称为$V$在域$\mathbf{F}$上的线性空间，记作$V(\mathbf{F})$. 如果$\mathbf{F}$是实（复）数域，则称$V$为实（复）数域上的线性空间. 关于线性空间的定义，我们还有如下说明：
+    基于此，我们完整定义了一个线性空间，我们一般称集合$V$关于上述两种运算在域$\mathbf{F}$上构成一个线性空间，简称为$V$在域$\mathbf{F}$上的线性空间，记作$V(\mathbf{F})$. 如果$\mathbf{F}$是实（复）数域，则称$V$为实（复）数域上的线性空间.
+\end{definition}
+关于线性空间的定义，我们还有如下说明：
 \begin{enumerate}
     \item 线性空间还有一个重要的概念是运算封闭，即线性空间中的元素进行加法或数乘运算后，得到的元素仍然是属于线性空间的. 这一点是定义要求的，加法封闭是 Abel 群的要求，因为 Abel 群要求加法运算定义为映射 $V\times V\to V$，因此$V$中两个元素相加后必须仍在$V$中（事实上这是代数系统的共性），数乘注意前述定义中数乘运算``取值于$V$''的要求，即它是 $F\times V\to V$ 的映射；
 

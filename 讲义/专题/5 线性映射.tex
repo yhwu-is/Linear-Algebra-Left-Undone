@@ -443,7 +443,7 @@
                   \item 设$m$是非负整数使得$\ker \sigma^m=\ker \sigma^{m+1}$，则
                         \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
 
-                  \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+1}=\cdots$.
+                  \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+2}=\cdots$.
               \end{enumerate}
           \end{theorem}
 
@@ -646,94 +646,6 @@
 
         \item 不同构，因为$\mathbf{C}^2(\mathbf{C})$的维数为2，而$\mathcal{L}(\mathbf{R}^4,\mathbf{R})$的维数为4.
     \end{enumerate}
-\end{solution}
-
-\section{线性空间的积}
-
-接下来的两节我们将综合应用之前所学习的基本知识，介绍两个重要的线性空间，即积空间和商空间，以及其上定义的线性映射. 在这两节中我们将完整地展示从定义的引入开始，如何研究一个线性空间，如何合理定义线性映射，如何应用前述知识综合地给出一些空间和映射的性质，这对于我们是一个重要的思维训练.
-
-\subsection{线性空间的积的定义与性质研究}
-
-我们首先探讨线性空间的积，或者积空间. 熟知集合有笛卡尔积运算，而线性空间是定义在集合上的代数结构，因此我们有一个自然的问题，即我们能否在多个线性空间的对应的集合的笛卡尔积上定义加法和数乘运算，使其成为一个线性空间？
-
-答案是肯定的，但我们需要首先声明的一点是，构成笛卡尔积的这些线性空间必须定义在同一个数域上，否则新集合上的数乘我们将很难定义，因为数域不同我们将很难选择数乘的常数应该选择来自于哪个线性空间的数域.
-\begin{definition}\label{def:8:积空间}
-    设$V_1,V_2,\ldots,V_n$是数域$\mathbf{F}$上的线性空间，我们有如下三个定义：
-    \begin{enumerate}
-        \item 线性空间的积：
-              \[V_1 \times V_2 \times \cdots \times V_n=\{(v_1,v_2,\ldots,v_n)\mid v_i \in V_i,\enspace i=1,2,\ldots,n\};\]
-
-        \item 规定$V_1 \times V_2 \times \cdots \times V_n$上加法和数乘运算：
-              \begin{enumerate}
-                  \item 加法：$(v_1,v_2,\ldots,v_n)+(u_1,u_2,\ldots,u_n)=(v_1+u_1,v_2+u_2,\ldots,v_n+u_n)$；
-
-                  \item 数乘：$\lambda(v_1,v_2,\ldots,v_n)=(\lambda v_1,\lambda v_2,\ldots,\lambda v_n)$.
-              \end{enumerate}
-    \end{enumerate}
-\end{definition}
-
-事实上我们很容易验证上述定义的线性空间的积在定义的加法和数乘运算下构成线性空间，我们将放在习题中供读者练习. 接下来我们要研究这一线性空间的性质. 事实上，我们早在有限维线性空间一节中就说明了，一个线性空间的核心结构就是其基和维数，因此我们首先研究它们. 事实上，对于积空间，它的基和维数的确定是非常符合我们的直觉的，我们来看一个例子：
-\begin{example}
-    求积空间$\mathbf{R}[x]_3\times\mathbf{R}^2$的一组基.
-\end{example}
-
-\begin{solution}
-    我们知道$\mathbf{R}[x]_3$的一组基为$1,x,x^2$，而$\mathbf{R}^2$的一组基为$(1,0),(0,1)$. 很自然的想法是：我们可以先取$\mathbf{R}[x]_3$的一组基，$\mathbf{R}^2$的位置置零，然后反之取$\mathbf{R}^2$的一组基，$\mathbf{R}[x]_3$的位置置零，即$(1,(0,0)),\ (x,(0,0)),\ (x^2,(0,0)),\ (0,(1,0)),\ (0,(0,1))$. 我们很容易可以证明上述向量组满足基的两个条件：线性无关和张成空间.
-\end{solution}
-
-上述例子中的基的构造方法是很自然的，而且我们会发现，在这样取基的情况下积空间的维数很显然就是各个线性空间的维数之和. 我们可以很容易地推广到一般情况：
-\begin{theorem}\label{thm:8:积空间维数}
-    设$V_1,V_2,\ldots,V_n$是数域$\mathbf{F}$上的有限维线性空间，则$V_1 \times V_2 \times \cdots \times V_n$是有限维线性空间，且
-    \[\dim(V_1 \times V_2 \times \cdots \times V_n)=\dim V_1+\dim V_2+\cdots+\dim V_n.\]
-\end{theorem}
-
-\begin{proof}
-    我们取$V_i$的一组基，对这组基中每个向量，我们取$V_1 \times V_2 \times \cdots \times V_n$中的这样的向量：其中第$j$个位置为此向量，其余位置为零向量，这样我们遍历所有$V_i$和每个$V_i$的基向量我们就得到了$V_1 \times V_2 \times \cdots \times V_n$的一组基（线性无关和张成性是很容易验证的），这组基的长度（即维数）为$\dim V_1+\dim V_2+\cdots+\dim V_n$.
-\end{proof}
-
-\subsection{线性空间的积与直和}
-
-本节我们将通过线性空间的积的角度来讨论直和的维数特点. 事实上，我们的手段就是构造线性映射，然后利用线性映射基本定理来得到结论.
-\begin{theorem}\label{thm:8:积与直和}
-    设$U_1,U_2,\ldots,U_n$是$V$的子空间，我们定义线性映射$\sigma:U_1 \times U_2 \times \cdots \times U_n \to U_1+U_2+\cdots+U_n$，使得$\sigma(u_1,u_2,\ldots,u_n)=u_1+u_2+\cdots+u_n$，则$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \sigma$是双射.
-\end{theorem}
-
-\begin{proof}
-    \begin{enumerate}
-        \item 充分性：设$\sigma$是双射，则$\sigma$首先是单射. 根据单射的等价条件，我们有$\ker \sigma=\{0\}$，即$u_1+u_2+\cdots+u_n=0$必须有$u_1=u_2=\cdots=u_n=0$，而这正是\autoref{thm:4:直和等价命题} 中直和的等价条件；
-
-        \item 必要性：设$U_1+U_2+\cdots+U_n$是直和，我们证明$\sigma$是单的、满的：
-              \begin{enumerate}
-                  \item 单射：设$\sigma(u_1,u_2,\ldots,u_n)=0$，即$u_1+u_2+\cdots+u_n=0$，由直和的等价条件可知$u_1=u_2=\cdots=u_n=0$，即$\sigma$的核空间只有出发空间零元，故是单射；
-
-                  \item 满射：实际上是由这个线性映射的定义直接保证的. $\forall u \in U_1+U_2+\cdots+U_n$，根据和的定义一定有分解$u=u_1+u_2+\cdots+u_n$，其中$u_i \in U_i$，因此根据$\sigma$的定义$\sigma(u_1,u_2,\ldots,u_n)=u$，即任意$u$我们都可找到原像，故是满射.
-              \end{enumerate}
-    \end{enumerate}
-\end{proof}
-
-事实上在证明中我们看到，$\sigma$的定义保证了其满射性，因此定理中最后的双射改为单射也是统一的. 通过这一定理我们可以直接得出以下结论：
-\begin{theorem}
-    设$U_1,U_2,\ldots,U_n$是有限维线性空间$V$的子空间，则$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \dim(U_1+U_2+\cdots+U_n)=\dim U_1+\dim U_2+\cdots+\dim U_n$.
-\end{theorem}
-
-\begin{proof}
-    根据\autoref{thm:8:积与直和}，$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \sigma$是双射. 我们很容易验证$\sigma$是线性映射，而线性双射我们又称同构映射，同构映射的出发空间和到达空间维数相等，因此$\sigma$是双射$\iff \dim(U_1 \times U_2 \times \cdots \times U_n)=\dim(U_1+U_2+\cdots+U_n)$，最后根据\autoref{thm:8:积空间维数} 积空间的维数可知定理成立.
-\end{proof}
-
-这里我们用同构映射完成证明，如果对同构不熟悉的可以回顾定义和等价条件，或者自己用线性映射基本定理进行推导. 由此，我们通过在积空间上定义映射，结合\hyperref[thm:6:线性映射基本定理]{线性映射基本定理}（或同构）得到了\autoref{thm:4:直和等价命题} 中关于维数的命题. 总结而言，在积空间的讨论中我们展现了一个比较完整地学习路径：从定义积空间的想法（来源于集合的笛卡尔积），到如何自然地定义出这一空间的加法和数乘运算，然后研究构造出的空间的基本结构有什么特点，然后进一步构造其上线性映射，得到一些其他的结论. 这一路径的每一步都是非常自然的，而且是学习一个数学概念的常见思路，希望读者不仅是在线性代数中体会到这种学习路径，在其他数学课甚至其他学科中都能总结出这样一条引入—定义—性质—应用的自然路径.
-
-最后我们再看一个拓展的问题，我们希望进一步看到构造同构映射带来的研究问题的方便性：
-\begin{example}
-    设$V_1,V_2,\ldots,V_n,W$是数域$\mathbf{F}$上的线性空间，证明：$\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$与$\mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$同构.
-\end{example}
-有的读者可能看见这题就会觉得非常简单，因为有限维线性空间的前提下二者维数显然相同，然而我们这里并未限定有限维线性空间，因此需要读者自己构造同构映射.
-
-\begin{solution}
-    $\forall f\in \mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$，我们定义$f_i:V_i\to W(i=1,2,\ldots,m)$满足
-    \[f_i(v_i)=f(0,\ldots,0,v_i,0,\ldots,0),\]
-    其中$v_i$位于第$i$个位置，其余位置为零向量.
-
-    定义$\varphi:\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)\to \mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$，使得$\varphi(f)=(f_1,f_2,\ldots,f_m)$，则接下来我们要验证$\varphi$就是我们要求的同构映射.
 \end{solution}
 
 \vspace{2ex}

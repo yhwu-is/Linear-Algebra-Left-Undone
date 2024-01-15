@@ -176,7 +176,7 @@
 
         \item 由前证$r(AB)\leqslant\min\{r(A),r(B)\}$，可知$r(AA^\mathrm{T})\leqslant r(A)$，因此只需证明$r(AA^\mathrm{T})\geqslant r(A)$，即只需证$N(AA^\mathrm{T})\subset N(A)$.
 
-              设$AA^\mathrm{T}X=\vec{0}$，因此$X^\mathrm{T}(A^\mathrm{T}A)X=0$，即$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=0$. 由于$A^\mathrm{T}X\in\mathbf{R}^n$，我们设$A^\mathrm{T}X=(a_1,a_2,\ldots,a_n)^\mathrm{T}$，则$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=a_1^2+a_2^2+\cdots+a_n^2=0$可得$a_1=a_2=\cdots=a_n=0$，即$A^\mathrm{T}X=\vec{0}$，因此$X \in N(A)$，因此$N(AA^\mathrm{T})\subset N(A)$，得证.
+              设$AA^\mathrm{T}X=\vec{0}$，因此$X^\mathrm{T}(AA^\mathrm{T})X=0$，即$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=0$. 由于$A^\mathrm{T}X\in\mathbf{R}^n$，我们设$A^\mathrm{T}X=(a_1,a_2,\ldots,a_n)^\mathrm{T}$，则$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=a_1^2+a_2^2+\cdots+a_n^2=0$可得$a_1=a_2=\cdots=a_n=0$，即$A^\mathrm{T}X=\vec{0}$，因此$X \in N(A)$，因此$N(AA^\mathrm{T})\subset N(A)$，得证.
 
         \item 对于$A^2=A$，考虑分块矩阵$\begin{pmatrix}
                       A & O \\ O & A-E
@@ -205,7 +205,7 @@
                   \end{pmatrix}).\]
               即$r(A)+r(A-E)=n+r(-A(A-E))$，故$r(A)+r(A-E)=n$等价于$r(-A(A-E))=0$，即$-A(A-E)=O$，即$A^2=A$，得证.
 
-              事实上，如果我们只需要证明$A^2=A \implies r(A)+r(E-A)=n$，我们可以用如下方法：由$A^2=A$可知$A(A-E)=O$，由本例第二问知$r(A)+r(A-E)\leqslant n$，又根据秩不等式$r(A)+r(B)\geqslant r(A+B)$，因此$r(A)+r(E-A)=\geqslant r(A+(E-A))=r(E)=n$. 综上可知，$r(A)+r(E-A)=n$.
+              事实上，如果我们只需要证明$A^2=A \implies r(A)+r(E-A)=n$，我们可以用如下方法：由$A^2=A$可知$A(A-E)=O$，由本例第二问知$r(A)+r(A-E)\leqslant n$，又根据秩不等式$r(A)+r(B)\geqslant r(A+B)$，因此$r(A)+r(E-A)\geqslant r(A+(E-A))=r(E)=n$. 综上可知，$r(A)+r(E-A)=n$.
     \end{enumerate}
 \end{proof}
 
