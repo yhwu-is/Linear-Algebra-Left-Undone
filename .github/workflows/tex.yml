@@ -15,24 +15,23 @@ jobs:
   build:
     name: Build document
     runs-on: ubuntu-latest
-    # container: mfisherman/texlive-full:latest
+    container:
+      image: registry.gitlab.com/islandoftex/images/texlive:latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build
         id: build
         working-directory: ${{ github.workspace }}
         run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full make xindy
-          sudo git config --system --add safe.directory $(pwd -P)
+          git config --system --add safe.directory $(pwd -P)
           echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           make gh-actions
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: LALU-build-${{ github.run_number }}-${{ steps.build.outputs.sha }}
           if-no-files-found: error
