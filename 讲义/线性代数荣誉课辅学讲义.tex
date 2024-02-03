@@ -44,33 +44,68 @@
 \NewDocumentCommand{\term}{m}{{\sffamily\heiti\bfseries{#1}}}
 
 % 标题格式
-% \ResetChapterNumberingStyle 重置章节编号为正常样式
-% \SetLUChapterNumberingStyle 设置章节编号为未竟专题样式
-% 参数为其上一章节的编号
+% \LUchapter 未竟专题
+
 \newcounter{LUchapter}
-\NewDocumentCommand{\ResetChapterNumberingStyle}{m}{%
-\setcounter{chapter}{#1}
+\newcounter{LUgreekchap}
+
+\makeatletter
+% 此处可按需增改
+% \texorpdfstring 的两个参数分别显示在正文中与 PDF 书签中
+\newcommand*{\@LUgreek}[1]{%
+    \ifcase#1\or\texorpdfstring{$\boldsymbol{\varepsilon}$}{ε}%
+    \or\texorpdfstring{$\boldsymbol{\delta}$}{δ}%
+    \or\texorpdfstring{$\boldsymbol{\lambda}$}{λ}%
+    \or\texorpdfstring{$\boldsymbol{\mu}$}{μ}%
+    \or\texorpdfstring{$\boldsymbol{\varphi}$}{φ}%
+    \or\texorpdfstring{$\boldsymbol{\theta}$}{θ}%
+    \else\@ctrerr\fi%
+}
+\newcommand*{\LUgreek}[1]{%
+    \expandafter\@LUgreek\csname c@#1\endcsname
+}
+\newcommand*{\LUchapsancheck}{%
+\expandafter\@ifundefined{@exist@LUchapter@\arabic{chapter}.\arabic{LUgreekchap}}%
+    {\setcounter{LUgreekchap}{1}}
+    {\stepcounter{LUgreekchap}}
+}
+\newcommand*{\LUgroupsancheck}{%
+\expandafter\@ifundefined{@exist@LUchapter@\arabic{chapter}}%
+    {}
+    {\endgroup}
+}
+\let\@std@chapter\chapter
+\renewcommand*{\chapter}{%
+    \LUgroupsancheck%
+    \@std@chapter
+}
+\makeatother
+
+\NewDocumentCommand{\LUchapter}{m}{%
+\LUgroupsancheck
+\begingroup
+\LUchapsancheck
+\addtocounter{chapter}{-1}
+\refstepcounter{LUchapter}
+\renewcommand*{\thechapter}{\arabic{chapter}\LUgreek{LUgreekchap}}
+\renewcommand*{\theHchapter}{LU.\arabic{LUchapter}}
+\ctexset{
+    chapter = {format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUchapter}}}},
+    section = {format={\raggedright\Large\bfseries},name={,},number={\thechapter.\arabic{section}}},
+    subsection = {format={\raggedright\large\bfseries},name={,},number={\thesection.\arabic{subsection}}},
+    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\thesubsection.\arabic{subsubsection}}},
+}
+\csname @std@chapter\endcsname{#1}
+\expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}\endcsname{\relax}
+\expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}.\arabic{LUgreekchap}\endcsname{\relax}
+}
+
 \ctexset{
     chapter = {format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
     section = {format={\raggedright\Large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}}},
     subsection = {format={\raggedright\large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}}},
     subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
 }
-\renewcommand{\thechapter}{\arabic{chapter}}
-}
-\NewDocumentCommand{\SetLUChapterNumberingStyle}{m}{%
-\setcounter{chapter}{#1}
-\refstepcounter{LUchapter}
-\ctexset{
-    chapter = {format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUchapter}}}},
-    section = {format={\raggedright\Large\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}}},
-    subsection = {format={\raggedright\large\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}.\arabic{subsection}}},
-    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\texorpdfstring{\arabic{chapter}$\boldsymbol{\varepsilon}$}{\arabic{chapter}ε}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
-}
-\renewcommand{\thechapter}{\arabic{chapter}$\boldsymbol{\varepsilon}$}
-}
-
-\ResetChapterNumberingStyle{0}
 
 \title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学讲义}
 \author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
@@ -94,19 +129,20 @@
 
 \songti
 
-{% 插入空页
-\null
+% 插入空页
 \thispagestyle{empty}
+\null
 \clearpage
+
 \thispagestyle{empty}
 \input{./其它/扉页.tex}
-}
 \clearpage
+
 \setcounter{page}{1}
 \input{./其它/序.tex}
 \input{./其它/致读者.tex}
-
 \clearpage
+
 \pdfbookmark[0]{目录}{contents}
 \tableofcontents
 
@@ -154,6 +190,13 @@
 \input{./其它/未竟专题14 线性动力系统.tex}
 \input{./专题/25 线性代数与微积分.tex}
 \input{./其它/未竟专题15 线性代数之外的代数.tex}
+
+\LUgroupsancheck
+
+\makeatletter
+\let\chapter\@std@chapter
+\let\@std@chapter\relax
+\makeatother
 
 \backmatter
 {\small

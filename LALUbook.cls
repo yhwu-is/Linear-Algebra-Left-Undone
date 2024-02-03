@@ -192,6 +192,7 @@
 
     % hyperref 与 cleveref 需要最后引入
     \RequirePackage{hyperref}
+    \RequirePackage{bookmark}
     \RequirePackage{cleveref}
 
     \hypersetup{
