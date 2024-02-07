@@ -6,11 +6,13 @@
 \begin{definition}[零化多项式] \index{duoxiangshi!linghua@零化 (annihilating polynomial)}
     我们有线性变换和矩阵的零化多项式定义如下：
     \begin{enumerate}
-        \item 设$\sigma\in \mathcal{L}(V)$，若$p\in\mathbf{F}[x]$使得$p(\sigma)=0$，则称$p$为$\sigma$的一个\term{零化多项式}；
+        \item 设$T\in \mathcal{L}(V)$，若$p\in\mathbf{F}[x]$使得$p(T)=0$，则称$p$为$T$的一个\term{零化多项式}；
 
         \item 设$A\in\mathbf{F}^{n\times n}$，若$p\in\mathbf{F}[x]$使得$p(A)=0$，则称$p$为$A$的一个零化多项式.
     \end{enumerate}
 \end{definition}
+
+一个显然的事情是，如果一个多项式是线性变换$T$的零化多项式$p$，那么它一定也是$T$在任意一组基下表示矩阵$A$的零化多项式，这是因为线性变换的多项式$p(T)=0$的矩阵表示是$p(A)=0$.
 
 \section{特征多项式 \quad Hamilton-Cayley 定理}
 
@@ -25,7 +27,7 @@
 
 根据这一定义，我们有两个直接的结论：
 \begin{enumerate}
-    \item $\sigma$的特征多项式的次数为$\dim V$，因为\autoref{thm:20:广义特征性质} \ref*{item:20:广义特征性质:2} 保证了$\displaystyle\sum_{i=1}^m d_i=\dim V$；
+    \item $\sigma$的特征多项式的次数为$\dim V$，因为\autoref{thm:17:广义特征性质} \ref*{item:17:广义特征性质:2} 保证了$\displaystyle\sum_{i=1}^m d_i=\dim V$；
 
     \item $\sigma$的特征多项式的零点恰为$\sigma$的全部特征值，这是由上述定义决定的.
 \end{enumerate}
@@ -43,6 +45,13 @@
     f(\lambda)=|\lambda I-A|=(\lambda-\lambda_1)^{r_1}\cdots(\lambda-\lambda_m)^{r_m}
 \end{equation}
 由于\autoref{eq:21:线性变换特征多项式} 和\autoref{eq:21:矩阵特征多项式} 的$k$重根都表示$k$重特征值，且$\sigma$和$A$的特征值及其重数一致，因此我们可以得到$d_i=r_i(i=1,\ldots,m)$. 注意到$d_i$是基于广义特征子空间维数定义的代数重数，$r_i$是基于矩阵特征多项式解的重数定义的代数重数，因此两个代数重数的定义也在此处统一了. 且多项式的$k$重根即为$k$重特征值，特征值的重数也就称为代数重数. 因此此后我们不再区分两种特征多项式和两种代数重数的定义.
+
+\begin{corollary}
+    \begin{enumerate}
+        \item 线性变换的特征多项式等于矩阵的特征多项式；
+        \item 相似的矩阵有相同的特征多项式.
+    \end{enumerate}
+\end{corollary}
 
 在上面的讨论中我们依据广义特征子空间的维数定义特征多项式，接下来我们希望变换思路，利用特征多项式的定义推导广义特征子空间的相关结论，从而将17讲开头提到的三角形中多项式的部分补全. 事实上，接下来要讨论的思路是一般的高等代数教材中惯用的思路，这一正一逆的思路在某种程度上也体现出两个研究体系的等价性.
 
@@ -83,6 +92,8 @@
           \end{proof}
 \end{enumerate}
 
+\section{特征多项式与标准形}
+\subsection{特征多项式唯一分解与广义特征子空间}
 接下来我们便可以利用这一定理继续我们逆向推导的过程. 我们的目标同样是找到能在直和后得到原空间的不变子空间的分解方式（即找到广义特征子空间）. 实际上，我们可以利用\autoref{thm:17:裴蜀定理} 得到以下关键结论：
 \begin{theorem} \label{thm:21:多项式分解与核空间直和}
     设$\sigma\in \mathcal{L}(V)$，且在$\mathbf{F}[x]$中有$p=p_1p_2$，且$p_1,p_2$互素，则有
@@ -102,9 +113,9 @@
 \[p(\lambda)=(\lambda-\lambda_1)^{r_1}(\lambda-\lambda_2)^{r_2}\cdots(\lambda-\lambda_m)^{r_m},\]
 其中$\lambda_1,\ldots,\lambda_m$为$\sigma$的所有互异特征值，$r_1,\ldots,r_m$为特征值的重数. 然后由于分解的因式显然是两两互素的，因此根据\autoref{thm:21:多项式分解与核空间直和2}，我们有
 \[\ker p(\sigma)=V=\ker (\sigma-\lambda_1I)^{r_1}\oplus\cdots\oplus\ker (\sigma-\lambda_mI)^{r_m},\]
-这或许就是一种巧合，我们从多项式的角度也推导出了和广义特征子空间相近的结论. 我们回顾\autoref{thm:20:广义特征性质} (2)：
+这或许就是一种巧合，我们从多项式的角度也推导出了和广义特征子空间相近的结论. 我们回顾\autoref{thm:17:广义特征性质} (2)：
 \[V=G(\lambda_1,\sigma)\oplus\cdots\oplus G(\lambda_m,\sigma),\]
-其中$G(\lambda_i,\sigma)=\ker (\sigma-\lambda_iI)^{\dim V}$，这与上式的形式是类似的，但这里将广义特征子空间定义中$(\sigma-\lambda I)$由于核空间扩张所需的幂次降低了. 除此之外，$\ker (\sigma-\lambda_iI)^{r_i}\enspace(i=1,2,\ldots,m)$也是$\sigma$的不变子空间，因此我们也能得到分块对角矩阵的标准形，并且\autoref{thm:20:广义特征性质} 的其他结论也可以基于此得到，此处不再赘述.
+其中$G(\lambda_i,\sigma)=\ker (\sigma-\lambda_iI)^{\dim V}$，这与上式的形式是类似的，但这里将广义特征子空间定义中$(\sigma-\lambda I)$由于核空间扩张所需的幂次降低了. 除此之外，$\ker (\sigma-\lambda_iI)^{r_i}\enspace(i=1,2,\ldots,m)$也是$\sigma$的不变子空间，因此我们也能得到分块对角矩阵的标准形，并且\autoref{thm:17:广义特征性质} 的其他结论也可以基于此得到，此处不再赘述.
 \begin{example}
     设$\sigma\in \mathcal{L}(V)$，$p(z)=a_nx^n+\cdots+a_1x\in\mathbf{F}[x]$是$\sigma$的一个零化多项式，其中$a_1\neq 0$，证明：
     \[V=\ker \sigma\oplus\im\sigma.\]
@@ -114,10 +125,73 @@
 
 \end{proof}
 
-下面我们希望将广义特征子空间定义中$(\sigma-\lambda I)$的幂次进一步降低到下界（即找到最低的幂次使得核空间停止增长），这需要引入极小多项式的概念.
+\subsection{初等因子分解与若当标准形}
+事实上，学习了若当标准形后，我们已不满足于基于广义特征子空间的分解. 我们知道同一个特征值可能对应多个若当块，因此每个广义特征子空间还能继续分解，分解成可以得到若当块的由循环基张成的循环子空间的直和. 我们可以根\autoref{cor:18:若当基存在}形式化地写出这一分解：设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$，设每个特征值$\lambda_i(i=1,\cdots,n)$对应的广义特征子空间$K_{\lambda_i}$可以由$s_i$组若当基$B_{i1},B_{i2},\cdots,B_{is_i}$张成，其中每一组基都可以表达为：
+\[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\cdots,v_{ij}\},\]
+事实上$r_{ij}$就是这组循环基的长度. 我们设由$B_{ij}$张成的循环子空间为$C_{ij}$，则有
+\[K_{\lambda_i}=C_{i1}\oplus C_{i2}\oplus\cdots\oplus C_{is_i}=\mathop{\oplus}\limits_{j=1}^{s_i} C_{ij},\]
+再根据\autoref{thm:17:广义特征性质}\ref{item:17:广义特征性质:2}，我们有
+\begin{equation} \label{eq:19:循环子空间分解}
+    V=\mathop{\oplus}\limits_{i=1}^n K_{\lambda_i}=\mathop{\oplus}\limits_{i=1}^n\mathop{\oplus}\limits_{j=1}^{s_i} C_{ij}.
+\end{equation}
+
+简而言之，我们将$V$分解为了一系列循环子空间的直和，每个循环子空间的循环基对应一个若当块. 进一步地，我们也希望探究这一分解与多项式之间的联系. 这时我们需要回忆起\autoref{ex:14:多项式域扩张}，帮助我们得到如下结论：
+\begin{theorem} \label{thm:19:循环子空间同构于商空间}
+    设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$. 设
+    \[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\cdots,v_{ij}\}\]
+    是$V$的一组循环基，$C_{ij}$是由$B_{ij}$张成的循环子空间. 则有
+    \[C_{ij}\cong \mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}}).\]
+\end{theorem}
+
+事实上证明这一定理是显然的，因为根据\autoref{ex:14:多项式域扩张}，我们知道$\mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$是一个$r_{ij}$维线性空间，与$C_{ij}$相同. 但为什么我们在这里选择这一特别的商空间呢？事实上，回顾\autoref{ex:14:多项式域扩张}的解答，我们发现，这一商空间的基是
+\[\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\cdots,\overline{1},\]
+其中$\overline{a}=a+(\lambda-\lambda_i)^{r_{ij}}$. 我们很容易发现这一基的形式与$B_{ij}$的形式完全是一一对应的：$(T-\lambda_iI)^kv_{ij}$对应$\overline{(\lambda-\lambda_i)^k}$，事实上，我们不难发现以下两个关系：
+\begin{gather*}
+    B_{ij}=\{p(T)v_{ij}\mid \deg p\leqslant r_{ij}-1\},\\
+    \mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})=\{\overline{p(\lambda)}\mid \deg p\leqslant r_{ij}-1\}.
+\end{gather*}
+因此我们能构造出一个非常自然的同构映射$\phi:C_{ij}\to \mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$，使得$\phi(p(T)v_{ij})=\overline{p(\lambda)},\enspace\forall \deg p\leqslant r_{ij}-1$.
+
+我们可以做进一步的观察，对于限制在$C_{ij}$上的线性映射$T|_{C_{ij}}$，我们利用同构映射将其自然地变为$\mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$上的线性映射$T'$：由于$T|_{C_{ij}}(p(T)v_{ij})=T\cdot p(T)v_{ij}$，根据同构我们有$T'(p(\lambda))=\overline{\lambda\cdot p(\lambda)}$.
+
+事实上，由于映射$T'$和$T|_{C_{ij}}$是完全由它们对应的线性空间的同构映射$\phi$对应的，因此我们很自然地能知道，$T'$在基$\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\cdots,\overline{1}$下的矩阵实际上与$T|_{C_{ij}}$在基$B_{ij}$下的矩阵是完全一致的，即是一个若当块. 如果读者不相信，我们将这一结果的计算性验证留作习题.
+
+总而言之，经过上面一系列看似繁杂的推演，我们事实上是想说明$C_{ij}$和$\mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$的同构是非常自然的，并且也将循环基中出现的$(T-\lambda_i I)^k$中的多项式$(\lambda-\lambda_i)^k$提取出来. 利用这一同构，我们可以将\autoref{eq:19:循环子空间分解}写为
+\begin{equation} \label{eq:19:初等因子分解}
+    V=\mathop{\oplus}\limits_{i=1}^n\mathop{\oplus}\limits_{j=1}^{s_i} \mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}}).
+\end{equation}
+注意，上式的等号实际上代表同构，在不引起歧义的情况下，我们可以这样简化书写. 事实上，这一分解直接引入了一个新的概念：初等因子（组）.
+\begin{definition}
+    设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$. 我们称\autoref{eq:19:初等因子分解}中出现的多项式$(\lambda-\lambda_i)^{r_{ij}}$为$T$的一个\term{初等因子}，并称$T$的全体初等因子为其\term{初等因子组}.
+\end{definition}
+
+当然，对于引入初等因子组的一个重要目的就是希望说明它是我们判断两个矩阵是否相似的全系不变量. 事实上，这一句话出现了两个疑点：
+\begin{enumerate}
+    \item 什么是全系不变量？
+    \item 我们上面定义的是线性映射的初等因子组，那么什么是矩阵的初等因子组呢？
+\end{enumerate}
+
+\begin{theorem}
+    初等因子组是矩阵相似的全系不变量，即两个矩阵相似当且仅当它们有相同的初等因子组.
+\end{theorem}
+
+对于\autoref{eq:19:初等因子分解}给出的初等因子分解，我们知道它实际上与循环子空间分解是完全等价的，于是我们很自然地会有如下三个问题：
+\begin{enumerate}
+    \item 为什么叫初等因子分解？这是因为这样的分解已经是最细的分解了吗（即不能再进一步分解使其与另一种循环子空间分解同构吗）？
+    \item 是否还有其它更粗粒度的分解与其它可能的循环子空间分解对应？即我们是否能结合一些初等因子，得到更大的循环子空间？是否有最粗粒度的分解？
+    \item 我们知道在复数域上多项式是可以完全分裂成一次多项式的乘积的，但是在其它一些域，例如实数域或者有理数域上，多项式无法完全分裂，那么将会得到二次多项式或者其它形式的初等因子，此时初等因子分解是否还有意义？
+\end{enumerate}
+% TODO: 区分两种循环子空间
+关于以上三个问题，事实上我们都可以给出肯定的回答. 第一个问题我们将马上在下面的定理中给出证明. 第二、第三个问题的回答我们留到下一讲中回答，事实上它们分别对应着第一、第二有理标准形.
+\begin{theorem}
+    最细分解
+\end{theorem}
+\begin{proof}
+
+\end{proof}
 
 \section{极小多项式及其性质}
-
+下面我们希望将广义特征子空间定义中$(\sigma-\lambda I)$的幂次进一步降低到下界（即找到最低的幂次使得核空间停止增长），这需要引入极小多项式的概念.
 \begin{definition}
     我们有如下线性变换和矩阵的极小多项式定义：
     \begin{enumerate}
@@ -173,6 +247,7 @@
           则称其为一个$r$级若当块（1级显然就是1阶矩阵），记作$J_r(a)$，其中$a$是对角线上元素. 不难得到其极小多项式等于特征多项式$(\lambda-a)^r$.
 \end{enumerate}
 
+\subsection{极小多项式的性质}
 我们利用多项式的带余除法以及 Hamilton-Cayley 定理可以得到下述简单的结论：
 \begin{theorem}
     设$\sigma\in \mathcal{L}(V)$.
@@ -212,14 +287,17 @@
 
 除此之外，我们还可以得到一个推论：
 \begin{corollary}
-    相似的矩阵有相同的极小多项式.
+    \begin{enumerate}
+        \item 线性变换的极小多项式等于矩阵的极小多项式；
+        \item 相似的矩阵有相同的极小多项式.
+    \end{enumerate}
 \end{corollary}
 
 \begin{proof}
 
 \end{proof}
 
-\section{多项式与标准形的应用}
+\subsection{极小多项式与对角化}
 
 在最后一小节我们尝试将两种描述线性变换的角度（标准形和多项式）联系起来，主要的桥梁就是上一小节中讨论的极小多项式. 在前文讨论特征多项式诱导的不变子空间分解时，我们将广义特征子空间定义中需要求核空间的线性变换幂次降低，而依据\autoref{thm:21:极小多项式与特征多项式相同根} 以及特征多项式是极小多项式的倍式可知，这一幂次还可以进一步降低：
 \begin{theorem} \label{thm:21:极小多项式与分解}
@@ -299,6 +377,41 @@
 
 我们需要补充说明一点，虽然矩阵相似不随数域改变而改变，但可对角化与数域有关. 例如实矩阵$A$的极小多项式为$\lambda^3-1$，在它在实数域上无法分解为互素一次因式的乘积，复数域上则可以，这表明$A$在实数域上不可对角化，但在复数域上可以.
 
+最后我们给出一个特征多项式等于极小多项式的充分必要条件：
+\begin{theorem}
+    设$V$是有限维线性空间，$T\in \mathcal{L}(V)$，则$T$的特征多项式等于极小多项式当且仅当$V$是循环子空间，即可以由一组循环基张成.
+\end{theorem}
+
+\subsection{若当标准形与极小多项式}
+接下来我们讨论若当标准形与极小多项式之间的关系. 实际上，我们早在\autoref{thm:21:若当形矩阵极小多项式} 中求解了若当形矩阵的极小多项式. 我们来看一个例子进行应用：
+\begin{example}
+    设$A$为$n$阶方阵且极小多项式次数为$n$，则$A$的若当标准形中各个若当块的主对角线元素互不相同.
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
+% 从此例中我们可以产生一个直觉，即极小多项式的次数等于特征多项式时每个特征值对应若当块只有一个，若极小多项式某个特征值对应的因式次数下降，那么将会使得若当块分为多个（出现多个对角线上元素相同的若当块），当次数下降到1时则均为一阶若当块（一阶矩阵）. 这样的叙述十分抽象，因为《线性代数应该这样学》并没有选择讲解如何从这一角度求解若当标准形，感兴趣的同学可以参考关于$\lambda$-矩阵的行列式因子、不变因子、初等因子三因子理论，从这一理论出发可以理解之前\hyperref[sect:22:若当标准形的另一求法]{若当标准形的另一求法}小节的结论.
+
+当然，我们仅基于直觉也可以得到一些常用的结论，如下面的例子：
+\begin{example}
+    回答以下两个问题：
+    \begin{enumerate}
+        \item 设$N\in \mathcal{L}(V)$幂零，证明：$N$的极小多项式是$z^{m+1}$，其中$m$是$N$的若当标准形中紧位于对角线上方的直线上连续出现的1的最大个数；
+
+        \item 设$p,q\in\mathbf{C}[x]$是具有相同零点的首一多项式，$q$是$p$的多项式倍，证明：存在$\sigma\in \mathcal{L}(\mathbf{C}^{\deg q})$使得$\sigma$的特征多项式为$q$且极小多项式为$p$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
@@ -319,7 +432,7 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 证明：\autoref{thm:19:循环子空间同构于商空间}之后定义的线性映射$T'$在基$\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\cdots,\overline{1}$下的矩阵实际上就是一个若当块.
 \end{enumerate}
 
 \centerline{\heiti C组}

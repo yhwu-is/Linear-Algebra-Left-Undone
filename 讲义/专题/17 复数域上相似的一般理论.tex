@@ -7,7 +7,7 @@
 \section{上三角矩阵}
 
 我们从上三角矩阵出发，首先因为之前的讨论中上三角矩阵的一些优良性质大家已经非常熟悉，并且事实上，复向量空间中的所有线性变换都可以在某组基下得到上三角矩阵的矩阵表示. 我们有如下定理：
-\begin{theorem}\label{thm:20:上三角矩阵存在}
+\begin{theorem}\label{thm:17:上三角矩阵存在}
     设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$，则
     \begin{enumerate}
         \item $\sigma$关于$V$的某组基有上三角矩阵，记为$A$；
@@ -51,7 +51,7 @@
 \end{solution}
 
 事实上，我们研究上三角矩阵（以及后续分块对角矩阵）的思路与研究对角矩阵是类似的，我们会讨论计算方法以及相关的等价条件. 下面我们给出关于对角矩阵的一些等价条件：
-\begin{theorem}\label{thm:20:上三角矩阵等价条件}
+\begin{theorem}\label{thm:17:上三角矩阵等价条件}
     设$\sigma\in \mathcal{L}(V)$，且$v_1,v_2,\ldots,v_n$是$V$的基，则以下条件等价：
     \begin{enumerate}
         \item $\sigma$关于$v_1,v_2,\ldots,v_n$的矩阵是上三角的；
@@ -74,7 +74,7 @@
 
 这一定理给出了上三角矩阵的几个充要条件，基于这些充要条件我们可以有如下进一步的理解：
 \begin{enumerate}
-    \item 我们可以给出\autoref{thm:20:上三角矩阵存在} 的另外两种证明，即《线性代数应该这样学》
+    \item 我们可以给出\autoref{thm:17:上三角矩阵存在} 的另外两种证明，即《线性代数应该这样学》
           5.27给出的两种证明. 事实上5.27的证明也使用了数学归纳法，但是之前分块矩阵的归纳是针对矩阵的阶数，这里是针对线性变换所在线性空间的维数. 我们这给出证明，以便深刻体会数学归纳法的思想：
 
           \begin{proof}
@@ -142,7 +142,7 @@
 \subsection{核空间的性质}
 
 事实上，根据可对角化的等价条件，我们知道一个线性变换不可对角化实际上是因为它没有足够多的线性无关的特征向量，也即特征子空间直和后比原空间略小. 事实上，我们知道$\sigma$在特征值$\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$. 我们回顾\autoref{thm:6:核空间性质}：
-\begin{theorem}\label{thm:20:核空间性质}
+\begin{theorem}\label{thm:17:核空间性质}
     设$\sigma\in \mathcal{L}(V)$，则有
     \begin{enumerate}
         \item $\{0\}=\ker \sigma^0\subseteq\ker \sigma^1\subseteq\cdots\subseteq\ker \sigma^k\subseteq\ker \sigma^{k+1}\subseteq\cdots$；
@@ -168,19 +168,19 @@
 \end{definition}
 
 根据线性映射矩阵表示很容易知道，幂零线性变换在任意一组基下的矩阵表示都是幂零矩阵. 我们接下来首先讨论幂零线性变换的一些基本性质：
-\begin{theorem} \label{thm:20:幂零线性变换性质}
+\begin{theorem} \label{thm:17:幂零线性变换性质}
     设线性变换$N\in \mathcal{L}(V)$是幂零的，则
     \begin{enumerate}
-        \item \label{item:20:幂零线性变换性质:1}
+        \item \label{item:17:幂零线性变换性质:1}
               $N$的所有特征值均为0（等价定义）；
 
-        \item \label{item:20:幂零线性变换性质:2}
+        \item \label{item:17:幂零线性变换性质:2}
               $N^{\dim V}$=0；
 
-        \item \label{item:20:幂零线性变换性质:3}
+        \item \label{item:17:幂零线性变换性质:3}
               $V$有一组基使得$N$关于这组基的矩阵对角线和对角线下方元素均为0（等价定义）；
 
-        \item \label{item:20:幂零线性变换性质:4}
+        \item \label{item:17:幂零线性变换性质:4}
               $N\pm I$可逆.
     \end{enumerate}
 \end{theorem}
@@ -197,7 +197,7 @@
     \end{enumerate}
 \end{proof}
 
-事实上 \ref*{item:20:幂零线性变换性质:1},\ref*{item:20:幂零线性变换性质:2},\ref*{item:20:幂零线性变换性质:4} 都有相应的矩阵的结论，我们将线性变换替换为它的矩阵表示即可，此处不再赘述. 而第三点则解释了我们在求矩阵的幂时将一些矩阵分解为一个矩阵加一个对角线上全为0的矩阵的合理性，因为后者一定是幂零的. 接下来我们通过几个例子进一步讨论、运用幂零矩阵、幂零线性变换的性质：
+事实上 \ref*{item:17:幂零线性变换性质:1},\ref*{item:17:幂零线性变换性质:2},\ref*{item:17:幂零线性变换性质:4} 都有相应的矩阵的结论，我们将线性变换替换为它的矩阵表示即可，此处不再赘述. 而第三点则解释了我们在求矩阵的幂时将一些矩阵分解为一个矩阵加一个对角线上全为0的矩阵的合理性，因为后者一定是幂零的. 接下来我们通过几个例子进一步讨论、运用幂零矩阵、幂零线性变换的性质：
 \begin{example}
     证明：$A$为幂零矩阵$\iff \forall k \in \mathbf{N}_+,\enspace\tr(A^k)=0$.
 \end{example}
@@ -233,15 +233,15 @@
 \end{definition}
 注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，$(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
 
-实际上，根据\autoref{thm:20:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$. 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为广义特征子空间的维数，几何重数定义为特征子空间的维数. 实际上在不变子空间一讲中我们有类似的定义，我们将在下一讲中讲解它们的关联.
+实际上，根据\autoref{thm:17:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$. 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为广义特征子空间的维数，几何重数定义为特征子空间的维数. 实际上在不变子空间一讲中我们有类似的定义，我们将在下一讲中讲解它们的关联.
 
 我们接下来的目标转向我们的主线，即证明任意线性变换的广义特征子空间的和为直和且和为原空间. 下面这一定理读者可以回顾特征值、特征向量的性质以及可对角化的等价条件，我们会发现这些定理具有很大的相似性，因此记忆难度并不大：
-\begin{theorem} \label{thm:20:广义特征性质}
+\begin{theorem} \label{thm:17:广义特征性质}
     设$V$是有限维的，$\sigma\in \mathcal{L}(V)$. 用$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值.
     \begin{enumerate}[label=(\arabic*)]
         \item $\sigma$对应于不同特征值的广义特征向量线性无关；
 
-        \item \label{item:20:广义特征性质:2}
+        \item \label{item:17:广义特征性质:2}
               $\sigma$不同特征值对应的广义特征子空间的和为直和，且$V=G(\lambda_1,\sigma)\oplus\cdots\oplus
                   G(\lambda_m,\sigma)$；
 
@@ -249,7 +249,7 @@
 
         \item 每个$G(\lambda_i,\sigma)$在$\sigma$下都是不变的；
 
-        \item \label{item:20:广义特征性质:5}
+        \item \label{item:17:广义特征性质:5}
               每个$(\sigma-\lambda_j I)\vert_{G(\lambda_j,\sigma)}$都是幂零的.
     \end{enumerate}
 \end{theorem}
@@ -269,7 +269,7 @@
 \end{proof}
 
 上述定理更重要的结果在于它我们可以得到任何复向量空间上的线性变换都有如下的分块对角矩阵的标准形：
-\begin{theorem}
+\begin{theorem} \label{thm:17:分块对角矩阵}
     设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$. 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的所有互不相同的特征值，重数分别为$d_1,\ldots,d_m$，则$V$有一组基使得$\sigma$关于这组基的有分块对角矩阵
     \[\begin{pmatrix}
             A_1 &  & O \\  & \ddots &  \\ O &  & A_m

@@ -1,0 +1,64 @@
+\chapter{有理标准形}
+
+% 相抵、相似、相合的全系不变量
+最后我们再来总结一个题型. 一些题目可能需要判断矩阵是否相似，实际上我们有如下基本方法：
+\begin{enumerate}
+    \item 定义法：找到$P$使得$P^{-1}AP=B$即可，这一般是$A,B$没给出具体矩阵的做法，例如上面的性质证明；
+
+    \item 我们也可以先计算两者特征多项式是否相等（即特征值是否一致），若不一致则一定不相似，得到结论，若一致且均为实对称矩阵则相似，否则不一定相似（因为这是相似的必要条件）. 对于这种特征值一致的情况，我们进行对角化，情况如下：
+          \begin{enumerate}
+              \item 若两矩阵均可对角化，则两矩阵相似：因为特征多项式相等则特征值相等，均可对角化那么对角矩阵也完全一致，因此二者与同一个对角矩阵相似，根据相似这一等价关系的传递性可知两矩阵相似；
+
+              \item 若一个矩阵可对角化，另一个矩阵不可对角化，则一定不相似；
+
+              \item 若两个矩阵都不可对角化，不一定相似. 需要两矩阵各个特征值的几何重数（即各个特征子空间维数）都一致才相似，否则不相似. 这是因为只有几何重数一致才有相同的若当标准形.
+          \end{enumerate}
+\end{enumerate}
+
+\begin{example}
+    设$A,B\in \mathbf{M}_n(\mathbf{F})$，证明：若$A$可逆，则$AB\sim BA$.
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{example}
+    设$A=\begin{pmatrix}
+            0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0
+        \end{pmatrix},B=\begin{pmatrix}
+            -1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 2
+        \end{pmatrix}$，判断$A$与$B$是否相似.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+\vspace{2ex}
+\centerline{\heiti \Large 内容总结}
+
+\vspace{2ex}
+\centerline{\heiti \Large 习题}
+
+\vspace{2ex}
+{\kaishu }
+\begin{flushright}
+    \kaishu
+
+\end{flushright}
+
+\centerline{\heiti A组}
+\begin{enumerate}
+    \item
+\end{enumerate}
+
+\centerline{\heiti B组}
+\begin{enumerate}
+    \item
+\end{enumerate}
+
+\centerline{\heiti C组}
+\begin{enumerate}
+    \item
+\end{enumerate}
