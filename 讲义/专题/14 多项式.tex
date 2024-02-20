@@ -12,181 +12,635 @@
     \end{tikzpicture}
 \end{figure}
 
-线性变换和矩阵的基本性质我们在之前的章节已经详细展开，因此我们的准备工作只剩下对多项式的概念和性质作简要介绍了. 需要注意的是，如果你的教材是《大学数学：代数与几何》，可以略过本讲，不影响你将要学习的部分，因此本讲中提到的教材都是指《线性代数应该这样学》. 除此之外还要声明的是，本讲中对多项式的讨论较浅，仅仅是为了后面的内容铺垫（比《线性代数应该这样学》略深入），如果你有更深入的兴趣，可以参考一般的高等代数教材.
+线性变换和矩阵的基本性质我们在之前的章节已经详细展开，因此我们的准备工作只剩下对多项式的概念和性质作简要介绍了. 需要注意的是，本讲中对多项式的讨论仅限于一元多项式，多元多项式、对称多项式相关的内容我们会放在未竟专题中.\footnote{如果你的教材是《大学数学：代数与几何》，可以略过本讲，不影响你将要学习的部分，因此本讲中提到的教材都是指《线性代数应该这样学》. 此外，本章内容已经超出《线性代数应该这样学》较多，如果只针对考试可以略过多出的部分.}
 
 \section{多项式的定义}
 
-我们首先介绍多项式的定义：
-\begin{definition}[多项式] \index{duoxiangshi@多项式 (polynomial)}
-    对于函数 $p:\mathbf{F}\to\mathbf{F}$，若存在$a_0,\ldots,a_m\in\mathbf{F}$使得对任意$z\in\mathbf{F}$有
-    \begin{equation}\label{eq:17:多项式定义}
-        p(z)=a_0+a_1z+\cdots+a_mz^m,
+实际上，我们在本书开头关于线性空间的讨论中就已经提到了域$F$上全体多项式的集合$F[x]$构成一个线性空间，但那里我们并未给出多项式的严格定义. 事实上，在中学或者数学分析（微积分）中，我们通常将多项式理解为一个函数：
+\begin{definition}[数域上的多项式函数] \index{duoxiangshi@多项式 (polynomial)} \label{def:14:多项式函数}
+    设$\mathbf{F}$是数域，对于函数 $p:\mathbf{F}\to\mathbf{F}$，若存在$a_0,\ldots,a_m\in\mathbf{F}$使得对任意$x\in\mathbf{F}$有
+    \begin{equation}
+        p(x)=a_0+a_1x+\cdots+a_mx^m,
     \end{equation}
-    则称函数$p$为系数在$\mathbf{F}$中的\term{多项式}.
+    则称函数$p$为系数在$\mathbf{F}$中的\term{多项式}，其中$a_ix^i$称为第$i$次项，使得$a_k\neq 0$成立的最大整数称为多项式的\term{次数}\index{duoxiangshi!cishu@次数}，记为$\deg p=k$.
 \end{definition}
 
-对于一个定义，我们很关心它是否能带来一些简便，系数的唯一性便是一个很好的使得研究简便的性质，否则一个多项式能有多种写法是会给人带来很多迷惑的. 事实上，我们有如下定理：
+事实上，这一定义在$\mathbf{F}$是数域这一条件下是没有问题的，因为这一定义能保证多项式系数的唯一性，即两个多项式在$\mathbf{F}$上每个点取值都相等时，它们的次数和对应次数项的系数均相等，不会引起不必要的歧义：
 \begin{theorem}
-    设$a_0,\ldots,a_m\in\mathbf{F}$，若对任意$z\in\mathbf{F}$有$a_0+a_1z+\cdots+a_mz^m=0$，则$a_0=\cdots=a_m=0$.
+    设$\mathbf{F}$是数域，$a_0,\ldots,a_m\in\mathbf{F}$，若对任意$x\in\mathbf{F}$有$p(x)=a_0+a_1x+\cdots+a_mx^m=0$，则$a_0=\cdots=a_m=0$.
 \end{theorem}
-
 \begin{proof}
-
+    我们可以考虑逆否命题，即若并非所有系数都等于$0$，则存在$x_0\in\mathbf{F}$使得$p(x_0)\neq 0$. 此时我们设系数不等于$0$的最高次数为$k$，即$p(x)=a_0+a_1x+\cdots+a_kx^k(a_k\neq 0)$，我们取
+    \[x_0=\dfrac{|a_0|+|a_1|+\cdots+|a_{k-1}|}{|a_k|}+1.\]
+    显然$x_0\geqslant 1$，故对于$i=0,1,\ldots,k-1$均有$x_0^i\leqslant x_0^{k-1}$，再结合复数的三角不等式有
+    \[|a_0+a_1x_0+\cdots+a_{k-1}x_0^{k-1}|\leqslant(|a_0|+|a_1|+\cdots+|a_{k-1}|)x_0^{k-1}<|a_kx_0^k|,\]
+    于是$a_0+a_1x_0+\cdots+a_{k-1}x_0^{k-1}\neq -a_kx_0^k$，即存在$x_0\in\mathbf{F}$使得$p(x_0)\neq 0$.
 \end{proof}
+基于此我们可以得到多项式的系数必然唯一，否则两相等多项式之差为$0$却可以有非零系数. 事实上我们也可以用其他方式理解这一结论，回顾数学分析中学习的幂级数，我们知道任何一个函数都可以写成泰勒级数的形式，并且泰勒级数是内闭绝对一致收敛于原函数的，并且泰勒展开式是唯一的，因此一个多项式函数的泰勒展开也是唯一的，即上面的系数唯一.
 
-基于此我们可以得到多项式的系数必然唯一，否则两相等多项式之差为0却可以有非零系数. 事实上我们也可以用其他方式理解这一结论：
-\begin{enumerate}
-    \item 将$1,x,x^2,\ldots$视为多项式构成的线性空间的一组基，那么上面的系数实际上就是一个多项式空间中一个元素在这组基下的坐标，而我们知道坐标是唯一的；
+在代数学中，我们应当考虑更一般的域，然而在一般的域上，上面的定理并不成立，因此基于函数的定义是不够严谨的. 一个简单的例子，我们考虑两个有限域$\mathbf{Z}_2$上的按上述定义的多项式函数$p(x)=x^2+1$和$q(x)=x+1$，我们可以验证：
+\begin{gather*}
+    p(0)=0^2+1=0+1=q(0),\\
+    p(1)=1^2+1=1+1=q(1),
+\end{gather*}
+即$p(x)$和$q(x)$在自变量$x$的任何可能取值上都有相同的函数值，但这并不意味着$p$和$q$是同一个多项式——我们希望的多项式相等是指次数和对应次数项的系数都相等. 因此，针对更一般的域，我们需要给出如下更严谨的定义：
+\begin{definition}[一般域上的一元多项式]
+    设$\mathbf{F}$是域，我们称$\mathbf{F}$上的一元多项式$p(x)$是一个形如下式的表达式，即
+    \begin{equation} \label{eq:17:多项式定义}
+        p(x)=a_0+a_1x+\cdots+a_mx^m,
+    \end{equation}
+    其中$a_0,\ldots,a_m\in\mathbf{F}$，$m\in\mathbf{N}$，$x\notin \mathbf{F}$是一个符号，我们称为不定元. 称$a_0,\ldots,a_m$为多项式$p(x)$的\term{系数}\index{duoxiangshi!xishu@系数}，更特殊的，称$a_0$为多项式的\term{常数项}\index{duoxiangshi!changshuxiang@常数项 (constant term)}，$a_ix^i$称为第$i$次项.
 
-    \item 回顾数学分析中学习的幂级数，我们知道任何一个函数都可以写成泰勒级数的形式，并且泰勒级数是内闭绝对一致收敛于原函数的，并且泰勒展开式是唯一的，因此一个多项式函数的泰勒展开也是唯一的，即上面的系数唯一.
-\end{enumerate}
+    对于非零多项式（即$p(x)\neq 0$），我们称使得$a_k\neq 0$成立的最大整数称为多项式的\term{次数}\index{duoxiangshi!cishu@次数}，记为$\deg p=k$. 对于零多项式，其次数定义为$-\infty$. 称$a_k$为多项式的\term{首项系数}\index{duoxiangshi!shouxiangxishu@首项系数 (leading coefficient)}，若$a_k=1$，即多项式首项系数为1，则称这一多项式为\term{首一多项式}\index{duoxiangshi!shouyi@首一 (monic polynomial)}.
+\end{definition}
 
-回顾第一讲中我们提到的代数结构——环的概念，我们不难验证数域$\mathbf{F}$上的全体多项式组成的集合$\mathbf{F}[x]$关于一般的多项式加法和乘法构成一个环，这个环称为数域$\mathbf{F}$上的（一元）多项式环. 具体的验证我们留作习题供读者练习.
+在以上定义中，$x$不再是一个自变量，而仅仅是一个符号，于是多项式也只是一个形式表达式，不再具有函数的意义，因此我们从定义上绕开了一般域上使用函数作为多项式定义出现的问题. 此时我们应当直接对这一形式表达式做规定：如上形式定义的两个多项式相等当且仅当它们的次数和对应次数项的系数都相等.
 
-除此之外，如果多项式$p$可以写成\autoref{eq:17:多项式定义} 的形式且$a_m\neq 0$，则称$p$是$m$次多项式，记为$\deg p=m$，称$a_m$为$p$的\term{首项系数}\index{duoxiangshi!shouxiangxishu@首项系数 (leading coefficient)}，称$a_0$为$p$的\term{常数项}\index{duoxiangshi!changshuxiang@常数项 (constant term)}. 若$a_m=1$，则多项式首项系数为1，则称这一多项式为\term{首一多项式}\index{duoxiangshi!shouyi@首一 (monic polynomial)}. 关于次数我们有如下非常基本的公式，我们将不加证明地直接给出结论：
-\begin{theorem}
-    设$p,q\in\mathbf{F}[x]$，则
+事实上如上定义的多项式还有一个好处，即我们这里不再将$x$视为取值于$\mathbf{F}$的变量，而只是一个符号，它不仅可以被$\mathbf{F}$中的数代入，也可以由矩阵、映射等代入. 定义中所说$x\in\mathbf{F}$含义为$x$这一符号不在$\mathbf{F}$中，因为如果在$\mathbf{F}$中则多项式直接会化简为一个数，但当我们需要取值的时候$x$是可以由$\mathbf{F}$中的数代入的. 还有一点需要说明的是，本讲以及后续正式内容一般都只涉及一元多项式，因此在不引起歧义的情况下，我们简称一元多项式为多项式. 对一元多项式$p(x)$，有时候我们也简写为$p$（特别是在涉及次数的地方）.
+
+现在多项式的定义不再基于函数，因此多项式的加法和乘法也不能基于原先一般的多项式函数加法和乘法，我们需要重新定义这种形式表达式的加法和乘法，当然是建立在以往的定义之上的合理定义. 我们设
+\begin{gather*}
+    p(x)=a_0+a_1x+\cdots+a_mx^m,\\
+    q(x)=b_0+b_1x+\cdots+b_nx^n,
+\end{gather*}
+我们定义多项式的加法和乘法如下：
+\begin{definition}[多项式的加法、数乘和乘法]
+    设$p(x)=a_0+a_1x+\cdots+a_mx^m$，$q(x)=b_0+b_1x+\cdots+b_nx^n$，q则
+    \begin{enumerate}
+        \item 不妨设$m\leqslant n$，则多项式的加法定义为
+                \[p(x)+q(x)=(a_0+b_0)+(a_1+b_1)x+\cdots+(a_m+b_m)x^m+b_{m+1}x^{m+1}\cdots+b_nx^n,\]
+        \item 多项式的数乘定义为
+              \[k\cdot p(x)=ka_0+ka_1x+\cdots+ka_mx^m,\]
+              其中$k\in\mathbf{F}$；
+        \item 多项式的乘法定义为
+        \begin{align*}
+            p(x)q(x)&=\sum_{k=0}^{m+n}\left(\sum_{i+j=k}a_ib_j\right)x^k\\
+                    &=a_0b_0+(a_0b_1+a_1b_0)x+\cdots+\left(\sum_{i+j=k}a_ib_j\right)x^k+\cdots+a_mb_nx^{m+n}.
+        \end{align*}
+    \end{enumerate}
+\end{definition}
+事实上这些定义是与一般多项式函数的运算统一的. 回顾第一讲中我们提到的代数结构——环的概念，我们不难验证数域$\mathbf{F}$上的全体多项式组成的集合$\mathbf{F}[x]$关于一般的多项式加法和乘法构成一个环（因此多项式加法、乘法满足结合律、交换律，且有分配律等），这个环称为数域$\mathbf{F}$上的一元多项式环. 具体的验证我们留作习题供读者练习. 同样的，我们也可以验证如上定义的$\mathbf{F}[x]$仍然构成域$\mathbf{F}$上的线性空间，即数乘的相关性质也是满足的.
+
+引入多项式的运算后我们可以讨论多项式次数与运算之间的关系. 我们有如下非常基本的公式，我们将不加证明地直接给出结论，因为的确非常显然：
+\begin{theorem} \label{thm:14:多项式次数与运算}
+    设$p(x),q(x)\in\mathbf{F}[x]$，则
     \begin{enumerate}
         \item $\deg(p+q)\leqslant \max\{\deg p,\deg q\}$；
-
+        \item $\deg(kp)=\deg p$，其中$k\in\mathbf{F}$且$k\neq 0$；
         \item $\deg(pq)=\deg p+\deg q$.
     \end{enumerate}
 \end{theorem}
 
-\section{零点与因式}
+在完成了多项式及其基本运算的定义后，我们将对多项式的结构的进行深入研究，关于多项式结构的核心定理是多项式的唯一分解定理，这也是我们本讲的一大目标，除此之外我们也会重点讨论在多项式实数域和复数域上特定的分解情况. 实际上，这些结论构成了之后讨论的基础. 为了达到这一目标，我们需要首先讨论多项式的整除关系与带余除法等基本概念.
 
-接下来我们研究多项式的零点与因式，从而可以引出多项式的分解. 事实上多项式的分解在之后的讨论中是非常关键的.
+\section{整除与互素}
+我们首先定义多项式整除的概念：
 \begin{definition}
-    我们称$s\in\mathbf{F}[x]$为多项式$p\in\mathbf{F}[x]$的因式，如果存在多项式$q\in\mathbf{F}[x]$使得$p=sq$.
+    设$p(x),q(x)\in\mathbf{F}[x]$，若存在多项式$s(x)\in\mathbf{F}[x]$使得$p(x)=s(x)q(x)$，则称$q(x)$是$p(x)$的因式，或$q(x)$整除$p(x)$，或$p(x)$能被$q(x)$整除，记为$q(x)\mid p(x)$，否则称$q(x)$不能整除$p(x)$，记为$q(x)\nmid p(x)$.
 \end{definition}
 
-事实上，很多时候一个多项式并不能整除另一个多项式，因此我们需要引入多项式的带余除法：
+由定义可以知道，零多项式可以被任意多项式整除，即任意多项式都可以是零多项式的因式，但零多项式不能作为任一非零多项式的因式.
+
+除此之外，我们发现，多项式的整除和整数的整除是基本一致的，事实上此后的很多概念（如带余除法、最大公因式、互素、唯一分解等）二者都有很大的相似性，我们将在后文中进一步讨论这一现象，现在我们的理解可以是：二者实际上都在加法和乘法下构成环，因此肯定有相似的性质. 但仅仅都是环还不能构成这么多的巧合，在证明了唯一分解定理后我们会更进一步讨论. 下面我们回到正题，我们可以验证多项式的整除关系具有如下性质：
 \begin{theorem}
-    设$p,s\in\mathbf{F}[x]$且$s\neq 0$，则存在唯一的多项式$q,r\in\mathbf{F}[x]$，使得$p=sq+r$，且$\deg r<\deg s$.
-\end{theorem}
-
-这一定理即教材4.8，证明可以参考教材. 这一定理的结论是非常重要的，事实上我们解决很多问题都是基于这一定理，例如
-\begin{example}
-    设$g(x)=ax+b,\enspace a,b\in\mathbf{F},\enspace a\neq 0,\enspace
-        f(x)\in \mathbf{F}[x]$，证明：$g(x)$是$f^2(x)$的因式的充要条件是$g(x)$是$f(x)$的因式.
-\end{example}
-
-\begin{proof}
-
-\end{proof}
-
-\begin{example}
-    设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$. 求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
-\end{example}
-
-\begin{solution}
-
-\end{solution}
-
-这一定理实际上是整数的带余除法的延伸. 事实上我们可以验证全体整数关于加法和乘法也构成环，因此多项式和整数的结构具有一定的类似性. 实际上我们会发现之后很多关于多项式的概念和定理都与数论中的结果非常类似.
-
-基于因式和带余除法的定义我们可以研究多项式零点和因式的性质，实际上与我们初中学习的因式分解是类似的：
-\begin{theorem}
-    设$p\in\mathbf{F}[x]$.
+    设$p(x),q(x),s(x)\in\mathbf{F}[x]$，$0\neq k\in\mathbf{F}$则有
     \begin{enumerate}
-        \item 若$\lambda\in\mathbf{F}$，则$p(\lambda)=0$当且仅当存在多项式$q\in\mathbf{F}[x]$使得对每个$z\in\mathbf{F}$均有$p(z)=(z-\lambda)q(z)$；
-
-        \item 若$p$是$m\enspace(m \geqslant 0)$次多项式，则$p$在$\mathbf{F}$上最多有$m$个互不相等的零点.
+        \item $p(x)\mid p(x)$；
+        \item 若$p(x)\mid q(x)$且$q(x)\mid s(x)$，则$p(x)\mid s(x)$；
+        \item 若$p(x)\mid q(x)$，则$kp(x)\mid q(x)$，因此非零常数多项式$k$是任一多项式的因式；
+        \item 若$p(x)\mid q(x)$且$p(x)\mid s(x)$，则对任意多项式$u(x),v(x)\in\mathbf{F}[x]$有$p(x)\mid u(x)q(x)+v(x)s(x)$.
     \end{enumerate}
 \end{theorem}
-两者的证明都非常基本，但我们考虑到读者应当进一步熟悉带余除法的应用，因此再次给出证明：
-
 \begin{proof}
-
+    \begin{enumerate}
+        \item 由定义，$p(x)=p(x)s(x)$，取$s(x)=1$即可；
+        \item 由定义，$q(x)=p(x)s_1(x)$，$s(x)=q(x)s_2(x)$，则$s(x)=p(x)s_1(x)s_2(x)$，符合整除定义；
+        \item 由定义，$q(x)=p(x)s(x)$，则$q(x)=kp(x)(s(x)/k)$，符合整除定义；
+        \item 由定义，$q(x)=p(x)s_1(x)$，$s(x)=p(x)s_2(x)$，则
+        \[u(x)q(x)+v(x)s(x)=p(x)(u(x)s_1(x)+v(x)s_2(x)),\]
+        符合整除定义.
+    \end{enumerate}
 \end{proof}
 
-事实上，我们希望上述定理的第二点的``最多''能够在复数域的情况下取到，这需要接下来这一基本而伟大的定理——代数学基本定理作为支撑：
-\begin{theorem}[代数学基本定理] \label{thm:17:代数学基本定理} \index{daishuxuejibendingli@代数学基本定理 (Fundamental Theorem of Algebra)}
+下面这一定理将帮助我们引入相伴多项式的概念：
+\begin{theorem}
+    设非零多项式$p(x),q(x)\in\mathbf{F}[x]$，且满足$p(x)\mid q(x)$和$q(x)\mid p(x)$，则存在非零常数$k\in\mathbf{F}$使得$p(x)=kq(x)$.
+\end{theorem}
+\begin{proof}
+    根据定义设$p(x)=s(x)q(x)$，$q(x)=t(x)p(x)$，则$p(x)=p(x)s(x)t(x)$. 故$\deg p=\deg p+\deg st$，故$\deg st=\deg s+\deg t=0$. 又由于$p,q$为非零多项式，故$s(x),t(x)$不能为$0$，故次数只能均为$0$，即为非零常数多项式，因此$p(x)$和$q(x)$只相差一个非零常数.
+\end{proof}
+
+事实上，如果两个多项式只差非零常数倍则显然可以互相整除，因此上面的定理实际上是充要条件. 基于这一定理我们给出如下定义：
+\begin{definition}
+    设非零多项式$p(x),q(x)\in\mathbf{F}[x]$，若$p(x)\mid q(x)$且$q(x)\mid p(x)$，即它们可以互相整除，则称$p(x)$与$q(x)$\term{相伴}\index{xiangban@相伴}，记为$p(x)\sim q(x)$.
+\end{definition}
+
+根据上面的定理我们也可以知道，两个多项式相伴当且仅当它们相差一个非零常数倍. 或许读到这里有的同学会产生一些疑惑，因为整除的定义和整数可以产生关联，但整数中我们并没有听说过相伴这一概念. 事实上，我们可以尝试进行概念的迁移：如果两个整数可以互相整除那么称它们相伴. 但你会发现可以互相整除的两个整数实际上要么就是同一个数要么是相反数，它们之间差常数$\pm 1$倍. 回想$\pm 1$在整数中的地位：它们是仅有的两个可以找到乘法逆元的整数！再回想非零常数多项式$k$在$\mathbf{F}[x]$中的地位：它们也是仅有的可以找到乘法逆元的多项式（零多项式和次数大于等于$1$的根据\autoref{thm:14:多项式次数与运算}（3）可以快速验证它们不可能有逆元）！由此，整数的相伴和多项式的相伴，甚至所有一般的环的相伴定义可以统一起来：环中两个相差可逆元作为倍数的元素就是相伴的. 这里我们利用整数和多项式都构成环结构解释了相伴定义的关联，这也是我们在前文中提到的整数和多项式的相似性的一个体现.
+
+事实上，很多时候一个多项式并不能整除另一个多项式，因此我们需要引入多项式的带余除法，这与整数的带余除法也是类似的：
+\begin{theorem} \label{thm:14:带余除法}
+    设$p(x),s(x)\in\mathbf{F}[x]$且$s(x)\neq 0$，则存在唯一的多项式$q(x),r(x)\in\mathbf{F}[x]$，使得$p(x)=s(x)q(x)+r(x)$，且$\deg r<\deg s$.
+\end{theorem}
+\begin{proof}
+    设$\deg p=n,\deg s=m$. 若$n<m$，则取$q=0,r=p$即可. 若$n\geqslant m$，我们有如下向量组：
+    \[1,x,\cdots,x^{m-1},s(x),xs(x),\cdots,x^{n-m}s(x),\]
+    它们在$\mathbf{F}_{n+1}[x]$中是线性无关的，这一点很容易验证，因为每个多项式次数都不同. 并且向量组的长度为$n+1=\dim\mathbf{F}_{n+1}[x]$，因此构成$\mathbf{F}_{n+1}[x]$的一组基. 因此有$p(x)$在这一组基下的坐标表示，即存在唯一的$a_0,a_1,\cdots,a_{m-1},b_0,b_1,\cdots,b_{n-m}\in\mathbf{F}$使得
+    \begin{align*}
+        p(x)&=a_0+a_1x+\cdots+a_{m-1}x^{m-1}+b_0s(x)+b_1xs(x)+\cdots+b_{n-m}x^{n-m}s(x)\\
+            &=[a_0+a_1x+\cdots+a_{m-1}x^{m-1}]+[s(x)(b_0+b_1x+\cdots+b_{n-m}x^{n-m})].
+    \end{align*}
+    取$q(x)=b_0+b_1x+\cdots+b_{n-m}x^{n-m}$，$r(x)=a_0+a_1x+\cdots+a_{m-1}x^{m-1}$即可满足定理要求. 唯一性直接根据$a_0,a_1,\cdots,a_{m-1},b_0,b_1,\cdots,b_{n-m}$的唯一性就可以得到.
+\end{proof}
+
+上述证明利用了线性空间的性质，事实上我们还有基于线性映射的证明思路，也有完全代数的证明角度，我们放在习题中供读者练习. 根据带余除法，我们知道的非零多项式$s(x)$整除$p(x)$当且仅当$s(x)$除$p(x)$后余数为$0$. 事实上这一定理的结论是非常重要的，我们解决很多问题都是基于这一定理，例如：
+\begin{example}
+    设$g(x)=ax+b,\enspace a,b\in\mathbf{F},\enspace a\neq 0,\enspace
+    f(x)\in \mathbf{F}[x]$，证明：$g(x)$是$f^2(x)$的因式的充要条件是$g(x)$是$f(x)$的因式.
+\end{example}
+\begin{proof}
+    \begin{enumerate}
+        \item  充分性：若$g(x)$是$f(x)$的因式，根据定义存在$q(x)\in\mathbf{F}[x]$使得$f(x)=g(x)q(x)$，则$f^2(x)=g(x)q(x)f(x)$，故$g(x)$是$f^2(x)$的因式.
+        \item 必要性：使用反证法，若$g(x)$不是$f(x)$的因式，则根据带余除法可知存在唯一的$q(x),r(x)(r(x)\neq 0)\in\mathbf{F}[x]$使得$f(x)=g(x)q(x)+r(x)$，且$\deg r<\deg g=1$，故$\deg r=0$，即$r(x)$是一个常数多项式，记为$c$，则$f^2(x)=g^2(x)q^2(x)+2cg(x)q(x)r(x)+c^2$，故$g(x)$不可能是$f^2(x)$的因式，与假设矛盾. 故$g(x)$是$f(x)$的因式.
+    \end{enumerate}
+\end{proof}
+
+关于带余除法的具体计算方法我们此处不具体展开，因为与我们在小学中学习的整数竖式除法是基本一致的. 接下来我们利用已经定义的整除、因式、带余除法等概念进一步引进公因式、公倍式、最大公因式和最小公倍式等概念：
+\begin{definition}
+    设$p(x),q(x),d(x)\in\mathbf{F}[x]$，若$d(x) \mid p(x)$且$d(x) \mid q(x)$，则称$d(x)$是$p(x)$和$q(x)$的一个公因式. 若$p(x)$和$q(x)$的公因式$d(x)$满足对$p(x)$和$q(x)$的任一公因式$d'(x)$都有$d'(x) \mid d(x)$，则称$d(x)$是$p(x)$和$q(x)$的一个\term{最大公因式（greatest common divisor, 简称gcd）}，通常记为$(p(x),q(x))=d(x)$.
+
+    类似地，若$p(x) \mid l(x)$且$q(x) \mid l(x)$，则称$l(x)$是$p(x)$和$q(x)$的一个公倍式. 若$p(x)$和$q(x)$的公倍式$l(x)$满足对$p(x)$和$q(x)$的任一公倍式$l'(x)$都有$l(x) \mid l'(x)$，则称$l(x)$是$p(x)$和$q(x)$的一个\term{最小公倍式（least common multiple, 简称lcm）}，通常记为$[p(x),q(x)]=l(x)$.
+\end{definition}
+故我们可以看出，当$p$和$q$不为0时，最大公因式即为次数最大的公因式. 相应的，最小公倍式即为次数最小的公倍式. 下面的问题是，我们如何求解最大公因式和最小公倍式呢？事实上类似于整数中的辗转相除法（或称欧几里得算法），对于多项式我们有如下结论：
+\begin{theorem} \label{thm:14:欧几里得算法}
+    设$p(x),q(x)\in\mathbf{F}[x]$，则它们的最大公因式$d(x)$必存在，且存在$u(x),v(x)\in\mathbf{F}[x]$使得
+    \begin{equation} \label{eq:14:欧几里得算法}
+        d(x)=u(x)p(x)+v(x)q(x).
+    \end{equation}
+\end{theorem}
+证明与欧几里得算法的构造是类似的，读者可以通过这一证明回顾初等数论的知识：
+\begin{proof}
+    若$p(x)=0$，显然有$d(x)=q(x)$，此时取$u(x)=0,v(x)=1$即可. 若$q(x)=0$，显然有$d(x)=p(x)$，此时取$u(x)=1,v(x)=0$即可. 若$p(x),q(x)$均不为零，我们可以利用带余除法得到如下等式：
+    \begin{gather*}
+        p(x)=q(x)s_1(x)+r_1(x),\\
+        q(x)=r_1(x)s_2(x)+r_2(x),\\
+        r_1(x)=r_2(x)s_3(x)+r_3(x),\\
+        \cdots\\
+        r_{n-2}(x)=r_{n-1}(x)s_n(x)+r_n(x),\\
+        \cdots
+    \end{gather*}
+    即我们把每一次的除式作为下一次运算的被除式，余式作为下一次运算的除式. 由于余式的次数是严格递减的，因此经过有限步后必有一个等式的余式为$0$. 不妨设$r_{n+1}(x)=0$，则有
+    \[r_{n-1}(x)=r_n(x)s_{n+1}(x).\]
+    现在我们要证明$r_n(x)$就是$p(x)$和$q(x)$的最大公因式. 由上式知$r_n(x)\mid r_{n-1}(x)$，继续由$r_{n-2}(x)=r_{n-1}(x)s_n(x)+r_n(x)$可知$r_n(x)\mid r_{n-2}(x)$，不断回推可知$r_n(x)\mid q(x)$且$r_n(x)\mid p(x)$，即$r_n(x)$是$p(x)$和$q(x)$的一个公因式. 又设$r'(x)$也是$p(x)$和$q(x)$的一个公因式，由$p(x)=q(x)s_1(x)+r_1(x)$可知$r'(x)\mid p(x)$，由$q(x)=r_1(x)s_2(x)+r_2(x)$可知$r'(x)\mid q(x)$，因此$r'(x)\mid r_1(x)$，同理$r'(x)\mid r_2(x)$，不断下推可知$r'(x)\mid r_n(x)$，因此$r_n(x)$是$p(x)$和$q(x)$的最大公因式，因此最大公因式一定存在，并且我们也找到了算法进行求解.
+
+    进一步证明\autoref{eq:14:欧几里得算法}成立，我们可以利用$r_{n-2}(x)=r_{n-1}(x)s_n(x)+r_n(x)$，得到
+    \[r_n(x)=r_{n-2}(x)-r_{n-1}(x)s_n(x),\]
+    进一步根据$r_{n-3}(x)=r_{n-2}(x)s_{n-1}(x)+r_{n-1}(x)$解出$r_{n-1}(x)$，代入上式得到
+    \[r_n(x)=r_{n-2}(x)(1+s_{n-1}(x)s_n(x))-r_{n-3}(x)s_n(x),\]
+    用类似的方法不断回推，最终得到
+    \[r_n(x)=u(x)p(x)+v(x)q(x),\]
+    显然$u(x),v(x)\in\mathbf{F}[x]$.
+\end{proof}
+
+我们可以具体操作一个例子来理解上述证明过程：
+\begin{example}
+    设$p(x)=x^4-x^3-x^2+2x-1$，$q(x)=x^3-2x+1$，求$(p(x),q(x))$，以及$u(x),v(x)$使得$(p(x),q(x))=u(x)p(x)+v(x)q(x)$.
+\end{example}
+\begin{solution}
+    我们可以利用带余除法进行计算：
+    \begin{align*}
+        p(x)&=q(x)(x-1)+x^2-x=q(x)s_1(x)+r_1(x),\\
+        q(x)&=r_1(x)(x+1)-x+1=r_1(x)s_2(x)+r_2(x),\\
+        r_1(x)&=r_2(x)(-x)=r_2(x)s_3(x),
+    \end{align*}
+    因此最大公因式$(p(x),q(x))=r_2(x)=-x+1$. 接下来开始回推，我们有
+    \begin{align*}
+        r_2(x)&=q(x)-r_1(x)s_2(x)\\
+              &=q(x)-(p(x)-q(x)s_1(x))s_2(x)\\
+              &=p(x)(-s_2(x))+q(x)(1+s_1(x)s_2(x)),
+    \end{align*}
+    所以$u(x)=-s_2(x)=-x-1$，$v(x)=1+s_1(x)s_2(x)=x^2$.
+\end{solution}
+
+需要说明的一点是，最大公因式并不是唯一的. 例如上例中我们可以验证$x-1,2x-2$等都是$p(x)$和$q(x)$的最大公因式. 事实上，如果我们从定义出发，设$d_1(x)$和$d_2(x)$都是$p(x)$和$q(x)$的最大公因式，则有$d_1(x)\mid d_2(x)$且$d_2(x)\mid d_1(x)$，因此$d_1(x)$和$d_2(x)$相伴，即存在非零常数$k\in\mathbf{F}$使得$d_1(x)=kd_2(x)$，因此最大公因式并不是唯一的，与最大公因式相伴的多项式都是最大公因式. 这与整数是类似的，例如$3$和$-3$都是$6$和$9$的最大公因式. 因此，为了讨论的方便，自此我们规定最大公因式是满足条件的首一多项式，那么最大公因式就是唯一的，于是上例中的最大公因式应当写为$x-1$.
+
+进一步地，我们可以类似定义多个多项式的最大公因式的概念，并且显然的一点是，多个多项式的最大公因式也是存在的，并且有如下结论：
+\begin{theorem}
+    设$p_1(x),p_2(x),\cdots,p_n(x)\in\mathbf{F}[x]$，则它们的最大公因式$d(x)$必存在，且有：
+    \begin{enumerate}
+        \item $((p_1(x),p_2(x)),p_3(x),\cdots,p_n(x))=(p_1(x),p_2(x),\cdots,p_n(x))$，并且最大公因式显然与多项式排列顺序无关，因此我们可以先求其中任意两个多项式的最大公因式，然后把问题转化为求解$n-1$个多项式的最大公因式的问题，不断重复这一过程直到求出所有多项式的最大公因式；
+        \item 存在$u_1(x),u_2(x),\cdots,u_n(x)\in\mathbf{F}[x]$使得
+        \[d(x)=u_1(x)p_1(x)+u_2(x)p_2(x)+\cdots+u_n(x)p_n(x).\]
+    \end{enumerate}
+\end{theorem}
+
+接下来我们讨论最小公倍式的计算. 为了我们讨论的方便，我们需要先研究一个很常见的概念及其性质. 很多时候我们更重视$p(x),q(x)$最大公因式为$1$的情况，此时最小公倍式只能是两个多项式的乘积：
+\begin{definition}
+    设$p(x),q(x)\in\mathbf{F}[x]$，若$(p(x),q(x))=1$，则称$p(x)$和$q(x)$\term{互素}\index{husu@互素 (coprime)}.
+\end{definition}
+根据\autoref{thm:14:欧几里得算法}我们很自然地得到一个多项式互素的充要条件：
+\begin{theorem}\label{thm:14:裴蜀定理}
+    设$(x),q(x)\in\mathbf{F}[x]$，则$p(x)$和$q(x)$互素的充要条件是存在$u(x),v(x)\in\mathbf{F}[x]$使得\[u(x)p(x)+v(x)q(x)=1.\]
+\end{theorem}
+这一定理称之为\term{裴蜀定理}\index{peishudingli@裴蜀定理 (Bézout's Lemma)}，事实上在数论中也有相对应的结论，证明是非常自然的. 习题中我们会给出另一种基于线性映射的证明思路供读者练习，这里我们延续数论的思路给出证明：
+\begin{proof}
+    \begin{enumerate}
+        \item 必要性：若$(p(x),q(x))=1$，由\autoref{thm:14:欧几里得算法}知存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$.
+        \item 充分性：若$u(x)p(x)+v(x)q(x)=1$，设$d(x)=(p(x),q(x))$，则$d(x)\mid u(x)p(x)+v(x)q(x)$，即$d(x)\mid 1$，故$d(x)$是一个首一常数多项式，即$d(x)=1$，故$p(x)$和$q(x)$互素.
+    \end{enumerate}
+\end{proof}
+
+关于互素我们有如下基本性质，在将来的讨论中都可能用到，因此在此列举. 为了内容的严谨与完整性还是给出了证明，读者如果觉得结论很显然（比如通过类比整数）可以适当略过证明.
+\begin{theorem} \label{thm:14:互素性质}
+    设$p(x),q(x),s(x),d(x)\in\mathbf{F}[x]$，则有
+    \begin{enumerate}
+        \item 若$p(x)\mid s(x)$，$q(x)\mid s(x)$且$(p(x),q(x))=1$，则$p(x)q(x)\mid s(x)$；
+        \item 若$(p(x),q(x))=1$，且$p(x)\mid q(x)s(x)$，则$p(x)\mid s(x)$；
+        \item 若$(p(x),q(x))=d(x)$，设$p=p_1(x)d(x),q(x)=q_1(x)d(x)$，则$(p_1(x),q_1(x))=1$；
+        \item 若$(p(x),q(x))=d(x)$，则$(s(x)p(x),s(x)q(x))=s(x)d(x)$；
+        \item 若$(p(x),q(x))=1$，$(p(x),s(x))=1$，则$(p(x),q(x)s(x))=1$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    需要说明的是，在证明过程中我们多次用到\autoref{eq:14:欧几里得算法}以及裴蜀定理，这是很常见的技巧.
+    \begin{enumerate}
+        \item 由于$(p(x),q(x))=1$，故存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$，设$s(x)=p(x)s_1(x),s(x)=q(x)s_2(x)$，则
+        \begin{align*}
+            s(x)&=s(x)u(x)p(x)+s(x)v(x)q(x) \\
+                &=q(x)s_2(x)u(x)p(x)+p(x)s_1(x)v(x)q(x)\\
+                &=p(x)q(x)(s_2(x)u(x)+s_1(x)v(x)),
+        \end{align*}
+        故$p(x)q(x)\mid s(x)$；
+        \item 由于$(p(x),q(x))=1$，故存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$，故
+        \[u(x)p(x)s(x)+v(x)q(x)s(x)=s(x),\]
+        故上式左端可以被$p(x)$整除（不要忘记$p(x)\mid q(x)s(x)$），故右端有$p(x)\mid s(x)$；
+        \item 由于$(p(x),q(x))=d(x)$，故存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=d(x)$，两边同除以$d(x)$得$u(x)p_1(x)+v(x)q_1(x)=1$，故$(p_1(x),q_1(x))=1$；
+        \item 首先$s(x)d(x)$显然是$s(x)p(x)$和$s(x)q(x)$的公因式，下证是最大公因式. 根据假设知存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=d(x)$，则
+        \[s(x)u(x)p(x)+s(x)v(x)q(x)=s(x)d(x),\]
+        因此若$t(x)\in\mathbf{F}[x]$满足$t(x)\mid s(x)p(x)$且$t(x)\mid s(x)q(x)$，则$t(x)\mid s(x)d(x)$，故$s(x)d(x)$是$s(x)p(x)$和$s(x)q(x)$的最大公因式；
+        \item 由于$(p(x),q(x))=1$，$(p(x),s(x))=1$，故存在$u(x),v(x),u'(x),v'(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$，$u'(x)p(x)+v'(x)s(x)=1$，两式相乘有
+        \[p(x)(u(x)u'(x)p(x)+u(x)v'(x)s(x)+v(x)u'(x)q(x))+(q(x)s(x))(v(x)v'(x))=1,\]
+        故$(p(x),q(x)s(x))=1$.
+    \end{enumerate}
+\end{proof}
+
+基于互素的定义与性质，我们可以得到计算两个多项式最小公倍式的方法. 类似于最大公因式的讨论，我们知道最小公倍式如果存在也是不唯一的，与最小公倍式相伴的多项式也是最小公倍式. 因此从现在起我们规定最小公倍式和最大公因式一样，必须是首一多项式，从而保证其唯一性. 在这一规定下我们有如下结论：
+\begin{theorem}
+    设非零多项式$p(x),q(x)\in\mathbf{F}[x]$，则
+    \begin{equation} \label{eq:14:最小公倍式}
+        p(x)q(x)=(p(x),q(x))[p(x)q(x)].
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    设$(p(x),q(x))=d(x)$，$p(x)=p_1(x)d(x),q(x)=q_1(x)d(x)$，则由\autoref{thm:14:互素性质}（3）知$(p_1(x),q_1(x))=1$. 首先我们观察到$p_1(x)d(x)q_1(x)$一定是$p(x)q(x)$的公倍式，不妨设它的首项系数$c\neq 0$，接下来的目标是证明$p_1(x)d(x)q_1(x)/c$是$p(x)q(x)$的最小公倍式.
+
+    又设$l(x)$是$p(x)q(x)$的一个公倍式，不妨设$l(x)=p(x)u(x)=q(x)v(x)$，则$p_1(x)d(x)u(x)=q_1(x)d(x)v(x)$，消去$d(x)$有
+    \[p_1(x)u(x)=q_1(x)v(x),\]
+    由于$(p_1(x),q_1(x))=1$，由\autoref{thm:14:互素性质}（2）知$p_1(x)\mid v(x)$，$q_1(x)\mid u(x)$，因此存在$u'(x)\in\mathbf{F}[x]$使得$u(x)=u'(x)q_1(x)$，故
+    \[l(x)=p(x)u(x)=p_1(x)d(x)u'(x)q_1(x),\]
+    故$p_1(x)d(x)q_1(x)/c\mid l(x)$，并且是首一多项式，故是$p(x)q(x)$的最小公倍式.
+\end{proof}
+
+这一定理证明了最小公倍式的存在性，并且\autoref{eq:14:最小公倍式}也给出了基于最大公因式的最小公倍式的计算方法. 事实上，多个多项式的最小公倍式也可以有类似于多个多项式最大公因式的推广，此处不再赘述.
+
+在本节的最后，我们证明一个在数论、密码学等领域应用非常广泛的定理：中国剩余定理. 这是中国古代求解一次线性同余方程组的方法. 一元线性同余方程组问题最早可见于中国南北朝时期（公元5世纪）的数学著作《孙子算经》卷下第二十六题，叫做``物不知数''问题，在一些故事背景下也称``韩信点兵''问题，原文如下：
+\begin{quotation}
+    \kaishu
+    今有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二。问物几何？
+\end{quotation}
+即，一个整数除以三余二，除以五余三，除以七余二，求这个整数. 《孙子算经》中首次提到了同余方程组问题，以及以上具体问题的解法，因此在中文数学文献中也会将中国剩余定理称为孙子定理. 这里将要介绍的版本是多项式版本，事实上回忆整数和多项式都构成环这一代数结构，读者一定能想到无论是整数还是多项式版本实际上都是环上中国剩余定理的特例. 中国剩余定理的多项式版本如下：
+\begin{theorem}[中国剩余定理] \label{thm:14:中国剩余定理}
+    设$q_1(x),q_2(x),\cdots,q_n(x)\in\mathbf{F}[x]$两两互素，即$(q_i(x),q_j(x))=1,\enspace\forall i,j\in\{1,2,\cdots,n\}$，则对任意的$r_1(x),r_2(x),\cdots,r_n(x)\in\mathbf{F}[x]$，方程组
+    \begin{equation} \label{eq:14:中国剩余定理}
+        \begin{cases}
+            p(x)\equiv r_1(x)\pmod{q_1(x)},\\
+            p(x)\equiv r_2(x)\pmod{q_2(x)},\\
+            \cdots\\
+            p(x)\equiv r_n(x)\pmod{q_n(x)},
+        \end{cases}
+    \end{equation}
+    模$Q(x)=\prod\limits_{i=1}^nq_k(x)$有唯一解.
+\end{theorem}
+\begin{proof}
+    首先证明解的存在性，我们需要构造出这个解. 事实上，如果我们能证明存在多项式$p_k(x)$使得对任意的$k$都有
+    \[p_k(x)\equiv 1\pmod{q_k(x)},\]
+    且对任意的$j\neq k$都有
+    \[p_k(x)\equiv 0\pmod{q_j(x)},\]
+    则$p(x)=\sum\limits_{k=1}^nr_k(x)p_k(x)$就是一个解. 现构造$p_k(x)$. 因为$q_k(x)$两两互素，故存在$u_j(x),v_j(x)\in\mathbf{F}[x]$使得
+    \[u_j(x)q_k(x)+v_j(x)q_j(x)=1,\]
+    其中$j\neq k$，故令
+    \begin{align*}
+        p_k(x)&=v_1(x)q_1(x)\cdots v_{k-1}(x)q_{k-1}(x)q_k(x)v_{k+1}(x)q_{k+1}(x)\cdots v_n(x)q_n(x) \\
+                &=(1-u_1(x)q_k(x))\cdots(1-u_{k-1}(x)q_k(x))(1-u_{k+1}(x)q_k(x))\cdots(1-u_n(x)q_k(x)),
+    \end{align*}
+    显然$p_k(x)$符合要求，因此我们构造出了这组方程的解为$p(x)=\sum\limits_{k=1}^nr_k(x)p_k(x)$.
+
+    最后我们说明解在模$Q(x)=\prod\limits_{i=1}^nq_k(x)$下的唯一性. 设$p_1(x),p_2(x)$都是\autoref{eq:14:中国剩余定理}的解，于是
+    \[p_1(x)\equiv p_2(x)\pmod{q_k(x)},\enspace k=1,2,\cdots,n,\]
+    即$p_1(x)-p_2(x)$必然是每个$q_k(x)$的倍式，又由于$q_k(x)$两两互素，故$p_1(x)-p_2(x)$是$Q(x)$的倍式，即$p_1(x)\equiv p_2(x)\pmod{Q(x)}$，故解唯一.
+\end{proof}
+
+\section{多项式的因式分解}
+本节我们将基于前面的讨论证明多项式的唯一分解定理. 事实上，这里的分解与我们在中学阶段学习的因式分解是一致的，即我们希望将多项式分解为不可再分的多项式的乘积，但事实上中学阶段并未给出严格的因式分解中一个多项式``不可再分''的概念. 接下来我们将严格地给出定义：
+\begin{definition}
+    设$p(x)\in\mathbf{F}[x]$是非常数多项式，若$p(x)$可以分解为两个次数小于$p(x)$次数的多项式的乘积，则称$p(x)$是域$\mathbf{F}$上的\term{可约多项式}\index{keyuedexiangshu@可约的多项式}，否则称$p(x)$是域$\mathbf{F}$上的\term{不可约多项式}\index{bukeuedexiangshu@不可约的多项式}.
+\end{definition}
+
+不难发现，在定义中我们始终强调多项式的可约和不可约是相对于域$\mathbf{F}$的，例如，$x^2+1$在实数域上是不可约的，但在复数域上是可约的，$x^2-2$在实数域上是可约的，但在有理数域上是不可约的. 此外，根据定义，一次多项式无论在哪个数域上都是不可约多项式，因为我们要求分解得到的多项式次数严格小于原先的多项式.
+
+不难发现，不可约多项式可以类比于整数中的素数. 素数我们定义为有不等于$\pm 1$和它自身（以及自身相反数）的整数，也就是说素数如果要分解成两数的乘积，必为整数环中的可逆元（$\pm 1$）与其相伴多项式（自身或相反数）的乘积，这与不可约多项式是一致的，因为不可约多项式不能分解为次数更低的多项式的乘积，因此只能分解为常数（多项式环中的可逆元）和相伴多项式的乘积. 关于不可约多项式与素数性质的相似性，还有下面一个常用的结论：
+\begin{theorem} \label{thm:14:不可约多项式的性质}
+    设$p(x)$是域$\mathbf{F}$上的不可约多项式，
+    \begin{enumerate}
+        \item 对于任意多项式$q(x)\in\mathbf{F}[x]$，或者$p(x)\mid q(x)$，或者$(p(x),q(x))=1$；
+        \item 设$q(x),s(x)\in\mathbf{F}[x]$，且$p(x)\mid q(x)s(x)$，则或者$p(x)\mid q(x)$，或者$p(x)\mid s(x)$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 设$(p(x),q(x))=d(x)$，因为$p(x)$不可约，故$p(x)$的因式只能是非零常数多项式或相伴多项$cf(x)(c\neq 0)$，故$d(x)=1$或$d(x)=cf(x)$（首一多项式）.
+        \item 否定一边证另一边. 假设$p(x)\nmid q(x)$，由（1）可知$(p(x),q(x))=1$，故由\autoref{thm:14:互素性质}（2）知$p(x)\mid s(x)$.
+    \end{enumerate}
+\end{proof}
+第二个结论可以很轻松地推广到多个多项式相乘的情形，我们陈述定理而不再赘述证明：
+\begin{corollary} \label{cor:14:不可约多项式的性质推广}
+    设$p(x)$是域$\mathbf{F}$上的不可约多项式且$p(x)\mid q_1(x)q_2(x)\cdots q_n(x)$，则$p(x)$必可整除其中某个$q_i(x)$.
+\end{corollary}
+
+在做了如上准备后，我们便可以开始陈述并证明本讲的核心定理之一——多项式的唯一分解定理：
+\begin{theorem}[多项式的唯一分解定理] \label{thm:14:多项式的唯一分解定理}
+    设$p(x)\in\mathbf{F}[x]$是非常数多项式，则
+    \begin{enumerate}
+        \item $p(x)$可以分解为不可约多项式的乘积；
+        \item 若有
+        \begin{equation} \label{eq:14:多项式的唯一分解}
+            p(x)=q_1(x)q_2(x)\cdots q_m(x)=s_1(x)s_2(x)\cdots s_n(x),
+        \end{equation}
+        为$p(x)$的两个不可约分解，即所有的$q_i(x),s_j(x)$都是不可约多项式，则$m=n$，且经过适当调换顺序后有$q_i(x)\sim s_i(x),\enspace i=1,2,\cdots,n$.
+    \end{enumerate}
+\end{theorem}
+定理的第一条表明不可约分解是存在的，第二条表明分解在不计不可约多项式次序以及相伴的意义下唯一. 下面我们给出定理的证明：
+\begin{proof}
+    \begin{enumerate}
+        \item 对$p(x)$的次数进行归纳. 若$\deg p=1$，结论显然成立. 设次数小于$n$的多项式都有不可约分解，考虑$\deg p=n$的情况，首先若$p(x)$是不可约多项式，则结论自然成立. 若$p(x)$是可约多项式，则存在$q(x),s(x)\in\mathbf{F}[x]$使得$p(x)=q(x)s(x)$，且$\deg q(x),\deg s(x)<\deg p(x)$，由归纳法知$q(x),s(x)$可以分解为不可约多项式的乘积，故$p(x)$也可以分解为不可约多项式的乘积.
+        \item 对\autoref{eq:14:多项式的唯一分解}中不可约多项式的个数$n$进行归纳，若$n=1$，说明$p(x)$是不可约多项式，因此$q_1(x)=s_1(x)=p(x)$. 设不可约多项式的个数小于$n$的多项式都满足结论，由两个分解式知$s_1(x)\mid q_1(x)q_2(x)\cdots q_m(x)$，由\autoref{cor:14:不可约多项式的性质推广}知$s_1(x)$必可整除其中某个$q_i(x)$，不妨设$s_1(x)\mid q_1(x)$. 但是$s_1(x)$和$q_1(x)$都是不可约多项式，故$s_1(x)\sim q_1(x)$，即有
+        \[s_1(x)=cq_1(x),\]
+        其中$c$是非零常数. 将上式代入\autoref{eq:14:多项式的唯一分解}并消去$p_1(x)$得
+        \[q_2(x)\cdots q_m(x)=c_2s_2(x)\cdots s_n(x),\]
+        由归纳法知$m=n$且经过适当调换顺序后有$q_i(x)\sim s_i(x),\enspace i=2,\cdots,n$. 并且前面的证明也有$q_1(x)\sim s_1(x)$，故对于$n$个不可约多项式的情况定理成立.
+    \end{enumerate}
+\end{proof}
+
+事实上我们知道，对于整数我们可以有唯一分解为素数乘积的定理. 并且我们知道整数环和多项式环都是整环（没有零因子且交换），具有这样性质的环我们称之为\term{唯一分解整环}\index{weiyifenjiezhenguan@唯一分解整环}. 接下来回忆我们为了证明这一定理做的准备，我们直接需要不可约以及互素的概念，为了定义互素，我们根源上是从带余除法出发，使用欧几里得算法得到最大公因式，然后才有最大公因式为$1$的两个多项式互素的概念. 事实上，能定义类似于带余除法运算的整环我们称之为\term{欧几里得整环}\index{oujilidezhenguan@欧几里得整环}，而整数环和多项式环都可以定义带余除法，因此都是欧几里得整环.
+
+事实上，在抽象代数中我们可以证明，所有的欧几里得整环都是唯一分解整环，因此事实上能定义带余除法的整环我们都可以走一遍前面的所有推导流程，定义最大公因元素，定义互素和不可约的概念，推导出唯一分解定理. 因此我们一开始发现的整数和多项式的诸多类似之处实际上来源于欧几里得整环性质的统一性，这也印证了我们在本书开头所说的研究代数结构的一大意义：我们找到了一个统一的模型，将一系列孤立的结构转化为了对一个更广泛的结构的研究.
+
+言归正传，我们知道这样的分解在相伴意义下唯一，如果我们希望分解式都有统一的标准，则我们要求提取首项系数，并且每个不可约多项式都是首一的，就可以得到唯一的``标准分解式''
+\[p(x)=c(q_1(x))^{\alpha_1}(q_2(x))^{\alpha_2}\cdots(q_m(x))^{\alpha_m},\]
+其中$c\neq 0$，$\alpha_i$是正整数，$q_i(x)$是不可约多项式. 若$\alpha_i>1$，则称$q_i(x)$是$p(x)$的\term{重因式}\index{zhongyinshi@重因式}，否则称\term{单因式}\index{danyinshi@单因式}. 例如$2x^3-2x^2-2x+2$可以有不可约分解式$(\sqrt{2}x-\sqrt{2})^2(x+1)$，但它的标准分解式应当为$2(x-1)^2(x+1)$，其中$x-1$是重因式，$x+1$是单因式.
+\begin{example} \label{ex:14:标准分解式与gcd和lcm}
+    设$p(x),q(x)\in\mathbf{F}[x]$，在它们的标准分解式中适当添加零次项，故不妨设它们有如下分解式：
+    \begin{gather*}
+        p(x)=c_1s_1(x)^{\alpha_1}s_2(x)^{\alpha_2}\cdots s_n(x)^{\alpha_n},\\
+        q(x)=c_2s_1(x)^{\beta_1}s_2(x)^{\beta_2}\cdots s_n(x)^{\beta_n},
+    \end{gather*}
+    其中$c_1,c_2\neq 0$，$\alpha_i,\beta_i\geqslant 0$，$s_i(x)$是不可约多项式. 不难证明，则$p(x)$和$q(x)$的最大公因式为
+    \[\gcd(p(x),q(x))=s_1(x)^{\min\{\alpha_1,\beta_1\}}s_2(x)^{\min\{\alpha_2,\beta_2\}}\cdots s_n(x)^{\min\{\alpha_n,\beta_n\}},\]
+    最小公倍式为
+    \[\lcm(p(x),q(x))=s_1(x)^{\max\{\alpha_1,\beta_1\}}s_2(x)^{\max\{\alpha_2,\beta_2\}}\cdots s_n(x)^{\max\{\alpha_n,\beta_n\}}.\]
+\end{example}
+
+关于重因式，我们希望能找到快速的方法进行判别，因为最直接的方法是分解多项式，但对多项式进行不可约分解是一件运算起来很费时间的事情. 但幸运的是，我们有一种方法使得我们可以避开不可约分解直接判别多项式是否有重因式，为了介绍这一方法，我们先引入形式导数的概念.
+\begin{definition}
+    设$p(x)=a_0+a_1x+\cdots+a_nx^n\in\mathbf{F}[x]$，则$p(x)$的\term{形式导数}\index{xingshidaoishu@形式导数}定义为
+    \[p'(x)=a_1+2a_2x+\cdots+na_nx^{n-1}.\]
+\end{definition}
+实际上这与原先将多项式视为函数时的求导是一致的，只是现在多项式不再是函数，因此需要重新定义形式上的导数. 我们不难验证形式导数有数学分析中定义的导数的相同的基本性质，此处不再赘述. 有了形式导数的概念，我们可以得到如下结论：
+\begin{theorem} \label{thm:14:重因式的判别}
+    设$p(x)\in\mathbf{F}[x]$，则$p(x)$没有重因式的充要条件为$(p(x),p'(x))=1$.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 充分性：我们使用反证法. 假设不可约多项式$q(x)$是$p(x)$的$m(m>1)$重因式，则$p(x)=q(x)^ms(x)$，故
+        \[p'(x)=mq(x)^{m-1}q'(x)s(x)+q(x)^ms'(x),\]
+        故$p(x)$与$p'(x)$有$q(x)^{m-1}(m>1)$为公因式，故$(p(x),p'(x))\neq 1$.
+        \item 必要性：若$f(x)$无重因式，不可约多项式$q(x)$是$p(x)$的任一单因式，设$p(x)=q(x)s(x)$，则$q(x)$不能整除$s(x)$，于是
+        \[p'(x)=q'(x)s(x)+q(x)s'(x),\]
+        若$q(x)$是$p'(x)$的因式，则$q(x)\mid q'(x)s(x)$，由于$q(x)$是不可约多项式，且$q(x)$不能整除$s(x)$，由\autoref{thm:14:不可约多项式的性质}（2）可知$q(x)\mid q'(x)$，由于$q(x)$是不可约多项式，故$\deg q>0$，故$q'$不是零多项式，且$\deg q'<\deg q$，这显然违背整除关系，故$q(x)$不是$p'(x)$的因式，即$p(x)$的任一单因子都不是$p'(x)$的因式，由\autoref{thm:14:互素性质}（5）可知，$(p(x),p'(x))=(q_1(x)\cdots q_n(x),p'(x))=1$.
+    \end{enumerate}
+\end{proof}
+
+实际上，这一定理给出的判定重因式的方法是非常高效的，因为关键步骤就是使用欧几里得算法计算多项式和它形式导数的最大公因式，而欧几里得算法运行是很快的，相较于复杂的多项式分解算法有相当大的优势. 进一步的，当$p(x)$有重因式时，我们可以通过$(p(x),p'(x))$消去其重因式，即如下定理：
+\begin{theorem} \label{thm:14:消去重因式}
+    设$d(x)=(p(x),p'(x))$，则$p(x)/d(x)$没有重因式，且这个多项式的不可约因式与$p(x)$的不可约因式仍然相同（不计重数）.
+\end{theorem}
+这一定理的证明只需要显式地写出$p(x)$的标准分解式然后求出$p(x)/d(x)$即可，非常直接，因此留作习题供读者练习.
+
+\section{复数域上的多项式函数}
+在证明了唯一分解定理之后，关于一般域上的多项式结构的讨论就基本结束了. 在后续章节中，我们通常假定线性空间定义在常见的数域上（如复数域、实数域、有理数域），因此接下来我们转向\autoref{def:14:多项式函数}中定义的多项式函数，讨论在一般数域上多项式函数的分解. 实际上，求解方程$p(x)=0$在其中起到关键的作用，因此我们首先讨论多项式函数的零点：
+\begin{definition}
+    设$p(x)\in\mathbf{F}[x]$，则$p(x)$的\term{零点}\index{lingdian@零点}（或称为根）是指方程$p(x)=0$的解.
+\end{definition}
+
+回顾\autoref{thm:14:带余除法}的证明，我们发现带余除法的合理性与多项式函数或是形式表达式的定义方式无关（事实上此后的各类定义和性质都是可以完全平移的，因为形式表达式的定义只是通过定义绕开了一般域上会出现的不合理的情况，但其上的各种运算都保持了多项式函数的性质），因此我们仍然可以根据这一定理得到如下结论：
+\begin{theorem} \label{thm:14:多项式函数根的性质}
+    设$p(x)\in\mathbf{F}[x]$.
+    \begin{enumerate}
+        \item 若$\lambda\in\mathbf{F}$，则$p(\lambda)=0$当且仅当存在多项式$q\in\mathbf{F}[x]$使得$p(x)=(x-\lambda)q(x)$；
+        \item 若$p(x)$是$m\enspace(m \geqslant 0)$次多项式，则$p(x)$在$\mathbf{F}$上最多有$m$个互不相等的零点；
+        \item 若$p(x)$是不可约多项式且$\deg p\geqslant 2$，则$p(x)$在$\mathbf{F}$上没有零点.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 我们分别从两个方向给出证明：
+        \begin{enumerate}
+            \item 充分性：这一方向比较显然，若存在多项式$q\in\mathbf{F}[x]$使得$p(x)=(x-\lambda)q(x)$，将$\lambda$代入得$p(\lambda)=0$.
+            \item 必要性：使用带余除法，我们有$p(x)=(x-\lambda)q(x)+r$，其中$\deg r<\deg(x-\lambda)=1$，故$r$是常数多项式，代入$x=\lambda$得$r=0$，故$p(x)=(x-\lambda)q(x)$.
+        \end{enumerate}
+        \item 反证法，假设$p(x)$有$m+1$个互不相等的零点$\lambda_1,\lambda_2,\cdots,\lambda_{m+1}$，则由（1）知$p(x)=(x-\lambda_1)(x-\lambda_2)\cdots(x-\lambda_{m+1})q(x)$，但$\deg p=m$，但等式右侧多项式次数大于$m$，矛盾.
+        \item 反证法，假设$p(x)$有零点$\lambda$，则由（1）知$p(x)=(x-\lambda)q(x)$，但$p(x)$是不可约多项式，不能分解为两个次数更低的多项式的乘积，矛盾.
+    \end{enumerate}
+\end{proof}
+
+根据以上定理，我们可以仿照标准因式分解中重因式的概念，给出多项式函数重根的定义：
+\begin{definition}
+    设$p(x)\in\mathbf{F}[x]$，$\lambda\in\mathbf{F}$，若存在$k\geqslant 1$使得$(x-\lambda)^k\mid p(x)$，但$(x-\lambda)^{k+1}\nmid p(x)$，则称$\lambda$是$p(x)$的一个$k$\term{重根}\index{zhonggen@重根}. 若$k=1$，则称$\lambda$是$p(x)$的一个\term{单根}\index{dangen@单根}.
+\end{definition}
+
+事实上，当我们看到\autoref{thm:14:多项式函数根的性质}（2）时很容易想到著名的代数学基本定理，这也是我们接下来讨论的一个基石：
+\begin{theorem}[代数学基本定理] \label{thm:14:代数学基本定理} \index{daishuxuejibendingli@代数学基本定理 (Fundamental Theorem of Algebra)}
     非常数复多项式在复平面上必有零点.
 \end{theorem}
 
-代数学基本定理最简单直接的证明来源于复分析中的刘维尔定理或柯西积分公式，感兴趣的同学可以学习复变函数进一步了解. 事实上，历史上无数大数学家曾尝试为代数学基本定理这一古老、神秘而美妙的定理给出证明，但他们的工作都被认为是不严谨的，例如大家熟知的欧拉、拉格朗日等. 第一个给出严谨证明的是数学天才高斯，但事实上他的证明方法在后来基于复分析的美妙而简洁证明出现后就变得黯淡许多. 数学家J.P. 塞尔曾经指出：代数基本定理的所有证明本质上都是拓扑的，因此很推荐对此感兴趣的读者学习拓扑学以及复变函数的知识，体会数学的美感.
+代数学基本定理最简单直接的证明来源于复分析中的刘维尔定理或柯西积分公式. 事实上，历史上无数大数学家曾尝试为代数学基本定理这一古老、神秘而美妙的定理给出证明，但他们的工作都被认为是不严谨的，例如大家熟知的欧拉、拉格朗日等. 第一个给出严谨证明的是数学天才高斯，但事实上他的证明方法在后来基于复分析的美妙而简洁证明出现后就变得黯淡许多. 数学家J.P. 塞尔曾经指出：代数基本定理的所有证明本质上都是拓扑的，因此很推荐对此感兴趣的读者学习拓扑学以及复分析知识，体会其中美感. 为了内容的完整性，我们这里给出一种基于基本微积分知识的证明，相对而言步骤更为繁琐：
+\begin{proof}
+    设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in\mathbf{C}[x]$，其中$n\geqslant 1$. 注意到
+    \[\lim_{x\to\infty}\dfrac{|p(x)|}{|x^n|}=|a_n|\neq 0,\]
+    因此$|p(x)|\to\infty(x\to\infty)$（此处$|\cdot|$表示复数的模长），故$\exists M\in\mathbf{C},\enspace\forall |x|>M$有$|p(x)|>|a_0|$. 而$|p(0)|=|a_0|$，考虑有界闭集$\{x\mid |x|\leqslant M\}$，由于$|p(x)|$是连续函数，根据连续函数的性质，$|p(x)|$在有界闭集上可以取得最小值$|p(\zeta)|$，下面证明这一最小值就是$0$.
 
-事实上，我们这里只需要承认这一定理，更重要的是基于代数学基本我们可以进行多项式的分解. 我们分复数域和实数域进行讨论：
-\begin{theorem} \label{thm:17:多项式分解}
-    设$p\in\mathbf{F}[x]$是非常数多项式，则$p$可以唯一分解（不计因式的次序）为
+    定义新的多项式函数
+    \[q(x)=\dfrac{p(x+\zeta)}{p(\zeta)},\]
+    回忆$|p(\zeta)|$是$|p(x)|$的最小值，则函数$|q(x)|$在$x=0$处取的最小值$1$，因此$q(x)$可以写为
+    \[q(x)=1+b_kx^k+\cdots+b_nx^n,\]
+    其中$k$是使得$b_k\neq 0$的最小整数，换言之，$b_k\neq 0$.
+
+    进一步地，我们取$\beta\in\mathbf{C}$满足$\beta^k=-\dfrac{1}{b_k}$，事实上这样的$\beta$一定存在，因为可以设$-\dfrac{1}{b_k}=re^{i\theta}$，取$\beta=r^{1/k}e^{i\theta/k}$即可. 然后我们可以取到一个常数$c>1$使得对任意的$t\in(0,1)$有
+    \[|q(t\beta)|\leqslant |1+a_kt^k\beta^k|+t^{k+1}c=1-t^k(1-tc),\]
+    取$t=1/2c$，则$|q(t\beta)|<1$，这与$|q(x)|$在$x=0$处取的最小值$1$矛盾！故$p(\zeta)=0$，即$p(x)$在复平面上存在零点$\zeta$.
+\end{proof}
+
+根据代数学基本定理，我们自然地有如下推论：
+\begin{corollary}
     \begin{enumerate}
-        \item $(\mathbf{F}=\mathbf{C})\quad p(z)=c(z-\lambda_1)\cdots(z-\lambda_m)$，其中$c,\lambda_1,\ldots,\lambda_m\in\mathbf{C}$；
-
-        \item $(\mathbf{F}=\mathbf{R})\quad p(x)=c(x-\lambda_1)\cdots(x-\lambda_m)(x^2+b_1x+c_1)\cdots(x^2+b_Mx+c_M)$，其中$c,\lambda_1,\ldots,\lambda_m,b_1,\ldots,b_M,c_1,\ldots,c_M\in\mathbf{R}$，并且对每个$j$均有$b_j^2<4c_j$.
+        \item 复数域上的$n$次多项式有且仅有$n$个复根（含重数）；
+        \item 复数域上的不可约多项式都是一次多项式，且复数域上的$n$次多项式可以唯一分解为$n$个一次多项式的乘积.
     \end{enumerate}
+\end{corollary}
+\begin{proof}[仅略证]
+    \begin{enumerate}
+        \item 设$p(x)\in\mathbf{C}[x]$，由代数学基本定理知$p(x)$在复平面上存在零点，记为$\lambda$，根据\autoref{thm:14:多项式函数根的性质}有$p(x)=(x-\lambda)q(x)$，其中$q(x)\in\mathbf{C}[x]$，且$q(x)$的次数为$n-1$，归纳可知$q(x)$有且仅有$n-1$个复根，故$p(x)$有且仅有$n$个复根.
+        \item 由（1）可知，复数域上的$n$次多项式有且仅有$n$个复根，结合唯一分解定理可知其可以唯一分解为$n$个一次多项式的乘积. 因此次数大于等于$2$的多项式一定可以进一步分解为多个一次多项式的乘积，故必定可约.
+    \end{enumerate}
+\end{proof}
+
+除此之外，我们也可以得到中学中我们熟知的韦达定理的一般版本，即多项式的根与系数之间的关系：
+\begin{theorem}[韦达定理] \label{thm:14:韦达定理}
+    设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in\mathbf{F}[x]$，$\lambda_1,\lambda_2,\cdots,\lambda_n$是$p(x)$视为复数域上多项式的$n$个根，则
+    \begin{gather*}
+        \sum\limits_{i=1}^n\lambda_i=-\frac{a_{n-1}}{a_n},\\
+        \sum\limits_{1\leqslant i<j\leqslant n}\lambda_i\lambda_j=\frac{a_{n-2}}{a_n},\\
+        \sum\limits_{1\leqslant i<j<k\leqslant n}\lambda_i\lambda_j\lambda_k=-\frac{a_{n-3}}{a_n},\\
+        \cdots\\
+        \lambda_1\lambda_2\cdots\lambda_n=(-1)^n\frac{a_0}{a_n}.
+    \end{gather*}
 \end{theorem}
-定理的证明并不困难，可以参考教材4.14--4.17，事实上结论更具重要性. 实际上这就是我们初中阶段学习的因式分解的严谨版本，特别是实数版本叙述了初中阶段我们囿于实数域无法分解的情形. 而复数版本则是代数学基本定理的直接推广，由这一分解我们知道：复数域上的$n$次多项式有且仅有$n$个零点.
-\begin{example}
-    证明：每个奇数次的实系数多项式都有实的零点.
-\end{example}
-
 \begin{proof}
-
+    根据唯一分解定理，我们有
+    \[p(x)=a_n(x-\lambda_1)(x-\lambda_2)\cdots(x-\lambda_n),\]
+    将等号右侧多项式乘法展开即可证明.
 \end{proof}
 
-\begin{example}
-    设$p\in\mathbf{F}[x]$且$q\neq 0$. 证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
-    \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
-\end{example}
-
+\section{实数域与有理数域上的多项式函数}
+复数域上每个多项式都可以分解为一次多项式的乘积是非常完美的结果，但是对于实数域和有理数域，情况就不再那么美好了. 例如，二次多项式$x^2+1$在实数域上是不可约的. 我们首先讨论实数域上多项式的分解，然后讨论有理数域上多项式的分解. 为了研究实数域上的情况，我们首先给出一些引理，这些引理事实上在中学阶段大家都比较熟悉：
+\begin{lemma} \label{lem:14:实数域共轭根}
+    设$p(x)\in\mathbf{R}[x]$，若复数$\lambda$是$p(x)$的一个根，则其共轭复数$\overline{\lambda}$也是$p(x)$的一个根.
+\end{lemma}
 \begin{proof}
+    证明非常直接，我们直接验证
+    \begin{align*}
+        p(\overline{\lambda})&=a_n\overline{\lambda}^n+a_{n-1}\overline{\lambda}^{n-1}+\cdots+a_1\overline{\lambda}+a_0\\
+        &=\overline{a_n\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_1\lambda+a_0}=0.
+    \end{align*}
+\end{proof}
+这一引理表明，实数域上的多项式的复根是成对出现的（实根的共轭是其本身，上面的定理不再具有意义）. 下面我们来研究实数域上不可约多项式的形式，事实上中学阶段我们都学习过这一点：
+\begin{lemma} \label{thm:14:实数域上不可约多项式的形式}
+    实数域上的不可约多项式为一次多项式，或下列二次多项式：$ax^2+bx+c$，其中$b^2-4ac<0$.
+\end{lemma}
+\begin{proof}
+    一次多项式显然不可约. 而二次多项式要可约，必然只能分解为两个一次多项式的乘积，故要求有两个实根. 但根据配方法，
+    \[ax^2+bx+c=a\left(x+\dfrac{b}{2a}\right)^2+\dfrac{4ac-b^2}{4a},\]
+    我们知道，$\dfrac{4ac-b^2}{4a}<0$时，二次多项式无实根，故不可约（相反的情况则可约）.
 
+    除此之外，任一次数高于二次的多项式如果有实根则可约，如果没有实根，假设其有一复根$a+bi$，则根据\autoref{lem:14:实数域共轭根}知其共轭复根$a-bi$也是其根，从而
+    \[(x-(a+bi))(x-(a-bi))=x^2-2ax+(a^2+b^2)\]
+    是其因式，故必然可约.
 \end{proof}
 
-\section{整除与互素}
+\begin{theorem} \label{thm:14:实数域上多项式分解}
+    设$p\in\mathbf{R}[x]$是非常数多项式，则$p$可以唯一分解为
+    \[p(x)=c(x-\lambda_1)\cdots(x-\lambda_m)(x^2+b_1x+c_1)\cdots(x^2+b_Mx+c_M),\]
+    其中$c,\lambda_1,\ldots,\lambda_m,b_1,\ldots,b_M,c_1,\ldots,c_M\in\mathbf{R}$，并且对每个$j$均有$b_j^2<4c_j$.
+\end{theorem}
+定理证明直接根据唯一分解定理以及\autoref{thm:14:实数域上不可约多项式的形式}即可，此处不再详细展开.
 
-提到因式我们很容易想到类似于整数的最大公因数的定义，这里我们依次引入整除、公因式和最大公因式的概念：
+接下来我们讨论有理数域上的多项式. 我们首先证明一个整系数多项式有有理根的必要条件，然后研究有理数域上多项式的因式分解.
+\begin{theorem} \label{thm:14:整系数多项式有有理根的必要条件}
+    设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in\mathbf{Z}[x]$，且$\dfrac{q}{p}$是$p(x)$的一个有理根，其中$p,q\in\mathbf{Z}$，且$(p,q)=1$，则$p\mid a_n$且$q\mid a_0$.
+\end{theorem}
+\begin{proof}
+    展开$p\left(\dfrac{q}{p}\right)=0$，得
+    \[a_n\left(\dfrac{q}{p}\right)^n+a_{n-1}\left(\dfrac{q}{p}\right)^{n-1}+\cdots+a_1\left(\dfrac{q}{p}\right)+a_0=0,\]
+    两边同时乘以$p^n$得
+    \[a_nq^n+a_{n-1}pq^{n-1}+\cdots+a_1p^{n-1}q+a_0p^n=0,\]
+    移项有$a_nq^n=-p(a_{n-1}q^{n-1}+\cdots+a_1p^{n-2}q+a_0p^{n-1})$，由于$(p,q)=1$，故$p\mid a_n$. 同理，我们有$q\mid a_0$.
+\end{proof}
+
+事实上，因为任一有理系数方程可以通过系数的通分化为整系数方程，故这一定理也适用于有理系数方程.
+\begin{example}
+    设$p(x)=x^5-12x^3+36x+12$，证明$p(x)$没有有理根.
+\end{example}
+\begin{proof}
+    由\autoref{thm:14:整系数多项式有有理根的必要条件}，我们知道$p(x)$的有理根必然是$\pm 1,\pm 2,\pm 3,\pm 4,\pm 6,\pm 12$中的一个. 但将这些数代入$p(x)$后，我们发现$p(x)$在这些数上都不为零，故$p(x)$没有有理根.
+\end{proof}
+
+接下来我们便可以讨论有理数域上的多项式的因式分解. 实际上有理系数多项式和整系数多项式的可约性是一致的. 为了证明这一漂亮的结果，我们首先引入本原项式的概念：
 \begin{definition}
-    设$p,q\in\mathbf{F}[x]$且$q\neq 0$，则$q$整除$p$或$p$能被$q$整除（记为$q \mid p$）当且仅当$p$除以$q$的余式为0.
+    设$p(x)\in\mathbf{Z}[x]$，若$(a_0,a_1,\cdots,a_n)=1$，则称$p(x)$是\term{本原多项式}\index{benyuanduoxishi@本原多项式}.
 \end{definition}
+即本原多项式是整系数多项式且其系数的最大公因式为$1$的多项式. 有了本原多项式的概念，我们可以得到如下高斯引理：
+\begin{lemma}[高斯引理] \label{lem:14:高斯引理}
+    设$p(x),q(x)\in\mathbf{Z}[x]$是本原多项式，则$p(x)q(x)$也是本原多项式.
+\end{lemma}
+\begin{proof}
+    设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$，$q(x)=b_mx^m+b_{m-1}x^{m-1}+\cdots+b_1x+b_0$，则$p(x)q(x)$的系数为
+    \[c_k=\sum_{i+j=k}a_ib_j,\]
+    反证法，假设$p(x)q(x)$不是本原多项式，则存在素数$p$使得$p\mid c_k$. 由于$p(x)$和$q(x)$是本原多项式，因此$p$不可能整除同时整除它们的系数，于是可设$p\mid a_0,p\mid a_1,\cdots,p\mid a_{i-1}$但$p\nmid a_i$，$p\mid b_0,p\mid b_1,\cdots,p\mid b_{j-1}$但$p\nmid b_j$. 注意到
+    \[c_{i+j}=\cdots+a_{i-2}b{j+2}+a_{i-1}b_{j+1}+a_ib_j+a_{i+1}b_{j-1}+\cdots,\]
+    我们发现，$p$可以整除右式除$a_ib_j$外的每一项，故$p$不可能整除$c_{i+j}$，与假设矛盾，因此$p(x)q(x)$一定是本原多项式.
+\end{proof}
+
+接下来我们便可以证明有理系数多项式和整系数多项式的可约性是一致的：
+\begin{theorem} \label{thm:14:有理系数多项式的可约性}
+    设整系数多项式在有理数域上可约，则它必可以分解为两个次数较低的整系数多项式之积.
+\end{theorem}
+\begin{proof}
+    设$p(x)\in\mathbf{Z}[x]$在有理数域上可约，则存在次数较低的$q(x),s(x)\in\mathbf{Q}[x]$使得
+    \[p(x)=q(x)s(x).\]
+    由于$q(x)$各项系数都是有理数，因此必有一个公分母$c$，于是$q(x)=\dfrac{1}{c}(cq(x))$，其中$cq(x)$是整系数多项式. 我们可以把$cq(x)$中所有系数的最大公约数$d$提取出来，则$q(x)=\dfrac{d}{c}(\dfrac{c}{d}q(x))$，其中$\dfrac{c}{d}q(x)$是本原多项式. 记$a=\dfrac{d}{c}$，则可以写为$q(x)=aq_1(x)$，其中$q_1(x)$是本原多项式. 同理，我们可以写$s(x)=bs_1(x)$，其中$s_1(x)$是本原多项式. 于是
+    \[p(x)=q(x)s(x)=abq_1(x)s_1(x),\]
+    由\autoref{lem:14:高斯引理}知$q_1(x)s_1(x)$是本原多项式，且$ab$必为整数，否则$p(x)=abq_1(x)s_1(x)$不是整系数多项式，矛盾. 因此$p(x)$可以分解为两个次数较低的整系数多项式$abq_1(x)$与$s_1(x)$之积（注意本原多项式的定义就是整系数多项式）.
+\end{proof}
+
+我们可以通过这一定理的逆否命题得知，整系数多项式如果在整数环上不可约，则它在有理数域上也不可约. 反之，如果整系数多项式在有理数域上不可约，因为整数集合是有理数集合的子集，所以这直接表明它在整数环上也不可约. 因我们知道，整系数多项式在有理数域上可约与在整数环上可约是等价的. 进一步地，因为任一有理系数方程可以通过系数的通分化为整系数方程，故这一结果也适用于有理系数方程.
+
+最后我们讨论一个判定整系数多项式在有理数域上不可约的方法，即艾森斯坦判别法：
+\begin{theorem}[艾森斯坦判别法] \label{thm:14:艾森斯坦判别法}
+    设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in\mathbf{Z}[x]$，$a_n\neq 0$且$n\geqslant 1$，若存在一个素数$p$，满足
+    \begin{enumerate}
+        \item $p\mid a_0,p\mid a_1,\cdots,p\mid a_{n-1}$，
+        \item $p\nmid a_n$，
+        \item $p^2\nmid a_0$，
+    \end{enumerate}
+    则$p(x)$在有理数域上不可约.
+\end{theorem}
+\begin{proof}
+    我们只需证明$p(x)$在整数环上不可约即可. 反证法，假设$p(x)$可约，则可分解为如下两个次数较低的整系数多项式的乘积：
+    \[f(x)=(b_mx^m+b_{m-1}x^{m-1}+\cdots+b_0)(c_tx^t+c_{t-1}x^{t-1}+\cdots+c_0),\]
+    其中$m+t=n$. 显然$a_0=b_0c_0,a_n=b_mc_t$，由于$p\mid a_0$且$p$是素数，故$p\mid b_0$或$p\mid c_0$，又$p^2\nmid a_0$，故$p$不能同时整除$b_0$和$c_0$，不妨设$p\mid b_0$且$p\nmid c_0$. 又由假设$p\nmid a_n=b_mc_t$，故$p\nmid b_m$且$p\nmid c_t$.
+
+    因此，我们不妨设$p\mid b_0,p\mid b_1,\cdots,p\mid b_{j-1}$，其中$0<j\leqslant m<n$. 而
+    \[a_j=b_jc_0+b_{j-1}c_1+\cdots+b_0c_j,\]
+    根据假设$p\mid a_j$，但我们发现$p$可以整除右式除$b_jc_0$外的每一项，故$p$不可能整除$a_j$，矛盾，因此$p(x)$在整数环上不可约.
+\end{proof}
+
+实际上，对于二次和三次多项式，如果它们可约则必定有一次多项式因子，因此我们可以直接通过有无零点来判定它们的可约性. 但对于次数更高的多项式，如四次多项式，即使没有零点，它也可能被分解为两个二次不可约多项式的乘积，因此我们不能用零点来判定它们的可约性，此时艾森斯坦判别法是非常重要的. 但需要注意的是，艾森斯坦判别法是一个充分条件而非必要条件，即如果一个多项式在有理数域上不可约，它不一定能被艾森斯坦判别法判别. 下面我们来看几个例子具体使用艾森斯坦判别法：
+\begin{example}
+    设$p(x)=x^4-18x^3+12x^2-6x+2$，证明$p(x)$在有理数域上不可约.
+\end{example}
+\begin{proof}
+    我们可以取素数$p=2$，显然$p\mid 2,p\mid -6,p\mid 12,p\mid -18$，$p\nmid 1$，且$p^2=4\nmid 2$，满足艾森斯坦判别法的条件，故$p(x)$在有理数域上不可约.
+\end{proof}
 
 \begin{example}
-    设$p,q\in\mathbf{F}[x]$，证明：$p^2 \mid q^2\iff p \mid q$.
+    若$p$为素数，证明：$q(x)=x^{p-1}+x^{p-2}+\cdots+x+1$在有理数域上不可约.
 \end{example}
-
 \begin{proof}
-
-\end{proof}
-
-\begin{definition}
-    在$\mathbf{F}[x]$中，若$s \mid p$且$s \mid q$，则称$s$是$p$和$q$的一个公因式. 若$p$和$q$的公因式$s$满足对$p$和$q$的任一公因式$s'$都有$s' \mid s$，则称$s$是$p$和$q$的一个最大公因式.
-\end{definition}
-故我们可以看出，当$p$和$q$不为0时，最大公因式即为次数最大（首项系数也要最大）的公因式. 相应的，我们也有最小公倍式的定义，这也类似于整数中的最小公倍数，我们不再赘述.
-
-类似于整数中的辗转相除法（或称欧几里得算法），对于多项式我们有如下结论：
-\begin{theorem}\label{thm:17:欧几里得算法}
-    设$p,q\in\mathbf{F}[x]$，存在它们的一个最大公因式$s$，则存在$u,v\in\mathbf{F}[x]$使得\[s=up+vq.\]
-\end{theorem}
-证明与欧几里得算法的构造是类似的，读者可以回顾初等数论的知识，这里也简要给出证明：
-
-\begin{proof}
-
-\end{proof}
-
-在本节中我们更重视$p,q$最大公因式为1的情况，我们称之为\term{互素}\index{husu@互素 (coprime)}，我们可以得到一个多项式互素的充要条件：
-\begin{theorem}\label{thm:17:裴蜀定理}
-    设$p,q\in\mathbf{F}[x]$，则$p$和$q$互素的充要条件是存在$u,v\in\mathbf{F}[x]$使得\[up+vq=1.\]
-\end{theorem}
-这一定理称之为\term{裴蜀定理}\index{peishudingli@裴蜀定理 (Bézout's Lemma)}，事实上在数论中也有相对应的结论，证明是非常自然的，读者可以体会：
-
-\begin{proof}
-
-\end{proof}
-
-\begin{example}
-    证明：$\mathbf{F}[x]$中两个次数大于0的多项式没有公共复根的充要条件是它们互素.
-\end{example}
-
-\begin{proof}
-
-\end{proof}
-
-\begin{theorem} \label{thm:14:多项式的唯一分解定理}
-    唯一分解定理
-\end{theorem}
-\begin{proof}
-
+    本题直接使用艾森斯坦判别法并不方便，但我们可以做变量代换$x=y+1$，则
+    \begin{align*}
+        q(x)&=\dfrac{x^p-1}{x-1}=q(y+1)=\dfrac{(y+1)^p-1}{y} \\
+        &=y^{p-1}+\dbinom{p}{1}y^{p-2}+\dbinom{p}{2}y^{p-3}+\cdots+\dbinom{p}{p-1}y+1,
+    \end{align*}
+    其中$\dbinom{p}{k}=\dfrac{p!}{k!(p-k)!}$. 因此$p|\dbinom{p}{k}$，$p\nmid 1$，且$p^2\nmid \dbinom{p}{p-1}=p$，满足艾森斯坦判别法的条件. 因此换元后的$q(y+1)$在有理数域上不可约，要注意换元前后的任意可能分解都是由$x=y+1$一一对应的，故$q(x)$在有理数域上不可约.
 \end{proof}
 
 下面这一例子在将来讨论初等因子、不变因子时有重要作用：
@@ -206,6 +660,8 @@
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
+我们借用丘维声老师《高等代数》中的一张图来总结我们研究
+
 \vspace{2ex}
 \centerline{\heiti \Large 习题}
 
@@ -218,15 +674,28 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item
+    \item 证明：全体一元多项式关于多项式一般的加法和乘法运算构成环.
+    \item 设$p(x),q(x),r(x)\in\mathbf{F}[x]$，则
+    \begin{enumerate}
+        \item 若$p(x),q(x)\neq 0$，则$p(x)q(x)\neq 0$；
+        \item 若$p(x)\neq 0$，且$p(x)q(x)=p(x)r(x)$，则$q(x)=r(x)$.
+    \end{enumerate}
+    \item 证明\autoref{thm:14:消去重因式}.
+    \item 证明：每个奇数次的实系数多项式都有实的零点.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item
+    \item 设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$. 求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
+    \item 设$p,q\in\mathbf{F}[x]$，证明：$p^2 \mid q^2\iff p \mid q$.
+    \item 证明：$\mathbf{F}[x]$中两个次数大于0的多项式没有公共复根的充要条件是它们互素.
+    \item 设$p\in\mathbf{F}[x]$且$q\neq 0$. 证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
+    \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
+    \item 设$p(x)$和$q(x)$是$\mathbf{F}[x]$中的两个次数不超过$n$的多项式，若存在$\mathbf{F}$上$n+1$个不同的数$\lambda_0,\lambda_1,\cdots,\lambda_n$使得$p(\lambda_i)=q(\lambda_i),\enspace i=0,1,\cdots,n$，则$p(x)=q(x)$.
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item 证明带余除法的其它角度.
+    \item 证明裴蜀定理的其它角度.
 \end{enumerate}
