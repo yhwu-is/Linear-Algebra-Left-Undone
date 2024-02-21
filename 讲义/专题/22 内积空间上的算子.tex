@@ -350,10 +350,10 @@
     \small
     \begin{tikzpicture}
         \tikzset{->-/.style={decoration={
-            markings,
-            mark=at position .6 with {\arrow{stealth}}},postaction={decorate}}}
+                markings,
+                mark=at position .6 with {\arrow{stealth}}},postaction={decorate}}}
 
-        \draw[rotate=45] (0, 6) rectangle (-3, 3) rectangle (-5, 0)
+        \draw[thick,rotate=45] (0, 6) rectangle (-3, 3) rectangle (-5, 0)
             (-3, 3) rectangle(-3.35, 3.35)
             coordinate (xr) at (-2, 4)
             coordinate (xn) at (-4, 2)
@@ -365,7 +365,7 @@
             node at (-4, 4) {$\mathbf{R}^n$}
             node at (-6, 3) {$\dim n-r$};
 
-        \draw[rotate=30] (6, 2) rectangle (3.5, -2) rectangle (0, -4)
+        \draw[thick,rotate=30] (6, 2) rectangle (3.5, -2) rectangle (0, -4)
             (3.5, -2) rectangle (3.85, -2.35)
             coordinate (b) at (4.5, 0.5)
             coordinate (0m) at (3.5, -2)
@@ -378,11 +378,11 @@
         \foreach \point in {xr, x, xn, 0n, b, 0m}
             \fill[black] (\point) circle (1pt);
 
-        \node [left] at (xr) {$x_r$};
-        \node [below right] at (x) {$x=x_r+x_n$};
-        \node [left] at (xn) {$x_n$};
-        \node [right] at (0n) {0};
-        \node [right] at (b) {$b$};
+        \node[left] at (xr) {$x_r$};
+        \node[below right] at (x) {$x=x_r+x_n$};
+        \node[left] at (xn) {$x_n$};
+        \node[right] at (0n) {0};
+        \node[right] at (b) {$b$};
 
         \draw[->-,very thick] (xr) -- node[above,sloped] {$Ax_r = b$} (b);
         \draw[->-,very thick] (x) -- node[below,sloped] {$Ax = b$} (b);
