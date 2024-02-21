@@ -199,7 +199,7 @@
 
 而由向量组确定为基的等价条件，易知长度为 $\dim V$ 的标准正交向量组都是$ V $ 的标准正交基.
 
-标准正交基的优势就在于表出向量的表出系数可以提前确定.
+标准正交基的优势就在于表出向量的表出系数可以确定.
 
 \begin{theorem}
     设 $e_1, \ldots e_n$ 是 $ V $ 标准正交基且 $ v \in V$. 则
@@ -250,6 +250,8 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 \end{theorem}
 
 证明并不复杂，只需要结合\autoref{thm:20:上三角矩阵存在} 和 Gram-Schmidt 过程即可. 虽然十分浅显，但它迈出了我们在内积空间上算子简化表示的第一步，在更进一步的结论中我们会运用到它.
+
+\section{内积的表示方式}
 
 在此我们先打住，回忆一下内积的定义，其本质上就是一个函数，它把 $ V $ 中元素的每个有序对 $(u, v)$ 都映射成一个数$ \langle u, v \rangle \in \mathbf{F}$，而我们也很熟悉一类把 $ V $ 中元素映射成一个数的函数，即所谓的线性泛函. 那么这两者之间是否存在着某种联系？我们先借助几个例子观察一下.
 
@@ -308,13 +310,34 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
     \end{enumerate}
 \end{example}
 
+但内积的表示方式也不仅仅只与线性泛函相关，考虑取定一组基 $ (e_1, \ldots , e_n) $，考虑 $ v, w \in V $，其在此组基下的坐标分别为 $ \alpha = (a_1, \ldots , a_n) $ 和 $ \beta = (b_1, \ldots , b_n) $，若 $ \langle e_i, e_j \rangle = g_{ij} $，则有
+
+\begin{align*}
+    \langle v, w \rangle & = \langle a_1e_1 + \cdots + a_ne_n, b_1e_1 + \cdots + b_ne_n \rangle \\
+                         & = a_1g_{11}\bar{b}_1 + \cdots + a_ng_{nn}\bar{b}_n \\
+                         & = (a_1, \ldots, a_n) \begin{pmatrix}
+                            g_{11} & \cdots & g_{1n} \\
+                            \vdots & \ddots & \vdots \\
+                            g_{n1} & \cdots & g_{nn}
+                         \end{pmatrix} \begin{pmatrix}
+                            \bar{b}_1 \\
+                            \vdots \\
+                            \bar{b}_n
+                         \end{pmatrix}
+                         = \alpha G \bar{\beta}^{\mathrm{T}}
+\end{align*}
+
+此处的矩阵 $ G $ 被称为内积在基 $ (e_1, \ldots, e_n) $ 下的 \term{Gram 矩阵}，显然在实空间下它是对称矩阵，而在复空间下它是共轭对称矩阵. 矩阵的共轭对称依托于共轭转置操作，我们会在下一节中介绍. 此外，因为内积的正定性，所以 $ \alpha G \bar{\alpha}^{\mathrm{T}} > 0$，这也是 Gram 矩阵的一个重要性质，也被称作正定性. 可以发现 Gram 矩阵的特性实际上是与内积的性质相对应的.
+
+而内积在任一一组标准正交基下的 Gram 矩阵都是单位矩阵，这也是标准正交基的一个重要性质.
+
 \section{正交补}
 
 本节的内容更偏向于几何方向，将带领大家了解空间的正交补，以及一种特殊的映射：正交投影. 并介绍一下极小化问题及一点应用.
 
 \subsection{正交补 \quad 正交投影}
 
-\begin{definition} \index{zhengjiao!bu@补 (orthogonal complement)}
+\begin{definition}[正交补] \index{zhengjiao!bu@补 (orthogonal complement)}
     设 $ U $ 是 $ V $ 的子集，则 $ U $ 的\term{正交补}（记作 $ U^{\perp } $）是由 $ V $ 中与 $ U $ 的每个向量都正交的那些向量组成的集合：
     \[U^{\perp } = \{ v \in V \mid \forall u \in U, \enspace \langle v, u\rangle = 0\}\]
 \end{definition}
@@ -350,8 +373,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
 除去这两个结论，该直和分解为我们定义正交投影奠定了基础：
 \begin{definition} \index{zhengjiao@touying@投影 (orthogonal projection)}
-    设 $ U $ 是 $ V $ 的有限维子空间. 定义 $ V $ 到 $ U $ 上的\term{正交投影}
-    为如下算子$ P_U \in \mathcal{L} (V)$：对 $ v \in V $ 将其写成 $ v = u + w $，其中$ u \in U $ 且 $ w \in U^{\perp }$，则 $ P_U v = u $.
+    设 $ U $ 是 $ V $ 的有限维子空间. 定义 $ V $ 到 $ U $ 上的\term{正交投影}为如下算子$ P_U \in \mathcal{L} (V)$：对 $ v \in V $ 将其写成 $ v = u + w $，其中$ u \in U $ 且 $ w \in U^{\perp }$，则 $ P_U v = u $.
 \end{definition}
 
 正交投影的性质相当之多，不过大部分是成对刻画以及简单的推理，在此仅作罗列不加证明：
