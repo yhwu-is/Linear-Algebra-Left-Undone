@@ -7,7 +7,7 @@
 \subsection{内积空间的同构}
 
 \begin{definition}
-    设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. $ S: V \rightarrow U $ 是一个线性映射. 若 $ \forall u, v \in V,\enspace \langle Su, Sv \rangle = \langle u, v \rangle $，则称 $ S $ 是一个保持内积的线性映射. 若 $ S $ 是双射，则称 $ S $ 是一个保积同构.
+    设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. $ S: V \rightarrow U $ 是一个线性映射. 若 $ \forall u, v \in V,\enspace \langle Su, Sv \rangle = \langle u, v \rangle $，则称 $ S $ 是一个保持内积的线性映射. 若 $ S $ 是双射，则称 $ S $ 是一个\term{保积同构}.
 \end{definition}
 
 在内积空间的语境下，保积同构也被称作同构. 显然，因为其能够保持内积，所以也能够保持范数. 自然地，其对偶问题也是我们关心的.
@@ -38,7 +38,7 @@
 
 \subsection{伴随}
 
-考虑 $ T \in \mathcal{L}(V, W) $，$ v \in V, w \in W $，我们常会求解这样的式子 $ \langle Tv, w \rangle_W $. 我们可以将其定义成一线性泛函 $ \varphi : V \rightarrow \mathbf{F}, \enspace \varphi (v) = \langle Tv, w \rangle_W $，利用 \hyperref[thm:23:Riesz]{Riesz 表示定理}，存在唯一的 $ u \in W $，使得 $ \varphi (v) = \langle v, u \rangle_V $. 于是可以得出 $ \langle Tv, w \rangle_W = \langle v, u \rangle_V $. 观察形式的变化，$ Tv $ “脱去”了 $ T $，那么我们猜测，这里从 $ w $ 到 $ u $ 应该也经历了某种变化，并且理应与 $ T $ 有某种对称性. 我们将此种变化命名为\term{伴随}
+考虑 $ T \in \mathcal{L}(V, W) $，$ v \in V, w \in W $，我们常会求解这样的式子 $ \langle Tv, w \rangle_W $. 我们可以将其定义成一线性泛函 $ \varphi : V \rightarrow \mathbf{F}, \enspace \varphi (v) = \langle Tv, w \rangle_W $，利用 \hyperref[thm:23:Riesz]{Riesz 表示定理}，存在唯一的 $ u \in W $，使得 $ \varphi (v) = \langle v, u \rangle_V $. 于是可以得出 $ \langle Tv, w \rangle_W = \langle v, u \rangle_V $. 观察形式的变化，$ Tv $ “脱去”了 $ T $，那么我们猜测，这里从 $ w $ 到 $ u $ 应该也经历了某种变化，并且理应与 $ T $ 有某种对称性. 我们将此种变化命名为\term{伴随}.
 
 \begin{definition}[伴随] \index{bansui@伴随 (adjoint)}
     设 $ T \in \mathcal{L}(V, W) $， $ T $ 的伴随 $ T^*: W \rightarrow V $ 满足如下条件： $ \forall v \in V, w \in W, \langle Tv, w \rangle_W = \langle v, T^*w \rangle_V $.
@@ -231,7 +231,7 @@
 
 写成内积的语言就是 $ \forall v, w \in V,\enspace \langle Tv, w \rangle = \langle v, Tw \rangle $.
 
-为了研究自伴算子的酉相似（正交相似）标准型，首先得了解自伴算子的特征值和不变子空间的情况. 回忆伴随部分的例题 \autoref{ex:24:伴随与特征值}，我们可以给出自伴算子的特征值的描述.
+为了研究自伴算子的酉相似（正交相似）标准型，首先得了解自伴算子的特征值和不变子空间的情况. 回忆伴随部分的\autoref{ex:24:伴随与特征值}，我们可以给出自伴算子的特征值的描述.
 
 \begin{theorem}
     自伴算子的特征值都是实数.
@@ -268,7 +268,7 @@
 复内积空间上无论算子自伴与否都有特征值，不再赘述，下面针对实内积空间进行证明.
 
 \begin{proof}
-    设 $ V $ 是实内积空间，$ n = \mathrm{dim} V $. 取 $ v \in V, v \neq 0 $. 则
+    设 $ V $ 是实内积空间，$ n = \dim V $. 取 $ v \in V, v \neq 0 $. 则
     \[ v, Tv, \ldots , T^nv \]
     必是线性相关的. 故存在不全为 0 的实数 $ a_0, \ldots , a_n $ 使得
     \[ \vec{0} = a_0v + a_1Tv + \cdots + a_nT^nv. \]
@@ -325,9 +325,9 @@
 
         \item[\ref*{item:24:实谱定理:1}$\implies$\ref*{item:24:实谱定理:2}] 采用数学归纳法.
 
-            $ \mathrm{dim}V = 1 $ 时显然成立.
+            $ \dim V = 1 $ 时显然成立.
 
-            设 $ \mathrm{dim}V > 1 $ 且在维数更小的实内积空间上成立. 因为\autoref{lem:24:实谱定理引理2}，设 $ T $ 有一个特征向量 $ u $ 且 $ \lVert u \rVert = 1 $，$ U = \spa(u) $，则 $ U $ 是 $ V $ 的一个一维子空间且在 $ T $ 下不变，有\autoref{lem:24:实谱定理引理3}，算子 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的.
+            设 $ \dim V > 1 $ 且在维数更小的实内积空间上成立. 因为\autoref{lem:24:实谱定理引理2}，设 $ T $ 有一个特征向量 $ u $ 且 $ \lVert u \rVert = 1 $，$ U = \spa(u) $，则 $ U $ 是 $ V $ 的一个一维子空间且在 $ T $ 下不变，有\autoref{lem:24:实谱定理引理3}，算子 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的.
 
             由归纳假设，$ U^{\perp } $ 有一个由 $ T|_{U^{\perp }} $ 的特征向量构成的标准正交基. 将 $ u $ 添加进这组基，就得到了 $ V $ 的一组由 $ T $ 的特征向量构成的标准正交基，得证.
 
@@ -384,7 +384,7 @@
 
 \subsection{复正规算子}
 
-有了 \autoref{thm:24:正规算子的特征向量正交} 的铺垫，我们就可以给出正规算子在复内积空间上的一个非常漂亮的描述.
+有了\autoref{thm:24:正规算子的特征向量正交} 的铺垫，我们就可以给出正规算子在复内积空间上的一个非常漂亮的描述.
 
 \begin{theorem}[复谱定理] \label{thm:24:复谱定理} \index{pudingli@谱定理 (spectral theorem)!fu@复谱定理}
     设 $ \mathbf{F} = \mathbf{C} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
@@ -408,9 +408,9 @@
     % FIXME
     假设 \ref*{item:24:复谱定理:1} 成立，即 $ T $ 是正规的. 由 \hyperref[thm:23:Schur]{Schur 定理}，可知 $ V $ 上存在一组标准正交基 $ (e_1, \ldots , e_n) $ 使得 $ T $ 关于其的矩阵是上三角矩阵，设为 $ A $.
     \[ A = \begin{pmatrix}
-             & a_{11} & \cdots & a_{1n} \\
-             &        & \ddots & \vdots \\
-             & 0      &        & a_{nn} \\
+             a_{11} & \cdots & a_{1n} \\
+                    & \ddots & \vdots \\
+             0      &        & a_{nn} \\
         \end{pmatrix} \]
     接下来的任务就是证明它其实是个对角矩阵.
 
@@ -460,7 +460,7 @@
 
 \subsection{实正规算子}
 
-实内积空间上的自伴算子的完全描述已经由实谱定理给出，所以我们只需要讨论正规但不自伴的情况，再将二者结合即可. 前面我们提到过，实内积空间刻画旋转需要更高的维度，本质上是复数需要一个二阶实矩阵来对应. 比如 $ z = a + b\mathrm{i} $，我们可以用矩阵 $ \begin{pmatrix} a & -b \\ b & a \end{pmatrix} = aI + bJ $ 来对应，其中 $ I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} $ 是单位矩阵，对应与 1，$ J = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} $ 是 ，对应于 $ \mathrm{i} $. 可以验证加法和乘法都是对应的，只需注意到 $ J^2 = -I $ 即可. 而共轭操作则是矩阵的转置，即 $ (aI + bJ)^{\mathrm{T}} = aI - bJ $. 更重要的一点在于，这个二阶矩阵是可以和自己的共轭转置交换的，即 $ (aI + bJ)(aI - bJ) = (aI - bJ)(aI + bJ) $. 也就是说，这是一个实正规矩阵. 所以萌生出将实正规算子中的复特征值用一个二阶矩阵去替代也就不足为奇了. 下面给出有关此二阶矩阵的完全描述.
+实内积空间上的自伴算子的完全描述已经由实谱定理给出，所以我们只需要讨论正规但不自伴的情况，再将二者结合即可. 前面我们提到过，实内积空间刻画旋转需要更高的维度，本质上是复数需要一个二阶实矩阵来对应. 比如 $ z = a + b\i $，我们可以用矩阵 $ \begin{pmatrix} a & -b \\ b & a \end{pmatrix} = aI + bJ $ 来对应，其中 $ I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} $ 是单位矩阵，对应于 1，$ J = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} $ 是 ，对应于 $ \i $. 可以验证加法和乘法都是对应的，只需注意到 $ J^2 = -I $ 即可. 而共轭操作则是矩阵的转置，即 $ (aI + bJ)^{\mathrm{T}} = aI - bJ $. 更重要的一点在于，这个二阶矩阵是可以和自己的共轭转置交换的，即 $ (aI + bJ)(aI - bJ) = (aI - bJ)(aI + bJ) $. 也就是说，这是一个实正规矩阵. 所以萌生出将实正规算子中的复特征值用一个二阶矩阵去替代也就不足为奇了. 下面给出有关此二阶矩阵的完全描述.
 
 \begin{theorem}
     设 $ V $ 是二维的实内积空间，$ T \in \mathcal{L}(V) $. 则以下条件等价：
@@ -596,11 +596,11 @@
     \begin{enumerate}
         \item 实数域：对 $ n $ 阶实对称矩阵 $ M $，若对于所有非零实系数向量 $ z $，均有$ z^{T}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵；
 
-        \item 复数域：对 $ n $ 阶 Hermite 矩阵 $ M $，若对于所有非零向量 $ z $，$ z^{H}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵.
+        \item 复数域：对 $ n $ 阶 Hermite 矩阵 $ M $，若对于所有非零向量 $ z $，$ z^\mathrm{H}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵.
     \end{enumerate}
 \end{definition}
 
-复数域上的定义合理性是由``对于 Hermite 矩阵 $ M $，$ z^{H}Mz $ 必为实数''保证的.
+复数域上的定义合理性是由``对于 Hermite 矩阵 $ M $，$ z^\mathrm{H}Mz $ 必为实数''保证的.
 
 由实数域上的正定矩阵的定义，我们可以发现其与二次型的相关性，我们也可以利用从二次型中所学来判定实正定矩阵.
 
@@ -626,12 +626,12 @@
     \begin{enumerate}
         \item $ A $ 是正定矩阵；
 
-        \item 双线性函数 $ \langle x, y \rangle = x^{H}Ay $定义了一个 $ \mathbf{C}^n $ 上的一个内积. 事实上， $ \mathbf{C}^n $ 所有内积都可视作由某个正定矩阵以此方式得到；
+        \item 双线性函数 $ \langle x, y \rangle = x^\mathrm{H}Ay $定义了一个 $ \mathbf{C}^n $ 上的一个内积. 事实上， $ \mathbf{C}^n $ 所有内积都可视作由某个正定矩阵以此方式得到；
 
         \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathbf{C}^k $ 构成的
-              Gram 矩阵. 即 $ A = B^{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且这种分解方式不唯一.
+              Gram 矩阵. 即 $ A = B^\mathrm{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且这种分解方式不唯一.
 
-        \item \term{Cholesky 分解}\index{Cholesky@Cholesky 分解 (Cholesky decomposition)}：存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^{H} $
+        \item \term{Cholesky 分解}\index{Cholesky@Cholesky 分解 (Cholesky decomposition)}：存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^\mathrm{H} $
 
         \item \term{Sylvester 定理}\index{Sylvester@Sylvester 定理 (Sylvester's criterion)}：$ A $ 的所有顺序主子式均为正. （但对于半正定矩阵而言，顺序主子式非负不能推出矩阵半正定）
     \end{enumerate}
@@ -673,7 +673,7 @@
             \vdots \\
             x_n
         \end{pmatrix} \right\rangle                                                                                                                  \\
-         & = \langle \sum_{i = 1}^{n}e_{i}\sum_{j = 1}^{n}a_{ij}x_{j}, \sum_{i = 1}^{n}x_{i}e_{i} \rangle
+         & = \left\langle \sum_{i = 1}^{n}e_{i}\sum_{j = 1}^{n}a_{ij}x_{j}, \sum_{i = 1}^{n}x_{i}e_{i} \right\rangle
         = \overline{x_1}\sum_{j = 1}^{n}a_{1j}x_{j} + \overline{x_2}\sum_{j = 1}^{n}a_{2j}x_{j} + \cdots + \overline{x_n}\sum_{j = 1}^{n}a_{nj}x_{j} \\
          & = (\overline{x_1}, \overline{x_2}, \ldots, \overline{x_n})
         \begin{pmatrix}
@@ -682,7 +682,7 @@
             \vdots                             \\
             \sum\limits_{j = 1}^{n}a_{nj}x_{j}
         \end{pmatrix}
-        = x^{H}Ax.
+        = x^\mathrm{H}Ax.
     \end{align*}
 
     此对应复内积空间的情形，实内积空间的情形也就显然了.
