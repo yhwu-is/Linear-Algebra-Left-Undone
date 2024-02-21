@@ -506,6 +506,23 @@
     \end{enumerate}
 \end{theorem}
 
+我们也可以借此给出正交变换的完全描述. 之前我们提到过，正交变换是由旋转和镜像组成的，旋转用二阶实矩阵也就是旋转矩阵表示，形式为 $ \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix} $，而保持不变或者反向的镜像对应于特征值为 $ 1 $ 和 $ -1 $. 所以正交变换的完全表示中只涉及旋转矩阵以及 $ 1, -1 $.
+
+\begin{theorem}
+    设 $ V $ 是实内积空间，$ S \in \mathcal{L}(V) $，则以下条件等价：
+    \begin{enumerate}
+        \item $ S $ 是正交变换；
+
+        \item 存在 $ V $ 的一组标准正交基使得 $ S $ 关于这组基有分块对角矩阵，对角线上的每个块要么是 $ 1 $ 或 $ -1 $ 构成的 $ 1 \times 1 $ 矩阵，要么是形如
+        \[
+            \begin{pmatrix}
+                \cos \theta & -\sin \theta \\
+                \sin \theta & \cos \theta
+            \end{pmatrix}
+        \]
+        的 $ 2 \times 2 $ 矩阵，其中 $ \theta \in (0, \pi) $.
+    \end{enumerate}
+\end{theorem}
 
 复谱定理给出了复向量空间上正规算子的完全描述，实谱定理给出了实向量空间上自伴算子的完全描述. 它们是非常强大的定理，因为它们给出的都是充要条件. 所以在处理内积空间上可对角化问题时，它们就是你最好的帮手.
 
