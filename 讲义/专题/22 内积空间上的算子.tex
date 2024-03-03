@@ -358,7 +358,7 @@
 正规算子的特征值本身没有特殊之处，但它的特征向量却有着特殊的性质.
 
 \begin{theorem} \label{thm:24:正规算子的特征向量}
-    设 $ T \in \mathcal{L}(V) $ 是正规的，且 $ v \in V $ 是 $ T $ 相应于特征值 $ \lambda $ 的特征向量，则 $ v $ 也是 $ T^* $ 相应于特征值$ \overline{\lambda} $ 的特征向量.
+    设 $ T \in \mathcal{L}(V) $ 是正规的，且 $ v \in V $ 是 $ T $ 相应于特征值 $ \lambda $ 的特征向量，则 $ v $ 也是 $ T^* $ 相应于特征值$ \bar{\lambda} $ 的特征向量.
 \end{theorem}
 
 这是\autoref{ex:24:伴随与特征值} 在正规算子条件下的加强，它不仅反映了算子与其伴随的特征值在数值上的关系，也反映出了特征空间的关系. 从这里出发，你可以先思考一下正规算子的不变子空间是怎样的，如果有困难的话不妨结合一下\autoref{ex:24:伴随与不变子空间}.
@@ -454,9 +454,65 @@
 
 这是复谱定理和酉变换特征值的性质的一个直接推论.
 
-复内积空间上的正规算子我们已经有了一个非常漂亮的描述，但实内积空间上的正规算子有着一个致命的问题，那就是它不一定存在特征值，正交变换时我们就已经给出了一个反例. 为了从复内积空间过渡到实内积空间，我们需要建立起复数和实矩阵的对应关系. 为此，我们需要利用复内积空间的结构研究实内积空间.
+复内积空间上的正规算子我们已经有了一个非常漂亮的描述，但实内积空间上的正规算子有着一个致命的问题，那就是它不一定存在特征值，正交变换时我们就已经给出了一个反例. 为了从复内积空间过渡到实内积空间，我们需要建立起复数和实矩阵的对应关系.
 
-\subsection{复化}
+% \subsection{复化}
+
+% 回忆 $ \mathbf{C}(\mathbf{R}) $ 这个线性空间，其维数为 2，以 $ 1, \i $ 为基，从而任意复数 $ z = a + b\i $ 都可以对应一个有序实数对 $ (a, b) \in \mathbf{R} \times \mathbf{R} $. 我们对于实向量空间就可以采取反方向的操作，即考虑 $ (u, v) \in V \times V $，其中 $ V $ 是实向量空间，将其对应于 $ u + v\i \in V_C $. $ V_C $ 被称作 $ V $ 的\term{复化}，这个过程也就是实向量空间的复化.
+
+% 对实向量空间复化的动机是显然的，我们所有的讨论都是在向量空间上进行的，有些实数范围不能解决的问题在复数范围内是轻松的，并且能给我们带来更多的启发. 而在一个变换的过程中，我们希望研究我们的结果有怎样的性质，以及整个过程中有哪些性质是不变的. 那我们首先得给 $ V_C $ 一个解释.
+
+% \begin{theorem}
+%     设 $ V $ 是实向量空间，$ V_C $ 是 $ V $ 的复化.
+%     \begin{enumerate}
+%         \item 定义 $ V_C $ 上的加法为
+%         \[
+%             (u_1 + v_1\i) + (u_2 + v_2\i) = (u_1 + u_2) + (v_1 + v_2)\i,
+%         \]
+%         其中 $ u_1, u_2, v_1, v_2 \in V $.
+%         \item 定义 $ V_C $ 上的数乘为
+%         \[
+%             (a + b\i)(u + v\i) = (au - bv) + (av + bu)\i,
+%         \]
+%         其中 $ a, b \in \mathbf{R} $，$ u, v \in V $.
+%     \end{enumerate}
+%     则 $ V_C $ 在上述定义的加法和数乘下构成一个复向量空间.
+% \end{theorem}
+
+% 复化的结果并没有脱离我们的预期，它依然是一个向量空间，这也说明复化这一变换的性质是可以为我们所用的. 接下来就是寻找 $ V $ 到 $ V_C $ 的不变量，而对于线性空间来说，最重要的便是基和维数.
+
+% \begin{theorem}
+%     设 $ V $ 是实向量空间，
+%     \begin{enumerate}
+%         \item 如果 $ v_1, \ldots , v_n $ 是 $ V $ （作为实向量空间）的一组基，则其也是 $ V_C $ （作为复向量空间）的一组基；
+
+%         \item $ V_C $ （作为复向量空间）的维数等于 $ V $ （作为实向量空间）的维数.
+%     \end{enumerate}
+% \end{theorem}
+
+% 既然线性空间的基和维数都没有发生变化，那我们就可以将 $ V $ 上的算子也一起迁移到 $ V_C $ 上，也就是说，对算子进行复化. 思路也与线性空间的复化类似，即将算子 $ T $ 分别作用在 $ u, v \in V $ 上，然后将其对应到 $ V_C $.
+
+% \begin{definition}
+%     设 $ V $ 是实向量空间，$ T \in \mathcal{L}(V) $. 定义 $ T $ 的复化 $ T_C \in \mathcal{L}(V_C) $ 满足 $ \forall u, v \in V,\enspace T_C(u + v\i) = Tu + \i Tv $.
+% \end{definition}
+
+% $ T_C $ 仍然是 $ V_C $ 上的线性变换这点请读者自行验证. 接下来便是寻找算子复化这一过程的不变量，而考虑到复化后的空间的基没有发生变化，那么矩阵表示的不变是显然的.
+
+% \begin{theorem}
+%     设 $ v_1, \ldots , v_n $ 是实向量空间 $ V $ 的一组基，$ T \in \mathcal{L}(V) $ 在这组基下的矩阵为 $ A $，则 $ T_C \in \mathcal{L}(V_C) $ 在这组基下的矩阵也是 $ A $.
+% \end{theorem}
+
+% 而对于算子，我们更关心的是它的特征值和特征向量，这些又与算子的极小多项式有着密切的联系. 反复利用 $ T_C $ 的定义，我们可以得到 $ (T_C)^n(u + v\i) = T^n u + \i T^n v $，这将复化的幂次运算与原算子的幂次运算联系了起来，也就可以解答与多项式相关的问题.
+
+% \begin{theorem}
+%     设 $ V $ 是实向量空间，$ T \in \mathcal{L}(V) $，则 $ T_C $ 的极小多项式等于 $ T $ 的极小多项式.
+% \end{theorem}
+
+% 这也就表明复化的极小多项式的系数都是实数. 而极小多项式的根是特征值，所以我们可以得到复化算子的特征值的描述.
+
+% \begin{theorem}
+%     设 $ V $ 是实向量空间，$ T \in \mathcal{L}(V) $，则 $ \lambda $ 是 $ T_C $ 的特征值当且仅当 $ \lambda$ 是 $ T $ 的特征值.
+% \end{theorem}
 
 \subsection{实正规算子}
 
@@ -524,177 +580,96 @@
     \end{enumerate}
 \end{theorem}
 
-复谱定理给出了复向量空间上正规算子的完全描述，实谱定理给出了实向量空间上自伴算子的完全描述. 它们是非常强大的定理，因为它们给出的都是充要条件. 所以在处理内积空间上可对角化问题时，它们就是你最好的帮手.
+\section{算子与数的类比 \quad 正算子}
 
-可能很多同学对于行秩、列秩相等以及转置的几何意义很感兴趣. 实际上我们有两种获得转置矩阵的方式，第一种来源于我们之前讨论的对偶空间上的线性映射对应的矩阵，这种方式可能不够直观. 另一种获得的方法基于伴随算子. 接下来我们将说明这些定义的统一性，深刻理解转置的内涵.
+\subsection{算子与数的类比}
 
-我们可以研究矩阵及其转置的关系，我们可以用一个图形来表示：
-
-\begin{figure}[H]
-    \centering
-    \small
-    \begin{tikzpicture}
-        \tikzset{->-/.style={decoration={
-                markings,
-                mark=at position .6 with {\arrow{stealth}}},postaction={decorate}}}
-
-        \draw[thick,rotate=45] (0, 6) rectangle (-3, 3) rectangle (-5, 0)
-            (-3, 3) rectangle(-3.35, 3.35)
-            coordinate (xr) at (-2, 4)
-            coordinate (xn) at (-4, 2)
-            coordinate (x) at (-2, 2)
-            coordinate (0n) at (-3, 3)
-            node at (-1, 5) {行空间}
-            node at (-4, 1) {$A$的核空间}
-            node at (-1.5, 6.5) {$\dim r$}
-            node at (-4, 4) {$\mathbf{R}^n$}
-            node at (-6, 3) {$\dim n-r$};
-
-        \draw[thick,rotate=30] (6, 2) rectangle (3.5, -2) rectangle (0, -4)
-            (3.5, -2) rectangle (3.85, -2.35)
-            coordinate (b) at (4.5, 0.5)
-            coordinate (0m) at (3.5, -2)
-            node at (5, 1.5) {列空间}
-            node at (2, -3) {$A^{\mathrm{T}}$的核空间}
-            node at (7, 0) {$\dim r$}
-            node at (5, -3) {$\mathbf{R}^m$}
-            node at (4, -4.5) {$\dim m-r$};
-
-        \foreach \point in {xr, x, xn, 0n, b, 0m}
-            \fill[black] (\point) circle (1pt);
-
-        \node[left] at (xr) {$x_r$};
-        \node[below right] at (x) {$x=x_r+x_n$};
-        \node[left] at (xn) {$x_n$};
-        \node[right] at (0n) {0};
-        \node[right] at (b) {$b$};
-
-        \draw[->-,very thick] (xr) -- node[above,sloped] {$Ax_r = b$} (b);
-        \draw[->-,very thick] (x) -- node[below,sloped] {$Ax = b$} (b);
-        \draw[->-,very thick] (xn) -- node[below,sloped] {$Ax_n = 0$} (0m);
-
-        \draw[dashed,thick] (xr) -- (x) -- (xn);
-    \end{tikzpicture}
-\end{figure}
-
-我们观察到以下几点：
-\begin{enumerate}
-    \item 矩阵的行空间与解空间（零空间）互为正交补（直观理解两个空间就是互相垂直且互为补空间），这一点应当是在正交的内容中有所提及的；
-
-    \item 矩阵的列空间与其转置矩阵的零空间互为正交补，这一点实际与上一条等价.
-\end{enumerate}
-
-接下来我们来看行秩（列秩比较显然，此处不再详细展开）. 我们首先得到解空间$N(A)$的维数，这可以直接根据维数公式得到：$\dim N(A) = n-r(A)$，根据正交补的性质，我们的可以得到行秩即为$n-(n-r(A))=r(A)$. 于是我们得到了一个基于正交补的行秩解释.
-
-\section{正算子}
-
-在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定（definite matrix），正定（positive definite）还是负定（negative definite）还是半正定（positive semidefinite）还是半负定（negative semidefinite）.
-
-有定可以被解释为无论这个非零向量是怎样的，其经过某种规定运算得到的数的符号是确定的. 正定矩阵自然就是指任何非零向量经某种运算后得到的实数一定是正的. 但这所谓的``某种运算''在不同的数域下仍然有差异.
-
-\begin{definition}[正定矩阵] \index{zhengdingjuzhen@正定矩阵 (positive definite matrix)}
-    \begin{enumerate}
-        \item 实数域：对 $ n $ 阶实对称矩阵 $ M $，若对于所有非零实系数向量 $ z $，均有$ z^{T}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵；
-
-        \item 复数域：对 $ n $ 阶 Hermite 矩阵 $ M $，若对于所有非零向量 $ z $，$ z^\mathrm{H}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵.
-    \end{enumerate}
-\end{definition}
-
-复数域上的定义合理性是由``对于 Hermite 矩阵 $ M $，$ z^\mathrm{H}Mz $ 必为实数''保证的.
-
-由实数域上的正定矩阵的定义，我们可以发现其与二次型的相关性，我们也可以利用从二次型中所学来判定实正定矩阵.
+从保距自同构到自伴算子和正规算子，我们对内积空间上的算子有了初步的了解，也对伴随在其中的作用有了一定的认识. 让我们回忆保距自同构和自伴算子有关伴随的描述.
 
 \begin{theorem}
-    设 $ A $ 为 $ n $ 阶实对称矩阵，则以下条件等价：
+    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $，则
     \begin{enumerate}
-        \item $ A $ 是正定矩阵；
+        \item $ T $ 是保距自同构当且仅当 $ T^*T = TT^* = I $；
 
-        \item $ A $ 的正惯性指数为 $ n $，即 $ A \simeq E $；
-
-        \item 存在可逆矩阵 $ P $，使得 $ A = P^{T}P $；
-
-        \item $ A $ 的 $ n $ 个特征值 $ \lambda_1, \lambda_2, \ldots, \lambda_n $ 均为正.
+        \item $ T $ 是自伴算子当且仅当 $ T = T^* $.
     \end{enumerate}
 \end{theorem}
 
-对应的复数域版本相信大家也很容易就能够联想得到，只需要将转置变为共轭转置即可.
-
-以下是一些更深层次地判别矩阵是否正定的条件，同时它们也是正定矩阵的一些重要的性质.
+但事实上，这种形式我们并不是初见，考虑以下定理.
 
 \begin{theorem}
-    $ A $ 是 $ n $ 阶的 Hermite 矩阵. 以下条件等价.
+    设 $ z \in \mathbf{C} $，则
     \begin{enumerate}
-        \item $ A $ 是正定矩阵；
+        \item $ z $ 是单位复数当且仅当 $ z\bar{z} = \bar{z}z = 1 $；
 
-        \item 双线性函数 $ \langle x, y \rangle = x^\mathrm{H}Ay $定义了一个 $ \mathbf{C}^n $ 上的一个内积. 事实上， $ \mathbf{C}^n $ 所有内积都可视作由某个正定矩阵以此方式得到；
-
-        \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathbf{C}^k $ 构成的
-              Gram 矩阵. 即 $ A = B^\mathrm{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且这种分解方式不唯一.
-
-        \item \term{Cholesky 分解}\index{Cholesky@Cholesky 分解 (Cholesky decomposition)}：存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^\mathrm{H} $
-
-        \item \term{Sylvester 定理}\index{Sylvester@Sylvester 定理 (Sylvester's criterion)}：$ A $ 的所有顺序主子式均为正. （但对于半正定矩阵而言，顺序主子式非负不能推出矩阵半正定）
+        \item $ z $ 是实数当且仅当 $ z = \bar{z} $.
     \end{enumerate}
 \end{theorem}
 
-像 2 就道出了正定矩阵和内积之间的关系，3 和 4 给出了正定矩阵的一些分解方式.
+所以，如果我们将对算子取伴随类比于对复数取共轭转置，那么保距自同构就类比于单位复数，自伴算子就类比于实数. 不过，这一类比还有一个较大的疑点，就是我们的所讨论的复内积空间上的算子是否能够类比于复数. 对于任意复数 $ z = a + b\i $，其共轭转置为 $ \bar{z} = a - b\i $. 为了在内积空间上达成类似的效果，我们需要先将算子分解为 $ T = T_1 + \i T_2 $ 的形式，并且 $ T_1, \i T_2 \in \mathcal{L}(V) $ 需要类似地满足实数和纯虚数的性质. 事实上，这是可以做到的.
 
-现在让我们跳开去，先去看看算子上的事情，不过出于更实用的原因，我们研究半正定矩阵对应的算子.
+\begin{theorem}
+    设 $ T $ 为复向量空间 $ V $ 上的算子，则 $ T = T_1 + \i T_2 $，$ T_1 = \dfrac{T + T^*}{2} $，$ \i T_2 = \dfrac{T - T^*}{2} $，并且 $ T^* = T_1 - \i T_2 $.
+\end{theorem}
+
+由此可见，我们的讨论的确是有意义的. 但紧接着又有一个更大的疑点，就是我们应该将正规算子置于何处，因为复数是可交换的，而算子并不是. 这也正是这个类比无法解决的问题，但这并不妨碍类比的意义，因为我们可以从上述定理中得到一个正规算子的等价条件.
+
+\begin{theorem}
+    设 $ T \in \mathcal{L}(V) $，则 $ T $ 是正规的当且仅当 $ T_1 $ 和 $ T_2 $ 可交换.
+\end{theorem}
+
+这也意味着，我们实际上可以通过 $ T = T_1 + \i T_2 $ 先将全体算子分类为三层，即 $ T_1, T_2 $ 不可交换的一般算子，$ T_1, T_2 $ 可交换的正规算子，以及 $ T_2 = 0 $ 的自伴算子.
+
+让我们再将这个类比延展到更多方面，比如特征值和特征向量，回忆保距自同构和自伴算子的特征值的描述.
+
+\begin{theorem}
+    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $，则
+    \begin{enumerate}
+        \item 若 $ T $ 是保距自同构，则 $ T $ 的特征值的模长都是 1；
+
+        \item 若 $ T $ 是自伴算子，则 $ T $ 的特征值都是实数.
+    \end{enumerate}
+\end{theorem}
+
+这一类比似乎暗示了保距自同构和自伴算子的特征值的性质与复数的模长和实数的性质有关. 这种暗示还延续到了算子作用后的空间与原空间的度量性质上.
+
+\begin{theorem} \label{thm:24:复内积空间}
+    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 若 $ \forall v \in V,\enspace \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
+\end{theorem}
+
+\begin{theorem}
+    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 则 $ T $ 是自伴的当且仅当 $ \forall v \in V, \langle Tv, v \rangle \in \mathbf{R} $
+\end{theorem}
+
+下面这个定理是\autoref{thm:24:复内积空间} 的一般情况.
+
+\begin{theorem}
+    若 $ T $ 是 $ V $ 上的自伴算子，$ \forall v \in V,\enspace \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
+\end{theorem}
+
+所以在接下来的研究中，我们可以怀着这样的类比去寻找算子更多的性质，以及为我们研究新的算子提供更多的启发.
+
+\subsection{正算子}
+
+在实谱定理的证明过程中，\autoref{lem:24:实谱定理引理1} 从自伴算子 $ T $ 构造出了一个新的算子 $ T^2 + bT + cI$，其中 $ b^2 < 4c $. 这是一个可逆的自伴算子，并且满足 $\langle (T^2 + bT + cI)v, v \rangle \geqslant 0, \forall v$. 也就是说，$ T^2 + bT + cI $ 的作用在内积上是保号的. 这一性质在诸多问题中都是非常重要的，包括多元函数的极值、量子态的转变等等，为此我们接下来研究与 $ T^2 + bT + cI $ 类似的算子.
 
 \begin{definition}[正算子] \index{zhengsuanzi@正算子 (positive operator)}
     设算子 $ T \in \mathcal{L}(V) $，如果 $ T $ 是自伴的且 $ \forall v \in V $均有 $ \langle Tv, v \rangle \geqslant 0 $.
 \end{definition}
 
-如果 $ V $ 是复向量空间，则 $ T $ 自伴的条件可以从定义中去除.
+这里的定义就出现了算子作用后的空间与原空间的度量，所以我们可以猜测，正算子的行为实际上类似于非负数. 非负数自然蕴含实数，所以我们可以猜测正算子自然也是自伴的.
 
-但对于正算子的定义似乎和对于半正定矩阵的定义方向完全不同，前者依托内积，后者则是依托二次型. 不过，若是你还记得我们曾经提到过内积本身是一种正定齐次双线性函数，以及二次型可以通过双线性函数引入，就可以捕获这其中的相关之处. 我们接下来进行推导.
+\begin{example}
+    设 $ V $ 为复向量空间，$ T \in \mathcal{L}(V) $. 证明：若 $\langle Tv, v \rangle \geqslant 0, \forall v \in V$，则 $ T $ 是自伴算子.
+\end{example}
 
-\begin{proof}
-    设 $ V $ 的一组标准正交基为 $ e = (e_1, e_2, \ldots, e_n) $，任取向量 $ \alpha \in V $，设其在 $ e $ 下的坐标为 $ x = (x_1, x_2, \ldots, x_n)^{T} $. 设正算子 $ T \in \mathcal{L}(V) $在 $ e $ 下的矩阵为 $ A = (a_{ij})_{n \times n}$，则
-    \begin{align*}
-        \langle Tv, v \rangle
-         & = \langle Tex, ex \rangle = \langle eAx, ex \rangle                                                                                       \\
-         & = \left\langle (e_1, e_2, \ldots ,e_n)
-        \begin{pmatrix}
-            a_{11} & a_{12} & \ldots & a_{1n} \\
-            a_{21} & a_{22} & \ldots & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{n1} & a_{n2} & \ldots & a_{nn}
-        \end{pmatrix}
-        \begin{pmatrix}
-            x_1    \\
-            x_2    \\
-            \vdots \\
-            x_n
-        \end{pmatrix} ,(e_1, e_2, \ldots ,e_n)
-        \begin{pmatrix}
-            x_1    \\
-            x_2    \\
-            \vdots \\
-            x_n
-        \end{pmatrix} \right\rangle                                                                                                                  \\
-         & = \left\langle \sum_{i = 1}^{n}e_{i}\sum_{j = 1}^{n}a_{ij}x_{j}, \sum_{i = 1}^{n}x_{i}e_{i} \right\rangle
-        = \overline{x_1}\sum_{j = 1}^{n}a_{1j}x_{j} + \overline{x_2}\sum_{j = 1}^{n}a_{2j}x_{j} + \cdots + \overline{x_n}\sum_{j = 1}^{n}a_{nj}x_{j} \\
-         & = (\overline{x_1}, \overline{x_2}, \ldots, \overline{x_n})
-        \begin{pmatrix}
-            \sum\limits_{j = 1}^{n}a_{1j}x_{j} \\
-            \sum\limits_{j = 1}^{n}a_{2j}x_{j} \\
-            \vdots                             \\
-            \sum\limits_{j = 1}^{n}a_{nj}x_{j}
-        \end{pmatrix}
-        = x^\mathrm{H}Ax.
-    \end{align*}
-
-    此对应复内积空间的情形，实内积空间的情形也就显然了.
-\end{proof}
-
-我们定义出的正算子虽然名为正算子，但我们类比的时候它其实是类似于非负数，非负数很重要的一种运算就是开方运算. 类似的，我们也可以定义算子的平方根.
+非负数很重要的一种运算就是开方运算，所以我们自然也希望能够定义正算子的开方运算，以及相应的平方根.
 
 \begin{definition}[平方根] \index{pingfanggen@平方根 (square root)}
     算子 $ R $ 被称为算子 $ T $ 的平方根，如果 $ R^{2} = T $.
 \end{definition}
 
-以下是正算子的刻画.
+因为我们先前已经给出过自伴算子的完全描述，所以正算子在对角化方面的行为与自伴算子是一致的. 下面的刻画更多是从算子与数的类比角度出发.
 
 \begin{theorem}
     设 $ T \in \mathcal{L}(V) $. 则以下条件等价.
@@ -716,7 +691,7 @@
     \end{enumerate}
 \end{theorem}
 
-从这里我们进一步加深类比. \ref*{item:25:正算子刻画:3} 就相当于复数非负当且仅当其有非负的平方根，\ref*{item:25:正算子刻画:4} 就相当于复数非负当且仅当其有实的平方根，\ref*{item:25:正算子刻画:5} 就相当于复数 $ z $ 非负当且仅当存在复数 $ w $ 使得 $ z = \overline{w}w $.
+\ref*{item:25:正算子刻画:3} 就相当于复数非负当且仅当其有非负的平方根，\ref*{item:25:正算子刻画:4} 就相当于复数非负当且仅当其有实的平方根，\ref*{item:25:正算子刻画:5} 就相当于复数 $ z $ 非负当且仅当存在复数 $ w $ 使得 $ z = \overline{w}w $.
 
 每个非负数都有唯一的非负平方根，下面这个定理表明正算子也具有类似的性质.
 
@@ -724,7 +699,7 @@
     $ V $ 上每个正算子都有唯一的正平方根.
 \end{theorem}
 
-这个涉及到唯一性的证明. 在我们最初学习线性代数的时候应该就涉及到了，如果线性映射在线性空间的一组基下的对应的像是确定的，则该线性映射是被唯一确定的. 而在内积空间上，我们倾向选用标准正交基，正算子以及其正平方根又是自伴的，所以证明借助了谱定理.
+此处涉及到唯一性的证明. 在我们最初学习线性代数的时候即提到过，如果线性映射在线性空间的一组基下的对应的像是确定的，则该线性映射是被唯一确定的. 而在内积空间上，我们倾向选用标准正交基，正算子以及其正平方根又是自伴的，所以证明借助了谱定理.
 
 \begin{proof}
     设 $ T \in \mathcal{L}(V) $ 是正的，$ v \in V $ 是 $ T $ 的一个特征向量，则有 $ \lambda \geqslant 0 $ 使得 $ Tv = \lambda v $.
@@ -753,39 +728,110 @@
     命题得证.
 \end{proof}
 
-我们将正算子 $ T $ 的唯一正平方根记作 $ \sqrt{T} $.
+我们将正算子 $ T $ 的唯一正平方根记作 $ \sqrt{T} $. 虽然正算子与非负数相似之处很多，但也有差异. 比如正算子是可以有无穷多个平方根的，但非负数最多只能有两个.
 
-另外，虽然正算子与非负数相似之处很多，但也有差异. 比如正算子是可以有无穷多个平方根的，但非负数最多只能有两个.
+% 在数学分析课程中，我们常常会讨论多元函数的极值，极值的刻画依赖的正是矩阵是否有定（definite matrix），正定（positive definite）还是负定（negative definite）还是半正定（positive semidefinite）还是半负定（negative semidefinite）.
 
-\section{算子与数的类比}
+% 有定可以被解释为无论这个非零向量是怎样的，其经过某种规定运算得到的数的符号是确定的. 正定矩阵自然就是指任何非零向量经某种运算后得到的实数一定是正的. 但这所谓的``某种运算''在不同的数域下仍然有差异.
 
-以下的两条定理建立在复数域上，也是对复内积空间的结构的进一步了解
+% \begin{definition}[正定矩阵] \index{zhengdingjuzhen@正定矩阵 (positive definite matrix)}
+%     \begin{enumerate}
+%         \item 实数域：对 $ n $ 阶实对称矩阵 $ M $，若对于所有非零实系数向量 $ z $，均有$ z^{T}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵；
 
-\begin{theorem} \label{thm:24:复内积空间}
-    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 若 $ \forall v \in V,\enspace \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
-\end{theorem}
+%         \item 复数域：对 $ n $ 阶 Hermite 矩阵 $ M $，若对于所有非零向量 $ z $，$ z^\mathrm{H}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵.
+%     \end{enumerate}
+% \end{definition}
 
-证明利用的正是之前的\autoref{eq:23:内积和范数的性质4}.
+% 复数域上的定义合理性是由``对于 Hermite 矩阵 $ M $，$ z^\mathrm{H}Mz $ 必为实数''保证的.
 
-\begin{theorem}
-    设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 则 $ T $ 是自伴的当且仅当 $ \forall v \in V, \langle Tv, v \rangle \in \mathbf{R} $
-\end{theorem}
+% 由实数域上的正定矩阵的定义，我们可以发现其与二次型的相关性，我们也可以利用从二次型中所学来判定实正定矩阵.
 
-证明利用的则是实数减去其共轭等于 0 推出的一系列等价变形. 这一定理也进一步地显示出自伴算子与实数的相似性.
+% \begin{theorem}
+%     设 $ A $ 为 $ n $ 阶实对称矩阵，则以下条件等价：
+%     \begin{enumerate}
+%         \item $ A $ 是正定矩阵；
 
-下面这个定理是\autoref{thm:24:复内积空间} 的一般情况.
+%         \item $ A $ 的正惯性指数为 $ n $，即 $ A \simeq E $；
 
-\begin{theorem}
-    若 $ T $ 是 $ V $ 上的自伴算子，$ \forall v \in V,\enspace \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
-\end{theorem}
+%         \item 存在可逆矩阵 $ P $，使得 $ A = P^{T}P $；
 
-复内积空间上已经处理过了，实内积空间上利用\autoref{eq:23:内积和范数的性质2} 与内积的对称性即可证明. 事实上，在实内积空间上能做到 $ \forall v \in V ,\enspace \langle Tv, v \rangle = 0 $ 的算子绝大部分都是非自伴的，下面这道例题给出了其满足的性质.
+%         \item $ A $ 的 $ n $ 个特征值 $ \lambda_1, \lambda_2, \ldots, \lambda_n $ 均为正.
+%     \end{enumerate}
+% \end{theorem}
 
-\begin{example}
-    设 $ V $ 是实内积空间， $ T \in \mathcal{L}(V),\enspace \forall v \in V,\enspace \langle Tv, v \rangle = 0 $. 证明：$ T^* = -T $.
-\end{example}
+% 对应的复数域版本相信大家也很容易就能够联想得到，只需要将转置变为共轭转置即可.
 
-满足这样性质的算子在实内积空间上叫做反对称算子，其可以类比为纯虚数，不过 0 算子因为其特殊性即是自伴算子也是反对称算子.
+% 以下是一些更深层次地判别矩阵是否正定的条件，同时它们也是正定矩阵的一些重要的性质.
+
+% \begin{theorem}
+%     $ A $ 是 $ n $ 阶的 Hermite 矩阵. 以下条件等价.
+%     \begin{enumerate}
+%         \item $ A $ 是正定矩阵；
+
+%         \item 双线性函数 $ \langle x, y \rangle = x^\mathrm{H}Ay $定义了一个 $ \mathbf{C}^n $ 上的一个内积. 事实上， $ \mathbf{C}^n $ 所有内积都可视作由某个正定矩阵以此方式得到；
+
+%         \item $ A $ 是向量 $ x_1, \ldots , x_n \in \mathbf{C}^k $ 构成的
+%               Gram 矩阵. 即 $ A = B^\mathrm{H}B $，其中 $ B $ 未必是方阵，但一定是单的，并且这种分解方式不唯一.
+
+%         \item \term{Cholesky 分解}\index{Cholesky@Cholesky 分解 (Cholesky decomposition)}：存在唯一的下三角矩阵 $ L $，其主对角元均为正数，使得 $ A = LL^\mathrm{H} $
+
+%         \item \term{Sylvester 定理}\index{Sylvester@Sylvester 定理 (Sylvester's criterion)}：$ A $ 的所有顺序主子式均为正. （但对于半正定矩阵而言，顺序主子式非负不能推出矩阵半正定）
+%     \end{enumerate}
+% \end{theorem}
+
+% 像 2 就道出了正定矩阵和内积之间的关系，3 和 4 给出了正定矩阵的一些分解方式.
+
+% 现在让我们跳开去，先去看看算子上的事情，不过出于更实用的原因，我们研究半正定矩阵对应的算子.
+
+% 如果 $ V $ 是复向量空间，则 $ T $ 自伴的条件可以从定义中去除.
+
+% 但对于正算子的定义似乎和对于半正定矩阵的定义方向完全不同，前者依托内积，后者则是依托二次型. 不过，若是你还记得我们曾经提到过内积本身是一种正定齐次双线性函数，以及二次型可以通过双线性函数引入，就可以捕获这其中的相关之处. 我们接下来进行推导.
+
+% \begin{proof}
+%     设 $ V $ 的一组标准正交基为 $ e = (e_1, e_2, \ldots, e_n) $，任取向量 $ \alpha \in V $，设其在 $ e $ 下的坐标为 $ x = (x_1, x_2, \ldots, x_n)^{T} $. 设正算子 $ T \in \mathcal{L}(V) $在 $ e $ 下的矩阵为 $ A = (a_{ij})_{n \times n}$，则
+%     \begin{align*}
+%         \langle Tv, v \rangle
+%          & = \langle Tex, ex \rangle = \langle eAx, ex \rangle                                                                                       \\
+%          & = \left\langle (e_1, e_2, \ldots ,e_n)
+%         \begin{pmatrix}
+%             a_{11} & a_{12} & \ldots & a_{1n} \\
+%             a_{21} & a_{22} & \ldots & a_{2n} \\
+%             \vdots & \vdots & \ddots & \vdots \\
+%             a_{n1} & a_{n2} & \ldots & a_{nn}
+%         \end{pmatrix}
+%         \begin{pmatrix}
+%             x_1    \\
+%             x_2    \\
+%             \vdots \\
+%             x_n
+%         \end{pmatrix} ,(e_1, e_2, \ldots ,e_n)
+%         \begin{pmatrix}
+%             x_1    \\
+%             x_2    \\
+%             \vdots \\
+%             x_n
+%         \end{pmatrix} \right\rangle                                                                                                                  \\
+%          & = \left\langle \sum_{i = 1}^{n}e_{i}\sum_{j = 1}^{n}a_{ij}x_{j}, \sum_{i = 1}^{n}x_{i}e_{i} \right\rangle
+%         = \overline{x_1}\sum_{j = 1}^{n}a_{1j}x_{j} + \overline{x_2}\sum_{j = 1}^{n}a_{2j}x_{j} + \cdots + \overline{x_n}\sum_{j = 1}^{n}a_{nj}x_{j} \\
+%          & = (\overline{x_1}, \overline{x_2}, \ldots, \overline{x_n})
+%         \begin{pmatrix}
+%             \sum\limits_{j = 1}^{n}a_{1j}x_{j} \\
+%             \sum\limits_{j = 1}^{n}a_{2j}x_{j} \\
+%             \vdots                             \\
+%             \sum\limits_{j = 1}^{n}a_{nj}x_{j}
+%         \end{pmatrix}
+%         = x^\mathrm{H}Ax.
+%     \end{align*}
+
+%     此对应复内积空间的情形，实内积空间的情形也就显然了.
+% \end{proof}
+
+% 我们定义出的正算子虽然名为正算子，但我们类比的时候它其实是类似于非负数，非负数很重要的一种运算就是开方运算. 类似的，我们也可以定义算子的平方根.
+
+% 以下是正算子的刻画.
+
+
+% 从这里我们进一步加深类比.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
