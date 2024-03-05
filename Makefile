@@ -1,18 +1,17 @@
-MAIN_DIR = 讲义
-MAIN_FILENAME = 线性代数荣誉课辅学讲义
-ANSWERS_DIR = 习题参考答案
-ANSWERS_FILENAME = 线性代数荣誉课辅学习题答案
+MAIN_DIR := 讲义
+ANSWERS_DIR := 习题参考答案
 
-GH_ACTIONS_DIR = gh-actions-build
+export GH_ACTIONS_DIR := gh-actions-build
 
 .PHONY: all gh-actions main ans clean
 
 all: main ans
 
-gh-actions: all
+gh-actions:
 # used by GitHub Actions
 	mkdir -p $(GH_ACTIONS_DIR)
-	cp $(MAIN_DIR)/$(MAIN_FILENAME).pdf $(ANSWERS_DIR)/$(ANSWERS_FILENAME).pdf $(GH_ACTIONS_DIR)
+	make -C $(MAIN_DIR) gh-cp
+	make -C $(ANSWERS_DIR) gh-cp
 
 main:
 	$(MAKE) -C $(MAIN_DIR)

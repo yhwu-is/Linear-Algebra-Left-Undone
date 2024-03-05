@@ -1,18 +1,114 @@
 \chapter{奇异值分解}
 
-让我们稍微复习一下关于算子和数的类比. 自伴算子类似于实数，正算子类似于非负数，等距同构类似于模为 1 的复数. 那么我们的野心不止于此，在复数域的时候我们希望使用我们已经熟悉的数去描述所有复数. 同理，在算子上我们希望使用我们已经熟悉的算子去描述其他一般的算子.
+上一讲中我们着重介绍了内积空间上的一些特殊的算子，以及它们的约化分解. 本讲我们将尝试将所得到的结论推广到一般的线性映射上，并给出一个将一般线性映射都“对角化”的方式.
 
-% TODO section
+\section{奇异值分解}
 
-我们还是从数开始出发. 每个非零复数 $ z $ 都可以写成如下形式
+我们提出要将一般的线性映射都“对角化”，但在若当标准型的时候我们已经知道，这理应是做不到的，症结在于可能没有足够的特征向量. 所以我们此处的“对角化”并不是使用线性映射本身的特征值和特征向量，而是采取与之相关的特殊的算子的特征值和特征向量. 回忆在对称矩阵部分，我们从一般的矩阵 $ A $ 构造出了 $ A^{\mathrm{T}}A $ 这样一个对称矩阵. 那么采取类似的方法，我们可以从 $ T \in \mathcal{L}(V, W) $ 构造出算子 $ T^*T $，让我们来看看它的性质.
+
+\begin{theorem} [$ T^*T $ 的性质] \label{thm:23:T^*T的性质}
+    设 $ T \in \mathcal{L}(V, W) $，则
+    \begin{enumerate}
+        \item $ T^*T $ 是正算子.
+
+        \item $ \ker T^*T = \ker T $.
+
+        \item $ \im T^*T = \im T^* $.
+
+        \item $ \dim \im T = \dim \im T^* = \dim \im T^*T $.
+    \end{enumerate}
+\end{theorem}
+
+而正算子的特征值非负，所以我们可以做出如下的定义.
+
+\begin{definition}[奇异值] \index{qiyizhi@奇异值 (singular value)}
+    设 $ T \in \mathcal{L}(V, W) $，则 $ T^*T $ 的特征值的算术平方根称为 $ T $ 的奇异值，降序排列，并且每个奇异值重复 $ \dim E(\lambda, T^*T) $ 次.
+\end{definition}
+
+但这样定义出来的值如何描述 $ T $？我们先从线性映射最基本的部分开始.
+
+\begin{theorem}
+    设 $ T \in \mathcal{L}(V, W) $，则
+    \begin{enumerate}
+        \item $ T $ 是单射等价于 $ 0 $ 不是 $ T $ 的奇异值.
+
+        \item $ T $ 的正奇异值的个数等于 $ \dim \im T $.
+
+        \item $ T $ 是满射等价于 $ T $ 的正奇异值的个数等于 $ \dim W $.
+    \end{enumerate}
+\end{theorem}
+
+借助 \ref*{thm:23:T^*T的性质} 和单射满射的等价条件即可证明.
+
+特征值对应有特征向量，奇异值也对应有奇异向量.
+
+\begin{definition}
+    设 $ T \in \mathcal{L}(V, W) $，奇异值为 $ s $，若存在 $ v \in V, w \in W $ 使得 $ Tv = sw $，$ T^*w = sv $，则称 $ v $ 为 $ T $ 关于 $ s $ 的左奇异向量，$ w $ 为 $ T $ 关于 $ s $ 的右奇异向量.
+\end{definition}
+
+$ T^*T $ 除去其特征值的性质外，更重要的在于其是一个自伴算子，所以我们可以对它应用谱定理，并由此给出我们所谓的“对角化”的方式——奇异值分解.
+
+\begin{theorem}[奇异值分解] \index{qiyizhi!fenjie@奇异值分解 (singular value decomposition)}
+    设 $ T \in \mathcal{L}(V, W) $ 有正奇异值 $ s_1, \ldots , s_m $. 则存在 $ V $ 的一组标准正交组 $ e_1, \ldots, \e_m $ 和 $ W $ 的标准正交组 $ f_1, \ldots, f_m $ 使得 $ \forall v \in V $ 均有$ Tv = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_m \langle v, e_m \rangle f_m $.
+\end{theorem}
+
+\begin{proof}
+    设 $ s_1, \ldots, s_n $ 为 $ T $ 的所有奇异值，也就有 $ n = \dim V $. 因为 $ T^*T $ 是正算子，所以对其应用谱定理，存在 $ V $ 的标准正交基 $ e_1, \ldots, e_n $ 使得 $ T^*Te_k = s_k^2e_k $，$ k = 1, \ldots, n $.
+
+    首先对正奇异值部分进行讨论. 对 $ k = 1, \ldots, m $，令 $ f_k = \dfrac{1}{s_k}Te_k $，即对应的右奇异向量. 则对于 $j, k \in \{1, \ldots, m\}$，有
+
+    \[
+        \langle f_j, f_k \rangle = \frac{1}{s_j s_k} \langle Te_j, Te_k \rangle = \frac{1}{s_j s_k} \langle e_j, T^*Te_k \rangle = \frac{1}{s_j s_k} \langle e_j, s_k^2e_k \rangle = \frac{s_k}{s_j} \langle e_j, e_k \rangle = \delta_{jk}.
+    \]
+
+    所以 $ f_1, \ldots, f_m $ 是 $ W $ 的标准正交组. 事实上，考虑到左奇异向量和右奇异向量分别是 $ T^*T $ 和 $ TT^* $ 的特征向量，这一点是显然的.
+
+    而对于零奇异值部分，$k \in \{m+1, \ldots, n\}$，$ T^*Te_k = 0 $，且 $ \ker T^*T = \ker T $，所以 $ Te_k = 0 $.
+
+    从而 $ \forall v \in V $，有
+
+    \begin{align*}
+        Tv & = T(\langle v, e_1 \rangle e_1 + \cdots + \langle v, e_n \rangle e_n) \\
+           & = \langle v, e_1 \rangle Te_1 + \cdots + \langle v, e_m \rangle Te_m \\
+           & = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_m \langle v, e_m \rangle f_m.
+    \end{align*}
+
+    命题得证.
+\end{proof}
+
+对于线性映射而言，使用两组不同的基是稀疏平常的事情；但对于算子而言，我们频繁地使用同一组基来表示，经常忽视了这一点. 所以，我们将所有一般线性映射“对角化”的方法建立在使用两组不同的基上，这与若当标准型的结果并不矛盾.
+
+由此我们也可以得出 $ T $ 在这两组标准正交基下的矩阵表示，设为 $ A = (a_{ij})_{m \times n} $，则 $ a_{ij} = \begin{cases}
+    s_i, & 1 \leqslant i = j \leqslant m, \\
+    0,   & \text{其他情况}.
+\end{cases} $. 其形式也非常类似于对角矩阵，我们将其定义为\term{矩形对角矩阵}.
+
+\begin{definition}[矩形对角矩阵] \index{juxingduijiaojuzhen@矩形对角矩阵 (rectangular diagonal matrix)}
+    设 $ A = (a_{ij})_{m \times n} $，则称 $ A $ 为矩形对角矩阵，若 $ a_{ij} = 0 $ 当 $ i \neq j $ 时.
+\end{definition}
+
+通过线性映射的矩阵表示的过程，我们也可以得到矩阵形式的奇异值分解.
+
+\begin{theorem}
+    设 $ A $ 为一 $ m \times n $ 阶矩阵，则 $ A $ 的奇异值分解为 $ A = U\Sigma V^* $，其中 $ U $ 为 $ m \times m $ 阶酉矩阵，$ V $ 为 $ n \times n $ 阶酉矩阵，$ \Sigma $ 为 $ m \times n $ 阶非负实数矩形对角矩阵.
+\end{theorem}
+
+这也表明所有矩阵的作用都可以分解为原空间上的旋转、拉伸和到达空间上的旋转三部分.
+
+\section{奇异值分解的应用}
+
+\subsection{奇异值的几何解释}
+
+\subsection{极分解定理}
+
+我们继续算子与数的类比. 每个非零复数 $ z $ 都可以写成如下形式
+
 \[ z = \left(\frac{z}{\lvert z \rvert}\right)\lvert z \rvert = \left(\frac{z}{\lvert z \rvert}\right)\sqrt{\overline{z}z} \]
-其中 $ \dfrac{z}{\lvert z \rvert} $ 是一个单位复数. 那么由此我们可以类比得出一个对 $ V $ 上任意算子的漂亮的描述.
+其中 $ \dfrac{z}{\lvert z \rvert} $ 是一个单位复数. 那么由此我们可以类比得出一个对 $ V $ 上任意算子的漂亮的描述，因其形式类似于复数极坐标分解，所以称为\term{极分解定理}.
 
 \begin{theorem}[极分解定理] \index{jifenjiedingli@极分解定理 (polar decomposition theorem)}
     设 $ T \in \mathcal{L}(V) $，则存在一个等距同构 $ S \in \mathcal{L}(V) $，使得 $ T = S\sqrt{T^*T} $.
 \end{theorem}
-
-它之所以叫这个名字就是因为其形式类似于复数极坐标分解. 以下是证明.
 
 \begin{proof}
     首先 $ \forall T \in \mathcal{L}(V) $，$ T^{*}T $ 都是正算子，所以 $ \sqrt{T^*T} $ 的定义是合理的.
@@ -66,23 +162,9 @@
     命题得证.
 \end{proof}
 
-极分解定理将所有一般的算子表成了一个等距同构和一个正算子的乘积，而这两种算子我们之前的章节都已经给出了完全的描述，所以我们探讨的内积空间上算子的约化分解的最终结论就是极分解定理.
+极分解定理将所有一般的算子表成了一个等距同构和一个正算子的乘积，而这两种算子我们之前的章节都已经给出了完全的描述. 所以我们也得到了一般算子的第二种刻画方式.
 
-特别地，考虑 $ \mathbf{F} = \mathbf{C} $ 的情况. 设 $ T \in \mathcal{L}(V) $，其有极分解 $ T = S\sqrt{T^*T} $，$ S $ 是等距同构. 则 $ V $ 有一个标准正交基使得$ S $ 关于这个基有对角矩阵，且 $ V $ 还有一组标准正交基使得 $ \sqrt{T^*T} $ 关于这组基有对角矩阵. 但很难有这样一组标准正交基满足 $ S $ 和 $ \sqrt{T^*T} $ 的同时对角化，不过这也给了我们一个思路，如果我们尝试用两组标准正交基对同一个算子描述可能会得到更简单的矩阵描述.
-
-为了与极分解配对，我们引入奇异值的概念.
-
-\begin{definition}[奇异值] \index{qiyizhi@奇异值 (singular value)}
-    设 $ T \in \mathcal{L}(V) $，则 $ T $ 的奇异值就是 $ \sqrt{T^*T} $的特征值，每个特征值 $ \lambda $ 重复 $ \dim E(\lambda, \sqrt{T^*T}) $ 次.
-\end{definition}
-
-显然算子的奇异值都是非负的，因为他们都是正算子 $ \sqrt{T^*T} $ 的特征值. 而且对 $ \sqrt{T^*T} $ 应用谱定理和可对角化条件可知，每个 $ T \in \mathcal{L}(V) $都有 $ \dim V $ 个奇异值.
-
-那么依托奇异值和两组标准正交基，我们可以对 $ V $ 上的每个算子都给出简洁的矩阵表示.
-
-\begin{theorem}[奇异值分解] \index{qiyizhi!fenjie@奇异值 (singular value decomposition)}
-    设 $ T \in \mathcal{L}(V) $ 有奇异值 $ s_1, \ldots , s_n $，则 $ V $ 存在两组标准正交基$ e_1, \ldots, \e_n $ 和 $ f_1, \ldots, f_n $ 使得 $ \forall v \in V $ 均有$ Tv = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_n \langle v, e_n \rangle f_n $.
-\end{theorem}
+\subsection*{$^*$ 算子范数和}
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
