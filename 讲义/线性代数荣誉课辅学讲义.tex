@@ -93,9 +93,6 @@
 \renewcommand*{\theHchapter}{LU.\arabic{LUchapter}}
 \ctexset{
     chapter = {format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUchapter}}}},
-    section = {format={\raggedright\Large\bfseries},name={,},number={\thechapter.\arabic{section}}},
-    subsection = {format={\raggedright\large\bfseries},name={,},number={\thesection.\arabic{subsection}}},
-    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\thesubsection.\arabic{subsubsection}}},
 }
 \csname @std@chapter\endcsname{#1}
 \expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}\endcsname{\relax}
@@ -104,9 +101,9 @@
 
 \ctexset{
     chapter = {format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
-    section = {format={\raggedright\Large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}}},
-    subsection = {format={\raggedright\large\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}}},
-    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}},
+    section = {format={\raggedright\Large\bfseries},name={,},number={\thechapter.\arabic{section}}},
+    subsection = {format={\raggedright\large\bfseries},name={,},number={\thesection.\arabic{subsection}}},
+    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\thesubsection.\arabic{subsubsection}}},
 }
 
 \title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学讲义}
@@ -136,11 +133,10 @@
 \null
 \clearpage
 
-\thispagestyle{empty}
 \input{./其它/扉页.tex}
 \clearpage
 
-\setcounter{page}{1}
+\pagenumbering{Roman}
 \input{./其它/序.tex}
 \input{./其它/致读者.tex}
 \clearpage
@@ -151,7 +147,6 @@
 \addtolength{\parskip}{.5em}
 
 \mainmatter
-\setcounter{page}{1} % 将页码计数设置为 1
 \input{./专题/1 预备知识.tex}
 \input{./其它/未竟专题1 预备思想.tex}
 \input{./专题/2 线性空间.tex}
