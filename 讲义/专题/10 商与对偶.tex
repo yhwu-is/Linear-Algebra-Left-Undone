@@ -1,18 +1,59 @@
 \chapter{商与对偶}
 
-关于矩阵运算进阶的两讲我们将讲述线性代数这门课中关于矩阵计算问题的一些进阶内容. 需要注意的是，本节除了一些基本概念在之后讨论矩阵的秩时还有关键作用之外，大都是技巧性的内容，基本都已经脱离了之前描述的抽象空间和映射. 但我们仍需承认这些内容的重要性，因为运算技巧将会使得未来的很多性质的研究更为便捷. 同时我们也应当感到欣慰，我们终于从抽象空间一步一步如同搭积木一般走到了具象的运算，并且这是建立在了充分理解了矩阵背后的内在含义的基础上的.
+\section{商空间}
 
-本节我们首先介绍有关初等矩阵、分块矩阵和矩阵方程的相关内容. 本节是之后讨论矩阵的秩的重要基础，并且涉及一些很重要的算法和技巧，需要引起重视.
+\subsection{从等价关系出发}
 
-\section{线性空间的商}
+这一讲我们需要首先引入代数中一非常常见的概念，即一个代数结构的商. 在第一讲中我们描述了一个非常重要的概念——等价类，不熟悉的读者可以回过头去重新阅读. 我们的目标是在一个线性空间$V$中定义出等价关系，换句话说（利用\autoref{thm:1:等价类的性质}），就是希望以某种方式将一个线性空间中的所有向量划分为几个不相交的等价类的并集.
 
-\subsection{商空间的引入与仿射子集}
+为了定义出这个等价关系，我们首先需要确定的是它应当满足怎样的性质，否则对于如何定义这一等价关系我们将毫无头绪. 这一问题的出发点事实上就隐藏在\autoref{ex:1:有限域}后关于``相容''的讨论中. 在那里，我们要求从一般整数加法和乘法继承下来的模$n$剩余类上的加法和乘法是良定义的，类比于这里的目标，则是希望线性空间中等价类的集合上（也就是商集）定义的加法和数乘运算，可以自然地继承一般的向量加法和乘法，并且保证相容性.
 
-我们继续循着数学概念学习的自然路径，再来审视一个新的概念——商空间. 在第一讲中我们描述了一个非常重要的概念——等价类. 我们希望在一个线性空间$V$中构造等价类组成商集，并在商集中引入加法和数乘运算，使得商集构成线性空间，这便是本节要讨论的商空间的来由. 总结一下，我们这里有两个需求：其一是构造合适的等价关系，其二是构造合理的加法和数乘运算.
+下面我们开始形式化地把上面抽象的描述转化为表达式. 我们需要在线性空间$V$中定义一个等价关系$R$，得到一个等价类构成的商集：
+\[V/R=\{\overline{v_1},\overline{v_2},\ldots,\overline{v_n},\ldots\},\]
+其中$\overline{v_i}$表示$v_i\in V$所在的等价类，取$v_i$为代表元. 需要注意的是，这里的等价类不一定是有限个，因此最后还是省略号.
 
-回忆集合的等价关系的建立，都是元素之间的关系. 例如等于关系是实数集合中的实数之间的关系，因此要在线性空间中建立等价关系，我们需要考虑两个元素（即向量）的关系. 我们可以考虑$V$的子空间$U$，并将关系$R$定义为
-\[\forall\alpha,\beta\in V,\enspace\alpha\,R\,\beta\iff \alpha-\beta\in U.\]
-即两个向量的差向量在一个规定的子空间中时称它们等价. 我们会很容易地验证出这个关系就是等价关系：
+接下来我们需要定义等价类之间的运算，我们希望自然继承线性空间的加法和数乘运算，故我们定义商集上的加法和数乘运算满足对于任意的$\overline{v_1},\overline{v_2}\in V/R$和$\lambda\in\mathbf{F}$，有
+\begin{equation} \label{eq:10:商集运算}
+    \begin{gathered}
+        \overline{v_1}+\overline{v_2}=\overline{v_1+v_2},\\
+        \lambda\overline{v_1}=\overline{\lambda v_1}.
+    \end{gathered}
+\end{equation}
+需要注意的是，等号左边的运算是商集$V/R$上的，右边是线性空间$V$上的，这里不再像模$n$剩余类上的运算定义那样使用不同的符号（例如加法改成$\oplus$）是出于习惯，以及相信读者学习到今天应当适应了为记号上方便做出的牺牲（比如对于任何线性空间，即使加法不是定义成最一般的加法，但也写成加号的形式）.
+
+最后我们需要上面的运算保证相容性，也就是说，对于任意的$v_1,v_2,u_1,u_2\in V$，如果$v_1Rv_2$，$u_1Ru_2$则$(v_1+u_1)R(v_2+u_2)$，$\lambda v_1R\lambda v_2$，展开写为：
+\begin{gather*}
+    \overline{v_1+u_1}=\overline{v_2+u_2},\\
+    \overline{\lambda v_1}=\overline{\lambda v_2}.
+\end{gather*}
+
+推进到这里或许我们还是很难看出如何定义这一等价关系，但我们可以从简单的角度入手，逐步观察这些等价类的特点. 我们可以首先考虑线性空间的零向量所在的等价类具有什么性质. 事实上，我们很容易得到如下定理：
+\begin{theorem}
+    线性空间$V$的零向量所在的等价类$\overline{0}$一定是$V$的子空间.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 加法封闭：$\forall \alpha,\beta\in\overline{0}$，则$\alpha\,R\,0$，$\beta\,R\,0$，因此根据相容性，$\alpha+\beta\,R\,0$，即$\alpha+\beta\in\overline{0}$；
+        \item 数乘封闭：$\forall \alpha\in\overline{0}$，则$\alpha\,R\,0$，$\lambda\in\mathbf{F}$，因此根据相容性，$\lambda\alpha\,R\,0$，即$\lambda\alpha\in\overline{0}$.
+    \end{enumerate}
+\end{proof}
+
+这一结论非常关键，它使得我们把抽象的关等价关系与一个子空间绑定. 我们记这一子空间为$U$，即$\overline{0}=U$，于是下面这一结论也是容易得到的：
+\begin{theorem}
+    设$v_1,v_2\in V$，则$v_1Rv_2$当且仅当$v_1-v_2\in U$.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item ($\implies$) 直接取$u_1,u_2\in U$，即$u_1\,R\,0$，$u_2\,R\,0$，因此根据相容性，$\overline{v_1}+\overline{u_1}=\overline{v_2}+\overline{u_2}$，移项得$\overline{v_1}-\overline{v_2}=\overline{u_2}-\overline{u_1}$，注意到$\overline{v_1}-\overline{v_2}=\overline{v_1}+(-1)\cdot\overline{v_2}=\overline{v_1}+\overline{-v_2}=\overline{v_1-v_2}$，同理有$\overline{u_2}-\overline{u_1}=\overline{u_2-u_1}$，因此$\overline{v_1-v_2}=\overline{u_2-u_1}=\overline{0}$，即$v_1-v_2\in U$；
+        \item 设$v_1-v_2=u\in U$，则$\overline{v_1}=\overline{v_2}+\overline{u}=\overline{v_2}+\overline{0}=\overline{v_2}$，因此$v_1Rv_2$.
+    \end{enumerate}
+\end{proof}
+
+至此，我们完成了对线性空间$V$上的符合相容性的等价关系$R$的性质的讨论. 我们发现，尽管运算定义和相容性的要求非常抽象，但是在线性空间的背景下，我们成功地将$R$与一个子空间$U$对应起来，这个子空间实际上就是等价类$\overline{0}$. 反过来，当我们需要定义线性空间的等价类的时候，我们可以从一个子空间$U$出发，然后定义等价关系$R$为
+\begin{equation} \label{eq:10:线性空间等价关系}
+    \forall\alpha,\beta\in V,\enspace\alpha\,R\,\beta\iff \alpha-\beta\in U.
+\end{equation}
+事实上，验证这一关系的确是等价关系是非常简单的：
 \begin{enumerate}
     \item (自反性) $\forall \alpha\in V,\enspace\alpha-\alpha=0\in U$，故$\alpha\,R\,\alpha$；
 
@@ -20,36 +61,33 @@
 
     \item (传递性) $\forall \alpha,\beta,\gamma\in V,\enspace\alpha\,R\,\beta,\enspace\beta\,R\,\gamma\implies \alpha-\beta\in U,\enspace\beta-\gamma\in U\implies \alpha-\gamma=(\alpha-\beta)+(\beta-\gamma)\in U\implies \alpha\,R\,\gamma$.
 \end{enumerate}
-证明只用到了线性空间的加法单位元、逆元性质且运算封闭. 接下来我们可以基于此定义这一等价关系的等价类：
+基于此，下一节开始我们将正式给出商空间的定义. 我们可以首先可以定义商集$V/R$是由等价类构成的集合，在线性空间的背景下，由于我们知道$R$是从一个子空间$U$出发的，因此我们也将商集记为$V/U$. 我们将按照自然的方式定义商集中的元素的加法和数乘运算，并证明实际上商集可以构成线性空间，于是称其为商空间，下面我们开始我们严格的陈述.
+
+\subsection{仿射子集与商空间}
+
+紧接着上一节末尾的思路，我们首先定义线性空间等价关系的商集. 研究商集，事实上首先需要研究等价类的性质. 回顾\autoref{eq:10:线性空间等价关系}，我们知道向量$\alpha\in V$所在的等价类为：
 \[\overline{\alpha}=\{\beta\in V \mid \beta\,R\,\alpha\}=\{\beta\in V \mid \beta-\alpha\in U\}=\{\beta\in V \mid \beta=\alpha+\gamma,\enspace\gamma\in U\}\]
 最后一个集合还可以进一步写成$\{\alpha+\gamma \mid \gamma\in U\}$，我们记为$\alpha+U$，称之为$V$的仿射子集. 我们给出如下完整的定义：
 \begin{definition}[仿射子集] \index{fangsheziji@仿射子集 (affine subset)}
     设$v\in V$，$U$是$V$的子空间，则$V$的\term{仿射子集}是$V$的形如$v+U$的子集，其中$v+U$定义为
     \[v+U=\{v+u \mid u\in U\}.\]
 \end{definition}
-根据我们之前的讨论，仿射子集就是我们在线性空间上定义的等价关系的等价类. 基于等价类的性质，我们有如下定理：
+我们知道，仿射子集就是我们在线性空间上定义的等价关系的等价类. 基于等价类的性质，我们有如下定理：
 \begin{theorem}
     设$U$是$V$的子空间，$v,w\in V$，则以下陈述等价：
     \begin{enumerate}
         \item $v-w\in U$；
-
         \item $v+U=w+U$；
-
         \item $(v+U)\cap(w+U)\neq \varnothing$.
     \end{enumerate}
 \end{theorem}
 
 还需要强调的一点是，$(v+U)+(w+U)$与$(v+w)+U$是完全相同的集合，等价性是显然的，我们只需要展开写出仿射子集定义然后证明两个集合互相包含即可. 当然更一般的情形为
-\[(v_1+U_1)+(v_2+U_2)+\cdots+(v_n+U_n)=(v_1+v_2+\cdots+v_n)+U_1+U_2+\cdots+U_n.\]
-
-按照我们之前所说的学习数学的基本思路，在学习一个新的概念后我们会尝试考察它是否具有某些特别的性质，从而可以更深入地理解这一概念. 类似于线性空间我们介绍过原点的直线、平面然后介绍一般线性空间的基本结构是基和维数，我们从直观入手，然后逐步考察仿射子集的基本结构.
-
-相信读者对``仿射''一词并不完全陌生，仿射变换实际上就是形如\[\vec{y}=A\vec{x}+\vec{b}\]的映射，其中$\vec{y},\vec{x},\vec{b}$为向量，$A$是一个矩阵. 实际上一元向量的情况就对应着一条斜率为$A$截距为$b$的直线.
-
-事实上，若$V$为二维空间（平面），$U$为$V$的一维子空间，则其几何意义就是一条过原点的直线，而集合$v+U$实际上将原集合所有点沿着$v$的方向平移，可以得到截距不为0的直线，这就体现了``仿射''一词的意义. 高维空间则是同理，只是我们很难直观地看到这一点. 因此，我们也可以称仿射子集$v+U$\textbf{\heiti 平行于}$U$.
+\[(v_1+U)+(v_2+U)+\cdots+(v_n+U)=(v_1+v_2+\cdots+v_n)+U.\]
+相信读者对``仿射''一词并不完全陌生，仿射变换实际上就是形如\[\vec{y}=A\vec{x}+\vec{b}\]的映射，其中$\vec{y},\vec{x},\vec{b}$为向量，$A$是一个矩阵. 实际上一元向量的情况就对应着一条斜率为$A$截距为$b$的直线. 事实上，若$V$为二维空间（平面），$U$为$V$的一维子空间，则其几何意义就是一条过原点的直线，而集合$v+U$实际上将原集合所有点沿着$v$的方向平移，可以得到截距不为0的直线，这就体现了``仿射''一词的意义. 高维空间则是同理，只是我们很难直观地看到这一点. 因此，我们也可以称仿射子集$v+U$\textbf{\heiti 平行于}$U$. 当然，在我们讨论完对偶后，我们会再来审视仿射子集更深的含义.
 
 下面的例子给出了仿射子集的一种等价描述，基于此我们可以对仿射子集中向量的结构有更进一步的了解：
-\begin{example}\label{ex:8:仿射子集性质}
+\begin{example} \label{ex:10:仿射子集性质}
     证明：$V$的非空子集$A$是$V$的仿射子集当且仅当对所有的$v,w\in A$和$\lambda\in\mathbf{F}$均有$\lambda v+(1-\lambda)w\in A$.
 \end{example}
 
@@ -61,18 +99,16 @@
 \begin{theorem}
     设$P,A,B,C$是平面上四点，$P$与$A,B$不共线，则$C$与$A,B$共线等价于存在$\lambda\in\mathbf{R}$使得$\overrightarrow{PC}=\lambda\overrightarrow{PA}+(1-\lambda)\overrightarrow{PB}$.
 \end{theorem}
-同时我们发现仿射子集实际上是我们在数学分析或微积分学习的凸集的特殊形式，在凸集中我们只要求$\lambda\in[0,1]$，这里我们要求整个数域上的点都要有\autoref{ex:8:仿射子集性质} 所述的性质. 因此凸集的性质我们也可以用来研究仿射子集. 当然这不是线性代数中研究的内容，感兴趣的同学可以学习凸优化的相关课程进一步了解.
+同时我们发现仿射子集实际上是我们在数学分析或微积分学习的凸集的特殊形式，在凸集中我们只要求$\lambda\in[0,1]$，这里我们要求整个数域上的点都要有\autoref{ex:10:仿射子集性质} 所述的性质. 当然这不是线性代数中研究的内容，感兴趣的同学可以学习凸优化的相关课程进一步了解.
 
-事实上在习题中我们将给出\autoref*{ex:8:仿射子集性质} 更一般的形式，我们可以回忆\autoref{thm:2:线性扩张构造子空间}，就会发现仿射子集的结构和线性空间保留了一些相似性，即虽然不能像线性空间一样保证加法数乘运算封闭，但仿射子集一定是保证凸组合封闭的集合.
+事实上在习题中我们将给出\autoref*{ex:10:仿射子集性质} 更一般的形式，我们可以回忆\autoref{thm:2:线性扩张构造子空间}，就会发现仿射子集的结构和线性空间保留了一些相似性，即虽然不能像线性空间一样保证加法数乘运算封闭，但仿射子集一定是保证凸组合封闭的集合.
 
-\subsection{商空间}
-
-定义了等价类（即仿射子集）后，我们可以定义相应的商集（即由全体等价类构成的集合），我们称之为商空间：
+定义了等价类（即仿射子集）并研究了其性质后，我们可以定义相应的商集（即由全体等价类构成的集合），我们称之为商空间：
 \begin{definition}
-    设$U$是$V$的子空间，则商空间$V/U$是指$V$的所有平行于$U$的仿射子集的集合，即
+    设$U$是$V$的子空间，则商空间$V/U$是指所有由\autoref{eq:10:线性空间等价关系}诱导的等价类构成的集合，即$V$的所有平行于$U$的仿射子集的集合，即
     \[V/U=\{v+U \mid v\in V\}.\]
 \end{definition}
-我们希望这些这一商集（商空间）真的构成线性空间，因此还需要定义加法和数乘运算. 定义是非常直接的：
+我们希望这些这一商集（商空间）真的构成线性空间，因此还需要定义加法和数乘运算. 定义则与上一节中的要求一样，是自然继承向量加法而来的，即满足\autoref{eq:10:商集运算}，我们把式中等价类写为仿射子集的形式即可得到如下定义：
 \begin{definition}
     设$U$是$V$的子空间，则商空间$V/U$上的加法和数乘运算定义为：$\forall \alpha,\beta\in V$和$\lambda\in\mathbf{F}$，
     \begin{gather*}
@@ -82,12 +118,547 @@
 \end{definition}
 我们很容易根据线性空间8条性质验证商空间在上述加法和数乘运算定义下构成线性空间，在此不再赘述. 特别注意这一线性空间的零向量是特别的，应当为$U$（即$\vec{0}+U$，一定注意不是$\vec{0}$，读者在验证商空间是线性空间时就会发现）.
 
-正常而言，在定义了一个线性空间后我们自然地想了解它的基本结构——基和维数，商空间也不例外. 我们通过下面这个定理来研究：
+正常而言，在定义了一个线性空间后我们自然地想了解它的基本结构——基和维数，商空间也不例外. 我们有很多的角度来得到相关的结论，这里我们首先介绍一个间接的方式得到关于维数的结论，我们将会引入商映射的概念，然后利用线性映射基本定理来得到商空间的维数. 而在讨论完对偶空间后，我们将从更直接且更为本质的角度进一步理解.
+
+\subsection{商映射}
+
+回顾等价类的讨论，实际上我们还可以定义原集合和商集之间的自然映射. 接下来我们循着等价类的思路定义商空间的语境下的自然映射，我们称之为商映射：
+\begin{definition}
+    设$U$是$V$的子空间，商映射$\pi$是如下定义的线性映射$\pi:V\to V/U$：对任意的$\alpha\in V$，
+    \[\pi(v)=v+U.\]
+\end{definition}
+显然这一定义就是基于自然映射的，因为它将原集合（线性空间）中的元素（向量）映射到它所在的等价类（仿射子集）. 因为所有向量的等价类都在像空间中，因此这一映射的像空间就是商空间$V/U$，因此如果我们要得到商空间的维数，直接使用线性映射基本定理即可：
 \begin{theorem}\label{thm:8:商空间维数}
     设$U$是有限维线性空间$V$的子空间，则
     \[\dim V/U=\dim V-\dim U.\]
 \end{theorem}
-这一定理的证明完全类似线性映射基本定理的证明，因此我之前一再强调这一思想的重要性. 我们的想法还是``设小扩大''：
+\begin{proof}
+    设$\pi$是$V$到$V/U$的商映射. 我们知道$\ker\pi=U$，因为根据仿射子集定义$\pi(v)=v+U=\vec{0}+U\iff v\in U$. 另一方面，$\pi$的定义蕴含了它是满射，因为$\forall v+U\in V/U$，$\pi(v)=v+U$，即每个像空间中的元素都有原像，因此$\im\pi=V/U$.
+
+    综合上述讨论以及线性映射基本定理，我们知道$\dim\im\pi=\dim V-\dim\ker\pi$，即$\dim V/U=\dim V-\dim U$.
+\end{proof}
+
+由此我们可以容易地得到商空间的维数，但是我们并不能从这一证明中知道商空间的基的形式，也无法体会商空间维数公式中减号的意义，这些问题我们将在讨论完对偶后进一步讨论.
+
+% 最后我们用一张图来总结商空间这一节的基本思路：
+
+% \begin{figure}[H]
+%     \centering
+%     \large
+%     \begin{tikzpicture}
+%         \draw node at (3, 3.5) {$\pi$}
+%             node (set) at (2, 2) {$\{a,b,c,d,\ldots\}$}
+%             node [below of=set] {\normalsize$(a - d \in U)$}
+%             node (Ka) at (4.5, 3.5) {$K_a$}
+%             node (Kb) at (5, 1) {$K_b$}
+%             node (Kc) at (6.5, 0.5) {$K_c$}
+%             coordinate (a) at (1.1, 2.2)
+%             coordinate (b) at (1.5, 1.8)
+%             coordinate (c) at (1.9, 1.8)
+%             coordinate (d) at (2.3, 2.3);
+
+%         % \foreach \x in {1, 1.5, ..., 9}
+%         %     \foreach \y in {0, 0.5, ..., 4}
+%         %         \fill[black] (\x, \y) circle (1pt);
+
+%         % \foreach \pt in {a, b, c, d}
+%         %     \fill[red] (\pt) circle (1pt);
+
+%         \draw[thick] (4, 0) rectangle (9, 4)
+%             (4, 2) -- (6, 4)
+%             (5, 3) -- (6, 0)
+%             (5.5, 1.5) -- (8, 0);
+
+%         \draw[thick,violet,-latex] (a) to[out=45, in=180] (4, 3);
+%         \draw[thick,violet,-latex] (b) to[out=-30, in=180] (4, 1.5);
+%         \draw[thick,violet,-latex] (c) to[out=-15, in=90] (Kc);
+%         \draw[thick,violet,-latex] (d) to[out=10, in=180] (4, 2.7);
+%     \end{tikzpicture}
+
+%     \normalsize
+%     等价类：仿射子集（如何进一步描述其结构）
+
+%     商集：仿射子集构成的集合；商空间：商集上定义加法和数乘
+
+%     商映射：自然映射
+
+%     商空间的基与维数：两种方法
+% \end{figure}
+
+\section{对偶空间与对偶映射}
+
+当我们在谈对偶的时候，我们在谈一种普遍性的结构：如果我们说 $A$ 和 $B$ 对偶，那么所有关于 $A$ 的叙述都能被翻译成关于 $B$ 的叙述，而且保持其正确性. 这种观点最经典的代表就在几何当中. 考虑$\mathbf{R}^2$空间，我们可以有如下两条陈述：
+\begin{enumerate}
+    \item 两点确定一条直线；
+    \item 两条线一定交于一点（这需要由给平行直线补上无穷远处的交点来实现）.
+\end{enumerate}
+在如上两条陈述中，点和线就构成了一组对偶的对象：我们把两点翻译成两条线，一条直线翻译成一点，确定翻译成交于——这与诗词中的对偶手法似乎也有些类似. 再考虑三维情形，三个点确定一个平面，三个平面确定一个点（同样补上无穷远处的点），这就构成了点与平面的对偶. 以此类推，一个点作为一个零维的对象总是与一个比总空间维数少 $1$（我们一般直接将其称作“余一维”）的对象对偶，这个对象被我们称作\term{超平面}. 在 $\R^n$ 中，它被如下的方程所唯一确定：
+\[a_1 x_1 + a_2 x_2 + \dots + a_n x_n = 1\]
+最后的值是 $1$ 是因为，如果这个等式的结果为 $b$，那我们（在它非零时，等于零的情况我们将来会发现十分特殊）总是可以把它除到左边去，通过改变系数的手法让它能够化为这样的一个方程. 这也已经暗示了这是一个 $n - 1$ 维的对象，因为我们通过一个 $n$ 个未知量的方程降低了一个``自由度''. 那么，接下来我们要考虑的是对于线性空间来说又会如何.
+
+\subsection{对偶空间}
+
+很直观地，我们发现，上面所给的方程无非是一个从 $\R^n$ 到 $\R$ 的线性映射
+\[f(x_1, x_2, \dots, x_n) = a_1 x_1 + a_2 x_2 + \dots + a_n x_n\]
+在取值$1$下的完全原像$\{x: f(x) = 1\}$（记$x=(x_1,x_2,\cdots,x_n)$）. 因此，我们类似地考虑从 $V$ 到基域 $\R$的线性映射，并给它一个新名字：
+
+\begin{definition}
+    称 $\mathcal{L}(V, \R)$ 上的元素为 $V$ 上的一个\term{线性泛函}.
+\end{definition}
+有时我们也将线性泛函称为线性函数，实际上它们都表示将$V$中向量映射到数域上的线性映射. 需要强调的一点是，这里$V$是$\R$上的线性空间，所以定义到$\R(\R)$的线性泛函（可以翻回线性映射的定义，我们要求两个线性空间定义的数域是一致的）. 我们来看几个线性泛函的例子：
+\begin{enumerate}
+    \item 定义$\sigma:\mathbf{F}^n\to\mathbf{F}$为$\sigma(x_1,\ldots,x_n)=c_1x_1+\cdots+c_nx_n$，其中$c_1,\ldots,c_n\in\mathbf{F}$，则$\sigma$是线性泛函；
+
+    \item 定义$\sigma:\mathbf{R}[x]_n\to\mathbf{R}$为$\sigma(p(x))=\displaystyle\int_0^1p(x)\mathrm{d}x$，则$\sigma$是线性泛函.
+\end{enumerate}
+
+对于复数域上的线性空间，这个定义以及以下的叙述也都是类似的，只是将实数域变为复数域，就不再赘述了. 考虑线性泛函 $f: V \to \R$，根据我们前面的讨论，集合 $\{x: f(x) = 1\}$ 就是一个超平面，并且事实上这一超平面反过来也唯一确定了$f$：
+
+\begin{lemma}\label{lemma:cong_functional_hyperplane}
+    如果 $\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，则线性泛函 $f$ 和线性泛函 $g$ 在任意点取值都相同.
+\end{lemma}
+
+\begin{proof}
+    考虑 $f$ 在向量空间中的任取的一点 $v \neq 0$ 上的取值 $f(v)$. 如果 $f(v)$ 不为 $0$，此时，根据线性性我们就有
+    \[f(\dfrac{1}{f(v)}v)=\dfrac{1}{f(v)}f(v)=1,\]
+    因此 $(\dfrac{1}{f(v)}v \in \{x: f(x) = 1\}$，也就是说它在 $f$ 确定的超平面上. 又$\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，因此我们也有 $g(\dfrac{1}{f(v)} v) = 1$，从而再次由线性性得出 $g(v) = f(v)$.
+
+    如果 $f(v)=0$，取$v'$使得$f(v')\neq 0$，由之前的讨论可知$f(v')=g(v')$，同理由线性性可知$0\neq f(v+v')=g(v+v')$，因此$g(v)=g(v+v')-g(v')=f(v+v')-f(v')=f(v)$.
+\end{proof}
+
+但需要注意的是，上述证明中我们实际上漏了一种可能，它就是那些``在全空间上都为$0$的泛函''——在我们的证明中，形式化的对 $f(v)$ 为零情形的证明总是依赖于存在一个向量使它取值非零，但我们并不能保证这一点. 但是，这样全空间上都为$0$的泛函显然是取值一致的. 唯一的问题是，它对应的超平面是什么？实际上，它对应的超平面是一个无穷远点处的超平面，我们后面会大致说明这一点，但这个东西的形式化留待后面射影几何的未竟专题讨论，在此我们只要确立它的唯一性即可.
+
+由此我们发现，线性泛函实际上与超平面是一一对应的. 因此线性泛函的几何意义也就是所谓超平面，因此线性空间中向量可以视为一个点，点是一维的对象，线性泛函则可以被视为与点对应的余一维的超平面. 接下来我们给全体线性泛函构成的集合一个名字，事实上，根据\autoref{thm:5:线性映射全体构成线性空间}，我们知道这是一个线性空间，我们称其为对偶空间：
+\begin{definition}
+    称 $\mathcal{L}(V, \R)$ 为 $V$ 的\term{对偶空间}，记作 $V^*$.
+\end{definition}
+
+到目前为止，引言中的大部分直观已经被形式化地表出了：点被我们形式化为线性空间$V$中的一个向量，超平面则对应于对偶空间中的一个线性泛函. 接下来的问题是，点和超平面可以有直观上的一一对应，向量和线性泛函是否也是这样的呢？也就是说，我们要证明 $V$ 和 $V^*$ 同构，这样两个空间中的元素就有一一对应的关系：
+
+% 证明的一个非常简单的思想来自于超平面方程，它有 $a_1, \dots, a_n$ 这么多的变元来确定，这些变元明显可以视作是超平面空间的一组基. 那么，让我们用线性泛函这套术语来将这种直观表述出来：
+
+\begin{theorem} \label{thm:10:对偶空间同构}
+    $V \cong V^*$.
+\end{theorem}
+
+\begin{proof}
+    取定 $V$ 的一组基 $e_1, e_2, \dots, e_n$，然后考虑 $f_1, f_2, \dots, f_n$ 为线性泛函且满足
+    \[f_i(e_j) = \begin{cases}
+        1, & i = j, \\
+        0, & i \neq j.
+    \end{cases},\]
+    如果我们使用 Kronecker 记号 $\delta_{ij}=\begin{cases}
+        1, & i = j, \\
+        0, & i \neq j.
+    \end{cases}$，这个条件可以写成
+    \[f_i(e_j) = \delta_{ij}, \forall i, j = 1, 2, \dots, n\]
+    这就是对前面所谓的超平面方程中的系数的形式化. 接下来，我们先验证这确实是 $V^*$ 的一组基，考虑固定 $f \in V^*$，任取 $V$ 的一个向量 $v = v_1 e_1 + v_2 e_2 + \dots v_n e_n$，我们就有
+    \[f(v) = f(v_1 e_1) + f(v_2 e_2) + \dots + f(v_n e_n)\]
+    注意到
+    \[f_i(v) = f_i (v_1 e_1 + v_2 e_2 + \dots + v_n e_n) = v_i\]
+    我们就可以将上式写成
+    \begin{align*}
+        f(v) &= f(f_1(v) e_1) + f(f_2(v) e_2) + \dots + f(f_n(v) e_n) \\
+        &= f_1(v) f(e_1) + f_2(v) f(e_2) + \dots + f_n(v) f(e_n) \\
+        &= (f(e_1) f_1 + f(e_2) f_2 + \dots + f(e_n) f_n)(v)
+    \end{align*}
+    因此可以将 $f$ 表出成 $f_i$ 的线性组合. 然后我们知道$\mathcal{L}(V, \R)$的维数等于$V$的维数，所以这组向量的长度也是合理的，因此构成一组基（当然读者也可以直接证明线性无关来说明这一点）. 然后，$e_i \mapsto f_i$ 自然地生成了一个线性映射
+    \begin{equation*}
+        \begin{aligned}
+            \varphi: V &\to V^* \\
+            e_i &\mapsto f_i
+        \end{aligned},
+    \end{equation*}
+    根据\autoref{thm:5:线性映射构造}，我们知道这可以唯一确定一个线性映射，定义方式就是$\sum_{i=1}^nc_ie_i \mapsto\sum_{i=1}^nc_if_i$，并且由于这一映射显然是满射（像包含了$V^*$的所有基），且出发空间与到达空间维数相同，因此根据\autoref{thm:6:双射等价条件}可知这就是我们希望得到的两个线性空间之间的同构映射.
+\end{proof}
+
+读者很容易怀疑为什么我们明明可以直接使用$\mathcal{L}(V, \R)$的维数直接地证明这一结论，却使用找基和构造同构映射的方式证明. 这是因为上述构造出的基非常重要，我们称其为原空间的基的\term{对偶基}，其中的元素 $f_i$ 也记作 $e^*_i$，这是非常合理的，因为它与原来的基有直接的对应关系.
+
+\begin{example}
+    设$V=\mathbf{R}[x]_3$，对于$g(x)\in V$，定义：
+    \[f_1(g(x))=\displaystyle\int_0^1g(x)\,\mathrm{d}x,\enspace f_2(g(x))=\int_0^2g(x)\,\mathrm{d}x,\enspace f_3(g(x))=\int_0^{-1}g(x)\,\mathrm{d}x,\]
+    \begin{enumerate}
+        \item 证明：$f_1,f_2,f_3$是$V^*$的一组基；
+
+        \item 求出$V$的一组基$g_1(x),g_2(x),g_3(x)$，使得$f_1,f_2,f_3$是$g_1,g_2,g_3$的对偶基.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+除此之外需要强调的是，这样一组基一定依赖于原来的基，上面构造出的同构也是如此——如果我们一开始给$V$取的是另一组基，这里的对偶基一定是另一组基，同构映射也会发生变化. 像这样随着基的取法不同而发生变化的同构映射我们称其为不自然的. 事实上，像坐标映射就是非常典型的不自然的映射：基的取法发生变化，坐标一定会有不同. 同理，线性映射的矩阵表示也是不自然的. 我们也可以给出自然映射的例子，比如直和与积的同构：
+\begin{equation}
+    \begin{aligned}
+        \sigma:V_1\times V_2\times\cdots\times V_n&\to V_1\oplus V_2\oplus\cdots\oplus V_n,\\
+        (v_1,v_2,\ldots,v_n)&\mapsto v_1+v_2+\cdots+v_n
+    \end{aligned}
+\end{equation}
+这里我们定义映射完全不依赖于基的选取，因此是自然的. 事实上，不存在从 $V$ 到 $V^*$ 的自然同构，这个命题在 Mac Lane 提出范畴论的原始论文中被称为是可以由范畴论所形式化的，而范畴论是数学中更为高深的分支，在此我们就不再深入探讨，待本书的最后一个未竟专题展开讨论.
+
+但是，另一个范畴论的观点还是可以讨论的. 当我们说对偶的时候，我们提到了关于对象的叙述的翻译的问题，如开头中的例子点与线之间的相互翻译对应——这一点我们已经通过线性空间与其对偶空间的同构形式化. 但我们似乎还忽略了一个翻译，就是``确定''和``交于''的之间的翻译. 很自然地，这两个词汇实际上就是线性空间元素之间的对应，即线性映射，于是我们接下来讲探讨线性映射之间的翻译. 在进一步讲解之前，我们首先需要介绍交换图的概念：
+\begin{definition}[交换图]
+    我们首先定义什么是一个\term{图（diagram）}. 一个图可以视为以一个代数结构（例如线性空间）为顶点，以某种映射（例如线性映射）为边的图，例如：
+    \begin{center}
+        \begin{tikzcd}
+            V_1 \arrow[r, "\sigma_1"] \arrow[rd, "\sigma_3"'] & V_2 \arrow[d, "\sigma_2"] \\
+            & V_3
+        \end{tikzcd}
+    \end{center}
+    如果我们称一个图是\term{交换的（commutative）}，则意味着对于图中的任意两个顶点间的任意两条有向路径，路径上映射的复合结果相同. 例如上图中，我们考察从$V_1$到$V_3$的两条路径，则如果$\sigma_2\circ\sigma_1=\sigma_3$，这个图是交换的.
+\end{definition}
+
+在定义了交换图后我们可以考虑以下交换图：
+\begin{center}
+    \begin{tikzcd}
+        V \rar["f"] \dar[swap, "\text{dual}"] & W \dar["\text{dual}"] \\
+        V^* & W^* \lar["f^*"]
+    \end{tikzcd}
+\end{center}
+% 这里的翻译真的对得上吗
+其中 $\text{dual}$ 表示如\autoref{thm:10:对偶空间同构}定义的同构，图中的 $f^*$ 就是我们翻译过去的东西，它被称为\term{对偶映射}. 实际上这里有些复杂，因为我们定义的$f^*$需要将一个 $W \to \R$ 的函数 $\varphi$ 映到一个 $V \to \R$ 的函数，是``映射之间的映射''. 我们需要一些耐心，我们首先可以检查我们需要的是什么，以及我们现在有什么来做出定义. 一个简化的重要步骤是对$f^*$进行``取值计算''，研究$f^*(\varphi)$是什么——实际上是一个$V \to \R$ 的函数，$f^*$接受一个$W \to \R$ 的函数 $\varphi$，而且我们恰好只有一个已知的 $f$ 是 $V\to W$ 中的映射，于是我们不妨将$\varphi$与$f$复合，这样正好可以凑出一个$V \to \R$ 的函数，即我们有如下非常自然的定义：
+\begin{definition} \label{def:10:对偶映射}
+    给定 $f: V \to W$，则定义对偶映射 $f^*: W^* \to V^*$ 为
+    \[f^*(\varphi) = \varphi \circ f\]
+\end{definition}
+实际上类似的处理手法在各种地方都会出现，事实上这里我们用$\varphi$与$f$复合，很直观的看法就是用$\varphi$把$f$拉回，这在几何中非常常见. 事实上有了上面的解释后，我相信读者不必苦于记忆这一看似抽象的定义，而是知道这一定义最自然的构造就是我们有两个映射然后复合一下即可.
+
+为什么说这是范畴论的观点呢？因为我们所谓的翻译实际上也就翻译了线性空间和线性变换，这二者就是一个范畴的要素，这样的翻译（在保映射复合的情况下）就被称为一个\term{函子}. 而这个函子是\term{反变}的，也就是说，它会把原来的箭头翻转过来（如上图中的情况）. 下面我们要验证的就因此被称为函子性：
+
+\begin{lemma}
+    考虑线性映射 $f: U \to V, g: V \to W$，则
+    \[
+        (f \circ g)^* = g^* \circ f^*
+    \]
+\end{lemma}
+
+\begin{proof}
+    对于类似形式（在几何中称为推出和拉回）的映射，我们证明等式的思路都是直接代入定义展开证明：
+    \[
+        (f \circ g)^* (\varphi) = \varphi \circ (f \circ g) = (\varphi \circ f) \circ g = (f^*(\varphi)) \circ g = g^* (f^*(\varphi)) = (g^* \circ f^*)(\varphi)
+    \]
+\end{proof}
+
+我想读者读到这里心里会有一个自然的疑问，便是为什么我们定义的映射是$V\to W$的，但对偶映射却是$W^*\to V^*$的？事实上，我们肯定是能够构造出$V^*\to W^*$的映射的，因为我们有$V\to V^*$的同构，它们的元素之间是一一对应的，同理$W$和$W^*$也是如此. 然后我们可以仿照$f$的定义来定义$f^*$，如果我们设$\alpha_i(i=1,2,\cdots,n)$为$V$的一组基，$\beta_i(i=1,2,\cdots,m)$为$W$的一组基，且
+\[f(\alpha_i)=c_{i1}\beta_1+c_{i2}\beta_2+\cdots+c_{im}\beta_m,\]
+那么我们可以定义$f^*(\alpha_i^*)=\sum\limits_{i=1}^m c_{ij}\beta_i^*$，这样的定义是非常直接的继承. 但是，根据我们之前的讨论，这样的定义是不自然的，因为它依赖于基的选取. 但我们看\autoref{def:10:对偶映射}的定义则不依赖于基的选取. 当然，一定有读者还保有一丝希望，希望我们能够找到一个$V^*\to W^*$的自然映射，但我们前面已经分析过，我们在定义时只有一个已知的 $f$ 是 $V\to W$ 中的映射，如果我们接收一个$V\to \R$的函数，这两个映射是无法直接复合的，更不用说得到一个$W\to \R$的函数了.
+
+我们已经认识到\autoref{def:10:对偶映射}的定义非常自然，并且具有反变的性质，接下来我们来看这一映射是否也具有我们希望拥有的其它性质. 在线性代数中，显然我们希望线性映射的对偶映射也是线性的，这一点我们可以直接验证：
+\begin{lemma}
+    给定线性映射 $f: V \to W$，则 $f^*: W^* \to V^*$ 是线性映射.
+\end{lemma}
+\begin{proof}
+    我们直接按照定义展开验证即可：
+    \begin{gather*}
+        \sigma^*(f_1+f_2)=(f_1+f_2)\circ\sigma=f_1\circ\sigma+f_2\circ\sigma=\sigma^*(f_1)+\sigma^*(f_2) \\
+        \sigma^*(\lambda f)=(\lambda f)\circ\sigma=\lambda(f\circ\sigma)=\lambda\sigma^*(f)
+    \end{gather*}
+\end{proof}
+
+当然我们也期望所有的对偶映射和线性映射一样也构成一个线性空间$\mathcal{L}(W^*,V^*)$，这一点我们可以直接验证：
+\begin{lemma}
+    给定 $f$ 和 $g$ 为 $V \to W$ 的线性映射，则
+    \begin{enumerate}
+        \item $(f + g)^* = f^* + g^*$；
+        \item $(\lambda f)^* = \lambda f^*$.
+    \end{enumerate}
+\end{lemma}
+
+这个引理的验证交由读者自行处理，也是展开即可. 这样子看下来，我们就已经建立了对偶空间的整个框架了. 时刻记住，它并没有第一眼看上去那般繁杂与抽象，它无非是一种超平面的代数表达. 但是，反变函子还留给我们最后的一个问题：既然对偶空间对应的函子是反过来的，那再对偶一次不就回去了吗？因此，我们就有了对双对偶空间的研究，最显然的结论就是：
+
+\[
+    V \cong V^{**}
+\]
+
+这当然看起来是一句废话. 从超平面的观点看，一次对偶把点映到了超平面，两次对偶就把它映了回去——且慢，这样的操作中，我们把点映回了点，于是我们会有一种期望，即这种同构是不是就变自然了呢？很幸运，答案是肯定的.
+
+\begin{theorem}
+    存在一个自然同构 $\psi: V \to V^{**}$.
+\end{theorem}
+
+\begin{proof}
+    又一次我们遇到了映射套映射的情况，那当然类似于之前对偶映射的讨论，我们的处理手段就是对需要定义的映射进行``取值计算''. 于是我们取$\psi$在$v\in V$上的值，得到$\psi(v)$，它是一个将线性泛函映到实数的线性泛函. 这仍然是映射套映射的情况，于是我们不妨更进一步，取在$f:V^*\to\R$上的🈯值，我们有$(\psi(v))(f)$是一个实数，这时我们要素齐全，直接令
+    \[(\psi(v))(f) = f(v),\enspace\forall f\in V^*,\enspace v\in V.\]
+    类似于对偶映射，这是我们最自然的选择，并且这一映射完全不依赖于基的选择，因此是自然的. 剩下的工作就是验证这个映射具有我们希望的性质，我们放在下面这一例题中证明.
+\end{proof}
+
+\begin{example}
+    设$V$为有限维线性空间. 我们定义$\psi:V\to V^{**}$为
+    \[(\psi(v))(f) = f(v),\enspace\forall f\in V^*,\enspace v\in V.\]
+    \begin{enumerate}
+        \item 证明：$\psi$是线性映射；
+
+        \item 证明：若$\sigma\in\mathcal{L}(V,V)$，则$\sigma^{**}\circ\psi=\psi\circ\sigma$，这里$\sigma^{**}$是$\sigma^*$的对偶映射；
+
+        \item 证明：$\psi$是$V$到$V^{**}$的同构映射.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+        \item
+        \item
+    \end{enumerate}
+\end{proof}
+
+需要注意的是，在证明这是一个线性同构的过程中，从技术上我们依然要依赖于对 $V$ 取任意一组基，因此它实际上依赖于 $V$ 的有限性. 如果 $V$ 并非有限，那么实际上问题会变得相当复杂，在此不做讨论. 虽然无限维情形的对偶空间依然可以用 $\mathcal{L}(V, \R)$ 来定义，超平面的直观则就不再适用了.
+
+\subsection{对偶映射的矩阵表示}
+
+我们已经提及，$\mathcal{L}(V, W)$ 和矩阵空间具备同构性质，而我们已经表明，对偶有一个函子性，也就是说，$\mathcal{L}(V, W)$ 到 $\mathcal{L}(W^*, V^*)$ 有对应. 因此，我们不免就想构造矩阵空间的一个类似的对偶，使得它能够``具备类似对偶的函子性''. 更直白地说，我们希望得到其对偶映射的矩阵表示.
+
+那么，让我们思考一下怎么给出这个表示. 现在，我们的第一反应是，它一定是一个反变的东西. 其次，它一定对于任意行数和列数的矩阵都存在. 那么，最简单的想法就是，它是不是就是矩阵的转置？矩阵的转置看起来符合反变的直观，而且也带有我们已经给出的性质. 而下面的问题是，如何验证这种直观.
+\begin{theorem} \label{thm:10:对偶映射的矩阵表示}
+    $V$和$W$为有限维线性空间. $V$的一组基为$\alpha_1,\ldots,\alpha_n$，$W$的一组基为$\beta_1,\ldots,\beta_m$，它们对偶空间的基分别为$f_1,\ldots,f_n$和$g_1,\ldots,g_m$. 设$\sigma\in\mathcal{L}(V,W)$，它在上述$V$和$W$的基下的矩阵为$A=(a_{ij})_{m \times n}$，则$\sigma^*\in\mathcal{L}(W^*,V^*)$在上述对偶基下的矩阵为$C=(c_{ij})_{n \times m}=A^\mathrm{T}$.
+\end{theorem}
+
+\begin{proof}
+    根据线性映射矩阵表示的定义，我们有
+    \[\sigma^*(g_j)=\sum_{i=1}^nc_{ij}f_i,\enspace j=1,2,\ldots,m.\]
+    上式左端根据对偶映射定义等于$(g_j\circ\sigma)$. 于是我们将等式两端均作用于$\alpha_k$上有
+    \[(g_j\circ\sigma)(\alpha_k)=\sum_{i=1}^nc_{ij}f_i(\alpha_k)=\sum_{i=1}^nc_{ij}\delta_{ik}=c_{kj}.\]
+    另一方面，根据映射复合的结合律以及线性映射矩阵表示的定义，我们有
+    \[(g_j\circ\sigma)(\alpha_k)=g_j(\sigma(\alpha_k))=g_j\left(\sum_{i=1}^na_{ik}\beta_i\right)=\sum_{i=1}^na_{ik}g_j(\beta_i)=\sum_{i=1}^na_{ik}\delta_{ij}=a_{jk}.\]
+    因此我们有$c_{kj}=a_{jk}$，即$C=A^\mathrm{T}$.
+\end{proof}
+
+这个结果看起来很平凡，对吧？但是让我们暂停一下，重新反思一下前面的几何直观. 如果我们有超平面方程
+
+\[
+    a_1 x_1 + a_2 x_2 + \dots + a_n x_n = 1
+\]
+
+我们记$a=(a_1,a_2,\ldots,a_n)^\mathrm{T},x=(x_1,x_2,\ldots,x_n)^\mathrm{T}$，于是上面的方程可以简化为$a^T x = 1$. 事实上，对于给定的一个超平面$a^T x = 1$，我们知道一定有某个点与之对应，事实上它就是$\tilde{x} = a$，即就是超平面方程的系数.
+\begin{proof}
+    原谅我没时间严格说明这个关系，之后会补上的，但其实这个很直观.
+\end{proof}
+
+于是我们接下来可以给出\autoref{thm:10:对偶映射的矩阵表示}从几何上的理解. 如果原来的方程是 $a^\mathrm{T} x = 1$，则与这个超平面对偶的点则是 $\tilde{x} = a$. 如果我们对 $\tilde{x}$ 作用上 $M$，也就是写成 $\tilde{x} = Ma$，则实现了$V\to W$的映射，那么前面与之对应的方程就是 $(Ma)^\mathrm{T} x = 1$，或者写作 $a^\mathrm{T} (M^\mathrm{T} x) = 1$，即新的超平面和原来的超平面相差一个 $M^\mathrm{T}$，即$W^*$与$V^*$之间相差了$M^\mathrm{T}$. 因此，从几何直观上，我们也验证了转置和对偶映射的对应关系. %这段要重写
+
+\subsection{零化子}
+
+在引理 \ref{lemma:cong_functional_hyperplane} 的证明中，我们探讨了一个使得线性泛函取值非零的向量，并且我们实际上也已经发现了，这样的向量在构建子空间的时候发挥了重要的作用. 接下来，我们要问的是，那些为零的点呢？既然线性泛函是一个从 $V$ 到 $\R$ 的函数，对于这个函数的零点的探讨也是理所应当的. 记一个线性泛函 $f$ 的零点集为 $\ker f$，则它当然也是一个线性空间. 而为了表现对偶空间的用处，我们就要研究那些零点包含某些东西的线性泛函构成的集合作为对偶空间的子集的结构——这种想法实际上也是所谓的泛函分析的起点：对一个函数空间中的结构的研究.
+
+于是，第一个定义就理所应当了：
+
+\begin{definition}
+    设 $U$ 为 $V$ 的子空间，则称
+    \[
+    U^0 = \{\varphi \in V^*: \forall u \in U, \varphi(u) = 0\}
+    \]
+    为 $U$ 的\term{零化子}.
+\end{definition}
+
+在零化子中的线性泛函，是那些零点集\emph{包含} $U$ 中的线性泛函. 为什么不定义零点集\emph{恰好是} $U$ 的线性泛函构成的集合呢？稍微想一想就会发现那样定义的集合结构非常难看：它对于线性泛函的加法和数乘都不封闭. 这就引出了零化子的第一个性质：
+
+\begin{theorem}
+    零化子构成一个对偶空间的子空间.
+\end{theorem}
+
+\begin{proof}
+    首先，任何空间的零化子都包含 $0$ 泛函，它将所有向量都映到 $0$；
+
+    其次，如果 $\alpha, \beta \in U^0$，则不难发现 $\alpha + \beta \in U^0$，因为对于任意 $u \in U$，有
+
+    \[
+    (\alpha + \beta) (u) = \alpha (u) + \beta (u) = 0
+    \]
+
+    同理，数乘封闭性也能这样证明.
+\end{proof}
+
+那么，定义了一个线性空间之后，我们的第一个问题就是，它的维数是多少. 对此，课本给出了一个证明，但笔者在此希望将其重写一下，使之变得更加容易理解. 实际上，我们将其看作以下非常有对称性的定理的推论：
+
+\begin{theorem} \label{thm:10:对偶空间的维数引理}
+    设 $V = U_1 \oplus U_2$，则 $V^* = U_1^0 \oplus U_2^0$，而且 $U_1^0 = U_2^*, U_2^0 = U_1^*$.
+\end{theorem}
+
+% 在证明这个定理之前，读者请先停下来观察一下这里的对称性. 需要关注的是，零化子是一个相对于某个大空间来说的东西，于是，这个定理说的就是，我们可以用一个相对于大空间来说的东西描述其中的小空间的对偶空间，这也就是为什么在讨论了对偶空间之后，我们立刻就引入了零化子的概念.
+
+\begin{proof}
+    为了证明直和，我们首先要证 $U_1^0 \cap U_2^0 = 0$. 考虑 $U_1^0 \cap U_2^0$ 中的线性泛函 $\phi$，则不难发现对于任意的 $U_1 \oplus U_2$ 中的元素 $u_1 + u_2, u_1 \in U_1, u_2 \in U_2$，都有 $\phi(u_1 + u_2) = \phi(u_1) + \phi(u_2) = 0$. 因此，$\phi$ 是零泛函.
+
+    接下来，为了验证同构，我们考虑定义线性泛函 $\phi \in U_2^*$ 的扩张为一个 $V^*$ 中的线性泛函 $\tilde{\phi}$，它限制在 $U_2$ 上的取值均与 $\phi$ 相同，而限制在 $U_1$ 上为零泛函，中间部分由这两部分线性张成. 按照定义，不难发现 $\tilde \phi \in U_1^0$. 如此就构造了 $U_2^* \to U_1^0$ 的线性映射，其逆映射为 $U_1^0$ 中的泛函限制到 $U_2^*$ 上. 在此构造的基础上，请读者自行填充剩下的验证细节.
+\end{proof}
+
+于是，我们就有了一个显然的推论：
+
+\begin{theorem}
+    $\dim U^0 = \dim V - \dim U$
+\end{theorem}
+\begin{proof}
+    设$V=U\oplus W$，则由\autoref{thm:10:对偶空间的维数引理}有$V^*=U^0\oplus W^0$，且$W^0=U^*$，于是$\dim U^0=\dim V^*-\dim W^0=\dim V-\dim U^*=\dim V-\dim U$.
+\end{proof}
+看到减号，我们不难发现，$U^{00}$，即两次取零化子的过程保持维数不变. 继续参照上面的定理的精神，我们不难发现，$U = U^{00}$，这个结论的证明方法有多种，留作习题请读者自行完成. 一个提示是，这个结论同样只对有限维线性空间成立.
+
+这个时候，让我们再回头来看看怎么形象的理解这个玩意儿. 为此，首先要做的是建立零点集和零化子之间的关系. 以下几个性质都是显然的：
+
+\begin{lemma}
+    \begin{enumerate}
+        \item $f \in (\ker f)^0$
+        \item $\forall f \in U^0, \ker f \subset U$
+    \end{enumerate}
+\end{lemma}
+
+我们还要进行一个定义，这实际上是零点集的推广，但是我们要换一个记号：
+
+\begin{definition}
+    设 $U$ 为 $V^*$ 的子空间，则定义
+    \[
+    N(U) = \{v \in V: \forall \varphi \in U, \varphi(v) = 0\}
+    \]
+\end{definition}
+
+也就是说，$N(U)$ 就是那些 $U$ 中的线性泛函的公共零点的集合，即：
+\[
+N(U) = \bigcap_{\varphi \in U} \ker \varphi
+\]
+它显然也是一个线性空间. 这样，上面引理的第一、第二条就有了一个看上去更加对称的推论：
+
+\begin{lemma}
+    \begin{enumerate}
+        \item 如果 $U$ 是 $V^*$ 的子空间，则 $U = N(U)^0$
+        \item 如果 $U$ 是 $V$ 的子空间，则 $U = N(U^0)$
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    我们只证明第一条. 考虑 $\phi \in U$，则 $N(U)$ 中的所有元素一定包含于 $\ker \phi$ 中，因此，$\phi$ 一定把其中的所有元素映到 $0$，即 $\phi \in N(U)^0, U \subset N(U)^0$. 然后，我们需要考虑维数问题. 考虑 $U$ 中的一组基 $e_1, e_2, \cdots, e_m$，其对偶基 $e_1^*, e_2^*, ..., e_m^*$ 可以扩张成 $V$ 的一组基 $e_1^*, e_2^*, \cdots e_m^*, e_{m + 1}, \cdots, e_n$，则根据基的线性无关性，不难得出 $N(U)$ 的基就是 $e_{m + 1}, \cdots, e_n$. 也就是说，$\dim N(U) = \dim V - \dim U$，于是 $\dim U = \dim N(U)^0$，我们得到 $U = N(U)^0$.
+\end{proof}
+
+于是，我们有了一个更加舒适的视角来理解零化子：它无非就是对偶空间中的零点集. 因此，我们应当很容易理解对于单个线性映射，以下性质无非是这条结论的推论：
+
+\begin{theorem}
+    设 $V$ 和 $W$ 都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
+    \begin{enumerate}
+    \item $\ker\sigma^*=(\im\sigma)^0$；
+    \item $\dim\ker\sigma^*=\dim\ker\sigma+\dim W-\dim V$；
+    \item $\dim\im\sigma^*=\dim\im\sigma$；
+    \item $\im\sigma^*=(\ker\sigma)^0$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    设$V$和$W$都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
+    \begin{enumerate}
+        \item $\sigma$是单射当且仅当$\sigma^*$是满射；
+
+        \item $\sigma$是满射当且仅当$\sigma^*$是单射.
+    \end{enumerate}
+\end{corollary}
+
+\section{再论商空间}
+
+我们已经探讨了很多直和的式子，也讨论了零点之类的问题. 现在，我们想问的是，这种零点是否依然还有别的方式来理解？为此，我们需要仔细观察一下零空间的结构. 首先，我们考虑单个线性泛函 $\varphi$ 的情形.
+
+在很久以前，我们就已经知道，$\ker \varphi$ 是一个线性空间，而这个东西无非就是 $\varphi^{-1} (0)$. 那么，我们就自然想要知道 $\varphi^{-1} (\lambda)$ 到底长什么样，这些东西一般被称为 $\varphi$ 的\term{纤维}. 下面我们考虑一个引理：
+
+\begin{lemma}
+     设 $r \in \R$，则对于任意 $v' \in \varphi^{-1}(r), v \in \ker \varphi$，都有 $v + v' \in \varphi^{-1} (r)$.
+\end{lemma}
+
+这个引理粗看有点线性性的意味，它的证明也是如此，在此就不赘述了. 而在发现这个引理之后，也就不难联想到以下结果，它完整地描述了纤维的结构：
+
+\begin{theorem}
+    $\varphi^{-1} (r) = v' + \ker \varphi$，其中 $v'$ 为 $\varphi^{-1} (r)$ 中的任意一个向量.
+\end{theorem}
+
+\begin{proof}
+    我们仅证明左侧包含于右侧，另一个包含由上面的引理保证. 考虑 $v'' \in \phi^{-1} (r)$，则 $\varphi (v') = \varphi (v'') = r$，因此 $\varphi(v' - v'') = 0, v' - v'' \in \ker \varphi$.
+\end{proof}
+
+这个东西显然不是一个线性空间，所以我们要给它另外一个名字：
+
+\begin{definition}
+    设 $W$ 是 $V$ 的子空间，$v \in V$，则称形如 $v + W$ 的集合为 $V$ 的\term{仿射子集}.
+\end{definition}
+
+根据语境的不同，我们也会称其为线性簇甚至线性流形. 于是我们从线性泛函的纤维再次推导出了仿射子集的结构，这相比于之前基于等价关系的推导更为直观. 事实上很显然，我们定义的超平面就是一个仿射子集，而且，一个泛函所对应的超平面，按照引理 \ref{lemma:cong_functional_hyperplane} 所述，就是它在 $1$ 处的纤维. 于是我们也再次理解了仿射子集的几何意义，它所表达的就是那些``近似线性对象''，比如线、面，等等.
+
+按照泛函的纤维的线性性的直观，我们也应该有以下结论：
+
+\begin{lemma}
+    设 $\lambda, \mu$ 为两个实数，$v_\lambda \in \varphi^{-1}(\lambda), v_\mu \in \varphi^{-1} (\mu)$ 则
+
+    \begin{enumerate}
+        \item $\varphi^{-1} (\lambda + \mu) = v_\lambda + v_\mu + \ker \varphi$
+        \item $\varphi^{-1} (\lambda \mu) = \mu v_\lambda + \ker \varphi = \lambda v_\mu + \ker \varphi = \mu \varphi^{-1} (\lambda) = \lambda \varphi^{-1} (\mu)$
+    \end{enumerate}
+\end{lemma}
+
+其证明如上显然. 然后，我们发现，按照这样的方式，所有纤维所构成的集合就定义了加法和数乘运算，而且不难验证它构成了一个线性空间；其维数则无非是压到了 $\R$ 的维数，也就是 $1$.
+
+按照这样的观点，则不难理解如何将这样的结论推广到一般的线性映射上去. 一个线性映射 $f: V \to W$ 无非就是将一个线性空间线性地压缩到了 $\im f$ 上去，其在原像集上的体现无非是那一族纤维. 这个性质由以下定理描述：
+
+\begin{theorem}
+    设 $f: V \to W$ 是一个线性映射，则 $f^{-1} (w) = v_0 + \ker f$，其中 $w \in W, v_0 \in f^{-1} (w)$.
+\end{theorem}
+
+因此，我们不妨给这些纤维的集合一个名字，而且，如果方便的话，最好能推广到所有的仿射子集上去，我们定义：
+
+\begin{definition}
+    设 $W$ 是 $V$ 的子空间，称所有形如 $v + W$ 的集合所构成的集合为 $V$ 对 $W$ 的\term{商空间}，记作 $V / W$.
+\end{definition}
+
+在此背景下重述上面的结论，就是 $V/\ker f$ 是一个线性空间，而且 $V/\ker f \simeq \im f$.
+
+更进一步的，实际上我们有一个天然的漂亮的方法，来给出这样的一个核：
+
+\begin{lemma}
+    若 $W$ 是 $V$ 的一个子空间，则存在线性映射 $V \to V$，使得其在 $W$ 上的点取值均为 $0$，而在 $W$ 以外的点取值均不为 $0$.
+\end{lemma}
+
+\begin{proof}
+    考虑 $V$ 的直和分解 $V = W \oplus W'$. 构造线性映射 $f$ 使得其在 $W$ 上为零映射，在 $W'$ 上为恒同映射即可.
+\end{proof}
+
+因此，任意子空间都是线性映射的一个核，我们就给出了以下定理：
+
+\begin{theorem}
+    设 $W$ 为 $V$ 的子空间，则 $V/W$ 是一个线性空间，而且 $\dim V/W = \dim V - \dim W$.
+\end{theorem}
+
+这是在上面的构造中，$V/W \simeq W'$. 到此为止，本节最核心的结果就已经建成了. 最后的一个结果将本节的三个核心概念：对偶空间、零化子和商空间串联起来：
+
+\begin{theorem}
+    $(V/W)^* = W^0$.
+\end{theorem}
+
+\begin{proof}
+    我们已经表明，$V/W \simeq W'$ 并给出了一个同构. 考虑 $W \oplus W' = V$，则 $V^* = W^* \oplus (W')^*$，其中 $(W')^* = W^0$.
+\end{proof}
+
+% 第二点是，商空间具备泛性质. 我们在很久以前就提到过泛性质的问题，而在这里，商空间实际上可以被看成一个推出，也就是说，如果以下图表中的实线箭头交换，则：
+
+% \begin{center}
+%     \begin{tikzcd}
+%         W \rar[hook, "i"] \dar[twoheadrightarrow, "p"] & V \dar[twoheadrightarrow, "p_*"] \arrow[rdd, bend left, "\varphi"] & \\
+%         1 \rar[hook, "i_*"] \arrow[rrd, bend right, "\tilde{i}"] & V/W \arrow[rd, dashed, "\varphi_*"] & \\
+%         & & Q
+%     \end{tikzcd}
+% \end{center}
+
+% 则存在唯一的虚线箭头使得图表交换. 下面我们给出证明.
+
+% \begin{proof}
+%     上图中的 $i, p, i_*, p_*$ 和 $\tilde{i}$ 都是显然看出的，所以，我们只要按照正常的方式，从 $\varphi$ 构造出 $\varphi_*$ 即可. 左下方三角的交换性是毋庸置疑的，因此，只要有右上的三角的交换性即可. 考虑 $V/W$ 中的元素 $v + W$，我们定义
+%     \[
+%     \varphi_*(v + W) = \varphi(v)
+%     \]
+%     这个映射是良定且唯一的，这由 $\varphi$ 对商的相容性保证，请读者自行在习题中完成证明.
+% \end{proof}
+
+% 这样的构造也被称为余纤维积. 更深入地探讨这样的构造不是我们在这里会去做的事情，但是我们会把更多关于推出的问题留在习题中，以供有兴趣的同学参考.
+
+最后的一个反思是，对偶空间的意义到底在哪？在最开始，我们已经提到过，线性泛函就是超平面，超平面与点具备对偶关系. 而这样的对偶关系延伸开去，就是两种对线性方程组的视角，其中，超平面的交的视角我们将在线性方程组一般理论的讨论中展开，这里我们给出点的视角. 如果将 $(a_{i1}, a_{i2}, \cdots, a_{in})$ 视作一个点，那么我们的求解任务就是找一个超平面过 $m$ 个点. 而我们在中学阶段就已经知道，要证明一组点共面是一个比较麻烦的事情，但是求一组面是否有交点往往来说是比较轻松的. 因此，我们通过对偶空间进行了一个翻译工作，将求一组点所共的那些面转化成了一些面所交的那些点，进而对问题完成了简化.
+
+\begin{theorem} \label{thm:10:商空间维数}
+    设$U$是有限维线性空间$V$的子空间，则
+    \[\dim V/U=\dim V-\dim U.\]
+\end{theorem}
+这一定理的形式与维数公式或线性映射基本定理完全类似，都是几个线性空间之间的维数的等式关系，因此我们有理由相信证明思想也会是类似的，即``设小扩大''：
 
 \begin{proof}
     取$U$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_s$，将其扩充为$V$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_s,\alpha_{s+1},\ldots,\alpha_n$. 于是我们要证的转化为$\dim V/U=n-s$，即证明$V/U$的一组基的长度为$n-s$.
@@ -116,10 +687,7 @@
     \end{enumerate}
 \end{proof}
 
-由此我们知道了商空间的维数表达式，也在通过证明过程知道了如何得到商空间的一组基. 事实上，上述证明中线性无关的部分和\hyperref[thm:6:线性映射基本定理]{线性映射基本定理}的证明完全类似. 事实上有了这一结论后，我们可以将线性映射基本定理
-\[\dim\im\varphi=\dim V-\dim\ker\varphi\]
-写成
-\[V/\ker\varphi\cong\im\varphi.\]
+由此我们知道了商空间的维数表达式，也在通过证明过程知道了如何得到商空间的一组基. 推进到这里我们完全有理由相信这一定理与线性映射基本定理有着什么特殊的关联，这一点待我们讨论完对偶后再来审视.
 
 \begin{example}
     设$A$是$\mathbf{R}$上的$2\times 3$矩阵：
@@ -136,461 +704,6 @@
 \begin{solution}
 
 \end{solution}
-
-\begin{example}
-    设$U$和$W$是线性空间$V$的子空间. 构造同构映射证明：若$V=U\oplus W$，则$U$和$V/W$同构.
-\end{example}
-
-\begin{solution}
-
-\end{solution}
-
-\subsection{商映射}
-
-接下来我们循着等价类的思路定义自然映射，在商空间的语境下我们称之为商映射：
-\begin{definition}
-    设$U$是$V$的子空间，商映射$\pi$是如下定义的线性映射$\pi:V\to V/U$：对任意的$\alpha\in V$，
-    \[\pi(v)=v+U.\]
-\end{definition}
-显然这一定义就是基于自然映射的，因为它将原集合（线性空间）中的元素（向量）映射到它所在的等价类（仿射子集）. 一般而言，我们定义映射的目标就是希望利用线性映射基本定理等来进一步研究线性空间的一些性质. 这里也不例外，我们利用线性映射基本定理就可以直接得到\autoref{thm:8:商空间维数} 的结论（除了不能知道基的结构）.
-
-\begin{proof}
-    设$\pi$是$V$到$V/U$的商映射. 我们知道$\ker\pi=U$，因为根据仿射子集定义$\pi(v)=v+U=\vec{0}+U\iff v\in U$. 另一方面，$\pi$的定义蕴含了它是满射，因为$\forall v+U\in V/U$，$\pi(v)=v+U$，即每个像空间中的元素都有原像，因此$\im\pi=V/U$.
-
-    综合上述讨论以及线性映射基本定理，我们知道$\dim\im\pi=\dim V-\dim\ker\pi$，即$\dim V/U=\dim V-\dim U$.
-\end{proof}
-
-由此我们似乎可以更容易地得到商空间的维数，但是我们并不能从这一证明中知道商空间的基的形式. 当然我们结合两个证明，我们会发现这一定理直接应用了线性映射基本定理，而\autoref{thm:8:商空间维数} 中相当于重新证明了线性映射基本定理然后用于说明商空间的基和维数的特点.
-
-\begin{example}\label{ex:8:良定义}
-
-\end{example}
-
-\begin{proof}
-
-\end{proof}
-
-最后我们再基于不变子空间讨论一个商线性变换的概念. 事实上，如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换. 我们严格定义如下：
-\begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，$U$是$\sigma$的不变子空间，定义映射$\sigma/U:V/U\to V/U$如下：
-    \[(\sigma/U)(v+U)=\sigma(v)+U,\enspace\forall v\in V,\]
-    则称$\sigma/U$是$\sigma$在$U$上的\term{商线性变换}\index{xianxingbianhuan@shang!商线性变换 (quotient operator)}.
-\end{definition}
-
-定义映射后，我们自然的想法就失确认这一定义是不是合理的. 首先这一定义的线性性容易验证，我们只需要用到商空间中定义的运算性质即可：
-\begin{itemize}
-    \item 齐次性：$(\sigma/U)(\lambda(v+U))=(\sigma/U)(\lambda v+U)=\sigma(\lambda v)+U=\lambda\sigma(v)+U=\lambda(\sigma/U)(v+U)$；
-
-    \item 加性：$(\sigma/U)((v_1+U)+(v_2+U))=(\sigma/U)(v_1+v_2+U)=\sigma(v_1+v_2)+U=\sigma(v_1)+\sigma(v_2)+U=(\sigma/U)(v_1+U)+(\sigma/U)(v_2+U)$.
-\end{itemize}
-
-除了线性的要求外，还有一个很重要的合理性来源于\autoref{ex:8:良定义} 中提到的良定义（well-defined）的概念. 因为这里又一次将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性. 事实上，回顾\autoref{ex:8:良定义}，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值（否则不符合映射的定义）. 商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma(v)+U\neq \sigma(w)+U$的情况，这一定义描述的就不是映射（因为映射要求一个自变量只能映到一个值上），因此不是良定义. 但我们可以验证这一映射是良定义的：
-
-\begin{proof}
-    设$v+U=w+U$，即$v-w\in U$，由于$U$在$\sigma$下不变，则$\sigma(v-w)\in U$，即$\sigma(v)-\sigma(w)\in U$，因此$\sigma(v)+U=\sigma(w)+U$，即$\sigma/U$是良定义的.
-\end{proof}
-
-这一定义可能具有一定的抽象性，因此我们用更抽象的例子来加深理解：
-\begin{example}
-    设$\sigma\in \mathcal{L}(V,W)$，定义$\widetilde{\sigma}:(V/(\ker \sigma))\to W$如下：
-    \[\widetilde{\sigma}(v+\ker\sigma)=\sigma(v).\]
-    \begin{enumerate}
-        \item $\widetilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
-
-        \item $\widetilde{\sigma}$是单射；
-
-        \item $\im \widetilde{\sigma}=\im \sigma$；
-
-        \item $V/(\ker \sigma)$同构于$\im \sigma$.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-
-\end{proof}
-
-最后我们用一张图来总结商空间这一节的基本思路（可以类比其他等价类如同余或等价标准形代入理解）：
-
-\begin{figure}[H]
-    \centering
-    \large
-    \begin{tikzpicture}
-        \draw node at (3, 3.5) {$\pi$}
-            node (set) at (2, 2) {$\{a,b,c,d,\ldots\}$}
-            node [below of=set] {\normalsize$(a - d \in U)$}
-            node (Ka) at (4.5, 3.5) {$K_a$}
-            node (Kb) at (5, 1) {$K_b$}
-            node (Kc) at (6.5, 0.5) {$K_c$}
-            coordinate (a) at (1.1, 2.2)
-            coordinate (b) at (1.5, 1.8)
-            coordinate (c) at (1.9, 1.8)
-            coordinate (d) at (2.3, 2.3);
-
-        % \foreach \x in {1, 1.5, ..., 9}
-        %     \foreach \y in {0, 0.5, ..., 4}
-        %         \fill[black] (\x, \y) circle (1pt);
-
-        % \foreach \pt in {a, b, c, d}
-        %     \fill[red] (\pt) circle (1pt);
-
-        \draw[thick] (4, 0) rectangle (9, 4)
-            (4, 2) -- (6, 4)
-            (5, 3) -- (6, 0)
-            (5.5, 1.5) -- (8, 0);
-
-        \draw[thick,violet,-latex] (a) to[out=45, in=180] (4, 3);
-        \draw[thick,violet,-latex] (b) to[out=-30, in=180] (4, 1.5);
-        \draw[thick,violet,-latex] (c) to[out=-15, in=90] (Kc);
-        \draw[thick,violet,-latex] (d) to[out=10, in=180] (4, 2.7);
-    \end{tikzpicture}
-
-    \normalsize
-    等价类：仿射子集（如何进一步描述其结构）
-
-    商集：仿射子集构成的集合；商空间：商集上定义加法和数乘
-
-    商映射：自然映射
-
-    商空间的基与维数：两种方法
-\end{figure}
-
-\section{线性空间的积}
-
-接下来的两节我们将综合应用之前所学习的基本知识，介绍两个重要的线性空间，即积空间和商空间，以及其上定义的线性映射. 在这两节中我们将完整地展示从定义的引入开始，如何研究一个线性空间，如何合理定义线性映射，如何应用前述知识综合地给出一些空间和映射的性质，这对于我们是一个重要的思维训练.
-
-\subsection{线性空间的积的定义与性质研究}
-
-我们首先探讨线性空间的积，或者积空间. 熟知集合有笛卡尔积运算，而线性空间是定义在集合上的代数结构，因此我们有一个自然的问题，即我们能否在多个线性空间的对应的集合的笛卡尔积上定义加法和数乘运算，使其成为一个线性空间？
-
-答案是肯定的，但我们需要首先声明的一点是，构成笛卡尔积的这些线性空间必须定义在同一个数域上，否则新集合上的数乘我们将很难定义，因为数域不同我们将很难选择数乘的常数应该选择来自于哪个线性空间的数域.
-\begin{definition}\label{def:8:积空间}
-    设$V_1,V_2,\ldots,V_n$是数域$\mathbf{F}$上的线性空间，我们有如下三个定义：
-    \begin{enumerate}
-        \item 线性空间的积：
-              \[V_1 \times V_2 \times \cdots \times V_n=\{(v_1,v_2,\ldots,v_n)\mid v_i \in V_i,\enspace i=1,2,\ldots,n\};\]
-
-        \item 规定$V_1 \times V_2 \times \cdots \times V_n$上加法和数乘运算：
-              \begin{enumerate}
-                  \item 加法：$(v_1,v_2,\ldots,v_n)+(u_1,u_2,\ldots,u_n)=(v_1+u_1,v_2+u_2,\ldots,v_n+u_n)$；
-
-                  \item 数乘：$\lambda(v_1,v_2,\ldots,v_n)=(\lambda v_1,\lambda v_2,\ldots,\lambda v_n)$.
-              \end{enumerate}
-    \end{enumerate}
-\end{definition}
-
-事实上我们很容易验证上述定义的线性空间的积在定义的加法和数乘运算下构成线性空间，我们将放在习题中供读者练习. 接下来我们要研究这一线性空间的性质. 事实上，我们早在有限维线性空间一节中就说明了，一个线性空间的核心结构就是其基和维数，因此我们首先研究它们. 事实上，对于积空间，它的基和维数的确定是非常符合我们的直觉的，我们来看一个例子：
-\begin{example}
-    求积空间$\mathbf{R}[x]_3\times\mathbf{R}^2$的一组基.
-\end{example}
-
-\begin{solution}
-    我们知道$\mathbf{R}[x]_3$的一组基为$1,x,x^2$，而$\mathbf{R}^2$的一组基为$(1,0),(0,1)$. 很自然的想法是：我们可以先取$\mathbf{R}[x]_3$的一组基，$\mathbf{R}^2$的位置置零，然后反之取$\mathbf{R}^2$的一组基，$\mathbf{R}[x]_3$的位置置零，即$(1,(0,0)),\ (x,(0,0)),\ (x^2,(0,0)),\ (0,(1,0)),\ (0,(0,1))$. 我们很容易可以证明上述向量组满足基的两个条件：线性无关和张成空间.
-\end{solution}
-
-上述例子中的基的构造方法是很自然的，而且我们会发现，在这样取基的情况下积空间的维数很显然就是各个线性空间的维数之和. 我们可以很容易地推广到一般情况：
-\begin{theorem}\label{thm:8:积空间维数}
-    设$V_1,V_2,\ldots,V_n$是数域$\mathbf{F}$上的有限维线性空间，则$V_1 \times V_2 \times \cdots \times V_n$是有限维线性空间，且
-    \[\dim(V_1 \times V_2 \times \cdots \times V_n)=\dim V_1+\dim V_2+\cdots+\dim V_n.\]
-\end{theorem}
-
-\begin{proof}
-    我们取$V_i$的一组基，对这组基中每个向量，我们取$V_1 \times V_2 \times \cdots \times V_n$中的这样的向量：其中第$j$个位置为此向量，其余位置为零向量，这样我们遍历所有$V_i$和每个$V_i$的基向量我们就得到了$V_1 \times V_2 \times \cdots \times V_n$的一组基（线性无关和张成性是很容易验证的），这组基的长度（即维数）为$\dim V_1+\dim V_2+\cdots+\dim V_n$.
-\end{proof}
-
-\subsection{线性空间的积与直和}
-
-本节我们将通过线性空间的积的角度来讨论直和的维数特点. 事实上，我们的手段就是构造线性映射，然后利用线性映射基本定理来得到结论.
-\begin{theorem}\label{thm:8:积与直和}
-    设$U_1,U_2,\ldots,U_n$是$V$的子空间，我们定义线性映射$\sigma:U_1 \times U_2 \times \cdots \times U_n \to U_1+U_2+\cdots+U_n$，使得$\sigma(u_1,u_2,\ldots,u_n)=u_1+u_2+\cdots+u_n$，则$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \sigma$是双射.
-\end{theorem}
-
-\begin{proof}
-    \begin{enumerate}
-        \item 充分性：设$\sigma$是双射，则$\sigma$首先是单射. 根据单射的等价条件，我们有$\ker \sigma=\{0\}$，即$u_1+u_2+\cdots+u_n=0$必须有$u_1=u_2=\cdots=u_n=0$，而这正是\autoref{thm:4:直和等价命题} 中直和的等价条件；
-
-        \item 必要性：设$U_1+U_2+\cdots+U_n$是直和，我们证明$\sigma$是单的、满的：
-              \begin{enumerate}
-                  \item 单射：设$\sigma(u_1,u_2,\ldots,u_n)=0$，即$u_1+u_2+\cdots+u_n=0$，由直和的等价条件可知$u_1=u_2=\cdots=u_n=0$，即$\sigma$的核空间只有出发空间零元，故是单射；
-
-                  \item 满射：实际上是由这个线性映射的定义直接保证的. $\forall u \in U_1+U_2+\cdots+U_n$，根据和的定义一定有分解$u=u_1+u_2+\cdots+u_n$，其中$u_i \in U_i$，因此根据$\sigma$的定义$\sigma(u_1,u_2,\ldots,u_n)=u$，即任意$u$我们都可找到原像，故是满射.
-              \end{enumerate}
-    \end{enumerate}
-\end{proof}
-
-事实上在证明中我们看到，$\sigma$的定义保证了其满射性，因此定理中最后的双射改为单射也是统一的. 通过这一定理我们可以直接得出以下结论：
-\begin{theorem}
-    设$U_1,U_2,\ldots,U_n$是有限维线性空间$V$的子空间，则$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \dim(U_1+U_2+\cdots+U_n)=\dim U_1+\dim U_2+\cdots+\dim U_n$.
-\end{theorem}
-
-\begin{proof}
-    根据\autoref{thm:8:积与直和}，$U_1+U_2+\cdots+U_n$是$V$的直和$\iff \sigma$是双射. 我们很容易验证$\sigma$是线性映射，而线性双射我们又称同构映射，同构映射的出发空间和到达空间维数相等，因此$\sigma$是双射$\iff \dim(U_1 \times U_2 \times \cdots \times U_n)=\dim(U_1+U_2+\cdots+U_n)$，最后根据\autoref{thm:8:积空间维数} 积空间的维数可知定理成立.
-\end{proof}
-
-这里我们用同构映射完成证明，如果对同构不熟悉的可以回顾定义和等价条件，或者自己用线性映射基本定理进行推导. 由此，我们通过在积空间上定义映射，结合\hyperref[thm:6:线性映射基本定理]{线性映射基本定理}（或同构）得到了\autoref{thm:4:直和等价命题} 中关于维数的命题. 总结而言，在积空间的讨论中我们展现了一个比较完整地学习路径：从定义积空间的想法（来源于集合的笛卡尔积），到如何自然地定义出这一空间的加法和数乘运算，然后研究构造出的空间的基本结构有什么特点，然后进一步构造其上线性映射，得到一些其他的结论. 这一路径的每一步都是非常自然的，而且是学习一个数学概念的常见思路，希望读者不仅是在线性代数中体会到这种学习路径，在其他数学课甚至其他学科中都能总结出这样一条引入—定义—性质—应用的自然路径.
-
-最后我们再看一个拓展的问题，我们希望进一步看到构造同构映射带来的研究问题的方便性：
-\begin{example}
-    设$V_1,V_2,\ldots,V_n,W$是数域$\mathbf{F}$上的线性空间，证明：$\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$与$\mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$同构.
-\end{example}
-有的读者可能看见这题就会觉得非常简单，因为有限维线性空间的前提下二者维数显然相同，然而我们这里并未限定有限维线性空间，因此需要读者自己构造同构映射.
-
-\begin{solution}
-    $\forall f\in \mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$，我们定义$f_i:V_i\to W(i=1,2,\ldots,m)$满足
-    \[f_i(v_i)=f(0,\ldots,0,v_i,0,\ldots,0),\]
-    其中$v_i$位于第$i$个位置，其余位置为零向量.
-
-    定义$\varphi:\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)\to \mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$，使得$\varphi(f)=(f_1,f_2,\ldots,f_m)$，则接下来我们要验证$\varphi$就是我们要求的同构映射.
-\end{solution}
-
-\section{对偶空间与对偶映射}
-
-本节我们将开始讨论矩阵的另一种很基本的运算：转置. 我们延续之前讨论的风格，首先介绍运算与线性映射之间的关联，然后再讨论其运算性质. 当然，转置与线性映射的关联不再像之前的那样简单明了，而是要首先引入线性空间和线性映射对偶的概念. 注意，这部分内容只在《线性代数应该这样学》中要求，只学习《大学数学：代数与几何》的读者可以选择性略过有关对偶的知识.
-
-\subsection{对偶空间}
-
-说起对偶，我们并不陌生，这一词语一路陪伴了我们从小学到高中的语文课，有``整齐匀称''之美. 在经济学中，我们可以将企业给定生产成本最大化产出的问题，和给定产出最小化成本的问题视为对偶. 我们自然的想法是，要定义线性空间的对偶，那么应当也是与原先的线性空间有着某种一一对应的关系. 接下来我们将开始定义线性空间的和对偶映射，然后逐步挖掘其中匀称之美.
-
-我们首先回顾一下在\autoref{def:3:线性映射的定义} 中定义的线性泛函的概念：
-\begin{definition}[线性泛函] \index{xianxingfanhan@线性泛函 (linear functional)}
-    线性空间$V(\mathbf{F})$上的\term{线性泛函}是从$V$到$\mathbf{F}$的线性映射，即线性泛函是$\mathcal{L}(V,\mathbf{F})$中的元素.
-\end{definition}
-有时我们也将线性泛函称为线性函数，实际上它们都表示将$V$中向量映射到数域上的线性映射. 我们来看几个线性泛函的例子：
-\begin{enumerate}
-    \item 定义$\sigma:\mathbf{F}^n\to\mathbf{F}$为$\sigma(x_1,\ldots,x_n)=c_1x_1+\cdots+c_nx_n$，其中$c_1,\ldots,c_n\in\mathbf{F}$，则$\sigma$是线性泛函；
-
-    \item 定义$\sigma:\mathbf{R}[x]_n\to\mathbf{R}$为$\sigma(p(x))=\displaystyle\int_0^1p(x)\mathrm{d}x$，则$\sigma$是线性泛函.
-\end{enumerate}
-
-我们知道，全体$V$到$\mathbf{F}$的线性映射构成的集合$\mathcal{L}(V,\mathbf{F})$也是一个线性空间（因为这只是$\mathcal{L}(V_1,V_2)$的特例），我们将其定义为线性空间$V$的对偶空间：
-\begin{definition}[对偶空间] \index{duioukongjian@对偶空间 (dual space)}
-    设$V$是数域$\mathbf{F}$上的线性空间，称$\mathcal{L}(V,\mathbf{F})$为$V$的\term{对偶空间}，记作$V^*$.
-\end{definition}
-
-即线性空间$V$的对偶空间是其上所有线性泛函构成的线性空间. 事实上，我们知道对于有限维线性空间$V_1$和$V_2$而言，若$\dim V_1=n$，$\dim V_2=m$，则$\mathcal{L}(V_1,V_2)$的维数为$mn$. 因此对偶空间$V^*$的维数就是$\dim V$，因为数域构成的线性空间$\mathbf{F}(\mathbf{F})$维数显然为1，因为乘法单位元1就可以作为一组基（1自身线性无关，然后1数乘$\mathbf{F}$中的元素可以得到所有元素，当然同理只要是非零元就可以作为基）.
-
-有同学可能会想到$\mathbf{C}(\mathbf{R})$的维数为2，然而如果翻回线性映射的定义就会发现，我们要求两个线性空间的数域是一致的，所以$V(\mathbf{F})$上的线性泛函一定是到$\mathbf{F}(\mathbf{F})$上的.
-
-沿着我们之前研究积空间和商空间的思路，接下来我们的目标非常明确：找到对偶空间的一组基. 我们可以考虑这样一个问题，假定$V$的维数为$n$，其一组基为$\alpha_1,\ldots,\alpha_n$. 由\autoref{thm:5:线性映射唯一确定} 可知，$V$上任一线性泛函$f$都可以由其在$\alpha_1,\ldots,\alpha_n$下的像$f(\alpha_1),\ldots,f(\alpha_n)$唯一确定. 我们考虑如下映射：
-\begin{align*}
-    \sigma:V^* & \to\mathbf{F}^n                         \\
-    f          & \mapsto(f(\alpha_1),\ldots,f(\alpha_n))
-\end{align*}
-根据唯一确定性我们很容易证明可知$\sigma$是一个线性双射（即同构映射），事实上这也与$V^*$维数为$n$是相符的. 由于同构映射具有保持向量组线性相关性的特点，我们取$\mathbf{F}^n$的自然基$e_1,\ldots,e_n$，则$\sigma^{-1}(e_1),\ldots,\sigma^{-1}(e_n)$就是$V^*$的一组基，我们称其为\term{对偶基}\index{duiouji@对偶基 (dual basis)}，记作$f_1,\ldots,f_n$.
-
-我们进一步探究对偶基的性质，根据上面的定义我们知道$f_i=\sigma^{-1}(e_i)$，即$\sigma(f_i)=e_i$，根据$\sigma$定义即$f_i$在$\sigma$下的像$(f(\alpha_1),\ldots,f(\alpha_n))=e_1=(0,\ldots,0,1,0,\ldots,0)$，即第$i$个分量为1，其余分量为0，即$f_i(\alpha_j)=\delta_{ij}$，其中$\delta_{ij}$为Kronecker记号，展开写即
-\[f_i(\alpha_j)=\begin{cases}
-        1 & i=j     \\
-        0 & i\neq j
-    \end{cases}\]
-这样我们便得到了对偶基. 我们上面的构造利用的是同构映射，因此无需证明线性无关和张成. 实际上直接证明也并不困难，我们将放在习题中供读者练习.
-
-事实上，通过对偶基的表示我们很容易看出对偶基和原空间基的一一对应关系，即对偶基的某个向量（实际上是映射）只有在原空间对应位置的向量下的像才为1，其余向量下的像都为0. 讲到这里，可能很多读者已经觉得十分抽象了，我们可以理一下思路，对偶空间的定义就是全体线性泛函$V^*=\mathcal{L}(V,\mathbf{F})$，因此它的维数显然和$V$相等，并且我们通过了一个同构映射得到了对偶空间的基的表示. 因为对偶空间中的元素是线性映射，因此基向量也只不过是满足一定条件的线性映射罢了，只是这里的表达可能略微复杂不够直观，但我们可以通过例子来熟悉：
-\begin{example}
-    设$V=\mathbf{R}[x]_3$，对于$g(x)\in V$，定义：
-    \[f_1(g(x))=\displaystyle\int_0^1g(x)\,\mathrm{d}x,\enspace f_2(g(x))=\int_0^2g(x)\,\mathrm{d}x,\enspace f_3(g(x))=\int_0^{-1}g(x)\,\mathrm{d}x,\]
-    \begin{enumerate}
-        \item 证明：$f_1,f_2,f_3$是$V^*$的一组基；
-
-        \item 求出$V$的一组基$g_1(x),g_2(x),g_3(x)$，使得$f_1,f_2,f_3$是$g_1,g_2,g_3$的对偶基.
-    \end{enumerate}
-\end{example}
-
-\begin{solution}
-
-\end{solution}
-
-\subsection{对偶映射}
-
-接下来我们将介绍一个看起来可能更为抽象的概念——对偶映射. 如果我们有一个线性映射$\sigma:V\to W$，对偶映射的自然想法就是出发空间和到达空间变为对偶空间，于是我们有如下定义：
-\begin{definition}[对偶映射] \index{duiouyingshe@对偶映射 (dual map)}
-    设$\sigma:V\to W$是线性映射，定义$\sigma^*:W^*\to V^*$为$\sigma^*(f)=f\circ\sigma,\forall f\in W^*$，则称$\sigma^*$为$\sigma$的\term{对偶映射}.
-\end{definition}
-定义可能略显抽象，我们做一下说明：
-\begin{enumerate}
-    \item 看定义$\sigma^*(f)=f\circ\sigma,\enspace\forall f\in W^*$，实际上对偶映射只是把自变量$f$复合了一下原映射$\sigma$. 定义式很好记忆，接下来的各个证明都要熟练使用这一定义；
-
-    \item 因为$\sigma^*(f)=f\circ\sigma,\enspace\forall f\in W^*$，其中$\sigma:V\to W,\enspace f:W\to\mathbf{F}$，由映射复合的定义可知$\sigma^*(f):V\to\mathbf{F}$，因此$\sigma^*$的出发空间是$W^*$（参数$f$所在空间），到达空间是$V^*$（像$\sigma^*(f)$所在空间），故$\sigma^*:W^*\to V^*$；
-
-    \item $\sigma^*$满足线性性，因此是线性映射，证明只需使用线性映射复合运算的性质：
-          \begin{gather*}
-              \sigma^*(f_1+f_2)=(f_1+f_2)\circ\sigma=f_1\circ\sigma+f_2\circ\sigma=\sigma^*(f_1)+\sigma^*(f_2) \\
-              \sigma^*(\lambda f)=(\lambda f)\circ\sigma=\lambda(f\circ\sigma)=\lambda\sigma^*(f)
-          \end{gather*}
-
-    \item 对偶映射还有以下运算性质：
-          \begin{enumerate}
-              \item $\forall\sigma,\tau\in\mathcal{L}(V,W),\enspace (\sigma+\tau)^*=\sigma^*+\tau^*$；
-
-              \item $\forall\sigma\in\mathcal{L}(V,W),\enspace \forall\lambda\in\mathbf{F},\enspace (\lambda\sigma)^*=\lambda\sigma^*$；
-
-              \item $\forall\sigma\in\mathcal{L}(V,W),\enspace \forall\tau\in\mathcal{L}(W,U),\enspace (\tau\sigma)^*=\sigma^*\tau^*$.
-          \end{enumerate}
-          注意这里的前两点也是线性性质，但前面是指线性映射，是映射对于自变量的线性性，这里可以将$^*$看成一种运算，这种运算作用于对偶映射，具有线性性. 我们简要证明一下这三条性质：
-
-          \begin{proof}
-              \begin{enumerate}
-                  \item $(\sigma+\tau)^*(f)=(f\circ(\sigma+\tau))=(f\circ\sigma)+(f\circ\tau)=\sigma^*(f)+\tau^*(f)=(\sigma^*+\tau^*)(f)$；
-
-                  \item $(\lambda\sigma)^*(f)=(f\circ(\lambda\sigma))=(\lambda(f\circ\sigma))=\lambda(f\circ\sigma)=\lambda\sigma^*(f)=(\lambda\sigma^*)(f)$；
-
-                  \item $(\tau\sigma)^*(f)=(f\circ(\tau\sigma))=((f\circ\tau)\circ\sigma)=\sigma^*(f\circ\tau)=\sigma^*(\tau^*(f))=(\sigma^*\tau^*)(f)$.
-              \end{enumerate}
-          \end{proof}
-          这里的$f$是任意的，因此这三条性质成立. 其中每一条最后一个等号我们回顾线性映射加法、数乘和复合的定义就会发现这一等号就是定义.
-\end{enumerate}
-这里希望读者能理解我们分点逐步加深理解的整理方式的良苦用心，事实上就是从简单的概念是什么开始，然后清晰地梳理出各种性质. 将来读者在其他课程中学习到了抽象的新概念，也可以试图做这样的整理，更符合一般的学习逻辑.
-
-按照惯例，接下来我们要尝试使用线性映射基本定理研究对偶映射像空间和核空间的性质，然后得到一些推论. 我们从下面几个方面逐步深入讨论：
-\begin{enumerate}
-    \item 零化子：为了下面进一步的研究，我们首先要给出零化子的概念：
-          \begin{definition}[零化子] \index{linghuazi@零化子 (annihilator)}
-              对于线性空间$V$的子空间$U$，定义$U$的\term{零化子}$U^0$为
-              \[U^0=\{\varphi\in V^*\mid\varphi(u)=0,\forall u\in U\}.\]
-          \end{definition}
-
-          对于零化子，我们有以下说明：
-          \begin{enumerate}
-              \item 根据定义，$U$的零化子实际上就是把$U$中向量全部映射为0的线性泛函；
-
-              \item 我们很容易证明：$U^0$是$V^*$的子空间：
-                    \begin{enumerate}
-                        \item 非空：$0\in U^0$，零映射一定在$U^0$中；
-
-                        \item 运算封闭：$\forall\varphi_1,\varphi_2\in U^0,\enspace \forall\lambda\in\mathbf{F}$，有
-                              \begin{gather*}
-                                  (\varphi_1+\varphi_2)(u)=\varphi_1(u)+\varphi_2(u)=0,\enspace\forall u\in U \\
-                                  (\lambda\varphi_1)(u)=\lambda\varphi_1(u)=0,\enspace\forall u\in U
-                              \end{gather*}
-                              因此$\varphi_1+\varphi_2\in U^0,\enspace \lambda\varphi_1\in U^0$；
-                    \end{enumerate}
-
-              \item 既然零化子是子空间，那么我们对其基和维数就会十分感兴趣. 事实上，根据零化子$U^0$的定义是将子空间$U$完全映射为0，根据\autoref{thm:5:线性映射唯一确定}，这等价于$U^0$中的元素将子空间$U$的基全部映为0. 设$U$的一组基为$\alpha_1,\ldots,\alpha_s$，则$U^0$中的元素$\varphi$满足
-                    \begin{equation}\label{eq:9:零化子基}
-                        \varphi(\alpha_1)=\cdots=\varphi(\alpha_s)=0.
-                    \end{equation}
-                    将这组基扩充成$V$的基$\alpha_1,\ldots,\alpha_s,\alpha_{s+1},\ldots,\alpha_n$，则$V^*$的对偶基为$f_1,\ldots,f_n$，其中$f_i(\alpha_j)=\delta_{ij}$，因此满足\autoref{eq:9:零化子基} 的$V^*$的基向量只有$f_{s+1},\ldots,f_n$. 我们自然猜想这就是$U^0$的一组基. 我们来验证：
-                    \begin{enumerate}
-                        \item 线性无关：证明是平凡的，因为$f_1,\ldots,f_n$是$V^*$的一组基，基向量组线性无关，因此其子向量组线性无关（可以回顾线性相关性的几种理解）；
-
-                        \item 张成空间：设$\varphi\in U^0$，由于首先有$\varphi\in V^*$，则它可以被$f_1,\ldots,f_n$线性表示，即
-                              \begin{equation}\label{eq:9:零化子线性表示}
-                                  \varphi=\lambda_1f_1+\cdots+\lambda_nf_n,\enspace \lambda_1,\ldots,\lambda_n\in\mathbf{F}.
-                              \end{equation}
-                              根据\autoref{thm:5:线性映射唯一确定} 可知，$\varphi$被其在$\alpha_1,\ldots,\alpha_n$下的像唯一确定. 由于$\varphi\in U^0$，因此$\varphi(\alpha_1)=\cdots=\varphi(\alpha_s)=0$，代入\autoref{eq:9:零化子线性表示} 可得$\lambda_1=\cdots=\lambda_s=0$.
-
-                              进一步我们将$\alpha_{i},\enspace i=s+1,\ldots,n$代入\autoref{eq:9:零化子线性表示} 可得$\lambda_{i}=\varphi(\alpha_i)$，因此$\varphi$可以被$f_{s+1},\ldots,f_n$线性表示为
-                              \[\varphi=\varphi(\alpha_{s+1})f_{s+1}+\cdots+\varphi(\alpha_n)f_n.\]
-                    \end{enumerate}
-                    因此我们可以根据证明过程得到$U^0$的一组基为$f_{s+1},\ldots,f_n$，维数为$n-s$，更一般地我们有
-                    \[\dim U^0=\dim V-\dim U.\]
-          \end{enumerate}
-
-    \item 对偶映射核空间与像空间的性质：我们不加证明地给出四个结论，它们对应《线性代数应该这样学》的3.107和3.109. 笔者认为教材给出的证明非常清楚，因此不再赘述.
-          \begin{theorem}\label{thm:9:对偶映射像和核的性质}
-              设$V$和$W$都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
-              \begin{enumerate}
-                  \item $\ker\sigma^*=(\im\sigma)^0$；
-
-                  \item $\dim\ker\sigma^*=\dim\ker\sigma+\dim W-\dim V$；
-
-                  \item $\dim\im\sigma^*=\dim\im\sigma$；
-
-                  \item $\im\sigma^*=(\ker\sigma)^0$.
-              \end{enumerate}
-          \end{theorem}
-
-          事实上很多情况下我们也并不需要背诵这些性质，一方面这只是几个由前面更为基本的概念和定理导出的性质，不具一般性，并且是为了下面更重要的结论铺垫；另一方面即使一定要记忆，它们很强的对称性使得记忆难度不大.
-
-          这一定理有一个非常关键的推论，其重要性大于上述定理，证明非常简单，见《线性代数应该这样学》3.108和3.110：
-          \begin{corollary}\label{cor:9:对偶映射单满射}
-              设$V$和$W$都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
-              \begin{enumerate}
-                  \item $\sigma$是单射当且仅当$\sigma^*$是满射；
-
-                  \item $\sigma$是满射当且仅当$\sigma^*$是单射.
-              \end{enumerate}
-          \end{corollary}
-\end{enumerate}
-
-\subsection{双重对偶空间}
-
-实际上，对偶空间有一个弊端，我们发现$V^*$的对偶基的选取是与$V$的基的选取有关的，因为我们需要首先确定$V$的一组基$\alpha_1,\ldots,\alpha_n$，然后才能得到$V^*$的对偶基$f_1,\ldots,f_n$，满足$f_i(\alpha_j)=\delta_{ij}$，其中$\delta_{ij}$为Kronecker记号.
-
-事实上这并不美观，因为如果我们尝试定义$V$和$V^*$之间的同构，由于这两个空间两组基的强相关性，我们一般需要有如下定义：
-\begin{align*}
-    \sigma:V                       & \to V^*                   \\
-    \alpha=\sum_{i=1}^nx_i\alpha_i & \mapsto\sum_{i=1}^nx_if_i
-\end{align*}
-我们会发现，这一映射的定义中$\alpha_i$和$f_i$都离不开选取$V$的一组基$\alpha_1,\ldots,\alpha_n$，更通俗地说，在我们取定了$V$的一组基前，我们甚至写不出$V$和$V^*$之间的同构！
-
-为了更容易地理解这一点，我们可以回想以往的线性映射的定义，例如最简单的
-\[\sigma(x_1,x_2,x_3)=(x_1-x_2,x_1+x_3,x_2-x_3),\]
-我们要求一个任意元素的像，例如$\sigma(1,2,3)$，我并不需要取$\mathbf{R}^3$的自然基还是其他的基也能知道像为$(-1,4,-1)$，然而$V$和$V^*$之间的同构$\sigma$作用于任意向量$\alpha$后的像$\sigma(\alpha)$在未确定$V$的基前是未定义的！我们一定需要$V$的基才能有坐标$x_i$，然后再利用这个坐标结合像空间的基（这组基和$V$的基是有关的）才能得到像，因此这里的同构映射是非常不美观的.
-
-有的读者可能会质疑，即$V$和$V^*$之间的同构真的一定需要建立在取定$V$的基的基础上吗？事实上的确是需要的，更规范的表述需要进一步学习范畴学等更为深入的数学知识，这里我们只给出直觉：因为同构映射实际上建立的是两个空间基的一一对应关系，然而$V^*$的基本身就依赖于$V$的基的选取，因此我们很难在定义同构映射时避免需要先确定$V$的基这一前提.
-
-因此我们会尝试研究$V$的对偶空间$V^*$的对偶空间$V^{**}$，我们称之为\term{双重对偶空间}\index{duioukongjian!shuangchong@双重 (double dual space)}. 由于$V^*=\mathcal{L}(V,\mathbf{F})$，因此$V^{**}=\mathcal{L}(V^*,\mathbf{F})=\mathcal{L}(\mathcal{L}(V,\mathbf{F}),\mathbf{F})$，因此$V^**$中的元素是这样的线性映射：它的自变量是$V$上的线性泛函，它将这一线性泛函映到一个数.
-
-我们知道$\dim V=\dim V^*$，故$V^*$也和其对偶空间有相同的维数，即$\dim V^*=\dim V^{**}$，故$\dim V=\dim V^{**}$，因此我们可以尝试构造一个同构映射$\sigma:V\to V^{**}$，使得这一映射不依赖于$V$的基的选取. 我们发现这样的映射是存在的，我们来跟着下面这个例子逐步说明：
-\begin{example}
-    设$V$为有限维线性空间. 我们定义$\tau:V\to V^{**}$为
-    \[(\tau(\alpha))(f)=f(\alpha),\enspace\forall \alpha\in V,\enspace f\in V^*.\]
-    \begin{enumerate}
-        \item 证明：$\tau$是线性映射；
-
-        \item 证明：若$\sigma\in\mathcal{L}(V,V)$，则$\sigma^{**}\circ\tau=\tau\circ\sigma$，这里$\sigma^{**}$是$\sigma^*$的对偶映射；
-
-        \item 证明：$\tau$是$V$到$V^{**}$的同构映射.
-    \end{enumerate}
-\end{example}
-
-\begin{solution}
-
-\end{solution}
-
-我们发现这一同构映射不需要先确定$V$的基就可以定义，因此相对于$V$与$V^*$间的同构映射更为自然. 在范畴学中，我们称这样的映射为
-\term{自然同构}\index{tonggou!ziran@自然同构 (natural isomorphism)}，它不依赖于选取的基，一直客观存在着，就好像在等着我们发现一样，而$V$与$V^*$间的同构映射则需要通过我们先取出$V$的基才能定义，因此缺少了这样``自然''的客观存在的感觉.
-
-事实上本节的讨论是比较抽象的，我们只能通过一些例子和描述来直观理解其中核心的思想，即自然同构中``自然''的含义（不依赖于基的选取）. 我们长篇的论述的核心就是直观地告诉读者，$V$和$V^*$之间找不到自然同构，但$V$和$V^{**}$之间存在. 更深入、严谨的讨论可能需要读者进一步学习范畴学的相关知识才能全面理解.
-
-\section{对偶映射的矩阵}
-
-有了前述内容的铺垫，本节我们将最终给出对偶映射的矩阵. 我们首先介绍矩阵转置的概念，然后说明对偶为什么与转置相关.
-\begin{definition}[转置] \index{zhuanzhi@转置 (transpose)}
-    设$A=\begin{pmatrix}
-            a_{11} & a_{12} & \cdots & a_{1n} \\
-            a_{21} & a_{22} & \cdots & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{m1} & a_{m2} & \cdots & a_{mn}
-        \end{pmatrix}$，称$\begin{pmatrix}
-            a_{11} & a_{21} & \cdots & a_{m1} \\
-            a_{12} & a_{22} & \cdots & a_{m2} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{1n} & a_{2n} & \cdots & a_{mn}
-        \end{pmatrix}$为矩阵$A$的\term{转置}，记作$A^\mathrm{T}$.
-\end{definition}
-
-简单来说，矩阵的转置就是矩阵的第$i$行变成了第$i$列（或者第$i$列变成了第$i$行，即行列互换），原先矩阵第$i$行第$j$列的元素转置后变为第$j$行第$i$列的元素，或者抽象表达为：
-\[A=(a_{ij})_{m \times n},\enspace A^\mathrm{T}=(a'_{ji})_{n \times m},\enspace a_{ij}=a'_{ji}\]
-
-接下来我们将说明对偶映射在对偶基下的矩阵就是原映射在原空间基下矩阵的转置：
-\begin{theorem}
-    $V$和$W$为有限维线性空间. $V$的一组基为$\alpha_1,\ldots,\alpha_n$，$W$的一组基为$\beta_1,\ldots,\beta_m$，它们对偶空间的基分别为$f_1,\ldots,f_n$和$g_1,\ldots,g_m$. 设$\sigma\in\mathcal{L}(V,W)$，它在上述$V$和$W$的基下的矩阵为$A=(a_{ij})_{m \times n}$，则$\sigma^*\in\mathcal{L}(W^*,V^*)$在上述对偶基下的矩阵为$C=(c_{ij})_{n \times m}=A^\mathrm{T}$.
-\end{theorem}
-
-\begin{proof}
-    根据线性映射矩阵表示的定义，我们有
-    \[\sigma^*(g_j)=\sum_{i=1}^nc_{ij}f_i,\enspace j=1,2,\ldots,m.\]
-    上式左端根据对偶映射定义等于$(g_j\circ\sigma)$. 于是我们将等式两端均作用于$\alpha_k$上有
-    \[(g_j\circ\sigma)(\alpha_k)=\sum_{i=1}^nc_{ij}f_i(\alpha_k)=\sum_{i=1}^nc_{ij}\delta_{ik}=c_{kj}.\]
-    另一方面，根据映射复合的结合律以及线性映射矩阵表示的定义，我们有
-    \[(g_j\circ\sigma)(\alpha_k)=g_j(\sigma(\alpha_k))=g_j\left(\sum_{i=1}^na_{ik}\beta_i\right)=\sum_{i=1}^na_{ik}g_j(\beta_i)=\sum_{i=1}^na_{ik}\delta_{ij}=a_{jk}.\]
-    因此我们有$c_{kj}=a_{jk}$，即$C=A^\mathrm{T}$.
-\end{proof}
-
-可能由许多同学心存疑惑——我们为什么要费这么大劲介绍一个这么特别且抽象的概念然后引入转置？事实上对偶这一概念在数学中是非常重要的，在之后我们还将提起它，现在可以先留下一个美好的期待，相信在之后的学习中你会逐渐发现这一定义是自然而美妙的，而且其中蕴含的思想是有很大的应用价值的.
-
-除此之外，在这一讲中笔者也反复强调，面对这一抽象的内容我们不要畏惧，我们可以先从是什么开始，熟练概念，然后理解相关的性质，例如我们在定义对偶映射的时候就强调先记住很好记忆的定义式，然后我们再说明它的出发空间、到达空间是什么，具有什么样的性质，不能一开始就妄图直接装下所有的概念、性质，这样只能使思维混乱且不知道自己学了什么. 我们应当学会将抽象的概念通过拆解成大家从小就习惯的``是什么''的教育和研究中更感兴趣的内容两部分进行梳理，从而更快地理解.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
@@ -627,6 +740,17 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
+    \item 设$U$和$W$是线性空间$V$的子空间. 构造同构映射证明：若$V=U\oplus W$，则$U$和$V/W$同构.
+    \item 实际上，零化子有一个更广泛的版本，考虑 $S$ 为 $V$ 的一个子集，也能如上构造 $S^0$，尝试证明，这样的构造满足以下性质：
+    \begin{enumerate}
+        \item $S^{00} = \mathop{\text{span}}S$
+        \item $S \subset T \iff T^0 \subset S^0$
+        \item 若 $U_1, U_2$ 为 $V$ 的两个子空间，证明 \begin{enumerate}
+            \item $(U_1 + U_2)^0 = U_1^0 \cap U_2^0$
+            \item $(U_1 \cap U_2)^0 = U_1^0 + U_2^0$
+        \end{enumerate}（提示：反复利用前面两个性质）
+        \item 进而得出对于零点集的相应结论
+    \end{enumerate}
     \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵为$A=(a_{ij})_{3 \times 3}$，求：
           \begin{enumerate}
               \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；

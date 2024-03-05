@@ -33,6 +33,45 @@
 
 除此之外，还有一些更为困难的问题我们将在讨论若当标准形之后进行讨论.
 
+最后我们再基于不变子空间讨论一个商线性变换的概念. 事实上，如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换. 我们严格定义如下：
+\begin{definition}
+    设$\sigma\in \mathcal{L}(V)$，$U$是$\sigma$的不变子空间，定义映射$\sigma/U:V/U\to V/U$如下：
+    \[(\sigma/U)(v+U)=\sigma(v)+U,\enspace\forall v\in V,\]
+    则称$\sigma/U$是$\sigma$在$U$上的\term{商线性变换}\index{xianxingbianhuan@shang!商线性变换 (quotient operator)}.
+\end{definition}
+
+定义映射后，我们自然的想法就失确认这一定义是不是合理的. 首先这一定义的线性性容易验证，我们只需要用到商空间中定义的运算性质即可：
+\begin{itemize}
+    \item 齐次性：$(\sigma/U)(\lambda(v+U))=(\sigma/U)(\lambda v+U)=\sigma(\lambda v)+U=\lambda\sigma(v)+U=\lambda(\sigma/U)(v+U)$；
+
+    \item 加性：$(\sigma/U)((v_1+U)+(v_2+U))=(\sigma/U)(v_1+v_2+U)=\sigma(v_1+v_2)+U=\sigma(v_1)+\sigma(v_2)+U=(\sigma/U)(v_1+U)+(\sigma/U)(v_2+U)$.
+\end{itemize}
+
+除了线性的要求外，还有一个很重要的合理性来源于相容性（或者良定义）的概念. 因为这里又一次将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性. 事实上，回顾相容性（良定义）的概念，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值（否则不符合映射的定义）. 商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma(v)+U\neq \sigma(w)+U$的情况，这一定义描述的就不是映射（因为映射要求一个自变量只能映到一个值上），因此不是良定义. 但我们可以验证这一映射是良定义的：
+
+\begin{proof}
+    设$v+U=w+U$，即$v-w\in U$，由于$U$在$\sigma$下不变，则$\sigma(v-w)\in U$，即$\sigma(v)-\sigma(w)\in U$，因此$\sigma(v)+U=\sigma(w)+U$，即$\sigma/U$是良定义的.
+\end{proof}
+
+这一定义可能具有一定的抽象性，因此我们用更抽象的例子来加深理解：
+\begin{example}
+    设$\sigma\in \mathcal{L}(V,W)$，定义$\widetilde{\sigma}:(V/(\ker \sigma))\to W$如下：
+    \[\widetilde{\sigma}(v+\ker\sigma)=\sigma(v).\]
+    \begin{enumerate}
+        \item $\widetilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
+
+        \item $\widetilde{\sigma}$是单射；
+
+        \item $\im \widetilde{\sigma}=\im \sigma$；
+
+        \item $V/(\ker \sigma)$同构于$\im \sigma$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
 \section{特征值与特征向量}
 
 事实上，在\autoref{ex:18:不变子空间} 中，我们求解了一维不变子空间. 根据一维空间中向量都成比例的性质，设$U$是$\sigma\in\mathcal{L}(V)$的一维不变子空间，我们有

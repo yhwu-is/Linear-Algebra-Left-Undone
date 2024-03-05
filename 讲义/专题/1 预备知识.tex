@@ -287,18 +287,41 @@
 我们可以看到，自然映射$\pi$将$A$中的元素$a$映到自己所在的等价类$\overline{a}$. 基于上述定义，我们可以完成在基本代数结构一节中遗留的一个问题：我们能否定义非数域的域？答案是肯定的，如果同学们对密码学感兴趣的应当听闻过有限域这一概念，接下来我们将通过简单的例子来说明这一概念.
 
 \begin{example}\label{ex:1:有限域}
-    设$Z_n$是$\mathbf{Z}$关于模$n$同余关系$R$的商集，即
+    设$Z_n$是$\mathbf{Z}$关于模$n$同余关系$R$的商集（也称$\mathbf{Z}$的模$n$剩余类），即
     \[Z_n=\mathbf{Z}/R=\{\overline{0},\overline{1},\ldots,\overline{n-1}\}.\]
     即$Z_n$中的元素是$n$个集合，其中第$i$个集合是全体模$n$余$i-1\enspace(i=1,2,\ldots,n)$的整数构成的集合.
 
-    在$Z_n$上定义加法$\oplus$为$\overline{a}\oplus\overline{b}=\overline{a+b}$. 这里$a$和$b$并不一定要在$0$到$n-1$之间，因为事实上$\overline{a}=\overline{kn+a}\enspace(k\in\mathbf{Z})$. 我们只需对$a$，$b$以及$a+b$对$n$取模就可以将它们控制在$0$到$n-1$之间且表示的是同一个运算表达式（因为本质上只是我们选取了同一个等价类的不同代表元素进行计算，例如$n=3$时，$\overline{1}+\overline{2}=\overline{4}+\overline{8}=\overline{0}$），这被称为是等价关系与加法的相容性. 任何时候如果我们要在商集上定义某个由原来的集合上的东西继承下来的东西，对相容性的检验都是不可或缺的.
+    在$Z_n$上我们仍然希望它可以继承$\mathbf{Z}$上的加法和乘法运算，因为这是整数作为环结构最重要的两种运算（减法就是加上相反数，除法无法在整数集合定义，因为会带来非整数的有理数）. 我们首先定义对加法运算的继承：
+    \[\overline{a}\oplus\overline{b}=\overline{a+b}.\]
+    它的含义是$a$对应的等价类与$b$对应的等价类的和就是$a$和$b$的和对应的等价类，因此这样的定义是自然地``继承''了$\mathbf{Z}$上的加法运算. 举个例子，当$n=3$时，$\overline{1}+\overline{2}=\overline{1+2}=\overline{3}=\overline{0}$. 要注意的是，这里$a$和$b$并不一定要在$0$到$n-1$之间，因为事实上$\overline{a}=\overline{kn+a}\enspace(k\in\mathbf{Z})$. 我们只需对$a$，$b$以及$a+b$对$n$取模就可以将它们控制在$0$到$n-1$之间且表示的是同一个运算表达式（因为本质上只是我们选取了同一个等价类的不同代表元素进行计算，例如$n=3$时，$\overline{1}\oplus\overline{2}=\overline{4}\oplus\overline{8}=\overline{0}$），这被称为是等价关系与加法的相容性，我们在这个例子之后将详细讨论.
 
     接下来我们需要定义乘法$\circ$，同样是一个自然的定义，即$\overline{a}\circ\overline{b}=\overline{ab}$. 读者不妨自行验证它与等价关系的相容性. 我们很容易验证$\forall n\in\mathbf{Z}$且$n\geqslant 2$，$\langle Z_n:\oplus,\circ\rangle$构成一个含幺交换环. 教材43页例8和45页例3中有详细的证明，因为较为显然此处从略. 我们要讨论的是何时$\langle Z_n:\oplus,\circ\rangle$构成域，由此我们便构造了一个非数域的域，并且元素个数是有限的.
 
     我们这里可以给出结论：$\langle Z_n:\oplus,\circ\rangle$是域当且仅当$n$是素数. 这一结论的证明需要一些数论的知识，我们放在习题中供感兴趣的同学证明.
 \end{example}
 
-在此，我们需要再次强调一下相容性的重要性：因为相容性保证了这个二元运算在等价类上是良定义的. 所谓良定义，即这个东西就其自身不产生矛盾，这在形而上学家的论述中最常出现的例子是``圆的方''这个语汇. 而在这里，我们遇到的问题是，当我们称它是一个运算时，它究竟是不是运算？因为如果它将两个相同的东西映到不同的东西，那它当然不是一个映射，这和它的定义矛盾，我们就称这种东西是不良定义的. 从此往后，我们希望读者在每一处构造定义之后，都注意检查其是否是良定义的. 这个问题在商集中特别典型，因为这是这个系列中最容易出现从某个集合``诱导''（即自然地投射到商结构）定义出新东西的情形，它也有相当大的可能性（尽管本讲义中显然避免了这种情况）是不良定义的.
+然而，这里我们会遇到一个很常见的问题，即上面定义的加法和乘法，真的是``合理''的吗？具体来说，令$R$表示上例中模$n$同余的等价关系，则
+\begin{enumerate}
+    \item 若$aRb$，$cRd$，则是否有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$；
+    \item 若$aRb$，$cRd$，则是否有$\overline{a}\circ\overline{c}=\overline{b}\circ\overline{d}$？
+\end{enumerate}
+如果不是，那么$Z_n$上定义的加法和乘法将不再是一个本讲开头所说的映射. 我们以加法为例展开讨论，实际上乘法同理. 因为$aRb$表明$\overline{a}=\overline{b}$，$cRd$表明$\overline{c}=\overline{d}$，因此如果$Z_n$上的加法是一个映射$\oplus(x,y):Z_n\to Z_n$，那么必须有$\oplus(\overline{a},\overline{c})=\oplus(\overline{b},\overline{d})$，否则两个相同的元素的加法会得到不同的元素，也就是说加法可以把同一组元素映到多个值，那么显然不再是一个映射，乘法也是同理. 当然，很幸运的是，上面的定义保证了这一``合理性''，我们事实上在上例中已经给出了这一合理性的例子：$n=3$时，$\overline{1}=\overline{4},\enspace\overline{2}=\overline{8}$，并且$\overline{1}\oplus\overline{2}=\overline{0}=\overline{4}\oplus\overline{8}$，这里加法仍然满足映射的条件. 当然我们可以给出更严谨的一般性证明，在此之前我们先给这一``合理''的性质一个更规范的定义：
+\begin{definition}
+    设$A$是一个集合，$R$是$A$上的一个等价关系，若$A$上有二元运算$+$，且我们在$A/R$上以如下自然的方式继承了$A$上的$\oplus$运算：
+    \[\overline{a}\oplus\overline{b}=\overline{a+b},\enspace\forall a,b\in A,\]
+    则我们称$\oplus$与$R$\term{相容（compactable）}当且仅当$aRb$，$cRd$时有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$，或者说等价的，$(a+b)R(c+d)$.
+\end{definition}
+
+在这种情况下，我们也称$\oplus$在$A/R$上是\term{良定义（well-defined）}的），但良定义这一词用途较广，一般指这一定义在当前语境下是否可接受，不一定用在商集相关的场合.
+
+这一定义有两个要点，其一是把原集合上的运算自然地继承到商集上，其二是这一继承还能使得运算是一个映射. 事实上，相容性（良定义性）是非常重要的，所谓良定义，即这个东西就其自身不产生矛盾，这在形而上学家的论述中最常出现的例子是``圆的方''这个语汇. 良定义的问题在商集中特别典型，因为这是这个系列中最容易出现从某个集合``诱导''（即自然地投射到商结构）定义出新东西的情形，它也有相当大的可能性（尽管本讲义中显然避免了这种情况）是不良定义的. 在给出规范定义后，我们可以证明如下结论：
+
+\begin{theorem}
+    模$n$同余关系$R$与加法$\oplus$和乘法$\circ$相容.
+\end{theorem}
+\begin{proof}
+    我们只证明加法的相容性，乘法的相容性留作练习. 设$aRb$，$cRd$，则可以设$b=a+kn$，$d=c+ln$，其中$k,l\in\mathbf{Z}$，则$\overline{b}\oplus\overline{d}=\overline{b+d}=\overline{a+c+(k+l)n}=\overline{a+c}=\overline{a}\oplus\overline{c}$，故$\oplus$与$R$相容.
+\end{proof}
 
 \section{高斯消元法}
 
