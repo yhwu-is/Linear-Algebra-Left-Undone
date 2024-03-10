@@ -230,58 +230,6 @@
     \end{pmatrix},\]
 事实上，我们很容易验证这样的常用基的确是线性空间$\mathbf{F}^{m\times n}$的一组基，因为它们显然是线性无关的，且张成整个空间（请读者自行验证），然后我们也知道这样的常用基中矩阵有$m\times n$个，由此我们也得到了$\dim\mathcal{L}(V_1,V_2)=mn$. 当然我们还可以有另一种理解方式，如果读者已经学习过编程中二维数组的概念，事实上二维数组在计算机中的存储形式是一行存完接着马上存下一行，因此事实上我们可以将二维数组看作是一个长为$m\times n$的一维数组（方法就是第一行写完后在同一行马上接着写第二行元素，写完后在同一行接着写第三行元素，依此类推），因此我们也可以理解为$\mathbf{F}^{m\times n}$和$\mathbf{F}^{mn}$是没有区别的（容易验证是同构的），因此$\dim\mathbf{F}^{m\times n}=mn$.
 
-\section{线性映射的不变子空间}
-
-回顾我们接下来讨论的目标，即找到一组基使得线性变换在这组基下的表示更简单. 设$\sigma\in\mathcal{L}(V)$，如果$V$有直和分解
-\begin{equation}\label{eq:18:直和分解}
-    V=U_1\oplus U_2\oplus\cdots\oplus U_m,
-\end{equation}
-其中每个$U_i$都是$V$的真子空间，那么我们对于$\sigma$的研究可以分别在各个$U_i$上进行. 这其中的基本原理在于直觉告诉我们（并且实际上通常而言）更低维的空间处理起来应当更为简单，事实上我们后面的很多工作都是在找这样的分解.
-
-为了在低维空间上进行研究，我们需要引入一个新的概念，即$\sigma$在$U_i$下的限制映射$\sigma\vert_{U_i}$. 我们给出标准的定义如下：
-\begin{definition} \index{xianxingyingshe!xianzhi@限制 (restriction map)}
-    设$V$是数域$\mathbf{F}$上的线性空间，$\sigma\in\mathcal{L}(V)$，我们在$V$的子空间$U$上定义映射$\sigma\vert_U$如下：
-    \[\sigma\vert_U:U\to V,\enspace\sigma\vert_U(\alpha)=\sigma(\alpha),\enspace\forall \alpha\in U,\]
-    则称$\sigma\vert_U$是$\sigma$在$U$上的\term{限制映射}.
-\end{definition}
-
-``限制''一词十分形象（如下图所示），因为限制映射就是将原映射的定义域限制在更小的范围内，但原定义域上的映射值保持不变.
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.7]{figs/18-1.png}
-\end{figure}
-
-但是我们需要注意，\autoref{eq:18:直和分解} 这一分解应当满足一个基本的条件，就是$\sigma$应当把每个$U_i$仍然映射到$U_i$本身，否则我们在讨论$\sigma\vert_{U_i}$的时候它不是一个线性变换，这与我们讨论的主题不一致，即我们希望限制映射$\sigma\vert_{U_i}$是一个线性变换（是$\mathcal{L}(U_i)$中的元素），我们称之为\term{限制线性变换}\index{xianxingyingshe!xianxingbianhuan!xianzhi@限制线性变换 (restriction operator)}.
-
-事实上，满足$\sigma\vert_{U_i}\in\mathcal{L}(U_i)$的子空间$U_i$非常重要，我们需要给予它一个定义：
-\begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma(\alpha)\in U$，则称$U$是$\sigma$的\term{不变子空间}\index{xianxingkongjian!zi!bubian@不变子空间 (invariant subspace)}，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
-\end{definition}
-即不变子空间中的每一个向量经过映射后仍在这一空间中，因此这里的``不变''的含义也是非常直观的. 根据定义我们可以验证或者求解一些很简单的不变子空间. 教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述. 教材8.20还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间. 我们这里也简要书写一下，供读者熟悉如何利用定义验证不变子空间：
-\begin{example}
-    若$\sigma\in\mathcal{L}(V)$且$p\in\mathbf{F}[x]$为多项式，则$\ker p(\sigma)$和$\im p(\sigma)$在$\sigma$下不变.
-\end{example}
-
-\begin{proof}
-    我们只需验证$\ker p(\sigma)$和$\im p(\sigma)$中的元素经过$\sigma$映射后仍在这一空间中即可.
-    \begin{enumerate}
-        \item $\forall \alpha\in \ker p(\sigma),\enspace p(\sigma)\alpha=0$，因此
-              \[(p(\sigma))(\sigma(\alpha))=\sigma(p(\sigma)\alpha)=\sigma(0)=0,\]
-              即$\sigma(\alpha)\in \ker p(\sigma)$，因此$\ker p(\sigma)$在$\sigma$下不变；
-
-        \item $\forall \alpha\in \im p(\sigma),\enspace \exists \beta\in V,\enspace \alpha=p(\sigma)\beta$，因此
-              \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)(\sigma(\beta))\in \im p(\sigma),\]
-              即$\im p(\sigma)$在$\sigma$下不变.
-    \end{enumerate}
-    事实上，对于$\ker p(\sigma)$，我们有
-    \[ p(\sigma)(\alpha)=p(\sigma)\alpha=p(\sigma(\alpha))=p(0)=0,\]
-    因此$\sigma(\alpha)\in \ker p(\sigma)$，即$\ker p(\sigma)$在$\sigma$下不变. 对于$\im p(\sigma)$，我们有
-    \[\forall \alpha\in \im p(\sigma),\enspace \exists \beta\in V,\enspace \alpha=p(\sigma)\beta,\]
-    因此
-    \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)\sigma(\beta)\in \im p(\sigma),\]
-    即$\im p(\sigma)$在$\sigma$下不变.
-\end{proof}
-
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}

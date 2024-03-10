@@ -1,185 +1,4 @@
-\chapter{相似与可对角化}
-
-我们早在矩阵的秩一讲中接触了第一个``标准形''，即相抵标准形. 那时我们知道标准形就是同一个映射选取了一组很好的基使得矩阵表示是一个很简单的矩阵，这一矩阵具有一定的代表性，具有很特别的形式，因此称为标准形. 事实上这非常符合我们这几讲中讨论的内容，只是相抵标准形不要求线性变换，不要求选取出发空间和到达空间选取的是同一组基，如果有线性变换和同一组基的要求，便引出了我们这一讲的主题：相似标准形.
-
-接下来的两讲我们都将讨论复向量空间上的矩阵能有怎样的相似标准形，这一讲我们先介绍相似的定义与性质，以及最简单的相似标准形——对角矩阵，描述其求解方法和存在的条件. 下一讲我们将说明两种所有矩阵都可以拥有的相似标准形：上三角矩阵和分块对角矩阵.
-
-\section{相似的定义与性质}
-
-我们早在矩阵的秩一讲中提到这一定理：
-\begin{theorem}[基的选择对映射矩阵的影响]
-    设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$是线性空间的$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
-\end{theorem}
-这一定理研究了同一个线性变换在不同基下表示矩阵之间的关系. 我们将同一个线性变换在不同基下表示的两个矩阵的关系称为相似的，规范定义如下：
-\begin{definition}
-    若对于$A,B\in \mathbf{M}_n(\mathbf{F})$，存在可逆矩阵$C\in \mathbf{M}_n(\mathbf{F})$, 使得$C^{-1}AC=B$，则称$A$相似于$B$，记作$A\sim B$.
-\end{definition}
-相似有以下基本性质需要了解：
-\begin{enumerate}
-    \item 相似是一种等价关系；两矩阵相似必相抵（相似矩阵的秩相等）；
-
-          \begin{proof}
-              等价关系在《大学数学：代数与几何》的233页有说明，此处不再赘述；此外，由于乘以可逆矩阵不改变原矩阵的秩，因此$r(P^{-1}AP)=r(A)$，即两矩阵相似必定秩相等，因此也必定相抵.
-          \end{proof}
-
-          需要说明的是相似必定相抵但反之不一定成立，相抵的两个矩阵甚至可能不是方阵，但相似有这一要求. 即使是方阵也不一定成立，在习题中我们会要求读者给出例子.
-
-    \item $A\sim B$可以得到$A^\mathrm{T}\sim B^\mathrm{T}$，$A^m\sim B^m$. 更一般地，对于任意多项式$f(x)$都有$f(A)\sim f(B)$，且若$B=P^{-1}AP$，有$f(B)=P^{-1}f(A)P$. 除此之外还有$A,B$可逆时，$A^{-1}\sim B^{-1}$，$A^*\sim B^*$；
-
-          \begin{proof}
-              \begin{enumerate}
-                  \item 由于$B^\mathrm{T}=(C^{-1}AC)^\mathrm{T}=C^\mathrm{T}A^\mathrm{T}(C^{-1})^\mathrm{T}=(C^\mathrm{T})^{-1}A^\mathrm{T}C^\mathrm{T}$，因此$A^\mathrm{T}\sim B^\mathrm{T}$；
-
-                  \item 由于$B^m=(C^{-1}AC)^m=C^{-1}A^mC$（乘积展开后中间$C^{-1}C$可以消去），因此$A^m\sim B^m$；
-
-                  \item 设$f(A)=a_0E+a_1A+\cdots+a_mA^m$，则$f(B)=a_0P^{-1}EP+a_1P^{-1}AP+\cdots+a_mP^{-1}A^mP=P^{-1}f(A)P$，因此$f(A)\sim f(B)$，且$f(B)=P^{-1}f(A)P$.
-
-                  \item 由于$B^{-1}=(C^{-1}AC)^{-1}=C^{-1}A^{-1}C$，因此$A^{-1}\sim B^{-1}$，$A^*\sim B^*$.
-
-                  \item 由于$B^*=(C^{-1}AC)^*=C^{-1}A^*C$，因此$A^*\sim B^*$.
-              \end{enumerate}
-          \end{proof}
-
-    \item $A_1\sim B_1$，$A_2\sim B_2$不一定有$A_1+A_2\sim B_1+B_2$，只有当$P^{-1}A_1P=B_1,P^{-1}A_2P=B_2$时（即相同的过渡矩阵$P$）才有$P^{-1}(A_1+A_2)P=B_1+B_2$；
-
-    \item 若$A_1\sim B_1$，$A_2\sim B_2$，则有
-          \[ \begin{pmatrix}
-                  A_1 & O \\ O & A_2
-              \end{pmatrix}\sim\begin{pmatrix}
-                  B_1 & O \\ O & B_2
-              \end{pmatrix};\]
-
-          \begin{proof}
-              设$P_1^{-1}A_1P_1=B_1$，$P_2^{-1}A_2P_2=B_2$，则
-              \[ \begin{pmatrix}
-                      P_1 & O \\ O & P_2
-                  \end{pmatrix}^{-1}\begin{pmatrix}
-                      A_1 & O \\ O & A_2
-                  \end{pmatrix}\begin{pmatrix}
-                      P_1 & O \\ O & P_2
-                  \end{pmatrix}=\begin{pmatrix}
-                      P_1^{-1}A_1P_1 & O \\ O & P_2^{-1}A_2P_2
-                  \end{pmatrix}=\begin{pmatrix}
-                      B_1 & O \\ O & B_2
-                  \end{pmatrix}.\]
-          \end{proof}
-
-    \item 相似矩阵有相同的特征多项式（逆命题不成立），即$A\sim B$有$|\lambda E-A|=|\lambda E-B|$，从而有相同的迹，行列式，特征值，但特征向量不一定相同；
-
-          \begin{proof}
-              设$B=P^{-1}AP$，则$|\lambda E-B|=|\lambda E-P^{-1}AP|=|P^{-1}(\lambda E-A)P|=|P^{-1}||\lambda E-A||P|=|\lambda E-A|$. 因此$A\sim B$有$|\lambda E-A|=|\lambda E-B|$.
-
-              我们知道特征多项式相同则特征值相同，迹等于所有特征值之和，行列式等于所有特征值之积，因此相似矩阵有相同的迹，行列式，特征值.
-
-              相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同.
-          \end{proof}
-
-    \item 与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零（但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
-
-          \begin{proof}
-              我们一边回顾上面这些特殊矩阵的定义一边证明结论：
-              \begin{enumerate}
-                  \item 设$A$是幂等矩阵，则$A^2=A$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}AP=B$，因此$B$也是幂等矩阵，即与幂等矩阵相似的仍幂等；
-
-                  \item 设$A$是对合矩阵，则$A^2=E$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}EP=P^{-1}P=E$，因此$B$也是对合矩阵，即与对合矩阵相似的仍对合；
-
-                  \item 设$A$是幂零矩阵，则存在正整数$m$使得$A^m=O$，设$B=P^{-1}AP$，则$B^m=P^{-1}A^mP=P^{-1}OP=O$，因此$B$也是幂零矩阵，即与幂零矩阵相似的仍幂零；
-
-                  \item 设$A$是正交矩阵，则$A^{-1}=A^\mathrm{T}$，设$B=P^{-1}AP$，则$B^{-1}=(P^{-1}AP)^{-1}=P^{-1}A^{-1}P=P^{-1}A^\mathrm{T}P$，只有当$P$是正交矩阵时，即$P^{-1}=P^\mathrm{T}$时，$B^{-1}=P^{-1}A^\mathrm{T}P=P^\mathrm{T}A^\mathrm{T}(P^{-1})^\mathrm{T}=(P^{-1}AP)^\mathrm{T}=B^\mathrm{T}$，因此与正交矩阵相似的不一定正交，只有过渡矩阵是正交矩阵时才一定正交.
-              \end{enumerate}
-          \end{proof}
-\end{enumerate}
-
-下面一个例子也是重要的结论，实际上在行列式一讲中已给出类似结论，但我们现在从特征值角度考虑这一结论：
-\begin{example}
-    回答以下两个问题：
-    \begin{enumerate}
-        \item \label{item:18:特征值相同:1}
-              设$A,B$均为$n$阶矩阵，证明：$\lambda\neq 0$是$AB$的特征值，则$\lambda$也是$BA$的特征值；
-
-        \item \label{item:18:特征值相同:2}
-              设$A\in \mathbf{M}_{m\times n}(\mathbf{C}),\enspace B\in \mathbf{M}_{n\times m}(\mathbf{C})$，证明：
-              \[ \begin{pmatrix}
-                      AB & O \\ B & O
-                  \end{pmatrix}\sim\begin{pmatrix}
-                      O & O \\ B & BA
-                  \end{pmatrix} \]
-              并由此推出$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-    \begin{enumerate}
-        \item 设$X$是$AB$属于$\lambda$的特征向量，则$ABX=\lambda X$，因此$B(ABX)=B(\lambda X)$，即$(BA)(BX)=\lambda(BX)$，因此$BX$是$BA$属于$\lambda$的特征向量，故$\lambda$也是$BA$的特征值.
-
-              实际上这里还有一点需要说明，就是$BX\neq 0$，否则它将不能作为特征向量. 事实上证明是简单的，假设$BX=0$，则$ABX=0$，由于$\lambda\neq 0$，因此必然有$X=0$，但这与$X$是$AB$属于$\lambda$的特征向量矛盾，因此$BX\neq 0$.
-
-        \item 根据分块矩阵初等变换的性质，我们可以通过不断尝试选取到$P=\begin{pmatrix}
-                      E_m & A \\ O & E_n
-                  \end{pmatrix}$，其逆矩阵为$P^{-1}=\begin{pmatrix}
-                      E_m & -A \\ O & E_n
-                  \end{pmatrix}$，我们发现恰有
-              \[\begin{pmatrix}
-                      E_m & -A \\ O & E_n
-                  \end{pmatrix}\begin{pmatrix}
-                      AB & O \\ B & O
-                  \end{pmatrix}\begin{pmatrix}
-                      E_m & A \\ O & E_n
-                  \end{pmatrix}=\begin{pmatrix}
-                      O & O \\ B & BA
-                  \end{pmatrix}.\]
-              因此$\begin{pmatrix}
-                      AB & O \\ B & O
-                  \end{pmatrix}$与$\begin{pmatrix}
-                      O & O \\ B & BA
-                  \end{pmatrix}$相似，因此它们的特征多项式相同，即
-              \[\begin{vmatrix}
-                      \lambda E_m-AB & O \\ -B & \lambda E_n
-                  \end{vmatrix}=\begin{vmatrix}
-                      \lambda E_m & O \\ -B & \lambda E_n-BA
-                  \end{vmatrix}.\]
-              根据行列式的计算性质$\begin{vmatrix}
-                      A & O \\ C & B
-                  \end{vmatrix}=|A||B|$，我们有
-              \[|\lambda E_m-AB||\lambda E_n|=|\lambda E_m||\lambda E_n-BA|,\]
-              即$\lambda^n|\lambda E_m-AB|=\lambda^m|\lambda E_n-BA|$，因此$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
-    \end{enumerate}
-\end{proof}
-
-不难发现上述例子中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广，因为由\ref*{item:18:特征值相同:2} 我们得到了$|\lambda E-AB|=|\lambda E-BA|(\lambda\neq 0)$.
-
-下面这个例子非常重要，在解决一些题目时使用这一结论会更便捷：
-\begin{example}
-    （教材定理$4.10$推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
-\end{example}
-
-\begin{proof}
-    由$AX=\lambda_0 X$以及$A=PBP^{-1}$，我们有$PBP^{-1}X=\lambda_0 X$，即$BP^{-1}X=\lambda_0 P^{-1}X$，因此$P^{-1}X$是$B$属于$\lambda_0$的特征向量，即$P^{-1}X$是$B$的特征向量，即$Y=P^{-1}X$.
-\end{proof}
-
-实际上本题是教材定理4.10（或本讲义\autoref{thm:11:基的选择对向量坐标的影响}）的推论，原因在于$P^{-1}AP=B$说明$A$和$B$是同一个线性变换（设为$\sigma$）在不同基下的矩阵，因此$X$和$Y$只是$\sigma$关于$\lambda_0$在两组基下的坐标，因此二坐标之间相差一个过渡矩阵.
-
-最后我们谈一个拓展题型，我们考虑矩阵方程$AX-XB=O$，若$A,B$都是$n$阶方阵且$X$可逆，则方程可以改写为$X^{-1}AX=B$，即$A$与$B$相似. 事实上，这一矩阵方程的解空间的维数实际上刻画了$A$与$B$的相似程度. 我们有如下结论：
-\begin{theorem}
-    设$A,B$分别为数域$\mathbf{F}$上$n$阶、$m$阶方阵，$A,B$有$r$个两两不等的公共特征值，则矩阵方程$AX-XB=O$有秩为$r$的矩阵解. 反之，若数域为复数域，矩阵方程$AX-XB=O$有秩为$r$的矩阵解，则$A,B$至少有$r$个公共的特征值（计重数）.
-\end{theorem}
-
-\begin{proof}
-    \begin{enumerate}
-        \item
-
-        \item
-    \end{enumerate}
-\end{proof}
-
-由此可以看出，复数域上$n$阶、$m$阶方阵$A,B$的矩阵方程$AX=XB$只有零解的充要条件是$A,B$没有公共特征值. 我们通过一个例子应用这一定理：
-\begin{example}
-    设$m$阶矩阵$A$与$n$阶矩阵$B$无公共复特征值，$C$为$m\times n$矩阵，则矩阵方程$AX-XB=C$存在唯一解.
-\end{example}
-
-\begin{proof}
-    设$V$是所有$m\times n$矩阵构成的线性空间，定义$V$上的线性变换$\sigma(X)=AX-XB,\enspace X\in V$. 由于$A$和$B$无公共复特征值，所以$\sigma(X)=AX-XB=O$只有零解，即$\sigma$为$V$上单射，由\autoref{thm:6:双射等价条件} 可知$\sigma$是满射且是同构映射. 于是，对任意的$C\in V$，都存在唯一的$X_0\in V$使得$\sigma(X_0)=C$，即矩阵方程$AX-XB=C$存在唯一解$X_0$.
-\end{proof}
+\chapter{相似标准形：复数域上的尝试与理论}
 
 \section{对角矩阵}
 
@@ -621,6 +440,360 @@
     \end{enumerate}
 \end{proof}
 
+\section{上三角矩阵}
+
+我们从上三角矩阵出发，首先因为之前的讨论中上三角矩阵的一些优良性质大家已经非常熟悉，并且事实上，复向量空间中的所有线性变换都可以在某组基下得到上三角矩阵的矩阵表示. 我们有如下定理：
+\begin{theorem}\label{thm:17:上三角矩阵存在}
+    设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$，则
+    \begin{enumerate}
+        \item $\sigma$关于$V$的某组基有上三角矩阵，记为$A$；
+
+        \item $\sigma$可逆的充要条件是$A$的主对角元均不为0；
+
+        \item $\sigma$的特征值恰为$A$的主对角元.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 根据相似的定义，这一结论与``任意$n$阶复矩阵一定相似于一个上三角矩阵''是等同的，我们可以使用分块矩阵结合数学归纳法的方法进行证明. $n=1$时结论显然，因为任意一阶矩阵本身就是上三角矩阵. 现假设$n-1$阶复矩阵都可以相似于上三角矩阵，设$A$为$n$阶复矩阵，我们任取$A$的一个复特征值$\lambda_1$，设$\alpha_1$为$A$对应于$\lambda_1$的特征向量. 我们把$\alpha_1$扩充为$\mathbf{C}^n$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_n$，记$P_1=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则$P_1$可逆，且
+              \[P_1^{-1}AP_1=\begin{pmatrix}
+                      \lambda_1 & \alpha' \\ 0 & A_{n-1}
+                  \end{pmatrix},\]
+
+              我们对$n-1$阶矩阵$A_{n-1}$应用归纳假设，因此存在可逆矩阵$P_2$使得$P_2^{-1}A_{n-1}P_2$为上三角矩阵，取$P=P_1\begin{pmatrix}
+                      1 & 0 \\ 0 & P_2
+                  \end{pmatrix}$，直接有
+              \[P^{-1}AP=\begin{pmatrix}
+                      \lambda_1 & \alpha'P_1 \\ 0 & P_2^{-1}A_{n-1}P_2
+                  \end{pmatrix}\]
+              为上三角矩阵，因此$n$阶复矩阵一定相似于上三角矩阵.
+
+        \item 这一结论在矩阵计算进阶一讲中已经讨论，此处不再赘述；
+
+        \item 利用线性映射的特征值等于表示矩阵的特征值，且表示矩阵的特征值就是$|\lambda E-A|=0$的零点即可得到这一结论.
+    \end{enumerate}
+\end{proof}
+
+除此之外，在矩阵计算进阶中我们也提到上三角矩阵相乘结果中对角线上元素是原矩阵对角线上对应元素相乘的结果，其逆的对角线上元素是原矩阵对角线对应元素的逆. 以上性质表明，上三角矩阵是所有线性变换都可以在某组基下得到的且有良好性质的矩阵类型. 还有一个需要说明的性质是，一个元素出现在上三角矩阵对角线上的次数恰好等于它作为特征值的重数，我们放在习题中供读者验证.
+
+事实上，我们在这里介绍这一证明的主要目的在于，这一证明给了我们一个求解线性变换（或矩阵）上三角化的方法. 与对角化类似，线性变换的上三角化依赖于矩阵上三角化，因此我们这里只讨论矩阵的情况. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
+\begin{example}
+    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x+y,5y+3z,8z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+事实上，我们研究上三角矩阵（以及后续分块对角矩阵）的思路与研究对角矩阵是类似的，我们会讨论计算方法以及相关的等价条件. 下面我们给出关于对角矩阵的一些等价条件：
+\begin{theorem}\label{thm:17:上三角矩阵等价条件}
+    设$\sigma\in \mathcal{L}(V)$，且$v_1,v_2,\ldots,v_n$是$V$的基，则以下条件等价：
+    \begin{enumerate}
+        \item $\sigma$关于$v_1,v_2,\ldots,v_n$的矩阵是上三角的；
+
+        \item 对每个$j=1,\ldots,n$有$\sigma(v_j)\in\spa(v_1,\ldots,v_j)$；
+
+        \item 对每个$j=1,\ldots,n$有$\spa(v_1,\ldots,v_j)$在$\sigma$下不变.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+这一定理给出了上三角矩阵的几个充要条件，基于这些充要条件我们可以有如下进一步的理解：
+\begin{enumerate}
+    \item 我们可以给出\autoref{thm:17:上三角矩阵存在} 的另外两种证明，即《线性代数应该这样学》
+          5.27给出的两种证明. 事实上5.27的证明也使用了数学归纳法，但是之前分块矩阵的归纳是针对矩阵的阶数，这里是针对线性变换所在线性空间的维数. 我们这给出证明，以便深刻体会数学归纳法的思想：
+
+          \begin{proof}
+              \begin{enumerate}
+                  \item
+
+                  \item
+              \end{enumerate}
+          \end{proof}
+
+    \item 比较对角矩阵的充要条件中要求存在一维不变子空间的分解，这里的等价条件表明上三角矩阵要求线性变换存在任意维数的不变子空间即可（对角矩阵的条件实际上蕴含这一条件，因为存在一维不变子空间直和分解，我们任意通过直和运算合并这些一维不变子空间就可以得到任意维数的不变子空间，因此对角矩阵的要求更强，上三角矩阵不需要这些任意维数的不变子空间能拆解成一维不变子空间的直和）.
+
+          事实上，因为任意复向量空间上的线性变换都存在一组基使得矩阵表示为上三角矩阵，因此任意复向量空间上的线性变换都存在任意维数的不变子空间. 因此下面这一例子的结论是显然的：
+          \begin{example}
+              设$V$是$n$维复向量空间. $\sigma\in \mathcal{L}(V)$，证明：对任意的正整数$r\enspace(1\leqslant r\leqslant n)$，$\sigma$有$r$维不变子空间.
+          \end{example}
+          \begin{proof}
+
+          \end{proof}
+\end{enumerate}
+
+接下来我们要讨论一个特别的问题，即线性变换/矩阵可交换的性质. 我们有如下定理：
+\begin{theorem}
+    设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，则
+    \begin{enumerate}
+        \item $\sigma$的每个特征子空间都是$\tau$的不变子空间；
+
+        \item $\sigma,\tau$有公共的特征向量.
+    \end{enumerate}
+\end{theorem}
+将这一定理的线性变换改为矩阵实际上是等价的.
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+接下来我们希望应用这上述定理解决下面的问题：
+\begin{example}
+    设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，证明：
+    \begin{enumerate}
+        \item 若$\sigma$有$s$个不同的特征值，则$\sigma,\tau$至少有$s$个公共且线性无关的特征向量；
+
+        \item 存在$V$的一组基，使得$\sigma$和$\tau$在这组基下的矩阵均为上三角矩阵.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+这一例子的结论告诉我们：线性变换可交换对应于同时上三角化. 例中 2 的结论如果换为矩阵表述应当是：设$A,B$是复数域上的两个$n$阶矩阵，且$AB=BA$，则存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$同时为上三角矩阵.
+
+\section{核空间的性质 \quad 幂零矩阵}
+
+这一节我们将为后续讨论分块对角矩阵做准备，同时幂零矩阵一节中也将讨论这一特殊矩阵的很多特别的、有趣的性质.
+
+\subsection{核空间的性质}
+
+事实上，根据可对角化的等价条件，我们知道一个线性变换不可对角化实际上是因为它没有足够多的线性无关的特征向量，也即特征子空间直和后比原空间略小. 事实上，我们知道$\sigma$在特征值$\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$. 我们回顾\autoref{thm:6:核空间性质}：
+\begin{theorem}\label{thm:17:核空间性质}
+    设$\sigma\in \mathcal{L}(V)$，则有
+    \begin{enumerate}
+        \item $\{0\}=\ker \sigma^0\subseteq\ker \sigma^1\subseteq\cdots\subseteq\ker \sigma^k\subseteq\ker \sigma^{k+1}\subseteq\cdots$；
+
+        \item 设$m$是非负整数使得$\ker \sigma^m=\ker \sigma^{m+1}$，则
+              \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
+
+        \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+1}=\cdots$.
+    \end{enumerate}
+\end{theorem}
+
+我们发现，如果我们提高线性变换的幂次，那么我们可以获得更大的核空间，这样扩张后的核空间的直和是否可以张成整个原空间呢？我们可以提前给出答案：可以，具体的说明我们在讨论完下面的幂零矩阵之后将会详细展开.
+
+\subsection{幂零矩阵}
+
+基于上面核空间的讨论，并为了方便后面小节的研究，我们将讲解幂零线性变换与幂零矩阵的相关准备知识.
+\begin{definition}[幂零] \index{miling@幂零 (nilpotent)}
+    \begin{enumerate}
+        \item 一个线性变换称为\term{幂零}的，如果它的某个幂等于零映射（即将所有向量都映射到0的映射）；
+
+        \item 一个矩阵$A$称为幂零的，如果存在正整数$m$使得$A^m=O$.
+    \end{enumerate}
+\end{definition}
+
+根据线性映射矩阵表示很容易知道，幂零线性变换在任意一组基下的矩阵表示都是幂零矩阵. 我们接下来首先讨论幂零线性变换的一些基本性质：
+\begin{theorem} \label{thm:17:幂零线性变换性质}
+    设线性变换$N\in \mathcal{L}(V)$是幂零的，则
+    \begin{enumerate}
+        \item \label{item:17:幂零线性变换性质:1}
+              $N$的所有特征值均为0（等价定义）；
+
+        \item \label{item:17:幂零线性变换性质:2}
+              $N^{\dim V}$=0；
+
+        \item \label{item:17:幂零线性变换性质:3}
+              $V$有一组基使得$N$关于这组基的矩阵对角线和对角线下方元素均为0（等价定义）；
+
+        \item \label{item:17:幂零线性变换性质:4}
+              $N\pm I$可逆.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 这一结论我们将在下一讲中介绍 \hyperref[thm:21:HC]{Hamilton-Cayley 定理}后给出证明；
+
+        \item
+
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+事实上 \ref*{item:17:幂零线性变换性质:1},\ref*{item:17:幂零线性变换性质:2},\ref*{item:17:幂零线性变换性质:4} 都有相应的矩阵的结论，我们将线性变换替换为它的矩阵表示即可，此处不再赘述. 而第三点则解释了我们在求矩阵的幂时将一些矩阵分解为一个矩阵加一个对角线上全为0的矩阵的合理性，因为后者一定是幂零的. 接下来我们通过几个例子进一步讨论、运用幂零矩阵、幂零线性变换的性质：
+\begin{example}
+    证明：$A$为幂零矩阵$\iff \forall k \in \mathbf{N}_+,\enspace\tr(A^k)=0$.
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{example}
+    若$A,B$为两个$n$阶矩阵且满足$AB-BA=A$，证明：
+    \begin{enumerate}
+        \item $A$不可逆；
+
+        \item $A$是幂零矩阵.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+\section{分块对角矩阵}
+
+\subsection{广义特征子空间与分块对角矩阵}
+
+上一节中我们已经讨论了不可对角化线性变换获得简化矩阵的一般思想，即试图利用核空间增长的性质扩张特征子空间，使得扩张后的特征子空间（称为广义特征子空间）的直和为原空间. 下面我们给出严谨定义：
+\begin{definition}
+    设$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$\sigma$的特征值，若向量$v\neq 0$且存在正整数$j$使得$(\sigma-\lambda I)^jv=0$，则称$v$为$\sigma$对应于$\lambda$的\term{广义特征向量}\index{tezhengxiangliang!guangyi@广义 (generalized eigenvector)}. $\sigma$对应于$\lambda$的全体广义特征向量与0向量构成的集合称为$\sigma$相应于$\lambda$的\term{广义特征子空间}\index{tezhengzikongjian!guangyi@广义 (generalized eigenspace)}，记为$G(\lambda,\sigma)$.
+\end{definition}
+注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，$(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
+
+实际上，根据\autoref{thm:17:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$. 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为广义特征子空间的维数，几何重数定义为特征子空间的维数. 实际上在不变子空间一讲中我们有类似的定义，我们将在下一讲中讲解它们的关联.
+
+我们接下来的目标转向我们的主线，即证明任意线性变换的广义特征子空间的和为直和且和为原空间. 下面这一定理读者可以回顾特征值、特征向量的性质以及可对角化的等价条件，我们会发现这些定理具有很大的相似性，因此记忆难度并不大：
+\begin{theorem} \label{thm:17:广义特征性质}
+    设$V$是复数域上的有限维线性空间，$\sigma\in \mathcal{L}(V)$. 用$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\sigma$对应于不同特征值的广义特征向量线性无关；
+
+        \item \label{item:17:广义特征性质:2}
+              $\sigma$不同特征值对应的广义特征子空间的和为直和，且$V=G(\lambda_1,\sigma)\oplus\cdots\oplus
+                  G(\lambda_m,\sigma)$；
+
+        \item $V$有一个由$\sigma$的广义特征向量组成的基；
+
+        \item 每个$G(\lambda_i,\sigma)$在$\sigma$下都是不变的；
+
+        \item \label{item:17:广义特征性质:5}
+              每个$(\sigma-\lambda_j I)\vert_{G(\lambda_j,\sigma)}$都是幂零的.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+
+        \item
+
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+上述定理更重要的结果在于它我们可以得到任何复向量空间上的线性变换都有如下的分块对角矩阵的标准形：
+\begin{theorem} \label{thm:17:分块对角矩阵}
+    设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$. 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的所有互不相同的特征值，重数分别为$d_1,\ldots,d_m$，则$V$有一组基使得$\sigma$关于这组基的有分块对角矩阵
+    \[\begin{pmatrix}
+            A_1 &  & O \\  & \ddots &  \\ O &  & A_m
+        \end{pmatrix}\]
+    其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
+    \[A_j=\begin{pmatrix}
+            \lambda_j &  & * \\  & \ddots &  \\ O &  & \lambda_j
+        \end{pmatrix}\]
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+由此我们得到了一个相比于上三角矩阵更为简单，并且所有线性变换都可以获得的标准形. 在介绍完其存在性后，我们按照惯例需要讨论如何将这一标准形求解出来. 事实上，根据上述定理的证明，我们发现每个对角块都是从一个广义特征子空间得来的，因此我们只需求出各个广义特征子空间的基，然后写出对应的矩阵即可. 如果得到的对角块不是上三角矩阵，我们可以使用在上三角矩阵求法中讲解的方法进行调整. 我们来看一个例子：
+\begin{example}
+    设$\sigma\in \mathcal{L}(\mathbf{C}^3)$定义为
+    \[\sigma(z_1,z_2,z_3)=(6z_1+3z_2+4z_3,6z_2+2z_3,7z_3),\]求一组基使其有分块对角矩阵并写出对应的分块对角矩阵.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难. 因为当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，是很困难的，但事实上根据核空间停止增长的性质可以知道，我们只需要不断提升矩阵的幂次，直到得到的广义特征子空间不再发生改变就能够停止计算.
+
+\begin{example}
+    设$\sigma,\tau\in \mathcal{L}(V)$可逆，证明：$\sigma$和$\tau^{-1}\sigma\tau$有相同的特征值，且重数也相同.
+\end{example}
+
+\begin{proof}
+
+\end{proof}
+
+\subsection{平方根问题}
+
+在进入下一个话题前，我们先简单介绍线性变换平方根的概念，这一概念在之后内积空间线性变换会进一步说明.
+\begin{definition}
+    我们称线性变换$\sigma\in \mathcal{L}(V)$的平方根是满足$\tau^2=\sigma$的线性变换$\tau\in \mathcal{L}(V)$.
+\end{definition}
+在复向量空间中，我们有如下两个结论：
+\begin{theorem} \label{thm:20:幂零平方根}
+    设$V$是复向量空间.
+    \begin{enumerate}
+        \item 设$N\in \mathcal{L}(V)$幂零，则$(I+N)$有平方根；
+
+        \item \label{item:20:幂零平方根:2}
+              若$\sigma\in \mathcal{L}(V)$可逆，则$\sigma$有平方根.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+我们发现，这一定理的证明思路基于$\sqrt{1+x}$的泰勒展开，我们不是第一次看到使用泰勒展开的情况，在求解矩阵的逆的进阶方法中，求逆的分式思想中也使用了 $\vphantom{\cfrac{1}{1-x}}\dfrac{1}{1-x}$的泰勒展开，足以体现一些数学直觉对于我们解决一些问题的重要性.
+
+\begin{example}
+    定义$N\in \mathcal{L}(\mathbf{F}^5)$为
+    \[N(x_1,x_2,x_3,x_4,x_5)=(2x_2,3x_3,-x_4,4x_5,0)\]
+    求$(I+N)$的一个平方根.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+最后，在开始习题内容前，我们需要讲解一类特殊的题型，即举例或举反例的问题. 一般而言，我们有如下两种思路：
+\begin{enumerate}
+    \item 考虑几何意义：例如旋转矩阵，特征值的几何意义等
+          \begin{example}
+              找出有限维实向量空间的一个线性变换$\sigma$，使得0是$\sigma$仅有的特征值但$\sigma$不是幂零线性变换.
+          \end{example}
+          \begin{example}
+              找出一个$\sigma\in L(\mathbf{R}^2)$使得$\sigma^4=-I$.
+          \end{example}
+
+    \item 考虑简单的情况：例如考虑2阶、3阶的简单线性变换/矩阵
+          \begin{example}
+              证明或给出反例：$V$上的幂零线性变换的集合是$L(V)$的子空间.
+          \end{example}
+          很多时候一些反例很难构想就选择记住这一构造思想即可. 一些反例可能基于一些简单的结论，但如果未思考到位可能很难构造.
+\end{enumerate}
+
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
@@ -789,4 +962,6 @@
           \end{enumerate}
 
     \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，且$AB=BA$. 证明：存在次数小于等于$n-1$的多项式$f(x)$使得$B=f(A)$.
+
+    \item 设$T\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$. 证明：对$V$的每个使得$T$有上三角矩阵的基，$\lambda$出现在$T$的矩阵的对角线上的次数等于$\lambda$作为$T$的特征值的重数.
 \end{enumerate}

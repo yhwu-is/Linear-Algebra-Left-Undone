@@ -1,9 +1,182 @@
-\chapter{特征值与特征向量}
+\chapter{相似标准形：动机与基础}
 
-事实上，为了研究上一讲前言中提到的线性变换、矩阵和多项式之间的关系，我们需要一个重要的媒介，即不变子空间. 相信读者这一点在接下来的章节中会逐渐体会到这一概念的桥梁作用.
+回顾线性代数的一大目标，我们希望找到出发空间和到达空间合适的基使得线性映射在这两组基下的表示更简单. 我们已经在相抵标准形一节中使用线性映射基本定理给出了一种可行的构造. 从本讲起，我们把眼光放在线性变换，即\textbf{出发空间和到达空间相同的线性映射，并且我们关注出发空间与到达空间取同一组基的时候，如何得到更简单的标准形}. 这一矩阵标准形我们称之为相似标准形，这也是我们讨论的第一个核心概念.
+
+当然我们会发现关于相似标准形讨论的限制显然比之前相抵标准形的更大. 回顾\autoref{thm:11:相抵标准形}中取得相抵标准形对应的基的方法，我们显然无法保证出发空间和到达空间取到的是同一组基，即使是在出发空间与到达空间一致的情况下. 因此本节我们将会探索另一种解决这一线性代数核心问题的范式，这就引出了接下来数讲的讨论核心——不变子空间.
+
+\section{相似的定义与性质}
+
+为了讨论相似标准形，我们需要首先从相似这一概念谈起. 正如我们在相抵标准形中的讨论那样，我们会综合线性映射和矩阵两个观点来讨论这一问题. 从线性映射的角度出发，我们的想法是对一个$n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$，找到一组基$\{\alpha_1,\cdots,\alpha_n\}$，使得$T$在这组基下的矩阵``比较简单''，即我们有
+\[\sigma(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)A,\]
+我们希望$A$是``比较简单''的，就像相抵标准形那样，有尽可能多的$0$，非零元素的排列规律也尽可能简单.
+
+如果从矩阵的角度出发，很自然地，我们会希望与上面映射的目标建立联系，我们会想起任意矩阵$A$都是线性变换$\sigma(\alpha)=A\alpha$在自然基下的表示矩阵. 此时我们的目标可以与映射的目标产生联系，即我们希望找到另一组基，使得$\sigma$在这组基下的矩阵$B$比较简单. 此时$A$和$B$的关系是同一个线性变换$\sigma$在不同基下的表示矩阵，事实上这一关系我们其实并不陌生，早在相抵标准形一讲中我们就提到如下定理：
+\begin{theorem}[基的选择对映射矩阵的影响]
+    设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$是线性空间的$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$，如果$\sigma$在基$B_1$下的矩阵为$A$，则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
+\end{theorem}
+这一定理研究了同一个线性变换在不同基下表示矩阵之间的关系，契合了我们的需求. 我们可以将上述同一线性变换在不同基下的矩阵表示之间的关系称为\term{相似}. 当然这是从线性映射的角度出发的定义，有时我们谈到相似可能仅仅是矩阵层面的关系，因此我们给出直接的使用矩阵定义如下：
+\begin{definition}
+    若对于$A,B\in \mathbf{M}_n(\mathbf{F})$，存在可逆矩阵$C\in \mathbf{M}_n(\mathbf{F})$, 使得$C^{-1}AC=B$，则称$A$相似于$B$，记作$A\sim B$.
+\end{definition}
+
+因此从矩阵的角度出发，我们的目标是找到一个可逆矩阵$P$，使得$P^{-1}AP$是``比较简单''的. 或者说，我们的目标是找到一个与$A$相似的``比较简单''的矩阵$B$，这样合乎要求的矩阵$B$就是我们所谓的矩阵$A$的\term{相似标准形}.
+
+接下来我们讨论相似的一些基本性质：
+\begin{enumerate}
+    \item 相似是一种等价关系；两矩阵相似必相抵（相似矩阵的秩相等）；
+
+          \begin{proof}
+              等价关系在《大学数学：代数与几何》的233页有说明，此处不再赘述；此外，由于乘以可逆矩阵不改变原矩阵的秩，因此$r(P^{-1}AP)=r(A)$，即两矩阵相似必定秩相等，因此也必定相抵.
+          \end{proof}
+
+          需要说明的是相似必定相抵但反之不一定成立，相抵的两个矩阵甚至可能不是方阵，但相似有这一要求. 即使是方阵也不一定成立，在习题中我们会要求读者给出例子.
+
+    \item $A\sim B$可以得到$A^\mathrm{T}\sim B^\mathrm{T}$，$A^m\sim B^m$. 更一般地，对于任意多项式$f(x)$都有$f(A)\sim f(B)$，且若$B=P^{-1}AP$，有$f(B)=P^{-1}f(A)P$. 除此之外还有$A,B$可逆时，$A^{-1}\sim B^{-1}$，$A^*\sim B^*$；
+
+          \begin{proof}
+              \begin{enumerate}
+                  \item 由于$B^\mathrm{T}=(C^{-1}AC)^\mathrm{T}=C^\mathrm{T}A^\mathrm{T}(C^{-1})^\mathrm{T}=(C^\mathrm{T})^{-1}A^\mathrm{T}C^\mathrm{T}$，因此$A^\mathrm{T}\sim B^\mathrm{T}$；
+
+                  \item 由于$B^m=(C^{-1}AC)^m=C^{-1}A^mC$（乘积展开后中间$C^{-1}C$可以消去），因此$A^m\sim B^m$；
+
+                  \item 设$f(A)=a_0E+a_1A+\cdots+a_mA^m$，则$f(B)=a_0P^{-1}EP+a_1P^{-1}AP+\cdots+a_mP^{-1}A^mP=P^{-1}f(A)P$，因此$f(A)\sim f(B)$，且$f(B)=P^{-1}f(A)P$.
+
+                  \item 由于$B^{-1}=(C^{-1}AC)^{-1}=C^{-1}A^{-1}C$，因此$A^{-1}\sim B^{-1}$，$A^*\sim B^*$.
+
+                  \item 由于$B^*=(C^{-1}AC)^*=C^{-1}A^*C$，因此$A^*\sim B^*$.
+              \end{enumerate}
+          \end{proof}
+
+    \item $A_1\sim B_1$，$A_2\sim B_2$不一定有$A_1+A_2\sim B_1+B_2$，只有当$P^{-1}A_1P=B_1,P^{-1}A_2P=B_2$时（即相同的过渡矩阵$P$）才有$P^{-1}(A_1+A_2)P=B_1+B_2$；
+
+    \item 若$A_1\sim B_1$，$A_2\sim B_2$，则有
+          \[ \begin{pmatrix}
+                  A_1 & O \\ O & A_2
+              \end{pmatrix}\sim\begin{pmatrix}
+                  B_1 & O \\ O & B_2
+              \end{pmatrix};\]
+
+          \begin{proof}
+              设$P_1^{-1}A_1P_1=B_1$，$P_2^{-1}A_2P_2=B_2$，则
+              \[ \begin{pmatrix}
+                      P_1 & O \\ O & P_2
+                  \end{pmatrix}^{-1}\begin{pmatrix}
+                      A_1 & O \\ O & A_2
+                  \end{pmatrix}\begin{pmatrix}
+                      P_1 & O \\ O & P_2
+                  \end{pmatrix}=\begin{pmatrix}
+                      P_1^{-1}A_1P_1 & O \\ O & P_2^{-1}A_2P_2
+                  \end{pmatrix}=\begin{pmatrix}
+                      B_1 & O \\ O & B_2
+                  \end{pmatrix}.\]
+          \end{proof}
+
+    \item 与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零（但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
+
+          \begin{proof}
+              我们一边回顾上面这些特殊矩阵的定义一边证明结论：
+              \begin{enumerate}
+                  \item 设$A$是幂等矩阵，则$A^2=A$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}AP=B$，因此$B$也是幂等矩阵，即与幂等矩阵相似的仍幂等；
+
+                  \item 设$A$是对合矩阵，则$A^2=E$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}EP=P^{-1}P=E$，因此$B$也是对合矩阵，即与对合矩阵相似的仍对合；
+
+                  \item 设$A$是幂零矩阵，则存在正整数$m$使得$A^m=O$，设$B=P^{-1}AP$，则$B^m=P^{-1}A^mP=P^{-1}OP=O$，因此$B$也是幂零矩阵，即与幂零矩阵相似的仍幂零；
+
+                  \item 设$A$是正交矩阵，则$A^{-1}=A^\mathrm{T}$，设$B=P^{-1}AP$，则$B^{-1}=(P^{-1}AP)^{-1}=P^{-1}A^{-1}P=P^{-1}A^\mathrm{T}P$，只有当$P$是正交矩阵时，即$P^{-1}=P^\mathrm{T}$时，$B^{-1}=P^{-1}A^\mathrm{T}P=P^\mathrm{T}A^\mathrm{T}(P^{-1})^\mathrm{T}=(P^{-1}AP)^\mathrm{T}=B^\mathrm{T}$，因此与正交矩阵相似的不一定正交，只有过渡矩阵是正交矩阵时才一定正交.
+              \end{enumerate}
+          \end{proof}
+\end{enumerate}
+
+\section{不变子空间}
+
+在介绍完相似的概念后，我们将正式开始我们的主线任务. 原谅我啰嗦再次重复一遍，我们要考虑$n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$，我们希望找到一组基$\{\alpha_1,\cdots,\alpha_n\}$，使得$T$在这组基下的矩阵``比较简单''，即我们有
+\[\sigma(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)A,\]
+我们希望$A$是``比较简单''的，就像相抵标准形那样，有尽可能多的$0$，非零元素的排列规律也尽可能简单. 自然地，我们会希望$A$可以是对角矩阵，或者退而求其次至少是分块对角矩阵.
+
+事实上，如果让我们直接思考如何获得这样的矩阵是非常容易使人迷茫的，但如果我们尝试从希望的矩阵的形式反推所取基需要的性质，应当能窥见一些端倪. 事实上，我们假设$A$为分块对角矩阵，即
+\[A=\begin{pmatrix}
+    A_1 & & & \\
+    & A_2 & & \\
+    & & \ddots & \\
+    & & & A_m
+\end{pmatrix},\]
+设$A_i(i=1,\cdots,m)$的阶数为$r_i$. 我们进一步展开$A$的形式：
+\[\begin{pmatrix}
+    a_{11} & \cdots & a_{1r_1} & & & & & & & \\
+    \vdots & \ddots & \vdots & & & & & & & \\
+    a_{r_11} & \cdots & a_{r_1r_1} & & & & & & & \\
+    & & & a_{r_1+1,r_1+1} & \cdots & a_{r_1+1,r_1+r_2} & & & & \\
+    & & & \vdots & \ddots & \vdots & & & & \\
+    & & & a_{r_1+r_2,r_1+1} & \cdots & a_{r_1+r_2,r_1+r_2} & & & & \\
+    & & & & & & \ddots & & & \\
+    & & & & & & & a_{n-r_m+1,n-r_m+1} & \cdots & a_{n-r_m+1,n} \\
+    & & & & & & & \vdots & \ddots & \vdots \\
+    & & & & & & & a_{n,n-r_m+1} & \cdots & a_{nn}
+\end{pmatrix}\]
+上图中空的部分全为$0$. 现在我们首先考虑第一个分块，根据线性映射矩阵表示的定义，我们有
+\begin{gather*}
+    \sigma(\alpha_1)=a_{11}\alpha_1+\cdots+a_{1r_1}\alpha_{r_1}\in \spa(\alpha_1,\cdots,\alpha_{r_1}),\\
+    \cdots\\
+    \sigma(\alpha_{r_1})=a_{1r_1}\alpha_1+\cdots+a_{r_1r_1}\alpha_{r_1}\in \spa(\alpha_1,\cdots,\alpha_{r_1}),
+\end{gather*}
+有趣的事情出现了，我们发现$\sigma$作用于$\alpha_1,\cdots,\alpha_{r_1}$中每个向量都会落在$\spa(\alpha_1,\cdots,\alpha_{r_1})$中. 进一步地，我们考虑任意的$\alpha\in\spa(\alpha_1,\cdots,\alpha_{r_1})$，我们有
+\[\alpha=k_1\alpha_1+\cdots+k_{r_1}\alpha_{r_1},\]
+因此
+\[\sigma(\alpha)=k_1\sigma(\alpha_1)+\cdots+k_{r_1}\sigma(\alpha_{r_1})\in \spa(\alpha_1,\cdots,\alpha_{r_1}),\]
+即$\sigma$作用于$\spa(\alpha_1,\cdots,\alpha_{r_1})$中的任意向量仍然落在$\spa(\alpha_1,\cdots,\alpha_{r_1})$中. 同理，我们可以证明$\sigma$作用于$\spa(\alpha_{r_1+1},\cdots,\alpha_{r_1+r_2})$中的任意向量仍然落在$\spa(\alpha_{r_1+1},\cdots,\alpha_{r_1+r_2})$中，以此类推，每个分块对应的基的一部分的线性扩张都有这样类似的性质. 我们知道一组向量的线性扩张是包含这些向量的最小子空间，再结合该子空间在线性变换作用后仍然落在其中的性质，我们将其称为不变子空间：
+\begin{definition}
+    设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma(\alpha)\in U$，则称$U$是$\sigma$的\term{不变子空间}\index{xianxingkongjian!zi!bubian@不变子空间 (invariant subspace)}，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
+\end{definition}
+
+即线性变换把不变子空间$U$中的元素全都映射到$U$自身的元素，所以``不变''这一形容词是非常形象的. 为了日后描述的方便，我们需要引入一个限制映射的概念. 我们给出标准的定义如下：
+\begin{definition} \index{xianxingyingshe!xianzhi@限制 (restriction map)}
+    设$V$是数域$\mathbf{F}$上的线性空间，$\sigma\in\mathcal{L}(V)$，我们在$V$的子空间$U$上定义映射$\sigma\vert_U$如下：
+    \[\sigma\vert_U:U\to V,\enspace\sigma\vert_U(\alpha)=\sigma(\alpha),\enspace\forall \alpha\in U,\]
+    则称$\sigma\vert_U$是$\sigma$在$U$上的\term{限制映射}.
+\end{definition}
+
+``限制''一词十分形象（如下图所示），因为限制映射就是将原映射的定义域限制在更小的范围内，但原定义域上的映射值保持不变.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{figs/18-1.png}
+\end{figure}
+
+因此，如果$U$是$\sigma$的不变子空间，根据不变子空间的定义可知，$\sigma\vert_U$就是一个线性变换（是$\mathcal{L}(U)$中的元素），我们称之为\term{限制变换}\index{xianxingyingshe!xianxingbianhuan!xianzhi@限制变换 (restriction operator)}.
+
+有了上面的概念，我们很容易可以将之前的推导转化为以下定理：
+\begin{theorem} \label{thm:15:不变子空间与分块对角矩阵}
+    设有限维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$在某组基下的表示矩阵为分块对角矩阵$A=\diag(A_1,\cdots,A_m)$，当且仅当$V$可以分解为不变子空间$U_1,\cdots,U_m$的直和，即
+    \[V=U_1\oplus\cdots\oplus U_m,\]
+    其中每个$U_i$都是$\sigma$的不变子空间，且$\sigma\vert_{U_i}$在$U_i$对应的基下的表示矩阵为$A_i$.
+\end{theorem}
+
+根据定义我们可以验证或者求解一些很简单的不变子空间. 教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述. 教材8.20还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间. 我们这里也简要书写一下，供读者熟悉如何利用定义验证不变子空间：
+\begin{example}
+    若$\sigma\in\mathcal{L}(V)$且$p\in\mathbf{F}[x]$为多项式，则$\ker p(\sigma)$和$\im p(\sigma)$在$\sigma$下不变.
+\end{example}
+
+\begin{proof}
+    我们只需验证$\ker p(\sigma)$和$\im p(\sigma)$中的元素经过$\sigma$映射后仍在这一空间中即可.
+    \begin{enumerate}
+        \item $\forall \alpha\in \ker p(\sigma),\enspace p(\sigma)\alpha=0$，因此
+              \[(p(\sigma))(\sigma(\alpha))=\sigma(p(\sigma)\alpha)=\sigma(0)=0,\]
+              即$\sigma(\alpha)\in \ker p(\sigma)$，因此$\ker p(\sigma)$在$\sigma$下不变；
+
+        \item $\forall \alpha\in \im p(\sigma),\enspace \exists \beta\in V,\enspace \alpha=p(\sigma)\beta$，因此
+              \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)(\sigma(\beta))\in \im p(\sigma),\]
+              即$\im p(\sigma)$在$\sigma$下不变.
+    \end{enumerate}
+    事实上，对于$\ker p(\sigma)$，我们有
+    \[ p(\sigma)(\alpha)=p(\sigma)\alpha=p(\sigma(\alpha))=p(0)=0,\]
+    因此$\sigma(\alpha)\in \ker p(\sigma)$，即$\ker p(\sigma)$在$\sigma$下不变. 对于$\im p(\sigma)$，我们有
+    \[\forall \alpha\in \im p(\sigma),\enspace \exists \beta\in V,\enspace \alpha=p(\sigma)\beta,\]
+    因此
+    \[\sigma(\alpha)=\sigma(p(\sigma)\beta)=p(\sigma)\sigma(\beta)\in \im p(\sigma),\]
+    即$\im p(\sigma)$在$\sigma$下不变.
+\end{proof}
 
 有时我们可能会遇到更为复杂的情形，如下面的例子：
-\begin{example} \label{ex:18:不变子空间}
+\begin{example} \label{ex:15:不变子空间}
     设$\mathbf{F}$为一数域，线性变换$\sigma\in\mathcal{L}(\mathbf{F}^2)$定义为
     \[\sigma(a,b)=(a,b)\begin{pmatrix}
             1 & -1 \\ 2 & 2
@@ -31,9 +204,45 @@
     \end{enumerate}
 \end{proof}
 
-除此之外，还有一些更为困难的问题我们将在讨论若当标准形之后进行讨论.
+除此之外，还有一些更为困难的问题我们将在讨论完标准形理论之后反过来进行讨论. 为了接下来对标准形讨论的方便，我们需要介绍一个特别的不变子空间：
+\begin{definition}
+    设$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量. 我们称子空间
+    \[W=\{v,Tv,T^2v,\cdots,T^kv,\cdots\}\]
+    为\term{由$v$生成的$T-\text{循环子空间}$}. 在不引起歧义的情况下，我们也称$W$为\term{$T-\text{循环子空间}$}或\term{循环子空间}.
+\end{definition}
 
-最后我们再基于不变子空间讨论一个商线性变换的概念. 事实上，如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换. 我们严格定义如下：
+一个需要注意的地方是，当$V$是有限维线性空间时，循环子空间也一定是有限维的（子空间的维数至少要小于等于原空间）. 一个有趣的事实是，如果循环子空间的维数等于$m$，那么它的一组基就是$\{v,Tv,\cdots,T^{m-1}v\}$. 我们来书写这一定理并给出证明：
+\begin{theorem} \label{thm:15:循环子空间}
+    设$V$是有限维线性空间，$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量，$W$是由$v$生成的$T-\text{循环子空间}$，则
+    \begin{enumerate}
+        \item $W$是$T$包含$v$的最小不变子空间；
+        \item 若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\cdots,T^{m-1}v\}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 首先我们证明是不变子空间. 由于$V$是有限维线性空间，故$W$一定也是有限维线性空间，故任意的$w\in W$都可以被表示为$W$中有限个元素的线性组合，假设为
+        \[w=k_1T^{m_1}v+k_2T^{m_2}v+\cdots+k_sT^{m_s}v,\]
+        其中$m_1,m_2,\cdots,m_s\in\mathbf{N}$，$k_1,k_2,\cdots,k_s\in\mathbf{F}$. 我们有
+        \[\begin{aligned}
+                Tw & =T(k_1T^{m_1}v+k_2T^{m_2}v+\cdots+k_sT^{m_s}v) \\
+                   & =k_1T^{m_1+1}v+k_2T^{m_2+1}v+\cdots+k_sT^{m_s+1}v,
+            \end{aligned}\]
+        因此$Tw$仍然是$W$中向量的线性组合，即$Tw\in W$，故$W$是$T$的不变子空间.
+
+        接下来我们证明是最小不变子空间. 设$U$是$T$的不变子空间，且$v\in U$，我们需要证明$W\subset U$. 由不变子空间的定义以及$v\in U$，我们知道$Tv\in U$，于是进一步利用不变子空间的定义有$T^2v\in U$，以此类推，$T^kv\in U,\enspace\forall k\in\mathbf{N}$，因此$W\subset U$，即$W$是$T$包含$v$的最小不变子空间.
+
+        \item 由于$v$是非零向量，故设$j$是使得$v,Tv,\cdots,T^{j-1}v$线性无关的最大正整数，设$U=\spa(v,Tv,\cdots,T^{j-1}v)$，因此$v,Tv,\cdots,T^{j-1}v$是$U$的一组基. 并且根据我们的假设，$v,Tv,\cdots,T^{j-1}v,T^jv$线性相关，因此根据线性相关性质有
+        \[T^jv=k_1v+k_2Tv+\cdots+k_{j-1}T^{j-1}v,\]
+        即$T^jv\in U$，于是我们任取$u\in U$，我们有
+        \[u=c_1v+c_2Tv+\cdots+c_{j-1}T^{j-1}v,\]
+        因此
+        \[Tu=c_1Tv+c_2T^2v+\cdots+c_{j-1}T^jv\in U,\]
+        故$U$是$T$的包含$v$的不变子空间. 由定理第一条可知，$W\subset U$，但根据$U$的定义又有$U\subset W$，因此$W=U$，即$W$的一组基为$\{v,Tv,\cdots,T^{j-1}v\}$，故事实上$j$就是$W$的维数. 因此若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\cdots,T^{m-1}v\}$.
+    \end{enumerate}
+\end{proof}
+
+最后我们再基于不变子空间讨论一个商线性变换的概念. 事实上，如果$U$是$\sigma$的不变子空间，那么$\sigma$还可以诱导出商空间$V/U$上的线性变换. 定义如下：
 \begin{definition}
     设$\sigma\in \mathcal{L}(V)$，$U$是$\sigma$的不变子空间，定义映射$\sigma/U:V/U\to V/U$如下：
     \[(\sigma/U)(v+U)=\sigma(v)+U,\enspace\forall v\in V,\]
@@ -47,38 +256,21 @@
     \item 加性：$(\sigma/U)((v_1+U)+(v_2+U))=(\sigma/U)(v_1+v_2+U)=\sigma(v_1+v_2)+U=\sigma(v_1)+\sigma(v_2)+U=(\sigma/U)(v_1+U)+(\sigma/U)(v_2+U)$.
 \end{itemize}
 
-除了线性的要求外，还有一个很重要的合理性来源于相容性（或者良定义）的概念. 因为这里又一次将线性变换定义在了等价类上，因此我们需要特别关注这一定义的良定义性. 事实上，回顾相容性（良定义）的概念，对于一个映射，其合理性在于原像集合中的一个元素只能映射到像集中的唯一一个值（否则不符合映射的定义）. 商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma(v)+U\neq \sigma(w)+U$的情况，这一定义描述的就不是映射（因为映射要求一个自变量只能映到一个值上），因此不是良定义. 但我们可以验证这一映射是良定义的：
+除了线性的要求外，还有一个很重要的合理性来源于之前在等价类和商空间中讨论的相容性（或者良定义）的概念，因为这里将线性变换定义在了等价类上. 事实上，对于一个映射，其相容性的关键在于原像集合中的同一个元素只能映射到像集中的唯一一个值（否则不符合映射的定义），具体而言，商线性变换的出发空间元素是等价类，因此如果出现$v+U=w+U$但$\sigma(v)+U\neq \sigma(w)+U$的情况，这一定义描述的就不是映射（因为映射要求一个自变量只能映到一个值上）. 我们可以验证这一映射是满足相容性的：
 
 \begin{proof}
-    设$v+U=w+U$，即$v-w\in U$，由于$U$在$\sigma$下不变，则$\sigma(v-w)\in U$，即$\sigma(v)-\sigma(w)\in U$，因此$\sigma(v)+U=\sigma(w)+U$，即$\sigma/U$是良定义的.
-\end{proof}
-
-这一定义可能具有一定的抽象性，因此我们用更抽象的例子来加深理解：
-\begin{example}
-    设$\sigma\in \mathcal{L}(V,W)$，定义$\widetilde{\sigma}:(V/(\ker \sigma))\to W$如下：
-    \[\widetilde{\sigma}(v+\ker\sigma)=\sigma(v).\]
-    \begin{enumerate}
-        \item $\widetilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
-
-        \item $\widetilde{\sigma}$是单射；
-
-        \item $\im \widetilde{\sigma}=\im \sigma$；
-
-        \item $V/(\ker \sigma)$同构于$\im \sigma$.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-
+    设$v+U=w+U$，即$v-w\in U$，由于$U$在$\sigma$下不变，则$\sigma(v-w)\in U$，即$\sigma(v)-\sigma(w)\in U$，因此$\sigma(v)+U=\sigma(w)+U$，即$\sigma/U$是满足相容性的.
 \end{proof}
 
 \section{特征值与特征向量}
 
-事实上，在\autoref{ex:18:不变子空间} 中，我们求解了一维不变子空间. 根据一维空间中向量都成比例的性质，设$U$是$\sigma\in\mathcal{L}(V)$的一维不变子空间，我们有
-\[\exists\lambda\in\mathbf{F},\enspace\sigma(\alpha)=\lambda\alpha,\enspace\forall \alpha\in U,\]
-即任意向量作用线性变换后的结果与原向量成比例. 这一性质将引入接下来的特征值与特征向量的概念，事实上它们对于获得简单矩阵的目标而言非常重要，因此我们需要特别研究一维不变子空间.
+在\autoref{thm:15:不变子空间与分块对角矩阵}中我们得到了一个很关键的观察，就是不变子空间与分块对角矩阵的关联. 因此我们很自然地希望展开对不变子空间的研究，研究原空间是否能，以及怎么能分解为合理的不变子空间的直和，得到令人满意的简单的矩阵表示. 我们自然需要从最简单的不变子空间开始我们的研究，即一维的不变子空间.
 
-在接下来的讨论中，我们很多定义都会有相应的矩阵和映射版本. 回顾在\autoref{thm:11:线性映射对向量坐标的影响} 中的讨论，我们提到了矩阵$A$和线性映射$\sigma(\alpha)=A\alpha$的统一性，提到我们未来将不区分矩阵和线性变换，这一点在本节过后将有更深刻的体会.
+事实上，在\autoref{ex:15:不变子空间} 中，我们已经尝试求解了一维不变子空间. 根据一维空间中向量都成比例的性质，设$U$是$\sigma\in\mathcal{L}(V)$的一维不变子空间，我们有
+\[\exists\lambda\in\mathbf{F},\enspace\sigma(\alpha)=\lambda\alpha,\enspace\forall \alpha\in U,\]
+即任意向量作用线性变换后的结果与原向量成比例. 这一性质将引入接下来的特征值与特征向量的概念，事实上它们对于获得简单矩阵的目标而言非常重要，因此是我们讨论的很好的开始.
+
+在接下来的讨论中，我们很多定义和结论都会有相应的矩阵和映射版本. 回顾在\autoref{thm:11:线性映射对向量坐标的影响} 中的讨论，我们提到了矩阵$A$和线性映射$\sigma(\alpha)=A\alpha$的统一性，并且在相似的引入中我们也提到了我们的目标在线性变换和矩阵两个角度下的陈述及其关联，因此我们未来将不特别区分矩阵和线性变换，这一点在本节过后将有更深刻的体会.
 
 \subsection{特征值与特征向量的定义与求解}
 
@@ -101,11 +293,9 @@
     因此$k_1\xi_1+k_2\xi_2\in V_\lambda$，故满足线性运算封闭. 综上，$V_\lambda$是$V$的子空间.
 \end{proof}
 
-需要注意的是，线性变换$\sigma$的特征值$\lambda$对应的特征子空间除了用$V_{\lambda}$表示以外，我们也可以记为$E(\lambda,\sigma)$. 这是为了之后介绍广义特征子空间的记号统一而做的准备.
-
 事实上，我们通过之后的例子会知道，$V_\lambda$的维数不一定是1，而至少是1. 那么我们之前引入特征值特征向量时所说的``一维不变子空间''是什么呢？事实上，我们可以取$V_\lambda$的任一组基$\alpha_1,\ldots,\alpha_n$，则其中任一向量进行扩张得到的子空间$U_i=\spa(\alpha_i),\enspace i=1,\ldots,n$就是一维不变子空间，因为$\forall u_i\in U_i,\enspace \sigma(u_i)=\lambda u_i\in U_i$，即$U_i$在$\sigma$下不变. 我们还需要注意，一维不变子空间的选取是不唯一的，因为$V_\lambda$的基的选取是不唯一的，因此$U_i$的选取也是不唯一的，实际上对于任意的$\alpha\in\V_{\lambda}$，$\spa(\alpha)$都是一维不变子空间.
 
-上面是线性变换的特征值与特征向量的定义，事实上我们也有对应的矩阵的特征值与特征向量的定义：
+上面是线性变换的特征值与特征向量的定义. 然而我们有一个无法绕开的问题，就是基于线性变换计算特征值与特征向量似乎并不是一个程序化的过程. 因此我们需要求助于矩阵——这是一个适合于计算的良好工具. 对应的，我们给出矩阵的特征值与特征向量的定义：
 \begin{definition}
     设矩阵$A\in \mathbf{M}_n(\mathbf{F})$，如果存在数$\lambda\in\mathbf{F}$和非零向量$X\in\mathbf{F}^n$使得$AX=\lambda X$，则称数$\lambda$为$A$的一个特征值，称非零向量$X$为$A$属于其特征值$\lambda$的特征向量.
 \end{definition}
@@ -117,9 +307,7 @@
                            & \iff (\alpha_1,\ldots,\alpha_n)AX=(\alpha_1,\ldots,\alpha_n)(\lambda X)            \\
                            & \iff AX=\lambda X
 \end{align*}
-其中第一行与第二行间的等价关系用到了矩阵乘法一节中证明的性质$\sigma((\alpha_1,\ldots,\alpha_n)X)=(\sigma(\alpha_1,\ldots,\alpha_n))X$. 由上述讨论可知$\lambda$同时是线性变换和矩阵的特征值，与基的选取无关. 但矩阵的特征向量$X$是线性映射特征向量在基下的坐标，这与基的选取有关.
-
-接下来我们讨论如何求解特征值与特征向量. 我们首先需要证明一个定理：
+其中第一行与第二行间的等价关系用到了矩阵乘法一节中证明的性质$\sigma((\alpha_1,\ldots,\alpha_n)X)=(\sigma(\alpha_1,\ldots,\alpha_n))X$. 由上述讨论可知$\lambda$同时是线性变换和矩阵的特征值，与基的选取无关. 但矩阵的特征向量$X$是线性映射特征向量在基下的坐标，这与基的选取有关. 由于基$\alpha_1,\ldots,\alpha_n$可以是任取的，于是求解线性变换的特征值的问题完全转化为了求线性变换任意一个矩阵表示的特征值，而特征向量也仅仅是向量与坐标的关系. 于是接下来我们讨论如何具体求解特征值与特征向量. 我们首先需要证明一个定理做一个简单的观察：
 \begin{theorem}
     设$\sigma$是$V(\mathbf{F})$上的线性变换，$I$为恒等映射，则下述条件等价：
     \begin{enumerate}[label=(\arabic*)]
@@ -230,6 +418,110 @@
 即特征值按重数求和为矩阵的迹（即矩阵对角线元素之和），特征值按重数求积为矩阵行列式. 这一结论在解决某些问题时有一定作用.
 
 事实上，我们这里给出的特征多项式只是矩阵的特征多项式的定义，关于线性变换特征多项式的定义以及进一步讨论将在后续章节进行，我们也会说明两种特征多项式的定义是统一的.
+
+\subsection{相似与特征值、特征向量的关联}
+可能细心的读者已经发现，我们前面的讨论中的某个位置留下了一个bug. 我们在讨论线性变换与矩阵的特征值的关联时，提到我们可以取线性变换任意一组基下的表示矩阵来计算特征值，这些特征值就是线性变换的特征值. 事实上这暗示了一个很重要的性质：线性变换任意一组基下的矩阵都有相同的特征值，或者说，相似的矩阵就有相同的特征值，否则上面的讨论一定是有问题的. 我们在此叙述这一性质并给出证明：
+\begin{theorem}
+    相似矩阵有相同的特征多项式（逆命题不成立），即$A\sim B$有$|\lambda E-A|=|\lambda E-B|$，从而有相同的迹，行列式，特征值，但特征向量不一定相同.
+\end{theorem}
+\begin{proof}
+    设$B=P^{-1}AP$，则$|\lambda E-B|=|\lambda E-P^{-1}AP|=|P^{-1}(\lambda E-A)P|=|P^{-1}||\lambda E-A||P|=|\lambda E-A|$. 因此$A\sim B$有$|\lambda E-A|=|\lambda E-B|$.
+
+    我们知道特征多项式相同则特征值相同，迹等于所有特征值之和，行列式等于所有特征值之积，因此相似矩阵有相同的迹，行列式，特征值.
+
+    相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同.
+\end{proof}
+
+下面我们讨论一些重要的例子. 首先要引入的例子也是重要的结论，实际上在行列式一讲中已给出类似结论，但我们现在从特征值角度考虑这一结论：
+\begin{example}
+    回答以下两个问题：
+    \begin{enumerate}
+        \item \label{item:18:特征值相同:1}
+              设$A,B$均为$n$阶矩阵，证明：$\lambda\neq 0$是$AB$的特征值，则$\lambda$也是$BA$的特征值；
+
+        \item \label{item:18:特征值相同:2}
+              设$A\in \mathbf{M}_{m\times n}(\mathbf{C}),\enspace B\in \mathbf{M}_{n\times m}(\mathbf{C})$，证明：
+              \[ \begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}\sim\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix} \]
+              并由此推出$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 设$X$是$AB$属于$\lambda$的特征向量，则$ABX=\lambda X$，因此$B(ABX)=B(\lambda X)$，即$(BA)(BX)=\lambda(BX)$，因此$BX$是$BA$属于$\lambda$的特征向量，故$\lambda$也是$BA$的特征值.
+
+              实际上这里还有一点需要说明，就是$BX\neq 0$，否则它将不能作为特征向量. 事实上证明是简单的，假设$BX=0$，则$ABX=0$，由于$\lambda\neq 0$，因此必然有$X=0$，但这与$X$是$AB$属于$\lambda$的特征向量矛盾，因此$BX\neq 0$.
+
+        \item 根据分块矩阵初等变换的性质，我们可以通过不断尝试选取到$P=\begin{pmatrix}
+                      E_m & A \\ O & E_n
+                  \end{pmatrix}$，其逆矩阵为$P^{-1}=\begin{pmatrix}
+                      E_m & -A \\ O & E_n
+                  \end{pmatrix}$，我们发现恰有
+              \[\begin{pmatrix}
+                      E_m & -A \\ O & E_n
+                  \end{pmatrix}\begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}\begin{pmatrix}
+                      E_m & A \\ O & E_n
+                  \end{pmatrix}=\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix}.\]
+              因此$\begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}$与$\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix}$相似，因此它们的特征多项式相同，即
+              \[\begin{vmatrix}
+                      \lambda E_m-AB & O \\ -B & \lambda E_n
+                  \end{vmatrix}=\begin{vmatrix}
+                      \lambda E_m & O \\ -B & \lambda E_n-BA
+                  \end{vmatrix}.\]
+              根据行列式的计算性质$\begin{vmatrix}
+                      A & O \\ C & B
+                  \end{vmatrix}=|A||B|$，我们有
+              \[|\lambda E_m-AB||\lambda E_n|=|\lambda E_m||\lambda E_n-BA|,\]
+              即$\lambda^n|\lambda E_m-AB|=\lambda^m|\lambda E_n-BA|$，因此$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+    \end{enumerate}
+\end{proof}
+
+不难发现上述例子中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广，因为由\ref*{item:18:特征值相同:2} 我们得到了$|\lambda E-AB|=|\lambda E-BA|(\lambda\neq 0)$.
+
+下面这个例子非常重要，在解决一些题目时使用这一结论会更便捷：
+\begin{example}
+    （教材定理$4.10$推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
+\end{example}
+
+\begin{proof}
+    由$AX=\lambda_0 X$以及$A=PBP^{-1}$，我们有$PBP^{-1}X=\lambda_0 X$，即$BP^{-1}X=\lambda_0 P^{-1}X$，因此$P^{-1}X$是$B$属于$\lambda_0$的特征向量，即$P^{-1}X$是$B$的特征向量，即$Y=P^{-1}X$.
+\end{proof}
+
+实际上本题是教材定理4.10（或本讲义\autoref{thm:11:基的选择对向量坐标的影响}）的推论，原因在于$P^{-1}AP=B$说明$A$和$B$是同一个线性变换（设为$\sigma$）在不同基下的矩阵，因此$X$和$Y$只是$\sigma$关于$\lambda_0$在两组基下的坐标，因此二坐标之间相差一个过渡矩阵.
+
+最后我们谈一个拓展题型，我们考虑矩阵方程$AX-XB=O$，若$A,B$都是$n$阶方阵且$X$可逆，则方程可以改写为$X^{-1}AX=B$，即$A$与$B$相似. 事实上，这一矩阵方程的解空间的维数实际上刻画了$A$与$B$的相似程度. 我们有如下结论：
+\begin{theorem}
+    设$A,B$分别为数域$\mathbf{F}$上$n$阶、$m$阶方阵，$A,B$有$r$个两两不等的公共特征值，则矩阵方程$AX-XB=O$有秩为$r$的矩阵解. 反之，若数域为复数域，矩阵方程$AX-XB=O$有秩为$r$的矩阵解，则$A,B$至少有$r$个公共的特征值（计重数）.
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+
+        \item
+    \end{enumerate}
+\end{proof}
+
+由此可以看出，复数域上$n$阶、$m$阶方阵$A,B$的矩阵方程$AX=XB$只有零解的充要条件是$A,B$没有公共特征值. 我们通过一个例子应用这一定理：
+\begin{example}
+    设$m$阶矩阵$A$与$n$阶矩阵$B$无公共复特征值，$C$为$m\times n$矩阵，则矩阵方程$AX-XB=C$存在唯一解.
+\end{example}
+
+\begin{proof}
+    设$V$是所有$m\times n$矩阵构成的线性空间，定义$V$上的线性变换$\sigma(X)=AX-XB,\enspace X\in V$. 由于$A$和$B$无公共复特征值，所以$\sigma(X)=AX-XB=O$只有零解，即$\sigma$为$V$上单射，由\autoref{thm:6:双射等价条件} 可知$\sigma$是满射且是同构映射. 于是，对任意的$C\in V$，都存在唯一的$X_0\in V$使得$\sigma(X_0)=C$，即矩阵方程$AX-XB=C$存在唯一解$X_0$.
+\end{proof}
 
 \subsection{特征值的基本性质}
 
@@ -456,9 +748,9 @@
 
 \end{proof}
 
-\subsection{实数域与复数域的讨论}
+\section{实数域与复数域的讨论}
 
-在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）. 实际上上面的讨论都是与数域无关的，即无论是什么数域上面的定理都是成立的. 然而，从\autoref{ex:18:不变子空间} 中我们看到实数域和复数域可能有本质的不同，即特征值的存在性可能存在差别. 事实上，这是\autoref{thm:17:多项式分解} 的必然结果，因为复数域上$n$次多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
+在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）. 实际上上面的讨论都是与数域无关的，即无论是什么数域上面的定理都是成立的. 然而，从\autoref{ex:15:不变子空间} 中我们看到实数域和复数域可能有本质的不同，即特征值的存在性可能存在差别. 事实上，这是\autoref{thm:14:多项式分解} 的必然结果，因为复数域上$n$次多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
 
 因此我们有必要分别讨论在复数域和实数域条件下特征值与特征向量的不同性质，事实上我们将在实空间上的线性变换一讲中单独深入讨论这一主题，但现在我们需要几个定理来引入这一话题并为接下来的讨论作准备：
 \begin{theorem}\label{thm:18:复数域上的特征值}
@@ -530,6 +822,8 @@
 
 在更高维的情况也是类似的，矩阵也可以表示为一个旋转向量的矩阵乘以一个伸缩向量的矩阵，旋转角度是复特征值的辐角，伸缩倍数是复特征值的模长.
 
+\section{特征值的估计}
+
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
@@ -593,6 +887,18 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
+    \item 设$\sigma\in \mathcal{L}(V,W)$，定义$\widetilde{\sigma}:(V/(\ker \sigma))\to W$如下：
+    \[\widetilde{\sigma}(v+\ker\sigma)=\sigma(v).\]
+    \begin{enumerate}
+        \item $\widetilde{\sigma}$是良定义的，且是$(V/(\ker \sigma))$到$W$上的线性映射；
+
+        \item $\widetilde{\sigma}$是单射；
+
+        \item $\im \widetilde{\sigma}=\im \sigma$；
+
+        \item $V/(\ker \sigma)$同构于$\im \sigma$.
+    \end{enumerate}
+
     \item 设$T\in \mathcal{L}(V)$，证明：$T$是数乘变换（即$T=cI_V$，其中$c$为非零常数，$I_V$为$V$上的恒等映射）的充要条件是$V$的每一个一维子空间都是$T$的不变子空间.
 
     \item 设$\sigma\in \mathcal{L}(V)$，证明：
