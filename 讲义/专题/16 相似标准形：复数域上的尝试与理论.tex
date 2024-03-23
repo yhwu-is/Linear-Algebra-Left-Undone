@@ -1,40 +1,142 @@
 \chapter{相似标准形：复数域上的尝试与理论}
 
 \section{对角矩阵}
+% 可对角化和数域无关
+\subsection{可对角化的条件}
 
-在介绍完相似的概念和基本性质后，我们便可以讨论如何寻找一组基使得线性变换的矩阵表示是一个很简单的矩阵，因为其它不够简单的矩阵只是线性变换在其他基下的表示，因此其他矩阵都与这一很简单的矩阵相似，因此称这一很简单的矩阵为相似标准形.
+在介绍完相似的概念和基本性质后，我们便可以讨论如何寻找一组基使得线性变换的矩阵表示是一个很简单的矩阵，即寻找合适的相似标准形. 我们从复数域开始，因为在上一讲\autoref{thm:15:复数域上的特征值}我们提到了复数域上的线性变换或矩阵必有特征值，并且根据\autoref{thm:14:代数学基本定理}可知特征值重数之和必定等于线性空间的维数（本讲在复数域下讨论，因此都承认这一点），而实数域则不一定，而特征值保证了一维不变子空间的存在，有很好的性质，因此我们可以先从复数域开始尝试. 并且我们就可以从一维不变子空间入手，因为\autoref{thm:15:不变子空间与分块对角矩阵}告诉我们，如果线性空间$V$能分解为$\sigma\in\mathcal{L}(V)$的一维不变子空间的直和，那么每个分块都是大小为1的分块，那么矩阵将会是对角矩阵——这是我们能想到的最简单的矩阵之一了. 我们将这一定理严谨陈述如下：
+\begin{theorem} \label{thm:16:对角矩阵等价一维不变子空间}
+    $n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$在基$B=\{\alpha_1,\cdots,\alpha_n\}$下的表示矩阵为对角矩阵$\diag(d_1,\cdots,d_n)$，当且仅当$V$能分解为$\sigma$的一维不变子空间的直和，即$V=U_1\oplus\cdots\oplus U_n$，其中$U_i=\spa(\alpha_i),\enspace i=1,\cdots,n$是$\sigma$的一维不变子空间.
+\end{theorem}
+\begin{proof}
+    必要性我们直接写出线性映射矩阵表示的定义即可：
+    \[\sigma(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)\begin{pmatrix}
+            d_1 &        &        \\
+                & \ddots &        \\
+                &        & d_n
+        \end{pmatrix},\]
+    展开可得$\sigma(\alpha_i)=d_i\alpha_i$，故$\alpha_i$是$\sigma$的特征向量，$U_i=\spa(\alpha_i)$是$\sigma$的一维不变子空间，并且由于$\alpha_1,\cdots,\alpha_n$是一组基，因此$U_1\oplus\cdots\oplus U_n=V$. 反之直接将上述过程逆回即可写出对角化的矩阵表示.
+\end{proof}
 
-我们心中最简单的矩阵除了全零的矩阵外可能就是只有对角线非零的矩阵了. 这样的矩阵我们称为对角矩阵，本节我们将探讨什么情况下线性变换可以找到一组基使得表示矩阵为对角矩阵，以及如何求解出对角矩阵以及对应的基.
+在上述定理中，线性变换在一组基下矩阵表示为对角矩阵，这样的线性变换我们称其为可对角化的，我们将这一定义严谨写下：
+\begin{definition}
+    设$\sigma\in\mathcal{L}(V)$，如果存在$V$的一组基使得$\sigma$在这组基下的矩阵是对角矩阵，则称$\sigma$可对角化
+\end{definition}
+
+在上述定理的证明中我们可以直接观察到，如果一个线性变换可对角化，那么对应于对角矩阵的基中每一个向量必然是特征向量，因此我们很容易想到可对角化的下一个等价条件就是线性变换有一组由特征向量构成的基. 当然这只是一个观察，基于这一观察我们可以进一步扩展，得到下面这一关于线性变换可对角化等价条件的核心定理：
+\begin{theorem} \label{thm:16:可对角化条件}
+    设$V$是数域$\mathbf{F}$上的$n$维线性空间，$\sigma$是$V$上的线性变换，$\lambda_1,\lambda_2,\ldots,\lambda_s\in\mathbf{F}$是$\sigma$的所有互异特征值，则以下条件等价：
+    \begin{enumerate}
+        \item \label{item:16:可对角化条件:1}
+              $\sigma$可对角化；
+
+        \item \label{item:16:可对角化条件:2}
+              $\sigma$有$n$个线性无关的特征向量，它们构成$V$的一组基；
+
+        \item \label{item:16:可对角化条件:3}
+              $V$有在$\sigma$下不变的一维子空间$U_1,\ldots,U_n$，使得$V=U_1\oplus\cdots\oplus U_n$.
+
+        \item \label{item:16:可对角化条件:4}
+              $V=V_{\lambda_1}\oplus V_{\lambda_2}\oplus\cdots\oplus V_{\lambda_s}$；
+
+        \item \label{item:16:可对角化条件:5}
+              $n=\dim V_{\lambda_1}+\dim V_{\lambda_2}+\cdots+\dim V_{\lambda_s}$；
+
+        \item \label{item:16:可对角化条件:6}
+              $\sigma$每个特征值的代数重数等于几何重数.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{itemize}
+        \item[\ref*{item:16:可对角化条件:1}$\implies$\ref*{item:16:可对角化条件:2}] 根据我们在推导求解线性变换对角矩阵流程时的分析，这一结论是成立的；
+
+        \item[\ref*{item:16:可对角化条件:2}$\implies$\ref*{item:16:可对角化条件:3}] 由于$\sigma$有$n$个线性无关的特征向量，记为$\alpha_1,\ldots,\alpha_n$，则令$U_i=\spa(\alpha_i)$，则$U_i$是$\sigma$的不变子空间（因为$\sigma(\alpha_i)=\lambda\alpha_i\in U_i,\enspace\forall\alpha_i\in U_i$），且$V=U_1\oplus\cdots\oplus U_n$；
+
+        \item[\ref*{item:16:可对角化条件:3}$\implies$\ref*{item:16:可对角化条件:4}] 我们将这些$U_i$中包含的向量按属于哪个$\lambda_i$的特征向量进行分类，然后每一类内的$U_i$进行直和即可得到特征子空间. 根据\autoref{thm:4:多空间直和} 可知结论成立；
+
+        \item[\ref*{item:16:可对角化条件:4}$\implies$\ref*{item:16:可对角化条件:5}] 根据\hyperref[thm:4:直和等价命题]{直和的维数公式}显然成立；
+
+        \item[\ref*{item:16:可对角化条件:5}$\implies$\ref*{item:16:可对角化条件:6}] 设$\lambda_1,\ldots,\lambda_s$的代数重数为$r_1,\ldots,r_s$，则$n=r_1+\cdots+r_s$，又根据\autoref{thm:18:代数重数与几何重数}，$\dim V_{\lambda_i}\leqslant r_i,\enspace i=1,\ldots,s$，因此由$n=\dim V_{\lambda_1}+\cdots+\dim V_{\lambda_s}$可知必须有$\dim V_{\lambda_i}=r_i,\enspace i=1,\ldots,s$，即每个特征值的代数重数等于几何重数；
+
+        \item[\ref*{item:16:可对角化条件:6}$\implies$\ref*{item:16:可对角化条件:1}] 由于每个特征值的代数重数等于几何重数，因此特征子空间维数之和为$n$，故存在$n$个线性无关的特征向量，根据我们在推导求解线性变换对角矩阵流程时的分析，这表明$\sigma$可对角化.
+    \end{itemize}
+\end{proof}
+
+我们有一个显然的推论如下：
+\begin{corollary}\label{cor:19:可对角化必要条件}
+    若$n$维空间上的线性变换$\sigma$有$n$个不同的特征值，则$\sigma$可对角化. 反之，$\sigma$可对角化不一定有$n$个特征值.
+\end{corollary}
+
+\begin{proof}
+    若$n$维空间上的线性变换$\sigma$有$n$个不同的特征值$\lambda_1,\ldots,\lambda_n$，设$v_1,\ldots,v_n$分别是$\lambda_1,\ldots,\lambda_n$对应的特征向量，由于$v_1,\ldots,v_n$线性无关，因此$v_1,\ldots,v_n$构成$V$的一组基，故$\sigma$可对角化.
+
+    反之，我们只需要举出最简单的反例，例如$\sigma=I_V$，即$V$上的恒等映射，它的特征值只有一个，即$\lambda=1$，但它可对角化（因为在任意一组基下的矩阵都是单位矩阵）.
+\end{proof}
+
+我们知道线性变换在不同基下的表示矩阵是相似的，因此我们完全可以将可对角化的概念推广到矩阵上：
+\begin{definition}
+    设$A\in\mathbf{F}^{n\times n}$，如果存在可逆矩阵$P$使得$P^{-1}AP$是对角矩阵，则称$A$可对角化（等价于$A$相似于对角矩阵）.
+\end{definition}
+显然的，矩阵的可对角化与线性变换可对角化之间的关联是密不可分的. 因为如果线性变换$\sigma$可对角化，则它的任意一组基$B_1$下的表示矩阵$A$都是可对角化的. 原因在于$\sigma$在某组基$B_2$下的矩阵是对角矩阵$\varLambda$，因此$A$和$\varLambda$是$\sigma$在两组基下的表示矩阵，因此$A$相似于对角矩阵，故$A$可对角化. 反之亦然，若$\sigma$的任意一组基下的表示矩阵$A$可对角化，这说明$A$相似于对角矩阵，因此$\sigma$在某一组基下的矩阵是对角矩阵，因此$\sigma$可对角化.
+
+我们很多时候会直接讨论矩阵的可对角化，因此自然的，我们希望得到矩阵可对角化的等价条件. 只需回顾矩阵和线性变换特征值与特征向量的对应关系（特征值一致，特征向量有坐标的关系），我们可以将以上线性变换可对角化的结果都推广到矩阵的可对角化上（除矩阵我们没有讨论不变子空间外）：
+\begin{theorem}
+    设$A$是数域$\mathbf{F}$上的$n$阶矩阵，$\lambda_1,\lambda_2,\ldots,\lambda_s\in\mathbf{F}$是$A$的所有互异特征值，则以下条件等价：
+    \begin{enumerate}
+        \item $A$可对角化；
+        \item $A$有$n$个线性无关的特征向量，它们构成$\mathbf{F}^n$的一组基；
+        \item $n=\dim V_{\lambda_1}+\dim V_{\lambda_2}+\cdots+\dim V_{\lambda_s}$；
+        \item $A$每个特征值的代数重数等于几何重数.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    若$n$阶矩阵$A$有$n$个不同的特征值，则$A$可对角化. 反之，$A$可对角化不一定有$n$个特征值.
+\end{corollary}
+
+实际上由特征值的性质，我们容易知道数域$\mathbf{F}$上矩阵$A$（或$\sigma\in\mathcal{L}(V)$）可对角化，对于数域$\mathbf{F}$上任意多项式$f(x)$，$f(A)$（或$f(\sigma)$）也可对角化，且$A$（或$\sigma$）可逆时，$A^{-1}$（或$A^{-1}$）和$A^*$也可对角化（我们只证明矩阵版本，线性映射完全一致，除了没有定义伴随矩阵对应的线性映射）：
+
+\begin{proof}
+    根据我们对特征值性质的讨论，若$A$有特征值$\lambda$，则$f(A)$对应的特征值为$f(\lambda)$，且$A$可逆时，$A^{-1}$和$A^*$有特征值$\lambda^{-1}$和$|A|\lambda^{-1}$，并且相应的特征向量保持不变，因此特征子空间都不变，一定也能保证特征子空间直和为$V$，因此它们都可对角化.
+\end{proof}
+
+得到了可对角化的等价条件后，我们自然有一个美好的愿景：如果每个线性变换和矩阵都是可对角化的，那么我们关于相似标准形的讨论似乎就可以结束了——对角化很显然是个能令人满意的结局！然而事与愿违，并非所有的线性变换和矩阵都是可对角化的，如下面的例子：
+\begin{example} \label{ex:16:若当块不可对角化}
+    证明$r$阶上三角矩阵$(r>1)$
+    \[J_0=\begin{pmatrix}
+            \lambda_0 & 1         &        &           \\
+                      & \lambda_0 & \ddots &           \\
+                      &           & \ddots & 1         \\
+                      &           &        & \lambda_0
+        \end{pmatrix}\]
+    不与对角阵相似.
+\end{example}
+
+\begin{solution}
+    首先求出特征多项式为$f(\lambda)=|\lambda E-J_0|=(\lambda-\lambda_0)^r$，因此$J_0$只有一个特征值$\lambda_0$，且代数重数为$r$.
+
+    接下来求几何重数，即$J_0X=\lambda_0X$的解空间维数，即$(\lambda_0 E-J_0)X=0O$的解空间维数，事实上由于$r(\lambda_0 E-J_0)=r-1$，因此解空间维数为$r-(r-1)=1$，即几何重数为$1<r$，因此不可对角化.
+\end{solution}
+
+事实上，上例中的矩阵我们称之为若当块矩阵，我们未来将会有完整第一讲来介绍这一类型矩阵，因为它在我们的讨论中具有非常重要的地位——不可对角化的线性变换能得到的最简单的矩阵表示就是由多个若当块矩阵构成的，因此得到这一矩阵形式将是我们未来讨论的一大目标，这也同时宣告了将对角化作为终极目标的失败.
 
 \subsection{对角化问题的一般解法}
 
-首先我们需要说明可对角化的定义，事实上线性变换和矩阵都有相应的定义：
-\begin{definition}
-    \begin{enumerate}
-        \item 线性变换可对角化：设$\sigma\in\mathcal{L}(V)$，如果存在$V$的一组基使得$\sigma$在这组基下的矩阵是对角矩阵，则称$\sigma$可对角化；
-
-        \item 矩阵可对角化：设$A\in\mathbf{F}^{n\times n}$，如果存在可逆矩阵$P$使得$P^{-1}AP$是对角矩阵，则称$A$可对角化（等价于$A$相似于对角矩阵）.
-    \end{enumerate}
-\end{definition}
-
-事实上这两者之间的关联是密不可分的. 因为如果线性变换$\sigma$可对角化，则它的任意一组基$B_1$下的表示矩阵$A$都是可对角化的. 原因在于$\sigma$在某组基$B_2$下的矩阵是对角矩阵$\varLambda$，因此$A$和$\varLambda$是$\sigma$在两组基下的表示矩阵，因此$A$相似于对角矩阵，故$A$可对角化. 反之亦然，若$\sigma$的任意一组基下的表示矩阵$A$可对角化，这说明$A$相似于对角矩阵，因此$\sigma$在某一组基下的矩阵是对角矩阵，因此$\sigma$可对角化.
-
-在本小节中，我们先探讨如下题型：我们假定线性映射$\sigma$和矩阵$A$可对角化，那么如何解出这一对角矩阵，以及解出
+在得到线性变换和矩阵可对角化的充要条件后，我们关心如何求解一个可对角化的线性变换和矩阵对应的对角矩阵，以及解出
 \begin{enumerate}
     \item $\sigma$在何组基下的矩阵是对角矩阵；
 
     \item 什么样的矩阵$P$使得$P^{-1}AP$是对角矩阵.
 \end{enumerate}
 
-我们将分别进行讨论. 我们先讨论矩阵的情况. 将$P^{-1}AP=\varLambda$变形为$AP=P\varLambda$，并将矩阵$P$按列分块为$P=(X_1,X_2,\ldots,X_n)$，则有
+我们将分别进行讨论. 我们先讨论矩阵的情况. 我们已知$A$可对角化，那么存在可逆矩阵$P$使得$P^{-1}AP$是对角矩阵. 为了求解出$P$，将$P^{-1}AP=\varLambda$变形为$AP=P\varLambda$，并将矩阵$P$按列分块为$P=(X_1,X_2,\ldots,X_n)$，则有
 \[A(X_1,X_2,\ldots,X_n)=(X_1,X_2,\ldots,X_n)\diag(\lambda_1,\lambda_2,\ldots,\lambda_n),\]
-利用分块矩阵乘法我们有$AX_j=\lambda_jX_j\enspace(X_j\neq 0,\enspace j=1,2,\ldots,n)$. 由于$P$是可逆矩阵，因此其列向量必然构成$\mathbf{F}^n$的一组基，即$A$相似于对角矩阵当且仅当$A$有$n$个线性无关的特征向量，并且这些特征向量按列排列就是我们要求解的$P$.
+利用分块矩阵乘法我们有$AX_j=\lambda_jX_j\enspace(X_j\neq 0,\enspace j=1,2,\ldots,n)$. 由于$P$是可逆矩阵，因此其列向量必然构成$\mathbf{F}^n$的一组基，这与$A$可对角化当且仅当$A$有$n$个线性无关的特征向量是一致的，并且这些线性无关的特征向量按列排列就是我们要求解的$P$.
 
 对于线性变换我们也可以做类似的分析. 事实上，若$\sigma$可对角化，我们可以简要做以下分析. 设$\sigma$在$V$的一组基$\alpha_1,\ldots,\alpha_n$下的矩阵为对角矩阵$\varLambda=\diag(\lambda_1,\ldots,\lambda_n)$，由线性映射矩阵表示的定义，这等价于
 \[\sigma(\alpha_i)=\lambda_i\alpha_i\enspace(i=1,\ldots,n),\]
-即$\alpha_1,\ldots,\alpha_n$是$\sigma$的$n$个线性无关的特征向量，因此$\sigma$可对角化当且仅当$\sigma$有$n$个线性无关的特征向量，并且这$n$个特征向量就是使得$\sigma$矩阵表示为对角矩阵的那组基.
-
-然而，如果我们直接求解线性变换的对角问题有一个很大的问题，即我们实际上没有程序化的方法求解特征值和特征向量. 如果给定的映射形式比较简单，可能可以试出结果，但很多时候我们很难解出特征值和特征向量. 但回顾矩阵$A$的特征值只需求解$|\lambda E-A|=0$，特征向量只需要在得到$\lambda$后解线性方程组$AX=\lambda X$即可. 但我们可以回顾上一讲中推导的线性变换和矩阵特征值、特征向量的关联，我们知道线性变换$\sigma$与其在任意一组基$B$下的矩阵$A$有相同的特征值，且$A$的特征向量是$\sigma$特征向量在$B$下的坐标. 因此我们可以``曲线救国''，得到求解对角化问题的一般流程如下：
+即$\alpha_1,\ldots,\alpha_n$是$\sigma$的$n$个线性无关的特征向量，并且这$n$个特征向量就是使得$\sigma$矩阵表示为对角矩阵的那组基，于是只需求出$n$个线性无关的特征向量即可完成对角化任务，然而，我们会遇到上一讲中提到的问题，即没有程序化的方法求解线性变换的特征值和特征向量. 但我们知道线性变换$\sigma$与其在任意一组基$B$下的矩阵$A$有相同的特征值，且$A$的特征向量是$\sigma$特征向量在$B$下的坐标. 因此我们可以``曲线救国''，得到求解线性变换的对角化问题的一般流程如下：
 
 \begin{enumerate}
     \item 先任意写出$\sigma$在一组基$B$下的矩阵$A$，当然为了计算方便一般选取自然基；
@@ -124,67 +226,9 @@
         \end{pmatrix}.\]
 \end{solution}
 
-\subsection{可对角化的条件}
+\subsection{可对角化的经典例子}
 
-在我们推导求解对角化问题的一般流程时，我们提到了一个条件：矩阵$A$可对角化当且仅当$A$有$n$个线性无关的特征向量，线性变换$\sigma$可对角化当且仅当$\sigma$有$n$个线性无关的特征向量. 这一条件是非常重要的，基于这一观察我们可以扩展到下面这一定理：
-\begin{theorem}
-    设$V$是数域$\mathbf{F}$上的$n$维线性空间，$\sigma$是$V$上的线性变换，$\lambda_1,\lambda_2,\ldots,\lambda_s\in\mathbf{F}$是$\sigma$的所有互异特征值，则以下条件等价：
-    \begin{enumerate}
-        \item \label{item:19:可对角化条件:1}
-              $\sigma$可对角化；
-
-        \item \label{item:19:可对角化条件:2}
-              $\sigma$有$n$个线性无关的特征向量，它们构成$V$的一组基；
-
-        \item \label{item:19:可对角化条件:3}
-              $V$有在$\sigma$下不变的一维子空间$U_1,\ldots,U_n$，使得$V=U_1\oplus\cdots\oplus U_n$.
-
-        \item \label{item:19:可对角化条件:4}
-              $V=V_{\lambda_1}\oplus V_{\lambda_2}\oplus\cdots\oplus V_{\lambda_s}$；
-
-        \item \label{item:19:可对角化条件:5}
-              $n=\dim V_{\lambda_1}+\dim V_{\lambda_2}+\cdots+\dim V_{\lambda_s}$；
-
-        \item \label{item:19:可对角化条件:6}
-              $\sigma$每个特征值的代数重数等于几何重数.
-    \end{enumerate}
-\end{theorem}
-实际上对于矩阵我们有对应的定理（除了矩阵没有不变子空间外，其余将线性变换替换为矩阵即可），此处不再赘述. 下面我们简要证明这一定理：
-
-\begin{proof}
-    \begin{itemize}
-        \item[\ref*{item:19:可对角化条件:1}$\implies$\ref*{item:19:可对角化条件:2}] 根据我们在推导求解线性变换对角矩阵流程时的分析，这一结论是成立的；
-
-        \item[\ref*{item:19:可对角化条件:2}$\implies$\ref*{item:19:可对角化条件:3}] 由于$\sigma$有$n$个线性无关的特征向量，记为$\alpha_1,\ldots,\alpha_n$，则令$U_i=\spa(\alpha_i)$，则$U_i$是$\sigma$的不变子空间（因为$\sigma(\alpha_i)=\lambda\alpha_i\in U_i,\enspace\forall\alpha_i\in U_i$），且$V=U_1\oplus\cdots\oplus U_n$；
-
-        \item[\ref*{item:19:可对角化条件:3}$\implies$\ref*{item:19:可对角化条件:4}] 我们将这些$U_i$中包含的向量按属于哪个$\lambda_i$的特征向量进行分类，然后每一类内的$U_i$进行直和即可得到特征子空间. 根据\autoref{thm:4:多空间直和} 可知结论成立；
-
-        \item[\ref*{item:19:可对角化条件:4}$\implies$\ref*{item:19:可对角化条件:5}] 根据\hyperref[thm:4:直和等价命题]{直和的维数公式}显然成立；
-
-        \item[\ref*{item:19:可对角化条件:5}$\implies$\ref*{item:19:可对角化条件:6}] 设$\lambda_1,\ldots,\lambda_s$的代数重数为$r_1,\ldots,r_s$，则$n=r_1+\cdots+r_s$，又根据\autoref{thm:18:代数重数与几何重数}，$\dim V_{\lambda_i}\leqslant r_i,\enspace i=1,\ldots,s$，因此由$n=\dim V_{\lambda_1}+\cdots+\dim V_{\lambda_s}$可知必须有$\dim V_{\lambda_i}=r_i,\enspace i=1,\ldots,s$，即每个特征值的代数重数等于几何重数；
-
-        \item[\ref*{item:19:可对角化条件:6}$\implies$\ref*{item:19:可对角化条件:1}] 由于每个特征值的代数重数等于几何重数，因此特征子空间维数之和为$n$，故存在$n$个线性无关的特征向量，根据我们在推导求解线性变换对角矩阵流程时的分析，这表明$\sigma$可对角化.
-    \end{itemize}
-\end{proof}
-
-我们有一个显然的推论如下：
-\begin{corollary}\label{cor:19:可对角化必要条件}
-    若$n$维空间上的线性变换$\sigma$有$n$个不同的特征值，则$\sigma$可对角化. 反之，$\sigma$可对角化不一定有$n$个特征值.
-\end{corollary}
-
-\begin{proof}
-    若$n$维空间上的线性变换$\sigma$有$n$个不同的特征值$\lambda_1,\ldots,\lambda_n$，设$v_1,\ldots,v_n$分别是$\lambda_1,\ldots,\lambda_n$对应的特征向量，由于$v_1,\ldots,v_n$线性无关，因此$v_1,\ldots,v_n$构成$V$的一组基，故$\sigma$可对角化.
-
-    反之，我们只需要举出最简单的反例，例如$\sigma=I_V$，即$V$上的恒等映射，它的特征值只有一个，即$\lambda=1$，但它可对角化（因为在任意一组基下的矩阵都是单位矩阵）.
-\end{proof}
-
-实际上由特征值的性质，我们容易知道数域$\mathbf{F}$上矩阵$A$可对角化，对于数域$\mathbf{F}$上任意多项式$f(x)$，$f(A)$也可对角化，且$A$可逆时，$A^{-1}$和$A^*$也可对角化.
-
-\begin{proof}
-    根据我们对特征值性质的讨论，若$A$有特征值$\lambda$，则$f(A)$对应的特征值为$f(\lambda)$，且$A$可逆时，$A^{-1}$和$A^*$有特征值$\lambda^{-1}$和$|A|\lambda^{-1}$，并且相应的特征向量保持不变，因此特征子空间都不变，一定也能保证特征子空间直和为$V$，因此它们都可对角化.
-\end{proof}
-
-接下来我们将给出一些基本的例子来运用上面的定理：
+接下来我们将给出一些综合性的经典例子来运用上面的可对角化等价条件以及对角化过程：
 \begin{example}
     线性变换 $T : \mathbf{R}^3 \to \mathbf{R}^3$ 的定义是：
     \[T(x_1,x_2,x_3)=(4x_1+x_3,2x_1+3x_2+2x_3,x_1+4x_3)\]
@@ -212,25 +256,6 @@
         \item 对于$\lambda=3$，我们求解$(T-3I)\alpha$得到特征向量（其中令$\alpha=(x_1,x_2,x_3)$），解得$\alpha_1=(1,0,-1)^\mathrm{T},\alpha_2=(0,1,0)^\mathrm{T}$，因此$T$在$\lambda=3$时的特征子空间为$V_3=\spa(\alpha_1,\alpha_2)$，维数为2，因此$\lambda=3$时代数重数与几何重数相等. 而$\lambda=5$是一重特征值，因此也必有代数重数与几何重数相等（因为一定有特征向量，那么特征子空间维数至少为1，再结合代数重数大于等于几何重数可知，特征子空间维数恰为1）. 因此$T$可对角化.
     \end{enumerate}
 \end{solution}
-
-\begin{example} \label{ex:16:若当块不可对角化}
-    证明$r$阶上三角矩阵$(r>1)$
-    \[J_0=\begin{pmatrix}
-            \lambda_0 & 1         &        &           \\
-                      & \lambda_0 & \ddots &           \\
-                      &           & \ddots & 1         \\
-                      &           &        & \lambda_0
-        \end{pmatrix}\]
-    不与对角阵相似.
-\end{example}
-
-\begin{solution}
-    首先求出特征多项式为$f(\lambda)=|\lambda E-J_0|=(\lambda-\lambda_0)^r$，因此$J_0$只有一个特征值$\lambda_0$，且代数重数为$r$.
-
-    接下来求几何重数，即$J_0X=\lambda_0X$的解空间维数，即$(\lambda_0 E-J_0)X=0O$的解空间维数，事实上由于$r(\lambda_0 E-J_0)=r-1$，因此解空间维数为$r-(r-1)=1$，即几何重数为$1<r$，因此不可对角化.
-\end{solution}
-
-事实上，上例中的矩阵我们称之为若当块矩阵，我们未来将会有完整第一章来介绍这一类型矩阵，因为它在我们的讨论中具有非常重要的地位——不可对角化的线性变换能得到的最简单的矩阵表示就是由多个若当块矩阵构成的，因此得到这一矩阵形式将是我们未来讨论的一大目标.
 
 \begin{example}\label{ex:19:秩1矩阵可对角化}
     设$\alpha$和$\beta$是$\mathbf{R}^n\enspace (n>1)$中两个列向量，$A=\alpha\beta^\mathrm{T}\neq O$.
@@ -360,6 +385,272 @@
 
 事实上，在一般的教材中还会专门探讨实对称矩阵的对角化问题. 这一问题涉及到后续要讲解的正交概念，因此我们会在内积空间上的线性变换中通过谱定理讨论这一问题. 届时我们将讨论在内积空间中的线性变换满足什么条件时一定可以对角化.
 
+\section{分块对角矩阵}
+
+\subsection{核空间的性质}
+
+我们仍然循着\autoref{thm:15:不变子空间与分块对角矩阵}提供的范式寻找相似标准形，即我们的目标仍然是寻找线性空间的一个不变子空间分解。我们知道线性变换不可对角化实际上是因为它没有足够多的线性无关的特征向量，也即特征子空间直和后比原空间略小，因此基于特征子空间这一不变子空间的直和分解并不对所有线性变换成立，于是我们很自然地会有一个想法，即我们能否将线性变换的特征子空间进行某种扩张，使得扩张后的特征子空间的直和能够张成整个线性空间呢？如果这样可行我们至少可以得到一个分块对角矩阵，这样的矩阵大概在我们可接受的相似标准形内.
+
+事实上，这一想法是完全可行的，因为只要我们观察到$\sigma$在特征值$\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$，并且我们敏锐的直觉能让我们想起我们曾经讲过核空间可以扩张的性质（\autoref{thm:6:核空间性质}），这一想法便已经找到了依据，为了讨论的方便我们重新叙述一下核空间扩张的性质：
+\begin{theorem}\label{thm:16:核空间性质}
+    设$\sigma\in \mathcal{L}(V)$，则有
+    \begin{enumerate}
+        \item $\{0\}=\ker \sigma^0\subseteq\ker \sigma^1\subseteq\cdots\subseteq\ker \sigma^k\subseteq\ker \sigma^{k+1}\subseteq\cdots$；
+
+        \item 设$m$是非负整数使得$\ker \sigma^m=\ker \sigma^{m+1}$，则
+              \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
+
+        \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+1}=\cdots$.
+    \end{enumerate}
+\end{theorem}
+
+回忆核空间讨论的内容，我们知道这一定理还有一个自然的推论：
+\begin{theorem} \label{thm:16:核空间扩张分解}
+    设$\sigma\in\mathcal{L}(V)$，设$n=\dim V$，则$V=\ker \sigma^n\oplus \im \sigma^n$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+因此，如果我们考虑$\ker(\sigma-\lambda I)^n$，其中$n$是$\sigma$对应线性空间的维数，那么我们可以获得比特征子空间更大的核空间，这样扩张后的核空间的直和是否可以张成整个原空间呢？我们可以提前给出答案：可以，这便是我们下一小节中要证明的主要定理，在此之前，我们需要首先给这一扩张后的特征子空间一个新的名字.
+
+\subsection{广义特征子空间与分块对角矩阵}
+
+\begin{definition}
+    设$V$是$n$维线性空间，$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$\sigma$的特征值，若向量$v\neq 0$且存在正整数$j$使得$(\sigma-\lambda I)^jv=0$，则称$v$为$\sigma$对应于$\lambda$的\term{广义特征向量}\index{tezhengxiangliang!guangyi@广义 (generalized eigenvector)}. $\sigma$对应于$\lambda$的全体广义特征向量与0向量构成的集合称为$\sigma$相应于$\lambda$的\term{广义特征子空间}\index{tezhengzikongjian!guangyi@广义 (generalized eigenspace)}，记为$G(\lambda,\sigma)$，在不引起歧义的情况下也可以省略线性变换记为$G_\lambda$.
+\end{definition}
+
+实际上，根据\autoref{thm:16:核空间性质}提到的核空间停止增长的性质，我们有$G_\lambda=\ker (\sigma-\lambda I)^n$，这也对应于上一小节末的讨论. 注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，$(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
+
+类似于特征值与特征向量的讨论，对于矩阵我们也可以讨论广义特征向量，实际上就是满足存在正整数$j$使得$(A-\lambda I)^jv=0$的向量$v$，这样的向量称为矩阵$A$对应于特征值$\lambda$的广义特征向量. 对于$n$阶矩阵，$A^kX=0$的解空间与核空间的性质也是完全一致的，因此广义特征子空间就等于$\ker(A-\lambda E)^n$. 为了我们叙述的简洁性，后面矩阵的等价表述我们就不再给出，读者完全可以自行推导.
+
+在定义了特征子空间的扩张后，我们接下来的目标转向我们的主要定理，即证明这样的扩张的确能使得对任意线性变换，扩张得到的广义特征子空间是不变子空间，并且它们的和为直和，且直和为原空间，这三点缺一不可，否则都无法满足\autoref{thm:15:不变子空间与分块对角矩阵}的要求. 接下来我们就来叙述并证明这一定理.
+\begin{theorem} \label{thm:16:广义特征性质}
+    设$V$是复数域上的$n$维线性空间，$\sigma\in \mathcal{L}(V)$. 用$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值.
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{item:16:广义特征性质:1}
+              每个$(\sigma-\lambda_j I)\vert_{G_{\lambda_j}}$都是幂零的；
+
+        \item 每个$G_{\lambda_i}$在$\sigma$下都是不变的；
+
+        \item $\sigma$对应于不同特征值的广义特征向量线性无关，故不同特征值对应的广义特征子空间的和为直和；
+
+        \item \label{item:16:广义特征性质:4}
+              $V=G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_m}$，故$V$有一组由$\sigma$的广义特征向量组成的基.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item $\forall v\in G_{\lambda_i}$，则根据$G_{\lambda_i}$定义可知$(\sigma-\lambda_i I)^nv=0$，因此限制在$G_{\lambda_i}$上，$((\sigma-\lambda_i I)\vert_{G_{\lambda_i}})^n$将所有向量化零，因此就是零线性变换，故是幂零的.
+
+        \item 设$v\in G_{\lambda_i}$，则根据$G_{\lambda_i}$定义可知这等价于存在正整数$j$使得$(\sigma-\lambda_i I)^jv=0$. 考虑$\sigma(v)$，我们有
+        \[(\sigma-\lambda_i I)^j(\sigma(v))=\sigma((\sigma-\lambda_i I)^j(v))=0,\]
+        其中$\sigma$与$(\sigma-\lambda_i I)^j$可交换是来源于\autoref{ex:7:矩阵多项式可交换}.
+
+        \item 设$v_1,\ldots,v_m$分别是$\lambda_1,\ldots,\lambda_m$对应的广义特征向量，设复数$c_1,\ldots,c_m$使得
+        \begin{equation} \label{eq:16:广义特征向量线性无关}
+            c_1v_1+\cdots+c_mv_m=0,
+        \end{equation}
+        令$k$是使得$(\sigma-\lambda_1 I)^kv_1\neq 0$成立的最大非负整数，令
+        \[w=(\sigma-\lambda_1 I)^{k-1}v_1,\]
+        则$(\sigma-\lambda_1 I)w=0$，即$\sigma(w)=\lambda_1w$，因此对于任意的$\lambda\in\mathbf{C}$，我们有
+        \[(\sigma-\lambda I)w=(\lambda_1-\lambda)w,\]
+        归纳可知$(\sigma-\lambda I)^nw=(\lambda_1-\lambda)^nw$.
+
+        根据广义特征子空间的定义，$(\sigma-\lambda_i I)^nv_i=0,\enspace i=1,\cdots,m$，故我们对\autoref{eq:16:广义特征向量线性无关}两边同时作用
+        \[(\sigma-\lambda_1 I)^k(\sigma-\lambda_2 I)^n\cdots(\sigma-\lambda_m I)^n\]
+        可得
+        \begin{align*}
+            0 &= c_1(\sigma-\lambda_1 I)^k(\sigma-\lambda_2 I)^n\cdots(\sigma-\lambda_m I)^nv_1 \\
+            &= c_1(\sigma-\lambda_2 I)^n\cdots(\sigma-\lambda_m I)^nw \\
+            &= c_1(\lambda_1-\lambda_2)^n\cdots(\lambda_1-\lambda_m)^nw,
+        \end{align*}
+        由于$(\lambda_1-\lambda_2)^n\cdots(\lambda_1-\lambda_m)^n\neq 0$，因此$c_1=0$，同理可得$c_2=\cdots=c_m=0$，因此$v_1,\ldots,v_m$线性无关. 根据线性无关性可知，$G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_m}$为直和是显然的（特征子空间也有完全一致的讨论）.
+
+        这一线性无关的证明思想相信读者并不陌生，只是有一些独特的细节处理. 这种排除其它系数只留下一个系数必须为零的技巧我们已经多次见到.
+
+        \item 我们通过对$V$的维数$n$进行归纳来证明. 当维数为1时，结论是显然的. 假设对任意小于$n$的维数结论都成立，现在我们对维数为$n$的情况证明. 由于是复向量空间，则必然有一个特征值$\lambda_1$，对应的广义特征子空间$G(\lambda_1,\sigma)$（使用这一记号是为了防止后续线性变换不同引起歧义）的维数不小于1. 由\autoref{thm:16:核空间扩张分解}，我们有
+        \[V=\ker(\sigma-\lambda_1 I)^n\oplus\im(\sigma-\lambda_1 I)^n,\]
+        即
+        \begin{equation} \label{eq:16:广义特征子空间分解}
+            V=G(\lambda_1,\sigma)\oplus W，
+        \end{equation}
+        其中$W=\im(\sigma-\lambda_1 I)^n$. 又根据\autoref{ex:15:多项式不变子空间}可知$W$是$\sigma$的不变子空间，又根据\autoref{eq:16:广义特征子空间分解}可知$\dim W<n$，因此我们可以考虑对$\sigma\vert_W$使用归纳假设，有
+        \[W=G(\lambda_2,\sigma\vert_W)\oplus\cdots\oplus G(\lambda_m,\sigma\vert_W),\]
+        因此为了完成证明，我们只需证明$G(\lambda_i,\sigma)=G(\lambda_i,\sigma\vert_W),\enspace i=2,\cdots,m$，而根据广义特征子空间的定义，包含关系$G(\lambda_i,\sigma\vert_W)\subset G(\lambda_i,\sigma)$是显然的，因此我们只需证明另一半包含. 设$v\in G(\lambda_i,\sigma)\subset V$，由\autoref{eq:16:广义特征子空间分解}可知$v=v_1+w$，其中$v_1\in G(\lambda_1,\sigma),w\in W$. 而由归纳假设，$w=v_2+\cdots+v_m$，其中$v_i\in G(\lambda_i,\sigma\vert_W)$，因此$v=v_1+v_2+\cdots+v_m$，改写一下得到
+        \[v_1+\cdots+(v_i-v)+\cdots+v_m=0,\]
+        而我们根据上一条证明知道对应于不同特征值的广义特征向量线性无关，而$v_i-v\in G(\lambda_i,\sigma)$，因此只能有$v_1=\cdots=v_{i-1}=v_{i+1}=\cdots=v_m=0$，且$v=v_i$. 特别地有$v_1=0$，因此$v=w=v_i\in G(\lambda_i,\sigma\vert_W)$，故包含得证.
+
+        最后我们结合本定理的3和4，取每个广义特征子空间的基拼在一起可以立刻得到$V$的一组由$\sigma$的广义特征向量组成的基.
+    \end{enumerate}
+\end{proof}
+
+结合\autoref{thm:15:不变子空间与分块对角矩阵}，上述定理的结果告诉我们，对于任意一个复向量空间上的线性变换，我们都可以找到一组基使得这个线性变换的矩阵是分块对角矩阵，而任意一个矩阵都可以相似于一个分块对角矩阵. 自然地，我们很容易发现如果每个广义特征子空间就等于特征子空间，那么我们的定理就退化为可对角化的情况，即我们有如下推论：
+\begin{corollary}
+    线性变换$\sigma$（或矩阵$A$）可对角化，当且仅当$\sigma$（或$A$）的任意特征值都满足$G(\lambda,\sigma)=E(\lambda,\sigma)$，即每个特征值对应的广义特征子空间等于特征子空间.
+\end{corollary}
+
+下面我们简要讨论如何将这一标准形求解出来. 事实上，根据上述定理的证明，我们发现每个对角块都是从一个广义特征子空间得来的，因此我们只需求出各个广义特征子空间的基，然后写出对应的矩阵即可. 我们来看一个例子：
+\begin{example}
+    设$\sigma\in \mathcal{L}(\mathbf{C}^3)$定义为
+    \[\sigma(z_1,z_2,z_3)=(6z_1+3z_2+4z_3,6z_2+2z_3,7z_3),\]求一组基使其有分块对角矩阵并写出对应的分块对角矩阵.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难. 因为当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，是比较复杂的；而如果根据核空间停止增长的性质不断提升矩阵的幂次，直到得到的广义特征子空间不再发生改变就能够停止计算也是一种可行的思路，只是每次算出一个幂次后都要判断线性变换或矩阵的秩是否下降. 在之后的章节中我们会通过多项式的理论来降低$\ker (\sigma-\lambda I)^{\dim V}$所需的幂次.
+
+当然，有的读者或许认为到目前为止我们对于复数域上线性变换与矩阵的标准形讨论已经进入尾声，毕竟我们已经按照\autoref{thm:15:不变子空间与分块对角矩阵}提供的范式找到了对任意线性变换都存在的不变子空间分解，得到了分块对角矩阵的标准形. 然而分块对角矩阵有时候可能会遇到分块很大的情况，或者矩阵本身只有一个特征值因此整个矩阵就是唯一的分块，这时矩阵并不一定足够简单，所以在后续我们后续我们还会通过更加精细的分解来实现更漂亮的矩阵标准形. 在下一节中我们给出一个对于这一问题不成熟但对于研究复数域上不变子空间性质很重要的解决方案，即给出上三角矩阵这一类任意复数域上线性变换和矩阵都可以得到的矩阵标准形.
+
+\section{上三角矩阵}
+
+我们研究矩阵标准形，很大一部分原因就是希望将对所有矩阵的研究都转向一个性质很好的矩阵的研究，这样之后的运算等就会非常方便（例如我们之前看到的利用对角化计算矩阵的幂）. 在之前的讨论中，我们已经见到了上三角矩阵的一些优良性质，事实上上三角矩阵的特征值求解也是很显然的问题：
+\begin{theorem}
+    设$A$为上三角矩阵，则$A$的特征值恰好就是其主对角元，且在对角线上出现的次数就等于特征值的代数重数.
+\end{theorem}
+\begin{proof}
+    我们知道$A$的特征值就是$|\lambda E-A|=0$的零点，而
+    \[|\lambda E-A|=\begin{vmatrix}
+            \lambda-a_{11} & a_{12}         & \cdots & a_{1n}         \\
+            0              & \lambda-a_{22} & \cdots & a_{2n}         \\
+            \vdots         & \vdots         & \ddots & \vdots         \\
+            0              & 0              & \cdots & \lambda-a_{nn}
+        \end{vmatrix}=(\lambda-a_{11})(\lambda-a_{22})\cdots(\lambda-a_{nn}),\]
+    因此很显然这一定理成立.
+\end{proof}
+
+因此上三角矩阵也是一个可行的方向. 与\autoref{thm:15:不变子空间与分块对角矩阵}中推导分块对角矩阵等价条件的思路类似，我们需要首先观察上三角矩阵的性质的等价条件，然后尝试验证某个等价条件是否对所有线性变换和矩阵都成立的.
+
+\subsection{上三角标准形的存在性}
+
+\begin{theorem} \label{thm:16:上三角矩阵等价条件}
+    设$\sigma\in \mathcal{L}(V)$，且$v_1,v_2,\ldots,v_n$是$V$的基，则以下条件等价：
+    \begin{enumerate}
+        \item $\sigma$关于$v_1,v_2,\ldots,v_n$的矩阵是上三角的；
+
+        \item 对每个$j=1,\ldots,n$有$\sigma(v_j)\in\spa(v_1,\ldots,v_j)$；
+
+        \item 对每个$j=1,\ldots,n$有$\spa(v_1,\ldots,v_j)$在$\sigma$下不变.
+    \end{enumerate}
+\end{theorem}
+定理的证明实际上只需要计算验证即可，非常简单：
+\begin{proof}
+
+\end{proof}
+
+这一定理给出了上三角矩阵的几个充要条件，因此我们的想法就是利用等价条件中的某一个条件来验证任意线性变换是否可以得到上三角矩阵. 幸运的是，的确对于任意的复向量空间上的线性变换，我们可以找到一组基使得其关于这组基有上三角矩阵.
+\begin{theorem}\label{thm:16:上三角矩阵存在}
+    设$V$是有限维复向量空间，对于任意的$\sigma\in \mathcal{L}(V)$，则一定存在$V$的一组基使得$\sigma$关于该组基有上三角矩阵.
+\end{theorem}
+\begin{proof}
+    仍然是经典的数学归纳法，$n=1$时结论显然. 现假设小于$n$维的复向量空间上的线性变换都可以找到一组基使得其关于这组基有上三角矩阵，现在考虑$n$维复向量空间. 因为是复向量空间，故$\sigma$一定存在特征值. 设$\lambda_1$是$\sigma$的一个特征值，我们考虑$U=\im(\sigma-\lambda_1 I)$，且$U$是$\sigma$的比$V$维数更小的不变子空间，因此我们可以用归纳假设，$U$存在一组基$u_1,\cdots,u_m$使得$\sigma\vert_U$有上三角矩阵. 根据\autoref{thm:16:上三角矩阵等价条件}，我们知道对于每个$j$都有
+    \[\sigma(u_j)=\sigma\vert_U(u_j)\in\spa(u_1,\ldots,u_j),\]
+    这里我们只得到一部分的基使得限制映射有上三角矩阵，接下来我们要扩张到全空间上实现定理证明. 将上面取到的基扩充为
+    \[u_1,\cdots,u_m,v_1,\cdots,v_k,\]
+    要使得$\sigma$关于这组基有上三角矩阵，根据\autoref{thm:16:上三角矩阵等价条件}，我们只需验证对每个$i$都有$\sigma(v_i)\in\spa(u_1,\cdots,u_m,v_1,\cdots,v_i)$. 这是显然的，因为$\sigma(v_i)=(\sigma-\lambda_1 I)(v_i)+\lambda_1 v_i$，而根据$U$的定义$\sigma-\lambda_1 I$的像在$U$中，因此$\sigma(v_i)\in\spa(u_1,\cdots,u_m,v_1,\cdots,v_i)$，因此我们可以得到一组基使得$\sigma$关于这组基有上三角矩阵.
+\end{proof}
+
+综合\autoref{thm:16:上三角矩阵等价条件}的第3点和\autoref{thm:16:上三角矩阵存在}，我们可以观察到不变子空间的另一个有趣的性质：
+\begin{corollary}
+    设$V$是$n$维复向量空间. $\sigma\in \mathcal{L}(V)$，证明：对任意的正整数$r\enspace(1\leqslant r\leqslant n)$，$\sigma$有$r$维不变子空间.
+\end{corollary}
+这是因为任意复向量空间上的线性变换都存在一组基使得矩阵表示为上三角矩阵，而存在上三角矩阵的其中一个充要条件是存在任意维数的不变子空间，因此任意复向量空间上的线性变换都存在任意维数的不变子空间.
+
+事实上，根据\autoref{thm:16:上三角矩阵存在}，我们可以综合分块对角矩阵的存在性，将每个广义特征子空间的基取成上三角矩阵的基，然后将这些基拼在一起，就可以得到一个每个分块都是上三角矩阵的分块对角矩阵，显然比之前单纯的分块对角矩阵和上三角矩阵都要简单：
+\begin{theorem} \label{thm:16:分块对角矩阵}
+    设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$. 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的所有互不相同的特征值，重数分别为$d_1,\ldots,d_m$，则$V$有一组基使得$\sigma$关于这组基的有分块对角矩阵
+    \[\begin{pmatrix}
+            A_1 &  & O \\  & \ddots &  \\ O &  & A_m
+        \end{pmatrix}\]
+    其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
+    \[A_j=\begin{pmatrix}
+            \lambda_j &  & * \\  & \ddots &  \\ O &  & \lambda_j
+        \end{pmatrix}\]
+\end{theorem}
+
+根据相似的定义，\autoref{thm:16:上三角矩阵存在}的结论与``任意$n$阶复矩阵一定相似于一个上三角矩阵''是等同的，进入矩阵的范畴我们如同从抽象的表达中解脱，所以我们这里也展示一种使用分块矩阵结合数学归纳法的方法进行证明.
+\begin{proof}
+    数学归纳法，$n=1$时结论显然，因为任意一阶矩阵本身就是上三角矩阵. 现假设$n-1$阶复矩阵都可以相似于上三角矩阵，设$A$为$n$阶复矩阵，我们任取$A$的一个复特征值$\lambda_1$，设$\alpha_1$为$A$对应于$\lambda_1$的特征向量. 我们把$\alpha_1$扩充为$\mathbf{C}^n$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_n$，记$P_1=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则$P_1$可逆，且
+            \[P_1^{-1}AP_1=\begin{pmatrix}
+                    \lambda_1 & \alpha' \\ 0 & A_{n-1}
+                \end{pmatrix},\]
+
+            我们对$n-1$阶矩阵$A_{n-1}$应用归纳假设，因此存在可逆矩阵$P_2$使得$P_2^{-1}A_{n-1}P_2$为上三角矩阵，取$P=P_1\begin{pmatrix}
+                    1 & 0 \\ 0 & P_2
+                \end{pmatrix}$，直接有
+            \[P^{-1}AP=\begin{pmatrix}
+                    \lambda_1 & \alpha'P_1 \\ 0 & P_2^{-1}A_{n-1}P_2
+                \end{pmatrix}\]
+            为上三角矩阵，因此$n$阶复矩阵一定相似于上三角矩阵.
+\end{proof}
+
+事实上，我们在这里介绍这一证明的一个重要的目的在于，这一证明给了我们一个求解线性变换（或矩阵）上三角化的方法. 与对角化等类似，线性变换的上三角化依赖于矩阵上三角化，因此我们这里只讨论矩阵的情况. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
+\begin{example}
+    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x+y,5y+3z,8z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+另一方面，我们可以再给出一个\autoref{thm:16:上三角矩阵存在}的证明与这一矩阵的证明方法对应：
+\begin{proof}
+    数学归纳法，$n=1$时结论显然，现假设维数小于$n$的复向量空间上的线性变换都可以找到一组基使得其关于这组基有上三角矩阵，现在考虑$n$维复向量空间. 因为是复向量空间，故$\sigma$一定存在特征值. 设$\lambda_1$是$\sigma$的一个特征值，$v_1$是对应的特征向量. 设$U=\spa(v_1)$，这是1维不变子空间，剩下我们需要处理$n-1$阶的子空间——我们很自然地求助于商空间，因为$V/U$是一个很自然的$n-1$维复向量空间，我们可以考虑商映射$\sigma/U\in\mathcal{L}(V/U)$，我们可以根据归纳假设，存在$V/U$的一组基使得$\sigma/U$关于这组基$v_2+U,\ldots,v_n+U$有上三角矩阵，根据\autoref{thm:16:上三角矩阵等价条件}，我们知道对每个$j$都有
+    \[(\sigma/U)(v_j+U)=\sigma(v_j)+U\in\spa(v_1+U,\ldots,v_j+U),\]
+    因此$\sigma(v_j)\in\spa(v_1,\ldots,v_j)$，因此结合$v_1$是特征向量的性质，我们可以得到一组基$v_1,\ldots,v_n$使得$\sigma$关于这组基有上三角矩阵.
+\end{proof}
+
+这里我们利用了商空间和商映射与矩阵的证明方法产生了对应：我们都是求助于特征值，它可以让我们在矩阵的第一列上符合上三角性质，然后我们获得低一阶的矩阵或者底一维的子空间，然后直接利用归纳假设即可证明. 因此其实基于矩阵和基于抽象映射和空间的证明方法从某种角度来看是可以相互翻译的.
+
+\subsection{矩阵可交换的讨论}
+接下来我们要讨论一个特别的问题，即线性变换/矩阵可交换的性质. 我们有如下定理：
+\begin{theorem} \label{ex:16:线性变换可交换}
+    设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，则
+    \begin{enumerate}
+        \item $\sigma$的每个特征子空间都是$\tau$的不变子空间；
+
+        \item $\sigma,\tau$有公共的特征向量.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 设$\lambda$是$\sigma$的一个特征值，$V_\lambda$是对应的特征子空间，我们要证明$V_\lambda$是$\tau$的不变子空间. 事实上，对于任意的$v\in V_\lambda$，有$\sigma(v)=\lambda v$，故$\sigma(\tau(v))=\tau(\sigma(v))=\lambda\tau(v)$，即$\tau(v)\in V_\lambda$，因此$V_\lambda$是$\tau$的不变子空间.
+
+        \item 由于$V_\lambda$是$\tau$的不变子空间，考虑限制映射$\tau\vert_{V_\lambda}$，因为定义在复向量空间上的线性变换一定有特征值，故存在$\mu$是$\tau\vert_{V_\lambda}$的一个特征值，且存在$u\in V_\lambda$使得$\tau(u)=\mu u$，又$V_\lambda$是$\sigma$的特征子空间，因此$u$是$\sigma$和$\tau$的公共特征向量.
+    \end{enumerate}
+\end{proof}
+
+将这一定理的线性变换改为矩阵实际上是等价的，读者完全可以自行推导. 接下来我们希望应用这上述定理解决下面这一经典的问题：
+\begin{example} \label{ex:16:可交换与同时上三角化}
+    设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，证明：
+    \begin{enumerate}
+        \item 若$\sigma$有$s$个不同的特征值，则$\sigma,\tau$至少有$s$个公共且线性无关的特征向量；
+
+        \item 存在$V$的一组基，使得$\sigma$和$\tau$在这组基下的矩阵均为上三角矩阵.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 设$\lambda_1,\ldots,\lambda_s$是$\sigma$的$s$个不同的特征值，$V_{\lambda_1},\ldots,V_{\lambda_s}$是对应的特征子空间. 根据\autoref{ex:16:线性变换可交换}，$V_{\lambda_1},\ldots,V_{\lambda_s}$是$\tau$的不变子空间，并且根据\autoref{ex:16:线性变换可交换}的2的证明我们可以在每个特征子空间中找到一个公共的特征向量，这样我们就找到了$s$个公共且线性无关的特征向量.
+
+        \item 这一结论的证明与\autoref{thm:16:上三角矩阵存在}类似，也有矩阵和商空间两个版本.
+        \begin{enumerate}
+            \item
+            \item
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+这一例子的结论告诉我们：线性变换可交换对应于同时上三角化. 例中 2 的结论如果换为矩阵表述应当是：设$A,B$是复数域上的两个$n$阶矩阵，且$AB=BA$，则存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$同时为上三角矩阵.
+
+\section{复数域上相似标准形理论的应用}
+
+我们在前文已经基本完成了对复数域上线性变换的相似标准形基本理论的讨论，这一理论包括对角标准形的充要条件，任意线性映射的广义特征子空间分解与分块对角矩阵标准形，以及上三角矩阵的等价条件与存在性. 接下来我们将利用这些理论来解决一些具体的问题，本节我们主要讨论幂等矩阵、幂零矩阵的性质以及线性变换的平方根问题.
+
 \subsection{幂等矩阵}
 
 本节我们专门讨论一个常见的特殊矩阵：幂等矩阵. 若$n$阶方阵$A$满足$A^2=A$，则$A$称为幂等矩阵. 幂等矩阵具有如下基本性质：
@@ -387,7 +678,7 @@
     \end{enumerate}
 \end{proof}
 
-实际上，幂等矩阵还有很多其他的性质，我们可以回到映射的角度去理解这一矩阵，讨论其与投影变换的等价性，这一点我们将在后续内积空间讲解投影变换时中给出详细说明. 下面是一个技巧性较强的题目，读者可以在此题中体会``幂等''这一性质的特点：
+实际上，幂等矩阵还有很多其他的性质，我们可以回到线性变换的角度去理解这一矩阵，不仅仅是将上述定理换成线性变换的描述进行讨论（因为根据线性映射矩阵表示很容易知道，幂等线性变换在任意一组基下的矩阵表示都是幂等矩阵），我们还可以讨论其与投影变换的等价性，这一点我们将在后续内积空间讲解投影变换时中给出详细说明. 下面是一个技巧性较强的题目，读者可以在此题中体会``幂等''这一性质的特点：
 \begin{example}
     设$A$，$B$为两个$n$阶幂等矩阵，证明：
     \begin{enumerate}
@@ -440,183 +731,22 @@
     \end{enumerate}
 \end{proof}
 
-\section{上三角矩阵}
-
-我们从上三角矩阵出发，首先因为之前的讨论中上三角矩阵的一些优良性质大家已经非常熟悉，并且事实上，复向量空间中的所有线性变换都可以在某组基下得到上三角矩阵的矩阵表示. 我们有如下定理：
-\begin{theorem}\label{thm:17:上三角矩阵存在}
-    设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$，则
-    \begin{enumerate}
-        \item $\sigma$关于$V$的某组基有上三角矩阵，记为$A$；
-
-        \item $\sigma$可逆的充要条件是$A$的主对角元均不为0；
-
-        \item $\sigma$的特征值恰为$A$的主对角元.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    \begin{enumerate}
-        \item 根据相似的定义，这一结论与``任意$n$阶复矩阵一定相似于一个上三角矩阵''是等同的，我们可以使用分块矩阵结合数学归纳法的方法进行证明. $n=1$时结论显然，因为任意一阶矩阵本身就是上三角矩阵. 现假设$n-1$阶复矩阵都可以相似于上三角矩阵，设$A$为$n$阶复矩阵，我们任取$A$的一个复特征值$\lambda_1$，设$\alpha_1$为$A$对应于$\lambda_1$的特征向量. 我们把$\alpha_1$扩充为$\mathbf{C}^n$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_n$，记$P_1=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则$P_1$可逆，且
-              \[P_1^{-1}AP_1=\begin{pmatrix}
-                      \lambda_1 & \alpha' \\ 0 & A_{n-1}
-                  \end{pmatrix},\]
-
-              我们对$n-1$阶矩阵$A_{n-1}$应用归纳假设，因此存在可逆矩阵$P_2$使得$P_2^{-1}A_{n-1}P_2$为上三角矩阵，取$P=P_1\begin{pmatrix}
-                      1 & 0 \\ 0 & P_2
-                  \end{pmatrix}$，直接有
-              \[P^{-1}AP=\begin{pmatrix}
-                      \lambda_1 & \alpha'P_1 \\ 0 & P_2^{-1}A_{n-1}P_2
-                  \end{pmatrix}\]
-              为上三角矩阵，因此$n$阶复矩阵一定相似于上三角矩阵.
-
-        \item 这一结论在矩阵计算进阶一讲中已经讨论，此处不再赘述；
-
-        \item 利用线性映射的特征值等于表示矩阵的特征值，且表示矩阵的特征值就是$|\lambda E-A|=0$的零点即可得到这一结论.
-    \end{enumerate}
-\end{proof}
-
-除此之外，在矩阵计算进阶中我们也提到上三角矩阵相乘结果中对角线上元素是原矩阵对角线上对应元素相乘的结果，其逆的对角线上元素是原矩阵对角线对应元素的逆. 以上性质表明，上三角矩阵是所有线性变换都可以在某组基下得到的且有良好性质的矩阵类型. 还有一个需要说明的性质是，一个元素出现在上三角矩阵对角线上的次数恰好等于它作为特征值的重数，我们放在习题中供读者验证.
-
-事实上，我们在这里介绍这一证明的主要目的在于，这一证明给了我们一个求解线性变换（或矩阵）上三角化的方法. 与对角化类似，线性变换的上三角化依赖于矩阵上三角化，因此我们这里只讨论矩阵的情况. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
-\begin{example}
-    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x+y,5y+3z,8z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
-\end{example}
-
-\begin{solution}
-
-\end{solution}
-
-事实上，我们研究上三角矩阵（以及后续分块对角矩阵）的思路与研究对角矩阵是类似的，我们会讨论计算方法以及相关的等价条件. 下面我们给出关于对角矩阵的一些等价条件：
-\begin{theorem}\label{thm:17:上三角矩阵等价条件}
-    设$\sigma\in \mathcal{L}(V)$，且$v_1,v_2,\ldots,v_n$是$V$的基，则以下条件等价：
-    \begin{enumerate}
-        \item $\sigma$关于$v_1,v_2,\ldots,v_n$的矩阵是上三角的；
-
-        \item 对每个$j=1,\ldots,n$有$\sigma(v_j)\in\spa(v_1,\ldots,v_j)$；
-
-        \item 对每个$j=1,\ldots,n$有$\spa(v_1,\ldots,v_j)$在$\sigma$下不变.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    \begin{enumerate}
-        \item
-
-        \item
-
-        \item
-    \end{enumerate}
-\end{proof}
-
-这一定理给出了上三角矩阵的几个充要条件，基于这些充要条件我们可以有如下进一步的理解：
-\begin{enumerate}
-    \item 我们可以给出\autoref{thm:17:上三角矩阵存在} 的另外两种证明，即《线性代数应该这样学》
-          5.27给出的两种证明. 事实上5.27的证明也使用了数学归纳法，但是之前分块矩阵的归纳是针对矩阵的阶数，这里是针对线性变换所在线性空间的维数. 我们这给出证明，以便深刻体会数学归纳法的思想：
-
-          \begin{proof}
-              \begin{enumerate}
-                  \item
-
-                  \item
-              \end{enumerate}
-          \end{proof}
-
-    \item 比较对角矩阵的充要条件中要求存在一维不变子空间的分解，这里的等价条件表明上三角矩阵要求线性变换存在任意维数的不变子空间即可（对角矩阵的条件实际上蕴含这一条件，因为存在一维不变子空间直和分解，我们任意通过直和运算合并这些一维不变子空间就可以得到任意维数的不变子空间，因此对角矩阵的要求更强，上三角矩阵不需要这些任意维数的不变子空间能拆解成一维不变子空间的直和）.
-
-          事实上，因为任意复向量空间上的线性变换都存在一组基使得矩阵表示为上三角矩阵，因此任意复向量空间上的线性变换都存在任意维数的不变子空间. 因此下面这一例子的结论是显然的：
-          \begin{example}
-              设$V$是$n$维复向量空间. $\sigma\in \mathcal{L}(V)$，证明：对任意的正整数$r\enspace(1\leqslant r\leqslant n)$，$\sigma$有$r$维不变子空间.
-          \end{example}
-          \begin{proof}
-
-          \end{proof}
-\end{enumerate}
-
-接下来我们要讨论一个特别的问题，即线性变换/矩阵可交换的性质. 我们有如下定理：
-\begin{theorem}
-    设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，则
-    \begin{enumerate}
-        \item $\sigma$的每个特征子空间都是$\tau$的不变子空间；
-
-        \item $\sigma,\tau$有公共的特征向量.
-    \end{enumerate}
-\end{theorem}
-将这一定理的线性变换改为矩阵实际上是等价的.
-
-\begin{proof}
-    \begin{enumerate}
-        \item
-
-        \item
-    \end{enumerate}
-\end{proof}
-
-接下来我们希望应用这上述定理解决下面的问题：
-\begin{example}
-    设$V$为$n$维复向量空间，$\sigma,\tau\in \mathcal{L}(V)$，$\sigma\tau=\tau\sigma$，证明：
-    \begin{enumerate}
-        \item 若$\sigma$有$s$个不同的特征值，则$\sigma,\tau$至少有$s$个公共且线性无关的特征向量；
-
-        \item 存在$V$的一组基，使得$\sigma$和$\tau$在这组基下的矩阵均为上三角矩阵.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-    \begin{enumerate}
-        \item
-
-        \item
-    \end{enumerate}
-\end{proof}
-
-这一例子的结论告诉我们：线性变换可交换对应于同时上三角化. 例中 2 的结论如果换为矩阵表述应当是：设$A,B$是复数域上的两个$n$阶矩阵，且$AB=BA$，则存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$同时为上三角矩阵.
-
-\section{核空间的性质 \quad 幂零矩阵}
-
-这一节我们将为后续讨论分块对角矩阵做准备，同时幂零矩阵一节中也将讨论这一特殊矩阵的很多特别的、有趣的性质.
-
-\subsection{核空间的性质}
-
-事实上，根据可对角化的等价条件，我们知道一个线性变换不可对角化实际上是因为它没有足够多的线性无关的特征向量，也即特征子空间直和后比原空间略小. 事实上，我们知道$\sigma$在特征值$\lambda$下的特征子空间实际上就是$\ker(\lambda I-\sigma)$. 我们回顾\autoref{thm:6:核空间性质}：
-\begin{theorem}\label{thm:17:核空间性质}
-    设$\sigma\in \mathcal{L}(V)$，则有
-    \begin{enumerate}
-        \item $\{0\}=\ker \sigma^0\subseteq\ker \sigma^1\subseteq\cdots\subseteq\ker \sigma^k\subseteq\ker \sigma^{k+1}\subseteq\cdots$；
-
-        \item 设$m$是非负整数使得$\ker \sigma^m=\ker \sigma^{m+1}$，则
-              \[\ker \sigma^m=\ker \sigma^{m+1}=\ker \sigma^{m+2}=\ker \sigma^{m+3}=\cdots\]
-
-        \item 令$n=\dim V$，则$\ker \sigma^n=\ker \sigma^{n+1}=\ker \sigma^{n+1}=\cdots$.
-    \end{enumerate}
-\end{theorem}
-
-我们发现，如果我们提高线性变换的幂次，那么我们可以获得更大的核空间，这样扩张后的核空间的直和是否可以张成整个原空间呢？我们可以提前给出答案：可以，具体的说明我们在讨论完下面的幂零矩阵之后将会详细展开.
-
 \subsection{幂零矩阵}
 
-基于上面核空间的讨论，并为了方便后面小节的研究，我们将讲解幂零线性变换与幂零矩阵的相关准备知识.
-\begin{definition}[幂零] \index{miling@幂零 (nilpotent)}
-    \begin{enumerate}
-        \item 一个线性变换称为\term{幂零}的，如果它的某个幂等于零映射（即将所有向量都映射到0的映射）；
-
-        \item 一个矩阵$A$称为幂零的，如果存在正整数$m$使得$A^m=O$.
-    \end{enumerate}
-\end{definition}
-
-根据线性映射矩阵表示很容易知道，幂零线性变换在任意一组基下的矩阵表示都是幂零矩阵. 我们接下来首先讨论幂零线性变换的一些基本性质：
-\begin{theorem} \label{thm:17:幂零线性变换性质}
+基于之前核空间的讨论，并为了方便后面小节的研究，我们将讲解幂零线性变换与幂零矩阵的相关准备知识. 根据线性映射矩阵表示很容易知道，幂零线性变换在任意一组基下的矩阵表示都是幂零矩阵. 我们接下来首先讨论幂零线性变换的一些基本性质：
+\begin{theorem} \label{thm:16:幂零线性变换性质}
     设线性变换$N\in \mathcal{L}(V)$是幂零的，则
     \begin{enumerate}
-        \item \label{item:17:幂零线性变换性质:1}
+        \item \label{item:16:幂零线性变换性质:1}
               $N$的所有特征值均为0（等价定义）；
 
-        \item \label{item:17:幂零线性变换性质:2}
+        \item \label{item:16:幂零线性变换性质:2}
               $N^{\dim V}$=0；
 
-        \item \label{item:17:幂零线性变换性质:3}
+        \item \label{item:16:幂零线性变换性质:3}
               $V$有一组基使得$N$关于这组基的矩阵对角线和对角线下方元素均为0（等价定义）；
 
-        \item \label{item:17:幂零线性变换性质:4}
+        \item \label{item:16:幂零线性变换性质:4}
               $N\pm I$可逆.
     \end{enumerate}
 \end{theorem}
@@ -625,15 +755,15 @@
     \begin{enumerate}
         \item 这一结论我们将在下一讲中介绍 \hyperref[thm:21:HC]{Hamilton-Cayley 定理}后给出证明；
 
-        \item
+        \item 考虑\autoref{thm:16:核空间性质}
 
-        \item
+        \item 考虑上三角矩阵
 
-        \item
+        \item 考虑矩阵版本，结合第一点可知$N+I$的特征值全为1，因此一定是可逆的.
     \end{enumerate}
 \end{proof}
 
-事实上 \ref*{item:17:幂零线性变换性质:1},\ref*{item:17:幂零线性变换性质:2},\ref*{item:17:幂零线性变换性质:4} 都有相应的矩阵的结论，我们将线性变换替换为它的矩阵表示即可，此处不再赘述. 而第三点则解释了我们在求矩阵的幂时将一些矩阵分解为一个矩阵加一个对角线上全为0的矩阵的合理性，因为后者一定是幂零的. 接下来我们通过几个例子进一步讨论、运用幂零矩阵、幂零线性变换的性质：
+事实上 \ref*{item:16:幂零线性变换性质:1},\ref*{item:16:幂零线性变换性质:2},\ref*{item:16:幂零线性变换性质:4} 都有相应的矩阵的结论，我们将线性变换替换为它的矩阵表示即可，此处不再赘述. 而第三点则解释了我们在求矩阵的幂时将一些矩阵分解为一个矩阵加一个对角线上全为0的矩阵的合理性，因为后者一定是幂零的. 接下来我们通过几个例子进一步讨论、运用幂零矩阵、幂零线性变换的性质：
 \begin{example}
     证明：$A$为幂零矩阵$\iff \forall k \in \mathbf{N}_+,\enspace\tr(A^k)=0$.
 \end{example}
@@ -659,87 +789,6 @@
     \end{enumerate}
 \end{proof}
 
-\section{分块对角矩阵}
-
-\subsection{广义特征子空间与分块对角矩阵}
-
-上一节中我们已经讨论了不可对角化线性变换获得简化矩阵的一般思想，即试图利用核空间增长的性质扩张特征子空间，使得扩张后的特征子空间（称为广义特征子空间）的直和为原空间. 下面我们给出严谨定义：
-\begin{definition}
-    设$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$是$\sigma$的特征值，若向量$v\neq 0$且存在正整数$j$使得$(\sigma-\lambda I)^jv=0$，则称$v$为$\sigma$对应于$\lambda$的\term{广义特征向量}\index{tezhengxiangliang!guangyi@广义 (generalized eigenvector)}. $\sigma$对应于$\lambda$的全体广义特征向量与0向量构成的集合称为$\sigma$相应于$\lambda$的\term{广义特征子空间}\index{tezhengzikongjian!guangyi@广义 (generalized eigenspace)}，记为$G(\lambda,\sigma)$.
-\end{definition}
-注意我们不定义广义特征值，因为若$\lambda$原先不是特征值，因此$\sigma-\lambda I$可逆，可逆映射复合仍可逆，故对于任意的$j$，$(\sigma-\lambda I)^j$仍可逆，即特征值是不会随着线性变换幂次增加而增加的.
-
-实际上，根据\autoref{thm:17:核空间性质}，我们有$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$. 需要补充说明的是，此处引入两个概念称为代数重数（或称重数）和几何重数，其中$\lambda$的代数重数定义为广义特征子空间的维数，几何重数定义为特征子空间的维数. 实际上在不变子空间一讲中我们有类似的定义，我们将在下一讲中讲解它们的关联.
-
-我们接下来的目标转向我们的主线，即证明任意线性变换的广义特征子空间的和为直和且和为原空间. 下面这一定理读者可以回顾特征值、特征向量的性质以及可对角化的等价条件，我们会发现这些定理具有很大的相似性，因此记忆难度并不大：
-\begin{theorem} \label{thm:17:广义特征性质}
-    设$V$是复数域上的有限维线性空间，$\sigma\in \mathcal{L}(V)$. 用$\lambda_1,\ldots,\lambda_m$表示$\sigma$的所有互异特征值.
-    \begin{enumerate}[label=(\arabic*)]
-        \item $\sigma$对应于不同特征值的广义特征向量线性无关；
-
-        \item \label{item:17:广义特征性质:2}
-              $\sigma$不同特征值对应的广义特征子空间的和为直和，且$V=G(\lambda_1,\sigma)\oplus\cdots\oplus
-                  G(\lambda_m,\sigma)$；
-
-        \item $V$有一个由$\sigma$的广义特征向量组成的基；
-
-        \item 每个$G(\lambda_i,\sigma)$在$\sigma$下都是不变的；
-
-        \item \label{item:17:广义特征性质:5}
-              每个$(\sigma-\lambda_j I)\vert_{G(\lambda_j,\sigma)}$都是幂零的.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    \begin{enumerate}
-        \item
-
-        \item
-
-        \item
-
-        \item
-
-        \item
-    \end{enumerate}
-\end{proof}
-
-上述定理更重要的结果在于它我们可以得到任何复向量空间上的线性变换都有如下的分块对角矩阵的标准形：
-\begin{theorem} \label{thm:17:分块对角矩阵}
-    设$V$是复向量空间，$\sigma\in \mathcal{L}(V)$. 设$\lambda_1,\ldots,\lambda_m$是$\sigma$的所有互不相同的特征值，重数分别为$d_1,\ldots,d_m$，则$V$有一组基使得$\sigma$关于这组基的有分块对角矩阵
-    \[\begin{pmatrix}
-            A_1 &  & O \\  & \ddots &  \\ O &  & A_m
-        \end{pmatrix}\]
-    其中每个$A_j$都是如下所示的$d_j\times d_j$上三角矩阵
-    \[A_j=\begin{pmatrix}
-            \lambda_j &  & * \\  & \ddots &  \\ O &  & \lambda_j
-        \end{pmatrix}\]
-\end{theorem}
-
-\begin{proof}
-
-\end{proof}
-
-由此我们得到了一个相比于上三角矩阵更为简单，并且所有线性变换都可以获得的标准形. 在介绍完其存在性后，我们按照惯例需要讨论如何将这一标准形求解出来. 事实上，根据上述定理的证明，我们发现每个对角块都是从一个广义特征子空间得来的，因此我们只需求出各个广义特征子空间的基，然后写出对应的矩阵即可. 如果得到的对角块不是上三角矩阵，我们可以使用在上三角矩阵求法中讲解的方法进行调整. 我们来看一个例子：
-\begin{example}
-    设$\sigma\in \mathcal{L}(\mathbf{C}^3)$定义为
-    \[\sigma(z_1,z_2,z_3)=(6z_1+3z_2+4z_3,6z_2+2z_3,7z_3),\]求一组基使其有分块对角矩阵并写出对应的分块对角矩阵.
-\end{example}
-
-\begin{solution}
-
-\end{solution}
-
-事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难. 因为当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，是很困难的，但事实上根据核空间停止增长的性质可以知道，我们只需要不断提升矩阵的幂次，直到得到的广义特征子空间不再发生改变就能够停止计算.
-
-\begin{example}
-    设$\sigma,\tau\in \mathcal{L}(V)$可逆，证明：$\sigma$和$\tau^{-1}\sigma\tau$有相同的特征值，且重数也相同.
-\end{example}
-
-\begin{proof}
-
-\end{proof}
-
 \subsection{平方根问题}
 
 在进入下一个话题前，我们先简单介绍线性变换平方根的概念，这一概念在之后内积空间线性变换会进一步说明.
@@ -747,12 +796,12 @@
     我们称线性变换$\sigma\in \mathcal{L}(V)$的平方根是满足$\tau^2=\sigma$的线性变换$\tau\in \mathcal{L}(V)$.
 \end{definition}
 在复向量空间中，我们有如下两个结论：
-\begin{theorem} \label{thm:20:幂零平方根}
+\begin{theorem} \label{thm:16:幂零平方根}
     设$V$是复向量空间.
     \begin{enumerate}
         \item 设$N\in \mathcal{L}(V)$幂零，则$(I+N)$有平方根；
 
-        \item \label{item:20:幂零平方根:2}
+        \item \label{item:16:幂零平方根:2}
               若$\sigma\in \mathcal{L}(V)$可逆，则$\sigma$有平方根.
     \end{enumerate}
 \end{theorem}

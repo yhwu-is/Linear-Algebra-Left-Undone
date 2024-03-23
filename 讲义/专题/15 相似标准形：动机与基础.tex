@@ -151,7 +151,7 @@
 \end{theorem}
 
 根据定义我们可以验证或者求解一些很简单的不变子空间. 教材例5.3给出了四个常见的不变子空间的例子，分别是两个平凡子空间和映射的像与核，验证非常简单，此处不赘述. 教材8.20还给出了$p$为多项式时，$\ker p(\sigma)$和$\im p(\sigma)$也为$\sigma$的不变子空间. 我们这里也简要书写一下，供读者熟悉如何利用定义验证不变子空间：
-\begin{example}
+\begin{example} \label{ex:15:多项式不变子空间}
     若$\sigma\in\mathcal{L}(V)$且$p\in\mathbf{F}[x]$为多项式，则$\ker p(\sigma)$和$\im p(\sigma)$在$\sigma$下不变.
 \end{example}
 
@@ -280,9 +280,9 @@
 \end{definition}
 必须注意特征向量为非零向量，否则零向量$\xi=\vec{0}$对任意$\lambda$都满足上面定义，从而失去``特征''的含义. 但是特征值可以为0，此时$\sigma(\xi)=\vec{0}$，即全体特征向量的集合就是线性变换的核空间.
 
-对于某一个$\lambda\in\mathbf{F}$，我们将所有满足$\sigma(\xi)=\lambda\xi$的向量构成的集合记为$V_\lambda=\{\xi \mid \sigma(\xi)=\lambda\xi,\enspace\xi\in V\}$，称为$\sigma$关于其特征值$\lambda$的\term{特征子空间}\index{tezhengzikongjian@特征子空间 (eigenspace)}. 显然，这一集合是由零向量和全体$\lambda$对应的特征向量构成的. 我们可以验证$V_\lambda$的确是$V$的``子空间''：
+对于某一个$\lambda\in\mathbf{F}$，我们将所有满足$\sigma(\xi)=\lambda\xi$的向量构成的集合记为$E(\lambda,\sigma)=\{\xi \mid \sigma(\xi)=\lambda\xi,\enspace\xi\in V\}$（在去除线性变换不引起歧义的情况下可简写为$V_\lambda$），称为$\sigma$关于其特征值$\lambda$的\term{特征子空间}\index{tezhengzikongjian@特征子空间 (eigenspace)}. 显然，这一集合是由零向量和全体$\lambda$对应的特征向量构成的. 我们可以验证$V_\lambda$的确是$V$的``子空间''：
 \begin{example}
-    证明：$V_\lambda$是$V$的子空间.
+    证明：$V_\lambda$是$V$的子空间，并且是线性变换$\sigma$的不变子空间.
 \end{example}
 
 \begin{proof}
@@ -291,6 +291,8 @@
     其次，对于任意$\xi_1,\xi_2\in V_\lambda$，$k_1,k_2\in\mathbf{F}$，我们有
     \[\sigma(k_1\xi_1+k_2\xi_2)=k_1\sigma(\xi_1)+k_2\sigma(\xi_2)=k_1\lambda\xi_1+k_2\lambda\xi_2=\lambda(k_1\xi_1+k_2\xi_2),\]
     因此$k_1\xi_1+k_2\xi_2\in V_\lambda$，故满足线性运算封闭. 综上，$V_\lambda$是$V$的子空间.
+
+    不变子空间也是显然的. 对于任意$\xi\in V_\lambda$，因为$V_\lambda$是由零向量和全体$\lambda$对应的特征向量构成的，因此必有$\sigma(\xi)=\lambda\xi\in V_\lambda$，因此$V_\lambda$是$\sigma$的不变子空间.
 \end{proof}
 
 事实上，我们通过之后的例子会知道，$V_\lambda$的维数不一定是1，而至少是1. 那么我们之前引入特征值特征向量时所说的``一维不变子空间''是什么呢？事实上，我们可以取$V_\lambda$的任一组基$\alpha_1,\ldots,\alpha_n$，则其中任一向量进行扩张得到的子空间$U_i=\spa(\alpha_i),\enspace i=1,\ldots,n$就是一维不变子空间，因为$\forall u_i\in U_i,\enspace \sigma(u_i)=\lambda u_i\in U_i$，即$U_i$在$\sigma$下不变. 我们还需要注意，一维不变子空间的选取是不唯一的，因为$V_\lambda$的基的选取是不唯一的，因此$U_i$的选取也是不唯一的，实际上对于任意的$\alpha\in\V_{\lambda}$，$\spa(\alpha)$都是一维不变子空间.
@@ -431,6 +433,11 @@
 
     相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同.
 \end{proof}
+
+在得到这一结论后，我们同样可以定义线性变换的特征多项式：我们就可以定义其为任意矩阵表示的特征多项式.
+\begin{definition}
+    设$\sigma$是$V(\mathbf{F})$上的线性变换，$A$是$\sigma$在任意一组基下的矩阵，则$\sigma$的\term{特征多项式}\index{tezhengduoxiangshi@特征多项式 (characteristic polynomial)}定义为$|\lambda E-A|$.
+\end{definition}
 
 下面我们讨论一些重要的例子. 首先要引入的例子也是重要的结论，实际上在行列式一讲中已给出类似结论，但我们现在从特征值角度考虑这一结论：
 \begin{example}
@@ -610,6 +617,11 @@
     \end{enumerate}
 \end{solution}
 
+当然在本题中，我们看到了一些特殊的矩阵，如对合矩阵，幂等矩阵，幂零矩阵等，我们在之后还会讨论它们的一些性质，特别是幂等矩阵和幂零矩阵，因此我们很有必要为这些矩阵写下一个定义. 当然这些名词还有对应的线性变换版本，下面我们给出正式的定义：
+\begin{definition}
+    一个矩阵$A$（或线性变换$\sigma$）称为\textbf{对合矩阵}（或\textbf{对合变换}），如果$A^2=E$（或$\sigma^2=I$）；称为\textbf{幂等矩阵}（或\textbf{幂等变换}），如果$A^2=A$（或$\sigma^2=\sigma$）；称为\textbf{幂零矩阵}（或\textbf{幂零变换}），如果存在自然数$k$使得$A^k=O$（或$\sigma^k=O$）.
+\end{definition}
+
 基于上面给出的性质和例子，我们可以进一步运用特征值的性质来求解一些问题，下面是一些例子：
 \begin{example}
     回答以下问题：
@@ -750,10 +762,10 @@
 
 \section{实数域与复数域的讨论}
 
-在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）. 实际上上面的讨论都是与数域无关的，即无论是什么数域上面的定理都是成立的. 然而，从\autoref{ex:15:不变子空间} 中我们看到实数域和复数域可能有本质的不同，即特征值的存在性可能存在差别. 事实上，这是\autoref{thm:14:多项式分解} 的必然结果，因为复数域上$n$次多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
+在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）. 实际上上面的讨论都是与数域无关的，即无论是什么数域上面的定理都是成立的. 然而，从\autoref{ex:15:不变子空间} 中我们看到实数域和复数域可能有本质的不同，即特征值的存在性可能存在差别. 事实上，这是\autoref{thm:14:多项式的唯一分解定理} 的必然结果，因为复数域上$n$次多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
 
 因此我们有必要分别讨论在复数域和实数域条件下特征值与特征向量的不同性质，事实上我们将在实空间上的线性变换一讲中单独深入讨论这一主题，但现在我们需要几个定理来引入这一话题并为接下来的讨论作准备：
-\begin{theorem}\label{thm:18:复数域上的特征值}
+\begin{theorem}\label{thm:15:复数域上的特征值}
     设$\sigma\in \mathcal{L}(V)$，$V$是$n$维复线性空间，则$\sigma$必有特征值.
 \end{theorem}
 
@@ -761,12 +773,12 @@
 
 这一命题也可以不使用特征多项式解决，在《线性代数应该这样学》的5.21以及习题5.B的16-17题都给出了一些不使用行列式、特征多项式的证明方法，读者可以参考，此处篇幅有限不再赘述.
 
-\begin{theorem}\label{thm:18:特征值与不变子空间}
+\begin{theorem}\label{thm:15:特征值与不变子空间}
     任取$\sigma\in \mathcal{L}(V)$，$V$是$n$维线性空间（无论数域是实或复），则$\sigma$一定有一维或二维不变子空间.
 \end{theorem}
 
 \begin{proof}
-    由\autoref{thm:18:复数域上的特征值} 可知，复空间$\sigma$有特征值$\lambda$，因此根据在特征子空间的讨论可知必然存在一维不变子空间.
+    由\autoref{thm:15:复数域上的特征值} 可知，复空间$\sigma$有特征值$\lambda$，因此根据在特征子空间的讨论可知必然存在一维不变子空间.
 
     若$\sigma$定义在实空间上，我们可以首先考虑复数域上的特征值，若$a+b\textup{i}$是$\sigma$的特征值，其中$a,b\in\mathbf{R}$，则存在不全为零的实向量$\alpha,\beta$使得$\alpha+\beta\textup{i}$是$\sigma$的特征向量，即我们有
     \[\sigma(\alpha+\beta\textup{i})=(a+b\textup{i})(\alpha+\beta\textup{i}).\]
