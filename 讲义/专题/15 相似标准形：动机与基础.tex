@@ -205,9 +205,9 @@
 \end{proof}
 
 除此之外，还有一些更为困难的问题我们将在讨论完标准形理论之后反过来进行讨论. 为了接下来对标准形讨论的方便，我们需要介绍一个特别的不变子空间：
-\begin{definition}
+\begin{definition} \label{def:15:循环子空间}
     设$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量. 我们称子空间
-    \[W=\{v,Tv,T^2v,\cdots,T^kv,\cdots\}\]
+    \[W=\spa(v,Tv,T^2v,\cdots,T^kv,\cdots)\]
     为\term{由$v$生成的$T-\text{循环子空间}$}. 在不引起歧义的情况下，我们也称$W$为\term{$T-\text{循环子空间}$}或\term{循环子空间}.
 \end{definition}
 
@@ -216,7 +216,7 @@
     设$V$是有限维线性空间，$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量，$W$是由$v$生成的$T-\text{循环子空间}$，则
     \begin{enumerate}
         \item $W$是$T$包含$v$的最小不变子空间；
-        \item 若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\cdots,T^{m-1}v\}$.
+        \item 若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\cdots,T^{m-1}v\}$（我们称其为一组循环基）.
     \end{enumerate}
 \end{theorem}
 \begin{proof}

@@ -21,16 +21,16 @@
     $G_{p_i}$中的向量则称为\term{广义特征向量}.
 \end{definition}
 
-事实上我们很容易发现这就是原先复数域上定义的广义特征子空间在任意数域上的推广形式：当数域为复数域时，$p_i(\lambda)=\lambda-\lambda_i$，其中$\lambda_i$是复数域上的特征值，则$G_{p_i}=\{v\in V\mid\exists m\in\mathbf{N}^+,(T-\lambda_iI)^mv=0\}$，实际上就等同于之前定义的广义特征子空间. 于是，我们也期望将\autoref{thm:17:广义特征性质}推广到任意数域上：
-\begin{theorem} \label{thm:20:推广广义特征性质}
+事实上我们很容易发现这就是原先复数域上定义的广义特征子空间在任意数域上的推广形式：当数域为复数域时，$p_i(\lambda)=\lambda-\lambda_i$，其中$\lambda_i$是复数域上的特征值，则$G_{p_i}=\{v\in V\mid\exists m\in\mathbf{N}^+,(T-\lambda_iI)^mv=0\}$，实际上就等同于之前定义的广义特征子空间. 于是，我们也期望将\autoref{thm:16:广义特征性质}推广到任意数域上：
+\begin{theorem} \label{thm:19:推广广义特征性质}
     设$V$是有限线性空间，$T\in \mathcal{L}(V)$. $T$的特征多项式有如下分解：
     \[f(\lambda)=p_1(\lambda)^{n_1}p_2(\lambda)^{n_2}\cdots p_k(\lambda)^{n_k},\]
     其中$p_i(\lambda)$是首一不可约多项式，$n_i$是正整数，$G_{p_i}$为广义特征空间，则我们有如下结论：
     \begin{enumerate}[label=(\arabic*)]
+        \item 每个$G_{p_i}$在$T$下都是不变的；
         \item $T$对应于不同特征值的广义特征向量线性无关；
         \item $T$不同特征值对应的广义特征子空间的和为直和，且$V=G_{p_1}\oplus G_{p_2}\oplus\cdots\oplus G_{p_k}$；
-        \item $V$有一个由$T$的广义特征向量组成的基；
-        \item 每个$G_{p_i}$在$T$下都是不变的.
+        \item $V$有一个由$T$的广义特征向量组成的基.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -42,7 +42,7 @@
     \end{enumerate}
 \end{proof}
 
-接下来我们的目标便是将广义特征子空间分解为循环子空间的直和. 事实上，我们无法分解为若当块所需的循环子空间的形式，因为一方面我们不一定在复数域上讨论，另一方面若当标准形有唯一性，而我们需要找到另一种标准形. 因此我们有如下定义：
+接下来我们的目标便是将广义特征子空间分解为循环子空间的直和. 事实上，我们无法分解为若当块所需的循环子空间的形式，因为一方面我们不一定在复数域上讨论，另一方面若当标准形有唯一性，而我们需要找到另一种标准形，如果还保持原先的循环子空间还是只能局限于若当标准形. 因此我们有如下定义：
 \begin{definition}
     设$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量. 我们称子空间
     \[W=\{v,Tv,T^2v,\cdots,T^kv,\cdots\}\]

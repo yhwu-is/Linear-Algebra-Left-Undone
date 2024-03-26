@@ -1,19 +1,5 @@
 \chapter{多项式的进一步讨论}
 
-在前面的讲解中我们讨论了如何利用核空间的性质将线性空间分解为若干个线性变换的不变子空间，得到广义特征子空间和分块对角矩阵的结论. 从本讲起我们希望变换一个角度，从多项式出发推导出这一结论，并由此出发深入讨论多项式与相似标准形的关联.
-
-为了接下来讨论的方便，我们首先介绍一个接下来常用的一类特殊的多项式，它将线性变换（矩阵）代入后多项式值为0. 这样的多项式我们称为线性变换（矩阵）的零化多项式，我们的严谨定义如下：
-\begin{definition}[零化多项式] \index{duoxiangshi!linghua@零化 (annihilating polynomial)}
-    我们有线性变换和矩阵的零化多项式定义如下：
-    \begin{enumerate}
-        \item 设$T\in \mathcal{L}(V)$，若$p\in\mathbf{F}[x]$使得$p(T)=0$，则称$p$为$T$的一个\term{零化多项式}；
-
-        \item 设$A\in\mathbf{F}^{n\times n}$，若$p\in\mathbf{F}[x]$使得$p(A)=0$，则称$p$为$A$的一个零化多项式.
-    \end{enumerate}
-\end{definition}
-
-一个显然的事情是，如果一个多项式是线性变换$T$的零化多项式$p$，那么它一定也是$T$在任意一组基下表示矩阵$A$的零化多项式，这是因为线性变换的多项式$p(T)=0$的矩阵表示是$p(A)=0$.
-
 \section{特征多项式 \quad Hamilton-Cayley 定理}
 
 接下来我们首先讨论线性变换的特征多项式，事实上我们在不变子空间一讲中实际上已经提到过矩阵的特征多项式，这里我们将给出线性变换的相关定义并讨论二者关联：
@@ -102,6 +88,17 @@
           \end{proof}
 \end{enumerate}
 
+\begin{definition}[零化多项式] \index{duoxiangshi!linghua@零化 (annihilating polynomial)}
+    我们有线性变换和矩阵的零化多项式定义如下：
+    \begin{enumerate}
+        \item 设$T\in \mathcal{L}(V)$，若$p\in\mathbf{F}[x]$使得$p(T)=0$，则称$p$为$T$的一个\term{零化多项式}；
+
+        \item 设$A\in\mathbf{F}^{n\times n}$，若$p\in\mathbf{F}[x]$使得$p(A)=0$，则称$p$为$A$的一个零化多项式.
+    \end{enumerate}
+\end{definition}
+
+一个显然的事情是，如果一个多项式是线性变换$T$的零化多项式$p$，那么它一定也是$T$在任意一组基下表示矩阵$A$的零化多项式，这是因为线性变换的多项式$p(T)=0$的矩阵表示是$p(A)=0$.
+
 \section{特征多项式与标准形}
 \subsection{特征多项式唯一分解与广义特征子空间}
 接下来我们便可以利用这一定理继续我们逆向推导的过程. 我们的目标同样是找到能在直和后得到原空间的不变子空间的分解方式（即找到广义特征子空间）. 实际上，我们可以利用\autoref{thm:17:裴蜀定理} 得到以下关键结论：
@@ -140,7 +137,7 @@
 \[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\cdots,v_{ij}\},\]
 事实上$r_{ij}$就是这组循环基的长度. 我们设由$B_{ij}$张成的循环子空间为$C_{ij}$，则有
 \[K_{\lambda_i}=C_{i1}\oplus C_{i2}\oplus\cdots\oplus C_{is_i}=\mathop{\oplus}\limits_{j=1}^{s_i} C_{ij},\]
-再根据\autoref{thm:17:广义特征性质}\ref{item:17:广义特征性质:2}，我们有
+再根据\autoref{thm:16:广义特征性质}，我们有
 \begin{equation} \label{eq:19:循环子空间分解}
     V=\mathop{\oplus}\limits_{i=1}^n K_{\lambda_i}=\mathop{\oplus}\limits_{i=1}^n\mathop{\oplus}\limits_{j=1}^{s_i} C_{ij}.
 \end{equation}
