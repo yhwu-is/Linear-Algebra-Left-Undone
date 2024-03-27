@@ -540,7 +540,7 @@
     \end{pmatrix}.\]
     对每个若当块$J_{ij}$，假设若当块大小为$k_{ij}$，我们类似于前面对若当块的讨论取出每个$M_{ij}=\lambda_i E_{k_{ij}}$，$N_{ij}=J_{k_{ij}}(0)$，然后将这些矩阵按$J$的顺序排列成分块对角矩阵即可得到$M$和$N$，则$J=M+N$，$M$可对角化，$N$是幂零的，且$MN=NM$是容易验证的.
 
-   我们取每个特征值$\lambda_i$对应的最大的若当块的阶数为$k_i$，因此$(J_{ij}-\lambda_{ij})^{k_i}=O$. 我们知道$(\lambda-\lambda_1)^{k_1},\cdots,(\lambda-\lambda_m)^{k_m}$是两两互素的多项式，因此由中国剩余定理\autoref{thm:14:中国剩余定理}可知，存在多项式$f(\lambda)$满足
+   我们设每个特征值$\lambda_i$对应的最大的若当块的阶数为$k_i$，因此$(J_{ij}-\lambda_{ij})^{k_i}=O$. 我们知道$(\lambda-\lambda_1)^{k_1},\cdots,(\lambda-\lambda_m)^{k_m}$是两两互素的多项式，因此由中国剩余定理\autoref{thm:14:中国剩余定理}可知，存在多项式$f(\lambda)$满足
    \[f(\lambda)=g_i(\lambda)(\lambda-\lambda_i)^{k_i}+\lambda_i,\enspace i=1,\cdots,m\]
     故$f(J_{ij})=g_i(J_{ij})(J_{ij}-\lambda_i)^{k_i}+\lambda_iE_{k_{ij}}=\lambda_iE_{k_{ij}}=M_{ij}$，因此$f(J)=M$也成立. 同理$N=J-M=J-f(J)$也是$J$的多项式，因此命题结论对若当标准形都成立.
 
