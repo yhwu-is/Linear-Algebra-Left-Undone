@@ -223,6 +223,13 @@
     \newcommand{\exampleautorefname}{例}
     \newcommand{\definitionautorefname}{定义}
     \newcommand{\axiomautorefname}{公理}
+    \newcommand{\Ob}{\mathop\mathrm{Ob}}
+    \newcommand{\cC}{\mathcal{C}}
+    \newcommand{\cD}{\mathcal{D}}
+    \newcommand{\Hom}{\mathop\mathrm{Hom}}
+    \newcommand{\FVect}{\mathsf{FVect}}
+    \newcommand{\Set}{\mathsf{Set}}
+    \newcommand{\FSet}{\mathsf{FSet}}
     \crefrangeformat{equation}{式~#3#1#4--#5#2#6}
     \crefrangeformat{example}{例~#3#1#4--#5#2#6}
 }
