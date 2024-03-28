@@ -20,4 +20,7 @@ gh-cp: all
 	cp -p $(FILENAME).pdf ../$(GH_ACTIONS_DIR)/$(CPNAME).pdf
 
 clean:
-	@rm -f *.aux *.log *.idx *.ind *.ilg *.thm *.toc *.blg *.bbl *.bcf *.out *.fls *.fdb_latexmk *.run.xml *.synctex.gz *.xdv *~ *.lof *.lot
+	rm -f *.aux *.log *.idx *.ind *.ilg *.thm *.toc *.blg *.bbl *.bcf *.out *.fls *.fdb_latexmk *.run.xml *.synctex.gz *.xdv *~ *.lof *.lot
+ifdef CPNAME
+	rm -f $(CPNAME).pdf $(CPNAME).tex
+endif

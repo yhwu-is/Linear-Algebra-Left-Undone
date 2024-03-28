@@ -92,7 +92,7 @@
 \renewcommand*{\thechapter}{\arabic{chapter}\LUgreek{LUgreekchap}}
 \renewcommand*{\theHchapter}{LU.\arabic{LUchapter}}
 \ctexset{
-    chapter = {format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUchapter}}}},
+    chapter={format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUchapter}}}},
 }
 \csname @std@chapter\endcsname{#1}
 \expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}\endcsname{\relax}
@@ -100,19 +100,19 @@
 }
 
 \ctexset{
-    chapter = {format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
-    section = {format={\raggedright\Large\bfseries},name={,},number={\thechapter.\arabic{section}}},
-    subsection = {format={\raggedright\large\bfseries},name={,},number={\thesection.\arabic{subsection}}},
-    subsubsection = {format={\raggedright\normalsize\bfseries},name={,},number={\thesubsection.\arabic{subsubsection}}},
+    chapter={format={\centering\Huge\bfseries},name={第,讲},number=\arabic{chapter}},
+    section={format={\raggedright\Large\bfseries},name={,},number={\thechapter.\arabic{section}}},
+    subsection={format={\raggedright\large\bfseries},name={,},number={\thesection.\arabic{subsection}}},
+    subsubsection={format={\raggedright\normalsize\bfseries},name={,},number={\thesubsection.\arabic{subsubsection}}},
 }
 
 \title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学讲义}
 \author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
 
 \AtEndPreamble{\hypersetup{
-    hypertexnames = true,
-    pdfauthor = {吴一航},
-    pdftitle = {线性代数荣誉课辅学讲义},
+    hypertexnames=true,
+    pdfauthor={吴一航},
+    pdftitle={线性代数荣誉课辅学讲义},
 }}
 
 \begin{document}

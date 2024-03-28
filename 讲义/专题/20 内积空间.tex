@@ -46,7 +46,7 @@
 
 以下给出几个内积和范数的示例：
 
-\begin{example} \label{ex:23:内积和范数}
+\begin{example}{}{内积和范数}
     \begin{enumerate}
         \item $\mathbf{F}^{n}$ 上的欧几里得内积定义为：
               \[\left\langle (w_1, \ldots, w_n), (z_1, \ldots, z_n)\right\rangle = w_1\overline{z_1} + \cdots + w_n\overline{z_n} = \vec{w}\overline{\vec{z}}^{\mathrm{T}}\]
@@ -65,7 +65,7 @@
 
 以下给出一个关键定义：
 
-\begin{definition} \index{zhengjiao@正交 (orthogonal)}
+\begin{definition}{}{}\index{zhengjiao@正交 (orthogonal)}
     两个向量 $u, v \in V$ 称为\term{正交的}，如果 $\langle u, v\rangle = 0$.
 \end{definition}
 
@@ -73,7 +73,7 @@
 
 那么正交的定义关键在何处呢？以下给出 $\mathbf{R}^{n}$ 空间上夹角的定义以供理解（证明良定义需要用到 Cauchy-Schwarz 不等式）：
 
-\begin{definition}
+\begin{definition}{}{}
     设 $u, v \in \mathbf{R}^{n}$，则 $u, v$ 的夹角 $ \theta $ 为$ \theta = \arccos \dfrac{\langle u, v\rangle}{\lVert u \rVert \lVert v \rVert}$.
 \end{definition}
 
@@ -89,7 +89,7 @@
 
 然后是熟悉的勾股定理在内积空间上的推广：
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $u, v$ 是 $V$ 中的正交向量，则 $\lVert u + v \rVert^2 = \lVert u \rVert^2 + \lVert v \rVert^2 $.
 \end{theorem}
 
@@ -99,13 +99,13 @@
 
 从而便引进了正交分解：
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $u, v \in V$ 且 $v \neq \vec{0}$. 令 $ c = \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}, \enspace w = u - \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}v$. 则 $\langle w, v\rangle = 0$且 $u = cv + w$.
 \end{theorem}
 
 而通过正交分解，我们可以证明一个数学中最重要的不等式（之一）：\term{Cauchy-Schwarz 不等式}.
 
-\begin{theorem}[Cauchy-Schwarz 不等式] \index{Cauchy@Cauchy-Schwarz 不等式 (Cauchy-Schwarz inequality)}
+\begin{theorem}{Cauchy-Schwarz 不等式}{} \index{Cauchy@Cauchy-Schwarz 不等式 (Cauchy-Schwarz inequality)}
     设 $u, v \in V$. 则 $\left\lvert \left\langle u, v\right\rangle \right\rvert \leqslant \lVert u \rVert\lVert v \rVert$. 等号成立当且仅当 $u, v$ 之一是另一个的标量倍.
 \end{theorem}
 
@@ -113,7 +113,7 @@
 
 借助 Cauchy-Schwarz 不等式，我们可以得到三角不等式：
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $u, v \in V$. 则 $\lVert u, v \rVert \leqslant \lVert u \rVert + \lVert v \rVert$. 等号成立当且仅当 $u, v$ 之一是另一个的非负标量倍.
 \end{theorem}
 
@@ -121,7 +121,7 @@
 
 另一个与几何相关的结论就是平行四边形恒等式：
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $u, v \in V$. 则 $ \lVert u + v \rVert^{2} + \lVert u - v \rVert^{2} = 2(\lVert u \rVert^{2} + \lVert v \rVert^{2})$.
 \end{theorem}
 
@@ -129,7 +129,7 @@
 
 以下为另外几个与内积有关的恒等式，我们会在证明正规算子和自伴算子的性质时运用到它们：
 
-\begin{example}
+\begin{example}{}{}
     证明下列式子成立：
     \begin{enumerate}
         \item $\mathbf{F} = \mathbf{R}$ 时：
@@ -158,7 +158,7 @@
 
 这一节我们将沿着正交的路径接着往下走，看看如果整个向量组乃至一组基都是单位化的且互相正交的话，会有怎样的性质. 我们也会讲解如何获取这样一组基的算法，并介绍 Riesz 表示定理，其揭示了线性泛函和内积的深刻联系.
 
-\begin{definition} \index{zhengjiao!biaozhun@标准正交 (orthonormal), 规范正交}
+\begin{definition}{}{}\index{zhengjiao!biaozhun@标准正交 (orthonormal), 规范正交}
     如果一个向量组的每个向量范数都是 1 且与其他向量正交则称这个向量组是\term{标准正交}（规范正交）的.
 \end{definition}
 
@@ -172,20 +172,20 @@
 
 标准正交组的优势在于处理其线性组合的范数很方便.
 
-\begin{theorem}
+\begin{theorem}{}{}
     若 $e_1, \ldots , e_m$ 是 $ V $ 中的标准正交向量组，则对 $\forall a_1, \ldots, a_m \in \mathbf{F}$ 均有
     \[ \lVert a_1e_1 + \cdots + a_ne_n\rVert^2 = \lvert a_1 \rvert^2 + \cdots + \lvert a_n \rvert^2.\]
 \end{theorem}
 
 反复使用勾股定理即可证明. 该定理也有一个重要推论：
 
-\begin{theorem}
+\begin{theorem}{}{}
     任何标准正交向量组都是线性无关的.
 \end{theorem}
 
 令其线性组合为 $ \vec{0} $ 即证.
 
-\begin{example} \label{ex:22:标准正交组}
+\begin{example}{}{标准正交组}
     设 $e_1, \ldots , e_m$ 是 $ V $ 的标准正交组. 设 $ v \in V $. 证明
     \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2 \]
     当且仅当 $ v \in \spa(e_1, \ldots , e_m)$.
@@ -193,7 +193,7 @@
 
 既然标准正交组都是线性无关的，很自然我们就会想到在线性空间中最有用的线性无关组：基. 也就有了标准正交基的定义.
 
-\begin{definition}
+\begin{definition}{}{}
     $ V $ 的标准正交基是 $ V $ 中的标准正交向量组构成的基.
 \end{definition}
 
@@ -201,7 +201,7 @@
 
 标准正交基的优势就在于表出向量的表出系数可以确定.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $e_1, \ldots e_n$ 是 $ V $ 标准正交基且 $ v \in V$. 则
     \begin{equation} \label{eq:23:Fourier展开}
         v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_n \rangle e_n
@@ -210,11 +210,11 @@
     \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2. \]
 \end{theorem}
 
-此为\autoref{ex:22:标准正交组} 的特例. \autoref{eq:23:Fourier展开} 也被称为 $ v $ 的 Fourier 展开，其中每个系数 $ \langle v, e_j \rangle $ 被称为 $ v $ 的 Fourier 系数.
+此为\autoref{ex:标准正交组} 的特例. \autoref{eq:23:Fourier展开} 也被称为 $ v $ 的 Fourier 展开，其中每个系数 $ \langle v, e_j \rangle $ 被称为 $ v $ 的 Fourier 系数.
 
 标准正交基的性质十分美妙，但我们取出一组基使得其恰好是标准正交基是十分困难的，所幸前人已经研究出了一套算法，可以将所有线性无关组转变为标准正交组，且张成空间相同.
 
-\begin{theorem}[Gram-Schmidt 过程] \index{Gram@Gram-Schmidt 过程 (Gram-Schmidt process)}
+\begin{theorem}{Gram-Schmidt 过程}{} \index{Gram@Gram-Schmidt 过程 (Gram-Schmidt process)}
     设 $v_1, \ldots ,v_n$ 是 $ V $ 中的线性无关向量组. 设 $e_1 = \dfrac{v_1}{\lVert v_1 \rVert}$. 对于 $ j = 2, \ldots , m$，定义 $ e_j $ 如下：
     \[ e_j = \frac{v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} }{\lVert v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1} \rVert}\]
     则 $e_1, \ldots , e_m $ 是 $ V $ 中的标准正交组，使得对 $ j = 1, \ldots , m $ 有
@@ -224,7 +224,7 @@
 证明前半部分使用归纳法，后半部分证明两向量组等价即可.
 
 让我们简单运用一下 Gram-Schmidt 过程.
-\begin{example}
+\begin{example}{}{}
     求 $\mathbf{R}[x]_2$ 的一组标准正交基，内积定义为 $\langle p, q \rangle = \displaystyle\int_{-1}^1 p(x)q(x)\,\mathrm{d}x$.
 \end{example}
 
@@ -245,17 +245,17 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 \end{enumerate}
 也可以得到这样一个定理.
 
-\begin{theorem}[Schur 定理] \label{thm:23:Schur} \index{Schur@Schur 定理 (Schur's triangularization theorem)}
+\begin{theorem}{Schur 定理}{Schur} \index{Schur@Schur 定理 (Schur's triangularization theorem)}
     设 $ V $ 是有限维的复内积空间，且 $ T \in \mathcal{L}(V) $，则 $ T $ 关于 $ V $ 的某个标准正交基具有上三角矩阵.
 \end{theorem}
 
-证明并不复杂，只需要结合\autoref{thm:20:上三角矩阵存在} 和 Gram-Schmidt 过程即可. 虽然十分浅显，但它迈出了我们在内积空间上算子简化表示的第一步，在更进一步的结论中我们会运用到它.
+证明并不复杂，只需要结合\autoref{thm:上三角矩阵存在} 和 Gram-Schmidt 过程即可. 虽然十分浅显，但它迈出了我们在内积空间上算子简化表示的第一步，在更进一步的结论中我们会运用到它.
 
 \section{内积的表示方式}
 
 在此我们先打住，回忆一下内积的定义，其本质上就是一个函数，它把 $ V $ 中元素的每个有序对 $(u, v)$ 都映射成一个数$ \langle u, v \rangle \in \mathbf{F}$，而我们也很熟悉一类把 $ V $ 中元素映射成一个数的函数，即所谓的线性泛函. 那么这两者之间是否存在着某种联系？我们先借助几个例子观察一下.
 
-\begin{example}
+\begin{example}{}{}
     \begin{enumerate}
         \item 定义如下的函数 $\varphi : \mathbf{F}^{3} \rightarrow \mathbf{F}$
               \[\varphi(z_1, z_2, z_3) = 2z_1 - 5z_2 + z_3\]
@@ -265,12 +265,12 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 
         \item 定义如下的函数 $\varphi$: $\mathbf{R}[x]_2 \rightarrow \mathbf{R}$
               \[\varphi(p) = \int_{-1}^1 p(t)(\cos(\pi t))\,\mathrm{d}t\]
-              是 $\mathbf{R}[x]_2$ 上的线性泛函, 此处的内积为\autoref{ex:23:内积和范数} \ref*{item:23:内积和范数:2} 中定义的. 但以下的事实并不那么显然：$ \exists u \in \mathbf{R}[x]_2$, 使得$\forall p \in \mathbf{R}[x]_2$ 均有 $ \varphi (p) = \langle p, u\rangle $.
+              是 $\mathbf{R}[x]_2$ 上的线性泛函, 此处的内积为\autoref{ex:内积和范数} \ref*{item:23:内积和范数:2} 中定义的. 但以下的事实并不那么显然：$ \exists u \in \mathbf{R}[x]_2$, 使得$\forall p \in \mathbf{R}[x]_2$ 均有 $ \varphi (p) = \langle p, u\rangle $.
     \end{enumerate}
 \end{example}
 
 可以发现，若是固定内积的第二个位置上的向量，内积就等同于一个线性泛函. 即对于确定的 $ u \in V , \enspace \varphi(v) = \langle v, u \rangle$ 就是一个线性泛函. 下面的定理揭示了这两者的关系，其指出 $ V $ 上所有的线性泛函都是这种形式：
-\begin{theorem}[Riesz 表示定理] \label{thm:23:Riesz} \index{Riesz@Riesz 表示定理 (Riesz representation theorem)}
+\begin{theorem}{Riesz 表示定理}{Riesz} \index{Riesz@Riesz 表示定理 (Riesz representation theorem)}
     设 $ V $ 是有限维的且 $ \varphi $ 是 $ V $ 上的线性泛函，则存在唯一的向量$u \in V$ 使得对 $\forall v \in V$ 均有 $ \varphi(v) = \langle v, u\rangle $.
 \end{theorem}
 
@@ -297,7 +297,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 而根据 Riesz 表示定理，我们知道 $ u $ 只依赖于线性泛函 $ \varphi $，所以选取任意一组$ V $ 上的标准正交基都会计算出相同的结果.
 
 按以往的经验，该节的内容常在考试中作为大题单独考察.
-\begin{example}
+\begin{example}{}{}
     定义在 $ V = \mathbf{R}^3 $ 上的运算
     \[ \langle \vec{x}, \vec{y} \rangle_V = x_1 y_1 + x_2 y_2 + (x_2 + x_3)(y_2 + y_3) \]
     其中 $ \vec{x} = (x_1, x_2, x_3),\enspace \vec{y} = (y_1, y_2, y_3) $.
@@ -314,17 +314,17 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
 \begin{align*}
     \langle v, w \rangle & = \langle a_1e_1 + \cdots + a_ne_n, b_1e_1 + \cdots + b_ne_n \rangle \\
-                         & = a_1g_{11}\bar{b}_1 + \cdots + a_ng_{nn}\bar{b}_n \\
+                         & = a_1g_{11}\bar{b}_1 + \cdots + a_ng_{nn}\bar{b}_n                   \\
                          & = (a_1, \ldots, a_n) \begin{pmatrix}
-                            g_{11} & \cdots & g_{1n} \\
-                            \vdots & \ddots & \vdots \\
-                            g_{n1} & \cdots & g_{nn}
-                         \end{pmatrix} \begin{pmatrix}
-                            \bar{b}_1 \\
-                            \vdots \\
-                            \bar{b}_n
-                         \end{pmatrix}
-                         = \alpha G \bar{\beta}^{\mathrm{T}}
+                                                    g_{11} & \cdots & g_{1n} \\
+                                                    \vdots & \ddots & \vdots \\
+                                                    g_{n1} & \cdots & g_{nn}
+                                                \end{pmatrix} \begin{pmatrix}
+                                                                  \bar{b}_1 \\
+                                                                  \vdots    \\
+                                                                  \bar{b}_n
+                                                              \end{pmatrix}
+    = \alpha G \bar{\beta}^{\mathrm{T}}
 \end{align*}
 
 此处的矩阵 $ G $ 被称为内积在基 $ (e_1, \ldots, e_n) $ 下的 \term{Gram 矩阵}，显然在实空间下它是对称矩阵，而在复空间下它是共轭对称矩阵. 矩阵的共轭对称依托于共轭转置操作，我们会在下一节中介绍. 此外，因为内积的正定性，所以 $ \alpha G \bar{\alpha}^{\mathrm{T}} > 0$，这也是 Gram 矩阵的一个重要性质，也被称作正定性. 可以发现 Gram 矩阵的特性实际上是与内积的性质相对应的.
@@ -337,7 +337,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
 \subsection{正交补 \quad 正交投影}
 
-\begin{definition}[正交补] \index{zhengjiao!bu@补 (orthogonal complement)}
+\begin{definition}{正交补}{} \index{zhengjiao!bu@补 (orthogonal complement)}
     设 $ U $ 是 $ V $ 的子集，则 $ U $ 的\term{正交补}（记作 $ U^{\perp } $）是由 $ V $ 中与 $ U $ 的每个向量都正交的那些向量组成的集合：
     \[U^{\perp } = \{ v \in V \mid \forall u \in U, \enspace \langle v, u\rangle = 0\}\]
 \end{definition}
@@ -359,7 +359,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
 那么根据之前的几何示例，我们不难猜测，如果 $ U $ 上升成为了一个子空间，那么就可以诱导一个自然的直和分解.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ U $ 是 $ V $ 的有限维子空间，则 $ V = U \oplus U^{\perp } $.
 \end{theorem}
 
@@ -372,7 +372,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 第二条的证明还是具有一定技巧性的，希望读者仔细品味.
 
 除去这两个结论，该直和分解为我们定义正交投影奠定了基础：
-\begin{definition} \index{zhengjiao@touying@投影 (orthogonal projection)}
+\begin{definition}{}{}\index{zhengjiao@touying@投影 (orthogonal projection)}
     设 $ U $ 是 $ V $ 的有限维子空间. 定义 $ V $ 到 $ U $ 上的\term{正交投影}为如下算子$ P_U \in \mathcal{L} (V)$：对 $ v \in V $ 将其写成 $ v = u + w $，其中$ u \in U $ 且 $ w \in U^{\perp }$，则 $ P_U v = u $.
 \end{definition}
 
@@ -401,7 +401,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 \end{enumerate}
 其中由 \ref*{item:23:正交投影性质:7} 我们知道正交投影存在一种矩阵表示是幂等的，且进一步可以证明在实空间上则是对称幂等的，这一性质在卡方分布中有着运用，此处仅仅介绍一下.
 
-\begin{example}
+\begin{example}{}{}
     设 $ U $ 是实内积空间 $ V $ 的一个有限维子空间. 证明：正交投影 $ P_U $ 具有以下性质：
     \[\langle P_U u, v\rangle = \langle u, P_U v\rangle, \enspace \forall u, v \in V \]
 \end{example}
@@ -412,7 +412,7 @@ Riesz 表示定理不仅证明了内积和线性泛函的联系，也给出了�
 
 我们常会遇到这样的一种问题：给定 $ V $ 的子空间 $ U $ 和点 $ v \in V $，求点$ u \in U $ 使得 $ \lVert v - u \rVert $ 最小. 下面的定理表明，取 $ u = P_U v$即可解决此极小化问题.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ U $ 是 $ V $ 的有限维子空间，$ v \in V $ 且 $ u \in U $. 则
     \[\lVert v - P_U v \rVert \leqslant \lVert v - u \rVert. \]
     等号成立当且仅当 $ u = P_U v $.

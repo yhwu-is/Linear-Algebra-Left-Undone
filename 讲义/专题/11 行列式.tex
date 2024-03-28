@@ -10,7 +10,7 @@
 
 \subsection{公理化定义}
 
-\begin{definition}[行列式] \label{def:13:公理化定义} \index{hanglieshi@行列式 (determinant)}
+\begin{definition}{行列式}{公理化定义} \index{hanglieshi@行列式 (determinant)}
     数域$\mathbf{F}$上的一个$n$阶\term{行列式}是取值于$\mathbf{F}$的$n$个$n$维向量$\alpha_1,\alpha_2,\ldots,\alpha_n \in \mathbf{F}^n$的一个函数，且$\forall \alpha_i,\beta_i \in \mathbf{F}^n$和$\forall \lambda \in \mathbf{F}$，满足下列规则：
     \begin{enumerate}
         \item \label{item:13:齐性}
@@ -30,8 +30,8 @@
 在公理化定义中，我们将行列式定义为一个满足特定的运算性质的从列向量组合到数的函数. 事实上，公理化定义从是逆序数定义可以推导出的行列式的运算性质，教材采用这种定义避开了繁琐的说明.
 
 除此之外，我们不难看出公理化定义可以形象地理解为对$n$维空间中体积的定义，对几何意义感兴趣的同学可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容.
-\begin{example} \label{ex:13:公理化定义}
-    使用\autoref{def:13:公理化定义} 验证下述命题的正确性：
+\begin{example}{}{公理化定义}
+    使用\autoref{def:公理化定义} 验证下述命题的正确性：
     \begin{enumerate}
         \item 若行列式有一列为零向量，则行列式的值等于0.
 
@@ -47,21 +47,21 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 由于行列式满足\autoref{def:13:公理化定义} 的\ref*{item:13:齐性}，设行列式第$i$列为零向量，因此
+        \item 由于行列式满足\autoref{def:公理化定义} 的\ref*{item:13:齐性}，设行列式第$i$列为零向量，因此
               \begin{align*}
                   D(\alpha_1,\ldots,0,\ldots,\alpha_n) & =D(\alpha_1,\ldots,0\cdot\alpha_i,\ldots,\alpha_n)  \\
                                                        & =0\cdot D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_n) \\
                                                        & =0
               \end{align*}
 
-        \item 由于行列式满足\autoref{def:13:公理化定义} 的\ref*{item:13:反对称性}，设行列式第$i$列和第$j$列元素相同，因此
+        \item 由于行列式满足\autoref{def:公理化定义} 的\ref*{item:13:反对称性}，设行列式第$i$列和第$j$列元素相同，因此
               \begin{align*}
                   D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n) & =D(\alpha_1,\ldots,\alpha_j,\ldots,\alpha_i,\ldots,\alpha_n)  \\
                                                                               & =-D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)
               \end{align*}
               从而$D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)=0$.
 
-        \item 由于行列式满足\autoref{def:13:公理化定义} 的\ref*{item:13:齐性}，设行列式第$i$列和第$j$列元素成比例，$\alpha_i=k\alpha_j$，因此
+        \item 由于行列式满足\autoref{def:公理化定义} 的\ref*{item:13:齐性}，设行列式第$i$列和第$j$列元素成比例，$\alpha_i=k\alpha_j$，因此
               \begin{align*}
                   D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)
                    & =D(\alpha_1,\ldots,k\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n) \\
@@ -70,7 +70,7 @@
               \end{align*}
               其中最后一个等号用到了本例的第二条结论.
 
-        \item 事实上，根据\autoref{def:13:公理化定义} 的\ref*{item:13:加性} 以及本例第3条结论，我们可以得到
+        \item 事实上，根据\autoref{def:公理化定义} 的\ref*{item:13:加性} 以及本例第3条结论，我们可以得到
               \begin{align*}
                   D(\alpha_1,\ldots,\alpha_i+k\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n)
                    & =D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)   \\&+D(\alpha_1,\ldots,k\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n) \\
@@ -89,7 +89,7 @@
     \end{enumerate}
 \end{proof}
 
-\begin{example} \label{ex:13:公理化定义2}
+\begin{example}{}{公理化定义2}
     设向量$\alpha_1,\alpha_2,\beta_1,\beta_2$为三维列向量，又$A=(\alpha_1,\alpha_2,\beta_1),B=(\alpha_1,\alpha_2,\beta_2)$，且$|A|=3$，$|B|=2$，求$|2A+3B|$.
 \end{example}
 
@@ -106,12 +106,12 @@
 \subsection{递归式定义}
 
 首先我们需要引入余子式和代数余子式的概念：
-\begin{definition} \label{def:13:余子式}
+\begin{definition}{}{余子式}
     在$n$阶行列式$D=|a_{ij}|_{n \times n}$中，去掉元素$a_{ij}$所在的第$i$行和第$j$列的所有元素而得到的$n-1$阶行列式称为元素$a_{ij}$的\term{余子式}\index{yuzishi@余子式 (minor)}，记作$M_{ij}$，并把数$A_{ij}=(-1)^{i+j}M_{ij}$称为元素$a_{ij}$的\term{代数余子式}\index{yuzishi!daishu@代数余子式 (cofactor)}.
 \end{definition}
 注意，虽然余子式和代数余子式在名称中含有式，但实际上他们是一个值. 实际上行列式也称为``式''，但这些``式''只是形状上有个形式，实际上只是一个值.
-\begin{example} \label{ex:13:余子式}
-    根据\autoref{def:13:余子式} 计算行列式$\begin{vmatrix}
+\begin{example}{}{余子式}
+    根据\autoref{def:余子式} 计算行列式$\begin{vmatrix}
             2  & 1 & 3  \\
             -1 & 0 & 2  \\
             1  & 5 & -2
@@ -128,7 +128,7 @@
 \end{solution}
 
 接下来我们便可以给出递归式定义：
-\begin{definition} \label{def:13:递归式定义}
+\begin{definition}{}{递归式定义}
     设$D=|a_{ij}|_{n \times n}$，则
     \begin{align}
         \label{eq:13:递归式定义1}
@@ -137,22 +137,22 @@
         D=\sum_{k=1}^{n}a_{ik}A_{ik}=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in} & \qquad i=1,2,\ldots,n
     \end{align}
 \end{definition}
-其中$A_{ij}$即为\autoref{def:13:余子式} 给出的代数余子式，\autoref{eq:13:递归式定义1} 称为$D$对第$j$列的展开式，\autoref{eq:13:递归式定义2} 称为$D$对第$i$行的展开式. 事实上，这一定义被称为递归式定义的原因是显然的（如果在程序设计课程中已经学习过递归的概念），它使用$n-1$阶行列式定义$n$阶行列式，因此我们对任意$n$阶行列式都可以递归展开到1阶，从而得到最终行列式计算结果.
+其中$A_{ij}$即为\autoref{def:余子式} 给出的代数余子式，\autoref{eq:13:递归式定义1} 称为$D$对第$j$列的展开式，\autoref{eq:13:递归式定义2} 称为$D$对第$i$行的展开式. 事实上，这一定义被称为递归式定义的原因是显然的（如果在程序设计课程中已经学习过递归的概念），它使用$n-1$阶行列式定义$n$阶行列式，因此我们对任意$n$阶行列式都可以递归展开到1阶，从而得到最终行列式计算结果.
 
 除此之外，我们需要强调的是，这里的递归式定义能称之为定义，必须要使得其与之前的公理化定义不冲突. 事实上二者等价的证明都是技术性的，教材175页定理5.1说明了我们如何从公理化定义推出递归式定义，反过来我们只需要对公理化定义中每个性质利用公理化定义逐个展开验算即可，我们放在习题中供感兴趣的读者自行验证. 因为都是技术性的问题，这里不展开叙述，事实上也不是我们核心的内容.
-\begin{example} \label{ex:13:递归式定义}
-    利用\autoref{def:13:递归式定义} 计算\autoref{ex:13:余子式} 中的行列式，可以行列展开均使用并在上述公式中选取不同$i$和$j$以熟悉\autoref*{def:13:递归式定义}，并注意体会递归式定义的含义.
+\begin{example}{}{递归式定义}
+    利用\autoref{def:递归式定义} 计算\autoref{ex:余子式} 中的行列式，可以行列展开均使用并在上述公式中选取不同$i$和$j$以熟悉\autoref*{def:递归式定义}，并注意体会递归式定义的含义.
 \end{example}
 
 \begin{solution}
-    我们选取$i=2$进行按行展开，由\autoref{def:13:余子式} 可知$A_{21}=17,A_{22}=-7,A_{23}=-9$，因此
+    我们选取$i=2$进行按行展开，由\autoref{def:余子式} 可知$A_{21}=17,A_{22}=-7,A_{23}=-9$，因此
     \begin{align*}
         D & =\sum_{k=1}^{3}a_{2k}A_{2k}              \\
           & =a_{21}A_{21}+a_{22}A_{22}+a_{23}A_{23}  \\
           & =(-1) \cdot 17+0 \cdot (-7)+2 \cdot (-9) \\
           & =-35.
     \end{align*}
-    同理，我们选取$j=3$进行按列展开，由\autoref{def:13:余子式} 可知$A_{13}=-5,A_{23}=-9,A_{33}=1$，因此
+    同理，我们选取$j=3$进行按列展开，由\autoref{def:余子式} 可知$A_{13}=-5,A_{23}=-9,A_{33}=1$，因此
     \begin{align*}
         D & =\sum_{k=1}^{3}a_{k3}A_{k3}             \\
           & =a_{13}A_{13}+a_{23}A_{23}+a_{33}A_{33} \\
@@ -163,7 +163,7 @@
 \end{solution}
 
 递归式定义有一个重要的结论如下：
-\begin{theorem} \label{thm:13:递归性质}
+\begin{theorem}{}{递归性质}
     $n$阶行列式$D=|a_{ij}|_{n \times n}$的某一行（列）元素与另一行（列）相应元素的代数余子式的乘积之和等于0，即
     \begin{align}
         \label{eq:13:递归式定义3}
@@ -173,15 +173,15 @@
     \end{align}
 \end{theorem}
 
-我们简要说一下定理的证明. 虽然这一定理看着下标满天飞，似乎很难证明，但如果我们首先将第$j$列元素替换为第$i$列元素，然后根据\autoref{def:13:递归式定义} 按第$j$列展开求行列式，这一结果一定是0，因为此时矩阵第$i$和$j$两列完全相同. 同时我们发现，我们上面展开写出的式子就是\autoref{eq:13:递归式定义3}（注意此时$a_{ki}=a_{kj}$），由此得证.
+我们简要说一下定理的证明. 虽然这一定理看着下标满天飞，似乎很难证明，但如果我们首先将第$j$列元素替换为第$i$列元素，然后根据\autoref{def:递归式定义} 按第$j$列展开求行列式，这一结果一定是0，因为此时矩阵第$i$和$j$两列完全相同. 同时我们发现，我们上面展开写出的式子就是\autoref{eq:13:递归式定义3}（注意此时$a_{ki}=a_{kj}$），由此得证.
 
-到目前为止，读者可能对\crefrange*{eq:13:递归式定义1}{eq:13:递归式定义4} 式繁杂的下标感到陌生，因此安排了\crefrange*{ex:13:公理化定义2}{ex:13:递归式定义} 希望大家熟悉这些公式.
-\begin{example} \label{ex:13:递归式定义2}
-    对\autoref{ex:13:递归式定义} 中的矩阵验证\autoref{thm:13:递归性质} 的正确性.
+到目前为止，读者可能对\crefrange*{eq:13:递归式定义1}{eq:13:递归式定义4} 式繁杂的下标感到陌生，因此安排了\crefrange*{ex:公理化定义2}{ex:递归式定义} 希望大家熟悉这些公式.
+\begin{example}{}{递归式定义2}
+    对\autoref{ex:递归式定义} 中的矩阵验证\autoref{thm:递归性质} 的正确性.
 \end{example}
 
 \begin{solution}
-    例如我们选取第一行元素和第二行的代数余子式，由\autoref{def:13:余子式} 可知$A_{21}=17,A_{22}=-7,A_{23}=-9$，因此
+    例如我们选取第一行元素和第二行的代数余子式，由\autoref{def:余子式} 可知$A_{21}=17,A_{22}=-7,A_{23}=-9$，因此
     \begin{align*}
         D & =\sum_{k=1}^{3}a_{1k}A_{2k}             \\
           & =a_{11}A_{21}+a_{12}A_{22}+a_{13}A_{23} \\
@@ -200,7 +200,7 @@
 
     \item $|kA|=k^n|A|$；
           \begin{proof}
-              由\autoref{def:13:公理化定义} 的\ref*{item:13:齐性}，设$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则
+              由\autoref{def:公理化定义} 的\ref*{item:13:齐性}，设$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则
               \begin{align*}
                   |kA| & =|k\alpha_1,k\alpha_2,\ldots,k\alpha_n| \\
                        & =k^n|\alpha_1,\alpha_2,\ldots,\alpha_n| \\
@@ -313,7 +313,7 @@
 本节内容按照往年经验不是考试重点，但是我们要保证教材中涉及的的方法都掌握. 本节我们简要说明教材中提及的基本行列式计算方法，在下一讲行列式计算进阶中我们将用一整讲详细展开行列式的计算技巧.
 
 首先我们用一个简单的三阶行列式的例子回顾行列式的多种基本计算方法. 这里选取三阶行列式主要原因也是三阶行列式在未来实际解题中最为常见，这里希望读者比较选择最适合自己的方法在未来更便捷地使用：
-\begin{example}
+\begin{example}{}{}
     计算行列式$D=\begin{vmatrix}
             1 & 2 & 3 \\
             2 & 3 & 1 \\
@@ -333,7 +333,7 @@
 
         \item （化为上三角形式）参考教材172页例4，具体过程不在此展开.
 
-        \item （递归式定义展开）我们对第一行展开，由\autoref{def:13:递归式定义} 可知
+        \item （递归式定义展开）我们对第一行展开，由\autoref{def:递归式定义} 可知
               \begin{align*}
                   D & =1 \cdot
                   \begin{vmatrix}
@@ -355,7 +355,7 @@
 \end{solution}
 
 接下来我们需要介绍一个非常重要的行列式，我们称之为Vandermonde行列式：
-\begin{example}
+\begin{example}{}{}
     证明：$n$阶Vandermonde行列式
     \[V_n=\begin{vmatrix}
             1         & 1         & \cdots & 1         \\
@@ -365,8 +365,8 @@
         \end{vmatrix}=\prod_{1 \leqslant i < j \leqslant n}(x_j-x_i)\]
 \end{example}
 
-教材177--178页例2给出了对上式的详细解释以及证明，这里我们不再赘述. 我们需要强调的是Vandermonde行列式的重要性，事实上，Vandermonde行列式有着广泛的应用，在之后不少的习题中我们将使用它. 在此我们证明\autoref{thm:4:覆盖定理} 的有限维情形作为一个例子：
-\begin{example}\label{ex:13:行列式证明覆盖定理}
+教材177--178页例2给出了对上式的详细解释以及证明，这里我们不再赘述. 我们需要强调的是Vandermonde行列式的重要性，事实上，Vandermonde行列式有着广泛的应用，在之后不少的习题中我们将使用它. 在此我们证明\autoref{thm:覆盖定理} 的有限维情形作为一个例子：
+\begin{example}{}{行列式证明覆盖定理}
     设$V_1,V_2,\ldots,V_s$是有限维线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V$.
 \end{example}
 
@@ -392,7 +392,7 @@
 \section{伴随矩阵}
 
 伴随矩阵是一个重要的概念，它给出了逆矩阵与原矩阵的关联，并且其性质都比较经典，很适合于练习.
-\begin{definition}[伴随矩阵] \index{bansuijuzhen@伴随矩阵 (adjugate matrix)}
+\begin{definition}{伴随矩阵}{} \index{bansuijuzhen@伴随矩阵 (adjugate matrix)}
     称矩阵$A^*=\begin{pmatrix}
             A_{11} & A_{21} & \cdots & A_{n1} \\
             A_{12} & A_{22} & \cdots & A_{n2} \\
@@ -401,7 +401,7 @@
         \end{pmatrix}$为$A$的\term{伴随矩阵}，其中$A_{ij}$是元素$a_{ij}$的代数余子式.
 \end{definition}
 我们要特别注意伴随矩阵代数余子式的下标与通常矩阵下标不一致，与转置下标一致. 伴随矩阵具有以下几个重要性质，我们将给出大部分性质的证明，部分性质我们放在朝花夕拾中证明：
-\begin{example} \label{ex:13:伴随矩阵}
+\begin{example}{}{伴随矩阵}
     证明下列关于$n$阶矩阵$A$的伴随矩阵$A^*$的性质：
     \begin{enumerate}
         \item \label{item:13:伴随矩阵:1}
@@ -449,14 +449,14 @@
 
         \item 由$(A^k)^*=|A^k|(A^k)^{-1}=|A|^k(A^{-1})^k=(|A|A^{-1})^k=(A^*)^k$.
 
-        \item 证明见\autoref{ex:15:伴随矩阵的秩}.
+        \item 证明见\autoref{ex:伴随矩阵的秩}.
     \end{enumerate}
 \end{proof}
 
-在计算行列式时若出现伴随矩阵，我们经常使用\autoref{ex:13:伴随矩阵} 中的 \ref*{item:13:伴随矩阵:1}，\ref*{item:13:伴随矩阵:3} 进行计算.
+在计算行列式时若出现伴随矩阵，我们经常使用\autoref{ex:伴随矩阵} 中的 \ref*{item:13:伴随矩阵:1}，\ref*{item:13:伴随矩阵:3} 进行计算.
 
 使用伴随矩阵求逆矩阵是一种矩阵求逆的方式，我们通过一个简单的例子复习：
-\begin{example}
+\begin{example}{}{}
     判断矩阵$\begin{pmatrix}
             1 & 2 & 3 \\ 2 & 1 & 2 \\ 1 & 3 & 3
         \end{pmatrix}$是否可逆. 若可逆，利用伴随矩阵求其逆矩阵.
@@ -469,7 +469,7 @@
 \section{Cramer法则}
 
 从历史角度来开，引入行列式是用于求解线性方程组的. 瑞士数学家克莱姆（Cramer）于1750年在他的《线性代数分析导言》中发表了这一方法. 事实上莱布尼兹〔1693〕，以及麦克劳林〔1748〕亦研究了这一法则，但他们的记法不如克莱姆清晰. 接下来我们介绍这一充满历史底蕴的定理：
-\begin{theorem}[Cramer法则] \label{thm:13:Cramer} \index{Cramer@Cramer 法则 (Cramer's rule)}
+\begin{theorem}{Cramer法则}{Cramer} \index{Cramer@Cramer 法则 (Cramer's rule)}
     对线性方程组
     \begin{gather}
         \label{eq:13:线性方程组1}
@@ -529,17 +529,17 @@
         \end{pmatrix}\begin{pmatrix}
             b_1 \\ b_2 \\ \vdots \\ b_n
         \end{pmatrix},\]
-    于是$x_i=\dfrac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$（根据\autoref{def:13:递归式定义}）.
+    于是$x_i=\dfrac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$（根据\autoref{def:递归式定义}）.
 
     事实上此时解唯一，因为可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
 
-    反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:6:双射等价条件} 可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$. 综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
+    反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:双射等价条件} 可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$. 综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
 
     剩下的无解、无穷解的结论就很显然了. 若$AX=b$无解或有无穷解，反证法，若$D\neq 0$，则$A$可逆，从而$AX=b$有唯一解，矛盾，故$D=0$. 反之，若$D=0$，则$A$不可逆，反证法，若$AX=b$有唯一解，$A$可逆，矛盾，故$AX=b$无解或有无穷解（完全就是前面$AX=b$有唯一解$\iff D=|A|\neq 0$的推论）.
 \end{proof}
 
 我们可以用 Cramer 法则求解线性方程组，但要注意只有方程个数与未知数个数相等时才能使用，并且需要系数行列式不为0.
-\begin{example}
+\begin{example}{}{}
     求解方程组$\begin{cases}
             x_1+x_2+x_3=1          \\
             a_1x_1+a_2x_2+a_3x_3=0 \\
@@ -581,7 +581,7 @@
 \subsection{行列式的秩}
 
 首先我们需要给出矩阵的子式、主子式的定义，然后给出相关的顺序主子式的定义.
-\begin{definition}
+\begin{definition}{}{}
     矩阵$A=(a_{ij})_{n \times n}$的任意$k$行（$i_1<i_2<\cdots<i_k$行）和任意$k$列（$j_1<j_2<\cdots<j_k$列）的交点上的$k^2$个元素排成的行列式
     \[\begin{vmatrix}
             a_{i_1j_1} & a_{i_1j_2} & \cdots & a_{i_1j_k} \\
@@ -594,7 +594,7 @@
     当$A$为方阵且$i_t=j_t\enspace(t=1,2,\ldots,k)$（即选取相同行列）时，称为$A$的$k$阶\term{主子式}\index{zhuzishi@主子式 (principal minor)}. 若$i_t=j_t=t\enspace(t=1,2,\ldots,k)$，称为$A$的$k$阶\term{顺序主子式}\index{zhuzishi!shunxu@顺序主子式 (leading principal minor)}（取前$k$行$k$列的左上角主子式）.
 \end{definition}
 
-\begin{example}
+\begin{example}{}{}
     写出矩阵$\begin{pmatrix}
             1 & 5 & -2 \\ 2 & 3 & 4 \\ -1 & -3 & 0
         \end{pmatrix}$的所有一阶、二阶子式、主子式和顺序主子式.
@@ -649,21 +649,21 @@
 \end{solution}
 
 接下来我们给出行列式的秩的定义.
-\begin{definition}
+\begin{definition}{}{}
     矩阵$A$的非零子式的最高阶数$r$称为$A$的行列式秩.
 \end{definition}
 即矩阵$A$的行列式秩为$r$的含义为$A$至少有一个$r$阶子式不为0，但所有$r+1$阶子式均为0. 事实上，我们可以通过如下定理统一矩阵的秩和行列式秩：
-\begin{theorem}\label{thm:13:行列式秩等于行列式秩}
+\begin{theorem}{}{行列式秩等于行列式秩}
     矩阵$A$的秩$r(A)=r \iff A$的行列式的秩为$r$.
 \end{theorem}
 我们可以得到上一个专题中矩阵的秩的等价定义. 这一定理的证明见教材183页，事实上是很简单的. 我们可以这么理解，最高非零子式的阶数实际上就是矩阵行、列向量极大线性无关组的长度（更多行、列向量就会使得子式等于0，此时必不满秩），那么这一定理就很显然了.
 
-\begin{definition}
+\begin{definition}{}{}
     矩阵$A$的非零子式的最高阶数$r$称为矩阵$A$的秩，记为$r(A)$.
 \end{definition}
 
 需要注意的是，前面定义的子式、行列式秩等都是对矩阵定义的，原因是行列式虽名为``式''但实际上只是一个数，只有矩阵有形可以定义上述概念.
-\begin{example}
+\begin{example}{}{}
     利用定义求矩阵$\begin{pmatrix}
             1 & 1 & -1 & 3 \\ 1 & 2 & 1 & 1 \\ 2 & 3 & 0 & 4
         \end{pmatrix}$的行列式秩.
@@ -683,10 +683,10 @@
 \begin{enumerate}
     \item 在矩阵的秩的定义以及三秩的统一中体现了向量组的秩（行秩、列秩的定义基于向量组的秩）和线性映射的秩（矩阵的秩的定义基于线性映射的秩）与矩阵的秩的统一；
 
-    \item 在\autoref{thm:13:行列式秩等于行列式秩} 中统一了矩阵的秩和行列式的秩.
+    \item 在\autoref{thm:行列式秩等于行列式秩} 中统一了矩阵的秩和行列式的秩.
 \end{enumerate}
-虽然线性映射的秩、矩阵的秩、行列式的秩的定义各不相同，但本质都在于向量组的秩（回顾线性映射的秩的定义，矩阵行秩、列秩的定义，乃至\autoref*{thm:13:行列式秩等于行列式秩} 的证明）. 这给我们的启示是上述提到的概念都可以互相转化考虑. 例如考虑可逆时，我们可以考虑行、列向量是否线性无关/矩阵对应的线性映射是否可逆/行列式是否为0等. 虽然说起来很简单，但是实际做题的时候很多同学还是容易思维局限，因此我们需要将这些概念的统一性放在重要的位置.
-\begin{example}
+虽然线性映射的秩、矩阵的秩、行列式的秩的定义各不相同，但本质都在于向量组的秩（回顾线性映射的秩的定义，矩阵行秩、列秩的定义，乃至\autoref*{thm:行列式秩等于行列式秩} 的证明）. 这给我们的启示是上述提到的概念都可以互相转化考虑. 例如考虑可逆时，我们可以考虑行、列向量是否线性无关/矩阵对应的线性映射是否可逆/行列式是否为0等. 虽然说起来很简单，但是实际做题的时候很多同学还是容易思维局限，因此我们需要将这些概念的统一性放在重要的位置.
+\begin{example}{}{}
     求多项式$f(x)=\begin{vmatrix}
             1 & a_1   & a_2     & a_3     \\
             1 & a_1+x & a_2     & a_3     \\
@@ -838,7 +838,7 @@
 
     \item 设$V$是一个$n$维实线性空间，证明：存在$V$中的一个由可列无穷多个向量组成的向量组$\{\alpha_i \mid i\in\mathbf{Z}_+\}$，使得其中任意$n$个向量组成的向量组都是$V$的一组基.
 
-    \item 回顾\autoref{ex:2:函数和数列线性空间}中数列极限的例子，证明：以$0$为极限的实数数列全体构成的线性空间是无限维线性空间.
+    \item 回顾\autoref{ex:函数和数列线性空间} 中数列极限的例子，证明：以$0$为极限的实数数列全体构成的线性空间是无限维线性空间.
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -892,7 +892,7 @@
 
 \section{化三角形法}
 
-\begin{example}
+\begin{example}{}{}
     计算行列式$D_{n+1}=\begin{vmatrix}
             1      & a_{1}       & a_{2}       & \cdots & a_n       \\
             1      & a_{1}+b_{1} & a_{2}       & \cdots & a_n       \\
@@ -917,7 +917,7 @@
 
 \section{连加法}
 
-\begin{example}
+\begin{example}{}{}
     计算行列式$D_n=\begin{vmatrix}
             x_1-m  & x_2    & \cdots & x_n    \\
             x_1    & x_2-m  & \cdots & x_n    \\
@@ -947,7 +947,7 @@
               & -m  &        &     \\
               &     & \ddots &     \\
               &     &        & -m
-        \end{vmatrix}                                                \\
+        \end{vmatrix}                                              \\
             & =(-m)^{n-1}\left(\sum_{i=1}^{n} x_i-m\right)
     \end{align*}
 \end{solution}
@@ -956,7 +956,7 @@
 
 当行列式每两行的值比较接近时，可采用让邻行中的某一行减或者加上另一行的若干倍, 这种方法叫滚动消去法.
 
-\begin{example}
+\begin{example}{}{}
     计算行列式$D_n=\begin{vmatrix}
             1      & 2      & 3      & \cdots & n-1    & n      \\
             2      & 1      & 2      & \cdots & n-2    & n-1    \\
@@ -1008,7 +1008,7 @@
 
 将高阶行列式化为低阶行列式再求解.
 
-\begin{example}
+\begin{example}{}{}
     解行列式$D_n=\begin{vmatrix}
             x     & -1    &        &         &         \\
                   & x     & \ddots &         &         \\
@@ -1043,7 +1043,7 @@
         \end{pmatrix} \]
 \end{solution}
 
-\begin{example}
+\begin{example}{}{}
     解行列式$D_n=\begin{vmatrix}
             \lambda & a      & a      & a      & \cdots & a      \\
             b       & \gamma & \beta  & \beta  & \cdots & \beta  \\
@@ -1091,7 +1091,7 @@
 
 升阶法就是把 $n$ 阶行列式增加一行一列变成 $n+1$ 阶行列式，再通过性质化简算出结果，这种计算行列式的方法叫做升阶法或加边法. 升阶法的最大特点就是要找每行或每列相同的因子, 那么升阶之后, 就可以利用行列式的性质把绝大多数元素化为0，这样就达到简化计算的效果.
 
-\begin{example}
+\begin{example}{}{}
     解行列式 $D=\begin{vmatrix}
             0      & 1      & 1      & \cdots & 1      & 1      \\
             1      & 0      & 1      & \cdots & 1      & 1      \\
@@ -1135,7 +1135,7 @@
 
 \section{数归/递推法}
 
-\begin{example} \label{ex:14:递推法}
+\begin{example}{}{递推法}
     计算行列式$D_n=\begin{vmatrix}
             \cos \beta & 1            &        &              &              \\
             1          & 2 \cos \beta & \ddots &              &              \\
@@ -1215,9 +1215,9 @@
 \end{enumerate}
 以上式子中的$C_1,C_2$均为任意常数，可以令$n=1,2$获得.
 
-所以其实\autoref{ex:14:递推法} 也可以使用递推式求得答案（留作习题证明略）. 不过一般遇到的还是特征根为实数的情况比较多，给出一道练习例题：
+所以其实\autoref{ex:递推法} 也可以使用递推式求得答案（留作习题证明略）. 不过一般遇到的还是特征根为实数的情况比较多，给出一道练习例题：
 
-\begin{example}
+\begin{example}{}{}
     计算行列式$D_n=
         \begin{vmatrix}
             9 & 5 &        &   &   \\
@@ -1248,7 +1248,7 @@
 
 \section{硬拆法}
 
-\begin{example}
+\begin{example}{}{}
     计算行列式$D_n=\begin{vmatrix}
             1-a_{1} & a_{2}   &        &           &         \\
             -1      & 1-a_{2} & \ddots &           &         \\
@@ -1267,7 +1267,7 @@
                    0 + 0   & -1      & \ddots & a_{n-1}   &         \\
                    0 + 0   &         & \ddots & 1-a_{n-1} & a_{n}   \\
                    0 + 0   &         &        & -1        & 1-a_{n}
-               \end{vmatrix}         \\
+               \end{vmatrix}                \\
         =    & \begin{vmatrix}
                    1  & a_{2}   &        &           &         \\
                    -1 & 1-a_{2} & \ddots &           &         \\
@@ -1307,7 +1307,7 @@
 
 \section{箭形行列式}
 
-\begin{example}
+\begin{example}{}{}
     计算行列式$\begin{vmatrix}
             a_1    & 1   & 1   & \cdots & 1   \\
             1      & a_2                      \\
@@ -1329,7 +1329,7 @@
 
 \section{Vandermonde 行列式}
 
-\begin{example}
+\begin{example}{}{}
     求行列式 $D_n=\begin{vmatrix}
             1         & 1         & \cdots & 1         \\
             x_1       & x_2       & \cdots & x_n       \\
@@ -1365,9 +1365,9 @@
     \[ D_n=(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j) \]
 \end{solution}
 
-\section{$^*$利用$|E_m-AB|=|E_n-BA|$} \label{sec:14:利用}
+\section{$^*$利用$|E_m-AB|=|E_n-BA|$} \label{sec:利用|E_m-AB|=|E_n-BA|}
 
-\begin{example}
+\begin{example}{}{}
     求行列式 $\begin{vmatrix}
             0      & 2a_1   & 3a_1   & \cdots & na_1     \\
             a_2    & a_2    & 3a_2   & \cdots & na_2     \\
@@ -1419,10 +1419,10 @@
 \end{solution}
 
 \section{Laplace定理}
-我们在\autoref{def:13:递归式定义} 中讲述了行列式一行（一列）展开的方式，这里我们讲解一个更加一般的展开方式：即按照$k$行（$k$列）展开.
+我们在\autoref{def:递归式定义} 中讲述了行列式一行（一列）展开的方式，这里我们讲解一个更加一般的展开方式：即按照$k$行（$k$列）展开.
 
 为了描述这一定理，我们需要首先将单个元素的余子式和代数余子式的概念推广到子式的余子式和代数余子式. 为此，我们先给出一个定义：
-\begin{definition}
+\begin{definition}{}{}
     $n$阶行列式$|A|$中任意取定$k$行、$k$列$(1\leqslant k<n)$，记为$i_1,\ldots,i_k$行，$j_1,\ldots,j_k$列，位于这些行和列的交叉处的$k^2$个元素所构成的$k$阶子式称为$|A|$的一个$k$阶子式，这一$k$阶子式记为$A\begin{pmatrix}
             i_1 & \cdots & i_k \\
             j_1 & \cdots & j_k
@@ -1452,7 +1452,7 @@
         a_{23}
     \end{vmatrix}$，代数余子式为$(-1)^{(1+3)+(1+2)}a_{23}=-a_{23}$.
 
-\begin{theorem}\label{thm:14:Laplace定理}
+\begin{theorem}{}{Laplace定理}
     在$n$阶行列式$|A|$中，取定$k$行：第$i_1,i_2,\ldots,i_k$行（$1\leqslant i_1<i_2<\cdots<i_k\leqslant n$，且$1\leqslant k<n$），则这$k$行元素形成的所有$k$阶子式与它们自己的代数余子式的乘积之和等于$|A|$，即
     \begin{equation}\label{eq:14:Laplace定理}
         |A|=\sum_{1\leqslant j_1<j_2<\cdots<j_k\leqslant n}A\begin{pmatrix}
@@ -1490,7 +1490,7 @@
 \end{proof}
 
 我们用一个简单的例子来应用这一定理：
-\begin{example}
+\begin{example}{}{}
     设$A$为$n$阶方阵，$B$为$m$阶方阵，$C$为$m\times n$矩阵，证明：
     \[ \begin{vmatrix}
             A & O \\
@@ -1552,7 +1552,7 @@
                       &     &        & 1   & a+b \\
               \end{vmatrix}$.
 
-    \item 用递推法解\autoref{ex:14:递推法}.
+    \item 用递推法解\autoref{ex:递推法}.
 
     \item （P188 第4题）解行列式 $ \begin{vmatrix}
                   a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\

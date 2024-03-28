@@ -5,7 +5,7 @@
 \section{欧几里得空间}
 
 在前面的学习中我们已经较为全面地学习了内积空间的相关知识，而在解析几何中，我们在更多情况下会研究\term{欧几里得空间}\index{oujilidekongjian@欧几里得空间 (Euclidean space)}下的问题.
-\begin{definition}[欧几里得空间]
+\begin{definition}{欧几里得空间}{}
     欧几里得空间（欧氏空间）是一个有限维实内积空间.
 \end{definition}
 同学们可能对欧氏空间的几何直观更为熟悉. 当欧氏空间的维数为 2 或 3 时，我们可以用熟悉的平面直角坐标系与空间直角坐标系来描述欧氏空间中的向量，并用点积作为向量的内积.
@@ -13,12 +13,12 @@
 \section{欧氏空间上的运算}
 
 我们也已经基本掌握了模、内积、夹角等在内积空间中的基本概念，在此我们引入一些在先前的学习中接触较少的概念.
-\begin{definition}[点积] \index{dianji@点积 (dot product)}
+\begin{definition}{点积}{} \index{dianji@点积 (dot product)}
     \term{点积}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\cdot\vec{b}$表示. 两向量点积得到的数值等于两向量模长的乘积与两向量夹角的余弦的乘积.
 \end{definition}
 特别的，三维欧氏空间中的向量点积$(a_1,a_2,a_3)\cdot(b_1,b_2,b_3)$可以表示为\[a_1b_1+a_2b_2+a_3b_3\]
 由点积的计算，我们可以很方便地得到两向量夹角的余弦，即\[\cos\theta=\frac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}\]
-\begin{definition}[叉乘] \index{chacheng@叉乘 (cross product)}
+\begin{definition}{叉乘}{} \index{chacheng@叉乘 (cross product)}
     \term{叉乘}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\times\vec{b}$表示. 两向量叉乘得到的向量垂直于两向量，方向遵循右手定则，其模长为两向量的模的乘积与两向量夹角的正弦的乘积.
 \end{definition}
 由定义可知，叉乘仅在三维欧氏空间中有定义，且叉乘的结果是一个向量，而不是一个数. 关于叉乘向量的计算有另一种更常用的用行列式表示的计算方法，即
@@ -30,7 +30,7 @@
 其中$\vec{i},\vec{j},\vec{k}$为三维欧氏空间的自然基.
 
 在解析几何中，叉乘的一个重要应用是求解与两向量垂直的向量.
-\begin{definition}[混合积] \index{hunheji@混合积 (mixed product)} \index{biaoliangsancongji@标量三重积 (scalar triple product)}
+\begin{definition}{混合积}{} \index{hunheji@混合积 (mixed product)} \index{biaoliangsancongji@标量三重积 (scalar triple product)}
     \term{混合积}（或称\term{标量三重积}，不同于\term{矢量三重积}）是三维欧氏空间中对三个向量的运算，用$[\vec{a},\vec{b},\vec{c}]$表示，等价于$(\vec{a}\times\vec{b})\cdot\vec{c}$.
 \end{definition}
 混合积的几何意义是以$\vec{a},\vec{b},\vec{c}$为邻边的平行六面体的体积，可以用行列式表示为
@@ -65,7 +65,7 @@
 
 在得到一张由其他方式表示的平面时，我们往往也会将其转化为一般式或点法式，以便于我们计算其与其他几何对象的关系. 例如，得到一个由平面上一点与平面上两不共线的向量表示的平面，则可以通过求两向量的叉积得到平面的法向量，从而得到平面的点法式.
 
-\begin{example}
+\begin{example}{}{}
     若已知一个平面上有三点$A(1,2,0),\enspace B(0,1,-1),\enspace C(1,1,1)$，求该平面的一般方程.
 \end{example}
 
@@ -106,7 +106,7 @@
 
 线与线之间的位置关系判断主要依靠它们的方向向量. 如果两条直线的方向向量平行，则两条直线平行或重合，此时再判断两直线是否存在公共点，若联立方程有解，说明两直线重合，否则两条直线平行. 如果两条直线的方向向量不平行，则还需要判断两条直线是否共面，若共面则说明两条直线相交，否则两条直线异面. 此时以两直线方程联立方程组，若有解则说明存在交点，否则说明两条直线异面.
 
-\begin{example}
+\begin{example}{}{}
     已知直线$L_1=\begin{cases}
             x+y+z-1=0 \\
             x-2y+2=0

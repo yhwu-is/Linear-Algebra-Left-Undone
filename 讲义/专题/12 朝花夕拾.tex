@@ -1,4 +1,4 @@
-\chapter{朝花夕拾}
+\chapter{朝花夕拾} \label{chap:朝花夕拾}
 
 我为这一讲取了一个很有诗意的名字，用以说明这一节我们重在对往日所学知识的回忆. 我们一路走来为了能进入这一讲做了太多准备工作，包括一开始难以理解的抽象空间和映射，以及后面具象但充满技巧性的矩阵与行列式. 但``吹尽狂沙始到金''，这一讲希望读者跟随我们的脚步，回忆起这一路上学习的核心概念和定理，为我们线性方程组一般理论的讨论画下一个完美的句点.
 
@@ -8,12 +8,12 @@
 
 \subsection{线性方程组解的一般理论}
 
-\begin{theorem}[线性方程组有解的充要条件] \label{thm:15:有解条件}
+\begin{theorem}{线性方程组有解的充要条件}{有解条件}
     线性方程组有解的充分必要条件是其系数矩阵与增广矩阵有相同的秩.
 \end{theorem}
 定理的证明非常简单，这里简要介绍思路：将方程组视为$x_1\beta_1+x_2\beta_2+\cdots+x_n\beta_n=\vec{b}$（$\beta_i$就是系数矩阵的第$i$列），则有解的条件为$\vec{b}$可以被$\beta_1,\ldots,\beta_n$线性表示，这等价于向量组$(\beta_1,\ldots,\beta_n)$与$(\beta_1,\ldots,\beta_n,\vec{b})$等价，故定理成立.
 
-\begin{theorem} \label{thm:15:方程组解}
+\begin{theorem}{}{方程组解}
     当方程组有解时（注意这个前提），以下定理成立：
     \begin{enumerate}
         \item 如果它的系数矩阵$A$的秩等于未知量的数目$n$，则方程组有唯一解；
@@ -21,8 +21,8 @@
         \item 如果$A$的秩小于$n$，则方程组有无穷多个解.
     \end{enumerate}
 \end{theorem}
-实际上，当系数矩阵为方阵时，这一定理就是\hyperref[thm:13:Cramer]{Cramer法则}结论的一部分，我们不再赘述其证明. 实际上，通过上面两个定理我们首先了解了线性方程组有无解的一般准则，然后讨论了有解前提下唯一解、无穷解对应于什么情况. 事实上，有关线性方程组解的情况的讨论至此文意已尽. 无论是理论层面或是解决题目的方面，这两个定理都为我们提供了足量的信息.
-\begin{example}
+实际上，当系数矩阵为方阵时，这一定理就是\nameref{thm:Cramer}结论的一部分，我们不再赘述其证明. 实际上，通过上面两个定理我们首先了解了线性方程组有无解的一般准则，然后讨论了有解前提下唯一解、无穷解对应于什么情况. 事实上，有关线性方程组解的情况的讨论至此文意已尽. 无论是理论层面或是解决题目的方面，这两个定理都为我们提供了足量的信息.
+\begin{example}{}{}
     设$n$阶矩阵$A$的行列式$|A|\neq 0$，记$A$的前$n-1$列形成的矩阵为$A_1$，$A$的第$n$列为$\vec{b}$，问：线性方程组$A_1X=\vec{b}$是否有解？
 \end{example}
 
@@ -32,12 +32,12 @@
 
 \subsection{齐次线性方程组解的一般理论}
 
-接下来我们将分别针对齐次和非齐次线性方程组的情况展开关于解的结构性质的讨论. 回顾\autoref{ex:2:常见子空间} 中的讨论，对于齐次线性方程组$AX=0$，我们有：
-\begin{theorem}
+接下来我们将分别针对齐次和非齐次线性方程组的情况展开关于解的结构性质的讨论. 回顾\autoref{ex:常见子空间} 中的讨论，对于齐次线性方程组$AX=0$，我们有：
+\begin{theorem}{}{}
     齐次线性方程组$AX=\vec{0}$的解空间为$\mathbf{R}^n$的子空间.
 \end{theorem}
 这一结论告诉我们，齐次线性方程组解构成线性空间，这是一个重要的结构性结论. 在确认其为线性空间后，我们来研究该线性空间的基本性质. 首先是由此引出的关于基础解系的概念. 基础解系即为齐次线性方程组解空间的一组基，且这组基的每一个线性组合都是该方程组的解、然后我们来研究这一空间的维数：
-\begin{theorem}\label{thm:15:齐次维数}
+\begin{theorem}{}{齐次维数}
     矩阵$A \in \mathbf{M}_{m \times n}(\mathbf{F})$，若$r(A) = r$，则该齐次线性方程组解空间维数为$n - r$.
 \end{theorem}
 事实上，本定理可以改写为类似于维数公式的形式，即
@@ -48,20 +48,20 @@
 
 我们令$A$是线性映射$\sigma$在出发空间和到达空间基下的矩阵表示，根据矩阵的秩的定义，$r(A)=r(\sigma)$；又根据\autoref{eq:7:方程组与核空间2} 的讨论，$\ker\sigma$和$N(A)$之间是坐标的一一对应关系，因此$\dim N(A)=\dim\ker\sigma$. 因此我们有\autoref{eq:15:齐次维数公式} 也成立，证毕.
 
-我们可以用\autoref{thm:15:齐次维数} 解决很多问题，下面是一个最简单的例子：
-\begin{example}
+我们可以用\autoref{thm:齐次维数} 解决很多问题，下面是一个最简单的例子：
+\begin{example}{}{}
     若$n$元齐次线性方程组$AX = \vec{0}$的解都是$BX = \vec{0}$的解. 证明：$r(B) \leqslant r(A)$.
 \end{example}
 
 \begin{proof}
-    由\autoref{thm:15:齐次维数}，$r(A)=n-\dim N(A)$，$r(B)=n-\dim N(B)$，由于$AX=\vec{0}$的解都是$BX=\vec{0}$的解，即$N(A) \subset N(B)$，因此$\dim N(A) \leqslant \dim N(B)$，故$r(B) \leqslant r(A)$.
+    由\autoref{thm:齐次维数}，$r(A)=n-\dim N(A)$，$r(B)=n-\dim N(B)$，由于$AX=\vec{0}$的解都是$BX=\vec{0}$的解，即$N(A) \subset N(B)$，因此$\dim N(A) \leqslant \dim N(B)$，故$r(B) \leqslant r(A)$.
 \end{proof}
 
-实际上在前面的讨论中，无论是\autoref{thm:15:有解条件} 的结论，都与列向量组成的线性空间有关，仿佛从未出现过行向量有关的定理. 事实上，我们将在未来讨论了内积空间正交性后展开对行向量空间的讨论，现在囿于概念上的缺乏无法叙述相关定理.
+实际上在前面的讨论中，无论是\autoref{thm:有解条件} 的结论，都与列向量组成的线性空间有关，仿佛从未出现过行向量有关的定理. 事实上，我们将在未来讨论了内积空间正交性后展开对行向量空间的讨论，现在囿于概念上的缺乏无法叙述相关定理.
 
 \subsection{非齐次线性方程组解的一般理论}
 
-回顾\autoref{ex:2:常见子空间} 中的讨论我们发现，非齐次线性方程组的解不构成线性空间，但我们可以尝试将其与齐次线性方程组解空间联系起来研究. 对于非齐次线性方程组
+回顾\autoref{ex:常见子空间} 中的讨论我们发现，非齐次线性方程组的解不构成线性空间，但我们可以尝试将其与齐次线性方程组解空间联系起来研究. 对于非齐次线性方程组
 \begin{equation} \label{eq:15:非齐次}
     x_1\beta_1+x_2\beta_2+\cdots+x_n\beta_n=\vec{b}
 \end{equation}
@@ -70,7 +70,7 @@
     x_1\beta_1+x_2\beta_2+\cdots+x_n\beta_n=\vec{0}
 \end{equation}
 称为其导出组，则我们有：
-\begin{theorem}\label{thm:15:通解加特解}
+\begin{theorem}{}{通解加特解}
     如果$n$元非齐次线性方程组有解，则它的解集$U=\{\gamma_0+\eta \mid \eta \in W\}$.
 \end{theorem}
 其中$\gamma_0$为\autoref{eq:15:非齐次} 的一个解（称为特解），$W$为\autoref{eq:15:齐次} 的解空间（\autoref*{eq:15:齐次} 的解称为通解）. 更具体地，设非齐次线性方程组$AX=b$有特解$X_0$，方程$AX=0$的基础解系为$X_1,\ldots,X_n$，则这一定理告诉我们$AX=b$的任何一个解都可以写为
@@ -93,7 +93,7 @@
     \end{enumerate}
 \end{proof}
 实际上根据上述几何描述形象理解这两个结论也不困难. 下面我们将通过一些例子进一步探讨非齐次线性方程组解的结构问题：
-\begin{example}\label{ex:15:非齐次解的进一步结构}
+\begin{example}{}{非齐次解的进一步结构}
     若$X_0$是非齐次线性方程组$AX=\vec{b}$的一个特解，$X_1,\ldots,X_p$是$AX=\vec{0}$的基础解系，证明：
     \begin{enumerate}
         \item $X_0,X_1,X_2,\ldots,X_p$线性无关；
@@ -121,7 +121,7 @@
                       k_1=k_2=\cdots=k_p=0
                   \end{cases}$因此$k_0=k_1=k_2=\cdots=k_p=0$，故$X_0,X_0+X_1,X_0+X_2,\ldots,X_0+X_p$线性无关.
 
-        \item 设$X$是$AX=\vec{b}$的任一个解，则由\autoref{thm:15:通解加特解} 可知，$X$可以被表示为
+        \item 设$X$是$AX=\vec{b}$的任一个解，则由\autoref{thm:通解加特解} 可知，$X$可以被表示为
               \begin{align*}
                   X & =X_0+k_1X_1+k_2X_2+\cdots+k_pX_p                                         \\
                     & =(1-k_1-k_2-\cdots-k_p)X_0+k_1(X_0+X_1)+k_2(X_0+X_2)+\cdots+k_p(X_0+X_p)
@@ -132,14 +132,14 @@
 
 本例说明了非齐次线性方程组的特解事实上与对应的齐次线性方程组的基础解系也是线性无关的. 事实上本例的结论和解决思路都是非常重要，请读者务必掌握.
 
-\begin{example}\label{ex:15:非齐次线性无关解}
+\begin{example}{}{非齐次线性无关解}
     设$A$为$s \times n$矩阵，且$r(A)=r$，证明：非齐次线性方程组$AX=\vec{b}$至多存在$n-r+1$个线性无关的解向量.
 \end{example}
 
 \begin{proof}
     当$AX=\vec{b}$无解时有0个解向量，我们知道$r\leqslant n$，因此$n-r+1\geqslant 1$，故命题成立.
 
-    当$AX=\vec{b}$有解时，设$X_0$是非齐次线性方程组$AX=\vec{b}$的一个特解，根据\autoref{thm:15:齐次维数} 知，$AX=\vec{0}$的解空间维数为$n-r$，故设$X_1,\ldots,X_{n-r}$是$AX=\vec{0}$的基础解系，则由\autoref{ex:15:非齐次解的进一步结构} 知，$X_0,X_0+X_1,X_0+X_2,\ldots,X_0+X_{n-r}$线性无关，并且它们都是$AX=\vec{b}$的解，因此非齐次线性方程组$AX=\vec{b}$存在$n-r+1$个线性无关的解向量.
+    当$AX=\vec{b}$有解时，设$X_0$是非齐次线性方程组$AX=\vec{b}$的一个特解，根据\autoref{thm:齐次维数} 知，$AX=\vec{0}$的解空间维数为$n-r$，故设$X_1,\ldots,X_{n-r}$是$AX=\vec{0}$的基础解系，则由\autoref{ex:非齐次解的进一步结构} 知，$X_0,X_0+X_1,X_0+X_2,\ldots,X_0+X_{n-r}$线性无关，并且它们都是$AX=\vec{b}$的解，因此非齐次线性方程组$AX=\vec{b}$存在$n-r+1$个线性无关的解向量.
 
     下面要说明$AX=\vec{b}$任意$n-r+2$个解向量必定线性相关. 利用反证法，设$\eta_1,\eta_2,\ldots,\eta_{n-r+2}$是$AX=\vec{b}$的$n-r+2$个线性无关解向量，则$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-r+2}-\eta_1$均为$AX=\vec{0}$的解向量. 设
     \[k_1(\eta_2-\eta_1)+k_2(\eta_3-\eta_1)+\cdots+k_{n-r+1}(\eta_{n-r+2}-\eta_1)=\vec{0},\]
@@ -153,7 +153,7 @@
 \section{理论应用}
 
 本节我们将综合线性方程组解的一般理论和之前所学的知识讨论一些秩的等式/不等式问题. 我们首先来看四个最为经典的问题：
-\begin{example}\label{ex:15:线性方程组理论与秩不等式}
+\begin{example}{}{线性方程组理论与秩不等式}
     利用线性方程组解的一般理论，证明以下命题：
     \begin{enumerate}
         \item  设$A,B$分别是$m \times n$和$n \times s$矩阵，则$r(AB)\leqslant\min\{r(A),r(B)\}$；
@@ -192,10 +192,10 @@
                      \end{pmatrix}
                   \to\begin{pmatrix}
                          O & E \\ -A(A-E) & A-E
-                     \end{pmatrix}                   \\
-                                    & \to\begin{pmatrix}
-                                             O & E \\ -A(A-E) & O
-                                         \end{pmatrix}.
+                     \end{pmatrix}                  \\
+                                   & \to\begin{pmatrix}
+                                            O & E \\ -A(A-E) & O
+                                        \end{pmatrix}.
               \end{align*}
               事实上第一次变换是第二行乘以$-E$加到第一行，第二次变换是第一列加到第二列，第三次变换是第二列乘以$-A$加到第一列，第四次变换是第一行乘以$E-A$加到第二行，注意每一步都是分块矩阵初等变换，因此不改变矩阵的秩，因此有
               \[r(\begin{pmatrix}
@@ -210,7 +210,7 @@
 \end{proof}
 
 实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系（复杂的题目可能涉及子空间交与和的维数公式）以及已知的简单秩不等式进行证明. 可能部分题目较为困难，但至少请掌握上面例题中的情况.
-\begin{example}\label{ex:15:伴随矩阵的秩}
+\begin{example}{}{伴随矩阵的秩}
     设$A^*$为矩阵$A$的伴随矩阵，证明：
     \[r(A^*)=\begin{cases}
             n & r(A)=n \\ 1 & r(A)=n-1 \\ 0 & r(A) < n-1
@@ -235,10 +235,10 @@
 
 \subsection{含参数的线性方程组问题}
 
-此类问题一般考察对于含参数的线性方程组，参数取值如何时有解/无解/有唯一解等. 本质而言，\autoref{thm:15:有解条件} 完全可以解决这一问题.
+此类问题一般考察对于含参数的线性方程组，参数取值如何时有解/无解/有唯一解等. 本质而言，\autoref{thm:有解条件} 完全可以解决这一问题.
 
-事实上，利用\autoref{thm:15:方程组解} 在有解情况下只需计算行列式判断非常方便，但判断无解需要利用\autoref{thm:15:有解条件}，其中线性相关性的判断通常仍然需要我们对系数矩阵进行高斯消元法. 我们来看一个简单的例子：
-\begin{example}
+事实上，利用\autoref{thm:方程组解} 在有解情况下只需计算行列式判断非常方便，但判断无解需要利用\autoref{thm:有解条件}，其中线性相关性的判断通常仍然需要我们对系数矩阵进行高斯消元法. 我们来看一个简单的例子：
+\begin{example}{}{}
     当$k$取何值时，方程组：
     \[\begin{cases}
             x_1+x_2+kx_3=4 \\ -x_1+kx_2+x_3=k^2 \\ x_1-x_2+2x_3=-4
@@ -265,7 +265,7 @@
               \[(\dfrac{k^2+2k}{k+1},\dfrac{k^2+2k+4}{k+1},-\dfrac{2k}{k+1})^{\mathrm{T}}.\]
     \end{enumerate}
 
-    事实上，本题方程个数与未知数个数相等，因此可以运用\hyperref[thm:13:Cramer]{Cramer法则}解决. 首先求解系数矩阵$A$的行列式为
+    事实上，本题方程个数与未知数个数相等，因此可以运用\nameref{thm:Cramer}解决. 首先求解系数矩阵$A$的行列式为
     \[|A|=\begin{vmatrix}
             1  & 1  & k \\
             -1 & k  & 1 \\
@@ -284,7 +284,7 @@
 \end{enumerate}
 
 下面的定理给出了两线性方程组同解的充要条件. 实际上，这两个定理的证明很值得作为练习综合运用所学知识：
-\begin{theorem}
+\begin{theorem}{}{}
     $n$元齐次线性方程组 $A_{m_1 \times n}X=\vec{0}$与 $B_{m_2 \times n}X=\vec{0}$同解的充要条件是$r\begin{pmatrix}
             A \\ B
         \end{pmatrix}=r(A)=r(B)$.
@@ -316,7 +316,7 @@
     \end{enumerate}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}{}{}
     $n$元非齐次线性方程组 $A_{m_1 \times n}X=\vec{b}$与 $B_{m_2 \times n}X=\vec{d}$同解的充要条件是
     \begin{enumerate}
         \item $r(A)\neq r(A,\vec{b})$且$r(B)\neq r(B,\vec{d})$；或
@@ -348,7 +348,7 @@
 
         \item 充分性：事实上$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
-                  \end{pmatrix}X=0$的解一定是$AX=\vec{b}$的解，设这两个方程的解集合（此时非齐次线性方程组不是子空间）分别为$S_1,S_2$，因此$S_1$是$S_2$的子集. 且由\autoref{ex:15:非齐次线性无关解} 可知，$S_1$的秩为$n-r\begin{pmatrix}
+                  \end{pmatrix}X=0$的解一定是$AX=\vec{b}$的解，设这两个方程的解集合（此时非齐次线性方程组不是子空间）分别为$S_1,S_2$，因此$S_1$是$S_2$的子集. 且由\autoref{ex:非齐次线性无关解} 可知，$S_1$的秩为$n-r\begin{pmatrix}
                       A \\ B
                   \end{pmatrix}+1$，$S_2$的秩为$n-r(A)+1$，因此$S_1=S_2$，即$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
@@ -359,7 +359,7 @@
 \end{proof}
 
 事实上，在了解上述定理证明后我们会发现这些条件都是非常自然的. 我们来看一个例子来运用上述定理：
-\begin{example}
+\begin{example}{}{}
     已知方程组\begin{gather*}
         \begin{cases}
             x_1+2x_2+3x_3=0  \\
@@ -396,7 +396,7 @@
 \subsection{线性方程组公共解问题}
 
 公共解即为两线性方程组解集的交集，我们从齐次和非齐次讨论有公共解的条件：
-\begin{theorem}
+\begin{theorem}{}{}
     对于$n$元齐次线性方程组 (1) $A_{m_1 \times n}X=\vec{0}$与 (2) $B_{m_2 \times n}X=\vec{0}$有
     \begin{enumerate}
         \item (1) 与 (2) 有非零公共解的充要条件是$r\begin{pmatrix} A \\ B \end{pmatrix}<n$；
@@ -452,7 +452,7 @@
     \end{enumerate}
 \end{proof}
 
-\begin{theorem}\label{thm:15:非齐次线性方程组公共解}
+\begin{theorem}{}{非齐次线性方程组公共解}
     对于$n$元非齐次线性方程组(1) $A_{m_1 \times n}X=\vec{b}$与 (2) $B_{m_2 \times n}X=\vec{d}$，若(1) 与 (2) 都有解，则
     \begin{enumerate}
         \item (1) 与 (2) 有公共解的充要条件是$r\begin{pmatrix}
@@ -491,7 +491,7 @@
                       A \\ B
                   \end{pmatrix}X=\begin{pmatrix}
                       \vec{b} \\ \vec{d}
-                  \end{pmatrix}$有解（根据\autoref{thm:15:有解条件}），记为$X_0$，则
+                  \end{pmatrix}$有解（根据\autoref{thm:有解条件}），记为$X_0$，则
               \[\begin{pmatrix}
                       A \\ B
                   \end{pmatrix}X_0=\begin{pmatrix}
@@ -565,7 +565,7 @@
 \end{proof}
 
 这两个定理看起来非常长，实则无需特别去记忆，只需要通过证明理解其含义即可，有时候做题甚至可以直接暴力解方程然后比较两方程组的解也能完成求解. 下面我们看一个简单的例子：
-\begin{example}
+\begin{example}{}{}
     设四元齐次线性方程组(1) 为\[\begin{cases}
             2x_1+3x_2-x_3=0 \\ x_1+2x_2+x_3-x_4=0
         \end{cases}\]已知另一个四元齐次线性方程组 (2) 的基础解系为
@@ -603,7 +603,7 @@
 \subsection{线性方程组反问题}
 
 此类问题即已知方程组的解，要给出原方程组. 我们仍按齐次与非齐次分开的思路讨论此类问题的一般解法. 这里我们之间通过例子来讲解方法：
-\begin{example}
+\begin{example}{}{}
     已知$n$维列向量组$\alpha_1,\ldots,\alpha_s$线性无关，求一齐次线性方程组以$\alpha_1,\ldots,\alpha_s$为基础解系.
 \end{example}
 
@@ -613,16 +613,16 @@
     令$A^\mathrm{T}=(\beta_1,\beta_2,\ldots,\beta_{n-s})$即可，因为此时$B^\mathrm{T}A^\mathrm{T}=O$，故$AB=O$.
 \end{solution}
 
-\begin{example}
+\begin{example}{}{}
     设向量组$\alpha_1,\ldots,\alpha_s$线性无关，求一非齐次线性方程组$AX=\vec{b}$，使其解集以$\alpha_1,\ldots,\alpha_s$为极大线性无关组.
 \end{example}
 
 \begin{solution}
-    根据\autoref{thm:15:非齐次线性方程组公共解}，$\alpha_2-\alpha_1,\ldots,\alpha_s-\alpha_1$是$AX=\vec{0}$的基础解系，因此根据齐次线性方程组反问题的解法可以得到$A$，然后令$b=A\alpha_1$即可符合题意.
+    根据\autoref{thm:非齐次线性方程组公共解}，$\alpha_2-\alpha_1,\ldots,\alpha_s-\alpha_1$是$AX=\vec{0}$的基础解系，因此根据齐次线性方程组反问题的解法可以得到$A$，然后令$b=A\alpha_1$即可符合题意.
 \end{solution}
 
 下面我们来看一个具体的例子来运用上面介绍的方法：
-\begin{example}
+\begin{example}{}{}
     已知$\alpha_1=(1,2,-1,0,4)^\mathrm{T},\enspace\alpha_2=(-1,3,2,4,1)^\mathrm{T},\enspace\alpha_3=(2,9,-1,4,13)^\mathrm{T}$，且有$W=\spa(\alpha_1,\alpha_2,\alpha_3)$.
     \begin{enumerate}
         \item 求以$W$为解空间的一个齐次线性方程组；
@@ -644,9 +644,9 @@
                       7x_1-x_2+5x_3=0 \\ 8x_1-4x_2+5x_4=0 \\ -2x_1-x_2+x_5=0
                   \end{cases}$.
 
-        \item 这一问可以利用前面例子中给出的方法，具体步骤不在此赘述（注意因为$\eta$不在$W$中，因此$W'$中可以有三个线性无关向量，不可想当然认为只有$\alpha_2-\alpha_1$是$AX=0$（设$A$为本题要求的方程组的系数矩阵）的解）. 我们这里给出更简单的方法，读者只需回顾根据\autoref{thm:15:通解加特解} 即可发现奥秘. 事实上，将$x_1=1,x_2=2,x_3=1,x_4=2,x_5=1$代入有$7x_1-x_2+5x_3=10$，$8x_1-4x_2+5x_4=10$，$-2x_1-x_2+x_5=-3$，因此$\eta$就是方程组$\begin{cases}
+        \item 这一问可以利用前面例子中给出的方法，具体步骤不在此赘述（注意因为$\eta$不在$W$中，因此$W'$中可以有三个线性无关向量，不可想当然认为只有$\alpha_2-\alpha_1$是$AX=0$（设$A$为本题要求的方程组的系数矩阵）的解）. 我们这里给出更简单的方法，读者只需回顾根据\autoref{thm:通解加特解} 即可发现奥秘. 事实上，将$x_1=1,x_2=2,x_3=1,x_4=2,x_5=1$代入有$7x_1-x_2+5x_3=10$，$8x_1-4x_2+5x_4=10$，$-2x_1-x_2+x_5=-3$，因此$\eta$就是方程组$\begin{cases}
                       7x_1-x_2+5x_3=10 \\ 8x_1-4x_2+5x_4=10 \\ -2x_1-x_2+x_5=-3
-                  \end{cases}$的一个特解，从而根据\autoref{thm:15:通解加特解} 可以知道上述方程组符合题意.
+                  \end{cases}$的一个特解，从而根据\autoref{thm:通解加特解} 可以知道上述方程组符合题意.
     \end{enumerate}
 \end{solution}
 
@@ -930,11 +930,11 @@
           \end{enumerate}
 
     \item （对角占优）设$A=(a_{ij})_{n \times n}$是一个$n$级矩阵，证明：
-    \begin{enumerate}
-        \item 若$A$为复矩阵，且$|a_{ii}|>\displaystyle\sum_{j \neq i}|a_{ij}|$，那么$|A|\neq 0$；
+          \begin{enumerate}
+              \item 若$A$为复矩阵，且$|a_{ii}|>\displaystyle\sum_{j \neq i}|a_{ij}|$，那么$|A|\neq 0$；
 
-        \item 若$A$为实矩阵，且$a_{ii}>\displaystyle\sum_{j \neq i}|a_{ij}|$，那么$|A|>0$；
+              \item 若$A$为实矩阵，且$a_{ii}>\displaystyle\sum_{j \neq i}|a_{ij}|$，那么$|A|>0$；
 
-        \item （推论）存在充分大的实数$M$，使得$t>M$时，$tE+A$可逆.
-    \end{enumerate}
+              \item （推论）存在充分大的实数$M$，使得$t>M$时，$tE+A$可逆.
+          \end{enumerate}
 \end{enumerate}

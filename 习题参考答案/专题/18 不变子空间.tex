@@ -53,7 +53,7 @@
                   a & -1 & a \\ 5 & -3 & 3 \\ 1-a & 0 & -a
               \end{vmatrix}=a-3=-1$可得$a=c=2$.
 
-    \item \label{ex:18:交换基础} 由题意有$AX=\lambda_0X$，则$A(BX)=B(AX)=\lambda_0(BX)$，可见$BX\in V_{\lambda_0}$.
+    \item \label{ex:交换基础} 由题意有$AX=\lambda_0X$，则$A(BX)=B(AX)=\lambda_0(BX)$，可见$BX\in V_{\lambda_0}$.
 \end{enumerate}
 
 \centerline{\heiti B组}
@@ -110,7 +110,7 @@
 \begin{enumerate}
     \item 设$B$的特征值为$\lambda_1,\ldots,\lambda_n$，则$B$的特征多项式为$f(\lambda)=|\lambda E-B|=(\lambda-\lambda_1)\cdots(\lambda-\lambda_n)$，则$f(A)=(A-\lambda_1E)\cdots(A-\lambda_nE)$. $f(A)$可逆充要条件是$|f(A)|\neq 0$，即$|A-\lambda_iE|\neq 0,\enspace i=1,\ldots,n$，这等价于$A$的特征值不是$\lambda_1,\ldots,\lambda_n$，即$B$的特征值都不是$A$的特征值.
 
-    \item 根据A组 \ref*{ex:18:交换基础} 题，$BX\in V_{\lambda_0}(A)$，故只需证存在$Z\neq 0$使得$Z\in V_{\lambda_0}(A)$且$BZ=\mu Z$，此时$Z$是$A$和$B$共同的特征向量. 设$X_1,\ldots,X_r$为$V_{\lambda_0}(A)$的基，由于$BX_i\in V_{\lambda_0}(A)$，则$BX_i$可以由$X_1,\ldots,X_r$线性表出，即$BX_i=(X_1,\ldots,X_r)\alpha_i$，其中$\alpha_i=(a_{i1},\ldots,a_{ir})^T$. 因此有
+    \item 根据A组 \ref*{ex:交换基础} 题，$BX\in V_{\lambda_0}(A)$，故只需证存在$Z\neq 0$使得$Z\in V_{\lambda_0}(A)$且$BZ=\mu Z$，此时$Z$是$A$和$B$共同的特征向量. 设$X_1,\ldots,X_r$为$V_{\lambda_0}(A)$的基，由于$BX_i\in V_{\lambda_0}(A)$，则$BX_i$可以由$X_1,\ldots,X_r$线性表出，即$BX_i=(X_1,\ldots,X_r)\alpha_i$，其中$\alpha_i=(a_{i1},\ldots,a_{ir})^T$. 因此有
           \[B(X_1,\ldots,X_r)=(X_1,\ldots,X_r)(\alpha_1,\ldots,\alpha_r)=(X_1,\ldots,X_r)P,\]
           其中$r$阶矩阵$P=(\alpha_1,\ldots,\alpha_r)$在复数域上有特征值$\mu$，故存在$Y_0\neq 0$使得$PY_0=\mu Y_0$. 将上式两端右乘$Y_0$，得
           \[B(X_1,\ldots,X_r)Y_0=(X_1,\ldots,X_r)(PY_0)=(X_1,\ldots,X_r)(\mu Y_0)=\mu(X_1,\ldots,X_r)Y_0.\]

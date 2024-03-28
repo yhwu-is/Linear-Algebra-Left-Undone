@@ -22,7 +22,7 @@
 \DeclareBoolOption[false]{draft} % 是否打上未定稿标记
 \DeclareBoolOption[true]{colors} % 是否让链接带颜色
 \DeclareBoolOption[false]{CJKthechapter} % 是否让天眉的各章编号使用中文数字
-\DeclareStringOption[]{coverpage} % 封面档档名, 默认为空
+\DeclareStringOption{coverpage} % 封面档档名, 默认为空
 \DeclareStringOption{fontsetup} % 字体设定档档名
 \DeclareStringOption{titlesetup} % 章节标题设定档档名
 \DeclareStringOption[16k]{geometry} % 版面（默认 16k）
@@ -42,7 +42,7 @@
 \RequirePackage{bm}
 \RequirePackage{mathrsfs}
 \RequirePackage{amssymb}
-\RequirePackage[intlimits]{mathtools}
+\RequirePackage{mathtools}
 
 % 加入字串处理功能
 \RequirePackage{xstring}
@@ -65,7 +65,6 @@
 \RequirePackage{tikz}
 
 \RequirePackage[many]{tcolorbox}
-\RequirePackage{mdframed}
 
 % Package settings
 % ----------------
@@ -121,71 +120,60 @@
 
 \DeclareMathOperator{\diag}{diag}
 
-\newenvironment{proof}{\fangsong}{\hspace*{\fill}$\square$\par}
-\newenvironment{solution}{\fangsong}{\par}
-
-\mdfdefinestyle{framestyle}{
-    ntheorem=true,
-    % roundcorner=10pt,
-    innertopmargin=\topskip,
-    theoremseparator={},
-    theoremspace=\quad,
-    frametitlerulewidth=.5pt,
-    frametitlerule=true,
-    linewidth=.5pt,
-    leftline=false,
-    rightline=false,
-    topline=true,
-    bottomline=true,
-    frametitlealignment=\raggedright\noindent,
+\tcbset{commonstyle/.style={
+            breakable,
+            colframe=#1!50!black,
+            coltitle=black,
+            colbacktitle=#1!5,
+            colback=white,
+            fonttitle=\bfseries,
+            leftrule=0pt,
+            rightrule=0pt,
+            enhanced jigsaw,
+            sharp corners,
+            toptitle=1mm,
+            bottomtitle=1mm,
+            separator sign={\quad},
+            toprule=1pt,
+            titlerule=1pt,
+            bottomrule=1pt,
+            overlay first={
+                    \draw[thick,#1!50!black,dashed]
+                    (frame.south west) -- (frame.south east);
+                },
+            overlay middle={
+                    \path[font=\small\heiti] (frame.north) node (cont) {续};
+                    \draw[thick,#1!50!black,dashed]
+                    (frame.north west) -- (cont.west)
+                    (frame.north east) -- (cont.east)
+                    (frame.south west) -- (frame.south east);
+                },
+            overlay last={
+                    \path[font=\small\heiti] (frame.north) node (cont) {续};
+                    \draw[thick,#1!50!black,dashed]
+                    (frame.north west) -- (cont.west)
+                    (frame.north east) -- (cont.east);
+                },
+        }
 }
 
-\mdtheorem[
-    style=framestyle,
-    linecolor=red!50!black,
-    frametitlebackgroundcolor=red!5,
-]{definition}{定义}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=blue!50!black,
-    frametitlebackgroundcolor=blue!5,
-]{example}{例}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=orange!50!black,
-    frametitlebackgroundcolor=orange!5,
-]{lemma}{引理}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=violet!50!black,
-    frametitlebackgroundcolor=violet!5,
-]{theorem}{定理}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=green!50!black,
-    frametitlebackgroundcolor=green!5,
-]{corollary}{推论}[chapter]
-\mdtheorem[
-    style=framestyle,
-    linecolor=olive!50!black,
-    frametitlebackgroundcolor=olive!5,
-]{axiom}{公理}[chapter]
-\surroundwithmdframed[
-    style=framestyle,
-    linecolor=teal!80!black,
-    frametitlebackgroundcolor=teal!5,
-    frametitle={\noindent\bfseries\heiti 证明},
-    % frametitleaboveskip=\topskip,
-    % frametitlebelowskip=\topskip,
-]{proof}
-\surroundwithmdframed[
-    style=framestyle,
-    linecolor=teal!80!black,
-    frametitlebackgroundcolor=teal!5,
-    frametitle={\noindent\bfseries\heiti 解},
-    % frametitleaboveskip=\topskip,
-    % frametitlebelowskip=\topskip,
-]{solution}
+\NewTColorBox{tcblaluthmbox}{mmm}{
+    commonstyle={teal},
+    colframe=teal!80!black,
+    title=#1\IfBlankF{#2}{\quad#2},
+    #3,
+}
+
+\NewDocumentEnvironment{proof}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 证明}}{#1}{#2}\fangsong}{\hspace*{\fill}$\square$\end{tcblaluthmbox}}
+\NewDocumentEnvironment{solution}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 解}}{#1}{#2}\fangsong}{\end{tcblaluthmbox}}
+
+\newcommand{\Ob}{\mathop\mathrm{Ob}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\Hom}{\mathop\mathrm{Hom}}
+\newcommand{\FVect}{\mathsf{FVect}}
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\FSet}{\mathsf{FSet}}
 
 \AtEndPreamble{
     \RequirePackage[Bjornstrup]{fncychap} % found on Internet
@@ -195,19 +183,26 @@
     \RequirePackage{bookmark}
     \RequirePackage{cleveref}
 
+    \newtcbtheorem[number within=chapter]{definition}{定义}{commonstyle={red}}{def}
+    \newtcbtheorem[number within=chapter]{example}{例}{commonstyle={blue}}{ex}
+    \newtcbtheorem[number within=chapter]{lemma}{引理}{commonstyle={orange}}{lem}
+    \newtcbtheorem[number within=chapter]{theorem}{定理}{commonstyle={violet}}{thm}
+    \newtcbtheorem[number within=chapter]{corollary}{推论}{commonstyle={green}}{cor}
+    \newtcbtheorem[number within=chapter]{axiom}{公理}{commonstyle={olive}}{axm}
+
     \hypersetup{
         unicode,
         bookmarksnumbered,
-        pdfborder = {0 0 0},
+        pdfborder={0 0 0},
     }
 
     % 按 colors 的 Bool 值设置链接色彩.
     \if@LALU@colors
         \hypersetup{
             colorlinks,
-            % linkcolor = blue,
-            % citecolor = red,
-            % urlcolor = teal
+            % linkcolor=blue,
+            % citecolor=red,
+            % urlcolor=teal
         }
     \else
         \hypersetup{hidelinks}
@@ -216,20 +211,17 @@
     \renewcommand{\figureautorefname}{图}
     \renewcommand{\tableautorefname}{表}
     \renewcommand{\equationautorefname}{式}
-    \renewcommand{\theoremautorefname}{定理}
+    \renewcommand{\chapterautorefname}{章}
     \renewcommand{\sectionautorefname}{节}
-    \newcommand{\lemmaautorefname}{引理}
-    \newcommand{\corollaryautorefname}{推论}
-    \newcommand{\exampleautorefname}{例}
-    \newcommand{\definitionautorefname}{定义}
-    \newcommand{\axiomautorefname}{公理}
-    \newcommand{\Ob}{\mathop\mathrm{Ob}}
-    \newcommand{\cC}{\mathcal{C}}
-    \newcommand{\cD}{\mathcal{D}}
-    \newcommand{\Hom}{\mathop\mathrm{Hom}}
-    \newcommand{\FVect}{\mathsf{FVect}}
-    \newcommand{\Set}{\mathsf{Set}}
-    \newcommand{\FSet}{\mathsf{FSet}}
+    \makeatletter
+    \newcommand{\tcb@cnt@theoremautorefname}{定理}
+    \newcommand{\tcb@cnt@lemmaautorefname}{引理}
+    \newcommand{\tcb@cnt@corollaryautorefname}{推论}
+    \newcommand{\tcb@cnt@exampleautorefname}{例}
+    \newcommand{\tcb@cnt@definitionautorefname}{定义}
+    \newcommand{\tcb@cnt@axiomautorefname}{公理}
+    \makeatother
+
     \crefrangeformat{equation}{式~#3#1#4--#5#2#6}
     \crefrangeformat{example}{例~#3#1#4--#5#2#6}
 }

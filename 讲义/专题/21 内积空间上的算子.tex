@@ -6,19 +6,19 @@
 
 \subsection{内积空间的同构}
 
-\begin{definition}
+\begin{definition}{}{}
     设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. $ S: V \rightarrow U $ 是一个线性映射. 若 $ \forall u, v \in V,\enspace \langle Su, Sv \rangle = \langle u, v \rangle $，则称 $ S $ 是一个保持内积的线性映射. 若 $ S $ 是双射，则称 $ S $ 是一个\term{保积同构}.
 \end{definition}
 
 在内积空间的语境下，保积同构也被称作同构. 显然，因为其能够保持内积，所以也能够保持范数. 自然地，其对偶问题也是我们关心的.
 
-\begin{theorem}
+\begin{theorem}{}{}
     若 $ S : V \rightarrow U $ 是一个保持范数的线性映射，则 $ S $ 是一个保积同构.
 \end{theorem}
 
 而回忆此前同构映射将空间的基映射到空间的基，内积空间中我们使用的是标准正交基. 所以，我们可以得到如下的结论.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个 $ n $ 维内积空间. 若 $ S : V \rightarrow U $ 是一个线性映射，则以下条件等价：
     \begin{enumerate}
         \item $ S $ 保持内积.
@@ -30,7 +30,7 @@
 
 有了这个等价条件的刻画，我们就会发现，区分内积空间的结构的本质还是落在了维数上.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. 则二者同构的充分必要条件是它们有相同的维数.
 \end{theorem}
 
@@ -38,17 +38,17 @@
 
 \subsection{伴随}
 
-考虑 $ T \in \mathcal{L}(V, W) $，$ v \in V, w \in W $，我们常会求解这样的式子 $ \langle Tv, w \rangle_W $. 我们可以将其定义成一线性泛函 $ \varphi : V \rightarrow \mathbf{F}, \enspace \varphi (v) = \langle Tv, w \rangle_W $，利用 \hyperref[thm:23:Riesz]{Riesz 表示定理}，存在唯一的 $ u \in W $，使得 $ \varphi (v) = \langle v, u \rangle_V $. 于是可以得出 $ \langle Tv, w \rangle_W = \langle v, u \rangle_V $. 观察形式的变化，$ Tv $ “脱去”了 $ T $，那么我们猜测，这里从 $ w $ 到 $ u $ 应该也经历了某种变化，并且理应与 $ T $ 有某种对称性. 我们将此种变化命名为\term{伴随}.
+考虑 $ T \in \mathcal{L}(V, W) $，$ v \in V, w \in W $，我们常会求解这样的式子 $ \langle Tv, w \rangle_W $. 我们可以将其定义成一线性泛函 $ \varphi : V \rightarrow \mathbf{F}, \enspace \varphi (v) = \langle Tv, w \rangle_W $，利用 \nameref{thm:Riesz}，存在唯一的 $ u \in W $，使得 $ \varphi (v) = \langle v, u \rangle_V $. 于是可以得出 $ \langle Tv, w \rangle_W = \langle v, u \rangle_V $. 观察形式的变化，$ Tv $ “脱去”了 $ T $，那么我们猜测，这里从 $ w $ 到 $ u $ 应该也经历了某种变化，并且理应与 $ T $ 有某种对称性. 我们将此种变化命名为\term{伴随}.
 
-\begin{definition}[伴随] \index{bansui@伴随 (adjoint)}
+\begin{definition}{伴随}{} \index{bansui@伴随 (adjoint)}
     设 $ T \in \mathcal{L}(V, W) $， $ T $ 的伴随 $ T^*: W \rightarrow V $ 满足如下条件： $ \forall v \in V, w \in W, \langle Tv, w \rangle_W = \langle v, T^*w \rangle_V $.
 \end{definition}
 
-伴随映射的定义利用的是 \hyperref[thm:23:Riesz]{Riesz 表示定理}，只需将 $ T^*w $ 定义成 $ u $ 即可.
+伴随映射的定义利用的是 \nameref{thm:Riesz}，只需将 $ T^*w $ 定义成 $ u $ 即可.
 
 那么伴随与原映射的对称性究竟体现在何处呢？其中之一体现在对应标准正交基下的表示矩阵. 为此，我们先补充一种在复内积空间下的矩阵操作.
 
-\begin{definition}[共轭转置] \index{gongezhuanzhi@共轭转置 (conjugate transpose)}
+\begin{definition}{共轭转置}{} \index{gongezhuanzhi@共轭转置 (conjugate transpose)}
     $ m \times n $ 矩阵的\term{共轭转置}是先互换行和列，然后对每个元素取复共轭得到的 $ n \times m $ 矩阵.
 
     即矩阵 $ A = (a_{ij})_{m \times n} $，则 $ A $ 的共轭转置阵 $ A^{\mathrm{H}} = (\overline{a_{ji}})_{n \times m} $
@@ -56,7 +56,7 @@
 
 这种操作的地位近似于实空间中的转置，与复空间上内积的共轭对称性相关联. 伴随映射与原映射在对应标准正交基下的表示矩阵正是这种对称关系. 而显然这一对称关系在实内积空间下变为转置.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ T \in \mathcal{L}(V, W) $，$ e_1, \ldots , e_n $ 是 $ V $ 的一组标准正交基，$ f_1, \ldots , f_m $ 是 $ W $ 的一组标准正交基，有 $ T(e_1, \ldots , e_n) = (f_1, \ldots , f_m)A $，$ A = (a_{ij})_{m \times n} $，$ T^*(f_1, \ldots , f_m) =(e_1, \ldots , e_n)B $，$ B = (b_{ij})_{n \times m} $，则 $ B $ 是 $ A $ 的共轭转置.
 \end{theorem}
 
@@ -84,11 +84,11 @@
 
 也寓于对应的特征值、不变子空间，这里给出两道例题.
 
-\begin{example} \label{ex:24:伴随与特征值}
+\begin{example}{}{伴随与特征值}
     设 $ T \in \mathcal{L}(V),\enspace \lambda \in \mathbf{F} $. 证明：$ \lambda $ 是 $ T $ 的特征值当且仅当 $ \overline{\lambda} $是 $ T^* $ 的特征值.
 \end{example}
 
-\begin{example} \label{ex:24:伴随与不变子空间}
+\begin{example}{}{伴随与不变子空间}
     设 $ T \in \mathcal{L}(V) $ 且 $ U $ 是 $ V $ 的子空间. 证明：$ U $ 在 $ T $ 下不变当且仅当 $ U^{\perp} $ 在 $ T^* $ 下不变.
 \end{example}
 
@@ -112,25 +112,25 @@
 
 自同构在代数中有着重要的地位，此处也不例外.
 
-\begin{definition}
+\begin{definition}{}{}
     设 $ V $ 是数域 $ \mathbf{F} $ 上的内积空间，$ S \in \mathcal{L}(V) $ 保持内积. 若 $ \mathbf{F} = \mathbf{R} $，则称 $ S $ 是\term{正交变换}；若 $ \mathbf{F} = \mathbf{C} $，则称 $ S $ 是\term{酉变换}.
 \end{definition}
 
 二者首先都保持了内积，所以都将对应空间的一组标准正交基映射到标准正交基，也就是说，二者都是可逆的线性变换. 进而，在先前伴随的基础上，我们自然地会思考正交变换和酉变换与其伴随之间的关系. 设 $ S \in \mathcal{L}(V) $ 是正交变换或酉变换，那么 $ \langle Sv, w \rangle = \langle Sv, SS^{-1} w \rangle = \langle v, S^{-1}w \rangle $，所以 $ S^{-1} = S^* $，即 $ S $ 的逆等于其伴随. 因而可以得出如下等价条件.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是数域 $ \mathbf{F} $ 上的内积空间，则 $ S \in \mathcal{L}(V) $ 是正交变换或酉变换等价于 $ S $ 是可逆的，且 $ S^{-1} = S^* $.
 \end{theorem}
 
 相应地，在矩阵空间中，我们可以利用这个等价条件定义正交矩阵和酉矩阵.
 
-\begin{definition} \index{youjuzhen@酉矩阵 (unitary matrix)} \index{zhengjiaojuzhen@正交矩阵 (orthogonal matrix)}
+\begin{definition}{}{} \index{youjuzhen@酉矩阵 (unitary matrix)} \index{zhengjiaojuzhen@正交矩阵 (orthogonal matrix)}
     设 $ A $ 是 $ n $ 阶实方阵，若 $ A^{\mathrm{T}} = A^{-1} $，则称 $ A $ 是\term{正交矩阵}；设 $ A $ 是 $ n $ 阶复方阵，若 $ A^\mathrm{H} = A^{-1} $，则称 $ A $ 是\term{酉矩阵}.
 \end{definition}
 
 结合伴随的表示矩阵与原映射的表示矩阵的对称性，我们可以得出如下定理.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ S \in \mathcal{L}(V) $ 是酉变换（正交变换），则 $ S $ 在 $ V $ 的任一一组标准正交基下的表示矩阵是酉矩阵（正交矩阵）.
 \end{theorem}
 
@@ -146,7 +146,7 @@
 \begin{gather*}
     A^{\mathrm{H}}A = \begin{pmatrix}
         \alpha_1^{\mathrm{H}} \\
-        \vdots             \\
+        \vdots                \\
         \alpha_n^{\mathrm{H}}
     \end{pmatrix} (\alpha_1, \ldots, \alpha_n) = E \\
     AA^{\mathrm{H}} = \begin{pmatrix}
@@ -158,13 +158,13 @@
 
 代入计算后我们会发现，若取 $ \mathbf{C}^n $ 上的标准内积，则 $ \langle \alpha_i, \alpha_j \rangle = \delta_{ij} $，$ \langle \beta_i, \beta_j \rangle = \delta_{ij} $，也就有如下定理：
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ A $ 是 $ n $ 阶复矩阵，$ A $ 是酉矩阵当且仅当 $ A $ 的列向量是 $ n $ 维复列向量空间上的标准正交基（取标准内积），或者 $ A $ 的行向量是 $ n $ 维复行向量空间上的标准正交基（取标准内积）.
 \end{theorem}
 
 对于正交矩阵而言，我们可以得到类似的结论.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ A $ 是 $ n $ 阶实矩阵，$ A $ 是正交矩阵当且仅当 $ A $ 的列向量是 $ n $ 维实列向量空间上的标准正交基（取标准内积），或者 $ A $ 的行向量是 $ n $ 维实行向量空间上的标准正交基（取标准内积）.
 \end{theorem}
 
@@ -172,7 +172,7 @@
 
 设 $ \lambda $ 是正交矩阵的一个特征值，$ x $ 是对应的特征向量，则 $ Ax = \lambda x $. 因为特征值有可能是复数，所以取共轭转置得到 $ x^{\mathrm{H}}A^{\mathrm{T}} = \bar{\lambda} x^{\mathrm{H}} $，两边同时右乘 $ Ax $，得到 $ x^{\mathrm{H}}A^{\mathrm{T}}Ax = \bar{\lambda} x^{\mathrm{H}}Ax = \bar{\lambda} \lambda x^{\mathrm{H}}x $，又因为 $ A^{\mathrm{T}}A = E $，所以 $ x^{\mathrm{H}}x = \bar{\lambda} \lambda x^{\mathrm{H}}x $，即 $ \lvert \lambda \rvert = 1 $. 对于酉矩阵上述讨论依然成立，所以我们可以得出如下结论.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ A $ 是 $ n $ 阶酉矩阵或正交矩阵，$ \lambda $ 是 $ A $ 的一个特征值，则 $ \lvert \lambda \rvert = 1 $.
 \end{theorem}
 
@@ -182,7 +182,7 @@
 
 酉矩阵和正交矩阵与标准正交基的关联远不止于表示矩阵，事实上，它们是标准正交基之间的“桥梁”，也就是过渡矩阵.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ (e_1, e_2, \ldots , e_n) $ 是复（实）内积空间 $ V $ 上的标准正交基，$ (f_1, f_2, \ldots , f_n) $ 是 $ V $ 上的一组基，从 $ (e_1, e_2, \ldots , e_n) $ 到 $ (f_1, f_2, \ldots , f_n) $ 的过渡矩阵为 $ A $. 则 $ (f_1, f_2, \ldots , f_n) $ 是标准正交基的充要条件是 $ A $ 为酉矩阵（正交矩阵）.
 \end{theorem}
 
@@ -215,7 +215,7 @@
 
 那提到了过渡矩阵，我们也就不得不提与之息息相关的一个等价关系——相似了. 相似实际上是同一个算子在不同基下的矩阵表示之间的关系，实现这个变化正是依赖于两组基之间的过渡矩阵. 而我们的主线正是依靠基变换实现的，只不过我们现在用的都是标准正交基，在基变换上也要有所升级. 所以，让我们先定义两个特殊一点的相似关系：
 
-\begin{definition}
+\begin{definition}{}{}
     \begin{enumerate}
         \item \term{酉相似}：复内积空间上，若 $ B = P^{-1}AP = P^{\mathrm{H}}AP $，则称矩阵 $ A $ 与矩阵 $ B $ 酉相似.
 
@@ -225,15 +225,15 @@
 
 自然地，在内积空间中，我们希望去寻找各矩阵的酉相似标准型或正交相似标准型，但这样的要求对一般的矩阵而言较为困难. 考虑到正交相似中 $ P^{\mathrm{T}}AP $ 的形式类似于合同变换，我们可以先从实对称矩阵入手，也就是说，$ A = A^{\mathrm{T}} $ 的情形. 那么在复内积空间上，这一关系相应于 $ A = A^{\mathrm{H}} $，满足这样条件的矩阵我们称之为\term{Hermite 矩阵}. 再回忆伴随部分的内容，我们可以得到此关系在算子上的对应.
 
-\begin{definition}[自伴算子] \index{zibansuanzi@自伴算子 (self-adjoint operator)}
+\begin{definition}{自伴算子}{} \index{zibansuanzi@自伴算子 (self-adjoint operator)}
     若算子 $ T \in \mathcal{L}(V) $ 满足 $ T = T^* $，则其被称为\term{自伴算子}.
 \end{definition}
 
 写成内积的语言就是 $ \forall v, w \in V,\enspace \langle Tv, w \rangle = \langle v, Tw \rangle $.
 
-为了研究自伴算子的酉相似（正交相似）标准型，首先得了解自伴算子的特征值和不变子空间的情况. 回忆伴随部分的\autoref{ex:24:伴随与特征值}，我们可以给出自伴算子的特征值的描述.
+为了研究自伴算子的酉相似（正交相似）标准型，首先得了解自伴算子的特征值和不变子空间的情况. 回忆伴随部分的\autoref{ex:伴随与特征值}，我们可以给出自伴算子的特征值的描述.
 
-\begin{theorem}
+\begin{theorem}{}{}
     自伴算子的特征值都是实数.
 \end{theorem}
 
@@ -241,7 +241,7 @@
 
 虽然我们阐明了自伴算子的特征值不与复数纠缠在一块，但还有另外一个阴影，就是它会不会像正交矩阵对应的算子那样，在实数域上没有特征值，这也是我们不希望看到的一点. 不过我们可以给出存在性的证明，这需要一点技巧，我们先从一个引理开始.
 
-\begin{lemma} \label{lem:24:实谱定理引理1}
+\begin{lemma}{}{实谱定理引理1}
     设 $ T \in \mathcal{L}(V) $ 是自伴的，并设 $ b, c \in \mathbf{R} $使得 $ b^2 < 4c $，则
     \[ T^2 + bT + cI \]
     是可逆的.
@@ -261,7 +261,7 @@
 
 这一算子多项式的引理和实系数二次多项式恒大于 0 的形式非常相似，事实上我们正需要从普通的多项式演变到算子多项式.
 
-\begin{lemma} \label{lem:24:实谱定理引理2}
+\begin{lemma}{}{实谱定理引理2}
     设 $ V \neq \{ \vec{0} \} $ 且 $ T \in \mathcal{L}(V) $ 是自伴算子，则$ T $ 恒有特征值.
 \end{lemma}
 
@@ -281,7 +281,7 @@
                 & = (a_0I + a_1T + \cdots + a_nT^n)v                                                     \\
                 & = c(T^2 + b_1T + c_1I)\cdots(T^2 + b_MT + c_MI)(T - \lambda_1I)\cdots(T - \lambda_mI)v
     \end{align*}
-    而由\autoref{lem:24:实谱定理引理1} 可知，$ T^2 + b_jT + c_jI, j = 1, \ldots , M $ 均是可逆的. 而 $ c \neq 0 $，所以 $ m > 0 $ 且
+    而由\autoref{lem:实谱定理引理1} 可知，$ T^2 + b_jT + c_jI, j = 1, \ldots , M $ 均是可逆的. 而 $ c \neq 0 $，所以 $ m > 0 $ 且
     \[ \vec{0} = (T - \lambda_1I)\cdots(T - \lambda_mI)v. \]
     所以 $ \exists i $ 使得 $ T - \lambda_iI $ 不是单射. 所以 $ T $ 必有特征值.
 \end{proof}
@@ -290,7 +290,7 @@
 
 然后是自伴算子的不变子空间的描述.
 
-\begin{lemma} \label{lem:24:实谱定理引理3}
+\begin{lemma}{}{实谱定理引理3}
     设 $ T \in \mathcal{L}(V) $ 是自伴的，并设 $ U $ 是 $ V $ 在 $ T $ 下不变的子空间. 则
     \begin{enumerate}
         \item $ U^{\perp} $ 在 $ T $ 下不变；
@@ -301,9 +301,9 @@
     \end{enumerate}
 \end{lemma}
 
-第一条参考 \autoref{ex:24:伴随与不变子空间}，第二条和第三条则是直接利用了自伴算子的定义. 不过自伴算子在不变子空间上的限制还是自伴算子这样的一条性质给归纳法提供了一个很好的切入点，我们此处选择依靠它来给出自伴算子的完全描述.
+第一条参考\autoref{ex:伴随与不变子空间}，第二条和第三条则是直接利用了自伴算子的定义. 不过自伴算子在不变子空间上的限制还是自伴算子这样的一条性质给归纳法提供了一个很好的切入点，我们此处选择依靠它来给出自伴算子的完全描述.
 
-\begin{theorem}[实谱定理] \label{thm:24:实谱定理} \index{pudingli!shi@实谱定理}
+\begin{theorem}{实谱定理}{实谱定理} \index{pudingli!shi@实谱定理}
     设 $ \mathbf{F} = \mathbf{R} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
         \item \label{item:24:实谱定理:1}
@@ -325,11 +325,11 @@
 
         \item[\ref*{item:24:实谱定理:1}$\implies$\ref*{item:24:实谱定理:2}] 采用数学归纳法.
 
-            $ \dim V = 1 $ 时显然成立.
+              $ \dim V = 1 $ 时显然成立.
 
-            设 $ \dim V > 1 $ 且在维数更小的实内积空间上成立. 因为\autoref{lem:24:实谱定理引理2}，设 $ T $ 有一个特征向量 $ u $ 且 $ \lVert u \rVert = 1 $，$ U = \spa(u) $，则 $ U $ 是 $ V $ 的一个一维子空间且在 $ T $ 下不变，有\autoref{lem:24:实谱定理引理3}，算子 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的.
+              设 $ \dim V > 1 $ 且在维数更小的实内积空间上成立. 因为\autoref{lem:实谱定理引理2}，设 $ T $ 有一个特征向量 $ u $ 且 $ \lVert u \rVert = 1 $，$ U = \spa(u) $，则 $ U $ 是 $ V $ 的一个一维子空间且在 $ T $ 下不变，有\autoref{lem:实谱定理引理3}，算子 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的.
 
-            由归纳假设，$ U^{\perp } $ 有一个由 $ T|_{U^{\perp }} $ 的特征向量构成的标准正交基. 将 $ u $ 添加进这组基，就得到了 $ V $ 的一组由 $ T $ 的特征向量构成的标准正交基，得证.
+              由归纳假设，$ U^{\perp } $ 有一个由 $ T|_{U^{\perp }} $ 的特征向量构成的标准正交基. 将 $ u $ 添加进这组基，就得到了 $ V $ 的一组由 $ T $ 的特征向量构成的标准正交基，得证.
 
         \item[\ref*{item:24:实谱定理:2}$\implies$\ref*{item:24:实谱定理:3}] 这是平凡的.
     \end{itemize}
@@ -341,7 +341,7 @@
 
 我们给出了自伴算子的一个非常漂亮的描述，但它毕竟太特殊了，还有更多的算子并不能满足这一要求. 不妨考虑将要求放宽一些，考虑到对角化的矩阵是可以与其他对角矩阵交换的，而对角阵共轭转置后还是对角阵，这引导着我们研究可以与伴随交换的算子.
 
-\begin{definition}[正规算子] \index{zhengguisuanzi@正规算子 (normal operator)}
+\begin{definition}{正规算子}{} \index{zhengguisuanzi@正规算子 (normal operator)}
     若算子 $ T \in \mathcal{L}(V) $ 满足 $ TT^* = T^*T $，则其被称为\term{正规算子}.
 \end{definition}
 
@@ -349,7 +349,7 @@
 
 在研究正规算子的特征值与特征向量前，我们先来看看它的一个性质.
 
-\begin{theorem} \label{thm:24:正规算子的等价条件}
+\begin{theorem}{}{正规算子的等价条件}
     算子 $ T \in \mathcal{L}(V) $ 是正规的当且仅当 $ \forall v \in V,\enspace \lVert Tv \rVert = \lVert T^*v \rVert $.
 \end{theorem}
 
@@ -357,20 +357,20 @@
 
 正规算子的特征值本身没有特殊之处，但它的特征向量却有着特殊的性质.
 
-\begin{theorem} \label{thm:24:正规算子的特征向量}
+\begin{theorem}{}{正规算子的特征向量}
     设 $ T \in \mathcal{L}(V) $ 是正规的，且 $ v \in V $ 是 $ T $ 相应于特征值 $ \lambda $ 的特征向量，则 $ v $ 也是 $ T^* $ 相应于特征值$ \overline{\lambda} $ 的特征向量.
 \end{theorem}
 
-这是\autoref{ex:24:伴随与特征值} 在正规算子条件下的加强，它不仅反映了算子与其伴随的特征值在数值上的关系，也反映出了特征空间的关系. 从这里出发，你可以先思考一下正规算子的不变子空间是怎样的，如果有困难的话不妨结合一下\autoref{ex:24:伴随与不变子空间}.
+这是\autoref{ex:伴随与特征值} 在正规算子条件下的加强，它不仅反映了算子与其伴随的特征值在数值上的关系，也反映出了特征空间的关系. 从这里出发，你可以先思考一下正规算子的不变子空间是怎样的，如果有困难的话不妨结合一下\autoref{ex:伴随与不变子空间}.
 
 在学特征值时我们就学过，同一映射的属于不同特征值的特征向量是线性无关的. 在正规算子条件下，这一结论也得到了加强，从原先的线性无关变为互相正交.
 
-\begin{theorem} \label{thm:24:正规算子的特征向量正交}
+\begin{theorem}{}{正规算子的特征向量正交}
     设 $ T \in \mathcal{L}(V) $ 是正规的，则 $ T $ 的相应于不同特征值的特征向量是正交的.
 \end{theorem}
 
 \begin{proof}
-    设 $ \alpha, \beta $，是 $ T $ 的不同特征值，$ u, v $ 分别是相应的特征向量，则 $ Tu = \alpha u,\enspace Tv = \beta v $. 由\autoref{thm:24:正规算子的特征向量} 有$ T^*v = \overline{\beta} v $. 从而
+    设 $ \alpha, \beta $，是 $ T $ 的不同特征值，$ u, v $ 分别是相应的特征向量，则 $ Tu = \alpha u,\enspace Tv = \beta v $. 由\autoref{thm:正规算子的特征向量} 有$ T^*v = \overline{\beta} v $. 从而
     \begin{align*}
         (\alpha - \beta)\langle u, v \rangle
          & = \langle \alpha u, v \rangle - \langle u, \overline{\beta}v \rangle \\
@@ -384,9 +384,9 @@
 
 \subsection{复正规算子}
 
-有了\autoref{thm:24:正规算子的特征向量正交} 的铺垫，我们就可以给出正规算子在复内积空间上的一个非常漂亮的描述.
+有了\autoref{thm:正规算子的特征向量正交} 的铺垫，我们就可以给出正规算子在复内积空间上的一个非常漂亮的描述.
 
-\begin{theorem}[复谱定理] \label{thm:24:复谱定理} \index{pudingli@谱定理 (spectral theorem)!fu@复谱定理}
+\begin{theorem}{复谱定理}{复谱定理} \index{pudingli@谱定理 (spectral theorem)!fu@复谱定理}
     设 $ \mathbf{F} = \mathbf{C} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
         \item \label{item:24:复谱定理:1}
@@ -406,11 +406,11 @@
     假设 \ref*{item:24:复谱定理:3} 成立，也就是 $ T $ 关于 $ V $ 的某个标准正交基具有对角矩阵，那么 $ T^* $关于同一组基的矩阵是 $ T $ 的共轭转置，也是对角矩阵. 任意两个对角矩阵是可交换的，所以$ T $ 和 $ T^* $ 是可交换的，所以 $ T $ 是正规的.
 
     % FIXME
-    假设 \ref*{item:24:复谱定理:1} 成立，即 $ T $ 是正规的. 由 \hyperref[thm:23:Schur]{Schur 定理}，可知 $ V $ 上存在一组标准正交基 $ (e_1, \ldots , e_n) $ 使得 $ T $ 关于其的矩阵是上三角矩阵，设为 $ A $.
+    假设 \ref*{item:24:复谱定理:1} 成立，即 $ T $ 是正规的. 由 \nameref{thm:Schur}，可知 $ V $ 上存在一组标准正交基 $ (e_1, \ldots , e_n) $ 使得 $ T $ 关于其的矩阵是上三角矩阵，设为 $ A $.
     \[ A = \begin{pmatrix}
-             a_{11} & \cdots & a_{1n} \\
-                    & \ddots & \vdots \\
-             0      &        & a_{nn} \\
+            a_{11} & \cdots & a_{1n} \\
+                   & \ddots & \vdots \\
+            0      &        & a_{nn} \\
         \end{pmatrix} \]
     接下来的任务就是证明它其实是个对角矩阵.
 
@@ -418,7 +418,7 @@
     \[ \lVert Te_1 \rVert^2 = \lvert a_{11} \rvert^2 \]
     而伴随映射的矩阵是原矩阵的共轭转置，所以
     \[ \lVert T^*e_1 \rVert^2 = \lvert a_{11} \rvert^2 + \lvert a_{12} \rvert^2 + \cdots + \lvert a_{1n} \rvert^2 \]
-    由\autoref{thm:24:正规算子的等价条件}，我们有 $ \lVert Te_1 \rVert = \lVert T^*e_1 \rVert $，所以 $ a_{1i} = 0,\enspace i = 2, \ldots , n $.
+    由\autoref{thm:正规算子的等价条件}，我们有 $ \lVert Te_1 \rVert = \lVert T^*e_1 \rVert $，所以 $ a_{1i} = 0,\enspace i = 2, \ldots , n $.
 
     现在考虑 $ e_2 $，因为证明了 $ a_{12} = 0 $，所以
     \[ \lVert Te_2 \rVert^2 = \lvert a_{22} \rvert^2 \]
@@ -431,19 +431,19 @@
 
 当然，证明方法不止一种，我们也可以用证明实谱定理的思路来证明，作为例题供读者思考.
 
-\begin{example}
+\begin{example}{}{}
     仿照实谱定理的证明方法，证明复谱定理.
 \end{example}
 
 借助复谱定理，我们也可以对正规算子和自伴算子的关系做更深入的理解.
 
-\begin{example}
+\begin{example}{}{}
     证明：复内积空间上的正规算子是自伴的当且仅当其所有的特征值都是实的.
 \end{example}
 
 相应地，我们也可以给出酉变换的一个完全描述.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是复内积空间，$ S \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
         \item $ S $ 是酉变换；
@@ -462,7 +462,7 @@
 
 % 对实向量空间复化的动机是显然的，我们所有的讨论都是在向量空间上进行的，有些实数范围不能解决的问题在复数范围内是轻松的，并且能给我们带来更多的启发. 而在一个变换的过程中，我们希望研究我们的结果有怎样的性质，以及整个过程中有哪些性质是不变的. 那我们首先得给 $ V_C $ 一个解释.
 
-% \begin{theorem}
+% \begin{theorem}{}{}
 %     设 $ V $ 是实向量空间，$ V_C $ 是 $ V $ 的复化.
 %     \begin{enumerate}
 %         \item 定义 $ V_C $ 上的加法为
@@ -481,7 +481,7 @@
 
 % 复化的结果并没有脱离我们的预期，它依然是一个向量空间，这也说明复化这一变换的性质是可以为我们所用的. 接下来就是寻找 $ V $ 到 $ V_C $ 的不变量，而对于线性空间来说，最重要的便是基和维数.
 
-% \begin{theorem}
+% \begin{theorem}{}{}
 %     设 $ V $ 是实向量空间，
 %     \begin{enumerate}
 %         \item 如果 $ v_1, \ldots , v_n $ 是 $ V $ （作为实向量空间）的一组基，则其也是 $ V_C $ （作为复向量空间）的一组基；
@@ -492,25 +492,25 @@
 
 % 既然线性空间的基和维数都没有发生变化，那我们就可以将 $ V $ 上的算子也一起迁移到 $ V_C $ 上，也就是说，对算子进行复化. 思路也与线性空间的复化类似，即将算子 $ T $ 分别作用在 $ u, v \in V $ 上，然后将其对应到 $ V_C $.
 
-% \begin{definition}
+% \begin{definition}{}{}
 %     设 $ V $ 是实向量空间，$ T \in \mathcal{L}(V) $. 定义 $ T $ 的复化 $ T_C \in \mathcal{L}(V_C) $ 满足 $ \forall u, v \in V,\enspace T_C(u + v\i) = Tu + \i Tv $.
 % \end{definition}
 
 % $ T_C $ 仍然是 $ V_C $ 上的线性变换这点请读者自行验证. 接下来便是寻找算子复化这一过程的不变量，而考虑到复化后的空间的基没有发生变化，那么矩阵表示的不变是显然的.
 
-% \begin{theorem}
+% \begin{theorem}{}{}
 %     设 $ v_1, \ldots , v_n $ 是实向量空间 $ V $ 的一组基，$ T \in \mathcal{L}(V) $ 在这组基下的矩阵为 $ A $，则 $ T_C \in \mathcal{L}(V_C) $ 在这组基下的矩阵也是 $ A $.
 % \end{theorem}
 
 % 而对于算子，我们更关心的是它的特征值和特征向量，这些又与算子的极小多项式有着密切的联系. 反复利用 $ T_C $ 的定义，我们可以得到 $ (T_C)^n(u + v\i) = T^n u + \i T^n v $，这将复化的幂次运算与原算子的幂次运算联系了起来，也就可以解答与多项式相关的问题.
 
-% \begin{theorem}
+% \begin{theorem}{}{}
 %     设 $ V $ 是实向量空间，$ T \in \mathcal{L}(V) $，则 $ T_C $ 的极小多项式等于 $ T $ 的极小多项式.
 % \end{theorem}
 
 % 这也就表明复化的极小多项式的系数都是实数. 而极小多项式的根是特征值，所以我们可以得到复化算子的特征值的描述.
 
-% \begin{theorem}
+% \begin{theorem}{}{}
 %     设 $ V $ 是实向量空间，$ T \in \mathcal{L}(V) $，则 $ \lambda $ 是 $ T_C $ 的特征值当且仅当 $ \lambda$ 是 $ T $ 的特征值.
 % \end{theorem}
 
@@ -518,7 +518,7 @@
 
 实内积空间上的自伴算子的完全描述已经由实谱定理给出，所以我们只需要讨论正规但不自伴的情况，再将二者结合即可. 前面我们提到过，实内积空间刻画旋转需要更高的维度，本质上是复数需要一个二阶实矩阵来对应. 比如 $ z = a + b\i $，我们可以用矩阵 $ \begin{pmatrix} a & -b \\ b & a \end{pmatrix} = aI + bJ $ 来对应，其中 $ I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} $ 是单位矩阵，对应于 1，$ J = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} $ 是 ，对应于 $ \i $. 可以验证加法和乘法都是对应的，只需注意到 $ J^2 = -I $ 即可. 而共轭操作则是矩阵的转置，即 $ (aI + bJ)^{\mathrm{T}} = aI - bJ $. 更重要的一点在于，这个二阶矩阵是可以和自己的共轭转置交换的，即 $ (aI + bJ)(aI - bJ) = (aI - bJ)(aI + bJ) $. 也就是说，这是一个实正规矩阵. 所以萌生出将实正规算子中的复特征值用一个二阶矩阵去替代也就不足为奇了. 下面给出有关此二阶矩阵的完全描述.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是二维的实内积空间，$ T \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
         \item $ T $ 是正规的但不是自伴的；
@@ -531,7 +531,7 @@
 
 其正与我们的目标相一致. 而考虑到实谱定理的证明方法，我们希望能够得到正规算子与其不变子空间之间的联系，最重要的是在不变子空间上的限制依然是正规的，来让我们继续使用归纳法. 事实上这是可行的，我们有如下的结论.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是内积空间，$ T \in \mathcal{L}(V) $ 是正规的，$ U $ 是 $ V $ 在 $ T $ 下不变的子空间，则
     \begin{enumerate}
         \item $ U^{\perp} $ 在 $ T $ 下不变；
@@ -546,37 +546,37 @@
 
 接下来就只需要将整个空间分解为不变子空间的直和，就可以得到实内积空间上正规算子的完全描述了.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是实内积空间，$ T \in \mathcal{L}(V) $，则以下条件等价：
     \begin{enumerate}
         \item $ T $ 是正规的.
 
         \item 存在 $ V $ 的一组标准正交基使得 $ T $ 关于这组基有分块对角矩阵，对角线上的每个块要么是 $ 1 \times 1 $ 矩阵，要么是形如
-        \[
-            \begin{pmatrix}
-                a & -b \\
-                b & a
-            \end{pmatrix}
-        \]
-        的 $ 2 \times 2 $ 矩阵，其中 $ a, b \in \mathbf{R} $ 且 $ b > 0 $.
+              \[
+                  \begin{pmatrix}
+                      a & -b \\
+                      b & a
+                  \end{pmatrix}
+              \]
+              的 $ 2 \times 2 $ 矩阵，其中 $ a, b \in \mathbf{R} $ 且 $ b > 0 $.
     \end{enumerate}
 \end{theorem}
 
 我们也可以借此给出正交变换的完全描述. 之前我们提到过，正交变换是由旋转和镜像组成的，旋转用二阶实矩阵也就是旋转矩阵表示，形式为 $ \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix} $，而保持不变或者反向的镜像对应于特征值为 $ 1 $ 和 $ -1 $. 所以正交变换的完全表示中只涉及旋转矩阵以及 $ 1, -1 $.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是实内积空间，$ S \in \mathcal{L}(V) $，则以下条件等价：
     \begin{enumerate}
         \item $ S $ 是正交变换；
 
         \item 存在 $ V $ 的一组标准正交基使得 $ S $ 关于这组基有分块对角矩阵，对角线上的每个块要么是 $ 1 $ 或 $ -1 $ 构成的 $ 1 \times 1 $ 矩阵，要么是形如
-        \[
-            \begin{pmatrix}
-                \cos \theta & -\sin \theta \\
-                \sin \theta & \cos \theta
-            \end{pmatrix}
-        \]
-        的 $ 2 \times 2 $ 矩阵，其中 $ \theta \in (0, \pi) $.
+              \[
+                  \begin{pmatrix}
+                      \cos \theta & -\sin \theta \\
+                      \sin \theta & \cos \theta
+                  \end{pmatrix}
+              \]
+              的 $ 2 \times 2 $ 矩阵，其中 $ \theta \in (0, \pi) $.
     \end{enumerate}
 \end{theorem}
 
@@ -586,7 +586,7 @@
 
 从保距自同构到自伴算子和正规算子，我们对内积空间上的算子有了初步的了解，也对伴随在其中的作用有了一定的认识. 让我们回忆保距自同构和自伴算子有关伴随的描述.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $，则
     \begin{enumerate}
         \item $ T $ 是保距自同构当且仅当 $ T^*T = TT^* = I $；
@@ -597,7 +597,7 @@
 
 但事实上，这种形式我们并不是初见，考虑以下定理.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ z \in \mathbf{C} $，则
     \begin{enumerate}
         \item $ z $ 是单位复数当且仅当 $ z\bar{z} = \bar{z}z = 1 $；
@@ -608,13 +608,13 @@
 
 所以，如果我们将对算子取伴随类比于对复数取共轭转置，那么保距自同构就类比于单位复数，自伴算子就类比于实数. 不过，这一类比还有一个较大的疑点，就是我们的所讨论的复内积空间上的算子是否能够类比于复数. 对于任意复数 $ z = a + b\i $，其共轭转置为 $ \bar{z} = a - b\i $. 为了在内积空间上达成类似的效果，我们需要先将算子分解为 $ T = T_1 + \i T_2 $ 的形式，并且 $ T_1, \i T_2 \in \mathcal{L}(V) $ 需要类似地满足实数和纯虚数的性质. 事实上，这是可以做到的.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ T $ 为复向量空间 $ V $ 上的算子，则 $ T = T_1 + \i T_2 $，$ T_1 = \dfrac{T + T^*}{2} $，$ \i T_2 = \dfrac{T - T^*}{2} $，并且 $ T^* = T_1 - \i T_2 $.
 \end{theorem}
 
 由此可见，我们的讨论的确是有意义的. 但紧接着又有一个更大的疑点，就是我们应该将正规算子置于何处，因为复数是可交换的，而算子并不是. 这也正是这个类比无法解决的问题，但这并不妨碍类比的意义，因为我们可以从上述定理中得到一个正规算子的等价条件.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ T \in \mathcal{L}(V) $，则 $ T $ 是正规的当且仅当 $ T_1 $ 和 $ T_2 $ 可交换.
 \end{theorem}
 
@@ -622,7 +622,7 @@
 
 让我们再将这个类比延展到更多方面，比如特征值和特征向量，回忆保距自同构和自伴算子的特征值的描述.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $，则
     \begin{enumerate}
         \item 若 $ T $ 是保距自同构，则 $ T $ 的特征值的模长都是 1；
@@ -633,17 +633,17 @@
 
 这一类比似乎暗示了保距自同构和自伴算子的特征值的性质与复数的模长和实数的性质有关. 这种暗示还延续到了算子作用后的空间与原空间的度量性质上.
 
-\begin{theorem} \label{thm:24:复内积空间}
+\begin{theorem}{}{复内积空间}
     设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 若 $ \forall v \in V,\enspace \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ V $ 是复内积空间，$ T \in \mathcal{L}(V) $. 则 $ T $ 是自伴的当且仅当 $ \forall v \in V, \langle Tv, v \rangle \in \mathbf{R} $
 \end{theorem}
 
-下面这个定理是\autoref{thm:24:复内积空间} 的一般情况.
+下面这个定理是\autoref{thm:复内积空间} 的一般情况.
 
-\begin{theorem}
+\begin{theorem}{}{}
     若 $ T $ 是 $ V $ 上的自伴算子，$ \forall v \in V,\enspace \langle Tv, v \rangle = 0 $，则 $ T = 0 $.
 \end{theorem}
 
@@ -651,27 +651,27 @@
 
 \subsection{正算子}
 
-在实谱定理的证明过程中，\autoref{lem:24:实谱定理引理1} 从自伴算子 $ T $ 构造出了一个新的算子 $ T^2 + bT + cI$，其中 $ b^2 < 4c $. 这是一个可逆的自伴算子，并且满足 $\langle (T^2 + bT + cI)v, v \rangle \geqslant 0, \forall v$. 也就是说，$ T^2 + bT + cI $ 的作用在内积上是保号的. 这一性质在诸多问题中都是非常重要的，包括多元函数的极值、量子态的转变等等，为此我们接下来研究与 $ T^2 + bT + cI $ 类似的算子.
+在实谱定理的证明过程中，\autoref{lem:实谱定理引理1} 从自伴算子 $ T $ 构造出了一个新的算子 $ T^2 + bT + cI$，其中 $ b^2 < 4c $. 这是一个可逆的自伴算子，并且满足 $\langle (T^2 + bT + cI)v, v \rangle \geqslant 0, \forall v$. 也就是说，$ T^2 + bT + cI $ 的作用在内积上是保号的. 这一性质在诸多问题中都是非常重要的，包括多元函数的极值、量子态的转变等等，为此我们接下来研究与 $ T^2 + bT + cI $ 类似的算子.
 
-\begin{definition}[正算子] \index{zhengsuanzi@正算子 (positive operator)}
+\begin{definition}{正算子}{} \index{zhengsuanzi@正算子 (positive operator)}
     设算子 $ T \in \mathcal{L}(V) $，如果 $ T $ 是自伴的且 $ \forall v \in V $均有 $ \langle Tv, v \rangle \geqslant 0 $.
 \end{definition}
 
 这里的定义就出现了算子作用后的空间与原空间的度量，所以我们可以猜测，正算子的行为实际上类似于非负数. 非负数自然蕴含实数，所以我们可以猜测正算子自然也是自伴的.
 
-\begin{example}
+\begin{example}{}{}
     设 $ V $ 为复向量空间，$ T \in \mathcal{L}(V) $. 证明：若 $\langle Tv, v \rangle \geqslant 0, \forall v \in V$，则 $ T $ 是自伴算子.
 \end{example}
 
 非负数很重要的一种运算就是开方运算，所以我们自然也希望能够定义正算子的开方运算，以及相应的平方根.
 
-\begin{definition}[平方根] \index{pingfanggen@平方根 (square root)}
+\begin{definition}{平方根}{} \index{pingfanggen@平方根 (square root)}
     算子 $ R $ 被称为算子 $ T $ 的平方根，如果 $ R^{2} = T $.
 \end{definition}
 
 因为我们先前已经给出过自伴算子的完全描述，所以正算子在对角化方面的行为与自伴算子是一致的. 下面的刻画更多是从算子与数的类比角度出发.
 
-\begin{theorem}
+\begin{theorem}{}{}
     设 $ T \in \mathcal{L}(V) $. 则以下条件等价.
     \begin{enumerate}
         \item \label{item:25:正算子刻画:1}
@@ -695,7 +695,7 @@
 
 每个非负数都有唯一的非负平方根，下面这个定理表明正算子也具有类似的性质.
 
-\begin{theorem}
+\begin{theorem}{}{}
     $ V $ 上每个正算子都有唯一的正平方根.
 \end{theorem}
 
@@ -734,7 +734,7 @@
 
 % 有定可以被解释为无论这个非零向量是怎样的，其经过某种规定运算得到的数的符号是确定的. 正定矩阵自然就是指任何非零向量经某种运算后得到的实数一定是正的. 但这所谓的``某种运算''在不同的数域下仍然有差异.
 
-% \begin{definition}[正定矩阵] \index{zhengdingjuzhen@正定矩阵 (positive definite matrix)}
+% \begin{definition}{正定矩阵}{} \index{zhengdingjuzhen@正定矩阵 (positive definite matrix)}
 %     \begin{enumerate}
 %         \item 实数域：对 $ n $ 阶实对称矩阵 $ M $，若对于所有非零实系数向量 $ z $，均有$ z^{T}Mz > 0 $，则称矩阵 $ M $ 为正定矩阵；
 
@@ -746,7 +746,7 @@
 
 % 由实数域上的正定矩阵的定义，我们可以发现其与二次型的相关性，我们也可以利用从二次型中所学来判定实正定矩阵.
 
-% \begin{theorem}
+% \begin{theorem}{}{}
 %     设 $ A $ 为 $ n $ 阶实对称矩阵，则以下条件等价：
 %     \begin{enumerate}
 %         \item $ A $ 是正定矩阵；
@@ -763,7 +763,7 @@
 
 % 以下是一些更深层次地判别矩阵是否正定的条件，同时它们也是正定矩阵的一些重要的性质.
 
-% \begin{theorem}
+% \begin{theorem}{}{}
 %     $ A $ 是 $ n $ 阶的 Hermite 矩阵. 以下条件等价.
 %     \begin{enumerate}
 %         \item $ A $ 是正定矩阵；
@@ -829,7 +829,6 @@
 % 我们定义出的正算子虽然名为正算子，但我们类比的时候它其实是类似于非负数，非负数很重要的一种运算就是开方运算. 类似的，我们也可以定义算子的平方根.
 
 % 以下是正算子的刻画.
-
 
 % 从这里我们进一步加深类比.
 

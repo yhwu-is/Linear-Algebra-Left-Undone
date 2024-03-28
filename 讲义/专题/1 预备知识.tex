@@ -19,7 +19,7 @@
 
 上面的定义中出现了一个新的记号，即两个集合之间出现了乘号，这实际上是集合的笛卡尔积运算，定义如下：
 
-\begin{definition}[笛卡尔积] \index{dikaerji@笛卡尔积 (Cartesian product)}
+\begin{definition}{笛卡尔积}{} \index{dikaerji@笛卡尔积 (Cartesian product)}
     设$A$和$B$是两个非空集合，我们把集合
     \[A\times B=\{(a,b) \mid a\in A, b\in B\}\]
     称为集合$A$和$B$的\term{笛卡尔积}.
@@ -30,7 +30,7 @@
 我们回到运算的映射表示，我们发现$+$和$\times$都以实数的有序对作为函数的自变量，函数值也是一个实数. 或许读者看到这里还是对运算的定义有些许迷茫，但如果我们回忆映射的基本定义$f:A\to B$表示给$A$中的任意元素$a$指派一个$B$中的元素$f(a)$，并将加法乘法写成$+(2,3)=5$，$\times(2,3)=6$，想必就会恍然大悟：$+$和$\times$实际上就是函数名，函数做的事情就是输入两个自变量然后进行加法/乘法运算得到结果，并把这个结果指派给自变量作为函数值.
 
 在上述讨论中，我们所做的事情很简单，就是给定一个集合，然后在这一集合的元素之间定义运算. 实际上这就是代数系统的定义：
-\begin{definition}[代数系统] \index{daishuxitong@代数系统 (algebraic system)}
+\begin{definition}{代数系统}{} \index{daishuxitong@代数系统 (algebraic system)}
     一般地，我们把一个非空集合$X$和在$X$上定义的若干代数运算$f_1,\ldots,f_k$组成的系统称为\term{代数系统}（简称代数系），记作$\langle X : f_1,\ldots,f_k\rangle$.
 \end{definition}
 
@@ -49,7 +49,7 @@
 \end{enumerate}
 
 对于乘法运算（可记为$\cdot$或$\times$），单位元一般记为$1$（更一般的可以记为$e$），逆元记为$a^{-1}$. 事实上，我们可以给出更多的例子：
-\begin{example}\label{ex:1:Abel 群}
+\begin{example}{}{Abel 群}
     \begin{enumerate}
         \item 代数系统$\langle \mathbf{R}\backslash\{0\}:\circ\rangle$定义的一般乘法运算
 
@@ -59,14 +59,14 @@
 \end{example}
 
 事实上，我们可以对上面的定义做进一步的抽象. 我们可以忽略集合中元素的意义差异（元素可以表示实数，也可以在上述例子中表示平面向量等几何对象），同时也可以忽略运算定义的差异，只关心运算作用于集合元素的性质. 对于一般的代数系统$\langle G:\circ\rangle$，我们有如下定义：
-\begin{definition}[群] \label{def:1:群} \index{qun@群 (group)}
+\begin{definition}{群}{群}\index{qun@群 (group)}
     若运算$\circ$满足结合律，则称代数系统$\langle G:\circ\rangle$为\term{半群}\index{qun!banqun@半群 (semigroup)}；若在半群基础上存在单位元，则称之为\term{含幺半群}\index{qun!hanyaobanqun@含幺半群 (monoid)}；若在含幺半群基础上每个元素存在逆元，则称之为\term{群}；若在群的基础上运算还满足交换律，则称之为\term{Abel 群}，也称\term{交换群}\index{qun!abel@Abel 群 (Abelian group), 交换群 (commutative group)}.
 \end{definition}
 
-\autoref{def:1:群} 给出了我们本节第一个要讨论的代数结构——群的定义. 简而言之，代数结构就是在集合上定义具有某些特定性质的运算后得到的一类代数系统. 事实上，教材中42--44页给出了大量抽象的例子有助于同学们理解上述一系列群的定义，并且我们在后续学习矩阵的时候也会遇到一些群结构，相信这些实例能使读者体会到``在集合上定义运算''的方式的多样与抽象.
+\autoref{def:群} 给出了我们本节第一个要讨论的代数结构——群的定义. 简而言之，代数结构就是在集合上定义具有某些特定性质的运算后得到的一类代数系统. 事实上，教材中42--44页给出了大量抽象的例子有助于同学们理解上述一系列群的定义，并且我们在后续学习矩阵的时候也会遇到一些群结构，相信这些实例能使读者体会到``在集合上定义运算''的方式的多样与抽象.
 
-为方便书写，对于\autoref{def:1:群} 定义的群$\langle G:\circ\rangle$，在不引起混淆的情况下我们可以简写为群$G$. 除此之外，我们还需要指出以下两点：
-\begin{theorem}\label{thm:1:群的单位元逆元唯一}
+为方便书写，对于\autoref{def:群} 定义的群$\langle G:\circ\rangle$，在不引起混淆的情况下我们可以简写为群$G$. 除此之外，我们还需要指出以下两点：
+\begin{theorem}{}{群的单位元逆元唯一}
     \begin{enumerate}
         \item 群的单位元唯一；
 
@@ -87,7 +87,7 @@
 其中第一点的证明直接使用了单位元的性质，第二点的证明则使用了结合律和逆元的性质. 这里关于唯一性的证明是非常重要的：我们只需假设要证明唯一的东西有两个，然后说明这两个必然相等即可. 这一思想在之后证明矩阵的逆唯一等问题时也会用到，因此此处特别给出证明强调.
 
 事实上，在很多集合上我们不仅可以定义一种运算，也可以定义两种甚至更多运算，在代数结构中我们仅讨论最多两种运算的情况. 事实上，我们最开始的实数集合定义加法和乘法的例子便可以引入一个新的代数结构——域：
-\begin{definition}[域] \index{yu@域 (field)}
+\begin{definition}{域}{} \index{yu@域 (field)}
     我们称代数系统$\langle F:+,\circ\rangle$为一个\term{域}，如果
     \begin{enumerate}
         \item $\langle F:+\rangle$是交换群，其单位元记作0；
@@ -103,7 +103,7 @@
 \end{definition}
 
 显然，实数域$\mathbf{R}$上定义一般的实数加法和乘法后构成一个域. 实际上我们熟悉的例如有理数、实数等集合关于一般的加法和乘法运算都构成域，因此我们会经常使用``有理数域''、``实数域''等说法. 我们称数集对数的加法和乘法构成的域为数域，注意此处运算的定义必须是数学分析中定义的数的加法和乘法，不能是自定义的运算.
-\begin{theorem}
+\begin{theorem}{}{}
     关于数域，我们有如下两个结论：
     \begin{enumerate}
         \item 数集$F$对数的加法和乘法构成数域的充要条件为：$F$包含0,1且对数的加、减、乘、除（除数不为0）运算封闭；
@@ -115,7 +115,7 @@
 上述定理的证明可见教材46页. 事实上，如果加法和乘法的定义不是数的加法和乘法，我们可以定义除了数域之外的域，我们将在本讲介绍完等价类的概念后给出这样的例子.
 
 当然，还有一种代数结构对于$\circ$运算的要求有所降低，但也有广泛的应用，这就是环：
-\begin{definition}[环] \index{huan@环 (ring)}
+\begin{definition}{环}{} \index{huan@环 (ring)}
     我们称代数系统$\langle R:+,\circ\rangle$为一个\term{环}，如果
     \begin{enumerate}
         \item $\langle R:+\rangle$是交换群，其单位元记作0；
@@ -132,7 +132,7 @@
     若进一步每个非$0$（$+$运算单位元）元素关于$\circ$都有逆元，则称之为\term{除环}\index{huan!chu@除环 (division ring)}. 另外，若上述定义中$\circ$运算满足交换律，则称为\term{交换环}\index{huan!jiaohuan@交换环 (commutative ring)}，结合上述除环和交换环两个定义，我们可以发现，交换除环即为域.
 \end{definition}
 
-\begin{example}
+\begin{example}{}{}
     利用定义验证下述关于代数系统的结论：
     \begin{enumerate}
         \item 整数集$\mathbf{Z}$对整数的加法和乘法构成一个交换环，但不是域；
@@ -153,8 +153,8 @@
 
 直观来看，实数位于数轴上，复数则分布在二维平面上，因此我们可以先考虑平面点集$\mathbf{R}^2$，并在其上定义加法和乘法运算使其成为一个域. 我们回顾高中学习的平面向量知识，我们记$\vec{e}_1=(1,0)$，$\vec{e}_2=(0,1)$，则$\mathbf{R}^2$上的任一向量$\vec{u}=(x,y)$可写为$x\vec{e}_1+y\vec{e}_2$. 此外，我们仍沿袭高中对向量长度的定义，即$\lvert\vec{u}\rvert=\sqrt{x^2+y^2}$.
 
-在\autoref{ex:1:Abel 群} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法使得代数系统$\langle\mathbf{R}^2\backslash\{(0,0)\}:\circ\rangle$也为Abel群. 这一乘法的构造需要满足一些自然的条件，同时也能实现构成Abel群的要求. 事实上，我们有如下定理：
-\begin{theorem}\label{thm:1:复数乘法构造}
+在\autoref{ex:Abel 群} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法使得代数系统$\langle\mathbf{R}^2\backslash\{(0,0)\}:\circ\rangle$也为Abel群. 这一乘法的构造需要满足一些自然的条件，同时也能实现构成Abel群的要求. 事实上，我们有如下定理：
+\begin{theorem}{}{复数乘法构造}
     平面点集$\mathbf{R}^2$上存在唯一的乘法$\circ$，满足
     \begin{enumerate}
         \item (单位元) $\vec{u}\circ\vec{e}_1=\vec{e}_1\circ\vec{u}=\vec{u},\enspace\forall\vec{u}\in\mathbf{R}^2$；
@@ -184,16 +184,16 @@
     接下来我们很容易验证$\langle\mathbf{R}^2:+,\circ\rangle$满足域的定义，我们留作习题供读者自行验证.
 \end{proof}
 
-在\autoref{thm:1:复数乘法构造} 赋予的乘法下，$\langle\mathbf{R}^2:+,\circ\rangle$称为复数域$\mathbf{C}$. 我们自然地将$\vec{e}_1$合理简记为1，同时$\vec{e}_2$简记为$\i$，因为此时$(a,b)$即为$a+b\i$，并且利用$\vec{e}_2^2=-\vec{e}_1$可知$\i^2=-1$，这与我们熟知的虚数单位的定义是统一的. 这一代数表示引入的相关概念，如实部、虚部、纯虚数，以及复数四则运算法则在高中阶段大家都已熟知，在此不再赘述.
+在\autoref{thm:复数乘法构造} 赋予的乘法下，$\langle\mathbf{R}^2:+,\circ\rangle$称为复数域$\mathbf{C}$. 我们自然地将$\vec{e}_1$合理简记为1，同时$\vec{e}_2$简记为$\i$，因为此时$(a,b)$即为$a+b\i$，并且利用$\vec{e}_2^2=-\vec{e}_1$可知$\i^2=-1$，这与我们熟知的虚数单位的定义是统一的. 这一代数表示引入的相关概念，如实部、虚部、纯虚数，以及复数四则运算法则在高中阶段大家都已熟知，在此不再赘述.
 
 非零复数$z=x+y\i$也可写为极坐标的形式，即$z=|z|(\cos\theta+\i\sin\theta)$，其中$|z|=\sqrt{x^2+y^2}$为复数的平面表示的模长，$\theta\in\mathbf{R}$为连接原点与$z$的有向线段与$x$轴正方向的夹角（在相差$2\pi$整数倍的意义下唯一）. 我们称$\theta$为复数$z$的辐角. 关于复数的模长我们有经典的三角不等式：
-\begin{theorem}
+\begin{theorem}{}{}
     设$z,w\in\mathbf{C}$，则有$|z+w|\leqslant|z|+|w|$.
 \end{theorem}
 
 这一定理的几何意义是非常显然的，我们将$z$和$w$放在平面直角坐标系中观察就可以明白这就是经典三角不等式的复数版本. 等号成立的条件也显而易见，即$z$和$w$要么至少一个为0，要么都非零且$z$和$w$位于从原点出发的同一条射线上. 按照我们给出的定义，这个式子是不言自明的，我们需要证明的反而是一些大家在高中时就已经熟知的结果，例如：
 
-\begin{theorem}
+\begin{theorem}{}{}
     设$z = (a, b) \in \mathbf{C}$，称 $\overline{z} = (a, -b)$ 为 $z$ 的共轭复数，则 $\overline{z} z = |z|^2$
 \end{theorem}
 
@@ -212,7 +212,7 @@
 我们首先从（二元）关系这一概念入手. 实际上，这里的二元关系和日常生活中的关系是紧密相连的，例如将全人类作为谈论的背景集合，那么$(\text{小头爸爸}, \text{大头儿子})$这一有序二元组是符合这一关系的，但$(\text{章鱼哥}, \text{海绵宝宝})$显然不符合. 因此我们可以将父子关系看作笛卡尔积集合$\text{人类}\times\text{人类}$的子集. 更一般化的，集合$A$中的关系可以由$A\times A$的子集
 \[\{(a,b) \mid a,b\in A, \enspace a\,R\,b\}\]
 来刻画，其中$R$是这个关系本身（实质上是两个元素之间的某种性质），例如之前讨论的父子关系，或是数学中的大于、小于或同余等. 事实上，反过来，由$A\times A$的子集可以确定一个关系，例如我把全世界所有的父子组合放在这个集合中，那么这个集合就定义了人类中的父子关系.
-\begin{example}
+\begin{example}{}{}
     以下是一些关系的例子：
     \begin{enumerate}
         \item 设$A=\mathbf{R}$，则$A\times A$的子集
@@ -236,7 +236,7 @@
 \end{example}
 
 接下来我们要讨论一种特别的关系，即等价关系. 它对关系$R$有一定的规定：
-\begin{definition}\label{def:1:等价关系}
+\begin{definition}{}{等价关系}
     集合$A$中关系若满足以下条件：
     \begin{itemize}
         \item (自反性) $\forall a\in A, \enspace a\,R\,a$；
@@ -257,18 +257,18 @@
     \overline{2}=\{3k+2\mid k\in\mathbf{Z}\}
 \end{gather*}
 且它们的并集就是原集合，即这三个等价类构成了原集合的一个\term{分划}\index{fenhua@分划 (partition)}（即分为并为原集合且互不相交的子集）. 这一结论对所有等价类都成立，是很直观的结论：
-\begin{theorem}\label{thm:1:等价类的性质}
+\begin{theorem}{}{等价类的性质}
     设$R$是集合$A$的等价关系，则由所有不同的等价类构成的子集族$\{\overline{a}\}$是$A$的分划. 反之，我们也可以基于分划在$A$中定义等价关系.
 \end{theorem}
 
 证明这一定理需要一个引理：
-\begin{lemma}
+\begin{lemma}{}{}
     设$R$是集合$A$的等价关系，$a,b\in A$，则$\overline{a}=\overline{b}\iff a\,R\,b$.
 \end{lemma}
 这一引理说明$a$和$b$等价当且仅当它们等价类相同，或者说在同一个等价类中，相信根据等价类的定义这是很显然的结论.
 
 这一引理还有一个重要的推论：
-\begin{corollary}\label{cor:1:等价类的性质}
+\begin{corollary}{}{等价类的性质}
     设$R$是集合$A$的等价关系，$a,b\in A$，则下面二者必成立其一：
     \begin{enumerate}
         \item $\overline{a}\cap\overline{b}=\varnothing$；
@@ -276,17 +276,17 @@
         \item $\overline{a}=\overline{b}$.
     \end{enumerate}
 \end{corollary}
-即等价类要么相等要么不相交，这一结论也是非常自然的，且由这一结论我们很容易证明\autoref{thm:1:等价类的性质}. 如果对这些定理的证明细节感兴趣的读者可以参看教材第5页的定理1.1和1.2.
+即等价类要么相等要么不相交，这一结论也是非常自然的，且由这一结论我们很容易证明\autoref{thm:等价类的性质}. 如果对这些定理的证明细节感兴趣的读者可以参看教材第5页的定理1.1和1.2.
 
 进一步此我们可以定义商集的概念：
-\begin{definition}[商集] \index{shangji@商集 (quotient set)}
+\begin{definition}{商集}{} \index{shangji@商集 (quotient set)}
     设$R$是集合$A$的等价关系，以关于$R$的等价类为元素的集合（实际上是集合构成的集合，又称集族）$\{\overline{a}\}$称为$A$对$R$的\term{商集}，记为$A/R$. 由
     \[\pi(a) = \overline{a}, \enspace \forall a\in A\]
     定义的$A$到$A/R$上的映射$\pi$称为$A$到$A/R$上的自然映射.
 \end{definition}
 我们可以看到，自然映射$\pi$将$A$中的元素$a$映到自己所在的等价类$\overline{a}$. 基于上述定义，我们可以完成在基本代数结构一节中遗留的一个问题：我们能否定义非数域的域？答案是肯定的，如果同学们对密码学感兴趣的应当听闻过有限域这一概念，接下来我们将通过简单的例子来说明这一概念.
 
-\begin{example}\label{ex:1:有限域}
+\begin{example}{}{有限域}
     设$Z_n$是$\mathbf{Z}$关于模$n$同余关系$R$的商集（也称$\mathbf{Z}$的模$n$剩余类），即
     \[Z_n=\mathbf{Z}/R=\{\overline{0},\overline{1},\ldots,\overline{n-1}\}.\]
     即$Z_n$中的元素是$n$个集合，其中第$i$个集合是全体模$n$余$i-1\enspace(i=1,2,\ldots,n)$的整数构成的集合.
@@ -306,7 +306,7 @@
     \item 若$aRb$，$cRd$，则是否有$\overline{a}\circ\overline{c}=\overline{b}\circ\overline{d}$？
 \end{enumerate}
 如果不是，那么$Z_n$上定义的加法和乘法将不再是一个本讲开头所说的映射. 我们以加法为例展开讨论，实际上乘法同理. 因为$aRb$表明$\overline{a}=\overline{b}$，$cRd$表明$\overline{c}=\overline{d}$，因此如果$Z_n$上的加法是一个映射$\oplus(x,y):Z_n\to Z_n$，那么必须有$\oplus(\overline{a},\overline{c})=\oplus(\overline{b},\overline{d})$，否则两个相同的元素的加法会得到不同的元素，也就是说加法可以把同一组元素映到多个值，那么显然不再是一个映射，乘法也是同理. 当然，很幸运的是，上面的定义保证了这一``合理性''，我们事实上在上例中已经给出了这一合理性的例子：$n=3$时，$\overline{1}=\overline{4},\enspace\overline{2}=\overline{8}$，并且$\overline{1}\oplus\overline{2}=\overline{0}=\overline{4}\oplus\overline{8}$，这里加法仍然满足映射的条件. 当然我们可以给出更严谨的一般性证明，在此之前我们先给这一``合理''的性质一个更规范的定义：
-\begin{definition}
+\begin{definition}{}{}
     设$A$是一个集合，$R$是$A$上的一个等价关系，若$A$上有二元运算$+$，且我们在$A/R$上以如下自然的方式继承了$A$上的$\oplus$运算：
     \[\overline{a}\oplus\overline{b}=\overline{a+b},\enspace\forall a,b\in A,\]
     则我们称$\oplus$与$R$\term{相容（compactable）}当且仅当$aRb$，$cRd$时有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$，或者说等价的，$(a+b)R(c+d)$.
@@ -316,7 +316,7 @@
 
 这一定义有两个要点，其一是把原集合上的运算自然地继承到商集上，其二是这一继承还能使得运算是一个映射. 事实上，相容性（良定义性）是非常重要的，所谓良定义，即这个东西就其自身不产生矛盾，这在形而上学家的论述中最常出现的例子是``圆的方''这个语汇. 良定义的问题在商集中特别典型，因为这是这个系列中最容易出现从某个集合``诱导''（即自然地投射到商结构）定义出新东西的情形，它也有相当大的可能性（尽管本讲义中显然避免了这种情况）是不良定义的. 在给出规范定义后，我们可以证明如下结论：
 
-\begin{theorem}
+\begin{theorem}{}{}
     模$n$同余关系$R$与加法$\oplus$和乘法$\circ$相容.
 \end{theorem}
 \begin{proof}
@@ -372,7 +372,7 @@
           \end{enumerate}
 \end{enumerate}
 
-从高斯消元法开始，我们正式进入线性代数的学习. 实际上，上述 \ref*{item:1:解方程组} 中关于方程组解的情况的讨论我们是浮于表面，是基于算法最后得到的矩阵的形式进行的讨论，但事实上，这背后蕴含着更深刻的意义. 我们将会在接下来的十余个章节中讲述线性代数中的核心概念，并在\hyperref[chap:朝花夕拾]{朝花夕拾}中回过头来重新审视线性方程组解的问题. 相信在那时，经历十余章各式抽象概念和运算技巧的洗礼后再来回味这一问题的你，定有``守得云开见月明''之感，对线性代数的理解也会更深一层.
+从高斯消元法开始，我们正式进入线性代数的学习. 实际上，上述 \ref*{item:1:解方程组} 中关于方程组解的情况的讨论我们是浮于表面，是基于算法最后得到的矩阵的形式进行的讨论，但事实上，这背后蕴含着更深刻的意义. 我们将会在接下来的十余个章节中讲述线性代数中的核心概念，并在\nameref{chap:朝花夕拾}中回过头来重新审视线性方程组解的问题. 相信在那时，经历十余章各式抽象概念和运算技巧的洗礼后再来回味这一问题的你，定有``守得云开见月明''之感，对线性代数的理解也会更深一层.
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
@@ -393,7 +393,7 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 完善\autoref{thm:1:复数乘法构造} 中的证明，即证明$\mathbf{R}^2$在平面向量加法和如\autoref*{thm:1:复数乘法构造} 定义的乘法下构成一个域.
+    \item 完善\autoref{thm:复数乘法构造} 中的证明，即证明$\mathbf{R}^2$在平面向量加法和如\autoref*{thm:复数乘法构造} 定义的乘法下构成一个域.
 
     \item 完成教材48页第13题.
 
@@ -433,7 +433,7 @@
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item 证明：\autoref{ex:1:有限域} 中定义的$\langle Z_n:\oplus,\circ\rangle$是域当且仅当$n$是素数.（提示：无论$n$是否为素数，$n\in\mathbf{Z}$且$n\geqslant 2$时$\langle Z_n:\oplus,\circ\rangle$为交换环，因此是否为素数将决定这一结构中每个元素是否有逆元. 在初等数论中，我们熟知的裴蜀定理可以解决这一问题.）
+    \item 证明：\autoref{ex:有限域} 中定义的$\langle Z_n:\oplus,\circ\rangle$是域当且仅当$n$是素数.（提示：无论$n$是否为素数，$n\in\mathbf{Z}$且$n\geqslant 2$时$\langle Z_n:\oplus,\circ\rangle$为交换环，因此是否为素数将决定这一结构中每个元素是否有逆元. 在初等数论中，我们熟知的裴蜀定理可以解决这一问题.）
 
     \item 本讲我们构造了$\mathbf{R}^2$上的乘法，从而定义了复数域的乘法运算. 本题希望探讨的是：$\mathbf{R}^3$无法构造出乘法使其成为一个域. 在高中的学习中我们知道，$\mathbf{R}^3$空间向量的一组基底为$\{\vec{e}_1=(1,0,0),\vec{e}_2=(0,1,0),\vec{e}_3=(0,0,1)\}$. 证明：$\mathbf{R}^3$没有乘法同时满足以下性质：
           \begin{enumerate}

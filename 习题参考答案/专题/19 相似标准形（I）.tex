@@ -217,8 +217,8 @@
                     \[A^k=P\varLambda^kP^{-1}=P\diag(n^k,0,\ldots,0)P^{-1},\]
                     故
                     \begin{align*}
-                        f(A) & =a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A                                                               \\
-                             & =P(a_m\varLambda^m+a_{m-1}\varLambda^{m-1}+\cdots+a_1\varLambda)P^{-1}                           \\
+                        f(A) & =a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A                                                                                                   \\
+                             & =P(a_m\varLambda^m+a_{m-1}\varLambda^{m-1}+\cdots+a_1\varLambda)P^{-1}                                                               \\
                              & =P\begin{pmatrix}
                                      a_mn^m+a_{m-1}n^{m-1}+\cdots+a_1n & 0 & \cdots & 0 \\ 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 0
                                  \end{pmatrix}P^{-1} \\
@@ -258,7 +258,7 @@
               \item 充分性：若$A$和$B$在复数域上相似，则存在可逆复矩阵$P=P_1+\i P_2$使得$B=P^{-1}AP$，其中$P_1,P_2$是实矩阵，即$AP=PB$，从而$A(P_1+\i P_2)=(P_1+\i P_2)B$，比较实部虚部可知$AP_1=P_1B$且$AP_2=P_2B$. 构造实系数多项式$f(t)=|P_1+tP_2|$，显然$f(\i)=|P|\neq 0$，则$f(t)$是非零多项式，所以$f(t)$的根只有有限多个，从而存在$t_0\in\mathbf{R}$使得$f(t_0)\neq 0$，则$|P_1+t_0P_2|\neq 0$，从而$P_1+t_0P_2$可逆，从而$A(P_1+t_0P_2)=AP_1+t_0AP_2=P_1B+t_0P_2B=(P_1+t_0P_2)B$，即$(P_1+t_0P_2)^{-1}A(P_1+t_0P_2)=B$，即$A$和$B$在实数域上相似.
           \end{enumerate}
 
-    \item \label{ex:19:交换对角化}
+    \item \label{ex:交换对角化}
           \begin{enumerate}
               \item \begin{enumerate}
                         \item 必要性：$A$有$n$个互不相等的特征值，则$A$一定可对角化，则$A$有$n$个线性无关特征向量，记为$X_1,\ldots,X_n$，则$AX_i=\lambda_iX_i\enspace (X_i\neq 0)$，则$A(BX_i)=B(AX_i)=\lambda_i(BX_i)$，即$BX_i$属于$A$的特征子空间$V_{\lambda_i}$，又$\lambda_i$是$A$的单重特征值，对应的特征子空间是一维的，故$V_{\lambda_i}$中任两个向量成比例，即$BX_i=\mu_iX_i$，故$X_i$也是$B$关于特征值$\mu_i$的特征向量.
@@ -271,7 +271,7 @@
                     则$Q^{-1}P^{-1}APQ=\diag(\lambda_1Q_1^{-1}Q_1,\ldots,\lambda_sQ_s^{-1}Q_s)=\diag(\lambda_1E_1,\ldots,\lambda_sE_s)$为对角矩阵，因此取$T=PQ$就有$T^{-1}AT$和$T^{-1}BT$都是对角矩阵.
           \end{enumerate}
 
-    \item 此题条件与C组 \ref*{ex:19:交换对角化} 题相同，因此我们知道存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$都是对角矩阵（因为$A$的$n$个线性无关特征向量也是$B$的线性无关特征向量）. 设$P^{-1}AP=\diag(\lambda_1,\ldots,\lambda_n)$，$P^{-1}BP=\diag(\mu_1,\ldots,\mu_n)$，并设$f(x)=a_{n-1}x^{n-1}+\cdots+a_1x+a_0$满足$f(A)=B$，则$a_{n-1}A^{n-1}+\cdots+a_1A+a_0E=B$，从而
+    \item 此题条件与C组 \ref*{ex:交换对角化} 题相同，因此我们知道存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$都是对角矩阵（因为$A$的$n$个线性无关特征向量也是$B$的线性无关特征向量）. 设$P^{-1}AP=\diag(\lambda_1,\ldots,\lambda_n)$，$P^{-1}BP=\diag(\mu_1,\ldots,\mu_n)$，并设$f(x)=a_{n-1}x^{n-1}+\cdots+a_1x+a_0$满足$f(A)=B$，则$a_{n-1}A^{n-1}+\cdots+a_1A+a_0E=B$，从而
           \[a_{n-1}(P^{-1}AP)^{n-1}+\cdots+a_1(P^{-1}AP)+a_0E=P^{-1}BP,\]
           即
           \[\begin{cases} \begin{aligned}
