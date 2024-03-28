@@ -34,14 +34,14 @@
     又过四年，他也走完了人生的旅途.
 \end{quote}
 据此列一元一次方程可知，丢番图享寿84岁，于33岁时成婚，38岁时生子，80岁时丧子. 丢番图作著的丛书《算术》（Arithmetica）处理求解代数方程组的问题，其中有不少已经遗失，但他的研究在数论中占有重要地位，如丢番图方程、丢番图几何、丢番图逼近等都是数学里的重要领域. 我们简要展开丢番图方程的讨论：
-\begin{definition}
+\begin{definition}{}{}
     形如
     \[a_1x_1^{b_1}+a_2x_2^{b_2}+\cdots+a_nx_n^{b_n}=c,\enspace a_i,b_i,c\in\mathbf{Z}\enspace(i=1,2,\ldots,n)\]
     的方程称为丢番图方程（或不定方程）.
 \end{definition}
 
 简而言之，丢番图方程就是未知数只能使用整数的整数系数多项式等式，虽然定义看起来十分简单，学过初等数论的同学应当有些熟悉（事实上在之后的讨论中我们可以看到初等代数与初等数论之间是紧密联系的），但可以说这一方程在数学史上留下了浓墨重彩的一笔. 后来当法国数学家费马研究《算术》一书时，对其中某个方程颇感兴趣并认为其无解，说他对此``已找到一个绝妙的证明''，但却没有记录下来，直到三个世纪后才出现完整的证明. 我们这里简要介绍这一定理，即费马大定理：
-\begin{theorem}
+\begin{theorem}{}{}
     丢番图方程$x^n+y^n-z^n=0$在$n>2$时无正整数解.
 \end{theorem}
 
@@ -126,11 +126,11 @@
 完全一致. 回顾线性方程组有解的条件，即$(10,20,30)^\mathrm{T}$可以由$(11,21,31)^\mathrm{T},(12,22,32)^\mathrm{T}$线性表示，因此上面行列式等于0是方程组有解的必要条件，即莱布尼茨通过消元法解出了现在线性方程组有解的一个必要条件.
 
 进一步地，莱布尼茨用记号$\overline{1\cdot 2\cdot 3\cdot 4}$表示现在的四阶行列式. 莱布尼兹说式$\overline{1\cdot 2\cdot 3\cdot 4}$由$4!=24$项组成，这些项可以由其中某一项指数的所有置换而得到. 这里为了叙述的完整性，我们先给出置换的相关定义：
-\begin{definition}[置换]
+\begin{definition}{置换}{}
     一个集合$S$的\term{置换}\index{zhihuan@置换 (permutation)}是一个从$S$到$S$的双射$p:S\to S$.
 \end{definition}
 
-\begin{example}
+\begin{example}{}{}
     设$S=\{1,2,3\}$，定义$p(1)=2,p(2)=3,p(3)=1$是$S$的一个置换，因为它是从$S$到$S$的双射. 我们通常将其记为$p_1=\begin{pmatrix}
             1 & 2 & 3 \\
             2 & 3 & 1
@@ -192,12 +192,12 @@
 实际上，上面的置换$p_1$相当于将1变为了2，然后2又变回了1，这构成了一个长度为2的循环. $p_2$相当于将3变为了4,4变为了5，然后5又变回了3，因此构成了一个长度为3的循环. 因此上式也可以改写为
 \[p=(3,4,5)(1,2)\]
 其中$(3,4,5)$就表示从3到4，4到5，然后5到3的循环（事实上$(4,5,3),(5,3,4)$同理表示同一个循环），$(1,2)$也是同理. 事实上，因为$3,4,5$和$1,2$之间没有元素是重复的，因此可以称它们是不相交的. 事实上我们有如下定理，我们不加证明地直接给出：
-\begin{theorem}
+\begin{theorem}{}{}
     $S$上的任意置换$p$都可以表示为长度$\geqslant 2$且不相交的循环的乘积，且这一分解式在不考虑循环顺序（即上面所说的$(3,4,5)$和$(4,5,3)$实则表示一个循环）下是唯一确定的.
 \end{theorem}
 
 事实上，我们在前面讲的对换（即两个元素交换顺序）就是长度为2的循环. 关于对换，我们也有一个重要的结论：
-\begin{theorem}\label{thm:16:对换乘积}
+\begin{theorem}{}{对换乘积}
     $S$上的任意置换$p$都可以表示为对换的乘积.
 \end{theorem}
 
@@ -208,7 +208,7 @@
 \end{proof}
 
 事实上在介绍莱布尼茨的工作时我们就介绍了莱布尼茨利用奇数或偶数次对换作为依据确定行列式定义中每一个排列的乘积前的符号，这里我们给出严谨的关于符号的说明：
-\begin{theorem}[置换的符号] \label{thm:16:置换的符号}
+\begin{theorem}{置换的符号}{置换的符号}
     设$p$是$S$上的一个置换，将$p$分解为对换的乘积：
     \[p=p_1\cdots p_k,\]
     则称
@@ -222,12 +222,12 @@
 \end{proof}
 
 基于这一定理，我们可以有如下合理的定义：
-\begin{definition}
+\begin{definition}{}{}
     若$\tau(p)=1$，则称$p$为$S$上的偶置换；若$\tau(p)=-1$，则称$p$为$S$上的奇置换.
 \end{definition}
 
 事实上我们在之前也定义了奇置换和偶置换，即从顺序排列的数列经过奇数还是偶数次对换可以得到最终的置换出发进行定义. 两个定义实际上是统一的，统一性由下面这一定理保证：
-\begin{theorem}\label{thm:16:置换符号计算公式}
+\begin{theorem}{}{置换符号计算公式}
     设$S$上的置换$p$分解为长为$l_1,l_2,\ldots,l_m$的互不相交的循环的乘积，则
     \[\tau(p)=(-1)^{\sum\limits_{k=1}^m(l_k-1)}.\]
 \end{theorem}
@@ -235,9 +235,9 @@
 因为对换是长度为2的循环，事实上每一个$l_i-1$都等于1. 如果上述定理成立，那么奇数次的对换将会使得置换符号为$-1$，因为$-1$的奇数次方，偶置换则会得到符号为$-1$的偶数次方，即为1，因此两个定义统一.
 
 \begin{proof}
-    事实上，根据\autoref{thm:16:置换的符号}，我们有
+    事实上，根据\autoref{thm:置换的符号}，我们有
     \[\tau(p)=\tau(p_1)\cdots\tau(p_m),\]
-    根据\autoref{thm:16:对换乘积} 的证明我们知道，$p_i$可以被写为$l_i-1$个对换的乘积，因此我们有$\tau(p_i)=(-1)^{l_k-1}$，因此有
+    根据\autoref{thm:对换乘积} 的证明我们知道，$p_i$可以被写为$l_i-1$个对换的乘积，因此我们有$\tau(p_i)=(-1)^{l_k-1}$，因此有
     \[\tau(p)=(-1)^{\sum\limits_{k=1}^m(l_k-1)}.\]
 \end{proof}
 
@@ -259,7 +259,7 @@
 事实上，由\autoref{eq:16:柯西行列式} 展开得到的式子中的项不难看出都可以写成如下形式：
 \[\prod a_{1p(1)}\ldots a_{np(n)}\]
 其中$p$是集合$S=\{1,2,\ldots,n\}$上的一个置换，因为乘积前面的$a_1\cdots a_n$会保证每一个数都出现，而后面的乘积由排列组合的知识可知只有$a_1,\ldots,a_n$的次数分别为$0,1,\ldots,n-1$的一个置换才会留下来且前面的系数为1或$-1$. 接下来便有一个问题，即前面的系数究竟是1还是$-1$. 柯西使用的方法与前面介绍的几乎完全一致！他就是通过计算$(-1)^{\sum\limits_{k=1}^m(l_k-1)}$这一方式判断的，其中$l_k$是上述置换$p$进行循环分解后各项的长度. 基于此，我们有行列式定义如下：
-\begin{definition}
+\begin{definition}{}{}
     $n$阶行列式
     \[\begin{vmatrix}
             a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -278,12 +278,12 @@
 $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但比2大. 而数对$(1,2)$则是顺序对，因为1在2前面且比2小，这与原先$1,2,3$的排列顺序是统一的.
 
 基于逆序对的定义我们可以有奇置换和偶置换的另一个定义：
-\begin{definition}
+\begin{definition}{}{}
     我们称逆序数为奇数的置换为奇置换，逆序数为偶数的置换为偶置换.
 \end{definition}
 
 显然我们也必须要求这一定义和前面的定义是一致的，事实上我们有如下定理：
-\begin{theorem}
+\begin{theorem}{}{}
     任意置换$p$的逆序数的奇偶性与其可以被分解为对换乘积的个数的奇偶性相同.
 \end{theorem}
 
@@ -291,7 +291,7 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 \end{proof}
 
-由这一定理以及\autoref{thm:16:置换符号计算公式} 我们知道逆序数为奇数时，置换符号为$-1$，逆序数为偶数时，置换符号为1，因此这一定义与前面的定义是一致的.
+由这一定理以及\autoref{thm:置换符号计算公式} 我们知道逆序数为奇数时，置换符号为$-1$，逆序数为偶数时，置换符号为1，因此这一定义与前面的定义是一致的.
 
 由此我们可以看出，行列式的逆序数定义实际上最开始来源于莱布尼茨、克莱姆等人最朴素的从低阶出发的探索，它们找到了一些规律，这些规律由天才数学家柯西进行抽象总结，得到具有普适性的方法，变成了上面沿用至今的严格定义. 而后人又结合置换、逆序数等理论进行重新叙述，再嵌套一层抽象，最终上面完整的叙述逻辑. 在这里我们看到一个很抽象甚至初看没有什么道理的定义是如何自然演化而来的，实际上是数学理论螺旋式进步以及多个理论（可能对应很多条数学发展支线）在教育家们的手中进行合理排列后所呈现的状态.
 
@@ -377,17 +377,17 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 这样的推广终归是成立了，它的证明由 E. Artin 在 1927 年给出，C. N. Delzell 在 1984 年甚至给出了一个算法以构造这样的平方和. 但是，故事到这里还没有结束，把``数''推广到``矩阵''，有趣的事情发生了：
 
-\begin{theorem}[Helton, 2002]\label{thm:16:helton2002}
+\begin{theorem}{Helton, 2002}{helton2002}
     对称的矩阵多项式是半正定的，当且仅当它能被拆成一组矩阵多项式的平方和.
 \end{theorem}
 
 当然，我们需要澄清一些概念：
 
-\begin{definition}
+\begin{definition}{}{}
     一个 $n$ 元的矩阵单项式是一个形如 $am_1m_2 \cdots m_k$ 的连乘积，其中 $a \in \R$，$m_i$ 为矩阵变元 $x_j \enspace(j \leqslant n)$ 或其转置. 一个 $n$ 元的矩阵多项式是有限个 $n$ 元矩阵单项式的和.
 \end{definition}
 
-\begin{definition}
+\begin{definition}{}{}
     一个 $n$ 元的矩阵多项式 $Q$ 的值域 $\im Q$ 被定义为
 
     \[ \bigcup_{m = 1}^\infty\left\{Q(A_1, A_2, \ldots, A_n) \mid A_i \in \mathbf{M}_m(\R)\right\} \]
@@ -395,33 +395,33 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
     即在代入任意 $n$ 个 $m$ 阶方阵之后所能得到的结果.
 \end{definition}
 
-\begin{definition}
+\begin{definition}{}{}
     称一个矩阵多项式 $Q$ 是对称的，如果所有 $\im Q$ 中的矩阵都是对称的；称它是半正定的，如果所有 $\im Q$ 中的矩阵都是半正定的.
 \end{definition}
 
-\begin{definition}
+\begin{definition}{}{}
     所谓矩阵多项式的平方和，指的是如下形式的有限和：
     \[ P(x_1, x_2, \ldots, x_n) = \sum_{i = 1}^k h_i(x_1, x_2, \ldots, x_n)h_i^\mathrm{T}(x_1, x_2, \ldots, x_n) \]
     其中 $h_i$ 均为 $n$ 元矩阵多项式. 显然，这个平方和一定是半正定的.
 \end{definition}
 
-\autoref{thm:16:helton2002} 的证明已经超出了这份讲义所能探讨的范畴. 其原论文足有二十页，证明过程可谓相当详尽，有兴趣的读者可自行查阅.
+\autoref{thm:helton2002} 的证明已经超出了这份讲义所能探讨的范畴. 其原论文足有二十页，证明过程可谓相当详尽，有兴趣的读者可自行查阅.
 
 下面我们再给出一个将数推广到矩阵的相关问题，它在某种意义上也与正定性有关，而且也是本世纪的成果. 最小二乘法在本讲义前面很早的地方就有介绍，同样将其推广到矩阵，就要求我们推广距离的概念：
 
-\begin{definition}
+\begin{definition}{}{}
     考虑 $n$ 阶正定矩阵 $A, B$，定义它们之间的迹度量距离（trace metric distance）为：
     \[ \delta(A, B) = \sqrt{\sum_{i = 1}^n \log^2\lambda_i(A^{-1}B)} \]
     其中 $\lambda_i(M)$ 表示矩阵 $M$ 的第 $i$ 个特征值.
 \end{definition}
 
-\begin{definition}
+\begin{definition}{}{}
     $k$ 个矩阵 $A_1, A_2, \ldots, A_k$ 的 Karcher 均值（Karcher mean）指的是正定矩阵 $X$，使得 $X$ 到所有 $A_i$ 的迹度量距离的平方和最小，将其记作 $\sigma(A_1, A_2, \ldots, A_k)$
 \end{definition}
 
 这个概念由 Karcher 在 1973 年先引入到任意度量空间中，这里呈现的是 Moakher 在 2005 年将其引入到矩阵中的版本. 在 2006 年，Bhatia 和 Holbrook 合作的论文呈现了它的一系列性质，并给出了一个猜想. 这个猜想是对下面这个简单事实的推广：
 
-\begin{lemma}
+\begin{lemma}{}{}
     考虑 $x_1, x_2, \ldots, x_n, y_1, y_2, \ldots, y_n \in \R$，且 $\forall i \leqslant n,\enspace x_i \leqslant y_i$. 记 $x, y$ 分别为使得
     \[ \sum_{i = 1}^n (x - x_i)^2, \quad \sum_{i = 1}^n (y - y_i)^2 \]
     取得极小值的 $x$ 和 $y$，则 $x \leqslant y$.
@@ -429,11 +429,11 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 很显然，对吧？他们猜测，Karcher 均值也有这种美好的单调性，不过，首先要在正定矩阵上引进序关系：
 
-\begin{definition}
+\begin{definition}{}{}
     如果 $B - A$ 正定，则 $A \leqslant B$.
 \end{definition}
 
-\begin{theorem}[Bhatia-Holbrook, 2006, Lawson-Lim, 2011]
+\begin{theorem}{Bhatia-Holbrook, 2006, Lawson-Lim, 2011}{}
     考虑 $A_1, A_2, \ldots, A_n, B_1, B_2, \ldots, B_n$ 为 $m$ 阶正定矩阵，如果 $\forall i \leqslant n,\enspace A_i \leqslant B_i$，则
     \[ \sigma(A_1, A_2, \ldots, A_n) \leqslant \sigma(B_1, B_2, \ldots, B_n) \]
 \end{theorem}
@@ -442,26 +442,26 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 提及特征值，我们不妨再看看另外一个不那么幸运的结果，它是一个被证伪的猜想.
 
-\begin{definition}
+\begin{definition}{}{}
     称一个方阵 $A$ 的谱半径（spectral radius）为其特征值的绝对值的最大者，记为 $\rho(A)$.
 \end{definition}
 
 这个定义是非常有用的，如果我们注意到以下两个定理：
 
-\begin{theorem}
+\begin{theorem}{}{}
     对于可对角化的矩阵 $U$，以下式子成立：
     \[ \lVert Uv \rVert \leqslant \rho(U) \lVert v \rVert \]
 \end{theorem}
 
 这是谱定理的一个直接推论. 注意，如果 $U$ 不是可对角化的，那么这个式子不成立，读者可以自行尝试构造反例，应当不难.
 
-\begin{theorem}
+\begin{theorem}{}{}
     \[ \rho(A_1A_2\cdots A_k) \leqslant \rho(A_1)\rho(A_2)\cdots \rho(A_k) \]
 \end{theorem}
 
 这是 Gelfand 公式的一个直接推论. 也就是说，如果我们限制了所有矩阵 $A_i$ 都是可对角化的（例如在许多物理过程中），可以通过谱半径的乘积来估计乘积的谱半径的上界，这对于很多连续进行线性变换的系统的估计都是非常关键的. 而且，下面这个定义也一样重要：
 
-\begin{definition}[广义谱半径]
+\begin{definition}{广义谱半径}{}
     设 $\Sigma$ 为有限个 $m$ 阶方阵的集合，称其广义谱半径（generalized spectral radius）为
     \[ \rho(\Sigma) = \varlimsup_{k \to \infty} \rho_k(\Sigma) \]
     其中
@@ -494,7 +494,7 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 当然，读者会说，高斯消元法嘛，第一讲就已经讲过了，如果 $A$ 可逆那就是 $\vec{x} = A^{-1}\vec{b}$ 呗. 也不算错，那如果 $A$ 干脆不是一个方阵呢？确切的解自然不存在，最小二乘解也由 Penrose-Moore 逆给出：
 
-\begin{definition}
+\begin{definition}{}{}
     考虑 $m \times n$ 矩阵 $A$，它的 Penrose-Moore 逆为一个 $n \times m$ 矩阵 $A^\dagger$ 满足以下条件：
 
     \begin{enumerate}
@@ -510,7 +510,7 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 当然，不难写出近似的精度的定义：
 
-\begin{definition}
+\begin{definition}{}{}
     称 $\widetilde{\vec{x}}$ 是 $A\vec{x} = \vec{b}$ 的一个精度为 $\varepsilon$ 的近似解，如果：
     \[ \lVert \widetilde{\vec{x}} - A^\dagger \vec{b} \rVert_A \leqslant \varepsilon \lVert A^\dagger \vec{b} \rVert_A \]
     其中
@@ -520,7 +520,7 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 这是对于一般的矩阵的结果. 通常情况下，我们只要处理实对称矩阵，甚至还能伴随一个更强的条件：
 
-\begin{definition} \index{ruozhuduijiao@弱主对角占优 (weakly diagonally dominant)}
+\begin{definition}{}{}\index{ruozhuduijiao@弱主对角占优 (weakly diagonally dominant)}
     称矩阵 $(a_{ij})$ 是\term{弱主对角占优}的，如果
     \[ a_{ii} \geqslant \sum_{j \neq i} |a_{ij}| \]
     对于任意 $i$ 成立.
@@ -528,7 +528,7 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 实对称的主对角占优矩阵对应的线性方程组求解当然可以使用直接求逆的方法，但是由于在处理图论问题以及求解一些椭圆型偏微分方程时，它往往以非常大的规模出现，所以哪怕是非线性时间的算法，也显得比较缓慢了，而到达近线性的突破到现在还不到十年：
 
-\begin{theorem}[Spielman-Teng, 2014]
+\begin{theorem}{Spielman-Teng, 2014}{}
     存在一个在任意精度 $\varepsilon$ 下求解实对称的主对角占优矩阵 $A$ 对应的方程组 $Ax = b$ 的随机算法，其时间复杂度为
     \[ O(m \log^c n \log(1 / \varepsilon)) \]
     其中 $m$ 为 $A$ 中的非零元个数，$c$ 为一常数.
@@ -542,34 +542,34 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 
 首先，何谓随机矩阵？我们这里只探讨最简单的模型：Bernoulli 矩阵.
 
-\begin{definition}
+\begin{definition}{}{}
     称一个矩阵为 Bernoulli 矩阵，如果它的每一个元素都是独立同分布、成功概率 $p = 1/2$ 的 Bernoulli 随机变量.
 \end{definition}
 
 第一个问题是，这玩意有多大概率是奇异的？简单观察一下，不难猜想，奇异性的来源也就是行或者列相同，因此，我们给出以下猜想：
 
-\begin{theorem}[Tikhomirov, 2020] \label{thm:16:tik2020}
+\begin{theorem}{Tikhomirov, 2020}{tik2020}
     一个 $n$ 阶 Bernoulli 矩阵奇异的概率为：
     \[ P_n = \left( \frac{1}{2} + o(1) \right)^n \]
 \end{theorem}
 
 这个结果的证明几经波折. 原始的猜想早在上世纪就被正式阐述过，早在 1967 年，Koml\'os 就已经表明，$\displaystyle\lim_{n \to \infty} P_n = 0$. 直到 1995 年，Kahn 等人才给出第一个指数级别的估计 $P_n = O(0.999^n)$. 在 2007 年，陶哲轩和 Van Vu 给出了 $P_n = O(0.958^n)$ 的估计并在第二年获得了如下突破：
 
-\begin{theorem}[Tao-Vu, 2007]
+\begin{theorem}{Tao-Vu, 2007}{}
     一个 $n$ 阶 Bernoulli 矩阵奇异的概率为：
     \[ P_n = \left( \frac{3}{4} + o(1) \right)^n \]
 \end{theorem}
 
 下一个突破性进展在 2010 年，Bourgain 等人进一步压下了上界：
 
-\begin{theorem}[Bourgain, 2010]
+\begin{theorem}{Bourgain, 2010}{}
     一个 $n$ 阶 Bernoulli 矩阵奇异的概率为：
     \[ P_n = \left( \frac{1}{\sqrt{2}} + o(1) \right)^n \]
 \end{theorem}
 
-最终形成了我们看到的\autoref{thm:16:tik2020}. 事实上，Tikhomirov 证明的结果比这个还要广一点：
+最终形成了我们看到的\autoref{thm:tik2020}. 事实上，Tikhomirov 证明的结果比这个还要广一点：
 
-\begin{theorem}[Tikhomirov, 2020]
+\begin{theorem}{Tikhomirov, 2020}{}
     一个 $n$ 阶，成功概率为 $p \in (0, 1/2]$ 的 Bernoulli 矩阵奇异的概率为：
     \[ P_n = \left( 1 - p + o(1) \right)^n \]
 \end{theorem}
@@ -595,13 +595,13 @@ Jain 等人在同年也给出了另一个关于任意有限支集的分布代替
 
 我们要谈的第一个问题叫做压缩感知（compressed sensing）. 给定一个稀疏信号和有限次的测量，测量的次数很可能远少于要复原的变量的个数，这个时候，我们需要多少次测量才能以某个精度复原出原始信号？最初的结果来自于 Donoho 在 2006 年的一篇论文，在 Google 学术上，这篇论文被引次数在笔者写下这一小节时已经达到了惊人的 33115 次，很可能是本世纪引用次数最高的一篇数学论文. 我们下面来介绍一下这篇论文的主要结果，首先需要给出几个定义：
 
-\begin{definition}
+\begin{definition}{}{}
     一个向量 $x$ 的 $l_p$-范数定义为：
     \[ \lVert x \rVert_p = \left( \sum_{i}|x_i|^p \right)^{\frac{1}{p}} \]
     其中 $x_i$ 为其分量.
 \end{definition}
 
-\begin{definition}
+\begin{definition}{}{}
     称一个向量是 $l_p$-稀疏的，如果它满足：
     \[ \lVert x \rVert_p < R \]
     其中 $R$ 为给定正常数，$0 < p \leqslant 1$.
@@ -627,7 +627,7 @@ Jain 等人在同年也给出了另一个关于任意有限支集的分布代替
 
 当然，我们说线性性，很显然的问题就是，什么样的东西是一个足以保线性性的东西？一个域上的线性空间，那当然可以. 它自身有 Abel 群结构，对于域的加法和数乘作用相容——等等，为什么一定要是一个域呢？域中的除法，以及域的交换性，这些东西看起来对线性性并没有多少意义. 如果你注意到了这一点，那么恭喜你，你已经能够写出模的定义了：
 
-\begin{definition}
+\begin{definition}{}{}
     置 $\langle R : +, \cdot \rangle$ 为一环，$\langle M : + \rangle$ 为一 Abel 群. 称 $M$ 为 $R$ 上的左模，如果我们能给它赋予一个映射 $R \times M \to M$ ，以左乘记，满足以下条件：
 
     \begin{itemize}
@@ -645,13 +645,13 @@ Jain 等人在同年也给出了另一个关于任意有限支集的分布代替
 
 对于模理论，深究起来亦破费一番功夫. 这里，我们只提示一个在笔者看来非常有用的性质：
 
-\begin{theorem}[Freyd-Mitchel, 1964]
+\begin{theorem}{Freyd-Mitchel, 1964}{}
     任意小的 Abel 范畴都可以满、忠实且正合地嵌入到某个环 $R$ 的左模范畴中去.
 \end{theorem}
 
 深入介绍这个定理会让这一节变得相当复杂，或许需要单开一本书来讲. 但是，单从字面意义上讲，读者不难看出，这个意思就是，对 Abel 范畴的研究可以在某个环 $R$ 的左模范畴中完成，而事实上另有一个嵌入定理将另一个更广泛的结构嵌入到 Abel 范畴中：
 
-\begin{theorem}[Quillen-Gabriel, 1972]
+\begin{theorem}{Quillen-Gabriel, 1972}{}
     任意一个小的 Quillen 正合范畴都可以被保正合地嵌入到 Abel 范畴中.
 \end{theorem}
 
@@ -661,11 +661,11 @@ Jain 等人在同年也给出了另一个关于任意有限支集的分布代替
 
 张量积的构造其实无外乎线性映射的推广：
 
-\begin{definition}
+\begin{definition}{}{}
     置 $V, W, Z$ 为线性空间，称 $V \times W \to Z$ 是双线性的（bilinear），如果它关于 $V$ 和关于 $W$ 都是线性的.
 \end{definition}
 
-\begin{definition} \label{thm:16:tensorprod}
+\begin{definition}{}{tensorprod}
     $V$ 和 $W$ 的张量积 $V \otimes W$ 无外乎一种具备泛性质的双线性映射 $\varphi$，即满足对于任意双线性映射 $h$，存在唯一线性映射 $\widetilde h$ 使得下图交换：
 
     \begin{center}
@@ -689,7 +689,7 @@ Jain 等人在同年也给出了另一个关于任意有限支集的分布代替
 
 于是：
 \[ V \otimes W \cong (V \times W) / R \]
-不难验证这样给出的 $V \otimes W$ 满足\autoref{thm:16:tensorprod}.
+不难验证这样给出的 $V \otimes W$ 满足\autoref{def:tensorprod}.
 
 \subsection{从代数到单子：往程序设计范式前进}
 
@@ -697,19 +697,19 @@ Jain 等人在同年也给出了另一个关于任意有限支集的分布代替
 
 我们已经提及，线性性是一个非常好的性质. 对于一般的群，这种性质都是不可能存在的. 但是，如何给一个非线性的结构赋予线性结构呢？我们先看一个事实.
 
-\begin{lemma}
+\begin{lemma}{}{}
     $\mathcal{L}(V)$ 关于复合操作构成一个群.
 \end{lemma}
 
 这个结果的验证应该颇为简单. 随后，我们自然想到，如果研究一个群到这个群的群同态，即那些保群乘法结构的映射，那么我们不久相当于把对群的研究线性化了吗？这样，我们就有了以下定义：
 
-\begin{definition}
+\begin{definition}{}{}
     从群 $G$ 到线性空间 $V$ 上的表示（representation）意指一个从 $G$ 到 $\mathcal{L}(V)$ 的群同态.
 \end{definition}
 
 通常地，我们会研究实表示和复表示，也就是把 $V$ 取为 $\R^n(\R)$ 和 $\C^n(\C)$. 我们将表示空间的维数称为表示的维数. 对表示论的研究很大程度上是对特征标的研究：
 
-\begin{definition}
+\begin{definition}{}{}
     考虑有限维表示 $\rho: G \to \mathcal{L}(V)$，$V$ 是域 $\mathbf{F}$ 上的向量空间，表示 $\rho$ 的特征标被定义为：
     \begin{align*}
         \chi_\rho \colon & G \to F                 \\

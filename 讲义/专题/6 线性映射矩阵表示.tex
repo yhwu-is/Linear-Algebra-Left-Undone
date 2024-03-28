@@ -5,7 +5,7 @@
 \section{线性映射矩阵表示}
 
 作为准备，我们首先需要引入矩阵的概念：
-\begin{definition}
+\begin{definition}{}{}
     域$\mathbf{F}$中的$m\times n$个元素$a_{ij}\enspace(i=1,\ldots,m,\enspace j=1,\ldots,n)$排成$m$行$n$列的矩形数表，称为域$\mathbf{F}$上的一个$m\times n$矩阵，记作
     \[A=\begin{pmatrix}
             a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -21,7 +21,7 @@
 除此之外，我们通常记域$\mathbf{F}$上的$m\times n$矩阵全体为$\mathbf{F}^{m\times n}$或$\mathbf{M}_{m\times n}(\mathbf{F})$. 当$m=n$时矩阵称为方阵，域$\mathbf{F}$上全体$n$阶矩阵（或称$n$阶方阵）记为$\mathbf{F}^{n\times n}$或$\mathbf{M}_n(\mathbf{F})$.
 
 在了解矩阵的定义之后，我们可以引入线性映射矩阵表示的概念. 经过前面大量的关于坐标同构的铺垫之后，想必读者对于如何将抽象的映射转化为矩阵有一个大致的思路：事实上，我们可以将矩阵视为多个$\mathbf{R}^n$中的列向量拼在一起得到的方块，那么如何得到这些$\mathbf{R}^n$中的列向量呢？想必是某些向量在线性映射到达空间的一组基下的坐标. 于是我们很自然地可以接受下面的定义：
-\begin{definition}\label{def:7:线性映射矩阵表示}
+\begin{definition}{}{线性映射矩阵表示}
     设$B_1=\{\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n\}$是$V_1(\mathbf{F})$的基，$B_2=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$是$V_2(\mathbf{F})$的基. 则线性映射$\sigma \in \mathcal{L}(V_1,V_2)$被它作用于基$B_1$的像
     \[\sigma(B_1)=\{\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)\}\]
     所唯一确定，而$\sigma(B_1)$是$V_2$的子空间，于是其中元素都可以被基$B_2$线性表示，即
@@ -55,7 +55,7 @@
 \end{enumerate}
 
 想必有很多读者会心存疑惑：为什么我们要这么定义线性映射的矩阵表示呢？我们将在下一小节说明线性映射构成的线性空间与矩阵构成线性空间的同构时解释这一点. 现在先让我们完成以下几个例题熟悉定义：
-\begin{example}\label{ex:7:矩阵表示1}
+\begin{example}{}{矩阵表示1}
     已知$\sigma \in \mathcal{L}(\mathbf{R}^3,\mathbf{R}^3)$且$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)$
     \begin{enumerate}
         \item 求$\sigma$的像空间和核空间；
@@ -72,7 +72,7 @@
               \[\ker\sigma=\{(x_1,x_2,x_3)\mid \sigma(x_1,x_2,x_3)=(0,0,0)\}=\{(0,0,0)\}\]
               即方程只有零解，核空间可以记为$\ker\sigma=\{0\}$（只含零元的空间的一般记法）.
 
-        \item 我们根据\autoref{def:7:线性映射矩阵表示}，应先写出$\sigma$在出发空间一组基（按题目要求是$\mathbf{R}^3$自然基）下的像，并将像表示为到达空间基（按题目要求是$\mathbf{R}^3$自然基）的线性组合，即
+        \item 我们根据\autoref{def:线性映射矩阵表示}，应先写出$\sigma$在出发空间一组基（按题目要求是$\mathbf{R}^3$自然基）下的像，并将像表示为到达空间基（按题目要求是$\mathbf{R}^3$自然基）的线性组合，即
               \begin{gather*}
                   \sigma(e_1)=(1,1,0)=e_1+e_2=(e_1,e_2,e_3)\begin{pmatrix}
                       1 \\ 1 \\ 0
@@ -95,8 +95,8 @@
 
 有趣的是，在结合我个人的学习经历以及过往辅学的经验后，我总结出了第二问的一种常见的错误解法，这里我需要加粗强调，下面这种解法是\textbf{完全错误的！！！}这里展示这一解法是为了让读者将前面所学的知识完全厘清：
 
-\begin{solution}
-    （\textbf{\songti 错误解法！！！}）$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)=(x_1,x_2,x_3)\begin{pmatrix}
+\begin{solution}[错误解法！！！]
+    $\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)=(x_1,x_2,x_3)\begin{pmatrix}
             1 & 1  & 0 \\
             1 & 0  & 1 \\
             0 & -1 & 0
@@ -203,7 +203,7 @@
           \begin{enumerate}
               \item 对于单射性，我们考察$\varphi$的核空间$\ker\varphi$中的元素$\sigma$，即$\sigma$在基下的矩阵表示为零矩阵，那么$\sigma$必然为零映射，因为它将所有基映射为0，故必然将所有出发空间元素映射为0，因此核空间为$\{0\}$，单射成立；
 
-              \item 对于满射性，我们需要为任意$m\times n$矩阵$(a_{ij})_{m\times n}$找到一个线性映射，使得这一矩阵为这一线性映射在基下的矩阵表示. 事实上，给定基和矩阵表示，我们就知道了线性映射在出发空间的基下的像——因为给定到达空间的基和矩阵就给定了线性映射在出发空间的基在到达空间的基下的坐标. 然后根据\autoref{thm:5:线性映射构造} 知我们一定能找到这一映射，故满射性成立.
+              \item 对于满射性，我们需要为任意$m\times n$矩阵$(a_{ij})_{m\times n}$找到一个线性映射，使得这一矩阵为这一线性映射在基下的矩阵表示. 事实上，给定基和矩阵表示，我们就知道了线性映射在出发空间的基下的像——因为给定到达空间的基和矩阵就给定了线性映射在出发空间的基在到达空间的基下的坐标. 然后根据\autoref{thm:线性映射构造} 知我们一定能找到这一映射，故满射性成立.
           \end{enumerate}
 \end{enumerate}
 
@@ -229,7 +229,6 @@
         0 & 0 & 1
     \end{pmatrix},\]
 事实上，我们很容易验证这样的常用基的确是线性空间$\mathbf{F}^{m\times n}$的一组基，因为它们显然是线性无关的，且张成整个空间（请读者自行验证），然后我们也知道这样的常用基中矩阵有$m\times n$个，由此我们也得到了$\dim\mathcal{L}(V_1,V_2)=mn$. 当然我们还可以有另一种理解方式，如果读者已经学习过编程中二维数组的概念，事实上二维数组在计算机中的存储形式是一行存完接着马上存下一行，因此事实上我们可以将二维数组看作是一个长为$m\times n$的一维数组（方法就是第一行写完后在同一行马上接着写第二行元素，写完后在同一行接着写第三行元素，依此类推），因此我们也可以理解为$\mathbf{F}^{m\times n}$和$\mathbf{F}^{mn}$是没有区别的（容易验证是同构的），因此$\dim\mathbf{F}^{m\times n}=mn$.
-
 
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}

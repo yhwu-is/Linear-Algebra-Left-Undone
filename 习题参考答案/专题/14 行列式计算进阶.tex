@@ -153,7 +153,7 @@
                             \vdots & \vdots & \vdots & \ddots & \vdots  & \vdots \\
                             0      & 0      & 0      & \ldots & a_{n-2} & 1      \\
                             0      & 0      & 0      & \ldots & 0       & 1      \\
-                        \end{vmatrix} \quad \text{($1-n$列用第$n$列减)}     \\
+                        \end{vmatrix} \quad \text{($1-n$列用第$n$列减)}                         \\
                             & =a_nD_{n-1}+\prod_{i=1}^{n-1}a_i
                     \end{align*}
                     递推可得$\displaystyle D_n=\left(\prod_{k=1}^na_k\right)
@@ -172,7 +172,7 @@
                                    & 1      &                \\
                                    & \vdots & \ddots &       \\
                                    & 1      &        & a_{n}
-                         \end{vmatrix}+\cdots+              \\
+                         \end{vmatrix}+\cdots+                    \\
                               & \begin{vmatrix}
                                     a_{1} &       &        & 1      \\
                                           & a_{2} &        & 1      \\
@@ -184,7 +184,7 @@
                                    & a_{2} &              \\
                                    &       & \ddots &     \\
                                    &       &        & a_n
-                         \end{vmatrix}                 \\
+                         \end{vmatrix}                       \\
                         =     & \left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}}
                         \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n} \frac{1}{a_{i}}\right)
                     \end{align*}
@@ -203,21 +203,21 @@
                   a_{2}^{2} & a_{3}^{2} & \cdots & a_{n}^{2} & a_{1}^{2} \\
                   \vdots    & \vdots    & \ddots & \vdots    & \vdots    \\
                   a_{2}^{n} & a_{3}^{n} & \cdots & a_{n}^{n} & a_{1}^{n}
-              \end{vmatrix}                                \\
+              \end{vmatrix}                                               \\
                           & =(1+(-1)^{n-1})\begin{vmatrix}
                                                a_{1}     & a_{2}     & \cdots & a_{n-1}     & a_{n}     \\
                                                a_{1}^{2} & a_{2}^{2} & \cdots & a_{n-1}^{2} & a_{n}^{2} \\
                                                \vdots    & \vdots    & \ddots & \vdots      & \vdots    \\
                                                a_{1}^{n} & a_{2}^{n} & \cdots & a_{n-1}^{n} & a_{n}^{n}
-                                           \end{vmatrix} \\
+                                           \end{vmatrix}                \\
                           & =(1+(-1)^{n-1})\prod_{i=1}^na_i
               \begin{vmatrix}
                   1           & 1           & \cdots & 1             & 1           \\
                   a_{1}       & a_{2}       & \cdots & a_{n-1}       & a_{n}       \\
                   \vdots      & \vdots      & \ddots & \vdots        & \vdots      \\
                   a_{1}^{n-1} & a_{2}^{n-1} & \cdots & a_{n-1}^{n-1} & a_{n}^{n-1}
-              \end{vmatrix}                      \\
-                          & =(1+(-1)^{n-1})\left(\prod_{i=1}^na_i\right)\prod_{1\leqslant i<j\leqslant n}(a_j-a_i)      \\
+              \end{vmatrix}                                     \\
+                          & =(1+(-1)^{n-1})\left(\prod_{i=1}^na_i\right)\prod_{1\leqslant i<j\leqslant n}(a_j-a_i) \\
           \end{align*}
 
     \item \begin{enumerate}
@@ -267,7 +267,7 @@
                                            \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
                                            1      & 1      & 1-n    & \cdots & 1      & 1      \\
                                            1      & 1-n    & 1      & \cdots & 1      & 1
-                                       \end{vmatrix}                            \\&=\begin{vmatrix}
+                                       \end{vmatrix}                                    \\&=\begin{vmatrix}
                                       0      & n+1    & 2      & \cdots & n-2    & n-1    \\
                                       0      & n      & 0      & \cdots & 0      & -n     \\
                                       0      & n      & 0      & \cdots & -n     & 0      \\
@@ -281,7 +281,7 @@
                                                      n      & 0      & \cdots & -n     & 0      \\
                                                      \vdots & \vdots & \ddots & \vdots & \vdots \\
                                                      n      & -n     & \cdots & 0      & 0
-                                                 \end{vmatrix}                          \\
+                                                 \end{vmatrix}                                   \\
                                     & =(-1)^{n+1}(-1)^{\frac{(n-2)(n-3)}{2}}
                                   \begin{vmatrix}
                                       n+1    & n-1    & \cdots & 3      & 2      \\
@@ -289,7 +289,7 @@
                                       n      & 0      & \cdots & 0      & 0      \\
                                       \vdots & \vdots & \ddots & \vdots & \vdots \\
                                       n      & 0      & \cdots & 0      & -n
-                                  \end{vmatrix}                                         \\
+                                  \end{vmatrix}                                                  \\
                                     & =(-1)^{\frac{n^2-3n+8}{2}}\begin{vmatrix}
                                                                     \frac{n(n+1)}{2} & n-1    & \cdots & 3      & 2      \\
                                                                     0                & -n     & \cdots & 0      & 0      \\
@@ -339,7 +339,7 @@
                                       \vdots & \vdots & \ddots & \vdots & \vdots \\
                                       0      & -n     & \cdots & 0      & 0      \\
                                       -n     & 0      & \cdots & 0      & 0
-                                  \end{vmatrix}_{n-3} \\
+                                  \end{vmatrix}_{n-3}                      \\
                                     & =-\frac{n^{2}(n+1)}{2}(-1)^{\frac{(n-3)(n-4)}{2}}(-n)^{n-3} \\
                                     & =(-1)^{\frac{n(n-1)}{2} }\frac{(n+1) n^{n-1}}{2}
                               \end{align*}
