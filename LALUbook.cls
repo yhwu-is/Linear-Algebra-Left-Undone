@@ -142,17 +142,13 @@
                     (frame.south west) -- (frame.south east);
                 },
             overlay middle={
-                    \path[font=\small\heiti] (frame.north) node (cont) {续};
                     \draw[thick,#1!50!black,dashed]
-                    (frame.north west) -- (cont.west)
-                    (frame.north east) -- (cont.east)
+                    (frame.north west) -- (frame.north east)
                     (frame.south west) -- (frame.south east);
                 },
             overlay last={
-                    \path[font=\small\heiti] (frame.north) node (cont) {续};
                     \draw[thick,#1!50!black,dashed]
-                    (frame.north west) -- (cont.west)
-                    (frame.north east) -- (cont.east);
+                    (frame.north west) -- (frame.north east);
                 },
         }
 }
