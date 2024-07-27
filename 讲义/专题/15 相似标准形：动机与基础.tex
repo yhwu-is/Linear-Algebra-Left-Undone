@@ -208,7 +208,7 @@
 \begin{definition}{}{循环子空间}
     设$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量. 我们称子空间
     \[W=\spa(v,Tv,T^2v,\cdots,T^kv,\cdots)\]
-    为\term{由$v$生成的$T-\text{循环子空间}$}. 在不引起歧义的情况下，我们也称$W$为\term{$T-\text{循环子空间}$}或\term{循环子空间}.
+    为\term{由$v$生成的$T\text{-循环子空间}$}. 在不引起歧义的情况下，我们也称$W$为\term{$T\text{-循环子空间}$}或\term{循环子空间}.
 \end{definition}
 
 一个需要注意的地方是，当$V$是有限维线性空间时，循环子空间也一定是有限维的（子空间的维数至少要小于等于原空间）. 一个有趣的事实是，如果循环子空间的维数等于$m$，那么它的一组基就是$\{v,Tv,\cdots,T^{m-1}v\}$. 我们来书写这一定理并给出证明：
@@ -234,7 +234,7 @@
 
         \item 由于$v$是非零向量，故设$j$是使得$v,Tv,\cdots,T^{j-1}v$线性无关的最大正整数，设$U=\spa(v,Tv,\cdots,T^{j-1}v)$，因此$v,Tv,\cdots,T^{j-1}v$是$U$的一组基. 并且根据我们的假设，$v,Tv,\cdots,T^{j-1}v,T^jv$线性相关，因此根据线性相关性质有
               \[T^jv=k_1v+k_2Tv+\cdots+k_{j-1}T^{j-1}v,\]
-              即$T^jv\in U$，于是我们任取$u\in U$，我们有
+              即$T^jv\in U$，于是我们任取$u\in U$，有
               \[u=c_1v+c_2Tv+\cdots+c_{j-1}T^{j-1}v,\]
               因此
               \[Tu=c_1Tv+c_2T^2v+\cdots+c_{j-1}T^jv\in U,\]
