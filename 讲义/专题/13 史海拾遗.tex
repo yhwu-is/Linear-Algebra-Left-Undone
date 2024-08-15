@@ -384,13 +384,13 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 当然，我们需要澄清一些概念：
 
 \begin{definition}{}{}
-    一个 $n$ 元的矩阵单项式是一个形如 $am_1m_2 \cdots m_k$ 的连乘积，其中 $a \in \R$，$m_i$ 为矩阵变元 $x_j \enspace(j \leqslant n)$ 或其转置. 一个 $n$ 元的矩阵多项式是有限个 $n$ 元矩阵单项式的和.
+    一个 $n$ 元的矩阵单项式是一个形如 $am_1m_2 \cdots m_k$ 的连乘积，其中 $a \in \mathbf{R}$，$m_i$ 为矩阵变元 $x_j \enspace(j \leqslant n)$ 或其转置. 一个 $n$ 元的矩阵多项式是有限个 $n$ 元矩阵单项式的和.
 \end{definition}
 
 \begin{definition}{}{}
     一个 $n$ 元的矩阵多项式 $Q$ 的值域 $\im Q$ 被定义为
 
-    \[ \bigcup_{m = 1}^\infty\left\{Q(A_1, A_2, \ldots, A_n) \mid A_i \in \mathbf{M}_m(\R)\right\} \]
+    \[ \bigcup_{m = 1}^\infty\left\{Q(A_1, A_2, \ldots, A_n) \mid A_i \in \mathbf{M}_m(\mathbf{R})\right\} \]
 
     即在代入任意 $n$ 个 $m$ 阶方阵之后所能得到的结果.
 \end{definition}
@@ -422,7 +422,7 @@ $(3,1)$和$(3,2)$都是逆序对，因为3在1前面但比1大，3在2前面但�
 这个概念由 Karcher 在 1973 年先引入到任意度量空间中，这里呈现的是 Moakher 在 2005 年将其引入到矩阵中的版本. 在 2006 年，Bhatia 和 Holbrook 合作的论文呈现了它的一系列性质，并给出了一个猜想. 这个猜想是对下面这个简单事实的推广：
 
 \begin{lemma}{}{}
-    考虑 $x_1, x_2, \ldots, x_n, y_1, y_2, \ldots, y_n \in \R$，且 $\forall i \leqslant n,\enspace x_i \leqslant y_i$. 记 $x, y$ 分别为使得
+    考虑 $x_1, x_2, \ldots, x_n, y_1, y_2, \ldots, y_n \in \mathbf{R}$，且 $\forall i \leqslant n,\enspace x_i \leqslant y_i$. 记 $x, y$ 分别为使得
     \[ \sum_{i = 1}^n (x - x_i)^2, \quad \sum_{i = 1}^n (y - y_i)^2 \]
     取得极小值的 $x$ 和 $y$，则 $x \leqslant y$.
 \end{lemma}
@@ -707,7 +707,7 @@ Jain 等人在同年也给出了另一个关于任意有限支集的分布代替
     从群 $G$ 到线性空间 $V$ 上的表示（representation）意指一个从 $G$ 到 $\mathcal{L}(V)$ 的群同态.
 \end{definition}
 
-通常地，我们会研究实表示和复表示，也就是把 $V$ 取为 $\R^n(\R)$ 和 $\C^n(\C)$. 我们将表示空间的维数称为表示的维数. 对表示论的研究很大程度上是对特征标的研究：
+通常地，我们会研究实表示和复表示，也就是把 $V$ 取为 $\mathbf{R}^n(\mathbf{R})$ 和 $\mathbf{C}^n(\mathbf{C})$. 我们将表示空间的维数称为表示的维数. 对表示论的研究很大程度上是对特征标的研究：
 
 \begin{definition}{}{}
     考虑有限维表示 $\rho: G \to \mathcal{L}(V)$，$V$ 是域 $\mathbf{F}$ 上的向量空间，表示 $\rho$ 的特征标被定义为：

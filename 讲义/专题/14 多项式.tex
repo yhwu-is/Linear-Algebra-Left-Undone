@@ -171,9 +171,9 @@
     类似地，若$p(x) \mid l(x)$且$q(x) \mid l(x)$，则称$l(x)$是$p(x)$和$q(x)$的一个公倍式. 若$p(x)$和$q(x)$的公倍式$l(x)$满足对$p(x)$和$q(x)$的任一公倍式$l'(x)$都有$l(x) \mid l'(x)$，则称$l(x)$是$p(x)$和$q(x)$的一个\term{最小公倍式（least common multiple, 简称lcm）}，通常记为$[p(x),q(x)]=l(x)$.
 \end{definition}
 故我们可以看出，当$p$和$q$不为0时，最大公因式即为次数最大的公因式. 相应的，最小公倍式即为次数最小的公倍式. 下面的问题是，我们如何求解最大公因式和最小公倍式呢？事实上类似于整数中的辗转相除法（或称欧几里得算法），对于多项式我们有如下结论：
-\begin{theorem}{}{欧几里得算法}
+\begin{theorem}{欧几里得算法}{欧几里得算法}
     设$p(x),q(x)\in\mathbf{F}[x]$，则它们的最大公因式$d(x)$必存在，且存在$u(x),v(x)\in\mathbf{F}[x]$使得
-    \begin{equation} \label{eq:14:欧几里得算法}
+    \begin{equation}
         d(x)=u(x)p(x)+v(x)q(x).
     \end{equation}
 \end{theorem}
@@ -192,7 +192,7 @@
     \[r_{n-1}(x)=r_n(x)s_{n+1}(x).\]
     现在我们要证明$r_n(x)$就是$p(x)$和$q(x)$的最大公因式. 由上式知$r_n(x)\mid r_{n-1}(x)$，继续由$r_{n-2}(x)=r_{n-1}(x)s_n(x)+r_n(x)$可知$r_n(x)\mid r_{n-2}(x)$，不断回推可知$r_n(x)\mid q(x)$且$r_n(x)\mid p(x)$，即$r_n(x)$是$p(x)$和$q(x)$的一个公因式. 又设$r'(x)$也是$p(x)$和$q(x)$的一个公因式，由$p(x)=q(x)s_1(x)+r_1(x)$可知$r'(x)\mid p(x)$，由$q(x)=r_1(x)s_2(x)+r_2(x)$可知$r'(x)\mid q(x)$，因此$r'(x)\mid r_1(x)$，同理$r'(x)\mid r_2(x)$，不断下推可知$r'(x)\mid r_n(x)$，因此$r_n(x)$是$p(x)$和$q(x)$的最大公因式，因此最大公因式一定存在，并且我们也找到了算法进行求解.
 
-    进一步证明\autoref{eq:14:欧几里得算法} 成立，我们可以利用$r_{n-2}(x)=r_{n-1}(x)s_n(x)+r_n(x)$，得到
+    进一步证明\nameref{thm:欧几里得算法}成立，我们可以利用$r_{n-2}(x)=r_{n-1}(x)s_n(x)+r_n(x)$，得到
     \[r_n(x)=r_{n-2}(x)-r_{n-1}(x)s_n(x),\]
     进一步根据$r_{n-3}(x)=r_{n-2}(x)s_{n-1}(x)+r_{n-1}(x)$解出$r_{n-1}(x)$，代入上式得到
     \[r_n(x)=r_{n-2}(x)(1+s_{n-1}(x)s_n(x))-r_{n-3}(x)s_n(x),\]
@@ -234,23 +234,23 @@
 \end{theorem}
 
 接下来我们讨论最小公倍式的计算. 为了我们讨论的方便，我们需要先研究一个很常见的概念及其性质. 很多时候我们更重视$p(x),q(x)$最大公因式为$1$的情况，此时最小公倍式只能是两个多项式的乘积：
-\begin{definition}{}{}
+\begin{definition}{互素}{}
     设$p(x),q(x)\in\mathbf{F}[x]$，若$(p(x),q(x))=1$，则称$p(x)$和$q(x)$\term{互素}\index{husu@互素 (coprime)}.
 \end{definition}
-根据\autoref{thm:欧几里得算法} 我们很自然地得到一个多项式互素的充要条件：
-\begin{theorem}{}{裴蜀定理}
+根据\nameref{thm:欧几里得算法}我们很自然地得到一个多项式互素的充要条件：
+\begin{theorem}{裴蜀定理}{裴蜀定理} \index{peishudingli@裴蜀定理 (Bézout's Lemma)}
     设$(x),q(x)\in\mathbf{F}[x]$，则$p(x)$和$q(x)$互素的充要条件是存在$u(x),v(x)\in\mathbf{F}[x]$使得\[u(x)p(x)+v(x)q(x)=1.\]
 \end{theorem}
-这一定理称之为\term{裴蜀定理}\index{peishudingli@裴蜀定理 (Bézout's Lemma)}，事实上在数论中也有相对应的结论，证明是非常自然的. 习题中我们会给出另一种基于线性映射的证明思路供读者练习，这里我们延续数论的思路给出证明：
+这一定理称之为\term{裴蜀定理}，事实上在数论中也有相对应的结论，证明是非常自然的. 习题中我们会给出另一种基于线性映射的证明思路供读者练习，这里我们延续数论的思路给出证明：
 \begin{proof}
     \begin{enumerate}
-        \item 必要性：若$(p(x),q(x))=1$，由\autoref{thm:欧几里得算法} 知存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$.
+        \item 必要性：若$(p(x),q(x))=1$，由\nameref{thm:欧几里得算法}知存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$.
         \item 充分性：若$u(x)p(x)+v(x)q(x)=1$，设$d(x)=(p(x),q(x))$，则$d(x)\mid u(x)p(x)+v(x)q(x)$，即$d(x)\mid 1$，故$d(x)$是一个首一常数多项式，即$d(x)=1$，故$p(x)$和$q(x)$互素.
     \end{enumerate}
 \end{proof}
 
 关于互素我们有如下基本性质，在将来的讨论中都可能用到，因此在此列举. 为了内容的严谨与完整性还是给出了证明，读者如果觉得结论很显然（比如通过类比整数）可以适当略过证明.
-\begin{theorem}{}{互素性质}
+\begin{theorem}{互素的基本性质}{互素性质}
     设$p(x),q(x),s(x),d(x)\in\mathbf{F}[x]$，则有
     \begin{enumerate}
         \item 若$p(x)\mid s(x)$，$q(x)\mid s(x)$且$(p(x),q(x))=1$，则$p(x)q(x)\mid s(x)$；
@@ -261,7 +261,7 @@
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    需要说明的是，在证明过程中我们多次用到\autoref{eq:14:欧几里得算法} 以及裴蜀定理，这是很常见的技巧.
+    需要说明的是，在证明过程中我们多次用到\nameref{thm:欧几里得算法}以及裴蜀定理，这是很常见的技巧.
     \begin{enumerate}
         \item 由于$(p(x),q(x))=1$，故存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$，设$s(x)=p(x)s_1(x),s(x)=q(x)s_2(x)$，则
               \begin{align*}
@@ -291,11 +291,11 @@
     \end{equation}
 \end{theorem}
 \begin{proof}
-    设$(p(x),q(x))=d(x)$，$p(x)=p_1(x)d(x),q(x)=q_1(x)d(x)$，则由\autoref{thm:互素性质}（3）知$(p_1(x),q_1(x))=1$. 首先我们观察到$p_1(x)d(x)q_1(x)$一定是$p(x)q(x)$的公倍式，不妨设它的首项系数$c\neq 0$，接下来的目标是证明$p_1(x)d(x)q_1(x)/c$是$p(x)q(x)$的最小公倍式.
+    设$(p(x),q(x))=d(x)$，$p(x)=p_1(x)d(x),q(x)=q_1(x)d(x)$，则由\nameref{thm:互素性质}（3）知$(p_1(x),q_1(x))=1$. 首先我们观察到$p_1(x)d(x)q_1(x)$一定是$p(x)q(x)$的公倍式，不妨设它的首项系数$c\neq 0$，接下来的目标是证明$p_1(x)d(x)q_1(x)/c$是$p(x)q(x)$的最小公倍式.
 
     又设$l(x)$是$p(x)q(x)$的一个公倍式，不妨设$l(x)=p(x)u(x)=q(x)v(x)$，则$p_1(x)d(x)u(x)=q_1(x)d(x)v(x)$，消去$d(x)$有
     \[p_1(x)u(x)=q_1(x)v(x),\]
-    由于$(p_1(x),q_1(x))=1$，由\autoref{thm:互素性质}（2）知$p_1(x)\mid v(x)$，$q_1(x)\mid u(x)$，因此存在$u'(x)\in\mathbf{F}[x]$使得$u(x)=u'(x)q_1(x)$，故
+    由于$(p_1(x),q_1(x))=1$，由\nameref{thm:互素性质}（2）知$p_1(x)\mid v(x)$，$q_1(x)\mid u(x)$，因此存在$u'(x)\in\mathbf{F}[x]$使得$u(x)=u'(x)q_1(x)$，故
     \[l(x)=p(x)u(x)=p_1(x)d(x)u'(x)q_1(x),\]
     故$p_1(x)d(x)q_1(x)/c\mid l(x)$，并且是首一多项式，故是$p(x)q(x)$的最小公倍式.
 \end{proof}
@@ -348,7 +348,7 @@
 不难发现，在定义中我们始终强调多项式的可约和不可约是相对于域$\mathbf{F}$的，例如，$x^2+1$在实数域上是不可约的，但在复数域上是可约的，$x^2-2$在实数域上是可约的，但在有理数域上是不可约的. 此外，根据定义，一次多项式无论在哪个数域上都是不可约多项式，因为我们要求分解得到的多项式次数严格小于原先的多项式.
 
 不难发现，不可约多项式可以类比于整数中的素数. 素数我们定义为有不等于$\pm 1$和它自身（以及自身相反数）的整数，也就是说素数如果要分解成两数的乘积，必为整数环中的可逆元（$\pm 1$）与其相伴多项式（自身或相反数）的乘积，这与不可约多项式是一致的，因为不可约多项式不能分解为次数更低的多项式的乘积，因此只能分解为常数（多项式环中的可逆元）和相伴多项式的乘积. 关于不可约多项式与素数性质的相似性，还有下面一个常用的结论：
-\begin{theorem}{}{不可约多项式的性质}
+\begin{theorem}{不可约多项式的性质}{不可约多项式的性质}
     设$p(x)$是域$\mathbf{F}$上的不可约多项式，
     \begin{enumerate}
         \item 对于任意多项式$q(x)\in\mathbf{F}[x]$，或者$p(x)\mid q(x)$，或者$(p(x),q(x))=1$；
@@ -358,11 +358,11 @@
 \begin{proof}
     \begin{enumerate}
         \item 设$(p(x),q(x))=d(x)$，因为$p(x)$不可约，故$p(x)$的因式只能是非零常数多项式或相伴多项$cf(x)(c\neq 0)$，故$d(x)=1$或$d(x)=cf(x)$（首一多项式）.
-        \item 否定一边证另一边. 假设$p(x)\nmid q(x)$，由（1）可知$(p(x),q(x))=1$，故由\autoref{thm:互素性质}（2）知$p(x)\mid s(x)$.
+        \item 否定一边证另一边. 假设$p(x)\nmid q(x)$，由（1）可知$(p(x),q(x))=1$，故由\nameref{thm:互素性质}（2）知$p(x)\mid s(x)$.
     \end{enumerate}
 \end{proof}
 第二个结论可以很轻松地推广到多个多项式相乘的情形，我们陈述定理而不再赘述证明：
-\begin{corollary}{}{不可约多项式的性质推广}
+\begin{corollary}{不可约多项式的性质推广}{不可约多项式的性质推广}
     设$p(x)$是域$\mathbf{F}$上的不可约多项式且$p(x)\mid q_1(x)q_2(x)\cdots q_n(x)$，则$p(x)$必可整除其中某个$q_i(x)$.
 \end{corollary}
 
@@ -382,7 +382,7 @@
 \begin{proof}
     \begin{enumerate}
         \item 对$p(x)$的次数进行归纳. 若$\deg p=1$，结论显然成立. 设次数小于$n$的多项式都有不可约分解，考虑$\deg p=n$的情况，首先若$p(x)$是不可约多项式，则结论自然成立. 若$p(x)$是可约多项式，则存在$q(x),s(x)\in\mathbf{F}[x]$使得$p(x)=q(x)s(x)$，且$\deg q(x),\deg s(x)<\deg p(x)$，由归纳法知$q(x),s(x)$可以分解为不可约多项式的乘积，故$p(x)$也可以分解为不可约多项式的乘积.
-        \item 对\autoref{eq:14:多项式的唯一分解} 中不可约多项式的个数$n$进行归纳，若$n=1$，说明$p(x)$是不可约多项式，因此$q_1(x)=s_1(x)=p(x)$. 设不可约多项式的个数小于$n$的多项式都满足结论，由两个分解式知$s_1(x)\mid q_1(x)q_2(x)\cdots q_m(x)$，由\autoref{cor:不可约多项式的性质推广} 知$s_1(x)$必可整除其中某个$q_i(x)$，不妨设$s_1(x)\mid q_1(x)$. 但是$s_1(x)$和$q_1(x)$都是不可约多项式，故$s_1(x)\sim q_1(x)$，即有
+        \item 对\autoref{eq:14:多项式的唯一分解} 中不可约多项式的个数$n$进行归纳，若$n=1$，说明$p(x)$是不可约多项式，因此$q_1(x)=s_1(x)=p(x)$. 设不可约多项式的个数小于$n$的多项式都满足结论，由两个分解式知$s_1(x)\mid q_1(x)q_2(x)\cdots q_m(x)$，由\nameref{cor:不可约多项式的性质推广}知$s_1(x)$必可整除其中某个$q_i(x)$，不妨设$s_1(x)\mid q_1(x)$. 但是$s_1(x)$和$q_1(x)$都是不可约多项式，故$s_1(x)\sim q_1(x)$，即有
               \[s_1(x)=cq_1(x),\]
               其中$c$是非零常数. 将上式代入\autoref{eq:14:多项式的唯一分解} 并消去$p_1(x)$得
               \[q_2(x)\cdots q_m(x)=c_2s_2(x)\cdots s_n(x),\]
@@ -425,7 +425,7 @@
               故$p(x)$与$p'(x)$有$q(x)^{m-1}(m>1)$为公因式，故$(p(x),p'(x))\neq 1$.
         \item 必要性：若$f(x)$无重因式，不可约多项式$q(x)$是$p(x)$的任一单因式，设$p(x)=q(x)s(x)$，则$q(x)$不能整除$s(x)$，于是
               \[p'(x)=q'(x)s(x)+q(x)s'(x),\]
-              若$q(x)$是$p'(x)$的因式，则$q(x)\mid q'(x)s(x)$，由于$q(x)$是不可约多项式，且$q(x)$不能整除$s(x)$，由\autoref{thm:不可约多项式的性质}（2）可知$q(x)\mid q'(x)$，由于$q(x)$是不可约多项式，故$\deg q>0$，故$q'$不是零多项式，且$\deg q'<\deg q$，这显然违背整除关系，故$q(x)$不是$p'(x)$的因式，即$p(x)$的任一单因子都不是$p'(x)$的因式，由\autoref{thm:互素性质}（5）可知，$(p(x),p'(x))=(q_1(x)\cdots q_n(x),p'(x))=1$.
+              若$q(x)$是$p'(x)$的因式，则$q(x)\mid q'(x)s(x)$，由于$q(x)$是不可约多项式，且$q(x)$不能整除$s(x)$，由\nameref{thm:不可约多项式的性质}（2）可知$q(x)\mid q'(x)$，由于$q(x)$是不可约多项式，故$\deg q>0$，故$q'$不是零多项式，且$\deg q'<\deg q$，这显然违背整除关系，故$q(x)$不是$p'(x)$的因式，即$p(x)$的任一单因子都不是$p'(x)$的因式，由\nameref{thm:互素性质}（5）可知，$(p(x),p'(x))=(q_1(x)\cdots q_n(x),p'(x))=1$.
     \end{enumerate}
 \end{proof}
 
@@ -437,7 +437,7 @@
 
 \section{复数域上的多项式函数}
 在证明了唯一分解定理之后，关于一般域上的多项式结构的讨论就基本结束了. 在后续章节中，我们通常假定线性空间定义在常见的数域上（如复数域、实数域、有理数域），因此接下来我们转向\autoref{def:多项式函数} 中定义的多项式函数，讨论在一般数域上多项式函数的分解. 实际上，求解方程$p(x)=0$在其中起到关键的作用，因此我们首先讨论多项式函数的零点：
-\begin{definition}{}{}
+\begin{definition}{零点}{}
     设$p(x)\in\mathbf{F}[x]$，则$p(x)$的\term{零点}\index{lingdian@零点}（或称为根）是指方程$p(x)=0$的解.
 \end{definition}
 
