@@ -24,3 +24,6 @@ clean:
 ifdef CPNAME
 	rm -f $(CPNAME).pdf $(CPNAME).tex
 endif
+
+# indent
+# for i in *.tex; do latexindent -m --GCString -l ../latexindent.yaml -g /dev/null -wd $i; done

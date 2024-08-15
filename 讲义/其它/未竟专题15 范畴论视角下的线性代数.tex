@@ -19,14 +19,14 @@
     \begin{enumerate}
         \item 一族元素，每个元素称为其中的\term{对象}，这一个族记作 $\Ob(\cC)$；我们将 $A \in \Ob(\cC)$ 简记作 $A \in \cC$；
         \item 一族 $A$ 到 $B$ 的箭头或者\term{态射} $\Hom_\cC (A, B)$，对于 $\Ob(\cC)$ 中的任意两个元素 $A, B \in \cC$，满足如下条件：
-        \begin{enumerate}
-            \item 如果 $A, B, C \in \cC, \alpha \in \Hom_\cC (A, B), \beta \in \Hom_\cC (B, C)$，则存在复合 $\beta \circ \alpha \in \Hom_\cC(A, C)$；
-            \item 对于任意$D \in \cC, \gamma \in \Hom_\cC (C, D)$，都有\[
-                \gamma \circ (\beta \circ \alpha)= (\gamma \circ \beta) \circ \alpha;
-            \]
-            \item $\Hom_\cC (A, A)$ 中必有一个恒同元素，记作 $\id_A$，使得对于任意的$f \in \Hom_\cC (B, A)$，
-            \[\id_A \circ f = f \circ \id_B \]
-        \end{enumerate}
+              \begin{enumerate}
+                  \item 如果 $A, B, C \in \cC, \alpha \in \Hom_\cC (A, B), \beta \in \Hom_\cC (B, C)$，则存在复合 $\beta \circ \alpha \in \Hom_\cC(A, C)$；
+                  \item 对于任意$D \in \cC, \gamma \in \Hom_\cC (C, D)$，都有\[
+                            \gamma \circ (\beta \circ \alpha)= (\gamma \circ \beta) \circ \alpha;
+                        \]
+                  \item $\Hom_\cC (A, A)$ 中必有一个恒同元素，记作 $\id_A$，使得对于任意的$f \in \Hom_\cC (B, A)$，
+                        \[\id_A \circ f = f \circ \id_B \]
+              \end{enumerate}
     \end{enumerate}
 \end{definition}
 
@@ -41,10 +41,10 @@
     \begin{enumerate}
         \item 对 $\cC$ 中的每个对象 $A$ 它指派 $\cD$ 中的一个对象 $F(A)$；
         \item 对 $\Hom_\cC (A, B)$ 中的每个态射 $\alpha$ 它指派 $\Hom_\cD (F(A), F(B))$ 中的一个态射 $F(\alpha)$，满足
-        \begin{enumerate}
-            \item 对于可复合的 $\alpha, \beta$ 都有 $F(\alpha \circ \beta) = F(\alpha) \circ F(\beta)$；
-            \item 对于任意 $A \in \cC$ 都有 $F(\id_A) = \id_{F(A)}$；
-        \end{enumerate}
+              \begin{enumerate}
+                  \item 对于可复合的 $\alpha, \beta$ 都有 $F(\alpha \circ \beta) = F(\alpha) \circ F(\beta)$；
+                  \item 对于任意 $A \in \cC$ 都有 $F(\id_A) = \id_{F(A)}$；
+              \end{enumerate}
     \end{enumerate}
 \end{definition}
 
@@ -291,10 +291,10 @@
 
 \begin{enumerate}
     \item 证明以下两个态射的性质：
-    \begin{enumerate}
-        \item 如果 $A$ 与 $B$ 同构，那么 $A$ 与 $B$ 之间的同构映射是唯一的；
-        \item 函子保持态射的单、满性质.
-    \end{enumerate}
+          \begin{enumerate}
+              \item 如果 $A$ 与 $B$ 同构，那么 $A$ 与 $B$ 之间的同构映射是唯一的；
+              \item 函子保持态射的单、满性质.
+          \end{enumerate}
 \end{enumerate}
 
 \end{document}
