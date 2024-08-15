@@ -19,14 +19,14 @@
     \begin{enumerate}
         \item 一族元素，每个元素称为其中的\term{对象}，这一个族记作 $\Ob(\cC)$；我们将 $A \in \Ob(\cC)$ 简记作 $A \in \cC$；
         \item 一族 $A$ 到 $B$ 的箭头或者\term{态射} $\Hom_\cC (A, B)$，对于 $\Ob(\cC)$ 中的任意两个元素 $A, B \in \cC$，满足如下条件：
-        \begin{enumerate}
-            \item 如果 $A, B, C \in \cC, \alpha \in \Hom_\cC (A, B), \beta \in \Hom_\cC (B, C)$，则存在复合 $\beta \circ \alpha \in \Hom_\cC(A, C)$；
-            \item 对于任意$D \in \cC, \gamma \in \Hom_\cC (C, D)$，都有\[
-                \gamma \circ (\beta \circ \alpha)= (\gamma \circ \beta) \circ \alpha;
-            \]
-            \item $\Hom_\cC (A, A)$ 中必有一个恒同元素，记作 $\id_A$，使得对于任意的$f \in \Hom_\cC (B, A)$，
-            \[\id_A \circ f = f \circ \id_B \]
-        \end{enumerate}
+              \begin{enumerate}
+                  \item 如果 $A, B, C \in \cC, \alpha \in \Hom_\cC (A, B), \beta \in \Hom_\cC (B, C)$，则存在复合 $\beta \circ \alpha \in \Hom_\cC(A, C)$；
+                  \item 对于任意$D \in \cC, \gamma \in \Hom_\cC (C, D)$，都有\[
+                            \gamma \circ (\beta \circ \alpha)= (\gamma \circ \beta) \circ \alpha;
+                        \]
+                  \item $\Hom_\cC (A, A)$ 中必有一个恒同元素，记作 $\id_A$，使得对于任意的$f \in \Hom_\cC (B, A)$，
+                        \[\id_A \circ f = f \circ \id_B \]
+              \end{enumerate}
     \end{enumerate}
 \end{definition}
 
@@ -41,20 +41,20 @@
     \begin{enumerate}
         \item 对 $\cC$ 中的每个对象 $A$ 它指派 $\cD$ 中的一个对象 $F(A)$；
         \item 对 $\Hom_\cC (A, B)$ 中的每个态射 $\alpha$ 它指派 $\Hom_\cD (F(A), F(B))$ 中的一个态射 $F(\alpha)$，满足
-        \begin{enumerate}
-            \item 对于可复合的 $\alpha, \beta$ 都有 $F(\alpha \circ \beta) = F(\alpha) \circ F(\beta)$；
-            \item 对于任意 $A \in \cC$ 都有 $F(\id_A) = \id_{F(A)}$；
-        \end{enumerate}
+              \begin{enumerate}
+                  \item 对于可复合的 $\alpha, \beta$ 都有 $F(\alpha \circ \beta) = F(\alpha) \circ F(\beta)$；
+                  \item 对于任意 $A \in \cC$ 都有 $F(\id_A) = \id_{F(A)}$；
+              \end{enumerate}
     \end{enumerate}
 \end{definition}
 
 最简单的函子的例子是一个范畴打到自身的恒同函子，它不会改变任何东西；以及 $\FVect_\F$ 到 $\Set$ 的忘却函子，它直接抛掉线性空间中的代数结构，只留下里面的元素. 现在我们考虑一个不那么平凡的例子：
 
 \begin{example}{}{}
-    考虑范畴 $\FSet$ 的对象是所有的有限集，其中的态射为含入映射. 则它到 $\FVect_\F$ 有一个显然的函子，是张成函子，我们将其记作 $\mathop{\mathrm{span}}: \FSet \to \FVect_\F$. 它将一个有限集合映到由它张成的线性空间. 实际上，也就是将 $S = \{s_1, s_2, \cdots, s_n\}$ 映到一个形式和：
+    考虑范畴 $\FSet$ 的对象是所有的有限集，其中的态射为含入映射. 则它到 $\FVect_\F$ 有一个显然的函子，是张成函子，我们将其记作 $\spa: \FSet \to \FVect_\F$. 它将一个有限集合映到由它张成的线性空间. 实际上，也就是将 $S = \{s_1, s_2,\ldots, s_n\}$ 映到一个形式和：
 
     \[
-        \mathop{\mathrm{span}} S = \{\sum_{i = 1}^n a_i s_i: a_i \in \F\}
+        \spa S = \left\{\sum_{i = 1}^n a_i s_i: a_i \in \F\right\}
     \]
 
     其上的线性空间运算都是显然的. 同样不难验证它将原来的含入映射映到一个线性映射，一个含入映射总是可以被对应到一个从子空间到原空间的嵌入.
@@ -91,13 +91,13 @@
 
 也许，我们应该采取一种更直观的看法来理解这一串概念，下面的一些概念来自于拓扑学，但并不严格，仅仅是提供一个比较方便的几何直观. 实际上，对拓扑和范畴论更加熟悉之后，读者会发现这个类比背后的深意.
 
-\begin{figure}[b!]
+\begin{figure}[htb]
     \centering
     \begin{tikzpicture}
         \draw[thick] (0,3) ellipse (2.5 and 1)
-        (0,-2) ellipse (4 and 2)
+        (0,-2) ellipse (4.2 and 2)
         node at (3, 3) {$\cC$}
-        node at (4.5, -2) {$\cD$}
+        node at (4.7, -2) {$\cD$}
         coordinate (X) at (-1, 3)
         coordinate (Y) at (1, 3)
         coordinate (FX) at (-3, -2)
@@ -134,9 +134,11 @@
         \foreach \point in {X, Y, FX, GX, GY, FY}
         \fill[black] (\point) circle (1pt);
     \end{tikzpicture}
+    \caption{自然变换的几何直观}
+    \label{fig:natural-transformation}
 \end{figure}
 
-首先，我们在一张纸上画两个面，表示两个范畴$\cC,\cD$. 在一个面上取两个点 $X, Y$，这是它上面的两个对象；然后，在另一个面上取四个点，分别表示 $F(X), F(Y), G(X), G(Y)$，即两个函子$F,G$在这两个点$X,Y$的取值. 注意，实际上两个函子分别是两个面之间的映射，如果把原像和像用线连接，展开来看的话，大概能看成是纸面上和纸面下的两张带有纹路的曲面. 然后，自然变换就是这两个曲面之间的连线$\theta$，对应到交换图上来，就是图中阴影区域的四条边. 实际上，我们的条件就是要求，这两族曲面$F, G$的结构和曲面之间的结构$\theta$都具备合适的连续性，图示如上页，这个东西在拓扑学中一般称为\term{同伦}.
+首先，我们在一张纸上画两个面，表示两个范畴$\cC,\cD$. 在一个面上取两个点 $X, Y$，这是它上面的两个对象；然后，在另一个面上取四个点，分别表示 $F(X), F(Y), G(X), G(Y)$，即两个函子$F,G$在这两个点$X,Y$的取值. 注意，实际上两个函子分别是两个面之间的映射，如果把原像和像用线连接，展开来看的话，大概能看成是纸面上和纸面下的两张带有纹路的曲面. 然后，自然变换就是这两个曲面之间的连线$\theta$，对应到交换图上来，就是图中阴影区域的四条边. 实际上，我们的条件就是要求，这两族曲面$F, G$的结构和曲面之间的结构$\theta$都具备合适的连续性，如\autoref{fig:natural-transformation}，这个东西在拓扑学中一般称为\term{同伦}.
 
 在实践中，我们一般会称态射 $\theta_X$ 对于 $X$ 来说是自然的、典范的，或者说它满足函子性. 我们来看两个例子：
 
@@ -204,7 +206,7 @@
 证明如上所述，形式化的写法留给读者，对偶地，我们就有：
 
 \begin{lemma}{}{}
-    $f: T \to S$ 是满射当且仅当存在映射 $g: S \to T$ 使得 $f \circ g = \id_S$
+    $f: T \to S$ 是满射当且仅当存在映射 $g: S \to T$ 使得 $f \circ g = \id_S$.
 \end{lemma}
 
 而后面的这个定义是纯粹用箭头完成的，因此，它就能被推广到态射的情形：
@@ -289,10 +291,10 @@
 
 \begin{enumerate}
     \item 证明以下两个态射的性质：
-    \begin{enumerate}
-        \item 如果 $A$ 与 $B$ 同构，那么 $A$ 与 $B$ 之间的同构映射是唯一的；
-        \item 函子保持态射的单、满性质.
-    \end{enumerate}
+          \begin{enumerate}
+              \item 如果 $A$ 与 $B$ 同构，那么 $A$ 与 $B$ 之间的同构映射是唯一的；
+              \item 函子保持态射的单、满性质.
+          \end{enumerate}
 \end{enumerate}
 
 \end{document}

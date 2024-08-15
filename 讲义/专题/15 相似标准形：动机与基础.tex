@@ -6,8 +6,8 @@
 
 \section{相似的定义与性质}
 
-为了讨论相似标准形，我们需要首先从相似这一概念谈起. 正如我们在相抵标准形中的讨论那样，我们会综合线性映射和矩阵两个观点来讨论这一问题. 从线性映射的角度出发，我们的想法是对一个$n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$，找到一组基$\{\alpha_1,\cdots,\alpha_n\}$，使得$T$在这组基下的矩阵``比较简单''，即我们有
-\[\sigma(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)A,\]
+为了讨论相似标准形，我们需要首先从相似这一概念谈起. 正如我们在相抵标准形中的讨论那样，我们会综合线性映射和矩阵两个观点来讨论这一问题. 从线性映射的角度出发，我们的想法是对一个$n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$，找到一组基$\{\alpha_1,\ldots,\alpha_n\}$，使得$T$在这组基下的矩阵``比较简单''，即我们有
+\[\sigma(\alpha_1,\ldots,\alpha_n)=(\alpha_1,\ldots,\alpha_n)A,\]
 我们希望$A$是``比较简单''的，就像相抵标准形那样，有尽可能多的$0$，非零元素的排列规律也尽可能简单.
 
 如果从矩阵的角度出发，很自然地，我们会希望与上面映射的目标建立联系，我们会想起任意矩阵$A$都是线性变换$\sigma(\alpha)=A\alpha$在自然基下的表示矩阵. 此时我们的目标可以与映射的目标产生联系，即我们希望找到另一组基，使得$\sigma$在这组基下的矩阵$B$比较简单. 此时$A$和$B$的关系是同一个线性变换$\sigma$在不同基下的表示矩阵，事实上这一关系我们其实并不陌生，早在相抵标准形一讲中我们就提到如下定理：
@@ -89,8 +89,8 @@
 
 \section{不变子空间}
 
-在介绍完相似的概念后，我们将正式开始我们的主线任务. 原谅我啰嗦再次重复一遍，我们要考虑$n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$，我们希望找到一组基$\{\alpha_1,\cdots,\alpha_n\}$，使得$T$在这组基下的矩阵``比较简单''，即我们有
-\[\sigma(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)A,\]
+在介绍完相似的概念后，我们将正式开始我们的主线任务. 原谅我再次重复一遍，我们要考虑$n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$，我们希望找到一组基$\{\alpha_1,\ldots,\alpha_n\}$，使得$T$在这组基下的矩阵``比较简单''，即我们有
+\[\sigma(\alpha_1,\ldots,\alpha_n)=(\alpha_1,\ldots,\alpha_n)A,\]
 我们希望$A$是``比较简单''的，就像相抵标准形那样，有尽可能多的$0$，非零元素的排列规律也尽可能简单. 自然地，我们会希望$A$可以是对角矩阵，或者退而求其次至少是分块对角矩阵.
 
 事实上，如果让我们直接思考如何获得这样的矩阵是非常容易使人迷茫的，但如果我们尝试从希望的矩阵的形式反推所取基需要的性质，应当能窥见一些端倪. 事实上，我们假设$A$为分块对角矩阵，即
@@ -100,7 +100,7 @@
             &     & \ddots &     \\
             &     &        & A_m
     \end{pmatrix},\]
-设$A_i\enspace(i=1,\cdots,m)$的阶数为$r_i$. 我们进一步展开$A$的形式：
+设$A_i\enspace(i=1,\ldots,m)$的阶数为$r_i$. 我们进一步展开$A$的形式：
 \[\begin{pmatrix}
         a_{11}   & \cdots & a_{1r_1}   &                   &        &                     &        &                     &        &               \\
         \vdots   & \ddots & \vdots     &                   &        &                     &        &                     &        &               \\
@@ -115,15 +115,15 @@
     \end{pmatrix}\]
 上图中空的部分全为$0$. 现在我们首先考虑第一个分块，根据线性映射矩阵表示的定义，我们有
 \begin{gather*}
-    \sigma(\alpha_1)=a_{11}\alpha_1+\cdots+a_{1r_1}\alpha_{r_1}\in \spa(\alpha_1,\cdots,\alpha_{r_1}),\\
+    \sigma(\alpha_1)=a_{11}\alpha_1+\cdots+a_{1r_1}\alpha_{r_1}\in \spa(\alpha_1,\ldots,\alpha_{r_1}),\\
     \cdots\\
-    \sigma(\alpha_{r_1})=a_{1r_1}\alpha_1+\cdots+a_{r_1r_1}\alpha_{r_1}\in \spa(\alpha_1,\cdots,\alpha_{r_1}),
+    \sigma(\alpha_{r_1})=a_{1r_1}\alpha_1+\cdots+a_{r_1r_1}\alpha_{r_1}\in \spa(\alpha_1,\ldots,\alpha_{r_1}),
 \end{gather*}
-有趣的事情出现了，我们发现$\sigma$作用于$\alpha_1,\cdots,\alpha_{r_1}$中每个向量都会落在$\spa(\alpha_1,\cdots,\alpha_{r_1})$中. 进一步地，我们考虑任意的$\alpha\in\spa(\alpha_1,\cdots,\alpha_{r_1})$，我们有
+有趣的事情出现了，我们发现$\sigma$作用于$\alpha_1,\ldots,\alpha_{r_1}$中每个向量都会落在$\spa(\alpha_1,\ldots,\alpha_{r_1})$中. 进一步地，我们考虑任意的$\alpha\in\spa(\alpha_1,\ldots,\alpha_{r_1})$，我们有
 \[\alpha=k_1\alpha_1+\cdots+k_{r_1}\alpha_{r_1},\]
 因此
-\[\sigma(\alpha)=k_1\sigma(\alpha_1)+\cdots+k_{r_1}\sigma(\alpha_{r_1})\in \spa(\alpha_1,\cdots,\alpha_{r_1}),\]
-即$\sigma$作用于$\spa(\alpha_1,\cdots,\alpha_{r_1})$中的任意向量仍然落在$\spa(\alpha_1,\cdots,\alpha_{r_1})$中. 同理，我们可以证明$\sigma$作用于$\spa(\alpha_{r_1+1},\cdots,\alpha_{r_1+r_2})$中的任意向量仍然落在$\spa(\alpha_{r_1+1},\cdots,\alpha_{r_1+r_2})$中，以此类推，每个分块对应的基的一部分的线性扩张都有这样类似的性质. 我们知道一组向量的线性扩张是包含这些向量的最小子空间，再结合该子空间在线性变换作用后仍然落在其中的性质，我们将其称为不变子空间：
+\[\sigma(\alpha)=k_1\sigma(\alpha_1)+\cdots+k_{r_1}\sigma(\alpha_{r_1})\in \spa(\alpha_1,\ldots,\alpha_{r_1}),\]
+即$\sigma$作用于$\spa(\alpha_1,\ldots,\alpha_{r_1})$中的任意向量仍然落在$\spa(\alpha_1,\ldots,\alpha_{r_1})$中. 同理，我们可以证明$\sigma$作用于$\spa(\alpha_{r_1+1},\ldots,\alpha_{r_1+r_2})$中的任意向量仍然落在$\spa(\alpha_{r_1+1},\ldots,\alpha_{r_1+r_2})$中，以此类推，每个分块对应的基的一部分的线性扩张都有这样类似的性质. 我们知道一组向量的线性扩张是包含这些向量的最小子空间，再结合该子空间在线性变换作用后仍然落在其中的性质，我们将其称为不变子空间：
 \begin{definition}{}{}
     设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma(\alpha)\in U$，则称$U$是$\sigma$的\term{不变子空间}\index{xianxingkongjian!zi!bubian@不变子空间 (invariant subspace)}，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
 \end{definition}
@@ -138,14 +138,21 @@
 ``限制''一词十分形象（如下图所示），因为限制映射就是将原映射的定义域限制在更小的范围内，但原定义域上的映射值保持不变.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{figs/18-1.png}
+    \begin{tikzpicture}[>=Stealth]
+        \draw[thick] (-2,0) ellipse (1 and 1.5) node[above=20] {$V$}
+        (2,0) ellipse (1 and 1.5) node[above=20] {$V$}
+        (-1.9,-0.5) circle (0.5) node {$U$}
+        (1.9,-0.5) ellipse (0.5 and 0.7) node {$\sigma(U)$}
+        (-1.8,0.5) edge[out=30,in=150,->] node[above] {$\sigma$} (1.8,0.5)
+        (-1.6,-0.6) edge[out=-30,in=190,->] node[below] {$\sigma\vert_U$} (1.75,-0.8);
+    \end{tikzpicture}
 \end{figure}
 
 因此，如果$U$是$\sigma$的不变子空间，根据不变子空间的定义可知，$\sigma\vert_U$就是一个线性变换（是$\mathcal{L}(U)$中的元素），我们称之为\term{限制变换}\index{xianxingyingshe!xianxingbianhuan!xianzhi@限制变换 (restriction operator)}.
 
 有了上面的概念，我们很容易可以将之前的推导转化为以下定理：
 \begin{theorem}{}{不变子空间与分块对角矩阵}
-    设有限维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$在某组基下的表示矩阵为分块对角矩阵$A=\diag(A_1,\cdots,A_m)$，当且仅当$V$可以分解为不变子空间$U_1,\cdots,U_m$的直和，即
+    设有限维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$在某组基下的表示矩阵为分块对角矩阵$A=\diag(A_1,\ldots,A_m)$，当且仅当$V$可以分解为不变子空间$U_1,\ldots,U_m$的直和，即
     \[V=U_1\oplus\cdots\oplus U_m,\]
     其中每个$U_i$都是$\sigma$的不变子空间，且$\sigma\vert_{U_i}$在$U_i$对应的基下的表示矩阵为$A_i$.
 \end{theorem}
@@ -207,23 +214,23 @@
 除此之外，还有一些更为困难的问题我们将在讨论完标准形理论之后反过来进行讨论. 为了接下来对标准形讨论的方便，我们需要介绍一个特别的不变子空间：
 \begin{definition}{}{循环子空间}
     设$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量. 我们称子空间
-    \[W=\spa(v,Tv,T^2v,\cdots,T^kv,\cdots)\]
+    \[W=\spa(v,Tv,T^2v,\ldots,T^kv,\cdots)\]
     为\term{由$v$生成的$T\text{-循环子空间}$}. 在不引起歧义的情况下，我们也称$W$为\term{$T\text{-循环子空间}$}或\term{循环子空间}.
 \end{definition}
 
-一个需要注意的地方是，当$V$是有限维线性空间时，循环子空间也一定是有限维的（子空间的维数至少要小于等于原空间）. 一个有趣的事实是，如果循环子空间的维数等于$m$，那么它的一组基就是$\{v,Tv,\cdots,T^{m-1}v\}$. 我们来书写这一定理并给出证明：
+一个需要注意的地方是，当$V$是有限维线性空间时，循环子空间也一定是有限维的（子空间的维数至少要小于等于原空间）. 一个有趣的事实是，如果循环子空间的维数等于$m$，那么它的一组基就是$\{v,Tv,\ldots,T^{m-1}v\}$. 我们来书写这一定理并给出证明：
 \begin{theorem}{}{循环子空间}
     设$V$是有限维线性空间，$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量，$W$是由$v$生成的$T-\text{循环子空间}$，则
     \begin{enumerate}
         \item $W$是$T$包含$v$的最小不变子空间；
-        \item 若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\cdots,T^{m-1}v\}$（我们称其为一组循环基）.
+        \item 若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\ldots,T^{m-1}v\}$（我们称其为一组循环基）.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     \begin{enumerate}
         \item 首先我们证明是不变子空间. 由于$V$是有限维线性空间，故$W$一定也是有限维线性空间，故任意的$w\in W$都可以被表示为$W$中有限个元素的线性组合，假设为
               \[w=k_1T^{m_1}v+k_2T^{m_2}v+\cdots+k_sT^{m_s}v,\]
-              其中$m_1,m_2,\cdots,m_s\in\mathbf{N}$，$k_1,k_2,\cdots,k_s\in\mathbf{F}$. 我们有
+              其中$m_1,m_2,\ldots,m_s\in\mathbf{N}$，$k_1,k_2,\ldots,k_s\in\mathbf{F}$. 我们有
               \[\begin{aligned}
                       Tw & =T(k_1T^{m_1}v+k_2T^{m_2}v+\cdots+k_sT^{m_s}v)     \\
                          & =k_1T^{m_1+1}v+k_2T^{m_2+1}v+\cdots+k_sT^{m_s+1}v,
@@ -232,13 +239,13 @@
 
               接下来我们证明是最小不变子空间. 设$U$是$T$的不变子空间，且$v\in U$，我们需要证明$W\subset U$. 由不变子空间的定义以及$v\in U$，我们知道$Tv\in U$，于是进一步利用不变子空间的定义有$T^2v\in U$，以此类推，$T^kv\in U,\enspace\forall k\in\mathbf{N}$，因此$W\subset U$，即$W$是$T$包含$v$的最小不变子空间.
 
-        \item 由于$v$是非零向量，故设$j$是使得$v,Tv,\cdots,T^{j-1}v$线性无关的最大正整数，设$U=\spa(v,Tv,\cdots,T^{j-1}v)$，因此$v,Tv,\cdots,T^{j-1}v$是$U$的一组基. 并且根据我们的假设，$v,Tv,\cdots,T^{j-1}v,T^jv$线性相关，因此根据线性相关性质有
+        \item 由于$v$是非零向量，故设$j$是使得$v,Tv,\ldots,T^{j-1}v$线性无关的最大正整数，设$U=\spa(v,Tv,\ldots,T^{j-1}v)$，因此$v,Tv,\ldots,T^{j-1}v$是$U$的一组基. 并且根据我们的假设，$v,Tv,\ldots,T^{j-1}v,T^jv$线性相关，因此根据线性相关性质有
               \[T^jv=k_1v+k_2Tv+\cdots+k_{j-1}T^{j-1}v,\]
               即$T^jv\in U$，于是我们任取$u\in U$，有
               \[u=c_1v+c_2Tv+\cdots+c_{j-1}T^{j-1}v,\]
               因此
               \[Tu=c_1Tv+c_2T^2v+\cdots+c_{j-1}T^jv\in U,\]
-              故$U$是$T$的包含$v$的不变子空间. 由定理第一条可知，$W\subset U$，但根据$U$的定义又有$U\subset W$，因此$W=U$，即$W$的一组基为$\{v,Tv,\cdots,T^{j-1}v\}$，故事实上$j$就是$W$的维数. 因此若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\cdots,T^{m-1}v\}$.
+              故$U$是$T$的包含$v$的不变子空间. 由定理第一条可知，$W\subset U$，但根据$U$的定义又有$U\subset W$，因此$W=U$，即$W$的一组基为$\{v,Tv,\ldots,T^{j-1}v\}$，故事实上$j$就是$W$的维数. 因此若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\ldots,T^{m-1}v\}$.
     \end{enumerate}
 \end{proof}
 
@@ -762,7 +769,7 @@
 
 \section{实数域与复数域的讨论}
 
-在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）. 实际上上面的讨论都是与数域无关的，即无论是什么数域上面的定理都是成立的. 然而，从\autoref{ex:不变子空间} 中我们看到实数域和复数域可能有本质的不同，即特征值的存在性可能存在差别. 事实上，这是\autoref{thm:多项式的唯一分解定理} 的必然结果，因为复数域上$n$次多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
+在上一节中我们并没有明确区分特征值所在的数域（即线性空间$V$定义的数域）. 实际上上面的讨论都是与数域无关的，即无论是什么数域上面的定理都是成立的. 然而，从\autoref{ex:不变子空间} 中我们看到实数域和复数域可能有本质的不同，即特征值的存在性可能存在差别. 事实上，这是\nameref{thm:多项式的唯一分解定理}的必然结果，因为复数域上$n$次多项式一定有$n$个根，但实数域上可能根会减少，因此$n$次特征多项式$f(\lambda)$在实数域上解的情况与复数域有差别.
 
 因此我们有必要分别讨论在复数域和实数域条件下特征值与特征向量的不同性质，事实上我们将在实空间上的线性变换一讲中单独深入讨论这一主题，但现在我们需要几个定理来引入这一话题并为接下来的讨论作准备：
 \begin{theorem}{}{复数域上的特征值}

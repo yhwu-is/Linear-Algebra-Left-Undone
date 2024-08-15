@@ -120,7 +120,7 @@
 
 \DeclareMathOperator{\diag}{diag}
 
-\tcbset{commonstyle/.style={
+\tcbset{laluthmstyle/.style={
             breakable,
             colframe=#1!50!black,
             coltitle=black,
@@ -154,7 +154,7 @@
 }
 
 \NewTColorBox{tcblaluthmbox}{mmm}{
-    commonstyle={teal},
+    laluthmstyle={teal},
     colframe=teal!80!black,
     title=#1\IfBlankF{#2}{\quad#2},
     #3,
@@ -163,10 +163,10 @@
 \NewDocumentEnvironment{proof}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 证明}}{#1}{#2}\fangsong}{\hspace*{\fill}$\square$\end{tcblaluthmbox}}
 \NewDocumentEnvironment{solution}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 解}}{#1}{#2}\fangsong}{\end{tcblaluthmbox}}
 
-\newcommand{\Ob}{\mathop\mathrm{Ob}}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Hom}{Hom}
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cD}{\mathcal{D}}
-\newcommand{\Hom}{\mathop\mathrm{Hom}}
 \newcommand{\FVect}{\mathsf{FVect}}
 \newcommand{\Set}{\mathsf{Set}}
 \newcommand{\FSet}{\mathsf{FSet}}
@@ -179,12 +179,12 @@
     \RequirePackage{bookmark}
     \RequirePackage{cleveref}
 
-    \newtcbtheorem[number within=chapter]{definition}{定义}{commonstyle={red}}{def}
-    \newtcbtheorem[number within=chapter]{example}{例}{commonstyle={blue}}{ex}
-    \newtcbtheorem[number within=chapter]{lemma}{引理}{commonstyle={orange}}{lem}
-    \newtcbtheorem[number within=chapter]{theorem}{定理}{commonstyle={violet}}{thm}
-    \newtcbtheorem[number within=chapter]{corollary}{推论}{commonstyle={green}}{cor}
-    \newtcbtheorem[number within=chapter]{axiom}{公理}{commonstyle={olive}}{axm}
+    \newtcbtheorem[number within=chapter]{definition}{定义}{laluthmstyle={red}}{def}
+    \newtcbtheorem[number within=chapter]{example}{例}{laluthmstyle={blue}}{ex}
+    \newtcbtheorem[number within=chapter]{lemma}{引理}{laluthmstyle={orange}}{lem}
+    \newtcbtheorem[number within=chapter]{theorem}{定理}{laluthmstyle={violet}}{thm}
+    \newtcbtheorem[number within=chapter]{corollary}{推论}{laluthmstyle={green}}{cor}
+    \newtcbtheorem[number within=chapter]{axiom}{公理}{laluthmstyle={olive}}{axm}
 
     \hypersetup{
         unicode,

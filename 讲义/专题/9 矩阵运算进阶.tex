@@ -412,7 +412,7 @@
               证明$\begin{pmatrix}
                       a & c \\ 0 & b
                   \end{pmatrix}^n=\begin{pmatrix}
-                      a^n & (a^{n-1}+a^{n-2}b+\ldots+b^{n-1})c \\ 0 & b^n
+                      a^n & (a^{n-1}+a^{n-2}b+\cdots+b^{n-1})c \\ 0 & b^n
                   \end{pmatrix}$.
           \end{example}
           \begin{proof}
@@ -420,7 +420,7 @@
               \[\begin{pmatrix}
                       a & c \\ 0 & b
                   \end{pmatrix}^k=\begin{pmatrix}
-                      a^k & (a^{k-1}+a^{k-2}b+\ldots+b^{k-1})c \\ 0 & b^k
+                      a^k & (a^{k-1}+a^{k-2}b+\cdots+b^{k-1})c \\ 0 & b^k
                   \end{pmatrix}.\]
               当$n=k+1$时，有
               \begin{align*}
@@ -434,12 +434,12 @@
                       a & c \\ 0 & b
                   \end{pmatrix}                                         \\
                    & =\begin{pmatrix}
-                          a^k & (a^{k-1}+a^{k-2}b+\ldots+b^{k-1})c \\ 0 & b^k
+                          a^k & (a^{k-1}+a^{k-2}b+\cdots+b^{k-1})c \\ 0 & b^k
                       \end{pmatrix}\begin{pmatrix}
                                        a & c \\ 0 & b
                                    \end{pmatrix} \\
                    & =\begin{pmatrix}
-                          a^{k+1} & (a^k+a^{k-1}b+\ldots+b^k)c \\
+                          a^{k+1} & (a^k+a^{k-1}b+\cdots+b^k)c \\
                           0       & b^{k+1}
                       \end{pmatrix}.
               \end{align*}
@@ -755,7 +755,7 @@
 \begin{gather*}
     Ax=b_1 \\ Ax=b_2 \\ \cdots \\ Ax=b_n
 \end{gather*}
-当$n$很大时，如果利用$LU$分解，我们只需对$A$做一次分解，就可以解出所有方程，但高斯消元法则需要每个方程都和每个$b_i(i=1,2,\cdots,n)$构成增广矩阵一起消元，计算量会增大许多.
+当$n$很大时，如果利用$LU$分解，我们只需对$A$做一次分解，就可以解出所有方程，但高斯消元法则需要每个方程都和每个$b_i(i=1,2,\ldots,n)$构成增广矩阵一起消元，计算量会增大许多.
 
 \section{矩阵方程}
 
@@ -992,7 +992,7 @@
               \[r(\sigma+\tau)\leqslant r(\sigma)+r(\tau),\]
               又根据线性映射的秩的定义，只需证明
               \[\dim(\sigma+\tau)(V_1)\leqslant \dim\sigma(V_1)+\dim\tau(V_1),\]
-              事实上，$\forall\beta\in(\sigma+\tau)(V_1)$，$\exists\alpha\in V_1$，使得$\beta=(\sigma+\tau)\alpha=\sigma(\alpha)+\tau(\alpha)\in\sigma(V_1)+\tau(V_1)$，因此$(\sigma+\tau)(V_1)\subseteq\sigma(V_1)+\tau(V_1)$，故$\dim(\sigma+\tau)(V_1)\leqslant \dim(\sigma(V_1)+\tau(V_1))\leqslant \dim\sigma(V_1)+\dim\tau(V_1)$，得证（最后一个不等号来源于\autoref{thm:线性空间维数公式}）.
+              事实上，$\forall\beta\in(\sigma+\tau)(V_1)$，$\exists\alpha\in V_1$，使得$\beta=(\sigma+\tau)\alpha=\sigma(\alpha)+\tau(\alpha)\in\sigma(V_1)+\tau(V_1)$，因此$(\sigma+\tau)(V_1)\subseteq\sigma(V_1)+\tau(V_1)$，故$\dim(\sigma+\tau)(V_1)\leqslant \dim(\sigma(V_1)+\tau(V_1))\leqslant \dim\sigma(V_1)+\dim\tau(V_1)$，得证（最后一个不等号来源于\nameref{thm:线性空间维数公式}）.
           \end{proof}
 
     \item $r(AB) \leqslant \min\{r(A), r(B)\}$.
@@ -1018,7 +1018,7 @@
           \begin{proof}
               设$A,B$分别是线性映射$\sigma\in\mathcal{L}(V_1,V_2),\tau\in\mathcal{L}(V_2,V_3)$在基下表示矩阵，其中$V_1,V_2,V_3$分别是$m,n,s$维线性空间，我们只需证
               \[r(\tau\sigma)\geqslant r(\sigma)+r(\tau)-n.\]
-              事实上，根据\autoref{thm:线性映射基本定理}，我们有
+              事实上，根据\nameref{thm:线性映射基本定理}，我们有
               \begin{align*}
                   r(\tau\sigma) & =m-\dim\ker(\tau\sigma)                   \\
                                 & \geqslant m-(\dim\ker\sigma+\dim\ker\tau) \\
@@ -1033,7 +1033,7 @@
                                        & =(n-\dim\sigma(V_1))+\dim(\ker\tau\cap\sigma(V_1)) \\
                                        & \leqslant\dim\ker\sigma+\dim\ker\tau.
               \end{align*}
-              这里2-3行将$\tau$视为$\mathcal{L}(\sigma(V_1),V_3)$中的线性映射，利用了\autoref{thm:线性映射基本定理}.
+              这里2-3行将$\tau$视为$\mathcal{L}(\sigma(V_1),V_3)$中的线性映射，利用了\nameref{thm:线性映射基本定理}.
           \end{proof}
 
           这一不等式有一个特例，即当$AB=O$时有$r(A)+r(B)\leqslant n$. 这一结论在\nameref{chap:朝花夕拾}中我们将用其他方法给出证明.

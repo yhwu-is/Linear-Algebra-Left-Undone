@@ -2,8 +2,14 @@
 ## Navigate to GitHub Actions or Releases to obtain a copy.
 讲义/*.pdf
 习题参考答案/*.pdf
+
 build
 gh-actions-build
+讲义/LALU.tex
+习题参考答案/LALU-answers.tex
+
+## latexindent.pl backup files
+*.bak*
 
 ## VSCode workspace settings
 .vscode/settings.json

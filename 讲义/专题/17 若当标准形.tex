@@ -29,8 +29,8 @@
     \end{pmatrix}\]
 则称其为一个$r$级若当块（1级显然就是1阶矩阵），记作$J_r(\lambda)$，其中$\lambda$是对角线上元素. 若一个线性变换$\sigma$在基$B$下的矩阵表示是对角块均为若当块的分块对角矩阵，则称这个分块对角矩阵是线性变换$\sigma$的\term{若当标准形}\index{ruodangxing@若当标准形 (Jordan canonical form)}，而这组基$B$称为$T$的\term{若当基}\index{ruodangji@若当基 (Jordan basis)}. 我们希望复数域上任意线性变换都能找到一组若当基使其矩阵表示为若当标准形，而这正是本节需要证明的目标.
 
-为了证明这一结果，我们需要首先观察若当块能在怎样的基下表示出. 为了发现这一规律，我们考虑一种最简单的情况，即一个线性变换$T$在某组基$B=\{v_1,v_2,v_3,\cdots,v_n\}$下的矩阵表示就是一个若当块，即
-\[\sigma(v_1,v_2,v_3,\cdots,v_n)=(v_1,v_2,v_3,\cdots,v_n)\begin{pmatrix}
+为了证明这一结果，我们需要首先观察若当块能在怎样的基下表示出. 为了发现这一规律，我们考虑一种最简单的情况，即一个线性变换$T$在某组基$B=\{v_1,v_2,v_3,\ldots,v_n\}$下的矩阵表示就是一个若当块，即
+\[\sigma(v_1,v_2,v_3,\ldots,v_n)=(v_1,v_2,v_3,\ldots,v_n)\begin{pmatrix}
         \lambda & 1       &        &         \\
                 & \lambda & \ddots &         \\
                 &         & \ddots & 1       \\
@@ -57,18 +57,18 @@
 \end{equation}
 
 即我们需要的这组基实际上具有如下形式：
-\[B=\{(\sigma-\lambda I)^{n-1}(v_n),(\sigma-\lambda I)^{n-2}(v_n),\cdots,(\sigma-\lambda I)(v_n),v_n\},\]
-并且有$(\sigma-\lambda I)^n=0$. 事实上观察上面这组等式，从第一个式子我们知道$v_1$实际上是$\sigma$关于特征值$\lambda$的特征向量，$v_2,\cdots,v_n$则是关于特征值$\lambda$的广义特征向量.
+\[B=\{(\sigma-\lambda I)^{n-1}(v_n),(\sigma-\lambda I)^{n-2}(v_n),\ldots,(\sigma-\lambda I)(v_n),v_n\},\]
+并且有$(\sigma-\lambda I)^n=0$. 事实上观察上面这组等式，从第一个式子我们知道$v_1$实际上是$\sigma$关于特征值$\lambda$的特征向量，$v_2,\ldots,v_n$则是关于特征值$\lambda$的广义特征向量.
 
 再进一步观察这样的一组向量，我们发现这组向量似乎与\autoref{thm:循环子空间} 中提到的循环基有些类似：它们都是从一个向量开始，不断作用一个线性变换等到的一组向量. 这里我们给出一个定义来详细地说明一些术语：
 \begin{definition}{}{若当循环基}
-    设$\sigma\in\mathcal{L}(V)$，$v\in V$是关于特征值$\lambda\in\mathbf{C}$的一个广义特征向量. 设$n$是使得$(\sigma-\lambda I)^n v=0$成立的最小正整数，则称$\{(\sigma-\lambda I)^{n-1}(v),(\sigma-\lambda I)^{n-2}(v),\cdots,(\sigma-\lambda I)(v),v\}$是\term{$\sigma$关于特征值$\lambda$的循环广义特征向量组}（不引起歧义的情况下也可称循环向量），其中$(\sigma-\lambda I)^{n-1}(v)$称为其起始向量，$v$称为其终止向量.
+    设$\sigma\in\mathcal{L}(V)$，$v\in V$是关于特征值$\lambda\in\mathbf{C}$的一个广义特征向量. 设$n$是使得$(\sigma-\lambda I)^n v=0$成立的最小正整数，则称$\{(\sigma-\lambda I)^{n-1}(v),(\sigma-\lambda I)^{n-2}(v),\ldots,(\sigma-\lambda I)(v),v\}$是\term{$\sigma$关于特征值$\lambda$的循环广义特征向量组}（不引起歧义的情况下也可称循环向量），其中$(\sigma-\lambda I)^{n-1}(v)$称为其起始向量，$v$称为其终止向量.
 \end{definition}
 
 给出这一定义后，便可以开始研究这一组向量与我们目标中的若当基之间的关联. 我们需要暂时停下前进的脚步，仔细思考我们需要什么. 我们的最终目标是证明，对于任意复向量空间上的线性变换，都能找到一组基，其矩阵表示为分块对角矩阵，且每一对角块为若当块. 根据\autoref{thm:不变子空间与分块对角矩阵}，我们要求每个若当块对应的基向量张成的子空间是不变子空间，因为这样才能保证生成一个对角块. 而根据之前的推导，我们知道生成若当块必须要这样的一组循环向量，那么自然地我们会有两个问题：
 \begin{enumerate}
     \item 循环向量生成的子空间一定是不变子空间吗？因为这样才能保证生成一个对角块；
-    \item 我们是从一组基$v_1,\cdots,v_n$可以得到若当块出发定义出这样的循环向量的，那么是不是一组向量满足这样的定义也一定线性无关的呢？因为这样只需要找到这样一组循环向量就一定可以构成若当基的一部分.
+    \item 我们是从一组基$v_1,\ldots,v_n$可以得到若当块出发定义出这样的循环向量的，那么是不是一组向量满足这样的定义也一定线性无关的呢？因为这样只需要找到这样一组循环向量就一定可以构成若当基的一部分.
 \end{enumerate}
 事实上如果读者熟悉之前讨论的一些例子和性质，这两个问题可以轻松解决：
 \begin{theorem}{}{若当循环基的性质}
@@ -87,23 +87,23 @@
 
 在以上问题被解决后，我们的目标将非常清晰，即对任意的复数域上的线性变换是否一定能找到一组基是由不同的若当循环基合并而成的，从而在在这组基下的矩阵表示是若当标准形？似乎有些困难，我们需要一些观察：事实上，若当循环基中的每个向量都是关于某个特征值$\lambda$的广义特征向量，因此它们张成的子空间应当是广义特征子空间$G_\lambda$的一部分（当然也可能张成整个广义特征子空间）. 于是站在\autoref{thm:广义特征性质} 中广义特征子空间分解的基础上，我们的目标可以转化为对其中的每一个广义特征子空间，找到一组由一个或多个若当循环基合并而成的基？这样首先利用\autoref{thm:广义特征性质} 中广义特征子空间分解，再利用广义特征子空间的若当循环基分解，我们就可以得到一组由不同的若当循环基合并而成的基，从而得到若当标准形.
 
-为了更清晰地展示，我们将上述过程形式化. 设$\sigma\in\mathcal{L}(V)$，$\lambda_1,\cdots,\lambda_m$是$\sigma$的互异特征值，$G_{\lambda_i}$是关于特征值$\lambda_i$的广义特征子空间. 根据\autoref{thm:广义特征性质}，我们知道
-\[V=G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_m}=\mathop{\oplus}\limits_{i=1}^m G_{\lambda_i},\]
-然后我们希望为每个广义特征子空间选取一组由一个或多个若当循环基合并而成的基，也就是说我们希望将每个广义特征子空间分解为一个或多个循环子空间的直和. 形式化而言，我们希望每个广义特征子空间$G_{\lambda_i}$可以由$s_i$组若当循环基$B_{i1},B_{i2},\cdots,B_{is_i}$张成，其中每一组基都可以表达为：
-\[B_{ij}=\{(\sigma-\lambda_iI)^{r_{ij}-1}(v_{ij}),(\sigma-\lambda_iI)^{r_{ij}-2}(v_{ij}),\cdots,v_{ij}\},\]
+为了更清晰地展示，我们将上述过程形式化. 设$\sigma\in\mathcal{L}(V)$，$\lambda_1,\ldots,\lambda_m$是$\sigma$的互异特征值，$G_{\lambda_i}$是关于特征值$\lambda_i$的广义特征子空间. 根据\autoref{thm:广义特征性质}，我们知道
+\[V=G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_m}=\bigoplus_{i=1}^m G_{\lambda_i},\]
+然后我们希望为每个广义特征子空间选取一组由一个或多个若当循环基合并而成的基，也就是说我们希望将每个广义特征子空间分解为一个或多个循环子空间的直和. 形式化而言，我们希望每个广义特征子空间$G_{\lambda_i}$可以由$s_i$组若当循环基$B_{i1},B_{i2},\ldots,B_{is_i}$张成，其中每一组基都可以表达为：
+\[B_{ij}=\{(\sigma-\lambda_iI)^{r_{ij}-1}(v_{ij}),(\sigma-\lambda_iI)^{r_{ij}-2}(v_{ij}),\ldots,v_{ij}\},\]
 事实上$r_{ij}$就是这组若当循环基的长度. 我们设由$B_{ij}$张成的循环子空间为$C_{ij}$，则有
-\[G_{\lambda_i}=C_{i1}\oplus C_{i2}\oplus\cdots\oplus C_{is_i}=\mathop{\oplus}\limits_{j=1}^{s_i} C_{ij},\]
+\[G_{\lambda_i}=C_{i1}\oplus C_{i2}\oplus\cdots\oplus C_{is_i}=\bigoplus_{j=1}^{s_i} C_{ij},\]
 再结合\autoref{thm:广义特征性质} 的分解，我们有
 \begin{equation} \label{eq:17:循环子空间分解}
-    V=\mathop{\oplus}\limits_{i=1}^m G_{\lambda_i}=\mathop{\oplus}\limits_{i=1}^n\mathop{\oplus}\limits_{j=1}^{s_i} C_{ij}.
+    V=\bigoplus_{i=1}^m G_{\lambda_i}=\bigoplus_{i=1}^n\bigoplus_{j=1}^{s_i} C_{ij}.
 \end{equation}
 
 根据\autoref{thm:若当循环基的性质}，每个循环子空间都是不变子空间，并且每个若当循环基都对应于一个若当块. 回忆我们上面的推导过程，我们现在剩下的任务就是为复数域上的任意广义特征子空间$G_{\lambda_i}$找到一组由一个或多个若当循环基合并而成的基，这样就能得到\autoref{eq:17:循环子空间分解} 所示的分解，从而得到任意复数域上的线性变换都存在若当标准形. 为了实现这一目标，我们需要先证明一个关于若当循环基的性质.
 
 \begin{lemma}{}{若当循环基合并性质}
-    设$\sigma\in\mathcal{L}(V)$，$\lambda\in\mathbf{C}$是$\sigma$的一个特征值. 设$B_1,\cdots,B_q$都是$\sigma$关于特征值$\lambda$的一组若当循环基，且它们的起始向量各不相同且构成了一组线性无关向量组，则
+    设$\sigma\in\mathcal{L}(V)$，$\lambda\in\mathbf{C}$是$\sigma$的一个特征值. 设$B_1,\ldots,B_q$都是$\sigma$关于特征值$\lambda$的一组若当循环基，且它们的起始向量各不相同且构成了一组线性无关向量组，则
     \begin{enumerate}
-        \item $B_i(i=1,\cdots,q)$是互不相交的；
+        \item $B_i(i=1,\ldots,q)$是互不相交的；
         \item $B=B_1\cup\cdots\cup B_q$是线性无关向量组.
     \end{enumerate}
 \end{lemma}
@@ -111,21 +111,21 @@
     \begin{enumerate}
         \item 反证法. 假设$B_i$和$B_j$有交集，即存在$v\in B_i\cap B_j$. 设$B_i$和$B_j$的终止向量分别为$v_i$和$v_j$，则存在非负整数$m_i,m_j$使得
               \[(\sigma-\lambda I)^{m_i}(v_i)=(\sigma-\lambda I)^{m_j}(v_j)=v.\]
-              故$(\sigma-\lambda I)^{m_i+m}(v_i)=(\sigma-\lambda I)^{m_j+m}(v_j)$，其中$m$是任意非负整数，因此$B_i$和$B_j$从向量$v$开始一直到起始向量必定都是相等的，而这与定理的前提起始向量各不相同矛盾，故$B_i(i=1,\cdots,q)$是互不相交的.
+              故$(\sigma-\lambda I)^{m_i+m}(v_i)=(\sigma-\lambda I)^{m_j+m}(v_j)$，其中$m$是任意非负整数，因此$B_i$和$B_j$从向量$v$开始一直到起始向量必定都是相等的，而这与定理的前提起始向量各不相同矛盾，故$B_i(i=1,\ldots,q)$是互不相交的.
 
-        \item 同样反证法，假设$B$是线性相关向量组，则一定存在一个子向量组$u_1,\cdots,u_s$，使得有全部非零的$k_1,\cdots,k_s$使得
+        \item 同样反证法，假设$B$是线性相关向量组，则一定存在一个子向量组$u_1,\ldots,u_s$，使得有全部非零的$k_1,\ldots,k_s$使得
               \begin{equation} \label{eq:17:若当循环基合并性质证明}
                   k_1u_1+\cdots+k_su_s=0.
               \end{equation}
               这是一定能做到的，因为$B$线性相关表明存在一个向量$u_1$能被其它向量线性表示，我们写出这一线性表示，去除表示中系数为0的向量，又$u_1\neq 0$，故一定剩余一组向量满足
               \[u_1=c_2u_2+\cdots+c_su_s,\]
-              其中$c_i\neq 0$，则$-u_1+c_2u_2+\cdots+c_su_s=0$，这就满足\autoref{eq:17:若当循环基合并性质证明} 中$k_1,\cdots,k_s$全部非零.
+              其中$c_i\neq 0$，则$-u_1+c_2u_2+\cdots+c_su_s=0$，这就满足\autoref{eq:17:若当循环基合并性质证明} 中$k_1,\ldots,k_s$全部非零.
 
-              接下来我们可以对每个$u_i$作用$(\sigma-\lambda I)$的幂次，在经过某个幂次后，所有的$u_i$都会变成它所在的$B_j$的起始向量. 假设每个$u_i$在作用$(\sigma-\lambda I)^{r_i}$次后变成所在$B_j$的起始向量，我们取$r=\max\{r_1,\cdots,r_s\}$，然后在\autoref{eq:17:若当循环基合并性质证明} 两边作用$(\sigma-\lambda I)^r$，则可以得到
+              接下来我们可以对每个$u_i$作用$(\sigma-\lambda I)$的幂次，在经过某个幂次后，所有的$u_i$都会变成它所在的$B_j$的起始向量. 假设每个$u_i$在作用$(\sigma-\lambda I)^{r_i}$次后变成所在$B_j$的起始向量，我们取$r=\max\{r_1,\ldots,r_s\}$，然后在\autoref{eq:17:若当循环基合并性质证明} 两边作用$(\sigma-\lambda I)^r$，则可以得到
               \begin{equation}
                   k_{i_1}(\sigma-\lambda I)^r(u_{i_1})+\cdots+k_{i_t}(\sigma-\lambda I)^r(u_{i_t})=0,
               \end{equation}
-              其中$u_{i_1},\cdots,u_{i_t}$是$u_1,\cdots,u_s$中在作用$(\sigma-\lambda I)^r$后变成对应起始向量的向量，即$(\sigma-\lambda I)^r(u_{i_j})$都是起始向量，而其它向量已经到达超出起始向量所需次数，因此被化零. 又$k_{ij}$全都不为0，因此这些起始向量$(\sigma-\lambda I)^r(u_{i_j})$线性相关，这与定理的前提起始向量线性无关矛盾，故$B$是线性无关向量组.
+              其中$u_{i_1},\ldots,u_{i_t}$是$u_1,\ldots,u_s$中在作用$(\sigma-\lambda I)^r$后变成对应起始向量的向量，即$(\sigma-\lambda I)^r(u_{i_j})$都是起始向量，而其它向量已经到达超出起始向量所需次数，因此被化零. 又$k_{ij}$全都不为0，因此这些起始向量$(\sigma-\lambda I)^r(u_{i_j})$线性相关，这与定理的前提起始向量线性无关矛盾，故$B$是线性无关向量组.
     \end{enumerate}
 \end{proof}
 
@@ -140,15 +140,15 @@
 
     于是接下来我们要将这组基扩充成$G_\lambda$的一组基，并保持若当循环基的特点. 观察$U=\im(\sigma-\lambda I)\vert_{G_\lambda}$和$G_\lambda$的区别，其一在于$\sigma-\lambda I$将$G_\lambda$的一些向量映射进了$U$，但这些向量本身没能被其它向量映射到$U$中，其二在于$\sigma-\lambda I$将$G_\lambda$中的一些向量（实际上就是特征向量）化零，因此我们就从这两个角度扩充.
     \begin{enumerate}
-        \item 我们考虑任一若当循环基$B_i$的终止向量，它应当是某个$v_i\in G_\lambda$在$\sigma-\lambda I$下的像，我们直接将$v_i$加入到$B_i$中，这样我们就得到了$\tilde{B_i}=B_i\cup\{v_i\},\enspace i=1,\cdots,q$，它们仍然是满足循环向量组定义的.
-        \item $B$中的特征向量实际上就是每个$B_i$的起始向量，我们记为$w_1,\cdots,w_q$，它们是特征子空间$V_\lambda$的一组线性无关向量，因此可以将其扩充为$V_\lambda$的一组基
-              \[w_1,\cdots,w_q,u_1,\cdots,u_s.\]
+        \item 我们考虑任一若当循环基$B_i$的终止向量，它应当是某个$v_i\in G_\lambda$在$\sigma-\lambda I$下的像，我们直接将$v_i$加入到$B_i$中，这样我们就得到了$\tilde{B_i}=B_i\cup\{v_i\},\enspace i=1,\ldots,q$，它们仍然是满足循环向量组定义的.
+        \item $B$中的特征向量实际上就是每个$B_i$的起始向量，我们记为$w_1,\ldots,w_q$，它们是特征子空间$V_\lambda$的一组线性无关向量，因此可以将其扩充为$V_\lambda$的一组基
+              \[w_1,\ldots,w_q,u_1,\ldots,u_s.\]
     \end{enumerate}
 
     从而扩张后我们得到新的一组不相交且起始向量线性无关的若当循环基的并：
     \[\tilde{B}=\tilde{B_1}\cup\tilde{B_2}\cup\cdots\cup\tilde{B_q}\cup\{u_1\}\cup\cdots\cup\{u_s\},\]
 
-    由\autoref{lem:若当循环基合并性质}，$\tilde{B}$必然线性无关. 最后我们证明$\tilde{B}$是$G_\lambda$的一组基. 假设$B$包含$r=\dim U$个向量，于是$\tilde{B}$包含$r+q+s$个向量. 又因为$w_1,\cdots,w_q,u_1,\cdots,u_s$是$V_\lambda$的一组基，而$V_\lambda=\ker(\sigma-\lambda I)\vert_{G_\lambda}$，由线性映射基本定理，
+    由\autoref{lem:若当循环基合并性质}，$\tilde{B}$必然线性无关. 最后我们证明$\tilde{B}$是$G_\lambda$的一组基. 假设$B$包含$r=\dim U$个向量，于是$\tilde{B}$包含$r+q+s$个向量. 又因为$w_1,\ldots,w_q,u_1,\ldots,u_s$是$V_\lambda$的一组基，而$V_\lambda=\ker(\sigma-\lambda I)\vert_{G_\lambda}$，由线性映射基本定理，
     \[\dim G_\lambda=\dim\ker(\sigma-\lambda I)\vert_{G_\lambda}+\dim\im(\sigma-\lambda I)\vert_{G_\lambda}=q+s+r,\]
 
     因此$\tilde{B}$线性无关且长度等于$G_\lambda$的维数，故是$G_\lambda$的一组若当循环基.
@@ -172,7 +172,7 @@
 
 回忆\autoref{eq:17:循环子空间分解}，我们的目标应当是为每一个广义特征子空间找到一组由若当循环基合并而成的基，然后将这些基合并成一组基，从而得到若当标准形. 因此我们只需要讨论如何对某一个特征值$\lambda$对应的广义特征子空间$G_\lambda$找到一组由一个或多个若当循环基合并而成的基即可，当一个线性变换或矩阵有多个特征值时，只需要对每一个特征值对应的广义特征子空间做同样的操作即可.
 
-因此我们现在只考虑将映射限制于一个广义特征子空间$G_\lambda$上的情形，将该特征值对应的若当块和若当基求解出来即可. 考虑到若当基是由一系列若当循环基合并而成，而若当循环基中会出现大量的$\sigma-\lambda I$的幂次. 回忆\autoref{thm:广义特征性质}，我们知道$(\sigma-\lambda I)\vert_{G_\lambda}$是幂零线性变换，因此我们可以自然地简记$N=\sigma-\lambda I$. 假设最终我们求得限制在$G_\lambda$下的若当基中有$n$组若当循环基，每组若当循环基的长度分别为$m_1,\cdots,m_n$（不妨设$m_1\geqslant\cdots\geqslant m_n$），则我们可以将这些若当基记为：
+因此我们现在只考虑将映射限制于一个广义特征子空间$G_\lambda$上的情形，将该特征值对应的若当块和若当基求解出来即可. 考虑到若当基是由一系列若当循环基合并而成，而若当循环基中会出现大量的$\sigma-\lambda I$的幂次. 回忆\autoref{thm:广义特征性质}，我们知道$(\sigma-\lambda I)\vert_{G_\lambda}$是幂零线性变换，因此我们可以自然地简记$N=\sigma-\lambda I$. 假设最终我们求得限制在$G_\lambda$下的若当基中有$n$组若当循环基，每组若当循环基的长度分别为$m_1,\ldots,m_n$（不妨设$m_1\geqslant\cdots\geqslant m_n$），则我们可以将这些若当基记为：
 \[N^{m_1}v_1,\ldots,Nv_1,v_1,\ldots,N^{m_n}v_n,\ldots,Nv_n,v_n.\]
 
 事实上这里有两组未知量，其一是每组若当循环基的长度$m_i$，这对应每个若当块的大小，因为每组若当循环基就对应于一个若当块；其二是每组若当循环基的终止向量$v_i$，这就可以决定出整个若当基. 我们接下来将分成两步来求解这两组未知量，我们将用到一个重要的工具，我们称其为\term{Young图}，如\autoref{fig:17:若当基Young图形式}. 这是一种倒三角形的方格图，每一列都是一组若当循环基，按照长度从长到短依次从左到右排列，这是从列的角度看Young图.
@@ -401,8 +401,8 @@
 
         \item 显然$\{0\},\spa(v_1),\spa(v_1,v_2),\ldots,\spa(v_1,\ldots,v_{n-1},v_n)$都是不变子空间，下面证明不变子空间一定在它们当中.
 
-              设$U$为任一不变子空间，若$U=\{0\}$，则也符合结论. 我们考虑非零的情况，设$\beta_1,\cdots,\beta_s$是$U$的一组基，并且假设
-              \[\beta_i=a_{i1}v_1+a_{i2}v_2+\cdots+a_{it}v_t,\enspace i=1,2,\cdots,s\]
+              设$U$为任一不变子空间，若$U=\{0\}$，则也符合结论. 我们考虑非零的情况，设$\beta_1,\ldots,\beta_s$是$U$的一组基，并且假设
+              \[\beta_i=a_{i1}v_1+a_{i2}v_2+\cdots+a_{it}v_t,\enspace i=1,2,\ldots,s\]
               其中满足至少有一个$i$使得$a_{it}\neq 0$（把所有基下表示末尾的0去除即可）. 对于满足$a_{it}\neq 0$的$i$，由于$U$是不变子空间，故$\sigma(\beta_i)\in U$，与第二点证明完全相同，我们得到
               \begin{align*}
                   a_{i2}v_1+a_{i3}v_2+\cdots+a_{it}v_{t-1}\in U, \\
@@ -477,7 +477,7 @@
                   \item $k=q+1$时，$J_k(0)$的个数为$r((J^m)^q)+r((J^m)^{q+2})-2r((J^m)^{q+1})=(n-mq)+0-0=r$.
                   \item $k>q+1$时，$J_k(0)$的个数为0.
               \end{enumerate}
-              综上所述，$J^m$的若当标准形是$\diag(J_q(0),\cdots,J_q(0),J_{q+1}(0),\cdots,J_{q+1}(0))$，其中$J_q(0)$的个数为$m-r$，$J_{q+1}(0)$的个数为$r$.
+              综上所述，$J^m$的若当标准形是$\diag(J_q(0),\ldots,J_q(0),J_{q+1}(0),\ldots,J_{q+1}(0))$，其中$J_q(0)$的个数为$m-r$，$J_{q+1}(0)$的个数为$r$.
     \end{enumerate}
 \end{solution}
 
@@ -527,7 +527,7 @@
     我们首先对若当块$J_n(a)$证明这一定理. 事实上这非常显然，我们取$B=aE_n$，$C=J_n(0)$，则$B$可对角化，$C$是幂零的，且$BC=CB=aJ_n(0)$. 又因为$O=C^n=(J_n(a)-B)^n$，因此我们取$f(x)=(x-a)^n+a$，代入$x=J_n(a)$有
     $f(J_n(a))=(J_n(a)-aE_n)^n+aE_n=aE_n=B$，因此$B$表示为了$A$的多项式，而$C=J_n(a)-B=J_n(a)-f(J_n(a))$也是$A$的多项式.
 
-    接下来推广到若当标准形$J$，我们假设$J$互不相同的特征值为$\lambda_1,\cdots,\lambda_m$，设每个特征值$\lambda_i$对应$s_i$个若当块，则可以将$J$表示为
+    接下来推广到若当标准形$J$，我们假设$J$互不相同的特征值为$\lambda_1,\ldots,\lambda_m$，设每个特征值$\lambda_i$对应$s_i$个若当块，则可以将$J$表示为
     \[J=\begin{pmatrix}
             J_{11} &        &          &        &        &        &          \\
                    & \ddots &          &        &        &        &          \\
@@ -539,8 +539,8 @@
         \end{pmatrix}.\]
     对每个若当块$J_{ij}$，假设若当块大小为$k_{ij}$，我们类似于前面对若当块的讨论取出每个$M_{ij}=\lambda_i E_{k_{ij}}$，$N_{ij}=J_{k_{ij}}(0)$，然后将这些矩阵按$J$的顺序排列成分块对角矩阵即可得到$M$和$N$，则$J=M+N$，$M$可对角化，$N$是幂零的，且$MN=NM$是容易验证的.
 
-    我们设每个特征值$\lambda_i$对应的最大的若当块的阶数为$k_i$，因此$(J_{ij}-\lambda_{ij})^{k_i}=O$. 我们知道$(\lambda-\lambda_1)^{k_1},\cdots,(\lambda-\lambda_m)^{k_m}$是两两互素的多项式，因此由中国剩余定理\autoref{thm:中国剩余定理} 可知，存在多项式$f(\lambda)$满足
-    \[f(\lambda)=g_i(\lambda)(\lambda-\lambda_i)^{k_i}+\lambda_i,\enspace i=1,\cdots,m\]
+    我们设每个特征值$\lambda_i$对应的最大的若当块的阶数为$k_i$，因此$(J_{ij}-\lambda_{ij})^{k_i}=O$. 我们知道$(\lambda-\lambda_1)^{k_1},\ldots,(\lambda-\lambda_m)^{k_m}$是两两互素的多项式，因此由\nameref{thm:中国剩余定理}可知，存在多项式$f(\lambda)$满足
+    \[f(\lambda)=g_i(\lambda)(\lambda-\lambda_i)^{k_i}+\lambda_i,\enspace i=1,\ldots,m\]
     故$f(J_{ij})=g_i(J_{ij})(J_{ij}-\lambda_i)^{k_i}+\lambda_iE_{k_{ij}}=\lambda_iE_{k_{ij}}=M_{ij}$，因此$f(J)=M$也成立. 同理$N=J-M=J-f(J)$也是$J$的多项式，因此命题结论对若当标准形都成立.
 
     接下来考虑一般情形，设$P^{-1}AP=J$，则$A=PJP^{-1}=P(M+N)P^{-1}=PMP^{-1}+PNP^{-1}$. 取$B=PMP^{-1}$，$C=PNP^{-1}$，则$B$可对角化，$C$是幂零的，且$BC=CB$，$B,C$均可以表示为$A$的多项式都可以从$M,N$具有这样的性质立刻得到，即这一问题是在相似下不变的.
@@ -613,10 +613,10 @@
 \begin{theorem}{}{实数域上的若当标准形}
     设$A$是$n$阶实矩阵，则$A$在实数域上相似于如下分块对角矩阵：
     \begin{enumerate}
-        \item $J=\diag(J_{r_1}(\lambda_1),\cdots,J_{r_k}(\lambda_k),J_{s_1}(a_1,b_1),J_{s_l}(a_l,b_l))$；
-        \item $\tilde{J}=\diag(J_{r_1}(\lambda_1),\cdots,J_{r_k}(\lambda_k),\tilde{J}_{s_1}(a_1,b_1),\tilde{J}_{s_l}(a_l,b_l))$
+        \item $J=\diag(J_{r_1}(\lambda_1),\ldots,J_{r_k}(\lambda_k),J_{s_1}(a_1,b_1),J_{s_l}(a_l,b_l))$；
+        \item $\tilde{J}=\diag(J_{r_1}(\lambda_1),\ldots,J_{r_k}(\lambda_k),\tilde{J}_{s_1}(a_1,b_1),\tilde{J}_{s_l}(a_l,b_l))$
     \end{enumerate}
-    其中$\lambda_1,\cdots,\lambda_k,a_1,b_1,\cdots,a_l,b_l$都是实数，$b_1,\cdots,b_l$都非零，$J_{r_i}(\lambda_i)$表示以$\lambda_i$为特征值的通常意义下的若当块，$R_j=\begin{pmatrix}
+    其中$\lambda_1,\ldots,\lambda_k,a_1,b_1,\ldots,a_l,b_l$都是实数，$b_1,\ldots,b_l$都非零，$J_{r_i}(\lambda_i)$表示以$\lambda_i$为特征值的通常意义下的若当块，$R_j=\begin{pmatrix}
             a_j & b_j \\ -b_j & a_j
         \end{pmatrix},C_2=\begin{pmatrix}
             0 & 0 \\ 1 & 0
