@@ -412,7 +412,7 @@
               证明$\begin{pmatrix}
                       a & c \\ 0 & b
                   \end{pmatrix}^n=\begin{pmatrix}
-                      a^n & (a^{n-1}+a^{n-2}b+\ldots+b^{n-1})c \\ 0 & b^n
+                      a^n & (a^{n-1}+a^{n-2}b+\cdots+b^{n-1})c \\ 0 & b^n
                   \end{pmatrix}$.
           \end{example}
           \begin{proof}
@@ -420,7 +420,7 @@
               \[\begin{pmatrix}
                       a & c \\ 0 & b
                   \end{pmatrix}^k=\begin{pmatrix}
-                      a^k & (a^{k-1}+a^{k-2}b+\ldots+b^{k-1})c \\ 0 & b^k
+                      a^k & (a^{k-1}+a^{k-2}b+\cdots+b^{k-1})c \\ 0 & b^k
                   \end{pmatrix}.\]
               当$n=k+1$时，有
               \begin{align*}
@@ -434,12 +434,12 @@
                       a & c \\ 0 & b
                   \end{pmatrix}                                         \\
                    & =\begin{pmatrix}
-                          a^k & (a^{k-1}+a^{k-2}b+\ldots+b^{k-1})c \\ 0 & b^k
+                          a^k & (a^{k-1}+a^{k-2}b+\cdots+b^{k-1})c \\ 0 & b^k
                       \end{pmatrix}\begin{pmatrix}
                                        a & c \\ 0 & b
                                    \end{pmatrix} \\
                    & =\begin{pmatrix}
-                          a^{k+1} & (a^k+a^{k-1}b+\ldots+b^k)c \\
+                          a^{k+1} & (a^k+a^{k-1}b+\cdots+b^k)c \\
                           0       & b^{k+1}
                       \end{pmatrix}.
               \end{align*}
@@ -755,7 +755,7 @@
 \begin{gather*}
     Ax=b_1 \\ Ax=b_2 \\ \cdots \\ Ax=b_n
 \end{gather*}
-当$n$很大时，如果利用$LU$分解，我们只需对$A$做一次分解，就可以解出所有方程，但高斯消元法则需要每个方程都和每个$b_i(i=1,2,\cdots,n)$构成增广矩阵一起消元，计算量会增大许多.
+当$n$很大时，如果利用$LU$分解，我们只需对$A$做一次分解，就可以解出所有方程，但高斯消元法则需要每个方程都和每个$b_i(i=1,2,\ldots,n)$构成增广矩阵一起消元，计算量会增大许多.
 
 \section{矩阵方程}
 

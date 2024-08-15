@@ -6,16 +6,16 @@
 
 在介绍完相似的概念和基本性质后，我们便可以讨论如何寻找一组基使得线性变换的矩阵表示是一个很简单的矩阵，即寻找合适的相似标准形. 我们从复数域开始，因为在上一讲\autoref{thm:复数域上的特征值} 我们提到了复数域上的线性变换或矩阵必有特征值，并且根据\nameref{thm:代数学基本定理}可知特征值重数之和必定等于线性空间的维数（本讲在复数域下讨论，因此都承认这一点），而实数域则不一定，而特征值保证了一维不变子空间的存在，有很好的性质，因此我们可以先从复数域开始尝试. 并且我们就可以从一维不变子空间入手，因为\autoref{thm:不变子空间与分块对角矩阵} 告诉我们，如果线性空间$V$能分解为$\sigma\in\mathcal{L}(V)$的一维不变子空间的直和，那么每个分块都是大小为1的分块，那么矩阵将会是对角矩阵——这是我们能想到的最简单的矩阵之一了. 我们将这一定理严谨陈述如下：
 \begin{theorem}{}{对角矩阵等价一维不变子空间}
-    $n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$在基$B=\{\alpha_1,\cdots,\alpha_n\}$下的表示矩阵为对角矩阵$\diag(d_1,\cdots,d_n)$，当且仅当$V$能分解为$\sigma$的一维不变子空间的直和，即$V=U_1\oplus\cdots\oplus U_n$，其中$U_i=\spa(\alpha_i),\enspace i=1,\cdots,n$是$\sigma$的一维不变子空间.
+    $n$维线性空间$V$上的线性变换$\sigma\in\mathcal{L}(V)$在基$B=\{\alpha_1,\ldots,\alpha_n\}$下的表示矩阵为对角矩阵$\diag(d_1,\ldots,d_n)$，当且仅当$V$能分解为$\sigma$的一维不变子空间的直和，即$V=U_1\oplus\cdots\oplus U_n$，其中$U_i=\spa(\alpha_i),\enspace i=1,\ldots,n$是$\sigma$的一维不变子空间.
 \end{theorem}
 \begin{proof}
     必要性我们直接写出线性映射矩阵表示的定义即可：
-    \[\sigma(\alpha_1,\cdots,\alpha_n)=(\alpha_1,\cdots,\alpha_n)\begin{pmatrix}
+    \[\sigma(\alpha_1,\ldots,\alpha_n)=(\alpha_1,\ldots,\alpha_n)\begin{pmatrix}
             d_1 &        &     \\
                 & \ddots &     \\
                 &        & d_n
         \end{pmatrix},\]
-    展开可得$\sigma(\alpha_i)=d_i\alpha_i$，故$\alpha_i$是$\sigma$的特征向量，$U_i=\spa(\alpha_i)$是$\sigma$的一维不变子空间，并且由于$\alpha_1,\cdots,\alpha_n$是一组基，因此$U_1\oplus\cdots\oplus U_n=V$. 反之直接将上述过程逆回即可写出对角化的矩阵表示.
+    展开可得$\sigma(\alpha_i)=d_i\alpha_i$，故$\alpha_i$是$\sigma$的特征向量，$U_i=\spa(\alpha_i)$是$\sigma$的一维不变子空间，并且由于$\alpha_1,\ldots,\alpha_n$是一组基，因此$U_1\oplus\cdots\oplus U_n=V$. 反之直接将上述过程逆回即可写出对角化的矩阵表示.
 \end{proof}
 
 在上述定理中，线性变换在一组基下矩阵表示为对角矩阵，这样的线性变换我们称其为可对角化的，我们将这一定义严谨写下：
@@ -460,7 +460,7 @@
               \[(\sigma-\lambda I)w=(\lambda_1-\lambda)w,\]
               归纳可知$(\sigma-\lambda I)^nw=(\lambda_1-\lambda)^nw$.
 
-              根据广义特征子空间的定义，$(\sigma-\lambda_i I)^nv_i=0,\enspace i=1,\cdots,m$，故我们对\autoref{eq:16:广义特征向量线性无关} 两边同时作用
+              根据广义特征子空间的定义，$(\sigma-\lambda_i I)^nv_i=0,\enspace i=1,\ldots,m$，故我们对\autoref{eq:16:广义特征向量线性无关} 两边同时作用
               \[(\sigma-\lambda_1 I)^k(\sigma-\lambda_2 I)^n\cdots(\sigma-\lambda_m I)^n\]
               可得
               \begin{align*}
@@ -480,7 +480,7 @@
               \end{equation}
               其中$W=\im(\sigma-\lambda_1 I)^n$. 又根据\autoref{ex:多项式不变子空间} 可知$W$是$\sigma$的不变子空间，又根据\autoref{eq:16:广义特征子空间分解} 可知$\dim W<n$，因此我们可以考虑对$\sigma\vert_W$使用归纳假设，有
               \[W=G(\lambda_2,\sigma\vert_W)\oplus\cdots\oplus G(\lambda_m,\sigma\vert_W),\]
-              因此为了完成证明，我们只需证明$G(\lambda_i,\sigma)=G(\lambda_i,\sigma\vert_W),\enspace i=2,\cdots,m$，而根据广义特征子空间的定义，包含关系$G(\lambda_i,\sigma\vert_W)\subset G(\lambda_i,\sigma)$是显然的，因此我们只需证明另一半包含. 设$v\in G(\lambda_i,\sigma)\subset V$，由\autoref{eq:16:广义特征子空间分解} 可知$v=v_1+w$，其中$v_1\in G(\lambda_1,\sigma),w\in W$. 而由归纳假设，$w=v_2+\cdots+v_m$，其中$v_i\in G(\lambda_i,\sigma\vert_W)$，因此$v=v_1+v_2+\cdots+v_m$，改写一下得到
+              因此为了完成证明，我们只需证明$G(\lambda_i,\sigma)=G(\lambda_i,\sigma\vert_W),\enspace i=2,\ldots,m$，而根据广义特征子空间的定义，包含关系$G(\lambda_i,\sigma\vert_W)\subset G(\lambda_i,\sigma)$是显然的，因此我们只需证明另一半包含. 设$v\in G(\lambda_i,\sigma)\subset V$，由\autoref{eq:16:广义特征子空间分解} 可知$v=v_1+w$，其中$v_1\in G(\lambda_1,\sigma),w\in W$. 而由归纳假设，$w=v_2+\cdots+v_m$，其中$v_i\in G(\lambda_i,\sigma\vert_W)$，因此$v=v_1+v_2+\cdots+v_m$，改写一下得到
               \[v_1+\cdots+(v_i-v)+\cdots+v_m=0,\]
               而我们根据上一条证明知道对应于不同特征值的广义特征向量线性无关，而$v_i-v\in G(\lambda_i,\sigma)$，因此只能有$v_1=\cdots=v_{i-1}=v_{i+1}=\cdots=v_m=0$，且$v=v_i$. 特别地有$v_1=0$，因此$v=w=v_i\in G(\lambda_i,\sigma\vert_W)$，故包含得证.
 
@@ -550,11 +550,11 @@
     设$V$是有限维复向量空间，对于任意的$\sigma\in \mathcal{L}(V)$，则一定存在$V$的一组基使得$\sigma$关于该组基有上三角矩阵.
 \end{theorem}
 \begin{proof}
-    仍然是经典的数学归纳法，$n=1$时结论显然. 现假设小于$n$维的复向量空间上的线性变换都可以找到一组基使得其关于这组基有上三角矩阵，现在考虑$n$维复向量空间. 因为是复向量空间，故$\sigma$一定存在特征值. 设$\lambda_1$是$\sigma$的一个特征值，我们考虑$U=\im(\sigma-\lambda_1 I)$，且$U$是$\sigma$的比$V$维数更小的不变子空间，因此我们可以用归纳假设，$U$存在一组基$u_1,\cdots,u_m$使得$\sigma\vert_U$有上三角矩阵. 根据\autoref{thm:上三角矩阵等价条件}，我们知道对于每个$j$都有
+    仍然是经典的数学归纳法，$n=1$时结论显然. 现假设小于$n$维的复向量空间上的线性变换都可以找到一组基使得其关于这组基有上三角矩阵，现在考虑$n$维复向量空间. 因为是复向量空间，故$\sigma$一定存在特征值. 设$\lambda_1$是$\sigma$的一个特征值，我们考虑$U=\im(\sigma-\lambda_1 I)$，且$U$是$\sigma$的比$V$维数更小的不变子空间，因此我们可以用归纳假设，$U$存在一组基$u_1,\ldots,u_m$使得$\sigma\vert_U$有上三角矩阵. 根据\autoref{thm:上三角矩阵等价条件}，我们知道对于每个$j$都有
     \[\sigma(u_j)=\sigma\vert_U(u_j)\in\spa(u_1,\ldots,u_j),\]
     这里我们只得到一部分的基使得限制映射有上三角矩阵，接下来我们要扩张到全空间上实现定理证明. 将上面取到的基扩充为
-    \[u_1,\cdots,u_m,v_1,\cdots,v_k,\]
-    要使得$\sigma$关于这组基有上三角矩阵，根据\autoref{thm:上三角矩阵等价条件}，我们只需验证对每个$i$都有$\sigma(v_i)\in\spa(u_1,\cdots,u_m,v_1,\cdots,v_i)$. 这是显然的，因为$\sigma(v_i)=(\sigma-\lambda_1 I)(v_i)+\lambda_1 v_i$，而根据$U$的定义$\sigma-\lambda_1 I$的像在$U$中，因此$\sigma(v_i)\in\spa(u_1,\cdots,u_m,v_1,\cdots,v_i)$，因此我们可以得到一组基使得$\sigma$关于这组基有上三角矩阵.
+    \[u_1,\ldots,u_m,v_1,\ldots,v_k,\]
+    要使得$\sigma$关于这组基有上三角矩阵，根据\autoref{thm:上三角矩阵等价条件}，我们只需验证对每个$i$都有$\sigma(v_i)\in\spa(u_1,\ldots,u_m,v_1,\ldots,v_i)$. 这是显然的，因为$\sigma(v_i)=(\sigma-\lambda_1 I)(v_i)+\lambda_1 v_i$，而根据$U$的定义$\sigma-\lambda_1 I$的像在$U$中，因此$\sigma(v_i)\in\spa(u_1,\ldots,u_m,v_1,\ldots,v_i)$，因此我们可以得到一组基使得$\sigma$关于这组基有上三角矩阵.
 \end{proof}
 
 综合\autoref{thm:上三角矩阵等价条件} 的第3点和\autoref{thm:上三角矩阵存在}，我们可以观察到不变子空间的另一个有趣的性质：
@@ -563,7 +563,7 @@
 \end{corollary}
 这是因为任意复向量空间上的线性变换都存在一组基使得矩阵表示为上三角矩阵，而存在上三角矩阵的其中一个充要条件是存在任意维数的不变子空间，因此任意复向量空间上的线性变换都存在任意维数的不变子空间. 如果我们更进一步地利用\autoref{thm:上三角矩阵等价条件} 的第三点，我们有如下推论：
 \begin{corollary}{}{}
-    设$V$是$n$维复向量空间. $\sigma\in \mathcal{L}(V)$，则存在$\sigma$的不变子空间$V_0,V_1,\cdots,V_n$使得$V_0\subseteq V_1\subseteq\cdots\subseteq V_n$，且$\dim V_i=i$.
+    设$V$是$n$维复向量空间. $\sigma\in \mathcal{L}(V)$，则存在$\sigma$的不变子空间$V_0,V_1,\ldots,V_n$使得$V_0\subseteq V_1\subseteq\cdots\subseteq V_n$，且$\dim V_i=i$.
 \end{corollary}
 
 事实上，根据\autoref{thm:上三角矩阵存在}，我们可以综合分块对角矩阵的存在性，将每个广义特征子空间的基取成上三角矩阵的基，然后将这些基拼在一起，就可以得到一个每个分块都是上三角矩阵的分块对角矩阵，显然比之前单纯的分块对角矩阵和上三角矩阵都要简单：

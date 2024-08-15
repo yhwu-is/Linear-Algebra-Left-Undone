@@ -73,13 +73,13 @@
     \item 利用分块对角矩阵分解
 
           \begin{proof}
-              设$\sigma$的特征值为$\lambda_1,\ldots,\lambda_m$，根据\autoref{thm:广义特征性质}，我们有广义特征子空间分解$V=G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_m}$. 设每个广义特征子空间的维数为$d_i$. 根据\autoref{thm:核空间性质} 核空间停止增长的性质，以及$\sigma\vert_{G_{\lambda_i}}$是幂零线性变换，我们知道一定有$(\sigma-\lambda_iI)^{d_i}=0$（因为$\sigma-\lambda_iI$在$G_{\lambda_i}$上的幂次的核空间最大维数为$d_i$，因此最多增长到$d_i$次幂）. 换句话说，设$f_i(\lambda)=(\lambda-\lambda_i)^{d_i}$，则$f_i(\sigma)$能将$G_{\lambda_i}$中向量都化零，而根据\autoref{thm:特征多项式与不变子空间}，$\sigma$在$V$上的特征多项式就是$f(\lambda)=f_1(\lambda)\cdots f_m(\lambda)$，而每个$f_i(\sigma)$都能将$G_{\lambda_i}$中的向量化零. 我们取$G_{\lambda_i}$的基为$v_{i1},\cdots,v_{is_i}$，合并成$V$的一组基$v_{11},\cdots,v_{1s_1},\cdots,v_{m1},\cdots,v_{ms_m}$，故对于任意的$v_{ij}$，根据\autoref{ex:矩阵多项式可交换} 的可交换性质，$f(\sigma)v=f_1(\sigma)\cdots f_{i-1}(\sigma)f_{i+1}(\sigma)\cdots f_m(\sigma)f_i(\sigma)v_{ij}=0$，即$f(\sigma)$能将$V$的一组基化零，根据线性映射的定义可知它也能将任意向量化零，故$f(\sigma)=0$，得证.
+              设$\sigma$的特征值为$\lambda_1,\ldots,\lambda_m$，根据\autoref{thm:广义特征性质}，我们有广义特征子空间分解$V=G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_m}$. 设每个广义特征子空间的维数为$d_i$. 根据\autoref{thm:核空间性质} 核空间停止增长的性质，以及$\sigma\vert_{G_{\lambda_i}}$是幂零线性变换，我们知道一定有$(\sigma-\lambda_iI)^{d_i}=0$（因为$\sigma-\lambda_iI$在$G_{\lambda_i}$上的幂次的核空间最大维数为$d_i$，因此最多增长到$d_i$次幂）. 换句话说，设$f_i(\lambda)=(\lambda-\lambda_i)^{d_i}$，则$f_i(\sigma)$能将$G_{\lambda_i}$中向量都化零，而根据\autoref{thm:特征多项式与不变子空间}，$\sigma$在$V$上的特征多项式就是$f(\lambda)=f_1(\lambda)\cdots f_m(\lambda)$，而每个$f_i(\sigma)$都能将$G_{\lambda_i}$中的向量化零. 我们取$G_{\lambda_i}$的基为$v_{i1},\ldots,v_{is_i}$，合并成$V$的一组基$v_{11},\ldots,v_{1s_1},\ldots,v_{m1},\ldots,v_{ms_m}$，故对于任意的$v_{ij}$，根据\autoref{ex:矩阵多项式可交换} 的可交换性质，$f(\sigma)v=f_1(\sigma)\cdots f_{i-1}(\sigma)f_{i+1}(\sigma)\cdots f_m(\sigma)f_i(\sigma)v_{ij}=0$，即$f(\sigma)$能将$V$的一组基化零，根据线性映射的定义可知它也能将任意向量化零，故$f(\sigma)=0$，得证.
           \end{proof}
 
     \item 利用上三角矩阵
 
           \begin{proof}
-              根据\autoref{thm:上三角矩阵存在}，我们设$\sigma$在基$v_1,\cdots,v_n$下的矩阵表示为
+              根据\autoref{thm:上三角矩阵存在}，我们设$\sigma$在基$v_1,\ldots,v_n$下的矩阵表示为
               \[A=\begin{pmatrix}
                       \lambda_1 & a_{12}    & \cdots & a_{1n}    \\
                       0         & \lambda_2 & \cdots & a_{2n}    \\
@@ -160,8 +160,8 @@
 \end{proof}
 
 \subsection{初等因子分解与若当标准形}
-事实上，学习了若当标准形后，我们已不满足于基于广义特征子空间的分解. 我们知道同一个特征值可能对应多个若当块，因此每个广义特征子空间还能继续分解，分解成可以得到若当块的由循环基张成的循环子空间的直和. 我们可以根据\autoref{cor:若当基存在} 形式化地写出这一分解：设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$，设每个特征值$\lambda_i(i=1,\cdots,n)$对应的广义特征子空间$K_{\lambda_i}$可以由$s_i$组若当基$B_{i1},B_{i2},\cdots,B_{is_i}$张成，其中每一组基都可以表达为：
-\[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\cdots,v_{ij}\},\]
+事实上，学习了若当标准形后，我们已不满足于基于广义特征子空间的分解. 我们知道同一个特征值可能对应多个若当块，因此每个广义特征子空间还能继续分解，分解成可以得到若当块的由循环基张成的循环子空间的直和. 我们可以根据\autoref{cor:若当基存在} 形式化地写出这一分解：设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$，设每个特征值$\lambda_i(i=1,\ldots,n)$对应的广义特征子空间$K_{\lambda_i}$可以由$s_i$组若当基$B_{i1},B_{i2},\ldots,B_{is_i}$张成，其中每一组基都可以表达为：
+\[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\ldots,v_{ij}\},\]
 事实上$r_{ij}$就是这组循环基的长度. 我们设由$B_{ij}$张成的循环子空间为$C_{ij}$，则有
 \[K_{\lambda_i}=C_{i1}\oplus C_{i2}\oplus\cdots\oplus C_{is_i}=\bigoplus_{j=1}^{s_i} C_{ij},\]
 再根据\autoref{thm:广义特征性质}，我们有
@@ -172,13 +172,13 @@
 简而言之，我们将$V$分解为了一系列循环子空间的直和，每个循环子空间的循环基对应一个若当块. 进一步地，我们也希望探究这一分解与多项式之间的联系. 这时我们需要回忆起\autoref{ex:多项式域扩张}，帮助我们得到如下结论：
 \begin{theorem}{}{循环子空间同构于商空间}
     设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$. 设
-    \[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\cdots,v_{ij}\}\]
+    \[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\ldots,v_{ij}\}\]
     是$V$的一组循环基，$C_{ij}$是由$B_{ij}$张成的循环子空间. 则有
     \[C_{ij}\cong \mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}}).\]
 \end{theorem}
 
 事实上证明这一定理是显然的，因为根据\autoref{ex:多项式域扩张}，我们知道$\mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$是一个$r_{ij}$维线性空间，与$C_{ij}$相同. 但为什么我们在这里选择这一特别的商空间呢？事实上，回顾\autoref{ex:多项式域扩张} 的解答，我们发现，这一商空间的基是
-\[\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\cdots,\overline{1},\]
+\[\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\ldots,\overline{1},\]
 其中$\overline{a}=a+(\lambda-\lambda_i)^{r_{ij}}$. 我们很容易发现这一基的形式与$B_{ij}$的形式完全是一一对应的：$(T-\lambda_iI)^kv_{ij}$对应$\overline{(\lambda-\lambda_i)^k}$，事实上，我们不难发现以下两个关系：
 \begin{gather*}
     B_{ij}=\{p(T)v_{ij}\mid \deg p\leqslant r_{ij}-1\},\\
@@ -188,7 +188,7 @@
 
 我们可以做进一步的观察，对于限制在$C_{ij}$上的线性映射$T|_{C_{ij}}$，我们利用同构映射将其自然地变为$\mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$上的线性映射$T'$：由于$T|_{C_{ij}}(p(T)v_{ij})=T\cdot p(T)v_{ij}$，根据同构我们有$T'(\overline{p(\lambda)})=\overline{\lambda\cdot p(\lambda)}$.
 
-事实上，由于映射$T'$和$T|_{C_{ij}}$是完全由它们对应的线性空间的同构映射$\phi$对应的，因此我们很自然地能知道，$T'$在基$\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\cdots,\overline{1}$下的矩阵实际上与$T|_{C_{ij}}$在基$B_{ij}$下的矩阵是完全一致的，即是一个若当块. 如果读者不相信，我们将这一结果的计算性验证留作习题.
+事实上，由于映射$T'$和$T|_{C_{ij}}$是完全由它们对应的线性空间的同构映射$\phi$对应的，因此我们很自然地能知道，$T'$在基$\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\ldots,\overline{1}$下的矩阵实际上与$T|_{C_{ij}}$在基$B_{ij}$下的矩阵是完全一致的，即是一个若当块. 如果读者不相信，我们将这一结果的计算性验证留作习题.
 
 总而言之，经过上面一系列看似繁杂的推演，我们事实上是想说明$C_{ij}$和$\mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$的同构是非常自然的，我们完全可以将$\mathbf{F}[\lambda]/((\lambda-\lambda_i)^{r_{ij}})$也视为一个循环子空间，并且我们也将循环基中出现的$(T-\lambda_i I)^k$中的多项式$(\lambda-\lambda_i)^k$提取出来，从而可以从多项式的角度来研究若当标准形. 利用这一同构，我们可以将\autoref{eq:19:循环子空间分解} 写为
 \begin{equation} \label{eq:19:初等因子分解}
@@ -335,7 +335,7 @@
 
 这一结论的直接应用就是若当标准形的极小多项式，并且基于若当标准形的极小多项式我们可以得到更多的结论. 我们首先利用之前讨论的若当块的极小多项式来得到若当形矩阵的极小多项式：
 \begin{example}{}{若当极小多项式}
-    设若当标准形$J$的互不相同的特征值为$\lambda_1,\cdots,\lambda_m$，每个特征值$\lambda_i$对应$s_i$个若当块，则可以将$J$表示为
+    设若当标准形$J$的互不相同的特征值为$\lambda_1,\ldots,\lambda_m$，每个特征值$\lambda_i$对应$s_i$个若当块，则可以将$J$表示为
     \[J=\begin{pmatrix}
             J_{11} &        &          &        &        &        &          \\
                    & \ddots &          &        &        &        &          \\
@@ -420,7 +420,7 @@
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 证明：\autoref{thm:循环子空间同构于商空间} 之后定义的线性映射$T'$在基$\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\cdots,\overline{1}$下的矩阵实际上就是一个若当块.
+    \item 证明：\autoref{thm:循环子空间同构于商空间} 之后定义的线性映射$T'$在基$\overline{(\lambda-\lambda_i)^{r_{ij}-1}},\overline{(\lambda-\lambda_i)^{r_{ij}-2}},\ldots,\overline{1}$下的矩阵实际上就是一个若当块.
     \item 已知某个实对称矩阵$A$的特征多项式为$\lambda^5+3\lambda^4-6\lambda^3-10\lambda^2+21\lambda-9$，求$A$的极小多项式.
     \item 设$V$为$n$阶方阵构成的线性空间，$\sigma\in \mathcal{L}(V),\enspace \forall A\in V,\enspace \sigma(A)=2A-3A^{\mathrm{T}}$.
           \begin{enumerate}

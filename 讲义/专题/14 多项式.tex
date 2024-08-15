@@ -143,13 +143,13 @@
 \end{theorem}
 \begin{proof}
     设$\deg p=n,\deg s=m$. 若$n<m$，则取$q=0,r=p$即可. 若$n\geqslant m$，我们有如下向量组：
-    \[1,x,\cdots,x^{m-1},s(x),xs(x),\cdots,x^{n-m}s(x),\]
-    它们在$\mathbf{F}_{n+1}[x]$中是线性无关的，这一点很容易验证，因为每个多项式次数都不同. 并且向量组的长度为$n+1=\dim\mathbf{F}_{n+1}[x]$，因此构成$\mathbf{F}_{n+1}[x]$的一组基. 因此有$p(x)$在这一组基下的坐标表示，即存在唯一的$a_0,a_1,\cdots,a_{m-1},b_0,b_1,\cdots,b_{n-m}\in\mathbf{F}$使得
+    \[1,x,\ldots,x^{m-1},s(x),xs(x),\ldots,x^{n-m}s(x),\]
+    它们在$\mathbf{F}_{n+1}[x]$中是线性无关的，这一点很容易验证，因为每个多项式次数都不同. 并且向量组的长度为$n+1=\dim\mathbf{F}_{n+1}[x]$，因此构成$\mathbf{F}_{n+1}[x]$的一组基. 因此有$p(x)$在这一组基下的坐标表示，即存在唯一的$a_0,a_1,\ldots,a_{m-1},b_0,b_1,\ldots,b_{n-m}\in\mathbf{F}$使得
     \begin{align*}
         p(x) & =a_0+a_1x+\cdots+a_{m-1}x^{m-1}+b_0s(x)+b_1xs(x)+\cdots+b_{n-m}x^{n-m}s(x) \\
              & =[a_0+a_1x+\cdots+a_{m-1}x^{m-1}]+[s(x)(b_0+b_1x+\cdots+b_{n-m}x^{n-m})].
     \end{align*}
-    取$q(x)=b_0+b_1x+\cdots+b_{n-m}x^{n-m}$，$r(x)=a_0+a_1x+\cdots+a_{m-1}x^{m-1}$即可满足定理要求. 唯一性直接根据$a_0,a_1,\cdots,a_{m-1},b_0,b_1,\cdots,b_{n-m}$的唯一性就可以得到.
+    取$q(x)=b_0+b_1x+\cdots+b_{n-m}x^{n-m}$，$r(x)=a_0+a_1x+\cdots+a_{m-1}x^{m-1}$即可满足定理要求. 唯一性直接根据$a_0,a_1,\ldots,a_{m-1},b_0,b_1,\ldots,b_{n-m}$的唯一性就可以得到.
 \end{proof}
 
 上述证明利用了线性空间的性质，事实上我们还有基于线性映射的证明思路，也有完全代数的证明角度，我们放在习题中供读者练习. 根据带余除法，我们知道的非零多项式$s(x)$整除$p(x)$当且仅当$s(x)$除$p(x)$后余数为$0$. 事实上这一定理的结论是非常重要的，我们解决很多问题都是基于这一定理，例如：
@@ -225,10 +225,10 @@
 
 进一步地，我们可以类似定义多个多项式的最大公因式的概念，并且显然的一点是，多个多项式的最大公因式也是存在的，并且有如下结论：
 \begin{theorem}{}{}
-    设$p_1(x),p_2(x),\cdots,p_n(x)\in\mathbf{F}[x]$，则它们的最大公因式$d(x)$必存在，且有：
+    设$p_1(x),p_2(x),\ldots,p_n(x)\in\mathbf{F}[x]$，则它们的最大公因式$d(x)$必存在，且有：
     \begin{enumerate}
-        \item $((p_1(x),p_2(x)),p_3(x),\cdots,p_n(x))=(p_1(x),p_2(x),\cdots,p_n(x))$，并且最大公因式显然与多项式排列顺序无关，因此我们可以先求其中任意两个多项式的最大公因式，然后把问题转化为求解$n-1$个多项式的最大公因式的问题，不断重复这一过程直到求出所有多项式的最大公因式；
-        \item 存在$u_1(x),u_2(x),\cdots,u_n(x)\in\mathbf{F}[x]$使得
+        \item $((p_1(x),p_2(x)),p_3(x),\ldots,p_n(x))=(p_1(x),p_2(x),\ldots,p_n(x))$，并且最大公因式显然与多项式排列顺序无关，因此我们可以先求其中任意两个多项式的最大公因式，然后把问题转化为求解$n-1$个多项式的最大公因式的问题，不断重复这一过程直到求出所有多项式的最大公因式；
+        \item 存在$u_1(x),u_2(x),\ldots,u_n(x)\in\mathbf{F}[x]$使得
               \[d(x)=u_1(x)p_1(x)+u_2(x)p_2(x)+\cdots+u_n(x)p_n(x).\]
     \end{enumerate}
 \end{theorem}
@@ -309,7 +309,7 @@
 \end{quotation}
 即，一个整数除以三余二，除以五余三，除以七余二，求这个整数. 《孙子算经》中首次提到了同余方程组问题，以及以上具体问题的解法，因此在中文数学文献中也会将中国剩余定理称为孙子定理. 这里将要介绍的版本是多项式版本，事实上回忆整数和多项式都构成环这一代数结构，读者一定能想到无论是整数还是多项式版本实际上都是环上中国剩余定理的特例. 中国剩余定理的多项式版本如下：
 \begin{theorem}{中国剩余定理}{中国剩余定理}
-    设$q_1(x),q_2(x),\cdots,q_n(x)\in\mathbf{F}[x]$两两互素，即$(q_i(x),q_j(x))=1,\enspace\forall i,j\in\{1,2,\cdots,n\}$，则对任意的$r_1(x),r_2(x),\cdots,r_n(x)\in\mathbf{F}[x]$，方程组
+    设$q_1(x),q_2(x),\ldots,q_n(x)\in\mathbf{F}[x]$两两互素，即$(q_i(x),q_j(x))=1,\enspace\forall i,j\in\{1,2,\ldots,n\}$，则对任意的$r_1(x),r_2(x),\ldots,r_n(x)\in\mathbf{F}[x]$，方程组
     \begin{equation} \label{eq:14:中国剩余定理}
         \begin{cases}
             p(x)\equiv r_1(x)\pmod{q_1(x)}, \\
@@ -335,7 +335,7 @@
     显然$p_k(x)$符合要求，因此我们构造出了这组方程的解为$p(x)=\sum\limits_{k=1}^nr_k(x)p_k(x)$.
 
     最后我们说明解在模$Q(x)=\prod\limits_{i=1}^nq_k(x)$下的唯一性. 设$p_1(x),p_2(x)$都是\autoref{eq:14:中国剩余定理} 的解，于是
-    \[p_1(x)\equiv p_2(x)\pmod{q_k(x)},\enspace k=1,2,\cdots,n,\]
+    \[p_1(x)\equiv p_2(x)\pmod{q_k(x)},\enspace k=1,2,\ldots,n,\]
     即$p_1(x)-p_2(x)$必然是每个$q_k(x)$的倍式，又由于$q_k(x)$两两互素，故$p_1(x)-p_2(x)$是$Q(x)$的倍式，即$p_1(x)\equiv p_2(x)\pmod{Q(x)}$，故解唯一.
 \end{proof}
 
@@ -375,7 +375,7 @@
               \begin{equation} \label{eq:14:多项式的唯一分解}
                   p(x)=q_1(x)q_2(x)\cdots q_m(x)=s_1(x)s_2(x)\cdots s_n(x),
               \end{equation}
-              为$p(x)$的两个不可约分解，即所有的$q_i(x),s_j(x)$都是不可约多项式，则$m=n$，且经过适当调换顺序后有$q_i(x)\sim s_i(x),\enspace i=1,2,\cdots,n$.
+              为$p(x)$的两个不可约分解，即所有的$q_i(x),s_j(x)$都是不可约多项式，则$m=n$，且经过适当调换顺序后有$q_i(x)\sim s_i(x),\enspace i=1,2,\ldots,n$.
     \end{enumerate}
 \end{theorem}
 定理的第一条表明不可约分解是存在的，第二条表明分解在不计不可约多项式次序以及相伴的意义下唯一. 下面我们给出定理的证明：
@@ -386,7 +386,7 @@
               \[s_1(x)=cq_1(x),\]
               其中$c$是非零常数. 将上式代入\autoref{eq:14:多项式的唯一分解} 并消去$p_1(x)$得
               \[q_2(x)\cdots q_m(x)=c_2s_2(x)\cdots s_n(x),\]
-              由归纳法知$m=n$且经过适当调换顺序后有$q_i(x)\sim s_i(x),\enspace i=2,\cdots,n$. 并且前面的证明也有$q_1(x)\sim s_1(x)$，故对于$n$个不可约多项式的情况定理成立.
+              由归纳法知$m=n$且经过适当调换顺序后有$q_i(x)\sim s_i(x),\enspace i=2,\ldots,n$. 并且前面的证明也有$q_1(x)\sim s_1(x)$，故对于$n$个不可约多项式的情况定理成立.
     \end{enumerate}
 \end{proof}
 
@@ -457,7 +457,7 @@
                   \item 充分性：这一方向比较显然，若存在多项式$q\in\mathbf{F}[x]$使得$p(x)=(x-\lambda)q(x)$，将$\lambda$代入得$p(\lambda)=0$.
                   \item 必要性：使用带余除法，我们有$p(x)=(x-\lambda)q(x)+r$，其中$\deg r<\deg(x-\lambda)=1$，故$r$是常数多项式，代入$x=\lambda$得$r=0$，故$p(x)=(x-\lambda)q(x)$.
               \end{enumerate}
-        \item 反证法，假设$p(x)$有$m+1$个互不相等的零点$\lambda_1,\lambda_2,\cdots,\lambda_{m+1}$，则由（1）知$p(x)=(x-\lambda_1)(x-\lambda_2)\cdots(x-\lambda_{m+1})q(x)$，但$\deg p=m$，但等式右侧多项式次数大于$m$，矛盾.
+        \item 反证法，假设$p(x)$有$m+1$个互不相等的零点$\lambda_1,\lambda_2,\ldots,\lambda_{m+1}$，则由（1）知$p(x)=(x-\lambda_1)(x-\lambda_2)\cdots(x-\lambda_{m+1})q(x)$，但$\deg p=m$，但等式右侧多项式次数大于$m$，矛盾.
         \item 反证法，假设$p(x)$有零点$\lambda$，则由（1）知$p(x)=(x-\lambda)q(x)$，但$p(x)$是不可约多项式，不能分解为两个次数更低的多项式的乘积，矛盾.
     \end{enumerate}
 \end{proof}
@@ -505,7 +505,7 @@
 
 除此之外，我们也可以得到中学中我们熟知的韦达定理的一般版本，即多项式的根与系数之间的关系：
 \begin{theorem}{韦达定理}{韦达定理}
-    设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in\mathbf{F}[x]$，$\lambda_1,\lambda_2,\cdots,\lambda_n$是$p(x)$视为复数域上多项式的$n$个根，则
+    设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in\mathbf{F}[x]$，$\lambda_1,\lambda_2,\ldots,\lambda_n$是$p(x)$视为复数域上多项式的$n$个根，则
     \begin{gather*}
         \sum\limits_{i=1}^n\lambda_i=-\frac{a_{n-1}}{a_n},\\
         \sum\limits_{1\leqslant i<j\leqslant n}\lambda_i\lambda_j=\frac{a_{n-2}}{a_n},\\
@@ -575,7 +575,7 @@
 
 接下来我们便可以讨论有理数域上的多项式的因式分解. 实际上有理系数多项式和整系数多项式的可约性是一致的. 为了证明这一漂亮的结果，我们首先引入本原项式的概念：
 \begin{definition}{}{}
-    设$p(x)\in\mathbf{Z}[x]$，若$(a_0,a_1,\cdots,a_n)=1$，则称$p(x)$是\term{本原多项式}\index{benyuanduoxishi@本原多项式}.
+    设$p(x)\in\mathbf{Z}[x]$，若$(a_0,a_1,\ldots,a_n)=1$，则称$p(x)$是\term{本原多项式}\index{benyuanduoxishi@本原多项式}.
 \end{definition}
 即本原多项式是整系数多项式且其系数的最大公因式为$1$的多项式. 有了本原多项式的概念，我们可以得到如下高斯引理：
 \begin{lemma}{高斯引理}{高斯引理}
@@ -584,7 +584,7 @@
 \begin{proof}
     设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$，$q(x)=b_mx^m+b_{m-1}x^{m-1}+\cdots+b_1x+b_0$，则$p(x)q(x)$的系数为
     \[c_k=\sum_{i+j=k}a_ib_j,\]
-    反证法，假设$p(x)q(x)$不是本原多项式，则存在素数$p$使得$p\mid c_k$. 由于$p(x)$和$q(x)$是本原多项式，因此$p$不可能整除同时整除它们的系数，于是可设$p\mid a_0,p\mid a_1,\cdots,p\mid a_{i-1}$但$p\nmid a_i$，$p\mid b_0,p\mid b_1,\cdots,p\mid b_{j-1}$但$p\nmid b_j$. 注意到
+    反证法，假设$p(x)q(x)$不是本原多项式，则存在素数$p$使得$p\mid c_k$. 由于$p(x)$和$q(x)$是本原多项式，因此$p$不可能整除同时整除它们的系数，于是可设$p\mid a_0,p\mid a_1,\ldots,p\mid a_{i-1}$但$p\nmid a_i$，$p\mid b_0,p\mid b_1,\ldots,p\mid b_{j-1}$但$p\nmid b_j$. 注意到
     \[c_{i+j}=\cdots+a_{i-2}b{j+2}+a_{i-1}b_{j+1}+a_ib_j+a_{i+1}b_{j-1}+\cdots,\]
     我们发现，$p$可以整除右式除$a_ib_j$外的每一项，故$p$不可能整除$c_{i+j}$，与假设矛盾，因此$p(x)q(x)$一定是本原多项式.
 \end{proof}
@@ -607,7 +607,7 @@
 \begin{theorem}{艾森斯坦判别法}{艾森斯坦判别法}
     设$p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in\mathbf{Z}[x]$，$a_n\neq 0$且$n\geqslant 1$，若存在一个素数$p$，满足
     \begin{enumerate}
-        \item $p\mid a_0,p\mid a_1,\cdots,p\mid a_{n-1}$，
+        \item $p\mid a_0,p\mid a_1,\ldots,p\mid a_{n-1}$，
         \item $p\nmid a_n$，
         \item $p^2\nmid a_0$，
     \end{enumerate}
@@ -618,7 +618,7 @@
     \[f(x)=(b_mx^m+b_{m-1}x^{m-1}+\cdots+b_0)(c_tx^t+c_{t-1}x^{t-1}+\cdots+c_0),\]
     其中$m+t=n$. 显然$a_0=b_0c_0,a_n=b_mc_t$，由于$p\mid a_0$且$p$是素数，故$p\mid b_0$或$p\mid c_0$，又$p^2\nmid a_0$，故$p$不能同时整除$b_0$和$c_0$，不妨设$p\mid b_0$且$p\nmid c_0$. 又由假设$p\nmid a_n=b_mc_t$，故$p\nmid b_m$且$p\nmid c_t$.
 
-    因此，我们不妨设$p\mid b_0,p\mid b_1,\cdots,p\mid b_{j-1}$，其中$0<j\leqslant m<n$. 而
+    因此，我们不妨设$p\mid b_0,p\mid b_1,\ldots,p\mid b_{j-1}$，其中$0<j\leqslant m<n$. 而
     \[a_j=b_jc_0+b_{j-1}c_1+\cdots+b_0c_j,\]
     根据假设$p\mid a_j$，但我们发现$p$可以整除右式除$b_jc_0$外的每一项，故$p$不可能整除$a_j$，矛盾，因此$p(x)$在整数环上不可约.
 \end{proof}
@@ -660,13 +660,13 @@
                         因此$f(x)+g(x)=p(x)q_1(x)+p(x)q_2(x)=p(x)(q_1(x)+q_2(x))\in(p(x))$；
                   \item 设$f(x)\in(p(x)),\lambda\in\mathbf{F}$，则存在$q(x)\in\mathbf{F}[x]$使得$f(x)=p(x)q(x)$，因此$\lambda f(x)=\lambda p(x)q(x)=p(x)(\lambda q(x))\in(p(x))$.
               \end{enumerate}
-        \item 令$n=\deg p$. 我们知道，$\mathbf{F}[x]/(p(x))$的元素都具有$a_kx^k+\cdots+a_1x+a_0+(p(x))$的形式，其中$a_k,\cdots,a_1,a_0\in\mathbf{F}$，并且当$k\geqslant n$时，由带余除法我们有
+        \item 令$n=\deg p$. 我们知道，$\mathbf{F}[x]/(p(x))$的元素都具有$a_kx^k+\cdots+a_1x+a_0+(p(x))$的形式，其中$a_k,\ldots,a_1,a_0\in\mathbf{F}$，并且当$k\geqslant n$时，由带余除法我们有
               \[a_kx^k+\cdots+a_1x+a_0=p(x)q(x)+r(x),\]
               其中$\deg r(x)<n$. 我们回忆商空间的定义，必然有
               \[a_kx^k+\cdots+a_1x+a_0+(p(x))=r(x)+(p(x)),\]
               因此$\mathbf{F}[x]/(p(x))$的元素可以表示为
               \[c_tx^t+\cdots+c_1x+c_0+(p(x))\]
-              的形式，其中$t<n$. 因此我们直接取向量组$\{1+(p(x)),x+(p(x)),\cdots,x^{n-1}+(p(x))\}$作为$\mathbf{F}[x]/(p(x))$的一组基即可，因为它们首先能张成$\mathbf{F}[x]/(p(x))$，其次它们是线性无关的，因为
+              的形式，其中$t<n$. 因此我们直接取向量组$\{1+(p(x)),x+(p(x)),\ldots,x^{n-1}+(p(x))\}$作为$\mathbf{F}[x]/(p(x))$的一组基即可，因为它们首先能张成$\mathbf{F}[x]/(p(x))$，其次它们是线性无关的，因为
               \[k_0(1+p(x))+k_1(x+p(x))+\cdots+k_{n-1}(x^{n-1}+p(x))=0+(p(x))\]
               等价于
               \[k_0+k_1x+\cdots+k_{n-1}x^{n-1}\in(p(x)),\]
@@ -710,7 +710,7 @@
     \item 证明：$\mathbf{F}[x]$中两个次数大于0的多项式没有公共复根的充要条件是它们互素.
     \item 设$p\in\mathbf{F}[x]$且$q\neq 0$. 证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
           \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
-    \item 设$p(x)$和$q(x)$是$\mathbf{F}[x]$中的两个次数不超过$n$的多项式，若存在$\mathbf{F}$上$n+1$个不同的数$\lambda_0,\lambda_1,\cdots,\lambda_n$使得$p(\lambda_i)=q(\lambda_i),\enspace i=0,1,\cdots,n$，则$p(x)=q(x)$.
+    \item 设$p(x)$和$q(x)$是$\mathbf{F}[x]$中的两个次数不超过$n$的多项式，若存在$\mathbf{F}$上$n+1$个不同的数$\lambda_0,\lambda_1,\ldots,\lambda_n$使得$p(\lambda_i)=q(\lambda_i),\enspace i=0,1,\ldots,n$，则$p(x)=q(x)$.
 \end{enumerate}
 
 \centerline{\heiti C组}
