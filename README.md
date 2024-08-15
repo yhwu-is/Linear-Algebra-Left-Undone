@@ -32,3 +32,9 @@
 ## 手动编译
 
 在仓库目录下运行 `make` 编译讲义与习题参考答案，运行 `make main` 或 `make ans` 分别编译，或在对应文件夹下运行 `make`. 编译完成的 PDF 位于对应文件夹下.
+
+也可以使用 Docker 编译：
+
+```bash
+docker run -v "$PWD":/workdir -e TERM=xterm --rm texlive/texlive:latest make
+```
