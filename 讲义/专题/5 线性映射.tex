@@ -367,7 +367,7 @@
 \end{example}
 
 \begin{proof}
-    与\autoref{thm:线性映射基本定理} 证明类似，我们``设小扩大''. 设$\dim W=n,\enspace\dim\ker\sigma\cap W=k$，设$\ker\sigma\cap W$的一组基为$\alpha_1,\alpha_2,\ldots,\alpha_k$，我们将其扩充为$W$的一组基，记为
+    与\nameref{thm:线性映射基本定理}证明类似，我们``设小扩大''. 设$\dim W=n,\enspace\dim\ker\sigma\cap W=k$，设$\ker\sigma\cap W$的一组基为$\alpha_1,\alpha_2,\ldots,\alpha_k$，我们将其扩充为$W$的一组基，记为
     \[\alpha_1,\alpha_2,\ldots,\alpha_k,\alpha_{k+1},\ldots,\alpha_n.\]
 
     根据定理要证明的等式和前述假设，我们只需证$\dim\sigma(W)=n-k$. 我们知道像空间为$\sigma(W)=\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$，其中根据我们的假设，$\sigma(\alpha_1)=\sigma(\alpha_2)=\cdots=\sigma(\alpha_k)=0$，因此像空间为$\spa(\sigma(\alpha_{k+1}),\ldots,\sigma(\alpha_n))$. 我们只需证明这一向量组是线性无关的即可，因为这样这$n-k$个向量就可以构成像空间的一组基，从而证明了$\dim\sigma(W)=n-k$.
@@ -431,7 +431,7 @@
           \begin{proof}
               回忆直和的证明方法，我们这里利用先证明和为直和（即交为$\{0\}$）再证等号成立的方法. 设$\alpha\in\ker\sigma\cap\im \sigma$，则$\sigma(\alpha)=0$，且存在$\beta\in V$使得$\sigma(\beta)=\alpha$，因此利用$\sigma^2=\sigma$有
               \[0=\sigma(\alpha)=\sigma(\sigma(\beta))=\sigma^2(\beta)=\sigma(\beta)=\alpha,\]
-              即$\ker\sigma\cap\im \sigma=\{0\}$，因此和为直和. 又由\autoref{thm:线性映射基本定理} 可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
+              即$\ker\sigma\cap\im \sigma=\{0\}$，因此和为直和. 又由\nameref{thm:线性映射基本定理}可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
           \end{proof}
 
     \item 关于核空间，我们有如下定理，这一定理在之后讨论矩阵标准形的时候非常有用：
@@ -494,7 +494,7 @@
                         \[\alpha=k_1\beta_1+\cdots+k_s\beta_s,\]
                         由于
                         \[0=\sigma(\alpha)=k_1\sigma(\beta_1)+\cdots+k_s\sigma(\beta_s),\]
-                        由$\sigma(\beta_1),\ldots,\sigma(\beta_s)$是一组基可知$k_1=\cdots=k_s=0$，因此$\alpha=0$，故$\ker\sigma\cap\im\sigma=\{0\}$，因此和为直和. 又由\autoref{thm:线性映射基本定理} 可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
+                        由$\sigma(\beta_1),\ldots,\sigma(\beta_s)$是一组基可知$k_1=\cdots=k_s=0$，因此$\alpha=0$，故$\ker\sigma\cap\im\sigma=\{0\}$，因此和为直和. 又由\nameref{thm:线性映射基本定理}可知，$\dim V=\dim\ker\sigma+\dim\im \sigma$，因此$V=\ker\sigma\oplus\im \sigma$.
               \end{enumerate}
           \end{proof}
 
