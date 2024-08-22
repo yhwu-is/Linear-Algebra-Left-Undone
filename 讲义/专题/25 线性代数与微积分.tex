@@ -173,7 +173,7 @@
     \begin{enumerate}
         \item 令 $\Vert A^{-1}\Vert = \dfrac{1}{\alpha}$，$\Vert B-A\Vert = \beta$，那么 $\beta < \alpha$，对于每一个 $x\in \mathbf{R}^n$，
         \[\begin{aligned}
-            a\Vert x\Vert &= \alpha\Vert A^{-1}Ax\Vert \leqslant \alpha \Vert A^{-1}\Vert \cdot \Vert Ax \Vert \\
+            \alpha\Vert x\Vert &= \alpha\Vert A^{-1}Ax\Vert \leqslant \alpha \Vert A^{-1}\Vert \cdot \Vert Ax \Vert \\
             &= \Vert Ax\Vert \leqslant \Vert (A - B)x\Vert + \Vert Bx\Vert \leqslant \beta\Vert x\Vert + \Vert Bx\Vert,
         \end{aligned}\]
         因此 \[(\alpha - \beta)\Vert x\vert \leqslant \Vert Bx\Vert,\enspace \forall x\in \mathbf{R}^n.\]
@@ -183,6 +183,11 @@
         当 $B\to A$ 时，$\beta\to 0$，这就证明了 $A\to A^{-1}$ 是连续映射.
     \end{enumerate}
 \end{proof}
+
+在做题的时候，我们经常会遇见可逆矩阵，这不是因为我们的题目有多么“好心”，而是因为可逆矩阵“在数量上”是远远多于不可逆矩阵的. 事实上有：实数域上的不可逆矩阵在 $\mathbf{R}^{n\times n}$ 中为零测集，可逆矩阵在 $\mathbf{R}^{n\times n}$ 中是稠密的，每个不可逆矩阵都可以被一列可逆矩阵逼近.
+
+前半段很简单，若 $A$ 为不可逆矩阵，那么 $\det A = 0$，取出 $A$ 的每个元素 $a_i$，$(1\leqslant i\leqslant n^2)$，将 $a_i$ 视为 $\mathbf{R}$ 上的一个变量，那么 $\det A$ 就是关于 $a_i$ 的一个多项式，这个多项式的零点对应的元素形成的矩阵构成的集合就是不可逆矩阵的集合，显然是零测的. 对于后半段，我们证明这样的结论：$A\in\mathbf{R}^{n\times n}$ 为任意取的一个矩阵，则在任意范数下都存在着可逆矩阵任意趋近 $A$，这就说明了可逆矩阵在 $\mathbf{R}^{n\times n}$ 中是稠密的. 另取任意可逆矩阵 $B\in\mathbf{R}^{n\times n}$，构造关于 $t\in \mathbf{R}$ 的多项式函数 \[g(t) = \det((1 - t)A + tB),\]
+该多项式函数不恒为 $0$，这样非零的多项式函数只有有限个零点，任取一个零点 $t_0$，如果 $t$ 距离 $t_0$ 足够近但是不等于 $t_0$，就有 $g(t) \neq0$，这就有 $(1 - t)A + tB$ 为可逆矩阵，并且其与 $A$ 的距离为 $d = \vert t\vert \Vert A - B\Vert$，当 $t$ 足够小的时候，距离 $d$ 就趋向 $0$. 所以得证.
 
 \section{多元函数微分学}
 
