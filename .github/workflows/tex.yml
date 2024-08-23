@@ -16,7 +16,7 @@ jobs:
     name: Build document
     runs-on: ubuntu-latest
     container:
-      image: registry.gitlab.com/islandoftex/images/texlive:latest
+      image: registry.gitlab.com/islandoftex/images/texlive:TL2023-historic
 
     steps:
       - name: Checkout
