@@ -257,13 +257,13 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 
 \begin{example}{}{}
     \begin{enumerate}
-        \item 定义如下的函数 $\varphi : \mathbf{F}^{3} \rightarrow \mathbf{F}$
+        \item 定义如下的函数 $\varphi\colon \mathbf{F}^{3} \rightarrow \mathbf{F}$
               \[\varphi(z_1, z_2, z_3) = 2z_1 - 5z_2 + z_3\]
               是 $\mathbf{F}^{3}$ 上的线性泛函. 我们可以将其写成以下形式：$ \forall z \in \mathbf{F}^{3}$，
               \[\varphi(z) = \langle z, u\rangle\]
               其中 $u = (2, -5, 1)$.
 
-        \item 定义如下的函数 $\varphi$: $\mathbf{R}[x]_2 \rightarrow \mathbf{R}$
+        \item 定义如下的函数 $\varphi\colon \mathbf{R}[x]_2 \rightarrow \mathbf{R}$
               \[\varphi(p) = \int_{-1}^1 p(t)(\cos(\pi t))\,\mathrm{d}t\]
               是 $\mathbf{R}[x]_2$ 上的线性泛函, 此处的内积为\autoref{ex:内积和范数} \ref*{item:23:内积和范数:2} 中定义的. 但以下的事实并不那么显然：$ \exists u \in \mathbf{R}[x]_2$, 使得$\forall p \in \mathbf{R}[x]_2$ 均有 $ \varphi (p) = \langle p, u\rangle $.
     \end{enumerate}
