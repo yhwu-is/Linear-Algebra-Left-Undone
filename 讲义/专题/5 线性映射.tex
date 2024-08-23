@@ -64,11 +64,11 @@
 \begin{example}{}{}
     数学分析与概率论中的线性映射：
     \begin{enumerate}
-        \item (极限) $\displaystyle\lim_{n\to +\infty}(\lambda a_n+\mu b_n)=\lambda\displaystyle\lim_{n\to +\infty}a_n+\mu\displaystyle\lim_{n\to +\infty}b_n$；
+        \item (极限) $\displaystyle\lim_{n\to +\infty}(\lambda a_n+\mu b_n)=\lambda\lim_{n\to +\infty}a_n+\mu\displaystyle\lim_{n\to +\infty}b_n$；
 
         \item (求导) $(\lambda f(x)+\mu g(x))'=\lambda f'(x)+\mu g'(x)$；
 
-        \item (积分) $\displaystyle\int_a^b(\lambda f(x)+\mu g(x))\,\mathrm{d}x=\lambda\displaystyle\int_a^bf(x)\,\mathrm{d}x+\mu\displaystyle\int_a^bg(x)\,\mathrm{d}x$；
+        \item (积分) $\displaystyle\int_a^b(\lambda f(x)+\mu g(x))\,\mathrm{d}x=\lambda\int_a^bf(x)\,\mathrm{d}x+\mu\displaystyle\int_a^bg(x)\,\mathrm{d}x$；
 
         \item (数学期望) $\mathrm{E}(\lambda X+\mu Y)=\lambda \mathrm{E}(X)+\mu \mathrm{E}(Y)$.
     \end{enumerate}
@@ -406,7 +406,7 @@
 还需注意的是，这一定理前提要求是有限维空间上的线性变换，因为我们可以给出如下例子：
 
 \begin{example}{}{}
-    设$V$是全体定义在实数域，取值于实数域的连续函数关于一般的函数加法和数乘构成的线性空间，$\sigma:V\to V$定义为$\sigma(f)=f'$，即求导变换，则$\sigma$是线性变换，且显然$\sigma$是满射（因为任意连续函数$g$一定黎曼可积，所以一定能在$V$中找到原函数使得原函数的导数为$g$），但$\sigma$不是单射，例如对于$g(x)=2x$有$f(x)=x^2+C$（$C$为任意常数）都可以有$f'(x)=g(x)$. 因此我们发现这里定义在无限维线性空间$V$中的线性变换使得上面的定理中单射满射不等价.
+    设$V$是全体定义在实数域，取值于实数域的可微函数关于一般的函数加法和数乘构成的线性空间，$\sigma:V\to V$定义为$\sigma(f)=f'$，即求导变换，则$\sigma$是线性变换，且显然$\sigma$是满射（因为任意连续函数$g$一定黎曼可积，所以一定能在$V$中找到原函数使得原函数的导数为$g$），但$\sigma$不是单射，例如对于$g(x)=2x$有$f(x)=x^2+C$（$C$为任意常数）都可以有$f'(x)=g(x)$. 因此我们发现这里定义在无限维线性空间$V$中的线性变换使得上面的定理中单射满射不等价.
 \end{example}
 
 \section{像与核的进一步讨论}
@@ -482,7 +482,7 @@
                   \item $(2)\implies(3)$：由\autoref{thm:核空间性质} 可知$\ker\sigma\subseteq\ker\sigma^2$，又任取$\alpha\in\ker\sigma^2$，则
                         \[0=\sigma^2(\alpha)=\sigma(\sigma(\alpha)),\]故$\sigma(\alpha)\in\ker\sigma\cap\im\sigma$，即$\sigma(\alpha)=0$，因此$\alpha\in\ker\sigma$，故$\ker\sigma^2\subseteq\ker\sigma$，因此$\ker\sigma=\ker\sigma^2$；
 
-                  \item $(3)\implies(4)$：令$\alpha\in\im\sigma^2$，故存在$\beta\in v$使得$\alpha=\sigma^2(\beta)=\sigma(\sigma(\beta))$，即$\alpha\in\im\sigma$，因此$\im\sigma^2\subseteq\im\sigma$，又由（3）知
+                  \item $(3)\implies(4)$：令$\alpha\in\im\sigma^2$，故存在$\beta\in V$使得$\alpha=\sigma^2(\beta)=\sigma(\sigma(\beta))$，即$\alpha\in\im\sigma$，因此$\im\sigma^2\subseteq\im\sigma$，又由（3）知
                         \[\dim\im\sigma^2=n-\dim\ker\sigma^2=n-\dim\ker\sigma=\dim\im\sigma,\]
                         因此$\im\sigma^2=\im\sigma$；
 
@@ -503,14 +503,14 @@
           \begin{proof}
               这一结论的证明需要结合两个维数公式. 事实上，由线性空间维数公式有
               \[\dim(\ker\sigma+\im \sigma)=\dim\ker\sigma+\dim\im \sigma-\dim(\ker\sigma \cap \im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)\]
-              因此只需证明$\dim(\ker\sigma+\im \sigma) \geqslant \dfrac{n}{2}$.
+              因此只需证明$\dim(\ker\sigma+\im \sigma) \leqslant \dfrac{n}{2}$.
 
               我们用反证法，我们知道$\ker\sigma\cap \im \sigma$是$\ker\sigma$和$\im\sigma$的子空间，因此
               \begin{gather*}
                   \dim(\ker\sigma\cap \im \sigma) \leqslant \dim\ker\sigma \\
                   \dim(\ker\sigma\cap \im \sigma) \leqslant \dim\im\sigma
               \end{gather*}
-              故若$\dim(\ker\sigma+\im \sigma)>\dfrac{n}{2}$，则有
+              故若$\dim(\ker\sigma\cap \im \sigma)>\dfrac{n}{2}$，则有
               \[\dim\ker\sigma+\dim\im \sigma>n\]
               与线性映射基本定理矛盾，因此$\dim(\ker\sigma+\im \sigma) \geqslant \dfrac{n}{2}$成立.
 

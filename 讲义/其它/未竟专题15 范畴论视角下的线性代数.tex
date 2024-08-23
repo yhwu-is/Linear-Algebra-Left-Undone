@@ -30,7 +30,7 @@
     \end{enumerate}
 \end{definition}
 
-对这个定义，需要进行一些说明. 我们用“一族”的地方所指的未必是“一个集合”. 这是为了避免一些集合论上的麻烦，出现例如集合的集合之类的问题. 在范畴不会引起误会的情况下，我们将 $\Hom_\cC (A, B)$ 简记成 $\Hom (A, B)$，其中的元素 $f$ 也写成 $f: A \to B$ 或者 $A \stackrel{f}{\to} B$.
+对这个定义，需要进行一些说明. 我们用“一族”的地方所指的未必是“一个集合”. 这是为了避免一些集合论上的麻烦，出现例如集合的集合之类的问题. 在范畴不会引起误会的情况下，我们将 $\Hom_\cC (A, B)$ 简记成 $\Hom (A, B)$，其中的元素 $f$ 也写成 $f\colon A \to B$ 或者 $A \stackrel{f}{\to} B$.
 
 对于本书的读者而言，最熟悉的范畴无疑是线性空间的范畴. 准确地说，是域 $\F$ 上的有限维线性空间的范畴. 我们将其记作 $\FVect_\F$. 其中的对象就是所有的有限维线性空间，两个线性空间 $V, W$ 之间的态射 $\Hom (V, W) = \mathcal{L}(V, W)$. 另一个熟悉的范畴是 $\Set$，其中的对象就是所有集合，两个集合 $S, T$ 之间的态射就是从 $S$ 到 $T$ 的映射. 但是，出于习惯考量，当后面我们提及 $\Set$ 时，涉及的态射会变成从集合 $S$ 到 $T$ 的含入映射. 当然，范畴的对象并不总是这样“类似集合”的东西，虽然目前为止，这样理解已经足够了.
 
@@ -145,9 +145,9 @@
 \begin{example}{}{}
     一个线性空间到某个商空间的投影映射. 考虑所有包含子空间 $U$ 的有限维线性空间. 显然，它们构成一个范畴，其间的态射定义为限制在 $U$ 上为恒同映射的线性映射，我们将这个东西记作 $\FVect_\F^U$.
 
-    实际上，我们在说的是，考虑一个函子 $p: \FVect_\F^U \to \FVect_\F$ 将线性空间 $X$ 映到线性空间 $X/U$，另一个函子 $i: \FVect_\F^U \to \FVect_\F$ 将线性空间 $X$ 映到线性空间 $X$ 自身. 态射的映射都是显然的. 接下来，我们要表明存在一个自然变换 $\theta: i \to p$.
+    实际上，我们在说的是，考虑一个函子 $p\colon \FVect_\F^U \to \FVect_\F$ 将线性空间 $X$ 映到线性空间 $X/U$，另一个函子 $i\colon \FVect_\F^U \to \FVect_\F$ 将线性空间 $X$ 映到线性空间 $X$ 自身. 态射的映射都是显然的. 接下来，我们要表明存在一个自然变换 $\theta: i \to p$.
 
-    现在，取任意的 $f: X \to Y$ 为 $\FVect_\F^U$ 中的态射，则我们需要使其交换的图表如下：
+    现在，取任意的 $f\colon X \to Y$ 为 $\FVect_\F^U$ 中的态射，则我们需要使其交换的图表如下：
 
     \begin{center}
         \begin{tikzcd}
@@ -200,23 +200,23 @@
 先考虑集合的情况. 单射在我们看来，是如果像相同则原像相同，也就是说，每个原像集中的元素都有不同的像. 那么，就应当存在一个函数把它翻译回去，使得它在原像集上是恒同映射，也就是说：
 
 \begin{lemma}{}{}
-    考虑集合 $S, T$，一个函数 $f: T \to S$ 是单射当且仅当存在映射 $g: S \to T$ 使得 $g \circ f = \id_T$.
+    考虑集合 $S, T$，一个函数 $f\colon T \to S$ 是单射当且仅当存在映射 $g\colon S \to T$ 使得 $g \circ f = \id_T$.
 \end{lemma}
 
 证明如上所述，形式化的写法留给读者，对偶地，我们就有：
 
 \begin{lemma}{}{}
-    $f: T \to S$ 是满射当且仅当存在映射 $g: S \to T$ 使得 $f \circ g = \id_S$.
+    $f\colon T \to S$ 是满射当且仅当存在映射 $g\colon S \to T$ 使得 $f \circ g = \id_S$.
 \end{lemma}
 
 而后面的这个定义是纯粹用箭头完成的，因此，它就能被推广到态射的情形：
 
 \begin{definition}{}{}
-    考虑范畴 $\cC$ 和其中的态射 $f: A \to B$.
+    考虑范畴 $\cC$ 和其中的态射 $f\colon A \to B$.
     \begin{itemize}
-        \item 称 $f$ 是\term{单态射}，如果存在 $g: B \to A$ 使得 $g \circ f = \id_B$；
-        \item 称 $f$ 是\term{满态射}，如果存在 $g: B \to A$ 使得 $f \circ g = \id_A$；
-        \item 称 $f$ 为\term{同构}，如果存在 $g: B \to A$ 使得 $f \circ g = \id_A$ 且 $g \circ f = \id_B$；
+        \item 称 $f$ 是\term{单态射}，如果存在 $g\colon B \to A$ 使得 $g \circ f = \id_B$；
+        \item 称 $f$ 是\term{满态射}，如果存在 $g\colon B \to A$ 使得 $f \circ g = \id_A$；
+        \item 称 $f$ 为\term{同构}，如果存在 $g\colon B \to A$ 使得 $f \circ g = \id_A$ 且 $g \circ f = \id_B$；
         \item 如果 $A$ 和 $B$ 之间存在一个同构，则称 $A$ 和 $B$ 同构.
     \end{itemize}
 \end{definition}

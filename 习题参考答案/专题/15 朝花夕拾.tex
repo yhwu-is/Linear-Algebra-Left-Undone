@@ -614,7 +614,7 @@
                     采用反证法. 设 $\lvert A \rvert = 0$，则线性方程组 $AX = 0$ 有非零解，设为 $X_0 = (x_1, x_2, \ldots, x_n)^{\mathrm{T}}$，记
                     \[\lvert x_k \rvert = \max \{\lvert x_1 \rvert, \lvert x_2 \rvert, \ldots, \lvert x_n \rvert\}.\]
                     由 $X_0 \neq 0$ 可知 $\lvert x_k \rvert > 0$，考虑 $AX = 0$ 的第 $k$ 个方程，有 $\displaystyle\sum_{j=1}^n a_{kj}x_j = 0$，于是
-                    \[\lvert a_{kk} \rvert \lvert x_k \rvert = \lvert -\displaystyle\sum_{j \neq k}a_{kj}x_j \rvert \leqslant \displaystyle\sum_{j \neq k}\lvert a_{kj} \rvert \lvert x_k \rvert.\]
+                    \[\lvert a_{kk} \rvert \lvert x_k \rvert = \lvert -\displaystyle\sum_{j \neq k}a_{kj}x_j \rvert \leqslant \sum_{j \neq k}\lvert a_{kj} \rvert \lvert x_k \rvert.\]
                     约去 $\lvert x_k \rvert$ 后可得 $\lvert a_{kk} \rvert \leqslant \displaystyle\sum_{j \neq k} \lvert a_{kj} \rvert$，这与条件矛盾. 所以 $\lvert A \rvert \neq 0$.
 
               \item 构造实函数
