@@ -258,19 +258,25 @@
 \begin{theorem}{链式法则}{}
     设 $D$、$E$ 和 $U$ 分别为 $\mathbf{R}^n$、$\mathbf{R}^m$ 和 $\mathbf{R}^l$ 上的开集，$f\colon D\to E$ 和 $g\colon E\to U$ 为向量值函数. 如果 $f$ 在 $x_0\in D$ 处可微，$g$ 在 $y_0 = f(x_0)$ 处可微，那么复合函数 $h = g\circ f$ 在 $x_0$ 处可微，并且有\[Jh(x_0) = Jg(y_0)Jf(x_0).\]
 
-    对应映射的复合与微分（在线性的层次上）可以通过下面两个交换图表示：
+    对应映射的复合与微分（在线性的层次上）可以通过下面这个交换图表示：
     \begin{center}
         \begin{tikzcd}
-            D \arrow[r, "f"] \arrow[rd, "g\circ f" description]
-            & E \arrow[d, "g"]\\
-            & U
+            & \mathbf{R}^m \arrow[rrr, "\mathrm{d} f"] \arrow[rrrdd, "\mathrm{d} (g \circ f)", swap] & & & \mathbf{R}^n \arrow[dd, "\mathrm{d} g"] \\
+            D \arrow[rrr, "f", crossing over] \arrow[ru, dashed] \arrow[rrrdd, "g \circ f", swap] & & & E \arrow[dd, "g", crossing over] \arrow[ru, dashed] \\
+            & & & & \mathbf{R}^l \\
+            & & & U \arrow[ru, dashed]
         \end{tikzcd}
-        \qquad
-        \begin{tikzcd}
-            \mathbf{R}^{n} \arrow[r, "\mathrm{d}f(x_1)"] \arrow[rd, "\mathrm{d}(g\circ f)(x_1)" description]
-            &\mathbf{R}^{m} \arrow[d, "\mathrm{d}g(f(x_1))"]\\
-            &\mathbf{R}^{l}
-        \end{tikzcd}
+        % \begin{tikzcd}
+        %     D \arrow[r, "f"] \arrow[rd, "g\circ f" description]
+        %     & E \arrow[d, "g"]\\
+        %     & U
+        % \end{tikzcd}
+        % \qquad
+        % \begin{tikzcd}
+        %     \mathbf{R}^{n} \arrow[r, "\mathrm{d}f(x_1)"] \arrow[rd, "\mathrm{d}(g\circ f)(x_1)" description]
+        %     &\mathbf{R}^{m} \arrow[d, "\mathrm{d}g(f(x_1))"]\\
+        %     &\mathbf{R}^{l}
+        % \end{tikzcd}
     \end{center}
 \end{theorem}
 
