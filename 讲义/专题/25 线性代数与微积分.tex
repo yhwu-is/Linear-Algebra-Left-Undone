@@ -88,7 +88,7 @@
     \[\begin{aligned}
             \vert g(x(u)) - g(x(v))\vert
              & = \lvert \Vert x(u) \Vert - \Vert x(v) \Vert \rvert \leqslant \lVert x(u) - x(v)\rVert                                                           \\
-             & = \lVert \sum_{i = 1}^{m} (u_i - v_i)x^{(i)}\rVert \leqslant \sum_{i = 1}^{m}\vert u_i - v_i\vert \Vert x^{(i)}\Vert                             \\
+             & = \left\lVert \sum_{i = 1}^{m} (u_i - v_i)x^{(i)}\right\rVert \leqslant \sum_{i = 1}^{m}\vert u_i - v_i\vert \Vert x^{(i)}\Vert                             \\
              & \leqslant \left(\sum_{i = 1}^{m}\vert u_i - v_i\vert^2\right)^{1/2}\left(\sum_{i = 1}^{m}\Vert x^{(i)}\Vert^2\right)^{1/2} =C\Vert u - v\Vert_2.
         \end{aligned}\]
     这个常数 $C = \left(\sum\limits_{i = 1}^{m}\Vert x^{(i)}\Vert^2\right)^{1/2}$ 仅仅与范数 $\Vert\cdot\Vert$ 以及给定的向量组 $x^{(1)}, x^{(2)}, \ldots, x^{(m)}$ 有关，一定满足 $0 \leqslant C<\infty$，所以 $g$ 一定是一致连续的.
@@ -487,12 +487,26 @@
 
 多元函数的积分学中的核心定理主要是 Fubini 定理与重积分换元法. Fubini 定理描述了如何将一个多元函数的积分转化为一系列一元函数的积分进行计算，分析的技巧在证明中占了很大的比重，而重积分换元法表明的是如何通过坐标变换将被积函数的积分区域转化为一个更易计算的区域，其相关的技巧与思想在几何中也有很多的应用. 在这一节中，我们将仔细介绍如何通过线性函数来逼近进行区域变换的函数，使用微分学的方法来估计误差，最后得出重积分换元法.
 
+\begin{figure}[hb]
+    \centering
+    \begin{tikzpicture}[>=stealth']
+        \def\size{2.4};
+        \fill[gray!40] (-\size/2, -\size) rectangle (\size/2, \size);
+        \draw[dashed, thick] (-\size/2, \size) -- (-\size/2, -\size) node[below] {$0$} -- (\size/2, -\size) node[below] {$2\pi$} -- (\size/2, \size);
+        \fill[gray!40] (2.5*\size, 0) circle (\size);
+        \draw[white, thick] (2.5*\size, 0) -- (3.5*\size, 0);
+        \draw node at (0, 0) {$(r, \theta)$} node[above left] at (2.5*\size, 0) {$(x, y)$};
+        \draw[thick] (0.6*\size, 0) edge[out=30, in=180, ->] node[above] {$\Phi$} (1.5*\size, 1);
+    \end{tikzpicture}
+    \caption{坐标变换的几何直观}
+    \label{fig:coordinate-transformation}
+\end{figure}
+
 \begin{example}{坐标变换}{}
     对于定义区域 $\Omega_1$ 和 $\Omega_2$ 如下：
     \[\Omega_1 = \mathbf{R}^2\setminus\{(x, y) \mid x\geqslant 0, y = 0\},\enspace \Omega_2 = \mathbf{R}_{>0}\times (0, 2\pi) = \{(r, \theta) \mid r>0, \theta\in(0, 2\pi)\}.\]
     我们熟悉的坐标变换 $x = r\cos\theta$，$y = r\sin\theta$ 就可以写成 \[\Phi\colon \Omega_2\to\Omega_1,\enspace \Phi(r, \theta) = (r\cos\theta, r\sin\theta).\]
-    % TODO 图
-    由于在 $\Omega_1$ 上我们给定了 $(x, y)$ 作为坐标，在$\Omega_2$ 上我们给定了 $(r, \theta)$ 作为坐标，所以我们可以使用 Jacobi 矩阵表示上述映射的微分
+    如\autoref{fig:coordinate-transformation} 所示. 由于在 $\Omega_1$ 上我们给定了 $(x, y)$ 作为坐标，在$\Omega_2$ 上我们给定了 $(r, \theta)$ 作为坐标，所以我们可以使用 Jacobi 矩阵表示上述映射的微分
     \[
         \mathrm{d}\Phi = J\Phi = \begin{pmatrix}
             \dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial \theta} \\[2ex]
@@ -505,7 +519,7 @@
     根据反函数定理，这个映射当然是可逆的.
 \end{example}
 
-这个例子告诉我们：坐标变换允许我们将被积区域进行变换，比如将圆或球转化成一个矩形，这样就可以极大简化运算. 更确切来说，对于原被积区域 $\Omega$ 上的函数 $f$，我们可以定义一个映射 $\varphi\colon \Sigma \to \Omega,\enspace \varphi(\Sigma) = \Omega$，使得我们只需要在现被积区域 $\Sigma$ 对复合函数 $f\circ\varphi$ 进行积分，函数的复合保证了积分区域转换的合法性，但是我们并不可以草率进行 \vspace{2ex}$\displaystyle\int_{\Omega}f\,\mathrm{d}x = \int_{\Sigma}f\circ \varphi\,\mathrm{d}x$ 的计算，因为对于 $\Omega$ 上的某一块体积元 $\sigma$，对与 $f$ 与坐标变换 $\varphi$ 下对应的 $\Sigma$ 上的体积元 $\sigma'$ 的体积并不一定相等，就好像对于上面例子中，将圆转化为矩形一样. 那么体积究竟变化了多少呢？这就是下面重积分换元法将要讨论的事情了. % TODO: this \vspace may need further fix
+这个例子告诉我们：坐标变换允许我们将被积区域进行变换，比如将圆或球转化成一个矩形，这样就可以极大简化运算. 更确切来说，对于原被积区域 $\Omega$ 上的函数 $f$，我们可以定义一个映射 $\varphi\colon \Sigma \to \Omega,\enspace \varphi(\Sigma) = \Omega$，使得我们只需要在现被积区域 $\Sigma$ 对复合函数 $f\circ\varphi$ 进行积分，函数的复合保证了积分区域转换的合法性，但是我们并不可以草率进行$\displaystyle\int\limits_{\Omega}f\,\mathrm{d}x = \int\limits_{\Sigma}f\circ \varphi\,\mathrm{d}x$ 的计算，因为对于 $\Omega$ 上的某一块体积元 $\sigma$，对与 $f$ 与坐标变换 $\varphi$ 下对应的 $\Sigma$ 上的体积元 $\sigma'$ 的体积并不一定相等，就好像对于上面例子中，将圆转化为矩形一样. 那么体积究竟变化了多少呢？这就是下面重积分换元法将要讨论的事情了.
 
 下面，我们首先考虑坐标变换为线性映射的情况，再使用微分学的基本手法对一般的坐标变换做线性化并且估计误差.
 
@@ -522,9 +536,25 @@
               设 $A$ 为 $\mathbf{R}^n$ 中的可求体积的有界集合，则任给 $\varepsilon > 0$，存在有限个矩形 $\{I_i\}$ 与 $\{J_j\}$ 使得
               \[\bigcup_i I_i\subset A\subset \bigcup_i J_j; \enspace \sum_i \nu(I_i) + \varepsilon > \nu(A) > \sum_j \nu(J_j) - \varepsilon.\]
               其中 $\{I_i\}$ 的内部互不相交.
-
-              % TODO 图
           \end{lemma}
+
+          \begin{figure}[h]
+              \centering
+              \begin{tikzpicture}[scale=0.7]
+                  \pgfmathsetseed{42}
+
+                  \fill[gray!40] (1, 1) -- (1, 5) -- (2, 5) -- (2, 6) -- (5, 6) -- (5, 5) -- (6, 5) -- (6, 2) -- (5, 2) -- (5, 1) -- cycle;
+                  \fill[gray!80] (2, 2) -- (2, 4) -- (3, 4) -- (3, 5) -- (4, 5) -- (4, 4) -- (5, 4) -- (5, 3) -- (4, 3) -- (4, 2) -- cycle;
+
+                  \draw[dashed] (0, 0) grid (6, 6);
+                  \draw[thick] (0, 0) rectangle (6, 6);
+
+                  \begin{scope}[shift={(3.3, 3.3)}]
+                      \path[draw, thick] plot[domain=0:350, smooth cycle] (\x:2+0.1*rnd);
+                  \end{scope}
+              \end{tikzpicture}
+              \caption{第一覆盖引理}
+          \end{figure}
 
           \begin{proof}
               对于一个包含 $A$ 的一个矩形 $I$，首先可以定义一个示性函数 $\chi_A$，满足
@@ -547,8 +577,19 @@
           \begin{lemma}{第二覆盖引理}{}
               设 $A$ 是 $\mathbf{R}^n$ 中的可求体积的有界集合，则任给 $\varepsilon>0$，存在有限个 $n$ 维球体 $\{B_i\}$ 和 $\{B^j\}$，使得 \[\bigcap_iB_i\subset A \subset \bigcup_jB^j;\enspace \sum_j\nu(B^j) - \varepsilon < \nu(A) < \sum_j\nu(B_i) + \varepsilon,\]
               其中 $\{B_i\}$ 的内部互不相交.
-              % TODO 图
           \end{lemma}
+
+          \begin{figure}[h]
+              \centering
+              \begin{tikzpicture}[scale=2]
+                  \draw (0, 0) grid (2, 2);
+                  \foreach \i in {0.5, 1.5}
+                      \foreach \j in {0.5, 1.5}
+                          \draw[fill=gray!50] (\i, \j) circle (0.5)
+                              \foreach \k in {0, 1, 2, 3} {($(\i, \j) + ({45+90*\k}:{sqrt(2)/(sqrt(2)+1)})$) circle ({(sqrt(2)-1)/(2+2*sqrt(2))})};
+              \end{tikzpicture}
+              \caption{第二覆盖引理}
+          \end{figure}
 
           \begin{proof}
               首先设 $\nu(A)>0$. 我们先取一个矩形 $I = \left[a, b\right]^n$ 使得 $A\subset I$. 将 $I$ 作 $m^n$ 等分，当 $m$ 充分大的时候，完全包含于 $A$ 的小矩形 $\{I_i^1\}$ 的体积之和满足条件 \[\sum_i\nu(I_i^1) > \frac12\nu(A).\]
