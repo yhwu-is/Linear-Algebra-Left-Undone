@@ -87,12 +87,12 @@
 
 \begin{proof}
     设 $u = (u_1, \ldots, u_m)^\mathrm{T}$，$v = (v_1, \ldots, v_m)^\mathrm{T}$，那么
-    \[\begin{aligned}
-            \vert g(x(u)) - g(x(v))\vert
-             & = \lvert \Vert x(u) \Vert - \Vert x(v) \Vert \rvert \leqslant \lVert x(u) - x(v)\rVert                                                           \\
-             & = \left\lVert \sum_{i = 1}^{m} (u_i - v_i)x^{(i)}\right\rVert \leqslant \sum_{i = 1}^{m}\vert u_i - v_i\vert \Vert x^{(i)}\Vert                             \\
-             & \leqslant \left(\sum_{i = 1}^{m}\vert u_i - v_i\vert^2\right)^{1/2}\left(\sum_{i = 1}^{m}\Vert x^{(i)}\Vert^2\right)^{1/2} =C\Vert u - v\Vert_2.
-        \end{aligned}\]
+    \begin{align}
+        \vert g(x(u)) - g(x(v))\vert
+         & = \lvert \Vert x(u) \Vert - \Vert x(v) \Vert \rvert \leqslant \lVert x(u) - x(v)\rVert                                                           \\
+         & = \left\lVert \sum_{i = 1}^{m} (u_i - v_i)x^{(i)}\right\rVert \leqslant \sum_{i = 1}^{m}\vert u_i - v_i\vert \Vert x^{(i)}\Vert                  \\
+         & \leqslant \left(\sum_{i = 1}^{m}\vert u_i - v_i\vert^2\right)^{1/2}\left(\sum_{i = 1}^{m}\Vert x^{(i)}\Vert^2\right)^{1/2} =C\Vert u - v\Vert_2.
+    \end{align}
     这个常数 $C = \left(\sum\limits_{i = 1}^{m}\Vert x^{(i)}\Vert^2\right)^{1/2}$ 仅仅与范数 $\Vert\cdot\Vert$ 以及给定的向量组 $x^{(1)}, x^{(2)}, \ldots, x^{(m)}$ 有关，一定满足 $0 \leqslant C<\infty$，所以 $g$ 一定是一致连续的.
 \end{proof}
 
@@ -248,10 +248,9 @@
 其中矩阵 $Jf(x_0)$ 是 $f$ 在 $x_0$ 的微分的矩阵表示，被称为\term{Jacobi 矩阵}. 这非常符合直觉，严谨的证明可以参考于品教授的《数学分析讲义》，这里只截取对应的定理：
 
 \begin{theorem}{微分的计算}{}
-    假设 $V = \mathbf{R}^n$ 和 $W = \mathbf{R}^m$，我们分别取坐标系 $\underset{i = 1, 2, \ldots, n}{\{x_i\}}$ 和 $\underset{j = 1, 2, \ldots, m}{\{y_j\}}$，考虑函数 \[f\colon V\to W,\enspace x\mapsto f(x) = (f_1(x_1, x_2, \ldots, x_n), \ldots, f_m(x_1, x_2, \ldots, x_n)).\]
+    假设 $V = \mathbf{R}^n$ 和 $W = \mathbf{R}^m$，我们分别取坐标系 $\{x_i\}_{i = 1, 2, \ldots, n}$ 和 $\{y_j\}{j = 1, 2, \ldots, m}$，考虑函数 \[f\colon V\to W,\enspace x\mapsto f(x) = (f_1(x_1, x_2, \ldots, x_n), \ldots, f_m(x_1, x_2, \ldots, x_n)).\]
     那么 $f$ 在 $x_0$ 处可微当且仅当每一个 $f_i$ 在 $x_0$ 处都可微，并且微分 $\mathrm{d}f(x_0)\in \mathcal{L}(\mathbf{R}^n, \mathbf{R}^m)$ 的矩阵表示为
     \[\left(\frac{\partial f_i}{\partial x_j}(x_0)\right)_{\substack{i = 1, 2, \ldots, m \\ j = 1, 2, \ldots, n}}.\]
-    % \[\underset{\substack{i = 1, 2, \ldots, m \\ j = 1, 2, \ldots, n}}{\left(\frac{\partial f_i}{\partial x_j}(x_0)\right)}.\]
 \end{theorem}
 
 同样，链式法则在多元函数的微分中也是成立的：
@@ -281,7 +280,7 @@
     给定区域 $D\subset \mathbf{R}^n$ 和 $\Delta \subset \mathbf{R}^m$ 与向量值函数 $f\colon D\to \Delta$，如果 $f$ 是一一映射并且其逆映射 $f^{-1}\colon \Delta\to D$ 是可微的，那么有
     \begin{enumerate}[label=(\arabic*)]
         \item $m = n$；
-        \item $Jf(x)$ 是可逆的，并且有 \[Jf^{-1}(y) = [\left.Jf\right|_{x = f^{-1}(y)}]^{-1}.\]
+        \item $Jf(x)$ 是可逆的，并且有 \[Jf^{-1}(y) = \left[Jf\big\rvert_{x = f^{-1}(y)}\right]^{-1}.\]
     \end{enumerate}
 \end{corollary}
 
@@ -355,11 +354,11 @@
 \begin{proof}
     任取 $a_0 \in C$，当 $n\geqslant 1$ 时，利用 $a_n = f(a_{n-1})$ 可以递归定义 $C$ 中的数列 $\{a_n\}$，我们来说明 $\{a_n\}$ 为 Cauchy 列. 根据题设，存在 $0\leqslant L <1$，使得当 $n\geqslant 1$ 时，\[d(a_{n+1}, a_n) = d(f(a_n), f(a_{n-1}))\leqslant Ld(a_n, a_{n-1}).\]
     由上式与归纳法可知 $d(a_n,a_{n-1})\leqslant L^{n-1}d(a_1, a_0)$ 对 $n\geqslant 1$ 均成立，当 $m > n$ 时，有
-    \[\begin{aligned}
-            d(a_m, a_n) & \leqslant d(a_m, a_{m-1}) + d(a_{m-1}, a_{m-2}) + \cdots + d(a_{n+1}, a_n) \\
-                        & \leqslant (L^{m-1} + L^{m-2} + \cdots + L^{n})d(a_1, a_0)                  \\
-                        & \leqslant \frac{L^n}{1-L}d(a_1, a_0).
-        \end{aligned}\]
+    \begin{align}
+        d(a_m, a_n) & \leqslant d(a_m, a_{m-1}) + d(a_{m-1}, a_{m-2}) + \cdots + d(a_{n+1}, a_n) \\
+                    & \leqslant (L^{m-1} + L^{m-2} + \cdots + L^{n})d(a_1, a_0)                  \\
+                    & \leqslant \frac{L^n}{1-L}d(a_1, a_0).
+    \end{align}
     由于 $L < 1$，所以当 $n\to\infty$ 时，$L^n\to 0$，所以 $\{a_n\}$ 为 Cauchy 列，其极限记为 $a_*$，则 $a_*\in C$，由 $a_n = f(a_{n-1})$ 与 $f$ 的连续性可知 $f(a_*) = a_*$.
 
     下面证明唯一性：若另有 $a\in C$ 使得 $f(a) = a$，则\[d(a, a_*) = d(f(a), f(a_*))\leqslant Ld(a, a_*),\]由于 $0\leqslant L < 1$，所以 $d(a, a_*) = 0$，即 $a = a_*$.
@@ -367,10 +366,10 @@
 
 所以 $\varphi$ 是一个压缩映射，因此 $\varphi$ 有唯一的不动点，即存在唯一的 $x_*\in \mathbf{R}^n$ 使得 $x_* = Ax_* + v$，即 $(I_n - A)x_* = v$，所以 $I_n - A$ 为单射，即可逆.
 
-对于恒同映射 $I_n$ 来讲，范数小于 $1$ 的映射相对于它是一个\term{微小扰动}，上面的例子告诉我们，对于一个像恒同映射这样的可逆映射施加一个微小扰动得到的映射是可逆的. 在一般的向量值函数中，微小扰动的例子丰富极了，因为每一个在某一点 $x_0$ 可微的向量值函数在该点都可以将其线性化，也就是分解成 $L(x - x_0) + o(\Vert x - x_0\Vert)$，将后一项视作微小扰动 $\varepsilon(x - x_0)$ ，所以我们可以猜测：如果向量值函数的微分在某一点 $x_0$ 可逆，那么存在 $x_0$ 的邻域 $U$ 与 $y_0 = f(x_0)$ 的邻域 $V$ 使得 $\left.f\right|_U \colon U\to V$ 是可逆的. 不过我们需要对这个函数添加一定的可微性条件. 一个向量值函数是 $C^k$ 的是指其每个分量都是一个 $k$ 次连续可微函数. 这就是\term{反函数定理}的内容.
+对于恒同映射 $I_n$ 来讲，范数小于 $1$ 的映射相对于它是一个\term{微小扰动}，上面的例子告诉我们，对于一个像恒同映射这样的可逆映射施加一个微小扰动得到的映射是可逆的. 在一般的向量值函数中，微小扰动的例子丰富极了，因为每一个在某一点 $x_0$ 可微的向量值函数在该点都可以将其线性化，也就是分解成 $L(x - x_0) + o(\Vert x - x_0\Vert)$，将后一项视作微小扰动 $\varepsilon(x - x_0)$ ，所以我们可以猜测：如果向量值函数的微分在某一点 $x_0$ 可逆，那么存在 $x_0$ 的邻域 $U$ 与 $y_0 = f(x_0)$ 的邻域 $V$ 使得 $f|_U \colon U\to V$ 是可逆的. 不过我们需要对这个函数添加一定的可微性条件. 一个向量值函数是 $C^k$ 的是指其每个分量都是一个 $k$ 次连续可微函数. 这就是\term{反函数定理}的内容.
 
 \begin{theorem}{反函数定理}{}
-    设 $D\subset \mathbf{R}^n$ 为开集，$f\colon D\to\mathbf{R}^n$ 为 $C^{k}$ 的映射 $(k\geqslant 1)$，$x_0\in D$. 如果 $\det Jf(x_0)\neq 0$，那么存在 $x_0$ 的邻域 $U\subset D$ 与 $f(x_0)$ 的邻域 $V\subset D$，使得 $\left.f\right|_U \colon U\to V$ 是可逆的，并且其逆也是 $C^k$ 的.
+    设 $D\subset \mathbf{R}^n$ 为开集，$f\colon D\to\mathbf{R}^n$ 为 $C^{k}$ 的映射 $(k\geqslant 1)$，$x_0\in D$. 如果 $\det Jf(x_0)\neq 0$，那么存在 $x_0$ 的邻域 $U\subset D$ 与 $f(x_0)$ 的邻域 $V\subset D$，使得 $f|_U \colon U\to V$ 是可逆的，并且其逆也是 $C^k$ 的.
 \end{theorem}
 
 \begin{proof}
@@ -385,17 +384,17 @@
     记 $\varphi(x) = y - g(x)$，当 $x\in \overline{B(0, \delta)}$ 时\[\Vert \varphi(x)\Vert \leqslant \Vert y\Vert +\Vert g(x)\Vert < \frac{\delta}{2} + \frac{1}{2}\Vert x\Vert \leqslant \delta.\]
     这说明 $\varphi(\overline{B(0, \delta)})\subset B(0, \delta)$. 当 $x_1, x_2\in \overline{B(0, \delta)}$ 时\[\Vert \varphi(x_1) - \varphi(x_2) \Vert = \Vert g(x_2) - g(x_1)\Vert \leqslant \frac{1}{2}\Vert x_2 - x_1\Vert.\]
     根据压缩映射原理，$f(x) = y$ 或 $x = y - g(x)$ 在 $\overline{B(0, \delta)}$ 中有唯一解，记作 $x_y$. 且 $\Vert x_y\Vert \leqslant \delta$，也就是 $x_y\in B(0, \delta)$. 令\[U = f^{-1}(B(0, \frac{\delta}{2}))\cap B(0, \delta),\enspace V = B(0, \frac{\delta}{2}),\]
-    则我们已经证明了 $\left.f\right|_U \colon U\to V$ 是一一映射，其逆映射 $h(y) = x_y$ 满足 \[y - g(h(y)) = h(y)\]
+    则我们已经证明了 $f|_U \colon U\to V$ 是一一映射，其逆映射 $h(y) = x_y$ 满足 \[y - g(h(y)) = h(y)\]
     下面逐步证明 $h$ 是 $C^k$ 的.
 
     \begin{enumerate}[label=(\arabic*)]
         \item $h \colon V\to U$ 是连续映射：当 $y_1,y_2\in V$ 时，\[\Vert h(y_1) - h(y_2)\Vert \leqslant \Vert y_1 - y_2 \Vert +\Vert g(h(y_1)) - g(h(y_2))\Vert \leqslant \Vert y_1 - y_2\Vert + \frac{1}{2}\Vert h(y_1) - h(y_2)\Vert,\]
               这说明 $\Vert h(y_1) - h(y_2)\Vert \leqslant 2\Vert y_1 - y_2\Vert,\enspace \forall y_1, y_2\in V$. 所以 $h$ 是连续的.
         \item $h \colon V\to U$ 是可微映射：设 $y_0\in V$，则对 $y\in V$ 有
-              \[\begin{aligned}
-                      h(y) - h(y_0) & = (y - y_0) - [g(h(y)) - g(h(y_0))]                                    \\
-                                    & = (y - y_0) - Jg(h(y_0))(h(y) - h(y_0)) + o(\Vert h(y) - h(y_0)\Vert).
-                \end{aligned}\]
+              \begin{align}
+                  h(y) - h(y_0) & = (y - y_0) - [g(h(y)) - g(h(y_0))]                                    \\
+                                & = (y - y_0) - Jg(h(y_0))(h(y) - h(y_0)) + o(\Vert h(y) - h(y_0)\Vert).
+              \end{align}
               利用 $Jf = I_n = Jg$ 与 (1)，上式可以改写为\[Jf(h(y_0))\cdot(h(y) - h(y_0)) = y - y_0 + o(\Vert y - y_0\Vert),\]
               所以 \[h(y) - h(y_0) = Jf(h(y_0))^{-1}\cdot(y - y_0) + o(\Vert y - y_0\Vert)\]
               因而 $h$ 在 $y_0$ 处可微.
@@ -483,7 +482,7 @@
 
     首先证明这样的定义的 $\varphi$ 是良定的，也就是说：对于 $x_1, x_2\in V$，$Ax_1 = Ax_2$，那么 \[\psi(x_1) = f(H(x_1)) - Ax_1 = f(H(x_2)) - Ax_2 = \psi(x_2).\]
     令 $\Phi(x) = f(H(x))$，$x\in V$，因为对于每一个 $x\in V$，$JH(x)$ 的秩为 $n$，而对每个 $x\in U$，$Jf(x)$ 的秩为 $l$，所以 \[r(J\Phi(x)) = r(Jf(H(x))\cdot JH(x)) = l, \enspace \forall x \in V.\]
-    固定 $x\in V$，令 $M$ 为 $J\Phi(x)$ 的值域，那么 $M\subset \mathbf{R}^m$，并且 $\dim M = l$，所以 $PJ\Phi(x) = A$，因此 $P$ 将 $M$ 映满到 $Y_1$，因为 $\dim M = \dim Y_1$，所以 $\left.P\right|_{M}$ 是一个一一映射.
+    固定 $x\in V$，令 $M$ 为 $J\Phi(x)$ 的值域，那么 $M\subset \mathbf{R}^m$，并且 $\dim M = l$，所以 $PJ\Phi(x) = A$，因此 $P$ 将 $M$ 映满到 $Y_1$，因为 $\dim M = \dim Y_1$，所以 $P|_{M}$ 是一个一一映射.
 
     设 $Ah = 0$，那么 $PJ\Phi(x)h = 0$，但是 $J\Phi(x)h \in M$，并且 $P$ 在 $M$ 上是一一映射，因此 $J\Phi(x)h = 0$，所以到这里我们已经证明了：若 $x\in V$，且 $Ah = 0$，那么 $J\psi(x)h = 0$.
     令 $h = x_2 - x_1$，并定义 $g(t) = \psi(x_1 + th)$，其中 $t\in [0, 1]$，根据 $V$ 的凸性，$x_1 + th\in V$，所以 \[g'(t) = J\psi(x_1 + th)h = 0, \enspace 0 \leqslant t\leqslant 1.\]
@@ -563,7 +562,7 @@
                   \draw[thick] (0, 0) rectangle (6, 6);
 
                   \begin{scope}[shift={(3.3, 3.3)}]
-                      \path[draw, thick] plot[domain=0:350, smooth cycle] (\x:2+0.1*rnd);
+                      \path[draw, thick] plot[domain=0:350, smooth cycle] (\x:1.9+0.2*rnd);
                   \end{scope}
               \end{tikzpicture}
               \caption{第一覆盖引理}
@@ -599,7 +598,7 @@
                   \foreach \i in {0.5, 1.5}
                       \foreach \j in {0.5, 1.5}
                           \draw[fill=gray!50] (\i, \j) circle (0.5)
-                              \foreach \k in {0, 1, 2, 3} {($(\i, \j) + ({45+90*\k}:{sqrt(2)/(sqrt(2)+1)})$) circle ({(sqrt(2)-1)/(2+2*sqrt(2))})};
+                              \foreach \k in {45, 135, 225, 315} {($(\i, \j) + (\k:{sqrt(2)/(sqrt(2)+1)})$) circle ({(sqrt(2)-1)/(2+2*sqrt(2))})};
               \end{tikzpicture}
               \caption{第二覆盖引理}
           \end{figure}
@@ -707,7 +706,7 @@
 \centerline{\heiti A组}
 \begin{enumerate}
     \item % Schatten 范数 是 范数
-        %   设 $A$ 为 $n$ 阶矩阵，定义 $A$ 的 Schatten 范数为 $\Vert A\Vert_s = \left(\sum_{i=1}^n\sigma_i^s\right)^{1/s}$，其中 $\sigma_i$ 为 $A$ 的奇异值. 证明 $\Vert A\Vert_s$ 是一个范数.
+          %   设 $A$ 为 $n$ 阶矩阵，定义 $A$ 的 Schatten 范数为 $\Vert A\Vert_s = \left(\sum_{i=1}^n\sigma_i^s\right)^{1/s}$，其中 $\sigma_i$ 为 $A$ 的奇异值. 证明 $\Vert A\Vert_s$ 是一个范数.
 \end{enumerate}
 
 \centerline{\heiti B组}
