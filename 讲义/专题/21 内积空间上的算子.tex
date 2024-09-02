@@ -176,7 +176,9 @@
     设 $ A $ 是 $ n $ 阶酉矩阵或正交矩阵，$ \lambda $ 是 $ A $ 的一个特征值，则 $ \lvert \lambda \rvert = 1 $.
 \end{theorem}
 
-这意味着酉矩阵和正交矩阵的特征值都落在单位圆上. 联系一下特征值的几何意义的话，我们便会发现，酉矩阵和正交矩阵对内积空间的变换方式无非就是旋转和镜像，更进一步来说，旋转也可以依靠镜像实现. 不过我们也发现了正交矩阵难以刻画的几何原因，在复数域上能够轻易描述的旋转在实数域上需要一个更高的维度. 所以关于二者的标准形式，尤其是正交矩阵，我们需要更有力的工具.
+% TODO: ref 修改
+
+这意味着酉矩阵和正交矩阵的特征值都落在单位圆上. 联系一下特征值的几何意义的话，我们便会发现，酉矩阵和正交矩阵对内积空间的变换方式无非就是旋转和镜像，更进一步来说，旋转也可以依靠镜像实现（见习题 C 组\nameref{item:24:镜像变换}）. 不过我们也发现了正交矩阵难以刻画的几何原因，在复数域上能够轻易描述的旋转在实数域上需要一个更高的维度. 所以关于二者的标准形式，尤其是正交矩阵，我们需要更有力的工具.
 
 \section{自伴算子}
 
@@ -866,5 +868,32 @@
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item
+    \item \label{item:24:镜像变换}
+        \begin{enumerate}
+            \item \begin{enumerate}
+                \item 设 $e$ 是欧式空间中的一个单位向量，定义线性变换
+                        \[
+                            \varphi(x) = x - 2\langle e, x \rangle e.
+                        \]
+                        证明：$\varphi$ 是正交变换且 $\det \varphi = -1$（上述 $\varphi$ 称为镜像变换）；
+                \item 设 $\xi$ 是 $n$ 维欧式空间 $V$ 中的正交变换，$1$ 是 $\xi$ 的特征值且几何重数等于 $n - 1$，证明：必存在 $V$ 中的一个单位向量 $e$ 使得
+                        \[
+                            \xi(x) = x - 2\langle e, x \rangle e.
+                        \]
+            \end{enumerate}
+            \item 设 $n$ 阶矩阵 $M = E_n - 2v v^{\mathrm{T}}$，其中 $v$ 是 $n$ 维实列向量，并且满足 $v^{T}v = 1$. 这样的 $M$ 称为镜像阵. 设 $\varphi$ 是 $n$ 维欧式空间 $V$ 上的线性变换，求证：$\varphi$ 是镜像变换的充分必要条件是 $\varphi$ 在 $V$ 的某一组（任一组）标准正交基下的表示矩阵是镜像阵.
+            \item 设 $u, v$ 是欧式空间 $V$ 中的两个范数相等的不同向量，求证：必存在镜像变换 $\varphi$ 使得 $\varphi(u) = v$.
+            \item （Cartan–Dieudonné theorem）证明：$n$ 维欧式空间 $V$ 上的任一正交变换均可表示为不超过 $n$ 个镜像变换之积.
+        \end{enumerate}
+    \item 设 $n$ 为一正整数，记 $z \in \mathbb{C}^n$ 为 $z = (z_0, z_1, \ldots, z_{n - 1})$，其中 $z_i \in \mathbb{C}$. 定义 $\mathbb{C}^n$ 上的线性函数 $\omega_0, \omega_1, \ldots, \omega_{n - 1}$ 如下：
+            \[
+                \omega_j(z_0, z_1, \ldots, z_{n - 1}) = \dfrac{1}{\sqrt{n}}\sum_{m = 0}^{n - 1}z_m e^{-2\pi \i jm/n}.
+            \]
+            则离散傅里叶变换（Discrete Fourier Transform）定义为 $\mathcal{F}: \mathbb{C}^n \to \mathbb{C}^n$，其中 \[ \mathcal{F}(z) = (\omega_0(z), \omega_1(z), \ldots, \omega_{n - 1}(z)). \]
+            证明：
+            \begin{enumerate}
+                \item $\mathcal{F}$ 是酉变换；
+                \item 若定义 $z_n = z_0$，则 \[ \mathcal{F}^{-1}(z_0, z_1, \ldots, z_{n - 1}) = \mathcal{F}(z_n, z_{n - 1}, \ldots, z_1). \]
+                \item $\mathcal{F}^4 = I$.
+            \end{enumerate}
 \end{enumerate}
