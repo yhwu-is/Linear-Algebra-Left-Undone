@@ -845,7 +845,7 @@
 
 对于低阶的矩阵来说，我们可以通过解特征多项式来精确求得特征值；但对于高阶矩阵而言，解特征多项式是非常困难的，所幸相关的工作一般来说也不需要我们精确求得特征值，所以我们可以通过一些方法来估计特征值.
 
-\begin{definition}{}{Gershgorin disks}
+\begin{definition}{格什戈林圆盘}{Gershgorin disks}
     设 $T \in \mathcal{L}(V)$，并且 $v_1, \ldots, v_n$ 是 $V$ 的一组基，$A = (a_{ij})_{n \times n}$ 为 $T$ 在这组基下的矩阵表示. 那么 $T$ 关于这组基的一个 Gershgorin 圆盘是指如下形式的集合：
     \[ D_i = \left\{z \in \mathbf{F} \mid \lvert z - a_{ii} \rvert \leqslant \sum_{j \neq i} \lvert a_{ij} \rvert\right\}, i = 1, \ldots, n. \]
 \end{definition}
@@ -854,7 +854,7 @@
 
 在进一步讨论之前，先考虑一种特殊的情况：对角矩阵. 设 $T \in \mathcal{L}(V)$，并且 $v_1, \ldots, v_n$ 是 $V$ 的一组基，$A = (a_{ij})_{n \times n}$ 为 $T$ 在这组基下的矩阵表示. 若 $A$ 是对角矩阵，那么 $T$ 相应的 Gershgorin 圆盘就是 $n$ 个单点，也就是对应的特征值. 这让我们朦胧之中觉得 Gershgorin 圆盘或许可以“控制”特征值. 事实上，这一想法是正确的：
 
-\begin{theorem}{}{Gershgorin disks theorem}
+\begin{theorem}{格什戈林圆盘第一定理}{Gershgorin disks theorem}
     设 $T \in \mathcal{L}(V)$，并且 $v_1, \ldots, v_n$ 是 $V$ 的一组基. 那么 $T$ 的每个特征值都在其关于 $v_1, \ldots, v_n$ 这组基的某个 Gershgorin 圆盘内.
 \end{theorem}
 
@@ -894,11 +894,11 @@
 
 不过我们可以看看这个例子的特殊之处，它的其中两个 Gershgorin 圆盘是相交的，所以尽管对应的两个特征值都落在了同一个圆盘内，但也可以被描述为其特征值落在了两个圆盘构成的连通区域内. 而考虑到对角矩阵对应的 Gershgorin 圆盘是 $n$ 个单点，除了重合外没有连通的情况，会出现一个 Gershgorin 圆盘对应一个特征值的情况也就不奇怪了. 所以，或许将连通的圆盘看作一个整体，而不是单独考虑每个圆盘，会更有利于我们的讨论.
 
-\begin{theorem}{}{Strengthening of Gershgorin disks theorem}
+\begin{theorem}{格什戈林圆盘第二定理}{Strengthening of Gershgorin disks theorem}
     设 $T \in \mathcal{L}(V)$，并且 $v_1, \ldots, v_n$ 是 $V$ 的一组基，$D_i, i = 1, \ldots, n$ 是 $T$ 关于这组基的 Gershgorin 圆盘. 若 $\cup_{i = 1}^n D_i$ 是 $k$ 个不相交的连通区域 $R_1, \ldots, R_k$ 的并，并且 $R_r$ 是一个 $m_r$ 个 Gershgorin 圆盘的并，那么 $T$ 有 $m_r$ 个特征值落在 $R_r$ 中，$r = 1, \ldots, k$.
 \end{theorem}
 
-这一定理的证明需要用到特征值的连续性，这里不再赘述. 借助于这一条定理，我们限制了每个连通区域内特征值的个数，从而使得我们可以更好地估计特征值的位置. 而自然地，我们也可以利用 Gershgorin 圆盘来刻画一些与特征值有关的性质.
+这一定理的证明需要用到特征值的连续性，这里不做过多展开. 借助于这一条定理，我们限制了每个连通区域内特征值的个数，从而使得我们可以更好地估计特征值的位置. 而自然地，我们也可以利用 Gershgorin 圆盘来刻画一些与特征值有关的性质.
 
 \begin{corollary}{}{}
     \begin{enumerate}
@@ -911,12 +911,13 @@
     \begin{enumerate}
         \item 是平凡的，运用 $n$ 个不同的特征值是可对角化的充分条件即可；
         \item 考虑到实系数多项式的复根是成对出现并且共轭，以及实系数矩阵的 Gershgorin 圆盘的圆心都落在实数轴上即可.
+    \end{enumerate}
 \end{proof}
 
 以上提到的 Gershgorin 圆盘都是使用的去心绝对行和作为半径，实际上我们也可以使用其他的方法来构造 Gershgorin 圆盘，比如使用去心绝对列和作为半径，即 \[
     C_i = \left\{z \in \mathbf{F} \mid \lvert z - a_{ii} \rvert \leqslant \sum_{j \neq i} \lvert a_{ji} \rvert\right\}, i = 1, \ldots, n.
 \]
-可以证明，这样构造的 Gershgorin 圆盘也满足 \autoref{thm:Gershgorin disks theorem} 和 \autoref{thm:Strengthening of Gershgorin disks theorem}. 所以在估计的时候，我们可以根据具体情况选择适合的 Gershgorin 圆盘，或者将两种方法结合起来使用.
+可以证明，这样构造的 Gershgorin 圆盘也满足 \nameref{thm:Gershgorin disks theorem} 和 \nameref{thm:Strengthening of Gershgorin disks theorem}. 所以在估计的时候，我们可以根据具体情况选择适合的 Gershgorin 圆盘，或者将两种方法结合起来使用.
 
 有些时候，我们还是觉得某个 Gershgorin 圆盘太大，无法给出特征值的精确估计. 这时，我们可以考虑将矩阵进行相似变换，使得新的矩阵对应的 Gershgorin 圆盘更小. 设 $D = \diag(p_1, p_2, \ldots, p_n), p_i > 0$ 是一个对角矩阵，那么有 \[
     D^{-1} A D = \begin{pmatrix}
@@ -1039,7 +1040,7 @@
     \item 设$A$为$n$阶矩阵，$X_1,X_2,X_3$为$n$元列向量，且$AX_1=kX_1\enspace(X_1\neq 0),AX_2=lX_1+kX_2,AX_3=lX_2+kX_3\enspace(l\neq 0)$. 证明：$X_1,X_2,X_3$线性无关.
 
     \item \begin{enumerate}
-        \item 使用 \autoref{thm:Gershgorin disks theorem} 证明：严格对角占优的矩阵是可逆的；
+        \item 使用 \nameref{thm:Gershgorin disks theorem} 证明：严格对角占优的矩阵是可逆的；
         \item 证明：矩阵 $A = \begin{pmatrix}
             1 + \i & 0.2 & 0.2 \\
             0.2 & 2 - \i & 0.2 \\
