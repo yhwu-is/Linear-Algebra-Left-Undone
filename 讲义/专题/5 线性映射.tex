@@ -724,11 +724,11 @@
 
 由此，我们通过在积空间上定义映射，结合\nameref{thm:线性映射基本定理}（或同构）得到了\autoref{thm:直和等价命题} 中关于维数的命题. 总结而言，在积空间的讨论中我们展现了一个比较完整地学习路径：从定义积空间的想法（来源于集合的笛卡尔积），到如何自然地定义出这一空间的加法和数乘运算，然后研究构造出的空间的基本结构有什么特点，然后进一步构造其上线性映射，得到一些其他的结论. 这一路径的每一步都是非常自然的，而且是学习一个数学概念的常见思路，希望读者不仅是在线性代数中体会到这种学习路径，在其他数学课甚至其他学科中都能总结出这样一条引入—定义—性质—应用的自然路径.
 
-\subsection{自然同构}
+\subsection{自然同构} \label{subsec:自然同构}
 
-本节我们将重新审视同构这一概念，我想本节的内容不是主线必须的，事实上对于同构这一概念，在有限维线性空间的视角下理解为维数相等在大部分场合下已经足够，但如果你希望在之后更深地理解对偶等章节，本节内容会提供一些基本的概念.\footnote{严谨而言，本节内容需要用到范畴论的概念，但这里我们为了避免引入大量的概念，将范畴论的术语转化为线性代数中的术语，并且大大简化我们的讨论，也就是说，这里仅仅是相关内容的冰山一角. 本书的最后一个未竟专题将会展开范畴论的讨论，感兴趣的读者可以参考.}
+本节我们将重新审视同构这一概念，我想本节的内容不是主线必须的，事实上对于同构这一概念，在有限维线性空间的视角下理解为维数相等在大部分场合下已经足够，但如果你希望在之后更深地理解对偶等章节，本节内容会提供一些基本的直观.\footnote{严谨而言，本节内容需要用到范畴论的概念，但这里我们为了避免引入大量的概念，将范畴论的术语转化为线性代数中的术语，并且大大简化我们的讨论，也就是说，这里仅仅是相关内容的冰山一角. 本书的最后一个未竟专题将会展开范畴论的讨论，感兴趣的读者可以参考.}
 
-为了重新审视同构，我们首先来看两个例子. 第一个例子需要我们回顾\autoref{thm:积与直和}，实际上我们可以直接得到如下同构：
+为了重新审视同构，我们首先来看两个例子. 第一个例子需要我们回顾\autoref{thm:积与直和}，作为一个推论我们可以得到如下同构：
 \begin{equation} \label{eq:5:积与直和自然同构}
     V_1\times V_2\times\cdots\times V_n\cong V_1\oplus V_2\oplus\cdots\oplus V_n.
 \end{equation}
@@ -752,30 +752,13 @@
 \end{equation}
 决定，其中$v_1,v_2,\ldots,v_n$是$v$在$V$的某一组基下的坐标. 相信读者读到这里已经发现了问题：\autoref{eq:5:积与直和自然同构映射} 中的映射我们并没有强调基的选取，然而\autoref{eq:5:V与Fn同构映射} 中的映射却依赖于基的选取，当$V$的基选取不一致时，$v\in V$的坐标会变化，因此映射$\sigma$的定义也会变化.
 
-这一差异引入了在线性空间中的自然同构的概念：
-\begin{definition}{自然同构（线性空间版本）}{}
-    设$V_1,V_2$为两个线性空间，称两者自然同构，如果在某组$V_1$的基$\alpha_{11},\ldots,\alpha_{1n}$和某组$V_2$的基$\alpha_{21},\ldots,\alpha_{2n}$下可以定义一个线性映射$\sigma_\alpha$ 满足：
-    \begin{enumerate}
-        \item $\sigma_\alpha$是一个从$V_1$到$V_2$的同构；
-        \item 对于任意$V_1$的基$\beta_{11},\ldots,\beta_{1n}$和$V_2$的基$\beta_{21},\ldots,\beta_{2n}$，如果能定义出同构映射$\sigma_\beta$，则必须有$\sigma_\beta$与$\sigma_\alpha$都是同一个线性映射.
-    \end{enumerate}
-\end{definition}
-
-读者可能会觉得这个定义有点语焉不详. 但实际上，我们可以回顾\autoref{thm:线性映射唯一确定}，为了定义一个线性映射，我们往往需要写出它把出发空间的基中的每个向量映射到了哪里，这也是上面通过基定义映射的依据. 而为了把我们前面例子中映射定义与基无关的要求，我们就引入了第二条性质.
-
-于是，接下来我们便可以按照这一定义验证两个例子中的同构是否是自然同构：
-\begin{proof}
-    \begin{enumerate}
-        \item
-        \item
-    \end{enumerate}
-\end{proof}
+这一差异引入了在线性空间中的自然同构的直观：称一个同构是自然的，如何这个同构的定义与基无关. 读者可能会觉得这个定义有点语焉不详，我们会在全书的最后一个未竟专题中给出更加严谨的定义.
 
 最后我们再看一个例子，我们希望进一步看到构造同构映射带来的研究问题的方便性：
 \begin{example}{}{}
     设$V_1,V_2,\ldots,V_n,W$是数域$\mathbf{F}$上的线性空间，证明：$\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$与$\mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$同构.
 \end{example}
-有的读者可能看见这题就会觉得非常简单，因为有限维线性空间的前提下二者维数显然相同，然而我们这里并未限定有限维线性空间，因此需要读者自己构造同构映射. 事实上同构映射的构造是很自然的，因为我们知道任何线性空间都与向量空间有一个很自然的映射，我们只需要将两部分映射复合即可.
+有的读者可能看见这题就会觉得非常简单，因为有限维线性空间的前提下二者维数显然相同，然而我们这里并未限定有限维线性空间，因此需要读者自己构造同构映射. 事实上同构映射的构造是很简单的，因为我们知道任何线性空间都与向量空间有一个最简单的坐标映射，我们只需要将两部分映射复合即可. 当然很多时候我们甚至可以直接自然地将同构写出，读者可以通过阅读这一例子的解答自行体会：
 
 \begin{solution}
     $\forall f\in \mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)$，我们定义$f_i:V_i\to W(i=1,2,\ldots,m)$满足
@@ -783,6 +766,15 @@
     其中$v_i$位于第$i$个位置，其余位置为零向量.
 
     定义$\varphi:\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n,W)\to \mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$，使得$\varphi(f)=(f_1,f_2,\ldots,f_m)$，则接下来我们要验证$\varphi$就是我们要求的同构映射.
+    \begin{enumerate}
+        \item 线性性：显然，读者自行验证；
+        \item 单射：设$\varphi(f)=0$，即$f_i=0(i=1,2,\ldots,m)$，则对任意$v\in V_1 \times V_2 \times \cdots \times V_n$，我们有
+              \[f(v)=f(v_1,v_2,\ldots,v_n)=f_1(v_1)+f_2(v_2)+\cdots+f_n(v_n)=0,\]
+              即$f=0$，故$\varphi$是单射；
+        \item 满射：设$(f_1,f_2,\ldots,f_m)\in \mathcal{L}(V_1,W) \times \mathcal{L}(V_2,W) \times \cdots \times \mathcal{L}(V_n,W)$，我们定义$f:V_1 \times V_2 \times \cdots \times V_n\to W$使得
+                \[f(v_1,v_2,\ldots,v_n)=f_1(v_1)+f_2(v_2)+\cdots+f_n(v_n),\]
+                则$f$是线性映射，且$\varphi(f)=(f_1,f_2,\ldots,f_m)$，故$\varphi$是满射.
+    \end{enumerate}
 \end{solution}
 
 \vspace{2ex}
@@ -794,9 +786,10 @@
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-I argue that set theory should not be based on membership, as in Zermelo-Frankel set theory, but rather on isomorphism-invariant structure.
+{\kaishu 我主张，集合论不应该基于成员关系，像 Zermelo-Frankel 集合论中那样，而应当基于同构不变的结构。}
 \begin{flushright}
-    ——W. Lawvere
+    \kaishu
+    ——W. 劳威尔（William Lawvere）
 \end{flushright}
 
 \centerline{\heiti A组}
@@ -817,6 +810,10 @@ I argue that set theory should not be based on membership, as in Zermelo-Frankel
     \item 是否存在$\mathbf{R}^2$到$\mathbf{R}^3$的线性映射$\sigma$使得$\sigma(3,2)=(1,0,0)$，$\sigma(1,5)=(1,1,0)$，$\sigma(-1,4)=(1,1,1)$？
 
     \item 求$\sigma(x_1,x_2,\ldots,x_n)=(x_1,0,\ldots,0)$的像、核与秩.
+
+    \item 证明：同构映射的逆、复合仍然是同构映射.
+
+    \item 证明：\autoref{def:积空间} 中定义的线性空间的积构成一个线性空间.
 \end{enumerate}
 
 \centerline{\heiti B组}
@@ -863,6 +860,53 @@ I argue that set theory should not be based on membership, as in Zermelo-Frankel
 
               \item 设$f,g,h \in \mathbf{R}[x]_3$且$f(1)=g(1)=h(1)=0$，证明：$f,g,h$线性相关.
           \end{enumerate}
+
+          \item 设$\sigma(p(x))=p'(x)$（求导），$\forall p(x) \in \mathbf{R}[x]_n$.
+          \begin{enumerate}
+              \item 证明：$\sigma$是$\mathbf{R}[x]_n$上的线性变换；
+
+              \item 求$\sigma$的值域和$r(\sigma)$，说明$\sigma$是否可逆；
+
+              \item 求$\sigma$的核及其维数；
+
+              \item 求$r(\sigma)+\dim\ker\sigma$，问：$\mathbf{R}[x]_n=\ker\sigma+\im \sigma$是否成立.
+          \end{enumerate}
+
+    \item 设$V$为有限维线性空间，$T\in \mathcal{L}(V,V)$且$T$不是恒等变换也不是零变换，问：下列情况是否可能发生？如果可能请举例，不可能请说明理由.
+          \begin{enumerate}
+              \item $\im T \cap \ker T = \{0\}$；
+
+              \item $\im T \subseteq \ker T$；
+
+              \item $\ker T = \im T$；
+
+              \item $\ker T \subseteq \im T$.
+          \end{enumerate}
+
+    \item 若$\sigma_1,\sigma_2\in \mathcal{L}(V,V)$，判断下列说法是否正确，正确请给出证明，反之给出反例：
+          \begin{enumerate}
+              \item 由$r(\sigma)+\dim\ker\sigma=n$可知$V=\ker\sigma+\im \sigma$；
+
+              \item 若有$\im T \cap \ker T = \{0\}$，则$V=\ker\sigma+\im \sigma$成立；
+
+              \item 因为$\forall \alpha \in V$有$(\sigma_1+\sigma_2)(\alpha)=\sigma_1(\alpha)+\sigma_2(\alpha)$，所以$(\sigma_1+\sigma_2)(V)=\sigma_1(V)+\sigma_2(V)$；
+
+              \item $(I-\sigma)(V)+\sigma(V)=V$，其中$I$为恒等映射.
+          \end{enumerate}
+
+          \item 设$V(\mathbf{R})$是线性空间，$\sigma$是$V(\mathbf{R})$到$\mathbf{R}^3$的同构映射，且$\sigma(\alpha_1)=(1,0,1),\enspace\allowbreak\sigma(\alpha_2)=(-2,1,0),\enspace\allowbreak\sigma(\alpha_3)=(-3,2,1),\enspace\allowbreak\sigma(\alpha_4)=(1,1,2)$.
+          \begin{enumerate}
+              \item $\alpha_1$在$\spa(\alpha_2,\alpha_3)$中吗？
+
+              \item 设$W_1=\spa(\alpha_1,\alpha_2),\enspace W_2=\spa(\alpha_3,\alpha_4)$，求$W_1\cap W_2$.
+          \end{enumerate}
+
+    \item 设$c_1,c_2,\ldots,c_n$是$n$个互异的实常数. 证明：$\mathbf{R}[x]_n$到$\mathbf{R}$的一个映射$\sigma$：
+          \[\sigma(p(x))=(p(c_1),p(c_2),\ldots,p(c_n))\]
+          是$\mathbf{R}[x]_n$到$\mathbf{R}$的一个同构映射.
+
+    \item 设$\sigma$和$\tau$分别为有限维线性空间$U\to V$和$V\to W$的线性映射，证明
+          \[\dim\ker\sigma+\dim(\im\sigma\cap\ker\sigma)=\dim\ker(\tau\sigma).\]
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -875,4 +919,28 @@ I argue that set theory should not be based on membership, as in Zermelo-Frankel
           \end{enumerate}
 
     \item 已知$\sigma_1,\sigma_2,\ldots,\sigma_s$是线性空间$V$上的$s$个两两不同的线性变换，证明：在$V$中必存在向量$\alpha$使得$\sigma_1(\alpha),\sigma_2(\alpha),\ldots,\sigma_s(\alpha)$也两两不同.
+
+    \item 设$V$是一个$n$维线性空间，$V=W_1\oplus W_2,\enspace\sigma\in \mathcal{L}(V,V)$. 证明：$\sigma$可逆$\iff V=\sigma(W_1)+\sigma(W_2)$.
+
+    \item 设$V_1,V_2,V_3$分别为$m,n,s$维线性空间，$\sigma\in \mathcal{L}(V_1,V_2),\enspace\tau\in \mathcal{L}(V_2,V_3)$，则
+          \[r(\sigma)+r(\tau)-n \leqslant r(\tau\sigma) \leqslant \min\{r(\sigma),r(\tau)\}.\]
+
+    \item 设$V_1$是有线维线性空间，$\sigma,\tau\in \mathcal{L}(V_1,V_2)$，则
+          \[r(\sigma+\tau) \leqslant r(\sigma)+r(\tau).\]
+
+          事实上前两题的结论在下一章节矩阵的秩中都会涉及，此处有兴趣的同学可以尝试从线性映射的角度理解这两个秩不等式. 由于这是教材中小字部分内容，一般而言不在考察范围，如果出现且无法找到合适方式，可以考虑化为矩阵进行证明.
+
+    \item 设$\sigma\in \mathcal{L}(V,V)$，$\dim V_1=n$，且$\sigma^2=\sigma$，$I$是$V$上的恒等变换. 证明：
+          \begin{enumerate}
+              \item $(I-\sigma)(V) \in \ker\sigma$；
+
+              \item $r(I-\sigma)+r(\sigma)=n$.
+          \end{enumerate}
+
+    \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\sigma^2=\theta$（零映射）. 证明：
+          \begin{enumerate}
+              \item $\sigma$的像空间维数不超过$\dfrac{n}{2}$；
+
+              \item 设$A$是$\sigma$在某组基下的矩阵，则方程组$AX=0$的基础解系至少有$\dfrac{n}{2}$个解.
+          \end{enumerate}
 \end{enumerate}

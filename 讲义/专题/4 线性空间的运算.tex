@@ -49,6 +49,64 @@
 
 除此之外，这一定理也告诉我们为什么需要研究子空间的和而更少研究子空间的并：因为子空间的和仍然是线性空间. 直观理解实际上就是和的定义中出现了两个子空间的向量的加法，而构成子空间的核心就是运算封闭，因此这一定义为子空间的和仍构成子空间提供了保证，因此这一定义也是十分自然的.
 
+下面我们来看一个例子，在例子中我们将给出求子空间的和与交的一般方法：
+\begin{example}{}{}
+    设 $\alpha_1 = (1, 0, -1, 0)$，$\alpha_2 = (0, 1, 2, 1)$，$\alpha_3 = (2, 1, 0, 1)$，是四维实行向量空间 $V$ 中的向量，他们张成的子空间为 $V_1$；又设向量 $\beta_1 = (-1, 1, 1, 1)$，$\beta_2 = (1, -1, -3, -1)$，$\beta_3 = (-1, 1, -1, 1)$ 张成的子空间为 $V_2$，求 $V_1$ 和 $V_2$ 的交与和的基.
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item 方法一.  $V_1 +V_2$ 是由 $\alpha_i$ 和 $\beta_i$ 生成的，因此只需要求出这 $6$ 个向量的极大线性无关组即可. 将这 $6$ 个向量按列分块方式拼成矩阵，并用初等行变换将其化为阶梯形矩阵：
+        \[ \begin{aligned} \begin{pmatrix}
+                1 & 0 & 2 & -1 & 1 & -1 \\
+                0 & 1 & 1 & 1  & -1 & 1  \\
+                -1 & 2 & 0 & 1 & -3 & -1 \\
+                0 & 1 & 1 & 1 & -1 & 1
+        \end{pmatrix} \xrightarrow{} \begin{pmatrix}
+                1 & 0 & 2 & -1 & 1 & -1 \\
+                0 & 1 & 1 & 1  & -1 & 1  \\
+                0 & 2 & 2 & 0 & -2 & -2 \\
+                0 & 0 & 0 & 0 & 0 & 0
+        \end{pmatrix} \\
+        \xrightarrow{} \begin{pmatrix}
+                1 & 0 & 2 & -1 & 1 & -1 \\
+                0 & 1 & 1 & 1  & -1 & 1  \\
+                0 & 0 & 0 & -2 & 0 & -4 \\
+                0 & 0 & 0 & 0 & 0 & 0
+        \end{pmatrix} \end{aligned} \]
+
+        所以就可以取 $\alpha_1$，$\alpha_2$，$\beta_1$ 为 $V_1 + V_2$ 的基（不唯一）.
+
+        下面再来取 $V_1\cap V_2$ 的基，首先注意到 $\alpha_1$，$\alpha_2$ 是 $V_1$ 的基（从上面的矩阵即可看出），又不难验证 $\beta_1$，$\beta_2$ 是 $V_2$ 的基，$V_2$ 中的向量可以表示为 $\beta_1$，$\beta_2$ 的线性组合. 假设 $t_1\beta_1 + t_2\beta_2$ 属于 $V_1$，则向量组 $\alpha_1, \alpha_2, t_1\beta_1 + t_2\beta_2$ 和向量组 $\alpha_1, \alpha_2$ 的秩相等（因为 $\alpha_1, \alpha_2$ 是 $V_1$ 的基）. 因此，我们可以用矩阵方法来求出参数 $t_1, t_2$. 注意到
+        \[ \begin{pmatrix}
+                1 & 0 & -t + t_2  \\
+                0 & 1 & t_1 - t_2 \\
+                -1 & 2 & t_1 - 3t_2 \\
+                0 & 1 & -t_1 - t_2
+        \end{pmatrix} \xrightarrow{} \begin{pmatrix}
+                1 & 0 & -t + t_2  \\
+                0 & 1 & t_1 - t_2 \\
+                0 & 2 & -2t_2 \\
+                0 & 0 & 0
+        \end{pmatrix} \xrightarrow{} \begin{pmatrix}
+                1 & 0 & -t + t_2  \\
+                0 & 1 & t_1 - t_2 \\
+                0 & 0 & -2t_1 \\
+                0 & 0 & 0
+        \end{pmatrix} \]
+
+        所以可以得出当且仅当 $t_1 = 0$ 时 $t_1\beta_1 + t_2\beta_2$ 属于 $V_1$，所以 $V_1 \cap V_2$ 的基可取为 $\beta_2$.
+
+        \item 方法二. 求 $V_1 + V_2$ 的基同方法一，现用解线性方程组的方法来求 $V_1 \cap V_2$ 的基. 因为 $\alpha_1$，$\alpha_2$ 是 $V_1$ 的基，$\beta_1$，$\beta_2$ 是 $V_2$ 的基，故对任一向量 $\gamma \in V_1 \cap V_2$，$\gamma = x_1\alpha_1 + x_2\alpha_2 = -x_3\beta_1 - x_4\beta_2$. 因此，求向量 $\gamma$ 等价于求解线性方程组
+
+        \[ x_1\alpha_1 + x_2\alpha_2 + x_3\beta_1 + x_4\beta_2 = 0. \]
+
+        上述线性方程的通解是 $(x_1, x_2, x_3, x_4) = k(-1, 1, 0, 1)$，从而 $\gamma = -k(\alpha_1 - \alpha_2) = -k\beta_2 (k \in \mathbf{R})$，于是 $\beta_2$ 是 $V_1 \cap V_2$ 的基.
+    \end{enumerate}
+\end{solution}
+
+我们不难发现，两个线性空间的和的求法就是将两个空间的基合并后求极大线性无关组，而交的求法则更具技巧性. 当然这里使用的是简单的向量空间的例子，如果是一般的线性空间，则可以先转化为基下的坐标然后使用上面的方法求解.
+
 \section{覆盖定理}
 
 \begin{theorem}{覆盖定理}{覆盖定理} \index{fugaidingli@覆盖定理}
@@ -215,9 +273,10 @@
 \centerline{\heiti \Large 习题}
 
 \vspace{2ex}
-When language has been well chosen, one is astonished to find that all demonstrations made for a known object apply immediately to many new objects: nothing requires to be changed, not even the terms, since then names have become the same.
+{\kaishu 在选择了一套恰当的语言之后，我们会惊讶地发现，所有对于已知对象的阐述都能被立刻推广到许多新的对象上：不需要进行任何改写，甚至包括术语，因为在这种语言下，所有的名字也是一致的。}
 \begin{flushright}
-    ——H. Poincaré
+    \kaishu
+    ——H. 庞加莱（Henri Poincaré）
 \end{flushright}
 
 \centerline{\heiti A组}

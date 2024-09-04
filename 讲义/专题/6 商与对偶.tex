@@ -1,4 +1,4 @@
-\chapter{商与对偶}
+\chapter{商与对偶} \label{chap:商与对偶}
 
 \section{商空间}
 
@@ -38,7 +38,7 @@
     \end{enumerate}
 \end{proof}
 
-这一结论非常关键，它使得我们把抽象的关等价关系与一个子空间绑定. 我们记这一子空间为$U$，即$\overline{0}=U$，于是下面这一结论也是容易得到的：
+这一结论非常关键，它使得我们把抽象的等价关系与一个子空间绑定. 我们记这一子空间为$U$，即$\overline{0}=U$，于是下面这一结论也是容易得到的：
 \begin{theorem}{}{}
     设$v_1,v_2\in V$，则$v_1Rv_2$当且仅当$v_1-v_2\in U$.
 \end{theorem}
@@ -288,14 +288,7 @@
 
 \end{solution}
 
-除此之外需要强调的是，这样一组基一定依赖于原来的基，上面构造出的同构也是如此——如果我们一开始给$V$取的是另一组基，这里的对偶基一定是另一组基，同构映射也会发生变化. 像这样随着基的取法不同而发生变化的同构映射我们称其为不自然的. 事实上，像坐标映射就是非常典型的不自然的映射：基的取法发生变化，坐标一定会有不同. 同理，线性映射的矩阵表示也是不自然的. 我们也可以给出自然映射的例子，比如直和与积的同构：
-\begin{equation}
-    \begin{aligned}
-        \sigma:V_1\times V_2\times\cdots\times V_n & \to V_1\oplus V_2\oplus\cdots\oplus V_n, \\
-        (v_1,v_2,\ldots,v_n)                       & \mapsto v_1+v_2+\cdots+v_n
-    \end{aligned}
-\end{equation}
-这里我们定义映射完全不依赖于基的选取，因此是自然的. 事实上，不存在从 $V$ 到 $V^*$ 的自然同构，这个命题在 Mac Lane 提出范畴论的原始论文中被称为是可以由范畴论所形式化的，而范畴论是数学中更为高深的分支，在此我们就不再深入探讨，待本书的最后一个未竟专题展开讨论.
+除此之外需要强调的是，这样一组基一定依赖于原来的基，上面构造出的同构也是如此——如果我们一开始给$V$取的是另一组基，这里的对偶基一定是另一组基，同构映射也会发生变化. 像这样随着基的取法不同而发生变化的同构映射根据我们在\nameref{subsec:自然同构}中的描述应当称其为不自然的. 事实上，不存在从 $V$ 到 $V^*$ 的自然同构，这个命题在 Mac Lane 提出范畴论的原始论文中被称为是可以由范畴论所形式化的，而范畴论是数学中更为高深的分支，在此我们就不再深入探讨，待本书的最后一个未竟专题展开讨论.
 
 但是，另一个范畴论的观点还是可以讨论的. 当我们说对偶的时候，我们提到了关于对象的叙述的翻译的问题，如开头中的例子点与线之间的相互翻译对应——这一点我们已经通过线性空间与其对偶空间的同构形式化. 但我们似乎还忽略了一个翻译，就是``确定''和``交于''的之间的翻译. 很自然地，这两个词汇实际上就是线性空间元素之间的对应，即线性映射，于是我们接下来讲探讨线性映射之间的翻译. 在进一步讲解之前，我们首先需要介绍交换图的概念：
 \begin{definition}{交换图}{}
@@ -404,38 +397,6 @@
 \end{proof}
 
 需要注意的是，在证明这是一个线性同构的过程中，从技术上我们依然要依赖于对 $V$ 取任意一组基，因此它实际上依赖于 $V$ 的有限性. 如果 $V$ 并非有限，那么实际上问题会变得相当复杂，在此不做讨论. 虽然无限维情形的对偶空间依然可以用 $\mathcal{L}(V, \R)$ 来定义，超平面的直观则就不再适用了.
-
-\subsection{对偶映射的矩阵表示}
-
-我们已经提及，$\mathcal{L}(V, W)$ 和矩阵空间具备同构性质，而我们已经表明，对偶有一个函子性，也就是说，$\mathcal{L}(V, W)$ 到 $\mathcal{L}(W^*, V^*)$ 有对应. 因此，我们不免就想构造矩阵空间的一个类似的对偶，使得它能够``具备类似对偶的函子性''. 更直白地说，我们希望得到其对偶映射的矩阵表示.
-
-那么，让我们思考一下怎么给出这个表示. 现在，我们的第一反应是，它一定是一个反变的东西. 其次，它一定对于任意行数和列数的矩阵都存在. 那么，最简单的想法就是，它是不是就是矩阵的转置？矩阵的转置看起来符合反变的直观，而且也带有我们已经给出的性质. 而下面的问题是，如何验证这种直观.
-\begin{theorem}{}{对偶映射的矩阵表示}
-    $V$和$W$为有限维线性空间. $V$的一组基为$\alpha_1,\ldots,\alpha_n$，$W$的一组基为$\beta_1,\ldots,\beta_m$，它们对偶空间的基分别为$f_1,\ldots,f_n$和$g_1,\ldots,g_m$. 设$\sigma\in\mathcal{L}(V,W)$，它在上述$V$和$W$的基下的矩阵为$A=(a_{ij})_{m \times n}$，则$\sigma^*\in\mathcal{L}(W^*,V^*)$在上述对偶基下的矩阵为$C=(c_{ij})_{n \times m}=A^\mathrm{T}$.
-\end{theorem}
-
-\begin{proof}
-    根据线性映射矩阵表示的定义，我们有
-    \[\sigma^*(g_j)=\sum_{i=1}^nc_{ij}f_i,\enspace j=1,2,\ldots,m.\]
-    上式左端根据对偶映射定义等于$(g_j\circ\sigma)$. 于是我们将等式两端均作用于$\alpha_k$上有
-    \[(g_j\circ\sigma)(\alpha_k)=\sum_{i=1}^nc_{ij}f_i(\alpha_k)=\sum_{i=1}^nc_{ij}\delta_{ik}=c_{kj}.\]
-    另一方面，根据映射复合的结合律以及线性映射矩阵表示的定义，我们有
-    \[(g_j\circ\sigma)(\alpha_k)=g_j(\sigma(\alpha_k))=g_j\left(\sum_{i=1}^na_{ik}\beta_i\right)=\sum_{i=1}^na_{ik}g_j(\beta_i)=\sum_{i=1}^na_{ik}\delta_{ij}=a_{jk}.\]
-    因此我们有$c_{kj}=a_{jk}$，即$C=A^\mathrm{T}$.
-\end{proof}
-
-这个结果看起来很平凡，对吧？但是让我们暂停一下，重新反思一下前面的几何直观. 如果我们有超平面方程
-
-\[
-    a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = 1
-\]
-
-我们记$a=(a_1,a_2,\ldots,a_n)^\mathrm{T},x=(x_1,x_2,\ldots,x_n)^\mathrm{T}$，于是上面的方程可以简化为$a^T x = 1$. 事实上，对于给定的一个超平面$a^T x = 1$，我们知道一定有某个点与之对应，事实上它就是$\tilde{x} = a$，即就是超平面方程的系数.
-\begin{proof}
-    原谅我没时间严格说明这个关系，之后会补上的，但其实这个很直观.
-\end{proof}
-
-于是我们接下来可以给出\autoref{thm:对偶映射的矩阵表示} 从几何上的理解. 如果原来的方程是 $a^\mathrm{T} x = 1$，则与这个超平面对偶的点则是 $\tilde{x} = a$. 如果我们对 $\tilde{x}$ 作用上 $M$，也就是写成 $\tilde{x} = Ma$，则实现了$V\to W$的映射，那么前面与之对应的方程就是 $(Ma)^\mathrm{T} x = 1$，或者写作 $a^\mathrm{T} (M^\mathrm{T} x) = 1$，即新的超平面和原来的超平面相差一个 $M^\mathrm{T}$，即$W^*$与$V^*$之间相差了$M^\mathrm{T}$. 因此，从几何直观上，我们也验证了转置和对偶映射的对应关系. % TODO: 这段要重写
 
 \subsection{零化子}
 
@@ -724,23 +685,29 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 设$A$为三阶矩阵，将$A$的第二列加到第一列得到矩阵$B$，再对调$B$的2、3行得到单位矩阵. 令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\enspace
-              P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用$P_1$和$P_2$表示$A$.
+    \item 证明以下两个命题：
+        \begin{enumerate}
+            \item 设$\varphi\in \mathcal{L}(V,\mathbf{F}),\enspace\varphi\neq 0$. 证明：$\dim V/(\ker\varphi)=1$；
 
-    \item 设$A$为可逆矩阵，将$A$的第$i$行和第$j$行对调得到矩阵$B$，证明矩阵$B$可逆并求$AB^{-1}$.
-
-    \item 设$A$为三阶可逆矩阵，且$P^{-1}AP=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$，其中$P=(\alpha_1,\alpha_2,\alpha_3)$，令$Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，求$Q^{-1}AQ$.
-
-    \item 求下列矩阵的可逆的条件与逆矩阵：$\begin{pmatrix}
-                  A & B \\ O & D
-              \end{pmatrix},\enspace \begin{pmatrix}
-                  O & B \\ C & D
-              \end{pmatrix}$.
+            \item 设$U$是$V$的子空间且$\dim V/U=1$，则存在$\varphi\in \mathcal{L}(V,\mathbf{F})$使得$\ker\varphi=U$.
+        \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
     \item 设$U$和$W$是线性空间$V$的子空间. 构造同构映射证明：若$V=U\oplus W$，则$U$和$V/W$同构.
+
+    \item 设$A_1$和$A_2$均为$V$的仿射子集，证明：$A_1\cap A_2$是$V$的仿射子集或空集（可推广至任意交）.
+
+    \item 设$U$是$V$的子空间，$\Gamma:\mathcal{L}(V/U,W)\to \mathcal{L}(V,W)$定义为$\Gamma(S)=S\circ\pi$. 证明：
+          \begin{enumerate}
+              \item $\Gamma$是线性映射；
+
+              \item $\Gamma$是单的；
+
+              \item $\im\Gamma=\{T\in \mathcal{L}(V,W) \mid \forall u\in U,\enspace Tu=0\}$.
+          \end{enumerate}
+
     \item 实际上，零化子有一个更广泛的版本，考虑 $S$ 为 $V$ 的一个子集，也能如上构造 $S^0$，尝试证明，这样的构造满足以下性质：
           \begin{enumerate}
               \item $S^{00} = \spa S$
@@ -751,44 +718,18 @@
                     \end{enumerate}（提示：反复利用前面两个性质）
               \item 进而得出对于零点集的相应结论
           \end{enumerate}
-    \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵为$A=(a_{ij})_{3 \times 3}$，求：
-          \begin{enumerate}
-              \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
-
-              \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
-
-              \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
-
-              \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
-          \end{enumerate}
-
-    \item 设$P=\begin{pmatrix}
-                  1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
-              \end{pmatrix}$，$Q=\begin{pmatrix}
-                  0 & 0 \\ 1 & 0
-              \end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$.
-          \begin{enumerate}
-              \item 验证$\sigma$是线性映射；
-
-              \item 求$\ker\sigma$和$\im \sigma$；
-
-              \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
-          \end{enumerate}
-
-    \item % 新题，需要答案
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item 若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在$n$阶下三角矩阵$B$，使得$BA$为上三角矩阵.
+    \item 设$v_1,\ldots,v_m\in V$. 令
+          \[A=\{\lambda_1v_1+\cdots+\lambda_mv_m \mid \lambda_1,\ldots,\lambda_m\in\mathbf{F}\text{~且~}\lambda_1+\cdots+\lambda_m=1\}.\]
+          证明：
+          \begin{enumerate}
+              \item $A$是$V$的仿射子集；
 
-    \item 设$A$是数域$\mathbf{F}$上的$n$阶可逆矩阵，把$A$和$A^{-1}$做如下分块：
-          \[A=\begin{pmatrix}
-                  A_{11} & A_{12} \\ A_{21} & A_{22}
-              \end{pmatrix},\enspace A^{-1}=\begin{pmatrix}
-                  B_{11} & B_{12} \\ B_{21} & B_{22}
-              \end{pmatrix}\]
-          其中$A_{11}$是$l \times k$矩阵，$B_{11}$是$k \times l$矩阵，$l$，$k$是小于$n$的正整数. 用$W$表示$A_{12}X=0$的解空间，$U$表示$B_{12}Y=0$的解空间，其中$X$和$Y$为列向量，证明$W$与$U$同构.
+              \item $V$的每个包含$v_1,\ldots,v_m$的仿射子集均包含$A$；
 
-    \item $A$的Schur补以及商等式$A/B=(A/C)/(B/C)$% 新题，需要答案
+              \item 存在某个$v\in V$和$V$的子空间$U$使得$A=v+U$且$\dim U\leqslant m-1$.
+          \end{enumerate}
 \end{enumerate}

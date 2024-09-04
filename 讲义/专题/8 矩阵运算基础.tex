@@ -388,10 +388,17 @@
 我们称$X$为矩阵$A$的Moore-Penrose广义逆矩阵，记作$X=A^\dagger$. 此处不赘述其证明和算法，感兴趣的同学可以自行查阅相关资料. 我们可以从两个角度认识这一定义，首先是取$A$为可逆矩阵，发现此定义是相容的，其次是通过这一矩阵可以获得线性方程组$AX=b$最小二乘解$X=A^\dagger b$. 广义逆矩阵在各个领域的研究中应用很广泛，所以在此提一下它的概念.
 
 \section{矩阵的转置}
+\subsection{基本定义与性质}
 
-接下来我们转入具象的矩阵运算中，讨论转置这一运算的性质. 我们首先给出一些基本的性质：
+矩阵的转置也是一种非常基本的运算，事实上推进到现在这一概念应当已经不陌生了，我们首先给出矩阵转置的定义：
 
-\subsection{基本性质}
+\begin{definition}{矩阵的转置}{}
+    设$A=(a_{ij})_{m \times n}$，则$A$的\term{转置矩阵}\index{zhuanzhi@转置 (transpose)}是一个$n \times m$矩阵，记作$A^\mathrm{T}$，它的第$k$行正好是$A$的第$k$列（$k=1,2,\ldots,n$）；它的第$r$列正好是$A$的第$r$行（$r=1,2,\ldots,m$）.
+\end{definition}
+
+例如，设$A=\begin{pmatrix}1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 9 & 10 & 11 & 12\end{pmatrix}$，则$A^\mathrm{T}=\begin{pmatrix}1 & 5 & 9 \\ 2 & 6 & 10 \\ 3 & 7 & 11 \\ 4 & 8 & 12\end{pmatrix}$.
+
+下面的列举的矩阵转置的性质是基本且常用的：
 
 \begin{enumerate}
     \item $(A^\mathrm{T})^\mathrm{T}=A$
@@ -513,6 +520,40 @@
         \end{pmatrix}.\]
     因此题中的充要条件可以转化为$AA^\mathrm{T}=E$是$A^\mathrm{T}A=E$的充要条件. 这是显然的，因为$AA^\mathrm{T}=E\iff A^{-1}=A^\mathrm{T}\iff A^\mathrm{T}A=E$成立.
 \end{solution}
+
+\subsection{对偶映射的矩阵表示}
+
+此前的矩阵运算我们都介绍了其与线性映射运算之间的关联，这些关联都是非常简单直接的。转置作为一个非常简单基本的运算，我们当然希望能找到一个非常简单基本的线性映射运算来对应，但很可惜的是，转置与线性映射运算的关联比较抽象，涉及到 \nameref{chap:商与对偶} 一章中介绍的对偶映射。
+
+我们已经提及，$\mathcal{L}(V, W)$ 和矩阵空间具备同构性质，而我们已经表明，对偶有一个函子性，也就是说，$\mathcal{L}(V, W)$ 到 $\mathcal{L}(W^*, V^*)$ 有对应. 因此，我们不免就想构造矩阵空间的一个类似的对偶，使得它能够``具备类似对偶的函子性''. 更直白地说，我们希望得到其对偶映射的矩阵表示.
+
+那么，让我们思考一下怎么给出这个表示. 现在，我们的第一反应是，它一定是一个反变的东西. 其次，它一定对于任意行数和列数的矩阵都存在. 那么，最简单的想法就是，它是不是就是矩阵的转置？矩阵的转置看起来符合反变的直观，而且也带有我们已经给出的性质. 而下面的问题是，如何验证这种直观.
+\begin{theorem}{}{对偶映射的矩阵表示}
+    $V$和$W$为有限维线性空间. $V$的一组基为$\alpha_1,\ldots,\alpha_n$，$W$的一组基为$\beta_1,\ldots,\beta_m$，它们对偶空间的基分别为$f_1,\ldots,f_n$和$g_1,\ldots,g_m$. 设$\sigma\in\mathcal{L}(V,W)$，它在上述$V$和$W$的基下的矩阵为$A=(a_{ij})_{m \times n}$，则$\sigma^*\in\mathcal{L}(W^*,V^*)$在上述对偶基下的矩阵为$C=(c_{ij})_{n \times m}=A^\mathrm{T}$.
+\end{theorem}
+
+\begin{proof}
+    根据线性映射矩阵表示的定义，我们有
+    \[\sigma^*(g_j)=\sum_{i=1}^nc_{ij}f_i,\enspace j=1,2,\ldots,m.\]
+    上式左端根据对偶映射定义等于$(g_j\circ\sigma)$. 于是我们将等式两端均作用于$\alpha_k$上有
+    \[(g_j\circ\sigma)(\alpha_k)=\sum_{i=1}^nc_{ij}f_i(\alpha_k)=\sum_{i=1}^nc_{ij}\delta_{ik}=c_{kj}.\]
+    另一方面，根据映射复合的结合律以及线性映射矩阵表示的定义，我们有
+    \[(g_j\circ\sigma)(\alpha_k)=g_j(\sigma(\alpha_k))=g_j\left(\sum_{i=1}^na_{ik}\beta_i\right)=\sum_{i=1}^na_{ik}g_j(\beta_i)=\sum_{i=1}^na_{ik}\delta_{ij}=a_{jk}.\]
+    因此我们有$c_{kj}=a_{jk}$，即$C=A^\mathrm{T}$.
+\end{proof}
+
+这个结果看起来很平凡，对吧？但是让我们暂停一下，重新反思一下前面的几何直观. 如果我们有超平面方程
+
+\[
+    a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = 1
+\]
+
+我们记$a=(a_1,a_2,\ldots,a_n)^\mathrm{T},x=(x_1,x_2,\ldots,x_n)^\mathrm{T}$，于是上面的方程可以简化为$a^T x = 1$. 事实上，对于给定的一个超平面$a^T x = 1$，我们知道一定有某个点与之对应，事实上它就是$\tilde{x} = a$，即就是超平面方程的系数.
+\begin{proof}
+    原谅我没时间严格说明这个关系，之后会补上的，但其实这个很直观.
+\end{proof}
+
+于是我们接下来可以给出\autoref{thm:对偶映射的矩阵表示} 从几何上的理解. 如果原来的方程是 $a^\mathrm{T} x = 1$，则与这个超平面对偶的点则是 $\tilde{x} = a$. 如果我们对 $\tilde{x}$ 作用上 $M$，也就是写成 $\tilde{x} = Ma$，则实现了$V\to W$的映射，那么前面与之对应的方程就是 $(Ma)^\mathrm{T} x = 1$，或者写作 $a^\mathrm{T} (M^\mathrm{T} x) = 1$，即新的超平面和原来的超平面相差一个 $M^\mathrm{T}$，即$W^*$与$V^*$之间相差了$M^\mathrm{T}$. 因此，从几何直观上，我们也验证了转置和对偶映射的对应关系. % TODO: 这段要重写
 
 \section{矩阵的共轭}
 
@@ -705,55 +746,20 @@
 
     \item 设$A$是$n$阶方阵且$A^n=O$，证明：
           \[(E_n-A)(E_n+A+A^2+\cdots+A^{n-1})=E_n.\]
+
+    \item 证明：若线性映射$\sigma \in \mathcal{L}(V_1,V_2)$可逆，则其逆映射唯一.
+
+    \item 证明：有一行元素或一列元素全为0的$n$阶方阵必定不可逆.
+
+    \item 设$\alpha,\beta$为三维列向量，且$\alpha\beta^\mathrm{T}=\begin{pmatrix}
+        -1 & 2  & 1  \\
+        1  & -2 & -1 \\
+        2  & -4 & -2
+    \end{pmatrix}$，求$\alpha^\mathrm{T}\beta$.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in L(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
-
-    \item 已知$f_1=1-x,f_2=1+x^2,f_3=x+2x^2$是$\mathbf{R}[x]_3$中三个元素，$\sigma$是$\mathbf{R}[x]_3$上的线性变换且满足$\sigma(f_1)=2+x^2,\sigma(f_2)=x,\sigma(f_3)=1+x+x^2$.
-          \begin{enumerate}
-              \item 证明：$f_1,f_2,f_3$构成$\mathbf{R}[x]_3$的一组基；
-
-              \item 求$\sigma$在基$f_1,f_2,f_3$下的矩阵；
-
-              \item 设$f=1+2x+3x^2$，求$\sigma(f)$.
-          \end{enumerate}
-
-    \item 设$V=\mathbf{M}_2(\mathbf{R})$是$\mathbf{R}$上所有$2 \times 2$矩阵构成的实数域上的线性空间. 已知
-          \[A=\begin{pmatrix}1 & -1 \\ \lambda & 1 \end{pmatrix}(\lambda \in \mathbf{R}),\enspace B=\begin{pmatrix}1 & 2 \\ -1 & -1 \end{pmatrix}\]
-          \begin{enumerate}
-              \item 证明：$\varphi(X)=AXB$为$V$上的线性变换；
-
-              \item 证明：$\lambda\neq-1$时，$\varphi$为可逆线性变换；
-
-              \item \label{item:7:B:1}
-                    $\lambda=-1$时，求$\varphi$的像空间和核空间；
-
-              \item 将 \ref*{item:7:B:1} 中的值域扩充为$V$的一组基，并求$\varphi$在这组基下的矩阵.
-          \end{enumerate}
-
-    \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
-          \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
-          V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
-
-    \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 4 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T : \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
-          \[T(f(x))=\begin{pmatrix}f(0) & f(1) \\ f(-1) & f(0)\end{pmatrix}\]
-          \begin{enumerate}
-              \item 求出 $T$ 的核空间 $N(T)$ 和像空间 $R(T)$；
-
-              \item 求$T$在$\mathbf{R}[x]_4$和$\mathbf{M}_2(\mathbf{R})$的基下的矩阵表示.
-          \end{enumerate}
-
-    \item 设$A=\begin{pmatrix}
-                  1 & -1 & -1 \\ -1 & 1 & 1 \\ 0 & -4 & 2
-              \end{pmatrix},\enspace\xi_1=(-1,1,-2)^\mathrm{T}$.
-          \begin{enumerate}
-              \item 求满足$A\xi_2=\xi_1$及$A^2\xi_3=\xi_1$的所有$\xi_2,\xi_3$；
-
-              \item 证明：$\xi_1,\xi_2,\xi_3$线性无关.
-          \end{enumerate}
-
     \item 若$f(x)$是$x$的实系数$m$次多项式：
           \[f(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0\]
           则有矩阵多项式：
@@ -768,9 +774,66 @@
 
               \item 若$A=P^{-1}BP$，证明：$f(A)=Pf(B)P^{-1}$.
           \end{enumerate}
+
+    \item 设$A$为$n$阶可逆矩阵，$A$的每行各元素之和都等于$k$，证明：$k \neq 0$且$A^{-1}$的每行各元素之和都等于$\vphantom{\cfrac{1}{k}}\dfrac{1}{k}$.
+
+    \item 已知矩阵$A=\begin{pmatrix}1 & 2 & a  \\
+               1 & 3 & 0  \\
+               2 & 7 & -a\end{pmatrix}$可以通过初等列变换转化为矩阵$B=\begin{pmatrix}1  & a & 2 \\
+               0  & 1 & 1 \\
+               -1 & 1 & 1\end{pmatrix}$.
+          \begin{enumerate}
+              \item 求常数$a$；
+
+              \item 求满足$AP=B$的可逆矩阵$P$.
+          \end{enumerate}
+
+          \item 证明以下两个命题：
+          \begin{enumerate}
+              \item 证明：任一$n$阶方阵都可以表示为一个对称矩阵与一个反对称矩阵的和.
+              \item 设$A$是$n$阶复矩阵，若$\overline{A}^\mathrm{T}=A$，则称$A$是一个Hermite矩阵. 若$\overline{A}^\mathrm{T}=-A$，则称$A$是一个斜Hermite矩阵. 证明：任一$n$阶复矩阵都可以表示为一个Hermite矩阵与一个斜Hermite矩阵的和.
+          \end{enumerate}
+
+    \item 证明以下两个命题：
+          \begin{enumerate}
+              \item 设$A$为$m\times n$阶实矩阵，则$A^\mathrm{T}A=O$的充要条件为$A=O$.
+              \item 设$A$为$m\times n$阶复矩阵，则$\overline{A^\mathrm{T}}A=O$的充要条件为$A=O$.
+          \end{enumerate}
+
+    \item 证明以下两个命题：
+          \begin{enumerate}
+              \item 设$A$为$n$阶对称矩阵，证明：$A$是零矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
+              \item 设$A$为$n$阶方阵，证明：$A$为反对称矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
+          \end{enumerate}
+
+    \item 证明：设$A$是实对称矩阵，若$A^2=O$，则$A=O$.
+
+    \item 设$A,B$为$n$阶方阵，证明：
+          \begin{enumerate}
+              \item 若$A,B$为对称矩阵，则$AB$为对称矩阵的充要条件为$AB=BA$，$AB$为反对称矩阵的充要条件为$AB=-BA$.
+              \item 若$A$为对称矩阵，$B$为反对称矩阵，则$AB$为反对称矩阵的充要条件为$AB=BA$，$AB$为对称矩阵的充要条件为$AB=-BA$.
+          \end{enumerate}
+
+    \item 求矩阵$\begin{pmatrix}
+                  a  & b  & c  & d  \\
+                  -b & a  & d  & -c \\
+                  -c & -d & a  & b  \\
+                  -d & c  & -b & a
+              \end{pmatrix}$的逆.
+
+    \item 设 $V=\{(a_{ij})_{n \times n} \mid \forall i,j,\enspace a_{ij}=a_{ji}\}$.
+          \begin{enumerate}
+              \item 证明：$V$为$\mathbf{F}^{n \times n}$的子空间；
+
+              \item 求$V$的基和维数.
+          \end{enumerate}
+
+    \item $\mathbf{M}_n(\mathbf{R})$表示所有实$n$阶方阵构成的集合. 设$W=\{A\in \mathbf{M}_n(\mathbf{R}) \mid a_{ji}=ka_{ij},\enspace i \leqslant j\}$，求当$k=0,1,2$时，$W$的一组基和维数.
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
     \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
+
+    \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
 \end{enumerate}

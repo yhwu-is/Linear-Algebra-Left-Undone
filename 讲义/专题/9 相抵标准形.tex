@@ -475,109 +475,6 @@
     \end{enumerate}
 \end{solution}
 
-关于相抵标准形，我们需要在此补充一个常用的技术，即相抵标准形的分解. 事实上将来讨论其它标准形时我们都会讨论分解问题，因为这能在实际问题中大大降低计算难度，便于我们进一步讨论.
-
-第一种分解是非常自然的分解，将来相似、相合标准形也会基于这一思想进行分解. 我们知道，对于矩阵$A$满足$r(A)=r$，则存在可逆矩阵$P'$和$Q'$，使得
-\[P'AQ'=\begin{pmatrix}
-        E_r & O \\ O & O
-    \end{pmatrix},\]
-因此我们可以得到$A=P'^{-1}\begin{pmatrix}
-        E_r & O \\ O & O
-    \end{pmatrix}Q'^{-1}$，即$A$可以分解成一个可逆矩阵、一个相抵标准形和另一个可逆矩阵的乘积. 记$P=P'^{-1}$，$Q=Q'^{-1}$，则$A=P\begin{pmatrix}
-        E_r & O \\ O & O
-    \end{pmatrix}Q$. 我们接下来给出一些经典的的例子供读者体会.
-
-\begin{example}{}{}
-    设$A$为$n$阶方阵，证明：
-    \begin{enumerate}
-        \item 存在可逆矩阵$B$和幂等矩阵$C$（即满足$C^2=C$）使得$A=BC$；
-        \item 存在对称矩阵$B$和可逆矩阵$C$使得$A=BC$.
-    \end{enumerate}
-\end{example}
-
-\begin{solution}
-    根据相抵标准形分解，设$r(A)=r$，则我们有$A=P\begin{pmatrix}
-            E_r & O \\ O & O
-        \end{pmatrix}Q$，其中$P$和$Q$都是可逆矩阵.
-    \begin{enumerate}
-        \item 第一问难点在于取出这个幂等矩阵，实际上回忆矩阵求幂的技巧，我们可以取$C=Q^{-1}\begin{pmatrix}
-                      E_r & O \\ O & O
-                  \end{pmatrix}Q$，则$C^2=C$（因为中间的$QQ^{-1}$会抵消，而相抵标准形是幂等的），此时$A=BC$，令$B=PQ$即可（因为$P$和$Q$都可逆，其乘积也必定可逆）.
-
-        \item 第二问难点在于取出这个对称矩阵，但相信读者在经过上一小问的历练后，应该会产生一种取到对称矩阵的直觉. 因为标准形是对称的，我们只需要再多写一个$P^\mathrm{T}$，令$B=P\begin{pmatrix}
-                      E_r & O \\ O & O
-                  \end{pmatrix}P^\mathrm{T}$，则$B$是对称矩阵，且$A=BC$，令$C=(P^\mathrm{T})^{-1}Q$即可（注意矩阵可逆则转置也可逆）.
-    \end{enumerate}
-\end{solution}
-
-从本例可以看出，很多问题我们需要首先写出分解，然后利用分解去找到符合题目要求的矩阵来证明（特别利用是方阵的相抵标准形有很多好的性质，如上面的幂等和对称），在习题中我们会看到更多这样的问题.
-
-另一种分解技巧是更进一步的，此时我们不仅对原矩阵分解，还对相抵标准形做进一步的分解. 我们对$s \times n$矩阵$\begin{pmatrix}
-        E_r & O \\ O & O
-    \end{pmatrix}$有一种很重要的分解：
-\[\begin{pmatrix}
-        E_r & O \\ O & O
-    \end{pmatrix}=\begin{pmatrix}
-        E_r \\ O
-    \end{pmatrix}\begin{pmatrix}
-        E_r & O
-    \end{pmatrix}\]
-由此我们可以知道任意一个非零矩阵都可以被分解成一个列满秩矩阵和一个行满秩矩阵的乘积：
-\[A=P\begin{pmatrix}
-        E_r & O \\ O & O
-    \end{pmatrix}Q=P\begin{pmatrix}
-        E_r \\ O
-    \end{pmatrix}\begin{pmatrix}
-        E_r & O
-    \end{pmatrix}Q\]
-记$P_1=P\begin{pmatrix}
-        E_r \\ O
-    \end{pmatrix}$，$Q_1=\begin{pmatrix}
-        E_r & O
-    \end{pmatrix}Q$，则$A=P_1Q_1$，且$P_1$和$Q_1$分别为列满秩、行满秩矩阵.
-
-我们简要解释$P_1$列满秩的原因，$Q_1$行满秩类似不再赘述. 由于$\begin{pmatrix}
-        E_r \\ O
-    \end{pmatrix}$是$s\times r$矩阵，且秩为$r$，列满秩. $P$可逆且为$s\times s$矩阵，因此$P_1$仍然是$s\times r$矩阵. 由于可逆矩阵可以写成若干初等矩阵乘积，初等变换不改变矩阵的秩，故$r(P)=r(P_1)=r$，又矩阵列秩=秩，故$P_1$列满秩.
-
-接下来我们来看一个例子进行应用，在介绍这一例子前我们需要首先引入一个概念，即矩阵的迹：
-\begin{definition}{迹}{} \index{ji@迹 (trace)}
-    $A=(a_{ij})_{n\times n}$是$n$阶方阵，$A$的主对角线上的元素之和称为$A$的\term{迹}，记为$\tr(A)$，即
-    \[\tr(A)=\sum_{i=1}^n a_{ii}\]
-\end{definition}
-
-\begin{example}{}{相抵分解}
-    已知 $n$ 阶矩阵 $A$ 的秩为 1 ，证明：$A^k=\tr(A)^{k-1}A$.
-\end{example}
-
-\begin{proof}
-    由前述分解可知，此处$r=1$，则有存在可逆矩阵 $P=(p_{ij})_{n \times n},Q=(q_{ij})_{n \times n}$，使得
-    \[A=P\begin{pmatrix}
-            1 &   &        &   \\
-              & 0 &        &   \\
-              &   & \ddots &   \\
-              &   &        & 0
-        \end{pmatrix} Q=P\begin{pmatrix}
-            1 \\ 0 \\ \vdots \\ 0
-        \end{pmatrix}\begin{pmatrix}
-            1 & 0 & \cdots & 0
-        \end{pmatrix} Q=\widetilde{P} \widetilde{Q},\]
-    其中$\widetilde{P}=P\begin{pmatrix}
-            1 \\ 0 \\ \vdots \\ 0
-        \end{pmatrix}$，$\widetilde{Q}=\begin{pmatrix}
-            1 & 0 & \cdots & 0
-        \end{pmatrix} Q$，则我们可以通过暴力计算不难验证：
-    \[\widetilde{Q} \widetilde{P}=\sum_{k=1}^{n} p_{i k} q_{k j}=\tr(A),\]
-    从而
-    \[A^{2}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q}=\tr(A) \widetilde{P} \widetilde{Q}=\tr(A) A,\]
-    进一步地
-    \[A^{k}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q} \cdots \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} A.\]
-\end{proof}
-
-事实上，本题的解答过程给我们了一个很重要的启示，那就是秩为1的矩阵一定可以分解为一个列向量和一个行向量的乘积. 之后我们将利用这一结论来解决一些问题，例如便于矩阵求幂等.
-
-除此之外，我们还可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明，具体应用见\autoref{ex:分块秩不等式}.
-
 \section{初等矩阵}
 
 接下来一节我们将介绍一种特别的矩阵——初等矩阵. 其中要介绍的初等矩阵和可逆矩阵的关联将成为我们求解矩阵的逆的一个重要手段，也是后面大量内容的讨论基础，因此我们在此展开叙述.
@@ -710,6 +607,109 @@
 
 \section{相抵标准形的应用}
 
+关于相抵标准形，我们需要在此补充一个常用的技术，即相抵标准形的分解. 事实上将来讨论其它标准形时我们都会讨论分解问题，因为这能在实际问题中大大降低计算难度，便于我们进一步讨论.
+
+第一种分解是非常自然的分解，将来相似、相合标准形也会基于这一思想进行分解. 我们知道，对于矩阵$A$满足$r(A)=r$，则存在可逆矩阵$P'$和$Q'$，使得
+\[P'AQ'=\begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix},\]
+因此我们可以得到$A=P'^{-1}\begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix}Q'^{-1}$，即$A$可以分解成一个可逆矩阵、一个相抵标准形和另一个可逆矩阵的乘积. 记$P=P'^{-1}$，$Q=Q'^{-1}$，则$A=P\begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix}Q$. 我们接下来给出一些经典的的例子供读者体会.
+
+\begin{example}{}{}
+    设$A$为$n$阶方阵，证明：
+    \begin{enumerate}
+        \item 存在可逆矩阵$B$和幂等矩阵$C$（即满足$C^2=C$）使得$A=BC$；
+        \item 存在对称矩阵$B$和可逆矩阵$C$使得$A=BC$.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    根据相抵标准形分解，设$r(A)=r$，则我们有$A=P\begin{pmatrix}
+            E_r & O \\ O & O
+        \end{pmatrix}Q$，其中$P$和$Q$都是可逆矩阵.
+    \begin{enumerate}
+        \item 第一问难点在于取出这个幂等矩阵，实际上回忆矩阵求幂的技巧，我们可以取$C=Q^{-1}\begin{pmatrix}
+                      E_r & O \\ O & O
+                  \end{pmatrix}Q$，则$C^2=C$（因为中间的$QQ^{-1}$会抵消，而相抵标准形是幂等的），此时$A=BC$，令$B=PQ$即可（因为$P$和$Q$都可逆，其乘积也必定可逆）.
+
+        \item 第二问难点在于取出这个对称矩阵，但相信读者在经过上一小问的历练后，应该会产生一种取到对称矩阵的直觉. 因为标准形是对称的，我们只需要再多写一个$P^\mathrm{T}$，令$B=P\begin{pmatrix}
+                      E_r & O \\ O & O
+                  \end{pmatrix}P^\mathrm{T}$，则$B$是对称矩阵，且$A=BC$，令$C=(P^\mathrm{T})^{-1}Q$即可（注意矩阵可逆则转置也可逆）.
+    \end{enumerate}
+\end{solution}
+
+从本例可以看出，很多问题我们需要首先写出分解，然后利用分解去找到符合题目要求的矩阵来证明（特别利用是方阵的相抵标准形有很多好的性质，如上面的幂等和对称），在习题中我们会看到更多这样的问题.
+
+另一种分解技巧是更进一步的，此时我们不仅对原矩阵分解，还对相抵标准形做进一步的分解. 我们对$s \times n$矩阵$\begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix}$有一种很重要的分解：
+\[\begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix}=\begin{pmatrix}
+        E_r \\ O
+    \end{pmatrix}\begin{pmatrix}
+        E_r & O
+    \end{pmatrix}\]
+由此我们可以知道任意一个非零矩阵都可以被分解成一个列满秩矩阵和一个行满秩矩阵的乘积：
+\[A=P\begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix}Q=P\begin{pmatrix}
+        E_r \\ O
+    \end{pmatrix}\begin{pmatrix}
+        E_r & O
+    \end{pmatrix}Q\]
+记$P_1=P\begin{pmatrix}
+        E_r \\ O
+    \end{pmatrix}$，$Q_1=\begin{pmatrix}
+        E_r & O
+    \end{pmatrix}Q$，则$A=P_1Q_1$，且$P_1$和$Q_1$分别为列满秩、行满秩矩阵.
+
+我们简要解释$P_1$列满秩的原因，$Q_1$行满秩类似不再赘述. 由于$\begin{pmatrix}
+        E_r \\ O
+    \end{pmatrix}$是$s\times r$矩阵，且秩为$r$，列满秩. $P$可逆且为$s\times s$矩阵，因此$P_1$仍然是$s\times r$矩阵. 由于可逆矩阵可以写成若干初等矩阵乘积，初等变换不改变矩阵的秩，故$r(P)=r(P_1)=r$，又矩阵列秩=秩，故$P_1$列满秩.
+
+接下来我们来看一个例子进行应用，在介绍这一例子前我们需要首先引入一个概念，即矩阵的迹：
+\begin{definition}{迹}{} \index{ji@迹 (trace)}
+    $A=(a_{ij})_{n\times n}$是$n$阶方阵，$A$的主对角线上的元素之和称为$A$的\term{迹}，记为$\tr(A)$，即
+    \[\tr(A)=\sum_{i=1}^n a_{ii}\]
+\end{definition}
+
+\begin{example}{}{相抵分解}
+    已知 $n$ 阶矩阵 $A$ 的秩为 1 ，证明：$A^k=\tr(A)^{k-1}A$.
+\end{example}
+
+\begin{proof}
+    由前述分解可知，此处$r=1$，则有存在可逆矩阵 $P=(p_{ij})_{n \times n},Q=(q_{ij})_{n \times n}$，使得
+    \[A=P\begin{pmatrix}
+            1 &   &        &   \\
+              & 0 &        &   \\
+              &   & \ddots &   \\
+              &   &        & 0
+        \end{pmatrix} Q=P\begin{pmatrix}
+            1 \\ 0 \\ \vdots \\ 0
+        \end{pmatrix}\begin{pmatrix}
+            1 & 0 & \cdots & 0
+        \end{pmatrix} Q=\widetilde{P} \widetilde{Q},\]
+    其中$\widetilde{P}=P\begin{pmatrix}
+            1 \\ 0 \\ \vdots \\ 0
+        \end{pmatrix}$，$\widetilde{Q}=\begin{pmatrix}
+            1 & 0 & \cdots & 0
+        \end{pmatrix} Q$，则我们可以通过暴力计算不难验证：
+    \[\widetilde{Q} \widetilde{P}=\sum_{k=1}^{n} p_{i k} q_{k j}=\tr(A),\]
+    从而
+    \[A^{2}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q}=\tr(A) \widetilde{P} \widetilde{Q}=\tr(A) A,\]
+    进一步地
+    \[A^{k}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q} \cdots \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} A.\]
+\end{proof}
+
+事实上，本题的解答过程给我们了一个很重要的启示，那就是秩为1的矩阵一定可以分解为一个列向量和一个行向量的乘积. 之后我们将利用这一结论来解决一些问题，例如便于矩阵求幂等.
+
+除此之外，我们还可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明，具体应用见\autoref{ex:分块秩不等式}.
+
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
@@ -727,59 +727,110 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 证明：若线性映射$\sigma \in \mathcal{L}(V_1,V_2)$可逆，则其逆映射唯一.
+    \item 设$A$为三阶矩阵，将$A$的第二列加到第一列得到矩阵$B$，再对调$B$的2、3行得到单位矩阵. 令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\enspace
+    P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用$P_1$和$P_2$表示$A$.
 
-    \item 证明：有一行元素或一列元素全为0的$n$阶方阵必定不可逆.
+    \item 设$A$为可逆矩阵，将$A$的第$i$行和第$j$行对调得到矩阵$B$，证明矩阵$B$可逆并求$AB^{-1}$.
 
-    \item 证明：\autoref{def:积空间} 中定义的线性空间的积构成一个线性空间.
+    \item 设$A$为三阶可逆矩阵，且$P^{-1}AP=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$，其中$P=(\alpha_1,\alpha_2,\alpha_3)$，令$Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，求$Q^{-1}AQ$.
 
-    \item 证明以下两个命题：
-          \begin{enumerate}
-              \item 设$\varphi\in \mathcal{L}(V,\mathbf{F}),\enspace\varphi\neq 0$. 证明：$\dim V/(\ker\varphi)=1$；
+    \item 给定$\mathbf{R}^4$的两组基
+          \begin{gather*}
+              \alpha_1=(1,1,1,1),\ \alpha_2=(1,1,-1,-1),\ \alpha_3=(1,-1,1,-1),\ \alpha_4=(1,-1,-1,1) \\
+              \beta_1=(1,1,0,1),\ \beta_2=(2,1,3,1),\ \beta_3=(1,1,0,0),\ \beta_4=(0,1,-1,-1)
+          \end{gather*}
+          求由基$\alpha_1,\alpha_2,\alpha_3,\alpha_4$到基$\beta_1,\beta_2,\beta_3,\beta_4$的过渡矩阵，并求向量$\xi=(1,0,0,-1)$在基$\alpha_1,\alpha_2,\alpha_3,\alpha_4$下的坐标.
 
-              \item 设$U$是$V$的子空间且$\dim V/U=1$，则存在$\varphi\in \mathcal{L}(V,\mathbf{F})$使得$\ker\varphi=U$.
-          \end{enumerate}
+    \item 证明：矩阵添加一列（或一行），其秩或不变，或增加1.
+
+    \item 设$A$是$s \times n$矩阵，$B$是$A$前$m$行构成的$m \times n$矩阵，证明：$r(B) \geqslant r(A) + m - s$.
 \end{enumerate}
 
 \centerline{\heiti B组}
 \begin{enumerate}
-    \item 设$A$为$n$阶可逆矩阵，$A$的每行各元素之和都等于$k$，证明：$k \neq 0$且$A^{-1}$的每行各元素之和都等于$\vphantom{\cfrac{1}{k}}\dfrac{1}{k}$.
+    \item 设$W$是$n$维线性空间$V$的一个非平凡子空间，$W$中取一组基$\delta_1,\ldots,\delta_m$，按如下两种方式将其扩充为$V$的一组基：
+    \begin{align*}
+        B_1 & =\{\delta_1,\ldots,\delta_m,\alpha_{m+1},\ldots,\alpha_n\} \\
+        B_2 & =\{\delta_1,\ldots,\delta_m,\beta_{m+1},\ldots,\beta_n\}
+    \end{align*}
+    设基$B_1$到$B_2$的过渡矩阵为$P$，求商空间$V/W$的基$\alpha_{m+1}+W,\ldots,\alpha_n+W$到$\beta_{m+1}+W,\ldots,\beta_n+W$的过渡矩阵.
 
-    \item 已知矩阵$A=\begin{pmatrix}1 & 2 & a  \\
-               1 & 3 & 0  \\
-               2 & 7 & -a\end{pmatrix}$可以通过初等列变换转化为矩阵$B=\begin{pmatrix}1  & a & 2 \\
-               0  & 1 & 1 \\
-               -1 & 1 & 1\end{pmatrix}$.
+    \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵为$A=(a_{ij})_{3 \times 3}$，求：
+    \begin{enumerate}
+        \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
+
+        \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
+
+        \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
+
+        \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
+    \end{enumerate}
+
+\item 设$P=\begin{pmatrix}
+            1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
+        \end{pmatrix}$，$Q=\begin{pmatrix}
+            0 & 0 \\ 1 & 0
+        \end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$.
+    \begin{enumerate}
+        \item 验证$\sigma$是线性映射；
+
+        \item 求$\ker\sigma$和$\im \sigma$；
+
+        \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
+    \end{enumerate}
+
+    \item 证明：当$n$为奇数时，$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是$\alpha_1+\alpha_2,\alpha_2+\alpha_3,\ldots,\alpha_n+\alpha_1$线性无关.
+
+    \item 设
+          \[B_1=\left\{\begin{pmatrix}
+                  1 & 0 \\ 0 & 0
+              \end{pmatrix},\begin{pmatrix}
+                  0 & 1 \\ 0 & 0
+              \end{pmatrix},\begin{pmatrix}
+                  0 & 0 \\ 1 & 0
+              \end{pmatrix}\begin{pmatrix}
+                  0 & 0 \\ 0 & 1
+              \end{pmatrix}\right\},\]
+          \[B_2=\left\{\begin{pmatrix}
+                  1 & 0 \\ 0 & 0
+              \end{pmatrix},\begin{pmatrix}
+                  1 & 1 \\ 0 & 0
+              \end{pmatrix},\begin{pmatrix}
+                  1 & 1 \\ 1 & 0
+              \end{pmatrix}\begin{pmatrix}
+                  1 & 1 \\ 1 & 1
+              \end{pmatrix}\right\}.\]
           \begin{enumerate}
-              \item 求常数$a$；
+              \item 证明：$B_2$也是线性空间$\mathbf{M}_2(\mathbf{R})$的基；
 
-              \item 求满足$AP=B$的可逆矩阵$P$.
+              \item 求基$B_2$变为基$B_1$的变换矩阵；
+
+              \item 求$\mathbf{M}_2(\mathbf{R})$的一组基$B_3=\{A_1,A_2,A_3,A_4\}$，使得$A_i^2=A_i,\enspace i=1,2,3,4$；
+
+              \item 已知矩阵$A$关于基$B_2$的坐标为$(1,1,1,1)^\mathrm{T}$，求$A$关于基$B_3$的坐标.
           \end{enumerate}
 
-    \item 设$A_1$和$A_2$均为$V$的仿射子集，证明：$A_1\cap A_2$是$V$的仿射子集或空集（可推广至任意交）.
-
-    \item 设$U$是$V$的子空间，$\Gamma:\mathcal{L}(V/U,W)\to \mathcal{L}(V,W)$定义为$\Gamma(S)=S\circ\pi$. 证明：
+    \item 利用相抵标准形证明以下结论：
           \begin{enumerate}
-              \item $\Gamma$是线性映射；
+              \item 设$B_1,B_2$为$s \times n$列满秩矩阵，证明：存在$s$阶可逆矩阵$C$使得$B_2=CB_1$；
 
-              \item $\Gamma$是单的；
+              \item 设$B_1,B_2$为$s \times n$行满秩矩阵，证明：存在$n$阶可逆矩阵$C$使得$B_2=B_1C$；
 
-              \item $\im\Gamma=\{T\in \mathcal{L}(V,W) \mid \forall u\in U,\enspace Tu=0\}$.
+              \item 任意秩为$r$的矩阵都可以被分解为$r$个秩为1的矩阵之和；
+
+              \item 已知$A$是$n$阶方阵，证明：存在$n$阶方阵$B$使得$A=ABA,\enspace B=BAB$.
           \end{enumerate}
+
+    \item 设 $A \in \mathbf{M}_{m \times n}(\mathbf{F})$，$r(A)=r$，$k$ 是满足条件 $r \leqslant k \leqslant n$ 的任意整数，证明存在 $n$ 阶方阵 $B$，使得 $AB=O$，且 $r(A)+r(B)=k$.
+
+    \item 设$A$是$m \times n$矩阵（$m \leqslant n$），$r(A)=m$，证明：存在$n \times m$矩阵$B$使得$AB=E$.
+
+    \item 设$A,B \in \mathbf{M}_n(\mathbf{F})$，$r(A)+r(B) \leqslant n$，证明：存在可逆矩阵$M$，使得$AMB=O$.
+
+    \item 设$A$为$n$阶实方阵且$r(A)=r>0$，证明存在秩为$r$的实方阵$B$和$C$使得$AB=CA$. % 新题，需要答案
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
-    \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
-
-    \item 设$v_1,\ldots,v_m\in V$. 令
-          \[A=\{\lambda_1v_1+\cdots+\lambda_mv_m \mid \lambda_1,\ldots,\lambda_m\in\mathbf{F}\text{~且~}\lambda_1+\cdots+\lambda_m=1\}.\]
-          证明：
-          \begin{enumerate}
-              \item $A$是$V$的仿射子集；
-
-              \item $V$的每个包含$v_1,\ldots,v_m$的仿射子集均包含$A$；
-
-              \item 存在某个$v\in V$和$V$的子空间$U$使得$A=v+U$且$\dim U\leqslant m-1$.
-          \end{enumerate}
+    \item 设矩阵$A \in \mathbf{F}^{m \times n}$，$A$的秩$r(A)=r$，定义$\mathbf{F}^{n \times p}$到$\mathbf{F}^{m \times p}$的线性映射$\sigma$，使得$\forall X \in \mathbf{F}^{n \times p}$，$\sigma(X)=AX$. 求$\sigma$核空间的维数.
 \end{enumerate}
