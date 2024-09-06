@@ -262,6 +262,178 @@
     在$\mathbf{R}^3$中，$W_1=\spa(\alpha_1)$，则其补空间根据直和的维数公式可知为2，记为$W_2=\spa(\alpha_2,\alpha_3)$. 实际上只需要$\alpha_1,\alpha_2,\alpha_3$线性无关即可，事实上这样的选择是有无穷种的，因为$W_1$本质表示一条直线，故$W_2$是不包含$W_1$且不与$W_1$平行的平面即可，这样$\alpha_2,\alpha_3$是$W_2$任意一组基都可以.
 \end{example}
 
+\section{商空间}
+
+这一节我们需要引入代数中一个非常重要的运算，即某个代数结构的商. 在第一讲中我们给出了一个非常重要的概念——等价类，这里的目标是在一个线性空间 $V$ 中定义出等价关系，即利用\autoref{thm:等价类的性质}，以某种方式将一个线性空间中的所有向量划分为几个不相交的等价类的并集，最后在此基础上定义出线性空间的商运算.
+
+\subsection{从等价关系出发}
+
+为了定义出这个等价关系，我们首先需要确定的是它应当满足怎样的性质，否则对于如何定义这一等价关系我们将毫无头绪. 这一问题的出发点事实上就隐藏在\autoref{ex:有限域} 后关于``相容''的讨论中. 在那里，我们要求从一般整数加法和乘法继承下来的模$n$剩余类上的加法和乘法是良定义的，类比于这里的目标，则是希望线性空间中等价类的集合上（也就是商集）定义的加法和数乘运算，可以自然地继承一般的向量加法和乘法，并且保证相容性.
+
+下面我们开始形式化地把上面抽象的描述转化为表达式. 我们需要在线性空间$V$中定义一个等价关系$R$，得到一个等价类构成的商集：
+\[V/R=\{\overline{v_1},\overline{v_2},\ldots,\overline{v_n},\ldots\},\]
+其中$\overline{v_i}$表示$v_i\in V$所在的等价类，取$v_i$为代表元. 需要注意的是，这里的等价类不一定是有限个，因此最后还是省略号.
+
+接下来我们需要定义等价类之间的运算，我们希望自然继承线性空间的加法和数乘运算，故我们定义商集上的加法和数乘运算满足对于任意的$\overline{v_1},\overline{v_2}\in V/R$和$\lambda\in\mathbf{F}$，有
+\begin{equation} \label{eq:10:商集运算}
+    \begin{gathered}
+        \overline{v_1}+\overline{v_2}=\overline{v_1+v_2},\\
+        \lambda\overline{v_1}=\overline{\lambda v_1}.
+    \end{gathered}
+\end{equation}
+需要注意的是，等号左边的运算是商集$V/R$上的，右边是线性空间$V$上的，这里不再像模$n$剩余类上的运算定义那样使用不同的符号（例如加法改成$\oplus$）是出于习惯，以及相信读者学习到今天应当适应了为记号上方便做出的牺牲（比如对于任何线性空间，即使加法不是定义成最一般的加法，但也写成加号的形式）.
+
+最后我们需要上面的运算保证相容性，也就是说，对于任意的$v_1,v_2,u_1,u_2\in V$，如果$v_1Rv_2$，$u_1Ru_2$则$(v_1+u_1)R(v_2+u_2)$，$\lambda v_1R\lambda v_2$，展开写为：
+\begin{gather*}
+    \overline{v_1+u_1}=\overline{v_2+u_2},\\
+    \overline{\lambda v_1}=\overline{\lambda v_2}.
+\end{gather*}
+
+推进到这里或许我们还是很难看出如何定义这一等价关系，但我们可以从简单的角度入手，逐步观察这些等价类的特点. 我们可以首先考虑线性空间的零向量所在的等价类具有什么性质. 事实上，我们很容易得到如下定理：
+\begin{theorem}{}{}
+    线性空间$V$的零向量所在的等价类$\overline{0}$一定是$V$的子空间.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 加法封闭：$\forall \alpha,\beta\in\overline{0}$，则$\alpha\,R\,0$，$\beta\,R\,0$，因此根据相容性，$\alpha+\beta\,R\,0$，即$\alpha+\beta\in\overline{0}$；
+        \item 数乘封闭：$\forall \alpha\in\overline{0}$，则$\alpha\,R\,0$，$\lambda\in\mathbf{F}$，因此根据相容性，$\lambda\alpha\,R\,0$，即$\lambda\alpha\in\overline{0}$.
+    \end{enumerate}
+\end{proof}
+
+这一结论非常关键，它使得我们把抽象的等价关系与一个子空间绑定. 我们记这一子空间为$U$，即$\overline{0}=U$，于是下面这一结论也是容易得到的：
+\begin{theorem}{}{}
+    设$v_1,v_2\in V$，则$v_1Rv_2$当且仅当$v_1-v_2\in U$.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item ($\implies$) 直接取$u_1,u_2\in U$，即$u_1\,R\,0$，$u_2\,R\,0$，因此根据相容性，$\overline{v_1}+\overline{u_1}=\overline{v_2}+\overline{u_2}$，移项得$\overline{v_1}-\overline{v_2}=\overline{u_2}-\overline{u_1}$，注意到$\overline{v_1}-\overline{v_2}=\overline{v_1}+(-1)\cdot\overline{v_2}=\overline{v_1}+\overline{-v_2}=\overline{v_1-v_2}$，同理有$\overline{u_2}-\overline{u_1}=\overline{u_2-u_1}$，因此$\overline{v_1-v_2}=\overline{u_2-u_1}=\overline{0}$，即$v_1-v_2\in U$；
+        \item 设$v_1-v_2=u\in U$，则$\overline{v_1}=\overline{v_2}+\overline{u}=\overline{v_2}+\overline{0}=\overline{v_2}$，因此$v_1Rv_2$.
+    \end{enumerate}
+\end{proof}
+
+至此，我们完成了对线性空间$V$上的符合相容性的等价关系$R$的性质的讨论. 我们发现，尽管运算定义和相容性的要求非常抽象，但是在线性空间的背景下，我们成功地将$R$与一个子空间$U$对应起来，这个子空间实际上就是等价类$\overline{0}$. 反过来，当我们需要定义线性空间的等价类的时候，我们可以从一个子空间$U$出发，然后定义等价关系$R$为
+\begin{equation} \label{eq:10:线性空间等价关系}
+    \forall\alpha,\beta\in V,\enspace\alpha\,R\,\beta\iff \alpha-\beta\in U.
+\end{equation}
+事实上，验证这一关系的确是等价关系是非常简单的：
+\begin{enumerate}
+    \item (自反性) $\forall \alpha\in V,\enspace\alpha-\alpha=0\in U$，故$\alpha\,R\,\alpha$；
+
+    \item (对称性) $\forall \alpha,\beta\in V,\enspace\alpha\,R\,\beta\implies \alpha-\beta\in U\implies \beta-\alpha=-(\alpha-\beta)\in U\implies \beta\,R\,\alpha$；
+
+    \item (传递性) $\forall \alpha,\beta,\gamma\in V,\enspace\alpha\,R\,\beta,\enspace\beta\,R\,\gamma\implies \alpha-\beta\in U,\enspace\beta-\gamma\in U\implies \alpha-\gamma=(\alpha-\beta)+(\beta-\gamma)\in U\implies \alpha\,R\,\gamma$.
+\end{enumerate}
+基于此，下一节开始我们将正式给出商空间的定义. 我们可以首先可以定义商集$V/R$是由等价类构成的集合，在线性空间的背景下，由于我们知道$R$是从一个子空间$U$出发的，因此我们也将商集记为$V/U$. 我们将按照自然的方式定义商集中的元素的加法和数乘运算，并证明实际上商集可以构成线性空间，于是称其为商空间，下面我们开始我们严格的陈述.
+
+\subsection{仿射子集与商空间}
+
+紧接着上一节末尾的思路，我们首先定义线性空间等价关系的商集. 研究商集，事实上首先需要研究等价类的性质. 回顾\autoref{eq:10:线性空间等价关系}，我们知道向量$\alpha\in V$所在的等价类为：
+\[\overline{\alpha}=\{\beta\in V \mid \beta\,R\,\alpha\}=\{\beta\in V \mid \beta-\alpha\in U\}=\{\beta\in V \mid \beta=\alpha+\gamma,\enspace\gamma\in U\}\]
+最后一个集合还可以进一步写成$\{\alpha+\gamma \mid \gamma\in U\}$，我们记为$\alpha+U$，称之为$V$的仿射子集. 我们给出如下完整的定义：
+\begin{definition}{仿射子集}{} \index{fangsheziji@仿射子集 (affine subset)}
+    设$v\in V$，$U$是$V$的子空间，则$V$的\term{仿射子集}是$V$的形如$v+U$的子集，其中$v+U$定义为
+    \[v+U=\{v+u \mid u\in U\}.\]
+\end{definition}
+我们知道，仿射子集就是我们在线性空间上定义的等价关系的等价类. 基于等价类的性质，我们有如下定理：
+\begin{theorem}{}{}
+    设$U$是$V$的子空间，$v,w\in V$，则以下陈述等价：
+    \begin{enumerate}
+        \item $v-w\in U$；
+        \item $v+U=w+U$；
+        \item $(v+U)\cap(w+U)\neq \varnothing$.
+    \end{enumerate}
+\end{theorem}
+
+还需要强调的一点是，$(v+U)+(w+U)$与$(v+w)+U$是完全相同的集合，等价性是显然的，我们只需要展开写出仿射子集定义然后证明两个集合互相包含即可. 当然更一般的情形为
+\[(v_1+U)+(v_2+U)+\cdots+(v_n+U)=(v_1+v_2+\cdots+v_n)+U.\]
+相信读者对``仿射''一词并不完全陌生，仿射变换实际上就是形如\[\vec{y}=A\vec{x}+\vec{b}\]的映射，其中$\vec{y},\vec{x},\vec{b}$为向量，$A$是一个矩阵. 实际上一元向量的情况就对应着一条斜率为$A$截距为$b$的直线. 事实上，若$V$为二维空间（平面），$U$为$V$的一维子空间，则其几何意义就是一条过原点的直线，而集合$v+U$实际上将原集合所有点沿着$v$的方向平移，可以得到截距不为0的直线，这就体现了``仿射''一词的意义. 高维空间则是同理，只是我们很难直观地看到这一点. 因此，我们也可以称仿射子集$v+U$\textbf{\heiti 平行于}$U$. 当然，在我们讨论完对偶后，我们会再来审视仿射子集更深的含义.
+
+下面的例子给出了仿射子集的一种等价描述，基于此我们可以对仿射子集中向量的结构有更进一步的了解：
+\begin{example}{}{仿射子集性质}
+    证明：$V$的非空子集$A$是$V$的仿射子集当且仅当对所有的$v,w\in A$和$\lambda\in\mathbf{F}$均有$\lambda v+(1-\lambda)w\in A$.
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+事实上，结合我们之前所说的仿射子集几何意义，这一结论在平面上来看正是我们高中学习的平面向量中学习的三点共线的等价条件的同义表达：
+\begin{theorem}{}{}
+    设$P,A,B,C$是平面上四点，$P$与$A,B$不共线，则$C$与$A,B$共线等价于存在$\lambda\in\mathbf{R}$使得$\overrightarrow{PC}=\lambda\overrightarrow{PA}+(1-\lambda)\overrightarrow{PB}$.
+\end{theorem}
+同时我们发现仿射子集实际上是我们在数学分析或微积分学习的凸集的特殊形式，在凸集中我们只要求$\lambda\in[0,1]$，这里我们要求整个数域上的点都要有\autoref{ex:仿射子集性质} 所述的性质. 当然这不是线性代数中研究的内容，感兴趣的同学可以学习凸优化的相关课程进一步了解.
+
+事实上在习题中我们将给出\autoref*{ex:仿射子集性质} 更一般的形式，我们可以回忆\autoref{thm:线性扩张构造子空间}，就会发现仿射子集的结构和线性空间保留了一些相似性，即虽然不能像线性空间一样保证加法数乘运算封闭，但仿射子集一定是保证凸组合封闭的集合.
+
+定义了等价类（即仿射子集）并研究了其性质后，我们可以定义相应的商集（即由全体等价类构成的集合），我们称之为商空间：
+\begin{definition}{}{}
+    设$U$是$V$的子空间，则商空间$V/U$是指所有由\autoref{eq:10:线性空间等价关系} 诱导的等价类构成的集合，即$V$的所有平行于$U$的仿射子集的集合，即
+    \[V/U=\{v+U \mid v\in V\}.\]
+\end{definition}
+我们希望这些这一商集（商空间）真的构成线性空间，因此还需要定义加法和数乘运算. 定义则与上一节中的要求一样，是自然继承向量加法而来的，即满足\autoref{eq:10:商集运算}，我们把式中等价类写为仿射子集的形式即可得到如下定义：
+\begin{definition}{}{}
+    设$U$是$V$的子空间，则商空间$V/U$上的加法和数乘运算定义为：$\forall \alpha,\beta\in V$和$\lambda\in\mathbf{F}$，
+    \begin{gather*}
+        (\alpha+U)+(\beta+U)=(\alpha+\beta)+U, \\
+        \lambda(\alpha+U)=(\lambda\alpha)+U.
+    \end{gather*}
+\end{definition}
+我们很容易根据线性空间8条性质验证商空间在上述加法和数乘运算定义下构成线性空间，在此不再赘述. 特别注意这一线性空间的零向量是特别的，应当为$U$（即$\vec{0}+U$，一定注意不是$\vec{0}$，读者在验证商空间是线性空间时就会发现）.
+
+正常而言，在定义了一个线性空间后我们自然地想了解它的基本结构——基和维数，商空间也不例外. 我们有很多的角度来得到相关的结论，这里首先介绍一个直接的方式得到关于维数的结论，其余的方法我们将在介绍完线性映射和对偶空间后讨论.
+
+\begin{theorem}{商空间的维数公式}{商空间的维数公式}
+    设$U$是有限维线性空间$V$的子空间，则
+    \[\dim V/U=\dim V-\dim U.\]
+\end{theorem}
+
+这一定理的形式与维数公式完全类似，都是几个线性空间之间的维数的等式关系，因此我们有理由相信证明思想也会是类似的，即``设小扩大''：
+
+\begin{proof}
+    取$U$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_s$，将其扩充为$V$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_s,\alpha_{s+1},\ldots,\alpha_n$. 于是我们要证的转化为$\dim V/U=n-s$，即证明$V/U$的一组基的长度为$n-s$.
+
+    类似于线性映射基本定理的证明，我们可以依靠直觉猜想. 我们猜想$V/U$的一组基为$\{\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U\}$. 这是很自然的想法. 我们只需要验证这组基的两个条件：线性无关和张成性：
+    \begin{enumerate}
+        \item 线性无关：设$\lambda_{s+1},\lambda_{s+2},\ldots,\lambda_n\in\mathbf{F}$，使得
+              \[\lambda_{s+1}(\alpha_{s+1}+U)+\lambda_{s+2}(\alpha_{s+2}+U)+\cdots+\lambda_n(\alpha_n+U)=U.\]
+              特别注意这里的零元是$\vec{0}+U=U$，实际上，上式等价于
+              \[(\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n)+U=U.\]
+              根据仿射子集定义，$\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n\in U$，因此可以被表示为$U$的基的线性组合，即
+              \[\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n=\mu_1\alpha_1+\mu_2\alpha_2+\cdots+\mu_s\alpha_s.\]
+              于是我们有
+              \[\lambda_{s+1}\alpha_{s+1}+\lambda_{s+2}\alpha_{s+2}+\cdots+\lambda_n\alpha_n-\mu_1\alpha_1-\mu_2\alpha_2-\cdots-\mu_s\alpha_s=0.\]
+              由于$\alpha_1,\alpha_2,\ldots,\alpha_n$是$V$的一组基，因此我们有$\lambda_{s+1}=\lambda_{s+2}=\cdots=\lambda_n=\mu_1=\mu_2=\cdots=\mu_s=0$. 从而$\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U$线性无关；
+
+        \item 张成空间：$\forall\alpha+U\in V/U$，其中$\alpha\in V$，我们有$\alpha$可以被$V$的基线性表示为
+              \[\alpha=\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n.\]
+              于是
+              \begin{align*}
+                  \alpha+U & =(\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n)+U         \\
+                           & =(\lambda_1\alpha_1+U)+(\lambda_2\alpha_2+U)+\cdots+(\lambda_n\alpha_n+U) \\
+                           & =\lambda_1(\alpha_1+U)+\lambda_2(\alpha_2+U)+\cdots+\lambda_n(\alpha_n+U)
+              \end{align*}
+              因此$V/U$中任意元素均可被$\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U$线性表示，即$\alpha_{s+1}+U,\alpha_{s+2}+U,\ldots,\alpha_n+U$张成$V/U$.
+    \end{enumerate}
+\end{proof}
+
+由此我们知道了商空间的维数表达式，也在通过证明过程知道了如何得到商空间的一组基. 下面我们来计算一个例子：
+
+\begin{example}{}{}
+    设$A$是$\mathbf{R}$上的$2\times 3$矩阵：
+    \[A=\begin{pmatrix}
+            1 & -1 & 2 \\ 1 & 0 & -1
+        \end{pmatrix}.\]
+    \begin{enumerate}
+        \item 求齐次线性方程组$AX=0$的解空间$W$的一组基；
+
+        \item 求商空间$\mathbf{R}^3/W$的维数和一组基.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
@@ -367,6 +539,8 @@
           \end{enumerate}
 
     \item 设$V$为有限维线性空间，$V_1$为其非零子空间. 证明：存在唯一的子空间$V_2$，使得$V=V_1\oplus V_2$的充要条件为$V_1=V$.
+
+    \item \item 设$A_1$和$A_2$均为$V$的仿射子集，证明：$A_1\cap A_2$是$V$的仿射子集或空集（可推广至任意交）.
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -382,4 +556,15 @@
           \end{enumerate}
 
     \item 设$W_0,W_1,W_2,\ldots,W_s$是线性空间$V$的$s+1$个非平凡子空间，且$W_0 \subseteq W_1 \cup W_2 \cup \cdots \cup W_s$. 证明：必存在$i$使得$W_0\subseteq W_i$.
+
+    \item 设$v_1,\ldots,v_m\in V$. 令
+    \[A=\{\lambda_1v_1+\cdots+\lambda_mv_m \mid \lambda_1,\ldots,\lambda_m\in\mathbf{F}\text{~且~}\lambda_1+\cdots+\lambda_m=1\}.\]
+    证明：
+    \begin{enumerate}
+        \item $A$是$V$的仿射子集；
+
+        \item $V$的每个包含$v_1,\ldots,v_m$的仿射子集均包含$A$；
+
+        \item 存在某个$v\in V$和$V$的子空间$U$使得$A=v+U$且$\dim U\leqslant m-1$.
+    \end{enumerate}
 \end{enumerate}

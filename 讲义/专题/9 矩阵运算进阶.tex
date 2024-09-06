@@ -659,6 +659,19 @@
     \end{pmatrix}.\]
 我们在之后讨论分块矩阵行列式的相关运算技巧时还会遇到Schur补，由此可见其在矩阵计算中的重要性. 我们会在很多习题中遇到类似于Schur补的形式，希望读者都能认出并指明其本质只是为了打洞而做初等变换得到的.
 
+接下来的例子是一个在计算数学中非常常见的公式——Sherman-Morrison-Woodbury公式.
+\begin{example}{}{}
+    设$A$为可逆矩阵，已知其逆矩阵为$A^{-1}$，我们考虑$B=A+XRY$，其中$X$是$n\times r$矩阵，$Y$是$r\times n$矩阵，而$R$是$r\times r$的可逆矩阵. 若$R$和$R^{-1}+YA^{-1}X$可逆，则
+    \[B^{-1}=A^{-1}-A^{-1}X(R^{-1}+YA^{-1}X)^{-1}YA^{-1}.\]
+\end{example}
+
+\begin{solution}
+
+\end{solution}
+
+初看这一公式想必一定会发出``这么复杂的公式为什么有用''的感叹. 事实上，我们考虑$r$比$n$小很多的情况，那么这个时候对$R$和$R^{-1}+YA^{-1}X$求逆会更容易，因为它们的阶数会低很多，计算量也小很多. 考虑极端情况，若$x$和$y$是非零列向量，取$X=x$，$Y=y^\mathrm{T}$，$R=(1)$，且满足$1+y^\mathrm{T}A^{-1}x\neq 0$，我们可以得到Sherman-Morrison-Woodbury公式的一个特殊情形（称为Sherman-Morrison公式）：
+\[(A+xy^\mathrm{T})^{-1}=A^{-1}-(1+y^\mathrm{T}A^{-1}x)^{-1}A^{-1}xy^\mathrm{T}A^{-1}.\]
+
 \subsection{分块矩阵与数学归纳法}
 
 分块矩阵经常运用在数学归纳法中，我们在之后的课程中也会经常用到这样的思想来证明一些结论，这一思想基于以下内容：
@@ -1199,6 +1212,8 @@
           \end{enumerate}
           % 新题，需要答案
 
+    \item 当$A$和$D$可逆时，通过分块矩阵初等变换求$P=\begin{pmatrix}A & B \\ O & D\end{pmatrix}$的逆矩阵.
+
     \item 利用列向量线性相关性，证明矩阵秩不等式：\[|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)\]
 
     \item 设$B$是$3 \times 1$矩阵，$C$是$1 \times 3$矩阵，证明：$r(BC) \leqslant 1$. 反之，若$A$是秩为1的$3 \times 3$矩阵，证明：存在$3 \times 1$矩阵$B$和$1 \times 3$矩阵$C$，使得$A = BC$.
@@ -1211,6 +1226,12 @@
         \end{enumerate}
 
     \item 设$A$和$B$是两个$n$阶实方阵，证明：$r(A)=r(AB)$当且仅当存在$n$阶实方阵$C$使得$A=ABC$. % 新题，需要答案
+
+    \item 证明如下结论：
+    \begin{enumerate}
+        \item 若存在正整数$m$使得$r(A^m)=r(A^{m+1})$，则必有$r(A^m)=r(A^{m+1})=r(A^{m+2})=\cdots$；
+        \item 设$A$为$n$阶方阵，证明：$r(A^n)=r(A^{n+1})=r(A^{n+2})=\cdots$.
+    \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -1251,7 +1272,7 @@
             \end{pmatrix}\]
         其中$A_{11}$是$l \times k$矩阵，$B_{11}$是$k \times l$矩阵，$l$，$k$是小于$n$的正整数. 用$W$表示$A_{12}X=0$的解空间，$U$表示$B_{12}Y=0$的解空间，其中$X$和$Y$为列向量，证明$W$与$U$同构.
 
-    \item $A$的Schur补以及商等式$A/B=(A/C)/(B/C)$% 新题，需要答案
+    \item 证明 Schur补的商等式 $A/B=(A/C)/(B/C)$% 新题，需要答案
 
     \item 已知$A$是一个$s \times n$矩阵，证明：$r(E_n-A^\mathrm{T}A)-r(E_s-AA^\mathrm{T})=n-s$.
 
