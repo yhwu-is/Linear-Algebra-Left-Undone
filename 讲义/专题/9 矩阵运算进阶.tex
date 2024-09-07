@@ -1125,7 +1125,7 @@
 \vspace{2ex}
 \centerline{\heiti \Large 内容总结}
 
-本讲我们从对偶引入转置运算，并介绍了转置运算的基本性质，也介绍了对称矩阵与反对称矩阵的概念与性质，希望读者通过例子和习题体验转置中蕴含的``对称性''在习题中的运用.
+本讲我们分模块讲解了矩阵的一些高级运算技巧，包括特殊矩阵的性质、矩阵可交换问题、求矩阵的逆和幂的技巧以及非常常用的分块矩阵初等变换，也介绍了矩阵方程作为一个应用. 最后我们介绍了秩的相关等式与不等式，其中大量的结论都非常经典且常用. 事实上，这一讲是本讲义第一次接触技巧性较强的内容，我们的重点从之前对于定理的证明以及用例子巩固定理的应用转变为了对于一些技巧性的处理，读者也应当多利用习题熟悉这些技巧，内化为基本功，未来的很多地方可能不经意间都会用上这里提到的技巧.
 
 \vspace{2ex}
 \centerline{\heiti \Large 习题}
@@ -1242,6 +1242,20 @@
                   b_n=2a_{n-1}+4b_{n-1}+2^n
               \end{cases}\]
           求$\{a_n\},\{b_n\}$的通项公式.
+
+    \item 设$n\geqslant 3$，证明下列矩阵不可逆：
+    \[A=\begin{pmatrix}
+        \cos(\alpha_1-\beta_1) & \cos(\alpha_1-\beta_2) & \cdots & \cos(\alpha_1-\beta_n) \\
+        \cos(\alpha_2-\beta_1) & \cos(\alpha_2-\beta_2) & \cdots & \cos(\alpha_2-\beta_n) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \cos(\alpha_n-\beta_1) & \cos(\alpha_n-\beta_2) & \cdots & \cos(\alpha_n-\beta_n)
+    \end{pmatrix},\]
+    \[B=\begin{pmatrix}
+        1+x_1y_1 & 1+x_1y_2 & \cdots & 1+x_1y_n \\
+        1+x_2y_1 & 1+x_2y_2 & \cdots & 1+x_2y_n \\
+        \vdots & \vdots & \ddots & \vdots \\
+        1+x_ny_1 & 1+x_ny_2 & \cdots & 1+x_ny_n
+    \end{pmatrix}.\]
 
     \item 证明以下两个命题：
           \begin{enumerate}

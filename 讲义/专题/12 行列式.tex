@@ -280,6 +280,42 @@
               本条的其他结论推导类似于上方，在此不再赘述，感兴趣的读者可以自行推导（关键在于第三类分块初等矩阵行列式为1），实际上结论并不是很重要，重要的是在于领悟使用行列式分块计算性质和打洞法的基本方法.
           \end{proof}
 
+          根据上面的结论，如果$A$和$D$均可逆时，我们有$|A||D-CA^{-1}B|=|D||A-BD^{-1}C|$，这一公式称为\term{降阶公式}. 若$A$为高阶矩阵，$D$为低阶矩阵，则利用降阶公式可以有效减少计算量. 例如：
+
+          \begin{example}{}{}
+              求下列矩阵行列式的值：
+              \[A=\begin{pmatrix}
+                  a_1^2 & a_1a_2 & \cdots & 1+a_1a_n \\
+                  1+a_2a_1 & a_2^2 & \cdots & 1+a_2a_n \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  1+a_na_1 & 1+a_na_2 & \cdots & a_n^2
+              \end{pmatrix}.\]
+          \end{example}
+
+          \begin{solution}
+            我们可以将 $A$ 化为
+
+            \[ A = -E_n + \begin{pmatrix}
+                a_1 & 1 \\ a_2 & 1 \\ \vdots & \vdots \\ a_n & 1
+            \end{pmatrix} E_2^{-1} \begin{pmatrix}
+                a_1 & a_2 & \cdots & a_n \\ 1 & 1 & \cdots & 1
+            \end{pmatrix} \]
+
+            故根据降阶公式有
+
+            \begin{align*}
+                |A| & = \left\vert-E_n + \begin{pmatrix}
+                    a_1 & 1 \\ a_2 & 1 \\ \vdots & \vdots \\ a_n & 1
+                \end{pmatrix} E_2^{-1} \begin{pmatrix}
+                    a_1 & a_2 & \cdots & a_n \\ 1 & 1 & \cdots & 1
+                \end{pmatrix}\right\vert \\
+                &= (-1)^n \left|E_2 - \begin{pmatrix}
+                    \sum\limits_{i=1}^n a_i^2 & \sum\limits_{i=1}^n a_i \\ \sum\limits_{i=1}^n a_i & n
+                \end{pmatrix}\right| \\
+                &= (-1)^n \left((1-n)\left(1-\sum\limits_{i=1}^n a_i^2\right) - \left(\sum\limits_{i=1}^n a_i\right)^2\right).
+            \end{align*}
+          \end{solution}
+
     \item 设$A,B$分别是$n \times m$和$m \times n$矩阵，则$|E_n \pm AB|=|E_m \pm BA|$，且 \\
           $|\lambda E_n \pm AB|=\lambda^{n-m}|\lambda E_m \pm BA|,\enspace n \geqslant m$.
           \begin{proof}
@@ -533,6 +569,8 @@
 
 \section{行列式计算技巧}
 
+一个核心：观察行列式的特征，通过用一行消去其它所有行或者通过逐行相减化出更多的 $0$，得到模板行列式（例如上三角、箭形等）求解；或者其它的一些明显的技巧性方法例如递推法.
+
 \subsection{化三角形法}
 
 因为三角形矩阵的行列式等于对角线元素的乘积，所以将行列式化为三角形矩阵的行列式是一种常用的计算方法.
@@ -560,24 +598,35 @@
 \end{solution}
 
 \begin{example}{}{}
-    计算行列式$\begin{vmatrix}
-            a_1    & 1   & 1   & \cdots & 1   \\
-            1      & a_2                      \\
-            1      &     & a_3                \\
-            \vdots &     &     & \ddots       \\
-            1      &     &     &        & a_n
-        \end{vmatrix}$，其中$a_i\neq 0\enspace(i=1,2,\ldots,n)$.
+    计算$n$阶行列式，其中$a_i\neq 0(i=2,\cdots,n)$：
+    \[|A|=\begin{vmatrix}
+        a_1 & b_2 & b_3 & \cdots & b_n \\
+        c_2 & a_2 & 0 & \cdots & 0 \\
+        c_3 & 0 & a_3 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        c_n & 0 & 0 & \cdots & a_n
+    \end{vmatrix}.\]
 \end{example}
 
 \begin{solution}
-    这一行列式因为形似箭头而被称为箭形行列式，我们可以将第一列减去每$i$列的$\frac{1}{a_i}$倍，可以得到
-    \[ \text{原式}=\begin{vmatrix}
-            a_1-\displaystyle\sum_{i=2}^n\frac{1}{a_i} & 1   & 1   & \cdots & 1   \\
-            0                                          & a_2                      \\
-            0                                          &     & a_3                \\
-            \vdots                                     &     &     & \ddots       \\
-            0                                          &     &     &        & a_n
-        \end{vmatrix} = \left(\sum_{i=2}^n\frac{1}{a_i}\right) \left(\prod_{j=2}^na_j\right) \]
+    这一行列式因为形似箭头而被称为箭形行列式，将第$i(2\leqslant i\leqslant n)$列乘以$-\dfrac{c_i}{a_i}$加到第一列上可以消去第一列所有的$c_i$得到上三角矩阵，最后答案为$(a_1-\sum\limits_{i=2}^n\dfrac{b_ic_i}{a_i})a_2a_3\cdots a_n$.
+\end{solution}
+
+箭形行列式可以当作一种模板来解决其它问题：
+
+\begin{example}{}{}
+    计算$n$阶行列式，其中$a_i\neq 0(i=1,\cdots,n)$：
+    \[|A|=\begin{vmatrix}
+        x_1-a_1 & x_2 & x_3 & \cdots & x_n \\
+        x_1 & x_2-a_2 & x_3 & \cdots & x_n \\
+        x_1 & x_2 & x_3-a_3 & \cdots & x_n \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        x_1 & x_2 & x_3 & \cdots & x_n-a_n
+    \end{vmatrix}.\]
+\end{example}
+
+\begin{solution}
+    第一行乘以-1依次加到其它行上去可以得到一个箭形行列式，使用上一例题的结论可知答案为\[(-1)^na_1a_2\cdots a_n(\sum\limits_{i=1}^n\dfrac{x_i}{a_i}-1).\]
 \end{solution}
 
 \subsection{连加法}
@@ -592,6 +641,8 @@
             x_1    & x_2    & \cdots & x_n-m
         \end{vmatrix}$.
 \end{example}
+
+这一例子事实上是前一个例子的特例，但我们这里展示连加法的运用，也体现一题多解的趣味性.
 
 \begin{solution}
     观察到每一行的和都是相同的，所以我们可以将每一列都累加到第一列上，得到
@@ -924,6 +975,57 @@
     \[ D_n=5^{n+1}-4^{n+1} \]
 \end{solution}
 
+最后我们介绍一个经典且复杂的例子，即所谓柯西行列式，我们利用递推法来求解：
+
+\begin{example}{柯西行列式}{}
+    计算行列式 $D_n=\begin{vmatrix}
+            (a_1+b_1)^{-1} & (a_1+b_2)^{-1} & \cdots & (a_1+b_n)^{-1} \\
+            (a_2+b_1)^{-1} & (a_2+b_2)^{-1} & \cdots & (a_2+b_n)^{-1} \\
+            \vdots         & \vdots         & \ddots & \vdots         \\
+            (a_n+b_1)^{-1} & (a_n+b_2)^{-1} & \cdots & (a_n+b_n)^{-1}
+        \end{vmatrix}$.
+\end{example}
+
+\begin{solution}
+    我们尝试求解 $D_n$ 和 $D_{n-1}$ 之间的递推式. 注意下面计算中的第一步是将行列式的前 $n-1$ 列每列都减去第 $n$ 列；第三步是将行列式的前 $n-1$ 行每行都减去第 $n$ 行；第二和第四步都是提取公因式.
+
+    \begin{align*}
+        D_n &= \begin{vmatrix}
+            \dfrac{1}{a_1+b_1} & \cdots & \dfrac{1}{a_1+b_{n-1}} & \dfrac{1}{a_1+b_n} \\
+            \vdots & \ddots & \vdots & \vdots \\
+            \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}} & \dfrac{1}{a_{n-1}+b_n} \\
+            \dfrac{1}{a_n+b_1} & \cdots & \dfrac{1}{a_n+b_{n-1}} & \dfrac{1}{a_n+b_n}
+        \end{vmatrix} \\
+        &= \begin{vmatrix}
+            \dfrac{b_n-b_1}{(a_1+b_1)(a_1+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_1+b_{n-1})(a_1+b_n)} & \dfrac{1}{a_1+b_n} \\
+            \vdots & \ddots & \vdots & \vdots \\
+            \dfrac{b_n-b_1}{(a_{n-1}+b_1)(a_{n-1}+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_{n-1}+b_{n-1})(a_{n-1}+b_n)} & \dfrac{1}{a_{n-1}+b_n} \\
+            \dfrac{b_n-b_1}{(a_n+b_1)(a_n+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_n+b_{n-1})(a_n+b_n)} & \dfrac{1}{a_n+b_n} \\
+        \end{vmatrix} \\
+        &= \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)} \begin{vmatrix}
+            \dfrac{1}{a_1+b_1} & \cdots & \dfrac{1}{a_1+b_{n-1}} & 1 \\
+            \vdots & \ddots & \vdots & \vdots \\
+            \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}} & 1 \\
+            \dfrac{1}{a_n+b_1} & \cdots & \dfrac{1}{a_n+b_{n-1}} & 1
+        \end{vmatrix} \\
+        &= \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)} \begin{vmatrix}
+            \dfrac{a_n-a_1}{(a_1+b_1)(a_n+b_1)} & \cdots & \dfrac{a_n-a_1}{(a_1+b_{n-1})(a_n+b_{n-1})} & 0 \\
+            \vdots & \ddots & \vdots & \vdots \\
+            \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_1)(a_n+b_1)} & \cdots & \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_{n-1})(a_n+b_{n-1})} & 0 \\
+            \dfrac{1}{a_n+b_1} & \cdots & \dfrac{1}{a_n+b_{n-1}} & 1
+        \end{vmatrix} \\
+        &= \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)} \begin{vmatrix}
+            \dfrac{1}{a_1+b_1} & \cdots & \dfrac{1}{a_1+b_{n-1}} \\
+            \vdots & \ddots & \vdots \\
+            \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}}
+        \end{vmatrix} \\
+        &= \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)} D_{n-1}
+    \end{align*}
+    不断递推下去即得
+
+    \[|A| = \dfrac{\prod\limits_{1 \leqslant i < j \leqslant n}(a_j - a_i)(b_j - b_i)}{\prod\limits_{i,j=1}^{n}(a_i + b_j)}\]
+\end{solution}
+
 \subsection{硬拆法}
 
 通常使用这种方法时某行或列会有较为明显的加和关系，这时可以将这一行或列视作两个向量相加，然后拆开形成两个行列式进行计算.
@@ -999,7 +1101,7 @@
 \end{example}
 
 \begin{solution}
-    考虑构造一个$n+1$阶的Vandermonde行列式.
+    本题有两个重要的直觉：第一这一行列式非常像 Vandermonde 行列式，第二这一行列式与 Vandermonde 行列式好像差了关键的一行. 因此我们考虑结合升阶法，构造一个 $n+1$ 阶的Vandermonde行列式.
     \[ f(x)=\begin{vmatrix}
             1         & 1         & \cdots & 1         & 1       \\
             x_1       & x_2       & \cdots & x_n       & x       \\
@@ -1076,7 +1178,7 @@
     所以原式$\displaystyle =(-1)^{n+1}\frac{n^2+n-2}{2}\prod_{i=1}^na_i$.
 \end{solution}
 
-\subsection{Laplace定理}
+\section{Laplace定理}
 我们在\autoref{def:递归式定义} 中讲述了行列式一行（一列）展开的方式，这里我们讲解一个更加一般的展开方式：即按照$k$行（$k$列）展开.
 
 为了描述这一定理，我们需要首先将单个元素的余子式和代数余子式的概念推广到子式的余子式和代数余子式. 为此，我们先给出一个定义：
@@ -1166,6 +1268,38 @@
 \end{proof}
 
 因此这里给出了比教材179页例4更为简洁的证明方法，当前前提在于利用了一个证明起来更为复杂的定理.
+
+\begin{example}{}{}
+    计算行列式$\begin{vmatrix}
+        -1 & 1 & 1 & 2 & -1 \\
+        0 & -1 & 0 & 1 & 2 \\
+        2 & 1 & 1 & 3 & -1 \\
+        1 & 2 & 2 & 1 & 0 \\
+        0 & 3 & 0 & 1 & 3
+    \end{vmatrix}.$
+\end{example}
+
+\begin{solution}
+    因为第一、第三列含有较多的 $0$，因此在这两列上做 Laplace 展开，得
+    \begin{align*}
+        |A| &= \begin{vmatrix}
+            -1 & 1 \\ 2 & 1
+        \end{vmatrix} \cdot (-1)^{1+3+1+3} \begin{vmatrix}
+            -1 & 1 & 2 \\ 2 & 1 & 0 \\ 3 & 1 & 3
+        \end{vmatrix} \\
+        &+ \begin{vmatrix}
+            -1 & 1 \\ 1 & 2
+        \end{vmatrix} \cdot (-1)^{1+4+1+3} \begin{vmatrix}
+            -1 & 1 & 2 \\ 1 & 3 & -1 \\ 3 & 1 & 3
+        \end{vmatrix} \\
+        &+ \begin{vmatrix}
+            2 & 1 \\ 1 & 1
+        \end{vmatrix} \cdot (-1)^{3+4+1+3} \begin{vmatrix}
+            1 & 2 & -1 \\ -1 & 1 & 2 \\ 3 & 1 & 3
+        \end{vmatrix} \\
+        &= (-3) \times (-11) + (-3) \times 32 + 3 \times (-23) = -132.
+    \end{align*}
+\end{solution}
 
 \section{伴随矩阵}
 
@@ -1621,6 +1755,16 @@
                         \end{vmatrix}$.
           \end{enumerate}
 
+    \item 记$a_{ij}=|i-j|$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
+
+    \item 计算行列式$D=\begin{vmatrix}
+        1 & 0 & 2 & 0 & x \\
+        0 & 2 & 0 & 1 & 0 \\
+        1 & 0 & 4 & 0 & x^2 \\
+        0 & 5 & 0 & 3 & 0 \\
+        1 & 0 & 8 & 0 & x^3
+    \end{vmatrix}$.
+
 \end{enumerate}
 
 \centerline{\heiti B组}
@@ -1647,6 +1791,10 @@
     \item 设实方阵$A$的伴随矩阵$A^*=\begin{pmatrix}
         1 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 1
     \end{pmatrix}$，且$|A|>0$，已知矩阵$B$满足$AB=E+3A$，求矩阵$B$.
+
+    \item 设$B=\begin{pmatrix}
+        1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1
+    \end{pmatrix}$，矩阵$A$满足方程$BA=B^\mathrm{T}B$，求$|A^*-2E|$.
 
     \item 已知齐次线性方程组
           \[\begin{cases} \begin{aligned}
@@ -1686,6 +1834,15 @@
               \end{vmatrix}=a_{nn}D^{n-2}.\]
 
     \item 设$a_1,a_2,\ldots,a_n$为互不相等的实数，$b_1,b_2,\ldots,b_n$为任意给定的实数. 证明：存在唯一的$n-1$次多项式，满足$f(a_i)=b_i,\enspace i=1,2,\ldots,n$.
+
+    \item 设 $a_1,a_2\cdots,a_n$ 是 $n$ 个两两互异的实数，$f_1(x),f_2(x),\cdots,f_n(x)$ 是 $n$ 个次数不大于 $n-2$ 的实系数多项式，证明：
+
+    \[\begin{vmatrix}
+        f_1(a_1) & f_1(a_2) & \cdots & f_1(a_n) \\
+        f_2(a_1) & f_2(a_2) & \cdots & f_2(a_n) \\
+        \vdots   & \vdots   & \ddots & \vdots   \\
+        f_n(a_1) & f_n(a_2) & \cdots & f_n(a_n)
+    \end{vmatrix}=0.\]
 
     \item 证明：$n$维向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是
           \[\begin{vmatrix}
@@ -1775,6 +1932,15 @@
 
     \item 计算行列式$|2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|$，其中$\alpha_1=(a_1,a_2,\ldots,a_n),\enspace \beta_1=(b_1,b_2,\ldots,b_n),\enspace \alpha_2=(c_1,c_2,\ldots,c_n),\enspace \beta_2 = (d_1,d_2,\ldots,d_n)$.（提示：利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$）
 
+    \item 求$2n$阶行列式的值（空缺处都是0）：
+    \[\begin{vmatrix}
+        a & & & & & b \\
+        & \ddots & & & \begin{rotate}{90} $\ddots$ \end{rotate} & \\
+        & & a & b & & \\
+        & & b & a & & \\
+        & \begin{rotate}{90} $\ddots$ \end{rotate} & & & \ddots & \\
+        b & & & & & a
+    \end{vmatrix}.\]
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -1816,6 +1982,8 @@
                   |A| & |B| \\ |C| & |D|
               \end{vmatrix} = 0.\]
 
+    \item 设$A$为$n$阶实对称矩阵（$n>1$），$|A|=0$，证明：$A_{ii}A_{jj}=(A_{ij})^2(i,j=1,\cdots,n)$.
+
     \item 求$\begin{pmatrix}
                   A & C \\ O & B
               \end{pmatrix}^*$，并求当$A$可逆时的$\begin{pmatrix}
@@ -1849,4 +2017,38 @@
         \vdots & \vdots & \vdots & \ddots & \vdots \\
         b      & b      & b      & \cdots & a
     \end{vmatrix}=\dfrac{b(a-c)^{n}-c(a-b)^{n}}{b-c}$，其中 $b \neq c$, 等式左端是 $n$ 阶行列式.
+
+    \item 计算$n$阶行列式
+    \[|A|=\begin{vmatrix}
+        a_1b_1 & a_1b_2 & a_1b_3 & \cdots & a_1b_n \\
+        a_2b_1 & a_2b_2 & a_2b_3 & \cdots & a_2b_n \\
+        a_3b_1 & a_3b_2 & a_3b_3 & \cdots & a_3b_n \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        a_nb_1 & a_nb_2 & a_nb_3 & \cdots & a_nb_n
+    \end{vmatrix}.\]
+
+    \item 计算$n$阶行列式
+    \[|A|=\begin{vmatrix}
+        1+a_1^2 & a_1a_2 & \cdots & a_1a_n \\
+        a_2a_1 & 1+a_2^2 & \cdots & a_2a_n \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_na_1 & a_na_2 & \cdots & 1+a_n^2
+    \end{vmatrix}.\]
+
+    \item 计算$n$阶行列式
+    \[|A|=\begin{vmatrix}
+        1+x_1 & 1+x_1^2 & \cdots & 1+x_1^n \\
+        1+x_2 & 1+x_2^2 & \cdots & 1+x_2^n \\
+        \vdots & \vdots & \ddots & \vdots \\
+        1+x_n & 1+x_n^2 & \cdots & 1+x_n^n
+    \end{vmatrix}.\]
+
+    \item 计算$n$阶行列式，其中$x,y,z$为任意实常数：
+    \[|A|=\begin{vmatrix}
+        x_1 & y & y & \cdots & y \\
+        z & x_2 & y & \cdots & y \\
+        z & z & x_3 & \cdots & y \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        z & z & z & \cdots & x_n
+    \end{vmatrix}.\]
 \end{enumerate}

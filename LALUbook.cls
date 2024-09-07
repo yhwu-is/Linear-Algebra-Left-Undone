@@ -63,6 +63,7 @@
 \RequirePackage{array}
 \RequirePackage{arydshln}
 \RequirePackage{tikz}
+\RequirePackage{rotating}
 
 \RequirePackage[many]{tcolorbox}
 
