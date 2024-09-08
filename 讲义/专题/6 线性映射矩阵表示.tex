@@ -232,87 +232,80 @@
 
 \section{线性映射与矩阵的进一步讨论}
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-在上一讲同构中我们已经知道，两个线性空间中的元素是向量还是多项式还是函数并不是核心差别，只要它们维数相同，我们就可以遮蔽掉元素的差别——因为它们都可以通过坐标映射同构于 $\mathbf{R}^n$，因此一切线性空间在坐标作用下都变成了向量空间，变成了最直观的可以用一个一个数字写出来的向量，而本讲我们正基于此将所有无论多么抽象的线性映射也表示成能用一个一个数字写出来的东西，即所谓的矩阵. 我们利用坐标映射将之前抽象的线性空间和线性映射转化为具象的数字表达，使得我们之后的研究更加具体.
+    在上一讲同构中我们已经知道，两个线性空间中的元素是向量还是多项式还是函数并不是核心差别，只要它们维数相同，我们就可以遮蔽掉元素的差别——因为它们都可以通过坐标映射同构于 $\mathbf{R}^n$，因此一切线性空间在坐标作用下都变成了向量空间，变成了最直观的可以用一个一个数字写出来的向量，而本讲我们正基于此将所有无论多么抽象的线性映射也表示成能用一个一个数字写出来的东西，即所谓的矩阵. 我们利用坐标映射将之前抽象的线性空间和线性映射转化为具象的数字表达，使得我们之后的研究更加具体.
 
-在理解了线性映射矩阵表示的概念之后，我们给出了一个重要的例子，同时从反面给出了错误解法，希望读者务必厘清这其中涉及的各种概念和方法. 接下来我们证明了线性映射构成的线性空间与矩阵构成的线性空间同构，同时引入了矩阵的加法和数乘——这与线性映射的加法和数乘是完全对应的. 总而言之，在有了线性映射的矩阵表示后，我们便可以将抽象的研究都转化为具象的矩阵运算，这一思想我们将在介绍完需要的工具——矩阵运算以及行列式之后深入运用，届时我们将分别以抽象的线性映射理论和矩阵理论叙述大量的结论，探寻利用二者研究线性代数问题的过程的关联与差异.
+    在理解了线性映射矩阵表示的概念之后，我们给出了一个重要的例子，同时从反面给出了错误解法，希望读者务必厘清这其中涉及的各种概念和方法. 接下来我们证明了线性映射构成的线性空间与矩阵构成的线性空间同构，同时引入了矩阵的加法和数乘——这与线性映射的加法和数乘是完全对应的. 总而言之，在有了线性映射的矩阵表示后，我们便可以将抽象的研究都转化为具象的矩阵运算，这一思想我们将在介绍完需要的工具——矩阵运算以及行列式之后深入运用，届时我们将分别以抽象的线性映射理论和矩阵理论叙述大量的结论，探寻利用二者研究线性代数问题的过程的关联与差异.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 一个定理有什么用并不重要，真正重要的是它有多优雅。}
-\begin{flushright}
-    \kaishu
-    ——S. 乌拉姆（Stanisław Ulam）
-\end{flushright}
+\begin{exercise}
+    \exquote[S. 乌拉姆（Stanisław Ulam）]{一个定理有什么用并不重要，真正重要的是它有多优雅。}
 
-% \centerline{\heiti A组}
-% \begin{enumerate}
-%     \item
-% \end{enumerate}
+    % \begin{exgroup}
+    %
+    % \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in L(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
+    \begin{exgroup}[2] % 如果取消注释上面的 exgroup，删除此处 [2]
+        \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in L(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
 
-    \item 已知$f_1=1-x,f_2=1+x^2,f_3=x+2x^2$是$\mathbf{R}[x]_3$中三个元素，$\sigma$是$\mathbf{R}[x]_3$上的线性变换且满足$\sigma(f_1)=2+x^2,\sigma(f_2)=x,\sigma(f_3)=1+x+x^2$.
-          \begin{enumerate}
-              \item 证明：$f_1,f_2,f_3$构成$\mathbf{R}[x]_3$的一组基；
+        \item 已知$f_1=1-x,f_2=1+x^2,f_3=x+2x^2$是$\mathbf{R}[x]_3$中三个元素，$\sigma$是$\mathbf{R}[x]_3$上的线性变换且满足$\sigma(f_1)=2+x^2,\sigma(f_2)=x,\sigma(f_3)=1+x+x^2$.
+        \begin{enumerate}
+            \item 证明：$f_1,f_2,f_3$构成$\mathbf{R}[x]_3$的一组基；
 
-              \item 求$\sigma$在基$f_1,f_2,f_3$下的矩阵；
+            \item 求$\sigma$在基$f_1,f_2,f_3$下的矩阵；
 
-              \item 设$f=1+2x+3x^2$，求$\sigma(f)$.
-          \end{enumerate}
+            \item 设$f=1+2x+3x^2$，求$\sigma(f)$.
+        \end{enumerate}
 
-    \item 设$V=\mathbf{M}_2(\mathbf{R})$是$\mathbf{R}$上所有$2 \times 2$矩阵构成的实数域上的线性空间. 已知
-          \[A=\begin{pmatrix}1 & -1 \\ \lambda & 1 \end{pmatrix}(\lambda \in \mathbf{R}),\enspace B=\begin{pmatrix}1 & 2 \\ -1 & -1 \end{pmatrix}\]
-          \begin{enumerate}
-              \item 证明：$\varphi(X)=AXB$为$V$上的线性变换；
+        \item 设$V=\mathbf{M}_2(\mathbf{R})$是$\mathbf{R}$上所有$2 \times 2$矩阵构成的实数域上的线性空间. 已知
+        \[A=\begin{pmatrix}1 & -1 \\ \lambda & 1 \end{pmatrix}(\lambda \in \mathbf{R}),\enspace B=\begin{pmatrix}1 & 2 \\ -1 & -1 \end{pmatrix}\]
+        \begin{enumerate}
+            \item 证明：$\varphi(X)=AXB$为$V$上的线性变换；
 
-              \item 证明：$\lambda\neq-1$时，$\varphi$为可逆线性变换；
+            \item 证明：$\lambda\neq-1$时，$\varphi$为可逆线性变换；
 
-              \item \label{item:7:B:1}
-                    $\lambda=-1$时，求$\varphi$的像空间和核空间；
+            \item \label{item:7:B:1}
+                  $\lambda=-1$时，求$\varphi$的像空间和核空间；
 
-              \item 将 \ref*{item:7:B:1} 中的值域扩充为$V$的一组基，并求$\varphi$在这组基下的矩阵.
-          \end{enumerate}
+            \item 将 \ref*{item:7:B:1} 中的值域扩充为$V$的一组基，并求$\varphi$在这组基下的矩阵.
+        \end{enumerate}
 
-    \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
-          \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
-          V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
+        \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
+        \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
+        V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
 
-    \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 4 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T : \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
-          \[T(f(x))=\begin{pmatrix}f(0) & f(1) \\ f(-1) & f(0)\end{pmatrix}\]
-          \begin{enumerate}
-              \item 求出 $T$ 的核空间 $N(T)$ 和像空间 $R(T)$；
+        \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 4 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T : \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
+        \[T(f(x))=\begin{pmatrix}f(0) & f(1) \\ f(-1) & f(0)\end{pmatrix}\]
+        \begin{enumerate}
+            \item 求出 $T$ 的核空间 $N(T)$ 和像空间 $R(T)$；
 
-              \item 求$T$在$\mathbf{R}[x]_4$和$\mathbf{M}_2(\mathbf{R})$的基下的矩阵表示.
-          \end{enumerate}
+            \item 求$T$在$\mathbf{R}[x]_4$和$\mathbf{M}_2(\mathbf{R})$的基下的矩阵表示.
+        \end{enumerate}
 
-    \item 设$A=\begin{pmatrix}
-                  1 & -1 & -1 \\ -1 & 1 & 1 \\ 0 & -4 & 2
-              \end{pmatrix},\enspace\xi_1=(-1,1,-2)^\mathrm{T}$.
-          \begin{enumerate}
-              \item 求满足$A\xi_2=\xi_1$及$A^2\xi_3=\xi_1$的所有$\xi_2,\xi_3$；
+        \item 设$A=\begin{pmatrix}
+                1 & -1 & -1 \\ -1 & 1 & 1 \\ 0 & -4 & 2
+            \end{pmatrix},\enspace\xi_1=(-1,1,-2)^\mathrm{T}$.
+        \begin{enumerate}
+            \item 求满足$A\xi_2=\xi_1$及$A^2\xi_3=\xi_1$的所有$\xi_2,\xi_3$；
 
-              \item 证明：$\xi_1,\xi_2,\xi_3$线性无关.
-          \end{enumerate}
+            \item 证明：$\xi_1,\xi_2,\xi_3$线性无关.
+        \end{enumerate}
 
-    \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\ker\sigma=\im \sigma$，证明：
-          \begin{enumerate}
-              \item $n$为偶数；
+        \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\ker\sigma=\im \sigma$，证明：
+        \begin{enumerate}
+            \item $n$为偶数；
 
-              \item 存在$V$的一组基$\alpha_1,\ldots,\alpha_n$使得
-                    \[\sigma(\alpha_1,\ldots,\alpha_n)=(\alpha_1,\ldots,\alpha_n)\begin{pmatrix}
-                            0 & E_{\frac{n}{2}} \\ 0 & 0
-                        \end{pmatrix}.\]
-          \end{enumerate}
-\end{enumerate}
+            \item 存在$V$的一组基$\alpha_1,\ldots,\alpha_n$使得
+                  \[\sigma(\alpha_1,\ldots,\alpha_n)=(\alpha_1,\ldots,\alpha_n)\begin{pmatrix}
+                          0 & E_{\frac{n}{2}} \\ 0 & 0
+                      \end{pmatrix}.\]
+        \end{enumerate}
+    \end{exgroup}
 
-% \centerline{\heiti C组}
-% \begin{enumerate}
-%     \item
-% \end{enumerate}
+    % \begin{exgroup}
+    %
+    % \end{exgroup}
+
+\end{exercise}

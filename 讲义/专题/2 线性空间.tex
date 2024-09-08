@@ -558,60 +558,52 @@
 
 事实上，基于这一例子我们也可以说明定义在$[a,b]$上的连续实值函数全体$C[a,b]$在实数域上构成的线性空间是无限维的，因为$C[a,b]$包含全体多项式，而全体多项式都无法被有限个向量表示，更不用说全体连续函数了. 当然，事实上\autoref{ex:函数和数列线性空间} 中的另一个数列的例子也构成无限维线性空间，这一点我们将在行列式一节作为习题，因为使用范德蒙行列式的结论更为便捷.
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本讲我们追随着第一讲最末尾关于线性方程组为什么无解、有唯一解或无穷解的问题，展开我们对线性方程组一般理论的讨论. 我们首先通过一个例子引入我们为什么要研究线性空间——因为我们需要了解向量之间的关联，从直觉上这与线性方程组解的情况是有关系的. 我们给出了线性空间的定义——其核心仍然是在集合上定义满足一定条件的运算，事实上就是对我们高中就熟知的向量加法数乘规则的抽象，然后我们讨论了基于这一公理化的定义我们可以得到的性质. 我们介绍了线性空间的子空间的定义与判别方法，引入了线性表示、线性扩张的概念并说明了我们如何通过线性扩张得到子空间——这一定理蕴含着所谓``闭包''的思想，我们将在未来讨论仿射子集时再次见到，实际上是非常符合几何直观的.
+    本讲我们追随着第一讲最末尾关于线性方程组为什么无解、有唯一解或无穷解的问题，展开我们对线性方程组一般理论的讨论. 我们首先通过一个例子引入我们为什么要研究线性空间——因为我们需要了解向量之间的关联，从直觉上这与线性方程组解的情况是有关系的. 我们给出了线性空间的定义——其核心仍然是在集合上定义满足一定条件的运算，事实上就是对我们高中就熟知的向量加法数乘规则的抽象，然后我们讨论了基于这一公理化的定义我们可以得到的性质. 我们介绍了线性空间的子空间的定义与判别方法，引入了线性表示、线性扩张的概念并说明了我们如何通过线性扩张得到子空间——这一定理蕴含着所谓``闭包''的思想，我们将在未来讨论仿射子集时再次见到，实际上是非常符合几何直观的.
 
-事实上，这一讲的内容是比较抽象的，因为线性空间的定义实际上就是将我们熟知的向量加法数乘运算抽象出来，从而适用于所有有类似结构的集合，因此读者在学习时可能会自动带入一些高中平面向量的直观，然后发现显然的问题不用证，复杂的问题摸不着头脑，但读者应当在未竟专题一中训练了基于定义和公理的数学证明思想，我们也尽力给出大量经典的例子，将推导过程写得非常详细，所以整体而言思路应当是清晰易懂的.
+    事实上，这一讲的内容是比较抽象的，因为线性空间的定义实际上就是将我们熟知的向量加法数乘运算抽象出来，从而适用于所有有类似结构的集合，因此读者在学习时可能会自动带入一些高中平面向量的直观，然后发现显然的问题不用证，复杂的问题摸不着头脑，但读者应当在未竟专题一中训练了基于定义和公理的数学证明思想，我们也尽力给出大量经典的例子，将推导过程写得非常详细，所以整体而言思路应当是清晰易懂的.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 1520年以来，全世界只有85个机构存活至今，其中50家是大学. 大学依靠梦想、希望生存下去——这就是大学的历史.}
-\begin{flushright}
-    \kaishu
-    ——美国哥伦比亚大学校长L·C·柏林格
-\end{flushright}
+\begin{exercise}
+    \exquote[美国哥伦比亚大学校长L·C·柏林格]{1520年以来，全世界只有85个机构存活至今，其中50家是大学. 大学依靠梦想、希望生存下去——这就是大学的历史.}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 检验下列集合对指定的加法和数乘运算是否构成实数域上的线性空间.
-          \begin{enumerate}
-              \item 有理数集$\mathbf{Q}$对普通的数的加法和乘法；
+    \begin{exgroup}
+        \item 检验下列集合对指定的加法和数乘运算是否构成实数域上的线性空间.
+        \begin{enumerate}
+            \item 有理数集$\mathbf{Q}$对普通的数的加法和乘法；
 
-              \item 集合$\mathbf{R}^2$对通常的向量加法和如下定义的数量乘法：$\lambda\cdot(x,y)=(\lambda x,y)$；
+            \item 集合$\mathbf{R}^2$对通常的向量加法和如下定义的数量乘法：$\lambda\cdot(x,y)=(\lambda x,y)$；
 
-              \item $\mathbf{R}_+^n$（即$n$元正实数向量）对如下定义的加法和数乘运算：
-                    \begin{gather*}
-                        (a_1,\ldots,a_n)+(b_1,\ldots,b_n)=(a_1b_1,\ldots,a_nb_n) \\
-                        \lambda\cdot(a_1,\ldots,a_n)=(a_1^\lambda,\ldots,a_n^\lambda)
-                    \end{gather*}
+            \item $\mathbf{R}_+^n$（即$n$元正实数向量）对如下定义的加法和数乘运算：
+                  \begin{gather*}
+                      (a_1,\ldots,a_n)+(b_1,\ldots,b_n)=(a_1b_1,\ldots,a_nb_n) \\
+                      \lambda\cdot(a_1,\ldots,a_n)=(a_1^\lambda,\ldots,a_n^\lambda)
+                  \end{gather*}
 
-              \item 请继续完成教材P86第二章习题第1题第(9)--(11)问关于函数的加法数乘定义线性空间的问题.
-          \end{enumerate}
+            \item 请继续完成教材P86第二章习题第1题第(9)--(11)问关于函数的加法数乘定义线性空间的问题.
+        \end{enumerate}
 
-    \item 请完成教材P86--87第二章习题第3题. 第(5)问平常问题较多，实际上就是要判断满足一定条件的多项式是否构成子空间.
-\end{enumerate}
+        \item 请完成教材P86--87第二章习题第3题. 第(5)问平常问题较多，实际上就是要判断满足一定条件的多项式是否构成子空间.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 证明：已知线性空间$V(\mathbf{F})$，$\lambda,\lambda_1,\ldots,\lambda_r\in\mathbf{F}$，$\beta,\alpha_1,\ldots,\alpha_r\in V$，有$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=\vec{0}$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$.
+    \begin{exgroup}
+        \item 证明：已知线性空间$V(\mathbf{F})$，$\lambda,\lambda_1,\ldots,\lambda_r\in\mathbf{F}$，$\beta,\alpha_1,\ldots,\alpha_r\in V$，有$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=\vec{0}$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$.
 
-    \item 设$V$是一个线性空间，$W$是$V$的子集，证明：$W$是$V$的子空间$\iff \spa(W)=W$.
-\end{enumerate}
+        \item 设$V$是一个线性空间，$W$是$V$的子集，证明：$W$是$V$的子空间$\iff \spa(W)=W$.
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 设$\mathbf{E}$是域$\mathbf{F}$的一个子域.
-          \begin{enumerate}
-              \item 证明：$\mathbf{F}$关于自身的加法和乘法构成一个$\mathbf{E}$上的向量空间，并举一例；
+    \begin{exgroup}
+        \item 设$\mathbf{E}$是域$\mathbf{F}$的一个子域.
+        \begin{enumerate}
+            \item 证明：$\mathbf{F}$关于自身的加法和乘法构成一个$\mathbf{E}$上的向量空间，并举一例；
 
-              \item 举例说明：$\mathbf{E}\enspace(\mathbf{E}\neq \mathbf{F})$不是$\mathbf{F}$上的线性空间；
+            \item 举例说明：$\mathbf{E}\enspace(\mathbf{E}\neq \mathbf{F})$不是$\mathbf{F}$上的线性空间；
 
-              \item 证明：若$V$是$\mathbf{F}$上的一个线性空间，则$V$也是$\mathbf{E}$上的一个线性空间.
-          \end{enumerate}
+            \item 证明：若$V$是$\mathbf{F}$上的一个线性空间，则$V$也是$\mathbf{E}$上的一个线性空间.
+        \end{enumerate}
 
-    \item 考虑在第一章定义的有限域 $\mathbf{F}_4$ 和 $\mathbf{Z}_2$. 证明：$\mathbf{Z}_2$ 可以看作 $\mathbf{F}_4$ 的一个子域. 并给出 $\mathbf{F}_4$ 在 $\mathbf{Z}_2$ 上的线性空间结构. 验证 $\mathbf{Z}_p$ 一定是 $\mathbf{F}_{p^n}$ 的一个子域.
-\end{enumerate}
+        \item 考虑在第一章定义的有限域 $\mathbf{F}_4$ 和 $\mathbf{Z}_2$. 证明：$\mathbf{Z}_2$ 可以看作 $\mathbf{F}_4$ 的一个子域. 并给出 $\mathbf{F}_4$ 在 $\mathbf{Z}_2$ 上的线性空间结构. 验证 $\mathbf{Z}_p$ 一定是 $\mathbf{F}_{p^n}$ 的一个子域.
+    \end{exgroup}
+\end{exercise}

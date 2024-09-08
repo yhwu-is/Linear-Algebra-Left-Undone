@@ -601,9 +601,9 @@
               \begin{tikzpicture}[scale=2]
                   \draw (0, 0) grid (2, 2);
                   \foreach \i in {0.5, 1.5}
-                      \foreach \j in {0.5, 1.5}
-                          \draw[fill=gray!50] (\i, \j) circle (0.5)
-                              \foreach \k in {45, 135, 225, 315} {($(\i, \j) + (\k:{sqrt(2)/(sqrt(2)+1)})$) circle ({(sqrt(2)-1)/(2+2*sqrt(2))})};
+                  \foreach \j in {0.5, 1.5}
+                  \draw[fill=gray!50] (\i, \j) circle (0.5)
+                  \foreach \k in {45, 135, 225, 315} {($(\i, \j) + (\k:{sqrt(2)/(sqrt(2)+1)})$) circle ({(sqrt(2)-1)/(2+2*sqrt(2))})};
               \end{tikzpicture}
               \caption{第二覆盖引理}
           \end{figure}
@@ -695,31 +695,23 @@
 
 这样，我们其实可以发现：重积分换元法的核心想法其实是研究\textbf{可求体积的图形在某一个映射下的体积是如何变化的}. 以这个想法为主线，配合\textbf{连续可微映射在某一点的局部性质与其在该点的微分的性质相同}这一核心原理，从线性映射到误差估计，我们就完成了重积分换元法的证明.
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 但是，因为我将这些东西视作不仅是一个“量”，而且是一个“简单量”。也有其它的量是复合而成的，并且相对于其它的复合量相差一些简单量的加和。这些量通过更高级的形式的加和形成。}
-\begin{flushright}
-    \kaishu
-    —— H. 格拉斯曼（Hermann Grassmann）
-\end{flushright}
+\begin{exercise}
+    \exquote[H. 格拉斯曼（Hermann Grassmann）]{但是，因为我将这些东西视作不仅是一个“量”，而且是一个“简单量”。也有其它的量是复合而成的，并且相对于其它的复合量相差一些简单量的加和。这些量通过更高级的形式的加和形成。}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item % Schatten 范数 是 范数
-          %   设 $A$ 为 $n$ 阶矩阵，定义 $A$ 的 Schatten 范数为 $\Vert A\Vert_s = \left(\sum_{i=1}^n\sigma_i^s\right)^{1/s}$，其中 $\sigma_i$ 为 $A$ 的奇异值. 证明 $\Vert A\Vert_s$ 是一个范数.
-\end{enumerate}
+    \begin{exgroup}
+        \item % Schatten 范数 是 范数
+        %   设 $A$ 为 $n$ 阶矩阵，定义 $A$ 的 Schatten 范数为 $\Vert A\Vert_s = \left(\sum_{i=1}^n\sigma_i^s\right)^{1/s}$，其中 $\sigma_i$ 为 $A$ 的奇异值. 证明 $\Vert A\Vert_s$ 是一个范数.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item
-\end{enumerate}
+    \begin{exgroup}
+        \item
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item
-\end{enumerate}
+    \begin{exgroup}
+        \item
+    \end{exgroup}
+\end{exercise}

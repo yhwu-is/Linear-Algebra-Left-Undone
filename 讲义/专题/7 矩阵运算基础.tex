@@ -678,125 +678,117 @@
 
 在这个例子中我们可以得到一个很关键的经验：分块对角矩阵求逆实际上就是对每一个分块求逆.
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本讲起我们介绍了矩阵的基本运算，我们不难发现，在引入矩阵后，我们一方面成功将线性方程组（矩阵表达的形式）解的本质理论的探究与之前所学习的线性空间、线性映射结合，从而迈出了里程碑式的一步；另一方面有形的矩阵表达也使得我们可以引入更多的计算技巧和工具，使我们未来的研究相对于前述章节而言更为具象.
+    本讲起我们介绍了矩阵的基本运算，我们不难发现，在引入矩阵后，我们一方面成功将线性方程组（矩阵表达的形式）解的本质理论的探究与之前所学习的线性空间、线性映射结合，从而迈出了里程碑式的一步；另一方面有形的矩阵表达也使得我们可以引入更多的计算技巧和工具，使我们未来的研究相对于前述章节而言更为具象.
 
-我们首先通过线性映射的复合引入了矩阵乘法，介绍了矩阵乘法的性质（特别注意与数的乘法不同的点，例如不一定交换，不一定可消去等），介绍了矩阵多项式的计算——这与中学里学习的因式分解、二项式展开等较为相关. 当然介绍矩阵乘法时我们也说明了线性方程组如何用矩阵乘法表示，说明了矩阵乘法左乘和右乘与行、列线性组合的关联，也阐释了两个记号的统一性，这些都是希望读者能够理解的，因为一般教材对于这些内容都持``默认''态度，但实践中发现同学们存在较多问题，因此在此都进行了详细讲解. 接下来矩阵的逆我们从线性映射的逆引入，介绍了矩阵的逆的唯一性，以及一些基本性质，这些性质的证明都非常基本，读者应当熟练，为之后的矩阵运算进阶做准备. 逆矩阵的求解我们也介绍了一种基于线性方程组的方法，之后我们会介绍更常用的其它方法. 接下来矩阵的转置、共轭以及分块则显得更加简单，因为更加具象，当然之后在运算进阶中我们可能会看到更多高级的计算技巧，本节的内容仅仅是一个开始.
+    我们首先通过线性映射的复合引入了矩阵乘法，介绍了矩阵乘法的性质（特别注意与数的乘法不同的点，例如不一定交换，不一定可消去等），介绍了矩阵多项式的计算——这与中学里学习的因式分解、二项式展开等较为相关. 当然介绍矩阵乘法时我们也说明了线性方程组如何用矩阵乘法表示，说明了矩阵乘法左乘和右乘与行、列线性组合的关联，也阐释了两个记号的统一性，这些都是希望读者能够理解的，因为一般教材对于这些内容都持``默认''态度，但实践中发现同学们存在较多问题，因此在此都进行了详细讲解. 接下来矩阵的逆我们从线性映射的逆引入，介绍了矩阵的逆的唯一性，以及一些基本性质，这些性质的证明都非常基本，读者应当熟练，为之后的矩阵运算进阶做准备. 逆矩阵的求解我们也介绍了一种基于线性方程组的方法，之后我们会介绍更常用的其它方法. 接下来矩阵的转置、共轭以及分块则显得更加简单，因为更加具象，当然之后在运算进阶中我们可能会看到更多高级的计算技巧，本节的内容仅仅是一个开始.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 在数学的天地里，重要的不是我们知道什么，而是我们怎么知道什么.}
-\begin{flushright}
-    \kaishu
-    ——毕达哥拉斯
-\end{flushright}
+\begin{exercise}
+    \exquote[毕达哥拉斯]{在数学的天地里，重要的不是我们知道什么，而是我们怎么知道什么.}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 证明：若$AB=BA$，$AC=CA$，则$A,B,C$为同阶方阵，且
-          \[A(BC)=(BC)A,\enspace A(B+C)=(B+C)A.\]
+    \begin{exgroup}
+        \item 证明：若$AB=BA$，$AC=CA$，则$A,B,C$为同阶方阵，且
+        \[A(BC)=(BC)A,\enspace A(B+C)=(B+C)A.\]
 
-    \item $A,B$都是$n$阶矩阵，求下列等式成立的充分条件：
-          \begin{enumerate}
-              \item $(A+B)^3=A^3+3A^2B+3AB^2+B^3$；
+        \item $A,B$都是$n$阶矩阵，求下列等式成立的充分条件：
+        \begin{enumerate}
+            \item $(A+B)^3=A^3+3A^2B+3AB^2+B^3$；
 
-              \item $(A+B)(A-B)=A^2-B^2$.
-          \end{enumerate}
+            \item $(A+B)(A-B)=A^2-B^2$.
+        \end{enumerate}
 
-    \item 设$A$是$n$阶方阵且$A^n=O$，证明：
-          \[(E_n-A)(E_n+A+A^2+\cdots+A^{n-1})=E_n.\]
+        \item 设$A$是$n$阶方阵且$A^n=O$，证明：
+        \[(E_n-A)(E_n+A+A^2+\cdots+A^{n-1})=E_n.\]
 
-    \item 证明：若线性映射$\sigma \in \mathcal{L}(V_1,V_2)$可逆，则其逆映射唯一.
+        \item 证明：若线性映射$\sigma \in \mathcal{L}(V_1,V_2)$可逆，则其逆映射唯一.
 
-    \item 证明：有一行元素或一列元素全为0的$n$阶方阵必定不可逆.
+        \item 证明：有一行元素或一列元素全为0的$n$阶方阵必定不可逆.
 
-    \item 设$\alpha,\beta$为三维列向量，且$\alpha\beta^\mathrm{T}=\begin{pmatrix}
-                  -1 & 2  & 1  \\
-                  1  & -2 & -1 \\
-                  2  & -4 & -2
-              \end{pmatrix}$，求$\alpha^\mathrm{T}\beta$.
-\end{enumerate}
+        \item 设$\alpha,\beta$为三维列向量，且$\alpha\beta^\mathrm{T}=\begin{pmatrix}
+                -1 & 2  & 1  \\
+                1  & -2 & -1 \\
+                2  & -4 & -2
+            \end{pmatrix}$，求$\alpha^\mathrm{T}\beta$.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 若$f(x)$是$x$的实系数$m$次多项式：
-          \[f(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0\]
-          则有矩阵多项式：
-          \[f(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E\]
-          其中 $A^0=E$.
-          \begin{enumerate}
-              \item 若$A$为对角矩阵$B=\begin{pmatrix}
-                            \lambda_1 & 0 \\ 0 & \lambda_2
-                        \end{pmatrix}$，证明：$f(A)=\begin{pmatrix}
-                            f(\lambda_1) & 0 \\ 0 & f(\lambda_2)
-                        \end{pmatrix}$；
+    \begin{exgroup}
+        \item 若$f(x)$是$x$的实系数$m$次多项式：
+        \[f(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0\]
+        则有矩阵多项式：
+        \[f(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E\]
+        其中 $A^0=E$.
+        \begin{enumerate}
+            \item 若$A$为对角矩阵$B=\begin{pmatrix}
+                          \lambda_1 & 0 \\ 0 & \lambda_2
+                      \end{pmatrix}$，证明：$f(A)=\begin{pmatrix}
+                          f(\lambda_1) & 0 \\ 0 & f(\lambda_2)
+                      \end{pmatrix}$；
 
-              \item 若$A=P^{-1}BP$，证明：$f(A)=Pf(B)P^{-1}$.
-          \end{enumerate}
+            \item 若$A=P^{-1}BP$，证明：$f(A)=Pf(B)P^{-1}$.
+        \end{enumerate}
 
-    \item 设$A$为$n$阶可逆矩阵，$A$的每行各元素之和都等于$k$，证明：$k \neq 0$且$A^{-1}$的每行各元素之和都等于$\vphantom{\cfrac{1}{k}}\dfrac{1}{k}$.
+        \item 设$A$为$n$阶可逆矩阵，$A$的每行各元素之和都等于$k$，证明：$k \neq 0$且$A^{-1}$的每行各元素之和都等于$\vphantom{\cfrac{1}{k}}\dfrac{1}{k}$.
 
-    \item 已知矩阵$A=\begin{pmatrix}1 & 2 & a  \\
+        \item 已知矩阵$A=\begin{pmatrix}1 & 2 & a  \\
                1 & 3 & 0  \\
                2 & 7 & -a\end{pmatrix}$可以通过初等列变换转化为矩阵$B=\begin{pmatrix}1  & a & 2 \\
                0  & 1 & 1 \\
                -1 & 1 & 1\end{pmatrix}$.
-          \begin{enumerate}
-              \item 求常数$a$；
+        \begin{enumerate}
+            \item 求常数$a$；
 
-              \item 求满足$AP=B$的可逆矩阵$P$.
-          \end{enumerate}
+            \item 求满足$AP=B$的可逆矩阵$P$.
+        \end{enumerate}
 
-    \item 证明以下两个命题：
-          \begin{enumerate}
-              \item 证明：任一$n$阶方阵都可以表示为一个对称矩阵与一个反对称矩阵的和.
-              \item 设$A$是$n$阶复矩阵，若$\overline{A}^\mathrm{T}=A$，则称$A$是一个Hermite矩阵. 若$\overline{A}^\mathrm{T}=-A$，则称$A$是一个斜Hermite矩阵. 证明：任一$n$阶复矩阵都可以表示为一个Hermite矩阵与一个斜Hermite矩阵的和.
-          \end{enumerate}
+        \item 证明以下两个命题：
+        \begin{enumerate}
+            \item 证明：任一$n$阶方阵都可以表示为一个对称矩阵与一个反对称矩阵的和.
+            \item 设$A$是$n$阶复矩阵，若$\overline{A}^\mathrm{T}=A$，则称$A$是一个Hermite矩阵. 若$\overline{A}^\mathrm{T}=-A$，则称$A$是一个斜Hermite矩阵. 证明：任一$n$阶复矩阵都可以表示为一个Hermite矩阵与一个斜Hermite矩阵的和.
+        \end{enumerate}
 
-    \item 证明以下两个命题：
-          \begin{enumerate}
-              \item 设$A$为$m\times n$阶实矩阵，则$A^\mathrm{T}A=O$的充要条件为$A=O$.
-              \item 设$A$为$m\times n$阶复矩阵，则$\overline{A^\mathrm{T}}A=O$的充要条件为$A=O$.
-          \end{enumerate}
+        \item 证明以下两个命题：
+        \begin{enumerate}
+            \item 设$A$为$m\times n$阶实矩阵，则$A^\mathrm{T}A=O$的充要条件为$A=O$.
+            \item 设$A$为$m\times n$阶复矩阵，则$\overline{A^\mathrm{T}}A=O$的充要条件为$A=O$.
+        \end{enumerate}
 
-    \item 证明以下两个命题：
-          \begin{enumerate}
-              \item 设$A$为$n$阶对称矩阵，证明：$A$是零矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
-              \item 设$A$为$n$阶方阵，证明：$A$为反对称矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
-          \end{enumerate}
+        \item 证明以下两个命题：
+        \begin{enumerate}
+            \item 设$A$为$n$阶对称矩阵，证明：$A$是零矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
+            \item 设$A$为$n$阶方阵，证明：$A$为反对称矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
+        \end{enumerate}
 
-    \item 证明：设$A$是实对称矩阵，若$A^2=O$，则$A=O$.
+        \item 证明：设$A$是实对称矩阵，若$A^2=O$，则$A=O$.
 
-    \item 设$A,B$为$n$阶方阵，证明：
-          \begin{enumerate}
-              \item 若$A,B$为对称矩阵，则$AB$为对称矩阵的充要条件为$AB=BA$，$AB$为反对称矩阵的充要条件为$AB=-BA$.
-              \item 若$A$为对称矩阵，$B$为反对称矩阵，则$AB$为反对称矩阵的充要条件为$AB=BA$，$AB$为对称矩阵的充要条件为$AB=-BA$.
-          \end{enumerate}
+        \item 设$A,B$为$n$阶方阵，证明：
+        \begin{enumerate}
+            \item 若$A,B$为对称矩阵，则$AB$为对称矩阵的充要条件为$AB=BA$，$AB$为反对称矩阵的充要条件为$AB=-BA$.
+            \item 若$A$为对称矩阵，$B$为反对称矩阵，则$AB$为反对称矩阵的充要条件为$AB=BA$，$AB$为对称矩阵的充要条件为$AB=-BA$.
+        \end{enumerate}
 
-    \item 求矩阵$\begin{pmatrix}
-                  a  & b  & c  & d  \\
-                  -b & a  & d  & -c \\
-                  -c & -d & a  & b  \\
-                  -d & c  & -b & a
-              \end{pmatrix}$的逆.
+        \item 求矩阵$\begin{pmatrix}
+                a  & b  & c  & d  \\
+                -b & a  & d  & -c \\
+                -c & -d & a  & b  \\
+                -d & c  & -b & a
+            \end{pmatrix}$的逆.
 
-    \item 设 $V=\{(a_{ij})_{n \times n} \mid \forall i,j,\enspace a_{ij}=a_{ji}\}$.
-          \begin{enumerate}
-              \item 证明：$V$为$\mathbf{F}^{n \times n}$的子空间；
+        \item 设 $V=\{(a_{ij})_{n \times n} \mid \forall i,j,\enspace a_{ij}=a_{ji}\}$.
+        \begin{enumerate}
+            \item 证明：$V$为$\mathbf{F}^{n \times n}$的子空间；
 
-              \item 求$V$的基和维数.
-          \end{enumerate}
+            \item 求$V$的基和维数.
+        \end{enumerate}
 
-    \item $\mathbf{M}_n(\mathbf{R})$表示所有实$n$阶方阵构成的集合. 设$W=\{A\in \mathbf{M}_n(\mathbf{R}) \mid a_{ji}=ka_{ij},\enspace i \leqslant j\}$，求当$k=0,1,2$时，$W$的一组基和维数.
-\end{enumerate}
+        \item $\mathbf{M}_n(\mathbf{R})$表示所有实$n$阶方阵构成的集合. 设$W=\{A\in \mathbf{M}_n(\mathbf{R}) \mid a_{ji}=ka_{ij},\enspace i \leqslant j\}$，求当$k=0,1,2$时，$W$的一组基和维数.
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
+    \begin{exgroup}
+        \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
 
-    \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
-\end{enumerate}
+        \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
+    \end{exgroup}
+\end{exercise}

@@ -842,176 +842,168 @@
           很多时候一些反例很难构想就选择记住这一构造思想即可. 一些反例可能基于一些简单的结论，但如果未思考到位可能很难构造.
 \end{enumerate}
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本讲我们介绍了相似的定义与性质，并介绍了第一个且是最简单的相似标准形——对角矩阵. 我们介绍了线性变换和矩阵可对角化的定义以及二者的统一性，介绍了如何求解线性变换/矩阵的对角化问题. 我们也探讨了线性变换/矩阵可对角化的几个充分必要条件，并通过大量的例题运用了这些条件. 最后我们介绍了幂等矩阵这一特殊矩阵，它有很多值得探讨的性质，并且很适合于作为本讲的一个运用.
+    本讲我们介绍了相似的定义与性质，并介绍了第一个且是最简单的相似标准形——对角矩阵. 我们介绍了线性变换和矩阵可对角化的定义以及二者的统一性，介绍了如何求解线性变换/矩阵的对角化问题. 我们也探讨了线性变换/矩阵可对角化的几个充分必要条件，并通过大量的例题运用了这些条件. 最后我们介绍了幂等矩阵这一特殊矩阵，它有很多值得探讨的性质，并且很适合于作为本讲的一个运用.
 
-从下一讲开始，我们将要介绍当线性变换/矩阵不可对角化时，它们可以有哪些退而求其次的也比较简单的相似标准形.
+    从下一讲开始，我们将要介绍当线性变换/矩阵不可对角化时，它们可以有哪些退而求其次的也比较简单的相似标准形.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 事类相推，各有攸归，故枝条虽分而同本干知，发其一端而已.}
-\begin{flushright}
-    \kaishu
-    ——刘徽，《九章算术注·原序》
-\end{flushright}
+\begin{exercise}
+    \exquote[刘徽，《九章算术注·原序》]{事类相推，各有攸归，故枝条虽分而同本干知，发其一端而已.}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 请举例：存在两个矩阵相抵但不相似.
+    \begin{exgroup}
+        \item 请举例：存在两个矩阵相抵但不相似.
 
-    \item 求矩阵
-          \[A = \begin{pmatrix}
-                  0  & -1 & 1 \\
-                  -1 & 0  & 1 \\
-                  1  & 1  & 0
-              \end{pmatrix}\]
-          的所有特征值，对应的特征子空间，以及与 $A$ 相似的一个对角矩阵.
+        \item 求矩阵
+        \[A = \begin{pmatrix}
+                0  & -1 & 1 \\
+                -1 & 0  & 1 \\
+                1  & 1  & 0
+            \end{pmatrix}\]
+        的所有特征值，对应的特征子空间，以及与 $A$ 相似的一个对角矩阵.
 
-    \item 设$A=\begin{pmatrix}
-                  a & b \\ c & d
-              \end{pmatrix}$为二阶实矩阵.
-          \begin{enumerate}
-              \item 若$|A|<0$，问：$A$与对角矩阵是否相似；
+        \item 设$A=\begin{pmatrix}
+                a & b \\ c & d
+            \end{pmatrix}$为二阶实矩阵.
+        \begin{enumerate}
+            \item 若$|A|<0$，问：$A$与对角矩阵是否相似；
 
-              \item 若$ad-bc=1$，$|a+d|>2$，问：$A$是否可对角化.
-          \end{enumerate}
+            \item 若$ad-bc=1$，$|a+d|>2$，问：$A$是否可对角化.
+        \end{enumerate}
 
-    \item 设$A=\begin{pmatrix}
-                  1 & 1 & a \\
-                  1 & a & 1 \\
-                  a & 1 & 1
-              \end{pmatrix}$，$\beta=\begin{pmatrix}
-                  1 \\ 1 \\ -2
-              \end{pmatrix}$，方程组$AX=\beta$有解但不唯一.
-          \begin{enumerate}
-              \item 求$a$的值；
+        \item 设$A=\begin{pmatrix}
+                1 & 1 & a \\
+                1 & a & 1 \\
+                a & 1 & 1
+            \end{pmatrix}$，$\beta=\begin{pmatrix}
+                1 \\ 1 \\ -2
+            \end{pmatrix}$，方程组$AX=\beta$有解但不唯一.
+        \begin{enumerate}
+            \item 求$a$的值；
 
-              \item 求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
-          \end{enumerate}
+            \item 求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
+        \end{enumerate}
 
-    \item 设$A$为三阶矩阵，$\alpha_1,\alpha_2,\alpha_3$线性无关，且$A\alpha_1=\alpha_1,A\alpha_2=\alpha_1+\alpha_2-2\alpha_3,A\alpha_3=\alpha_1-2\alpha_2+\alpha_3$，求$A$的特征值.
+        \item 设$A$为三阶矩阵，$\alpha_1,\alpha_2,\alpha_3$线性无关，且$A\alpha_1=\alpha_1,A\alpha_2=\alpha_1+\alpha_2-2\alpha_3,A\alpha_3=\alpha_1-2\alpha_2+\alpha_3$，求$A$的特征值.
 
-    \item 设三阶实对称矩阵$A$的各行元素之和为3，向量$\alpha_1=(-1,2,-1)^\mathrm{T}$，$\alpha_2=(0,-1,1)^\mathrm{T}$是方程组$AX=0$的两个解，求矩阵$P$使得$P^{-1}AP$为对角矩阵.
-\end{enumerate}
+        \item 设三阶实对称矩阵$A$的各行元素之和为3，向量$\alpha_1=(-1,2,-1)^\mathrm{T}$，$\alpha_2=(0,-1,1)^\mathrm{T}$是方程组$AX=0$的两个解，求矩阵$P$使得$P^{-1}AP$为对角矩阵.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设$a\neq b$，且$(aE-A)(bE-A)=O$. 证明：$A$可对角化（特例：对合矩阵）；
+    \begin{exgroup}
+        \item 设$a\neq b$，且$(aE-A)(bE-A)=O$. 证明：$A$可对角化（特例：对合矩阵）；
 
-    \item 证明：满足$A^2=E$且特征值只有1的矩阵只能是$E$，特征值只有$-1$的矩阵只能是$-E$.
+        \item 证明：满足$A^2=E$且特征值只有1的矩阵只能是$E$，特征值只有$-1$的矩阵只能是$-E$.
 
-    \item 设$A$为三阶矩阵，$A^2=A$且$r(A)=r$，求$|A-2E|$.
+        \item 设$A$为三阶矩阵，$A^2=A$且$r(A)=r$，求$|A-2E|$.
 
-    \item 设$T\in \mathcal{L}(\mathbf{C}^3)$使得6和7是$T$的特征值，且$T$不可对角化. 证明：存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
+        \item 设$T\in \mathcal{L}(\mathbf{C}^3)$使得6和7是$T$的特征值，且$T$不可对角化. 证明：存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
 
-    \item 证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似. 对于不可对角化的矩阵来说，这一结论还成立吗？
+        \item 证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似. 对于不可对角化的矩阵来说，这一结论还成立吗？
 
-    \item 设$A=\begin{pmatrix}
-                  2 & 2 & 0 \\ 8 & 2 & a \\ 0 & 0 & 6
-              \end{pmatrix}$相似于对角矩阵，求常数$a$，并求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
+        \item 设$A=\begin{pmatrix}
+                2 & 2 & 0 \\ 8 & 2 & a \\ 0 & 0 & 6
+            \end{pmatrix}$相似于对角矩阵，求常数$a$，并求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
 
-    \item 设$A=(a_{ij})_{n\times n}$是上三角矩阵.
-          \begin{enumerate}
-              \item 求$A$的全部特征值；
+        \item 设$A=(a_{ij})_{n\times n}$是上三角矩阵.
+        \begin{enumerate}
+            \item 求$A$的全部特征值；
 
-              \item 若$A$主对角元互不相等，证明：$A$与对角阵相似；
+            \item 若$A$主对角元互不相等，证明：$A$与对角阵相似；
 
-              \item 若$n$个主对角元相等且$A$不为对角矩阵，证明：$A$不与对角阵相似.
-          \end{enumerate}
+            \item 若$n$个主对角元相等且$A$不为对角矩阵，证明：$A$不与对角阵相似.
+        \end{enumerate}
 
-    \item 已知$\mathbf{R}^3$的一个线性变换
-          \[\sigma(x_1,x_2,x_3)=(2x_1-2x_2,-2x_1+x_2-2x_3,-2x_2).\]
-          \begin{enumerate}
-              \item 求$\sigma$关于自然基$\{e_1,e_2,e_3\}$所对应的矩阵$A$；
+        \item 已知$\mathbf{R}^3$的一个线性变换
+        \[\sigma(x_1,x_2,x_3)=(2x_1-2x_2,-2x_1+x_2-2x_3,-2x_2).\]
+        \begin{enumerate}
+            \item 求$\sigma$关于自然基$\{e_1,e_2,e_3\}$所对应的矩阵$A$；
 
-              \item 求$\sigma$关于基$\{(1,1,1),(0,1,1),(0,0,1)\}$所对应的矩阵$B$；
+            \item 求$\sigma$关于基$\{(1,1,1),(0,1,1),(0,0,1)\}$所对应的矩阵$B$；
 
-              \item 求矩阵$C_1$，使$C_1^{-1}BC_1=A$.
-          \end{enumerate}
+            \item 求矩阵$C_1$，使$C_1^{-1}BC_1=A$.
+        \end{enumerate}
 
-    \item 设$A=\begin{pmatrix}
-                  0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0
-              \end{pmatrix},B=\begin{pmatrix}
-                  1 & 0 & 0 \\ 0 & 1 & 2 \\ 0 & -1 & -2
-              \end{pmatrix}$，证明：$A\sim B$，并求可逆矩阵$P$使得$P^{-1}AP=B$.
+        \item 设$A=\begin{pmatrix}
+                0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0
+            \end{pmatrix},B=\begin{pmatrix}
+                1 & 0 & 0 \\ 0 & 1 & 2 \\ 0 & -1 & -2
+            \end{pmatrix}$，证明：$A\sim B$，并求可逆矩阵$P$使得$P^{-1}AP=B$.
 
-    \item 已知$A=\begin{pmatrix}
-                  2 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & x
-              \end{pmatrix}$与$B=\begin{pmatrix}
-                  2 & 0 & 0 \\ 0 & y & 0 \\ 0 & 0 & -1
-              \end{pmatrix}$相似.
-          \begin{enumerate}
-              \item 求$x$和$y$；
+        \item 已知$A=\begin{pmatrix}
+                2 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & x
+            \end{pmatrix}$与$B=\begin{pmatrix}
+                2 & 0 & 0 \\ 0 & y & 0 \\ 0 & 0 & -1
+            \end{pmatrix}$相似.
+        \begin{enumerate}
+            \item 求$x$和$y$；
 
-              \item 求一个可逆矩阵$P$，使$P^{-1}AP$为对角矩阵.
-          \end{enumerate}
+            \item 求一个可逆矩阵$P$，使$P^{-1}AP$为对角矩阵.
+        \end{enumerate}
 
-    \item 设$A=\begin{pmatrix}
-                  1 & 2 & 0 & 0  & 0 \\ 4 & 3 & 0 & 0 & 0 \\ 0 & 0 & 1 & -3 & 3 \\ 0 & 0 & 3 & -5 & 3 \\
-                  0 & 0 & 6 & -6 & 4
-              \end{pmatrix}$，求$A$的特征值. 若$A$可对角化，求可逆矩阵$P$，使$P^{-1}AP$为对角矩阵.
+        \item 设$A=\begin{pmatrix}
+                1 & 2 & 0 & 0  & 0 \\ 4 & 3 & 0 & 0 & 0 \\ 0 & 0 & 1 & -3 & 3 \\ 0 & 0 & 3 & -5 & 3 \\
+                0 & 0 & 6 & -6 & 4
+            \end{pmatrix}$，求$A$的特征值. 若$A$可对角化，求可逆矩阵$P$，使$P^{-1}AP$为对角矩阵.
 
-    \item 设三阶矩阵$A$的特征值为$\lambda_1=1,\lambda_2=2,\lambda_3=3$，它们对应的特征向量为$\xi_1=(1,1,1)^\mathrm{T}, \xi_2=(1,2,4)^\mathrm{T},\xi_3=(1,3,9)^\mathrm{T}$，又$\beta=(1,1,3)^\mathrm{T}$，计算$A^n\beta$.
+        \item 设三阶矩阵$A$的特征值为$\lambda_1=1,\lambda_2=2,\lambda_3=3$，它们对应的特征向量为$\xi_1=(1,1,1)^\mathrm{T}, \xi_2=(1,2,4)^\mathrm{T},\xi_3=(1,3,9)^\mathrm{T}$，又$\beta=(1,1,3)^\mathrm{T}$，计算$A^n\beta$.
 
-    \item 设$A=\begin{pmatrix}
-                  3 & 4 & 0 & 0 \\ 4 & -3 & 0 & 0 \\ 0 & 0 & 2 & 4 \\ 0 & 0 & 0 & 2
-              \end{pmatrix}$，求$A^n(n\in\mathbf{N}_+)$.
+        \item 设$A=\begin{pmatrix}
+                3 & 4 & 0 & 0 \\ 4 & -3 & 0 & 0 \\ 0 & 0 & 2 & 4 \\ 0 & 0 & 0 & 2
+            \end{pmatrix}$，求$A^n(n\in\mathbf{N}_+)$.
 
-    \item 已知三阶矩阵$A$和三元列向量$X$，使得向量组$X,AX,A^2X$线性无关，且满足
-          \[A^3X=3AX-2A^2X.\]
-          \begin{enumerate}
-              \item 记$P=(X,AX,A^2X)$，求三阶矩阵$B$使得$A=PBP^{-1}$；
+        \item 已知三阶矩阵$A$和三元列向量$X$，使得向量组$X,AX,A^2X$线性无关，且满足
+        \[A^3X=3AX-2A^2X.\]
+        \begin{enumerate}
+            \item 记$P=(X,AX,A^2X)$，求三阶矩阵$B$使得$A=PBP^{-1}$；
 
-              \item 计算行列式$|A+E|$.
-          \end{enumerate}
-\end{enumerate}
+            \item 计算行列式$|A+E|$.
+        \end{enumerate}
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$. 证明：$\sigma$可对角化当且仅当对每个$\lambda\in\mathbf{C}$有$V=\ker(\sigma-\lambda I)\oplus\im(\sigma-\lambda I)$.
+    \begin{exgroup}
+        \item 设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$. 证明：$\sigma$可对角化当且仅当对每个$\lambda\in\mathbf{C}$有$V=\ker(\sigma-\lambda I)\oplus\im(\sigma-\lambda I)$.
 
-    \item 设$B=\alpha\alpha^\mathrm{T}$，其中$\alpha=(a_1,\ldots,a_n)^\mathrm{T}\neq 0\enspace(a_i\in\mathbf{R},\enspace i=1,2,\ldots,n)$.
-          \begin{enumerate}
-              \item 证明：$B^k=tB$，其中$k$为正整数，$t$为常数，并求$t$；
+        \item 设$B=\alpha\alpha^\mathrm{T}$，其中$\alpha=(a_1,\ldots,a_n)^\mathrm{T}\neq 0\enspace(a_i\in\mathbf{R},\enspace i=1,2,\ldots,n)$.
+        \begin{enumerate}
+            \item 证明：$B^k=tB$，其中$k$为正整数，$t$为常数，并求$t$；
 
-              \item 求可逆阵$P$使得$P^{-1}BP$为对角矩阵，并写出该对角矩阵.
-          \end{enumerate}
+            \item 求可逆阵$P$使得$P^{-1}BP$为对角矩阵，并写出该对角矩阵.
+        \end{enumerate}
 
-    \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
-          \begin{enumerate}
-              \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
+        \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
+        \begin{enumerate}
+            \item 求$A$的特征值，并求矩阵$P$使得$P^{-1}AP$为对角矩阵；
 
-              \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
+            \item 若$f(x)$是$x$的$m$次多项式，且常数项为0，证明：存在$k\in\mathbf{R}$使得$f(A)=kA$，并求出$k$；
 
-              \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
-          \end{enumerate}
+            \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
+        \end{enumerate}
 
-    \item 设$A,B$为$n$阶矩阵，且$A+B=AB$，求证：
-          \begin{enumerate}
-              \item $A,B$的特征向量是公共的；
+        \item 设$A,B$为$n$阶矩阵，且$A+B=AB$，求证：
+        \begin{enumerate}
+            \item $A,B$的特征向量是公共的；
 
-              \item $A$相似于对角矩阵当且仅当$B$相似于对角矩阵；
+            \item $A$相似于对角矩阵当且仅当$B$相似于对角矩阵；
 
-              \item $r(A)=r(B)$.
-          \end{enumerate}
+            \item $r(A)=r(B)$.
+        \end{enumerate}
 
-    \item 设$A,B\in \mathbf{M}_n(\mathbf{R})$，证明$A$与$B$在$\mathbf{R}$上相似当且仅当在$\mathbf{C}$上相似.
+        \item 设$A,B\in \mathbf{M}_n(\mathbf{R})$，证明$A$与$B$在$\mathbf{R}$上相似当且仅当在$\mathbf{C}$上相似.
 
-          {\kaishu 注：实际上相似这一性质与数域无关，本题是这一结论的特例.}
+        {\kaishu 注：实际上相似这一性质与数域无关，本题是这一结论的特例.}
 
-    \item \begin{enumerate}
-              \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量；
+        \item \begin{enumerate}
+            \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量；
 
-              \item 若$A,B$均可对角化，且$AB=BA$，则对角化的过渡矩阵可以相同.
-          \end{enumerate}
+            \item 若$A,B$均可对角化，且$AB=BA$，则对角化的过渡矩阵可以相同.
+        \end{enumerate}
 
-    \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，且$AB=BA$. 证明：存在次数小于等于$n-1$的多项式$f(x)$使得$B=f(A)$.
+        \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，且$AB=BA$. 证明：存在次数小于等于$n-1$的多项式$f(x)$使得$B=f(A)$.
 
-    \item 设$T\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$. 证明：对$V$的每个使得$T$有上三角矩阵的基，$\lambda$出现在$T$的矩阵的对角线上的次数等于$\lambda$作为$T$的特征值的重数.
+        \item 设$T\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$. 证明：对$V$的每个使得$T$有上三角矩阵的基，$\lambda$出现在$T$的矩阵的对角线上的次数等于$\lambda$作为$T$的特征值的重数.
 
-    \item 证明：$A$为幂零矩阵$\iff \forall k \in \mathbf{N}_+,\enspace\tr(A^k)=0$.
-\end{enumerate}
+        \item 证明：$A$为幂零矩阵$\iff \forall k \in \mathbf{N}_+,\enspace\tr(A^k)=0$.
+    \end{exgroup}
+\end{exercise}

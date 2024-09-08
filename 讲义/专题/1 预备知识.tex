@@ -374,81 +374,73 @@
 
 从高斯消元法开始，我们正式进入线性代数的学习. 实际上，上述 \ref*{item:1:解方程组} 中关于方程组解的情况的讨论我们是浮于表面，是基于算法最后得到的矩阵的形式进行的讨论，但事实上，这背后蕴含着更深刻的意义. 我们将会在接下来的十余个章节中讲述线性代数中的核心概念，并在\nameref{chap:朝花夕拾}中回过头来重新审视线性方程组解的问题. 相信在那时，经历十余章各式抽象概念和运算技巧的洗礼后再来回味这一问题的你，定有``守得云开见月明''之感，对线性代数的理解也会更深一层.
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本讲为了后续章节讲述方便引入了一些基本概念和算法. 尽管这是一门面向理工科应用的数学课，但我们仍然希望以最自然的方式引入概念，而非填鸭式地轰炸，因此我们首先从大家最熟悉的实数集合开始，讨论在集合上定义运算的方法：我们逐步加强条件，引入了三种基本的代数结构——群、环和域，并且给出了一些例子，并简单讨论了定义代数系统的意义. 事实上，下一讲开始要介绍的线性空间也是一种特殊的代数结构，因此首先引入代数结构对于我们自然展开接下来的讨论有很大的帮助，不至于让读者觉得非常突兀.
+    本讲为了后续章节讲述方便引入了一些基本概念和算法. 尽管这是一门面向理工科应用的数学课，但我们仍然希望以最自然的方式引入概念，而非填鸭式地轰炸，因此我们首先从大家最熟悉的实数集合开始，讨论在集合上定义运算的方法：我们逐步加强条件，引入了三种基本的代数结构——群、环和域，并且给出了一些例子，并简单讨论了定义代数系统的意义. 事实上，下一讲开始要介绍的线性空间也是一种特殊的代数结构，因此首先引入代数结构对于我们自然展开接下来的讨论有很大的帮助，不至于让读者觉得非常突兀.
 
-接下来我们也从域的定义入手，构造了$\mathbf{R}^2$上的乘法运算使其构成了一个域，并且我们发现这里的定义与高中学习的复数乘法是完全一致的. 之后我们引入了等价关系的概念，这一概念在后续的讲义中将会多次出现，其重要意义就是将一个集合划分成了几个等价的区域. 最后我们讨论了高斯消元法的一般步骤，这是我们接下来解决线性空间中各类问题绕不开的算法.
+    接下来我们也从域的定义入手，构造了$\mathbf{R}^2$上的乘法运算使其构成了一个域，并且我们发现这里的定义与高中学习的复数乘法是完全一致的. 之后我们引入了等价关系的概念，这一概念在后续的讲义中将会多次出现，其重要意义就是将一个集合划分成了几个等价的区域. 最后我们讨论了高斯消元法的一般步骤，这是我们接下来解决线性空间中各类问题绕不开的算法.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 我这门课很简单，只有简单的加减乘除四则运算，甚至除法都不太需要.}
-\begin{flushright}
-    \kaishu
-    ——浙江大学数学科学学院教授吴志祥
-\end{flushright}
+\begin{exercise}
+    \exquote[浙江大学数学科学学院教授吴志祥]{我这门课很简单，只有简单的加减乘除四则运算，甚至除法都不太需要.}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 完善\autoref{thm:复数乘法构造} 中的证明，即证明$\mathbf{R}^2$在平面向量加法和如\autoref*{thm:复数乘法构造} 定义的乘法下构成一个域.
+    \begin{exgroup}
+        \item 完善\autoref{thm:复数乘法构造} 中的证明，即证明$\mathbf{R}^2$在平面向量加法和如\autoref*{thm:复数乘法构造} 定义的乘法下构成一个域.
 
-    \item 完成教材48页第13题.
+        \item 完成教材48页第13题.
 
-    \item 求齐次线性方程组$\begin{cases}
-                  x_1+x_2+x_3+4x_4-3x_5=0   \\
-                  2x_1+x_2+3x_3+5x_4-5x_5=0 \\
-                  x_1-x_2+3x_3-2x_4-x_5=0   \\
-                  3x_1+x_2+5x_3+6x_4-7x_5=0
-              \end{cases}$的通解.
+        \item 求齐次线性方程组$\begin{cases}
+                x_1+x_2+x_3+4x_4-3x_5=0   \\
+                2x_1+x_2+3x_3+5x_4-5x_5=0 \\
+                x_1-x_2+3x_3-2x_4-x_5=0   \\
+                3x_1+x_2+5x_3+6x_4-7x_5=0
+            \end{cases}$的通解.
 
-    \item 求非齐次线性方程组$\begin{cases}
-                  x_1-x_2+2x_3-2x_4+3x_5=1     \\
-                  2x_1-x_2+5x_3-9x_4+8x_5=-1   \\
-                  3x_1-2x_2+7x_3-11x_4+11x_5=0 \\
-                  x_1-x_2+x_3-x_4+3x_5=3
-              \end{cases}$的通解.
+        \item 求非齐次线性方程组$\begin{cases}
+                x_1-x_2+2x_3-2x_4+3x_5=1     \\
+                2x_1-x_2+5x_3-9x_4+8x_5=-1   \\
+                3x_1-2x_2+7x_3-11x_4+11x_5=0 \\
+                x_1-x_2+x_3-x_4+3x_5=3
+            \end{cases}$的通解.
 
-    \item 求解线性方程组$\begin{cases}
-                  x_1+x_2+x_3=1   \\
-                  x_1+2x_2-5x_3=2 \\
-                  2x_1+3x_2-4x_3=5
-              \end{cases}$.
-\end{enumerate}
+        \item 求解线性方程组$\begin{cases}
+                x_1+x_2+x_3=1   \\
+                x_1+2x_2-5x_3=2 \\
+                2x_1+3x_2-4x_3=5
+            \end{cases}$.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设$A$是一个Abel群，$A$的运算是加法. 在$A$中定义乘法运算为$ab=0,\enspace\forall a,b\in A$. 证明：$A$为一个环，而且它的加法单位元与乘法单位元相同（我们称这种环为\term{零环}\index{huan!ling@零环 (zero ring)}）.
+    \begin{exgroup}
+        \item 设$A$是一个Abel群，$A$的运算是加法. 在$A$中定义乘法运算为$ab=0,\enspace\forall a,b\in A$. 证明：$A$为一个环，而且它的加法单位元与乘法单位元相同（我们称这种环为\term{零环}\index{huan!ling@零环 (zero ring)}）.
 
-    \item 证明：若集合$A$上的二元关系$R$满足
-          \begin{enumerate}
-              \item $a\,R\,a,\enspace\forall a\in A$；
+        \item 证明：若集合$A$上的二元关系$R$满足
+        \begin{enumerate}
+            \item $a\,R\,a,\enspace\forall a\in A$；
 
-              \item $\forall a,b,c\in A$，若$a\,R\,b$且$a\,R\,c$，则$b\,R\,c$.
-          \end{enumerate}
-          则$R$为$A$上的等价关系.
-\end{enumerate}
+            \item $\forall a,b,c\in A$，若$a\,R\,b$且$a\,R\,c$，则$b\,R\,c$.
+        \end{enumerate}
+        则$R$为$A$上的等价关系.
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 证明：\autoref{ex:有限域} 中定义的$\langle Z_n:\oplus,\circ\rangle$是域当且仅当$n$是素数.（提示：无论$n$是否为素数，$n\in\mathbf{Z}$且$n\geqslant 2$时$\langle Z_n:\oplus,\circ\rangle$为交换环，因此是否为素数将决定这一结构中每个元素是否有逆元. 在初等数论中，我们熟知的裴蜀定理可以解决这一问题.）
+    \begin{exgroup}
+        \item 证明：\autoref{ex:有限域} 中定义的$\langle Z_n:\oplus,\circ\rangle$是域当且仅当$n$是素数.（提示：无论$n$是否为素数，$n\in\mathbf{Z}$且$n\geqslant 2$时$\langle Z_n:\oplus,\circ\rangle$为交换环，因此是否为素数将决定这一结构中每个元素是否有逆元. 在初等数论中，我们熟知的裴蜀定理可以解决这一问题.）
 
-    \item 本讲我们构造了$\mathbf{R}^2$上的乘法，从而定义了复数域的乘法运算. 本题希望探讨的是：$\mathbf{R}^3$无法构造出乘法使其成为一个域. 在高中的学习中我们知道，$\mathbf{R}^3$空间向量的一组基底为$\{\vec{e}_1=(1,0,0),\vec{e}_2=(0,1,0),\vec{e}_3=(0,0,1)\}$. 证明：$\mathbf{R}^3$没有乘法同时满足以下性质：
-          \begin{enumerate}
-              \item (单位元) $\forall \vec{u}\in\mathbf{R}^3,\enspace\vec{e}_1\cdot \vec{u}=\vec{u}\cdot \vec{e}_1$；
+        \item 本讲我们构造了$\mathbf{R}^2$上的乘法，从而定义了复数域的乘法运算. 本题希望探讨的是：$\mathbf{R}^3$无法构造出乘法使其成为一个域. 在高中的学习中我们知道，$\mathbf{R}^3$空间向量的一组基底为$\{\vec{e}_1=(1,0,0),\vec{e}_2=(0,1,0),\vec{e}_3=(0,0,1)\}$. 证明：$\mathbf{R}^3$没有乘法同时满足以下性质：
+        \begin{enumerate}
+            \item (单位元) $\forall \vec{u}\in\mathbf{R}^3,\enspace\vec{e}_1\cdot \vec{u}=\vec{u}\cdot \vec{e}_1$；
 
-              \item (交换性) $\forall \vec{u},\vec{v}\in\mathbf{R}^3,\enspace\vec{u}\cdot \vec{v}=\vec{v}\cdot \vec{u}$；
+            \item (交换性) $\forall \vec{u},\vec{v}\in\mathbf{R}^3,\enspace\vec{u}\cdot \vec{v}=\vec{v}\cdot \vec{u}$；
 
-              \item (长度可乘性) $\forall \vec{u},\vec{v}\in\mathbf{R}^3,\enspace|\vec{u}\cdot\vec{v}|=|\vec{u}||\vec{v}|$.
-          \end{enumerate}
-          按照如下思路给出详细证明过程：采用反证法. 假设乘法存在，则
-          \begin{enumerate}
-              \item 通过计算$(\vec{e}_1+\vec{e}_2)\cdot(\vec{e}_1-\vec{e}_2)$，$(\vec{e}_1+\vec{e}_3)\cdot(\vec{e}_1-\vec{e}_3)$，证明\[\vec{e}_2\cdot\vec{e}_2=\vec{e}_3\cdot\vec{e}_3=-\vec{e}_1.\]
+            \item (长度可乘性) $\forall \vec{u},\vec{v}\in\mathbf{R}^3,\enspace|\vec{u}\cdot\vec{v}|=|\vec{u}||\vec{v}|$.
+        \end{enumerate}
+        按照如下思路给出详细证明过程：采用反证法. 假设乘法存在，则
+        \begin{enumerate}
+            \item 通过计算$(\vec{e}_1+\vec{e}_2)\cdot(\vec{e}_1-\vec{e}_2)$，$(\vec{e}_1+\vec{e}_3)\cdot(\vec{e}_1-\vec{e}_3)$，证明\[\vec{e}_2\cdot\vec{e}_2=\vec{e}_3\cdot\vec{e}_3=-\vec{e}_1.\]
 
-              \item 证明$(\vec{e}_2+\vec{e}_3)\cdot(\vec{e}_2-\vec{e}_3)=0$得出矛盾.
-          \end{enumerate}
+            \item 证明$(\vec{e}_2+\vec{e}_3)\cdot(\vec{e}_2-\vec{e}_3)=0$得出矛盾.
+        \end{enumerate}
 
-    \item 尝试构造一个 4 元的域 $\mathbf{F}_4$.（提示：我们在上面的第一题中已经给出了 2 元的域 $\mathbf{Z}_2$，而且我们也知道 $\mathbf{Z}_4$ 不构成一个域，因此，我们考虑怎么把两个二元的域拼起来，可以尝试笛卡尔积的方式，并在其中定义二元运算来满足所需的性质. 进一步的两个事实是，对于所有的素数 $p$，都可以用类似的方法构造 $p^n$ 元的域；以及不是任意两个域的笛卡尔积都是域，这个例子已经被上面的第二题所说明.）
-\end{enumerate}
+        \item 尝试构造一个 4 元的域 $\mathbf{F}_4$.（提示：我们在上面的第一题中已经给出了 2 元的域 $\mathbf{Z}_2$，而且我们也知道 $\mathbf{Z}_4$ 不构成一个域，因此，我们考虑怎么把两个二元的域拼起来，可以尝试笛卡尔积的方式，并在其中定义二元运算来满足所需的性质. 进一步的两个事实是，对于所有的素数 $p$，都可以用类似的方法构造 $p^n$ 元的域；以及不是任意两个域的笛卡尔积都是域，这个例子已经被上面的第二题所说明.）
+    \end{exgroup}
+\end{exercise}
