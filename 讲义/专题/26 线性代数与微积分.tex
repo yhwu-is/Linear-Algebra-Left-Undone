@@ -507,14 +507,13 @@
 
 \begin{figure}[hb]
     \centering
-    \begin{tikzpicture}[>=stealth']
-        \def\size{2.4};
-        \fill[gray!40] (-\size/2, -\size) rectangle (\size/2, \size);
-        \draw[dashed, thick] (-\size/2, \size) -- (-\size/2, -\size) node[below] {$0$} -- (\size/2, -\size) node[below] {$2\pi$} -- (\size/2, \size);
-        \fill[gray!40] (2.5*\size, 0) circle (\size);
-        \draw[white, thick] (2.5*\size, 0) -- (3.5*\size, 0);
-        \draw node at (0, 0) {$(r, \theta)$} node[above left] at (2.5*\size, 0) {$(x, y)$};
-        \draw[thick] (0.6*\size, 0) edge[out=30, in=180, ->] node[above] {$\Phi$} (1.5*\size, 1);
+    \begin{tikzpicture}[>=latex,scale=2.4]
+        \fill[gray!40] (-0.5, -1) rectangle (0.5, 1);
+        \draw[dashed, thick] (-0.5, 1) -- (-0.5, -1) node[below] {$0$} -- (0.5, -1) node[below] {$2\pi$} -- (0.5, 1);
+        \fill[gray!40] (2.5, 0) circle (1);
+        \draw[white, thick] (2.5, 0) -- (3.5, 0);
+        \draw node at (0, 0) {$(r, \theta)$} node[above left] at (2.5, 0) {$(x, y)$};
+        \draw[thick] (0.6, 0) edge[out=30, in=180, ->] node[above] {$\Phi$} (1.5, 0.4);
     \end{tikzpicture}
     \caption{坐标变换的几何直观}
     \label{fig:coordinate-transformation}
