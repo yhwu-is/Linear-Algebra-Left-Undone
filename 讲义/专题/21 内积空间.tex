@@ -573,15 +573,15 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 \begin{enumerate}
     \item 证明：下列 $\langle A, B \rangle$ 分别定义了 $n$ 阶实矩阵空间和 $n$ 阶复矩阵空间上的内积（称为 Frobenius 内积）：
           \begin{enumerate}
-            \item 设 $V$ 为 $n$ 阶实矩阵空间，对任意的 $n$ 阶实矩阵 $A = (a_{ij})$ 和 $B = (b_{ij})$，定义
+              \item 设 $V$ 为 $n$ 阶实矩阵空间，对任意的 $n$ 阶实矩阵 $A = (a_{ij})$ 和 $B = (b_{ij})$，定义
                     \[
                         \langle A, B \rangle = \tr(A B^{\mathrm{T}}) \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}b_{ij}.
                     \]
-            \item 设 $V$ 为 $n$ 阶复矩阵空间，对任意的 $n$ 阶复矩阵 $A = (a_{ij})$ 和 $B = (b_{ij})$，定义
-                \[
-                    \langle A, B \rangle = \tr(A B^{\mathrm{H}}) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}\overline{b_{ij}}.
-                \]
-                （其中 $B^{\mathrm{H}}$ 表示 $B$ 的共轭转置）
+              \item 设 $V$ 为 $n$ 阶复矩阵空间，对任意的 $n$ 阶复矩阵 $A = (a_{ij})$ 和 $B = (b_{ij})$，定义
+                    \[
+                        \langle A, B \rangle = \tr(A B^{\mathrm{H}}) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}\overline{b_{ij}}.
+                    \]
+                    （其中 $B^{\mathrm{H}}$ 表示 $B$ 的共轭转置）
           \end{enumerate}
     \item 设 $V$ 是实系数多项式全体构成的实线性空间，任取
           \[ f(x) = a_0 + a_1 x + \cdots + a_n x^n, \enspace g(x) = b_0 + b_1 x + \cdots + b_m x^m, (a_n, b_m \neq 0), \]
@@ -596,61 +596,61 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
           等号成立当且仅当 $ v = \displaystyle\sum_{j = 1}^{m} \langle v, e_j \rangle e_j $. 这个不等式被称为 Bessel 不等式.\index{Bessel@Bessel 不等式 (Bessel's inequality)}
     \item 设 $e_1, \ldots, e_n$ 是 $V$ 的一个标准正交基. 证明：
           \begin{enumerate}
-            \item 若 $v_1, \ldots, v_n \in V$ 满足
-                  \[
-                    \lVert e_k - v_k \rVert < \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
-                  \]
-                  那么 $v_1, \ldots, v_n$ 是 $V$ 的一组基.
-            \item 存在 $v_1, \ldots, v_n \in V$ 满足
-                  \[
-                    \lVert e_k - v_k \rVert \leqslant \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
-                  \]
-                  但 $v_1, \ldots, v_n$ 线性相关.
+              \item 若 $v_1, \ldots, v_n \in V$ 满足
+                    \[
+                        \lVert e_k - v_k \rVert < \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
+                    \]
+                    那么 $v_1, \ldots, v_n$ 是 $V$ 的一组基.
+              \item 存在 $v_1, \ldots, v_n \in V$ 满足
+                    \[
+                        \lVert e_k - v_k \rVert \leqslant \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
+                    \]
+                    但 $v_1, \ldots, v_n$ 线性相关.
           \end{enumerate}
 \end{enumerate}
 
 \centerline{\heiti C组}
 \begin{enumerate}
     \item 令 $V$ 是区间 $[-1, 1]$ 上次数不超过 $n$ 的实系数多项式构成的实线性空间，$V$ 上的内积定义为
-            \[
-                \langle f, g \rangle = \int_{-1}^{1} f(t)g(t)\,\mathrm{d}t.
-            \]
-            证明：$V$ 是 $n + 1$ 维欧式空间，并且下列多项式组成 $V$ 的一组正交基：
-            \[
-                P_0(x) = 1, \ P_k(x) = \dfrac{1}{2^k k!} \cdot \dfrac{\mathrm{d}^k}{\mathrm{d}x^k} (x^2 - 1)^k, \ k = 1, 2, \ldots, n.
-            \]
-            称之为 Legendre 多项式.
+          \[
+              \langle f, g \rangle = \int_{-1}^{1} f(t)g(t)\,\mathrm{d}t.
+          \]
+          证明：$V$ 是 $n + 1$ 维欧式空间，并且下列多项式组成 $V$ 的一组正交基：
+          \[
+              P_0(x) = 1, \enspace P_k(x) = \dfrac{1}{2^k k!} \cdot \dfrac{\mathrm{d}^k}{\mathrm{d}x^k} (x^2 - 1)^k, \enspace k = 1, 2, \ldots, n.
+          \]
+          称之为 Legendre 多项式.
     \item 对于欧式空间 $V$ 向量组 $u_1, u_2, \ldots, u_m$，也同样存在着 Gram 矩阵的概念。称下述矩阵：
-            \[
-                G(u_1, u_2, \ldots, u_m) = \begin{pmatrix}
-                    \langle u_1, u_1 \rangle & \langle u_1, u_2 \rangle & \cdots & \langle u_1, u_m \rangle \\
-                    \langle u_2, u_1 \rangle & \langle u_2, u_2 \rangle & \cdots & \langle u_2, u_m \rangle \\
-                    \vdots                   & \vdots                   & \ddots & \vdots                   \\
-                    \langle u_m, u_1 \rangle & \langle u_m, u_2 \rangle & \cdots & \langle u_m, u_m \rangle
-                \end{pmatrix}
-            \]
-            为向量组 $u_1, u_2, \ldots, u_m$ 的 Gram 矩阵. 证明：
-            \begin{enumerate}
-                \item 若用 Gram-Schmidt 过程将 $ V $ 的一个线性无关向量组 $\{u_1, u_2, \ldots, u_m\}$ 变为正交向量组 $\{v_1, v_2, \ldots, v_n\}$，则这两组向量组的 Gram 矩阵的行列式不变，即
+          \[
+              G(u_1, u_2, \ldots, u_m) = \begin{pmatrix}
+                  \langle u_1, u_1 \rangle & \langle u_1, u_2 \rangle & \cdots & \langle u_1, u_m \rangle \\
+                  \langle u_2, u_1 \rangle & \langle u_2, u_2 \rangle & \cdots & \langle u_2, u_m \rangle \\
+                  \vdots                   & \vdots                   & \ddots & \vdots                   \\
+                  \langle u_m, u_1 \rangle & \langle u_m, u_2 \rangle & \cdots & \langle u_m, u_m \rangle
+              \end{pmatrix}
+          \]
+          为向量组 $u_1, u_2, \ldots, u_m$ 的 Gram 矩阵. 证明：
+          \begin{enumerate}
+              \item 若用 Gram-Schmidt 过程将 $ V $ 的一个线性无关向量组 $\{u_1, u_2, \ldots, u_m\}$ 变为正交向量组 $\{v_1, v_2, \ldots, v_n\}$，则这两组向量组的 Gram 矩阵的行列式不变，即
                     \[
                         \det G(u_1, u_2, \ldots, u_m) = \det G(v_1, v_2, \ldots, v_n) = \lvert v_1 \rvert^2 \lvert v_2 \rvert^2 \cdots \lvert v_n \rvert^2.
                     \]
-                \item 向量组 $u_1, u_2, \ldots, u_m$ 线性无关的充要条件是其 Gram 矩阵可逆.
-                \item 不等式：
-                        \[
-                            0 \leqslant \det G(u_1, u_2, \ldots, u_m) \leqslant \lvert u_1 \rvert^2 \lvert u_2 \rvert^2 \cdots \lvert u_m \rvert^2.
-                        \]
-                        后一个等号成立的条件式 $u_i$ 两两正交或某个 $u_i$ 为 0.
-                \item Hadamard 不等式：$A = (a_{ij})$ 为 $n$ 阶实矩阵，则
-                        \[
-                            \lvert \det A \rvert^2 \leqslant \prod_{j = 1}^n \sum_{i = 1}^n a_{ij}^2.
-                        \]
-            \end{enumerate}
+              \item 向量组 $u_1, u_2, \ldots, u_m$ 线性无关的充要条件是其 Gram 矩阵可逆.
+              \item 不等式：
+                    \[
+                        0 \leqslant \det G(u_1, u_2, \ldots, u_m) \leqslant \lvert u_1 \rvert^2 \lvert u_2 \rvert^2 \cdots \lvert u_m \rvert^2.
+                    \]
+                    后一个等号成立的条件式 $u_i$ 两两正交或某个 $u_i$ 为 0.
+              \item Hadamard 不等式：$A = (a_{ij})$ 为 $n$ 阶实矩阵，则
+                    \[
+                        \lvert \det A \rvert^2 \leqslant \prod_{j = 1}^n \sum_{i = 1}^n a_{ij}^2.
+                    \]
+          \end{enumerate}
     \item 设 $f: [-\pi, \pi] \to \mathbf{R}$ 是连续函数. 对于每个非负的整数 $k$，定义
-            \[
-                a_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \cos kx \mathrm{d}x, \quad b_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \sin kx \mathrm{d}x.
-            \]
-            证明：\[
-                \dfrac{a_0^2}{2} + \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) \leqslant \dfrac{1}{\pi} \int_{-\pi}^{\pi} f^2(x) \mathrm{d}x.
-            \]
+          \[
+              a_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \cos kx \mathrm{d}x, \quad b_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \sin kx \mathrm{d}x.
+          \]
+          证明：\[
+              \dfrac{a_0^2}{2} + \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) \leqslant \dfrac{1}{\pi} \int_{-\pi}^{\pi} f^2(x) \mathrm{d}x.
+          \]
 \end{enumerate}

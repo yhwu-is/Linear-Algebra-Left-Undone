@@ -738,8 +738,7 @@
 
 \centerline{\heiti A组}
 \begin{enumerate}
-    \item 设$A$为三阶矩阵，将$A$的第二列加到第一列得到矩阵$B$，再对调$B$的2、3行得到单位矩阵. 令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\enspace
-    P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用$P_1$和$P_2$表示$A$.
+    \item 设$A$为三阶矩阵，将$A$的第二列加到第一列得到矩阵$B$，再对调$B$的2、3行得到单位矩阵. 令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\enspace P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用$P_1$和$P_2$表示$A$.
 
     \item 设$A$为可逆矩阵，将$A$的第$i$行和第$j$行对调得到矩阵$B$，证明矩阵$B$可逆并求$AB^{-1}$.
 
@@ -760,35 +759,35 @@
 \centerline{\heiti B组}
 \begin{enumerate}
     \item 设$W$是$n$维线性空间$V$的一个非平凡子空间，$W$中取一组基$\delta_1,\ldots,\delta_m$，按如下两种方式将其扩充为$V$的一组基：
-    \begin{align*}
-        B_1 & =\{\delta_1,\ldots,\delta_m,\alpha_{m+1},\ldots,\alpha_n\} \\
-        B_2 & =\{\delta_1,\ldots,\delta_m,\beta_{m+1},\ldots,\beta_n\}
-    \end{align*}
-    设基$B_1$到$B_2$的过渡矩阵为$P$，求商空间$V/W$的基$\alpha_{m+1}+W,\ldots,\alpha_n+W$到$\beta_{m+1}+W,\ldots,\beta_n+W$的过渡矩阵.
+          \begin{align*}
+              B_1 & =\{\delta_1,\ldots,\delta_m,\alpha_{m+1},\ldots,\alpha_n\} \\
+              B_2 & =\{\delta_1,\ldots,\delta_m,\beta_{m+1},\ldots,\beta_n\}
+          \end{align*}
+          设基$B_1$到$B_2$的过渡矩阵为$P$，求商空间$V/W$的基$\alpha_{m+1}+W,\ldots,\alpha_n+W$到$\beta_{m+1}+W,\ldots,\beta_n+W$的过渡矩阵.
 
     \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵为$A=(a_{ij})_{3 \times 3}$，求：
-    \begin{enumerate}
-        \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
+          \begin{enumerate}
+              \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
 
-        \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
+              \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
 
-        \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
+              \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
 
-        \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
-    \end{enumerate}
+              \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
+          \end{enumerate}
 
-\item 设$P=\begin{pmatrix}
-            1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
-        \end{pmatrix}$，$Q=\begin{pmatrix}
-            0 & 0 \\ 1 & 0
-        \end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$.
-    \begin{enumerate}
-        \item 验证$\sigma$是线性映射；
+    \item 设$P=\begin{pmatrix}
+                  1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
+              \end{pmatrix}$，$Q=\begin{pmatrix}
+                  0 & 0 \\ 1 & 0
+              \end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$.
+          \begin{enumerate}
+              \item 验证$\sigma$是线性映射；
 
-        \item 求$\ker\sigma$和$\im \sigma$；
+              \item 求$\ker\sigma$和$\im \sigma$；
 
-        \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
-    \end{enumerate}
+              \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
+          \end{enumerate}
 
     \item 证明：当$n$为奇数时，$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是$\alpha_1+\alpha_2,\alpha_2+\alpha_3,\ldots,\alpha_n+\alpha_1$线性无关.
 
