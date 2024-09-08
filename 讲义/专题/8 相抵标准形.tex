@@ -721,127 +721,118 @@
 
 除此之外，我们还可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明，具体应用见\autoref{ex:分块秩不等式}.
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本讲的核心是从线性映射和矩阵两个角度得到了相抵标准形. 我们首先介绍了矩阵的秩的定义，并证明了矩阵的秩等于行秩等于列秩，然后也基于这一定义讨论了三个重要的定理. 接下来我们从线性映射的角度，利用线性映射基本定理证明了相抵标准形的存在，然后从矩阵的角度介绍了初等矩阵及其性质，并将相抵标准形和初等变换联系起来. 最后我们介绍了基于矩阵分解的相抵标准形的一些应用.
+    本讲的核心是从线性映射和矩阵两个角度得到了相抵标准形. 我们首先介绍了矩阵的秩的定义，并证明了矩阵的秩等于行秩等于列秩，然后也基于这一定义讨论了三个重要的定理. 接下来我们从线性映射的角度，利用线性映射基本定理证明了相抵标准形的存在，然后从矩阵的角度介绍了初等矩阵及其性质，并将相抵标准形和初等变换联系起来. 最后我们介绍了基于矩阵分解的相抵标准形的一些应用.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 不管数学的任一分支是多么抽象，总有一天会应用在这实际世界上.}
-\begin{flushright}
-    \kaishu
-    ——罗巴切夫斯基
-\end{flushright}
+\begin{exercise}
+    \exquote[罗巴切夫斯基]{不管数学的任一分支是多么抽象，总有一天会应用在这实际世界上.}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 设$A$为三阶矩阵，将$A$的第二列加到第一列得到矩阵$B$，再对调$B$的2、3行得到单位矩阵. 令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\enspace
-    P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用$P_1$和$P_2$表示$A$.
+    \begin{exgroup}
+        \item 设$A$为三阶矩阵，将$A$的第二列加到第一列得到矩阵$B$，再对调$B$的2、3行得到单位矩阵. 令$P_1=\begin{pmatrix}1 & 0 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}\enspace P_2=\begin{pmatrix}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{pmatrix}$，试用$P_1$和$P_2$表示$A$.
 
-    \item 设$A$为可逆矩阵，将$A$的第$i$行和第$j$行对调得到矩阵$B$，证明矩阵$B$可逆并求$AB^{-1}$.
+        \item 设$A$为可逆矩阵，将$A$的第$i$行和第$j$行对调得到矩阵$B$，证明矩阵$B$可逆并求$AB^{-1}$.
 
-    \item 设$A$为三阶可逆矩阵，且$P^{-1}AP=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$，其中$P=(\alpha_1,\alpha_2,\alpha_3)$，令$Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，求$Q^{-1}AQ$.
+        \item 设$A$为三阶可逆矩阵，且$P^{-1}AP=\begin{pmatrix}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2\end{pmatrix}$，其中$P=(\alpha_1,\alpha_2,\alpha_3)$，令$Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，求$Q^{-1}AQ$.
 
-    \item 给定$\mathbf{R}^4$的两组基
-          \begin{gather*}
-              \alpha_1=(1,1,1,1),\ \alpha_2=(1,1,-1,-1),\ \alpha_3=(1,-1,1,-1),\ \alpha_4=(1,-1,-1,1) \\
-              \beta_1=(1,1,0,1),\ \beta_2=(2,1,3,1),\ \beta_3=(1,1,0,0),\ \beta_4=(0,1,-1,-1)
-          \end{gather*}
-          求由基$\alpha_1,\alpha_2,\alpha_3,\alpha_4$到基$\beta_1,\beta_2,\beta_3,\beta_4$的过渡矩阵，并求向量$\xi=(1,0,0,-1)$在基$\alpha_1,\alpha_2,\alpha_3,\alpha_4$下的坐标.
+        \item 给定$\mathbf{R}^4$的两组基
+        \begin{gather*}
+            \alpha_1=(1,1,1,1),\ \alpha_2=(1,1,-1,-1),\ \alpha_3=(1,-1,1,-1),\ \alpha_4=(1,-1,-1,1) \\
+            \beta_1=(1,1,0,1),\ \beta_2=(2,1,3,1),\ \beta_3=(1,1,0,0),\ \beta_4=(0,1,-1,-1)
+        \end{gather*}
+        求由基$\alpha_1,\alpha_2,\alpha_3,\alpha_4$到基$\beta_1,\beta_2,\beta_3,\beta_4$的过渡矩阵，并求向量$\xi=(1,0,0,-1)$在基$\alpha_1,\alpha_2,\alpha_3,\alpha_4$下的坐标.
 
-    \item 证明：矩阵添加一列（或一行），其秩或不变，或增加1.
+        \item 证明：矩阵添加一列（或一行），其秩或不变，或增加1.
 
-    \item 设$A$是$s \times n$矩阵，$B$是$A$前$m$行构成的$m \times n$矩阵，证明：$r(B) \geqslant r(A) + m - s$.
-\end{enumerate}
+        \item 设$A$是$s \times n$矩阵，$B$是$A$前$m$行构成的$m \times n$矩阵，证明：$r(B) \geqslant r(A) + m - s$.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设$W$是$n$维线性空间$V$的一个非平凡子空间，$W$中取一组基$\delta_1,\ldots,\delta_m$，按如下两种方式将其扩充为$V$的一组基：
-    \begin{align*}
-        B_1 & =\{\delta_1,\ldots,\delta_m,\alpha_{m+1},\ldots,\alpha_n\} \\
-        B_2 & =\{\delta_1,\ldots,\delta_m,\beta_{m+1},\ldots,\beta_n\}
-    \end{align*}
-    设基$B_1$到$B_2$的过渡矩阵为$P$，求商空间$V/W$的基$\alpha_{m+1}+W,\ldots,\alpha_n+W$到$\beta_{m+1}+W,\ldots,\beta_n+W$的过渡矩阵.
+    \begin{exgroup}
+        \item 设$W$是$n$维线性空间$V$的一个非平凡子空间，$W$中取一组基$\delta_1,\ldots,\delta_m$，按如下两种方式将其扩充为$V$的一组基：
+        \begin{align*}
+            B_1 & =\{\delta_1,\ldots,\delta_m,\alpha_{m+1},\ldots,\alpha_n\} \\
+            B_2 & =\{\delta_1,\ldots,\delta_m,\beta_{m+1},\ldots,\beta_n\}
+        \end{align*}
+        设基$B_1$到$B_2$的过渡矩阵为$P$，求商空间$V/W$的基$\alpha_{m+1}+W,\ldots,\alpha_n+W$到$\beta_{m+1}+W,\ldots,\beta_n+W$的过渡矩阵.
 
-    \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵为$A=(a_{ij})_{3 \times 3}$，求：
-    \begin{enumerate}
-        \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
+        \item 已知$\mathbf{R}^3$的基$B_1=\{\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2=\{\xi_1,\xi_2,\xi_3\}$的变换矩阵为$A=(a_{ij})_{3 \times 3}$，求：
+        \begin{enumerate}
+            \item 基$B_3=\{\alpha_2,\alpha_1,\alpha_3\}$变为基$B_2$的变换矩阵；
 
-        \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
+            \item 基$B_4=\{-\alpha_1,\alpha_2,\alpha_3\}$变为基$B_2$的变换矩阵；
 
-        \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
+            \item 基$B_4$变为基$B_5=\{\xi_3,\xi_2,-\xi_1\}$的变换矩阵；
 
-        \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
-    \end{enumerate}
+            \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
+        \end{enumerate}
 
-\item 设$P=\begin{pmatrix}
-            1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
-        \end{pmatrix}$，$Q=\begin{pmatrix}
-            0 & 0 \\ 1 & 0
-        \end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$.
-    \begin{enumerate}
-        \item 验证$\sigma$是线性映射；
+        \item 设$P=\begin{pmatrix}
+                1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
+            \end{pmatrix}$，$Q=\begin{pmatrix}
+                0 & 0 \\ 1 & 0
+            \end{pmatrix}$，定义$\mathbf{R}^{3\times 2}$上映射$\sigma(A)=PAQ$.
+        \begin{enumerate}
+            \item 验证$\sigma$是线性映射；
 
-        \item 求$\ker\sigma$和$\im \sigma$；
+            \item 求$\ker\sigma$和$\im \sigma$；
 
-        \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
-    \end{enumerate}
+            \item 求$\mathbf{R}^{3\times 2}$的两组基，使得$\sigma$关于这两组基的表示矩阵是对角矩阵.
+        \end{enumerate}
 
-    \item 证明：当$n$为奇数时，$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是$\alpha_1+\alpha_2,\alpha_2+\alpha_3,\ldots,\alpha_n+\alpha_1$线性无关.
+        \item 证明：当$n$为奇数时，$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是$\alpha_1+\alpha_2,\alpha_2+\alpha_3,\ldots,\alpha_n+\alpha_1$线性无关.
 
-    \item 设
-          \[B_1=\left\{\begin{pmatrix}
-                  1 & 0 \\ 0 & 0
-              \end{pmatrix},\begin{pmatrix}
-                  0 & 1 \\ 0 & 0
-              \end{pmatrix},\begin{pmatrix}
-                  0 & 0 \\ 1 & 0
-              \end{pmatrix}\begin{pmatrix}
-                  0 & 0 \\ 0 & 1
-              \end{pmatrix}\right\},\]
-          \[B_2=\left\{\begin{pmatrix}
-                  1 & 0 \\ 0 & 0
-              \end{pmatrix},\begin{pmatrix}
-                  1 & 1 \\ 0 & 0
-              \end{pmatrix},\begin{pmatrix}
-                  1 & 1 \\ 1 & 0
-              \end{pmatrix}\begin{pmatrix}
-                  1 & 1 \\ 1 & 1
-              \end{pmatrix}\right\}.\]
-          \begin{enumerate}
-              \item 证明：$B_2$也是线性空间$\mathbf{M}_2(\mathbf{R})$的基；
+        \item 设
+        \[B_1=\left\{\begin{pmatrix}
+                1 & 0 \\ 0 & 0
+            \end{pmatrix},\begin{pmatrix}
+                0 & 1 \\ 0 & 0
+            \end{pmatrix},\begin{pmatrix}
+                0 & 0 \\ 1 & 0
+            \end{pmatrix}\begin{pmatrix}
+                0 & 0 \\ 0 & 1
+            \end{pmatrix}\right\},\]
+        \[B_2=\left\{\begin{pmatrix}
+                1 & 0 \\ 0 & 0
+            \end{pmatrix},\begin{pmatrix}
+                1 & 1 \\ 0 & 0
+            \end{pmatrix},\begin{pmatrix}
+                1 & 1 \\ 1 & 0
+            \end{pmatrix}\begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix}\right\}.\]
+        \begin{enumerate}
+            \item 证明：$B_2$也是线性空间$\mathbf{M}_2(\mathbf{R})$的基；
 
-              \item 求基$B_2$变为基$B_1$的变换矩阵；
+            \item 求基$B_2$变为基$B_1$的变换矩阵；
 
-              \item 求$\mathbf{M}_2(\mathbf{R})$的一组基$B_3=\{A_1,A_2,A_3,A_4\}$，使得$A_i^2=A_i,\enspace i=1,2,3,4$；
+            \item 求$\mathbf{M}_2(\mathbf{R})$的一组基$B_3=\{A_1,A_2,A_3,A_4\}$，使得$A_i^2=A_i,\enspace i=1,2,3,4$；
 
-              \item 已知矩阵$A$关于基$B_2$的坐标为$(1,1,1,1)^\mathrm{T}$，求$A$关于基$B_3$的坐标.
-          \end{enumerate}
+            \item 已知矩阵$A$关于基$B_2$的坐标为$(1,1,1,1)^\mathrm{T}$，求$A$关于基$B_3$的坐标.
+        \end{enumerate}
 
-    \item 利用相抵标准形证明以下结论：
-          \begin{enumerate}
-              \item 设$B_1,B_2$为$s \times n$列满秩矩阵，证明：存在$s$阶可逆矩阵$C$使得$B_2=CB_1$；
+        \item 利用相抵标准形证明以下结论：
+        \begin{enumerate}
+            \item 设$B_1,B_2$为$s \times n$列满秩矩阵，证明：存在$s$阶可逆矩阵$C$使得$B_2=CB_1$；
 
-              \item 设$B_1,B_2$为$s \times n$行满秩矩阵，证明：存在$n$阶可逆矩阵$C$使得$B_2=B_1C$；
+            \item 设$B_1,B_2$为$s \times n$行满秩矩阵，证明：存在$n$阶可逆矩阵$C$使得$B_2=B_1C$；
 
-              \item 任意秩为$r$的矩阵都可以被分解为$r$个秩为1的矩阵之和；
+            \item 任意秩为$r$的矩阵都可以被分解为$r$个秩为1的矩阵之和；
 
-              \item 已知$A$是$n$阶方阵，证明：存在$n$阶方阵$B$使得$A=ABA,\enspace B=BAB$.
-          \end{enumerate}
+            \item 已知$A$是$n$阶方阵，证明：存在$n$阶方阵$B$使得$A=ABA,\enspace B=BAB$.
+        \end{enumerate}
 
-    \item 设 $A \in \mathbf{M}_{m \times n}(\mathbf{F})$，$r(A)=r$，$k$ 是满足条件 $r \leqslant k \leqslant n$ 的任意整数，证明存在 $n$ 阶方阵 $B$，使得 $AB=O$，且 $r(A)+r(B)=k$.
+        \item 设 $A \in \mathbf{M}_{m \times n}(\mathbf{F})$，$r(A)=r$，$k$ 是满足条件 $r \leqslant k \leqslant n$ 的任意整数，证明存在 $n$ 阶方阵 $B$，使得 $AB=O$，且 $r(A)+r(B)=k$.
 
-    \item 设$A$是$m \times n$矩阵（$m \leqslant n$），$r(A)=m$，证明：存在$n \times m$矩阵$B$使得$AB=E$.
+        \item 设$A$是$m \times n$矩阵（$m \leqslant n$），$r(A)=m$，证明：存在$n \times m$矩阵$B$使得$AB=E$.
 
-    \item 设$A,B \in \mathbf{M}_n(\mathbf{F})$，$r(A)+r(B) \leqslant n$，证明：存在可逆矩阵$M$，使得$AMB=O$.
+        \item 设$A,B \in \mathbf{M}_n(\mathbf{F})$，$r(A)+r(B) \leqslant n$，证明：存在可逆矩阵$M$，使得$AMB=O$.
 
-    \item 设$A$为$n$阶实方阵且$r(A)=r>0$，证明存在秩为$r$的实方阵$B$和$C$使得$AB=CA$. % 新题，需要答案
-\end{enumerate}
+        \item 设$A$为$n$阶实方阵且$r(A)=r>0$，证明存在秩为$r$的实方阵$B$和$C$使得$AB=CA$. % 新题，需要答案
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 设矩阵$A \in \mathbf{F}^{m \times n}$，$A$的秩$r(A)=r$，定义$\mathbf{F}^{n \times p}$到$\mathbf{F}^{m \times p}$的线性映射$\sigma$，使得$\forall X \in \mathbf{F}^{n \times p}$，$\sigma(X)=AX$. 求$\sigma$核空间的维数.
-\end{enumerate}
+    \begin{exgroup}
+        \item 设矩阵$A \in \mathbf{F}^{m \times n}$，$A$的秩$r(A)=r$，定义$\mathbf{F}^{n \times p}$到$\mathbf{F}^{m \times p}$的线性映射$\sigma$，使得$\forall X \in \mathbf{F}^{n \times p}$，$\sigma(X)=AX$. 求$\sigma$核空间的维数.
+    \end{exgroup}
+\end{exercise}

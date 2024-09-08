@@ -1122,163 +1122,154 @@
     \end{enumerate}
 \end{solution}
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本讲我们分模块讲解了矩阵的一些高级运算技巧，包括特殊矩阵的性质、矩阵可交换问题、求矩阵的逆和幂的技巧以及非常常用的分块矩阵初等变换，也介绍了矩阵方程作为一个应用. 最后我们介绍了秩的相关等式与不等式，其中大量的结论都非常经典且常用. 事实上，这一讲是本讲义第一次接触技巧性较强的内容，我们的重点从之前对于定理的证明以及用例子巩固定理的应用转变为了对于一些技巧性的处理，读者也应当多利用习题熟悉这些技巧，内化为基本功，未来的很多地方可能不经意间都会用上这里提到的技巧.
+    本讲我们分模块讲解了矩阵的一些高级运算技巧，包括特殊矩阵的性质、矩阵可交换问题、求矩阵的逆和幂的技巧以及非常常用的分块矩阵初等变换，也介绍了矩阵方程作为一个应用. 最后我们介绍了秩的相关等式与不等式，其中大量的结论都非常经典且常用. 事实上，这一讲是本讲义第一次接触技巧性较强的内容，我们的重点从之前对于定理的证明以及用例子巩固定理的应用转变为了对于一些技巧性的处理，读者也应当多利用习题熟悉这些技巧，内化为基本功，未来的很多地方可能不经意间都会用上这里提到的技巧.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 尽管⼀批教授和教科书编者⽤关于矩阵的荒唐⾄极的计算内容掩盖了线性代数的简明性，但是鲜有与之相较更为初等的理论. }
-\begin{flushright}
-    \kaishu
-    ——魏尔斯特拉斯
-\end{flushright}
+\begin{exercise}
+    \exquote[魏尔斯特拉斯]{尽管⼀批教授和教科书编者⽤关于矩阵的荒唐⾄极的计算内容掩盖了线性代数的简明性，但是鲜有与之相较更为初等的理论. }
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 设方阵$A$满足$A^2-A-2E=O$，证明：
-          \begin{enumerate}
-              \item $A$和$E-A$都是可逆矩阵，并求它们的逆矩阵；
+    \begin{exgroup}
+        \item 设方阵$A$满足$A^2-A-2E=O$，证明：
+        \begin{enumerate}
+            \item $A$和$E-A$都是可逆矩阵，并求它们的逆矩阵；
 
-              \item $A+E$和$A-2E$不可能同时可逆.
-          \end{enumerate}
+            \item $A+E$和$A-2E$不可能同时可逆.
+        \end{enumerate}
 
-    \item 若$A,B$为两个$n$阶矩阵且满足$A+B=AB$，证明：
-          \begin{enumerate}
-              \item $A-E$和$B-E$均可逆；
+        \item 若$A,B$为两个$n$阶矩阵且满足$A+B=AB$，证明：
+        \begin{enumerate}
+            \item $A-E$和$B-E$均可逆；
 
-              \item $AB=BA$；
+            \item $AB=BA$；
 
-              \item $r(A)=r(B)$.
-          \end{enumerate}
+            \item $r(A)=r(B)$.
+        \end{enumerate}
 
-    \item 求下列矩阵的可逆的条件与逆矩阵：$\begin{pmatrix}
-            A & B \\ O & D
-        \end{pmatrix},\enspace \begin{pmatrix}
-            O & B \\ C & D
-        \end{pmatrix}$.
-\end{enumerate}
+        \item 求下列矩阵的可逆的条件与逆矩阵：$\begin{pmatrix}
+                A & B \\ O & D
+            \end{pmatrix},\enspace \begin{pmatrix}
+                O & B \\ C & D
+            \end{pmatrix}$.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设$f(x)=1+x+\cdots+x^{m-1}$，$g(x)=1-x$，$A=\begin{pmatrix}
-                  a & b \\ 0 & a
-              \end{pmatrix}$，计算$f(A)g(A)$.
+    \begin{exgroup}
+        \item 设$f(x)=1+x+\cdots+x^{m-1}$，$g(x)=1-x$，$A=\begin{pmatrix}
+                a & b \\ 0 & a
+            \end{pmatrix}$，计算$f(A)g(A)$.
 
-    \item 已知矩阵$A=\begin{pmatrix}
-                  1 & 0 & 4 \\ 0 & 1 & 2 \\ 0 & 1 & 2
-              \end{pmatrix}$，求证：所有与$A$可交换的矩阵构成$\mathbf{M}_3(\mathbf{R})$的一个子空间，并求子空间的一组基.
+        \item 已知矩阵$A=\begin{pmatrix}
+                1 & 0 & 4 \\ 0 & 1 & 2 \\ 0 & 1 & 2
+            \end{pmatrix}$，求证：所有与$A$可交换的矩阵构成$\mathbf{M}_3(\mathbf{R})$的一个子空间，并求子空间的一组基.
 
-    \item 已知矩阵$A=\begin{pmatrix}
-                  1 & 0 & 1 \\ 0 & 2 & 0 \\ 1 & 0 & 1
-              \end{pmatrix}$，
-          \begin{enumerate}
-              \item 求所有与$A$可交换的矩阵；
+        \item 已知矩阵$A=\begin{pmatrix}
+                1 & 0 & 1 \\ 0 & 2 & 0 \\ 1 & 0 & 1
+            \end{pmatrix}$，
+        \begin{enumerate}
+            \item 求所有与$A$可交换的矩阵；
 
-              \item 若$AB+E=A^2+B$，求$B$.
-          \end{enumerate}
+            \item 若$AB+E=A^2+B$，求$B$.
+        \end{enumerate}
 
-    \item 设$A \in \mathbf{F}^{n \times n}$，令$C(A)=\{B \in \mathbf{F}^{n \times n} \mid AB=BA\}$.
-          \begin{enumerate}
-              \item 证明：$C(A)$为$\mathbf{F}^{n \times n}$的一个子空间；
+        \item 设$A \in \mathbf{F}^{n \times n}$，令$C(A)=\{B \in \mathbf{F}^{n \times n} \mid AB=BA\}$.
+        \begin{enumerate}
+            \item 证明：$C(A)$为$\mathbf{F}^{n \times n}$的一个子空间；
 
-              \item 求$C(E)$；
+            \item 求$C(E)$；
 
-              \item 当$A$为对角线上元素互不相等的对角阵时，求$C(A)$的维数和一组基.
-          \end{enumerate}
+            \item 当$A$为对角线上元素互不相等的对角阵时，求$C(A)$的维数和一组基.
+        \end{enumerate}
 
-    \item 设$A$是$n$阶矩阵，$A^k=O$对某个正整数$k$成立，求证下列方阵可逆，并求它们的逆：
-          \begin{enumerate}
-              \item $E+A$；
+        \item 设$A$是$n$阶矩阵，$A^k=O$对某个正整数$k$成立，求证下列方阵可逆，并求它们的逆：
+        \begin{enumerate}
+            \item $E+A$；
 
-              \item $E-A$；
+            \item $E-A$；
 
-              \item $E+A+\dfrac{1}{2!}A^2+\cdots+\dfrac{1}{(k-1)!}A^{k-1}$.
-          \end{enumerate}
+            \item $E+A+\dfrac{1}{2!}A^2+\cdots+\dfrac{1}{(k-1)!}A^{k-1}$.
+        \end{enumerate}
 
-    \item 设$A=\begin{pmatrix}
-                  1      & \cdots & 1      \\
-                  \vdots & \ddots & \vdots \\
-                  1      & \cdots & 1
-              \end{pmatrix}$，求：
-          \begin{enumerate}
-              \item 一个二次实系数多项式$f(x)=ax^2+bx$，使得$f(A)=O$；
-              \item $A^100$；
-              \item $(A+E)^3$；
-              \item $(A+E)^{-1}$.
-          \end{enumerate}
-          % 新题，需要答案
+        \item 设$A=\begin{pmatrix}
+                1      & \cdots & 1      \\
+                \vdots & \ddots & \vdots \\
+                1      & \cdots & 1
+            \end{pmatrix}$，求：
+        \begin{enumerate}
+            \item 一个二次实系数多项式$f(x)=ax^2+bx$，使得$f(A)=O$；
+            \item $A^100$；
+            \item $(A+E)^3$；
+            \item $(A+E)^{-1}$.
+        \end{enumerate}
+        % 新题，需要答案
 
-    \item 当$A$和$D$可逆时，通过分块矩阵初等变换求$P=\begin{pmatrix}A & B \\ O & D\end{pmatrix}$的逆矩阵.
+        \item 当$A$和$D$可逆时，通过分块矩阵初等变换求$P=\begin{pmatrix}A & B \\ O & D\end{pmatrix}$的逆矩阵.
 
-    \item 利用列向量线性相关性，证明矩阵秩不等式：\[|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)\]
+        \item 利用列向量线性相关性，证明矩阵秩不等式：\[|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B)\]
 
-    \item 设$B$是$3 \times 1$矩阵，$C$是$1 \times 3$矩阵，证明：$r(BC) \leqslant 1$. 反之，若$A$是秩为1的$3 \times 3$矩阵，证明：存在$3 \times 1$矩阵$B$和$1 \times 3$矩阵$C$，使得$A = BC$.
+        \item 设$B$是$3 \times 1$矩阵，$C$是$1 \times 3$矩阵，证明：$r(BC) \leqslant 1$. 反之，若$A$是秩为1的$3 \times 3$矩阵，证明：存在$3 \times 1$矩阵$B$和$1 \times 3$矩阵$C$，使得$A = BC$.
 
-    \item 设$\alpha,\beta$为$n$维列向量，且$A=\alpha\alpha^\mathrm{T}+\beta\beta^\mathrm{T}$.
+        \item 设$\alpha,\beta$为$n$维列向量，且$A=\alpha\alpha^\mathrm{T}+\beta\beta^\mathrm{T}$.
         \begin{enumerate}
             \item 证明：$r(A) \leqslant 2$；
 
             \item 若$\alpha,\beta$线性相关，证明：$r(A) \leqslant 1$.
         \end{enumerate}
 
-    \item 设$A$和$B$是两个$n$阶实方阵，证明：$r(A)=r(AB)$当且仅当存在$n$阶实方阵$C$使得$A=ABC$. % 新题，需要答案
+        \item 设$A$和$B$是两个$n$阶实方阵，证明：$r(A)=r(AB)$当且仅当存在$n$阶实方阵$C$使得$A=ABC$. % 新题，需要答案
 
-    \item 证明如下结论：
-    \begin{enumerate}
-        \item 若存在正整数$m$使得$r(A^m)=r(A^{m+1})$，则必有$r(A^m)=r(A^{m+1})=r(A^{m+2})=\cdots$；
-        \item 设$A$为$n$阶方阵，证明：$r(A^n)=r(A^{n+1})=r(A^{n+2})=\cdots$.
-    \end{enumerate}
-\end{enumerate}
+        \item 证明如下结论：
+        \begin{enumerate}
+            \item 若存在正整数$m$使得$r(A^m)=r(A^{m+1})$，则必有$r(A^m)=r(A^{m+1})=r(A^{m+2})=\cdots$；
+            \item 设$A$为$n$阶方阵，证明：$r(A^n)=r(A^{n+1})=r(A^{n+2})=\cdots$.
+        \end{enumerate}
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 已知数列$\{a_n\},\{b_n\}$满足$a_0=-1,\enspace b_0=3$，且
-          \[\begin{cases}
-                  a_n=3a_{n-1}+b_{n-1}+2^{n-1} \\
-                  b_n=2a_{n-1}+4b_{n-1}+2^n
-              \end{cases}\]
-          求$\{a_n\},\{b_n\}$的通项公式.
+    \begin{exgroup}
+        \item 已知数列$\{a_n\},\{b_n\}$满足$a_0=-1,\enspace b_0=3$，且
+        \[\begin{cases}
+                a_n=3a_{n-1}+b_{n-1}+2^{n-1} \\
+                b_n=2a_{n-1}+4b_{n-1}+2^n
+            \end{cases}\]
+        求$\{a_n\},\{b_n\}$的通项公式.
 
-    \item 设$n\geqslant 3$，证明下列矩阵不可逆：
-    \[A=\begin{pmatrix}
-        \cos(\alpha_1-\beta_1) & \cos(\alpha_1-\beta_2) & \cdots & \cos(\alpha_1-\beta_n) \\
-        \cos(\alpha_2-\beta_1) & \cos(\alpha_2-\beta_2) & \cdots & \cos(\alpha_2-\beta_n) \\
-        \vdots & \vdots & \ddots & \vdots \\
-        \cos(\alpha_n-\beta_1) & \cos(\alpha_n-\beta_2) & \cdots & \cos(\alpha_n-\beta_n)
-    \end{pmatrix},\]
-    \[B=\begin{pmatrix}
-        1+x_1y_1 & 1+x_1y_2 & \cdots & 1+x_1y_n \\
-        1+x_2y_1 & 1+x_2y_2 & \cdots & 1+x_2y_n \\
-        \vdots & \vdots & \ddots & \vdots \\
-        1+x_ny_1 & 1+x_ny_2 & \cdots & 1+x_ny_n
-    \end{pmatrix}.\]
+        \item 设$n\geqslant 3$，证明下列矩阵不可逆：
+        \[A=\begin{pmatrix}
+                \cos(\alpha_1-\beta_1) & \cos(\alpha_1-\beta_2) & \cdots & \cos(\alpha_1-\beta_n) \\
+                \cos(\alpha_2-\beta_1) & \cos(\alpha_2-\beta_2) & \cdots & \cos(\alpha_2-\beta_n) \\
+                \vdots                 & \vdots                 & \ddots & \vdots                 \\
+                \cos(\alpha_n-\beta_1) & \cos(\alpha_n-\beta_2) & \cdots & \cos(\alpha_n-\beta_n)
+            \end{pmatrix},\]
+        \[B=\begin{pmatrix}
+                1+x_1y_1 & 1+x_1y_2 & \cdots & 1+x_1y_n \\
+                1+x_2y_1 & 1+x_2y_2 & \cdots & 1+x_2y_n \\
+                \vdots   & \vdots   & \ddots & \vdots   \\
+                1+x_ny_1 & 1+x_ny_2 & \cdots & 1+x_ny_n
+            \end{pmatrix}.\]
 
-    \item 证明以下两个命题：
-          \begin{enumerate}
-              \item 与矩阵$I=\begin{pmatrix}
-                            0 & 1 &   &        &   \\
-                              &   & 1 &        &   \\
-                              &   &   & \ddots &   \\
-                              &   &   &        & 1 \\
-                            1 &   &   &        & 0
-                        \end{pmatrix}$可交换的矩阵$A$都可以写成$I$的一个多项式，即$A=a_{11}E+a_{12}I+a_{13}I^2+\cdots+a_{1n}I^{n-1}$；
+        \item 证明以下两个命题：
+        \begin{enumerate}
+            \item 与矩阵$I=\begin{pmatrix}
+                          0 & 1 &   &        &   \\
+                            &   & 1 &        &   \\
+                            &   &   & \ddots &   \\
+                            &   &   &        & 1 \\
+                          1 &   &   &        & 0
+                      \end{pmatrix}$可交换的矩阵$A$都可以写成$I$的一个多项式，即$A=a_{11}E+a_{12}I+a_{13}I^2+\cdots+a_{1n}I^{n-1}$；
 
-              \item 与矩阵$J=\begin{pmatrix}
-                            0 & 1 &   &        &   \\
-                              &   & 1 &        &   \\
-                              &   &   & \ddots &   \\
-                              &   &   &        & 1 \\
-                              &   &   &        & 0
-                        \end{pmatrix}$可交换的矩阵$A$都可以写成$J$的一个多项式，即$A=a_{11}E+a_{12}J+a_{13}J^2+\cdots+a_{1n}J^{n-1}$.
-          \end{enumerate}
+            \item 与矩阵$J=\begin{pmatrix}
+                          0 & 1 &   &        &   \\
+                            &   & 1 &        &   \\
+                            &   &   & \ddots &   \\
+                            &   &   &        & 1 \\
+                            &   &   &        & 0
+                      \end{pmatrix}$可交换的矩阵$A$都可以写成$J$的一个多项式，即$A=a_{11}E+a_{12}J+a_{13}J^2+\cdots+a_{1n}J^{n-1}$.
+        \end{enumerate}
 
-    \item 证明：若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在$n$阶下三角矩阵$B$，使得$BA$为上三角矩阵.
+        \item 证明：若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在$n$阶下三角矩阵$B$，使得$BA$为上三角矩阵.
 
-    \item 设$A$是数域$\mathbf{F}$上的$n$阶可逆矩阵，把$A$和$A^{-1}$做如下分块：
+        \item 设$A$是数域$\mathbf{F}$上的$n$阶可逆矩阵，把$A$和$A^{-1}$做如下分块：
         \[A=\begin{pmatrix}
                 A_{11} & A_{12} \\ A_{21} & A_{22}
             \end{pmatrix},\enspace A^{-1}=\begin{pmatrix}
@@ -1286,23 +1277,24 @@
             \end{pmatrix}\]
         其中$A_{11}$是$l \times k$矩阵，$B_{11}$是$k \times l$矩阵，$l$，$k$是小于$n$的正整数. 用$W$表示$A_{12}X=0$的解空间，$U$表示$B_{12}Y=0$的解空间，其中$X$和$Y$为列向量，证明$W$与$U$同构.
 
-    \item 证明 Schur补的商等式 $A/B=(A/C)/(B/C)$% 新题，需要答案
+        \item 证明 Schur补的商等式 $A/B=(A/C)/(B/C)$% 新题，需要答案
 
-    \item 已知$A$是一个$s \times n$矩阵，证明：$r(E_n-A^\mathrm{T}A)-r(E_s-AA^\mathrm{T})=n-s$.
+        \item 已知$A$是一个$s \times n$矩阵，证明：$r(E_n-A^\mathrm{T}A)-r(E_s-AA^\mathrm{T})=n-s$.
 
-    \item 利用打洞法完成以下两个问题（\ref*{item:11:C:1} 也可以不使用打洞法，可以思考其他方式解决）：
-          \begin{enumerate}
-              \item 设$n$阶方阵$A,B,C,D$满足$AC+BD=E$，证明：$r(AB) = r(A)+r(B)-n$；
+        \item 利用打洞法完成以下两个问题（\ref*{item:11:C:1} 也可以不使用打洞法，可以思考其他方式解决）：
+        \begin{enumerate}
+            \item 设$n$阶方阵$A,B,C,D$满足$AC+BD=E$，证明：$r(AB) = r(A)+r(B)-n$；
 
-              \item \label{item:11:C:1}
-                    $n$阶方阵$A,B$满足$AB=BA$，证明：$r(AB)+r(A+B)\leqslant r(A)+r(B)$.
-          \end{enumerate}
+            \item \label{item:11:C:1}
+                  $n$阶方阵$A,B$满足$AB=BA$，证明：$r(AB)+r(A+B)\leqslant r(A)+r(B)$.
+        \end{enumerate}
 
-    \item $f(x)=f_1(x)f_2(x)$是多项式，且$f_1(x)$与$f_2(x)$互素，则$f(A)=O$的充要条件是$r(f_1(A))+r(f_2(A))=n$. （注：此题的推论非常多，如$A^2=A$，$A^n=E$等形式的结论都可以利用这个例子推导出）
+        \item $f(x)=f_1(x)f_2(x)$是多项式，且$f_1(x)$与$f_2(x)$互素，则$f(A)=O$的充要条件是$r(f_1(A))+r(f_2(A))=n$. （注：此题的推论非常多，如$A^2=A$，$A^n=E$等形式的结论都可以利用这个例子推导出）
 
-    \item 设$A,B$分别为$3 \times 2$和$2 \times 3$实矩阵. 若$AB=\begin{pmatrix}
-                  8             & 0 & -4 \\[1ex]
-                  -\dfrac{3}{2} & 9 & -6 \\[1ex]
-                  -2            & 0 & 1
-              \end{pmatrix}$，求$BA$.
-\end{enumerate}
+        \item 设$A,B$分别为$3 \times 2$和$2 \times 3$实矩阵. 若$AB=\begin{pmatrix}
+                8             & 0 & -4 \\[1ex]
+                -\dfrac{3}{2} & 9 & -6 \\[1ex]
+                -2            & 0 & 1
+            \end{pmatrix}$，求$BA$.
+    \end{exgroup}
+\end{exercise}

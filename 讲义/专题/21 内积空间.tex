@@ -507,29 +507,29 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
                 mark=at position .6 with {\arrow{stealth}}},postaction={decorate}}}
 
         \draw[thick,rotate=45] (0, 6) rectangle (-3, 3) rectangle (-5, 0)
-            (-3, 3) rectangle(-3.35, 3.35)
-            coordinate (xr) at (-2, 4)
-            coordinate (xn) at (-4, 2)
-            coordinate (x) at (-2, 2)
-            coordinate (0n) at (-3, 3)
-            node at (-1, 5) {行空间}
-            node at (-4, 1) {$A$的核空间}
-            node at (-1.5, 6.5) {$\dim r$}
-            node at (-4, 4) {$\mathbf{R}^n$}
-            node at (-6, 3) {$\dim n-r$};
+        (-3, 3) rectangle(-3.35, 3.35)
+        coordinate (xr) at (-2, 4)
+        coordinate (xn) at (-4, 2)
+        coordinate (x) at (-2, 2)
+        coordinate (0n) at (-3, 3)
+        node at (-1, 5) {行空间}
+        node at (-4, 1) {$A$的核空间}
+        node at (-1.5, 6.5) {$\dim r$}
+        node at (-4, 4) {$\mathbf{R}^n$}
+        node at (-6, 3) {$\dim n-r$};
 
         \draw[thick,rotate=30] (6, 2) rectangle (3.5, -2) rectangle (0, -4)
-            (3.5, -2) rectangle (3.85, -2.35)
-            coordinate (b) at (4.5, 0.5)
-            coordinate (0m) at (3.5, -2)
-            node at (5, 1.5) {列空间}
-            node at (2, -3) {$A^{\mathrm{T}}$的核空间}
-            node at (7, 0) {$\dim r$}
-            node at (5, -3) {$\mathbf{R}^m$}
-            node at (4, -4.5) {$\dim m-r$};
+        (3.5, -2) rectangle (3.85, -2.35)
+        coordinate (b) at (4.5, 0.5)
+        coordinate (0m) at (3.5, -2)
+        node at (5, 1.5) {列空间}
+        node at (2, -3) {$A^{\mathrm{T}}$的核空间}
+        node at (7, 0) {$\dim r$}
+        node at (5, -3) {$\mathbf{R}^m$}
+        node at (4, -4.5) {$\dim m-r$};
 
         \foreach \point in {xr, x, xn, 0n, b, 0m}
-            \fill[black] (\point) circle (1pt);
+        \fill[black] (\point) circle (1pt);
 
         \node[left] at (xr) {$x_r$};
         \node[below right] at (x) {$x=x_r+x_n$};
@@ -554,103 +554,95 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 
 接下来我们来看行秩（列秩比较显然，此处不再详细展开）. 我们首先得到解空间$N(A)$的维数，这可以直接根据维数公式得到：$\dim N(A) = n-r(A)$，根据正交补的性质，我们的可以得到行秩即为$n-(n-r(A))=r(A)$. 于是我们得到了一个基于正交补的行秩解释.
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本章是内积空间的基础，首先通过点积引入内积这一最基本的概念，然后相应地定义了范数. 然后沿着正交的路径拾级而上，从正交的定义、性质，到标准正交的向量组，标准正交基，最后到了正交的子空间：正交补. 此外，在标准正交基部分中我们顺着前人的思路，成功掌握了求标准正交基的方法，即 Gram-Schmidt 过程，也通过 Riesz 表示定理寻找到了内积的凭依：它就是我们曾学习过的线性泛函，只不过换了一种形式. 另外还有一些可能并非应试重点考察但我希望你了解一下的内容，它们往往与之后的章节或是其他的课程有着一些现阶段不容易想见的联系，如极小化的应用等. 但这正是数学的美妙之处，不是吗？
+    本章是内积空间的基础，首先通过点积引入内积这一最基本的概念，然后相应地定义了范数. 然后沿着正交的路径拾级而上，从正交的定义、性质，到标准正交的向量组，标准正交基，最后到了正交的子空间：正交补. 此外，在标准正交基部分中我们顺着前人的思路，成功掌握了求标准正交基的方法，即 Gram-Schmidt 过程，也通过 Riesz 表示定理寻找到了内积的凭依：它就是我们曾学习过的线性泛函，只不过换了一种形式. 另外还有一些可能并非应试重点考察但我希望你了解一下的内容，它们往往与之后的章节或是其他的课程有着一些现阶段不容易想见的联系，如极小化的应用等. 但这正是数学的美妙之处，不是吗？
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 就我个人而言，我相信如果我不曾面临那些尝试描绘并解决那些曾经全然无知的问题的经历，我或许甚至不曾完成我现在所作的工作的四分之一，甚至十分之一。}
-\begin{flushright}
-    \kaishu
-    ——J. 狄奥多尼（Jean Dieudonné）
-\end{flushright}
+\begin{exercise}
+    \exquote[J. 狄奥多尼（Jean Dieudonné）]{就我个人而言，我相信如果我不曾面临那些尝试描绘并解决那些曾经全然无知的问题的经历，我或许甚至不曾完成我现在所作的工作的四分之一，甚至十分之一。}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 证明：下列 $\langle A, B \rangle$ 分别定义了 $n$ 阶实矩阵空间和 $n$ 阶复矩阵空间上的内积（称为 Frobenius 内积）：
-          \begin{enumerate}
+    \begin{exgroup}
+        \item 证明：下列 $\langle A, B \rangle$ 分别定义了 $n$ 阶实矩阵空间和 $n$ 阶复矩阵空间上的内积（称为 Frobenius 内积）：
+        \begin{enumerate}
             \item 设 $V$ 为 $n$ 阶实矩阵空间，对任意的 $n$ 阶实矩阵 $A = (a_{ij})$ 和 $B = (b_{ij})$，定义
-                    \[
-                        \langle A, B \rangle = \tr(A B^{\mathrm{T}}) \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}b_{ij}.
-                    \]
+                  \[
+                      \langle A, B \rangle = \tr(A B^{\mathrm{T}}) \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}b_{ij}.
+                  \]
             \item 设 $V$ 为 $n$ 阶复矩阵空间，对任意的 $n$ 阶复矩阵 $A = (a_{ij})$ 和 $B = (b_{ij})$，定义
-                \[
-                    \langle A, B \rangle = \tr(A B^{\mathrm{H}}) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}\overline{b_{ij}}.
-                \]
-                （其中 $B^{\mathrm{H}}$ 表示 $B$ 的共轭转置）
-          \end{enumerate}
-    \item 设 $V$ 是实系数多项式全体构成的实线性空间，任取
-          \[ f(x) = a_0 + a_1 x + \cdots + a_n x^n, \enspace g(x) = b_0 + b_1 x + \cdots + b_m x^m, (a_n, b_m \neq 0), \]
-          证明：如下的二元运算是 $V$ 上的内积：
-          \[ \langle f, g \rangle = \sum_{i, j} \dfrac{a_i b_j}{i + j + 1}. \]
-\end{enumerate}
+                  \[
+                      \langle A, B \rangle = \tr(A B^{\mathrm{H}}) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{ij}\overline{b_{ij}}.
+                  \]
+                  （其中 $B^{\mathrm{H}}$ 表示 $B$ 的共轭转置）
+        \end{enumerate}
+        \item 设 $V$ 是实系数多项式全体构成的实线性空间，任取
+        \[ f(x) = a_0 + a_1 x + \cdots + a_n x^n, \enspace g(x) = b_0 + b_1 x + \cdots + b_m x^m, (a_n, b_m \neq 0), \]
+        证明：如下的二元运算是 $V$ 上的内积：
+        \[ \langle f, g \rangle = \sum_{i, j} \dfrac{a_i b_j}{i + j + 1}. \]
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设 $ (e_1, \ldots , e_m) $ 是复内积空间 $ V $ 的一个标准正交组，证明：$ \forall v \in V $，均有
-          \[ \sum_{j = 1}^{m} \lvert \langle v, e_j \rangle \rvert^2 \leqslant \lVert v \rVert^2, \]
-          等号成立当且仅当 $ v = \displaystyle\sum_{j = 1}^{m} \langle v, e_j \rangle e_j $. 这个不等式被称为 Bessel 不等式.\index{Bessel@Bessel 不等式 (Bessel's inequality)}
-    \item 设 $e_1, \ldots, e_n$ 是 $V$ 的一个标准正交基. 证明：
-          \begin{enumerate}
+    \begin{exgroup}
+        \item 设 $ (e_1, \ldots , e_m) $ 是复内积空间 $ V $ 的一个标准正交组，证明：$ \forall v \in V $，均有
+        \[ \sum_{j = 1}^{m} \lvert \langle v, e_j \rangle \rvert^2 \leqslant \lVert v \rVert^2, \]
+        等号成立当且仅当 $ v = \displaystyle\sum_{j = 1}^{m} \langle v, e_j \rangle e_j $. 这个不等式被称为 Bessel 不等式.\index{Bessel@Bessel 不等式 (Bessel's inequality)}
+        \item 设 $e_1, \ldots, e_n$ 是 $V$ 的一个标准正交基. 证明：
+        \begin{enumerate}
             \item 若 $v_1, \ldots, v_n \in V$ 满足
                   \[
-                    \lVert e_k - v_k \rVert < \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
+                      \lVert e_k - v_k \rVert < \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
                   \]
                   那么 $v_1, \ldots, v_n$ 是 $V$ 的一组基.
             \item 存在 $v_1, \ldots, v_n \in V$ 满足
                   \[
-                    \lVert e_k - v_k \rVert \leqslant \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
+                      \lVert e_k - v_k \rVert \leqslant \dfrac{1}{\sqrt{n}}, \quad k = 1, 2, \ldots, n,
                   \]
                   但 $v_1, \ldots, v_n$ 线性相关.
-          \end{enumerate}
-\end{enumerate}
+        \end{enumerate}
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 令 $V$ 是区间 $[-1, 1]$ 上次数不超过 $n$ 的实系数多项式构成的实线性空间，$V$ 上的内积定义为
-            \[
-                \langle f, g \rangle = \int_{-1}^{1} f(t)g(t)\,\mathrm{d}t.
-            \]
-            证明：$V$ 是 $n + 1$ 维欧式空间，并且下列多项式组成 $V$ 的一组正交基：
-            \[
-                P_0(x) = 1, \ P_k(x) = \dfrac{1}{2^k k!} \cdot \dfrac{\mathrm{d}^k}{\mathrm{d}x^k} (x^2 - 1)^k, \ k = 1, 2, \ldots, n.
-            \]
-            称之为 Legendre 多项式.
-    \item 对于欧式空间 $V$ 向量组 $u_1, u_2, \ldots, u_m$，也同样存在着 Gram 矩阵的概念。称下述矩阵：
-            \[
-                G(u_1, u_2, \ldots, u_m) = \begin{pmatrix}
-                    \langle u_1, u_1 \rangle & \langle u_1, u_2 \rangle & \cdots & \langle u_1, u_m \rangle \\
-                    \langle u_2, u_1 \rangle & \langle u_2, u_2 \rangle & \cdots & \langle u_2, u_m \rangle \\
-                    \vdots                   & \vdots                   & \ddots & \vdots                   \\
-                    \langle u_m, u_1 \rangle & \langle u_m, u_2 \rangle & \cdots & \langle u_m, u_m \rangle
-                \end{pmatrix}
-            \]
-            为向量组 $u_1, u_2, \ldots, u_m$ 的 Gram 矩阵. 证明：
-            \begin{enumerate}
-                \item 若用 Gram-Schmidt 过程将 $ V $ 的一个线性无关向量组 $\{u_1, u_2, \ldots, u_m\}$ 变为正交向量组 $\{v_1, v_2, \ldots, v_n\}$，则这两组向量组的 Gram 矩阵的行列式不变，即
-                    \[
-                        \det G(u_1, u_2, \ldots, u_m) = \det G(v_1, v_2, \ldots, v_n) = \lvert v_1 \rvert^2 \lvert v_2 \rvert^2 \cdots \lvert v_n \rvert^2.
-                    \]
-                \item 向量组 $u_1, u_2, \ldots, u_m$ 线性无关的充要条件是其 Gram 矩阵可逆.
-                \item 不等式：
-                        \[
-                            0 \leqslant \det G(u_1, u_2, \ldots, u_m) \leqslant \lvert u_1 \rvert^2 \lvert u_2 \rvert^2 \cdots \lvert u_m \rvert^2.
-                        \]
-                        后一个等号成立的条件式 $u_i$ 两两正交或某个 $u_i$ 为 0.
-                \item Hadamard 不等式：$A = (a_{ij})$ 为 $n$ 阶实矩阵，则
-                        \[
-                            \lvert \det A \rvert^2 \leqslant \prod_{j = 1}^n \sum_{i = 1}^n a_{ij}^2.
-                        \]
-            \end{enumerate}
-    \item 设 $f: [-\pi, \pi] \to \mathbf{R}$ 是连续函数. 对于每个非负的整数 $k$，定义
-            \[
-                a_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \cos kx \mathrm{d}x, \quad b_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \sin kx \mathrm{d}x.
-            \]
-            证明：\[
-                \dfrac{a_0^2}{2} + \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) \leqslant \dfrac{1}{\pi} \int_{-\pi}^{\pi} f^2(x) \mathrm{d}x.
-            \]
-\end{enumerate}
+    \begin{exgroup}
+        \item 令 $V$ 是区间 $[-1, 1]$ 上次数不超过 $n$ 的实系数多项式构成的实线性空间，$V$ 上的内积定义为
+        \[
+            \langle f, g \rangle = \int_{-1}^{1} f(t)g(t)\,\mathrm{d}t.
+        \]
+        证明：$V$ 是 $n + 1$ 维欧式空间，并且下列多项式组成 $V$ 的一组正交基：
+        \[
+            P_0(x) = 1, \enspace P_k(x) = \dfrac{1}{2^k k!} \cdot \dfrac{\mathrm{d}^k}{\mathrm{d}x^k} (x^2 - 1)^k, \enspace k = 1, 2, \ldots, n.
+        \]
+        称之为 Legendre 多项式.
+        \item 对于欧式空间 $V$ 向量组 $u_1, u_2, \ldots, u_m$，也同样存在着 Gram 矩阵的概念。称下述矩阵：
+        \[
+            G(u_1, u_2, \ldots, u_m) = \begin{pmatrix}
+                \langle u_1, u_1 \rangle & \langle u_1, u_2 \rangle & \cdots & \langle u_1, u_m \rangle \\
+                \langle u_2, u_1 \rangle & \langle u_2, u_2 \rangle & \cdots & \langle u_2, u_m \rangle \\
+                \vdots                   & \vdots                   & \ddots & \vdots                   \\
+                \langle u_m, u_1 \rangle & \langle u_m, u_2 \rangle & \cdots & \langle u_m, u_m \rangle
+            \end{pmatrix}
+        \]
+        为向量组 $u_1, u_2, \ldots, u_m$ 的 Gram 矩阵. 证明：
+        \begin{enumerate}
+            \item 若用 Gram-Schmidt 过程将 $ V $ 的一个线性无关向量组 $\{u_1, u_2, \ldots, u_m\}$ 变为正交向量组 $\{v_1, v_2, \ldots, v_n\}$，则这两组向量组的 Gram 矩阵的行列式不变，即
+                  \[
+                      \det G(u_1, u_2, \ldots, u_m) = \det G(v_1, v_2, \ldots, v_n) = \lvert v_1 \rvert^2 \lvert v_2 \rvert^2 \cdots \lvert v_n \rvert^2.
+                  \]
+            \item 向量组 $u_1, u_2, \ldots, u_m$ 线性无关的充要条件是其 Gram 矩阵可逆.
+            \item 不等式：
+                  \[
+                      0 \leqslant \det G(u_1, u_2, \ldots, u_m) \leqslant \lvert u_1 \rvert^2 \lvert u_2 \rvert^2 \cdots \lvert u_m \rvert^2.
+                  \]
+                  后一个等号成立的条件式 $u_i$ 两两正交或某个 $u_i$ 为 0.
+            \item Hadamard 不等式：$A = (a_{ij})$ 为 $n$ 阶实矩阵，则
+                  \[
+                      \lvert \det A \rvert^2 \leqslant \prod_{j = 1}^n \sum_{i = 1}^n a_{ij}^2.
+                  \]
+        \end{enumerate}
+        \item 设 $f: [-\pi, \pi] \to \mathbf{R}$ 是连续函数. 对于每个非负的整数 $k$，定义
+        \[
+            a_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \cos kx \mathrm{d}x, \quad b_k = \dfrac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} f(x) \sin kx \mathrm{d}x.
+        \]
+        证明：\[
+            \dfrac{a_0^2}{2} + \sum_{k = 1}^{\infty} (a_k^2 + b_k^2) \leqslant \dfrac{1}{\pi} \int_{-\pi}^{\pi} f^2(x) \mathrm{d}x.
+        \]
+    \end{exgroup}
+\end{exercise}

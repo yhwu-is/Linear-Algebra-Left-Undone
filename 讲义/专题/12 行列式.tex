@@ -27,7 +27,7 @@
               (规范性) $D(e_1,e_2,\ldots,e_n)=1$.
     \end{enumerate}
 \end{definition}
-在公理化定义中，我们将行列式定义为一个满足特定的运算性质的从列向量组合到数的函数. 需要注意的是，行列式除了上述记法外，如果设矩阵 $A = (\alpha_1,\cdots,\alpha_n)$，那么行列式 $D(\alpha_1,\cdots,\alpha_n)$ 也可以记为 $|A|$.
+在公理化定义中，我们将行列式定义为一个满足特定的运算性质的从列向量组合到数的函数. 需要注意的是，行列式除了上述记法外，如果设矩阵 $A = (\alpha_1,\ldots,\alpha_n)$，那么行列式 $D(\alpha_1,\ldots,\alpha_n)$ 也可以记为 $|A|$.
 
 除此之外，我们不难看出公理化定义可以形象地理解为对$n$维空间中体积的定义，对几何意义感兴趣的同学可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容.
 \begin{example}{}{公理化定义}
@@ -285,35 +285,39 @@
           \begin{example}{}{}
               求下列矩阵行列式的值：
               \[A=\begin{pmatrix}
-                  a_1^2 & a_1a_2 & \cdots & 1+a_1a_n \\
-                  1+a_2a_1 & a_2^2 & \cdots & 1+a_2a_n \\
-                  \vdots & \vdots & \ddots & \vdots \\
-                  1+a_na_1 & 1+a_na_2 & \cdots & a_n^2
-              \end{pmatrix}.\]
+                      a_1^2    & a_1a_2   & \cdots & 1+a_1a_n \\
+                      1+a_2a_1 & a_2^2    & \cdots & 1+a_2a_n \\
+                      \vdots   & \vdots   & \ddots & \vdots   \\
+                      1+a_na_1 & 1+a_na_2 & \cdots & a_n^2
+                  \end{pmatrix}.\]
           \end{example}
 
           \begin{solution}
-            我们可以将 $A$ 化为
+              我们可以将 $A$ 化为
 
-            \[ A = -E_n + \begin{pmatrix}
-                a_1 & 1 \\ a_2 & 1 \\ \vdots & \vdots \\ a_n & 1
-            \end{pmatrix} E_2^{-1} \begin{pmatrix}
-                a_1 & a_2 & \cdots & a_n \\ 1 & 1 & \cdots & 1
-            \end{pmatrix} \]
+              \[ A = -E_n + \begin{pmatrix}
+                      a_1 & 1 \\ a_2 & 1 \\ \vdots & \vdots \\ a_n & 1
+                  \end{pmatrix} E_2^{-1} \begin{pmatrix}
+                      a_1 & a_2 & \cdots & a_n \\ 1 & 1 & \cdots & 1
+                  \end{pmatrix} \]
 
-            故根据降阶公式有
+              故根据降阶公式有
 
-            \begin{align*}
-                |A| & = \left\vert-E_n + \begin{pmatrix}
-                    a_1 & 1 \\ a_2 & 1 \\ \vdots & \vdots \\ a_n & 1
-                \end{pmatrix} E_2^{-1} \begin{pmatrix}
-                    a_1 & a_2 & \cdots & a_n \\ 1 & 1 & \cdots & 1
-                \end{pmatrix}\right\vert \\
-                &= (-1)^n \left|E_2 - \begin{pmatrix}
-                    \sum\limits_{i=1}^n a_i^2 & \sum\limits_{i=1}^n a_i \\ \sum\limits_{i=1}^n a_i & n
-                \end{pmatrix}\right| \\
-                &= (-1)^n \left((1-n)\left(1-\sum\limits_{i=1}^n a_i^2\right) - \left(\sum\limits_{i=1}^n a_i\right)^2\right).
-            \end{align*}
+              \begin{align*}
+                  |A| & = \left\vert-E_n +
+                  \begin{pmatrix}
+                      a_1 & 1 \\ a_2 & 1 \\ \vdots & \vdots \\ a_n & 1
+                  \end{pmatrix} E_2^{-1}
+                  \begin{pmatrix}
+                      a_1 & a_2 & \cdots & a_n \\ 1 & 1 & \cdots & 1
+                  \end{pmatrix}\right\vert                                                                       \\
+                      & = (-1)^n \left|E_2 -
+                  \begin{pmatrix}
+                      \sum\limits_{i=1}^n a_i^2 & \sum\limits_{i=1}^n a_i \\[2ex]
+                      \sum\limits_{i=1}^n a_i   & n
+                  \end{pmatrix}\right|                                                          \\
+                      & = (-1)^n \left((1-n)\left(1-\sum\limits_{i=1}^n a_i^2\right) - \left(\sum\limits_{i=1}^n a_i\right)^2\right).
+              \end{align*}
           \end{solution}
 
     \item 设$A,B$分别是$n \times m$和$m \times n$矩阵，则$|E_n \pm AB|=|E_m \pm BA|$，且 \\
@@ -393,38 +397,38 @@
     \end{vmatrix},\]
 到目前为止，根据上面的例题我们已经有三种基本方法来计算行列式的值. 但是，有的读者或许对这三种逐步展开或变换的方法感到繁琐：或许我们可以直接写出一个公式来计算行列式的值？当然这样的公式需要我们通过逐步的展开或变换来得到.
 
-我们使用公理化定义来展开这一行列式，为了叙述方便，我们记 $A = (\alpha_1,\cdots,\alpha_n)$，并记 $e_i$ 为 $n$ 维单位向量，即 $e_i = (0,\cdots,1,\cdots,0)$，其中 $1$ 在第 $i$ 个位置. 这样，行列式的第 $j$ 列就可以表达为
+我们使用公理化定义来展开这一行列式，为了叙述方便，我们记 $A = (\alpha_1,\ldots,\alpha_n)$，并记 $e_i$ 为 $n$ 维单位向量，即 $e_i = (0,\ldots,1,\ldots,0)$，其中 $1$ 在第 $i$ 个位置. 这样，行列式的第 $j$ 列就可以表达为
 
 \[\alpha_j = a_{1j}e_1 + a_{2j}e_2 + \cdots + a_{nj}e_n = \sum_{i=1}^{n}a_{ij}e_i.\]
 
-于是，根据行列式公理化定义 \autoref{def:公理化定义} 的线性性质，我们有
+于是，根据行列式公理化定义\autoref{def:公理化定义} 的线性性质，我们有
 
 \begin{align*}
-    |A| &= |\alpha_1,\alpha_2,\cdots,\alpha_n| = |\sum\limits_{i=1}^{n}a_{i1}e_i,\alpha_2,\cdots,\alpha_n| \\
-        &= \sum\limits_{i=1}^{n}a_{i1}|e_i,\alpha_2,\cdots,\alpha_n|.
+    |A| & = |\alpha_1,\alpha_2,\ldots,\alpha_n| = |\sum\limits_{i=1}^{n}a_{i1}e_i,\alpha_2,\ldots,\alpha_n| \\
+        & = \sum\limits_{i=1}^{n}a_{i1}|e_i,\alpha_2,\ldots,\alpha_n|.
 \end{align*}
 
-对行列式 $|e_i,\alpha_2,\cdots,\alpha_n|$ 继续展开，由 $\alpha_2 = \sum\limits_{j=1}^{n}a_{j2}e_j$，我们有
+对行列式 $|e_i,\alpha_2,\ldots,\alpha_n|$ 继续展开，由 $\alpha_2 = \sum\limits_{j=1}^{n}a_{j2}e_j$，我们有
 
-\[|e_i,\alpha_2,\cdots,\alpha_n| = \sum\limits_{j=1}^{n}a_{j2}|e_i,e_j,\alpha_3,\cdots,\alpha_n|.\]
+\[|e_i,\alpha_2,\ldots,\alpha_n| = \sum\limits_{j=1}^{n}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|.\]
 
-于是 $|A| = \sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{i1}a_{j2}|e_i,e_j,\alpha_3,\cdots,\alpha_n|$. 不断展开，我们最终得到
+于是 $|A| = \sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{i1}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|$. 不断展开，我们最终得到
 
-\[|A| = \sum\limits_{k_1,k_2,\cdots,k_n} a_{k_11}a_{k_22}\cdots a_{k_nn}|e_{k_1},e_{k_2},\cdots,e_{k_n}|.\]
+\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} a_{k_11}a_{k_22}\cdots a_{k_nn}|e_{k_1},e_{k_2},\ldots,e_{k_n}|.\]
 
-注意行列式 $|e_{k_1},e_{k_2},\cdots,e_{k_n}|$ 在某对 $k_i,k_j$ 重复时的值为 $0$，所以在不为 $0$ 的项中，$(k_1,k_2,\cdots,k_n)$ 必定是 $(1,2,\cdots,n)$ 的一个全排列，即在 $k_1,k_2,\cdots,k_n$ 中，$1,2,\cdots,n$ 中每个数都出现且仅出现一次. 设 $S_n$ 为 $1,2,\cdots,n$ 所有全排列构成的集合，那么 $S_n$ 的元素个数为 $n!$.
+注意行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 在某对 $k_i,k_j$ 重复时的值为 $0$，所以在不为 $0$ 的项中，$(k_1,k_2,\ldots,k_n)$ 必定是 $(1,2,\ldots,n)$ 的一个全排列，即在 $k_1,k_2,\ldots,k_n$ 中，$1,2,\ldots,n$ 中每个数都出现且仅出现一次. 设 $S_n$ 为 $1,2,\ldots,n$ 所有全排列构成的集合，那么 $S_n$ 的元素个数为 $n!$.
 
-进一步地，当 $(k_1,k_2,\cdots,k_n) \in S_n$ 时，行列式 $|e_{k_1},e_{k_2},\cdots,e_{k_n}|$ 的每一行、每一列都有且只有一个元素等于 $1$，其余元素都等于 $0$，因此 $|e_{k_1},e_{k_2},\cdots,e_{k_n}| = \pm 1$，因此 $|A|$ 的展开式一共有 $n!$ 项，可以表达为
+进一步地，当 $(k_1,k_2,\ldots,k_n) \in S_n$ 时，行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 的每一行、每一列都有且只有一个元素等于 $1$，其余元素都等于 $0$，因此 $|e_{k_1},e_{k_2},\ldots,e_{k_n}| = \pm 1$，因此 $|A|$ 的展开式一共有 $n!$ 项，可以表达为
 
-\[|A| = \sum\limits_{k_1,k_2,\cdots,k_n} (-1)^\epsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
+\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} (-1)^\epsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
 
-那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\cdots,e_n| = 1$ 的次数有关，因此 $\epsilon$ 只和 $k_1,k_2,\cdots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\epsilon$ 的值：
+那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\ldots,e_n| = 1$ 的次数有关，因此 $\epsilon$ 只和 $k_1,k_2,\ldots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\epsilon$ 的值：
 
 \begin{definition}{逆序数}{}
-    设 $k_1,k_2,\cdots,k_n \in S_n$，如果 $i < j$ 且 $k_i > k_j$，则称 $k_i,k_j$ 是这个排列的一个\term{逆序对}\index{逆序对}，排序中所有逆序对的总数称为这个排列的\term{逆序数}\index{逆序数}，记作 $\tau(k_1,k_2,\cdots,k_n)$.
+    设 $k_1,k_2,\ldots,k_n \in S_n$，如果 $i < j$ 且 $k_i > k_j$，则称 $k_i,k_j$ 是这个排列的一个\term{逆序对}\index{nixudui@逆序对}，排序中所有逆序对的总数称为这个排列的\term{逆序数}\index{nixushu@逆序数}，记作 $\tau(k_1,k_2,\ldots,k_n)$.
 \end{definition}
 
-逆序数的定义是非常易懂的，就是位置在前但数值更大的情况出现的次数. 直观上来看，逆序数衡量了与\term{常序排列} $(1,2,\cdots,n)$ 之间的距离，逆序数越大，排列与常序排列的差距越大. 逆序数的求法也非常简单：设排列为 $(k_1,k_2,\cdots,k_n)$，那么我们先看 $k_1$ 后面有多少个数比 $k_1$ 小，然后看 $k_2$ 后面有多少个数比 $k_2$ 小，以此类推，最后将所有这些数相加即可. 我们来看一个简单的例子：
+逆序数的定义是非常易懂的，就是位置在前但数值更大的情况出现的次数. 直观上来看，逆序数衡量了与\term{常序排列} $(1,2,\ldots,n)$ 之间的距离，逆序数越大，排列与常序排列的差距越大. 逆序数的求法也非常简单：设排列为 $(k_1,k_2,\ldots,k_n)$，那么我们先看 $k_1$ 后面有多少个数比 $k_1$ 小，然后看 $k_2$ 后面有多少个数比 $k_2$ 小，以此类推，最后将所有这些数相加即可. 我们来看一个简单的例子：
 
 \begin{example}{}{}
     求排列 $(3,1,4,2)$ 的逆序数.
@@ -437,13 +441,13 @@
 基于逆序数的定义，我们可以将排列做一个简单的分类：
 
 \begin{definition}{奇排列和偶排列}{}
-    如果一个排列的逆序数是偶数（包括零），则称这个排列是\term{偶排列}\index{偶排列}；如果一个排列的逆序数是奇数，则称这个排列是\term{奇排列}\index{奇排列}.
+    如果一个排列的逆序数是偶数（包括零），则称这个排列是\term{偶排列}\index{oupailie@偶排列}；如果一个排列的逆序数是奇数，则称这个排列是\term{奇排列}\index{jipailie@奇排列}.
 \end{definition}
 
 不难证明奇偶排列有如下简单的性质：
 \begin{example}{奇偶排列的性质}{}
     \begin{enumerate}
-        \item 设 $(k_1,k_2,\cdots,k_n) \in S_n$，若将 $k_i$ 与 $k_j$ 交换，其余数不动，那么排列的奇偶性会改变；
+        \item 设 $(k_1,k_2,\ldots,k_n) \in S_n$，若将 $k_i$ 与 $k_j$ 交换，其余数不动，那么排列的奇偶性会改变；
         \item 设 $n \geqslant 2$，则 $S_n$ 中奇排列和偶排列的个数相等.
     \end{enumerate}
 \end{example}
@@ -458,15 +462,15 @@
 讨论到此，我们终于可以给出逆序数与行列式展开中每项的符号之间的联系：
 
 \begin{theorem}{}{}
-    设 $(k_1,k_2,\cdots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\cdots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\cdots,k_n)$ 变为 $(1,2,\cdots,n)$，因此 $\epsilon = \tau(k_1,k_2,\cdots,k_n)$.
+    设 $(k_1,k_2,\ldots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\ldots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\ldots,k_n)$ 变为 $(1,2,\ldots,n)$，因此 $\epsilon = \tau(k_1,k_2,\ldots,k_n)$.
 \end{theorem}
 
 \begin{proof}
-    对 $n$ 进行归纳. $n=1$ 时结论显然成立，设对 $1,2,\cdots,n-1$ 的任一排列结论成立，我们来证明 $n$ 的情形. 设 $n$ 在排列 $(k_1,\cdots,k_n)$ 的第 $i$ 位，即 $k_i = n$，$n$ 贡献的逆序数为 $m_i = n - i$. 将 $k_i$ 与 $k_{i+1}$ 对换，再与 $k_{i+2}$ 对换，以此类推，最后与 $k_n$ 对换，这样 $n$ 就到了第 $n$ 位. 注意到
+    对 $n$ 进行归纳. $n=1$ 时结论显然成立，设对 $1,2,\ldots,n-1$ 的任一排列结论成立，我们来证明 $n$ 的情形. 设 $n$ 在排列 $(k_1,\ldots,k_n)$ 的第 $i$ 位，即 $k_i = n$，$n$ 贡献的逆序数为 $m_i = n - i$. 将 $k_i$ 与 $k_{i+1}$ 对换，再与 $k_{i+2}$ 对换，以此类推，最后与 $k_n$ 对换，这样 $n$ 就到了第 $n$ 位. 注意到
 
-    \[ \tau(k_1,\cdots,k_n) = \tau(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n) + m_i,\]
+    \[ \tau(k_1,\ldots,k_n) = \tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) + m_i,\]
 
-    且 $(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n)$ 经过 $\tau(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n)$ 次相邻对换可以变为 $(1,2,\cdots,n-1)$，结合上面的讨论可知 $(k_1,\cdots,k_n)$ 经过 $\tau(k_1,\cdots,k_n)$ 次相邻对换可以变为 $(1,2,\cdots,n)$，因此 $\epsilon = \tau(k_1,\cdots,k_n)$.
+    且 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 经过 $\tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 次相邻对换可以变为 $(1,2,\ldots,n-1)$，结合上面的讨论可知 $(k_1,\ldots,k_n)$ 经过 $\tau(k_1,\ldots,k_n)$ 次相邻对换可以变为 $(1,2,\ldots,n)$，因此 $\epsilon = \tau(k_1,\ldots,k_n)$.
 \end{proof}
 
 由此我们可以得到行列式的逆序数定义：
@@ -479,32 +483,32 @@
             \vdots & \vdots & \ddots & \vdots \\
             a_{n1} & a_{n2} & \cdots & a_{nn}
         \end{vmatrix},\]
-    则 $|A| = \sum\limits_{(k_1,k_2,\cdots,k_n) \in S_n} (-1)^{\tau(k_1,k_2,\cdots,k_n)}a_{k_11}a_{k_22}\cdots a_{k_nn}$.
+    则 $|A| = \sum\limits_{(k_1,k_2,\ldots,k_n) \in S_n} (-1)^{\tau(k_1,k_2,\ldots,k_n)}a_{k_11}a_{k_22}\cdots a_{k_nn}$.
 \end{theorem}
 
 根据逆序数定义，我们可以重解 \autoref{ex:行列式基本运算} 中的行列式：
 \begin{solution}
     我们知道三阶行列式的逆序数计算公式为 $D=\begin{vmatrix}
-        a_{11} & a_{12} & a_{13} \\
-        a_{21} & a_{22} & a_{23} \\
-        a_{31} & a_{32} & a_{33}
-    \end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$，因此$D=1 \cdot 3 \cdot 2+2 \cdot 1 \cdot 3+3 \cdot 2 \cdot 1-3 \cdot 3 \cdot 3-2 \cdot 2 \cdot 2-1 \cdot 1 \cdot 1=-18$.
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+        \end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$，因此$D=1 \cdot 3 \cdot 2+2 \cdot 1 \cdot 3+3 \cdot 2 \cdot 1-3 \cdot 3 \cdot 3-2 \cdot 2 \cdot 2-1 \cdot 1 \cdot 1=-18$.
 \end{solution}
 
 下面的例子会让我们更进一步地理解逆序数定义中``排列''的含义：
 \begin{example}{}{}
     设
     \[f(x)=\begin{vmatrix}
-        x-a_{11} & -a_{12} & \cdots & -a_{1n} \\
-        -a_{21} & x-a_{22} & \cdots & -a_{2n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        -a_{n1} & -a_{n2} & \cdots & x-a_{nn}
-    \end{vmatrix},\]
+            x-a_{11} & -a_{12}  & \cdots & -a_{1n}  \\
+            -a_{21}  & x-a_{22} & \cdots & -a_{2n}  \\
+            \vdots   & \vdots   & \ddots & \vdots   \\
+            -a_{n1}  & -a_{n2}  & \cdots & x-a_{nn}
+        \end{vmatrix},\]
     其中$x$是未知数，$a_{ij}$是常数，证明：$f(x)$是一个最高次项系数为1的$n$次多项式，且其$n-1$次项的系数等于$-(a_{11}+\cdots+a_{nn})$.
 \end{example}
 
 \begin{proof}
-    根据逆序数定义，我们知道 $f(x)$ 的最高次项出现在展开式中的单项 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$ 中，且展开式中的其他单项作为 $x$ 的多项式的次数必定小于等于 $n-2$（因为我们要求 $(k_1,\cdots,k_n)$ 是全排列）. 因此 $f(x)$ 是一个最高次项系数为 $1$ 的 $n$ 次多项式，且其 $n-1$ 次项的系数只能来源于 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$，故等于 $-(a_{11}+\cdots+a_{nn})$.
+    根据逆序数定义，我们知道 $f(x)$ 的最高次项出现在展开式中的单项 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$ 中，且展开式中的其他单项作为 $x$ 的多项式的次数必定小于等于 $n-2$（因为我们要求 $(k_1,\ldots,k_n)$ 是全排列）. 因此 $f(x)$ 是一个最高次项系数为 $1$ 的 $n$ 次多项式，且其 $n-1$ 次项的系数只能来源于 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$，故等于 $-(a_{11}+\cdots+a_{nn})$.
 \end{proof}
 
 \subsection{范德蒙（Vandermonde）行列式}
@@ -522,18 +526,19 @@
 \begin{proof}
     这里的证明使用的是归纳法. 当$n=2$时，易知$V_2=x_2-x_1$，结论成立. 假设结论对$n-1$阶范德蒙行列式成立，那么对于$V_n$，从第$n$行起，依次将前一行乘$(-x_1)$加到后一行，可以得到\begin{align*}
         V_n & = \begin{vmatrix}
-            1         & 1         & \cdots & 1         \\
-            0         & x_2-x_1   & \cdots & x_n-x_1   \\
-            0         & x_2(x_2-x_1) & \cdots & x_n(x_n-x_1) \\
-            \vdots    & \vdots    & \ddots & \vdots    \\
-            0         & x_2^{n-2}(x_2-x_1) & \cdots & x_n^{n-2}(x_n-x_1)
-        \end{vmatrix} \\
-        & = (x_2-x_1)(x_3-x_1)\cdots(x_n-x_1)\begin{vmatrix}
-            1         & 1         & \cdots & 1         \\
-            0         & x_2       & \cdots & x_n       \\
-            0         & x_2^2     & \cdots & x_n^2     \\
-            \vdots    & \vdots    & \ddots & \vdots    \\
-            0         & x_2^{n-2} & \cdots & x_n^{n-2}
+                    1      & 1                  & \cdots & 1                  \\
+                    0      & x_2-x_1            & \cdots & x_n-x_1            \\
+                    0      & x_2(x_2-x_1)       & \cdots & x_n(x_n-x_1)       \\
+                    \vdots & \vdots             & \ddots & \vdots             \\
+                    0      & x_2^{n-2}(x_2-x_1) & \cdots & x_n^{n-2}(x_n-x_1)
+                \end{vmatrix} \\
+            & = (x_2-x_1)(x_3-x_1)\cdots(x_n-x_1)
+        \begin{vmatrix}
+            1      & 1         & \cdots & 1         \\
+            0      & x_2       & \cdots & x_n       \\
+            0      & x_2^2     & \cdots & x_n^2     \\
+            \vdots & \vdots    & \ddots & \vdots    \\
+            0      & x_2^{n-2} & \cdots & x_n^{n-2}
         \end{vmatrix}
     \end{align*}
     上式右端为是关于$x_2,x_3,\ldots,x_n$的$n-1$阶范德蒙行列式，根据归纳假设，我们有
@@ -543,7 +548,7 @@
     \end{align*}
 \end{proof}
 
- 我们需要强调的是范德蒙行列式的重要性，事实上，范德蒙行列式有着广泛的应用，在之后不少的习题中我们将使用它. 在此我们证明\autoref{thm:覆盖定理} 的有限维情形作为一个例子：
+我们需要强调的是范德蒙行列式的重要性，事实上，范德蒙行列式有着广泛的应用，在之后不少的习题中我们将使用它. 在此我们证明\autoref{thm:覆盖定理} 的有限维情形作为一个例子：
 \begin{example}{}{行列式证明覆盖定理}
     设$V_1,V_2,\ldots,V_s$是有限维线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V$.
 \end{example}
@@ -585,7 +590,6 @@
         \end{vmatrix}$.
 \end{example}
 
-
 \begin{solution}
     观察这个行列式的特点，主对角线下方的元素与第 1 行元素对应相同，故用第 1 行的 $-1$ 倍加到下面各行便可使主对角线下方的元素全部变为0，即化为上三角形.
     \[ D_{n+1}=\begin{vmatrix}
@@ -598,31 +602,31 @@
 \end{solution}
 
 \begin{example}{}{}
-    计算$n$阶行列式，其中$a_i\neq 0(i=2,\cdots,n)$：
+    计算$n$阶行列式，其中$a_i\neq 0\enspace(i=2,\ldots,n)$：
     \[|A|=\begin{vmatrix}
-        a_1 & b_2 & b_3 & \cdots & b_n \\
-        c_2 & a_2 & 0 & \cdots & 0 \\
-        c_3 & 0 & a_3 & \cdots & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        c_n & 0 & 0 & \cdots & a_n
-    \end{vmatrix}.\]
+            a_1    & b_2    & b_3    & \cdots & b_n    \\
+            c_2    & a_2    & 0      & \cdots & 0      \\
+            c_3    & 0      & a_3    & \cdots & 0      \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            c_n    & 0      & 0      & \cdots & a_n
+        \end{vmatrix}.\]
 \end{example}
 
 \begin{solution}
-    这一行列式因为形似箭头而被称为箭形行列式，将第$i(2\leqslant i\leqslant n)$列乘以$-\dfrac{c_i}{a_i}$加到第一列上可以消去第一列所有的$c_i$得到上三角矩阵，最后答案为$(a_1-\sum\limits_{i=2}^n\dfrac{b_ic_i}{a_i})a_2a_3\cdots a_n$.
+    这一行列式因为形似箭头而被称为箭形行列式，将第$i\enspace(2\leqslant i\leqslant n)$列乘以$-c_i/a_i$加到第一列上可以消去第一列所有的$c_i$得到上三角矩阵，最后答案为$(a_1-\sum\limits_{i=2}^n\dfrac{b_ic_i}{a_i})a_2a_3\cdots a_n$.
 \end{solution}
 
 箭形行列式可以当作一种模板来解决其它问题：
 
 \begin{example}{}{}
-    计算$n$阶行列式，其中$a_i\neq 0(i=1,\cdots,n)$：
+    计算$n$阶行列式，其中$a_i\neq 0,\enspace i=1,\ldots,n$：
     \[|A|=\begin{vmatrix}
-        x_1-a_1 & x_2 & x_3 & \cdots & x_n \\
-        x_1 & x_2-a_2 & x_3 & \cdots & x_n \\
-        x_1 & x_2 & x_3-a_3 & \cdots & x_n \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        x_1 & x_2 & x_3 & \cdots & x_n-a_n
-    \end{vmatrix}.\]
+            x_1-a_1 & x_2     & x_3     & \cdots & x_n     \\
+            x_1     & x_2-a_2 & x_3     & \cdots & x_n     \\
+            x_1     & x_2     & x_3-a_3 & \cdots & x_n     \\
+            \vdots  & \vdots  & \vdots  & \ddots & \vdots  \\
+            x_1     & x_2     & x_3     & \cdots & x_n-a_n
+        \end{vmatrix}.\]
 \end{example}
 
 \begin{solution}
@@ -811,7 +815,7 @@
     计算行列式$D_n=\begin{vmatrix}
             (a_1 + b_1)^{-1} & (a_1 + b_2)^{-1} & \cdots & (a_1 + b_n)^{-1} \\
             (a_2 + b_1)^{-1} & (a_2 + b_2)^{-1} & \cdots & (a_2 + b_n)^{-1} \\
-            \vdots            & \vdots            & \ddots & \vdots            \\
+            \vdots           & \vdots           & \ddots & \vdots           \\
             (a_n + b_1)^{-1} & (a_n + b_2)^{-1} & \cdots & (a_n + b_n)^{-1}
         \end{vmatrix}$.
 \end{example}
@@ -987,39 +991,47 @@
 \end{example}
 
 \begin{solution}
-    我们尝试求解 $D_n$ 和 $D_{n-1}$ 之间的递推式. 注意下面计算中的第一步是将行列式的前 $n-1$ 列每列都减去第 $n$ 列；第三步是将行列式的前 $n-1$ 行每行都减去第 $n$ 行；第二和第四步都是提取公因式.
+    我们尝试求解 $D_n$ 和 $D_{n-1}$ 之间的递推式. 首先将行列式的前 $n-1$ 列每列都减去第 $n$ 列：
 
     \begin{align*}
-        D_n &= \begin{vmatrix}
-            \dfrac{1}{a_1+b_1} & \cdots & \dfrac{1}{a_1+b_{n-1}} & \dfrac{1}{a_1+b_n} \\
-            \vdots & \ddots & \vdots & \vdots \\
-            \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}} & \dfrac{1}{a_{n-1}+b_n} \\
-            \dfrac{1}{a_n+b_1} & \cdots & \dfrac{1}{a_n+b_{n-1}} & \dfrac{1}{a_n+b_n}
-        \end{vmatrix} \\
-        &= \begin{vmatrix}
-            \dfrac{b_n-b_1}{(a_1+b_1)(a_1+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_1+b_{n-1})(a_1+b_n)} & \dfrac{1}{a_1+b_n} \\
-            \vdots & \ddots & \vdots & \vdots \\
-            \dfrac{b_n-b_1}{(a_{n-1}+b_1)(a_{n-1}+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_{n-1}+b_{n-1})(a_{n-1}+b_n)} & \dfrac{1}{a_{n-1}+b_n} \\
-            \dfrac{b_n-b_1}{(a_n+b_1)(a_n+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_n+b_{n-1})(a_n+b_n)} & \dfrac{1}{a_n+b_n} \\
-        \end{vmatrix} \\
-        &= \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)} \begin{vmatrix}
-            \dfrac{1}{a_1+b_1} & \cdots & \dfrac{1}{a_1+b_{n-1}} & 1 \\
-            \vdots & \ddots & \vdots & \vdots \\
-            \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}} & 1 \\
-            \dfrac{1}{a_n+b_1} & \cdots & \dfrac{1}{a_n+b_{n-1}} & 1
-        \end{vmatrix} \\
-        &= \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)} \begin{vmatrix}
-            \dfrac{a_n-a_1}{(a_1+b_1)(a_n+b_1)} & \cdots & \dfrac{a_n-a_1}{(a_1+b_{n-1})(a_n+b_{n-1})} & 0 \\
-            \vdots & \ddots & \vdots & \vdots \\
-            \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_1)(a_n+b_1)} & \cdots & \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_{n-1})(a_n+b_{n-1})} & 0 \\
-            \dfrac{1}{a_n+b_1} & \cdots & \dfrac{1}{a_n+b_{n-1}} & 1
-        \end{vmatrix} \\
-        &= \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)} \begin{vmatrix}
-            \dfrac{1}{a_1+b_1} & \cdots & \dfrac{1}{a_1+b_{n-1}} \\
-            \vdots & \ddots & \vdots \\
+        D_n & = \begin{vmatrix}
+                    \dfrac{1}{a_1+b_1}     & \cdots & \dfrac{1}{a_1+b_{n-1}}     & \dfrac{1}{a_1+b_n}     \\[2ex]
+                    \vdots                 & \ddots & \vdots                     & \vdots                 \\[2ex]
+                    \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}} & \dfrac{1}{a_{n-1}+b_n} \\[2ex]
+                    \dfrac{1}{a_n+b_1}     & \cdots & \dfrac{1}{a_n+b_{n-1}}     & \dfrac{1}{a_n+b_n}
+                \end{vmatrix}                                                                       \\[2ex]
+            & = \begin{vmatrix}
+                    \dfrac{b_n-b_1}{(a_1+b_1)(a_1+b_n)}         & \cdots & \dfrac{b_n-b_{n-1}}{(a_1+b_{n-1})(a_1+b_n)}         & \dfrac{1}{a_1+b_n}     \\[2ex]
+                    \vdots                                      & \ddots & \vdots                                              & \vdots                 \\[2ex]
+                    \dfrac{b_n-b_1}{(a_{n-1}+b_1)(a_{n-1}+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_{n-1}+b_{n-1})(a_{n-1}+b_n)} & \dfrac{1}{a_{n-1}+b_n} \\[2ex]
+                    \dfrac{b_n-b_1}{(a_n+b_1)(a_n+b_n)}         & \cdots & \dfrac{b_n-b_{n-1}}{(a_n+b_{n-1})(a_n+b_n)}         & \dfrac{1}{a_n+b_n}
+                \end{vmatrix}
+    \end{align*}
+    第二步是提取公因式：
+    \[ \text{上式} = \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)}
+        \begin{vmatrix}
+            \dfrac{1}{a_1+b_1}     & \cdots & \dfrac{1}{a_1+b_{n-1}}     & 1      \\[2ex]
+            \vdots                 & \ddots & \vdots                     & \vdots \\[2ex]
+            \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}} & 1      \\[2ex]
+            \dfrac{1}{a_n+b_1}     & \cdots & \dfrac{1}{a_n+b_{n-1}}     & 1
+        \end{vmatrix} \]
+    第三步是将行列式的前 $n-1$ 行每行都减去第 $n$ 行：
+    \[ \text{上式} = \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)}
+        \begin{vmatrix}
+            \dfrac{a_n-a_1}{(a_1+b_1)(a_n+b_1)}         & \cdots & \dfrac{a_n-a_1}{(a_1+b_{n-1})(a_n+b_{n-1})}         & 0      \\[2ex]
+            \vdots                                      & \ddots & \vdots                                              & \vdots \\[2ex]
+            \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_1)(a_n+b_1)} & \cdots & \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_{n-1})(a_n+b_{n-1})} & 0      \\[2ex]
+            \dfrac{1}{a_n+b_1}                          & \cdots & \dfrac{1}{a_n+b_{n-1}}                              & 1
+        \end{vmatrix} \]
+    然后再次提取公因式：
+    \begin{align*}
+        \text{上式} & = \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)}
+        \begin{vmatrix}
+            \dfrac{1}{a_1+b_1}     & \cdots & \dfrac{1}{a_1+b_{n-1}}     \\[2ex]
+            \vdots                 & \ddots & \vdots                     \\[2ex]
             \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}}
-        \end{vmatrix} \\
-        &= \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)} D_{n-1}
+        \end{vmatrix}                                                         \\[2ex]
+                    & = \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)} D_{n-1}
     \end{align*}
     不断递推下去即得
 
@@ -1230,7 +1242,7 @@
 下面的证明需要利用一些行列式逆序数定义的知识，感兴趣的读者可以参考史海拾遗一讲的描述，当然也可以略过这里的证明.
 
 \begin{proof}
-    我们只证明前一半按行展开的情况，后一半按列展开的情况可以类似证明. 事实上，$|A|$是$n!$项的代数和（事实上直接用按一行（一列）展开的定义结合数学归纳法很容易得到），而\autoref{eq:14:Laplace定理} 右边求和符号包含$C_n^k$项，然后$k$阶子式展开有$k!$项，$n-k$阶代数余子式有$(n-k)!$项，所以$C_n^k\cdot k!\cdot (n-k)!=n!$，所以\autoref{eq:14:Laplace定理} 等号左右项数相同.
+    我们只证明前一半按行展开的情况，后一半按列展开的情况可以类似证明. 事实上，$|A|$是$n!$项的代数和（事实上直接用按一行（一列）展开的定义结合数学归纳法很容易得到），而\autoref{eq:14:Laplace定理} 右边求和符号包含$\binom{n}{k}$项，然后$k$阶子式展开有$k!$项，$n-k$阶代数余子式有$(n-k)!$项，所以$\binom{n}{k}\cdot k!\cdot (n-k)!=n!$，所以\autoref{eq:14:Laplace定理} 等号左右项数相同.
 
     事实上，我们不难发现\autoref{eq:14:Laplace定理} 等号右端$n!$项是互不相同的（不是计算结果一定互不相同，是参与计算的行列式元素不同），又\autoref{eq:14:Laplace定理} 等号左右项数相同，故我们只需证明等号右侧每一项都是$|A|$展开中的一项即可.
 
@@ -1271,33 +1283,36 @@
 
 \begin{example}{}{}
     计算行列式$\begin{vmatrix}
-        -1 & 1 & 1 & 2 & -1 \\
-        0 & -1 & 0 & 1 & 2 \\
-        2 & 1 & 1 & 3 & -1 \\
-        1 & 2 & 2 & 1 & 0 \\
-        0 & 3 & 0 & 1 & 3
-    \end{vmatrix}.$
+            -1 & 1  & 1 & 2 & -1 \\
+            0  & -1 & 0 & 1 & 2  \\
+            2  & 1  & 1 & 3 & -1 \\
+            1  & 2  & 2 & 1 & 0  \\
+            0  & 3  & 0 & 1 & 3
+        \end{vmatrix}.$
 \end{example}
 
 \begin{solution}
     因为第一、第三列含有较多的 $0$，因此在这两列上做 Laplace 展开，得
     \begin{align*}
-        |A| &= \begin{vmatrix}
-            -1 & 1 \\ 2 & 1
-        \end{vmatrix} \cdot (-1)^{1+3+1+3} \begin{vmatrix}
+        |A| & = \begin{vmatrix}
+                    -1 & 1 \\ 2 & 1
+                \end{vmatrix} \cdot (-1)^{1+3+1+3}
+        \begin{vmatrix}
             -1 & 1 & 2 \\ 2 & 1 & 0 \\ 3 & 1 & 3
-        \end{vmatrix} \\
-        &+ \begin{vmatrix}
-            -1 & 1 \\ 1 & 2
-        \end{vmatrix} \cdot (-1)^{1+4+1+3} \begin{vmatrix}
+        \end{vmatrix}                                 \\
+            & + \begin{vmatrix}
+                    -1 & 1 \\ 1 & 2
+                \end{vmatrix} \cdot (-1)^{1+4+1+3}
+        \begin{vmatrix}
             -1 & 1 & 2 \\ 1 & 3 & -1 \\ 3 & 1 & 3
-        \end{vmatrix} \\
-        &+ \begin{vmatrix}
-            2 & 1 \\ 1 & 1
-        \end{vmatrix} \cdot (-1)^{3+4+1+3} \begin{vmatrix}
+        \end{vmatrix}                                \\
+            & + \begin{vmatrix}
+                    2 & 1 \\ 1 & 1
+                \end{vmatrix} \cdot (-1)^{3+4+1+3}
+        \begin{vmatrix}
             1 & 2 & -1 \\ -1 & 1 & 2 \\ 3 & 1 & 3
-        \end{vmatrix} \\
-        &= (-3) \times (-11) + (-3) \times 32 + 3 \times (-23) = -132.
+        \end{vmatrix}                                \\
+            & = (-3) \times (-11) + (-3) \times 32 + 3 \times (-23) = -132.
     \end{align*}
 \end{solution}
 
@@ -1381,8 +1396,8 @@
 下面的例子也十分经典，是已知伴随矩阵求原矩阵，需要熟练运用伴随矩阵的性质：
 \begin{example}
     已知$A^*=\begin{pmatrix}
-        1 & -2 & 1 \\ 0 & 2 & -2 \\ -1 & 2 & 1
-    \end{pmatrix}$，求$A$.
+            1 & -2 & 1 \\ 0 & 2 & -2 \\ -1 & 2 & 1
+        \end{pmatrix}$，求$A$.
 \end{example}
 
 \begin{solution}
@@ -1466,8 +1481,8 @@
         \end{pmatrix}\begin{pmatrix}
             b_1 \\ b_2 \\ \vdots \\ b_n
         \end{pmatrix},\]
-    于是$x_i=\dfrac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$（根据\autoref{def:递归式定义}）.
-
+    于是根据\autoref{def:递归式定义}，
+    \[x_i=\frac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\frac{D_i}{D}\enspace(i=1,2,\ldots,n)\]
     事实上此时解唯一，因为可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
 
     反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:双射等价条件} 可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$. 综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
@@ -1638,417 +1653,409 @@
     事实上，我们知道这一行列式展开后是一个次数最高为3的多项式，因此$0,-1,-2$就是$f(x)$的所有零点.
 \end{solution}
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
-
-在这一讲中我们引入了一个重要的工具——行列式. 我们不同于一般教材的逆序数定义（我们将会在史海拾遗中从历史角度介绍这一定义），首先给出了公理化的定义，并且发现行列式事实上就是在描述$n$维空间中物体的体积. 接下来我们也介绍了递归式定义（即按一行一列展开）和逆序数定义，并讨论了行列式的一些性质，介绍了常用的范德蒙行列式，在此基础上也介绍了大量的运算技巧——或许读者能回想起中学时代刷题的感觉. 接下来我们也介绍了伴随矩阵及其大量性质，在性质的证明中希望读者体会这类证明的一般想法. 我们也介绍了Cramer法则，它是最开始研究线性方程组理论的一个核心结果，因此在讨论线性方程组一般理论的朝花夕拾一讲中我们还会再遇见它的身影. 最后我们讨论了行列式的秩，这也是我们最后一个``秩''的定义，我们讨论了向量组、线性映射、矩阵、行列式的秩的统一性，这也是我们这一学期学习的秩的概念的一个总结，也希望读者能在练习中更深刻体会它们的关联.
-
-事实上，我们很难说服读者行列式以什么样的方式引入是最为合适的，或许在史海拾遗的历史讲述中我们可能才能窥见行列式诞生的奥秘，那是最为自然的描述，但需要过多的准备以至于可能令人厌烦. 但至少公理化定义是非常简单的，并且有一定的几何背景，由此也直接可以得出行列式大量的优良性质，例如矩阵可逆等价于行列式等于零——这一性质在将来关于线性方程组、特征多项式等的讨论中是核心的.
-
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
-
-\vspace{2ex}
-{\kaishu 我总是尽我的精力和才能来摆脱那种繁重而单调的计算. }
-\begin{flushright}
-    \kaishu
-    —— 约翰·纳皮尔
-\end{flushright}
-
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 证明：行列式的公理化定义、递归式定义和逆序数定义是等价的.
-
-    \item 设$\alpha_1,\alpha_2,\alpha_3$为三维列向量，令$A=(\alpha_1,\alpha_2,\alpha_3)$，且$|A|=2$，求$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|$.
-
-    \item 求证以下命题：
-          \begin{enumerate}
-              \item 奇数阶反对称矩阵不可逆；
-
-              \item 若$A$是$n$阶可逆对称矩阵，$B$是$n$阶反对称矩阵，则当$n$为奇数时，齐次线性方程组$(AB)X=O$有非零解.
-          \end{enumerate}
-
-    \item 设$A$、$B$分别为$m$、$n$阶可逆矩阵，且$|A|=a$，$|B|=b$，求$\begin{pmatrix}
-                  A & O \\ O & B
-              \end{pmatrix}^*$和$\begin{pmatrix}
-                  O & A \\ B & O
-              \end{pmatrix}^*$.
-
-    \item 证明：
-          \begin{enumerate}
-              \item 若$A$为幂等矩阵，则$A^*$也为幂等矩阵；$A$为幂零矩阵，则$A^*$也为幂零矩阵；
-
-              \item 若$A$为对称矩阵，则$A^*$也为对称矩阵；$A$为反对称矩阵，则$A^*$为偶数阶时也为反对称矩阵，奇数阶时为对称矩阵.
-          \end{enumerate}
-
-    \item 证明：上（下）三角矩阵的伴随矩阵是上（下）三角矩阵（对角矩阵为特例）.
-
-    \item 设$A$为$n$阶方阵，证明：若$|A|=0$，则$A$中任意两行（列）对应元素的代数余子式成比例.
-
-    \item 设向量$\alpha_1,\alpha_2,\alpha_3$线性无关，讨论向量$\alpha_1-\alpha_2-2\alpha_3,\ 2\alpha_1+\alpha_2-\alpha_3,\ 3\alpha_1+\alpha_2+2\alpha_3$的线性相关性.
-
-    \item 设$W=\spa(\alpha_1,\alpha_2)$是$\mathbf{R}^4$的一个子空间，其中$\alpha_1=(1,2,1,-1)^\mathrm{T}$，$\alpha_2=(1,4,-1,-1)^\mathrm{T}$，试将$\alpha_1,\alpha_2$扩充为$\mathbf{R}^4$的基.
-
-    \item $ D_n=\begin{vmatrix}
-                  1      & 2      & 3      & 4      & \cdots & n-1    & n      \\
-                  x      & 1      & 2      & 3      & \cdots & n-2    & n-1    \\
-                  x      & x      & 1      & 2      & \cdots & n-3    & n-2    \\
-                  x      & x      & x      & 1      & \cdots & n-4    & n-3    \\
-                  \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-                  x      & x      & x      & x      & \cdots & 1      & 2      \\
-                  x      & x      & x      & x      & \cdots & x      & 1      \\
-              \end{vmatrix}$（提示：考虑滚动消去法）.
-
-    \item $ D_n=\begin{vmatrix}
-                  a_1 & b_1 &     &        &         \\
-                      & a_2 & b_2 &        &         \\
-                      &     & a_3 & \ddots &         \\
-                      &     &     & \ddots & b_{n-1} \\
-                  b_n &     &     &        & a_n
-              \end{vmatrix}$.
-
-    \item $D_n=\begin{vmatrix}
-                  a+b & ab  &        &     &     \\
-                  1   & a+b & \ddots &     &     \\
-                      & 1   & \ddots & ab  &     \\
-                      &     & \ddots & a+b & ab  \\
-                      &     &        & 1   & a+b \\
-              \end{vmatrix}$.
-
-    \item 用递推法解\autoref{ex:递推法}.
-
-    \item 解行列式 $ \begin{vmatrix}
-                  a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
-                  b^{2} & (b+1)^{2} & (b+2)^{2} & (b+3)^{2} \\
-                  c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
-                  d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
-              \end{vmatrix} $.
-
-    \item 设
-          \[ D=\begin{vmatrix}
-                  1+a_1  & 1      & \cdots & 1      \\
-                  1      & 1+a_2  & \cdots & 1      \\
-                  \vdots & \vdots & \ddots & \vdots \\
-                  1      & 1      & \cdots & 1+a_n
-              \end{vmatrix} \]
-          \begin{enumerate}
-              \item 用递推公式计算行列式$D$；
-
-              \item 硬拆$D$为$2^n$个行列式，计算出结果.
-          \end{enumerate}
-
-    \item 解行列式
-          \begin{enumerate}
-              \item $D=\begin{vmatrix}
-                            1      & 2      & \cdots & 2      & 2      \\
-                            2      & 2      & \cdots & 2      & 2      \\
-                            \vdots & \vdots & \ddots & \vdots & \vdots \\
-                            2      & 2      & \cdots & n-1    & 2      \\
-                            2      & 2      & \cdots & 2      & n\end{vmatrix}$；
-
-              \item $D=\begin{vmatrix}
-                            1      & 2      & \cdots & n-1    & n      \\
-                            2      & 3      & \cdots & n      & 1      \\
-                            3      & 4      & \cdots & 1      & 2      \\
-                            \vdots & \vdots & \ddots & \vdots & \vdots \\
-                            n      & 1      & \cdots & n-2    & n-1
-                        \end{vmatrix}$.
-          \end{enumerate}
-
-    \item 记$a_{ij}=|i-j|$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
-
-    \item 计算行列式$D=\begin{vmatrix}
-        1 & 0 & 2 & 0 & x \\
-        0 & 2 & 0 & 1 & 0 \\
-        1 & 0 & 4 & 0 & x^2 \\
-        0 & 5 & 0 & 3 & 0 \\
-        1 & 0 & 8 & 0 & x^3
-    \end{vmatrix}$.
-
-\end{enumerate}
-
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设$D=\begin{vmatrix}
-                  3 & 0 & 4 & 1 \\ 2 & 3 & 1 & 4 \\ 0 & -7 & 8 & 3 \\ 5 & 3 & -2 & 2
-              \end{vmatrix}$，求
-          \begin{enumerate}
-              \item $A_{21}+A_{22}+A_{23}+A_{24}$；
-
-              \item $A_{31}+A_{33}$；
-
-              \item $M_{41}+M_{42}+M_{43}+M_{44}$.
-          \end{enumerate}
-
-    \item 求参数 $a,b$  的值，使得$\begin{vmatrix}1 & 1 & 1 \\ x & y & z \\u & v & w\end{vmatrix}=1,
-              \begin{vmatrix}1 & 2 & -5 \\ x & y & z \\u & v & w\end{vmatrix}=2,
-              \begin{vmatrix}2 & 3 & b \\ x & y & z \\u & v & w\end{vmatrix}=a$都成立，并求$\begin{vmatrix}x & y & z \\ 1 & -1 & 5 \\u & v & w\end{vmatrix}$.
-
-    \item 设$A,B$为三阶矩阵，且$|A|=3,|B|=2$，且$|A^{-1}+B|=2$，求$|A+B^{-1}|$.
-
-    \item 设$A$为$n$阶正交矩阵，即$AA^\mathrm{T}=A^\mathrm{T}A=E$，且$|A|<0$，证明：$|E+A|=0$.
-
-    \item 设实方阵$A$的伴随矩阵$A^*=\begin{pmatrix}
-        1 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 1
-    \end{pmatrix}$，且$|A|>0$，已知矩阵$B$满足$AB=E+3A$，求矩阵$B$.
-
-    \item 设$B=\begin{pmatrix}
-        1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1
-    \end{pmatrix}$，矩阵$A$满足方程$BA=B^\mathrm{T}B$，求$|A^*-2E|$.
-
-    \item 已知齐次线性方程组
-          \[\begin{cases} \begin{aligned}
-                      a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n          & = 0             \\
-                      a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n          & = 0             \\
-                                                                    & \vdotswithin{=} \\
-                      a_{n-1,1}x_1+a_{n-1,2}x_2+\cdots+a_{n-1,n}x_n & = 0
-                  \end{aligned} \end{cases}\]
-          设$M_j\enspace(j=1,2,\ldots,n)$表示$A=(a_{ij})_{n-1 \times n}$划掉第$j$列所得的$n-1$阶子式，证明：
-          \begin{enumerate}
-              \item $(M_1,-M_2,\ldots,(-1)^{n-1}M_n)$是方程组的一个解；
-
-              \item 若$r(A)=n-1$，则方程组的解全是$(M_1,-M_2,\ldots,(-1)^{n-1}M_n)$的倍数.
-          \end{enumerate}
-
-    \item 设$A,B$均为$n$阶矩阵，且$|A|=2,|B|=1$，求$|2A^*B^*-A^{-1}B^{-1}|$.
-
-    \item 若$n$阶非零矩阵$A$满足$A^\mathrm{T}=A^*$，证明：
-          \begin{enumerate}
-              \item $|A|>0$；
-
-              \item $|A|=1$（补充：若$A$第一行元素相等，求第一行元素的值）；
-
-              \item $A$为正交矩阵，即$AA^\mathrm{T}=A^\mathrm{T}A$；
-
-              \item $n>2$且为奇数时，$|E-A|=0$.
-          \end{enumerate}
-
-    \item 已知$A$是一个秩为$n-1$的$n\enspace(n \geqslant 2)$阶方阵，且已知某个元素$a_{ij}$的代数余子式$A_{ij} \neq 0$，求方程组$AX=0$的基础解系.
-
-    \item 设$D=|a_{ij}|_{n \times n}$，$A_{ij}$是$a_{ij}$的代数余子式. 求证：
-          \[\begin{vmatrix}
-                  A_{11}    & A_{12}    & \cdots & A_{1,n-1}   \\
-                  A_{21}    & A_{22}    & \cdots & A_{2,n-1}   \\
-                  \vdots    & \vdots    & \ddots & \vdots      \\
-                  A_{n-1,1} & A_{n-1,2} & \cdots & A_{n-1,n-1}
-              \end{vmatrix}=a_{nn}D^{n-2}.\]
-
-    \item 设$a_1,a_2,\ldots,a_n$为互不相等的实数，$b_1,b_2,\ldots,b_n$为任意给定的实数. 证明：存在唯一的$n-1$次多项式，满足$f(a_i)=b_i,\enspace i=1,2,\ldots,n$.
-
-    \item 设 $a_1,a_2\cdots,a_n$ 是 $n$ 个两两互异的实数，$f_1(x),f_2(x),\cdots,f_n(x)$ 是 $n$ 个次数不大于 $n-2$ 的实系数多项式，证明：
-
-    \[\begin{vmatrix}
-        f_1(a_1) & f_1(a_2) & \cdots & f_1(a_n) \\
-        f_2(a_1) & f_2(a_2) & \cdots & f_2(a_n) \\
-        \vdots   & \vdots   & \ddots & \vdots   \\
-        f_n(a_1) & f_n(a_2) & \cdots & f_n(a_n)
-    \end{vmatrix}=0.\]
-
-    \item 证明：$n$维向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是
-          \[\begin{vmatrix}
-                  \alpha_1^\mathrm{T}\alpha_1 & \alpha_1^\mathrm{T}\alpha_2 & \cdots & \alpha_1^\mathrm{T}\alpha_n \\
-                  \alpha_2^\mathrm{T}\alpha_1 & \alpha_2^\mathrm{T}\alpha_2 & \cdots & \alpha_2^\mathrm{T}\alpha_n \\
-                  \vdots                      & \vdots                      & \ddots & \vdots                      \\
-                  \alpha_n^\mathrm{T}\alpha_1 & \alpha_n^\mathrm{T}\alpha_2 & \cdots & \alpha_n^\mathrm{T}\alpha_n
-              \end{vmatrix}\neq 0.\]
-
-    \item 设$a_1,\ldots,a_n$为$n$个$n$维向量，证明：向量组$a_1,\ldots,a_n$线性无关的充要条件是任一个$n$维向量都可以由其线性表示（不使用线性空间维数的方式完成）.
-
-    \item 设$s \times n\enspace(s\leqslant n)$矩阵为
-          \[\begin{pmatrix}
-                  1      & a      & a^2    & \cdots & a^{n-1}    \\
-                  1      & a^2    & a^4    & \cdots & a^{2(n-1)} \\
-                  \vdots & \vdots & \vdots & \ddots & \vdots     \\
-                  1      & a^s    & a^{2s} & \cdots & a^{s(n-1)}
-              \end{pmatrix}\]
-          且$a^r\neq 1\enspace(0<r<n)$，求$A$的秩和它的列向量组的一个极大线性无关组.
-
-    \item 设$A,B,C,D \in \mathbf{F}^{n \times n}$，定义变换 $ T : \mathbf{F}^{n \times n} \to \mathbf{F}^{n \times n}$ 为
-          \[ T(X) = AXB+CX+XD \]
-          证明：
-          \begin{enumerate}
-              \item $T$为$\mathbf{F}^{n \times n}$上的线性变换；
-
-              \item 当$C=D=0$时，$T$可逆的充要条件是$|AB| \neq 0$.
-          \end{enumerate}
-
-    \item 设$A$为$n$阶矩阵，且$r(A) < n$，又$A_{11} \neq 0$，证明：存在常数$k$，使得$(A^*)^2=kA^*$.
-
-    \item 设$V$是一个$n$维实线性空间，证明：存在$V$中的一个由可列无穷多个向量组成的向量组$\{\alpha_i \mid i\in\mathbf{Z}_+\}$，使得其中任意$n$个向量组成的向量组都是$V$的一组基.
-
-    \item 回顾\autoref{ex:函数和数列线性空间} 中数列极限的例子，证明：以$0$为极限的实数数列全体构成的线性空间是无限维线性空间.
-
-    \item 解行列式
-    \begin{enumerate} \begin{multicols}{2}
-            \item $ D_1=\begin{vmatrix}
-                    1 & 2 & 3 & 4 \\2&3&4&1\\3&4&1&2\\4&1&2&3
-                \end{vmatrix} $
-
-            \item $ D_2=\begin{vmatrix}
-                    \lambda+2 & -1        & -1        & -1        \\
-                    -1        & \lambda+2 & -1        & -1        \\
-                    -1        & -1        & \lambda+2 & -1        \\
-                    -1        & -1        & -1        & \lambda+2
-                \end{vmatrix} $
-
-        \end{multicols} \begin{multicols}{2} % dirty hack
-
-            \item $ D_3=\begin{vmatrix}
-                    1^{2} & 2^{2} & 3^{2} & 4^{2} \\
-                    2^{2} & 3^{2} & 4^{2} & 5^{2} \\
-                    3^{2} & 4^{2} & 5^{2} & 6^{2} \\
-                    4^{2} & 5^{2} & 6^{2} & 7^{2}
-                \end{vmatrix} $
-
-            \item $ D_4=\begin{vmatrix}
-                    3 & 2 & 0 & 0 \\
-                    1 & 3 & 2 & 0 \\
-                    0 & 1 & 3 & 2 \\
-                    0 & 0 & 1 & 3
-                \end{vmatrix} $
-        \end{multicols} \end{enumerate}
-
-    \item 解行列式 $\begin{vmatrix}
-        a_{1}+a_{2}         & a_{2}+a_{3}         & \cdots & a_{n-1}+a_n         & a_n+a_{1}         \\
-        a_{1}^{2}+a_{2}^{2} & a_{2}^{2}+a_{3}^{2} & \cdots & a_{n-1}^{2}+a_n^{2} & a_n^{2}+a_{1}^{2} \\
-        \vdots              & \vdots              & \ddots & \vdots              & \vdots            \\
-        a_{1}^{n}+a_{2}^{n} & a_{2}^{n}+a_{3}^{n} & \cdots & a_{n-1}^{n}+a_n^{n} & a_n^{n}+a_{1}^{n}
-    \end{vmatrix}$.
-
-    \item 解行列式
-          \begin{multicols}{2} \begin{enumerate}
-                  \item $D=\begin{vmatrix}
-                                ax+by & ay+bz & az+bx \\
-                                ay+bz & az+bx & ax+by \\
-                                az+bx & ax+by & ay+bz
-                            \end{vmatrix}$
-
-                  \item $D=\begin{vmatrix}
-                                x^2+1 & xy    & xz    \\
-                                xy    & y^2+1 & yz    \\
-                                xz    & yz    & z^2+1
-                            \end{vmatrix}$
-              \end{enumerate} \end{multicols}
-
-    \item 计算行列式$|2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|$，其中$\alpha_1=(a_1,a_2,\ldots,a_n),\enspace \beta_1=(b_1,b_2,\ldots,b_n),\enspace \alpha_2=(c_1,c_2,\ldots,c_n),\enspace \beta_2 = (d_1,d_2,\ldots,d_n)$.（提示：利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$）
-
-    \item 求$2n$阶行列式的值（空缺处都是0）：
-    \[\begin{vmatrix}
-        a & & & & & b \\
-        & \ddots & & & \begin{rotate}{90} $\ddots$ \end{rotate} & \\
-        & & a & b & & \\
-        & & b & a & & \\
-        & \begin{rotate}{90} $\ddots$ \end{rotate} & & & \ddots & \\
-        b & & & & & a
-    \end{vmatrix}.\]
-\end{enumerate}
-
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 设$A=(a_{ij})$是$n(n\geqslant 2)$阶整数方阵，满足对任意的$i,j$，$|A|$均可整除$a_{ij}$，证明：$|A|=\pm 1$.
-
-    \item 设$f_{ij}(t)$是可微函数，
-    \[F(t)=\begin{vmatrix}
-        f_{11}(t) & f_{12}(t) & \cdots & f_{1n}(t) \\
-        f_{21}(t) & f_{22}(t) & \cdots & f_{2n}(t) \\
-        \vdots & \vdots & \ddots & \vdots \\
-        f_{n1}(t) & f_{n2}(t) & \cdots & f_{nn}(t)
-    \end{vmatrix},\]
-    求证：$\dfrac{\textup{d}}{\textup{d}t}F(t)=\sum\limits_{j=1}^nF_j(t)$，其中
-    \[F_j(t)=\begin{vmatrix}
-        f_{11}(t) & f_{12}(t) & \cdots & \dfrac{\textup{d}}{\textup{d}t}f_{1j}(t) & \cdots & f_{1n}(t) \\
-        f_{21}(t) & f_{22}(t) & \cdots & \dfrac{\textup{d}}{\textup{d}t}f_{2j}(t) & \cdots & f_{2n}(t) \\
-        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-        f_{n1}(t) & f_{n2}(t) & \cdots & \dfrac{\textup{d}}{\textup{d}t}f_{nj}(t) & \cdots & f_{nn}(t)
-    \end{vmatrix}.\]
-
-    \item 设$A,B,C,D$均为$n$阶方阵，$\lvert A \rvert \neq 0$且$AC=CA$. 证明：
-          \[\begin{vmatrix}
-                  A & B \\ C & D
-              \end{vmatrix} = |AD-CB|.\]
-
-    \item 设$A$为$n$阶可逆矩阵，$\alpha,\beta$为$n$维列向量，证明：
-          \[|A+\alpha\beta^{\mathrm{T}}|=|A|(1+\beta^\mathrm{T}A^{-1}\alpha).\]
-
-    \item 设$A,B$均为$n$阶方阵，证明：
-          \[\begin{vmatrix}
-                  A & B \\ B & A
-              \end{vmatrix} = |A+B||A-B|.\]
-
-    \item 设$A,B,C,D$均为$n$阶方阵，且$r\begin{pmatrix}
-                  A & B \\ C & D
-              \end{pmatrix}=n$，证明：
-          \[\begin{vmatrix}
-                  |A| & |B| \\ |C| & |D|
-              \end{vmatrix} = 0.\]
-
-    \item 设$A$为$n$阶实对称矩阵（$n>1$），$|A|=0$，证明：$A_{ii}A_{jj}=(A_{ij})^2(i,j=1,\cdots,n)$.
-
-    \item 求$\begin{pmatrix}
-                  A & C \\ O & B
-              \end{pmatrix}^*$，并求当$A$可逆时的$\begin{pmatrix}
-                  A & B \\ C & D
-              \end{pmatrix}^*$.
-
-    \item 下面三个小问探讨伴随矩阵的反问题，即对任意给定的$n$阶方阵$B$，是否存在$n$阶方阵$A$使得$A^*=B$.
-          \begin{enumerate}
-              \item 证明：若$n=2$，则存在唯一的2阶方阵$A$使得$A^*=B$；
-
-              \item 证明：若$n > 2$，则存在$n$阶方阵$A$使得$A^*=B$的充要条件为$r(B) \in \{0,1,n\}$，并且
-                    \begin{enumerate}
-                        \item $r(B)=n$时，$A=\sqrt[n-1]{|B|}B^{-1}$；
-
-                        \item $r(B)=1$时，$A=Q^{-1}\begin{pmatrix}
-                                      0 & O \\ O & X_{n-1}
-                                  \end{pmatrix}P^{-1}$，且$|X_{n-1}|=|PQ|$，$B=P\begin{pmatrix}
-                                      1 & O \\ O & O
-                                  \end{pmatrix}Q$；
-                    \end{enumerate}
-
-              \item 设$A=\begin{pmatrix}
-                            1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1
-                        \end{pmatrix}$，求矩阵$B$使得$B^*=A$.
-          \end{enumerate}
-
-    \item 证明$\begin{vmatrix}
-        a      & c      & c      & \cdots & c      \\
-        b      & a      & c      & \cdots & c      \\
-        b      & b      & a      & \cdots & c      \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        b      & b      & b      & \cdots & a
-    \end{vmatrix}=\dfrac{b(a-c)^{n}-c(a-b)^{n}}{b-c}$，其中 $b \neq c$, 等式左端是 $n$ 阶行列式.
-
-    \item 计算$n$阶行列式
-    \[|A|=\begin{vmatrix}
-        a_1b_1 & a_1b_2 & a_1b_3 & \cdots & a_1b_n \\
-        a_2b_1 & a_2b_2 & a_2b_3 & \cdots & a_2b_n \\
-        a_3b_1 & a_3b_2 & a_3b_3 & \cdots & a_3b_n \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        a_nb_1 & a_nb_2 & a_nb_3 & \cdots & a_nb_n
-    \end{vmatrix}.\]
-
-    \item 计算$n$阶行列式
-    \[|A|=\begin{vmatrix}
-        1+a_1^2 & a_1a_2 & \cdots & a_1a_n \\
-        a_2a_1 & 1+a_2^2 & \cdots & a_2a_n \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_na_1 & a_na_2 & \cdots & 1+a_n^2
-    \end{vmatrix}.\]
-
-    \item 计算$n$阶行列式
-    \[|A|=\begin{vmatrix}
-        1+x_1 & 1+x_1^2 & \cdots & 1+x_1^n \\
-        1+x_2 & 1+x_2^2 & \cdots & 1+x_2^n \\
-        \vdots & \vdots & \ddots & \vdots \\
-        1+x_n & 1+x_n^2 & \cdots & 1+x_n^n
-    \end{vmatrix}.\]
-
-    \item 计算$n$阶行列式，其中$x,y,z$为任意实常数：
-    \[|A|=\begin{vmatrix}
-        x_1 & y & y & \cdots & y \\
-        z & x_2 & y & \cdots & y \\
-        z & z & x_3 & \cdots & y \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        z & z & z & \cdots & x_n
-    \end{vmatrix}.\]
-\end{enumerate}
+\begin{summary}
+
+    在这一讲中我们引入了一个重要的工具——行列式. 我们不同于一般教材的逆序数定义（我们将会在史海拾遗中从历史角度介绍这一定义），首先给出了公理化的定义，并且发现行列式事实上就是在描述$n$维空间中物体的体积. 接下来我们也介绍了递归式定义（即按一行一列展开）和逆序数定义，并讨论了行列式的一些性质，介绍了常用的范德蒙行列式，在此基础上也介绍了大量的运算技巧——或许读者能回想起中学时代刷题的感觉. 接下来我们也介绍了伴随矩阵及其大量性质，在性质的证明中希望读者体会这类证明的一般想法. 我们也介绍了Cramer法则，它是最开始研究线性方程组理论的一个核心结果，因此在讨论线性方程组一般理论的朝花夕拾一讲中我们还会再遇见它的身影. 最后我们讨论了行列式的秩，这也是我们最后一个``秩''的定义，我们讨论了向量组、线性映射、矩阵、行列式的秩的统一性，这也是我们这一学期学习的秩的概念的一个总结，也希望读者能在练习中更深刻体会它们的关联.
+
+    事实上，我们很难说服读者行列式以什么样的方式引入是最为合适的，或许在史海拾遗的历史讲述中我们可能才能窥见行列式诞生的奥秘，那是最为自然的描述，但需要过多的准备以至于可能令人厌烦. 但至少公理化定义是非常简单的，并且有一定的几何背景，由此也直接可以得出行列式大量的优良性质，例如矩阵可逆等价于行列式等于零——这一性质在将来关于线性方程组、特征多项式等的讨论中是核心的.
+
+\end{summary}
+
+\begin{exercise}
+    \exquote[约翰·纳皮尔]{我总是尽我的精力和才能来摆脱那种繁重而单调的计算. }
+
+    \begin{exgroup}
+        \item 证明：行列式的公理化定义、递归式定义和逆序数定义是等价的.
+
+        \item 设$\alpha_1,\alpha_2,\alpha_3$为三维列向量，令$A=(\alpha_1,\alpha_2,\alpha_3)$，且$|A|=2$，求$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|$.
+
+        \item 求证以下命题：
+        \begin{enumerate}
+            \item 奇数阶反对称矩阵不可逆；
+
+            \item 若$A$是$n$阶可逆对称矩阵，$B$是$n$阶反对称矩阵，则当$n$为奇数时，齐次线性方程组$(AB)X=O$有非零解.
+        \end{enumerate}
+
+        \item 设$A$、$B$分别为$m$、$n$阶可逆矩阵，且$|A|=a$，$|B|=b$，求$\begin{pmatrix}
+                A & O \\ O & B
+            \end{pmatrix}^*$和$\begin{pmatrix}
+                O & A \\ B & O
+            \end{pmatrix}^*$.
+
+        \item 证明：
+        \begin{enumerate}
+            \item 若$A$为幂等矩阵，则$A^*$也为幂等矩阵；$A$为幂零矩阵，则$A^*$也为幂零矩阵；
+
+            \item 若$A$为对称矩阵，则$A^*$也为对称矩阵；$A$为反对称矩阵，则$A^*$为偶数阶时也为反对称矩阵，奇数阶时为对称矩阵.
+        \end{enumerate}
+
+        \item 证明：上（下）三角矩阵的伴随矩阵是上（下）三角矩阵（对角矩阵为特例）.
+
+        \item 设$A$为$n$阶方阵，证明：若$|A|=0$，则$A$中任意两行（列）对应元素的代数余子式成比例.
+
+        \item 设向量$\alpha_1,\alpha_2,\alpha_3$线性无关，讨论向量$\alpha_1-\alpha_2-2\alpha_3,\ 2\alpha_1+\alpha_2-\alpha_3,\ 3\alpha_1+\alpha_2+2\alpha_3$的线性相关性.
+
+        \item 设$W=\spa(\alpha_1,\alpha_2)$是$\mathbf{R}^4$的一个子空间，其中$\alpha_1=(1,2,1,-1)^\mathrm{T}$，$\alpha_2=(1,4,-1,-1)^\mathrm{T}$，试将$\alpha_1,\alpha_2$扩充为$\mathbf{R}^4$的基.
+
+        \item $ D_n=\begin{vmatrix}
+                1      & 2      & 3      & 4      & \cdots & n-1    & n      \\
+                x      & 1      & 2      & 3      & \cdots & n-2    & n-1    \\
+                x      & x      & 1      & 2      & \cdots & n-3    & n-2    \\
+                x      & x      & x      & 1      & \cdots & n-4    & n-3    \\
+                \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                x      & x      & x      & x      & \cdots & 1      & 2      \\
+                x      & x      & x      & x      & \cdots & x      & 1      \\
+            \end{vmatrix}$（提示：考虑滚动消去法）.
+
+        \item $ D_n=\begin{vmatrix}
+                a_1 & b_1 &     &        &         \\
+                    & a_2 & b_2 &        &         \\
+                    &     & a_3 & \ddots &         \\
+                    &     &     & \ddots & b_{n-1} \\
+                b_n &     &     &        & a_n
+            \end{vmatrix}$.
+
+        \item $D_n=\begin{vmatrix}
+                a+b & ab  &        &     &     \\
+                1   & a+b & \ddots &     &     \\
+                    & 1   & \ddots & ab  &     \\
+                    &     & \ddots & a+b & ab  \\
+                    &     &        & 1   & a+b \\
+            \end{vmatrix}$.
+
+        \item 用递推法解\autoref{ex:递推法}.
+
+        \item 解行列式 $ \begin{vmatrix}
+                a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
+                b^{2} & (b+1)^{2} & (b+2)^{2} & (b+3)^{2} \\
+                c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
+                d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
+            \end{vmatrix} $.
+
+        \item 设
+        \[ D=\begin{vmatrix}
+                1+a_1  & 1      & \cdots & 1      \\
+                1      & 1+a_2  & \cdots & 1      \\
+                \vdots & \vdots & \ddots & \vdots \\
+                1      & 1      & \cdots & 1+a_n
+            \end{vmatrix} \]
+        \begin{enumerate}
+            \item 用递推公式计算行列式$D$；
+
+            \item 硬拆$D$为$2^n$个行列式，计算出结果.
+        \end{enumerate}
+
+        \item 解行列式
+        \begin{enumerate}
+            \item $D=\begin{vmatrix}
+                          1      & 2      & \cdots & 2      & 2      \\
+                          2      & 2      & \cdots & 2      & 2      \\
+                          \vdots & \vdots & \ddots & \vdots & \vdots \\
+                          2      & 2      & \cdots & n-1    & 2      \\
+                          2      & 2      & \cdots & 2      & n\end{vmatrix}$；
+
+            \item $D=\begin{vmatrix}
+                          1      & 2      & \cdots & n-1    & n      \\
+                          2      & 3      & \cdots & n      & 1      \\
+                          3      & 4      & \cdots & 1      & 2      \\
+                          \vdots & \vdots & \ddots & \vdots & \vdots \\
+                          n      & 1      & \cdots & n-2    & n-1
+                      \end{vmatrix}$.
+        \end{enumerate}
+
+        \item 记$a_{ij}=|i-j|$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
+
+        \item 计算行列式$D=\begin{vmatrix}
+                1 & 0 & 2 & 0 & x   \\
+                0 & 2 & 0 & 1 & 0   \\
+                1 & 0 & 4 & 0 & x^2 \\
+                0 & 5 & 0 & 3 & 0   \\
+                1 & 0 & 8 & 0 & x^3
+            \end{vmatrix}$.
+
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 设$D=\begin{vmatrix}
+                3 & 0 & 4 & 1 \\ 2 & 3 & 1 & 4 \\ 0 & -7 & 8 & 3 \\ 5 & 3 & -2 & 2
+            \end{vmatrix}$，求
+        \begin{enumerate}
+            \item $A_{21}+A_{22}+A_{23}+A_{24}$；
+
+            \item $A_{31}+A_{33}$；
+
+            \item $M_{41}+M_{42}+M_{43}+M_{44}$.
+        \end{enumerate}
+
+        \item 求参数 $a,b$  的值，使得$\begin{vmatrix}1 & 1 & 1 \\ x & y & z \\u & v & w\end{vmatrix}=1,
+            \begin{vmatrix}1 & 2 & -5 \\ x & y & z \\u & v & w\end{vmatrix}=2,
+            \begin{vmatrix}2 & 3 & b \\ x & y & z \\u & v & w\end{vmatrix}=a$都成立，并求$\begin{vmatrix}x & y & z \\ 1 & -1 & 5 \\u & v & w\end{vmatrix}$.
+
+        \item 设$A,B$为三阶矩阵，且$|A|=3,|B|=2$，且$|A^{-1}+B|=2$，求$|A+B^{-1}|$.
+
+        \item 设$A$为$n$阶正交矩阵，即$AA^\mathrm{T}=A^\mathrm{T}A=E$，且$|A|<0$，证明：$|E+A|=0$.
+
+        \item 设实方阵$A$的伴随矩阵$A^*=\begin{pmatrix}
+                1 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 1
+            \end{pmatrix}$，且$|A|>0$，已知矩阵$B$满足$AB=E+3A$，求矩阵$B$.
+
+        \item 设$B=\begin{pmatrix}
+                1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1
+            \end{pmatrix}$，矩阵$A$满足方程$BA=B^\mathrm{T}B$，求$|A^*-2E|$.
+
+        \item 已知齐次线性方程组
+        \[\begin{cases} \begin{aligned}
+                    a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n          & = 0             \\
+                    a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n          & = 0             \\
+                                                                  & \vdotswithin{=} \\
+                    a_{n-1,1}x_1+a_{n-1,2}x_2+\cdots+a_{n-1,n}x_n & = 0
+                \end{aligned} \end{cases}\]
+        设$M_j\enspace(j=1,2,\ldots,n)$表示$A=(a_{ij})_{n-1 \times n}$划掉第$j$列所得的$n-1$阶子式，证明：
+        \begin{enumerate}
+            \item $(M_1,-M_2,\ldots,(-1)^{n-1}M_n)$是方程组的一个解；
+
+            \item 若$r(A)=n-1$，则方程组的解全是$(M_1,-M_2,\ldots,(-1)^{n-1}M_n)$的倍数.
+        \end{enumerate}
+
+        \item 设$A,B$均为$n$阶矩阵，且$|A|=2,|B|=1$，求$|2A^*B^*-A^{-1}B^{-1}|$.
+
+        \item 若$n$阶非零矩阵$A$满足$A^\mathrm{T}=A^*$，证明：
+        \begin{enumerate}
+            \item $|A|>0$；
+
+            \item $|A|=1$（补充：若$A$第一行元素相等，求第一行元素的值）；
+
+            \item $A$为正交矩阵，即$AA^\mathrm{T}=A^\mathrm{T}A$；
+
+            \item $n>2$且为奇数时，$|E-A|=0$.
+        \end{enumerate}
+
+        \item 已知$A$是一个秩为$n-1$的$n\enspace(n \geqslant 2)$阶方阵，且已知某个元素$a_{ij}$的代数余子式$A_{ij} \neq 0$，求方程组$AX=0$的基础解系.
+
+        \item 设$D=|a_{ij}|_{n \times n}$，$A_{ij}$是$a_{ij}$的代数余子式. 求证：
+        \[\begin{vmatrix}
+                A_{11}    & A_{12}    & \cdots & A_{1,n-1}   \\
+                A_{21}    & A_{22}    & \cdots & A_{2,n-1}   \\
+                \vdots    & \vdots    & \ddots & \vdots      \\
+                A_{n-1,1} & A_{n-1,2} & \cdots & A_{n-1,n-1}
+            \end{vmatrix}=a_{nn}D^{n-2}.\]
+
+        \item 设$a_1,a_2,\ldots,a_n$为互不相等的实数，$b_1,b_2,\ldots,b_n$为任意给定的实数. 证明：存在唯一的$n-1$次多项式，满足$f(a_i)=b_i,\enspace i=1,2,\ldots,n$.
+
+        \item 设 $a_1,a_2,\ldots,a_n$ 是 $n$ 个两两互异的实数，$f_1(x),f_2(x),\ldots,f_n(x)$ 是 $n$ 个次数不大于 $n-2$ 的实系数多项式，证明：
+
+        \[\begin{vmatrix}
+                f_1(a_1) & f_1(a_2) & \cdots & f_1(a_n) \\
+                f_2(a_1) & f_2(a_2) & \cdots & f_2(a_n) \\
+                \vdots   & \vdots   & \ddots & \vdots   \\
+                f_n(a_1) & f_n(a_2) & \cdots & f_n(a_n)
+            \end{vmatrix}=0.\]
+
+        \item 证明：$n$维向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是
+        \[\begin{vmatrix}
+                \alpha_1^\mathrm{T}\alpha_1 & \alpha_1^\mathrm{T}\alpha_2 & \cdots & \alpha_1^\mathrm{T}\alpha_n \\
+                \alpha_2^\mathrm{T}\alpha_1 & \alpha_2^\mathrm{T}\alpha_2 & \cdots & \alpha_2^\mathrm{T}\alpha_n \\
+                \vdots                      & \vdots                      & \ddots & \vdots                      \\
+                \alpha_n^\mathrm{T}\alpha_1 & \alpha_n^\mathrm{T}\alpha_2 & \cdots & \alpha_n^\mathrm{T}\alpha_n
+            \end{vmatrix}\neq 0.\]
+
+        \item 设$a_1,\ldots,a_n$为$n$个$n$维向量，证明：向量组$a_1,\ldots,a_n$线性无关的充要条件是任一个$n$维向量都可以由其线性表示（不使用线性空间维数的方式完成）.
+
+        \item 设$s \times n\enspace(s\leqslant n)$矩阵为
+        \[\begin{pmatrix}
+                1      & a      & a^2    & \cdots & a^{n-1}    \\
+                1      & a^2    & a^4    & \cdots & a^{2(n-1)} \\
+                \vdots & \vdots & \vdots & \ddots & \vdots     \\
+                1      & a^s    & a^{2s} & \cdots & a^{s(n-1)}
+            \end{pmatrix}\]
+        且$a^r\neq 1\enspace(0<r<n)$，求$A$的秩和它的列向量组的一个极大线性无关组.
+
+        \item 设$A,B,C,D \in \mathbf{F}^{n \times n}$，定义变换 $ T : \mathbf{F}^{n \times n} \to \mathbf{F}^{n \times n}$ 为
+        \[ T(X) = AXB+CX+XD \]
+        证明：
+        \begin{enumerate}
+            \item $T$为$\mathbf{F}^{n \times n}$上的线性变换；
+
+            \item 当$C=D=0$时，$T$可逆的充要条件是$|AB| \neq 0$.
+        \end{enumerate}
+
+        \item 设$A$为$n$阶矩阵，且$r(A) < n$，又$A_{11} \neq 0$，证明：存在常数$k$，使得$(A^*)^2=kA^*$.
+
+        \item 设$V$是一个$n$维实线性空间，证明：存在$V$中的一个由可列无穷多个向量组成的向量组$\{\alpha_i \mid i\in\mathbf{Z}_+\}$，使得其中任意$n$个向量组成的向量组都是$V$的一组基.
+
+        \item 回顾\autoref{ex:函数和数列线性空间} 中数列极限的例子，证明：以$0$为极限的实数数列全体构成的线性空间是无限维线性空间.
+
+        \item 解行列式
+        \begin{enumerate} \begin{multicols}{2}
+                \item $ D_1=\begin{vmatrix}
+                        1 & 2 & 3 & 4 \\2&3&4&1\\3&4&1&2\\4&1&2&3
+                    \end{vmatrix} $
+
+                \item $ D_2=\begin{vmatrix}
+                        \lambda+2 & -1        & -1        & -1        \\
+                        -1        & \lambda+2 & -1        & -1        \\
+                        -1        & -1        & \lambda+2 & -1        \\
+                        -1        & -1        & -1        & \lambda+2
+                    \end{vmatrix} $
+
+            \end{multicols} \begin{multicols}{2} % dirty hack
+
+                \item $ D_3=\begin{vmatrix}
+                        1^{2} & 2^{2} & 3^{2} & 4^{2} \\
+                        2^{2} & 3^{2} & 4^{2} & 5^{2} \\
+                        3^{2} & 4^{2} & 5^{2} & 6^{2} \\
+                        4^{2} & 5^{2} & 6^{2} & 7^{2}
+                    \end{vmatrix} $
+
+                \item $ D_4=\begin{vmatrix}
+                        3 & 2 & 0 & 0 \\
+                        1 & 3 & 2 & 0 \\
+                        0 & 1 & 3 & 2 \\
+                        0 & 0 & 1 & 3
+                    \end{vmatrix} $
+            \end{multicols} \end{enumerate}
+
+        \item 解行列式 $\begin{vmatrix}
+                a_{1}+a_{2}         & a_{2}+a_{3}         & \cdots & a_{n-1}+a_n         & a_n+a_{1}         \\
+                a_{1}^{2}+a_{2}^{2} & a_{2}^{2}+a_{3}^{2} & \cdots & a_{n-1}^{2}+a_n^{2} & a_n^{2}+a_{1}^{2} \\
+                \vdots              & \vdots              & \ddots & \vdots              & \vdots            \\
+                a_{1}^{n}+a_{2}^{n} & a_{2}^{n}+a_{3}^{n} & \cdots & a_{n-1}^{n}+a_n^{n} & a_n^{n}+a_{1}^{n}
+            \end{vmatrix}$.
+
+        \item 解行列式
+        \begin{multicols}{2} \begin{enumerate}
+                \item $D=\begin{vmatrix}
+                              ax+by & ay+bz & az+bx \\
+                              ay+bz & az+bx & ax+by \\
+                              az+bx & ax+by & ay+bz
+                          \end{vmatrix}$
+
+                \item $D=\begin{vmatrix}
+                              x^2+1 & xy    & xz    \\
+                              xy    & y^2+1 & yz    \\
+                              xz    & yz    & z^2+1
+                          \end{vmatrix}$
+            \end{enumerate} \end{multicols}
+
+        \item 计算行列式$|2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|$，其中$\alpha_1=(a_1,a_2,\ldots,a_n),\enspace \beta_1=(b_1,b_2,\ldots,b_n),\enspace \alpha_2=(c_1,c_2,\ldots,c_n),\enspace \beta_2 = (d_1,d_2,\ldots,d_n)$.（提示：利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$）
+
+        \item 求$2n$阶行列式的值（空缺处都是0）：
+        \[\begin{vmatrix}
+                a &         &   &   &         & b \\
+                  & \ddots  &   &   & \iddots &   \\
+                  &         & a & b &         &   \\
+                  &         & b & a &         &   \\
+                  & \iddots &   &   & \ddots  &   \\
+                b &         &   &   &         & a
+            \end{vmatrix}.\]
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 设$A=(a_{ij})$是$n\enspace(n\geqslant 2)$阶整数方阵，满足对任意的$i,j$，$|A|$均可整除$a_{ij}$，证明：$|A|=\pm 1$.
+
+        \item 设$f_{ij}(t)$是可微函数，
+        \[F(t)=\begin{vmatrix}
+                f_{11}(t) & f_{12}(t) & \cdots & f_{1n}(t) \\
+                f_{21}(t) & f_{22}(t) & \cdots & f_{2n}(t) \\
+                \vdots    & \vdots    & \ddots & \vdots    \\
+                f_{n1}(t) & f_{n2}(t) & \cdots & f_{nn}(t)
+            \end{vmatrix},\]
+        求证：$\dfrac{\mathrm{d}}{\mathrm{d}t}F(t)=\sum\limits_{j=1}^nF_j(t)$，其中
+        \[F_j(t)=\begin{vmatrix}
+                f_{11}(t) & f_{12}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{1j}(t) & \cdots & f_{1n}(t) \\[2ex]
+                f_{21}(t) & f_{22}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{2j}(t) & \cdots & f_{2n}(t) \\[2ex]
+                \vdots    & \vdots    & \ddots & \vdots                                   & \vdots & \vdots    \\[2ex]
+                f_{n1}(t) & f_{n2}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{nj}(t) & \cdots & f_{nn}(t)
+            \end{vmatrix}.\]
+
+        \item 设$A,B,C,D$均为$n$阶方阵，$\lvert A \rvert \neq 0$且$AC=CA$. 证明：
+        \[\begin{vmatrix}
+                A & B \\ C & D
+            \end{vmatrix} = |AD-CB|.\]
+
+        \item 设$A$为$n$阶可逆矩阵，$\alpha,\beta$为$n$维列向量，证明：
+        \[|A+\alpha\beta^{\mathrm{T}}|=|A|(1+\beta^\mathrm{T}A^{-1}\alpha).\]
+
+        \item 设$A,B$均为$n$阶方阵，证明：
+        \[\begin{vmatrix}
+                A & B \\ B & A
+            \end{vmatrix} = |A+B||A-B|.\]
+
+        \item 设$A,B,C,D$均为$n$阶方阵，且$r\begin{pmatrix}
+                A & B \\ C & D
+            \end{pmatrix}=n$，证明：
+        \[\begin{vmatrix}
+                |A| & |B| \\ |C| & |D|
+            \end{vmatrix} = 0.\]
+
+        \item 设$A$为$n$阶实对称矩阵（$n>1$），$|A|=0$，证明：$A_{ii}A_{jj}=(A_{ij})^2(i,j=1,\ldots,n)$.
+
+        \item 求$\begin{pmatrix}
+                A & C \\ O & B
+            \end{pmatrix}^*$，并求当$A$可逆时的$\begin{pmatrix}
+                A & B \\ C & D
+            \end{pmatrix}^*$.
+
+        \item 下面三个小问探讨伴随矩阵的反问题，即对任意给定的$n$阶方阵$B$，是否存在$n$阶方阵$A$使得$A^*=B$.
+        \begin{enumerate}
+            \item 证明：若$n=2$，则存在唯一的2阶方阵$A$使得$A^*=B$；
+
+            \item 证明：若$n > 2$，则存在$n$阶方阵$A$使得$A^*=B$的充要条件为$r(B) \in \{0,1,n\}$，并且
+                  \begin{enumerate}
+                      \item $r(B)=n$时，$A=\sqrt[n-1]{|B|}B^{-1}$；
+
+                      \item $r(B)=1$时，$A=Q^{-1}\begin{pmatrix}
+                                    0 & O \\ O & X_{n-1}
+                                \end{pmatrix}P^{-1}$，且$|X_{n-1}|=|PQ|$，$B=P\begin{pmatrix}
+                                    1 & O \\ O & O
+                                \end{pmatrix}Q$；
+                  \end{enumerate}
+
+            \item 设$A=\begin{pmatrix}
+                          1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1
+                      \end{pmatrix}$，求矩阵$B$使得$B^*=A$.
+        \end{enumerate}
+
+        \item 证明$\begin{vmatrix}
+                a      & c      & c      & \cdots & c      \\
+                b      & a      & c      & \cdots & c      \\
+                b      & b      & a      & \cdots & c      \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                b      & b      & b      & \cdots & a
+            \end{vmatrix}=\dfrac{b(a-c)^{n}-c(a-b)^{n}}{b-c}$，其中 $b \neq c$, 等式左端是 $n$ 阶行列式.
+
+        \item 计算$n$阶行列式
+        \[|A|=\begin{vmatrix}
+                a_1b_1 & a_1b_2 & a_1b_3 & \cdots & a_1b_n \\
+                a_2b_1 & a_2b_2 & a_2b_3 & \cdots & a_2b_n \\
+                a_3b_1 & a_3b_2 & a_3b_3 & \cdots & a_3b_n \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                a_nb_1 & a_nb_2 & a_nb_3 & \cdots & a_nb_n
+            \end{vmatrix}.\]
+
+        \item 计算$n$阶行列式
+        \[|A|=\begin{vmatrix}
+                1+a_1^2 & a_1a_2  & \cdots & a_1a_n  \\
+                a_2a_1  & 1+a_2^2 & \cdots & a_2a_n  \\
+                \vdots  & \vdots  & \ddots & \vdots  \\
+                a_na_1  & a_na_2  & \cdots & 1+a_n^2
+            \end{vmatrix}.\]
+
+        \item 计算$n$阶行列式
+        \[|A|=\begin{vmatrix}
+                1+x_1  & 1+x_1^2 & \cdots & 1+x_1^n \\
+                1+x_2  & 1+x_2^2 & \cdots & 1+x_2^n \\
+                \vdots & \vdots  & \ddots & \vdots  \\
+                1+x_n  & 1+x_n^2 & \cdots & 1+x_n^n
+            \end{vmatrix}.\]
+
+        \item 计算$n$阶行列式，其中$x,y,z$为任意实常数：
+        \[|A|=\begin{vmatrix}
+                x_1    & y      & y      & \cdots & y      \\
+                z      & x_2    & y      & \cdots & y      \\
+                z      & z      & x_3    & \cdots & y      \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                z      & z      & z      & \cdots & x_n
+            \end{vmatrix}.\]
+    \end{exgroup}
+\end{exercise}

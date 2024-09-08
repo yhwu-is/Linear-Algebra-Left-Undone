@@ -500,9 +500,7 @@
 
 \begin{proof}
     上图中的 $i, p, i_*, p_*$ 和 $\tilde{i}$ 都是显然看出的，所以，我们只要按照正常的方式，从 $\varphi$ 构造出 $\varphi_*$ 即可. 左下方三角的交换性是毋庸置疑的，因此，只要有右上的三角的交换性即可. 考虑 $V/W$ 中的元素 $v + W$，我们定义
-    \[
-    \varphi_*(v + W) = \varphi(v)
-    \]
+    \[ \varphi_*(v + W) = \varphi(v) \]
     这个映射是良定且唯一的，这由 $\varphi$ 对商的相容性保证，请读者自行在习题中完成证明.
 \end{proof}
 
@@ -510,57 +508,47 @@
 
 最后的一个反思是，对偶空间的意义到底在哪？在最开始，我们已经提到过，线性泛函就是超平面，超平面与点具备对偶关系. 而这样的对偶关系延伸开去，就是两种对线性方程组的视角，其中，超平面的交的视角我们将在线性方程组一般理论的讨论中展开，这里我们给出点的视角. 如果将 $(a_{i1}, a_{i2},\ldots, a_{in})$ 视作一个点，那么我们的求解任务就是找一个超平面过 $m$ 个点. 而我们在中学阶段就已经知道，要证明一组点共面是一个比较麻烦的事情，但是求一组面是否有交点往往来说是比较轻松的. 因此，我们通过对偶空间进行了一个翻译工作，将求一组点所共的那些面转化成了一些面所交的那些点，进而对问题完成了简化.
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
+\end{summary}
 
+\begin{exercise}
+    \exquote[线性代数教学俗语]{龙生龙，凤生凤，华罗庚的学生会打洞.}
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
-
-\vspace{2ex}
-{\kaishu 龙生龙，凤生凤，华罗庚的学生会打洞.}
-\begin{flushright}
-    \kaishu
-    ——线性代数教学俗语
-\end{flushright}
-
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 证明以下两个命题：
+    \begin{exgroup}
+        \item 证明以下两个命题：
         \begin{enumerate}
             \item 设$\varphi\in \mathcal{L}(V,\mathbf{F}),\enspace\varphi\neq 0$. 证明：$\dim V/(\ker\varphi)=1$；
 
             \item 设$U$是$V$的子空间且$\dim V/U=1$，则存在$\varphi\in \mathcal{L}(V,\mathbf{F})$使得$\ker\varphi=U$.
         \end{enumerate}
-\end{enumerate}
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设$U$和$W$是线性空间$V$的子空间. 构造同构映射证明：若$V=U\oplus W$，则$U$和$V/W$同构.
+    \begin{exgroup}
+        \item 设$U$和$W$是线性空间$V$的子空间. 构造同构映射证明：若$V=U\oplus W$，则$U$和$V/W$同构.
 
-    \item 设$U$是$V$的子空间，$\Gamma:\mathcal{L}(V/U,W)\to \mathcal{L}(V,W)$定义为$\Gamma(S)=S\circ\pi$. 证明：
-          \begin{enumerate}
-              \item $\Gamma$是线性映射；
+        \item 设$U$是$V$的子空间，$\Gamma:\mathcal{L}(V/U,W)\to \mathcal{L}(V,W)$定义为$\Gamma(S)=S\circ\pi$. 证明：
+        \begin{enumerate}
+            \item $\Gamma$是线性映射；
 
-              \item $\Gamma$是单的；
+            \item $\Gamma$是单的；
 
-              \item $\im\Gamma=\{T\in \mathcal{L}(V,W) \mid \forall u\in U,\enspace Tu=0\}$.
-          \end{enumerate}
+            \item $\im\Gamma=\{T\in \mathcal{L}(V,W) \mid \forall u\in U,\enspace Tu=0\}$.
+        \end{enumerate}
 
-    \item 实际上，零化子有一个更广泛的版本，考虑 $S$ 为 $V$ 的一个子集，也能如上构造 $S^0$，尝试证明，这样的构造满足以下性质：
-          \begin{enumerate}
-              \item $S^{00} = \spa S$
-              \item $S \subset T \iff T^0 \subset S^0$
-              \item 若 $U_1, U_2$ 为 $V$ 的两个子空间，证明 \begin{enumerate}
-                        \item $(U_1 + U_2)^0 = U_1^0 \cap U_2^0$
-                        \item $(U_1 \cap U_2)^0 = U_1^0 + U_2^0$
-                    \end{enumerate}（提示：反复利用前面两个性质）
-              \item 进而得出对于零点集的相应结论
-          \end{enumerate}
-\end{enumerate}
+        \item 实际上，零化子有一个更广泛的版本，考虑 $S$ 为 $V$ 的一个子集，也能如上构造 $S^0$，尝试证明，这样的构造满足以下性质：
+        \begin{enumerate}
+            \item $S^{00} = \spa S$
+            \item $S \subset T \iff T^0 \subset S^0$
+            \item 若 $U_1, U_2$ 为 $V$ 的两个子空间，证明 \begin{enumerate}
+                      \item $(U_1 + U_2)^0 = U_1^0 \cap U_2^0$
+                      \item $(U_1 \cap U_2)^0 = U_1^0 + U_2^0$
+                  \end{enumerate}（提示：反复利用前面两个性质）
+            \item 进而得出对于零点集的相应结论
+        \end{enumerate}
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item
-\end{enumerate}
+    \begin{exgroup}
+        \item
+    \end{exgroup}
+\end{exercise}

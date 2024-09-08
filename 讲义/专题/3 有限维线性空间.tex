@@ -502,107 +502,99 @@
     \item 容易验证$\mathbf{R}^n$中的向量在自然基下的坐标实际上就是向量本身，例如$(x,y,z)=xe_1+ye_2+ze_3$，故在$\mathbf{R}^3$自然基下的坐标仍然为$(x,y,z)$，需要牢记，有时可以加速解题.
 \end{enumerate}
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-本节内容相对而言概念和定理非常多，涉及的题型也很多，因此我们在这里给出一个思维导图，供读者捋顺思路（读者也可以将其他看到过的，例如习题中的命题进一步加入思维导图）.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.6]{figs/3-1.png}
-\end{figure}
+    本节内容相对而言概念和定理非常多，涉及的题型也很多，因此我们在这里给出一个思维导图，供读者捋顺思路（读者也可以将其他看到过的，例如习题中的命题进一步加入思维导图）.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[scale=0.6]{figs/3-1.png}
+    \end{figure}
 
-事实上，与其他内容风格不一样的是，本讲中很大一部分的定理我们都给出了证明，一方面是为了提升阅读体验，防止在初学时就被多个``显然''等词汇困惑，另一方面也是希望读者能够从这些比较规范的证明中得到一些证明的技巧.
+    事实上，与其他内容风格不一样的是，本讲中很大一部分的定理我们都给出了证明，一方面是为了提升阅读体验，防止在初学时就被多个``显然''等词汇困惑，另一方面也是希望读者能够从这些比较规范的证明中得到一些证明的技巧.
 
-也许读到这里很多读者都会有些迷惑与焦急——为什么我们仿佛在学习很多看起来十分抽象而且似乎没什么实际应用的知识呢？或许我们需要在这里给读者一个``定心丸''. 事实上，我们在上一讲中定义的线性空间运算法则就是从一般向量加法数乘运算法则抽象而来的最为抽象和基本的内容，我们仅仅建立在这一基础上，伴随着线性表示、线性扩张、线性相关等概念的提出，导出了（有限维）线性空间都具有一种统一的本质结构描述——基和维数，由此我们从抽象的运算规则走到了比较具体的结构. 在此基础上，我们基本上将单个线性空间的研究完成，之后我们将会讨论线性空间之间的关系——一方面可以定义线性空间之间的运算，我们将在下一讲详细介绍，另一方面可以建立两个线性空间之间的某种映射，在关于这种映射的讨论中我们会发现线性空间的本质结构是维数，甚至基之间的差异都可以完全被遮蔽（只需通过本讲介绍的坐标即可），然后我们对线性空间的认识便可以从某种比较抽象的结构走向大家熟悉的一定长度的向量，接下来便可以定义更为具象的矩阵. 这一路上我们实际上是从最为抽象的内容逐步定义概念，说明定理，走向具象的内容. 不同于一般线性代数从行列式、矩阵开始，这样的思路一定能让读者对线性代数有更为深刻的认识.
+    也许读到这里很多读者都会有些迷惑与焦急——为什么我们仿佛在学习很多看起来十分抽象而且似乎没什么实际应用的知识呢？或许我们需要在这里给读者一个``定心丸''. 事实上，我们在上一讲中定义的线性空间运算法则就是从一般向量加法数乘运算法则抽象而来的最为抽象和基本的内容，我们仅仅建立在这一基础上，伴随着线性表示、线性扩张、线性相关等概念的提出，导出了（有限维）线性空间都具有一种统一的本质结构描述——基和维数，由此我们从抽象的运算规则走到了比较具体的结构. 在此基础上，我们基本上将单个线性空间的研究完成，之后我们将会讨论线性空间之间的关系——一方面可以定义线性空间之间的运算，我们将在下一讲详细介绍，另一方面可以建立两个线性空间之间的某种映射，在关于这种映射的讨论中我们会发现线性空间的本质结构是维数，甚至基之间的差异都可以完全被遮蔽（只需通过本讲介绍的坐标即可），然后我们对线性空间的认识便可以从某种比较抽象的结构走向大家熟悉的一定长度的向量，接下来便可以定义更为具象的矩阵. 这一路上我们实际上是从最为抽象的内容逐步定义概念，说明定理，走向具象的内容. 不同于一般线性代数从行列式、矩阵开始，这样的思路一定能让读者对线性代数有更为深刻的认识.
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu 给我五个系数，我将画出一头大象；给我六个系数，大象将会摇动尾巴.}
-\begin{flushright}
-    \kaishu
-    ——柯西
-\end{flushright}
+\begin{exercise}
+    \exquote[柯西]{给我五个系数，我将画出一头大象；给我六个系数，大象将会摇动尾巴.}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 请先完成教材P87--88第二章习题第10题的判断题；
+    \begin{exgroup}
+        \item 请先完成教材P87--88第二章习题第10题的判断题；
 
-    \item 证明：如果向量组线性相关，把每个向量去掉$m$个位置一致的分量，得到的缩短组仍线性相关；如果向量组线性无关，把每个向量添加$m$个位置一致的分量，得到的缩短组仍线性无关；
+        \item 证明：如果向量组线性相关，把每个向量去掉$m$个位置一致的分量，得到的缩短组仍线性相关；如果向量组线性无关，把每个向量添加$m$个位置一致的分量，得到的缩短组仍线性无关；
 
-    \item $a$取何值时，$\beta_1=(1,3,6,2)^\mathrm{T},\beta_2=(2,1,2,-1)^\mathrm{T},\beta_3=(1,-1,a,-2)^\mathrm{T}$线性无关？
+        \item $a$取何值时，$\beta_1=(1,3,6,2)^\mathrm{T},\beta_2=(2,1,2,-1)^\mathrm{T},\beta_3=(1,-1,a,-2)^\mathrm{T}$线性无关？
 
-    \item 设$\alpha_1,\alpha_2,\ldots,\alpha_n\in\mathbf{F}^n$. 证明：$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是$\mathbf{F}^n$中任一向量都可以由它们线性表示.
+        \item 设$\alpha_1,\alpha_2,\ldots,\alpha_n\in\mathbf{F}^n$. 证明：$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是$\mathbf{F}^n$中任一向量都可以由它们线性表示.
 
-    \item 设$S_1=\{\alpha_1,\ldots,\alpha_s\},S_2=\{\beta_1,\ldots,\beta_t\}$是向量空间$V$的两个线性无关的子集，证明：$\alpha_1,\ldots,\alpha_s,\beta_1,\ldots,\beta_t$线性无关$\iff \spa(S_1)\cap \spa(S_2)=\{0\}$.
+        \item 设$S_1=\{\alpha_1,\ldots,\alpha_s\},S_2=\{\beta_1,\ldots,\beta_t\}$是向量空间$V$的两个线性无关的子集，证明：$\alpha_1,\ldots,\alpha_s,\beta_1,\ldots,\beta_t$线性无关$\iff \spa(S_1)\cap \spa(S_2)=\{0\}$.
 
-    \item 已知$\alpha_1=(1,2,4,3),\alpha_2=(1,-1,-6,6),\alpha_3=(-2,-1,2,-9),\alpha_4=(1,1,-2,7),\beta=(4,2,4,a)$.
-          \begin{enumerate}
-              \item 求子空间$\spa(\alpha_1,\alpha_2,\alpha_3,\alpha_4)$的维数和一组基；
+        \item 已知$\alpha_1=(1,2,4,3),\alpha_2=(1,-1,-6,6),\alpha_3=(-2,-1,2,-9),\alpha_4=(1,1,-2,7),\beta=(4,2,4,a)$.
+        \begin{enumerate}
+            \item 求子空间$\spa(\alpha_1,\alpha_2,\alpha_3,\alpha_4)$的维数和一组基；
 
-              \item 求$a$的值使得$\beta\in W$，并求$\beta$在 (1) 所选基下的坐标.
-          \end{enumerate}
+            \item 求$a$的值使得$\beta\in W$，并求$\beta$在 (1) 所选基下的坐标.
+        \end{enumerate}
 
-    \item 证明：$B=\{1,x-a,(x-a)^2\}\enspace(a\neq 0)$是$\mathbf{R}[x]_3$的一组基，并求$\mathbf{R}[x]_3$的自然基$\{1,x,x^2\}$中每个向量关于基$B$的坐标.
+        \item 证明：$B=\{1,x-a,(x-a)^2\}\enspace(a\neq 0)$是$\mathbf{R}[x]_3$的一组基，并求$\mathbf{R}[x]_3$的自然基$\{1,x,x^2\}$中每个向量关于基$B$的坐标.
 
-    \item 已知向量组$A=\{\alpha_1,\alpha_2,\alpha_3\},\enspace B=\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\},\enspace C=\{\alpha_1,\alpha_2,\alpha_3,\alpha_5\}$的秩分别为$r(A)=r(B)=3,\enspace r(C)=4$. 证明：$\{\alpha_1,\alpha_2,\alpha_3,\alpha_5-\alpha_4\}$的秩为4.
+        \item 已知向量组$A=\{\alpha_1,\alpha_2,\alpha_3\},\enspace B=\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\},\enspace C=\{\alpha_1,\alpha_2,\alpha_3,\alpha_5\}$的秩分别为$r(A)=r(B)=3,\enspace r(C)=4$. 证明：$\{\alpha_1,\alpha_2,\alpha_3,\alpha_5-\alpha_4\}$的秩为4.
 
-    \item 设向量组$\alpha_1,\alpha_2,\ldots,\alpha_s$的秩为$r$. 在其中任取$m$个向量$\alpha_{i1},\alpha_{i2},\ldots,\alpha_{im}$，证明：向量组$\alpha_{i1},\alpha_{i2},\ldots,\alpha_{im}$的秩$\geqslant r+m-s$.
+        \item 设向量组$\alpha_1,\alpha_2,\ldots,\alpha_s$的秩为$r$. 在其中任取$m$个向量$\alpha_{i1},\alpha_{i2},\ldots,\alpha_{im}$，证明：向量组$\alpha_{i1},\alpha_{i2},\ldots,\alpha_{im}$的秩$\geqslant r+m-s$.
 
-    \item 已知$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关，而$\alpha_1,\alpha_2,\ldots,\alpha_n,\beta,\gamma$线性相关. 证明：要么$\beta,\gamma$可以由$\alpha_1,\alpha_2,\ldots,\alpha_n$线性表示，要么$\alpha_1,\alpha_2,\ldots,\alpha_n,\beta$与$\alpha_1,\alpha_2,\ldots,\alpha_n,\gamma$等价.
-\end{enumerate}
+        \item 已知$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关，而$\alpha_1,\alpha_2,\ldots,\alpha_n,\beta,\gamma$线性相关. 证明：要么$\beta,\gamma$可以由$\alpha_1,\alpha_2,\ldots,\alpha_n$线性表示，要么$\alpha_1,\alpha_2,\ldots,\alpha_n,\beta$与$\alpha_1,\alpha_2,\ldots,\alpha_n,\gamma$等价.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 已知$\alpha_1\neq 0$，则$\alpha_1,\alpha_2,\ldots,\alpha_n$线性相关的充要条件是存在$i\enspace(2 \leqslant i \leqslant n)$使得$\alpha_i$可由$\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示，且表示法唯一.
+    \begin{exgroup}
+        \item 已知$\alpha_1\neq 0$，则$\alpha_1,\alpha_2,\ldots,\alpha_n$线性相关的充要条件是存在$i\enspace(2 \leqslant i \leqslant n)$使得$\alpha_i$可由$\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示，且表示法唯一.
 
-    \item 证明以下两个结论：
-          \begin{enumerate}
-              \item 设$U$和$W$都是$V$的非零子空间，如果$U\subseteq W$，那么$\dim U \leqslant \dim W$；
+        \item 证明以下两个结论：
+        \begin{enumerate}
+            \item 设$U$和$W$都是$V$的非零子空间，如果$U\subseteq W$，那么$\dim U \leqslant \dim W$；
 
-              \item 设$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U = \dim W$，则$U = W$.
-          \end{enumerate}
+            \item 设$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U = \dim W$，则$U = W$.
+        \end{enumerate}
 
-    \item 设向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关. 证明：在向量组$\beta,\alpha_1,\alpha_2,\ldots,\alpha_n$中至多有一个向量$\alpha_i\enspace(1 \leqslant i \leqslant r)$可被其前面的$i$个向量$\beta,\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示.
+        \item 设向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关. 证明：在向量组$\beta,\alpha_1,\alpha_2,\ldots,\alpha_n$中至多有一个向量$\alpha_i\enspace(1 \leqslant i \leqslant r)$可被其前面的$i$个向量$\beta,\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示.
 
-    \item 证明：$1,e^{\lambda_1\cdot x},e^{\lambda_2\cdot x}$（$\lambda_1\neq\lambda_2$且均不为0）线性无关.
+        \item 证明：$1,e^{\lambda_1\cdot x},e^{\lambda_2\cdot x}$（$\lambda_1\neq\lambda_2$且均不为0）线性无关.
 
-    \item 设线性空间$V(\mathbf{F})$中，向量$\beta$是$\alpha_1,\ldots,\alpha_r$的线性组合，但不是$\alpha_1,\ldots,\alpha_{r-1}$的线性组合. 证明：$\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$.
+        \item 设线性空间$V(\mathbf{F})$中，向量$\beta$是$\alpha_1,\ldots,\alpha_r$的线性组合，但不是$\alpha_1,\ldots,\alpha_{r-1}$的线性组合. 证明：$\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$.
 
-    \item 设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：
-          \[ \forall a,b \in \mathbf{R}_+,\enspace k\in \mathbf{R}\colon\enspace a\oplus b = ab,\enspace k\odot a = a^k \]
-          则 $\mathbf{R}^+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}^+$的一组基.
-\end{enumerate}
+        \item 设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：
+        \[ \forall a,b \in \mathbf{R}_+,\enspace k\in \mathbf{R}\colon\enspace a\oplus b = ab,\enspace k\odot a = a^k \]
+        则 $\mathbf{R}^+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}^+$的一组基.
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 已知$m$个向量$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，但其中任意$m-1$个都线性无关，证明：
-          \begin{enumerate}
-              \item 若$k_1\alpha_1+\cdots+k_m\alpha_m=0$，则$k_1,\ldots,k_m$全为0或全不为0；
+    \begin{exgroup}
+        \item 已知$m$个向量$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，但其中任意$m-1$个都线性无关，证明：
+        \begin{enumerate}
+            \item 若$k_1\alpha_1+\cdots+k_m\alpha_m=0$，则$k_1,\ldots,k_m$全为0或全不为0；
 
-              \item 若以下等式成立
-                    \begin{align*}
-                        k_1\alpha_1+\cdots+k_m\alpha_m & =0 \\
-                        l_1\alpha_1+\cdots+l_m\alpha_m & =0
-                    \end{align*}
-                    其中$l_1\neq 0$，证明：$\dfrac{k_1}{l_1}=\cdots=\dfrac{k_m}{l_m}$.
-          \end{enumerate}
+            \item 若以下等式成立
+                  \begin{align*}
+                      k_1\alpha_1+\cdots+k_m\alpha_m & =0 \\
+                      l_1\alpha_1+\cdots+l_m\alpha_m & =0
+                  \end{align*}
+                  其中$l_1\neq 0$，证明：$\dfrac{k_1}{l_1}=\cdots=\dfrac{k_m}{l_m}$.
+        \end{enumerate}
 
-    \item （替换定理）设$\alpha_1,\alpha_2,\ldots,\alpha_r$线性无关，且可以被$\beta_1,\beta_2,\ldots,\beta_n$线性表示，则可以将$\beta_1,\beta_2,\ldots,\beta_n$中的$r$个向量替换成$\alpha_1,\alpha_2,\ldots,\alpha_r$后得到与$\beta_1,\beta_2,\ldots,\beta_n$等价的新向量组（注：可以使用数学归纳法证明）.
+        \item （替换定理）设$\alpha_1,\alpha_2,\ldots,\alpha_r$线性无关，且可以被$\beta_1,\beta_2,\ldots,\beta_n$线性表示，则可以将$\beta_1,\beta_2,\ldots,\beta_n$中的$r$个向量替换成$\alpha_1,\alpha_2,\ldots,\alpha_r$后得到与$\beta_1,\beta_2,\ldots,\beta_n$等价的新向量组（注：可以使用数学归纳法证明）.
 
-    \item 设线性空间$V=\mathbf{F}^n$. 证明：
-          \begin{enumerate}
-              \item 存在$V$的子空间$W$，使得$W$的任一非零向量的分量均不为0；
+        \item 设线性空间$V=\mathbf{F}^n$. 证明：
+        \begin{enumerate}
+            \item 存在$V$的子空间$W$，使得$W$的任一非零向量的分量均不为0；
 
-              \item 若$V$的子空间$W$的任一非零向量的分量均不为0，则$\dim W=1$；
+            \item 若$V$的子空间$W$的任一非零向量的分量均不为0，则$\dim W=1$；
 
-              \item 若$V$的子空间$W$的任一非零向量的零分量个数均不超过$r$，则$\dim W \leqslant r+1$.
-          \end{enumerate}
+            \item 若$V$的子空间$W$的任一非零向量的零分量个数均不超过$r$，则$\dim W \leqslant r+1$.
+        \end{enumerate}
 
-    \item 设 $\mathbf{Q}(\sqrt[3]{2}) = \{a+b\sqrt[3]{2}+c\sqrt[3]{4}\mid a,b,c\in\mathbf{Q}\}$，证明 $\mathbf{Q}(\sqrt[3]{2})$ 是 $\mathbf{Q}$ 上的线性空间并求其维数.
+        \item 设 $\mathbf{Q}(\sqrt[3]{2}) = \{a+b\sqrt[3]{2}+c\sqrt[3]{4}\mid a,b,c\in\mathbf{Q}\}$，证明 $\mathbf{Q}(\sqrt[3]{2})$ 是 $\mathbf{Q}$ 上的线性空间并求其维数.
 
-    \item 设$\mathbf{K} \subseteq \mathbf{F} \subseteq \mathbf{E}$是三个数域，已知$\mathbf{F}$作为$\mathbf{K}$上的线性空间是$n$维的，$\mathbf{E}$作为$\mathbf{F}$上的线性空间是$m$维的，证明：$\mathbf{E}$作为$\mathbf{K}$上的线性空间是$mn$维的.
+        \item 设$\mathbf{K} \subseteq \mathbf{F} \subseteq \mathbf{E}$是三个数域，已知$\mathbf{F}$作为$\mathbf{K}$上的线性空间是$n$维的，$\mathbf{E}$作为$\mathbf{F}$上的线性空间是$m$维的，证明：$\mathbf{E}$作为$\mathbf{K}$上的线性空间是$mn$维的.
 
-    \item 延续上一讲对于 $\mathbf{F_4}(\mathbf{Z}_2)$ 的讨论，尝试求 $\mathbf{F_4}$ 在 $\mathbf{Z}_2$ 上的一组基及其维数，以及其中每个元素的坐标表示.
-\end{enumerate}
+        \item 延续上一讲对于 $\mathbf{F_4}(\mathbf{Z}_2)$ 的讨论，尝试求 $\mathbf{F_4}$ 在 $\mathbf{Z}_2$ 上的一组基及其维数，以及其中每个元素的坐标表示.
+    \end{exgroup}
+\end{exercise}

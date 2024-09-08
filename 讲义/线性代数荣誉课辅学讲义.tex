@@ -7,6 +7,7 @@
     geometry = 16k,
 ]{LALUbook}
 
+\usepackage{mathdots}
 \usepackage{booktabs} % Excel 导出的大表格
 \usepackage{rotating}
 \usepackage{extarrows}
@@ -81,6 +82,55 @@
     \@std@chapter
 }
 \makeatother
+
+% 内容总结
+\newenvironment{summary}{%
+    \hypersetup{bookmarksnumbered=false}%
+    \titleformat{\subsection}[block]{\centering\heiti\Large}{}{1em}{}%
+    \subsection{内容总结}%
+}{}
+
+% 习题环境
+% \begin{exercise}
+%   \exquote[somebody]{...}
+%   \begin{exgroup}
+%     \item ...
+%     \item ...
+%   \end{exgroup}
+%   \begin{exgroup}
+%     ...
+%   \end{exgroup}
+% \end{exercise}
+\newcounter{exgroupcounter}
+\newenvironment{exercise}{%
+    \setcounter{exgroupcounter}{0}%
+    \NewDocumentEnvironment{exgroup}{so}{%
+        \IfBooleanF{##1}{%
+            \IfValueTF{##2}{%
+                \setcounter{exgroupcounter}{##2}%
+            }{%
+                \refstepcounter{exgroupcounter}%
+            }%
+            \subsection{\Alph{exgroupcounter} 组}%
+        }%
+        \begin{enumerate}%
+    }{%
+        \end{enumerate}%
+    }%
+    \NewDocumentCommand{\exquote}{om}{%
+        \vspace{2ex}%
+        {\sffamily\kaishu ##2}%
+        \IfValueT{##1}{%
+            \begin{flushright}%
+                \sffamily\kaishu ——##1%
+            \end{flushright}%
+        }%
+    }%
+    \hypersetup{bookmarksnumbered=false}%
+    \titleformat{\section}[block]{\centering\heiti\Large}{}{1em}{}%
+    \titleformat{\subsection}[block]{\centering\heiti\bfseries}{}{1em}{}%
+    \section{习题}%
+}{}
 
 \NewDocumentCommand{\LUchapter}{m}{%
 \LUgroupsancheck

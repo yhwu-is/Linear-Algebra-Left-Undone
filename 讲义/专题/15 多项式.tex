@@ -303,10 +303,10 @@
 这一定理证明了最小公倍式的存在性，并且\autoref{eq:14:最小公倍式} 也给出了基于最大公因式的最小公倍式的计算方法. 事实上，多个多项式的最小公倍式也可以有类似于多个多项式最大公因式的推广，此处不再赘述.
 
 在本节的最后，我们证明一个在数论、密码学等领域应用非常广泛的定理：中国剩余定理. 这是中国古代求解一次线性同余方程组的方法. 一元线性同余方程组问题最早可见于中国南北朝时期（公元5世纪）的数学著作《孙子算经》卷下第二十六题，叫做``物不知数''问题，在一些故事背景下也称``韩信点兵''问题，原文如下：
-\begin{quotation}
+\begin{quote}
     \kaishu
     今有物不知其数，三三数之剩二，五五数之剩三，七七数之剩二. 问物几何？
-\end{quotation}
+\end{quote}
 即，一个整数除以三余二，除以五余三，除以七余二，求这个整数. 《孙子算经》中首次提到了同余方程组问题，以及以上具体问题的解法，因此在中文数学文献中也会将中国剩余定理称为孙子定理. 这里将要介绍的版本是多项式版本，事实上回忆整数和多项式都构成环这一代数结构，读者一定能想到无论是整数还是多项式版本实际上都是环上中国剩余定理的特例. 中国剩余定理的多项式版本如下：
 \begin{theorem}{中国剩余定理}{中国剩余定理}
     设$q_1(x),q_2(x),\ldots,q_n(x)\in\mathbf{F}[x]$两两互素，即$(q_i(x),q_j(x))=1,\enspace\forall i,j\in\{1,2,\ldots,n\}$，则对任意的$r_1(x),r_2(x),\ldots,r_n(x)\in\mathbf{F}[x]$，方程组
@@ -676,46 +676,37 @@
 
 实际上，在代数学中，$(p(x))$我们称其为由$p(x)$生成的理想，它由所有$(p(x))$的倍式组成. 这一例子给出了多项式和线性空间的一个非常直接的关联：用$\mathbf{F}[x]$商去一个$n$次多项式生成的理想，得到的是一个$n$维线性空间.
 
-\vspace{2ex}
+\begin{summary}
 
-\centerline{\heiti \Large 内容总结}
+    % 我们借用丘维声老师《高等代数》中的一张图来总结我们研究
 
-% 我们借用丘维声老师《高等代数》中的一张图来总结我们研究
+\end{summary}
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\begin{exercise}
+    \exquote[G. 波利亚（George Pólya）]{如果有一个你无法解决的问题，那么一定有一个更简单的你可以解决的问题：去找到它。}
 
-\vspace{2ex}
-{\kaishu 如果有一个你无法解决的问题，那么一定有一个更简单的你可以解决的问题：去找到它。}
-\begin{flushright}
-    \kaishu
-    ——G. 波利亚（George Pólya）
-\end{flushright}
+    \begin{exgroup}
+        \item 证明：全体一元多项式关于多项式一般的加法和乘法运算构成环.
+        \item 设$p(x),q(x),r(x)\in\mathbf{F}[x]$，则
+        \begin{enumerate}
+            \item 若$p(x),q(x)\neq 0$，则$p(x)q(x)\neq 0$；
+            \item 若$p(x)\neq 0$，且$p(x)q(x)=p(x)r(x)$，则$q(x)=r(x)$.
+        \end{enumerate}
+        \item 证明\autoref{thm:消去重因式}.
+        \item 证明：每个奇数次的实系数多项式都有实的零点.
+    \end{exgroup}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item 证明：全体一元多项式关于多项式一般的加法和乘法运算构成环.
-    \item 设$p(x),q(x),r(x)\in\mathbf{F}[x]$，则
-          \begin{enumerate}
-              \item 若$p(x),q(x)\neq 0$，则$p(x)q(x)\neq 0$；
-              \item 若$p(x)\neq 0$，且$p(x)q(x)=p(x)r(x)$，则$q(x)=r(x)$.
-          \end{enumerate}
-    \item 证明\autoref{thm:消去重因式}.
-    \item 证明：每个奇数次的实系数多项式都有实的零点.
-\end{enumerate}
+    \begin{exgroup}
+        \item 设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$. 求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
+        \item 设$p,q\in\mathbf{F}[x]$，证明：$p^2 \mid q^2\iff p \mid q$.
+        \item 证明：$\mathbf{F}[x]$中两个次数大于0的多项式没有公共复根的充要条件是它们互素.
+        \item 设$p\in\mathbf{F}[x]$且$q\neq 0$. 证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
+        \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
+        \item 设$p(x)$和$q(x)$是$\mathbf{F}[x]$中的两个次数不超过$n$的多项式，若存在$\mathbf{F}$上$n+1$个不同的数$\lambda_0,\lambda_1,\ldots,\lambda_n$使得$p(\lambda_i)=q(\lambda_i),\enspace i=0,1,\ldots,n$，则$p(x)=q(x)$.
+    \end{exgroup}
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$. 求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
-    \item 设$p,q\in\mathbf{F}[x]$，证明：$p^2 \mid q^2\iff p \mid q$.
-    \item 证明：$\mathbf{F}[x]$中两个次数大于0的多项式没有公共复根的充要条件是它们互素.
-    \item 设$p\in\mathbf{F}[x]$且$q\neq 0$. 证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
-          \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
-    \item 设$p(x)$和$q(x)$是$\mathbf{F}[x]$中的两个次数不超过$n$的多项式，若存在$\mathbf{F}$上$n+1$个不同的数$\lambda_0,\lambda_1,\ldots,\lambda_n$使得$p(\lambda_i)=q(\lambda_i),\enspace i=0,1,\ldots,n$，则$p(x)=q(x)$.
-\end{enumerate}
-
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item 证明带余除法的其它角度.
-    \item 证明裴蜀定理的其它角度.
-\end{enumerate}
+    \begin{exgroup}
+        \item 证明带余除法的其它角度.
+        \item 证明裴蜀定理的其它角度.
+    \end{exgroup}
+\end{exercise}

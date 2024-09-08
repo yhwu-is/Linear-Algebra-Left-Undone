@@ -204,25 +204,25 @@
               \centering
               \begin{tikzpicture}[scale=1.2]
                   \foreach[count=\i] \len in {7, 7, 5, 3, 3, 2}
-                      \draw (0, -\i+1) -- (\len, -\i+1);
+                  \draw (0, -\i+1) -- (\len, -\i+1);
 
                   \foreach \i in {0, 1, 2}
-                      \draw (\i, -3) -- (\i, -5);
+                  \draw (\i, -3) -- (\i, -5);
 
                   \draw (3, -3) -- (3, -4);
 
                   \foreach \i in {0,...,5}
-                      \draw (\i, 0) -- (\i, -2);
+                  \draw (\i, 0) -- (\i, -2);
 
                   \foreach \i in {6, 7}
-                      \draw (\i, 0) -- (\i, -1);
+                  \draw (\i, 0) -- (\i, -1);
 
                   \foreach \i in {1, 2} {
-                      \node at (\i-.5, -4.5) {$v_{\i}$};
-                      \node at (\i-.5, -.5) {$N^{m_{\i}}v_{\i}$};
+                  \node at (\i-.5, -4.5) {$v_{\i}$};
+                  \node at (\i-.5, -.5) {$N^{m_{\i}}v_{\i}$};
                   }
                   \foreach \i in {1, 2}
-                      \node at (\i-.5, -3.5) {$Nv_{\i}$};
+                  \node at (\i-.5, -3.5) {$Nv_{\i}$};
 
                   \node at (3-.5, -3.5) {$v_{3}$};
                   \node at (6.5, -.5) {$N^{m_n}v_n$};
@@ -244,14 +244,14 @@
               \centering
               \begin{tikzpicture}[scale=1.2]
                   \foreach[count=\i] \len in {5, 5, 4, 2}
-                      \draw (0, -\i+1) -- (\len, -\i+1);
+                  \draw (0, -\i+1) -- (\len, -\i+1);
 
                   \foreach \i in {0,...,5}
-                      \draw (\i, 0) -- (\i, -1);
+                  \draw (\i, 0) -- (\i, -1);
                   \foreach \i in {0,...,4}
-                      \draw (\i, -1) -- (\i, -2);
+                  \draw (\i, -1) -- (\i, -2);
                   \foreach \i in {0, 1, 2}
-                      \draw (\i, -2) -- (\i, -3);
+                  \draw (\i, -2) -- (\i, -3);
 
                   \node at (.5, -.5) {$N^2v_1$};
                   \node at (1.5, -.5) {$N^2v_2$};
@@ -613,36 +613,38 @@
         c_1 \lambda_1^n \\ c_2 \lambda_2^n
     \end{pmatrix}$，这便是$(a_n, a_{n + 1})$在这组基下的坐标，代入$v_1, v_2$即可得到通解$a_n = c_1 \lambda_1^n + c_2 \lambda_2^n$.
 
-而对于$m$阶线性递推方程$a_n = k_1 a_{n - 1} + k_2 a_{n - 2} + \cdots + k_m a_{n - m}$，其无重根的情况是二阶的简单推广. 考虑$T \in \mathcal{L}(F^m)$，$T(x_1, x_2, \cdots, x_m) = (x_2, x_3, \cdots, k_m x_1 + k_{m - 1} x_2 + \cdots + k_1 x_m)$，则$T(a_{n - m}, a_{n - m + 1}, \cdots, a_{n - 1}) = (a_{n - m + 1}, a_{n - m + 2}, \cdots, a_n)$，对应的特征方程为$x^m - k_1 x^{m - 1} - \cdots - k_m = 0$，得到特征值为$\lambda_1, \lambda_2, \cdots, \lambda_m$，而对应的特征向量为$v_i = (1, \lambda_i, \lambda_i^2, \cdots, \lambda_i^{m - 1})$，通解为$a_n = \sum_{i = 1}^m c_i \lambda_i^n$. 另一个有趣的事实是所有的特征向量也能组成一个 Vandermonde 矩阵，这也可以从另一个侧面印证为什么要求没有重根.
+而对于$m$阶线性递推方程$a_n = k_1 a_{n - 1} + k_2 a_{n - 2} + \cdots + k_m a_{n - m}$，其无重根的情况是二阶的简单推广. 考虑$T \in \mathcal{L}(F^m)$，$T(x_1, x_2, \ldots, x_m) = (x_2, x_3, \ldots, k_m x_1 + k_{m - 1} x_2 + \cdots + k_1 x_m)$，则$T(a_{n - m}, a_{n - m + 1}, \ldots, a_{n - 1}) = (a_{n - m + 1}, a_{n - m + 2}, \ldots, a_n)$，对应的特征方程为$x^m - k_1 x^{m - 1} - \cdots - k_m = 0$，得到特征值为$\lambda_1, \lambda_2, \ldots, \lambda_m$，而对应的特征向量为$v_i = (1, \lambda_i, \lambda_i^2, \ldots, \lambda_i^{m - 1})$，通解为$a_n = \sum_{i = 1}^m c_i \lambda_i^n$. 另一个有趣的事实是所有的特征向量也能组成一个 Vandermonde 矩阵，这也可以从另一个侧面印证为什么要求没有重根.
 
 那么如果存在重根又会发生什么情况呢？我们依然先以一个二阶线性递推方程为例，考虑$a_n = 2 \lambda_0 a_{n - 1} - \lambda_0^2 a_{n - 2}$，构造相应的算子$T(x_1, x_2) = (x_2, 2 \lambda_0 x_2 - \lambda_0^2 x_1)$，则$T(a_{n - 2}, a_{n - 1}) = (a_{n - 1}, a_n)$，特征值易求得为$\lambda_0$，对应特征向量为$(1, \lambda_0)$. 特征空间为一维的，显然不能够对角化，所以它应该对应为二阶的若当块的情况，已知$v_1 = (1, \lambda_0)$，求出满足$(T - \lambda_0 I)v_2 = v_1$的$v_2$即求出了若当基. 满足条件的一个$v_2 = (0, 1)$，在这组基下$T$的矩阵表示为$\begin{pmatrix} \lambda_0 & 1 \\ 0 & \lambda_0 \end{pmatrix} = \lambda_0 I + J$，其中$J = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ 且 $J^2 = O$. 设$(a_0, a_1) = c_1v_1 + c_2v_2$，那么有
 \begin{align*}
-    M^n \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} & = (\lambda_0 I + J)^n \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} \\
-    & = (\lambda^n I + n \lambda^{n - 1} J) \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} \\
-    & = \begin{pmatrix} \lambda^n & n \lambda^{n - 1} \\ 0 & \lambda^n \end{pmatrix} \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} \\
-    & = \begin{pmatrix} c_1 \lambda^n + n c_2 \lambda^{n - 1} \\ d \lambda^n \end{pmatrix}.
+    M^n \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}
+     & = (\lambda_0 I + J)^n \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}                                                          \\
+     & = (\lambda^n I + n \lambda^{n - 1} J) \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}                                          \\
+     & = \begin{pmatrix} \lambda^n & n \lambda^{n - 1} \\ 0 & \lambda^n \end{pmatrix} \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} \\
+     & = \begin{pmatrix} c_1 \lambda^n + n c_2 \lambda^{n - 1} \\ d \lambda^n \end{pmatrix}.
 \end{align*}
 从而代入$v_1, v_2$有$a_n = c_1 \lambda_0^n + n c_2 \lambda_0^{n - 1}$.
 
-进而我们可以考虑一个$m$阶线性递推方程，且其特征方程有$m$重根$\lambda_0 \neq 0$的情况（特征值为$0$是退化的），这时对应的是一个$m$阶的若当块，重点在于求出其对应的若当基. 首先对应的算子$T$的形式应当为$T(x_1, x_2, \cdots, x_m) = (x_2, x_3, \cdots, (-1)^{m + 1} \binom{m}{0} \lambda_0^m x_1 + (-1)^m \binom{m}{1} \lambda_0^{m - 1} x_2 + \cdots + (-1)^2 \binom{m}{m - 1} \lambda_0 x_{m})$，要求出特征向量即求出满足$(T - \lambda_0 I)v_1 = 0$的$v_1$，这一线性方程组的系数矩阵如下：\[
+进而我们可以考虑一个$m$阶线性递推方程，且其特征方程有$m$重根$\lambda_0 \neq 0$的情况（特征值为$0$是退化的），这时对应的是一个$m$阶的若当块，重点在于求出其对应的若当基. 首先对应的算子$T$的形式应当为$T(x_1, x_2, \ldots, x_m) = (x_2, x_3, \ldots, (-1)^{m + 1} \binom{m}{0} \lambda_0^m x_1 + (-1)^m \binom{m}{1} \lambda_0^{m - 1} x_2 + \cdots + (-1)^2 \binom{m}{m - 1} \lambda_0 x_{m})$，要求出特征向量即求出满足$(T - \lambda_0 I)v_1 = 0$的$v_1$，这一线性方程组的系数矩阵如下：
+\[
     \begin{pmatrix}
-        -\lambda_0 & 1 & 0 & \cdots & 0 \\
-        0 & -\lambda_0 & 1 & \cdots & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        0 & 0 & 0 & \cdots & 1 \\
+        -\lambda_0                            & 1                                     & 0                                           & \cdots & 0                                       \\
+        0                                     & -\lambda_0                            & 1                                           & \cdots & 0                                       \\
+        \vdots                                & \vdots                                & \vdots                                      & \ddots & \vdots                                  \\
+        0                                     & 0                                     & 0                                           & \cdots & 1                                       \\
         (-1)^{m + 1} \binom{m}{0} \lambda_0^m & (-1)^m \binom{m}{1} \lambda_0^{m - 1} & (-1)^{m - 1} \binom{m}{2} \lambda_0^{m - 2} & \cdots & ((-1)^2 \binom{m}{m - 1} - 1) \lambda_0
     \end{pmatrix}
 \]
-我们能轻松得到$v_1 = (\lambda_0^0, \lambda_0, \lambda_0^2, \cdots, \lambda_0^{m - 1})$是满足前$m-1$行的，代入验证也满足第$m$行. 因为前$m-1$行是线性无关的，所以我们基本上可以宣称第$m$行是前$m-1$行的线性组合，也就是说这个矩阵的秩为$m-1$. 但是，这个线性组合的系数在后续求解若当基的过程中相当重要，所以我们还是要求出来. 记以上系数矩阵为$\begin{pmatrix}
-    \beta_1 \\ \beta_2 \\ \vdots \\ \beta_m
-\end{pmatrix}$，$\beta_i$均是行向量. 这个系数求解的关键在于第$2$到第$m-1$个坐标都是有两个行向量来控制的，并且$\beta_m$每个是以组合数为基础的，我们能够很自然的联想到杨辉三角. 首先第$1$个坐标能够给出第一个系数$t_1 = (-1)^m \binom{m - 1}{0} \lambda_0^{m - 1}$，然后第$2$个坐标结合杨辉三角便可以得到$t_2 = (-1)^{m - 1} \binom{m - 1}{1} \lambda_0^{m - 2}$，以此类推，直到第$m-1$个坐标$t_{i - 1} = (-1)^2 \binom{m-1}{m-2} \lambda_0$. 第$m$个坐标我们需要验证其正确性，因为其减去了$1$所以形式上有所区别，但我们可以将其改写为$((-1)^2 \binom{m}{m - 1} - \binom{m - 1}{m - 1}) \lambda_0 = ((-1)^2 \binom{m - 1}{m - 2}) \lambda_0$，与$t_{i-1}$一致. 所以我们有 \[
+我们能轻松得到$v_1 = (\lambda_0^0, \lambda_0, \lambda_0^2, \ldots, \lambda_0^{m - 1})$是满足前$m-1$行的，代入验证也满足第$m$行. 因为前$m-1$行是线性无关的，所以我们基本上可以宣称第$m$行是前$m-1$行的线性组合，也就是说这个矩阵的秩为$m-1$. 但是，这个线性组合的系数在后续求解若当基的过程中相当重要，所以我们还是要求出来. 记以上系数矩阵为$\begin{pmatrix}
+        \beta_1 \\ \beta_2 \\ \vdots \\ \beta_m
+    \end{pmatrix}$，$\beta_i$均是行向量. 这个系数求解的关键在于第$2$到第$m-1$个坐标都是有两个行向量来控制的，并且$\beta_m$每个是以组合数为基础的，我们能够很自然的联想到杨辉三角. 首先第$1$个坐标能够给出第一个系数$t_1 = (-1)^m \binom{m - 1}{0} \lambda_0^{m - 1}$，然后第$2$个坐标结合杨辉三角便可以得到$t_2 = (-1)^{m - 1} \binom{m - 1}{1} \lambda_0^{m - 2}$，以此类推，直到第$m-1$个坐标$t_{i - 1} = (-1)^2 \binom{m-1}{m-2} \lambda_0$. 第$m$个坐标我们需要验证其正确性，因为其减去了$1$所以形式上有所区别，但我们可以将其改写为$((-1)^2 \binom{m}{m - 1} - \binom{m - 1}{m - 1}) \lambda_0 = ((-1)^2 \binom{m - 1}{m - 2}) \lambda_0$，与$t_{i-1}$一致. 所以我们有 \[
     \beta_m = t_1 \beta_1 + t_2 \beta_2 + \cdots + t_{m - 1} \beta_{m - 1}.
 \]
 其中$t_i = (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \lambda_0^{m - i}$.
 
 因为$v_1$的求解是基于齐次线性方程组，所以系数的作用不是很明确. 但当我们开始求解$v_2, v_3, \ldots, v_m$时，这就意味着我们需要处理非齐次线性方程组，需要验证$v_1, v_2, \ldots, v_{m-1}$的第$m$个坐标能根据前$m-1$个坐标由系数$t_i$组合得到. 以$v_2$为例，我们需要验证$\lambda_0^{m-1} = \sum_{i = 1}^{m-1} t_i \lambda_0^{i-1} = \sum_{i = 1}^{m-1} (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \lambda_0^{m - 1}$. 我们可以将其化简为 \begin{align*}
-    \sum_{i = 1}^{m-1} (-1)^{m + 1 - i} \binom{m - 1}{i - 1} & = 1 \\
-    \sum_{i = 0}^{m-1} \binom{m-1}{i} (-1)^{m - i} & = 0.
+    \sum_{i = 1}^{m-1} (-1)^{m + 1 - i} \binom{m - 1}{i - 1} & = 1  \\
+    \sum_{i = 0}^{m-1} \binom{m-1}{i} (-1)^{m - i}           & = 0.
 \end{align*}
 这是二项式定理的一个特殊情况，所以这个等式是成立的. 根据前$m-1$行，我们可以得到$v_2 = (0, 1, 2 \lambda_0, 3 \lambda_0^2, \ldots, (m - 1) \lambda_0^{m - 2})$. 以此类推，仅依据前$m-1$行的计算，我们可以得到$v_j = (0, 0, \ldots, \binom{j - 1}{j - 1} \lambda_0^0, \binom{j}{j - 1} \lambda_0^1, \ldots, \binom{m - 1}{j - 1} \lambda_0^{m - j})$，且第$1$个非零坐标为第$j$个. 接下来便需要验证$v_j, 1 \leqslant j \leqslant m - 1$的第$m$个坐标能由前$m-1$个坐标线性组合得到，即 \[
     \binom{m - 1}{j - 1} \lambda_0^{m - j} = \sum_{i = 1}^{m - 1} t_i \binom{i - 1}{j - 1} \lambda_0^{i - 1}.
@@ -656,36 +658,43 @@
         \binom{m - 1}{i - 1} \binom{i - 1}{j - 1} & = \dfrac{(m - 1)!}{(i - 1)! (m - i)!} \dfrac{(i - 1)!}{(j - 1)! (i - j)!} \\ & = \dfrac{(m - 1)!}{(j - 1)! (m - j)!} \dfrac{(m - j)!}{(i - j)! (m - i)!} \\ & = \binom{m - 1}{j - 1} \binom{m - j}{i - j},
     \end{align*}
     所以 \begin{align*}
-        \sum_{i = j}^m (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \binom{i - 1}{j - 1} & = \sum_{i = j}^m (-1)^{m + 1 - i} \binom{m - 1}{j - 1} \binom{m - j}{i - j} \\
-        & = \binom{m - 1}{j - 1} \sum_{t = 0}^k (-1)^(k + i - t  + 1 - i) \binom{k}{t} \\
-        & = \binom{m - 1}{j - 1} \sum_{t = 0}^k \binom{k}{t} (-1)^{k + 1 - t} \\
-        & = \binom{m - 1}{j - 1} (-1) (1 - 1)^k = 0.
+        \sum_{i = j}^m (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \binom{i - 1}{j - 1}
+         & = \sum_{i = j}^m (-1)^{m + 1 - i} \binom{m - 1}{j - 1} \binom{m - j}{i - j}  \\
+         & = \binom{m - 1}{j - 1} \sum_{t = 0}^k (-1)^(k + i - t  + 1 - i) \binom{k}{t} \\
+         & = \binom{m - 1}{j - 1} \sum_{t = 0}^k \binom{k}{t} (-1)^{k + 1 - t}          \\
+         & = \binom{m - 1}{j - 1} (-1) (1 - 1)^k = 0.
     \end{align*}
     其中 $t = i - j, k = m - j$.
 \end{proof}
 
-由上可知$v_j$的求解是正确的，这样我们便得到了对应的若当基，$T$在这组基下的表示矩阵为$\lambda_0 I + J$. 设初值在若当基下的表示系数为$c_1, c_2, \ldots, c_m$，则有 \begin{align*}
+由上可知$v_j$的求解是正确的，这样我们便得到了对应的若当基，$T$在这组基下的表示矩阵为$\lambda_0 I + J$. 设初值在若当基下的表示系数为$c_1, c_2, \ldots, c_m$，则有
+\begin{align*}
     M^n \begin{pmatrix}
+            c_1 \\ c_2 \\ \vdots \\ c_m
+        \end{pmatrix}
+     & = (\lambda_0 I + J)^n
+    \begin{pmatrix}
         c_1 \\ c_2 \\ \vdots \\ c_m
-    \end{pmatrix}
-    & = (\lambda_0 I + J)^n \begin{pmatrix}
+    \end{pmatrix}                                                                               \\
+     & = (\lambda_0^n I + n \lambda_0^{n - 1} J + \cdots + \binom{n}{m - 1} \lambda_0^{n - m + 1} J^{m - 1})
+    \begin{pmatrix}
         c_1 \\ c_2 \\ \vdots \\ c_m
-    \end{pmatrix} \\ & = (\lambda_0^n I + n \lambda_0^{n - 1} J + \cdots + \binom{n}{m - 1} \lambda_0^{n - m + 1} J^{m - 1}) \begin{pmatrix}
+    \end{pmatrix}                                                                               \\
+     & = \begin{pmatrix}
+             \lambda_0^n & n \lambda_0^{n - 1} & \cdots & \binom{n}{m - 1} \lambda_0^{n - m + 1} \\
+             0           & \lambda_0^n         & \cdots & \binom{n}{m - 2} \lambda_0^{n - m + 2} \\
+             \vdots      & \vdots              & \ddots & \vdots                                 \\
+             0           & 0                   & \cdots & \lambda_0^n
+         \end{pmatrix}
+    \begin{pmatrix}
         c_1 \\ c_2 \\ \vdots \\ c_m
-    \end{pmatrix} \\
-    & = \begin{pmatrix}
-        \lambda_0^n & n \lambda_0^{n - 1} & \cdots & \binom{n}{m - 1} \lambda_0^{n - m + 1} \\
-        0 & \lambda_0^n & \cdots & \binom{n}{m - 2} \lambda_0^{n - m + 2} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        0 & 0 & \cdots & \lambda_0^n
-    \end{pmatrix} \begin{pmatrix}
-        c_1 \\ c_2 \\ \vdots \\ c_m
-    \end{pmatrix} \\ & = \begin{pmatrix}
-        c_1 \lambda_0^n + n c_2 \lambda_0^{n - 1} + \cdots + \binom{n}{m - 1} c_m \lambda_0^{n - m + 1} \\
-        c_2 \lambda_0^n + n c_3 \lambda_0^{n - 1} + \cdots + \binom{n}{m - 2} c_m \lambda_0^{n - m + 2} \\
-        \vdots \\
-        c_m \lambda_0^n
-    \end{pmatrix}.
+    \end{pmatrix}                                                                               \\
+     & = \begin{pmatrix}
+             c_1 \lambda_0^n + n c_2 \lambda_0^{n - 1} + \cdots + \binom{n}{m - 1} c_m \lambda_0^{n - m + 1} \\
+             c_2 \lambda_0^n + n c_3 \lambda_0^{n - 1} + \cdots + \binom{n}{m - 2} c_m \lambda_0^{n - m + 2} \\
+             \vdots                                                                                          \\
+             c_m \lambda_0^n
+         \end{pmatrix}.
 \end{align*}
 
 代入$\{v_j\}$即可得到通解
@@ -694,10 +703,10 @@
 \]
 
 而对于一般的若当标准型来说，只需要求出相应的基，然后利用分块对角矩阵的幂次运算即可得到坐标，代入基即可求得通解. 不过需要注意的是，对于$m$阶若当标准型下$n$阶的若当块，其对应的若当基是我们在$m$重根中讨论的前$n$个向量，即
-    \begin{align*}
-        v_1 & = (1, \lambda_0, \lambda_0^2, \ldots, \lambda_0^{m - 1}), \\ v_2 & = (0, 1, 2 \lambda_0, \ldots, (n - 1) \lambda_0^{m - 2}), \\ & \ldots \\ v_n & = (0, 0, \ldots, \binom{n - 1}{n - 1} \lambda_0^0, \binom{n}{n - 1} \lambda_0^1, \ldots, \binom{m - 1}{n - 1} \lambda_0^{m - n}),
-    \end{align*}
-    而非前$n$个坐标.
+\begin{align*}
+    v_1 & = (1, \lambda_0, \lambda_0^2, \ldots, \lambda_0^{m - 1}), \\ v_2 & = (0, 1, 2 \lambda_0, \ldots, (n - 1) \lambda_0^{m - 2}), \\ & \ldots \\ v_n & = (0, 0, \ldots, \binom{n - 1}{n - 1} \lambda_0^0, \binom{n}{n - 1} \lambda_0^1, \ldots, \binom{m - 1}{n - 1} \lambda_0^{m - n}),
+\end{align*}
+而非前$n$个坐标.
 
 下面给出一道例题，请读者自行尝试.
 
@@ -743,54 +752,46 @@
 
 \end{proof}
 
-\vspace{2ex}
-\centerline{\heiti \Large 内容总结}
+\begin{summary}
 
-\vspace{2ex}
-\centerline{\heiti \Large 习题}
+\end{summary}
 
-\vspace{2ex}
-{\kaishu }
-\begin{flushright}
-    \kaishu
+\begin{exercise}
+    % \exquote[]{}
 
-\end{flushright}
+    \begin{exgroup}
+        \item
+    \end{exgroup}
 
-\centerline{\heiti A组}
-\begin{enumerate}
-    \item
-\end{enumerate}
+    \begin{exgroup}
+        \item 求矩阵\[\begin{pmatrix}
+                2 & 3 & 0  & -1 & 2 & -2 \\ -1 & 0 & 2 & 1 & -1 & -2 \\
+                1 & 3 & 2  & 0  & 1 & -4 \\ 5 & 6 & -1 & -2 & 5 & -3 \\
+                3 & 3 & -1 & -2 & 3 & -1 \\ 1 & 3 & 2 & 0 & 1 & -4
+            \end{pmatrix}\]的若当标准形以及相应的过渡矩阵（提示：这一矩阵是幂零指数为3的幂零矩阵）.
 
-\centerline{\heiti B组}
-\begin{enumerate}
-    \item 求矩阵\[\begin{pmatrix}
-                  2 & 3 & 0  & -1 & 2 & -2 \\ -1 & 0 & 2 & 1 & -1 & -2 \\
-                  1 & 3 & 2  & 0  & 1 & -4 \\ 5 & 6 & -1 & -2 & 5 & -3 \\
-                  3 & 3 & -1 & -2 & 3 & -1 \\ 1 & 3 & 2 & 0 & 1 & -4
-              \end{pmatrix}\]的若当标准形以及相应的过渡矩阵（提示：这一矩阵是幂零指数为3的幂零矩阵）.
+        \item 设$A=\begin{pmatrix}
+                2 & 1 & 1 \\ -2 & -1 & -2 \\ 1 & 1 & 2
+            \end{pmatrix}$，求$A$的若当标准形$J$和矩阵$P$，使得$P^{-1}AP=J$.
 
-    \item 设$A=\begin{pmatrix}
-                  2 & 1 & 1 \\ -2 & -1 & -2 \\ 1 & 1 & 2
-              \end{pmatrix}$，求$A$的若当标准形$J$和矩阵$P$，使得$P^{-1}AP=J$.
+        \item 定义$\sigma\in \mathcal{L}(\mathbf{C}^3)$为$\sigma(z_1,z_2,z_3)=(z_2,z_3,0)$. 证明不存在$\tau\in \mathcal{L}(\mathbf{C}^3)$使得$\tau^2=\sigma$.
 
-    \item 定义$\sigma\in \mathcal{L}(\mathbf{C}^3)$为$\sigma(z_1,z_2,z_3)=(z_2,z_3,0)$. 证明不存在$\tau\in \mathcal{L}(\mathbf{C}^3)$使得$\tau^2=\sigma$.
+        \item 证明：存在复数域上的对称矩阵$B,C$，使得$A=BC$，并且可以指定$B,C$中任意一个可逆.
 
-    \item 证明：存在复数域上的对称矩阵$B,C$，使得$A=BC$，并且可以指定$B,C$中任意一个可逆.
-
-    \item 斐波那契序列（Fibonacci sequence）$\{F_n\}$满足如下定义：
-          \[
-              F_0 = 0, F_1 = 1, F_n = F_{n - 2} + F_{n - 1}, n \geqslant 2.
-          \]
-          定义$T \in \mathcal{L}(\mathbf{R}^2)$为$T(x_1, x_2) = (x_2, x_1 + x_2)$.
-          \begin{enumerate}
+        \item 斐波那契序列（Fibonacci sequence）$\{F_n\}$满足如下定义：
+        \[
+            F_0 = 0, F_1 = 1, F_n = F_{n - 2} + F_{n - 1}, n \geqslant 2.
+        \]
+        定义$T \in \mathcal{L}(\mathbf{R}^2)$为$T(x_1, x_2) = (x_2, x_1 + x_2)$.
+        \begin{enumerate}
             \item 证明：对于任意非负整数$n$，$T^n(0, 1) = (F_n, F_{n + 1})$.
             \item 求$T$的特征值和对应的特征向量.
             \item 求$F_n$的通项公式.
             \item 证明：对于任意非负整数$n$，$F_n$是最接近$\dfrac{\varphi^n}{\sqrt{5}}$的整数，其中$\varphi = \dfrac{1 + \sqrt{5}}{2}$.
-          \end{enumerate}
-\end{enumerate}
+        \end{enumerate}
+    \end{exgroup}
 
-\centerline{\heiti C组}
-\begin{enumerate}
-    \item
-\end{enumerate}
+    \begin{exgroup}
+        \item
+    \end{exgroup}
+\end{exercise}
