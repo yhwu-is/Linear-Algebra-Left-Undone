@@ -27,7 +27,7 @@
               (规范性) $D(e_1,e_2,\ldots,e_n)=1$.
     \end{enumerate}
 \end{definition}
-在公理化定义中，我们将行列式定义为一个满足特定的运算性质的从列向量组合到数的函数. 需要注意的是，行列式除了上述记法外，如果设矩阵 $A = (\alpha_1,\cdots,\alpha_n)$，那么行列式 $D(\alpha_1,\cdots,\alpha_n)$ 也可以记为 $|A|$.
+在公理化定义中，我们将行列式定义为一个满足特定的运算性质的从列向量组合到数的函数. 需要注意的是，行列式除了上述记法外，如果设矩阵 $A = (\alpha_1,\ldots,\alpha_n)$，那么行列式 $D(\alpha_1,\ldots,\alpha_n)$ 也可以记为 $|A|$.
 
 除此之外，我们不难看出公理化定义可以形象地理解为对$n$维空间中体积的定义，对几何意义感兴趣的同学可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容.
 \begin{example}{}{公理化定义}
@@ -393,38 +393,38 @@
     \end{vmatrix},\]
 到目前为止，根据上面的例题我们已经有三种基本方法来计算行列式的值. 但是，有的读者或许对这三种逐步展开或变换的方法感到繁琐：或许我们可以直接写出一个公式来计算行列式的值？当然这样的公式需要我们通过逐步的展开或变换来得到.
 
-我们使用公理化定义来展开这一行列式，为了叙述方便，我们记 $A = (\alpha_1,\cdots,\alpha_n)$，并记 $e_i$ 为 $n$ 维单位向量，即 $e_i = (0,\cdots,1,\cdots,0)$，其中 $1$ 在第 $i$ 个位置. 这样，行列式的第 $j$ 列就可以表达为
+我们使用公理化定义来展开这一行列式，为了叙述方便，我们记 $A = (\alpha_1,\ldots,\alpha_n)$，并记 $e_i$ 为 $n$ 维单位向量，即 $e_i = (0,\ldots,1,\ldots,0)$，其中 $1$ 在第 $i$ 个位置. 这样，行列式的第 $j$ 列就可以表达为
 
 \[\alpha_j = a_{1j}e_1 + a_{2j}e_2 + \cdots + a_{nj}e_n = \sum_{i=1}^{n}a_{ij}e_i.\]
 
 于是，根据行列式公理化定义 \autoref{def:公理化定义} 的线性性质，我们有
 
 \begin{align*}
-    |A| &= |\alpha_1,\alpha_2,\cdots,\alpha_n| = |\sum\limits_{i=1}^{n}a_{i1}e_i,\alpha_2,\cdots,\alpha_n| \\
-        &= \sum\limits_{i=1}^{n}a_{i1}|e_i,\alpha_2,\cdots,\alpha_n|.
+    |A| & = |\alpha_1,\alpha_2,\ldots,\alpha_n| = |\sum\limits_{i=1}^{n}a_{i1}e_i,\alpha_2,\ldots,\alpha_n| \\
+        & = \sum\limits_{i=1}^{n}a_{i1}|e_i,\alpha_2,\ldots,\alpha_n|.
 \end{align*}
 
-对行列式 $|e_i,\alpha_2,\cdots,\alpha_n|$ 继续展开，由 $\alpha_2 = \sum\limits_{j=1}^{n}a_{j2}e_j$，我们有
+对行列式 $|e_i,\alpha_2,\ldots,\alpha_n|$ 继续展开，由 $\alpha_2 = \sum\limits_{j=1}^{n}a_{j2}e_j$，我们有
 
-\[|e_i,\alpha_2,\cdots,\alpha_n| = \sum\limits_{j=1}^{n}a_{j2}|e_i,e_j,\alpha_3,\cdots,\alpha_n|.\]
+\[|e_i,\alpha_2,\ldots,\alpha_n| = \sum\limits_{j=1}^{n}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|.\]
 
-于是 $|A| = \sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{i1}a_{j2}|e_i,e_j,\alpha_3,\cdots,\alpha_n|$. 不断展开，我们最终得到
+于是 $|A| = \sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{i1}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|$. 不断展开，我们最终得到
 
-\[|A| = \sum\limits_{k_1,k_2,\cdots,k_n} a_{k_11}a_{k_22}\cdots a_{k_nn}|e_{k_1},e_{k_2},\cdots,e_{k_n}|.\]
+\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} a_{k_11}a_{k_22}\cdots a_{k_nn}|e_{k_1},e_{k_2},\ldots,e_{k_n}|.\]
 
-注意行列式 $|e_{k_1},e_{k_2},\cdots,e_{k_n}|$ 在某对 $k_i,k_j$ 重复时的值为 $0$，所以在不为 $0$ 的项中，$(k_1,k_2,\cdots,k_n)$ 必定是 $(1,2,\cdots,n)$ 的一个全排列，即在 $k_1,k_2,\cdots,k_n$ 中，$1,2,\cdots,n$ 中每个数都出现且仅出现一次. 设 $S_n$ 为 $1,2,\cdots,n$ 所有全排列构成的集合，那么 $S_n$ 的元素个数为 $n!$.
+注意行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 在某对 $k_i,k_j$ 重复时的值为 $0$，所以在不为 $0$ 的项中，$(k_1,k_2,\ldots,k_n)$ 必定是 $(1,2,\ldots,n)$ 的一个全排列，即在 $k_1,k_2,\ldots,k_n$ 中，$1,2,\ldots,n$ 中每个数都出现且仅出现一次. 设 $S_n$ 为 $1,2,\ldots,n$ 所有全排列构成的集合，那么 $S_n$ 的元素个数为 $n!$.
 
-进一步地，当 $(k_1,k_2,\cdots,k_n) \in S_n$ 时，行列式 $|e_{k_1},e_{k_2},\cdots,e_{k_n}|$ 的每一行、每一列都有且只有一个元素等于 $1$，其余元素都等于 $0$，因此 $|e_{k_1},e_{k_2},\cdots,e_{k_n}| = \pm 1$，因此 $|A|$ 的展开式一共有 $n!$ 项，可以表达为
+进一步地，当 $(k_1,k_2,\ldots,k_n) \in S_n$ 时，行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 的每一行、每一列都有且只有一个元素等于 $1$，其余元素都等于 $0$，因此 $|e_{k_1},e_{k_2},\ldots,e_{k_n}| = \pm 1$，因此 $|A|$ 的展开式一共有 $n!$ 项，可以表达为
 
-\[|A| = \sum\limits_{k_1,k_2,\cdots,k_n} (-1)^\epsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
+\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} (-1)^\epsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
 
-那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\cdots,e_n| = 1$ 的次数有关，因此 $\epsilon$ 只和 $k_1,k_2,\cdots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\epsilon$ 的值：
+那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\ldots,e_n| = 1$ 的次数有关，因此 $\epsilon$ 只和 $k_1,k_2,\ldots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\epsilon$ 的值：
 
 \begin{definition}{逆序数}{}
-    设 $k_1,k_2,\cdots,k_n \in S_n$，如果 $i < j$ 且 $k_i > k_j$，则称 $k_i,k_j$ 是这个排列的一个\term{逆序对}\index{逆序对}，排序中所有逆序对的总数称为这个排列的\term{逆序数}\index{逆序数}，记作 $\tau(k_1,k_2,\cdots,k_n)$.
+    设 $k_1,k_2,\ldots,k_n \in S_n$，如果 $i < j$ 且 $k_i > k_j$，则称 $k_i,k_j$ 是这个排列的一个\term{逆序对}\index{nixudui@逆序对}，排序中所有逆序对的总数称为这个排列的\term{逆序数}\index{nixushu@逆序数}，记作 $\tau(k_1,k_2,\ldots,k_n)$.
 \end{definition}
 
-逆序数的定义是非常易懂的，就是位置在前但数值更大的情况出现的次数. 直观上来看，逆序数衡量了与\term{常序排列} $(1,2,\cdots,n)$ 之间的距离，逆序数越大，排列与常序排列的差距越大. 逆序数的求法也非常简单：设排列为 $(k_1,k_2,\cdots,k_n)$，那么我们先看 $k_1$ 后面有多少个数比 $k_1$ 小，然后看 $k_2$ 后面有多少个数比 $k_2$ 小，以此类推，最后将所有这些数相加即可. 我们来看一个简单的例子：
+逆序数的定义是非常易懂的，就是位置在前但数值更大的情况出现的次数. 直观上来看，逆序数衡量了与\term{常序排列} $(1,2,\ldots,n)$ 之间的距离，逆序数越大，排列与常序排列的差距越大. 逆序数的求法也非常简单：设排列为 $(k_1,k_2,\ldots,k_n)$，那么我们先看 $k_1$ 后面有多少个数比 $k_1$ 小，然后看 $k_2$ 后面有多少个数比 $k_2$ 小，以此类推，最后将所有这些数相加即可. 我们来看一个简单的例子：
 
 \begin{example}{}{}
     求排列 $(3,1,4,2)$ 的逆序数.
@@ -437,13 +437,13 @@
 基于逆序数的定义，我们可以将排列做一个简单的分类：
 
 \begin{definition}{奇排列和偶排列}{}
-    如果一个排列的逆序数是偶数（包括零），则称这个排列是\term{偶排列}\index{偶排列}；如果一个排列的逆序数是奇数，则称这个排列是\term{奇排列}\index{奇排列}.
+    如果一个排列的逆序数是偶数（包括零），则称这个排列是\term{偶排列}\index{oupailie@偶排列}；如果一个排列的逆序数是奇数，则称这个排列是\term{奇排列}\index{jipailie@奇排列}.
 \end{definition}
 
 不难证明奇偶排列有如下简单的性质：
 \begin{example}{奇偶排列的性质}{}
     \begin{enumerate}
-        \item 设 $(k_1,k_2,\cdots,k_n) \in S_n$，若将 $k_i$ 与 $k_j$ 交换，其余数不动，那么排列的奇偶性会改变；
+        \item 设 $(k_1,k_2,\ldots,k_n) \in S_n$，若将 $k_i$ 与 $k_j$ 交换，其余数不动，那么排列的奇偶性会改变；
         \item 设 $n \geqslant 2$，则 $S_n$ 中奇排列和偶排列的个数相等.
     \end{enumerate}
 \end{example}
@@ -458,15 +458,15 @@
 讨论到此，我们终于可以给出逆序数与行列式展开中每项的符号之间的联系：
 
 \begin{theorem}{}{}
-    设 $(k_1,k_2,\cdots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\cdots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\cdots,k_n)$ 变为 $(1,2,\cdots,n)$，因此 $\epsilon = \tau(k_1,k_2,\cdots,k_n)$.
+    设 $(k_1,k_2,\ldots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\ldots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\ldots,k_n)$ 变为 $(1,2,\ldots,n)$，因此 $\epsilon = \tau(k_1,k_2,\ldots,k_n)$.
 \end{theorem}
 
 \begin{proof}
-    对 $n$ 进行归纳. $n=1$ 时结论显然成立，设对 $1,2,\cdots,n-1$ 的任一排列结论成立，我们来证明 $n$ 的情形. 设 $n$ 在排列 $(k_1,\cdots,k_n)$ 的第 $i$ 位，即 $k_i = n$，$n$ 贡献的逆序数为 $m_i = n - i$. 将 $k_i$ 与 $k_{i+1}$ 对换，再与 $k_{i+2}$ 对换，以此类推，最后与 $k_n$ 对换，这样 $n$ 就到了第 $n$ 位. 注意到
+    对 $n$ 进行归纳. $n=1$ 时结论显然成立，设对 $1,2,\ldots,n-1$ 的任一排列结论成立，我们来证明 $n$ 的情形. 设 $n$ 在排列 $(k_1,\ldots,k_n)$ 的第 $i$ 位，即 $k_i = n$，$n$ 贡献的逆序数为 $m_i = n - i$. 将 $k_i$ 与 $k_{i+1}$ 对换，再与 $k_{i+2}$ 对换，以此类推，最后与 $k_n$ 对换，这样 $n$ 就到了第 $n$ 位. 注意到
 
-    \[ \tau(k_1,\cdots,k_n) = \tau(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n) + m_i,\]
+    \[ \tau(k_1,\ldots,k_n) = \tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) + m_i,\]
 
-    且 $(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n)$ 经过 $\tau(k_1,\cdots,k_{i-1},k_{i+1},\cdots,n)$ 次相邻对换可以变为 $(1,2,\cdots,n-1)$，结合上面的讨论可知 $(k_1,\cdots,k_n)$ 经过 $\tau(k_1,\cdots,k_n)$ 次相邻对换可以变为 $(1,2,\cdots,n)$，因此 $\epsilon = \tau(k_1,\cdots,k_n)$.
+    且 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 经过 $\tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 次相邻对换可以变为 $(1,2,\ldots,n-1)$，结合上面的讨论可知 $(k_1,\ldots,k_n)$ 经过 $\tau(k_1,\ldots,k_n)$ 次相邻对换可以变为 $(1,2,\ldots,n)$，因此 $\epsilon = \tau(k_1,\ldots,k_n)$.
 \end{proof}
 
 由此我们可以得到行列式的逆序数定义：
@@ -479,7 +479,7 @@
             \vdots & \vdots & \ddots & \vdots \\
             a_{n1} & a_{n2} & \cdots & a_{nn}
         \end{vmatrix},\]
-    则 $|A| = \sum\limits_{(k_1,k_2,\cdots,k_n) \in S_n} (-1)^{\tau(k_1,k_2,\cdots,k_n)}a_{k_11}a_{k_22}\cdots a_{k_nn}$.
+    则 $|A| = \sum\limits_{(k_1,k_2,\ldots,k_n) \in S_n} (-1)^{\tau(k_1,k_2,\ldots,k_n)}a_{k_11}a_{k_22}\cdots a_{k_nn}$.
 \end{theorem}
 
 根据逆序数定义，我们可以重解 \autoref{ex:行列式基本运算} 中的行列式：
@@ -598,7 +598,7 @@
 \end{solution}
 
 \begin{example}{}{}
-    计算$n$阶行列式，其中$a_i\neq 0(i=2,\cdots,n)$：
+    计算$n$阶行列式，其中$a_i\neq 0(i=2,\ldots,n)$：
     \[|A|=\begin{vmatrix}
         a_1 & b_2 & b_3 & \cdots & b_n \\
         c_2 & a_2 & 0 & \cdots & 0 \\
@@ -1230,7 +1230,7 @@
 下面的证明需要利用一些行列式逆序数定义的知识，感兴趣的读者可以参考史海拾遗一讲的描述，当然也可以略过这里的证明.
 
 \begin{proof}
-    我们只证明前一半按行展开的情况，后一半按列展开的情况可以类似证明. 事实上，$|A|$是$n!$项的代数和（事实上直接用按一行（一列）展开的定义结合数学归纳法很容易得到），而\autoref{eq:14:Laplace定理} 右边求和符号包含$C_n^k$项，然后$k$阶子式展开有$k!$项，$n-k$阶代数余子式有$(n-k)!$项，所以$C_n^k\cdot k!\cdot (n-k)!=n!$，所以\autoref{eq:14:Laplace定理} 等号左右项数相同.
+    我们只证明前一半按行展开的情况，后一半按列展开的情况可以类似证明. 事实上，$|A|$是$n!$项的代数和（事实上直接用按一行（一列）展开的定义结合数学归纳法很容易得到），而\autoref{eq:14:Laplace定理} 右边求和符号包含$\binom{n}{k}$项，然后$k$阶子式展开有$k!$项，$n-k$阶代数余子式有$(n-k)!$项，所以$\binom{n}{k}\cdot k!\cdot (n-k)!=n!$，所以\autoref{eq:14:Laplace定理} 等号左右项数相同.
 
     事实上，我们不难发现\autoref{eq:14:Laplace定理} 等号右端$n!$项是互不相同的（不是计算结果一定互不相同，是参与计算的行列式元素不同），又\autoref{eq:14:Laplace定理} 等号左右项数相同，故我们只需证明等号右侧每一项都是$|A|$展开中的一项即可.
 
@@ -1933,14 +1933,14 @@
     \item 计算行列式$|2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|$，其中$\alpha_1=(a_1,a_2,\ldots,a_n),\enspace \beta_1=(b_1,b_2,\ldots,b_n),\enspace \alpha_2=(c_1,c_2,\ldots,c_n),\enspace \beta_2 = (d_1,d_2,\ldots,d_n)$.（提示：利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$）
 
     \item 求$2n$阶行列式的值（空缺处都是0）：
-    \[\begin{vmatrix}
-        a & & & & & b \\
-        & \ddots & & & \begin{rotate}{90} $\ddots$ \end{rotate} & \\
-        & & a & b & & \\
-        & & b & a & & \\
-        & \begin{rotate}{90} $\ddots$ \end{rotate} & & & \ddots & \\
-        b & & & & & a
-    \end{vmatrix}.\]
+          \[\begin{vmatrix}
+                  a &         &   &   &         & b \\
+                    & \ddots  &   &   & \iddots &   \\
+                    &         & a & b &         &   \\
+                    &         & b & a &         &   \\
+                    & \iddots &   &   & \ddots  &   \\
+                  b &         &   &   &         & a
+              \end{vmatrix}.\]
 \end{enumerate}
 
 \centerline{\heiti C组}
@@ -1982,7 +1982,7 @@
                   |A| & |B| \\ |C| & |D|
               \end{vmatrix} = 0.\]
 
-    \item 设$A$为$n$阶实对称矩阵（$n>1$），$|A|=0$，证明：$A_{ii}A_{jj}=(A_{ij})^2(i,j=1,\cdots,n)$.
+    \item 设$A$为$n$阶实对称矩阵（$n>1$），$|A|=0$，证明：$A_{ii}A_{jj}=(A_{ij})^2(i,j=1,\ldots,n)$.
 
     \item 求$\begin{pmatrix}
                   A & C \\ O & B

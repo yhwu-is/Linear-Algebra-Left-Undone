@@ -216,8 +216,8 @@
 \begin{solution}
     我们可以直接证明第二点，因为第一点是第二点的特例. 设$f(x)=\displaystyle\sum_{i=0}^ma_ix^i$，$g(x)=\displaystyle\sum_{j=0}^sb_jx^j$，$A^0=B^0=E$，则
     \begin{align*}
-        f(A)g(B) & =\displaystyle\sum_{i=0}^ma_iA^i\cdot \sum_{j=0}^sb_jB^j(AB=BA)                                                           \\
-                 & =\displaystyle\sum_{k=0}^{m+s}\sum_{i+j=k}a_ib_jA^iB^j=\displaystyle\sum_{k=0}^{m+s}\sum_{i+j=k}b_ja_iB^jA^i \\
+        f(A)g(B) & =\sum_{i=0}^ma_iA^i\cdot \sum_{j=0}^sb_jB^j(AB=BA)                                 \\
+                 & =\sum_{k=0}^{m+s}\sum_{i+j=k}a_ib_jA^iB^j=\sum_{k=0}^{m+s}\sum_{i+j=k}b_ja_iB^jA^i \\
                  & =g(B)f(A).
     \end{align*}
     事实上由于$A\cdot A=A\cdot A$，因此$f(A)g(A)=g(A)f(A)$只是上面证明的结论的特例.
