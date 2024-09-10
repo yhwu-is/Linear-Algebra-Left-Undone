@@ -45,7 +45,57 @@
     \end{enumerate}
 \end{theorem}
 
-定理前两条的证明见教材74页，第三条我们留作习题供读者练习，因为在考试中有出现过. 前两条还可以进行推广，即$V$的有限个子空间的交与和仍然是$V$的子空间.
+\begin{proof}
+    我们从子空间的定义出发证明这一定理.
+    即验证 $W_1 \cap W_2$ 满足子空间的三个条件：
+
+
+    \begin{itemize}
+        \item
+        由于 $W_1, W_2$ 都是 $V$ 的子空间，零向量 $\mathbf{0} \in W_1$ 且 $\mathbf{0} \in W_2$。因此，$\mathbf{0} \in W_1 \cap W_2$。
+
+        \item
+        对于任意的 $x, y \in W_1 \cap W_2$，有 $x \in W_1$ 且 $x \in W_2$，$y \in W_1$ 且 $y \in W_2$。
+        由于 $W_1$ 和 $W_2$ 都是 $V$ 的子空间，所以 $x + y \in W_1$ 且 $x + y \in W_2$。
+        因此，$x + y \in W_1 \cap W_2$。
+
+        \item
+        对于任意的 $x \in W_1 \cap W_2$ 和任意的标量 $\lambda \in \mathbf{F}$，有 $x \in W_1$ 且 $x \in W_2$。
+        由于 $W_1$ 和 $W_2$ 都是 $V$ 的子空间，所以 $\lambda x \in W_1$ 且 $\lambda x \in W_2$。
+        因此，$\lambda x \in W_1 \cap W_2$。
+    \end{itemize}
+
+    所以 $W_1 \cap W_2$ 是 $V$ 的子空间。
+
+
+    下证$W_1 + W_2$ 是 $V$ 的子空间:
+    \begin{itemize}
+        \item
+        由于 $W_1$ 和 $W_2$ 是 $V$ 的子空间，$\mathbf{0} \in W_1$ 且 $\mathbf{0} \in W_2$。
+        因此，$\mathbf{0} = \mathbf{0} + \mathbf{0} \in W_1 + W_2$。
+
+        \item
+        对于任意的 $u_1, u_2 \in W_1 + W_2$，存在 $x_1, x_2 \in W_1$ 和 $y_1, y_2 \in W_2$，使得 $u_1 = x_1 + y_1$，$u_2 = x_2 + y_2$。
+        则
+        $$
+        u_1 + u_2 = (x_1 + y_1) + (x_2 + y_2) = (x_1 + x_2) + (y_1 + y_2).
+        $$
+        由于 $W_1$ 和 $W_2$ 是 $V$ 的子空间，$x_1 + x_2 \in W_1$ 且 $y_1 + y_2 \in W_2$，
+        因此，$u_1 + u_2 \in W_1 + W_2$。
+
+        \item
+        对于任意的 $u \in W_1 + W_2$ 和标量 $\lambda \in \mathbf{F}$，存在 $x \in W_1$ 和 $y \in W_2$，使得 $u = x + y$。
+        则
+        $$
+        \lambda u = \lambda (x + y) = \lambda x + \lambda y.
+        $$
+        由于 $W_1$ 和 $W_2$ 是 $V$ 的子空间，$\lambda x \in W_1$ 且 $\lambda y \in W_2$，
+        因此，$\lambda u \in W_1 + W_2$。
+    \end{itemize}
+
+    因此，$W_1 + W_2$ 也是 $V$ 的子空间。
+\end{proof}
+我们只在此证明定理的前两条，第三条我们留作习题供读者练习，因为在考试中有出现过. 前两条还可以进行推广，即$V$的有限个子空间的交与和仍然是$V$的子空间.
 
 除此之外，这一定理也告诉我们为什么需要研究子空间的和而更少研究子空间的并：因为子空间的和仍然是线性空间. 直观理解实际上就是和的定义中出现了两个子空间的向量的加法，而构成子空间的核心就是运算封闭，因此这一定义为子空间的和仍构成子空间提供了保证，因此这一定义也是十分自然的.
 
@@ -128,7 +178,7 @@
     \end{enumerate}
 \end{proof}
 
-本质而言$s>2$的情况就是将$s-1$个子空间的并视为一个整体，然后套用$s=2$的情况证明. 若将这一定理的条件限制在$V$为有限维线性空间，我们也可以利用Vandermonde行列式的方法证明，详见\autoref{ex:行列式证明覆盖定理}. 事实上覆盖定理在习题中也有出现，例如教材91--92页第8、9题，都是覆盖定理的直接证明. 我们下面再给出一个例子供读者应用覆盖定理：
+本质而言$s>2$的情况就是将$s-1$个子空间的并视为一个整体，然后套用$s=2$的情况证明. 若将这一定理的条件限制在$V$为有限维线性空间，我们也可以利用Vandermonde行列式的方法证明，详见\autoref{ex:行列式证明覆盖定理}. 我们下面再给出一个例子供读者应用覆盖定理：
 \begin{example}{}{}
     $V_1,V_2,\ldots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：存在$V$的一组基$\alpha_1,\alpha_2,\ldots,\alpha_n$都不在$V_1,V_2,\ldots,V_s$中.
 \end{example}
@@ -215,9 +265,25 @@
     \end{enumerate}
 \end{theorem}
 
-定理的证明是基本的，可以参考教材76页. 在实际运用中我们要非常熟悉这些等价条件，因为都可能使用到.
+定理的证明是基本的.
+\begin{proof}
+    上述命题等价，只需证明 (1) $\Rightarrow$ (2) $\Rightarrow$ (3) $\Rightarrow$ (4) $\Rightarrow$ (1)。
 
-我们也可以定义有限个子空间的直和，即$V=W_1\oplus W_2\oplus\cdots\oplus W_n \iff W_i \cap \sum\limits_{j \neq i}W_j=\{0\}$，即每个子空间与其余子空间的和的交都是$\{0\}$. 等价命题也是上述定理的推广，例如唯一分解、$\vec{0}$的分解以及维数公式推广，此处不再赘述，详见教材76页. 除此之外，我们还有一个与多空间直和相关的定理：
+    先证 (1) $\Rightarrow$ (2): 设 $W_1 + W_2$ 中的 $\alpha$ 有两个分解式
+    $$
+    \alpha = \alpha_1 + \alpha_2 = \beta_1 + \beta_2, \quad \alpha_1, \beta_1 \in W_1, \ \alpha_2, \beta_2 \in W_2,
+    $$
+    则 $\alpha_1 - \beta_1 = \beta_2 - \alpha_2 \in W_1 \cap W_2 = \{\mathbf{0}\}$，于是得 $\beta_1 = \alpha_1, \beta_2 = \alpha_2$，故 $\alpha$ 的分解式是唯一的。
+
+    其次证 (2) $\Rightarrow$ (3): 由 $W_1 + W_2$ 中零向量的分解式唯一性以及 $0 = 0 + 0$，立即得命题 (3) 成立。
+
+    再证 (3) $\Rightarrow$ (4): 由命题 (3) 可推出 $W_1 \cap W_2 = \{\mathbf{0}\}$，因为若 $W_1 \cap W_2 \ne \{\mathbf{0}\}$，则存在 $0 \ne a \in W_1 \cap W_2$，使得 $0 = \alpha + (-\alpha)$，（其中 $\alpha \in W_1, -\alpha \in W_2$），这与命题 (3) 相矛盾。再根据维数公式 就得命题 (4)。
+
+    最后由命题 (4) 及维数公式 立即得命题 (1) 成立。
+\end{proof}
+在实际运用中我们要非常熟悉这些等价条件，因为都可能使用到.
+
+我们也可以定义有限个子空间的直和，即$V=W_1\oplus W_2\oplus\cdots\oplus W_n \iff W_i \cap \sum\limits_{j \neq i}W_j=\{0\}$，即每个子空间与其余子空间的和的交都是$\{0\}$. 等价命题也是上述定理的推广，例如唯一分解、$\vec{0}$的分解以及维数公式推广，此处不再赘述. 除此之外，我们还有一个与多空间直和相关的定理：
 \begin{theorem}{}{多空间直和}
     若$V=V_1\oplus V_2,\enspace V_1=V_{11}\oplus\cdots\oplus V_{1s},\enspace V_2=V_{21}\oplus\cdots\oplus V_{2t}$，则
     \[V=V_{11}\oplus\cdots\oplus V_{1s}\oplus V_{21}\oplus\cdots\oplus V_{2t}\]
