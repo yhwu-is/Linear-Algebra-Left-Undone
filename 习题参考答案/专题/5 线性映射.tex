@@ -179,6 +179,131 @@
           而 $ l_i \neq 0,\enspace \sigma^{k - 1}(\alpha) \neq \vec{0} $，矛盾！
 
     \item 见 \hyperref[sec:2022-2023-1midtzy]{2022-2023学年线性代数I（H）期中（谈之奕老师）}.
+
+    \item \begin{enumerate}
+        \item 证明：$ \forall p_1(x), p_2(x) \in \mathbf{R}[x]_n,\enspace \forall k_1, k_2 \in \mathbf{R} $，有
+              \begin{align*}
+                  \sigma(k_1 p_1 + k_2 p_2) & = (k_1 p_1(x) + k_2 p_2(x))'                                    \\
+                                            & = k_1 p_1'(x) + k_2 p_2'(x) = k_1 \sigma(p_1) + k_2 \sigma(p_2)
+              \end{align*}
+              因此 $ \sigma $ 是 $ \mathbf{R}[x]_n $ 上的线性变换.
+
+        \item \begin{gather*}
+                  \begin{aligned}
+                      \im \sigma & = \spa(\sigma(1), \sigma(x), \sigma(x^2), \ldots, \sigma(x^{n - 1})) \\
+                                 & = \spa(1, 2x, \ldots, (n - 1) x^{n - 2})                             \\
+                                 & = \spa(1, x, \ldots, x^{n - 2})
+                  \end{aligned} \\
+                  r(\sigma) = n - 1
+              \end{gather*}
+              可知 $ \sigma $ 不是单射，因此不可逆.
+
+        \item 由 $ \sigma(p(x)) = 0 $ 可知 $ p(x) = c $（常数）. 因此 $ \ker \sigma = \spa(1),\enspace \dim \ker \sigma = 1 $.
+
+        \item \begin{gather*}
+                  r(\sigma) + \dim \ker \sigma = (n - 1) + 1 = n \\
+                  \im \sigma + \ker \sigma = \spa(1, x, \ldots, x^{n - 2}) = \im \sigma \neq \mathbf{R}[x]_n
+              \end{gather*}
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 可能. 例如 $ \sigma(x, y) = (x + y, x + y) $.
+              \begin{gather*}
+                  \im \sigma = \spa(\vec{e}_1 + \vec{e}_2) \\
+                  \ker \sigma = \spa(\vec{e}_1 - \vec{e}_2) \\
+                  \im \sigma \cap \ker \sigma = \{\vec{0}\}
+              \end{gather*}
+
+        \item 可能. 例如 $ \sigma(x, y, z) = (x - y, x - y, x - y) $.
+              \begin{gather*}
+                  \im \sigma = \spa((1, 1, 1)) \\
+                  \ker \sigma = \spa((1, 1, 1), (1, 1, 0)) \\
+                  \im \sigma \subseteq \ker \sigma
+              \end{gather*}
+
+        \item 可能. 例如 $ \sigma(x, y) = (x - y, x - y) $.
+              \begin{gather*}
+                  \im \sigma = \ker \sigma = \spa((1, 1))
+              \end{gather*}
+
+        \item 可能. 例如 $ \sigma(x, y) = (x, x - y) $.
+              \begin{gather*}
+                  \im \sigma = \mathbf{R}^2 \\
+                  \ker \sigma = \{\vec{0}\} \\
+                  \ker \sigma \subseteq \im \sigma
+              \end{gather*}
+    \end{enumerate}
+
+\item \begin{enumerate}
+        \item 错误. 一个反例为 $ \sigma(x_1, x_2) = (x_1 - x_2, x_1 - x_2) $，则 $ \im \sigma + \ker \sigma = \spa((1, 1)) $.
+
+        \item 正确. $ \im \sigma + \ker \sigma \subseteq V $，此时 $ \dim(\im \sigma + \ker \sigma) = \dim \im \sigma + \dim \ker \sigma - 0 = \dim V $，所以 $ \im \sigma + \ker \sigma = V $.
+
+        \item \label{item:6:B:2:3}
+              错误. $ \forall \alpha \in V $ 有
+              \[ (\sigma_1 + \sigma_2)(\alpha) = \sigma_1(\alpha) + \sigma_2(\alpha) \in \sigma_1(V) + \sigma_2(V) \]
+              所以
+              \[ (\sigma_1 + \sigma_2)(V) \subseteq \sigma_1(V) + \sigma_2(V) \]
+              但上式中等号不一定成立. 反例：$ V = \mathbf{R}^3 $ 上的线性变换 $ \sigma_1, \sigma_2 $ 关于 $ \mathbf{R}^3 $ 的基 $ \vec{e}_1, \vec{e}_2, \vec{e}_3 $ 的像分别为
+              \begin{gather*}
+                  \sigma_1(\vec{e}_1) = \vec{e}_1,\enspace \sigma_1(\vec{e}_2) = \sigma_1(\vec{e}_3) = \vec{e}_2 \\
+                  \sigma_2(\vec{e}_1) = \vec{e}_1,\enspace \sigma_2(\vec{e}_2) = \sigma_2(\vec{e}_3) = \vec{e}_3 \\
+                  \sigma_1(V) = \spa(\vec{e}_1, \vec{e}_2),\enspace \sigma_2(V) = \spa(\vec{e}_1, \vec{e}_3) \\
+                  \sigma_1(V) + \sigma_2(V) = \spa(\vec{e}_1, \vec{e}_2, \vec{e}_3) = \mathbf{R}^3
+              \end{gather*}
+              而
+              \begin{gather*}
+                  (\sigma_1 + \sigma_2)(\vec{e}_1) = \vec{e}_1 + \vec{e}_1 = 2 \vec{e}_1 \\
+                  (\sigma_1 + \sigma_2)(\vec{e}_2) = (\sigma_1 + \sigma_2)(\vec{e}_3) = \vec{e}_2 + \vec{e}_3 \\
+                  (\sigma_1 + \sigma_2)(V) = \spa(\vec{e}_1, \vec{e}_2 + \vec{e}_3) \neq \mathbf{R}^3
+              \end{gather*}
+
+        \item 错误. $ (I - \sigma)(V) + \sigma(V) \subseteq V $，等号不一定成立，原因同 \ref*{item:6:B:2:3}，此时只需将 $ I - \sigma $ 视作 $ \sigma_1 $，将 $ \sigma $ 视作 $ \sigma_2 $.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 在. 因为
+              \[ \sigma(\alpha_1) = -2 \sigma(\sigma_2) + \sigma(\alpha_3) = \sigma(-2 \alpha_2 + \alpha_3) \]
+              同构映射 $ \sigma $ 可逆. 所以
+              \[ \alpha_1 = -2 \alpha_2 + \alpha_3 \in \spa(\alpha_2, \alpha_3) \]
+    \end{enumerate}
+
+    \item 我们仅对 $ n = 3 $ 的情况给出证明. % TODO P117/7
+
+          先证 $ \sigma $ 是线性映射. $ \forall p(x), q(x) \in \mathbf{R}[x]_3,\enspace \forall k_1, k_2 \in \mathbf{R} $ 有
+          \begin{align*}
+                  & \sigma(k_1 p(x) + k_2 q(x))                                                 \\
+              ={} & (k_1 p(c_1) + k_2 q(c_1), k_1 p(c_2) + k_2 q(c_2), k_1 p(c_3) + k_2 q(c_3)) \\
+              ={} & k_1(p(c_1), p(c_2), p(c_3)) + k_1(q(c_1), q(c_2), q(c_3))                   \\
+              ={} & k_1 \sigma(p(x)) + k_2 \sigma(q(x))
+          \end{align*}
+
+          再证 $ \sigma $ 是双射，即 $ \forall (d_1, d_2, d_3) \in \mathbf{R}^3 $，存在唯一的
+          \[ p(x) = a + bx + cx^2 \in \mathbf{R}[x]_3 \]
+          使 $ \sigma(p(x)) = (d_1, d_2, d_3) $. 根据
+          \[ \sigma(p(x)) = (p(c_1), p(c_2), p(c_3)) \]
+          以及 $ \sigma(p(x)) = (d_1, d_2, d_3) $，有
+          \[ \begin{cases}
+                  a + bc_1 + cc_1^2 = d_1 \\
+                  a + bc_2 + cc_2^2 = d_2 \\
+                  a + bc_3 + cc_3^3 = d_3
+              \end{cases} \]
+          方程组是关于未知元 $ a, b, c $ 的三元线性非齐次方程组，其中 $ c_1, c_2, c_3 $ 是互异的实常数. 用高斯消元法，易将其增广矩阵变换为下列阶梯形矩阵，即
+          \begin{align} % TODO 增广矩阵
+                             & \begin{pmatrix}
+                                   1 & c_1 & c_1^2 & \Bigm| & d_1 \\
+                                   1 & c_2 & c_2^2 & \Bigm| & d_2 \\
+                                   1 & c_3 & c_3^3 & \Bigm| & d_3
+                               \end{pmatrix} \notag                                                                    \\
+              \implies \quad & \begin{pmatrix}
+                                   1 & c_1 & c_1^2     & \Bigm| & d_1                                                         \\[1ex]
+                                   0 & 1   & c_2 + c_1 & \Bigm| & \dfrac{d_1 - d_2}{c_1 - c_2}                                \\[2ex]
+                                   0 & 0   & c_3 - c_2 & \Bigm| & \dfrac{d_3 - d_1}{c_3 - c_1} - \dfrac{d_2 - d_1}{c_2 - c_1}
+                               \end{pmatrix} \label{item:6:B:6:1}
+          \end{align}
+          阶梯性矩阵 \ref*{item:6:B:6:1}（其中 $ c_3 - c_2, c_3 - c_1, c_2 - c_1 $ 均为非零常数）对应的方程组有唯一解 $ a, b, c $，即存在唯一的
+          \[ p(x) = a + bx + cx^2 \in \mathbf{R}[x]_3 \]
+          使得 $ \sigma(p(x)) = (d_1, d_2, d_3) $ 成立. 所以 $ \sigma $ 是线性双射，即 $ \mathbf{R}[x]_3 $ 到 $ \mathbf{R}^3 $ 的同构映射.
 \end{enumerate}
 
 \centerline{\heiti C组}
