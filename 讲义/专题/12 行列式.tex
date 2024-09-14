@@ -420,9 +420,9 @@
 
 进一步地，当 $(k_1,k_2,\ldots,k_n) \in S_n$ 时，行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 的每一行、每一列都有且只有一个元素等于 $1$，其余元素都等于 $0$，因此 $|e_{k_1},e_{k_2},\ldots,e_{k_n}| = \pm 1$，因此 $|A|$ 的展开式一共有 $n!$ 项，可以表达为
 
-\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} (-1)^\epsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
+\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} (-1)^\varepsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
 
-那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\ldots,e_n| = 1$ 的次数有关，因此 $\epsilon$ 只和 $k_1,k_2,\ldots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\epsilon$ 的值：
+那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\ldots,e_n| = 1$ 的次数有关，因此 $\varepsilon$ 只和 $k_1,k_2,\ldots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\varepsilon$ 的值：
 
 \begin{definition}{逆序数}{}
     设 $k_1,k_2,\ldots,k_n \in S_n$，如果 $i < j$ 且 $k_i > k_j$，则称 $k_i,k_j$ 是这个排列的一个\term{逆序对}\index{nixudui@逆序对}，排序中所有逆序对的总数称为这个排列的\term{逆序数}\index{nixushu@逆序数}，记作 $\tau(k_1,k_2,\ldots,k_n)$.
@@ -462,7 +462,7 @@
 讨论到此，我们终于可以给出逆序数与行列式展开中每项的符号之间的联系：
 
 \begin{theorem}{}{}
-    设 $(k_1,k_2,\ldots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\ldots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\ldots,k_n)$ 变为 $(1,2,\ldots,n)$，因此 $\epsilon = \tau(k_1,k_2,\ldots,k_n)$.
+    设 $(k_1,k_2,\ldots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\ldots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\ldots,k_n)$ 变为 $(1,2,\ldots,n)$，因此 $\varepsilon = \tau(k_1,k_2,\ldots,k_n)$.
 \end{theorem}
 
 \begin{proof}
@@ -470,7 +470,7 @@
 
     \[ \tau(k_1,\ldots,k_n) = \tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) + m_i,\]
 
-    且 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 经过 $\tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 次相邻对换可以变为 $(1,2,\ldots,n-1)$，结合上面的讨论可知 $(k_1,\ldots,k_n)$ 经过 $\tau(k_1,\ldots,k_n)$ 次相邻对换可以变为 $(1,2,\ldots,n)$，因此 $\epsilon = \tau(k_1,\ldots,k_n)$.
+    且 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 经过 $\tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 次相邻对换可以变为 $(1,2,\ldots,n-1)$，结合上面的讨论可知 $(k_1,\ldots,k_n)$ 经过 $\tau(k_1,\ldots,k_n)$ 次相邻对换可以变为 $(1,2,\ldots,n)$，因此 $\varepsilon = \tau(k_1,\ldots,k_n)$.
 \end{proof}
 
 由此我们可以得到行列式的逆序数定义：
