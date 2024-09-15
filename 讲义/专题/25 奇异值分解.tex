@@ -164,6 +164,69 @@ $ T^*T $ 除去其特征值的性质外，更重要的在于其是一个自伴�
 
 极分解定理将所有一般的算子表成了一个等距同构和一个正算子的乘积，而这两种算子我们之前的章节都已经给出了完全的描述. 所以我们也得到了一般算子的第二种刻画方式.
 
+\subsection{特征人脸算法}
+
+奇异值分解的存在性在经典的人脸识别算法——特征人脸算法中得到了应用，使得最原始版本的特征人脸算法得以大幅加速。首先介绍如下符号：
+
+\begin{itemize}
+    \item $m$: 人脸数量
+    \item $n$: 每张人脸图像的像素数
+    \item $D = \begin{pmatrix}
+        x_1^\mathrm{T} \\
+        \vdots \\
+        x_m^\mathrm{T} \\
+    \end{pmatrix}\in \mathbf{R}^{m\times n}$: 人脸数据矩阵，每一行 $x_i^\mathrm{T} \in \mathbf{R}^n$ 代表一张人脸图像
+    \item $A=D - \bar{D}$: 中心化后的人脸数据矩阵，其中$\bar{D} = \begin{pmatrix}
+        \bar{x}^\mathrm{T} \\
+        \vdots \\
+        \bar{x}^\mathrm{T} \\
+    \end{pmatrix}$，$\bar{x} = \mathbb{E}(X) = \frac{1}{m}\sum_{i=1}^m x_i$
+\end{itemize}
+
+从概率论的观点来看，具体的人脸 $x_1, \cdots, x_m$ 都是从自然人脸随机变量 $X$ 中的具体观测值，服从一个复杂的概率分布。利用 $X$ 的协方差矩阵 (covariance matrix) 可以刻画人脸之间的相关性，即
+
+\[ \mathrm{Cov}(X) = \frac{1}{m-1}\sum_{i=1}^m (x_i - \mathbb{E}(X))(x_i - \mathbb{E}(X)) = \frac{1}{m-1} A^{\mathrm{T}}A \]
+
+特征人脸算法的本质在于将人脸图像从高维的像素矩阵表示 $x\in \mathbf{R}^n$ 投影到一个低维的特征空间，并寻求最小的投影损失。主成分分析方法证明，选择协方差的特征向量作为投影基，再从特征值的绝对值从高到低选择前 $k$ 个特征向量构成低维特征空间对人脸进行表示，可以得到最小的投影损失。这就要求我们\textbf{对协方差矩阵进行特征值分解}。
+
+在特征人脸算法的应用场景中，人脸数量 $m$ 一般只有几百张，而每张人脸图像的像素数 $n$ 一般至少也是上万的级别。如果直接对 $A^{\mathrm{T}}A$ 进行特征值分解，计算量是非常大的。而利用 $A$ 的\textbf{奇异值分解的存在性}，可以通过对 $AA^{\mathrm{T}}$ 进行奇异值分解，从而间接得到 $A^{\mathrm{T}}A$ 的前 $k$ 个特征向量，大幅减少计算量。
+
+具体来说，根据 $A\in \mathbf{R}^{m\times n}$ 的奇异值分解的存在性，存在正交矩阵 $U\in \mathbf{R}^{m\times m}$（左奇异矩阵）和 $V\in \mathbf{R}^{m\times m}$ （右奇异矩阵）使得
+
+\[ A = U\Sigma V^{\mathrm{T}} \]
+
+其中 $\Sigma = (s_{ij})_{m\times n}$, $s_{ii}=s_i$ 是奇异值，$\Sigma$ 中除了 $s_{ii}$ 之外的元素全为零。由于
+
+\begin{gather*}
+    AA^{\mathrm{T}} = (U\Sigma V^{\mathrm{T}})(U\Sigma V^{\mathrm{T}})^{\mathrm{T}} = U \Sigma (V^{\mathrm{T}} V) \Sigma U^{\mathrm{T}} = U \Sigma^2 U^{\mathrm{T}} \\
+    A^{\mathrm{T}}A = (U\Sigma V^{\mathrm{T}})^{\mathrm{T}}(U\Sigma V^{\mathrm{T}}) = V \Sigma (U^{\mathrm{T}} U) \Sigma V^{\mathrm{T}} = V \Sigma^2 V^{\mathrm{T}}
+\end{gather*}
+
+可以看出这就是用正交变换将 $A^{\mathrm{T}}A$ 和 $AA^{\mathrm{T}}$ 对角化的过程。可以证明，奇异值分解所需要的矩阵 $U, V$ , 就分别是 $AA^{\mathrm{T}}$ 和 $A^{\mathrm{T}}A$ 的正交特征向量矩阵。
+
+将 $U$, $V$ 用列向量形式表示：
+
+\[ U = \begin{pmatrix}
+    u_1 & \cdots & u_m
+\end{pmatrix}, \quad V = \begin{pmatrix}
+    v_1 & \cdots & v_n
+\end{pmatrix} \]
+
+$u_i, v_i$ 分别为 $U, V$ 对应位置的特征向量，共享特征值 $\lambda_i$（即奇异值 $s_i$ 的平方）。根据 $u_i$ 是 的$AA^{\mathrm{T}}$ 的特征向量，有
+
+\[ AA^{\mathrm{T}} u_i = \lambda_i u_i \]
+
+两边左乘 $A^{\mathrm{T}}$，根据 $\lambda_i$ 对矩阵为数乘可将其提到最左边，可以得到
+
+\[ (A^{\mathrm{T}}A)A^{\mathrm{T}} u_i = \lambda_i A^{\mathrm{T}} u_i \]
+
+可知 $A^{\mathrm{T}} u_i$ 就是 $A^{\mathrm{T}}A$ 的特征向量，根据对应关系，就是 $v_i$ 。因此有
+
+\[ (v_1, \cdots, v_k) = A^{\mathrm{T}}(u_1, \cdots, u_k) \]
+
+$v_1, \cdots, v_k$ 就是我们希望将人脸投影到的低维特征空间，$k$ 是手工选择的一个控制特征空间维度的参数。由于实践中 $k$ 一般取小于 $m$ 的值已经能达到很小的投影损失，因此仅对 $AA^{\mathrm{T}}$ 进行特征值分解是可行的。
+
+
 \subsection*{$^*$ 算子范数}
 
 \begin{summary}
