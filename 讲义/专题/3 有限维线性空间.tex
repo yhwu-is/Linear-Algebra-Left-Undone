@@ -169,7 +169,7 @@
             如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 则其任意子集也线性无关，如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则其任意包含它的向量组也线性相关.
           \end{example}
           \begin{proof}
-           我们先证明前者，不失一般性，设子集为 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$, 其中 $1 \leqslant i_1 < i_2 < \cdots < i_k \leqslant n$, 若存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 使得
+            我们先证明前者，不失一般性，设子集为 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$, 其中 $1 \leqslant i_1 < i_2 < \cdots < i_k \leqslant n$, 若存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 使得
 
             \[
             \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k} = 0,
@@ -181,10 +181,9 @@
                 \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k}  + 0 \alpha_{i_{k+1}} + \cdots + 0 \alpha_{i_n} = 0,
             \]
 
+            其中 $\lambda_{k+1} = \lambda_{k+2} = \cdots = \lambda_n = 0$, 且 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 不全为零，（即将不在子集中的其它元素以$0$作为系数加到方程中，这样就找到了一个满足线性相关定义的式子）这与 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关矛盾. 故 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$ 线性无关.
 
-            其中 $\lambda_{k+1} = \lambda_{k+2} = \cdots = \lambda_n = 0$, 且 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 不全为零, （即将不在子集中的其它元素以$0$作为系数加到方程中，这样就找到了一个满足线性相关定义的式子）这与 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关矛盾. 故 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$ 线性无关.
-
-            相同的方法证明后者,设 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关, 则存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_n$ 使得
+            相同的方法证明后者，设 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_n$ 使得
 
             \[
             \lambda_1 \alpha_1 + \lambda_2 \alpha_2 + \cdots + \lambda_n \alpha_n = 0,
