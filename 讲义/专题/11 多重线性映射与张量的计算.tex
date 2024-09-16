@@ -1,6 +1,492 @@
 \chapter{多重线性映射与张量的计算}
 
+在定义了线性性之后，我们不难联想到微积分中一元函数到多元函数的推广过程. 因此，我们自然地想要将线性映射推广到多重线性映射. 这时，我们顺理成章地也就完成了对向量和矩阵的推广，也就是所谓的张量. 张量的运算在几何的背景下具备明确的意义，在本讲中，我们会简要介绍张量的计算法则. 因为张量在物理学中的普遍使用，数学家、科普作家 Lillian R. Lieber 将张量誉为 the fact of universe，可见其重要性.
+
 \section{多重线性映射}
+
+多重线性映射的定义是轻松的. 它无非就是把一元的映射变成多元的映射，让我们直接写出 $n$ 元情形下的定义：
+
+\begin{definition}{}{}
+    设 $V_1, V_2, \ldots, V_n, W$ 均为线性空间，称 $f: V_1 \times V_2 \times \cdots \times V_n \to W$ 为\term{多重线性映射}，如果它对于任意一个分量都是线性的，即
+    \[ f(v_1, \ldots, \lambda v_i + \mu v_i', \ldots, v_n) = \lambda f(v_1, \ldots, v_i, \ldots, v_n) + \mu f(v_1, \ldots, v_i', \ldots, v_n) \]
+
+    即保加法和数乘操作. 我们将这样的多重线性映射全体记为 $\mathcal{L}(V_1, V_2, \cdots, V_n; W)$. 如果 $W = \mathbf{F}$，则称 $f \in \mathcal{L}(V_1, V_2, \cdots, V_n; \mathbf{F})$ 为\term{多重线性函数}.
+\end{definition}
+
+注意，我们在记号中的最后一项用的是分号而不是逗号，其目的就是区分目标线性空间和源线性空间. 这里首先要注意到的一点是，$\mathcal{L}(V_1 \times V_2 \times \cdots \times V_n, W)$ 和 $\mathcal{L}(V_1, V_2, \cdots, V_n; W)$ 是完全不同的. 为了理解这点，我们需要注意到 $V_1 \times V_2$ 中的数乘操作是对 $(v_1,v_2) \in V_1 \times V_2$ 中的每个分量都加以数乘，而多重线性映射的数乘是可以单独作用在任意一个分量上的，请看下面的一个例子：
+
+\begin{example}
+    考虑 $V_1 = V_2 = W = \R$. 考虑映射：
+    \[
+    f(a, b) = ab
+    \]
+    则它是一个多重线性映射，因为我们有 $\forall \lambda, \mu, a_1, a_2 \in \R$
+    \[
+    f(\lambda a_1 + \mu a_2, b) = (\lambda a_1 + \mu a_2) b = \lambda f(a_1, b) + \mu f(a_2, b)
+    \]
+    对于第二个分量也是同理的. 但是如果将其理解成 $V_1 \times V_2 \to W$ 的映射，则它不是一个线性映射. 考虑数乘操作即可：
+    \[
+    f(\lambda (a, b)) = f(\lambda a, \lambda b) = \lambda^2 ab \neq \lambda f(a, b)
+    \]
+    另一方面，考虑映射
+    \[
+    f(a, b) = a + b
+    \]
+    则它是一个 $\R^2 \to \R$ 的线性映射，因为对于任意 $(a_1, b_1), (a_2, b_2) \in \R^2, \lambda, \mu \in \R$，都有
+    \[
+    f(\lambda (a_1, b_1) + \mu (a_2, b_2)) = f(\lambda a_1 + \mu a_2, \lambda b_1 + \mu b_2) = \lambda f(a_1, b_1) + \mu f(a_2, b_2)
+    \]
+    但是它不是一个多重线性映射，考虑第一个分量的数乘操作：
+    \[
+    f(\lambda a, b) = \lambda a + b \neq \lambda f(a, b)
+    \]
+    因此，多重线性映射不一定是积空间上的线性映射，乘积空间上的线性映射也不一定是多重线性映射.
+\end{example}
+
+第二个问题是，我们怎么表达这样的多重线性映射？我们知道，线性映射可以用矩阵来表达，那么，多重线性映射应该怎么表达呢？我们首先考虑二元的情形. 考虑 $V_1, V_2, W$ 都是线性空间，为了接下来讨论的方便，不失一般性地，我们所有的线性空间都直接视为 $\mathbf{F}^n$ 这样的向量空间，其中 $n$ 为向量空间的维数，之后的矩阵表示需要的基在不特殊说明的情况下均取自然基. 若 $f \in \mathcal{L}(V_1, V_2; W)$，则我们很容易想到，将 $f$ 拆成两个线性函数，设 $V_1$ 有一组基 $\{e_1,\ldots,e_n\}$，记
+\[
+f_i (v_2) = f(e_i, v_2)
+\]
+则它就是一个 $V_2 \to W$ 的线性映射. 设它所对应的矩阵为 $M_i$，考虑 $V_1$ 中的向量 $v_1 = \lambda_1 e_1 + \lambda_2 e_2 + \cdots \lambda_n e_n$，其中 $n = \dim V_1$，则
+\[
+f(v_1, v_2) = f(\lambda_1 e_1 + \lambda_2 e_2 + \dots + \lambda_n e_n, v_2) = \lambda_1 f_1 (v_2) + \lambda_2 f_2 (v_2) + \cdots + \lambda_n f_n (v_2)
+\]
+将线性映射翻译成矩阵，我们就有：
+\[
+f(v_1, v_2) = \lambda_1 M_1 v_2 + \lambda_2 M_2 v_2 + \cdots + \lambda_n M_n v_2 = (\lambda_1 M_1 + \lambda_2 M_2 + \cdots + \lambda_n M_n) v_2
+\]
+形式地，我们将其记作（回忆 $v_1 = (\lambda_1,\lambda_2,\ldots,\lambda_n)$）
+\[
+    f(v_1, v_2) = v_1^\mathrm{T} \begin{pmatrix}
+        M_1 \\ M_2 \\ \vdots \\ M_n
+    \end{pmatrix}
+    v_2
+\]
+其中的
+\[\begin{pmatrix}
+        M_1 \\ M_2 \\ \vdots \\ M_n
+    \end{pmatrix}\]
+就是多重线性映射 $f$ 在自然基下的矩阵表示. 这个记号看起来很符合直觉：使用矩阵乘法的通常规则，我们将 $v_1$ 的每个分量 $\lambda_i$ 分别和对应的 $M_i$ 相乘然后求和，再乘以后面的 $v_2$. 但要注意的是，这不同于分块矩阵乘法，如果是分块矩阵乘法我们还要求 $\lambda_i$ 和 $M_i$ 是可以做矩阵乘法的，但显然这里并不能，因此这只是形式上的记号.
+
+事实上，这种记号就是我们在朴素的情形下对张量的理解：一种广义矩阵，以矩阵为元素的矩阵；更广泛地说，以张量为元素的向量：我们将向量称为 $1$ 阶张量，以向量为元素的向量称为 $2$ 阶张量，就是矩阵，而以 $n$ 阶张量为元素的向量就称为 $n + 1$ 阶张量——直观地说，$3$ 阶张量就是一个“立方体”中排有的数字，而 $n$ 阶张量则是 $n$ 维的方体. 在上面的例子中，我们给出的就是一个 $3$ 阶张量，因为它涉及三个线性空间之间的映射. 如果只涉及两个线性空间，那就是我们之前介绍的线性映射，那它的表示就是 $2$ 阶张量（即矩阵）.
+
+有的读者可能会疑惑张量中元素的排列是按行还是按列的，目前我们不会区分这两者，在后文引入反变和共变的概念后再作区分.
+
+\section{张量积}
+
+在研究了多重线性映射的表示之后，我们要探讨的问题就是，多重线性映射构成的线性空间 $\mathcal{L}(V_1, V_2, \cdots, V_n; W)$ 的结构，即我们如何构造这样一个线性空间. 可以预计的是，它应该能够被视作是一个 $\mathcal{L}(V_1, V_2, \cdots, V_n; \R)$ 和 $W$ 组合而成的东西. 为了理解为何会如此，我们先从一个常见的情形开始：
+
+\begin{lemma}{}{多重线性函数}
+    \[
+    \mathcal{L}(V, W^*; \R) \cong \mathcal{L}(V, W)
+    \]
+\end{lemma}
+
+实际上，这个命题的证明无非就是把我们在最开始所做的关于多重线性映射的表示的讨论重述一遍.
+
+\begin{proof}
+    设 $V$ 有一组基 $\{e_1, e_2, \dots, e_n\}$，$f \in \mathcal{L}(V, W^*; \R)$. 记
+    \[
+    f_i (\rho) = f(e_i, \rho), \forall \rho \in W^*
+    \]
+    则 $f_i: W^* \to \R$ 是 $W^{**}$ 中的元素，基于$W^{**} \cong W$ 的同构映射 $\varphi$，我们可以得到 $W$ 中的元素 $\varphi(f_i)$. 而通过将每个 $e_i$ 映射到 $\varphi(f_i)$ 可以确定一个 $V \to W$ 的线性映射 $\psi$（基于\autoref{thm:线性映射构造}）. 然后我们就可以基于此给出一个线性同构：
+    \begin{center}
+        \begin{tabular}{rrcl}
+            $\Phi\enspace\colon$      & $\mathcal{L}(V, W^*; \R)$ & $\to$     & $\mathcal{L}(V, W)$ \\
+                                   & $f$                      & $\mapsto$ & $\psi$
+        \end{tabular}
+    \end{center}
+
+    基于这个构造，不难验证它是一个线性同构：
+    \begin{enumerate}
+        \item 线性性：
+        \item 同构：
+    \end{enumerate}
+\end{proof}
+
+基于上面的证明，我们很容易看出，一个多重线性函数的集合可以与一个线性映射的集合互相转化. 下面我们由此出发定义张量积：
+
+\begin{definition}{}{}
+    定义 $V_1 \otimes V_2 = \mathcal{L}(V_1^*, V_2^*; \R) \cong \mathcal{L}(V_1^*, V_2)$，称为向量空间 $V_1$ 和 $V_2$ 的张量积.
+\end{definition}
+
+根据同构关系显然有 $\dim V_1 \otimes V_2 = \dim V_1 \dim V_2$. 不难看出为什么我们要用对偶来定义这个结构. 直观地说，这其实就是原来的对偶空间的推广，因为在一个线性空间的情形下，我们就有 $\mathcal{L}(V_1^*, \R) = V_1$.
+
+按照递推的方式，我们可以定义出更多个线性空间的张量积：
+\begin{lemma}{}{}
+    $(V_1 \otimes V_2) \otimes V_3 = \mathcal{L}(\mathcal{L}(V_1^*, V_2^*; \R), V_3^*; \R) \cong \mathcal{L}(V_1^*, V_2^*, V_3^*; \R) \cong \mathcal{L}(V_1^*, V_2^*; V_3).$
+\end{lemma}
+
+这个引理的证明可以仿照\autoref{lem:多重线性函数}完成，较为繁杂，此处略去. 这一引理表明了 $\otimes$ 具备结合律，因为 $\mathcal{L}(V_1^*, V_2^*, V_3^*; \R)$ 中的 $V_1^*, V_2^*, V_3^*$ 具有同等地位. 除此之外，利用归纳法我们可以得到以下推论：
+\begin{corollary}{}{}
+    $\dim V_1 \otimes V_2 \otimes \cdots \otimes V_n = \dim V_1 \dim V_2 \cdots \dim V_n.$
+\end{corollary}
+
+下面我们给出 $V_1 \otimes V_2$ 中的元素的表示，但是，更方便的看法其实是考虑 $V_1^* \otimes V_2^*$ 中元素的表示. 我们知道，它就是一个 $\mathcal{L}(V_1, V_2; \R)$ 中的元素，所以，考虑 $f \in V_1^*, g \in V_2^*$，记
+
+\[
+(f \otimes g) (v_1, v_2) = f(v_1) g(v_2)
+\]
+
+则 $f \otimes g \in \mathcal{L}(V_1, V_2; \R)$，不难验证它是一个双线性映射. 进一步地，$\otimes: V_1^* \times V_2^* \to \mathcal{L}(V_1, V_2; \R)$ 这个映射是一个满但不单的双线性映射：
+\begin{lemma}{}{}
+    $\otimes: V_1^* \times V_2^* \to \mathcal{L}(V_1, V_2; \R)$ 是一个满但不单的双线性映射.
+\end{lemma}
+\begin{proof}
+    双线性映射 $f$ 由 $f(\alpha_i,\beta_j)$ 唯一确定.
+\end{proof}
+
+既然 $\otimes$ 不是单射，我们自然想要去计算：
+
+\begin{lemma}{}{}
+    \[
+    \ker \otimes = \{(f, g) \mid (f, g) \sim (0, 0)\}
+    \]
+    其中 $\sim$ 为以下等价关系：
+    \[
+    (f_1, g_1) \sim (f_2, g_2) \iff \forall v_1, v_2, f_1(v_1) g_1(v_2) = f_2(v_1) g_2(v_2)
+    \]
+\end{lemma}
+
+这个引理几乎就是 $\ker \otimes$ 定义的同义反复，而事实上，我们能写出这个引理的另一个版本：
+
+\begin{lemma}{}{}
+    $\ker \otimes = \mathop{\mathrm{span}}\{(f,0), (0, g)\}$
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+因此，我们有了张量积的另一个定义，我们以定理的形式陈述：
+
+\begin{theorem}{}{}
+    张量积 $V_1 \otimes V_2 \cong V_1 \times V_2 / \ker \otimes$，其中 $\ker \otimes$ 如上所述.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}{}{张量积的基}
+    张量积的一组基
+\end{theorem}
+\begin{proof}
+    很显然，$i_k$ 不全相同的两个张量是线性无关的
+\end{proof}
+
+最后的最后，我们给出一个泛性质的描述方式. 这实际上几乎就是从商空间的泛性质继承过来的，不过多了一点多重线性代数的成分：
+
+\begin{theorem}{}{}
+    考虑 $V_1 \times V_2$ 到 $V_1 \otimes V_2$ 的典范投影 $\pi$，按照商空间的写法它应该是明显的. 那么，对于任意向量空间 $U$ 和 $V_1 \times V_2 \to U$ 的双线性映射 $\varphi$，存在唯一线性映射 $\tilde \varphi$ 使下图交换：
+    \begin{center}
+        \begin{tikzcd}
+            V_1 \times V_2 \rar["\pi"] \arrow[rd, swap, "\varphi"] & V_1 \otimes V_2 \dar["\exists ! \tilde \varphi"] \\
+             & U \\
+        \end{tikzcd}
+    \end{center}
+\end{theorem}
+
+细心的读者可能会发现，这里有一个记号似乎被滥用了. 我们通常所说的 $V_1 \times V_2 \to U$ 的映射都是指线性映射，而这里却用之来指代双线性映射. 对范畴论有些许了解的读者会意识到，这不是在 $\mathsf{FVect}$，即有限维线性空间构成的范畴的意义下所说的泛性质，因为其中混杂了线性映射和双线性映射. 但这其实不是问题，只需要对范畴的对象进行一些重新定义——当然，这不是我们在这里需要去深入研究的主题. 至于这个定理的证明，参照商映射的泛性质的证明，这并不困难，故留作练习.
+
+\section{张量的坐标变换}
+
+在以下的记号当中，我们都会用上标表示对偶空间中的指标，下标表示原空间的指标. 从此以后会采纳 Einstein 求和约定，也就是说，记：
+
+\[
+a^i x_i := \sum_{i = 1}^n a^i x_i
+\]
+
+其中 $i$ 称为哑指标，要求它在其他地方没有出现过，且同时出现在上标和下标当中. 其中的范围 $n$ 则由读者自己在语境中给出. 例如上面的表达式中，$i$ 同时出现在求和对象 $a^i x_i$ 的上下标中，而且 $i$ 没有在其他地方出现过，因此可以简写为 $a^i x_i$.
+
+这样的表示好处在于，在以后大规模进行张量的讨论时，我们会用到大量此种求和，而上下指标的方式往往是比较方便且符合直觉的. 当然这需要适应，比如下面的例子这样更复杂的和式：
+
+\[
+a^{ij} x_i y_j = \sum_{i = 1}^n \sum_{j = 1}^m a^{ij} x_i y_j
+\]
+
+此处 $i,j$ 同时出现在了求和对象 $a^{ij} x_i y_j$ 的上下标中，因此这一求和就可以简写为 $a^{ij} x_i y_j$. 为了让读者适应一下这样的记号，考虑向量 $b$ 的分量 $b_i$ 和矩阵 $M$ 的元素 $M_{ij}$，记 $Mb = v$，其中分量为 $v_i$，则按照矩阵乘法的定义：
+
+\[
+v_i = \sum_{j = 1}^m M_{ij} b_j
+\]
+
+这样的记号难以写成 Einstein 求和，这是因为没有指标出现在上标，所以我们拨弄一下矩阵中元素的指标，写成：
+
+\[
+v_i = \sum_{j = 1}^m M^j_i b_j =: M^j_i b_j
+\]
+
+这样就简化了不少记号. 其中行号在下，列号在上，我们通常都采纳此种记法. 然后考虑矩阵乘法，考虑矩阵 $A$ 和矩阵 $B$ 以及其中的元素 $A_i^j$ 和 $B_k^l$，令 $AB = C$：
+
+\[
+C_m^n = \sum\limits_{j=1}^p A_m^j B_j^n =: A_m^j B_j^n
+\]
+
+这样，我们的记号就非常自然了. 看起来哑指标 $j$ 就像是被消掉了一样（$j$ 只出现在了求和展开式中，但未出现在最后的结果 $C_m^n$ 中），非常合理. 另一个常用的例子在未来会介绍的二次型当中，考虑向量 $x, y$ 和矩阵 $A$，记号如上所述，则
+
+\[
+x^\mathrm{T} A y = \sum\limits_{i=1}^p \sum\limits_{j=1}^q x^i A_i^j y_j =: x^i A_i^j y_j
+\]
+
+这里为啥 $x$ 的分量 $i$ 写在上面呢？因为 $x$ 发生了转置，它变成了一个行向量，所以其中的元素下标就变成了列号，是上标. 实际上的话，我们更常用的写法是保持坐标为下标而矩阵全为上标，也就是说，写成：
+
+\[
+x^\mathrm{T} A y = x_i A^{ij} y_j
+\]
+
+这样按照求和约定也是合理的，在后面我们会解释为什么会出现这样的结构.
+
+在研究矩阵的过程中，我们说过，矩阵在坐标变换之后会发生某种变化，这就是所谓的换基操作，它带来的就是相似矩阵的定义. 张量同样也不可避免地要面对基的变换的问题，而且更加复杂，这值得我们花一整节来理解并适应.
+
+我们称 $V_1 \otimes V_2 \otimes \cdots \otimes V_n, V_i = V, \forall i = 1, 2, ..., n$ 这一张量积中的元素为张量. 事实上根据我们在第一节中的讨论，那里的张量是多重线性映射的表示，实际上和多重线性映射本身是一一对应的，因此这两个张量的定义是基本一致的.
+
+设 $V$ 的一组基为 $\{\tilde{e}_{i}\}$，原先的基为 $\{e_i\}$. 存在矩阵 $M$ 使得其中的元素为 $M_i^j$，满足：
+\[
+\tilde e_{i} = M_i^j e_j
+\]
+注意，这里 $j$ 是被求和的哑指标. 出于习惯，让我们写出张量积空间的一组基
+\[
+e_{i_1 i_2 \cdots i_n} = e_{i_1} \otimes e_{i_2} \otimes \cdots \otimes e_{i_n}
+\]
+对于新的一组基 $\tilde{e}_{i}$，也能给出新的一组张量积空间的基，形如：
+\[
+\tilde{e}_{i_1 i_2 \cdots i_n} = \tilde{e}_{i_1} \otimes \tilde{e}_{i_2} \otimes \cdots \otimes \tilde{e}_{i_n}
+\]
+展开 $\tilde e_{i_t}$ 项，能够得到：
+\[
+\tilde{e}_{i_1 i_2 \cdots i_n} = M_{i_1}^{j_1} e_{j_1} \otimes M_{i_2}^{j_2} e_{j_2} \otimes \cdots \otimes M_{i_n}^{j_n} e_{j_n}
+\]
+其中 $j_k$ 是哑指标. $M_{i_k}^{j_k}$ 是一个纯粹的实数，我们可以将其提到最前面，并重新整理一下求和：
+\[
+\tilde{e}_{i_1 i_2 \cdots i_n} = \sum_{j_1, j_2, \ldots, j_n} \left( \prod_k M_{i_k}^{j_k} \right) e_{j_1} \otimes e_{j_2} \cdots \otimes e_{j_n} = \left( \prod_k M_{i_k}^{j_k} \right) e_{j_1 j_2 \cdots j_n}
+\]
+注意其中 $k$ 取遍 $1, 2, \cdots, n$，最后一式中 $j_l$ 均为哑指标.
+注意到，一个张量积空间中的元素是
+\[
+T = \tilde T^{i_1 i_2 \cdots i_n} \tilde e_{i_1 i_2 \cdots i_n} = \tilde T^{i_1 i_2 \cdots i_n} \tilde e_{i_1} \otimes \tilde e_{i_2} \otimes \cdots \otimes \tilde e_{i_n}
+\]
+其中 $i_k$ 均为哑指标. $\tilde T^{i_1 i_2 \cdots i_n}$ 是一个实数，也就是在 $\tilde e_{i_1 i_2 \cdots i_n}$ 的系数. 于是，原来的张量就变成了：
+\[
+T = \tilde T^{i_1 i_2 \cdots i_n} \tilde e_{i_1 i_2 \cdots i_n} = \tilde T^{i_1 i_2 \cdots i_n} \left( \prod_k M_{i_k}^{j_k} \right) e_{j_1 j_2 \cdots j_n}
+\]
+也就是说，如果记 $T = T^{j_1 j_2 \cdots j_n} e_{j_1 j_2 \cdots j_n}$，则有
+\[
+T^{j_1 j_2 \cdots j_n} = \tilde T^{i_1 i_2 \cdots i_n} \left( \prod_k M_{i_k}^{j_k} \right)
+\]
+于是，我们终于从两组基之间的过渡矩阵出发得到了两组基下张量的坐标表示的变换. 这是一个非常美观的式子，也很符合我们对指标上下消去的直观. 这里边的张量 $T$ 被称为 $n$ 阶反变张量，因为我们用了矩阵的逆去做变换，这样变换在直观上是``反的''. 如果我们在张量积中掺入对偶空间，即考虑
+\[
+V_s^r = \overbrace{V \otimes V \otimes \cdots \otimes V}^{r\,\text{个}} \otimes \underbrace{V^* \otimes V^* \otimes \cdots \otimes V^*}_{s\,\text{个}}
+\]
+其中的元素称为 $r$ 阶反变，$s$ 阶共变的张量，简记作 $(r,s)$ 型张量. 考虑坐标变换为 $N$，其逆矩阵为 $M$，则坐标变换公式通过类似的方法可以给出为
+\[
+\tilde T^{i_1 i_2 \cdots i_r}_{j_1 j_2 \cdots j_s} = T^{k_1 k_2 \cdots k_r}_{l_1 l_2 \cdots l_s} M_{k_1}^{i_1} M_{k_2}^{i_2} \cdots M_{k_r}^{i_r} N_{j_1}^{l_1} N_{j_2}^{l_2} \cdots N_{j_s}^{l_s}
+\]
+读者不妨自行验证之. 这也能看出，方阵为 $(1, 1)$ 型张量，这是因为它是 $\mathcal{L}(V)$ 中的元素，即 $V \otimes V^*$ 中的元素. 因此，对于
+\[
+(\tilde e_i, \tilde e_2, \cdots, \tilde e_n) = (e_1, e_2, \cdots, e_n) M
+\]
+实际上我们有
+\[
+(\tilde e_i, \tilde e_2, \cdots, \tilde e_n)^\mathrm{T} = M^\mathrm{T} (e_1, e_2, \cdots, e_n)^\mathrm{T}
+\]
+因此在代入公式时，需要将行列倒置：
+\[\tilde A_j^i = A_l^k (M^{-1})_j^l M_k^i = \sum\limits_{k=1}^n\sum\limits_{l=1}^n (M^{-1})_j^l A_l^k M_k^i,\]
+写成矩阵乘法就是：
+\[
+\tilde A = M^{-1} A M
+\]
+这与前面的公式是一致的. 有些物理学家也会喜欢用``满足这种变换形式的量称为张量''的方法来定义张量，这当然也可行，但在我们的背景下，更偏好这种代数的定义方式. 我们置 $V_0^0 = \R, V_0^1 = V, V_1^0 = V^*$，这都是自然的.
+
+\section{张量的运算}
+
+在线性代数当中，我们大量研究了矩阵及其运算. 因此，在多重线性代数当中，毫无疑问要涉及到张量的运算. 首先，不难发现 $V_s^r$ 是一个向量空间，上面有加法和数乘运算，因此，更为特殊的是那些``跨越''了多个维数的运算. 显而易见的，第一种运算方式是张量积
+\[
+\otimes: V_{s_1}^{r_1} \times V_{s_2}^{r_2} \to V_{s_1 + s_2}^{r_1 + r_2}
+\]
+考虑 $T \in V_{s_1}^{r_1}, S \in V_{s_2}^{r_2}$，我们定义：
+\[
+(T \otimes S) (e_{i_1}, e_{i_2}, \ldots, e_{i_{r_1}}, e_{i_{r_1 + 1}}, \ldots, e_{i_{r_1 + r_2}}, \omega_{j_1}, \omega_{j_2}, \ldots, \omega_{j_{s_1}}, \omega_{j_{s_1 + 1}}, \ldots, \omega_{j_{s_1 + s_2}})
+\]
+为
+\[
+T(e_{i_1}, e_{i_2}, \ldots, e_{i_{r_1}}, \omega_{j_1}, \omega_{j_2}, \ldots, \omega_{j_{s_1}}) S(e_{i_{r_1 + 1}}, e_{i_{r_1 + 2}} \ldots, e_{i_{r_1 + r_2}}, \omega_{j_{s_1 + 1}}, \omega_{j_{s_1 + 2}}, \ldots, \omega_{j_{s_1 + s_2}})
+\]
+其中 ${e_i}$ 为原空间的基，${\omega_j}$ 为对偶空间的基. 注意，我们把张量积变成了``乘积''. 这是因为，张量积无非是一个从一串线性空间的乘积打到基域上的线性映射，而基域上的乘法是良定的. 熟悉这种``张量作用在向量上''的观点会使得我们此后的介绍显得清楚地多.
+
+注意到，出于一点符号的滥用，我们用 $\otimes$ 同时表示张量的张量积和构造张量积空间的基. 考虑 ${e_i}$ 为原空间的一组基，${\omega^j}$ 为对偶空间的一组基，我们将张量积空间 $V^r_s$ 的基记作
+\[
+e_{i_1} \otimes e_{i_2} \otimes \cdots \otimes e_{i_r} \otimes \omega^{j_1} \otimes \omega^{j_2} \otimes \cdots \otimes \omega^{j_s}
+\]
+但每个 $e_{i_k}$ 和 $\omega_{j_l}$ 都是向量，不是张量，为了将其理解成张量，需要考虑这组基在原来的线性空间中的作用，我们定义
+\[
+e_{i_k} (e_{i_l}) = \delta_{i_k i_l}, \quad \omega^{j_k} (\omega^{j_l}) = \delta^{j_k j_l}
+\]
+其中 $\delta$ 为 Kronecker 记号. 不难验证，如果如上定义，那么张量积和张量空间的基的构造形式实际上是统一的. 我们称这样构造出来的张量积空间的基为原来的基诱导产生的一组基. 进一步地，不难表明，这样定义的张量积满足结合律和分配律.
+
+作为几个低维度的例子，注意到在 $V_0^0 = \mathbf{F}$ 和 $V_0^0 = \mathbf{F}$ 之间的张量积无非就是域中的乘法，$V_0^0 = \mathbf{F}$ 和 $V_0^1 = V$ 或 $V_1^0 = V^*$ 之间的张量积无非就是纯量乘法，这会使得我们感到更加亲切.
+
+另一个低维度的例子是，$V_0^1 = V$ 和 $V_0^1 = V$ 之间的张量积是什么？按照要求，我们写出：
+\[
+(T \otimes S)(e_{i}, e_{j}) = T (e_i) S (e_j)
+\]
+其中 $T, S \in V^*$. 如果取对应的坐标，不难看出 $(T \otimes S)^{i j} = T^i S^j$，实际上，我们就此得到了一个矩阵 $T S^\mathrm{T}$. 而两个矩阵的张量积则是将后面的矩阵塞进前面的矩阵每一个表项之中，并与之相乘，这会作为一个习题留下. 更进一步地，我们有：
+\[
+(T \otimes S)^{i_1 i_2 \cdots i_{r_1 + r_2}}_{j_1 j_2 \cdots j_{s_1 + s_2}} = T^{i_1 i_2 \cdots i_{r_1}}_{j_1 j_2 \cdots j_{s_1}} S^{i_{r_1 + 1} i_{r_1 + 2} \cdots i_{r_1 + r_2}}_{j_{s_1 + 1} j_{s_1 + 2} \cdots j_{s_1 + s_2}}
+\]
+这种局部坐标下的表示是平凡的，还请读者自行验证.
+
+另一种操作看起来要自然地多，称为张量的\term{缩并（contraction）}操作. 取定 $(r, s)$ 型张量 $T$ 和指标 $1 \leqslant k \leqslant r, 1 \leqslant l \leqslant s$，我们考虑其对指标 $(i, j)$ 的缩并
+\[
+\mathop{\mathrm{ct}}_{(k, l)} : V^r_s \to V^{r - 1}_{s - 1}
+\]
+比较容易理解的定义式是取张量的一个坐标表示：
+\[
+\mathop{\mathrm{ct}}_{(k, l)} (T_{j_1 j_2 \cdots j_s}^{i_1 i_2 \cdots i_r} e_{i_1} \otimes e_{i_2} \otimes \cdots \otimes e_{i_r} \otimes \omega^{j_1} \otimes \omega^{j_2} \otimes \cdots \otimes \omega^{j_s})
+\]
+将其定义为
+\[
+T_{j_1 j_2 \cdots j_{l - 1} m j_{l + 1} \cdots j_{s}}^{i_1 i_2 \cdots i_{k - 1} m i_{k + 1} \cdots i_r} e_{i_1} \otimes \cdots \otimes e_{i_{k - 1}} \otimes e_{i_{k + 1}} \otimes \cdots \otimes e_{i_r} \otimes \omega^{j_1} \otimes \cdots \otimes \omega^{j_{l - 1}} \otimes \omega^{j_{l + 1}} \otimes \cdots \otimes \omega^{j_s}
+\]
+注意其中 $m$ 为哑指标. 也就是说，我们要将对应的坐标一应删掉，对应的分量进行求和. 一个最常见的例子来源于将矩阵视作 $(1, 1)$ 张量的结果，其缩并无非就是一个 $(0, 0)$ 张量，也就是迹，因为我们对对角线做了求和. 容易注意到，矩阵的不同视角会诞生不同的对称性结构，读者很快会发现，将矩阵视作 $(1, 1)$ 张量还是 $(0, 2)$ 张量会带来一些意义上的不同. 因为这种现象对于四阶张量愈发明显，所以更深入地探讨这种不同及其表达的含义将会留在最后一节进行.
+
+% \section{置换群的表示}
+
+% 在这一节中，我们将讨论一点张量的代数性质，而讨论的基础就是置换群的表示. 同时，作为一节群表示论的导引性质的材料，我们也会给出一些非常基础的定义而不讨论其内涵.
+
+\section{张量代数和外代数}
+
+注意到，如果把所有张量做成一个巨大的向量空间，我们能得到：
+\[
+\mathcal{T} V = \bigoplus_{r, s = 0}^{\infty} V^r_s
+\]
+其中的元素形如：
+\[
+\sum_{r, s = 0}^\infty X^r_s, \quad X^r_s \in V^r_s
+\]
+因为无限个线性空间的直和的性质，这个和式中只有有限项非零. 这被称为 $V$ 上的\term{张量代数（tensor algebra）}，所谓的代数指的是其上有一个张量积结构作为内部的乘法结构，与加法和数乘运算相容. 下面我们研究的东西最好都是代数，因为这样的话它的结构就会更加清晰明了.
+
+出于一些几何学的目的，我们下面考察 $V_r = V_r^0$ 中的结构. 显然，这个东西的无穷直和是张量代数的子代数，它在张量积和其它运算下封闭. 因此，研究它主要是因为这是一个比较简单的对象——读者不难看出，处理 $(r, s)$ 型张量使得我们往往要打两组下标，这对作者来说很是麻烦；另一方面是其在几何意义上的重要性，这种重要性在读者对微分形式有所理解之后应该会更加明白. 在本节中，为了简洁起见，除非额外指出，否则当我们提到张量，我们都称的是 $V_r$ 中的张量，即共变张量.
+
+回顾一下对称矩阵和反称矩阵的概念. 我们称一个矩阵 $A$ 是对称的，如果 $A_{ij} = A_{ji}$；称一个矩阵 $A$ 是反称的，如果 $A_{ij} = -A_{ji}$. 顺理成章地，对于张量，我们定义：
+
+\begin{definition}{}{}
+    \begin{enumerate}
+        \item 称一个 $r$ 阶张量 $T$ 是对称的，如果对于任意 $k, l$，都有 \[
+        T_{i_1 i_2 \cdots i_k \cdots i_l \cdots i_r} = T_{i_1 i_2 \cdots i_l \cdots i_k \cdots i_r}
+        \]
+        即任意指标对换坐标分量不变.
+        \item 称一个 $r$ 阶张量 $T$ 是反称的，如果对于任意 $k, l$，都有 \[
+        T_{i_1 i_2 \cdots i_k \cdots i_l \cdots i_r} = -T_{i_1 i_2 \cdots i_l \cdots i_k \cdots i_r}
+        \]
+        即任意指标对换坐标分量变号.
+    \end{enumerate}
+\end{definition}
+
+我们将 $r$ 阶对称张量构成的集合记作 $\bigodot_r V$，将 $r$ 阶反称张量构成的集合记作 $\bigwedge_r V$. 很显然，它们都是 $r$ 阶张量全体 $V_r$ 的子空间，而且它们只有唯一的公共元 $0$. 对偶地，$V^r$ 的两个子空间记作 $\bigodot^r V$ 和 $\bigwedge^r V$. 为了考虑它们构成的线性空间结构，我们写出：
+
+\begin{lemma}{}{}
+    设 $V$ 为一个 $n$ 维向量空间，${e_i}$ 为它的一组对偶基，则
+    \begin{enumerate}
+        \item $\bigodot_r V$ 有一组基\[
+        \{e_{i_1} \otimes e_{i_2} \otimes \cdots \otimes e_{i_r} \mid 1 \leqslant i_1 \leqslant i_2 \leqslant \cdots \leqslant i_r \leqslant n\}
+        \]
+        因此它的维数是
+        \[
+        \binom{n + r - 1}{r}
+        \]
+        \item $\bigwedge_r V$ 有一组基\[
+        \{e_{i_1} \otimes e_{i_2} \otimes \cdots \otimes e_{i_r} \mid 1 \leqslant i_1 < i_2 < \cdots < i_r \leqslant n\}
+        \]
+        因此它的维数是
+        \[
+        \binom{n}{r}
+        \]
+    \end{enumerate}
+\end{lemma}
+
+给出一组基之后，计算其维数就是一点组合数学方法，因此下面的证明中，我们只证明这是一组基.
+
+\begin{proof}
+
+\end{proof}
+
+注意到，这时两个维数之和就是 $n^r$，为 $V_r$ 的维数，也就是说：
+
+\begin{corollary}{}{}
+    任意一个张量都可以被分解成一个对称张量和一个反称张量.
+\end{corollary}
+
+下面的证明我们不通过计数维数的方法，而是通过直接写出分解的方式进行，这样可以方便以后的应用：
+
+\begin{proof}
+
+\end{proof}
+
+在上面的证明中，我们实际上用到了两个算子，记 \[
+\mathcal{S}_r T = \frac{1}{r!} \sum_{\sigma \in S_r} \sigma T, \quad \mathcal{A}_r T = \frac{1}{r!} \sum_{\sigma \in S_r} \mathop{\mathrm{sgn}}(\sigma) \sigma T
+\]
+其中 $S_r$ 为所有可能的置换，$\sigma T$ 定义为张量
+\[
+\sigma T(e_1, e_2, \ldots e_r) = T(e_{\sigma(1)}, e_{\sigma(2)}, \ldots e_{\sigma(r)})
+\]
+实际上，这两个算子就是 $V_r$ 到 $\bigodot_r V$ 和 $\bigwedge_r V$ 的两个投影算子. 接下来，可以定义对称积和反称积（或称外积）：
+\[
+T \odot S = \mathcal{S} (T \otimes S), \quad T \wedge S = \mathcal{A} (T \otimes S)
+\]
+请读者自行验证这两个乘积符号和张量积一样，可以用于构造一整个对称张量或反称张量的空间，分别称为对称张量代数和外代数. 另外，这两个乘法也是结合的，并且与线性空间的运算相容.
+
+对于对称张量代数，我们可以以一个同构一言以蔽之：
+
+\begin{theorem}{}{}
+    $\bigodot_r V$ 同构于所有 $n$ 元 $r$ 阶齐次多项式构成的向量空间，且对称积在同构意义下被映射到多项式的乘积.
+\end{theorem}
+
+\begin{proof}
+    直接用基完成映射即可.
+\end{proof}
+
+对于外代数，或许有更多值得一提的性质：
+
+\begin{lemma}{}{}
+    设 $T, S$ 分别为 $r$ 阶和 $s$ 阶的反称张量，则\[
+    T \wedge S = (-1)^{r s} S \wedge T
+    \]
+\end{lemma}
+
+这意味着它有某种意义上的反称性. 证明仅仅是简单的计算，请读者自行完成之.
+
+考虑线性映射 $M: V \to V$. 不难表明，它诱导了 $\bigodot_r V$ 和 $\bigwedge_r V$ 上的线性映射，我们以递推的形式定义之：
+\begin{align*}
+\bigodot_1 M = M, \quad (\bigodot_{i + 1} M) (\alpha \odot \beta) = (\bigodot_i M) (\alpha) \odot M (\beta), \alpha \in \bigodot_i V, \beta \in V \\
+\bigwedge_1 M = M, \quad (\bigwedge_{i + 1} M) (\alpha \wedge \beta) = (\bigwedge_i M) (\alpha) \wedge M (\beta), \alpha \in \bigwedge_i V, \beta \in V \\
+\end{align*}
+
+注意到，它在 $\bigwedge_n V$ 上诱导的映射一定是一个纯量乘法，我们称其乘数为 $M$ 的\term{行列式（determinant）}. 同样，也称其为 $M$ 的矩阵表示的行列式，记作 $\det M$. 利用行列式，一种更轻松的计算反称积的形式如下：
+
+\begin{theorem}{}{}
+    设 $f_1, f_2, \ldots, f_r \in V^*, v_1, v_2, \ldots, v_r \in V$，则\[
+    f^1 \wedge f^2 \wedge \cdots \wedge f^r (v_1, v_2, \ldots, v_r) = \det (f^i (v_j))
+    \]
+\end{theorem}
+
+\begin{proof}
+    考虑 $(f^i (v_j))$ 在 $V$ 的子空间上表示的线性映射，这就是大映射的限制.
+\end{proof}
+
+下面的几个引理也是容易证明的：
+
+\begin{lemma}{}{}
+    设 $A, B: V \to V$ 为线性映射（或其矩阵表示），则：
+    \begin{enumerate}
+        \item $\det(A^\mathrm{T}) = \det A$.
+        \item $\det(A B) = \det A \det B$.
+        \item $\det(A^{-1}) = (\det A)^{-1}$.
+        \item $\det A$ 在坐标变换的意义下不变.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    最后两条都是 2 的直接推论. 第一条，只需取对偶基即可，不影响最高次外代数上的纯量乘积；第二条，诱导的线性映射的复合就是原来的线性映射复合诱导出来的线性映射，而诱导的线性映射的复合无非是两个纯量乘法的复合.
+\end{proof}
 
 \begin{summary}
 
