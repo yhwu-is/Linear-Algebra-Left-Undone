@@ -12,7 +12,32 @@
     \[c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj}\enspace(i=1,\ldots,p,\enspace j=1,\ldots,n).\]
 \end{definition}
 
-事实上，这一定义带给我们的感受与我们在上一讲定义矩阵加法和数乘时的直观不同，在我们初看这一定义时必然会产生一个疑惑：为什么矩阵乘法定义得如此复杂，为什么不定义成两个矩阵对应元素相乘就可以了呢？事实上，这是因为矩阵乘法的定义来源于线性映射的复合的矩阵表示. 教材124--125页的推导通过线性映射的复合运算定义了矩阵的乘法运算，由于篇幅的限制，我们这里不再将教材中已有的内容重复. 在此我们给出两个线性映射的角度来理解矩阵乘法：
+这一定义带给我们的感受与我们在上一讲定义矩阵加法和数乘时的直观不同，在我们初看这一定义时必然会产生一个疑惑：为什么矩阵乘法定义得如此复杂，为什么不定义成两个矩阵对应元素相乘就可以了呢？事实上，这是因为矩阵乘法的定义来源于线性映射的复合的矩阵表示: 
+
+\begin{enumerate}
+    \item 设线性空间 $V_1(F), V_2(F), V_3(F)$ 的基分别为 $B_1=\{\varepsilon, \varepsilon_2,\ldots,\varepsilon_n\},B_2=\{e_1,e_2,\ldots,e_m\},B_3=\{\zeta_1,\zeta_2,\ldots,\zeta_p\}$, $\sigma \in L(V_1,V_2), \tau \in L(V_2,v_3)$，且 $\sigma, \tau$ 分别关于基 $B_1$ 和 $B_2$ 及基 $B_2$ 和 $B_3$ 的矩阵为 $B=(b_{i,j})_{m \times n}$ 和 $A=(a_{ij})_{p\times m}$，即：
+    
+    $M(\tau)=A=\begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1m} \\
+        a_{21} & a_{22} & \cdots & a_{2m} \\
+        \vdots & & & \vdots \\
+        a_{p1} & a_{p2} & \cdots & a_{pm} 
+    \end{pmatrix}$,
+    $M(\sigma)=B=\begin{pmatrix}
+        b_{11} & b_{12} & \cdots & b_{1n} \\
+        b_{21} & b_{22} & \cdots & b_{2n} \\
+        \vdots & & & \vdots \\
+        b_{m1} & b_{m2} & \cdots & b_{mn} 
+    \end{pmatrix}$.
+
+    \item 则 $\tau\sigma \in L(V_1,V_3)$ 关于基 $B_1$ 和 $B_3$ 的矩阵 $C=(c_{ij})_{p\times n}$ 中第 $j$ 列元素 $c_{1j},c_{2j},\ldots,c_{pj}$ 是 $\tau\sigma(\varepsilon_j)$ 在基 $B_3$ 下的坐标. 于是有：
+    
+    $\tau\sigma(\varepsilon_j)=\tau(\sigma(\varepsilon_j))=\tau(\sum_{k=1}^{m}b_{kj}e_k)=\sum_{k=1}^{m}b_{kj}\tau(e_k)=\sum_{k=1}^{m}b_{kj}(\sum_{i=1}^{p}a_{ik}\zeta_i)=\sum_{i=1}^{p}(\sum_{k=1}^{m}a_{ik}b_{kj})\zeta_i$.
+
+    即得：$c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj}$.
+\end{enumerate}
+
+接下来我们再给出两个线性映射的角度来理解矩阵乘法：
 \begin{enumerate}
     \item 回顾上一节中提到的旋转$\theta$角的线性映射对应的矩阵$M_{\theta}=\begin{pmatrix}
                   \cos\theta & -\sin\theta \\
@@ -53,10 +78,25 @@
 \end{example}
 
 \begin{solution}
-    见教材126页例1.
+    $AB =\begin{pmatrix}
+        0-3 & 3-1 \\
+        1-9 & 3+2-3
+    \end{pmatrix}=\begin{pmatrix}
+        -3 & 2 & -8 & 2
+    \end{pmatrix}$,
+
+    $BA=\begin{pmatrix}
+        0+3 & 0+3 & 0-9 \\
+        1+2 & 0+2 & -1-6 \\
+        3+1 & 0+1 & -3-3
+    \end{pmatrix}=\begin{pmatrix}
+        3 & 3 & -9 \\
+        3 & 2 & -7 \\
+        4 & 1 & -6
+    \end{pmatrix}$.
 \end{solution}
 
-教材125页下方也介绍了几个矩阵运算的基本性质：
+接下来给出矩阵运算的几个基本性质：
 \begin{enumerate}
     \item $(AB)C=A(BC)$（结合律）
 
@@ -66,7 +106,7 @@
 
     \item $(B+C)P=BP+CP$（右分配律）
 \end{enumerate}
-证明方法十分简单暴力：直接设出矩阵元素然后暴力计算证明等号两边对应位置（如第$i$行第$j$列元素）相等即可. 125页下方给出了结合律的证明，感兴趣的同学可以参考，实际上记住结论即可.
+证明方法十分简单暴力：直接设出矩阵元素然后暴力计算证明等号两边对应位置（如第$i$行第$j$列元素）相等即可. 
 
 实际上，由矩阵加法和乘法满足的运算律可知，全体$n$阶方阵构成的集合$\mathbf{F}^{n\times n}$关于矩阵加法和乘法构成环.
 
@@ -328,10 +368,25 @@
     可逆矩阵$A$的逆矩阵唯一.
 \end{theorem}
 
+\begin{proof}
+    若存在两个不同的矩阵 $B,C$ 使得 $BA=AB=CA=AC=E$，则必有 $B=BE=B(AC)=(BA)C=EC=C$，与假设矛盾.
+\end{proof}
+注意这个唯一性的证明，我们在证明群的单位元唯一时使用了完全一致的思想，请务必掌握.
+
 \begin{theorem}{}{}
     设$A,B\in \mathbf{M}_n(\mathbf{F})$，则$AB=E \iff A$与$B$互为逆矩阵（即对于方阵而言，$AB=E\iff BA=E\iff A,B$可逆）.
 \end{theorem}
-这两个定理的证明见教材130页. 特别注意唯一性的证明，我们在证明群的单位元唯一时使用了完全一致的思想，请务必掌握.
+
+\begin{proof}
+    只需证：若 $AB=E$，则必有 $BA=E$.
+    设 $A,B$ 分别是 $\sigma, \tau \in L(V,V)$ 关于 $V$ 的基 $B=\{\epsilon_1,\epsilon_2,\ldots,\epsilon_n\}$ 所对应的矩阵，则：$AB=E \iff \sigma\tau = I_V$.
+    
+    因此要证明 $BA=E$，只需证明 $\tau\sigma=I_V$，由 $r(\sigma\tau)=r(I_V)=n \leq \min(r(\sigma),r(\tau))$，得：$r(\sigma)=r(\tau)=n$.
+
+    因此 $\forall \alpha \in V$，均存在唯一的 $\beta \in V$，使得 $\tau(\beta)=\alpha$，从而 $(\tau\sigma)(\alpha)=(\tau\sigma)(\tau(\beta))=\tau(\sigma\tau(\beta))=\tau(\beta)=\alpha$.
+
+    故 $\tau\sigma=I_V$，命题得证.
+\end{proof}
 
 \subsection{基本性质}
 
@@ -367,7 +422,33 @@
 \end{example}
 
 \begin{solution}
-    见教材132页例3.
+    以 $A$ 为系数矩阵的非齐次线性方程组 $AX=b$，对于任意的 $b=(b_1,b_2,b_3)$，可以用高斯消元法将其增广矩阵
+
+    $$(A,b)=\left(\begin{array}{ccc:c}
+        1 & -1 & 1 & b_1\\
+        0 & 1 & 2 & b_2\\
+        1 & 0 & 4 & b_3
+    \end{array}\right)$$ 化为：
+
+    $$\left(\begin{array}{ccc:c}
+        1 & 0 & 0 & 4b_1+4b_2-3b_3\\
+        0 & 1 & 0 & 2b_1+3b_2-2b_3\\
+        0 & 0 & 1 & -b_1-b_2+b_3
+    \end{array}\right)$$.
+
+    因此，对任意的 $b$，方程组 $AX=b$ 有唯一解：
+    $$X=\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}=\begin{pmatrix}
+        4b_1+4b_2-3b_3\\2b_1+3b_2-2b_3\\-b_1-b_2+b_3
+    \end{pmatrix}=\begin{pmatrix}
+        4 & 4 & -3\\
+        2 & 3 & -2\\
+        -1 & -1 & 1
+    \end{pmatrix}\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}$$ 即：
+    $$A^{-1}=\begin{pmatrix}
+        4 & 4 & -3\\
+        2 & 3 & -2\\
+        -1 & -1 & 1
+    \end{pmatrix}$$
 \end{solution}
 
 关于逆矩阵的求解问题，我们将在介绍完初等变换后介绍第二种基本方法，剩余的进阶解法将在\nameref{chap:矩阵运算进阶}中介绍更多手段，以及我们会介绍矩阵方程求解的方法. 本节我们囿于一些计算技巧和基本概念暂未引入所以无法完全展开这些技巧.
