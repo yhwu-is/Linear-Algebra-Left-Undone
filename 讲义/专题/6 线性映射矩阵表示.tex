@@ -116,14 +116,33 @@
           这里将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$的结果按行排列成矩阵，而标准答案是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$在$\mathbf{R}^3$自然基下的坐标按列排列成矩阵，回忆$\mathbf{R}^n$向量在自然基下坐标是其本身这一性质，标准答案就是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$按列排列成矩阵，由此我们解释了行列互换发生的原因.
 \end{enumerate}
 
-这也就是为什么我强调读者不要参考教材102页例3求解像空间的方法来求解像空间——很容易导致这里矩阵表示犯这样的错误，并且容易导致初学时无法区分求解像空间和线性映射矩阵表示的方法. 在这里我必须再次强调：在没有完全熟练掌握这些概念和方法前，不要乱用方法！！！
+这也就是为什么我强调读者不要参考之前提到的第二种方法\autoref{ex:线性映射的像空间求解2}来求解像空间——很容易导致这里矩阵表示犯这样的错误，并且容易导致初学时无法区分求解像空间和线性映射矩阵表示的方法. 在这里我必须再次强调：在没有完全熟练掌握这些概念和方法前，不要乱用方法！！！
 
-还需要强调的一点是，教材121页例2中介绍了旋转变换的矩阵表示，即$\mathbf{R}^2$中向量绕原点按逆时针方向旋转$\theta$角的变换关于$\mathbf{R}^2$的自然基的矩阵表示为
-\[\mathbf{M}(\sigma)=\begin{pmatrix}
+
+接下来，我们还需要介绍旋转变换的矩阵表示
+\begin{example}{}{}
+    设$\sigma:\mathbf{R}^2\to\mathbf{R}^2$是绕原点逆时针旋转$\theta$角的变换，求$\sigma$在$\mathbf{R}^2$的自然基下的矩阵表示.
+\end{example}
+\begin{solution}
+    求解的过程是很自然简单的，我们只需要考虑$\sigma$在常用基$e_1,e_2$下的像，即
+    \[
+    \begin{cases}
+        \sigma(e_1)=\cos\theta e_1+\sin\theta e_2=(e_1,e_2)\begin{pmatrix}
+            \cos\theta \\ \sin\theta
+        \end{pmatrix} \\
+        \sigma(e_2)=-\sin\theta e_1+\cos\theta e_2=(e_1,e_2)\begin{pmatrix}
+            -\sin\theta \\ \cos\theta
+        \end{pmatrix}
+    \end{cases}
+    \]
+    故
+    \[\mathbf{M}(\sigma)=\begin{pmatrix}
         \cos\theta & -\sin\theta \\
         \sin\theta & \cos\theta
     \end{pmatrix}\]
-这一形式可以记忆，在之后会多次出现.
+
+\end{solution}
+这一矩阵形式可以记忆，在之后会多次出现.
 
 \section{$\mathcal{L}(V_1,V_2)$与矩阵线性空间的同构}
 
