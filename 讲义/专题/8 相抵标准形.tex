@@ -192,7 +192,7 @@
 \begin{theorem}{基的选择对向量坐标的影响}{基的选择对向量坐标的影响}
     设线性空间$V$的两组基为$B_1$和$B_2$，且基$B_1$到$B_2$的变换矩阵（过渡矩阵）为$A$，如果$\xi \in V(\mathbf{F})$在$B_1$和$B_2$下的坐标分别为$X$和$Y$，则$Y=A^{-1}X$.
 \end{theorem}
-上述即教材定理4.10，描述\textbf{同一个向量在不同基下坐标之间的关系}. 证明是简单的：
+上述定理描述了\textbf{同一个向量在不同基下坐标之间的关系}. 证明是简单的：
 
 \begin{proof}
     由题意，$\xi$在两组基下有如下两种坐标表示：
@@ -217,7 +217,7 @@
     又由于$\sigma(\alpha)$在线性无关向量组$\beta_1,\ldots,\beta_m$下的坐标唯一，故我们有$Y=AX$.
 \end{proof}
 
-上述即教材定理4.1，这一定理给出\textbf{一个向量经过线性映射之后，其坐标的变化}. 我们可以用下图表示：
+这一定理给出\textbf{一个向量经过线性映射之后，其坐标的变化}. 我们可以用下图表示：
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[>=Stealth]
@@ -255,7 +255,7 @@
 \begin{theorem}{基的选择对映射矩阵的影响}{基的选择对映射矩阵的影响}
     设线性变换$\sigma \in \mathcal{L}(V,V)$，$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_n\}$是线性空间$V(\mathbf{F})$的两组基，基$B_1$变为基$B_2$的变换矩阵为$C$. 如果$\sigma$在基$B_1$下的矩阵为$A$，则$\sigma$关于基$B_2$所对应的矩阵为$C^{-1}AC$.
 \end{theorem}
-上述即教材定理7.4，研究\textbf{同一个映射在不同基下表示矩阵之间的关系}. 这一定理的证明需要用到我们之前证明的
+这一定理研究了\textbf{同一个映射在不同基下表示矩阵之间的关系}. 它的证明需要用到我们之前证明的
 \[(\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))B=\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)B).\]
 
 \begin{proof}
@@ -429,7 +429,43 @@
         \item 将单位矩阵第$i,j$行（或列）对换，得到初等对换矩阵$E_{ij}$.
     \end{enumerate}
 \end{definition}
-教材136页上方给出了这三类矩阵具体的形状. 事实上，初等矩阵的定义就将我们在高斯消元法中使用的初等变换的三种形式对应到了矩阵的形式上. 我们很容易通过计算验证，简而言之，对单位矩阵$E$做了一次初等变换后得到的矩阵$P$，乘以其他任何矩阵$A$的效果就是对$A$做了和对$E$做的同样的初等变换.
+三种初等矩阵具体形状如下：
+
+\begin{gather*}
+    E_i(c) = \begin{blockarray}{cccccc}
+        \begin{block}{[ccccc]c}
+            1 &        &   &        &   &                               \\
+            & \ddots &   &        &   &                               \\
+            &        & c &        &   & {\footnotesize\text{第$i$行}} \\
+            &        &   & \ddots &   &                               \\
+            &        &   &        & 1 &                               \\
+        \end{block}
+    \end{blockarray} \\
+    E_{ij}(c) = \begin{blockarray}{cccccccc}
+        \begin{block}{[ccccccc]c}
+            1 &        &   &        &   &        &   &                               \\
+            & \ddots &   &        &   &        &   &                               \\
+            &        & 1 &        &   &        &   & {\footnotesize\text{第$i$行}} \\
+            &        &   & \ddots &   &        &   &                               \\
+            &        & c &        & 1 &        &   & {\footnotesize\text{第$j$行}} \\
+            &        &   &        &   & \ddots &   &                               \\
+            &        &   &        &   &        & 1 &                               \\
+        \end{block}
+    \end{blockarray} \\
+    E_{ij} = \begin{blockarray}{cccccccc}
+        \begin{block}{[ccccccc]c}
+            1 &        &   &        &   &        &   &                               \\
+            & \ddots &   &        &   &        &   &                               \\
+            &        & 0 &        & 1 &        &   & {\footnotesize\text{第$i$行}} \\
+            &        &   & \ddots &   &        &   &                               \\
+            &        & 1 &        & 0 &        &   & {\footnotesize\text{第$j$行}} \\
+            &        &   &        &   & \ddots &   &                               \\
+            &        &   &        &   &        & 1 &                               \\
+        \end{block}
+    \end{blockarray}
+\end{gather*}
+
+事实上，初等矩阵的定义就将我们在高斯消元法中使用的初等变换的三种形式对应到了矩阵的形式上. 我们很容易通过计算验证，简而言之，对单位矩阵$E$做了一次初等变换后得到的矩阵$P$，乘以其他任何矩阵$A$的效果就是对$A$做了和对$E$做的同样的初等变换.
 
 当我们对矩阵左乘一个初等矩阵时，相当于对矩阵做了对应的初等行变换；右乘一个初等矩阵时，相当于对矩阵做了对应的初等列变换. 所以在高斯消元法中，假设系数矩阵为$A$，简化阶梯矩阵为$U$，我们做的初等行变换分别为$P_1,P_2,\ldots,P_k$，则有
 \[P_kP_{k-1}\cdots P_2P_1A=U.\]
@@ -442,7 +478,7 @@
 
     \item 注意三类矩阵不是三个矩阵，例如倍乘矩阵乘以哪一行/哪一列，以及乘以多少都是不唯一的；
 
-    \item 三种初等矩阵都是可逆的，且$E_i^{-1}(c)=E_i\left(\dfrac{1}{c}\right)$，$E_{ij}^{-1}(c)=E_{ij}(-c)$，$E_{ij}^{-1}=E_{ij}$. 原因非常简单，只需要记住这三类矩阵在单位矩阵基础上做了什么，需要反过来作用什么来抵消就可以理解；
+    \item 三种初等矩阵都是可逆的，且$E_i^{-1}(c)=E_i(1/c)$，$E_{ij}^{-1}(c)=E_{ij}(-c)$，$E_{ij}^{-1}=E_{ij}$. 原因非常简单，只需要记住这三类矩阵在单位矩阵基础上做了什么，需要反过来作用什么来抵消就可以理解；
 
     \item 三种初等矩阵的转置：$E_i^\mathrm{T}(c)=E_i(c)$，$E_{ij}^\mathrm{T}(c)=E_{ji}(c)$，$E_{ij}^\mathrm{T}=E_{ij}$，因此初等矩阵转置前后分别对应于同样的行列变换操作. 例如倍乘行变换表示对第$i$行乘以$c$，转置后如果视为列变换则表示对第$i$列乘以$c$，行列操作一致，对换也是如此. 而倍加$E_{ij}(c)$在行变换表示将第$i$行乘$c$加到第$j$行，转置后如果视为列变换，$E_{ji}(c)$表示将第$i$列乘$c$加到第$j$列，这两者在行列操作上保持了一致性.
 
@@ -493,7 +529,47 @@
 \end{example}
 
 \begin{solution}
-    见教材138页例.
+    \begin{gather*}
+        (A, E) =
+        \left(\begin{array}{ccc:ccc}
+                0  & 2  & -1 & 1 & 0 & 0 \\
+                1  & 1  & 2  & 0 & 1 & 0 \\
+                -1 & -1 & -1 & 0 & 0 & 1
+            \end{array}\right)
+        \xrightarrow{[1] \leftrightarrow [2]}
+        \left(\begin{array}{ccc:ccc}
+                1  & 1  & 2  & 0 & 1 & 0 \\
+                0  & 2  & -1 & 1 & 0 & 0 \\
+                -1 & -1 & -1 & 0 & 0 & 1
+            \end{array}\right) \\
+        \xrightarrow{[3] + [1]}
+        \left(\begin{array}{ccc:ccc}
+                1 & 1 & 2  & 0 & 1 & 0 \\
+                0 & 2 & -1 & 1 & 0 & 0 \\
+                0 & 0 & 1  & 0 & 1 & 1
+            \end{array}\right)
+        \xrightarrow{\substack{[1] + [3] \times (-2) \\ [2] + [3]}}
+        \left(\begin{array}{ccc:ccc}
+                1 & 1 & 0 & 0 & -1 & -2 \\
+                0 & 2 & 0 & 1 & 1  & 1  \\
+                0 & 0 & 1 & 0 & 1  & 1
+            \end{array}\right) \\
+        \xrightarrow{\substack{[2] \times (1/2) \\ [1] + [2] \times (-1)}}
+        \left(
+        \begin{array}{ccc:ccc}
+                1 & 0 & 0 & -\frac{1}{2} & -\frac{3}{2} & -\frac{5}{2} \\
+                0 & 1 & 0 & \frac{1}{2}  & \frac{1}{2}  & \frac{1}{2}  \\
+                0 & 0 & 1 & 0            & 1            & 1
+            \end{array}
+        \right)
+    \end{gather*}
+
+    故 $A^{-1} =
+        \begin{pmatrix}
+            -\frac{1}{2} & -\frac{3}{2} & -\frac{5}{2} \\
+            \frac{1}{2}  & \frac{1}{2}  & \frac{1}{2}  \\
+            0            & 1            & 1
+        \end{pmatrix}$.
 \end{solution}
 
 \section{初等矩阵与相抵标准形}
@@ -506,7 +582,21 @@
     初等变换不改变矩阵的秩（包括行变换和列变换）.
 \end{theorem}
 
-定理的证明很简单，只需对各个初等变换逐一通过计算验证即可，可以参考教材140--141页的证明. 由这一定理我们同样可以证明\autoref*{thm:相抵标准形}，因为我们可以通过对任何一个矩阵做一系列初等行变换$P_1,\ldots,P_s$得到（行）简化阶梯矩阵，再做一系列初等列变换$Q_1,\ldots,Q_t$，即可将矩阵化为$U_r$的形式.
+定理的证明很简单，只需对各个初等变换逐一通过计算验证即可，具体证明如下：
+
+\begin{proof}
+    因为初等列变换和初等行变换是等价的，所以我们仅就初等行变换的情形给以证明.
+
+    设 $m\times n$ 矩阵 $A$ 的 $m$ 个行向量为 $\{ a_1, a_2, \dots, a_m \}$.
+
+    (1) 将 $A$ 的第 $i, j$ 行对换得到 $B$，则 $B$ 与 $A$ 的行向量组相同，故 $A, B$ 的行秩相等.
+
+    (2) 将 $A$ 的第 $i$ 行乘非零常数 $c$ 得到 $B$，则 $B$ 的行向量组：$\beta_i = c\alpha_i, \beta_k = \alpha_k \enspace (k \neq i)$. 因此 $B$ 与 $A$ 的行向量组可以互相线性表示. 所以 $A$ 与 $B$ 的行秩相等.
+
+    (3) 将 $A$ 的第 $i$ 行乘常数 $c$ 加到第 $j$ 行得到 $B$，则 $B$ 的行向量组：$\beta_j = c\alpha_i + \alpha_j,\allowbreak \beta_k = \alpha_k \enspace (k \neq j)$. 相应地也有 $\alpha_j = \beta_j - c\beta_i, \alpha_k = \beta_k \enspace (k \neq j)$. 因此 $A$ 与 $B$ 的行向量组可以互相线性表示. 所以 $A$ 与 $B$ 的行秩相等.
+\end{proof}
+
+由这一定理我们同样可以证明\autoref*{thm:相抵标准形}，因为我们可以通过对任何一个矩阵做一系列初等行变换$P_1,\ldots,P_s$得到（行）简化阶梯矩阵，再做一系列初等列变换$Q_1,\ldots,Q_t$，即可将矩阵化为$U_r$的形式.
 
 令$P=P_1\cdots P_s$，$Q=Q_1\cdots Q_t$，则上述过程可以总结为$PAQ=U_r$，且$P$和$Q$都是可逆矩阵，因为初等矩阵都是可逆矩阵，可逆矩阵的乘积仍然为可逆矩阵. 又我们知道$U_r$的行秩=列秩$=r=$矩阵的秩，由\autoref{thm:初等变换不改变秩} 可知，$U_r$的秩与$A$的秩相等，因此$r=r(A)$成立，综上得证.
 
@@ -534,7 +624,16 @@
 
           我们在这里对初等变换做一个小小的总结. 事实上初等变换只有三个非常重要的性质，即初等变换可逆，可逆矩阵可以写为初等变换的乘积，以及初等变换不改变矩阵的秩，只需牢记这三点就能覆盖几乎全部的证明技巧.
 
-    \item 事实上，相抵也被称为等价，相抵标准形也被称为等价标准形，原因就在于相抵是矩阵的一个等价关系. 教材142页详细说明了这一点，这里不再赘述. 这里要强调的是，这一等价关系将矩阵空间$\mathbf{F}^{m\times n}$中的全体元素按秩进行了分类，每一类对应的相抵标准形都是一样的.
+    \item 事实上，相抵也被称为等价，相抵标准形也被称为等价标准形，原因就在于相抵是矩阵的一个等价关系；证明如下：
+          \begin{enumerate}
+              \item $E_m A E_n = A$, 即 $A \cong A$;
+
+              \item 若 $A \cong B$, 则存在可逆矩阵 $P$ 和 $Q$, 使得 $PAQ = B$, 于是, $P^{-1} B Q^{-1} = A$, 从而 $B \cong A$;
+
+              \item 若 $A \cong B, B \cong C$, 则存在可逆矩阵 $P, S, Q, T$, 使得 $PAQ = B, SBT = C$, 于是就有 $(SP)A(QT) = C$, 从而 $A \cong C$.
+          \end{enumerate}
+
+          这里要强调的是，这一等价关系将矩阵空间$\mathbf{F}^{m\times n}$中的全体元素按秩进行了分类，每一类对应的相抵标准形都是一样的.
 \end{enumerate}
 
 \begin{example}{}{}

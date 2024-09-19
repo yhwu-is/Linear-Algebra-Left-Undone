@@ -1001,7 +1001,7 @@
           \begin{proof}
               左侧的不等号我们放在习题中供读者思考，此处证明右侧不等式. 事实上我们只需要证明$r(A+B)\leqslant r(A)+r(B)$即可，因为如果上式成立，则$r(A-B)=r(A+(-B))\leqslant r(A)+r(-B)=r(A)+r(B)$.
 
-              下面我们证明$r(A+B)\leqslant r(A)+r(B)$，这里我们站在线性映射的角度证明（事实上接下来第3、5个不等式也是如此，主要思路与教材3.4节一致）. 设$A,B$分别是线性映射$\sigma,\tau\in\mathcal{L}(V_1,V_2)$在基下表示矩阵. 事实上，矩阵的秩的定义就来源于线性映射的秩，即$r(A)=r(\sigma)$，$r(B)=r(\tau)$，因此我们只需要证明
+              下面我们证明$r(A+B)\leqslant r(A)+r(B)$，这里我们站在线性映射的角度证明（接下来第3、5个不等式也是如此，将矩阵的证明转化为线性映射的证明）. 设$A,B$分别是线性映射$\sigma,\tau\in\mathcal{L}(V_1,V_2)$在基下表示矩阵. 事实上，矩阵的秩的定义就来源于线性映射的秩，即$r(A)=r(\sigma)$，$r(B)=r(\tau)$，因此我们只需要证明
               \[r(\sigma+\tau)\leqslant r(\sigma)+r(\tau),\]
               又根据线性映射的秩的定义，只需证明
               \[\dim(\sigma+\tau)(V_1)\leqslant \dim\sigma(V_1)+\dim\tau(V_1),\]
