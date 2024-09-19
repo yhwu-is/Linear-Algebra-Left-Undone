@@ -239,7 +239,7 @@
                    & = \lambda(a_1+b_1\i)+\lambda(a_2+b_2\i) = \lambda \alpha_1 + \lambda \alpha_2.
               \end{align*}
     \end{enumerate}
-    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间.同理我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}:+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
+    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间. 同理我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}:+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
     \begin{enumerate}
         \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
 
@@ -432,9 +432,9 @@
 \begin{proof}
     \begin{enumerate}
         \item 必要性显然，否则 $W$ 关于 $V$ 的运算不构成线性空间，所以只需证明充分性.
-        \item 由于 $W$ 是 $V$ 的子集，所以 $V(\mathbf{F})$ 中数乘满足的4条性质及加法的交换律与结合律对 $W$ 都成立.因此只要再证 $V$ 的零元 $0\in W$，$W$中每个元 $\alpha$ 的负元 $(-\alpha)\in W$.由于 $W$ 对数乘封闭，所以取 $\lambda=0$和$\lambda=-1$，即得：
-            \[ 0\cdot\alpha=0\in W,(-1)\cdot\alpha=-\alpha\in W \]
-        故 $W$ 是 $V(\mathbf{F})$ 的线性子空间.
+        \item 由于 $W$ 是 $V$ 的子集，所以 $V(\mathbf{F})$ 中数乘满足的4条性质及加法的交换律与结合律对 $W$ 都成立. 因此只要再证 $V$ 的零元 $0\in W$，$W$中每个元 $\alpha$ 的负元 $(-\alpha)\in W$. 由于 $W$ 对数乘封闭，所以取 $\lambda=0$和$\lambda=-1$，即得：
+              \[ 0\cdot\alpha=0\in W,(-1)\cdot\alpha=-\alpha\in W \]
+              故 $W$ 是 $V(\mathbf{F})$ 的线性子空间.
     \end{enumerate}
 \end{proof}
 
@@ -599,31 +599,31 @@
                       (\lambda \circ f)(x) = \lambda f(x)
                   \end{gather*}
 
-              \item \[V_1= \{f \mid x \in \mathbf{R}, f(x) \in \mathbf{R}, f(-x)=-f(x)\}\]
+            \item \[V_1= \{f \mid x \in \mathbf{R}, f(x) \in \mathbf{R}, f(-x)=-f(x)\}\]
                   \[V_2= \{f \mid x \in \mathbf{R}, f(x) \in \mathbf{R}, f(0)=1, f(-x)=f(x)\}\]
                   对题(4)所定义的加法和数量乘法.
 
-              \item $V = \{f \mid x \in \mathbf{R}, f(x) \in \mathbf{C}, f(-x)= \overline{f(x)} \}$.
-              对题(4)所定义的加法和数量乘法.
+            \item $V = \{f \mid x \in \mathbf{R}, f(x) \in \mathbf{C}, f(-x)= \overline{f(x)} \}$.
+                  对题(4)所定义的加法和数量乘法.
         \end{enumerate}
 
         \item 判断下列子集是否为给定线性空间的子空间：
-          \begin{enumerate}
+        \begin{enumerate}
             \item $W = \{(x_1,\ldots,x_n) \in F^n \mid a_1 x_1+\cdots +a_n x_n =0\}$, 其中 $a_1, \ldots, a_n$ 为域 $F$ 中的固定数量.
-            
+
             \item $W_1 = \{(x,1,0) \in \mathbf{R}^3 \}$, $W_2 = \{(x,y,0) \in \mathbf{R}^3\}$.
-            
+
             \item $W_1 = \{(x,y,z) \in \mathbf{R}^3 \mid x-3y+z = 0\}$, $W_2 = \{(x,y,z) \in \mathbf{R}^3 \mid x-3y+z = 1\}$.
-            
-            \item $W_1 = \left\{(x,y,z) \in \mathbf{R}^3 \middle|\ \dfrac{x}{2} = \dfrac{y-4}{1} = \dfrac{z-1}{-3}\right\}$, 
-            
-            $W_2 = \{(x,y,z) \in \mathbf{R}^3 \mid x-y = 0, x+y+z = 0\}$.
-            
+
+            \item $W_1 = \left\{(x,y,z) \in \mathbf{R}^3 \middle|\ \dfrac{x}{2} = \dfrac{y-4}{1} = \dfrac{z-1}{-3}\right\}$,
+
+                  $W_2 = \{(x,y,z) \in \mathbf{R}^3 \mid x-y = 0, x+y+z = 0\}$.
+
             \item $W_1 = \{p(x) \in R[x] \mid p(1) = 0\}$, $W_2 = \{P(x) \in R[x]_n \mid p(1) = p(0)\}$（此题主要就是要判断满足一定条件的多项式是否构成子空间）.
-            
+
             \item $W = \{f \in F(-\infty, +\infty) \mid f(-x)=f(x), \forall x \in R\}$, 其中 $F(-\infty, +\infty)$ 是所有定义在 $(-\infty, +\infty)$ 上的实值函数对通常的函数加法及数与函数的乘法在实数域上构成的线性空间.
-            
-          \end{enumerate}
+
+        \end{enumerate}
     \end{exgroup}
 
     \begin{exgroup}
