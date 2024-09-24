@@ -5,13 +5,14 @@ export GH_ACTIONS_DIR := gh-actions-build
 
 .PHONY: all gh-actions main ans clean
 
-all: main ans
+all: main
 
 gh-actions:
 # used by GitHub Actions
-	mkdir -p $(GH_ACTIONS_DIR)
-	make -C $(MAIN_DIR) gh-cp
-	make -C $(ANSWERS_DIR) gh-cp
+#	mkdir -p $(GH_ACTIONS_DIR)
+#	make -C $(MAIN_DIR) gh-cp
+#	make -C $(ANSWERS_DIR) gh-cp
+	make -C $(MAIN_DIR)
 
 main:
 	$(MAKE) -C $(MAIN_DIR)
