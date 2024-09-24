@@ -75,13 +75,16 @@
     \LUgroupsancheck%
     \@std@chapter
 }
+\let\@std@chaptermark\chaptermark
+\def\chaptermark#1{\def\@LALU@chaptername{#1}\@std@chaptermark{#1}}
 \makeatother
 
 % 内容总结
 \newenvironment{summary}{%
     \hypersetup{bookmarksnumbered=false}%
     \titleformat{\subsection}[block]{\centering\heiti\Large}{}{1em}{}%
-    \subsection{内容总结}%
+    \phantomsection%
+    \subsection*{内容总结}%
 }{}
 
 % 习题环境
@@ -96,35 +99,55 @@
 %   \end{exgroup}
 % \end{exercise}
 \newcounter{exgroupcounter}
-\newenvironment{exercise}{%
-    \setcounter{exgroupcounter}{0}%
-    \NewDocumentEnvironment{exgroup}{so}{%
-        \IfBooleanF{##1}{%
-            \IfValueTF{##2}{%
-                \setcounter{exgroupcounter}{##2}%
-            }{%
-                \refstepcounter{exgroupcounter}%
-            }%
-            \subsection{\Alph{exgroupcounter} 组}%
-        }%
-        \begin{enumerate}%
-    }{%
-        \end{enumerate}%
-    }%
-    \NewDocumentCommand{\exquote}{om}{%
-        \vspace{2ex}%
-        {\sffamily\kaishu ##2}%
-        \IfValueT{##1}{%
-            \begin{flushright}%
-                \sffamily\kaishu ——##1%
-            \end{flushright}%
-        }%
-    }%
-    \hypersetup{bookmarksnumbered=false}%
-    \titleformat{\section}[block]{\centering\heiti\Large}{}{1em}{}%
-    \titleformat{\subsection}[block]{\centering\heiti\bfseries}{}{1em}{}%
-    \section{习题}%
-}{}
+\ExplSyntaxOn
+\newenvironment{exercise}{
+    \iow_now:Nx \g_lalu_ans_iow { \cs_if_exist:cTF { @exist@LUchapter@\arabic{chapter} } { \exp_not:N \setcounter{LUsection}{ \theLUchapter-1 } \exp_not:N \LUsection } { \exp_not:N \setcounter{section}{ \thechapter-1 } \exp_not:N \section } { \cs:w @LALU@chaptername \cs_end: } }
+    \setcounter{exgroupcounter}{0}
+    \NewDocumentEnvironment{exgroup}{o}{
+        \IfValueTF{##1}{
+            \setcounter{exgroupcounter}{##1}
+        }{
+            \refstepcounter{exgroupcounter}
+        }
+        \subsection*{\Alph{exgroupcounter}组}
+        \begin{enumerate}
+    }{
+        \end{enumerate}
+        \seq_if_empty:NF \g_lalu_ans_seq {
+            \iow_now:Nx \g_lalu_ans_iow { \exp_not:N \subsection*{ \Alph{exgroupcounter} 组 } \exp_not:N \begin{enumerate} }
+            \seq_map_tokens:Nn \g_lalu_ans_seq { \iow_now:Nn \g_lalu_ans_iow }
+            \iow_now:Nn \g_lalu_ans_iow { \end{enumerate} }
+        }
+        \seq_gclear:N \g_lalu_ans_seq
+    }
+    \NewDocumentEnvironment{answer}{+b}{}{
+        \seq_gput_right:Nx \g_lalu_ans_seq { \exp_not:N \item [\theenumi.] \tl_to_str:n { ##1 } }
+    }
+    \NewDocumentCommand{\exquote}{om}{
+        \vspace{2ex}
+        {\sffamily\kaishu ##2}
+        \IfValueT{##1}{
+            \begin{flushright}
+                \sffamily\kaishu ——##1
+            \end{flushright}
+        }
+    }
+    \hypersetup{bookmarksnumbered=false}
+    \titleformat{\section}[block]{\centering\heiti\Large}{}{1em}{}
+    \titleformat{\subsection}[block]{\centering\heiti\bfseries}{}{1em}{}
+    \phantomsection
+    \section*{习题}
+    \addcontentsline{toc}{section}{习题}
+}{
+    \iow_now:Nn \g_lalu_ans_iow { \clearpage }
+}
+\seq_new:N \g_lalu_ans_seq  % stores the answers, shipped at the end of the exgroup
+\iow_new:N \g_lalu_ans_iow
+\iow_open:Nn \g_lalu_ans_iow { LALU-ans-contents.tex }
+\AtEndDocument{
+\iow_close:N \g_lalu_ans_iow
+}
+\ExplSyntaxOff
 
 \NewDocumentCommand{\LUchapter}{m}{%
 \LUgroupsancheck
@@ -138,8 +161,8 @@
     chapter={format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUchapter}}}},
 }
 \csname @std@chapter\endcsname{#1}
-\expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}\endcsname{\relax}
-\expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}.\arabic{LUgreekchap}\endcsname{\relax}
+\expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}\endcsname{\null}
+\expandafter\xdef\csname @exist@LUchapter@\arabic{chapter}.\arabic{LUgreekchap}\endcsname{\null}
 }
 
 \ctexset{
