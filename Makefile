@@ -5,7 +5,7 @@ export GH_ACTIONS_DIR := gh-actions-build
 
 .PHONY: all gh-actions main ans clean
 
-all: main ans
+all: main
 
 gh-actions:
 # used by GitHub Actions
