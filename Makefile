@@ -9,9 +9,10 @@ all: main ans
 
 gh-actions:
 # used by GitHub Actions
-	mkdir -p $(GH_ACTIONS_DIR)
-	make -C $(MAIN_DIR) gh-cp
-	make -C $(ANSWERS_DIR) gh-cp
+#	mkdir -p $(GH_ACTIONS_DIR)
+#	make -C $(MAIN_DIR) gh-cp
+#	make -C $(ANSWERS_DIR) gh-cp
+	make -C $(MAIN_DIR)
 
 main:
 	$(MAKE) -C $(MAIN_DIR)

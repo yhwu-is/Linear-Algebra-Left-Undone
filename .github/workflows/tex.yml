@@ -35,4 +35,4 @@ jobs:
         with:
           name: LALU-build-${{ github.run_number }}-${{ steps.build.outputs.sha }}
           if-no-files-found: error
-          path: ${{ github.workspace }}/gh-actions-build/*.pdf
+          path: ${{ github.workspace }}/讲义/*.pdf
