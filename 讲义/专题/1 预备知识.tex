@@ -26,13 +26,13 @@
 \end{definition}
 
 \begin{definition}{$n$ 元笛卡尔积}{}
-    设 $A_i~(1\le i\le n)$ 是一族集合，我们把集合
+    设 $A_i~(1\leqslant i\leqslant n)$ 是一族集合，我们把集合
     \[
-    \prod_{i=1}^n A_i = \{(a_1, a_2, \cdots, a_n), a_i\in A_i\}
+    \prod_{i=1}^n A_i = \{(a_1, a_2, \cdots, a_n) \mid a_i\in A_i\}
     \]
     称为集族 $\{A_i\}$ 的 \term{$n$ 元笛卡尔积}. 特别地，当所有的 $A_i$ 都为集合 $A$ 时，记
     \[
-    A^n = \prod_{i=1}^n A = \{(a_1, a_2, \cdots, a_n), a_i \in A\}
+    A^n = \prod_{i=1}^n A = \{(a_1, a_2, \cdots, a_n) \mid a_i \in A\}
     \]
     为集合 $A$ 的 $n$ 次\term{笛卡尔幂}.
 \end{definition}
@@ -48,7 +48,7 @@
 
 特别注意的是，代数系统上定义的运算必须保证封闭性，也就是运算后的结果必须仍然在集合$X$中. 这事实上早已由映射的方式对运算的定义保证了.
 
-不难理解，代数系统其中蕴含的性质与其中定义的运算具有的性质是关联很大的. 例如从经典分析学的角度实数实际上是是这样一些东西的组合 $\langle\mathbf{R}\colon 0, 1, +, *, \le\rangle$，只是我们在没有歧义时将其简记为了 $\mathbf{R}$. 接下来我们以实数域为例，介绍在代数学中关心的几个运算性质. 我们首先讨论实数域上的加法运算，以下性质对于任意$a,b,c\in\mathbf{R}$都成立：
+不难理解，代数系统其中蕴含的性质与其中定义的运算具有的性质是关联很大的. 例如从经典分析学的角度实数实际上是是这样一些东西的组合 $\langle\mathbf{R}\colon 0, 1, +, *, \leqslant\rangle$，只是我们在没有歧义时将其简记为了 $\mathbf{R}$. 接下来我们以实数域为例，介绍在代数学中关心的几个运算性质. 我们首先讨论实数域上的加法运算，以下性质对于任意$a,b,c\in\mathbf{R}$都成立：
 
 \begin{enumerate}
     \item 结合律：$(a+b)+c=a+(b+c)$；
@@ -165,7 +165,7 @@
 
 直观来看，实数位于数轴上，复数则分布在二维平面上，因此我们可以先考虑平面点集$\mathbf{R}^2$，并在其上定义加法和乘法运算使其成为一个域. 我们回顾高中学习的平面向量知识，我们记$\vec{e}_1=(1,0)$，$\vec{e}_2=(0,1)$，则$\mathbf{R}^2$上的任一向量$\vec{u}=(x,y)$可写为$x\vec{e}_1+y\vec{e}_2$. 此外，我们仍沿袭高中对向量长度的定义，即$\lvert\vec{u}\rvert=\sqrt{x^2+y^2}$.
 
-在\autoref{ex\colonAbel 群} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法使得代数系统$\langle\mathbf{R}^2\setminus\{(0,0)\}\colon\circ\rangle$也为Abel群. 这一乘法的构造需要满足一些自然的条件，同时也能实现构成Abel群的要求. 事实上，我们有如下定理：
+在\autoref{ex:Abel 群} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法使得代数系统$\langle\mathbf{R}^2\setminus\{(0,0)\}\colon\circ\rangle$也为Abel群. 这一乘法的构造需要满足一些自然的条件，同时也能实现构成Abel群的要求. 事实上，我们有如下定理：
 \begin{theorem}{}{复数乘法构造}
     平面点集$\mathbf{R}^2$上存在唯一的乘法$\circ$，满足
     \begin{enumerate}

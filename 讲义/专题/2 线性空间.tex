@@ -33,7 +33,7 @@
 \begin{definition}{线性空间}{}
     设$V$是一个非空集合，$\mathbf{F}$是一个数域，我们定义两种运算，其中第一个运算是我们熟知的加法$+$. 在线性空间的定义中，我们要求$\langle V:+\rangle$构成Abel群，即其中元素满足如下运算律：
     \begin{enumerate}
-        \item (结合律) $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma,\enspace\forall \alpha,\beta,\gamma \in V$；
+        \item (加法结合律) $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma,\enspace\forall \alpha,\beta,\gamma \in V$；
 
         \item (加法单位元) $\exists 0 \in V$使得$\forall\alpha\in V$ 有 $\alpha+0=0+\alpha$；
 
@@ -44,13 +44,13 @@
 
     第二种运算和之前学习的其他代数结构不同，我们需要首先引入一个数域$\mathbf{F}$，接下来在$\mathbf{F}\times V$上定义取值于$V$的数乘运算，即$\mathbf{F}\times V$中的每个元素$(\lambda,\alpha)\mapsto \lambda\alpha\in V$，并且数乘运算满足以下性质：$\forall \alpha,\beta \in V,\enspace\forall \lambda,\mu\in\mathbf{F}$以及$\mathbf{F}$上的乘法单位元1，有
     \begin{enumerate}
-        \item $1\cdot \alpha=\alpha$；
+        \item (乘法单位元) $1\cdot \alpha=\alpha$；
 
-        \item $\lambda(\mu\alpha)=(\lambda\mu)\alpha$；
+        \item (乘法结合律) $\lambda(\mu\alpha)=(\lambda\mu)\alpha$；
 
-        \item $(\lambda+\mu)\alpha=\lambda\alpha+\mu\alpha$；
+        \item (左分配律) $(\lambda+\mu)\alpha=\lambda\alpha+\mu\alpha$；
 
-        \item $\lambda(\alpha+\beta)=\lambda\alpha+\lambda\beta$.
+        \item (右分配律) $\lambda(\alpha+\beta)=\lambda\alpha+\lambda\beta$.
     \end{enumerate}
 
     基于此，我们完整定义了一个线性空间，我们一般称集合$V$关于上述两种运算在域$\mathbf{F}$上构成一个线性空间，简称为$V$在域$\mathbf{F}$上的线性空间，记作$V(\mathbf{F})$. 如果$\mathbf{F}$是实（复）数域，则称$V$为实（复）数域上的线性空间.
@@ -103,15 +103,111 @@
           \end{enumerate}
 \end{enumerate}
 
-或许同学们会疑惑为什么线性空间会要求上述这8条性质（加法、数乘各4条）. 事实上，这里的加法交换律是可以被其他7条推出的，感兴趣的同学可以自行尝试证明. 其余的7条公理彼此独立，每一条均不可取消. 感兴趣的同学可以试试举出反例来说明其余7条中每一条均不能由其余各条推出.
+或许同学们会疑惑为什么线性空间会要求上述这8条性质（加法、数乘各4条）. 事实上，这里的加法交换律是可以被其他7条推出的，感兴趣的同学可以自行尝试证明. 其余的7条公理彼此独立（除了逆元的定义依赖于单位元），每一条均不可取消，否则就不能构成线性空间. 有兴趣的同学可以看下面的推导过程和示例，先是加法交换律可以被其它定律推出
 
-我们发现线性空间中定义的运算规则与我们高中学习的平面向量的加法和数乘是非常类似的，我们回顾未竟专题一关于公理化的讨论，实际上这就可以视为从简单的向量加法和数乘抽象出来的一些规则. 而公理的诞生应当是要尽可能简洁，而且有足够的表达力——这一点我们将来基于这一定义不断推出线性空间的性质时就会发现非常足够（事实上你现在就能通过我们上面证明的运算性质初步感知到这一点，因为7条公理中任何一条的缺失都会使得上面某条显然而合理的性质不再满足，而我们未来需要的性质都可以由此导出），因此皮亚诺在1888年正式给出这一定义并沿用至今. 但我们需要知道他的工作也是基于前人（如格拉斯曼）的工作不断修正而来的，只是我们被动接受这一概念使得这一自然的过程变得很突兀. 当然这门课只要求你记忆这8条性质，并请务必牢记于心，考试可能要求你验证线性空间. 记忆难度也并不大，Abel 群4条性质都有名称标注，数乘运算也是易于记忆的结合律和分配律加单位元性质.
+\begin{proof}
+{
+    \allowdisplaybreaks
+    设 $\alpha,\beta\in V$, 则有
+    \begin{align*}
+        \tag{加法单位元}
+        \alpha + \beta &= (0 + \alpha) + (\beta + 0)\\
+        \tag{逆元}
+        &= ((-\alpha + \alpha) + \alpha) + (\beta + (\beta + (-\beta)))\\
+        \tag{加法结合律}
+        &= -\alpha + ((\alpha + \alpha) + (\beta + \beta)) + (-\beta)\\
+        \tag{乘法单位元}
+        &= -\alpha + ((1\cdot\alpha + 1\cdot\alpha) + (1\cdot\beta + 1\cdot\beta)) + (-\beta)\\
+        \tag{左分配律}
+        &= -\alpha + (2\cdot\alpha + 2\cdot\beta) + (-\beta)\\
+        \tag{右分配律}
+        &= -\alpha + 2\cdot (\alpha + \beta) + (-\beta)\\
+        \tag{左分配律}
+        &= -\alpha + (\alpha + \beta) + (\alpha + \beta) + (-\beta)\\
+        \tag{加法结合律}
+        &= ((-\alpha + \alpha) + \beta) + (\alpha + (\beta + (-\beta)))\\
+        \tag{逆元}
+        &= (0 + \beta) + (\alpha + 0)\\
+        \tag{加法单位元}
+        &= \beta + \alpha
+    \end{align*}
+}
+\end{proof}
+
+接下来看一些例子，它们说明其它的线性空间公理要求都是不可或缺的
+
+\begin{example}{}{去除一条线性空间公理}
+    \begin{enumerate}
+        \item 加法结合律
+
+        考虑集合 $F = \mathbf{R}, V = \{(x, y)\in\mathbf{R}^2 \mid xy = 0\}$，即 $x$ 轴和 $y$ 轴的并，在其上自定义加法和乘法
+        \begin{align*}
+            (x_1, x_2) + (y_1, y_2) &= \begin{cases}
+                (0, 0), & (x_1+x_2)(y_1+y_2) \notin V\\
+                (x_1+x_2, y_1+y_2), & (x_1+x_2)(y_1+y_2) \in V
+            \end{cases}
+            k\cdot (x_1, x_2) = (k x_1, k x_2)
+        \end{align*}
+        不难验证其满足除了加法结合律以外的所有要求（验证留作练习，下同）.
+
+        \item 加法逆元
+
+        因为如果去掉单位元要求会导致逆元无法定义，所以跳过仅仅去掉单位元的情况. 考虑 $F = \mathbf{R}$，构造这样一个集合：向实数集中人为添加一个元素 $0'$，保持其它数的加法，称这个集合为 $V$，对 $0'$ 定义加法
+        \[
+            0' + \alpha = \alpha + 0 = \alpha
+        \]
+        注意到此时 $0 + 0' = 0$，也就是说 $0'$ 是真正的加法单位元，对 $\alpha\ne 0$，沿用实数集中``正常''的乘法. 对 $0'$ 定义乘法
+        \[
+            k\cdot 0' = 0'
+        \]
+        则可以验证除了逆元以外其它的公理都得到了满足，但是对于一般的 $\alpha$，我们无法找到 $\beta$ 使得 $\alpha + \beta = 0$. 这个例子的来源可以是考虑 $0$ 的邻域内如下的函数集合族
+        \[
+            V = \{a+o(1)\mid a\in\mathbf{R}\} \cup \{o(x)\}
+        \]
+        有 $(a+o(1)) + (b+o(1)) = (a+b) + o(1)$. 用 $o(x)$ 加上一个 $a+o(1)$ 并不改变结果，然而用两个 $o(1)$ 的函数族加出一个 $o(x)$ 是不可能的.
+
+        \item 乘法单位元
+
+        考虑 $F = V = \mathbf{R}$. 在实数集中保持加法不变，令 $k\cdot \alpha = 0$. 读者不难验证它事实上满足除了乘法单位元以外的所有要求.
+
+        \item 乘法结合律
+
+        仍然保持实数上的加法不变，考虑 $F=\mathbf{C}, V=\mathbf{R}$，定义乘法
+        \[
+            k\cdot \alpha = (\Re k) \alpha
+        \]
+        读者不难验证它满足除了乘法结合律以外的所有要求.
+
+        \item 左分配律
+
+        考虑 $F=V=\mathbf{R}$. 保持实数集中加法不变，定义
+        \[
+            k\cdot \alpha = \alpha
+        \]
+        读者不难验证它除了左分配律以外的公理都满足.
+
+        \item 右分配律
+
+        （笔者暂时没有想到更好的例子，所以这个例子会略微抽象）考虑 $F=\mathbf{C}, V=\mathbf{C}^2$. 保持 $\mathbf{C}$ 上的加法不变，对 $k\in\mathbf{C}, \alpha = (z_1, z_2)$ 定义乘法
+        \[
+            k\cdot\alpha = \begin{cases}
+                (k z_1, k z_2), & z_1 = 0~\text{或}~\Im(z_2 - z_1) \geqslant 0\\
+                (\overline{k} z_1, \overline{k} z_2), & \text{其它}
+            \end{cases}
+        \]
+        则读者可以验证它满足除右结合律以外的所有公理.
+    \end{enumerate}
+\end{example}
+
+我们发现线性空间中定义的运算规则与我们高中学习的平面向量的加法和数乘是非常类似的，我们回顾未竟专题一关于公理化的讨论，实际上这就可以视为从简单的向量加法和数乘抽象出来的一些规则. 而公理的诞生应当是要尽可能简洁，而且有足够的表达力——这一点我们将来基于这一定义不断推出线性空间的性质时就会发现非常足够（事实上你现在就能通过我们上面证明的运算性质初步感知到这一点，因为7条公理中任何一条的缺失都会使得上面某条显然而合理的性质不再满足，从而允许各种意想不到的反例出现，而定义了这些公理之后我们未来需要的性质都可以由此导出），因此皮亚诺在1888年正式给出这一定义并沿用至今. 但我们需要知道他的工作也是基于前人（如格拉斯曼）的工作不断修正而来的，只是我们被动接受这一概念使得这一自然的过程变得很突兀. 当然这门课只要求你记忆这8条性质，并请务必牢记于心，考试可能要求你验证线性空间. 记忆难度也并不大，Abel 群4条性质都有名称标注，数乘运算也是易于记忆的结合律和分配律加单位元性质.
 
 除此之外，公理化定义还有一个很重要的作用就是使得我们可以不仅仅在向量集合的背景下定义线性空间，这使得我们可以将对于很多结构的研究都转化为对于线性空间的研究. 接下来我们给出一些与向量无关的线性空间的例子，它们分别代表着线性空间在某些方面的抽象，希望读者仔细体会：
 
 \begin{example}{}{}
     （平凡的常识：多项式）$\mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$关于多项式的加法和数乘构成线性空间，具体展开而言便是
-    \[(p_1+p_2)(x)=p_1(x)+p_2(x),\enspace(\lambda p)(x)=\lambda p(x),\enspace\forall p_1,p_2,p\in\mathbf{F}[x]_{n+1},\enspace\forall \lambda\in\mathbf{F}.\]
+    \[
+        (p_1+p_2)(x)=p_1(x)+p_2(x),\enspace(\lambda p)(x)=\lambda p(x),\enspace\forall p_1,p_2,p\in\mathbf{F}[x]_{n+1},\enspace\forall \lambda\in\mathbf{F}.
+    \]
     这也能解释常见记号的含义：$(k_1p_1+k_2p_2)(x)=k_1p_1(x)+k_2p_2(x)$.
     但我们需要注意
     \[\mathbf{F}[x]'_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}, a_n\neq 0\}\]
@@ -267,7 +363,7 @@
 
     对于$\mathbf{R(R)}$的验证同理，下面考察$\mathbf{R}(\mathbf{C})$，它与$\mathbf{R(R)}$定义的集合一致，都是实数集合$\mathbf{R}$，因此加法性质共同满足，因此我们只需验证数乘运算不满足要求即可. 事实上仍然是运算不封闭导致的，回顾封闭的要求$\mathbf{F}\times V\to V$，现在$\mathbf{R(C)}$中的$V=\mathbf{R}$，数域$\mathbf{F}=\mathbf{C}$，我们取复数$i$与实数$1$进行数乘，结果为$i\notin\mathbf{R}$，破坏了封闭性，故$\mathbf{R(C)}$不构成线性空间.
 
-    最后我们考察$\mathbf{R(Z)}$，事实上我们会发现运算封闭以及与运算规律都是满足的，那为何不是线性空间呢？事实上这里开了个小玩笑，这是因为$\mathbf{Z}$不是数域！我们知道最小的数域是有理数域$\mathbf{Q}$，因而$\mathbf{Z}\subsetneq\mathbf{Q}$不是数域，因此$\mathbf{R(Z)}$不构成线性空间.
+    最后我们考察$\mathbf{R(Z)}$，事实上我们会发现运算封闭以及与运算规律都是满足的，那为何不是线性空间呢？事实上这里开了个小玩笑，这是因为$\mathbf{Z}$不是数域！我们知道最小的数域是有理数域$\mathbf{Q}$，因而$\mathbf{Z}\subsetneq\mathbf{Q}$不是数域，因此$\mathbf{R(Z)}$不构成线性空间（实际上抽象代数中有类似的概念叫环上的模，$\mathbf{Q}$ 便是整数环 $\mathbf{Z}$ 上的模，而在有些更加抽象的课本中线性空间被定义为交换除环上的模）.
 \end{proof}
 
 \begin{example}{}{运算与同构}
@@ -591,8 +687,8 @@
                       \lambda\cdot(a_1,\ldots,a_n)=(a_1^\lambda,\ldots,a_n^\lambda)
                   \end{gather*}
 
-            \item 集合 $V$ 为区间 $[a, b]$ 上所有函数值 $\geq 0$ 的是变量函数，即：
-                  \[V=\{f \mid f(x) \geq 0, \forall x \in [a, b] \}\]
+            \item 集合 $V$ 为区间 $[a, b]$ 上所有函数值 $\geqslant 0$ 的实变量函数，即：
+                  \[V=\{f \mid f(x) \geqslant 0, \forall x \in [a, b] \}\]
                   对通常的函数加法和数与函数的乘法，即：
                   \begin{gather*}
                       (f \oplus g)(x) = f(x) + g(x) \\
@@ -624,6 +720,8 @@
             \item $W = \{f \in F(-\infty, +\infty) \mid f(-x)=f(x), \forall x \in R\}$, 其中 $F(-\infty, +\infty)$ 是所有定义在 $(-\infty, +\infty)$ 上的实值函数对通常的函数加法及数与函数的乘法在实数域上构成的线性空间.
 
         \end{enumerate}
+
+        \item 对于 \autoref{ex:去除一条线性空间公理} 中的每个例子，举例说明它们为什么违反了对应的公理，又为什么能满足其它的公理.
     \end{exgroup}
 
     \begin{exgroup}
