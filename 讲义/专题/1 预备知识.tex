@@ -25,18 +25,30 @@
     称为集合$A$和$B$的\term{笛卡尔积}.
 \end{definition}
 
-因此我们很容易理解$\mathbf{R}\times\mathbf{R}$作为集合长什么样，它的元素是形如$(a,b)$的有序对，其中$a,b\in\mathbf{R}$. 事实上，我们可以将$\mathbf{R}\times\mathbf{R}$看作平面上的点集，其中的元素$(a,b)$对应于平面上的一个点，这一点的横坐标为$a$，纵坐标为$b$.
+\begin{definition}{$n$ 元笛卡尔积}{}
+    设 $A_i~(1\le i\le n)$ 是一族集合，我们把集合
+    \[
+    \prod_{i=1}^n A_i = \{(a_1, a_2, \cdots, a_n), a_i\in A_i\}
+    \]
+    称为集族 $\{A_i\}$ 的 \term{$n$ 元笛卡尔积}. 特别地，当所有的 $A_i$ 都为集合 $A$ 时，记
+    \[
+    A^n = \prod_{i=1}^n A = \{(a_1, a_2, \cdots, a_n), a_i \in A\}
+    \]
+    为集合 $A$ 的 $n$ 次\term{笛卡尔幂}.
+\end{definition}
+
+因此我们很容易理解$\mathbf{R}\times\mathbf{R}$作为集合长什么样，它的元素是形如$(a,b)$的有序对，其中$a,b\in\mathbf{R}$. 事实上，我们可以将$\mathbf{R}\times\mathbf{R}$看作平面上的点集，其中的元素$(a,b)$对应于平面上的一个点，这一点的横坐标为$a$，纵坐标为$b$. 类似地，空间中的点可以用三个实数来表示，也就是形如 $(x, y, z)$ 的有序对，其中 $x,y,z\in\mathbf{R}$. 也就是说，$\mathbf{R}^3$ 表示的是空间中的点集，在这种情况下我们有时会用``空间''来代指集合，而用``点''来代指集合的元素.
 
 我们回到运算的映射表示，我们发现$+$和$\times$都以实数的有序对作为函数的自变量，函数值也是一个实数. 或许读者看到这里还是对运算的定义有些许迷茫，但如果我们回忆映射的基本定义$f\colon A\to B$表示给$A$中的任意元素$a$指派一个$B$中的元素$f(a)$，并将加法乘法写成$+(2,3)=5$，$\times(2,3)=6$，想必就会恍然大悟：$+$和$\times$实际上就是函数名，函数做的事情就是输入两个自变量然后进行加法/乘法运算得到结果，并把这个结果指派给自变量作为函数值.
 
 在上述讨论中，我们所做的事情很简单，就是给定一个集合，然后在这一集合的元素之间定义运算. 实际上这就是代数系统的定义：
 \begin{definition}{代数系统}{} \index{daishuxitong@代数系统 (algebraic system)}
-    一般地，我们把一个非空集合$X$和在$X$上定义的若干代数运算$f_1,\ldots,f_k$组成的系统称为\term{代数系统}（简称代数系），记作$\langle X : f_1,\ldots,f_k\rangle$.
+    一般地，我们把一个非空集合$X$和与$X$相关的若干代数运算$f_1,\ldots,f_k$组成的系统称为\term{代数系统}（简称代数系），记作$\langle X \colon f_1,\ldots,f_k\rangle$.
 \end{definition}
 
 特别注意的是，代数系统上定义的运算必须保证封闭性，也就是运算后的结果必须仍然在集合$X$中. 这事实上早已由映射的方式对运算的定义保证了.
 
-不难理解，代数系统其中蕴含的性质与其中定义的运算具有的性质是关联很大的. 我们仍然以实数域为例，介绍在代数学中关心的几个运算性质. 我们首先讨论实数域上的加法运算，以下性质对于任意$a,b,c\in\mathbf{R}$都成立：
+不难理解，代数系统其中蕴含的性质与其中定义的运算具有的性质是关联很大的. 例如从经典分析学的角度实数实际上是是这样一些东西的组合 $\langle\mathbf{R}\colon 0, 1, +, *, \le\rangle$，只是我们在没有歧义时将其简记为了 $\mathbf{R}$. 接下来我们以实数域为例，介绍在代数学中关心的几个运算性质. 我们首先讨论实数域上的加法运算，以下性质对于任意$a,b,c\in\mathbf{R}$都成立：
 
 \begin{enumerate}
     \item 结合律：$(a+b)+c=a+(b+c)$；
@@ -51,21 +63,21 @@
 对于乘法运算（可记为$\cdot$或$\times$），单位元一般记为$1$（更一般的可以记为$e$），逆元记为$a^{-1}$. 事实上，我们可以给出更多的例子：
 \begin{example}{}{Abel 群}
     \begin{enumerate}
-        \item 代数系统$\langle \mathbf{R}\backslash\{0\}:\circ\rangle$定义的一般乘法运算
+        \item 代数系统$\langle \mathbf{R}\setminus\{0\}\colon\circ\rangle$定义的一般乘法运算
 
-        \item 代数系统$\langle \mathbf{R}^2:+\rangle$定义的平面向量的加法
+        \item 代数系统$\langle \mathbf{R}^2\colon+\rangle$定义的平面向量的加法
     \end{enumerate}
     均满足上述四条运算性质.
 \end{example}
 
-事实上，我们可以对上面的定义做进一步的抽象. 我们可以忽略集合中元素的意义差异（元素可以表示实数，也可以在上述例子中表示平面向量等几何对象），同时也可以忽略运算定义的差异，只关心运算作用于集合元素的性质. 对于一般的代数系统$\langle G:\circ\rangle$，我们有如下定义：
+事实上，我们可以对上面的定义做进一步的抽象. 我们可以忽略集合中元素的意义差异（元素可以表示实数，也可以在上述例子中表示平面向量等几何对象），同时也可以忽略运算定义的差异，只关心运算作用于集合元素的性质. 对于一般的代数系统$\langle G\colon\circ\rangle$，我们有如下定义：
 \begin{definition}{群}{群}\index{qun@群 (group)}
-    若运算$\circ$满足结合律，则称代数系统$\langle G:\circ\rangle$为\term{半群}\index{qun!banqun@半群 (semigroup)}；若在半群基础上存在单位元，则称之为\term{含幺半群}\index{qun!hanyaobanqun@含幺半群 (monoid)}；若在含幺半群基础上每个元素存在逆元，则称之为\term{群}；若在群的基础上运算还满足交换律，则称之为\term{Abel 群}，也称\term{交换群}\index{qun!abel@Abel 群 (Abelian group), 交换群 (commutative group)}.
+    若运算$\circ$满足结合律，则称代数系统$\langle G\colon\circ\rangle$为\term{半群}\index{qun!banqun@半群 (semigroup)}；若在半群基础上存在单位元，则称之为\term{含幺半群}\index{qun!hanyaobanqun@含幺半群 (monoid)}；若在含幺半群基础上每个元素存在逆元，则称之为\term{群}；若在群的基础上运算还满足交换律，则称之为\term{Abel 群}，也称\term{交换群}\index{qun!abel@Abel 群 (Abelian group), 交换群 (commutative group)}.
 \end{definition}
 
 \autoref{def:群} 给出了我们本节第一个要讨论的代数结构——群的定义. 简而言之，代数结构就是在集合上定义具有某些特定性质的运算后得到的一类代数系统. 事实上，教材中42--44页给出了大量抽象的例子有助于同学们理解上述一系列群的定义，并且我们在后续学习矩阵的时候也会遇到一些群结构，相信这些实例能使读者体会到``在集合上定义运算''的方式的多样与抽象.
 
-为方便书写，对于\autoref{def:群} 定义的群$\langle G:\circ\rangle$，在不引起混淆的情况下我们可以简写为群$G$. 除此之外，我们还需要指出以下两点：
+为方便书写，对于\autoref{def:群} 定义的群$\langle G\colon\circ\rangle$，在不引起混淆的情况下我们可以简写为群$G$. 除此之外，我们还需要指出以下两点：
 \begin{theorem}{}{群的单位元逆元唯一}
     \begin{enumerate}
         \item 群的单位元唯一；
@@ -88,11 +100,11 @@
 
 事实上，在很多集合上我们不仅可以定义一种运算，也可以定义两种甚至更多运算，在代数结构中我们仅讨论最多两种运算的情况. 事实上，我们最开始的实数集合定义加法和乘法的例子便可以引入一个新的代数结构——域：
 \begin{definition}{域}{} \index{yu@域 (field)}
-    我们称代数系统$\langle F:+,\circ\rangle$为一个\term{域}，如果
+    我们称代数系统$\langle F\colon+,\circ\rangle$为一个\term{域}，如果
     \begin{enumerate}
-        \item $\langle F:+\rangle$是交换群，其单位元记作0；
+        \item $\langle F\colon+\rangle$是交换群，其单位元记作0；
 
-        \item $\langle F\backslash\{0\}:\circ\rangle$是交换群；
+        \item $\langle F\setminus\{0\}\colon\circ\rangle$是交换群；
 
         \item 运算$\circ$对$+$满足左、右分配律，即
               \begin{gather*}
@@ -116,11 +128,11 @@
 
 当然，还有一种代数结构对于$\circ$运算的要求有所降低，但也有广泛的应用，这就是环：
 \begin{definition}{环}{} \index{huan@环 (ring)}
-    我们称代数系统$\langle R:+,\circ\rangle$为一个\term{环}，如果
+    我们称代数系统$\langle R\colon+,\circ\rangle$为一个\term{环}，如果
     \begin{enumerate}
-        \item $\langle R:+\rangle$是交换群，其单位元记作0；
+        \item $\langle R\colon+\rangle$是交换群，其单位元记作0；
 
-        \item $\langle R:\circ\rangle$是幺半群；
+        \item $\langle R\colon\circ\rangle$是幺半群；
 
         \item 运算$\circ$对$+$满足左、右分配律，即
               \begin{gather*}
@@ -139,7 +151,7 @@
 
         \item 设$C[a,b]$是闭区间$[a,b]$上的连续函数的集合；它对函数的加法和乘法构成一个环；
 
-        \item 设$Q(\sqrt{2})=\{a+b\sqrt{2} \mid a,b\in\mathbf{Q}\}$，则$Q(\sqrt{2})$是一个数域.
+        \item 设$\mathbf{Q}(\sqrt{2})=\{a+b\sqrt{2} \mid a,b\in\mathbf{Q}\}$，则$\mathbf{Q}(\sqrt{2})$是一个数域.
     \end{enumerate}
 \end{example}
 
@@ -149,11 +161,11 @@
 
 \section{复数域的引入}
 
-本书前半段讨论的框架是实数域、复数域都适用的，当然为了简化，我们的例子大都来源于实数. 从多项式一讲开始，我们便会开始强调实数域和复数域结论的不同，因此我们有必要在此引入复数域.
+本书前半段讨论的框架是实数域、复数域都适用的，当然为了简化，我们的例子大都来源于实数. 从多项式一讲开始，我们便会开始强调实数域和复数域结论的不同，因此我们有必要在此引入复数域，复数域有很多种等价的定义方法，此处我们选择使用二维向量的运算定义.
 
 直观来看，实数位于数轴上，复数则分布在二维平面上，因此我们可以先考虑平面点集$\mathbf{R}^2$，并在其上定义加法和乘法运算使其成为一个域. 我们回顾高中学习的平面向量知识，我们记$\vec{e}_1=(1,0)$，$\vec{e}_2=(0,1)$，则$\mathbf{R}^2$上的任一向量$\vec{u}=(x,y)$可写为$x\vec{e}_1+y\vec{e}_2$. 此外，我们仍沿袭高中对向量长度的定义，即$\lvert\vec{u}\rvert=\sqrt{x^2+y^2}$.
 
-在\autoref{ex:Abel 群} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法使得代数系统$\langle\mathbf{R}^2\backslash\{(0,0)\}:\circ\rangle$也为Abel群. 这一乘法的构造需要满足一些自然的条件，同时也能实现构成Abel群的要求. 事实上，我们有如下定理：
+在\autoref{ex\colonAbel 群} 中我们已经验证了$\mathbf{R}^2$上的向量加法满足Abel群的条件，因此我们只需要定义$\mathbf{R}^2$上的乘法使得代数系统$\langle\mathbf{R}^2\setminus\{(0,0)\}\colon\circ\rangle$也为Abel群. 这一乘法的构造需要满足一些自然的条件，同时也能实现构成Abel群的要求. 事实上，我们有如下定理：
 \begin{theorem}{}{复数乘法构造}
     平面点集$\mathbf{R}^2$上存在唯一的乘法$\circ$，满足
     \begin{enumerate}
@@ -161,7 +173,7 @@
 
         \item (长度可乘性) $\lvert\vec{u}\circ\vec{v}\rvert=\lvert\vec{u}\rvert\lvert\vec{v}\rvert$.
     \end{enumerate}
-    此乘法满足交换律，且使得$\langle\mathbf{R}^2:+,\circ\rangle$成为域.
+    此乘法满足交换律，且使得$\langle\mathbf{R}^2\colon+,\circ\rangle$成为域.
 \end{theorem}
 
 上述定理中第一个条件是非常自然的，因为在二维平面上，$\{(x,0) \mid x\in\mathbf{R}\}$实际上就是实数轴，因此$\vec{e}_1=(1,0)$相当于实数1，因此作为乘法单位元是非常自然的. 第二条长度可乘则看起来没那么自然，但在接下来的证明中我们将会了解到其意义.
@@ -181,10 +193,10 @@
     \[(a,b)\circ(c,d)=(ac-bd,ad+bc).\]
     可验证，此乘法以$\vec{e}_1$为单位元，等式$(ac-bd)^2+(ad+bc)^2=(a^2+b^2)(c^2+d^2)$表明乘法满足长度可乘性. 上述证明亦表明乘法唯一（只能这么构造$\vec{e}_2\circ\vec{e}_2$）.
 
-    接下来我们很容易验证$\langle\mathbf{R}^2:+,\circ\rangle$满足域的定义，我们留作习题供读者自行验证.
+    接下来我们很容易验证$\langle\mathbf{R}^2\colon+,\circ\rangle$满足域的定义，我们留作习题供读者自行验证.
 \end{proof}
 
-在\autoref{thm:复数乘法构造} 赋予的乘法下，$\langle\mathbf{R}^2:+,\circ\rangle$称为复数域$\mathbf{C}$. 我们自然地将$\vec{e}_1$合理简记为1，同时$\vec{e}_2$简记为$\i$，因为此时$(a,b)$即为$a+b\i$，并且利用$\vec{e}_2^2=-\vec{e}_1$可知$\i^2=-1$，这与我们熟知的虚数单位的定义是统一的. 这一代数表示引入的相关概念，如实部、虚部、纯虚数，以及复数四则运算法则在高中阶段大家都已熟知，在此不再赘述.
+在\autoref{thm:复数乘法构造} 赋予的乘法下，$\langle\mathbf{R}^2\colon+,\circ\rangle$称为复数域$\mathbf{C}$. 我们自然地将$\vec{e}_1$合理简记为1，同时$\vec{e}_2$简记为$\i$，因为此时$(a,b)$即为$a+b\i$，并且利用$\vec{e}_2^2=-\vec{e}_1$可知$\i^2=-1$，这与我们熟知的虚数单位的定义是统一的. 这一代数表示引入的相关概念，如实部、虚部、纯虚数，以及复数四则运算法则在高中阶段大家都已熟知，在此不再赘述.
 
 非零复数$z=x+y\i$也可写为极坐标的形式，即$z=|z|(\cos\theta+\i\sin\theta)$，其中$|z|=\sqrt{x^2+y^2}$为复数的平面表示的模长，$\theta\in\mathbf{R}$为连接原点与$z$的有向线段与$x$轴正方向的夹角（在相差$2\pi$整数倍的意义下唯一）. 我们称$\theta$为复数$z$的辐角. 关于复数的模长我们有经典的三角不等式：
 \begin{theorem}{}{}
@@ -209,7 +221,7 @@
 
 我们时常需要讨论集合中元素之间的关系. 例如直线间的平行、垂直、相交，或是数之间的大于、等于、小于关系.``关系''在我们的讲义中将会多次出现，因此我们很有必要在此形式化定义这一概念，并强调其中一类特定的关系——等价关系.
 
-我们首先从（二元）关系这一概念入手. 实际上，这里的二元关系和日常生活中的关系是紧密相连的，例如将全人类作为谈论的背景集合，那么$(\text{小头爸爸}, \text{大头儿子})$这一有序二元组是符合这一关系的，但$(\text{章鱼哥}, \text{海绵宝宝})$显然不符合. 因此我们可以将父子关系看作笛卡尔积集合$\text{人类}\times\text{人类}$的子集. 更一般化的，集合$A$中的关系可以由$A\times A$的子集
+我们首先从（二元）关系这一概念入手. 实际上，这里的二元关系和日常生活中的关系是紧密相连的，例如在父子关系中如果将全人类作为谈论的背景集合，那么$(\text{小头爸爸}, \text{大头儿子})$这一有序二元组是符合这一关系的，但$(\text{章鱼哥}, \text{海绵宝宝})$显然不符合. 因此我们可以将父子关系看作笛卡尔积集合$\text{人类}\times\text{人类}$的子集. 更一般化的，集合$A$中的关系可以由$A\times A$的子集
 \[\{(a,b) \mid a,b\in A, \enspace a\,R\,b\}\]
 来刻画，其中$R$是这个关系本身（实质上是两个元素之间的某种性质），例如之前讨论的父子关系，或是数学中的大于、小于或同余等. 事实上，反过来，由$A\times A$的子集可以确定一个关系，例如我把全世界所有的父子组合放在这个集合中，那么这个集合就定义了人类中的父子关系.
 \begin{example}{}{}
@@ -225,9 +237,9 @@
               定义了一个关系$R$，即
               \[a\,R\,b \iff a\leqslant b.\]
 
-        \item 设$A$为任意数集，定义在$A$上的函数$f$也是一种关系，集合$A\times A$的子集
+        \item 设$A$为任意数集，$A\to A$ 的函数$f$也是一种关系，集合$A\times A$的子集
               \[B=\{(a,b)\in A\times A \mid b=f(a)\}\]
-              刻画了这一关系. 换言之，函数是一种特殊的关系，它要求$\forall a\in A$有且仅有一个元素$b\in A$使得$(a,b)\in B$，其中$B$为上述定义的$A\times A$的子集.
+              刻画了这一关系. 换言之，函数是一种特殊的关系，它要求$\forall a\in A$有且仅有一个元素$b\in A$使得$(a,b)\in B$，其中$B$为上述定义的$A\times A$的子集，这个子集就是我们熟知的函数图像.
 
         \item 设$A=\mathbf{Z}$，关系$R$满足$a\,R\,b\iff a\equiv b \pmod n$，即模$n$同余，则$A\times A$的子集
               \[\{(a,b)\in A\times A \mid a\equiv b \pmod n\}\]
@@ -287,17 +299,17 @@
 我们可以看到，自然映射$\pi$将$A$中的元素$a$映到自己所在的等价类$\overline{a}$. 基于上述定义，我们可以完成在基本代数结构一节中遗留的一个问题：我们能否定义非数域的域？答案是肯定的，如果同学们对密码学感兴趣的应当听闻过有限域这一概念，接下来我们将通过简单的例子来说明这一概念.
 
 \begin{example}{}{有限域}
-    设$Z_n$是$\mathbf{Z}$关于模$n$同余关系$R$的商集（也称$\mathbf{Z}$的模$n$剩余类），即
-    \[Z_n=\mathbf{Z}/R=\{\overline{0},\overline{1},\ldots,\overline{n-1}\}.\]
-    即$Z_n$中的元素是$n$个集合，其中第$i$个集合是全体模$n$余$i-1\enspace(i=1,2,\ldots,n)$的整数构成的集合.
+    设$\mathbf{Z}_n$是$\mathbf{Z}$关于模$n$同余关系$R$的商集（也称$\mathbf{Z}$的模$n$剩余类），即
+    \[\mathbf{Z}_n=\mathbf{Z}/R=\{\overline{0},\overline{1},\ldots,\overline{n-1}\}.\]
+    即$\mathbf{Z}_n$中的元素是$n$个集合，其中第$i$个集合是全体模$n$余$i-1\enspace(i=1,2,\ldots,n)$的整数构成的集合.
 
-    在$Z_n$上我们仍然希望它可以继承$\mathbf{Z}$上的加法和乘法运算，因为这是整数作为环结构最重要的两种运算（减法就是加上相反数，除法无法在整数集合定义，因为会带来非整数的有理数）. 我们首先定义对加法运算的继承：
+    在$\mathbf{Z}_n$上我们仍然希望它可以继承$\mathbf{Z}$上的加法和乘法运算，因为这是整数作为环结构最重要的两种运算（减法就是加上相反数，除法无法在整数集合定义，因为会带来非整数的有理数）. 我们首先定义对加法运算的继承：
     \[\overline{a}\oplus\overline{b}=\overline{a+b}.\]
     它的含义是$a$对应的等价类与$b$对应的等价类的和就是$a$和$b$的和对应的等价类，因此这样的定义是自然地``继承''了$\mathbf{Z}$上的加法运算. 举个例子，当$n=3$时，$\overline{1}+\overline{2}=\overline{1+2}=\overline{3}=\overline{0}$. 要注意的是，这里$a$和$b$并不一定要在$0$到$n-1$之间，因为事实上$\overline{a}=\overline{kn+a}\enspace(k\in\mathbf{Z})$. 我们只需对$a$，$b$以及$a+b$对$n$取模就可以将它们控制在$0$到$n-1$之间且表示的是同一个运算表达式（因为本质上只是我们选取了同一个等价类的不同代表元素进行计算，例如$n=3$时，$\overline{1}\oplus\overline{2}=\overline{4}\oplus\overline{8}=\overline{0}$），这被称为是等价关系与加法的相容性，我们在这个例子之后将详细讨论.
 
-    接下来我们需要定义乘法$\circ$，同样是一个自然的定义，即$\overline{a}\circ\overline{b}=\overline{ab}$. 读者不妨自行验证它与等价关系的相容性. 我们很容易验证$\forall n\in\mathbf{Z}$且$n\geqslant 2$，$\langle Z_n:\oplus,\circ\rangle$构成一个含幺交换环. 教材43页例8和45页例3中有详细的证明，因为较为显然此处从略. 我们要讨论的是何时$\langle Z_n:\oplus,\circ\rangle$构成域，由此我们便构造了一个非数域的域，并且元素个数是有限的.
+    接下来我们需要定义乘法$\circ$，同样是一个自然的定义，即$\overline{a}\circ\overline{b}=\overline{ab}$. 读者不妨自行验证它与等价关系的相容性. 我们很容易验证$\forall n\in\mathbf{Z}$且$n\geqslant 2$，$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$构成一个含幺交换环. 教材43页例8和45页例3中有详细的证明，因为较为显然此处从略. 我们要讨论的是何时$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$构成域，由此我们便构造了一个非数域的域，并且元素个数是有限的.
 
-    我们这里可以给出结论：$\langle Z_n:\oplus,\circ\rangle$是域当且仅当$n$是素数. 这一结论的证明需要一些数论的知识，我们放在习题中供感兴趣的同学证明.
+    我们这里可以给出结论：$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$是域当且仅当$n$是素数. 这一结论的证明需要一些数论的知识，我们放在习题中供感兴趣的同学证明.
 \end{example}
 
 然而，这里我们会遇到一个很常见的问题，即上面定义的加法和乘法，真的是``合理''的吗？具体来说，令$R$表示上例中模$n$同余的等价关系，则
@@ -305,7 +317,7 @@
     \item 若$aRb$，$cRd$，则是否有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$；
     \item 若$aRb$，$cRd$，则是否有$\overline{a}\circ\overline{c}=\overline{b}\circ\overline{d}$？
 \end{enumerate}
-如果不是，那么$Z_n$上定义的加法和乘法将不再是一个本讲开头所说的映射. 我们以加法为例展开讨论，实际上乘法同理. 因为$aRb$表明$\overline{a}=\overline{b}$，$cRd$表明$\overline{c}=\overline{d}$，因此如果$Z_n$上的加法是一个映射$\oplus(x,y):Z_n\to Z_n$，那么必须有$\oplus(\overline{a},\overline{c})=\oplus(\overline{b},\overline{d})$，否则两个相同的元素的加法会得到不同的元素，也就是说加法可以把同一组元素映到多个值，那么显然不再是一个映射，乘法也是同理. 当然，很幸运的是，上面的定义保证了这一``合理性''，我们事实上在上例中已经给出了这一合理性的例子：$n=3$时，$\overline{1}=\overline{4},\enspace\overline{2}=\overline{8}$，并且$\overline{1}\oplus\overline{2}=\overline{0}=\overline{4}\oplus\overline{8}$，这里加法仍然满足映射的条件. 当然我们可以给出更严谨的一般性证明，在此之前我们先给这一``合理''的性质一个更规范的定义：
+如果不是，那么$\mathbf{Z}_n$上定义的加法和乘法将不再是一个本讲开头所说的映射. 我们以加法为例展开讨论，实际上乘法同理. 因为$aRb$表明$\overline{a}=\overline{b}$，$cRd$表明$\overline{c}=\overline{d}$，因此如果$\mathbf{Z}_n$上的加法是一个映射$\oplus(x,y)\colon\mathbf{Z}_n\to \mathbf{Z}_n$，那么必须有$\oplus(\overline{a},\overline{c})=\oplus(\overline{b},\overline{d})$，否则两个相同的元素的加法会得到不同的元素，也就是说加法可以把同一组元素映到多个值，那么显然不再是一个映射，乘法也是同理. 当然，很幸运的是，上面的定义保证了这一``合理性''，我们事实上在上例中已经给出了这一合理性的例子：$n=3$时，$\overline{1}=\overline{4},\enspace\overline{2}=\overline{8}$，并且$\overline{1}\oplus\overline{2}=\overline{0}=\overline{4}\oplus\overline{8}$，这里加法仍然满足映射的条件. 当然我们可以给出更严谨的一般性证明，在此之前我们先给这一``合理''的性质一个更规范的定义：
 \begin{definition}{}{}
     设$A$是一个集合，$R$是$A$上的一个等价关系，若$A$上有二元运算$+$，且我们在$A/R$上以如下自然的方式继承了$A$上的$\oplus$运算：
     \[\overline{a}\oplus\overline{b}=\overline{a+b},\enspace\forall a,b\in A,\]
@@ -320,7 +332,7 @@
     模$n$同余关系$R$与加法$\oplus$和乘法$\circ$相容.
 \end{theorem}
 \begin{proof}
-    我们只证明加法的相容性，乘法的相容性留作练习. 设$aRb$，$cRd$，则可以设$b=a+kn$，$d=c+ln$，其中$k,l\in\mathbf{Z}$，则$\overline{b}\oplus\overline{d}=\overline{b+d}=\overline{a+c+(k+l)n}=\overline{a+c}=\overline{a}\oplus\overline{c}$，故$\oplus$与$R$相容.
+    我们只证明加法的相容性，乘法的相容性留作练习. 设$a\,R\,b$，$c\,R\,d$，则可以设$b=a+kn$，$d=c+ln$，其中$k,l\in\mathbf{Z}$，则$\overline{b}\oplus\overline{d}=\overline{b+d}=\overline{a+c+(k+l)n}=\overline{a+c}=\overline{a}\oplus\overline{c}$，故$\oplus$与$R$相容.
 \end{proof}
 
 \section{高斯消元法}
@@ -338,7 +350,7 @@
                                                  & \vdotswithin{=} \\
             a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n & = b_m
         \end{aligned} \end{cases} \]
-将其系数排列成矩阵
+将其系数按照如下的方式排列，称其为一个矩阵
 \[\begin{pmatrix}
         a_{11} & a_{12} & \cdots & a_{1n} \\
         a_{21} & a_{22} & \cdots & a_{2n} \\
@@ -424,7 +436,7 @@
     \end{exgroup}
 
     \begin{exgroup}
-        \item 证明：\autoref{ex:有限域} 中定义的$\langle Z_n:\oplus,\circ\rangle$是域当且仅当$n$是素数.（提示：无论$n$是否为素数，$n\in\mathbf{Z}$且$n\geqslant 2$时$\langle Z_n:\oplus,\circ\rangle$为交换环，因此是否为素数将决定这一结构中每个元素是否有逆元. 在初等数论中，我们熟知的裴蜀定理可以解决这一问题.）
+        \item 证明：\autoref{ex:有限域} 中定义的$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$是域当且仅当$n$是素数.（提示：无论$n$是否为素数，$n\in\mathbf{Z}$且$n\geqslant 2$时$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$为交换环，因此是否为素数将决定这一结构中每个元素是否有逆元. 在初等数论中，我们熟知的裴蜀定理可以解决这一问题.）
 
         \item 本讲我们构造了$\mathbf{R}^2$上的乘法，从而定义了复数域的乘法运算. 本题希望探讨的是：$\mathbf{R}^3$无法构造出乘法使其成为一个域. 在高中的学习中我们知道，$\mathbf{R}^3$空间向量的一组基底为$\{\vec{e}_1=(1,0,0),\vec{e}_2=(0,1,0),\vec{e}_3=(0,0,1)\}$. 证明：$\mathbf{R}^3$没有乘法同时满足以下性质：
         \begin{enumerate}
