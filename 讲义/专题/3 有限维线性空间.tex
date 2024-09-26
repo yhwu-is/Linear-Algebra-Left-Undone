@@ -166,7 +166,7 @@
          \end{solution}
     \item 从向量组与它的部分组的关系看
           \begin{example}{}{}
-            如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 则其任意子集也线性无关，如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则其任意包含它的向量组也线性相关.
+            如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关，则其任意子集也线性无关，如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则其任意包含它的向量组也线性相关.
           \end{example}
           \begin{proof}
             我们先证明前者，不失一般性，设子集为 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$, 其中 $1 \leqslant i_1 < i_2 < \cdots < i_k \leqslant n$, 若存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 使得
@@ -573,7 +573,7 @@
 \end{solution}
 关于向量的定义我们有以下几点需要强调：
 \begin{enumerate}
-    \item 若向量$\alpha$在基$\beta_1,\beta_2,\ldots,\beta_n$下的坐标为$\alpha_B=(a_1,a_2,\ldots,a_n)$，则我们也可以写为
+    \item \hypertarget{基底的矩阵写法}若向量$\alpha$在基$\beta_1,\beta_2,\ldots,\beta_n$下的坐标为$\alpha_B=(a_1,a_2,\ldots,a_n)$，则我们也可以写为
           \[\alpha=(\beta_1, \beta_2, \ldots, \beta_n)\begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}\]
           实际上我们在学习矩阵乘法后就会意识到这一记号是很自然的，因为这样的表示就等价于
           \[\alpha=a_1\beta_1+a_2\beta_2+\cdots+a_n\beta_n,\]

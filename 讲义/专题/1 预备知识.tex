@@ -28,13 +28,19 @@
 \begin{definition}{$n$ 元笛卡尔积}{}
     设 $A_i~(1\leqslant i\leqslant n)$ 是一族集合，我们把集合
     \[
-    \prod_{i=1}^n A_i = \{(a_1, a_2, \cdots, a_n), a_i\in A_i\}
+    \prod_{i=1}^n A_i = \{(a_1, a_2, \cdots, a_n) \mid a_i\in A_i\}
     \]
     称为集族 $\{A_i\}$ 的 \term{$n$ 元笛卡尔积}. 特别地，当所有的 $A_i$ 都为集合 $A$ 时，记
     \[
-    A^n = \prod_{i=1}^n A = \{(a_1, a_2, \cdots, a_n), a_i \in A\}
+    A^n = \prod_{i=1}^n A = \{(a_1, a_2, \cdots, a_n) \mid a_i \in A\}
     \]
-    为集合 $A$ 的 $n$ 次\term{笛卡尔幂}.
+    为集合 $A$ 的 $n$ 次\term{笛卡尔幂}. 为了和后文的矩阵记号保持一致，严格来说 $\mathbf{R}^n$ 中的符号应当是沿竖向书写的，或者横向书写时添加转置符号，例如
+    \[
+    \begin{pmatrix}
+        1 \\ 2 \\ 3
+    \end{pmatrix} = (1, 2, 3)^{\mathrm{T}} \in \mathbf{R}^3
+    \]
+    但是本书中为了简便性起见，书写时有时会省去右上角的转置符号，因此可能表达行向量或者列向量的含义，请读者在阅读时注意甄别.
 \end{definition}
 
 因此我们很容易理解$\mathbf{R}\times\mathbf{R}$作为集合长什么样，它的元素是形如$(a,b)$的有序对，其中$a,b\in\mathbf{R}$. 事实上，我们可以将$\mathbf{R}\times\mathbf{R}$看作平面上的点集，其中的元素$(a,b)$对应于平面上的一个点，这一点的横坐标为$a$，纵坐标为$b$. 类似地，空间中的点可以用三个实数来表示，也就是形如 $(x, y, z)$ 的有序对，其中 $x,y,z\in\mathbf{R}$. 也就是说，$\mathbf{R}^3$ 表示的是空间中的点集，在这种情况下我们有时会用``空间''来代指集合，而用``点''来代指集合的元素.
@@ -309,19 +315,19 @@
 
     接下来我们需要定义乘法$\circ$，同样是一个自然的定义，即$\overline{a}\circ\overline{b}=\overline{ab}$. 读者不妨自行验证它与等价关系的相容性. 我们很容易验证$\forall n\in\mathbf{Z}$且$n\geqslant 2$，$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$构成一个含幺交换环. 教材43页例8和45页例3中有详细的证明，因为较为显然此处从略. 我们要讨论的是何时$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$构成域，由此我们便构造了一个非数域的域，并且元素个数是有限的.
 
-    我们这里可以给出结论：$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$是域当且仅当$n$是素数. 这一结论的证明需要一些数论的知识，我们放在习题中供感兴趣的同学证明.
+    我们这里可以给出结论：$\langle \mathbf{Z}_n\colon\oplus,\circ\rangle$是域当且仅当$n$是素数. 这一结论的证明需要一些数论的知识，我们放在习题中供感兴趣的同学证明. 如果一个域中只有有限个元素，这样的 $\mathbf{Z}_n$ 称为有限域. 可以证明对于任何一个域，要么自然数集是其一个子集，此时我们称域的特征为 $0$，例如之前介绍的数域（有理数域、实数域、复数域等），要么它包含了某个 $\mathbf{Z}_p$，这时我们称域的特征为 $p$. 本书中没有特别说明时均假设域的特征为 $0$，即我们总是可以找到任意多有限个的不同整数.
 \end{example}
 
 然而，这里我们会遇到一个很常见的问题，即上面定义的加法和乘法，真的是``合理''的吗？具体来说，令$R$表示上例中模$n$同余的等价关系，则
 \begin{enumerate}
-    \item 若$aRb$，$cRd$，则是否有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$；
-    \item 若$aRb$，$cRd$，则是否有$\overline{a}\circ\overline{c}=\overline{b}\circ\overline{d}$？
+    \item 若$a\,R\,b$，$c\,R\,d$，则是否有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$；
+    \item 若$a\,R\,b$，$c\,R\,d$，则是否有$\overline{a}\circ\overline{c}=\overline{b}\circ\overline{d}$？
 \end{enumerate}
-如果不是，那么$\mathbf{Z}_n$上定义的加法和乘法将不再是一个本讲开头所说的映射. 我们以加法为例展开讨论，实际上乘法同理. 因为$aRb$表明$\overline{a}=\overline{b}$，$cRd$表明$\overline{c}=\overline{d}$，因此如果$\mathbf{Z}_n$上的加法是一个映射$\oplus(x,y)\colon\mathbf{Z}_n\to \mathbf{Z}_n$，那么必须有$\oplus(\overline{a},\overline{c})=\oplus(\overline{b},\overline{d})$，否则两个相同的元素的加法会得到不同的元素，也就是说加法可以把同一组元素映到多个值，那么显然不再是一个映射，乘法也是同理. 当然，很幸运的是，上面的定义保证了这一``合理性''，我们事实上在上例中已经给出了这一合理性的例子：$n=3$时，$\overline{1}=\overline{4},\enspace\overline{2}=\overline{8}$，并且$\overline{1}\oplus\overline{2}=\overline{0}=\overline{4}\oplus\overline{8}$，这里加法仍然满足映射的条件. 当然我们可以给出更严谨的一般性证明，在此之前我们先给这一``合理''的性质一个更规范的定义：
+如果不是，那么$\mathbf{Z}_n$上定义的加法和乘法将不再是一个本讲开头所说的映射. 我们以加法为例展开讨论，实际上乘法同理. 因为$a\,R\,b$表明$\overline{a}=\overline{b}$，$c\,R\,d$表明$\overline{c}=\overline{d}$，因此如果$\mathbf{Z}_n$上的加法是一个映射$\oplus(x,y)\colon\mathbf{Z}_n\to \mathbf{Z}_n$，那么必须有$\oplus(\overline{a},\overline{c})=\oplus(\overline{b},\overline{d})$，否则两个相同的元素的加法会得到不同的元素，也就是说加法可以把同一组元素映到多个值，那么显然不再是一个映射，乘法也是同理. 当然，很幸运的是，上面的定义保证了这一``合理性''，我们事实上在上例中已经给出了这一合理性的例子：$n=3$时，$\overline{1}=\overline{4},\enspace\overline{2}=\overline{8}$，并且$\overline{1}\oplus\overline{2}=\overline{0}=\overline{4}\oplus\overline{8}$，这里加法仍然满足映射的条件. 当然我们可以给出更严谨的一般性证明，在此之前我们先给这一``合理''的性质一个更规范的定义：
 \begin{definition}{}{}
     设$A$是一个集合，$R$是$A$上的一个等价关系，若$A$上有二元运算$+$，且我们在$A/R$上以如下自然的方式继承了$A$上的$\oplus$运算：
     \[\overline{a}\oplus\overline{b}=\overline{a+b},\enspace\forall a,b\in A,\]
-    则我们称$\oplus$与$R$\term{相容（compatible）}当且仅当$aRb$，$cRd$时有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$，或者说等价的，$(a+b)R(c+d)$.
+    则我们称$\oplus$与$R$\term{相容（compatible）}当且仅当$a\,R\,b$，$c\,R\,d$时有$\overline{a}\oplus\overline{c}=\overline{b}\oplus\overline{d}$，或者说等价的，$(a+b)R(c+d)$.
 \end{definition}
 
 在这种情况下，我们也称$\oplus$在$A/R$上是\term{良定义（well-defined）}的，但良定义这一词用途较广，一般指这一定义在当前语境下是否可接受，不一定用在商集相关的场合.
@@ -359,7 +365,7 @@
     \end{pmatrix}\]
 且记$\vec{b}=(b_1,b_2,\ldots,b_m)^\mathrm{T}$，若$\vec{b}=\vec{0}$则称此方程为齐次线性方程组，否则为非齐次线性方程组. 再将$n$个未知量记为$n$元列向量$X=(x_1,x_2,\ldots,x_n)^\mathrm{T}$，我们便可以把方程组简记为$AX=\vec{b}$.
 
-令$\vec{\beta}_i=(a_{1i},a_{2i},\ldots,a_{mi})^\mathrm{T}$，即方程组系数矩阵的某一列，则方程组还可以记为$x_1\vec{\beta}_1+x_2\vec{\beta}_2+\cdots+x_n\vec{\beta}_n=\vec{b}$，这一形式将在之后多次见到.
+令$\vec{\beta}_i=(a_{1i},a_{2i},\ldots,a_{mi})^\mathrm{T}$，即方程组系数矩阵的某一列，则方程组还可以记为$x_1\vec{\beta}_1+x_2\vec{\beta}_2+\cdots+x_n\vec{\beta}_n=\vec{b}$\phantomsection\label{线性方程的向量表示}，这一形式将在之后多次见到.
 
 在以上的记号下，我们可以将解线性方程组的过程转化为矩阵的初等行变换. 高斯消元法的一般步骤如下：
 \begin{center}
