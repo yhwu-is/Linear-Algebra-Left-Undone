@@ -31,7 +31,7 @@
 
 \term{线性空间}\index{xianxingkongjian@线性空间 (linear space)}是我们接触的第一个核心概念，作为一种代数结构，它需要在非空集合$V$上定义运算. 我们写下其定义，然后给出解读：
 \begin{definition}{线性空间}{}
-    设$V$是一个非空集合，$\mathbf{F}$是一个数域，我们定义两种运算，其中第一个运算是我们熟知的加法$+$. 在线性空间的定义中，我们要求$\langle V:+\rangle$构成Abel群，即其中元素满足如下运算律：
+    设$V$是一个非空集合，$\mathbf{F}$是一个数域，我们定义两种运算，其中第一个运算是我们熟知的加法$+$. 在线性空间的定义中，我们要求$\langle V\colon+\rangle$构成Abel群，即其中元素满足如下运算律：
     \begin{enumerate}
         \item (加法结合律) $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma,\enspace\forall \alpha,\beta,\gamma \in V$；
 
@@ -44,9 +44,9 @@
 
     第二种运算和之前学习的其他代数结构不同，我们需要首先引入一个数域$\mathbf{F}$，接下来在$\mathbf{F}\times V$上定义取值于$V$的数乘运算，即$\mathbf{F}\times V$中的每个元素$(\lambda,\alpha)\mapsto \lambda\alpha\in V$，并且数乘运算满足以下性质：$\forall \alpha,\beta \in V,\enspace\forall \lambda,\mu\in\mathbf{F}$以及$\mathbf{F}$上的乘法单位元1，有
     \begin{enumerate}
-        \item (乘法单位元) $1\cdot \alpha=\alpha$；
+        \item (数乘单位元) $1\cdot \alpha=\alpha$；
 
-        \item (乘法结合律) $\lambda(\mu\alpha)=(\lambda\mu)\alpha$；
+        \item (数乘结合律) $\lambda(\mu\alpha)=(\lambda\mu)\alpha$；
 
         \item (左分配律) $(\lambda+\mu)\alpha=\lambda\alpha+\mu\alpha$；
 
@@ -123,7 +123,7 @@
         \tag{右分配律}
         &= -\alpha + 2\cdot (\alpha + \beta) + (-\beta)\\
         \tag{左分配律}
-        &= -\alpha + (\alpha + \beta) + (\alpha + \beta) + (-\beta)\\
+        &= -\alpha + ((\alpha + \beta) + (\alpha + \beta)) + (-\beta)\\
         \tag{加法结合律}
         &= ((-\alpha + \alpha) + \beta) + (\alpha + (\beta + (-\beta)))\\
         \tag{逆元}
@@ -145,14 +145,14 @@
             (x_1, x_2) + (y_1, y_2) &= \begin{cases}
                 (0, 0), & (x_1+x_2)(y_1+y_2) \notin V\\
                 (x_1+x_2, y_1+y_2), & (x_1+x_2)(y_1+y_2) \in V
-            \end{cases}
-            k\cdot (x_1, x_2) = (k x_1, k x_2)
+            \end{cases} \\
+            k\cdot (x_1, x_2) &= (k x_1, k x_2)
         \end{align*}
         不难验证其满足除了加法结合律以外的所有要求（验证留作练习，下同）.
 
         \item 加法逆元
 
-        因为如果去掉单位元要求会导致逆元无法定义，所以跳过仅仅去掉单位元的情况. 考虑 $F = \mathbf{R}$，构造这样一个集合：向实数集中人为添加一个元素 $0'$，保持其它数的加法，称这个集合为 $V$，对 $0'$ 定义加法
+        因为如果去掉加法单位元要求会导致逆元无法定义，所以跳过仅仅去掉加法单位元的情况. 考虑 $F = \mathbf{R}$，构造这样一个集合：向实数集中人为添加一个元素 $0'$，保持其它数的加法，称这个集合为 $V$，对 $0'$ 定义加法
         \[
             0' + \alpha = \alpha + 0 = \alpha
         \]
@@ -166,17 +166,17 @@
         \]
         有 $(a+o(1)) + (b+o(1)) = (a+b) + o(1)$. 用 $o(x)$ 加上一个 $a+o(1)$ 并不改变结果，然而用两个 $o(1)$ 的函数族加出一个 $o(x)$ 是不可能的.
 
-        \item 乘法单位元
+        \item 数乘单位元
 
         考虑 $F = V = \mathbf{R}$. 在实数集中保持加法不变，令 $k\cdot \alpha = 0$. 读者不难验证它事实上满足除了乘法单位元以外的所有要求.
 
-        \item 乘法结合律
+        \item 数乘结合律
 
         仍然保持实数上的加法不变，考虑 $F=\mathbf{C}, V=\mathbf{R}$，定义乘法
         \[
             k\cdot \alpha = (\Re k) \alpha
         \]
-        读者不难验证它满足除了乘法结合律以外的所有要求.
+        其中 $\Re k$ 表示复数 $k$ 的实部，读者不难验证它满足除了乘法结合律以外的所有要求.
 
         \item 左分配律
 
@@ -188,14 +188,14 @@
 
         \item 右分配律
 
-        （笔者暂时没有想到更好的例子，所以这个例子会略微抽象）考虑 $F=\mathbf{C}, V=\mathbf{C}^2$. 保持 $\mathbf{C}$ 上的加法不变，对 $k\in\mathbf{C}, \alpha = (z_1, z_2)$ 定义乘法
+        （笔者暂时没有想到更好的例子，所以这个例子会略微抽象）考虑 $F=\mathbf{C}, V=\mathbf{C}^2$. 保持 $\mathbb{C}^2$ 上的加法不变，对 $k\in\mathbf{C}, \alpha = (z_1, z_2)$ 定义乘法
         \[
             k\cdot\alpha = \begin{cases}
-                (k z_1, k z_2), & z_1 = 0~\text{或}~\Im(z_2 - z_1) \geqslant 0\\
+                (k z_1, k z_2), & z_1 = 0~\text{或}~\Im(z_2 / z_1) \geqslant 0\\
                 (\overline{k} z_1, \overline{k} z_2), & \text{其它}
             \end{cases}
         \]
-        则读者可以验证它满足除右结合律以外的所有公理.
+        这里 $\Im$ 表示复数的虚部，则读者可以验证它满足除右分配律以外的所有公理.
     \end{enumerate}
 \end{example}
 
@@ -311,7 +311,7 @@
 关于数域我们需要强调的并不多，只有一条非常关键的，那就是数域在线性空间$V(\mathbf{F})$中的作用只与数乘运算有关，加法运算与数域没有关系，只和集合$V$中的元素有关，这一点根据定义是显然的. 因此在验证线性空间的过程中，例如$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$之间的差别只在于数域不同，故加法性质是共同满足的，只需各自验证数乘的性质.
 
 \begin{proof}
-    这里我们验证$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$都构成线性空间，$\mathbf{R(R)}$证明类似. 我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}:+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
+    这里我们验证$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$都构成线性空间，$\mathbf{R(R)}$证明类似. 我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}\colon+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
     \begin{enumerate}
         \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
 
@@ -335,7 +335,7 @@
                    & = \lambda(a_1+b_1\i)+\lambda(a_2+b_2\i) = \lambda \alpha_1 + \lambda \alpha_2.
               \end{align*}
     \end{enumerate}
-    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间. 同理我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}:+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
+    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间. 同理我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}\colon+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
     \begin{enumerate}
         \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
 
@@ -377,7 +377,7 @@
 
 这一例子给出了一个非常不自然的运算定义，当然证明时仍然是按照运算封闭和八条性质逐条验证即可，我们留作下一讲的习题供读者验证，这里给出另一种基于同构的理解其构成线性空间的方式.
 
-我们可以定义映射$\varphi:\mathbf{R}\to\mathbf{R}^+$，其中$\phi(x)=e^x$，则$\varphi$是一个双射（这是一个有反函数$\ln x$的可逆映射）. 我们如何理解这个双射呢？实际上在两个集合之间建立双射就说明两个集合之间的元素具有一一对应的关系，例如每个$\mathbf{R}$中的元素$a$对应唯一的一个$\mathbf{R}^+$中的元素$e^a$，反之每个$\mathbf{R}^+$中的元素$b$对应唯一的一个$\mathbf{R}$中的元素$\ln b$. 例如$\mathbf{R}$中的元素$0$唯一对应于$\mathbf{R}^+$中的1，而$\mathbf{R}^+$中的1又反过来唯一与$\mathbf{R}$中的$0$对应，事实上两个集合中所有元素都可以像$0$和$1$这样两两凑对（例如$(1,e)$也能凑对，可以记为$(a,\varphi(a))$），这就是双射``一一对应''的意义.
+我们可以定义映射$\varphi\colon\mathbf{R}\to\mathbf{R}^+$，其中$\phi(x)=e^x$，则$\varphi$是一个双射（这是一个有反函数$\ln x$的可逆映射）. 我们如何理解这个双射呢？实际上在两个集合之间建立双射就说明两个集合之间的元素具有一一对应的关系，例如每个$\mathbf{R}$中的元素$a$对应唯一的一个$\mathbf{R}^+$中的元素$e^a$，反之每个$\mathbf{R}^+$中的元素$b$对应唯一的一个$\mathbf{R}$中的元素$\ln b$. 例如$\mathbf{R}$中的元素$0$唯一对应于$\mathbf{R}^+$中的1，而$\mathbf{R}^+$中的1又反过来唯一与$\mathbf{R}$中的$0$对应，事实上两个集合中所有元素都可以像$0$和$1$这样两两凑对（例如$(1,e)$也能凑对，可以记为$(a,\varphi(a))$），这就是双射``一一对应''的意义.
 
 除此之外，映射$\varphi$还有另一个重要的性质. 我们不难发现，
 \begin{gather*}
@@ -387,7 +387,7 @@
 
 这两条性质将进一步加深``一一对应''的含义. 第一条关于加法的性质实际上说明了，在$\mathbf{R}$中任意两个元素$x$和$y$做$\mathbf{R}$中的加法的结果，与$x$和$y$``凑对''的元素$\varphi(x)$和$\varphi(y)$做$\mathbf{R}^+$中的加法的结果也是``凑对''的，也就是说，$\mathbf{R}$中两个元素做了加法，正好对应于$\mathbf{R}^+$中的两个元素也做了加法. 例如，$\mathbf{R}$中元素$2$和$3$做加法后结果为$5$，而$\mathbf{R}^+$中元素$e^2$和$e^3$做$\mathbf{R}^+$中加法后结果为$e^5$，所有参与加法的三个元素是完全对应的. 事实上数乘也是如此，对$\mathbf{R}$中元素的数乘运算也对应于$\mathbf{R}^+$中对应的元素做数乘运算. 具有这样保持两个代数结构运算的性质的映射$\varphi$我们称之为``同态''，特别地，若代数结构为线性空间，则称之为``线性映射''. 更进一步地，若映射$\varphi$是双射，则称之为``同构''，特别地，若代数结构为线性空间，则称之为``线性同构''（或者在线性代数的讨论场景下，不产生歧义时简称同构）. 我们在此给出一个初步的定义：
 \begin{definition}{}{同构}
-    设$V(\mathbf{F})$和$W(\mathbf{F})$是数域$\mathbf{F}$上的线性空间，若映射$\varphi:V(\mathbf{F})\to W(\mathbf{F})$满足
+    设$V(\mathbf{F})$和$W(\mathbf{F})$是数域$\mathbf{F}$上的线性空间，若映射$\varphi\colonV(\mathbf{F})\to W(\mathbf{F})$满足
     \begin{gather*}
         \varphi(\alpha+\beta)=\varphi(\alpha)+\varphi(\beta),\enspace\forall\alpha,\beta\in V(\mathbf{F}) \\
         \varphi(\lambda\alpha)=\lambda\varphi(\alpha),\enspace\forall\alpha\in V(\mathbf{F}),\enspace\forall\lambda\in\mathbf{F}
