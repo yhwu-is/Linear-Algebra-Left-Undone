@@ -16,14 +16,14 @@
     或简记为$(a_{ij})_{m\times n}$，其中$a_{ij}$表示矩阵$A$的第$i$行第$j$列的元素.
 \end{definition}
 
-但是笔者将会在下文用不同的方式引出一种新的定义. 为了探究线性映射的性质，我们需要先研究一些特殊案例，然后从特殊到一般，矩阵就是对特殊案例——$\mathbf{F}^n$ 这样空间的研究. 不妨先考察 $\mathbf{F}^n\to\mathbf{F}^m$ 的线性映射，其可以写成 $y = \varphi(x)$，其中 $x\in\mathbf{F}^n, y\in\mathbf{F}^m$. 我们给出如下结论：
+但是笔者将会在下文用不同的方式引出一种新的定义. 为了探究线性映射的性质，我们需要先研究一些特殊案例，然后从特殊到一般，矩阵就是对特殊案例——$\mathbf{F}^n$ 这样空间的研究. 不妨先考察 $\mathbf{F}^n\to\mathbf{F}^m$ 的线性映射，其可以写成 $y = \sigma(x)$，其中 $x\in\mathbf{F}^n, y\in\mathbf{F}^m$. 我们给出如下结论：
 \begin{lemma}{}{}
     设
     \begin{align*}
-        \varphi \colon \mathbf{F}^n &\to \mathbf{F}^m \\
+        \sigma \colon \mathbf{F}^n &\to \mathbf{F}^m \\
         x = (x_1, \cdots, x_n) & \mapsto y = (y_1, \cdots, y_m)
     \end{align*}
-    是线性映射，则映射具有形式
+    是线性映射，则映射具有形式，称矩阵 $(a_{ij})_{m\times n}$ 为线性映射 $\sigma\colon\mathbf{F}^n\to\mathbf{F}^m$ 的标准表示
     \begin{align*}
         y_1 &= a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n \\
         y_2 &= a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n \\
@@ -32,17 +32,17 @@
     \end{align*}
 \end{lemma}
 \begin{proof}
-    考虑 $\varphi$ 在 $\mathbf{F}^n$ 的标准基底 $e_1, e_2, \ldots, e_n$ 上的值，设
+    考虑 $\sigma$ 在 $\mathbf{F}^n$ 的标准基底 $e_1, e_2, \ldots, e_n$ 上的值，设
     \[
-        \varphi(e_1) = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{pmatrix},
-        \varphi(e_2) = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{pmatrix},
+        \sigma(e_1) = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{pmatrix},
+        \sigma(e_2) = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{pmatrix},
         \ldots,
-        \varphi(e_n) = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn} \end{pmatrix}
+        \sigma(e_n) = \begin{pmatrix} a_{1n} \\ a_{2n} \\ \vdots \\ a_{mn} \end{pmatrix}
     \]
     由线性性，有
     \begin{align*}
-        \varphi(x) &= \varphi(x_1 e_1 + x_2 e_2 + \cdots + x_n e_n) \\
-        &= x_1 \varphi(e_1) + x_2 \varphi(e_2) + \cdots + x_n \varphi(e_n) \\
+        \sigma(x) &= \sigma(x_1 e_1 + x_2 e_2 + \cdots + x_n e_n) \\
+        &= x_1 \sigma(e_1) + x_2 \sigma(e_2) + \cdots + x_n \sigma(e_n) \\
         &= \begin{pmatrix} a_{11} x_1 \\ a_{21} x_1 \\ \vdots \\ a_{m1} x_1 \end{pmatrix} +
         \begin{pmatrix} a_{12} x_2 \\ a_{22} x_2 \\ \vdots \\ a_{m2} x_2 \end{pmatrix} +
         \cdots +
@@ -56,7 +56,7 @@
     \end{align*}
 \end{proof}
 
-不难发现这里的 $a_{ij}$ 项实际上反映了输入的第 $j$ 项对输出的第 $i$ 项有多少权重，而只要确定了这 $m\times n$ 个权重，我们就得到了一个 $\mathbf{F}^n\to\mathbf{F}^m$ 的线性映射. 换言之，$\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 和这些权重是一一对应的.于是一个映射可以等价地被记为一个矩阵，它接受一个 $\mathbf{F}^n$ 的向量，返回一个 $\mathbf{F}^m$ 的向量
+不难发现这里的 $a_{ij}$ 项实际上反映了输入的第 $j$ 项对输出的第 $i$ 项有多少权重，而只要确定了这 $m\times n$ 个权重，我们就得到了一个 $\mathbf{F}^n\to\mathbf{F}^m$ 的线性映射. 换言之，$\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 和这些权重是一一对应的，于是一个映射可以等价地被记为一个矩阵，它接受一个 $\mathbf{F}^n$ 的向量，返回一个 $\mathbf{F}^m$ 的向量，由于标准基的存在，所以我们有自然同构 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m) \cong \mathbf{F}^{m\times n}$ 后面不再区分 $\mathbf{F}^{m\times n}$ 和 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$.
 \[
     A = \begin{pmatrix}
         a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -90,7 +90,7 @@
 
 回顾第一章对线性方程的两种表示，一种是写成若干条方程，从行看去，每一行反映了输出的一项如何由输入线性组合得来. 另一种是像\autoref{线性方程的向量表示}中一样写成一条向量方程 $x_1\beta_1 + x_2\beta_2 + \cdots + x_n\beta_n = 0$，从列看去，每一列反映了输入的每一项会对输出产生怎么样的影响.
 
-我们注意到虽然证明过程中我们假设了 $\varphi(e_j) = (a_{1j}, a_{2j}, \ldots, a_{mj})^{\mathrm{T}}$，但是即使把矩阵的列改成任意向量空间 $V$ 中的向量而非 $\mathbf{R}^m$ 中的向量也并不改变论证的有效性，也就是说矩阵的列完全可以被替换为任意向量空间中的元素，这样我们也就得到了 $\mathbf{R}^n \to V$ 的映射的一般表示方法——写成长度为 $n$ 的一行，每列分别是一个向量，例如当 $V = \mathbf{R}[x]_4$ 时，我们可以写出
+我们注意到虽然证明过程中我们假设了 $\sigma(e_j) = (a_{1j}, a_{2j}, \ldots, a_{mj})^{\mathrm{T}}$，但是即使把矩阵的列改成任意向量空间 $V$ 中的向量而非 $\mathbf{R}^m$ 中的向量也并不改变论证的有效性，也就是说矩阵的列完全可以被替换为任意向量空间中的元素，这样我们也就得到了 $\mathbf{R}^n \to V$ 的映射的一般表示方法——写成长度为 $n$ 的一行，每列分别是一个向量，例如当 $V = \mathbf{R}[x]_4$ 时，我们可以写出
 \[
 (1, x, x^2, x^3) \begin{pmatrix}
     1 \\ 2 \\ 3 \\ 4
@@ -105,56 +105,48 @@
 
 在了解矩阵的定义之后，我们可以引入线性映射矩阵表示的概念. 经过前面大量的关于坐标同构的铺垫之后，想必读者对于如何将抽象的映射转化为矩阵有一个大致的思路，将一般的向量空间同构到我们熟悉的 $\mathbf{F}^n$，然后就可以得到矩阵表示. 但是在这之前笔者认为需要带读者了解交换图的基本工具
 
-我们把空间抽象出来称为一个节点，空间之间的函数用箭头来表示，例如，如果有映射 $\psi\colon V_1 \to V_2, \varphi\colon V_2 \to V_3$，那么我们可以绘制交换图
-{
-\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+我们把空间抽象出来称为一个节点，空间之间的函数用箭头来表示，例如，如果有映射 $\psi\colon V_1 \to V_2, \sigma\colon V_2 \to V_3$，那么我们可以绘制交换图
 \[
-\begin{tikzcd}
-V_1 \arrow[r, "\psi"] & V_2 \arrow[r, "\varphi"] & V_3
-\end{tikzcd}
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        V_1 \arrow[r, "\psi"] & V_2 \arrow[r, "\sigma"] & V_3
+    \end{tikzcd}
 \]
-}
 
-交换图唯一的要求是从一个节点沿着箭头到另一个节点，函数的复合应当是相同的，例如在上面的图中，如果 $x\in V_1$ 经过两个映射，它会先变成 $\psi(x)$，然后得到 $\varphi(\psi(x)) = (\varphi\circ\psi)(x)$. 所以在上面的图中，如果要从 $V_1$ 引出一条箭头指向 $V_3$ 则这条箭头只能代表映射 $\varphi\circ\psi$（注意后经过的映射写在左侧，这与从左到右的书写习惯相反），类似地我们可以画出如下的图
-{
-\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+交换图唯一的要求是从一个节点沿着箭头到另一个节点，函数的复合应当是相同的，例如在上面的图中，如果 $x\in V_1$ 经过两个映射，它会先变成 $\psi(x)$，然后得到 $\sigma(\psi(x)) = (\sigma\circ\psi)(x)$. 所以在上面的图中，如果要从 $V_1$ 引出一条箭头指向 $V_3$ 则这条箭头只能代表映射 $\sigma\circ\psi$（注意后经过的映射写在左侧，这与从左到右的书写习惯相反），类似地我们可以画出如下的图
 \[
-\begin{tikzcd}
-V_1 \arrow[r, "\psi"] \ar[rd, "\rho\circ\psi"'] & V_2 \arrow[d, "\rho"] \ar[rd, "\varphi\circ\rho"] \\ & V_3 \ar[r, "\varphi"'] & V_4
-\end{tikzcd}
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        V_1 \arrow[r, "\psi"] \ar[rd, "\rho\circ\psi"'] & V_2 \arrow[d, "\rho"] \ar[rd, "\sigma\circ\rho"] \\ & V_3 \ar[r, "\sigma"'] & V_4
+    \end{tikzcd}
 \]
-}
 
-从图中我们可以读出 $\varphi\circ(\rho\circ\psi) = (\varphi\circ\rho)\circ\psi$，即映射复合的结合律. 自此，构造出指定的映射就可以图形化地表示成在图上画箭头，只要能够找到两个节点之间的一条通路，就能够通过映射的复合构造出一个映射.
+从图中我们可以读出 $\sigma\circ(\rho\circ\psi) = (\sigma\circ\rho)\circ\psi$，即映射复合的结合律. 自此，构造出指定的映射就可以图形化地表示成在图上画箭头，只要能够找到两个节点之间的一条通路，就能够通过映射的复合构造出一个映射.
 
 接下来回到一般的线性映射. 我们知道一个 $\mathbf{F}$ 上的 $m\times n$ 矩阵可以作为一个 $\mathbf{F}^n\to\mathbf{R}^m$ 的映射，所以矩阵对应的应该是从 $\mathbf{F}^n$ 指向 $\mathbf{F}^m$ 的箭头. 一个向量组可以作为一个 $\mathbf{F}^n\to V$ 的映射，所以一个 $n$ 元向量组对应一条 $\mathbf{F}^n$ 指向 $V$ 的箭头. 对于基底这种特殊的向量组，其特性是可逆，于是在 $\mathbf{F}^n\to V$ 外可以另外添加一条反向的箭头表示坐标映射. 不妨设 $V_1$ 是 $\mathbf{F}$ 上的 $n$ 维向量空间，而 $V_2$ 是 $\mathbf{F}$ 上的 $m$ 维向量空间. 为了把映射 $\sigma\colon V_1\to V_2$ 用矩阵表示，我们需要先取两个基底：$B_1 = (\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n)\colon \mathbf{F}^n\to V_1$ 和 $B_2 = (\alpha_1, \alpha_2, \ldots, \alpha_m)\colon\mathbf{F}^m\to V_2$. 根据上面的两组基和一个映射画出交换图
-{
-\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
 \[
-\begin{tikzcd}
-V_1 \arrow[r, "\sigma"]
-\arrow[d, gray, shift left, "B_1^{-1}"] &
-V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
-\mathbf{F}^n \arrow[u, shift left, "B_1"] &
-\mathbf{F}^m \arrow[u, shift left, "B_2"]
-\end{tikzcd}
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        V_1 \arrow[r, "\sigma"]
+        \arrow[d, gray, shift left, "B_1^{-1}"] &
+        V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
+        \mathbf{F}^n \arrow[u, shift left, "B_1"] &
+        \mathbf{F}^m \arrow[u, shift left, "B_2"]
+    \end{tikzcd}
 \]
-}
 
-这时构造出一个矩阵，即画出一条从 $\mathbf{F}^n\to\mathbf{F}^m$ 的箭头就十分自然了，只需要求出从 $\mathbf{F}^n$ 到 $\mathbf{F}^m$ 的映射复合就可以，沿着交换图的箭头不难读出我们所求的矩阵可以写成 $\mathbf{M}(\sigma) = B_2^{-1} \circ \sigma \circ B_1$. 又或者，如果考虑从 $\mathbf{R}^n$ 到 $V_2$ 的两条路径，也可以说它是唯一的矩阵使得 $\sigma \circ B_1 = B_2 \circ \mathbf{M}(\sigma)$
-{
-\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+这时构造出一个矩阵，即画出一条从 $\mathbf{F}^n\to\mathbf{F}^m$ 的箭头就十分自然了，只需要求出从 $\mathbf{F}^n$ 到 $\mathbf{F}^m$ 的映射复合就可以，沿着交换图的箭头不难读出我们所求的矩阵可以写成 $\mathbf{M}(\sigma) = B_2^{-1} \circ \sigma \circ B_1$. 又或者，如果考虑从 $\mathbf{F}^n$ 到 $V_2$ 的两条路径，也可以说它是唯一的矩阵使得 $\sigma \circ B_1 = B_2 \circ \mathbf{M}(\sigma)$
 \[
-\begin{tikzcd}
-V_1 \arrow[r, "\sigma"]
-\arrow[d, gray, shift left, "B_1^{-1}"] &
-V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
-\mathbf{F}^n \arrow[u, shift left, "B_1"]
-\arrow[r, red, "\mathbf{M}(\sigma)"'] &
-\mathbf{F}^m \arrow[u, shift left, "B_2"]
-\end{tikzcd}
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        V_1 \arrow[r, "\sigma"]
+        \arrow[d, gray, shift left, "B_1^{-1}"] &
+        V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
+        \mathbf{F}^n \arrow[u, shift left, "B_1"]
+        \arrow[r, red, "\mathbf{M}(\sigma)"'] &
+        \mathbf{F}^m \arrow[u, shift left, "B_2"]
+    \end{tikzcd}
 \]
-}
 
 事实上，如果从另一个角度思考，因为矩阵是多个$\mathbf{R}^m$中的向量并列在一起得到的方块，那么如何得到这些$\mathbf{R}^m$中的列向量呢？想必是某些向量在线性映射到达空间的一组基下的坐标. 于是我们很自然地可以接受下面的定义：
 \begin{definition}{}{线性映射矩阵表示}
@@ -168,12 +160,14 @@ V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
                 \sigma(\varepsilon_n) & = a_{1n}\alpha_1+a_{2n}\alpha_2+\cdots+a_{mn}\alpha_m
             \end{aligned} \end{cases} \]
     将$\sigma(B_1)=\{\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)\}$关于基$B_2$的坐标排列成矩阵$\mathbf{M}(\sigma)$，即
-    \[\mathbf{M}(\sigma)=\begin{pmatrix}
+    \[
+        \mathbf{M}(\sigma)=\begin{pmatrix}
             a_{11} & a_{12} & \cdots & a_{1n} \\
             a_{21} & a_{22} & \cdots & a_{2n} \\
             \vdots & \vdots & \ddots & \vdots \\
             a_{m1} & a_{m2} & \cdots & a_{mn}
-        \end{pmatrix}\]
+        \end{pmatrix}
+    \]
     称$\mathbf{M}(\sigma)$为$\sigma$在基$B_1$和$B_2$下的矩阵表示，有时也称线性映射在基下的表示矩阵.
 \end{definition}
 
@@ -191,7 +185,7 @@ V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
 
 想必有很多读者会心存疑惑：为什么我们要这么定义线性映射的矩阵表示呢？我们将在下一小节说明线性映射构成的线性空间与矩阵构成线性空间的同构时解释这一点. 现在先让我们完成以下几个例题熟悉定义：
 \begin{example}{}{矩阵表示1}
-    已知$\sigma \in \mathcal{L}(\mathbf{R}^3,\mathbf{R}^3)$且$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)$
+    已知$\sigma \in \mathcal{L}(\mathbf{R}^3,\mathbf{R}^3)$且$\sigma(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}=(x_1+x_2,x_1-x_3, x_2)^{\color{lightgray}\mathrm{T}}$
     \begin{enumerate}
         \item 求$\sigma$的像空间和核空间；
 
@@ -202,57 +196,107 @@ V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
 \begin{solution}
     \begin{enumerate}
         \item 求像空间和核空间的方法我们在之前已经介绍过，我们为了计算方便取$\mathbf{R}^3$的自然基$e_1,e_2,e_3$计算有：
-              \[\im\sigma=\spa(\sigma(e_1),\sigma(e_2),\sigma(e_3))=\spa((1,1,0),(1,0,1),(0,-1,0))=\mathbf{R}^3\]
+              \[
+                \im\sigma
+                =\spa(\sigma(e_1),\sigma(e_2),\sigma(e_3))
+                =\spa(
+                        (1,1,0)^{\color{lightgray}\mathrm{T}},
+                        (1,0,1)^{\color{lightgray}\mathrm{T}},
+                        (0,-1,0)^{\color{lightgray}\mathrm{T}}
+                    )
+                =\mathbf{R}^3
+              \]
               对于核空间，解方程$\sigma(\alpha)=0$即可. 我们也可以用更简洁的方式书写：
-              \[\ker\sigma=\{(x_1,x_2,x_3)\mid \sigma(x_1,x_2,x_3)=(0,0,0)\}=\{(0,0,0)\}\]
+              \[
+                \ker\sigma
+                =\{
+                    (x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}} \mid
+                    \sigma(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}
+                    =(0,0,0)^{\color{lightgray}\mathrm{T}}
+                \}
+                =\{(0,0,0)^{\color{lightgray}\mathrm{T}}\}
+              \]
               即方程只有零解，核空间可以记为$\ker\sigma=\{0\}$（只含零元的空间的一般记法）.
 
         \item 我们根据\autoref{def:线性映射矩阵表示}，应先写出$\sigma$在出发空间一组基（按题目要求是$\mathbf{R}^3$自然基）下的像，并将像表示为到达空间基（按题目要求是$\mathbf{R}^3$自然基）的线性组合，即
-              \begin{gather*}
-                  \sigma(e_1)=(1,1,0)=e_1+e_2=(e_1,e_2,e_3)\begin{pmatrix}
-                      1 \\ 1 \\ 0
-                  \end{pmatrix} \\
-                  \sigma(e_2)=(1,0,1)=e_1+e_3=(e_1,e_2,e_3)\begin{pmatrix}
-                      1 \\ 0 \\ 1
-                  \end{pmatrix} \\
-                  \sigma(e_3)=(0,-1,0)=-e_2=(e_1,e_2,e_3)\begin{pmatrix}
-                      0 \\ -1 \\ 0
-                  \end{pmatrix}
-              \end{gather*}
-              接下来我们把坐标依次按列称矩阵就得到了本题需要求解的矩阵：
-              \[\mathbf{M}(\sigma)=\begin{pmatrix}
-                      1 & 1 & 0  \\
-                      1 & 0 & -1 \\
-                      0 & 1 & 0
-                  \end{pmatrix}\]
+            \begin{gather*}
+                \sigma(e_1) = (1,1,0)^{\color{lightgray}\mathrm{T}}
+                =e_1+e_2=(e_1,e_2,e_3)\begin{pmatrix}
+                    1 \\ 1 \\ 0
+                \end{pmatrix} \\
+                \sigma(e_2) = (1,0,1)^{\color{lightgray}\mathrm{T}}
+                =e_1+e_3=(e_1,e_2,e_3)\begin{pmatrix}
+                    1 \\ 0 \\ 1
+                \end{pmatrix} \\
+                \sigma(e_3) = (0,-1,0)^{\color{lightgray}\mathrm{T}}
+                =-e_2=(e_1,e_2,e_3)\begin{pmatrix}
+                    0 \\ -1 \\ 0
+                \end{pmatrix}
+            \end{gather*}
+            接下来我们把坐标依次按列称矩阵就得到了本题需要求解的矩阵：
+            \[
+                \mathbf{M}(\sigma)=\begin{pmatrix}
+                    1 & 1 & 0  \\
+                    1 & 0 & -1 \\
+                    0 & 1 & 0
+                \end{pmatrix}
+            \]
     \end{enumerate}
 \end{solution}
 
 有趣的是，在结合我个人的学习经历以及过往辅学的经验后，我总结出了第二问的一种常见的错误解法，这里我需要加粗强调，下面这种解法是\textbf{完全错误的！！！}这里展示这一解法是为了让读者将前面所学的知识完全厘清：
 
 \begin{solution}[错误解法！！！]
-    $\sigma(x_1,x_2,x_3)=(x_1+x_2,x_1-x_3, x_2)=(x_1,x_2,x_3)\begin{pmatrix}
+    $
+        \sigma(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}
+        =(x_1+x_2,x_1-x_3, x_2)=(x_1,x_2,x_3)\begin{pmatrix}
             1 & 1  & 0 \\
             1 & 0  & 1 \\
             0 & -1 & 0
-        \end{pmatrix}$
+        \end{pmatrix}
+    $
 \end{solution}
 
 我们惊奇地发现，这一结果和我们前面得到的标准答案在向量的排列方式上发生了变化，即标准答案的1、2、3行变为了这里的1、2、3列，我们需要强调两点：
 \begin{enumerate}
-    \item 为什么这种解法是错误的：我们可以直接比较\autoref{eq:7:线性映射矩阵表示} 和这一解法中，\autoref*{eq:7:线性映射矩阵表示} 的等号左边是$n$个向量在$\sigma$下的像，而上述解法$\sigma(x_1,x_2,x_3)$只是$\sigma$在一个向量下的像，这显然是不一样的！！！同样，等号右边括号内\autoref*{eq:7:线性映射矩阵表示} 是到达空间的一组基，而上述解法中仍然只是一个向量. 我们从未定义过这样解题的结果是什么，所以千万不能做这种无意义的事！！！
+    \item 为什么这种解法是错误的：我们可以直接比较\autoref{eq:7:线性映射矩阵表示} 和这一解法中，\autoref*{eq:7:线性映射矩阵表示} 的等号左边是$n$个向量在$\sigma$下的像，而上述解法$\sigma(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}$只是$\sigma$在一个向量下的像，这显然是不一样的！！！同样，等号右边括号内\autoref*{eq:7:线性映射矩阵表示} 是到达空间的一组基，而上述解法中仍然只是一个向量. 我们从未定义过这样解题的结果是什么，所以千万不能做这种无意义的事！！！
 
-          容易导致混淆的原因可能在于$(x,y,z)$向量是排列成一行的，可能看起来和$(e_1,e_2,e_3)$有点相似，但如果我们将后者拆分成$((1,0,0),(0,1,0),(0,0,1))$，你还会混淆吗？
+          容易导致混淆的原因可能在于我们书写$(x,y,z)$向量时是排列成一行的，可能看起来和$(e_1,e_2,e_3)$有点相似，但是如果我们回忆在第一章中的约定：写作行向量，实际是列向量，把 $\mathbf{R}^3$ 的向量按列书写之后我们得到的应该是
+          \[
+            \sigma\begin{pmatrix}
+                x_1 \\ x_2 \\ x_3
+            \end{pmatrix} = \begin{pmatrix}
+                x_1 + x_2 \\ x_1 - x_3 \\ x_2
+            \end{pmatrix} = \begin{pmatrix}
+                1 & 1 & 0 \\ 1 & 0 & -1 \\  0 & 1 & 0
+            \end{pmatrix} \begin{pmatrix}
+                x_1 \\ x_2 \\ x_3
+            \end{pmatrix} \implies
+            \sigma = \begin{pmatrix}
+                1 & 1 & 0 \\ 1 & 0 & -1 \\  0 & 1 & 0
+            \end{pmatrix}
+          \]
+          当注意到这点之后，实际上我们也可以直接写出矩阵形式的 $\mathbf{R}^3 \to \mathbf{R}^3$ 的映射，由于标准基 $B_1 = B_2 = E$ 是单位阵，即恒同映射（坐标等于向量）所以 $\sigma\circ E = E\circ \mathbf{M}(\sigma)$ 退化为其标准表示 $\mathbf{M} = \sigma = \begin{pmatrix}
+              1 & 1 & 0 \\ 1 & 0 & -1 \\  0 & 1 & 0
+          \end{pmatrix}$.
 
-    \item 为什么会出现行列互换这样的错误：事实上
-          \[\sigma(x,y,z)=\sigma(xe_1+ye_2+ze_3)=x\sigma(e_1)+y\sigma(e_2)+z\sigma(e_3)=(x,y,z)\begin{pmatrix}
-                  \sigma(e_1) \\ \sigma(e_2) \\ \sigma(e_3)
-              \end{pmatrix},\]
-          这里将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$的结果按行排列成矩阵，而标准答案是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$在$\mathbf{R}^3$自然基下的坐标按列排列成矩阵，回忆$\mathbf{R}^n$向量在自然基下坐标是其本身这一性质，标准答案就是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$按列排列成矩阵，由此我们解释了行列互换发生的原因.
+    \item 为什么会出现行列互换这样的错误：
+          事实上
+          \[
+            \sigma(x,y,z)^{\color{lightgray}\mathrm{T}}
+            =\sigma(xe_1+ye_2+ze_3)
+            =x\sigma(e_1)+y\sigma(e_2)+z\sigma(e_3)
+            =(x,y,z)
+            \begin{pmatrix}
+                \sigma(e_1)^{\color{lightgray}\mathrm{T}} \\
+                \sigma(e_2)^{\color{lightgray}\mathrm{T}} \\
+                \sigma(e_3)^{\color{lightgray}\mathrm{T}}
+            \end{pmatrix},
+          \]
+        这里将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$的结果按行排列成矩阵，对比标准答案的 $(\sigma(e_1), \sigma(e_2), \sigma(e_3))$ 是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$在$\mathbf{R}^3$自然基下的坐标按列排列成矩阵，回忆$\mathbf{R}^n$向量在自然基下坐标是其本身这一性质，标准答案就是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$按列排列成矩阵，由此我们解释了行列互换发生的原因.
 \end{enumerate}
 
 这也就是为什么我强调读者不要参考之前提到的第二种方法\autoref{ex:线性映射的像空间求解2}来求解像空间——很容易导致这里矩阵表示犯这样的错误，并且容易导致初学时无法区分求解像空间和线性映射矩阵表示的方法. 在这里我必须再次强调：在没有完全熟练掌握这些概念和方法前，不要乱用方法！！！
-
 
 接下来，我们还需要介绍旋转变换的矩阵表示
 \begin{example}{}{}
@@ -287,81 +331,229 @@ V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
 
 回忆我们定义
 
-本节我们将完善上一讲中同构的例子的细节，即若$\dim V_1(\mathbf{F})=m$，$\dim V_2(\mathbf{F})=n$，则$\mathcal{L}(V_1,V_2) \cong \mathbf{F}^{m \times n}$，其中$\mathbf{F}^{m \times n}$表示全体$m\times n$矩阵构成的线性空间.
-
-要证明这一结论，首先要说明全体$m\times n$矩阵关于某种运算的确构成线性空间，这里的运算——即矩阵的加法和数乘还需要我们来定义. 我们有一个非常自然的想法——既然$V_1\to V_2$的全体线性映射关于线性映射加法和数乘构成线性空间，那么我们也许可以利用线性映射加法与数乘运算的矩阵表示来定义加法和数乘运算.
-
-我们首先回顾线性映射的加法和数乘运算：设$\sigma,\tau\in \mathcal{L}(V_1,V_2)$，规定$\sigma$与$\tau$之和及$\lambda$与$\sigma$的数乘$\lambda\sigma$分别为
-\begin{gather*}
-    (\sigma+\tau)(\alpha)=\sigma(\alpha)+\tau(\alpha),\enspace\forall\alpha\in V_1 \\
-    (\lambda\sigma)(\alpha)=\lambda(\sigma(\alpha)),\enspace\forall\alpha\in V_1
-\end{gather*}
-
-回顾线性映射的矩阵表示，我们实际上是要计算出线性映射在出发空间一组基下的像在到达空间一组基下的坐标然后按列排列. 我们取$V_1$的基$B_1=\{\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n\}$，$V_2$的基$B_2=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$，假设$\sigma$和$\tau$在$B_1$和$B_2$下的矩阵分别为$A=(a_{ij})_{m\times n}$和$B=(b_{ij})_{m\times n}$，则
-\begin{gather*}
-    \sigma(\varepsilon_i)=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{mi}\alpha_m \\
-    \tau(\varepsilon_i)=b_{1i}\alpha_1+b_{2i}\alpha_2+\cdots+b_{mi}\alpha_m.
-\end{gather*}
-因此
-\[(\sigma+\tau)(\varepsilon_i)=(a_{1i}+b_{1i})\alpha_1+(a_{2i}+b_{2i})\alpha_2+\cdots+(a_{mi}+b_{mi})\alpha_m,\enspace i=1,2,\ldots,n\]
-即$(\sigma+\tau)$矩阵表示$\mathbf{M}(\sigma+\tau)$的第$i$列元素为$A$和$B$的第$i$列对应元素相加. 由于$i$是任取的，因此$(\sigma+\tau)$的矩阵表示每一列都是$A$和$B$同一列对应元素相加，实际上对于整个矩阵而言就是矩阵相同位置元素相加，即
+本节我们将完善上一讲中同构的例子的细节，即若$\dim V_1(\mathbf{F})=m$，$\dim V_2(\mathbf{F})=n$，则 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 中映射和其在 $\mathbf{F}^{m\times n}$ 中的标准表示一一对应. 于是 $\mathbf{F}^{m\times n}$ 便可以自然地从映射构成的线性空间 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 中继承加法和数乘. 先考虑加法，由于 $(\sigma+\tau)(x) = \sigma(x) + \tau(x)$，令 $\sigma = (a_{ij})_{m\times n}, \tau = (b_{ij})_{m\times n}$ 则有
 \begin{align*}
-    \mathbf{M}(\sigma+\tau) & =\begin{pmatrix}
-                                   a_{11}+b_{11} & a_{12}+b_{12} & \cdots & a_{1n}+b_{1n} \\
-                                   a_{21}+b_{21} & a_{22}+b_{22} & \cdots & a_{2n}+b_{2n} \\
-                                   \vdots        & \vdots        & \ddots & \vdots        \\
-                                   a_{m1}+b_{m1} & a_{m2}+b_{m2} & \cdots & a_{mn}+b_{mn}
-                               \end{pmatrix}     \\
-                            & \triangleq\begin{pmatrix}
-                                            a_{11} & a_{12} & \cdots & a_{1n} \\
-                                            a_{21} & a_{22} & \cdots & a_{2n} \\
-                                            \vdots & \vdots & \ddots & \vdots \\
-                                            a_{m1} & a_{m2} & \cdots & a_{mn}
-                                        \end{pmatrix} + \begin{pmatrix}
-                                                            b_{11} & b_{12} & \cdots & b_{1n} \\
-                                                            b_{21} & b_{22} & \cdots & b_{2n} \\
-                                                            \vdots & \vdots & \ddots & \vdots \\
-                                                            b_{m1} & b_{m2} & \cdots & b_{mn}
-                                                        \end{pmatrix} \\
-                            & =\mathbf{M}(\sigma)+\mathbf{M}(\tau).
+    &\phantom{=\ }((a_{ij})_{m\times n} + (b_{ij})_{m\times n})(x)\\
+    &= (a_{ij})_{m\times n} (x) + (b_{ij})_{m\times n} (x) \\
+    &= \begin{pmatrix}
+        a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n \\
+        a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n \\
+        \cdots\\
+        a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n
+    \end{pmatrix} + \begin{pmatrix}
+        b_{11} x_1 + b_{12} x_2 + \cdots + b_{1n} x_n \\
+        b_{21} x_1 + b_{22} x_2 + \cdots + b_{2n} x_n \\
+        \cdots\\
+        b_{m1} x_1 + b_{m2} x_2 + \cdots + b_{mn} x_n
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        (a_{11} + b_{11}) x_1 + (a_{12} + b_{12}) x_2 + \cdots + (a_{1n} + b_{1n}) x_n \\
+        (a_{21} + b_{21}) x_1 + (a_{22} + b_{22}) x_2 + \cdots + (a_{2n} + b_{2n}) x_n \\
+        \cdots\\
+        (a_{m1} + b_{m1}) x_1 + (a_{m2} + b_{m2}) x_2 + \cdots + (a_{mn} + b_{mn}) x_n
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
+        a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
+        \cdots\\
+        a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\ x_2 \\ \vdots \\ x_n
+    \end{pmatrix}
 \end{align*}
-式中$\triangleq$表示定义，即定义矩阵加法为矩阵对应元素相加. 同理，我们也可以通过线性映射的数乘定义矩阵数乘运算如下：
-\[\mathbf{M}(\lambda\sigma)=\begin{pmatrix}
+
+即应该有
+\[
+    (a_{ij})_{m\times n} + (b_{ij})_{m\times n} = (a_{ij} + b_{ij})_{m\times n}
+\]
+
+类似地，由线性映射的数乘 $(\lambda \sigma)(x) = \lambda\cdot(\sigma(x)), \forall \lambda\in\mathbf{F}, x\in V$ 可以导出
+\[
+    \lambda (a_{ij})_{m\times n} = (\lambda a_{ij})_{m\times n} = \begin{pmatrix}
         \lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1n} \\
         \lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2n} \\
-        \vdots         & \vdots         & \ddots & \vdots         \\
-        \lambda a_{m1} & \lambda a_{m2} & \cdots & \lambda a_{mn}
-    \end{pmatrix}\triangleq\lambda\begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1n} \\
-        a_{21} & a_{22} & \cdots & a_{2n} \\
         \vdots & \vdots & \ddots & \vdots \\
-        a_{m1} & a_{m2} & \cdots & a_{mn}
-    \end{pmatrix}=\lambda\mathbf{M}(\sigma).\]
-事实上这非常符合我们对于矩阵加法和数乘的幻想，即矩阵加法就是对应元素相加，矩阵数乘就是对应元素乘以一个数.
+        \lambda a_{m1} & \lambda a_{m2} & \cdots & \lambda a_{mn}
+    \end{pmatrix}
+\]
 
-在利用线性映射的加法和数乘定义了非常自然的矩阵加法和数乘后，我们需要验证$m\times n$矩阵全体关于这两种运算构成线性空间. 这里我们只需回顾线性空间运算的八条要求然后逐一验证即可，实际上非常简单，因此不在此赘述.
+结合上面的推导，我们给出正式的矩阵加法和数乘定义
+\begin{definition}{矩阵加法和数乘}{}
+    (加法) 设 $A = (a_{ij})_{m\times n}, B = (b_{ij})_{m\times n} \in \mathbf{F}^{m\times n}$ 为矩阵，则定义
+    \[
+        A + B = \begin{pmatrix}
+            a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
+            a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
+            \cdots\\
+            a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
+        \end{pmatrix}
+    \]
+    (数乘) 对 $\lambda\in\mathbf{F}$, 定义
+    \[
+        \lambda A = \begin{pmatrix}
+            \lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1n} \\
+            \lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \lambda a_{m1} & \lambda a_{m2} & \cdots & \lambda a_{mn}
+        \end{pmatrix}
+    \]
+\end{definition}
+
+前文已经证明了两个空间之间的全体线性映射构成线性空间，这里矩阵作为特殊的线性映射（$\mathbf{F}^n\to\mathbf{F}^m$），自然关于继承来的加法和乘法构成线性空间.
+
+% deprecated
+% 为此我们需要理解矩阵的加法和数乘是怎么样的.
+% 我们有一个非常自然的想法——既然 $V_1\to V_2$ 的全体线性映射关于线性映射加法和数乘构成线性空间，那么我们也许可以利用线性映射加法与数乘运算的矩阵表示来定义加法和数乘运算.
+
+% 我们首先回顾线性映射的加法和数乘运算：设$\sigma,\tau\in \mathcal{L}(V_1,V_2)$，规定$\sigma$与$\tau$之和及$\lambda$与$\sigma$的数乘$\lambda\sigma$分别为
+% \begin{gather*}
+%     (\sigma+\tau)(\alpha)=\sigma(\alpha)+\tau(\alpha),\enspace\forall\alpha\in V_1 \\
+%     (\lambda\sigma)(\alpha)=\lambda(\sigma(\alpha)),\enspace\forall\alpha\in V_1
+% \end{gather*}
+
+% 回顾线性映射的矩阵表示，我们实际上是要计算出线性映射在出发空间一组基下的像在到达空间一组基下的坐标然后按列排列. 我们取$V_1$的基$B_1=\{\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n\}$，$V_2$的基$B_2=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}$，假设$\sigma$和$\tau$在$B_1$和$B_2$下的矩阵分别为$A=(a_{ij})_{m\times n}$和$B=(b_{ij})_{m\times n}$，则
+% \begin{gather*}
+%     \sigma(\varepsilon_i)=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{mi}\alpha_m \\
+%     \tau(\varepsilon_i)=b_{1i}\alpha_1+b_{2i}\alpha_2+\cdots+b_{mi}\alpha_m.
+% \end{gather*}
+% 因此
+% \[(\sigma+\tau)(\varepsilon_i)=(a_{1i}+b_{1i})\alpha_1+(a_{2i}+b_{2i})\alpha_2+\cdots+(a_{mi}+b_{mi})\alpha_m,\enspace i=1,2,\ldots,n\]
+% 即$(\sigma+\tau)$矩阵表示$\mathbf{M}(\sigma+\tau)$的第$i$列元素为$A$和$B$的第$i$列对应元素相加. 由于$i$是任取的，因此$(\sigma+\tau)$的矩阵表示每一列都是$A$和$B$同一列对应元素相加，实际上对于整个矩阵而言就是矩阵相同位置元素相加，即
+% \begin{align*}
+%     \mathbf{M}(\sigma+\tau) & =\begin{pmatrix}
+%                                    a_{11}+b_{11} & a_{12}+b_{12} & \cdots & a_{1n}+b_{1n} \\
+%                                    a_{21}+b_{21} & a_{22}+b_{22} & \cdots & a_{2n}+b_{2n} \\
+%                                    \vdots        & \vdots        & \ddots & \vdots        \\
+%                                    a_{m1}+b_{m1} & a_{m2}+b_{m2} & \cdots & a_{mn}+b_{mn}
+%                                \end{pmatrix}     \\
+%                             & \triangleq\begin{pmatrix}
+%                                             a_{11} & a_{12} & \cdots & a_{1n} \\
+%                                             a_{21} & a_{22} & \cdots & a_{2n} \\
+%                                             \vdots & \vdots & \ddots & \vdots \\
+%                                             a_{m1} & a_{m2} & \cdots & a_{mn}
+%                                         \end{pmatrix} + \begin{pmatrix}
+%                                                             b_{11} & b_{12} & \cdots & b_{1n} \\
+%                                                             b_{21} & b_{22} & \cdots & b_{2n} \\
+%                                                             \vdots & \vdots & \ddots & \vdots \\
+%                                                             b_{m1} & b_{m2} & \cdots & b_{mn}
+%                                                         \end{pmatrix} \\
+%                             & =\mathbf{M}(\sigma)+\mathbf{M}(\tau).
+% \end{align*}
+% 式中$\triangleq$表示定义，即定义矩阵加法为矩阵对应元素相加. 同理，我们也可以通过线性映射的数乘定义矩阵数乘运算如下：
+% \[\mathbf{M}(\lambda\sigma)=\begin{pmatrix}
+%         \lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1n} \\
+%         \lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2n} \\
+%         \vdots         & \vdots         & \ddots & \vdots         \\
+%         \lambda a_{m1} & \lambda a_{m2} & \cdots & \lambda a_{mn}
+%     \end{pmatrix}\triangleq\lambda\begin{pmatrix}
+%         a_{11} & a_{12} & \cdots & a_{1n} \\
+%         a_{21} & a_{22} & \cdots & a_{2n} \\
+%         \vdots & \vdots & \ddots & \vdots \\
+%         a_{m1} & a_{m2} & \cdots & a_{mn}
+%     \end{pmatrix}=\lambda\mathbf{M}(\sigma).\]
+
+事实上从运算的形式看，这非常符合我们对于矩阵加法和数乘的幻想，即矩阵加法就是对应元素相加，矩阵数乘就是对应元素乘以一个数.
+
+此外，在利用线性映射的加法和数乘定义了非常自然的矩阵加法和数乘后，我们也可以直接通过加法和数乘的定义证明 $m\times n$ 矩阵全体关于这两种运算构成线性空间. 这里我们只需回顾线性空间运算的八条要求然后逐一验证即可，实际上非常简单，因此不在此赘述.
 
 \subsection{同构的说明}
 
-在上一小节中我们定义了矩阵的加法和数乘运算，也验证了全体$m\times n$矩阵关于这两种运算构成线性空间$\mathbf{F}^{m\times n}$，接下来我们需要讨论的是对于$n$维线性空间$V_1$和$m$维线性空间$V_2$，$\mathcal{L}(V_1,V_2)$与$\mathbf{F}^{m\times n}$的同构. 即我们需要定义一个线性双射$\varphi:\mathcal{L}(V_1,V_2)\to\mathbf{F}^{m\times n}$. 事实上我们只需要很自然地利用线性映射矩阵表示定义，即定义
-\[\varphi(\sigma)=\mathbf{M}(\sigma),\]
+在上一小节中我们借助映射定义了矩阵的加法和数乘运算，也说明了全体$m\times n$矩阵关于这两种运算构成线性空间$\mathbf{F}^{m\times n}$，接下来我们需要讨论的是对于$n$维线性空间$V_1$和$m$维线性空间$V_2$，$\mathcal{L}(V_1,V_2)$与$\mathbf{F}^{m\times n}$的同构. 即我们需要定义一个线性双射$\sigma:\mathcal{L}(V_1,V_2)\to\mathbf{F}^{m\times n}$. 事实上我们只需要取一组基，然后利用线性映射矩阵表示，即定义
+\[
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        V_1 \arrow[r, "\sigma"]
+        \arrow[d, gray, shift left, "B_1^{-1}"] &
+        V_2 \arrow[d, gray, shift left, "B_2^{-1}"] &
+        \mathcal{L}(V_1, V_2) \arrow[d, thick, red, "\cong"]\\
+        \mathbf{F}^n \arrow[u, shift left, "B_1"]
+        \arrow[r, "\mathbf{M}(\sigma)"'] &
+        \mathbf{F}^m \arrow[u, shift left, "B_2"] &
+        \mathcal{L}(\mathbf{F}^n, \mathbf{F}^m) = \mathbf{F}^{m\times n}
+    \end{tikzcd}
+    \varphi(\sigma)=\mathbf{M}_{\color{lightgray} B_1, B_2}(\sigma)\\
+\]
+
 也就是说$\varphi$将线性映射$\sigma$映射为其矩阵表示. 接下来需要验证$\varphi$是线性双射.
 \begin{enumerate}
-    \item 线性性是显然的，因为根据矩阵加法和数乘的定义，我们有
-          \begin{gather*}
-              \varphi(\sigma+\tau)=\mathbf{M}(\sigma+\tau)=\mathbf{M}(\sigma)+\mathbf{M}(\tau)=\varphi(\sigma)+\varphi(\tau) \\
-              \varphi(\lambda\sigma)=\mathbf{M}(\lambda\sigma)=\lambda\mathbf{M}(\sigma)=\lambda\varphi(\sigma).
-          \end{gather*}
+    \item 先证明线性性，因为根据矩阵加法和数乘的定义和基、坐标的线性性，我们有
+          \begin{align*}
+            \forall x\in\mathbf{F}^n, \\
+            (\varphi(\sigma + \tau))(x)
+            &= (B_2^{-1} \circ (\sigma + \tau) \circ B_1) (x) \\
+            &= B_2^{-1} ((\sigma + \tau) (B_1 (x))) \\
+            &= B_2^{-1} (\sigma (B_1 (x)) + \sigma (B_1 (x))) \\
+            &= B_2^{-1} (\sigma (B_1 (x))) + B_2^{-1} (\sigma (B_1 (x))) \\
+            &= (B_2^{-1} \circ \sigma \circ B_1) (x) + (B_2^{-1} \circ \tau \circ B_1) (x) \\
+            &= (\varphi(\sigma))(x) + (\varphi(\tau))(x) \\
+            &= (\varphi(\sigma) + \varphi(\tau))(x)\\
+            &\implies \varphi(\sigma + \tau) = \varphi(\sigma) + \varphi(\tau)\\
+            (\varphi(\lambda\sigma))(x)
+            &= (B_2^{-1} \circ (\lambda\sigma) \circ B_1)(x)\\
+            &= B_2^{-1} ((\lambda\sigma)(B_1(x)))\\
+            &= B_2^{-1} (\lambda (\sigma(B_1(x))))\\
+            &= \lambda (B_2^{-1} (\sigma (B_1(x))))\\
+            &= (\lambda (B_2^{-1}\circ\sigma\circ B_1))(x)\\
+            &= (\lambda \varphi(\sigma))(x)\\
+            &\implies \varphi(\lambda\sigma) = \lambda \varphi(\sigma)
+          \end{align*}
+          % deprecated
+          %   \begin{gather*}
+          %     \varphi(\sigma+\tau)(x)=\mathbf{M}(\sigma+\tau)=\mathbf{M}(\sigma)+\mathbf{M}(\tau)=\varphi(\sigma)+\varphi(\tau) \\
+          %     \varphi(\lambda\sigma)=\mathbf{M}(\lambda\sigma)=\lambda\mathbf{M}(\sigma)=\lambda\varphi(\sigma).
+          %   \end{gather*}
 
     \item 双射也是显然的：
-          \begin{enumerate}
-              \item 对于单射性，我们考察$\varphi$的核空间$\ker\varphi$中的元素$\sigma$，即$\sigma$在基下的矩阵表示为零矩阵，那么$\sigma$必然为零映射，因为它将所有基映射为0，故必然将所有出发空间元素映射为0，因此核空间为$\{0\}$，单射成立；
+          基底是可逆映射，故 $\varphi(\sigma) = B_2^{-1} \circ \sigma \circ B_1$ 和 $\varphi^{-1}(M) =  B_2 \circ M \circ B_1^{-1}$ 互为逆映射，从而是双射.
+        %   \begin{enumerate}
+        %     \item 对于单射性，我们考察$\varphi$的核空间$\ker\varphi$中的元素$\sigma$，即$\sigma$在基下的矩阵表示为零矩阵，那么$\sigma$必然为零映射，因为它将所有基映射为0，故必然将所有出发空间元素映射为0，因此核空间为$\{0\}$，单射成立；
 
-              \item 对于满射性，我们需要为任意$m\times n$矩阵$(a_{ij})_{m\times n}$找到一个线性映射，使得这一矩阵为这一线性映射在基下的矩阵表示. 事实上，给定基和矩阵表示，我们就知道了线性映射在出发空间的基下的像——因为给定到达空间的基和矩阵就给定了线性映射在出发空间的基在到达空间的基下的坐标. 然后根据\autoref{thm:线性映射构造} 知我们一定能找到这一映射，故满射性成立.
-          \end{enumerate}
+        %     \item 对于满射性，我们需要为任意$m\times n$矩阵$(a_{ij})_{m\times n}$找到一个线性映射，使得这一矩阵为这一线性映射在基下的矩阵表示. 事实上，给定基和矩阵表示，我们就知道了线性映射在出发空间的基下的像——因为给定到达空间的基和矩阵就给定了线性映射在出发空间的基在到达空间的基下的坐标. 然后根据\autoref{thm:线性映射构造} 知我们一定能找到这一映射，故满射性成立.
+        %   \end{enumerate}
 \end{enumerate}
 
-由此我们证明了$\mathcal{L}(V_1,V_2)\cong\mathbf{F}^{m\times n}$. 而我们很容易知道，$\mathbf{F}^{m\times n}$的维数为$mn$. 事实上对于矩阵关于矩阵加法和数乘构成的线性空间，我们有如下一组常用基：$E_{ij}(i=1,\ldots,m,j=1,\ldots,n)$，其中每个$E_{ij}$为第$i$行$j$列元素为1，其余元素全为0的矩阵. 例如对于$\mathbf{F}^{2\times 3}$，根据前面的描述我们可以写出其常用基为：
+这一同构不仅体现在线性空间的同构，更是体现在作为映射保持了映射对象的同步运算，换言之，$X \mapsto \mathbf{M}(\sigma)(x)$ 和 $\alpha \mapsto \sigma(\alpha)$ 是同步进行的. 即我们有重要定理:
+
+\begin{theorem}{线性映射对向量坐标的影响}{线性映射对向量坐标的影响}
+    设$\sigma \in \mathcal{L}(V_1,V_2)$关于$V_1$和$V_2$的基$B_1$和基$B_2$的矩阵为$A=(a_{ij})_{m \times n}$，且$\alpha$与$\sigma(\alpha)$在基$B_1=(\alpha_1,\ldots,\alpha_n)$和$B_2=(\beta_1,\ldots,\beta_m)$下的坐标分别为$X$和$Y$，则$Y=AX$.
+\end{theorem}
+
+\begin{proof}
+    设$X=(x_1,\ldots,x_n)^\mathrm{T},\enspace Y=(y_1,\ldots,y_m)^\mathrm{T}$，由题意可知
+    \begin{align*}
+        \sigma(\alpha) & =\sigma(x_1\alpha_1+\cdots+x_n\alpha_n)                                 \\
+                       & =x_1\sigma(\alpha_1)+\cdots+x_n\sigma(\alpha_n)                         \\
+                       & =(\sigma(\alpha_1),\ldots,\sigma(\alpha_n))X \\
+                       & =(\beta_1,\ldots,\beta_m)AX
+    \end{align*}
+    又由于$\sigma(\alpha)$在线性无关向量组$\beta_1,\ldots,\beta_m$下的坐标唯一，故我们有$Y=AX$.
+\end{proof}
+
+或者通过画图来说明这一点，由于一个 $n$ 维的列向量可以认为属于 $\mathbf{F}^{n\times 1}$，即看成是 $\mathbf{F} \to \mathbf{F}^n$ 的矩阵（其乘以 $\mathbf{F}$ 中的标量 $k$ 等同于用 $k$ 数乘），假设向量 $\alpha, \sigma(\alpha)$ 在两个基底下分别有坐标 $X,Y$. 起手先画出我们熟悉的矩阵表示的图，然后向其上按照关系 $\alpha = B_1 X, \sigma(\alpha) = B_2 Y$ 添加箭头 $\alpha, X, Y$. 接下来就可以从图中直接读出 $Y=AX$
+\[
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        V_1
+            \arrow[r, "\sigma"]
+            \arrow[d, gray, shift left, "B_1^{-1}"]
+        & V_2
+            \arrow[d, gray, shift left, "B_2^{-1}"]
+        \\ \mathbf{F}^n
+            \arrow[u, shift left, "B_1"]
+            \arrow[r, "A"']
+        & \mathbf{F}^m
+            \arrow[u, shift left, "B_2"]
+        \\ \color{red}\mathbf{F}
+            \arrow[uu, red, bend left=60, "\alpha"]
+            \arrow[u, red, "X"]
+            \arrow[ur, red, "Y"']
+    \end{tikzcd}
+\]
+
+解释如下：我们可以取任意的线性映射$\sigma:V_1\to V_2$，在$V_1$和$V_2$的基$B_1$和$B_2$下的矩阵表示为$A$. 这里有$V_1$和$V_2$中的向量在基下的坐标分别是$\mathbf{F}^n$和$\mathbf{F}^m$中的向量. 根据\autoref{thm:线性映射对向量坐标的影响}，$\tau(\alpha)=\beta$中$\beta$和$\alpha$坐标之间的关联为$Y=AX$，这就相当于在$\mathbf{F}^n$和$\mathbf{F}^m$中的向量之间建立了一个与$A:V_1\to V_2$同步的映射$X\mapsto AX$，每当$V$中向量经过$\sigma$映射后，它的坐标也就经过了$A$的映射.
+
+由此我们证明了$\mathcal{L}(V_1,V_2)\cong\mathbf{F}^{m\times n}$是一种线性映射层面的同构. 而我们很容易知道，$\mathbf{F}^{m\times n}$的维数为$mn$. 事实上对于矩阵关于矩阵加法和数乘构成的线性空间，我们有如下一组常用基：$E_{ij}(i=1,\ldots,m,j=1,\ldots,n)$，其中每个$E_{ij}$为第$i$行$j$列元素为1，其余元素全为0的矩阵. 例如对于$\mathbf{F}^{2\times 3}$，根据前面的描述我们可以写出其常用基为：
 \[E_{11}=\begin{pmatrix}
         1 & 0 & 0 \\
         0 & 0 & 0
@@ -388,7 +580,7 @@ V_2 \arrow[d, gray, shift left, "B_2^{-1}"] \\
 
 \begin{summary}
 
-    在上一讲同构中我们已经知道，两个线性空间中的元素是向量还是多项式还是函数并不是核心差别，只要它们维数相同，我们就可以遮蔽掉元素的差别——因为它们都可以通过坐标映射同构于 $\mathbf{R}^n$，因此一切线性空间在坐标作用下都变成了向量空间，变成了最直观的可以用一个一个数字写出来的向量，而本讲我们正基于此将所有无论多么抽象的线性映射也表示成能用一个一个数字写出来的东西，即所谓的矩阵. 我们利用坐标映射将之前抽象的线性空间和线性映射转化为具象的数字表达，使得我们之后的研究更加具体.
+    在上一讲同构中我们已经知道，两个（有限维）线性空间中的元素是向量还是多项式还是函数并不是核心差别，只要它们维数相同，我们就可以遮蔽掉元素的差别——因为它们都可以通过坐标映射同构于 $\mathbf{F}^n$，因此一切线性空间在坐标作用下都变成了向量空间，变成了最直观的可以用一个一个数字写出来的向量，而本讲我们正基于此将所有无论多么抽象的线性映射也表示成能用一个一个数字写出来的东西，即所谓的矩阵. 我们利用坐标映射将之前抽象的线性空间和线性映射转化为具象的数字表达，使得我们之后的研究更加具体.
 
     在理解了线性映射矩阵表示的概念之后，我们给出了一个重要的例子，同时从反面给出了错误解法，希望读者务必厘清这其中涉及的各种概念和方法. 接下来我们证明了线性映射构成的线性空间与矩阵构成的线性空间同构，同时引入了矩阵的加法和数乘——这与线性映射的加法和数乘是完全对应的. 总而言之，在有了线性映射的矩阵表示后，我们便可以将抽象的研究都转化为具象的矩阵运算，这一思想我们将在介绍完需要的工具——矩阵运算以及行列式之后深入运用，届时我们将分别以抽象的线性映射理论和矩阵理论叙述大量的结论，探寻利用二者研究线性代数问题的过程的关联与差异.
 

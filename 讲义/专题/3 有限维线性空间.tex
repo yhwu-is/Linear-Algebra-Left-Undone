@@ -469,8 +469,8 @@
     对其进行倍加变换，即将第 $i$ 行的 $k$ 倍加到第 $j$ 行上，即第 $j$ 行变为 $a_{j1} + ka_{i1}, a_{j2} + ka_{i2}, \ldots, a_{jn} + ka_{in}$. 记原先的列向量为 $S_A = \{\alpha_1, \alpha_2, \ldots, \alpha_n\}$，新的列向量为 $S_B = \{\beta_1, \beta_2, \ldots, \beta_n\}$.
 
     \begin{enumerate}
-        \item $S_A$ 线性相关 $\Rightarrow$ $S_B$ 线性相关：若 $S_A$ 线性相关，则存在不全为零的数 $x_1, x_2, \ldots, x_n$ 使得 $x_1\alpha_1 + x_2\alpha_2 + \cdots + x_n\alpha_n = 0$. 由于 $S_B$ 与 $S_A$ 仅有第 $j$ 行不同，所以我们仅需要判断第 $j$ 行在系数 $x_1, x_2, \ldots, x_n$ 下的线性组合是否为 0 即可. 事实上我们有 $x_1(a_{j1} + ka_{i1}) + x_2(a_{j2} + ka_{i2}) + \cdots + x_n(a_{jn} + ka_{in}) = x_1a_{j1} + x_2a_{j2} + \cdots + x_na_{jn} + k(x_1a_{i1} + x_2a_{i2} + \cdots + x_na_{in}) = 0$，故 $S_B$ 线性相关.
-        \item $S_A$ 线性无关 $\Rightarrow$ $S_B$ 线性无关：若 $S_A$ 线性无关，使用反证法，假设 $S_B$ 线性相关，但我们知道$S_A$ 实际上就是 $S_B$ 的第 $j$ 行减去第 $i$ 行的 $k$ 倍，因此 $S_B$ 变换到 $S_A$ 可以视为做了一个倍加变换，所以根据证明的第 1 点可知 $S_A$ 线性相关，出现矛盾.
+        \item $S_A$ 线性相关 $\implies$ $S_B$ 线性相关：若 $S_A$ 线性相关，则存在不全为零的数 $x_1, x_2, \ldots, x_n$ 使得 $x_1\alpha_1 + x_2\alpha_2 + \cdots + x_n\alpha_n = 0$. 由于 $S_B$ 与 $S_A$ 仅有第 $j$ 行不同，所以我们仅需要判断第 $j$ 行在系数 $x_1, x_2, \ldots, x_n$ 下的线性组合是否为 0 即可. 事实上我们有 $x_1(a_{j1} + ka_{i1}) + x_2(a_{j2} + ka_{i2}) + \cdots + x_n(a_{jn} + ka_{in}) = x_1a_{j1} + x_2a_{j2} + \cdots + x_na_{jn} + k(x_1a_{i1} + x_2a_{i2} + \cdots + x_na_{in}) = 0$，故 $S_B$ 线性相关.
+        \item $S_A$ 线性无关 $\implies$ $S_B$ 线性无关：若 $S_A$ 线性无关，使用反证法，假设 $S_B$ 线性相关，但我们知道$S_A$ 实际上就是 $S_B$ 的第 $j$ 行减去第 $i$ 行的 $k$ 倍，因此 $S_B$ 变换到 $S_A$ 可以视为做了一个倍加变换，所以根据证明的第 1 点可知 $S_A$ 线性相关，出现矛盾.
     \end{enumerate}
 \end{proof}
 

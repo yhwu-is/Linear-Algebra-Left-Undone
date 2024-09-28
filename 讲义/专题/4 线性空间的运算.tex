@@ -267,17 +267,17 @@
 
 定理的证明是基本的.
 \begin{proof}
-    上述命题等价，只需证明 (1) $\Rightarrow$ (2) $\Rightarrow$ (3) $\Rightarrow$ (4) $\Rightarrow$ (1).
+    上述命题等价，只需证明 (1) $\implies$ (2) $\implies$ (3) $\implies$ (4) $\implies$ (1).
 
-    先证 (1) $\Rightarrow$ (2): 设 $W_1 + W_2$ 中的 $\alpha$ 有两个分解式
+    先证 (1) $\implies$ (2): 设 $W_1 + W_2$ 中的 $\alpha$ 有两个分解式
     $$
     \alpha = \alpha_1 + \alpha_2 = \beta_1 + \beta_2, \quad \alpha_1, \beta_1 \in W_1, \ \alpha_2, \beta_2 \in W_2,
     $$
     则 $\alpha_1 - \beta_1 = \beta_2 - \alpha_2 \in W_1 \cap W_2 = \{\mathbf{0}\}$，于是得 $\beta_1 = \alpha_1, \beta_2 = \alpha_2$，故 $\alpha$ 的分解式是唯一的。
 
-    其次证 (2) $\Rightarrow$ (3): 由 $W_1 + W_2$ 中零向量的分解式唯一性以及 $0 = 0 + 0$，立即得命题 (3) 成立.
+    其次证 (2) $\implies$ (3): 由 $W_1 + W_2$ 中零向量的分解式唯一性以及 $0 = 0 + 0$，立即得命题 (3) 成立.
 
-    再证 (3) $\Rightarrow$ (4): 由命题 (3) 可推出 $W_1 \cap W_2 = \{\mathbf{0}\}$，因为若 $W_1 \cap W_2 \ne \{\mathbf{0}\}$，则存在 $0 \ne a \in W_1 \cap W_2$，使得 $0 = \alpha + (-\alpha)$，（其中 $\alpha \in W_1, -\alpha \in W_2$），这与命题 (3) 相矛盾。再根据维数公式 就得命题 (4)。
+    再证 (3) $\implies$ (4): 由命题 (3) 可推出 $W_1 \cap W_2 = \{\mathbf{0}\}$，因为若 $W_1 \cap W_2 \ne \{\mathbf{0}\}$，则存在 $0 \ne a \in W_1 \cap W_2$，使得 $0 = \alpha + (-\alpha)$，（其中 $\alpha \in W_1, -\alpha \in W_2$），这与命题 (3) 相矛盾。再根据维数公式 就得命题 (4)。
 
     最后由命题 (4) 及维数公式 立即得命题 (1) 成立.
 \end{proof}

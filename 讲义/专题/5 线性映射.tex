@@ -437,24 +437,41 @@
 \end{enumerate}
 
 \begin{example}{}{}
-    已知$\mathbf{R}^3$到$\mathbf{R}^2$的映射$\sigma$为$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_2-x_3)$，求$\sigma$的像和核.
+    已知$\mathbf{R}^3$到$\mathbf{R}^2$的映射$\sigma$为$\sigma(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}=(x_1+x_2,x_2-x_3)^{\color{lightgray}\mathrm{T}}$，求$\sigma$的像和核.
 \end{example}
+注：这里的一些例子是从《代数与几何》这本书上抄来的，但是书中线性映射相关的地方行和列的混乱容易导致一些困惑，为此，笔者有时会在向量的右上角加上一个浅色的转置 $({}^{\color{gray}\mathrm{T}})$ 以代表它是列向量且和书上记法有差别
 
 \begin{solution}
     \begin{itemize}
-        \item 首先求像空间. 取出发空间$\mathbf{R}^3$的一组基$B=\{(1,0,0),(0,1,0),(0,0,1)\}$，则$\im \sigma=\sigma(\mathbf{R}^3)=\spa(\sigma(1,0,0),\sigma(0,1,0),\sigma(0,0,1))=\spa((1,0),(1,1),(0,-1))$. 根据求解极大线性无关组的方法（或者这么简单的情况瞪眼法也可以）得到像空间$\im \sigma=\spa((1,0),(0,-1))=\mathbf{R}^2$.
+        \item 首先求像空间. 取出发空间$\mathbf{R}^3$的一组基$B=\{(1,0,0)^{\color{lightgray}\mathrm{T}},(0,1,0)^{\color{lightgray}\mathrm{T}},(0,0,1)^{\color{lightgray}\mathrm{T}}\}$，则
+        \begin{align*}
+            \im \sigma
+            &=\sigma(\mathbf{R}^3)
+            &=\spa(
+                \sigma(1,0,0)^{\color{lightgray}\mathrm{T}},
+                \sigma(0,1,0)^{\color{lightgray}\mathrm{T}},
+                \sigma(0,0,1)^{\color{lightgray}\mathrm{T}}
+                 ) \\
+            &=\spa(
+                (1,0)^{\color{lightgray}\mathrm{T}},
+                (1,1)^{\color{lightgray}\mathrm{T}},
+                (0,-1)^{\color{lightgray}\mathrm{T}}
+                )
+        \end{align*}
+        根据求解极大线性无关组的方法（或者这么简单的情况瞪眼法也可以）得到像空间
+        $\im \sigma=\spa((1,0)^{\color{lightgray}\mathrm{T}},(0,-1)^{\color{lightgray}\mathrm{T}})=\mathbf{R}^2$.
 
-        \item 接下来求解核空间. 设$\sigma(\alpha)=0$，其中$\alpha=(x_1,x_2,x_3)$，即$\sigma(x_1,x_2,x_3)=(x_1+x_2,x_2-x_3)=(0,0)$，解得解向量为$k(-1,1,1),\enspace k\in\mathbf{R}$，写成线性扩张的形式为$\spa((-1,1,1))$.
+        \item 接下来求解核空间. 设$\sigma(\alpha)=0$，其中$\alpha=(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}$，即$\sigma(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}=(x_1+x_2,x_2-x_3)^{\color{lightgray}\mathrm{T}}=(0,0)$，解得解向量为$k(-1,1,1)^{\color{lightgray}\mathrm{T}},\enspace k\in\mathbf{R}$，写成线性扩张的形式为$\spa((-1,1,1)^{\color{lightgray}\mathrm{T}})$.
     \end{itemize}
 \end{solution}
 
 下面我们也给出另一种求像空间的方法，但是为了防止读者混淆这一方法和之后线性映射矩阵表示的方法，希望读者能按照笔者首先介绍的方法求解.
 \begin{solution}\label{ex:线性映射的像空间求解2}
     \begin{align*}
-        \sigma(x_1, x_2, x_3) &= (x_1 + x_2, x_2 - x_3)\\
-        &= x_1(1, 0) + x_2(1, 1) + x_3(0, -1)
+        \sigma(x_1, x_2, x_3)^{\color{lightgray}\mathrm{T}} &= (x_1 + x_2, x_2 - x_3)^{\color{lightgray}\mathrm{T}}\\
+        &= x_1(1, 0)^{\color{lightgray}\mathrm{T}} + x_2(1, 1)^{\color{lightgray}\mathrm{T}} + x_3(0, -1)^{\color{lightgray}\mathrm{T}}
     \end{align*}
-    记 $e_1 = (1, 0), e_2 = (1, 1), e_3 = (0, -1)$，则 $\sigma(x_1, x_2, x_3) = x_1 e_1 + x_2 e_2 + x_3 e_3$，所以 $\sigma(\mathbf{R}^3) = \spa\{e_1, e_2,e_3\} = \spa \{e_1, e_2\}=\mathbf{R}^2$.
+    记 $\beta_1 = (1, 0)^{\color{lightgray}\mathrm{T}}, \beta_2 = (1, 1)^{\color{lightgray}\mathrm{T}}, \beta_3 = (0, -1)^{\color{lightgray}\mathrm{T}}$，则 $\sigma(x_1, x_2, x_3)^{\color{lightgray}\mathrm{T}} = x_1 \beta_1 + x_2 \beta_2 + x_3 \beta_3$，所以 $\sigma(\mathbf{R}^3) = \spa\{\beta_1, \beta_2, \beta_3\} = \spa \{\beta_1, \beta_2\}=\mathbf{R}^2$.
 \end{solution}
 
 
@@ -517,7 +534,7 @@
 \end{proof}
 最后我们讨论一个初学时容易困惑的问题，如下例所示：
 \begin{example}{}{线性映射判断1}
-    是否存在$\mathbf{R}^2$到$\mathbf{R}^3$的线性映射$\sigma$使得$\sigma(1,0)=(1,0,0),\enspace\sigma(0,1)=(0,1,0),\enspace\sigma(1,1)=(0,0,1)$？
+    是否存在$\mathbf{R}^2$到$\mathbf{R}^3$的线性映射$\sigma$使得$\sigma(1,0)^{\color{lightgray}\mathrm{T}}=(1,0,0)^{\color{lightgray}\mathrm{T}},\enspace\sigma(0,1)^{\color{lightgray}\mathrm{T}}=(0,1,0)^{\color{lightgray}\mathrm{T}},\enspace\sigma(1,1)^{\color{lightgray}\mathrm{T}}=(0,0,1)^{\color{lightgray}\mathrm{T}}$？
 \end{example}
 
 初学时感到困难是因为不能熟练应用线性映射的各类性质，找不到映射定义也不敢下结论不存在，或者发现必要条件都满足了却不敢构造. 我们这里给出几个解决策略：
@@ -536,13 +553,13 @@
     \item 如果题目给定的映射不违反上述线性映射的必要条件，那我们可以按照\autoref{thm:线性映射构造} 构造出相应的映射.
 \end{enumerate}
 
-根据上面的描述，我们发现 \ref*{item:5:线性映射判断1:1} 中的映射定义违反了明显违反了不能是从低维到高维满射的条件. 实际上，$\sigma$也将线性相关的向量组映射到了线性无关的向量组，并且根据定义，$\sigma(0)=\sigma((1,0)+(0,1)-(1,1))=(1,1,-1)$，因此所有的必要条件都被违反了，因此这一映射一定不是线性映射. 事实上这一例子也表明很多时候三个必要条件可能是同时违反的，因为它们都是由基本的线性映射和线性相关性质推导而来，并非完全独立的判据.
+根据上面的描述，我们发现 \ref*{item:5:线性映射判断1:1} 中的映射定义违反了明显违反了不能是从低维到高维满射的条件. 实际上，$\sigma$也将线性相关的向量组映射到了线性无关的向量组，并且根据定义，$\sigma(0)=\sigma((1,0)^{\color{lightgray}\mathrm{T}}+(0,1)^{\color{lightgray}\mathrm{T}}-(1,1)^{\color{lightgray}\mathrm{T}})=(1,1,-1)$，因此所有的必要条件都被违反了，因此这一映射一定不是线性映射. 事实上这一例子也表明很多时候三个必要条件可能是同时违反的，因为它们都是由基本的线性映射和线性相关性质推导而来，并非完全独立的判据.
 
 我们还需强调的是，如果\autoref{thm:线性映射构造} 前提成立，即题目给我们的是一组基下的像，则一定不会违反上述三个必要条件. 对于条件 \ref*{ex:线性映射判断1}，给定一组基$\alpha_1,\ldots,\alpha_n$，我们要凑出$\sigma(0)$只能通过$\sigma(0)=\sigma(0\alpha_1+\cdots+0\alpha_n)=0\sigma(\alpha_1)+\cdots+0\sigma(\alpha_n)=0$，因此不可能违反  \ref*{item:5:线性映射判断1:1}. 对于 \ref*{item:5:线性映射判断1:2}，我们给定的是基，因此不存在将线性相关向量组映射到线性无关向量组的情况. 对于 \ref*{item:5:线性映射判断1:3}，如果题目给出的是低维到高维的映射，由于我们只给出了低维出发空间的基下的像，这些像不可能张成整个高维到达空间（原理和$n-1$个向量无法张成$n$维空间一致），因此也不可能违反 \ref*{item:5:线性映射判断1:3}，因此\autoref{thm:线性映射构造} 并不与我们的必要条件相矛盾，相反，如果题目给出的是一组基下的像，我们就可以毫无顾虑地说映射一定存在.
 
 最后我们再看一个例子来练习我们上面的策略：
 \begin{example}{}{线性映射判断2}
-    是否存在$\mathbf{R}^3$到$\mathbf{R}^2$的线性映射$\sigma$使得$\sigma(1,-1,1)=(1,0),\enspace\sigma(1,1,1)=(0,1)$？
+    是否存在$\mathbf{R}^3$到$\mathbf{R}^2$的线性映射$\sigma$使得$\sigma(1,-1,1)^{\color{lightgray}\mathrm{T}}=(1,0)^{\color{lightgray}\mathrm{T}},\enspace\sigma(1,1,1)^{\color{lightgray}\mathrm{T}}=(0,1)^{\color{lightgray}\mathrm{T}}$？
 \end{example}
 
 \begin{solution}
@@ -550,15 +567,26 @@
 
     实际上，根据提给条件我们有
     \begin{gather*}
-        \sigma(1,-1,1)=\sigma(e_1-e_2+e_3)=\sigma(e_1)-\sigma(e_2)+\sigma(e_3)=(1,0) \\
-        \sigma(1,1,1)=\sigma(e_1+e_2+e_3)=\sigma(e_1)+\sigma(e_2)+\sigma(e_3)=(0,1)
+        \sigma(1,-1,1)^{\color{lightgray}\mathrm{T}}
+        =\sigma(e_1-e_2+e_3)
+        =\sigma(e_1)-\sigma(e_2)+\sigma(e_3)
+        =(1,0)^{\color{lightgray}\mathrm{T}} \\
+        \sigma(1,1,1)^{\color{lightgray}\mathrm{T}}
+        =\sigma(e_1+e_2+e_3)
+        =\sigma(e_1)+\sigma(e_2)+\sigma(e_3)
+        =(0,1)^{\color{lightgray}\mathrm{T}}
     \end{gather*}
     我们希望解出$\sigma(e_1),\sigma(e_2),\sigma(e_3)$，这样就可以直接根据\autoref*{thm:线性映射构造} 构造出这一线性映射. 但这一方程组只有2个方程却有三个未知量. 事实上我们可以任意定义$\sigma(e_3)=(0,0)$，然后解方程组得到
-    \[\sigma(e_1)=\dfrac{1}{2} (1,1),\enspace \sigma(e_2)=\dfrac{1}{2} (-1,1)\]
-    又由$\sigma(e_3)=(0,0)$，根据\autoref*{thm:线性映射构造}，满足题目条件的线性映射存在.
+    \[\sigma(e_1)=\dfrac{1}{2} (1,1)^{\color{lightgray}\mathrm{T}},\enspace \sigma(e_2)=\dfrac{1}{2} (-1,1)^{\color{lightgray}\mathrm{T}}\]
+    又由$\sigma(e_3)=(0,0)^{\color{lightgray}\mathrm{T}}$，根据\autoref*{thm:线性映射构造}，满足题目条件的线性映射存在.
 \end{solution}
 需要注意的是题目中$\sigma(e_3)$不一定要定义为$(0,0)$，这样只是为了计算方便，事实上定义成任何值都可以得到$\sigma$在一组基下的像，从而根据\autoref*{thm:线性映射构造} 得到这一线性映射存在. 如果题目要求我们写出映射也并不复杂，根据我们在\autoref*{thm:线性映射构造} 中的构造方法，我们可以写出$\forall\alpha=(x,y,z)=xe_1+ye_2+ze_3$，
-\[\sigma(\alpha)=\sigma(xe_1+ye_2+ze_3)=x\sigma(e_1)+y\sigma(e_2)+z\sigma(e_3)=\dfrac{1}{2} (x-y,x+y)\]
+\[
+    \sigma(\alpha)
+    =\sigma(xe_1+ye_2+ze_3)
+    =x\sigma(e_1)+y\sigma(e_2)+z\sigma(e_3)
+    =\dfrac{1}{2} (x-y,x+y)^{\color{lightgray}\mathrm{T}}
+\]
 符合题目条件. 事实上根据$\sigma(e_3)$定义的不唯一，我们可以得到不同的线性映射，这里只是给出一种可能的解.
 
 \section{线性映射基本定理}
@@ -1178,10 +1206,10 @@
         \item 设$V_1,V_2,V_3$分别为$m,n,s$维线性空间，$\sigma\in \mathcal{L}(V_1,V_2),\enspace\tau\in \mathcal{L}(V_2,V_3)$，则
         \[r(\sigma)+r(\tau)-n \leqslant r(\tau\sigma) \leqslant \min\{r(\sigma),r(\tau)\}.\]
 
-        \item 设$V_1$是有线维线性空间，$\sigma,\tau\in \mathcal{L}(V_1,V_2)$，则
+        \item 设$V_1$是有限维线性空间，$\sigma,\tau\in \mathcal{L}(V_1,V_2)$，则
         \[r(\sigma+\tau) \leqslant r(\sigma)+r(\tau).\]
 
-        事实上前两题的结论在下一章节矩阵的秩中都会涉及，此处有兴趣的同学可以尝试从线性映射的角度理解这两个秩不等式. 如果无法找到合适方式，可以考虑化为矩阵进行证明.
+        事实上前两题的结论在后续章节矩阵的秩中都会涉及，此处有兴趣的同学可以尝试从线性映射的角度理解这两个秩不等式. 如果无法找到合适方式，可以考虑化为矩阵进行证明.
 
         \item 设$\sigma\in \mathcal{L}(V,V)$，$\dim V_1=n$，且$\sigma^2=\sigma$，$I$是$V$上的恒等变换. 证明：
         \begin{enumerate}
