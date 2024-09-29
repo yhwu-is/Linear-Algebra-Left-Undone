@@ -20,7 +20,7 @@
 
 在上述定理中，线性变换在一组基下矩阵表示为对角矩阵，这样的线性变换我们称其为可对角化的，我们将这一定义严谨写下：
 \begin{definition}{}{}
-    设$\sigma\in\mathcal{L}(V)$，如果存在$V$的一组基使得$\sigma$在这组基下的矩阵是对角矩阵，则称$\sigma$可对角化
+    设$\sigma\in\mathcal{L}(V)$，如果存在$V$的一组基使得$\sigma$在这组基下的矩阵是对角矩阵，则称$\sigma$可对角化.
 \end{definition}
 
 在上述定理的证明中我们可以直接观察到，如果一个线性变换可对角化，那么对应于对角矩阵的基中每一个向量必然是特征向量，因此我们很容易想到可对角化的下一个等价条件就是线性变换有一组由特征向量构成的基. 当然这只是一个观察，基于这一观察我们可以进一步扩展，得到下面这一关于线性变换可对角化等价条件的核心定理：
@@ -409,7 +409,9 @@
     设$\sigma\in\mathcal{L}(V)$，设$n=\dim V$，则$V=\ker \sigma^n\oplus \im \sigma^n$.
 \end{theorem}
 \begin{proof}
+    设 $v \in \ker \sigma^n \cap \im \sigma^n$，则$\exists u \in V$，使得$是v=\sigma^n(u)$，从而$u \in \ker \sigma^{2n}$，进而$u \in \ker \sigma^{n}$， $v=\sigma^n(u)=0$，这表明$\ker \sigma^n \cap \im \sigma^n=\{0\}$.
 
+    结合$\dim \ker\sigma^n+\dim \im\sigma^n=n=\dim V$可知$V=\ker\sigma^n\oplus\im\sigma^n$.
 \end{proof}
 
 因此，如果我们考虑$\ker(\sigma-\lambda I)^n$，其中$n$是$\sigma$对应线性空间的维数，那么我们可以获得比特征子空间更大的核空间，这样扩张后的核空间的直和是否可以张成整个原空间呢？我们可以提前给出答案：可以，这便是我们下一小节中要证明的主要定理，在此之前，我们需要首先给这一扩张后的特征子空间一个新的名字.
@@ -502,7 +504,22 @@
 \end{example}
 
 \begin{solution}
+    $\sigma$在$\mathcal{L}(\mathbf{C}^3)$的自然基下的矩阵是
+    \begin{pmatrix}
+        6 & 3 & 4 \\
+        0 & 6 & 2 \\
+        0 & 0 & 7
+    \end{pmatrix}
+    $\sigma$的特征值为$\lambda_1=6,\lambda_2=7$.
 
+    解方程可以得到两个广义特征子空间$G(\lambda_1,\sigma)=\spa((1,0,0),(0,\dfrac{1}{3},0))$，$G(\lambda_2,\sigma)=\spa((0,2,1))$.
+
+    取$\alpha_1=(1,0,0),\alpha_2=(\dfrac{1}{3}),\alpha_3=(0,2,1)$，则$\sigma$在基$\{\alpha_1,\alpha_2,\alpha_3\}$下有分块对角矩阵
+    \begin{pmatrix}
+        6 & 1 & 0 \\
+        0 & 6 & 0 \\
+        0 & 0 & 7
+    \end{pmatrix}.
 \end{solution}
 
 事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难. 因为当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，是比较复杂的；而如果根据核空间停止增长的性质不断提升矩阵的幂次，直到得到的广义特征子空间不再发生改变就能够停止计算也是一种可行的思路，只是每次算出一个幂次后都要判断线性变换或矩阵的秩是否下降. 在之后的章节中我们会通过多项式的理论来降低$\ker (\sigma-\lambda I)^{\dim V}$所需的幂次.
@@ -542,7 +559,12 @@
 \end{theorem}
 定理的证明实际上只需要计算验证即可，非常简单：
 \begin{proof}
+$1 \implies 2$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵$A=(a_{ij})_{n\times n}$是上三角的，即$a_{ij}=0,\forall i>j$.则对于$\forall j \in \{1,\ldots,n\}$，有$\sigma(v_j)=\displaystyle\sum_{i=1}^{n}a_{ij}v_i=\displaystyle\sum_{i=1}^{j}a_{ij}v_i\in  \spa(v_1,\ldots,v_n)$.
 
+$2 \implies 3$：对$\forall v=\displaystyle\sum_{i=1}^{j}a_iv_i \in \spa(v_1,\ldots,v_j)$，有$\sigma(v)=\sigma(\displaystyle\sum_{i=1}^{j}a_iv_i)=\displaystyle\sum_{i=1}^{j}a_i\sigma(v_i)$.
+由2知对于$\forall i \in \{1,\ldots,j\}$，有$\sigma(v_i) \in \spa(v_1,\ldots,v_i) \subseteq \spa(v_1,\ldots,v_j)$，从而知$\sigma(v) \in \spa(v_1,\ldots,v_j)$，$\spa(v_1,\ldots,v_j)$在$\sigma$下不变.
+
+$3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\times n}$对于$\forall j \in \{1,\ldots,n\}$，$\sigma(v_j)=\displaystyle\sum_{i=1}^{n}a_{ij}v_i\in \spa(v_1,\ldots,v_n)$，从而有$a_{j+1,j}=\cdots=a_{n,j}=0$，即$\forall i>j,a_{ij}=0$.故$A$为上三角矩阵.
 \end{proof}
 
 这一定理给出了上三角矩阵的几个充要条件，因此我们的想法就是利用等价条件中的某一个条件来验证任意线性变换是否可以得到上三角矩阵. 幸运的是，的确对于任意的复向量空间上的线性变换，我们可以找到一组基使得其关于这组基有上三角矩阵.
@@ -596,11 +618,29 @@
 
 事实上，我们在这里介绍这一证明的一个重要的目的在于，这一证明给了我们一个求解线性变换（或矩阵）上三角化的方法. 与对角化等类似，线性变换的上三角化依赖于矩阵上三角化，因此我们这里只讨论矩阵的情况. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
 \begin{example}{}{}
-    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x+y,5y+3z,8z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
+    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x,0,x+2z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
 \end{example}
 
 \begin{solution}
+    $\sigma$在$\mathbf{C}^3$的自然基下的矩阵$A$为
+    \begin{pmatrix}
+        2 & 0 & 0 \\
+        0 & 0 & 0 \\
+        1 & 0 & 2
+    \end{pmatrix}.
 
+    令$|\lambda_E-A|=0$，知$A$的一个特征值是$0$，相应的一个特征向量为$\alpha_1=(0,1,0)$.$\sigma$在$\alpha_1,e_1,e_3$下的矩阵为矩阵
+    \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 2 & 0 \\
+        0 & 1 & 2
+    \end{pmatrix}.
+    再考虑矩阵
+    \begin{pmatrix}
+        2 & 0 \\
+        1 & 2
+    \end{pmatrix}.
+    这个矩阵的特征值为$2$，相应的特征向量为$\alpha_2=(2,0,1)$.最后取$\alpha_3=(0,0,1)$，则$\sigma$在$\alpha_1,\alpha_2,\alpha_3$下的矩阵为上三角矩阵.
 \end{solution}
 
 另一方面，我们可以再给出一个\autoref{thm:上三角矩阵存在} 的证明与这一矩阵的证明方法对应：
@@ -644,11 +684,22 @@
     \begin{enumerate}
         \item 设$\lambda_1,\ldots,\lambda_s$是$\sigma$的$s$个不同的特征值，$V_{\lambda_1},\ldots,V_{\lambda_s}$是对应的特征子空间. 根据\autoref{thm:线性变换可交换}，$V_{\lambda_1},\ldots,V_{\lambda_s}$是$\tau$的不变子空间，并且根据\autoref{thm:线性变换可交换} 的2的证明我们可以在每个特征子空间中找到一个公共的特征向量，这样我们就找到了$s$个公共且线性无关的特征向量.
 
-        \item 这一结论的证明与\autoref{thm:上三角矩阵存在} 类似，也有矩阵和商空间两个版本.
-              \begin{enumerate}
-                  \item
-                  \item
-              \end{enumerate}
+        \item 这一结论的证明与\autoref{thm:上三角矩阵存在} 类似，也有矩阵和商空间两个版
+        限于篇幅这里只给出商空间版本的证明：
+        我们对维数$n$归纳证明.
+        \begin{enumerate}
+            \item $n=1$时，结论显然成立.
+            \item 假设命题对$n-1$成立.由于$\sigma \tau=\tau \sigma$，故$\exists \alpha\in V$，使得$\alpha$同时为$\sigma$和$\tau$的特征向量.
+
+            设$U=\spa{\alpha}$，则$U$是$\sigma$和$\tau$的不变子空间.考虑商映射$\sigma/U,\tau/U$.
+            对于$\forall v+U\in V/U$，有$((\sigma/U)(\tau/U))(v+U)=(\sigma/U)(\tau(v)+U)=\sigma(\tau(v))+U=\tau(\sigma(v))+U=((\tau/U)(\sigma/U))(v+U)$，即$(\sigma/U)(\tau/U)=(\tau/U)(\sigma/U)$.
+
+            由$\dim V/U=n-1$，结合归纳假设可知：存在$V/U$的一组基$v_1+U,\ldots,v_{n-1}+U$，使得$\sigma/U$和$\tau/U$在这组基下都是上三角矩阵.
+
+            则$(\sigma/U)(v_i+U)=\sigma(v_i)+U \in \spa(v_1+U,\ldots,v_i+U)$，从而$\sigma(v_i)\in \spa(\alpha,v_1,\ldots,v_i),\forall i=1,2,\ldots,n-1$.
+
+            容易验证：$\alpha,v_1,\ldots,v_{n-1}$线性无关，从而构成$V$的基.由上面的叙述可知$\sigma$在这组基下的矩阵为上三角矩阵.同理，$\tau$在这组基下也为上三角矩阵，命题对$n$成立.从而命题成立.
+        \end{enumerate}
     \end{enumerate}
 \end{proof}
 
@@ -782,9 +833,14 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item
+        \item 由于$tr(A)=tr(AB-BA)=tr(AB)-tr(BA)=0$，而$tr(A)$为$A$的所有特征值之积，这表明$0$是$A$的特征值，从而$A$不可逆.
+        \item 由$AB-BA=A$知$AB=BA+A$.
 
-        \item
+        考虑从$\mathbf{M}_n(F)$到自身的映射$\sigma:\sigma(X)=XB-BX$，则$\sigma(A)=A$.
+
+        容易验证$\sigma$是线性映射.归纳容易证明：$\sigma(A^k)=kA^k,\forall k\in \mathbb{N}^*$
+
+        假设$A$不是幂零的，则对$\forall k \in \mathbb{N}^*$，有$A^k \neq 0,\sigma(A^k)=kA^k$.这表明任意正整数$k$都是$\sigma$的特征值，这与$\sigma$最多只有$n^2$个特征值矛盾.故$A$是幂零矩阵.
     \end{enumerate}
 \end{proof}
 
@@ -807,9 +863,18 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item
+        \item 从$\sqrt{1+x}=1+a_1x+a_2x^2+\cdots$受到启发，我们猜测$I+N$有形如$I+a_1N+a_2N^2+\cdots$的平方根.
+        由于$N$是幂零的，故存在正整数$m$，使得$N^m=0$，从而上面的式子成为一个有限和$I+a_1N+a_2N^2+\cdots+a_{m-1}N^{m-1}$.
 
-        \item
+        我们希望$(I+a_1N+a_2N^2+\cdots+a_{m-1}N^{m-1})^2=I+2a_1N+(2a_2+a_1)N^2+(2a_3+2a_1a_2)N^3+\cdots+(2a_{m-1}+f(a_1,\ldots,a_{m-2})N^{m-1})$等于$I+N$.所以取$2a_1=1$，再取$a_2$使得$2a_2+a_1^2=0$.
+
+        对所有$j=3,4,\ldots,m-1$如此进行下去，每次都能得到相应的$a_j$，我们并不关心$a_j$的显式公式，只需知道这些$a_j$的选取确实给出了$(I+N)$的一个平方根.
+        \item 设$\lambda_1,\ldots,\lambda_m$是$T$所有互不相同的本征值，则对每个$j$都存在一个幂零算子$N_j\in \mathcal{L}(G(\lambda_j,T))$使得$T|G_{(\lambda_j,T)}=\lambda_jI+N_j$.因为$T$可逆，所以$\lambda_j \neq 0$，于是有$T|G_{\lambda_j,T}=\lambda_j(I+\dfrac{N_j}{\lambda_j})$.
+        显然$\dfrac{N_j}{\lambda_j}$也是幂零的，故$(I+\dfrac{N_j}{\lambda_j})$有平方根，从而我们可以得到$T|G_{(\lambda_j,T)}$的一个平方根$R_j$.
+
+        对于$\forall v\in V$，$v$可以唯一地写成$v=u_1+\cdots+u_m$，其中$u_j\in G(\lambda_j,T)$.
+
+        我们定义算子$R\in\mathcal{L}(V):Rv=R_1u_1+\cdots+R_mu_m$.不难验证我们定义的$R$即为$T$的平方根.
     \end{enumerate}
 \end{proof}
 
@@ -822,7 +887,7 @@
 \end{example}
 
 \begin{solution}
-
+    由于$N^4=0$，我们设$\sqrt{I+N}=I+a_1N+a_2N^2+a_3N^3$，则$I+N=(I+a_1N+a_2N^2+a_3N^3)^2=I+2a_1N+(a_1^2+2a_2)N^2+(2a_3+2a_1a_2)N^3$，有$a_1=\dfrac{1}{2},a_2=-\dfrac{1}{8},a_3=\dfrac{1}{16}$.代入即可算出$(I+N)$的一个平方根.
 \end{solution}
 
 最后，在开始习题内容前，我们需要讲解一类特殊的题型，即举例或举反例的问题. 一般而言，我们有如下两种思路：
@@ -831,14 +896,47 @@
           \begin{example}{}{}
               找出有限维实向量空间的一个线性变换$\sigma$，使得0是$\sigma$仅有的特征值但$\sigma$不是幂零线性变换.
           \end{example}
+          \begin{solution}
+            我们定义$\sigma\in\mathcal{L}({\mathbf{R}^3})$，$\sigma$在自然基下的矩阵为
+            \begin{pmatrix}
+                0 & 1 & 0 \\
+                -1 & 0 & 0 \\
+                0 & 0 & 0
+            \end{pmatrix}.
+            则$0$是$\sigma$仅有的特征值，但$\sigma^3=-\sigma\neq 0$，$\sigma$不为幂零线性变换.
+          \end{solution}
           \begin{example}{}{}
               找出一个$\sigma\in L(\mathbf{R}^2)$使得$\sigma^4=-I$.
           \end{example}
-
+          \begin{solution}
+            从旋转的角度考虑可以得到$\sigma(x,y)=(x,y)\cdot$
+            \begin{pmatrix}
+                \dfrac{\sqrt{2}}{2} & -\dfrac{\sqrt{2}}{2} \\
+                \dfrac{\sqrt{2}}{2} & \dfrac{\sqrt{2}}{2}
+            \end{pmatrix}.
+            满足.
+          \end{solution}
     \item 考虑简单的情况：例如考虑2阶、3阶的简单线性变换/矩阵
           \begin{example}{}{}
               证明或给出反例：$V$上的幂零线性变换的集合是$L(V)$的子空间.
           \end{example}
+          \begin{solution}
+            反例：$V=\mathbf{R}^2,\sigma,\tau$在自然基下的矩阵分别为
+            \begin{pmatrix}
+                0 & 1 \\
+                0 & 0
+            \end{pmatrix}
+            \begin{pmatrix}
+                0 & 0 \\
+                1 & 0
+            \end{pmatrix}.
+            则$\sigma+\tau$在自然基下的矩为
+            \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{pmatrix}
+            表明$\sigma+\tau$不是幂零线性变换.从而命题不成立.
+          \end{solution}
           很多时候一些反例很难构想就选择记住这一构造思想即可. 一些反例可能基于一些简单的结论，但如果未思考到位可能很难构造.
 \end{enumerate}
 
