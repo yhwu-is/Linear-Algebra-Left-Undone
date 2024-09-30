@@ -514,14 +514,14 @@
 
 下面这个例子非常重要，在解决一些题目时使用这一结论会更便捷：
 \begin{example}{}{}
-    （\autoref{thm:基的选择对向量坐标的影响}推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
+    （\autoref{thm:基的选择对向量坐标的影响} 推广）设$P^{-1}AP=B$，证明：$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
 \end{example}
 
 \begin{proof}
     由$AX=\lambda_0 X$以及$A=PBP^{-1}$，我们有$PBP^{-1}X=\lambda_0 X$，即$BP^{-1}X=\lambda_0 P^{-1}X$，因此$P^{-1}X$是$B$属于$\lambda_0$的特征向量，即$P^{-1}X$是$B$的特征向量，即$Y=P^{-1}X$.
 \end{proof}
 
-实际上本题是本讲义\autoref{thm:基的选择对向量坐标的影响}的推论，原因在于$P^{-1}AP=B$说明$A$和$B$是同一个线性变换（设为$\sigma$）在不同基下的矩阵，因此$X$和$Y$只是$\sigma$关于$\lambda_0$在两组基下的坐标，因此二坐标之间相差一个过渡矩阵.
+实际上本题是本讲义\autoref{thm:基的选择对向量坐标的影响} 的推论，原因在于$P^{-1}AP=B$说明$A$和$B$是同一个线性变换（设为$\sigma$）在不同基下的矩阵，因此$X$和$Y$只是$\sigma$关于$\lambda_0$在两组基下的坐标，因此二坐标之间相差一个过渡矩阵.
 
 最后我们谈一个拓展题型，我们考虑矩阵方程$AX-XB=O$，若$A,B$都是$n$阶方阵且$X$可逆，则方程可以改写为$X^{-1}AX=B$，即$A$与$B$相似. 事实上，这一矩阵方程的解空间的维数实际上刻画了$A$与$B$的相似程度. 我们有如下结论：
 \begin{theorem}{}{}
@@ -530,46 +530,46 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 设$\lambda_1,\ldots,\lambda_r$是$A$和$B$的$r$个公共特征值，$\alpha_1,\ldots,\alpha_r$为$A$相应的特征向量.由于$\lambda_1,\ldots,\lambda_r$也是$B^\mathrm{T}$的特征值，设$\beta_1,\ldots,\beta_r$是$B^\mathrm{T}$相应的特征向量.则$B^\mathrm{T}\beta_i=\lambda_i\beta_i$，从而$\beta_i^{\mathrm{T}}B=\lambda\beta_i^{\mathrm{T}}$.下面我们证明$X=(\alpha_1,\ldots,\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}$是$AX-XB=0$的解.
+        \item 设$\lambda_1,\ldots,\lambda_r$是$A$和$B$的$r$个公共特征值，$\alpha_1,\ldots,\alpha_r$为$A$相应的特征向量. 由于$\lambda_1,\ldots,\lambda_r$也是$B^\mathrm{T}$的特征值，设$\beta_1,\ldots,\beta_r$是$B^\mathrm{T}$相应的特征向量. 则$B^\mathrm{T}\beta_i=\lambda_i\beta_i$，从而$\beta_i^{\mathrm{T}}B=\lambda\beta_i^{\mathrm{T}}$. 下面我们证明$X=(\alpha_1,\ldots,\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}$是$AX-XB=0$的解.
 
-        事实上，$AX=A(\alpha_1,\ldots,\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}=(\lambda_1\alpha_1,\ldots,\lambda_r\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}=\lambda_1\alpha_1\beta_1+\cdots+\lambda_r\alpha_r\beta_r$，$XB=(\alpha_1,\ldots,\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}B=(\alpha_1,\ldots,\alpha_r)\cdot(\lambda_1\beta_1,\ldots,\lambda_r\beta_r)=(\lambda_1\alpha_1\beta_1+\cdots+\lambda_r\alpha_r\beta_1)$.故$AX-XB=0$.
+        事实上，$AX=A(\alpha_1,\ldots,\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}=(\lambda_1\alpha_1,\ldots,\lambda_r\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}=\lambda_1\alpha_1\beta_1+\cdots+\lambda_r\alpha_r\beta_r$，$XB=(\alpha_1,\ldots,\alpha_r)\cdot(\beta_1,\ldots,\beta_r)^\mathrm{T}B=(\alpha_1,\ldots,\alpha_r)\cdot(\lambda_1\beta_1,\ldots,\lambda_r\beta_r)=(\lambda_1\alpha_1\beta_1+\cdots+\lambda_r\alpha_r\beta_1)$. 故$AX-XB=0$.
 
         接下来证明$r(X)=r$.
-        注意到$r(\alpha_1,\ldots,\alpha_r)=r((\beta_1,\ldots,\beta_r)^\mathrm{T})=r$，故$r(X)\le r(\alpha_1,\ldots,\alpha_r)=r,r(X)\ge r(\alpha_1,\ldots,\alpha_r)+r((\beta_1,\ldots,\beta_r)^\mathrm{T})-r$，从而$r(X)=r$.
-        \item 设$X=P$\begin{pmatrix}
+        注意到$r(\alpha_1,\ldots,\alpha_r)=r((\beta_1,\ldots,\beta_r)^\mathrm{T})=r$，故$r(X)\leqslant r(\alpha_1,\ldots,\alpha_r)=r,r(X)\geqslant r(\alpha_1,\ldots,\alpha_r)+r((\beta_1,\ldots,\beta_r)^\mathrm{T})-r$，从而$r(X)=r$.
+        \item 设$X=P\begin{pmatrix}
             E_r & 0 \\
             0 & 0
-        \end{pmatrix}Q，则$AX-XB=0$，从而$P^{-1}AP$\begin{pmatrix}
+        \end{pmatrix}Q$，则$AX-XB=0$，从而$P^{-1}AP\begin{pmatrix}
             E_r & 0 \\
             0 & 0
-        \end{pmatrix}$=$
+        \end{pmatrix} =
         \begin{pmatrix}
             E_r & 0 \\
             0 & 0
-        \end{pmatrix}$QBQ^{-1}$.
+        \end{pmatrix}QBQ^{-1}$.
 
-        设$C=P^{-1}AP=$\begin{pmatrix}
+        设$C=P^{-1}AP=\begin{pmatrix}
             C_1 & C_2 \\
             C_3 & C_4
-        \end{pmatrix}，
-        $D=QBQ^{-1}=$\begin{pmatrix}
+        \end{pmatrix}$，
+        $D=QBQ^{-1}=\begin{pmatrix}
             D_1 & D_2 \\
             D_3 & D_4
-        \end{pmatrix}.则
-        \begin{pmatrix}
+        \end{pmatrix}$. 则
+        $\begin{pmatrix}
             C_1 & C_2 \\
             C_3 & C_4
         \end{pmatrix}\begin{pmatrix}
             E_r & 0 \\
             0 & 0
-        \end{pmatrix}$=$\begin{pmatrix}
+        \end{pmatrix} = \begin{pmatrix}
             E_r & 0 \\
             0 & 0
         \end{pmatrix}\begin{pmatrix}
             D_1 & D_2 \\
             D_3 & D_4
-        \end{pmatrix}，从而知$C_1=D_1$，$C_2=D_3=0$.
-        由于$|\lambda E-C|=|\lambda E_r-C_1||\lambda E_{n-r}-C_4|$，$|\lambda E-D|=|\lambda E_r-D_1||\lambda E_{m-r}-D_4|$，而$|\lambda E_r-C_1|$是一个关于$\lambda$的$r$次多项式，在复数域上有$r$个根（计重数），它们是$C$的特征值，同时也为$D$的特征值.从而$C$和$D$至少有$r$个公共的特征值.而相似变换不改变矩阵的特征值，这表明$A,B$至少有$r$个公共的特征值.
+        \end{pmatrix}$，从而知$C_1=D_1$，$C_2=D_3=0$.
+        由于$|\lambda E-C|=|\lambda E_r-C_1||\lambda E_{n-r}-C_4|$，$|\lambda E-D|=|\lambda E_r-D_1||\lambda E_{m-r}-D_4|$，而$|\lambda E_r-C_1|$是一个关于$\lambda$的$r$次多项式，在复数域上有$r$个根（计重数），它们是$C$的特征值，同时也为$D$的特征值. 从而$C$和$D$至少有$r$个公共的特征值. 而相似变换不改变矩阵的特征值，这表明$A,B$至少有$r$个公共的特征值.
     \end{enumerate}
 \end{proof}
 
@@ -815,7 +815,7 @@
 
     以此类推，在等式两边不断左乘$(A-\lambda E)$可知：对于$\forall r \in \{1,\cdots,s-1\}$都有$\displaystyle\sum_{i=1}^{s-r}k_{i+r}\alpha_i=0$.
 
-    令$r=s-1$得到$k_s\alpha_1=0,k_s=0$.再依次代回不难得到$k_i=0,\forall i \in \{1,\cdots,s\}$，从而向量组$\alpha_1,\cdots,\alpha_s$线性无关.
+    令$r=s-1$得到$k_s\alpha_1=0,k_s=0$. 再依次代回不难得到$k_i=0,\forall i \in \{1,\cdots,s\}$，从而向量组$\alpha_1,\cdots,\alpha_s$线性无关.
 \end{proof}
 
 \section{实数域与复数域的讨论}
@@ -831,7 +831,7 @@
 
 这一命题也可以不使用特征多项式解决，下面我们给出一种不使用行列式、特征多项式的证明方法：
 \begin{proof}
-    对于$v \in V,v \neq 0$，$v,\sigma(v),\cdots,\sigma^n(v)$线性相关，从而存在不全为$0$的复数$a_0,a_1,\cdots,a_n$，使得$a_0v+a_1\sigma(v)+\cdots+a_n\sigma^n(v)=0$.由于$v \neq 0$，故$a_1,\cdots,a_n$不全为$0$.
+    对于$v \in V,v \neq 0$，$v,\sigma(v),\cdots,\sigma^n(v)$线性相关，从而存在不全为$0$的复数$a_0,a_1,\cdots,a_n$，使得$a_0v+a_1\sigma(v)+\cdots+a_n\sigma^n(v)=0$. 由于$v \neq 0$，故$a_1,\cdots,a_n$不全为$0$.
 
     令$f(z)=\displaystyle\sum_{i=0}^{n}a_iz^i=c\displaystyle\prod_{i=1}^{m}(z-\lambda_i)$，则$0=f(\sigma)(v)=c(\sigma-\lambda_1I)\cdots(\sigma-\lambda_mI)v$，这表明$\exists j\in \{1,\cdots,m\}$使得$(\sigma-\lambda_jI)$不是单的，从而$\sigma$有本征值.
 \end{proof}
