@@ -1,0 +1,123 @@
+\makeatletter
+   \def\input@path{{..}} % 搜索上层目录的 LALUbook
+\makeatother
+
+\documentclass[
+    % colors = false,
+    geometry = 16k,
+]{LALUbook}
+
+\usepackage{booktabs} % Excel 导出的大表格
+
+\usetikzlibrary{arrows, arrows.meta, calc, intersections, decorations.pathreplacing, patterns, decorations.markings}
+
+\title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学习题答案}
+\author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
+
+\AtEndPreamble{\hypersetup{
+    pdfauthor = {吴一航},
+    pdftitle = {线性代数荣誉课辅学习题答案},
+}}
+
+\newcounter{LUsection}
+
+\makeatletter
+\newcommand*{\LUgroupsancheck}{%
+\expandafter\@ifundefined{@exist@LUsection@\arabic{section}}%
+    {}
+    {\endgroup}
+}
+\let\@std@section\section
+\renewcommand*{\section}{%
+    \LUgroupsancheck%
+    \@std@section
+}
+\makeatother
+
+\NewDocumentCommand{\LUsection}{m}{%
+\LUgroupsancheck
+\begingroup
+\addtocounter{section}{-1}
+\refstepcounter{LUsection}
+\renewcommand*{\thesection}{未竟专题\zhnumber{\arabic{LUsection}}}
+\renewcommand*{\theHsection}{LU.\arabic{LUsection}}
+\ctexset{
+    section={format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUsection}}}},
+}
+\csname @std@section\endcsname{#1}
+\expandafter\xdef\csname @exist@LUsection@\arabic{section}\endcsname{\null}
+}
+
+\begin{document}
+\frontmatter
+
+\pdfbookmark[0]{目录}{contents}
+\tableofcontents
+
+\addtolength{\parskip}{.5em}
+
+\mainmatter
+
+\ctexset{
+    chapter={format={\centering\Huge\bfseries},name={,},number={}},
+    section={format={\raggedright\Large\bfseries},name={第,讲},number={\arabic{section}}},
+}
+\renewcommand*{\thechapter}{}
+\renewcommand*{\thesection}{第\arabic{section}讲}
+
+\chapter{《线性代数：未竟之美》习题参考答案}
+\titleformat{\subsection}[block]{\centering\heiti\bfseries}{}{1em}{}
+\input{LALU-ans-contents.tex}
+
+\LUgroupsancheck
+
+\makeatletter
+\let\section\@std@section
+\let\@std@section\relax
+\makeatother
+
+\ctexset{
+    section={format={\raggedright\Large\bfseries},name={,},number={}},
+}
+\renewcommand*{\thesection}{}
+
+% 线代I期中/练习
+\chapter{线性代数I（H）期中/小测历年卷试题集}
+\input{./历年卷/2020-2021-1extzy1.tex}
+\input{./历年卷/2020-2021-1extzy2.tex}
+\input{./历年卷/2020-2021-1midwzx.tex}
+\input{./历年卷/2021-2022-1exlks.tex}
+\input{./历年卷/2021-2022-1midwzx.tex}
+\input{./历年卷/2022-2023-1midlks.tex}
+\input{./历年卷/2022-2023-1midtzy.tex}
+\input{./历年卷/2022-2023-1midwzx.tex}
+
+% 线代I期末
+\chapter{线性代数I（H）期末历年卷试题集}
+\input{./历年卷/2009-2010-1final.tex}
+\input{./历年卷/2010-2011-1final.tex}
+\input{./历年卷/2011-2012-1final.tex}
+\input{./历年卷/2012-2013-1final.tex}
+\input{./历年卷/2013-2014-1final.tex}
+\input{./历年卷/2014-2015-1final.tex}
+\input{./历年卷/2018-2019-1final.tex}
+\input{./历年卷/2019-2020-1final.tex}
+\input{./历年卷/2021-2022-1final.tex}
+\input{./历年卷/2022-2023-1final.tex}
+
+% 线代II期中/练习
+\chapter{线性代数II（H）期中/小测历年卷试题集}
+\input{./历年卷/2020-2021-2midlks.tex}
+\input{./历年卷/2020-2021-2exlks.tex}
+\input{./历年卷/2020-2021-2midtzy.tex}
+\input{./历年卷/2022-2023-2midlks.tex}
+\input{./历年卷/2022-2023-2midwzx.tex}
+
+% 线代II期末
+\chapter{线性代数II（H）期末历年卷试题集}
+\input{./历年卷/2022-2023-2finalex.tex}
+\input{./历年卷/2022-2023-2final.tex}
+
+\backmatter
+
+\end{document}

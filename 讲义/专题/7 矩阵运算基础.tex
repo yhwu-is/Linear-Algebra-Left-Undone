@@ -6,13 +6,179 @@
 
 \subsection{矩阵乘法的定义与基本性质}
 
-我们首先给出矩阵乘法的定义：
+我们在前文证明过线性映射的复合仍然是线性映射，当我们写出 $(\tau{\color{lightgray}\circ}\sigma)(\alpha) = \tau(\sigma(\alpha))$ 时我们通过映射复合定义了映射的乘法（只有这样才能在形式上说结合律成立）. 于是矩阵作为一种特殊的映射，其乘法应当继承自矩阵的复合，我们注意到映射 $\tau\sigma$ 能够存在的条件是 $\tau$ 的出发空间和 $\sigma$ 的到达空间相同，即两个映射可以通过一个公共的中间空间``连接''起来
+\[
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        V_1 \arrow[r, "\sigma"] \arrow[rr, bend right, "\tau{\color{lightgray}{}\circ{}}\sigma"'] & V_2 \arrow[r, "\tau"] & V_3
+    \end{tikzcd}
+\]
+
+我们假设读者已经熟知映射的相乘即复合，在后文中我们将会省去映射复合的符号 ${\color{lightgray}\circ}$.  那么将 $V_1, V_2, V_3$ 分别替换为我们熟悉的 $\mathbf{F}^n, \mathbf{F}^m, \mathbf{F}^p$，我们就理应能够将 $p\times m$ 和 $m\times n$ 的两个矩阵相乘
+\[
+    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+    \begin{tikzcd}
+        \mathbf{F}^n \arrow[r, "B"] \arrow[rr, bend right, "AB"'] & \mathbf{F}^m \arrow[r, "A"] & \mathbf{F}^p
+    \end{tikzcd}
+\]
+
+由于复合的映射的复合是线性映射，那么矩阵的乘法应该给出一个矩阵 $AB\in\mathbf{F}^{p\times n}$. 那么让我们动手计算一下
+\begin{align*}
+    (AB)(x) &= A(Bx) \\
+    &= \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1m} \\
+        a_{21} & a_{22} & \cdots & a_{2m} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{p1} & a_{p2} & \cdots & a_{pm}
+    \end{pmatrix} \left( \begin{pmatrix}
+        b_{11} & b_{12} & \cdots & b_{1n} \\
+        b_{21} & b_{22} & \cdots & b_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        b_{m1} & b_{m2} & \cdots & b_{mn}
+    \end{pmatrix} \begin{pmatrix}
+        x_1 \\ x_2 \\ \cdots \\ x_n
+    \end{pmatrix} \right)\\
+    &= \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1m} \\
+        a_{21} & a_{22} & \cdots & a_{2m} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{p1} & a_{p2} & \cdots & a_{pm}
+    \end{pmatrix} \begin{pmatrix}
+        \sum_{j=1}^n b_{1j} x_j \\
+        \sum_{j=1}^n b_{2j} x_j \\
+        \vdots \\
+        \sum_{j=1}^n b_{mj} x_j
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \sum_{k=1}^m a_{1k} b_{kj} x_j \\
+        \sum_{k=1}^m a_{2k} b_{kj} x_j \\
+        \vdots \\
+        \sum_{k=1}^m a_{pk} b_{kj} x_j
+    \end{pmatrix} \\
+    &= \begin{pmatrix}
+        \sum_{k=1}^m a_{1k} b_{k1} & \sum_{k=1}^m a_{1k} b_{k2} & \cdots & \sum_{k=1}^m a_{1k} b_{kn} \\
+        \sum_{k=1}^m a_{2k} b_{k1} & \sum_{k=1}^m a_{2k} b_{k2} & \cdots & \sum_{k=1}^m a_{2k} b_{kn} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \sum_{k=1}^m a_{pk} b_{k1} & \sum_{k=1}^m a_{pk} b_{k1} & \cdots & \sum_{k=1}^m a_{pk} b_{kn}
+    \end{pmatrix} \begin{pmatrix}
+        x_1 \\ x_2 \\ \vdots \\ x_n
+    \end{pmatrix}\\
+\end{align*}
+
+设 $C = AB$，则矩阵相乘结果中有
+\[
+    c_{ij} = \sum_{k=1}^m a_{ik} b_{kj}
+\]
+
+矩阵乘法 $AB$ 表现为 $A$ 的行和 $B$ 的列的点乘，于是我们可以给出矩阵乘法的定义：
 \begin{definition}{}{}
     设$A=(a_{ij})_{p\times m},B=(b_{ij})_{m\times n}$，我们定义$A$与$B$的乘积矩阵$C=AB=(c_{ij})_{p\times n}$是一个$p\times n$矩阵，其中它的第$i$行第$j$列元素为矩阵$A$的第$i$行与矩阵$B$的第$j$列对应位置元素相乘后求和的结果，即
-    \[c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj}\enspace(i=1,\ldots,p,\enspace j=1,\ldots,n).\]
+    \[
+        c_{ij}
+        =\sum_{k=1}^m a_{ik} b_{kj}
+        =a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj}\enspace(i=1,\ldots,p,\enspace j=1,\ldots,n).
+    \]
 \end{definition}
 
-事实上，这一定义带给我们的感受与我们在上一讲定义矩阵加法和数乘时的直观不同，在我们初看这一定义时必然会产生一个疑惑：为什么矩阵乘法定义得如此复杂，为什么不定义成两个矩阵对应元素相乘就可以了呢？事实上，这是因为矩阵乘法的定义来源于线性映射的复合的矩阵表示. 教材124--125页的推导通过线性映射的复合运算定义了矩阵的乘法运算，由于篇幅的限制，我们这里不再将教材中已有的内容重复. 在此我们给出两个线性映射的角度来理解矩阵乘法：
+这一定义带给我们的感受与我们在上一讲定义矩阵加法和数乘时的直观不同，如果脱离了映射复合的背景，在我们初看这一定义时必然会产生一个疑惑：为什么矩阵乘法定义得如此复杂，为什么不定义成两个矩阵对应元素相乘就可以了呢？事实上，只有这么定义，才能使结合律 $(AB)x = A(Bx)$ 在形式上变为可能，如果从输入第 $j$ 个分量对输出第 $i$ 个分量的权重来看，输入的第 $j$ 个分量可以通过 $b_{kj}, \enspace 1\leqslant k\leqslant m$ 对中间变量产生影响，而中间变量对输出第 $i$ 个分量的影响体现在 $a_{ik}, \enspace 1\leqslant k\leqslant m$，相乘时就必须要把这些影响对中间变量的每一项叠加起来，所以是 $a_{ik} b_{kj}$ 对 $k$ 的求和，最终导致了输入和输出指标固定，对中间指标求和. 如果从基的角度看：
+
+\begin{enumerate}
+    \item 设线性空间 $V_1(F), V_2(F), V_3(F)$ 的基分别为
+    \begin{align*}
+        B_1&=\{\varepsilon, \varepsilon_2,\ldots,\varepsilon_n\},
+        B_2&=\{\zeta_1,\zeta_2,\ldots,\zeta_m\},
+        B_3&=\{\eta_1,\eta_2,\ldots,\eta_p\}
+    \end{align*}
+    $\sigma \in L(V_1,V_2), \tau \in L(V_2,V_3)$，且 $\sigma, \tau$ 分别关于基 $B_1$ 和 $B_2$ 及基 $B_2$ 和 $B_3$ 的矩阵为 $B=(b_{i,j})_{m \times n}$ 和 $A=(a_{ij})_{p\times m}$，即：
+
+          $M(\tau)=A=\begin{pmatrix}
+                  a_{11} & a_{12} & \cdots & a_{1m} \\
+                  a_{21} & a_{22} & \cdots & a_{2m} \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  a_{p1} & a_{p2} & \cdots & a_{pm}
+              \end{pmatrix}$,
+          $M(\sigma)=B=\begin{pmatrix}
+                  b_{11} & b_{12} & \cdots & b_{1n} \\
+                  b_{21} & b_{22} & \cdots & b_{2n} \\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  b_{m1} & b_{m2} & \cdots & b_{mn}
+              \end{pmatrix}$.
+
+    \item 则 $\tau\sigma \in L(V_1,V_3)$ 关于基 $B_1$ 和 $B_3$ 的矩阵 $C=(c_{ij})_{p\times n}$ 中第 $j$ 列元素 $c_{1j},c_{2j},\ldots,c_{pj}$ 是 $\tau\sigma(\varepsilon_j)$ 在基 $B_3$ 下的坐标. 于是有：
+          \begin{align*}
+            \tau\sigma(\varepsilon_j)
+            &=\tau(\sigma(\varepsilon_j))
+            &=\tau\left(\sum_{k=1}^{m}b_{kj}\zeta_k\right) \\
+            &=\sum_{k=1}^{m}b_{kj}\tau(\zeta_k) \\
+            &=\sum_{k=1}^{m}b_{kj}\left(\sum_{i=1}^{p}a_{ik}\eta_i\right) \\
+            &=\sum_{i=1}^{p}\left(\sum_{k=1}^{m}a_{ik}b_{kj}\right)\eta_i
+          \end{align*}
+
+          即得：$c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj}$. 换言之，表示矩阵的乘积等于乘积（复合）的表示矩阵，这也可以通过映射的复合得到简单的验证
+          \begin{align*}
+            \mathbf{M}_{\color{lightgray} B_2, B_3} (\tau) \mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)
+            &= (B_3^{-1} \tau B_2) (B_2^{-1} \sigma B_1) \\
+            &= B_3^{-1} \tau (B_2 B_2^{-1}) \sigma B_1 \\
+            &= B_3^{-1} (\tau \sigma) B_1 \\
+            &= \mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \sigma)
+          \end{align*}
+
+          如果从交换图的视角看，我们可以通过绘制箭头简单地看出，根据映射复合构造出的三个表示矩阵显然满足 $\mathbf{M}_{\color{lightgray} B_2, B_3} (\tau) \mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma) = \mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \sigma)$:
+          \[
+            \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+            \begin{tikzcd}
+                V_1
+                    \arrow[rr, "\sigma"]
+                    \arrow[rrrr, bend left, "\tau\sigma"]
+                    \arrow[d, shift left, lightgray, "B_1^{-1}"]
+                && V_2
+                    \arrow[rr, "\tau"]
+                    \arrow[d, shift left, lightgray, "B_2^{-1}"]
+                && V_3
+                    \arrow[d, shift left, lightgray, "B_3^{-1}"]
+                \\ \mathbf{F}^n
+                    \arrow[u, shift left, "B_1"]
+                    \arrow[rrrr, bend right, "\mathbf{M}_{\color{lightgray} B_1, B_3} (\tau\sigma)"']
+                    \arrow[rr, "\mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)"']
+                && \mathbf{F}^m
+                    \arrow[u, shift left, "B_2"]
+                    \arrow[rr, "\mathbf{M}_{\color{lightgray} B_2, B_3} (\tau)"']
+                && \mathbf{F}^p
+                    \arrow[u, shift left, "B_3"]
+            \end{tikzcd}
+          \]
+
+          但是需要注意的是，这要求在两个映射矩阵表示的基底选择中，$V_2$ 选取的基底是相同的，否则这个过程就会失败，基底不同时我们就无法写出 $\mathbf{M}(\tau)\mathbf{M}(\sigma) = \mathbf{M}(\tau\sigma)$
+          \[
+            \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+            \begin{tikzcd}
+                & V_1
+                    \arrow[rd, "\sigma"]
+                    \arrow[rr, "\tau\sigma"]
+                    \arrow[dl, shift left, lightgray, "B_1^{-1}"]
+                && V_3
+                    \arrow[dr, shift left, lightgray, "B_3^{-1}"]
+                \\ \mathbf{F}^n
+                    \arrow[ur, shift left, "B_1"]
+                    \arrow[rrrr, bend right=90, "\mathbf{M}_{\color{lightgray} B_1, B_3} (\tau\sigma)"']
+                    \arrow[rd, "\mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)"']
+                && V_2
+                    \arrow[ur, "\tau"]
+                    \arrow[dl, shift left, lightgray, "B_2^{-1}"]
+                    \arrow[dr, shift left, lightgray, "(B_2')^{-1}"]
+                && \mathbf{F}^p
+                    \arrow[ul, shift left, "B_3"]
+                \\ & \mathbf{F}^m
+                    \arrow[ur, shift left, "B_2"]
+                    \arrow[rr, dashed, "?"']
+                && \mathbf{F}^m
+                    \arrow[ul, shift left, "B_2'"]
+                    \arrow[ur, "\mathbf{M}_{\color{lightgray} B_2', B_3} (\tau)"']
+            \end{tikzcd}
+          \]
+\end{enumerate}
+
+接下来我们再给出两个线性映射的例子来理解矩阵乘法：
 \begin{enumerate}
     \item 回顾上一节中提到的旋转$\theta$角的线性映射对应的矩阵$M_{\theta}=\begin{pmatrix}
                   \cos\theta & -\sin\theta \\
@@ -26,7 +192,7 @@
                   \end{pmatrix}\begin{pmatrix}
                                    \cos\theta_1 & -\sin\theta_1 \\
                                    \sin\theta_1 & \cos\theta_1
-                               \end{pmatrix}                                                              \\
+                               \end{pmatrix} \\
                & =\begin{pmatrix}
                       \cos\theta_2\cos\theta_1-\sin\theta_2\sin\theta_1 & -\cos\theta_2\sin\theta_1-\sin\theta_2\cos\theta_1 \\
                       \sin\theta_2\cos\theta_1+\cos\theta_2\sin\theta_1 & -\sin\theta_2\sin\theta_1+\cos\theta_2\cos\theta_1
@@ -38,7 +204,7 @@
           \end{align*}
           这表明矩阵乘法$M_{\theta_2}M_{\theta_1}$的结果确实与$\sigma_2\sigma_1$的矩阵表示$M_{\theta_1+\theta_2}$一致.
 
-    \item 回顾线性映射的复合，若复合$\sigma_1\sigma_2$符合定义，则必须有$\sigma_2$的到达空间恰好是$\sigma_1$的出发空间，故两空间维数一致，那么$\sigma_1$对应的矩阵$A$的列数和$\sigma_2$对应的矩阵$B$的行数一致，这也是我们要求两个矩阵$A,B$可乘的重要条件的来源. 而最后乘法的结果行数等于$A$的行数，列数等于$B$的列数，这也与$\sigma_1\sigma_2$出发空间为$\sigma_2$出发空间（对应于$B$的列数），到达空间为$\sigma_1$到达空间（对应于$A$的行数）一致.
+    \item 我们在此再次强调矩阵相乘时左侧矩阵的列数应该等于右边矩阵的行数：回顾线性映射的复合，若复合$\sigma_1\sigma_2$符合定义，则必须有$\sigma_2$的到达空间恰好是$\sigma_1$的出发空间，故两空间维数一致，那么$\sigma_1$对应的矩阵$A$的列数和$\sigma_2$对应的矩阵$B$的行数一致，这也是我们要求两个矩阵$A,B$可乘的重要条件的来源. 而最后乘法的结果行数等于$A$的行数，列数等于$B$的列数，这也与$\sigma_1\sigma_2$出发空间为$\sigma_2$出发空间（对应于$B$的列数），到达空间为$\sigma_1$到达空间（对应于$A$的行数）一致.
 \end{enumerate}
 
 \begin{example}{}{}
@@ -53,10 +219,25 @@
 \end{example}
 
 \begin{solution}
-    见教材126页例1.
+    $AB =\begin{pmatrix}
+            0-3 & 3-1   \\
+            1-9 & 3+2-3
+        \end{pmatrix}=\begin{pmatrix}
+            -3 & 2 & -8 & 2
+        \end{pmatrix}$,
+
+    $BA=\begin{pmatrix}
+            0+3 & 0+3 & 0-9  \\
+            1+2 & 0+2 & -1-6 \\
+            3+1 & 0+1 & -3-3
+        \end{pmatrix}=\begin{pmatrix}
+            3 & 3 & -9 \\
+            3 & 2 & -7 \\
+            4 & 1 & -6
+        \end{pmatrix}$.
 \end{solution}
 
-教材125页下方也介绍了几个矩阵运算的基本性质：
+接下来给出矩阵运算的几个基本性质：
 \begin{enumerate}
     \item $(AB)C=A(BC)$（结合律）
 
@@ -66,17 +247,17 @@
 
     \item $(B+C)P=BP+CP$（右分配律）
 \end{enumerate}
-证明方法十分简单暴力：直接设出矩阵元素然后暴力计算证明等号两边对应位置（如第$i$行第$j$列元素）相等即可. 125页下方给出了结合律的证明，感兴趣的同学可以参考，实际上记住结论即可.
+证明方法十分简单：使用映射的结合律、线性性和分配律直接证明对应的几何版本的正确性，或者直接暴力设出矩阵元素然后暴力计算证明等号两边对应位置（如第$i$行第$j$列元素）相等也是可行的.
 
 实际上，由矩阵加法和乘法满足的运算律可知，全体$n$阶方阵构成的集合$\mathbf{F}^{n\times n}$关于矩阵加法和乘法构成环.
 
 在本节最后，我们有四个非常重要的问题需要仔细探讨：
 \begin{enumerate}
-    \item 在有了矩阵乘法的定义后，高斯消元法中我们将线性方程组简记为$AX=b$实际上是相当自然的，除此之外，我们将向量坐标表示为列向量的形式，例如
-          \[\vec{\alpha}=(\alpha_1,\alpha_2,\ldots,\alpha_n)\begin{pmatrix}
+    \item 在有了矩阵乘法的定义后，高斯消元法中我们将线性方程组简记为$AX=b$实际上是相当自然的，除此之外，我们将向量坐标表示为列向量的形式，例如将向量 $v$ 对基 $\alpha$ 分解
+          \[v=(\alpha_1,\alpha_2,\ldots,\alpha_n)\begin{pmatrix}
                   x_1 \\ x_2 \\ \vdots \\ x_n
               \end{pmatrix}\]
-          这也是符合矩阵乘法定义的一种习惯（虽然基一般不是数域$\mathbf{F}$中的元素）.
+          这也是符合矩阵形式乘法定义的一种习惯（虽然基一般不是数域$\mathbf{F}$或者向量空间$\mathbf{F}^m$中的元素）.
 
     \item 事实上，在这里我们可以看出求解线性方程组和线性映射之间的关联. 我们设$AX=b$的解为
           \[X=\begin{pmatrix}
@@ -94,7 +275,7 @@
           \begin{equation}\label{eq:7:方程组与核空间2}
               \sigma(x_1\varepsilon_1+x_2\varepsilon_2+\cdots+x_n\varepsilon_n)=b.
           \end{equation}
-          由此我们将线性方程组的求解问题和找到线性映射到达空间中某个向量在出发空间中原像的坐标联系起来了，即将求解$AX=b$和求解$\sigma(a)=b$联系起来了，只是我们求解后者后还需要求出$a$在矩阵表示基下的坐标.
+          由此我们将线性方程组的求解问题和找到线性映射到达空间中某个向量在出发空间中原像的坐标联系起来了，即将求解$AX=b$和求解$\sigma(a)=b$联系起来了，只是我们求解后者时通常是对于一般的向量空间而言的，这时求解是通过求出$a$在矩阵表示基下的坐标实现的.
 
           若前述$b=0$，则我们将齐次线性方程组的解空间与线性映射的核空间联系起来了，即线性映射的核空间中元素在一组基下的向量就是这一线性映射在这组基下的矩阵表示作为系数矩阵的线性方程组的解. 这一联系将在\nameref{chap:朝花夕拾}中有更深入的讨论.
 
@@ -132,11 +313,16 @@
 
     \item 之后我们会经常看见两种记号，即
           \begin{align*}
-              (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n)) & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A \\
-              \sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)                   & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A
+              (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))
+              & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A \\
+              \sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)
+              & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A
           \end{align*}
           教材中两个记号是等价的，这只是记号上的差别，含义完全相同. 但是在之后我们还会看到一个很特别的书写方式
-          \[(\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))B=\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)B)\]
+          \[
+            (\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))B
+            =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)B)
+          \]
           教材不加解释地使用了这一等式，这容易导致读者的困惑，因此我们这里简要说明它们的确是等价的，从而接下来读者可以放心地自由使用这一结论.
 
           根据上述的第一个性质可知，我们只需要证明对$B$的某一列上式成立即可，因为乘法结果是列与列对应的. 我们设$B$的第$k$列为
@@ -166,10 +352,10 @@
 \begin{enumerate}[label=(\arabic*)]
     \item 矩阵乘法不一定满足交换律（即$AB$不一定等于$BA$，事实上随手写两个矩阵，很大的概率就是不交换的，甚至交换过来不可乘）. 因此实数的完全平方公式代入矩阵不一定成立，即很多时候$(A+B)^2=A^2+AB+BA+B^2\neq A^2+2AB+B^2$；
 
-    \item 但是注意数量矩阵（即对角线上元素都相等，其余均为0，单位矩阵是其特例）和任何矩阵相乘都是可交换的，这一点在矩阵求幂时很有用；
+    \item 但是注意数量矩阵（即对角线上元素都相等，其余均为0，单位矩阵是其特例）和任何同阶的矩阵相乘都是可交换的，这一点在矩阵求幂时很有用；
 
     \item \label{item:7:矩阵乘法:3}
-          $A\neq O$且$B\neq O$不能推出$AB\neq O$. 例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$.
+          $A\neq O$且$B\neq O$不能推出$AB\neq O$. 例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$ 在环上这种元素通常被称为零因子.
 
     \item 消去律也不一定满足：即$AB = AC$不一定$A = B$. 原因在于$AB=AC \implies A(B-C)=O$，由 \ref*{item:7:矩阵乘法:3} 可知不一定$B = C$.
 \end{enumerate}
@@ -178,17 +364,17 @@
 
 我们在线性空间中已经介绍过，我们一般用$\mathbf{F}[x]_{m+1}$表示数域$\mathbf{F}$上的次数最高为$m$的多项式全体，其中的元素我们一般记为
 \[p(x)=a_mx^m+a_{m-1}x^{m-1}+\cdots+a_1x+a_0,\enspace a_i\in\mathbf{F}\enspace(i=1,2,\ldots,m)\]
-事实上这里的自变量不一定需要是一个数，也可以是线性映射或者矩阵. 例如线性映射$\sigma:V\to V$构成的$m$次多项式可以记为
+我们发现这里的自变量不一定需要是一个数，也可以是线性变换或者方阵，因为只要可以和自己相乘就能定义乘方. 例如线性映射$\sigma:V\to V$构成的$m$次多项式可以记为
 \[p(\sigma)=a_m\sigma^m+a_{m-1}\sigma^{m-1}+\cdots+a_1\sigma+a_0I\]
 其中$\sigma^i$表示$\sigma$复合$i$次，$I$表示恒等映射. 我们很容易说明当$\sigma$在$V$的一组基下矩阵表示为$A$时，$p(\sigma)$在同一组基下的矩阵表示为
 \[p(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E,\]
 其中$E$表示单位矩阵. 由此我们便得到了矩阵多项式的定义，我们有如下几点需要强调：
 \begin{enumerate}
-    \item 这里我们要求$\sigma$是线性变换（即出发空间和到达空间一致），事实上也并不必要，只需出发空间和到达空间维数相同即可，因为我们的目的是保证矩阵的幂次可以定义（即$A$和$A$可乘，因此$A$的行列数一致）；
+    \item 这里我们要求$\sigma$是线性变换（即出发空间和到达空间一致），因为只有满足这一条件才能复合. 对于矩阵而言，其作用在标准 $n$ 维向量空间 $\mathbf{F}^n$ 上，所以矩阵可求幂即要求出发空间和到达空间维数相同即可，这样才能保证矩阵的幂次可以定义（即$A$和$A$可乘，因此$A$的行列数一致）；
 
-    \item 上面的定义隐含：$\sigma^0 = I$，$A^0=E$；
+    \item 上面的定义隐含：$\sigma^0 = I, A^0=E$；
 
-    \item $A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$，其中$A$为方阵，$k,m$为任意整数. 负整数对应于逆矩阵的情况，接下来可逆的部分会作进一步解释.
+    \item $A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$，其中$A$为方阵，$k,m$为任意正整数. 当 $A$ 可逆时这一式可以拓展到全体整数，负整数对应于逆矩阵的情况，接下来可逆的部分会作进一步解释.
 \end{enumerate}
 
 \begin{example}{}{}
@@ -216,7 +402,7 @@
 \begin{solution}
     我们可以直接证明第二点，因为第一点是第二点的特例. 设$f(x)=\displaystyle\sum_{i=0}^ma_ix^i$，$g(x)=\displaystyle\sum_{j=0}^sb_jx^j$，$A^0=B^0=E$，则
     \begin{align*}
-        f(A)g(B) & =\sum_{i=0}^ma_iA^i\cdot \sum_{j=0}^sb_jB^j(AB=BA)                                 \\
+        f(A)g(B) & =\sum_{i=0}^ma_iA^i\cdot \sum_{j=0}^sb_jB^j\quad(AB=BA)                            \\
                  & =\sum_{k=0}^{m+s}\sum_{i+j=k}a_ib_jA^iB^j=\sum_{k=0}^{m+s}\sum_{i+j=k}b_ja_iB^jA^i \\
                  & =g(B)f(A).
     \end{align*}
@@ -247,7 +433,7 @@
     然后求解核空间，我们设$\sigma(\varepsilon)=0$，将$\varepsilon$写成出发空间基的表示后事实上就是\autoref{eq:7:方程组与核空间2} 的形式，我们已说明这一形式与\autoref{eq:7:方程组与核空间1} 等价，因此我们只需求解$AX=0$然后代回出发空间的基即可，最终结果为$\ker\sigma=\spa(4\varepsilon_1+3\varepsilon_2-2\varepsilon_3)$.
 \end{solution}
 
-总结一下，此类题目求解像空间实际上就是求出矩阵列向量的极大线性无关组，然后记得把基添加回来. 求解核空间只需求解齐次线性方程组$AX=0$即可.
+总结一下，此类题目求解像空间实际上就是求出矩阵列向量的极大线性无关组，然后记得将结果对到达空间的基向量做线性组合. 求解核空间只需求解齐次线性方程组$AX=0$并将解对出发空间的基向量即可.
 
 \begin{example}{}{矩阵表示3}
     已知3阶矩阵$A=\begin{pmatrix}
@@ -274,19 +460,28 @@
             0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
         \end{pmatrix}$.
 
-    根据$\sigma$的定义我们可以求得$\sigma(E_{11})=\sigma(E_{31})=\begin{pmatrix}
+    根据$\sigma$的定义我们可以求得
+    \begin{align*}
+        \sigma(E_{11})&=\sigma(E_{31})=\begin{pmatrix}
             1 & 0 & 0 \\ 0 & 0 & 0 \\ -1 & 0 & 0
-        \end{pmatrix},\enspace \sigma(E_{12})=\sigma(E_{32})=\begin{pmatrix}
+        \end{pmatrix}, &
+        \sigma(E_{12})&=\sigma(E_{32})=\begin{pmatrix}
             0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & -1 & 0
-        \end{pmatrix},\enspace \sigma(E_{13})=\sigma(E_{33})=\begin{pmatrix}
+        \end{pmatrix}, \\
+        \sigma(E_{13})&=\sigma(E_{33})=\begin{pmatrix}
             0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & -1
-        \end{pmatrix},\sigma(E_{21})=\begin{pmatrix}
+        \end{pmatrix}, &
+        \sigma(E_{21})&=\begin{pmatrix}
             0 & 0 & 0 \\ -1 & 0 & 0 \\ 1 & 0 & 0
-        \end{pmatrix},\enspace \sigma(E_{22})=\begin{pmatrix}
+        \end{pmatrix}, \\
+        \sigma(E_{22})&=\begin{pmatrix}
             0 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 1 & 0
-        \end{pmatrix},\enspace \sigma(E_{23})=\begin{pmatrix}
+        \end{pmatrix}, &
+        \sigma(E_{23})&=\begin{pmatrix}
             0 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 0 & 1
-        \end{pmatrix}$. 所以$\sigma$的像空间为上述六个矩阵线性扩张而成的空间，即$\im\sigma=\spa(\sigma(E_{11}),\sigma(E_{12}),\sigma(E_{13}),\sigma(E_{21}),\sigma(E_{22}),\sigma(E_{23}))$. 又由\nameref{thm:线性映射基本定理}可知，$\dim\im\sigma=n-\dim\ker\sigma=6$，因此像空间就是这六个矩阵线性扩张而成的空间.
+        \end{pmatrix}.
+    \end{align*}
+    所以$\sigma$的像空间为上述六个矩阵线性扩张而成的空间，即$\im\sigma=\spa(\sigma(E_{11}),\sigma(E_{12}),\sigma(E_{13}),\sigma(E_{21}),\sigma(E_{22}),\sigma(E_{23}))$. 又由\nameref{thm:线性映射基本定理}可知，$\dim\im\sigma=n-\dim\ker\sigma=6$，因此像空间就是这六个矩阵线性扩张而成的空间.
 \end{solution}
 
 实际上，\autoref{ex:矩阵表示2} 和\autoref{ex:矩阵表示3} 都属于已知映射求像和核的题目，求解方法仍然是原先介绍的方法，只是\autoref*{ex:矩阵表示2} 没有像\autoref{ex:矩阵表示1} 或\autoref*{ex:矩阵表示3} 给出了线性映射的定义，而是给出矩阵表示，但这也完全不影响我们的求解.
@@ -295,11 +490,11 @@
 
 \subsection{可逆的基本概念}
 
-要引入矩阵的逆的概念，我们需要首先讨论线性映射的逆. 我们这里给出线性映射的逆的定义：
-\begin{definition}{线性映射的逆}{可逆映射} \index{ni@逆 (inverse)}
-    设$\sigma \in \mathcal{L}(V_1,V_2)$. 若存在$\tau \in \mathcal{L}(V_2,V_1)$使得$\sigma \tau = I_{V_2}$且$\tau \sigma = I_{V_1}$，则称$\sigma$\term{可逆}\index{ni!ke@可逆 (invertible)}，并称$\tau$为$\sigma$的逆映射\index{ni!yingshe@映射 (inverse map)}.
-\end{definition}
-其中$I_{V_1}$和$I_{V_2}$分别是$V_1$和$V_2$上的恒等映射.
+要引入矩阵的逆的概念，我们需要首先讨论线性映射的逆. 我们这里回顾线性映射的逆的定义：
+% \begin{definition}{线性映射的逆}{可逆映射} \index{ni@逆 (inverse)}
+设$\sigma \in \mathcal{L}(V_1,V_2)$. 若存在$\tau \in \mathcal{L}(V_2,V_1)$使得$\sigma \tau = I_{V_2}$且$\tau \sigma = I_{V_1}$，则称$\sigma$\term{可逆}\index{ni!ke@可逆 (invertible)}，并称$\tau$为$\sigma$的逆映射\index{ni!yingshe@映射 (inverse map)}. 其中$I_{V_1}$和$I_{V_2}$分别是$V_1$和$V_2$上的恒等映射.
+% \end{definition}
+
 
 在之前有关线性映射基本定理的讨论中，我们提到了双射的概念. 事实上，在映射的语境下，双射与可逆是完全等价的. 我们有如下定理：
 \begin{theorem}{}{}
@@ -315,7 +510,7 @@
     \item 由于双射要求单射和满射，而单射性与核空间维数为0等价，由线性映射基本定理，双射应有出发空间维数等于像空间维数，而满射性要求像空间维数等于到达空间维数，因此双射要求出发空间和到达空间必须维数相同.
 \end{enumerate}
 
-在\autoref{def:可逆映射} 的语境下，我们取$V_1$的一组基$B_1=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$，$V_2$的一组基$B_2=\{\beta_1,\beta_2,\ldots,\beta_n\}$（特别注意根据我们上述讨论两个空间维数一致），则$\sigma$关于$B_1$和$B_2$的矩阵为$A=(a_{ij})_{m \times n}$，$\tau$关于$B_2$和$B_1$的矩阵为$B=(b_{ij})_{n \times m}$.
+在\autoref{def:可逆映射} 的语境下，我们取$V_1$的一组基$B_1=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$，$V_2$的一组基$B_2=\{\beta_1,\beta_2,\ldots,\beta_n\}$（特别注意根据我们上述讨论两个空间维数一致），则$\sigma$在基$B_1$和$B_2$下的表示矩阵为$A=(a_{ij})_{m \times n}$，$\tau$关于$B_2$和$B_1$的矩阵为$B=(b_{ij})_{n \times m}$.
 
 我们知道线性映射的复合对应矩阵乘法，因此$\tau\sigma:V_1\to V_1$关于$V_1$的基$B_1$和$\sigma\tau:V_2\to V_2$关于$V_2$的基$B_2$对应的矩阵分别为$BA$和$AB$，而我们很容易证明恒等映射关于任何基的矩阵均为单位矩阵，因此我们有$BA=E$和$AB=E$. 由此我们从可逆映射的角度引入矩阵的逆的概念：
 \begin{definition}{矩阵的逆}{}
@@ -328,10 +523,25 @@
     可逆矩阵$A$的逆矩阵唯一.
 \end{theorem}
 
+\begin{proof}
+    若存在两个不同的矩阵 $B,C$ 使得 $BA=AB=CA=AC=E$，则必有 $B=BE=B(AC)=(BA)C=EC=C$，与假设矛盾.
+\end{proof}
+注意这个唯一性的证明，我们在证明群的单位元唯一时使用了完全一致的思想，请务必掌握.
+
 \begin{theorem}{}{}
     设$A,B\in \mathbf{M}_n(\mathbf{F})$，则$AB=E \iff A$与$B$互为逆矩阵（即对于方阵而言，$AB=E\iff BA=E\iff A,B$可逆）.
 \end{theorem}
-这两个定理的证明见教材130页. 特别注意唯一性的证明，我们在证明群的单位元唯一时使用了完全一致的思想，请务必掌握.
+
+\begin{proof}
+    只需证：若 $AB=E$，则必有 $BA=E$.
+    设 $A,B$ 分别是 $\sigma, \tau \in L(V,V)$ 关于 $V$ 的基 $B=\{\epsilon_1,\epsilon_2,\ldots,\epsilon_n\}$ 所对应的矩阵，则：$AB=E \iff \sigma\tau = I_V$.
+
+    因此要证明 $BA=E$，只需证明 $\tau\sigma=I_V$，由 $r(\sigma\tau)=r(I_V)=n \leqslant \min(r(\sigma),r(\tau))$，得：$r(\sigma)=r(\tau)=n$.
+
+    因此 $\forall \alpha \in V$，均存在唯一的 $\beta \in V$，使得 $\tau(\beta)=\alpha$，从而 $(\tau\sigma)(\alpha)=(\tau\sigma)(\tau(\beta))=\tau(\sigma\tau(\beta))=\tau(\beta)=\alpha$.
+
+    故 $\tau\sigma=I_V$，命题得证.
+\end{proof}
 
 \subsection{基本性质}
 
@@ -348,7 +558,7 @@
 
     \item $(A^k)^{-1}=(A^{-1})^k,\enspace A^kA^m=A^{k+m},\enspace (A^k)^m=A^{km}$；注意这里的$k$和$m$不一定需要非负，事实上负数就是逆矩阵的幂次或幂次的逆，如$A^{-2}=(A^{-1})^2=(A^2)^{-1}$；
 
-    \item 若$A$和$B$可逆，则$A\neq O$且$B\neq O$能推出$AB\neq O$，并且$A$可逆且$AB=O$可以推出$B=O$. 除此之外还有消去律成立，即$A \neq O$则有$AB=AC \implies B=C$成立.
+    \item 若 $A$ 可逆，则消去律成立，即 $AB=AC \implies B=C$ 成立，我们只需在 $AB=AC$ 的等式两边同时左乘 $A^{-1}$ 即可证明（$BA = CA$ 的情况也是成立的，只需要等式两边同时右乘 $A^{-1}$ 即可证明）. 这个结论的一个显然的推论是，若 $A$ 可逆且 $AB=O$（或 $BA = O$）可以推出 $B=O$（令 $C = O$ 即可）. 更进一步地，回忆在不可逆矩阵的情况下，即使 $A\neq O$ 且 $B\neq O$，我们也可能有 $AB = O$，但当 $A$（或 $B$）可逆时，根据前面的结论可知 $B$（或 $A$）必然为零矩阵，因此不可能存在这样的情况.
 \end{enumerate}
 
 需要强调的是，我们之后讨论运算性质的时候都是循着类似的思路，考虑加法、数乘、乘法（2个相乘，$n$个相乘，矩阵的幂）、逆、转置、共轭等，所以虽然每个地方给出的性质都很多，但实际上大致研究思路是一致的.
@@ -367,7 +577,33 @@
 \end{example}
 
 \begin{solution}
-    见教材132页例3.
+    以 $A$ 为系数矩阵的非齐次线性方程组 $AX=b$，对于任意的 $b=(b_1,b_2,b_3)$，可以用高斯消元法将其增广矩阵
+
+    \[(A,b)=\left(\begin{array}{ccc:c}
+                1 & -1 & 1 & b_1 \\
+                0 & 1  & 2 & b_2 \\
+                1 & 0  & 4 & b_3
+            \end{array}\right)\] 化为：
+
+    \[\left(\begin{array}{ccc:c}
+                1 & 0 & 0 & 4b_1+4b_2-3b_3 \\
+                0 & 1 & 0 & 2b_1+3b_2-2b_3 \\
+                0 & 0 & 1 & -b_1-b_2+b_3
+            \end{array}\right)\].
+
+    因此，对任意的 $b$，方程组 $AX=b$ 有唯一解：
+    \[X=\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}=\begin{pmatrix}
+            4b_1+4b_2-3b_3 \\2b_1+3b_2-2b_3\\-b_1-b_2+b_3
+        \end{pmatrix}=\begin{pmatrix}
+            4  & 4  & -3 \\
+            2  & 3  & -2 \\
+            -1 & -1 & 1
+        \end{pmatrix}\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}\] 即：
+    \[A^{-1}=\begin{pmatrix}
+            4  & 4  & -3 \\
+            2  & 3  & -2 \\
+            -1 & -1 & 1
+        \end{pmatrix}\]
 \end{solution}
 
 关于逆矩阵的求解问题，我们将在介绍完初等变换后介绍第二种基本方法，剩余的进阶解法将在\nameref{chap:矩阵运算进阶}中介绍更多手段，以及我们会介绍矩阵方程求解的方法. 本节我们囿于一些计算技巧和基本概念暂未引入所以无法完全展开这些技巧.

@@ -164,6 +164,8 @@
 \NewDocumentEnvironment{proof}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 证明}}{#1}{#2}\fangsong}{\hspace*{\fill}$\square$\end{tcblaluthmbox}}
 \NewDocumentEnvironment{solution}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 解}}{#1}{#2}\fangsong}{\end{tcblaluthmbox}}
 
+\NewDocumentCommand{\term}{m}{{\sffamily\heiti\bfseries{#1}}}
+
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\Hom}{Hom}
 \newcommand{\cC}{\mathcal{C}}
