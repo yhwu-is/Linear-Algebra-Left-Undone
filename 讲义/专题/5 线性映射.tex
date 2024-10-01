@@ -1185,8 +1185,23 @@
         \end{answer}
 
         \item 证明：同构映射的逆、复合仍然是同构映射.
+        \begin{answer}
+            其逆映射是同构映射是显然的.我们只证明复合映射
+
+            对于两个同构映射 $\sigma: V_1 \to V_2, \tau: V_2 \to V_3$，我们有其核空间
+            $\ker \sigma \tau$,$\tau$是单的，将$0$映射到$0$，$\sigma$也是单的，故$\sigma\tau$是单的，将$0$映射到$0$；
+            $\sigma$是满的，$\tau$也是满的，故$\sigma\tau$是满的，故$\sigma\tau$是双射，是同构映射.
+
+
+            如果从矩阵的角度来理解：
+            同构映射对应的矩阵是可逆矩阵；
+            可逆矩阵的逆矩阵，可逆矩阵的乘积矩阵仍然是可逆矩阵.
+        \end{answer}
 
         \item 证明：\autoref{def:积空间} 中定义的线性空间的积构成一个线性空间.
+        \begin{answer}
+           根据定义一一验证，只需要注意对于每一个位置的加法和数乘都是独立的即可.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
