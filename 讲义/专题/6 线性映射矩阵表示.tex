@@ -595,6 +595,19 @@
 
     \begin{exgroup}[2] % 如果取消注释上面的 exgroup，删除此处 [2]
         \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in L(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
+        \begin{answer}
+            $ T(\beta_1, \beta_2, \ldots, \beta_n) = (\beta_1, \beta_2, \ldots, \beta_n)A $，其中
+            \[ A = \begin{pmatrix}
+                      &   &        &   & a_1    \\
+                    1 &   &        &   & a_2    \\
+                      & 1 &        &   & a_3    \\
+                      &   & \ddots &   & \vdots \\
+                      &   &        & 1 & a_n
+                \end{pmatrix} \]
+            是 $ T $ 关于基 $ B $ 的表示矩阵.
+  
+            $ T $ 是同构 $ \iff T $ 是双射 $ \iff r(T) = n $，满秩. 所以当 $ a_1 \neq 0 $ 时，$ r(T) = n $ 满秩，此时 $ T $ 是同构映射.
+        \end{answer}
 
         \item 已知$f_1=1-x,f_2=1+x^2,f_3=x+2x^2$是$\mathbf{R}[x]_3$中三个元素，$\sigma$是$\mathbf{R}[x]_3$上的线性变换且满足$\sigma(f_1)=2+x^2,\sigma(f_2)=x,\sigma(f_3)=1+x+x^2$.
         \begin{enumerate}
@@ -604,6 +617,97 @@
 
             \item 设$f=1+2x+3x^2$，求$\sigma(f)$.
         \end{enumerate}
+        
+        \begin{answer}
+            \begin{enumerate}
+                \item 只需要证明$f_1,f_2,f_3$是线性无关的即可，事实上，这也十分显然(考虑其在$1,x,x^2$下的坐标表示线性无关),想必读者可以自行证明
+  
+                \item 方法一：设 $ (\sigma(f_1), \sigma(f_2), \sigma(f_3)) = (f_1, f_2, f_3) A $，则由
+                      \[ (\sigma(f_1), \sigma(f_2), \sigma(f_3)) = (1, x, x^2) \begin{pmatrix}
+                              2 & 0 & 1 \\
+                              0 & 1 & 1 \\
+                              2 & 0 & 1
+                          \end{pmatrix} = (1, x, x^2) \begin{pmatrix}
+                              1  & 1 & 0 \\
+                              -1 & 0 & 1 \\
+                              0  & 1 & 2
+                          \end{pmatrix} A \]
+                      可得
+                      \begin{align*}
+                          A & = \begin{pmatrix}
+                                    1  & 1 & 0 \\
+                                    -1 & 0 & 1 \\
+                                    0  & 1 & 2
+                                \end{pmatrix}^{-1}
+                          \begin{pmatrix}
+                              2 & 0 & 1 \\
+                              0 & 1 & 1 \\
+                              1 & 0 & 1
+                          \end{pmatrix}           \\
+                            & = \begin{pmatrix}
+                                    -1 & -2 & 1  \\
+                                    2  & 2  & -1 \\
+                                    -1 & -1 & 1
+                                \end{pmatrix}
+                          \begin{pmatrix}
+                              2 & 0 & 1 \\
+                              0 & 1 & 1 \\
+                              1 & 0 & 1
+                          \end{pmatrix}
+                          = \begin{pmatrix}
+                                -1 & -2 & -2 \\
+                                3  & 2  & 3  \\
+                                -1 & -1 & -1
+                            \end{pmatrix}
+                      \end{align*}
+  
+                      方法二：通过待定系数法解方程组
+                      \[ \begin{cases}
+                              \sigma(f_1) = -f_1 + 3 f_2 - f_3   \\
+                              \sigma(f_2) = -2 f_1 + 2 f_2 - f_3 \\
+                              \sigma(f_3) = -2 f_1 + 3 f_2 - f_3
+                          \end{cases} \]
+                      解得
+                      \[ (\sigma(f_1), \sigma(f_2), \sigma(f_3)) = (f_1, f_2, f_3) \begin{pmatrix}
+                              -1 & -2 & -2 \\
+                              3  & 2  & 3  \\
+                              -1 & -1 & -1
+                          \end{pmatrix} \]
+  
+                \item \begin{align*}
+                          \sigma(f) & = \sigma\left((1, x, x^2)
+                          \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}\right)= \sigma\left((f_1, f_2, f_3)
+                          \begin{pmatrix}
+                              1  & 1 & 0 \\
+                              -1 & 0 & 1 \\
+                              0  & 1 & 2
+                          \end{pmatrix}^{-1} \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}\right) \\
+                                    & = (\sigma(f_1), \sigma(f_2), \sigma(f_3))
+                          \begin{pmatrix}
+                              1  & 1 & 0 \\
+                              -1 & 0 & 1 \\
+                              0  & 1 & 2
+                          \end{pmatrix}^{-1} \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}        \\
+                                    & = (1, x, x^2)
+                          \begin{pmatrix}
+                              2 & 0 & 1 \\
+                              0 & 1 & 1 \\
+                              1 & 0 & 1
+                          \end{pmatrix}
+                          \begin{pmatrix}
+                              1  & 1 & 0 \\
+                              -1 & 0 & 1 \\
+                              0  & 1 & 2
+                          \end{pmatrix}^{-1}
+                          \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}                           \\
+                                    & = (1, x, x^2)
+                          \begin{pmatrix} -4 \\ 3 \\ 2 \end{pmatrix}                          \\
+                                    & = 2x^2 + 3x - 4
+                      \end{align*}
+  
+                      或也可采用待定系数法求出 $ f = -2 f_1 + 3 f_2 $，所以 $ \sigma(f) = -2 \sigma(f_1) + 3 \sigma(f_2) = 2x^2 + 3x - 4 $.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$V=\mathbf{M}_2(\mathbf{R})$是$\mathbf{R}$上所有$2 \times 2$矩阵构成的实数域上的线性空间. 已知
         \[A=\begin{pmatrix}1 & -1 \\ \lambda & 1 \end{pmatrix}(\lambda \in \mathbf{R}),\enspace B=\begin{pmatrix}1 & 2 \\ -1 & -1 \end{pmatrix}\]
@@ -618,9 +722,61 @@
             \item 将 \ref*{item:7:B:1} 中的值域扩充为$V$的一组基，并求$\varphi$在这组基下的矩阵.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item $ \forall X, Y \in \mathbf{M}_2(\mathbf{R}),\enspace k_1, k_2 \in \mathbf{R} $，有
+                      \begin{align*}
+                          \varphi(k_1 X + k_2 Y) & = A(k_1 X + k_2 Y)B               \\
+                                                 & = k_1 A X B + k_2 A Y B           \\
+                                                 & = k_1 \varphi(X) + k_2 \varphi(Y)
+                      \end{align*}
+                      所以 $ \varphi $ 是 $ \mathbf{M}_2(\mathbf{R}) $ 上的线性映射.
+  
+                \item 证明：易知 $ B $ 可逆. 当 $ \lambda = -1 $ 时，$ A $ 可逆. 故 $ \varphi $ 可逆，$ \varphi^{-1}(X) = A^{-1} X B^{-1} $.
+  
+                \item $ \lambda = -1 $ 时，取 $ V $ 的一组基 $ \alpha_1 = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \alpha_2 = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \alpha_3 = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \alpha_4 = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} $，有
+                      \begin{gather*}
+                          \begin{aligned}
+                              \im \sigma & = \spa(\varphi(\alpha_1), \varphi(\alpha_2), \varphi(\alpha_3), \varphi(\alpha_4))                                \\
+                                         & = \spa\left(\begin{pmatrix} 1 & 2 \\ -1 & -2 \end{pmatrix}, \begin{pmatrix} -1 & -1 \\ 1 & 1 \end{pmatrix}\right)
+                          \end{aligned} \\
+                          \ker \sigma = \spa\left(\begin{pmatrix} 2 & -3 \\ 0 & 1 \end{pmatrix}, \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix}\right)
+                      \end{gather*}
+                      （步骤略，答案不唯一）
+  
+                \item 取 $ \begin{pmatrix} 1 & 2 \\ -1 & -2 \end{pmatrix}, \begin{pmatrix} -1 & -1 \\ 1 & 1 \end{pmatrix}, \alpha_3, \alpha_4 $ 即可. 此时矩阵为$ \begin{pmatrix}
+                              2 & -2 & -1 & 0 \\
+                              4 & -2 & 0  & 1 \\
+                              0 & 1  & 0  & 0 \\
+                              0 & 0  & 0  & 0
+                          \end{pmatrix} $. （答案不唯一）
+            \end{enumerate}  
+        \end{answer}
+
         \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
         \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
         V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
+
+        \begin{answer}
+            我们可以类比线性空间
+          \[ W = \{ x \in \mathbf{R}^4 \mid x_1 + x_2 + x_3 = 0 \} \]
+          $ W $ 的基只需求解线性方程组 $ x_1 + x_2 + x_3 = 0 $ 即可，得到基础解系为 $ (-1, 0, 1, 0)^{\mathrm{T}},\allowbreak (-1, 1, 0, 0)^{\mathrm{T}},\allowbreak (0, 0, 0, 1)^{\mathrm{T}} $.
+
+          换回 $ V $，即有基为 $ A_1 = \begin{pmatrix} -1 & 0 \\ 1 & 0 \end{pmatrix}, A_2 = \begin{pmatrix} -1 & 1 \\ 0 & 0 \end{pmatrix}, A_3 = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} $. 而
+          \begin{align*}
+                         & \sigma(A_1) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = A_1 + A_2                      \\
+                         & \sigma(A_2) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = A_1 + A_2                      \\
+                         & \sigma(A_3) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = 2 A_3                          \\
+              \implies{} & \sigma(A_1 + A_2) = 2(A_1 + A_2),\enspace \sigma(A_1 - A_2) = 0,\enspace \sigma(A_3) = 2 A_3
+          \end{align*}
+          取基 $ A_1 - A_2, A_1 + A_2, A_3 $，有
+          \[ (\sigma(A_1 - A_2), \sigma(A_1 + A_2), \sigma(A_3)) = (A_1 - A_2, A_1 + A_2, A_3) = \begin{pmatrix}
+                  0 & 0 & 0 \\
+                  0 & 2 & 0 \\
+                  0 & 0 & 2
+              \end{pmatrix} \]
+          为对角矩阵.
+        \end{answer}
 
         \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 4 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T \colon \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
         \[T(f(x))=\begin{pmatrix}f(0) & f(1) \\ f(-1) & f(0)\end{pmatrix}\]
@@ -630,6 +786,57 @@
             \item 求$T$在$\mathbf{R}[x]_4$和$\mathbf{M}_2(\mathbf{R})$的基下的矩阵表示.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item \label{item:7:B:5:1}
+                      求核空间，即求使得 $ T(f(x)) $ 为零矩阵的 $ f(x) $ 构成的空间. 设 $ f(x) = ax^3 + bx^2 + cx + d $，则有
+                      \[ \begin{cases}
+                              f(0) = d = 0             \\
+                              f(1) = a + b + c + d = 0 \\
+                              f(-1) = -a + b -c + d = 0
+                          \end{cases} \]
+                      解方程，令 $ a = t $ 有
+                      \[ \begin{cases}
+                              a = t  \\
+                              b = 0  \\
+                              c = -t \\
+                              d = 0
+                          \end{cases} \implies f(x) = t(x^3 - x) \]
+                      故 $ N(T) = \spa(x^3 - x) $.
+  
+                      求像空间，取 $ \mathbf{R}[x]_4 $ 的自然基 $ 1, x, x^2, x^3 $.
+                      \[ \begin{matrix}
+                              T(1) = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}   & T(x) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}   \\
+                              T(x^2) = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} & T(x^3) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+                          \end{matrix} \]
+                      求它们的极大线性无关组. 我们发现 $ T(x) = T(x^3) $，故先舍弃 $ T(x^3) $，然后令
+                      \begin{align*}
+                                     & k_1 T(1) + k_2 T(x) + k_3 T(x^2) = 0                                             \\
+                          \implies{} & \begin{pmatrix} k_1 & k_1 + k_2 + k_3 \\ k_1 - k_2 + k_3 & k_1 \end{pmatrix} = 0 \\
+                          \implies{} & \begin{cases}
+                                           k_1 = 0             \\
+                                           k_1 + k_2 + k_3 = 0 \\
+                                           k_1 - k_2 + k_3 = 0 \\
+                                       \end{cases}                                                              \\
+                          \implies{} & k_1 = k_2 = k_3 = 0
+                      \end{align*}
+                      故 $ T(1), T(x), T(x^2) $ 线性无关. 故 $ R(T) = \spa\left(\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}\right) $.
+  
+                \item 我们只需要将$2 \times 2$矩阵的第二列拼到第一列下方就可以变为我们熟悉的列向量形式，所以其矩阵表示也是简单的
+                      \[
+                        T(1,x,x^2,x^3)=(e_1,e_2,e_3,e_4)\begin{pmatrix}
+                            1 & 0 & 0 & 0 \\
+                            1 & -1 & 1 & -1 \\
+                            1 & 1 & 1 & 1 \\
+                            1 & 0 & 0 & 0
+                        \end{pmatrix}
+                      \]
+
+                      其中$e_1=\begin{pmatrix}1&0\\0&0\end{pmatrix}$,$e_2=\begin{pmatrix}0&0\\1&0\end{pmatrix}$,
+                      $e_3=\begin{pmatrix}0&1\\0&0\end{pmatrix}$,$e_4=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
+            \end{enumerate}
+        \end{answer}
+
         \item 设$A=\begin{pmatrix}
                 1 & -1 & -1 \\ -1 & 1 & 1 \\ 0 & -4 & 2
             \end{pmatrix},\enspace\xi_1=(-1,1,-2)^\mathrm{T}$.
@@ -638,6 +845,82 @@
 
             \item 证明：$\xi_1,\xi_2,\xi_3$线性无关.
         \end{enumerate}
+        
+        \begin{answer}
+            \begin{enumerate}
+                \item 对非齐次线性方程组$AX=\xi_1$，\\
+                      $\bar{A}=\begin{pmatrix}
+                              1  & -1 & -1 & -1 \\
+                              -1 & 1  & 1  & 1  \\
+                              0  & -4 & -2 & -2
+                          \end{pmatrix}
+                          \rightarrow\begin{pmatrix}
+                              1 & -1 & -1       & -1       \\
+                              0 & 1  & \frac 12 & \frac 12 \\
+                              0 & 0  & 0        & 0
+                          \end{pmatrix}
+                          \rightarrow\begin{pmatrix}
+                              1 & 0 & -\frac 12 & -\frac 12 \\
+                              0 & 1 & \frac 12  & \frac 12  \\
+                              0 & 0 & 0         & 0
+                          \end{pmatrix}$，则\\
+                      $\xi_2=C_1\begin{pmatrix}
+                              \frac 12  \\
+                              -\frac 12 \\
+                              1
+                          \end{pmatrix} + \begin{pmatrix}
+                              -\frac 12 \\
+                              \frac 12  \\
+                              0
+                          \end{pmatrix}=\dfrac 12\begin{pmatrix}
+                              C_1 - 1  \\
+                              -C_1 + 1 \\
+                              2C_1
+                          \end{pmatrix}$（其中$C_1$为任意常数）.\\
+                      $A^2=\begin{pmatrix}
+                              2  & 2  & 0 \\
+                              -2 & -2 & 0 \\
+                              4  & 4  & 0
+                          \end{pmatrix}$，对齐次线性方程组$A^2X=\xi_1$，\\
+                      $\bar{B}=\begin{pmatrix}
+                              A^2 & \xi_1
+                          \end{pmatrix}=\begin{pmatrix}
+                              2  & 2  & 0 & 1  \\
+                              -2 & -2 & 0 & 1  \\
+                              4  & 4  & 0 & -2
+                          \end{pmatrix}
+                          \rightarrow\begin{pmatrix}
+                              1 & 1 & 0 & -\frac 12 \\
+                              0 & 0 & 0 & 0         \\
+                              0 & 0 & 0 & 0
+                          \end{pmatrix}$，\\
+                      则$A^2X=\xi_1$的通解\\
+                      $\xi_3=C_2\begin{pmatrix}
+                              -1 \\
+                              1  \\
+                              0
+                          \end{pmatrix}+C_3\begin{pmatrix}
+                              0 \\
+                              0 \\
+                              1
+                          \end{pmatrix}+\begin{pmatrix}
+                              -\frac 12 \\
+                              0         \\
+                              0
+                          \end{pmatrix}=\begin{pmatrix}
+                              -C_2 - \frac 12 \\
+                              C_2             \\
+                              C_3
+                          \end{pmatrix}$（其中$C_2, C_3$为任意常数）.
+                \item
+                      因为$|\xi_1,\xi_2,\xi_3|=\dfrac 12\begin{vmatrix}
+                              -1 & C_1 - 1  & -C_2 - \frac 12 \\
+                              1  & -C_1 + 1 & C_2             \\
+                              -2 & 2C_1     & C_3
+                          \end{vmatrix}=-\dfrac 12\neq 0$，\\
+                      所以$\xi_1,\xi_2,\xi_3$线性无关.
+            \end{enumerate}
+        \end{answer}
 
         \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\ker\sigma=\im \sigma$，证明：
         \begin{enumerate}
@@ -648,6 +931,19 @@
                           0 & E_{\frac{n}{2}} \\ 0 & 0
                       \end{pmatrix}.\]
         \end{enumerate}
+
+        \begin{answer}
+            证明：\begin{enumerate}
+                \item 由于 $ \ker \sigma = \im \sigma $，由 $ \dim \im \sigma + \dim \ker \sigma = \dim V $ 可得.
+  
+                \item 设 $ \beta_1, \ldots, \beta_n $ 为 $ V $ 的一组基，则
+                      \[ \im \sigma = \spa(\sigma(\beta_1), \ldots, \sigma(\beta_n)) = \ker \sigma \]
+                      设 $ \sigma(\beta_1), \ldots, \sigma(\beta_{\frac{n}{2}}) $ 为 $ \im \sigma $ 的基，则可以证明
+                      \[ \sigma(\beta_1), \ldots, \sigma(\beta_{\frac{n}{2}}), \beta_1, \ldots, \beta_{\frac{n}{2}} \]
+                      线性无关，且 $ \sigma $ 在此基下的矩阵即为所求的形式.
+            \end{enumerate}
+  
+        \end{answer}
     \end{exgroup}
 
     % \begin{exgroup}
