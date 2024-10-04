@@ -6,7 +6,7 @@
 
 \section{行列式的定义}
 
-或许行列式是线性代数基础内容中最难下定义的一个概念了——不同的教材通常会给出不同的行列式引入和定义方式，且不同的思路各有其优劣。通常有三种基本的定义方式：``逆序数''定义（最常见的方式）、递归式定义（按行（列）展开）以及公理化定义（使用一些规则描述），这三种定义方式也是完全等价的. 在本讲中，我们从公理化定义出发，将递归式定义作为性质进行介绍，然后在行列式的基本运算中引入逆序数定义. 在读者已经适应公理化定义的体系后，我想这样的思路更具有几何直观，很多的推导也非常便捷.
+或许行列式是线性代数基础内容中最难下定义的一个概念了——不同的教材通常会给出不同的行列式引入和定义方式，且不同的思路各有其优劣. 通常有三种基本的定义方式：``逆序数''定义（最常见的方式）、递归式定义（按行（列）展开）以及公理化定义（使用一些规则描述），这三种定义方式也是完全等价的. 在本讲中，我们从公理化定义出发，将递归式定义作为性质进行介绍，然后在行列式的基本运算中引入逆序数定义. 在读者已经适应公理化定义的体系后，我想这样的思路更具有几何直观，很多的推导也非常便捷.
 
 \subsection{公理化定义}
 
@@ -41,7 +41,8 @@
 
         \item 对行列式做倍加列变换，行列式的值不变.
 
-        \item 若$\alpha_1,\alpha_2,\ldots,\alpha_n$线性相关，则$D(\alpha_1,\alpha_2,\ldots,\alpha_n)=0$.
+        \item \label{item:13:公理化定义导出性质:5}
+            若$\alpha_1,\alpha_2,\ldots,\alpha_n$线性相关，则$D(\alpha_1,\alpha_2,\ldots,\alpha_n)=0$.
     \end{enumerate}
 \end{example}
 
@@ -66,7 +67,7 @@
                   D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_n)
                    & =D(\alpha_1,\ldots,k\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n) \\
                    & =kD(\alpha_1,\ldots,\alpha_j,\ldots,\alpha_j,\ldots,\alpha_n) \\
-                   & =0
+                   & =0.
               \end{align*}
               其中最后一个等号用到了本例的第二条结论.
 
@@ -199,34 +200,76 @@
     \item 一般情况下，$|A \pm B| \neq |A|\pm|B|$；
 
     \item $|kA|=k^n|A|$；
-          \begin{proof}
-              由\autoref{def:公理化定义} 的\ref*{item:13:齐性}，设$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则
-              \begin{align*}
-                  |kA| & =|k\alpha_1,k\alpha_2,\ldots,k\alpha_n| \\
-                       & =k^n|\alpha_1,\alpha_2,\ldots,\alpha_n| \\
-                       & =k^n|A|.
-              \end{align*}
-          \end{proof}
 
-    \item \label{item:13:行列式性质:4}
+    \item \label{item:13:行列式性质:3}
           初等矩阵行列式（注意初等矩阵不分行列，左乘右乘区分初等行列变换）：\\
           $|E_{ij}|=-1,\enspace |E_i(c)|=c,\enspace |E_{ij}(k)|=1$；
 
-    \item 利用 \ref*{item:13:行列式性质:4} 中的结论可以得到$|AB|=|A||B|,\enspace|A^k|=|A|^k$；
+    \item \label{item:13:行列式性质:4}
+          $|AB|=|A||B|,\enspace|A^k|=|A|^k$；
 
-    \item 利用 \ref*{item:13:行列式性质:4} 中的结论可以得到$A$可逆$\iff |A| \neq 0$；
+    \item $A$可逆$\iff |A| \neq 0$；
 
-    \item 利用 \ref*{item:13:行列式性质:4} 中的结论可以得到$|A^\mathrm{T}|=|A|$；
+    \item $|A^\mathrm{T}|=|A|$；
 
-    \item 利用 \ref*{item:13:行列式性质:4} 中的结论可以得到上、下三角矩阵行列式均为主对角线元素的乘积；
+    \item 上、下三角矩阵行列式均为主对角线元素的乘积；
 
-    \item 利用 \ref*{item:13:行列式性质:4} 中的结论（求出初等矩阵逆矩阵行列式）可以得到若$A$可逆，则$|A^{-1}|=|A|^{-1}$.
-          \begin{proof}
-              由$|AB|=|A||B|$，设$B=A^{-1}$，则$|E|=|AA^{-1}|=|A||A^{-1}|$，因此$|A||A^{-1}|=1$，从而$|A^{-1}|=|A|^{-1}$.
-          \end{proof}
+    \item 若$A$可逆，则$|A^{-1}|=|A|^{-1}$.
+
 \end{enumerate}
 
-以上性质都可以基于定义或上述其他性质得到，其中3-6条可参考教材5.3节，7可参考教材172页例3. 这些性质结论希望读者熟悉，实际上推导过程重要性不大，虽然也并不复杂. 下面介绍的性质需要用到``打洞法''（分块矩阵初等变换）来证明：
+\begin{proof}
+    \begin{enumerate}[start=2]
+        \item 由\autoref{def:公理化定义} 的\ref*{item:13:齐性}，设$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，则
+        \begin{align*}
+            |kA| & =|k\alpha_1,k\alpha_2,\ldots,k\alpha_n| \\
+                 & =k^n|\alpha_1,\alpha_2,\ldots,\alpha_n| \\
+                 & =k^n|A|.
+        \end{align*}
+
+        \item 设 $E = (e_1, e_2, \ldots, e_n)$，则
+
+            由\autoref{def:公理化定义} 的\ref*{item:13:反对称性}，$|E_{ij}| = |e_1, e_2, \ldots, e_j, \ldots, e_i, \ldots, e_n| = -|E| = -1$；
+
+            由\autoref{def:公理化定义} 的\ref*{item:13:齐性}，$|E_i(c)| = |e_1, e_2, \ldots, c e_i, \ldots, e_n| = c|E| = c$；
+
+            由\autoref{def:公理化定义} 的\ref*{item:13:加性}，$|E_{ij}(k)| = |e_1, e_2, \ldots, e_i + k e_j, \ldots, e_n| = |E| + 0 = 1$.
+
+        \item 对于 $|AB| = |A||B|$，分 $B$ 可逆与不可逆两种情况讨论：
+
+            若 $B$ 可逆，则存在初等矩阵 $P_1, P_2, \ldots, P_k$，使得 $B = P_1 P_2 \cdots P_k$；由于右乘初等矩阵相当于对矩阵进行初等列变换，因此我们利用\ref*{item:13:行列式性质:3} 中的结论可以得到
+            \begin{align*}
+                |A E_ij| = -|A| = |A||E_ij|, \\
+                |A E_i(c)| = c|A| = c|A||E_i(c)|, \\
+                |A E_{ij}(k)| = |A| = |A||E_{ij}(k)|.
+            \end{align*}
+            因此，$|AB| = |A P_1 P_2 \cdots P_k| = |A||P_1||P_2|\cdots||P_k| = |A||B|$.
+
+            若 $B$ 不可逆，则 $r(AB) \leqslant r(B) < n$，故 $AB$ 也不可逆. 组成不可逆的矩阵的列向量必线性相关，故由\autoref{ex:公理化定义} 的\ref*{item:13:公理化定义导出性质:5} 可知 $|B|=0, |AB|=0$，因此 $|AB| = 0 = |A||B|$.
+
+            同理，分 $A$ 可逆与不可逆两种情况讨论，可得 $|A^k|=|A|^k$.
+
+        \item 若 $A$ 可逆，则存在可逆矩阵 $B$ 使得 $AB=E$，利用性质\ref*{item:13:行列式性质:4} 可知 $|A||B|=|E|=1$，故 $|A| \neq 0$. 反之，若 $A$ 不可逆，则 $A$ 的列向量线性相关，故 $|A| = 0$.
+
+        \item 若 $A$ 不可逆，则 $A^\mathrm{T}$ 不可逆，故 $|A| = |A^\mathrm{T}| = 0$；
+            若 $A$ 可逆，则存在初等矩阵 $P_1, P_2, \ldots, P_k$，使得 $A = P_1 P_2 \cdots P_k$，故
+            \begin{align*}
+                |A^\mathrm{T}| &= |P_k^\mathrm{T} P_{k-1}^\mathrm{T} \cdots P_1^\mathrm{T}| \\
+                      &= |P_k^\mathrm{T}| |P_{k-1}^\mathrm{T}| \cdots |P_1^\mathrm{T}| \\
+                      &= |P_k| |P_{k-1}| \cdots |P_1| \\
+                      &= |A|.
+            \end{align*}
+            上式成立是因为三类初等矩阵的行列式等于其转置的行列式.
+
+        \item 设 $A$ 为上三角矩阵，其对角线元素为 $a_{11}, a_{22}, \ldots, a_{nn}$，若 $\exists a_{ii} = 0$，则 $A$ 不可逆，$|A| = 0$；反之，若 $a_{ii} \neq 0, \enspace i=1,2,\ldots,n$，则对 $A$ 作倍加列变换可将 $A$ 化为对角矩阵 $\mathrm{diag}(a_{11},a_{22},\ldots,a_{nn})$，故 $|A| = \prod_{i=1}^n a_{ii}$.
+
+            若 $A$ 为下三角矩阵，则 $A^\mathrm{T}$ 为上三角矩阵，故 $|A| = |A^\mathrm{T}| = \prod_{i=1}^n a_{ii}$.
+
+        \item 由$|AB|=|A||B|$，设$B=A^{-1}$，则$|E|=|AA^{-1}|=|A||A^{-1}|$，因此$|A||A^{-1}|=1$，从而$|A^{-1}|=|A|^{-1}$.
+    \end{enumerate}
+\end{proof}
+
+以上这些性质希望读者熟悉，实际上推导过程重要性不大，基于定义或上述其他性质便可以得到这些结论. 下面介绍的性质需要用到``打洞法''（分块矩阵初等变换）来证明：
 
 \begin{enumerate}
     \item $\begin{vmatrix}
@@ -238,8 +281,103 @@
               \end{vmatrix} = |A||B|,\enspace\begin{vmatrix}
                   O & A \\ B & C
               \end{vmatrix} = (-1)^{kr}|A||B|$（其中$A$为$k$阶方阵，$B$为$r$阶方阵）；
+
+          我们先给出使用数学归纳法证明的思路：
           \begin{proof}
-              证明从略，感兴趣的读者可以参考教材179页例2，实际上我们很多时候只需要基于这些结论证明进一步的性质.
+            先证明 $\begin{vmatrix}
+                        A & O \\ C & B
+                    \end{vmatrix} = |A||B|$. 我们令
+            \[
+                D = \begin{vmatrix}
+                        A & O \\ C & B
+                    \end{vmatrix} = \begin{vmatrix}
+                        a_{11} & a_{12} & \cdots & a_{1k} & 0      & \cdots & 0      \\
+                        a_{21} & a_{22} & \cdots & a_{2k} & 0      & \cdots & 0      \\
+                        \vdots &        & \ddots & \vdots & \vdots &        & \vdots \\
+                        a_{k1} & a_{k2} & \cdots & a_{kk} & 0      & \cdots & 0      \\
+                        c_{11} & c_{12} & \cdots & c_{1k} & b_{11} & \cdots & b_{1r} \\
+                        \vdots &        &        & \vdots & \vdots & \ddots & \vdots \\
+                        c_{r1} & c_{r2} & \cdots & c_{rk} & b_{r1} & \cdots & b_{rr}
+                    \end{vmatrix}.
+            \]
+            对 $A$ 的阶数 $k$ 作数学归纳法：当 $k=1$ 时，$D = a_{11}|B| = |A||B|$ 是显然的；假设 $A$ 的阶数为 $k-1$ 时上述结论成立，则当 $A$ 的阶数为 $k$ 时，我们对 $D$ 的第一行展开，得
+            \[
+                D = (-1)^{1+1} a_{11} M_{11}^D + (-1)^{1+2} a_{12} M_{12}^D + \cdots + (-1)^{1+k} a_{1k} M_{1k}^D,
+            \]
+            其中 $M_{1j}^D$ 是 $a_{1j}$ 在 $D$ 中的余子式.
+            注意到 $M_{1j}^D$ 仍然是 $\begin{vmatrix}
+                A & O \\ C & B
+            \end{vmatrix}$ 类型的行列式，故由归纳假设我们有
+            \[
+                M_{1j}^D = M_{1j}^A |B|, \enspace j = 1, 2, \ldots, k.
+            \]
+            其中 $M_{1j}^A$ 是 $a_{1j}$ 在 $A$ 中的余子式. 将其代入 $D$ 的展开式，得到
+            \[
+                D = \left[(-1)^{1+1} a_{11} M_{11}^A + (-1)^{1+2} a_{12} M_{12}^A + \cdots + (-1)^{1+k} a_{1k} M_{1k}^A\right] |B| = |A||B|.
+            \]
+
+            根据以上结论，令 $C = O$，则有
+            \[
+                \begin{vmatrix} A & O \\ O & B \end{vmatrix} = |A||B|.
+            \]
+
+            利用 $|A^\mathrm{T}|=|A|$，有
+            \[
+                \begin{vmatrix}
+                    A & C \\ O & B
+                \end{vmatrix} = \begin{vmatrix}
+                    A^\mathrm{T} & O \\ C^\mathrm{T} & B^\mathrm{T}
+                \end{vmatrix} = |A^\mathrm{T}||B^\mathrm{T}| = |A||B|.
+            \]
+
+            由于从 $\begin{vmatrix} O & A \\ B & C \end{vmatrix}$ 到 $\begin{vmatrix} A & C \\ O & B \end{vmatrix}$ 只需将 $A$ 和 $C$ 中的每一列依次与前面的 $r$ 列逐列交换，利用\autoref{def:公理化定义} 的\ref*{item:13:反对称性}，我们有
+            \[
+                \begin{vmatrix}
+                    O & A \\ B & C
+                \end{vmatrix} = (-1)^{kr} \begin{vmatrix}
+                    A & O \\ C & B
+                \end{vmatrix} = (-1)^{kr} |A||B|.
+            \]
+          \end{proof}
+
+          下面我们使用打洞法来重新证明，可以发现，使用打洞法可以使证明变得更为简洁：
+          \begin{proof}
+              若 $B$ 不可逆，则 $r(B) < r$，故 $r\begin{pmatrix} O \\ B \end{pmatrix} < r$，进而 $r\begin{pmatrix} A & O \\ C & B \end{pmatrix} < k + r$，故
+              \[
+                  \begin{vmatrix}
+                      A & O \\ C & B
+                  \end{vmatrix} = 0 = |A||B|.
+              \]
+
+              若 $B$ 可逆，则
+              \[
+                  \begin{pmatrix}
+                      A & O \\ C & B
+                  \end{pmatrix} \begin{pmatrix}
+                      E_k & O \\ -B^{-1} C & E_r
+                  \end{pmatrix} = \begin{pmatrix}
+                      A & O \\ O & B
+                  \end{pmatrix} = \begin{pmatrix}
+                      A & O \\ O & E_r
+                  \end{pmatrix} \begin{pmatrix}
+                      E_k & O \\ O & B
+                  \end{pmatrix},
+              \]
+              而分块倍加矩阵的行列式
+              \[
+                  \begin{vmatrix}
+                      E_k & O \\ -B^{-1} C & E_r
+                  \end{vmatrix} = 1,
+              \]
+              故有
+              \[
+                  \begin{vmatrix}
+                      A & O \\ C & B
+                  \end{vmatrix} = \begin{vmatrix}
+                      A & O \\ O & B
+                  \end{vmatrix} = |A||B|.
+              \]
+              其余推导部分同上.
           \end{proof}
 
     \item 当$A$可逆时，有$\begin{vmatrix}
@@ -299,7 +437,7 @@
                       a_1 & 1 \\ a_2 & 1 \\ \vdots & \vdots \\ a_n & 1
                   \end{pmatrix} E_2^{-1} \begin{pmatrix}
                       a_1 & a_2 & \cdots & a_n \\ 1 & 1 & \cdots & 1
-                  \end{pmatrix} \]
+                  \end{pmatrix}. \]
 
               故根据降阶公式有
 
@@ -361,9 +499,48 @@
 
 \begin{solution}
     \begin{enumerate}
-        \item （公理化定义与性质）参考教材171页例2的方法，此处展开较为复杂不再赘述，也不推荐使用这一方法.
+        \item （公理化定义与性质）由\autoref{def:公理化定义} 对该行列式进行展开操作（此处略去展开后有相同列向量的项），得到
+            \begin{align*}
+                D =&\, \begin{vmatrix}
+                    e_1 + 2e_2 + 3e_3 & 2e_1 + 3e_2 + e_3 & 3e_1 + e_2 + 2e_3
+                \end{vmatrix} \\
+                =&\, \begin{vmatrix}
+                    e_1 & 3e_2 & 2e_3
+                \end{vmatrix} + \begin{vmatrix}
+                    e_1 & e_3 & e_2
+                \end{vmatrix} + \begin{vmatrix}
+                    2e_2 & 2e_1 & 2e_3
+                \end{vmatrix} + \\
+                &\, \begin{vmatrix}
+                    2e_2 & e_3 & 3e_1
+                \end{vmatrix} + \begin{vmatrix}
+                    3e_3 & 2e_1 & e_2
+                \end{vmatrix} + \begin{vmatrix}
+                    3e_3 & 3e_2 & 3e_1
+                \end{vmatrix} \\
+                =&\, 1 \cdot 3 \cdot 2 - 1 \cdot 1 \cdot 1 - 2 \cdot 2 \cdot 2 + 2 \cdot 1 \cdot 3 + 3 \cdot 2 \cdot 1 - 3 \cdot 3 \cdot 3 \\
+                =&\, -18.
+            \end{align*}
+            使用公理化定义展开行列式十分复杂，因此在实际运用中不推荐使用这一方法.
 
-        \item （化为上三角形式）参考教材172页例4，具体过程不在此展开.
+        \item （化为上三角形式）对 $D$ 作初等行变换，将其化为上三角行列式：
+            \[
+                D = \begin{vmatrix}
+                    1 & 2 & 3 \\
+                    2 & 3 & 1 \\
+                    3 & 1 & 2
+                \end{vmatrix} = \begin{vmatrix}
+                    1 & 2 & 3 \\
+                    0 & -1 & -5 \\
+                    0 & -5 & -7
+                \end{vmatrix} = \begin{vmatrix}
+                    1 & 2 & 3 \\
+                    0 & -1 & -5 \\
+                    0 & 0 & 18
+                \end{vmatrix}
+                = 1 \cdot (-1) \cdot 18
+                = -18.
+            \]
 
         \item （递归式定义展开）我们对第一行展开，由\autoref{def:递归式定义} 可知
               \begin{align*}
@@ -520,7 +697,7 @@
             x_1       & x_2       & \cdots & x_n       \\
             \vdots    & \vdots    & \ddots & \vdots    \\
             x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1}
-        \end{vmatrix}=\prod_{1 \leqslant i < j \leqslant n}(x_j-x_i)\]
+        \end{vmatrix}=\prod_{1 \leqslant i < j \leqslant n}(x_j-x_i).\]
 \end{example}
 
 \begin{proof}
@@ -539,7 +716,7 @@
             0      & x_2^2     & \cdots & x_n^2     \\
             \vdots & \vdots    & \ddots & \vdots    \\
             0      & x_2^{n-2} & \cdots & x_n^{n-2}
-        \end{vmatrix}
+        \end{vmatrix}.
     \end{align*}
     上式右端为是关于$x_2,x_3,\ldots,x_n$的$n-1$阶范德蒙行列式，根据归纳假设，我们有
     \begin{align*}
@@ -557,24 +734,22 @@
     设$\dim V=n$，设$\alpha_1,\alpha_2,\ldots,\alpha_n$为$V$的一组基，构造向量组$\{\beta_k\}$中每个元素满足
     \[\beta_k=\alpha_1+k\alpha_2+\cdots+k^{n-1}\alpha_n,\enspace k=1,2,3,\ldots\]
     任取上述向量组中的$n$个向量$\beta_{k_1},\beta_{k_2},\ldots,\beta_{k_n}$，其中$k_1<k_2<\cdots<k_n$，则有
-    \[(\beta_{k_1},\beta_{k_2},\ldots,\beta_{k_n})=(\alpha_1,\alpha_2,\ldots,\alpha_n)C\]
+    \[(\beta_{k_1},\beta_{k_2},\ldots,\beta_{k_n})=(\alpha_1,\alpha_2,\ldots,\alpha_n)C,\]
     其中
     \[C=\begin{pmatrix}
             1         & 1         & \cdots & 1         \\
             k_1       & k_2       & \cdots & k_n       \\
             \vdots    & \vdots    & \ddots & \vdots    \\
             k_1^{n-1} & k_2^{n-1} & \cdots & k_n^{n-1}
-        \end{pmatrix}\]
+        \end{pmatrix},\]
     则$|C|$是一个范德蒙行列式. 由范德蒙行列式的性质可知$|C| \neq 0$，因此$C$可逆. 又由于$\alpha_1,\alpha_2,\ldots,\alpha_n$是$V$的一组基，因此$\beta_{k_1},\beta_{k_2},\ldots,\beta_{k_n}$线性无关，从而向量组$\{\beta_k\}$中任意$n$个向量均构成$V$的一组基.
 
     由于$V_1,V_2,\ldots,V_s$是$V$的非平凡子空间，因此每个子空间最多包含$\{\beta_k\}$中$n-1$个向量，进而$V_1\cup V_2\cup\cdots\cup V_s$只包含$\{\beta_k\}$中有限个向量，所以必然存在一个向量$\beta_j$使得$\beta_j \notin V_1\cup V_2\cup\cdots\cup V_s$.
 \end{proof}
 
-除此之外教材上还有一些基于递推的方法的例子，我们将会在下一讲中展开介绍这一方法以及其它技巧性更强的方法.
-
 \section{行列式计算技巧}
 
-一个核心：观察行列式的特征，通过用一行消去其它所有行或者通过逐行相减化出更多的 $0$，得到模板行列式（例如上三角、箭形等）求解；或者其它的一些明显的技巧性方法例如递推法.
+行列式计算的核心思想：观察行列式的特征，通过用一行消去其它所有行或者通过逐行相减化出更多的 $0$，得到模板行列式（例如上三角、箭形等）求解；或者通过一些明显的技巧性方法（例如递推法）来求解.
 
 \subsection{化三角形法}
 
@@ -671,7 +846,7 @@
               &     & \ddots &     \\
               &     &        & -m
         \end{vmatrix}                                              \\
-            & =(-m)^{n-1}\left(\sum_{i=1}^{n} x_i-m\right)
+            & =(-m)^{n-1}\left(\sum_{i=1}^{n} x_i-m\right).
     \end{align*}
 \end{solution}
 
@@ -724,7 +899,7 @@
             1      & 1      & 1      & \cdots & 0      & 0      \\
             1      & 1      & 1      & \cdots & 1      & 0
         \end{vmatrix}                      \\
-            & =(-1)^{n+1}(n+1) 2^{n-2}
+            & =(-1)^{n+1}(n+1) 2^{n-2}.
     \end{align*}
 \end{solution}
 
@@ -739,7 +914,7 @@
                   &       & \ddots & -1      &         \\
                   &       &        & x       & -1      \\
             a_{0} & a_{1} & \cdots & a_{n-2} & a_{n-1}
-        \end{vmatrix}$
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
@@ -747,7 +922,7 @@
     \begin{align*}
         D_n & =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i\begin{vmatrix} A & O \\ O & B \end{vmatrix}
         =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i|A||B|                                                        \\
-            & =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i(x^i)\left((-1)^{n-1-i}\right) =\sum_{i=0}^{n-1}a_i x^i
+            & =\sum_{i=0}^{n-1}(-1)^{n+i+1}a_i(x^i)\left((-1)^{n-1-i}\right) =\sum_{i=0}^{n-1}a_i x^i,
     \end{align*}
 
     其中$A\in \mathbf{M}_i(\mathbf{R}),\enspace B\in \mathbf{M}_{n-1-i}(\mathbf{R})$，
@@ -764,7 +939,7 @@
                & x  & \ddots &    &    \\
                &    & \ddots & -1 &    \\
                &    &        & x  & -1
-        \end{pmatrix} \]
+        \end{pmatrix}. \]
 \end{solution}
 
 \begin{example}{}{}
@@ -774,7 +949,7 @@
             b       & \beta  & \gamma & \beta  & \cdots & \beta  \\
             \vdots  & \vdots & \vdots & \vdots & \ddots & \vdots \\
             b       & \beta  & \beta  & \beta  & \cdots & \gamma
-        \end{vmatrix}$
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
@@ -807,18 +982,18 @@
                                        \vdots       & \vdots       & \ddots & \vdots       \\
                                        0            & 0            & \cdots & \gamma-\beta
                                    \end{vmatrix}           \\
-            & =(\lambda \gamma+\lambda(n-2)\beta-(n-1)ab)(\gamma-\beta)^{n-2}
+            & =(\lambda \gamma+\lambda(n-2)\beta-(n-1)ab)(\gamma-\beta)^{n-2}.
     \end{align*}
 \end{solution}
 
-\begin{example}{}{}
-    计算行列式$D_n=\begin{vmatrix}
-            (a_1 + b_1)^{-1} & (a_1 + b_2)^{-1} & \cdots & (a_1 + b_n)^{-1} \\
-            (a_2 + b_1)^{-1} & (a_2 + b_2)^{-1} & \cdots & (a_2 + b_n)^{-1} \\
-            \vdots           & \vdots           & \ddots & \vdots           \\
-            (a_n + b_1)^{-1} & (a_n + b_2)^{-1} & \cdots & (a_n + b_n)^{-1}
-        \end{vmatrix}$.
-\end{example}
+% \begin{example}{}{}
+%     计算行列式$D_n=\begin{vmatrix}
+%             (a_1 + b_1)^{-1} & (a_1 + b_2)^{-1} & \cdots & (a_1 + b_n)^{-1} \\
+%             (a_2 + b_1)^{-1} & (a_2 + b_2)^{-1} & \cdots & (a_2 + b_n)^{-1} \\
+%             \vdots           & \vdots           & \ddots & \vdots           \\
+%             (a_n + b_1)^{-1} & (a_n + b_2)^{-1} & \cdots & (a_n + b_n)^{-1}
+%         \end{vmatrix}$.
+% \end{example}
 
 \subsection{升阶法}
 
@@ -844,7 +1019,7 @@
             \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
             0      & 1      & 1      & \cdots & 0      & 1      \\
             0      & 1      & 1      & \cdots & 1      & 0
-        \end{vmatrix} \]
+        \end{vmatrix}. \]
 
     再将第一行的 $-1$ 倍加到其他各行, 得:
     \[ D =\begin{vmatrix}
@@ -852,7 +1027,7 @@
             -1     & -1 &        &    \\
             \vdots &    & \ddots &    \\
             -1     &    &        & -1
-        \end{vmatrix} \]
+        \end{vmatrix}. \]
 
     从第二列开始, 每列乘以 $-1$ 加到第一列, 得:
     \begin{align*}
@@ -862,7 +1037,7 @@
                         &    & \ddots &    \\
                         &    &        & -1
              \end{vmatrix} \\
-          & =(-1)^{n+1}(n-1)
+          & =(-1)^{n+1}(n-1).
     \end{align*}
 \end{solution}
 
@@ -880,11 +1055,11 @@
 
 \begin{solution}
     \begin{align*}
-        D_1 & =\cos\beta                               \\
+        D_1 & =\cos\beta,                               \\
         D_2 & =\begin{vmatrix}
                    \cos\beta & 1          \\
                    1         & 2\cos\beta
-               \end{vmatrix}=2\cos^2\beta-1=\cos2\beta
+               \end{vmatrix}=2\cos^2\beta-1=\cos2\beta.
     \end{align*}
 
     猜想$D_n=\cos n\beta$. 数学归纳证明：
@@ -896,7 +1071,7 @@
                        & 1            & \ddots & 1            &              \\
                        &              & \ddots & 2 \cos \beta & 1            \\
                        &              &        & 1            & 2 \cos \beta
-        \end{vmatrix} \]
+        \end{vmatrix}. \]
 
     将 $D_{k+1}$ 按最后一行展开, 得
     \begin{align*}
@@ -916,7 +1091,7 @@
             \vdots     & \vdots       & \vdots       & \ddots & \vdots \\
             0          & 0            & 0            & \cdots & 1
         \end{vmatrix}       \\
-        ={}        & 2\cos\beta D_k-D_{k-1}
+        ={}        & 2\cos\beta D_k-D_{k-1}.
     \end{align*}
 
     而$D_{k}=\cos k \beta,\enspace
@@ -925,26 +1100,26 @@
         D_{k+1} & = 2 \cos \beta D_{k}-D_{k-1}                                               \\
                 & =2 \cos \beta \cos k \beta-\cos k \beta \cos \beta-\sin k \beta \sin \beta \\
                 & =\cos k \beta \cos \beta-\sin k \beta \sin \beta                           \\
-                & =\cos (k+1) \beta
+                & =\cos (k+1) \beta.
     \end{align*}
 
     则证得$D_n=\cos n\beta,\enspace n\in \mathbf{N}$.
 \end{solution}
 
 下面介绍常系数线性递推数列，为了方便，只介绍二阶情况. 如果$D_n$满足关系式
-\[ aD_n+bD_{n-1}+cD_{n-2}=0 \]
+\[ aD_n+bD_{n-1}+cD_{n-2}=0, \]
 解特征方程
 \[ ar^2+br+c=0 \]
 会有三种根的情况.
 \begin{enumerate}
     \item $\Delta>0$, 有两个不等的实根$r_1, r_2$，则有
-          \[ D_n=C_1r_1^n+C_2r_2^n \]
+          \[ D_n=C_1r_1^n+C_2r_2^n. \]
 
     \item $\Delta=0$, 有重实根$r$，则有
-          \[ D_n=(C_1+nC_2)r^n \]
+          \[ D_n=(C_1+nC_2)r^n. \]
 
     \item $\Delta<0$, 有共轭复根$r=\cos\beta\pm \i\sin\beta$，则有
-          \[ D_n=C_1\cos n\beta + C_2\sin n\beta \]
+          \[ D_n=C_1\cos n\beta + C_2\sin n\beta. \]
 \end{enumerate}
 以上式子中的$C_1,C_2$均为任意常数，可以令$n=1,2$获得.
 
@@ -963,20 +1138,20 @@
 
 \begin{solution}
     按第一列展开, 得
-    \[ D_n=9 D_{n-1}-20 D_{n-2} \]
+    \[ D_n=9 D_{n-1}-20 D_{n-2}, \]
     即 $ D_n-9 D_{n-1}+20 D_{n-2}=0 $.
 
     作特征方程
-    \[ x^{2}-9 x+20=0 \]
+    \[ x^{2}-9 x+20=0, \]
     解得 $ x_1=4,\enspace x_2=5 $. 则
-    \[ D_n=A \cdot 4^n+B \cdot 5^n \]
+    \[ D_n=A \cdot 4^n+B \cdot 5^n, \]
 
     当 $n=1$ 时, $9=4A+5B$；
 
     当 $n=2$ 时，$61=16A+25B$.
 
     解得$A=-4,\enspace B=5$，所以
-    \[ D_n=5^{n+1}-4^{n+1} \]
+    \[ D_n=5^{n+1}-4^{n+1}. \]
 \end{solution}
 
 最后我们介绍一个经典且复杂的例子，即所谓柯西行列式，我们利用递推法来求解：
@@ -1005,7 +1180,7 @@
                     \vdots                                      & \ddots & \vdots                                              & \vdots                 \\[2ex]
                     \dfrac{b_n-b_1}{(a_{n-1}+b_1)(a_{n-1}+b_n)} & \cdots & \dfrac{b_n-b_{n-1}}{(a_{n-1}+b_{n-1})(a_{n-1}+b_n)} & \dfrac{1}{a_{n-1}+b_n} \\[2ex]
                     \dfrac{b_n-b_1}{(a_n+b_1)(a_n+b_n)}         & \cdots & \dfrac{b_n-b_{n-1}}{(a_n+b_{n-1})(a_n+b_n)}         & \dfrac{1}{a_n+b_n}
-                \end{vmatrix}
+                \end{vmatrix}.
     \end{align*}
     第二步是提取公因式：
     \[ \text{上式} = \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)}
@@ -1014,7 +1189,7 @@
             \vdots                 & \ddots & \vdots                     & \vdots \\[2ex]
             \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}} & 1      \\[2ex]
             \dfrac{1}{a_n+b_1}     & \cdots & \dfrac{1}{a_n+b_{n-1}}     & 1
-        \end{vmatrix} \]
+        \end{vmatrix}. \]
     第三步是将行列式的前 $n-1$ 行每行都减去第 $n$ 行：
     \[ \text{上式} = \dfrac{\prod\limits_{i=1}^{n-1}(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)}
         \begin{vmatrix}
@@ -1022,7 +1197,7 @@
             \vdots                                      & \ddots & \vdots                                              & \vdots \\[2ex]
             \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_1)(a_n+b_1)} & \cdots & \dfrac{a_n-a_{n-1}}{(a_{n-1}+b_{n-1})(a_n+b_{n-1})} & 0      \\[2ex]
             \dfrac{1}{a_n+b_1}                          & \cdots & \dfrac{1}{a_n+b_{n-1}}                              & 1
-        \end{vmatrix} \]
+        \end{vmatrix}. \]
     然后再次提取公因式：
     \begin{align*}
         \text{上式} & = \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)}
@@ -1031,11 +1206,11 @@
             \vdots                 & \ddots & \vdots                     \\[2ex]
             \dfrac{1}{a_{n-1}+b_1} & \cdots & \dfrac{1}{a_{n-1}+b_{n-1}}
         \end{vmatrix}                                                         \\[2ex]
-                    & = \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)} D_{n-1}
+                    & = \dfrac{\prod\limits_{i=1}^{n-1}(a_n-a_i)(b_n-b_i)}{\prod\limits_{j=1}^{n}(a_j+b_n)\prod\limits_{k=1}^{n-1}(a_n+b_k)} D_{n-1}.
     \end{align*}
     不断递推下去即得
 
-    \[|A| = \dfrac{\prod\limits_{1 \leqslant i < j \leqslant n}(a_j - a_i)(b_j - b_i)}{\prod\limits_{i,j=1}^{n}(a_i + b_j)}\]
+    \[|A| = \dfrac{\prod\limits_{1 \leqslant i < j \leqslant n}(a_j - a_i)(b_j - b_i)}{\prod\limits_{i,j=1}^{n}(a_i + b_j)}.\]
 \end{solution}
 
 \subsection{硬拆法}
@@ -1074,7 +1249,7 @@
                                           & -1      & \ddots & a_{n-1}   &         \\
                                           &         & \ddots & 1-a_{n-1} & a_{n}   \\
                                           &         &        & -1        & 1-a_{n}
-                               \end{vmatrix}
+                               \end{vmatrix}.
     \end{align*}
 
     上面第一个行列式的值为 1（从第 1 行开始，每一行依次加到下一行），所以
@@ -1095,7 +1270,7 @@
             & =1-a_{1}(1-a_{2} D_{n-2})                                 \\
             & =\cdots                                                   \\
             & =1-a_{1}+a_{1} a_{2}+\cdots+(-1)^n a_{1} a_{2} \cdots a_n \\
-            & =1+\sum_{i=1}^{n}(-1)^i \prod_{j=1}^i a_j
+            & =1+\sum_{i=1}^{n}(-1)^i \prod_{j=1}^i a_j.
     \end{align*}
 \end{solution}
 
@@ -1122,19 +1297,19 @@
             x_1^{n-2} & x_2^{n-2} & \cdots & x_n^{n-2} & x^{n-2} \\
             x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1} & x^{n-1} \\
             x_1^{n}   & x_2^{n}   & \cdots & x_n^{n}   & x^{n}
-        \end{vmatrix} \]
+        \end{vmatrix}. \]
 
     将 $f(x)$ 按第 $n+1$ 列展开, 得
-    \[ f(x)=A_{1, n+1}+A_{2, n+1} x+\cdots+A_{n, n+1} x^{n-1}+A_{n+1, n+1} x^{n} \]
+    \[ f(x)=A_{1, n+1}+A_{2, n+1} x+\cdots+A_{n, n+1} x^{n-1}+A_{n+1, n+1} x^{n}, \]
     其中 $x^{n-1}$ 的系数为
-    \[ A_{n, n+1}=(-1)^{n+(n+1)} D_n=-D_n \]
+    \[ A_{n, n+1}=(-1)^{n+(n+1)} D_n=-D_n. \]
 
     又根据 Vandermonde 行列式的结果知
-    \[ f(x)=(x-x_1)(x-x_2)\cdots(x-x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j) \]
+    \[ f(x)=(x-x_1)(x-x_2)\cdots(x-x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j). \]
     由上式可求得 $x^{n-1}$ 的系数为
-    \[ -(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j) \]
+    \[ -(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j). \]
     故有
-    \[ D_n=(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j) \]
+    \[ D_n=(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j). \]
 \end{solution}
 
 \subsection{利用$|E_m-AB|=|E_n-BA|$} \label{sec:利用|E_m-AB|=|E_n-BA|}
@@ -1156,7 +1331,7 @@
             1      & 2      & 2      & \cdots & n      \\
             \vdots & \vdots & \vdots & \ddots & \vdots \\
             1      & 2      & 3      & \cdots & n-1    \\
-        \end{vmatrix} \]
+        \end{vmatrix}. \]
 
     注意到这个行列式对应的矩阵可以加上一个单位矩阵构成一个每行都相等的矩阵，所以我们可以利用$|E_m-AB|=|E_n-BA|$来求解这个行列式.
     \begin{align*}
@@ -1177,7 +1352,7 @@
          & =(-1)^n\begin{vmatrix}E_n-
                       \begin{pmatrix}
                 1 \\1\\1\\\vdots\\1
-            \end{pmatrix}\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}\end{vmatrix}
+            \end{pmatrix}\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}\end{vmatrix}.
     \end{align*}
 
     而 \[ \begin{vmatrix}E_n-\begin{pmatrix}
@@ -1185,7 +1360,7 @@
             \end{pmatrix}\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}\end{vmatrix}
         =1-\begin{pmatrix}1 & 2 & 3 & \cdots & n\end{pmatrix}
         \begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}
-        =-\frac{n^2+n-2}{2} \]
+        =-\frac{n^2+n-2}{2}. \]
 
     所以原式$\displaystyle =(-1)^{n+1}\frac{n^2+n-2}{2}\prod_{i=1}^na_i$.
 \end{solution}
@@ -1288,7 +1463,7 @@
             2  & 1  & 1 & 3 & -1 \\
             1  & 2  & 2 & 1 & 0  \\
             0  & 3  & 0 & 1 & 3
-        \end{vmatrix}.$
+        \end{vmatrix}$.
 \end{example}
 
 \begin{solution}
@@ -1390,14 +1565,59 @@
 \end{example}
 
 \begin{solution}
-    见教材182页例1.
+    我们使用行列式来判断矩阵是否可逆：设 $A=\begin{pmatrix}
+            1 & 2 & 3 \\ 2 & 1 & 2 \\ 1 & 3 & 3
+        \end{pmatrix}$，则有 $|A| = 4$，因此 $A$ 可逆.
+
+    接着我们使用伴随矩阵求 $A$ 的逆矩阵. 首先求 $|A|$ 中各元素的代数余子式：
+
+    \[
+        A_{11} = \begin{vmatrix}
+            1 & 2 \\ 3 & 3
+        \end{vmatrix} = -3, \quad
+        A_{12} = - \begin{vmatrix}
+            2 & 2 \\ 1 & 3
+        \end{vmatrix} = -4, \quad
+        A_{13} = \begin{vmatrix}
+            2 & 1 \\ 1 & 3
+        \end{vmatrix} = 5.
+    \]
+
+    类似地，我们有
+    \begin{align*}
+        A_{21} &= 3, \quad A_{22} = 0, \quad A_{23} = -1, \\
+        A_{31} &= 1, \quad A_{32} = 4, \quad A_{33} = -3,
+    \end{align*}
+
+    由此可得 $A$ 的伴随矩阵 $A^* = \begin{pmatrix}
+            A_{11} & A_{21} & A_{31} \\
+            A_{12} & A_{22} & A_{32} \\
+            A_{13} & A_{23} & A_{33}
+        \end{pmatrix} = \begin{pmatrix}
+            -3 & 3 & 1 \\
+            -4 & 0 & 4 \\
+            5 & -1 & -3
+        \end{pmatrix}$
+
+    因此，
+
+    \[
+        A^{-1} = \dfrac{A^*}{|A|} = \dfrac{1}{4} \begin{pmatrix}
+            -3 & 3 & 1 \\
+            -4 & 0 & 4 \\
+            5 & -1 & -3
+            \end{pmatrix}
+    \]
+
 \end{solution}
 
+需要注意的是，在矩阵阶数较大时，使用伴随矩阵求逆矩阵需要求解大量的代数余子式，因此我们在实际计算中一般还是采用行变换（列变换）的方法求解逆矩阵.
+
 下面的例子也十分经典，是已知伴随矩阵求原矩阵，需要熟练运用伴随矩阵的性质：
-\begin{example}
-    已知$A^*=\begin{pmatrix}
+\begin{example}{}{}
+    已知 $A^*=\begin{pmatrix}
             1 & -2 & 1 \\ 0 & 2 & -2 \\ -1 & 2 & 1
-        \end{pmatrix}$，求$A$.
+        \end{pmatrix}$，求 $A$.
 \end{example}
 
 \begin{solution}
@@ -1461,9 +1681,11 @@
         \end{vmatrix}$.
 
     \begin{enumerate}
-        \item 方程组 \ref{eq:13:线性方程组1} 只有零解$\iff D \neq 0$，有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
+        \item 方程组 \ref{eq:13:线性方程组1} 只有零解$\iff D \neq 0$，\\
+              方程组 \ref{eq:13:线性方程组1} 有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
 
-        \item 方程组 \ref{eq:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，当$D=0$时，方程组 \ref{eq:13:线性方程组2} 要么无解，要么有无穷多解.
+        \item 方程组 \ref{eq:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，\\
+              当$D=0$时，方程组 \ref{eq:13:线性方程组2} 要么无解，要么有无穷多解.
     \end{enumerate}
 \end{theorem}
 
@@ -1608,7 +1830,19 @@
 \begin{theorem}{}{行列式秩等于行列式秩}
     矩阵$A$的秩$r(A)=r \iff A$的行列式的秩为$r$.
 \end{theorem}
-我们可以得到上一个专题中矩阵的秩的等价定义. 这一定理的证明见教材183页，事实上是很简单的. 我们可以这么理解，最高非零子式的阶数实际上就是矩阵行、列向量极大线性无关组的长度（更多行、列向量就会使得子式等于0，此时必不满秩），那么这一定理就很显然了.
+\begin{proof}
+    \begin{enumerate}
+        \item 先证 $r(A)=r \implies A$ 的行列式秩为 $r$：
+
+            由 $r(A) = r$ 可得 $A$ 的行秩为 $r$，不妨设 $A$ 的前 $r$ 行构成的矩阵 $A_1$ 的行秩为 $r$，其列秩也为 $r$；不妨再设 $A_1$ 的前 $r$ 列向量线性无关. 如此，$A$ 的左上角的 $r$ 阶子块是可逆矩阵，其行列式是 $A$ 的一个 $r$ 阶非零子式；又因为 $A$ 的任意 $r+1$ 个行向量线性相关，因此任意 $r+1$ 阶子式都是零子式. 故 $A$ 的行列式秩为 $r$.
+
+        \item 再证 $A$ 的行列式秩为 $r \implies r(A)=r$：
+
+            不妨设 $A$ 的左上角 $r$ 阶子式 $|A_0|$ 为非零子式. 于是 $A_0$ 可逆，其 $r$ 个行向量线性无关，将它们添分量构成 $A$ 的前 $r$ 个行向量，它们也线性无关；而且此时 $A$ 中任意 $r+1$ 行线性相关（否则 $A$ 中存在 $r+1$ 阶非零子式），故矩阵 $A$ 的行秩为 $r$，即 $r(A)=r$.
+    \end{enumerate}
+\end{proof}
+
+该定理给出了一个上个专题中矩阵的秩的等价定义. 我们可以这么理解，最高非零子式的阶数实际上就是矩阵行、列向量极大线性无关组的长度（更多行、列向量就会使得子式等于0，此时必不满秩），那么这一定理就很显然了.
 
 \begin{definition}{}{}
     矩阵$A$的非零子式的最高阶数$r$称为矩阵$A$的秩，记为$r(A)$.
@@ -1637,7 +1871,7 @@
 
     \item 在\autoref{thm:行列式秩等于行列式秩} 中统一了矩阵的秩和行列式的秩.
 \end{enumerate}
-虽然线性映射的秩、矩阵的秩、行列式的秩的定义各不相同，但本质都在于向量组的秩（回顾线性映射的秩的定义，矩阵行秩、列秩的定义，乃至\autoref*{thm:行列式秩等于行列式秩} 的证明）. 这给我们的启示是上述提到的概念都可以互相转化考虑. 例如考虑可逆时，我们可以考虑行、列向量是否线性无关/矩阵对应的线性映射是否可逆/行列式是否为0等. 虽然说起来很简单，但是实际做题的时候很多同学还是容易思维局限，因此我们需要将这些概念的统一性放在重要的位置.
+虽然线性映射的秩、矩阵的秩、行列式的秩的定义各不相同，但本质都在于向量组的秩（回顾线性映射的秩的定义，矩阵行秩、列秩的定义，乃至\autoref{thm:行列式秩等于行列式秩} 的证明）. 这给我们的启示是上述提到的概念都可以互相转化考虑. 例如考虑可逆时，我们可以考虑行、列向量是否线性无关/矩阵对应的线性映射是否可逆/行列式是否为0等. 虽然说起来很简单，但是实际做题的时候很多同学还是容易思维局限，因此我们需要将这些概念的统一性放在重要的位置.
 \begin{example}{}{}
     求多项式$f(x)=\begin{vmatrix}
             1 & a_1   & a_2     & a_3     \\
