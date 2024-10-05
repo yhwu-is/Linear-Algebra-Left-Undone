@@ -1010,7 +1010,7 @@
         \item 设$S,T\in \mathcal{L}(V)$满足$ST=TS$，证明：$\ker S$和$\im S$都在$T$下不变.
         \begin{answer}
             对于$\forall v\in\ker S,Sv=0\implies STv=TSv=0$，这表明$Tv\in \ker S$，$\ker S$在$T$下不变.
-            对于$forall v \in \im S,v=Su\implies Tv=TSu=S(Tu)$，这表明$Tv \in \im S$，$\im S$在$T$下不变.
+            对于$\forall v \in \im S,v=Su\implies Tv=TSu=S(Tu)$，这表明$Tv \in \im S$，$\im S$在$T$下不变.
         \end{answer}
         \item 已知$\mathbf{R}^2$上线性变换$T$在基$e_1=(1,0),e_2=(0,1)$下的矩阵为$\begin{pmatrix}2 & 1 \\ 0 & 2\end{pmatrix}$. 证明：
         \begin{enumerate}
@@ -1045,7 +1045,7 @@
         \item 设$V$是有限维的且$T\in \mathcal{L}(V)$，设$\lambda_1,\ldots,\lambda_m$是非零互异特征值，证明：
         \[ \dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T)\leqslant\dim\im T. \]
         \begin{answer}
-            考虑$U=E(\lambda_1,T)\oplus E(\lambda_2,T) \oplus \cdots \oplus E(\lambda_m,T)$，对于$\forall u\in U$，设$u=v_1+v_2+\cdots+v_m$，其中$v_i\in E(\lambda_i,T)$.则$v_i=T(\dfrac{v_i}{\lambda_i})$，从而$u=T(\displaystyle\sum_{i=1}^{m}\dfrac{v_i}{\lambda_i}) \in \im T$.因此$U$是$\im T$的子空间.进而有$\dim U=\dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T) \leqslant \dim \im T$.
+            考虑$U=E(\lambda_1,T)\oplus E(\lambda_2,T) \oplus \cdots \oplus E(\lambda_m,T)$，对于$\forall u\in U$，设$u=v_1+v_2+\cdots+v_m$，其中$v_i\in E(\lambda_i,T)$.则$v_i=T(\dfrac{v_i}{\lambda_i})$，从而$u=T(\sum\limits_{i=1}^{m}\dfrac{v_i}{\lambda_i}) \in \im T$.因此$U$是$\im T$的子空间.进而有$\dim U=\dim E(\lambda_1,T)+\cdots+\dim E(\lambda_m,T) \leqslant \dim \im T$.
         \end{answer}
         \item 设$T\in \mathcal{L}(V)$且$\dim\im T=k$. 证明$T$至多有$k+1$个特征值.
         \begin{answer}
@@ -1145,7 +1145,7 @@
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
-                \item $T$的所有一维不变子空间为$\spa(e_i),i=1,2,\ldots,n$.
+                \item $T$的所有一维不变子空间为$\spa(e_i),\enspace i=1,2,\ldots,n$.
                 \item $T$的所有不变子空间为所有$\spa(e_{i_1},e_{i_2},\ldots,e_{i_k})$，其中$(i_1,i_2,\ldots,i_k)\subset\{1,2,\ldots,n\}$.
 
                 $T$的不变子空间个数为$2^n$.
@@ -1181,7 +1181,7 @@
         \end{answer}
 
         \item \begin{enumerate}
-            \item 使用 \nameref{thm:Gershgorin disks theorem} 证明：严格对角占优的矩阵是可逆的；
+            \item 使用 \nameref{thm:Gershgorin disks theorem}证明：严格对角占优的矩阵是可逆的；
             \item 证明：矩阵 $A = \begin{pmatrix}
                           1 + \i & 0.2    & 0.2          \\
                           0.2    & 2 - \i & 0.2          \\
@@ -1191,8 +1191,8 @@
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
-                \item 设$A=(a_{ij})_{n\times n}$是一个严格对角占优矩阵，则$A$的每个特征值都在某个Gershgorin圆盘$D_i=\{z\in \mathbf{F}||z-a_{ii}|\leqslant \displaystyle\sum_{j\neq i}|a_{ij}|\}$内.若$0$是$A$的特征值，则存在$i\in\{1,2,\ldots,n\}$，使得$|a_{ii}|<\displaystyle\sum_{j\neq i}|a_{ij}|$，这与$A$是严格对角占优矩阵矛盾.从而$0$不是$A$的特征值，$A$为可逆矩阵.
-                \item 假设$A$不可逆，则$A$有特征值$0$.显然$0\notin D_1,D_2$，故$0\in D_3$.注意到$0$实际上在$D_3$的边界上，回顾Gershgorin圆盘第一定理的证明，要使得等号成立则应有$c_1=c_2=c_3$，从而$(v_1+v_2+v_3)$是$A$对应于特征值$0$的特征向量.而$(v_1+v_2+v_3)A\neq 0$，矛盾.故假设不成立，$A$为可逆矩阵.
+                \item 设$A=(a_{ij})_{n\times n}$是一个严格对角占优矩阵，则$A$的每个特征值都在某个Gershgorin圆盘$D_i=\{z\in \mathbf{F}\mid|z-a_{ii}|\leqslant \displaystyle\sum_{j\neq i}|a_{ij}|\}$内.若$0$是$A$的特征值，则存在$i\in\{1,2,\ldots,n\}$，使得$|a_{ii}|<\displaystyle\sum_{j\neq i}|a_{ij}|$，这与$A$是严格对角占优矩阵矛盾.从而$0$不是$A$的特征值，$A$为可逆矩阵.
+                \item 假设$A$不可逆，则$A$有特征值$0$.显然$0\notin D_1,D_2$，故$0\in D_3$.注意到$0$实际上在$D_3$的边界上，回顾 \nameref*{thm:Gershgorin disks theorem}的证明，要使得等号成立则应有$c_1=c_2=c_3$，从而$(v_1+v_2+v_3)$是$A$对应于特征值$0$的特征向量.而$(v_1+v_2+v_3)A\neq 0$，矛盾.故假设不成立，$A$为可逆矩阵.
             \end{enumerate}
         \end{answer}
     \end{exgroup}
