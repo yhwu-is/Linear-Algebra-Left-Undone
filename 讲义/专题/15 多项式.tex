@@ -312,19 +312,19 @@
     设$q_1(x),q_2(x),\ldots,q_n(x)\in\mathbf{F}[x]$两两互素，即$(q_i(x),q_j(x))=1,\enspace\forall i,j\in\{1,2,\ldots,n\}$，则对任意的$r_1(x),r_2(x),\ldots,r_n(x)\in\mathbf{F}[x]$，方程组
     \begin{equation} \label{eq:14:中国剩余定理}
         \begin{cases}
-            p(x)\equiv r_1(x)\pmod{q_1(x)}, \\
-            p(x)\equiv r_2(x)\pmod{q_2(x)}, \\
+            p(x)\equiv r_1(x)\bmod{q_1(x)}, \\
+            p(x)\equiv r_2(x)\bmod{q_2(x)}, \\
             \cdots                          \\
-            p(x)\equiv r_n(x)\pmod{q_n(x)},
+            p(x)\equiv r_n(x)\bmod{q_n(x)},
         \end{cases}
     \end{equation}
     模$Q(x)=\prod\limits_{i=1}^nq_k(x)$有唯一解.
 \end{theorem}
 \begin{proof}
     首先证明解的存在性，我们需要构造出这个解. 事实上，如果我们能证明存在多项式$p_k(x)$使得对任意的$k$都有
-    \[p_k(x)\equiv 1\pmod{q_k(x)},\]
+    \[p_k(x)\equiv 1\bmod{q_k(x)},\]
     且对任意的$j\neq k$都有
-    \[p_k(x)\equiv 0\pmod{q_j(x)},\]
+    \[p_k(x)\equiv 0\bmod{q_j(x)},\]
     则$p(x)=\sum\limits_{k=1}^nr_k(x)p_k(x)$就是一个解. 现构造$p_k(x)$. 因为$q_k(x)$两两互素，故存在$u_j(x),v_j(x)\in\mathbf{F}[x]$使得
     \[u_j(x)q_k(x)+v_j(x)q_j(x)=1,\]
     其中$j\neq k$，故令
@@ -335,8 +335,8 @@
     显然$p_k(x)$符合要求，因此我们构造出了这组方程的解为$p(x)=\sum\limits_{k=1}^nr_k(x)p_k(x)$.
 
     最后我们说明解在模$Q(x)=\prod\limits_{i=1}^nq_k(x)$下的唯一性. 设$p_1(x),p_2(x)$都是\autoref{eq:14:中国剩余定理} 的解，于是
-    \[p_1(x)\equiv p_2(x)\pmod{q_k(x)},\enspace k=1,2,\ldots,n,\]
-    即$p_1(x)-p_2(x)$必然是每个$q_k(x)$的倍式，又由于$q_k(x)$两两互素，故$p_1(x)-p_2(x)$是$Q(x)$的倍式，即$p_1(x)\equiv p_2(x)\pmod{Q(x)}$，故解唯一.
+    \[p_1(x)\equiv p_2(x)\bmod{q_k(x)},\enspace k=1,2,\ldots,n,\]
+    即$p_1(x)-p_2(x)$必然是每个$q_k(x)$的倍式，又由于$q_k(x)$两两互素，故$p_1(x)-p_2(x)$是$Q(x)$的倍式，即$p_1(x)\equiv p_2(x)\bmod{Q(x)}$，故解唯一.
 \end{proof}
 
 \section{多项式的因式分解}
@@ -685,26 +685,104 @@
 
     \begin{exgroup}
         \item 证明：全体一元多项式关于多项式一般的加法和乘法运算构成环.
+        \begin{answer}
+            按照环的定义逐一进行验证即可.
+        \end{answer}
         \item 设$p(x),q(x),r(x)\in\mathbf{F}[x]$，则
         \begin{enumerate}
             \item 若$p(x),q(x)\neq 0$，则$p(x)q(x)\neq 0$；
             \item 若$p(x)\neq 0$，且$p(x)q(x)=p(x)r(x)$，则$q(x)=r(x)$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 由于$p(x),q(x)\neq 0$，故存在$c\in \mathbf{F}$，使得$p(c)\neq 0,q(c)\neq 0$，从而$p(c)q(c)\neq0$，这表明$p(x)q(x)\neq 0$.
+                \item 由$p(x)q(x)=p(x)r(x)$知$p(x)(q(x)-r(x))=0$.而$p(x)\neq0$，因此有$q(x)-r(x)=0$即$q(x)=r(x)$.
+            \end{enumerate}
+        \end{answer}
         \item 证明\autoref{thm:消去重因式}.
+        \begin{answer}
+            设$p(x)$的不可约分解为$p(x)=cq_1(x)^{\alpha_1}q_2(x)^{\alpha_2}\cdots q_m(x)^{\alpha_m}$，其中$\alpha_i$为正整数，$i=1,2,\ldots,m$.
+
+            则$p'(x)=c\displaystyle\sum_{i=1}^{m}(\alpha_i q_i(x)^{\alpha_i-1}\displaystyle\prod_{j\neq i}q_j(x)^{\alpha_j})$，从而$\displaystyle d(x)=c\prod_{i=1}^{m}q_i(x)^{\alpha_i-1}$，
+
+            $\displaystyle\dfrac{p(x)}{d(x)}=c\prod_{i=1}^{m}q_i(x)$显然没有重因式，且这个多项式的不可约因式与$p(x)$的不可约因式仍然相同.
+        \end{answer}
         \item 证明：每个奇数次的实系数多项式都有实的零点.
+        \begin{answer}
+            设$\deg f=n$为奇数，$f(x)=\displaystyle\sum_{i=0}^{n}a_nx^n$.不妨设$a_n>0$（否则考虑$-f(x)$）.
+
+            取$x=\dfrac{\sum\limits_{i=0}^{n-1}|a_i|}{a_n}+2$，则$a_nx^n>\displaystyle\sum_{i=0}^{n-1}|a_i|x^n>\displaystyle\sum_{i=0}^{n-1}|a_i|x^i\geqslant |\displaystyle\sum_{i=0}^{n-1}a_ix^i|$，
+
+            从而$f(x)=a_nx^n+\displaystyle\sum_{i=0}^{n-1}a_ix^i>0$，$f(-x)=-a_nx^n+\displaystyle\sum_{i=0}^{n-1}a_i(-x)^i\leqslant -a_nx_n+\displaystyle\sum_{i=0}^{n-1}|a_ix^i|<0$.
+            而实系数多项式在$R$上连续，故$f$一定有实的零点.
+        \end{answer}
+
     \end{exgroup}
 
     \begin{exgroup}
         \item 设多项式$f(x)$被$(x-1),(x-2),(x-3)$除后，余式分别为$4,8,16$. 求$f(x)$被$(x-1)(x-2)(x-3)$除后的余式.
+        \begin{answer}
+            $1=\dfrac{1}{2}(x-2)(x-3)-\dfrac{1}{2}(x-4)(x-1)$，故$\dfrac{1}{2}(x-2)(x-3) \equiv1\bmod{(x-1)}$.
+
+            同理有$-(x-1)(x-3)\equiv1\bmod{(x-2)}$，$\dfrac{1}{2}(x-1)(x-2)\equiv1\bmod{(x-3)}$.
+
+            从而$f(x)\equiv\dfrac{1}{2}\times 4 \times(x-2)(x-3)-1\times 8\times(x-1)(x-3)+\dfrac{1}{2}\times 16\times(x-1)(x-2)\equiv 2x^2-2x+4\bmod{(x-1)(x-2)(x-3)}$.
+        \end{answer}
         \item 设$p,q\in\mathbf{F}[x]$，证明：$p^2 \mid q^2\iff p \mid q$.
+        \begin{answer}
+            设$q=ps+t$，其中$\deg t<\deg p$，则$q^2=p^2s^2+2pst+t^2$.
+
+            从而$p^2\mid q^2\iff 2pst+t^2=0 \iff t(2ps+t)=0$.由于$\deg t<\deg p\leqslant \deg (ps)$，故$t(2ps+t)=0\iff t=0 \iff p\mid q$.
+        \end{answer}
         \item 证明：$\mathbf{F}[x]$中两个次数大于0的多项式没有公共复根的充要条件是它们互素.
+        \begin{answer}
+            \begin{enumerate}
+                \item 充分性：假设多项式$p,q$有公共复根$\lambda$，则$(x-\lambda)$为$p$和$q$的公因式，这与$p$和$q$互素矛盾.
+                \item 必要性：设$d(x)$是$p(x)$和$q(x)$的公因式，则$\deg d>1$，由代数基本定理知$d(x)$在复数域上有根，这表明$p$和$q$有公共复根，矛盾.从而$p$和$q$互素.
+            \end{enumerate}
+        \end{answer}
         \item 设$p\in\mathbf{F}[x]$且$q\neq 0$. 证明：$c$是$f(x)$的$k\enspace(k\geqslant 1)$重根的充要条件为
         \[f(c)=f'(c)=\cdots=f^{(k-1)}(c),\enspace f^{(k)}(c)\neq 0.\]
+        \begin{answer}
+            必要性显然.下面归纳证明充分性.
+            \begin{enumerate}
+                \item $k=1$时，命题成立.
+                \item 假设命题对$k$成立，则对于$k+1$，令$g(x)=f'(x)$，则$g(c)=g'(c)=\cdots=g^{(k-1)}(c)=0,g^{(k)}(c)\neq 0$，根据归纳假设，$c$是$g(x)$的$k$重根，从而$c$是$f(x)$的$(k+1)$重根，命题对$k+1$成立.
+            \end{enumerate}
+        \end{answer}
         \item 设$p(x)$和$q(x)$是$\mathbf{F}[x]$中的两个次数不超过$n$的多项式，若存在$\mathbf{F}$上$n+1$个不同的数$\lambda_0,\lambda_1,\ldots,\lambda_n$使得$p(\lambda_i)=q(\lambda_i),\enspace i=0,1,\ldots,n$，则$p(x)=q(x)$.
+        \begin{answer}
+            考虑多项式$f(x)=p(x)-q(x)$，$\deg f\leqslant \max\{\deg p,\deg q\}=n$，而$m\enspace(m\geqslant 0)$次多项式至多有$m$个根，这表明$\deg f=-\infty$，只能有$f(x)\equiv 0$，从而$p(x)=q(x)$.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
         \item 证明带余除法的其它角度.
+        \begin{answer}
+            \begin{enumerate}
+                \item 存在性：给定$p(x),s(x)\in\mathbf{F}[x],s(x)\neq 0$，设$A=\{r(x)\in \mathbf{F}[x]\mid\exists s(x)\in \mathbf{F}[x],p(x)=s(x)q(x)+r(x)\}$.
+
+                由于$p(x)=0\cdot s(x)+p(x)$，故$p(x)\in A$，$A\neq \emptyset$.若$s\mid p$，则$r(x)=0\in A$，且满足$\deg r<\deg s$.
+
+                否则存在$\displaystyle \min_{r\in A}\{\deg r\}$，我们证明$\deg r<\deg s$.
+
+                若不然，假设$r_1(x)$为$A$中次数最低的多项式，$\deg r_1=m\geqslant \deg s$，设$r_1=a_mx^m+\cdots+a_0$，则$r_2(x)=r_1(x)-s(x)\cdot a_mx^{m-\deg s}\in A$，且$\deg r_2 <m$，这与$r_1$的选取矛盾，从而假设不成立，有$\deg r_1(x)<\deg s$，存在性得证.
+                \item 唯一性：设$p(x)=s(x)q_1(x)+r_1(x)=s(x)q_2(x)+r_2(x)$，则$s(x)(q_1(x)-q_2(x))=r_2(x)-r_1(x)$.
+
+                若$q_1(x)\neq q_2(x)$，则$\deg (r_2-r_1)<\deg s\leqslant \deg s(x)(q_1(x)-q_2(x))$，矛盾.从而$q_1(x)=q_2(x),r_1(x)=r_2(x)$.
+            \end{enumerate}
+        \end{answer}
         \item 证明裴蜀定理的其它角度.
+        \begin{answer}
+            \begin{enumerate}
+                \item 必要性：设$\deg p=n,\deg q=m$，考虑映射$T:\mathbf{F}[x]_{n}\times\mathbf{F}[x]_{m}\rightarrow \mathbf{F}[x]_{m+n}$.我们先证明$T$是单射.
+
+                假设$r_1,r_2\in\mathbf{F}[x]_{n},s_1,s_2\in\mathbf{F}[x]_{m}$，$T(r_1,s_1)=T(r_2,s_2)$.则$r_1p+s_1q=r_2p+s_2q \implies (r_1-r_2)p=(s_2-s_1)q\implies p\mid(s_2-s_1)q$.
+                由于$(p,q)=1$，故有$p|(s_2-s_1)$.而$\deg (s_2-s_1)\leqslant n-1 <\deg p$，故有$s_2-s_1=0,s_1=s_2$，进而有$r_1=r_2$，从而$T$为单射.
+
+                又由于$\dim(\mathbf{F}[x]_{n}\times\mathbf{F}[x]_{m})=n+m=\dim(\mathbf{F}[x]_{m+n})$，故由$T$为单射知$T$为满射.从而存在$u(x),v(x)\in\mathbf{F}[x]$，使得$u(x)p(x)+v(x)q(x)=1$.
+                \item 充分性：设$(p(x),q(x))=d(x)$，则$d(x)\mid (u(x)p(x)+v(x)q(x))=1$，从而$d(x)=1$，$p(x)$和$q(x)$互素.
+            \end{enumerate}
+        \end{answer}
     \end{exgroup}
 \end{exercise}
