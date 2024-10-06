@@ -651,16 +651,125 @@
             \item  若 $W_1, W_2$ 是 $ \mathbf{R}^n $ 的两个子空间，$B_1, B_2$ 分别是 $W_1, W_2$ 的基，则存在 $ \mathbf{R}^n $ 的一组基 $B$，使得 $B \supseteq B_1 \cup B_2$。
 
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 错. 反例：$\alpha_1=(1,0),\alpha_2=(2,0),\alpha_3=(0,1)$，则 $\alpha_1,\alpha_2,\alpha_3$ 线性相关而 $\alpha_3$ 不是 $\alpha_1.\alpha_2$ 的线性组合.
+
+                \item 对. 该命题的等价命题（逆否命题）是：若存在一个向量是其余向量的线性组合，则 $\alpha_1,\ldots,\alpha_m$ 线性相关. 这正是定理 3.1 的内容，因而成立.
+
+                \item 错. 反例：$\alpha_1=(1,0),\alpha_2=(0,1),\alpha_3=(1,1)$，则 $\alpha_1,\alpha_2,\alpha_3$ 两两无关，而三者线性相关. 可证两两无关是向量组无关的必要条件.
+
+                \item 错. 反例：$\alpha_1=(1,0),\alpha_2=(0,0),\beta_1=(0,0),\beta_2=(0,1)$，有 $\alpha_1,\alpha_2$ 相关，$\beta_1,\beta_2$ 相关，而 $\alpha_1+\beta_1$ 与 $\alpha_2+\beta_2$ 线性无关.
+
+                \item 错. 若 $\alpha_1,\ldots,\alpha_n$ 线性无关，有
+                    \[\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n\implies\lambda_1=\lambda_2=\cdots=\lambda_n=0,\]
+                    判断 $\alpha_1+\alpha_2,\alpha_2+\alpha_3,\ldots,\alpha_n+\alpha_1$ 是否无关. 设
+                    \[\lambda_1'(\alpha_1+\alpha_2)+\cdots+\lambda_n'(\alpha_n+\alpha_1)=0,\]
+                    则
+                    \[(\lambda_n'+\lambda_1')\alpha_1+(\lambda_1'+\lambda_2')\alpha_2+\cdots+(\lambda_{n-1}'+\lambda_{n}')\alpha_n=0,\]
+                    则
+                    \[\begin{cases} \begin{aligned}
+                                \lambda_n'+\lambda_1'       & = 0               \\
+                                                            & \vdotswithin{ = } \\
+                                \lambda_{n-1}'+\lambda_{n}' & = 0               \\
+                            \end{aligned} \end{cases}.\]
+                    解该方程可得 $\lambda_n'=(-1)^n\lambda_1'$，因此当 $n$ 为偶数时，上述方程组有非零解，则向量组相关，而当 $n$ 为奇数时，向量组无关. 综上，该命题不成立.
+
+                \item 对. 由定理 3.1，不妨设 $\alpha_3$ 可由 $\alpha_1,\alpha_2$ 线性表示，则 $\alpha_1+\alpha_2,\alpha_2+\alpha_3,\alpha_3+\alpha_1$ 均可由 $\alpha_1,\alpha_2$ 线性表示，再由定理 3.3 可知，$\alpha_1+\alpha_2,\alpha_2+\alpha_3,\alpha_3+\alpha_1$ 线性相关.
+
+                \item 错. 反例：取 $\alpha_0=\alpha_1-\alpha_2-\alpha_3$，则 $\alpha_0+\alpha_1=(\alpha_0+\alpha_2)+(\alpha_0+\alpha_3)$，三者线性相关，不是 $\mathbf{R}^3$ 的基.
+
+                \item 对. 判断 $\alpha_1+\alpha_2$ 与 $\alpha_1-\alpha_2$ 是否无关.
+                    \[\lambda_1(\alpha_1+\alpha_2)+\lambda_2(\alpha_1-\alpha_2)=0,\]
+                    则有$(\lambda_1+\lambda_2)\alpha_1+(\lambda_1-\lambda_2)\alpha_2=0$，则 $\lambda_1+\lambda_2=0,\lambda_1-\lambda_2=0\implies \lambda_1=\lambda_2=0$，因此线性无关且个数等于维数，是一组基.
+
+                \item 错. 反例：$\mathbf{R}^2$ 中过原点的直线 $L_0$ 是 $\mathbf{R}^2$ 的一个子空间. 显然这样的直线有无数条.
+
+                \item 错. 反例：$\mathbf{R}^3$ 中，子空间 $W_1=\spa(e_1,e_2)$，$W_2=\spa(e_1+e_2,e_3)$，则 $B_1\cup B_2=\{e_1,e_2,e_3,e_1+e_2\}$，显然 $\mathbf{R}^3$ 中的任一组基都不可能包含四个元素.
+            \end{enumerate}
+        \end{answer}
 
         \item 证明：如果向量组线性相关，把每个向量去掉$m$个位置一致的分量，得到的缩短组仍线性相关；如果向量组线性无关，把每个向量添加$m$个位置一致的分量，得到的缩短组仍线性无关；
+        \begin{answer}
+            \begin{enumerate}
+                \item 若向量组线性相关，则对应该方程组有无穷多解. 去掉 $m$ 个分量，相当于删去该方程组中的任意 $m$ 行方程，依然有无穷多解. 这是因为对于原方程组的任意一个解，将其带入被削减后的方程组也依然成立. 故线性相关得证.
+
+                \item 若向量组线性无关，对应原方程组仅有唯一解，也就是全零解. 增加 $m$ 个分量相当于增加 $m$ 个方程，依然只有唯一解，因为若出现非零解，代入原方程组对应的方程中不会成立，矛盾. 故线性无关得证.
+            \end{enumerate}
+        \end{answer}
 
         \item $a$取何值时，$\beta_1=(1,3,6,2)^\mathrm{T},\beta_2=(2,1,2,-1)^\mathrm{T},\beta_3=(1,-1,a,-2)^\mathrm{T}$线性无关？
+        \begin{answer}
+            方程组：$x_1\beta_1+x_2\beta_2+x_3\beta_3=0$ 系数矩阵
+            \[\begin{pmatrix}
+                    1 & 2  & 1  \\
+                    3 & 1  & -1 \\
+                    6 & 2  & a  \\
+                    2 & -1 &
+                    -2\end{pmatrix}\rightarrow\begin{pmatrix}
+                    1 & 2   & 1   \\
+                    0 & -5  & -4  \\
+                    0 & -10 & a-6 \\
+                    0 & -6  & -4
+                \end{pmatrix}\rightarrow\begin{pmatrix}
+                    1 & 2  & 1   \\
+                    0 & -5 & -4  \\
+                    0 & 0  & a+2 \\
+                    0 & 0  & 0
+                \end{pmatrix},\]
+            仅全零解的条件是 $a\neq-2$，此时向量组线性无关.
+        \end{answer}
 
         \item 设$\alpha_1,\alpha_2,\ldots,\alpha_n\in\mathbf{F}^n$. 证明：$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是$\mathbf{F}^n$中任一向量都可以由它们线性表示.
+        \begin{answer}
+            \begin{enumerate}
+                \item 必要性：$\alpha_1,\ldots,\alpha_n$ 线性无关，对于 $F^n$ 中的任一向量 $\beta$, $\alpha_1,\ldots,\alpha_n,\beta$ 的向量个数大于维数 $n$，则线性相关. 由定理 3.2，$\beta$ 可被 $\alpha_1,\ldots,\alpha_n$ 唯一表示.
+
+                \item 充分性：由于 $F^n$ 中任意向量均可被 $\alpha_1,\ldots,\alpha_n$ 线性表示，并且向量个数等于维数. 则 $\alpha_1,\ldots,\alpha_n$ 是 $F^n$ 的一组基. 则 $\alpha_1,\ldots,\alpha_n$ 线性无关.
+
+                      $^*$ 更详细的证明：对于 $F^n$ 的一组基 $e_1,\ldots,e_n$，其可被 $\alpha_1,\ldots,\alpha_n$ 表示. 若 $\alpha_1,\ldots,\alpha_n$ 线性相关，不妨设 $\alpha_n$ 可被 $\alpha_1,\ldots,\alpha_{n-1}$ 表示，则有 $e_1,\ldots,e_n$ 可被 $\alpha_1,\ldots,\alpha_{n-1}$ 表示. 由于 $e_1,\ldots,e_n$ 线性无关. 根据定理 3.3，$n\leqslant n-1$，矛盾. 因此得证.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$S_1=\{\alpha_1,\ldots,\alpha_s\},S_2=\{\beta_1,\ldots,\beta_t\}$是向量空间$V$的两个线性无关的子集，证明：$\alpha_1,\ldots,\alpha_s,\beta_1,\ldots,\beta_t$线性无关$\iff \spa(S_1)\cap \spa(S_2)=\{0\}$.
+        \begin{answer}
+            \begin{enumerate}
+                \item 必要性：对于 $\forall v\in\spa(S_1) \cap \spa(S_2)$ 有 $v=a_1\alpha_1+\cdots+a_s\alpha_s=b_1\beta_1+\cdots+b_t\beta_t$. 由于 $\alpha_1,\ldots,\alpha_s,\beta_1,\ldots,\beta_t$ 线性无关 $\implies a_1=\cdots=a_s=b_1=\cdots=b_t=0$，则 $v=0$，即 $\spa(S_1)\cap\spa(S_2)=\{0\}$.
+
+                \item 充分性：考虑反证法. 如果 $\alpha_1,\ldots,\alpha_s,\beta_1,\ldots,\beta_t$ 线性相关，则存在不全为零的系数使得 $a_1\alpha_1+\cdots+a_s\alpha_s+b_1\beta_1\cdots+b_t\beta_t=0$. 因此存在一个向量 $v=a_1\alpha_1+\cdots+a_s\alpha_s=-(b_1\beta_1\cdots+b_t\beta_t)\neq 0$ 且 $v\in\spa(S_1),v\in\spa(S_2)$. 即存在非零向量 $v$ 属于 $\spa(S_1),v\in\spa(S_2)$，矛盾！则充分性得证.
+            \end{enumerate}
+        \end{answer}
 
         \item 完成 \autoref{lem:初等行变换不改变列的线性相关性} 其它两种初等行变换的证明.
+        \begin{answer}
+            设矩阵为
+            \[
+                \begin{pmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    a_{21} & a_{22} & \cdots & a_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    a_{m1} & a_{m2} & \cdots & a_{mn}
+                \end{pmatrix},
+            \]
+
+            \begin{enumerate}
+                \item 对其进行倍乘行变换，即将第 $i$ 行乘以 $c$，那么第 $i$ 行会变为 $c a_{i1}, c a_{i2}, \ldots, c a_{in}$，而其他行不变. 记原先矩阵的列向量为 $S_A = \{\alpha_1,\alpha_2,\ldots,\alpha_n\}$，变换后的矩阵列向量为 $S_B = \{\beta_1,\beta_2,\ldots,\beta_n\}$.
+
+                    先证 $S_A$ 线性相关 $\implies S_B$ 线性相关：若 $S_A$ 线性相关，则存在不全为零的系数 $x_1, x_2, \ldots, x_n$ 使得 $x_1 \alpha_1 + x_2 \alpha_2 + \cdots + x_n \alpha_n = 0$. 由于 $S_B$ 与 $S_A$ 只有第 $i$ 行不同，我们仅需要判断第 $i$ 行中的元素在系数 $x_1, x_2, \ldots, x_n$ 下的线性组合是否为 $0$ 即可. 事实上我们有 $x_1 c a_{i1} + x_2 c a_{i2} + \cdots + x_n c a_{in} = c(x_1 a_{i1} + x_2 a_{i2} + \cdots + x_n a_{in}) = 0$，故 $S_B$ 线性相关.
+
+                    再证 $S_B$ 线性相关 $\implies S_A$ 线性相关：若 $S_B$ 线性相关，由于倍乘行变换保证 $c \neq 0$，故从 $S_B$ 到 $S_A$ 相当于做一次将第 $i$ 行乘以 $\frac{1}{c}$ 的行变换，同理可得 $S_A$ 线性相关.
+
+                    因此，对矩阵做倍乘行变换不改变矩阵的列的线性相关性.
+
+                \item 对其进行对换行变换，即将第 $i$ 行与第 $j$ 行交换，其他行不变. 记原先矩阵的列向量为 $S_A = \{\alpha_1,\alpha_2,\ldots,\alpha_n\}$，变换后的矩阵列向量为 $S_B = \{\beta_1,\beta_2,\ldots,\beta_n\}$.
+
+                    先证 $S_A$ 线性相关 $\implies S_B$ 线性相关：若 $S_A$ 线性相关，则存在不全为零的系数 $x_1, x_2, \ldots, x_n$ 使得 $x_1 \alpha_1 + x_2 \alpha_2 + \cdots + x_n \alpha_n = 0$. 由于 $S_B$ 与 $S_A$ 只有第 $i$ 行与第 $j$ 行不同，我们仅需要判断第 $i$ 行与第 $j$ 行中的元素在系数 $x_1, x_2, \ldots, x_n$ 下的线性组合是否均为 $0$ 即可. 事实上由原先第 $i$（$j$）行的元素在 $x_1, x_2, \ldots, x_n$ 下的线性组合为 $0$ 即可得到变换后第 $j$（$i$）行的元素的线性组合为 $0$，故 $S_B$ 线性相关.
+
+                    再证 $S_B$ 线性相关 $\implies S_A$ 线性相关：若 $S_B$ 线性相关，从 $S_B$ 到 $S_A$ 相当于再做一次相同的对换行变换，同理有 $S_A$ 线性相关.
+
+                    因此，对矩阵做对换行变换不改变矩阵的列的线性相关性.
+            \end{enumerate}
+        \end{answer}
 
         \item 已知$\alpha_1=(1,2,4,3),\alpha_2=(1,-1,-6,6),\alpha_3=(-2,-1,2,-9),\alpha_4=(1,1,-2,7),\beta=(4,2,4,a)$.
         \begin{enumerate}
@@ -668,18 +777,93 @@
 
             \item 求$a$的值使得$\beta\in W$，并求$\beta$在 (1) 所选基下的坐标.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 也就是求 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 的极大线性无关组. 利用讲义中所述求法：方程组
+                      \[ a_1\alpha_1+\cdots+a_4\alpha_4=0 \]
+                      对应系数矩阵 $\begin{pmatrix}
+                              1 & 1  & -2 & 1  \\
+                              2 & -1 & -1 & 1  \\
+                              4 & -6 & 2  & -2 \\
+                              3 & 6  & -9 & 7\end{pmatrix}$. 化简为行阶梯型：$\begin{pmatrix}
+                              1 & 1  & -2 & 1  \\
+                              0 & -3 & 3  & -1 \\
+                              0 & 0  & 0  & 3  \\
+                              0 & 0  & 0  & 0\end{pmatrix}$，因此 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 有非零解，这四个向量线性相关. （其实此处已知矩阵秩为 3，即维数是 3）.
+
+                      再选取 $\alpha_1,\alpha_2,\alpha_4$ 来求解方程 $a_1\alpha_1+a_2\alpha_2+a_4\alpha_4=0$：
+                      \[\begin{pmatrix}
+                              1 & 1  & 1  \\
+                              2 & -1 & 1  \\
+                              4 & -6 & -2 \\
+                              3 & 6  & 7\end{pmatrix}\rightarrow\begin{pmatrix}
+                              1 & 1  & 1  \\
+                              0 & -3 & -2 \\
+                              0 & 0  & 2  \\
+                              0 & 0  & 0\end{pmatrix},\]
+                      因此该方程组只有全零解，即 $\alpha_1,\alpha_2,\alpha_4$ 是$\alpha_1,\alpha_2,\alpha_3,\alpha_4$的极大线性无关组. 则 $\spa(\alpha_1,\alpha_2,\alpha_4)$ 的维数是 3. 一组基是 $\alpha_1,\alpha_2,\alpha_4$ .
+
+                \item 也就是 $a_1\alpha_1+\cdots+a_4\alpha_4=\beta$有解：增广矩阵 $\begin{pmatrix}
+                              1 & 1  & -2 & 1  & 4 \\
+                              2 & -1 & -1 & 1  & 2 \\
+                              4 & -6 & 2  & -2 & 4 \\
+                              3 & 6  & -9 & 7  & a\end{pmatrix}$化为 $\begin{pmatrix}
+                              1 & 1  & -2 & 1         & 4   \\
+                              0 & -3 & 3  & -1        & -6  \\
+                              0 & 0  & 0  & -\frac 83 & 8   \\
+                              0 & 0  & 0  & 0         & a-9\end{pmatrix}$，若方程有解，则 $a=9$. 求坐标，取 $x_3=0$ 代入得 $\beta=4\alpha_1+3\alpha_2-3\alpha_4$.
+            \end{enumerate}
+        \end{answer}
 
         \item 证明：$B=\{1,x-a,(x-a)^2\}\enspace(a\neq 0)$是$\mathbf{R}[x]_3$的一组基，并求$\mathbf{R}[x]_3$的自然基$\{1,x,x^2\}$中每个向量关于基$B$的坐标.
+        \begin{answer}
+            只需证明 $B$ 线性无关即可. $\lambda_1+\lambda_2(x_a)+\lambda_3(x-a)^2$求导，增加方程数得到
+            \begin{gather*}
+                \lambda_2+2\lambda_3x=0, \\
+                2\lambda_3=0,
+            \end{gather*}
+            则 $\lambda_1=\lambda_2=\lambda_3$，线性无关得证. 又 $B$ 中向量个数等于 $R[x]_3$ 维数. 则 $B$ 是一组基. $1=1 \cdot 1+0 \cdot (x-a)+0\times(x-a)^2$ ，即 $(1,0,0)$；$x=a \cdot 1+1 \cdot (x-a)+0\times(x-a)^2$ ，即 $(a,1,0)$；$x^2=a^2 \cdot 1+2a \cdot (x-a)+1\times(x-a)^2$ ，即 $(a^2,2a,1)$.
+        \end{answer}
 
         \item 已知向量组$A=\{\alpha_1,\alpha_2,\alpha_3\},\enspace B=\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\},\enspace C=\{\alpha_1,\alpha_2,\alpha_3,\alpha_5\}$的秩分别为$r(A)=r(B)=3,\enspace r(C)=4$. 证明：$\{\alpha_1,\alpha_2,\alpha_3,\alpha_5-\alpha_4\}$的秩为4.
+        \begin{answer}
+            等价于证明 $\alpha_1,\alpha_2,\alpha_3,\alpha_5-\alpha_4$ 线性无关. 即求解
+            \begin{equation}
+                \lambda_1\alpha_1+\lambda_2\alpha_2+\lambda_3\alpha_3+\lambda_4(\alpha_5-\alpha_4)=0. \tag{*} \label{eq:3:A.10}
+            \end{equation}
+
+            由于 $r(A)=r(B)=3$ 可得 $A$ 线性无关. $B$ 线性相关. 由定理 3.2 得 $\alpha_4$ 可由 $\alpha_1,\alpha_2,\alpha_3$ 唯一表示：$\alpha_4=\mu_1\alpha_1+\mu_2\alpha_2+\mu_3\alpha_3$. 则代入 (\ref*{eq:3:A.10}) 式. 有
+            \[(\lambda_1-\mu_1\lambda_4)\alpha_1+(\lambda_2-\mu_2\lambda_4)\alpha_2+(\lambda_3-\mu_3\lambda_4)\alpha_3+\lambda_4\alpha_5=0,\]
+            因为 $r(C)=4$，$\alpha_1,\alpha_2,\alpha_3,\alpha_5$ 线性无关. 有 $\lambda_4=0,\lambda_1=\mu_1\lambda_4=0,\lambda_2=\mu_2\lambda_4=0,\lambda_3=\mu_3\lambda_4=0$. 故 $\alpha_1,\alpha_2,\alpha_3,\alpha_5-\alpha_4$ 线性无关. 原题得证.
+        \end{answer}
 
         \item 设向量组$\alpha_1,\alpha_2,\ldots,\alpha_s$的秩为$r$. 在其中任取$m$个向量$\alpha_{i1},\alpha_{i2},\ldots,\alpha_{im}$，证明：向量组$\alpha_{i1},\alpha_{i2},\ldots,\alpha_{im}$的秩$\geqslant r+m-s$.
+        \begin{answer}
+            相当于从 $\alpha_1,\ldots,\alpha_s$ 向量中选取 $s-m$ 个向量丢弃，剩余向量的秩：
+            \[r(\alpha_{i1},\ldots,\alpha_{im})\geqslant r-(s-m) =r+m-s.\]
+        \end{answer}
 
         \item 已知$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关，而$\alpha_1,\alpha_2,\ldots,\alpha_n,\beta,\gamma$线性相关. 证明：要么$\beta,\gamma$可以由$\alpha_1,\alpha_2,\ldots,\alpha_n$线性表示，要么$\alpha_1,\alpha_2,\ldots,\alpha_n,\beta$与$\alpha_1,\alpha_2,\ldots,\alpha_n,\gamma$等价.
+        \begin{answer}
+            方程：$\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n+\lambda_{n+1}\beta+\lambda_{n+2}\gamma=0$，显然 $\lambda_{n+1},\lambda_{n+2}$ 不全为零. 否则与 $\alpha_1,\ldots,\alpha_n$ 线性无关矛盾.
+            \begin{enumerate}
+                \item 若 $\lambda_{n+1}=0,\lambda_{n+2}\neq 0$，则 $\gamma$ 可被 $\alpha_1,\ldots,\alpha_n$ 表示. 若 $\lambda_{n+1}\neq0,\lambda_{n+2}=0$， 则 $\beta$ 可被 $\alpha_1,\ldots,\alpha_n$ 表示.
+
+                \item 若 $\lambda_{n+1}\lambda_{n+2}\neq 0$ ，则有
+                      \begin{gather*}
+                          \beta=-\frac 1{\lambda_{n+1}}(\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n+\lambda_{n+2}\gamma), \\
+                          \gamma=-\frac 1{\lambda_{n+2}}(\lambda_1\alpha_1+\cdots+\lambda_n\alpha_n+\lambda_{n+1}\beta).
+                      \end{gather*}
+                    两组向量可以相互表示. 两者等价. 综上原题得证.
+            \end{enumerate}
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
         \item 已知$\alpha_1\neq 0$，则$\alpha_1,\alpha_2,\ldots,\alpha_n$线性相关的充要条件是存在$i\enspace(2 \leqslant i \leqslant n)$使得$\alpha_i$可由$\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示，且表示法唯一.
+        \begin{answer}
+            充分性显然成立，下证必要性：由于 $\alpha_1,\ldots,\alpha_n$ 线性相关，则存在 $m$，其能使得 $\alpha_1,\ldots,\alpha_m$ 线性无关的最大下标，有 $1\leqslant m<n$. 因此 $i=m+1$，$\alpha_1,\ldots,\alpha_{i-1}$ 线性无关，$\alpha_1,\ldots,\alpha_i$ 线性相关. 可得 $\alpha_i$ 可被 $\alpha_1,\ldots,\alpha_{i-1}$ 唯一表示.
+        \end{answer}
 
         \item 证明以下两个结论：
         \begin{enumerate}
@@ -687,16 +871,53 @@
 
             \item 设$U$和$W$都是$V$的非零子空间，$U\subseteq W$，且$\dim U = \dim W$，则$U = W$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 设 $U$ 的一组基为 $u_1,\ldots,u_m$，$W$ 的一组基为 $w_1,\ldots,w_n$. 由于 $U\subseteq W$，则 $u_1,\ldots,u_m$ 可由 $w_1,\ldots,w_n$ 线性表示，且 $u_1,\ldots,u_m$ 线性无关. 由定理 3.3 的等价命题可得 $m\leqslant n$，则 $m=\dim U\leqslant\dim W=n$ 的得证.
+
+                \item 因为 $\dim U=\dim W$，则 $u_1,\ldots,u_m$ 也是 $W$ 的一组基. 则 $W$ 的任意向量均可由 $u_1,\ldots,u_m$ 表示，可得 $W\subseteq U$，而 $U\subseteq W$，故有 $U=W$ 得证.
+            \end{enumerate}
+        \end{answer}
 
         \item 设向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关. 证明：在向量组$\beta,\alpha_1,\alpha_2,\ldots,\alpha_n$中至多有一个向量$\alpha_i\enspace(1 \leqslant i \leqslant r)$可被其前面的$i$个向量$\beta,\alpha_1,\alpha_2,\ldots,\alpha_{i-1}$线性表示.
+        \begin{answer}
+            反证法. 若存在两个向量 $\alpha_i,\alpha_j$ 可被前面的向量表示，即
+            \begin{gather*}
+                \alpha_i=\lambda_0\beta+\lambda_1\alpha_1+\cdots+\lambda_{i-1}\alpha_{i-1}, \\
+                \alpha_j=\mu_0\beta+\mu_1\alpha_1+\cdots+\mu_{j-1}\alpha_{j-1}.
+            \end{gather*}
+            如果 $\lambda_0$ 或者 $\mu_0$ 为 0，则有向量组中的 $\alpha_i$ 或 $\alpha_j$ 可被其他向量线性表示，则该向量组相关，这与条件矛盾. 若 $\lambda_0$ 与 $\mu_0$ 均不为 0，等式可化为
+            \begin{gather*}
+                \frac 1{\lambda_0}\alpha_i=\beta+\frac{\lambda_1}{\lambda_0}\alpha_1+\cdots+\frac{\lambda_{i-1}}{\lambda_0}\alpha_{i-1}, \\
+                \frac 1{\mu_0}\alpha_j=\beta+\frac{\mu_1}{\mu_0}\alpha_1+\cdots+\frac{\mu_{j-1}}{\mu_0}\alpha_{j-1}.
+            \end{gather*}
+            不妨设 $i>j$. 相减得
+            \[\frac 1{\lambda_0}\alpha_i=\left(\frac{\lambda_1}{\lambda_0}-\frac{\mu_1}{\mu_0}\right)\alpha_1+\cdots+\left(\frac{\lambda_i}{\lambda_0}+\frac 1{\mu_0}\right)\alpha_j+\frac{\lambda_{i-1}}{\lambda_0}\alpha_{i-1},\]
+            则 $\alpha_i$ 可被其他向量线性表示，因此向量组线性相关，与条件矛盾. 综上，至多有一个向量 $\alpha_i$ 可被前面的相邻线性表示.
+        \end{answer}
 
         \item 证明：$1,e^{\lambda_1\cdot x},e^{\lambda_2\cdot x}$（$\lambda_1\neq\lambda_2$且均不为0）线性无关.
+        \begin{answer}
+            考虑使用求导构造更多方程.
+            \[\begin{cases}
+                    k_0+k_1\cdot e^{\lambda_1 x}+k_2\cdot e^{\lambda_2 x}=0               \\
+                    k_1\lambda_1\cdot e^{\lambda_1 x}+k_2\lambda_2\cdot e^{\lambda_2 x}=0 \\
+                    k_1\lambda_1^2\cdot e^{\lambda_1 x}+k_2\lambda_2^2\cdot e^{\lambda_2 x}=0
+                \end{cases},\]
+          由后两式可知$k_1k_2(\lambda_1-\lambda_0)=0$. 又 $\lambda_1\neq\lambda_2$，故$k_1=k_2=0$，代回第一式得 $k_0=0$，则 $1,e^{\lambda_1x},e^{\lambda_2x}$ 线性无关，得证.
+        \end{answer}
 
         \item 设线性空间$V(\mathbf{F})$中，向量$\beta$是$\alpha_1,\ldots,\alpha_r$的线性组合，但不是$\alpha_1,\ldots,\alpha_{r-1}$的线性组合. 证明：$\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$.
+        \begin{answer}
+            只需证明 $\alpha_r$ 可以被 $\alpha_1,\ldots,\alpha_{r-1},\beta$ 表示即可. 由于 $\beta$ 是 $\alpha_1,\ldots,\alpha_{r-1}$ 的线性组合，若 $\lambda_r=0$，则 $\beta$ 是 $\alpha_1,\ldots,\alpha_{r-1}$ 的线性组合. 这与条件矛盾. 因此 $\alpha_r=-\vspace{1ex}\dfrac 1{\lambda_r}(\lambda_1\alpha_1+\cdots+\lambda_{r-1}\alpha_{r-1}-\beta)$，则这两组向量等价. $\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$ 得证.
+        \end{answer}
 
         \item 设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：
         \[ \forall a,b \in \mathbf{R}_+,\enspace k\in \mathbf{R}\colon\enspace a\oplus b = ab,\enspace k\odot a = a^k \]
         则 $\mathbf{R}^+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}^+$的一组基.
+        \begin{answer}
+            分析该实线性空间，可以看出加法单位元为 1，数乘单位元为 1. 我们给出一组基：$e$，其中 $e$ 为自然对数的底数. 当然, 2，3 或者 10 都可以作为一组基. 接下来我们验证 $e$ 是 $\mathbf{R}^+$ 的基：$\forall a\in \mathbf{R}^+,\exists k=\ln a\in\mathbf{R}$，满足 $k\odot e=e^k=a$，则 $\spa(e)=\mathbf{R}^+$ 成立. 由于该向量组只有一个元素，且并非设该空间的零元 1，则 $e$ 是线性无关的. 得证.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
@@ -711,8 +932,34 @@
                   \end{align*}
                   其中$l_1\neq 0$，证明：$\dfrac{k_1}{l_1}=\cdots=\dfrac{k_m}{l_m}$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 若 不全为 0. 不妨设设至少有 $k_i=0$，则有 $k_1\alpha_1+\cdots+k_{i-1}\alpha_{i-1}+k_{i+1}\alpha_{i+1}+\cdots+k_m\alpha_m=0$，并且系数不全为 0. 因此 $\alpha_1,\ldots,\alpha_{i-1},\alpha_{i+1},\ldots,\alpha_m$ 这 $m-1$ 个向量相关，与题设矛盾. 则原题得证.
+
+                \item $l_1\neq 0$，则 $l_2,\ldots,l_m$ 均不为 0.
+                      \begin{enumerate}
+                          \item 若 $k_1=\cdots=k_m=0$. 原式显然成立.
+
+                          \item 若 $k_1,\ldots,k_m$ 不全为 0. 则
+                                \begin{gather*}
+                                    l_1(k_1\alpha_1+\cdots+k_m\alpha_m)=0, \\
+                                    k_1(l_1\alpha_1+\cdots+l_m\alpha_m)=0.
+                                \end{gather*}
+                                两式相减，得
+                                \[(k_2l_1-k_1l_2)\alpha_2+\cdots+(k_ml_1-k_1l_m)\alpha_m=0,\]
+                                因为 $\alpha_2,\ldots,\alpha_m$ 线性无关. 则以上系数均为 0. 故$\dfrac {k_2}{l_2}=\dfrac {k_1}{l_1},\ldots,\dfrac {k_m}{l_m}=\dfrac {k_1}{l_1}$. 得证.
+                      \end{enumerate}
+            \end{enumerate}
+        \end{answer}
 
         \item （替换定理）设$\alpha_1,\alpha_2,\ldots,\alpha_r$线性无关，且可以被$\beta_1,\beta_2,\ldots,\beta_n$线性表示，则可以将$\beta_1,\beta_2,\ldots,\beta_n$中的$r$个向量替换成$\alpha_1,\alpha_2,\ldots,\alpha_r$后得到与$\beta_1,\beta_2,\ldots,\beta_n$等价的新向量组（注：可以使用数学归纳法证明）.
+        \begin{answer}
+            利用递推法：当 $r=1$ 时，由于 $\alpha_1$ 线性无关，可得 $\alpha_1\neq 0$. 设 $\alpha_1=\lambda_1\beta_1+\cdots+\lambda_n\beta_n$，则至少存在一个 $\lambda_i\neq 0$，不妨设 $\lambda_1\neq 0$，因此有 $\beta_1=-\vspace{1ex}\dfrac 1{\lambda_1}(-\alpha_1+\lambda_2\beta_2+\cdots+\lambda_n\beta_n)$，故 $\beta_1,\ldots,\beta_n$ 与 $\alpha_1,\beta_2,\ldots,\beta_n$ 等价.
+
+            当 $r=2$ 时，由于 $\alpha_1,\alpha_2$ 无关. 有 $\alpha_1\alpha_2\neq 0$. 根据 $r=1$ 的情况，不妨设 $\beta_1,\ldots,\beta_n$ 与 $\alpha_1,\beta_2,\ldots,\beta_n$ 等价. 因此 $\alpha_2$ 可由 $\alpha_1,\beta_2,\ldots,\beta_n$ 表出：
+            \[\alpha_2=\mu_1\alpha_1+\mu_2\beta_2+\cdots+\mu_n\beta_n.\]
+            由于 $\alpha_1,\alpha_2$ 无关，故 $\mu_2,\ldots,\mu_n$ 至少有一个非零的数. 不妨设 $\mu_2\neq 0$，同上可得$\alpha_1,\alpha_2,\beta_3,\ldots,\beta_n$ 就与 $\alpha_1,\beta_2,\ldots,\beta_n$ 等价，也与$\beta_1,\beta_2,\ldots,\beta_n$ 等价. 综上，通过递推可知，对正整数 $r$，上述结论依然成立.
+        \end{answer}
 
         \item 设线性空间$V=\mathbf{F}^n$. 证明：
         \begin{enumerate}
@@ -722,11 +969,87 @@
 
             \item 若$V$的子空间$W$的任一非零向量的零分量个数均不超过$r$，则$\dim W \leqslant r+1$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item $\alpha=(1,1,\ldots,1)^{\mathrm{T}}, W=\spa(\alpha)$,显然 $W$ 是满足条件的一维子空间.
+
+                \item 考虑反证法：若 $\dim W>1$，则 $W$ 中存在线性无关的两向量. 由条件，
+                      \[a_1,\ldots,a_n,b_1,\ldots,b_n\neq 0,\]
+                      可设 $a_1=kb_1,k\in F$，因此 $\alpha-k\beta=(0,a_2-kb-2,\ldots,a_n-kb_n)^{\mathrm{T}}\in W$. 且由于 $\alpha,\beta$ 无关，$\alpha-k\beta\neq 0$ 但存在分量为 0，这与条件矛盾. 故 $\dim W=1$.
+
+                \item 考虑反证法：若 $\dim W>r+1$，则存在 $r+2$ 个线性无关的向量，设为
+                      \begin{align*}
+                          \alpha_1     & = (a_{11},a_{12},\ldots,a_{1(r+1)},\ldots,a_{1n})^{\mathrm{T}},                 \\
+                                       & \vdotswithin{ = }                                                              \\
+                          \alpha_{r+2} & = (a_{(r+2)1},a_{(r+2)2},\ldots,a_{(r+2)(r+1)},\ldots,a_{(r+2)n})^{\mathrm{T}}.
+                      \end{align*}
+                      取这些向量的前 $r+1$ 个分量组成新的向量组：
+                      \begin{align*}
+                          \beta_1     & = (a_{11},a_{12},\ldots,a_{1(r+1)})^{\mathrm{T}},             \\
+                                      & \vdotswithin{ = }                                            \\
+                          \beta_{r+2} & = (a_{(r+2)1},a_{(r+2)2},\ldots,a_{(r+2)(r+1)})^{\mathrm{T}}.
+                      \end{align*}
+                      由于 $\beta_1,\ldots,\beta_{r+2}$ 是 $r+2$ 个 $r+1$ 维向量，其必然线性相关，则存在不全为 0 的系数 $\lambda_1,\ldots,\lambda_{r+2}$，$\lambda_1\beta_1+\cdots+\lambda_{r+2}\beta_{r+2}=0$.  由于 $\alpha_1,\ldots,\alpha_{r+2}$ 线性无关知：$\lambda_1\alpha_1+\cdots+\lambda_{r+2}\alpha_{r+2}\neq 0$，且其属于 $W$. 但其前 $r+1$ 个分量均为 0，这与条件矛盾. 故 $\dim W\leqslant r+1$ 得证.
+            \end{enumerate}
+        \end{answer}
 
         \item 设 $\mathbf{Q}(\sqrt[3]{2}) = \{a+b\sqrt[3]{2}+c\sqrt[3]{4}\mid a,b,c\in\mathbf{Q}\}$，证明 $\mathbf{Q}(\sqrt[3]{2})$ 是 $\mathbf{Q}$ 上的线性空间并求其维数.
+        \begin{answer}
+            先证明 $\mathbf{Q}(\sqrt[3]{2})$ 是 $\mathbf{Q}$ 上的线性空间：
+
+            $\mathbf{Q}(\sqrt[3]{2})$ 对通常的加法构成交换群以及其封闭性是显然的，在此不再赘述，下阐述数乘性质：
+            \begin{enumerate}
+                \item $\forall v = a+b\sqrt[3]{2}+c\sqrt[3]{4} \in \mathbf{Q}(\sqrt[3]{2}), \enspace 1 (a+b\sqrt[3]{2}+c\sqrt[3]{4}) = a+b\sqrt[3]{2}+c\sqrt[3]{4}$；
+
+                \item $\forall v = a+b\sqrt[3]{2}+c\sqrt[3]{4} \in \mathbf{Q}(\sqrt[3]{2}), \forall \lambda, \mu \in \mathbf{Q}, \enspace \lambda(\mu v) = (\lambda \mu) v$；
+
+                \item $\forall v = a+b\sqrt[3]{2}+c\sqrt[3]{4} \in \mathbf{Q}(\sqrt[3]{2}), \forall \lambda, \mu \in \mathbf{Q}, \enspace (\lambda + \mu) v = (\lambda + \mu)a + (\lambda + \mu) b\sqrt[3]{2} + (\lambda + \mu) c\sqrt[3]{4} = \lambda(a+b\sqrt[3]{2}+c\sqrt[3]{4}) + \mu(a+b\sqrt[3]{2}+c\sqrt[3]{4}) = \lambda v + \mu v$；
+
+                \item $\forall v = a_1 + b_1\sqrt[3]{2} + c_1\sqrt[3]{4}, u = a_2 + b_2\sqrt[3]{2} + c_2\sqrt[3]{4} \in \mathbf{Q}(\sqrt[3]{2}), \forall \lambda \in \mathbf{Q}, \enspace \lambda(v+u) = \lambda (a_1 + a_2) + \lambda (b_1 + b_2)\sqrt[3]{2} + \lambda (c_1 + c_2)\sqrt[3]{4} = \lambda (a_1 + b_1\sqrt[3]{2} + c_1\sqrt[3]{4}) + \lambda (a_2 + b_2\sqrt[3]{2} + c_2\sqrt[3]{4}) = \lambda v + \lambda u$；
+
+                \item （封闭性）$\forall v = a+b\sqrt[3]{2}+c\sqrt[3]{4} \in \mathbf{Q}(\sqrt[3]{2}), \forall \lambda \in \mathbf{Q}, \enspace \lambda v = \lambda a + \lambda b\sqrt[3]{2} + \lambda c\sqrt[3]{4} \in \mathbf{Q}(\sqrt[3]{2})$.
+            \end{enumerate}
+            故 $\mathbf{Q}(\sqrt[3]{2})$ 是 $\mathbf{Q}$ 上的线性空间.
+
+            下求 $\mathbf{Q}(\sqrt[3]{2})$ 的维数. 考虑找 $\mathbf{Q}(\sqrt[3]{2})$ 的一组基，我们给出 $\{1, \sqrt[3]{2}, \sqrt[3]{4}\}$，下证其为 $\mathbf{Q}(\sqrt[3]{2})$ 的一组基：
+
+            \begin{enumerate}
+                \item （线性无关）令 $k_1 + k_2 \sqrt[3]{2} + k_3 \sqrt[3]{4} = 0$，其中 $k_1, k_2, k_3 \in \mathbf{Q}$，由于左边只有第一项为有理数，故有 $k_1 = 0$，进而有 $\sqrt[3]{2} (k_2 + k_3 \sqrt[3]{2}) = 0$，又可得到 $k_2 = 0$，并且 $k_3 = 0$. 故 $\{1, \sqrt[3]{2}, \sqrt[3]{4}\}$ 线性无关.
+
+                \item （张成空间）由 $\mathbf{Q}(\sqrt[3]{2})$ 的定义易得.
+            \end{enumerate}
+            综上，$\mathbf{Q}(\sqrt[3]{2})$ 是 $\mathbf{Q}$ 上的线性空间，且 $\dim \mathbf{Q}(\sqrt[3]{2}) = 3$.
+
+        \end{answer}
 
         \item 设$\mathbf{K} \subseteq \mathbf{F} \subseteq \mathbf{E}$是三个数域，已知$\mathbf{F}$作为$\mathbf{K}$上的线性空间是$n$维的，$\mathbf{E}$作为$\mathbf{F}$上的线性空间是$m$维的，证明：$\mathbf{E}$作为$\mathbf{K}$上的线性空间是$mn$维的.
+        \begin{answer}
+            取 $\mathbf{F}(\mathbf{K})$ 的一组基 $f_1, f_2, \ldots, f_n$，$\mathbf{E}(\mathbf{F})$ 的一组基 $e_1, e_2, \ldots, e_m$，下证向量组 $B = \{f_1 e_1, f_2 e_1, \ldots, f_n e_1, f_1 e_2, f_2 e_2, \ldots, f_n e_2, \ldots, f_1 e_m, f_2 e_m, \ldots, f_n e_m\}$ 是 $\mathbf{E}(\mathbf{K})$ 的一组基：
+
+            \begin{enumerate}
+                \item （线性无关）令 $k_{11} f_1 e_1 + k_{12} f_2 e_1 + \cdots + k_{1n} f_n e_1 + k_{21} f_1 e_2 + k_{22} f_2 e_2 + \cdots + k_{2n} f_n e_2 + \cdots + k_{m1} f_1 e_m + k_{m2} f_2 e_m + \cdots + k_{mn} f_n e_m = 0$，其中 $k_{ij} \in \mathbf{K}$，则
+                    \[
+                        \sum_{i=1}^m \left(\sum_{j=1}^n k_{ij} f_j \right) e_i = 0.
+                    \]
+                    由于 $e_1, e_2, \ldots, e_n$ 是 $\mathbf{E}(\mathbf{F})$ 的一组基 $e_1, e_2, \ldots, e_m$，我们有
+                    \[
+                        \sum_{j=1}^n k_{ij} f_j = 0, \enspace \forall i = 1, 2, \ldots, m.
+                    \]
+                    而 $f_1, f_2, \ldots, f_n$ 又是 $\mathbf{F}(\mathbf{K})$ 的一组基，故 $k_{ij} = 0$，即向量组 $B$ 线性无关.
+
+                \item （张成空间）$\forall e = \mu_1 e_1 + \mu_2 e_2 + \cdots + \mu_m e_m \in \mathbf{E} \enspace (\mu_1, \mu_2, \ldots, \mu_m \in \mathbf{F})$，由于 $\mu_i \in \mathbf{F}$，故存在 $k_{ij} \in \mathbf{K}$ 使得 $\mu_i = k_{i1} f_1 + k_{i2} f_2 + \cdots + k_{in} f_n$，于是
+                    \[
+                        e = \sum_{i=1}^m \left(\sum_{j=1}^n k_{ij} f_j \right) e_i
+                          = \sum_{i=1}^m \sum_{j=1}^n k_{ij} f_j e_i.
+                    \]
+                    故 $e \in \spa B$.
+            \end{enumerate}
+            综上，$B$ 是 $\mathbf{E}(\mathbf{K})$ 的一组基，故 $\dim \mathbf{E}(\mathbf{K}) = mn$.
+        \end{answer}
 
         \item 延续上一讲对于 $\mathbf{F_4}(\mathbf{Z}_2)$ 的讨论，尝试求 $\mathbf{F_4}$ 在 $\mathbf{Z}_2$ 上的一组基及其维数，以及其中每个元素的坐标表示.
+        \begin{answer}
+
+        \end{answer}
     \end{exgroup}
 \end{exercise}
