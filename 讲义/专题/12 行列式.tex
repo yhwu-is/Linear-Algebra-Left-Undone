@@ -140,7 +140,7 @@
 \end{definition}
 其中$A_{ij}$即为\autoref{def:余子式} 给出的代数余子式，\autoref{eq:13:递归式定义1} 称为$D$对第$j$列的展开式，\autoref{eq:13:递归式定义2} 称为$D$对第$i$行的展开式. 事实上，这一定义被称为递归式定义的原因是显然的（如果在程序设计课程中已经学习过递归的概念），它使用$n-1$阶行列式定义$n$阶行列式，因此我们对任意$n$阶行列式都可以递归展开到1阶，从而得到最终行列式计算结果.
 
-除此之外，我们需要强调的是，这里的递归式定义能称之为定义，必须要使得其与之前的公理化定义不冲突. 事实上二者等价的证明都是技术性的，教材175页定理5.1说明了我们如何从公理化定义推出递归式定义，反过来我们只需要对公理化定义中每个性质利用公理化定义逐个展开验算即可，我们放在习题中供感兴趣的读者自行验证. 因为都是技术性的问题，这里不展开叙述，事实上也不是我们核心的内容.
+除此之外，我们需要强调的是，这里的递归式定义能称之为定义，必须要使得其与之前的公理化定义不冲突. 事实上二者等价的证明都是技术性的，从公理化定义推出递归式定义需要利用公理化定义将原行列式进行拆分与变形，反过来我们只需要对公理化定义中每个性质利用递归式定义逐个展开验算即可，我们放在习题中供感兴趣的读者自行验证. 因为都是技术性的问题，这里不展开叙述，事实上也不是我们核心的内容.
 \begin{example}{}{递归式定义}
     利用\autoref{def:递归式定义} 计算\autoref{ex:余子式} 中的行列式，可以行列展开均使用并在上述公式中选取不同$i$和$j$以熟悉\autoref*{def:递归式定义}，并注意体会递归式定义的含义.
 \end{example}
@@ -238,11 +238,11 @@
         \item 对于 $|AB| = |A||B|$，分 $B$ 可逆与不可逆两种情况讨论：
 
             若 $B$ 可逆，则存在初等矩阵 $P_1, P_2, \ldots, P_k$，使得 $B = P_1 P_2 \cdots P_k$；由于右乘初等矩阵相当于对矩阵进行初等列变换，因此我们利用\ref*{item:13:行列式性质:3} 中的结论可以得到
-            \begin{align*}
+            \begin{gather*}
                 |A E_ij| = -|A| = |A||E_ij|, \\
                 |A E_i(c)| = c|A| = c|A||E_i(c)|, \\
                 |A E_{ij}(k)| = |A| = |A||E_{ij}(k)|.
-            \end{align*}
+            \end{gather*}
             因此，$|AB| = |A P_1 P_2 \cdots P_k| = |A||P_1||P_2|\cdots||P_k| = |A||B|$.
 
             若 $B$ 不可逆，则 $r(AB) \leqslant r(B) < n$，故 $AB$ 也不可逆. 组成不可逆的矩阵的列向量必线性相关，故由\autoref{ex:公理化定义} 的\ref*{item:13:公理化定义导出性质:5} 可知 $|B|=0, |AB|=0$，因此 $|AB| = 0 = |A||B|$.
@@ -501,25 +501,25 @@
     \begin{enumerate}
         \item （公理化定义与性质）由\autoref{def:公理化定义} 对该行列式进行展开操作（此处略去展开后有相同列向量的项），得到
             \begin{align*}
-                D =&\, \begin{vmatrix}
+                D = {} & \begin{vmatrix}
                     e_1 + 2e_2 + 3e_3 & 2e_1 + 3e_2 + e_3 & 3e_1 + e_2 + 2e_3
                 \end{vmatrix} \\
-                =&\, \begin{vmatrix}
+                = {} & \begin{vmatrix}
                     e_1 & 3e_2 & 2e_3
                 \end{vmatrix} + \begin{vmatrix}
                     e_1 & e_3 & e_2
                 \end{vmatrix} + \begin{vmatrix}
                     2e_2 & 2e_1 & 2e_3
                 \end{vmatrix} + \\
-                &\, \begin{vmatrix}
+                {} & \begin{vmatrix}
                     2e_2 & e_3 & 3e_1
                 \end{vmatrix} + \begin{vmatrix}
                     3e_3 & 2e_1 & e_2
                 \end{vmatrix} + \begin{vmatrix}
                     3e_3 & 3e_2 & 3e_1
                 \end{vmatrix} \\
-                =&\, 1 \cdot 3 \cdot 2 - 1 \cdot 1 \cdot 1 - 2 \cdot 2 \cdot 2 + 2 \cdot 1 \cdot 3 + 3 \cdot 2 \cdot 1 - 3 \cdot 3 \cdot 3 \\
-                =&\, -18.
+                = {} & 1 \cdot 3 \cdot 2 - 1 \cdot 1 \cdot 1 - 2 \cdot 2 \cdot 2 + 2 \cdot 1 \cdot 3 + 3 \cdot 2 \cdot 1 - 3 \cdot 3 \cdot 3 \\
+                = {} & -18.
             \end{align*}
             使用公理化定义展开行列式十分复杂，因此在实际运用中不推荐使用这一方法.
 
@@ -1584,10 +1584,10 @@
     \]
 
     类似地，我们有
-    \begin{align*}
-        A_{21} &= 3, \quad A_{22} = 0, \quad A_{23} = -1, \\
-        A_{31} &= 1, \quad A_{32} = 4, \quad A_{33} = -3,
-    \end{align*}
+    \begin{gather*}
+        A_{21} = 3, \quad A_{22} = 0, \quad A_{23} = -1, \\
+        A_{31} = 1, \quad A_{32} = 4, \quad A_{33} = -3,
+    \end{gather*}
 
     由此可得 $A$ 的伴随矩阵 $A^* = \begin{pmatrix}
             A_{11} & A_{21} & A_{31} \\
@@ -1900,8 +1900,151 @@
 
     \begin{exgroup}
         \item 证明：行列式的公理化定义、递归式定义和逆序数定义是等价的.
+        \begin{answer}
+            \begin{enumerate}
+                \item 公理化定义 $\implies$ 递归式定义：
+
+                    先证明一个引理：设 $A=(a_{ij})_{n \times n}$ 中 $a_{in}=0,\enspace i = 1, 2, \ldots, n-1$，则 $|A| = a_{nn} M_{nn} = a_{nn} A_{nn}$.
+
+                    将 $A$ 分块表示为
+                    \[
+                        A = \begin{pmatrix}
+                            A_1             & \mathbf{0} \\
+                            \mathbf{\alpha} & a_{nn}
+                        \end{pmatrix},
+                    \]
+
+                    其中 $|A_1| = M_{nn} = A_{nn}$. 若 $a_{nn} = 0$，则 $A$ 不可逆，$|A| = 0$，引理成立；若 $A_1$ 不可逆，则 $r(A) \leqslant r(A_1) + 1 < n$，故 $A$ 不可逆，$|A| = 0$，引理亦成立；若 $a_{nn} \neq 0$ 且 $A_1$ 可逆，则对 $A$ 作倍加列变换，有
+                    \[
+                        |A| = \begin{vmatrix}
+                            A_1             & \mathbf{0} \\
+                            \mathbf{0}      & a_{nn}
+                        \end{vmatrix}.
+                    \]
+
+                    再对 $A$ 作倍加行变换，将 $A_1$ 化为上三角矩阵 $B_1$，且有 $|B_1| = |A_1| = M_{nn}$，此时有
+                    \[
+                        |A| = \begin{vmatrix}
+                            B_1             & \mathbf{0} \\
+                            \mathbf{0}      & a_{nn}
+                        \end{vmatrix} = a_{nn} B_1 = a_{nn} M_{nn}.
+                    \]
+
+                    上式成立是因为上三角矩阵的行列式等于其对角线元素之积.
+
+                    下面我们来通过公理化定义推出递归式定义. 我们先推导行列式 $D=|a_{ij}|_{n \times n}$ 对第 $j$ 列元素的展开式：
+
+                    令 $\alpha_j$ 为 $A$ 中第 $j$ 列的元素，则由公理化定义可得
+                    \begin{align*}
+                        D &= D(\alpha_1, \alpha_2, \ldots, \alpha_j, \ldots, \alpha_n) \\
+                          &= D(\alpha_1, \alpha_2, \ldots, \sum_{i=1}^n a_{ij} e_i, \ldots, \alpha_n) \\
+                          &= \sum_{i=1}^n D(\alpha_1, \alpha_2, \ldots, a_{ij} e_i, \ldots, \alpha_n).
+                    \end{align*}
+                    对于上式中的第 $i$ 项 $D_i$，我们将第 $j$ 列依次与第 $j+1, j+2, \ldots, n$ 列对换，再将第 $i$ 行依次与第 $i+1, i+2, \ldots, n$ 行对换，于是有
+                    \[
+                        D_i = (-1)^{2n-i-j} \begin{vmatrix}
+                            a_{11}     & \cdots & a_{1, j-1}   & a_{1, j+1}   & \cdots & a_{1n}     & 0      \\
+                            \vdots     &        &              &              &        &            & \vdots \\
+                            a_{i-1, 1} & \cdots & a_{i-1, j-1} & a_{i-1, j+1} & \cdots & a_{i-1, n} & 0      \\
+                            a_{i+1, 1} & \cdots & a_{i+1, j-1} & a_{i+1, j+1} & \cdots & a_{i+1, n} & 0      \\
+                            \vdots     &        &              &              &        &            & \vdots \\
+                            a_{n1}     & \cdots & a_{n, j-1}   & a_{n, j+1}   & \cdots & a_{nn}     & 0      \\
+                            a_{i1}     & \cdots & a_{i, j-1}   & a_{i, j+1}   & \cdots & a_{in}     & a_{ij}
+                        \end{vmatrix} = \begin{vmatrix}
+                            A_1         & 0      \\
+                            \alpha_{ij} & a_{ij}
+                        \end{vmatrix}.
+                    \]
+
+                    根据引理，我们有
+                    \[
+                        D_i = (-1)^{2n-i-j} a_{ij} |A_1| = (-1)^{i+j} a_{ij} M_{ij} = a_{ij} A_{ij}.
+                    \]
+
+                    由此可得行列式的递推式定义：
+                    \[
+                        D = \sum_{i=1}^n D_i = \sum_{i=1}^n a_{ij} A_{ij}.
+                    \]
+
+                \item 递归式定义 $\implies$ 公理化定义：
+                    \begin{enumerate}
+                        \item （线性性）直接将公理化定义用递归式对第$i$列展开：
+                            \begin{align*}
+                                    & D(\alpha_1,\ldots,\lambda\alpha_{i}+\mu\beta_i,\ldots,\alpha_n)                                      \\
+                                ={} & \sum_{k=1}^{n}(\lambda a_{ki}+\mu b_{ki})A_{ki}                                                      \\
+                                ={} & \lambda \cdot \sum_{k=1}^{n}a_{ki}A_{ki}+\mu \cdot \sum_{k=1}^{n}b_{ki}A_{ki}                        \\
+                                ={} & \lambda D(\alpha_1,\ldots,\alpha_{i},\ldots,\alpha_n)+\mu D(\alpha_1,\ldots,\beta_i,\ldots,\alpha_n),
+                            \end{align*}
+                            则线性性得证.
+
+                        \item （反对称性）使用数学归纳法证明. 显然，$D(\alpha_1,\alpha_2)=-D(\alpha_2,\alpha_1)$，然后做出归纳假设：对于任意正整数$i,j$，$1 \leqslant i, j \leqslant n - 1$且$i \neq j$，有：
+                            \[ D(\alpha_1,\ldots,\alpha_i,\ldots,\alpha_j,\ldots,\alpha_{n-1})=-D(\alpha_1,\ldots,\alpha_j,\ldots,\alpha_i,\ldots,\alpha_{n-1}). \]
+                            由此做出递推，对交换前后的行列式的首行做展开：
+                            \begin{gather*}
+                                D(\alpha_1,\ldots,\alpha_{i},\ldots,\alpha_{j},\ldots,\alpha_n)
+                                 =\sum_{k=1}^{n}a_{1k}A_{1k},   \\
+                                D(\alpha_1,\ldots,\alpha_{j},\ldots,\alpha_{i},\ldots,\alpha_n)
+                                 =\sum_{k=1}^{n}a'_{1k}A'_{1k}.
+                            \end{gather*}
+                            其中，除第$i,j$项外，由归纳假设，其余项都满足$a_{1k}=a'_{1k},A_{1k}=-A'_{1k}$，则有$a_{1k}A_{1k}=-a'_{1k}A'_{1k},k\neq i,j$. 因此主要考察$a_{1i}A_{1i}+a_{1j}A_{1j}$与$a'_{1i}A'_{1i}+a'_{1j}A'_{1j}$这两项. 首先有$a'_{1i}=a_{1j},a'_{1j}=a_{1i}$. 然后将$A_{1i}$与$A'_{1j}$两项展开对比：
+                            \begin{align*}
+                                A_{1i}  & =(-1)^{1+i} D(\beta_{1},\ldots,\beta_{i-1},\beta_{i+1},\ldots,\beta_{j},\ldots,\beta_{n}),                             \\
+                                A'_{1j} & =(-1)^{1+j} D(\beta_{1},\ldots,\beta_{i-1},\beta_{j},\beta_{i+1},\ldots,\beta_{j-1},\beta_{j+1},\ldots,\beta_{n}).
+                            \end{align*}
+                            式中的$\beta_k$表示原列向量 $\alpha_k$ 去掉首行元素后剩余$n-1$个元素组成的新列向量. 可以发现，$A'_{1j}$向左交换$j-(i+1)$次后与$A_{1i}$是绝对值一致的. 则根据归纳假设，有$(-1)^{j-(i+1)}A'_{1j}=(-1)^{1+j-(1+i)}A_{1i}$，即有$A'_{1j}=-A_{1i}$，所以$a_{1i}A_{1i}+a_{1j}A_{1j}=-(a'_{1j}A'_{1j}+a'_{1i}A'_{1i})$. 综上可证：
+                            \[ D(\alpha_1,\ldots,\alpha_{i},\ldots,\alpha_{j},\ldots,\alpha_n)=D(\alpha_1,\ldots,\alpha_{j},\ldots,\alpha_{i},\ldots,\alpha_n). \]
+
+                        \item （规范性）
+                            \[
+                                |E_n| = \begin{vmatrix}
+                                    E_{n-1}    & \mathbf{0} \\
+                                    \mathbf{0} & 1
+                                \end{vmatrix} = |E_{n-1}| = \cdots = |E_1| = 1.
+                            \]
+                    \end{enumerate}
+
+                \item 公理化定义 $\implies$ 逆序数定义：见本章``逆序数定义''部分的推导.
+
+                \item 逆序数定义 $\implies$ 公理化定义：
+                    \begin{enumerate}
+                        \item （线性性）使用逆序数定义对行列式进行展开：
+                            \begin{align*}
+                                & D(\alpha_1, \ldots , \lambda\alpha_i + \mu\beta_i, \ldots, \alpha_n) \\
+                                ={} & \sum_{(k_1, k_2, \ldots, k_n) \in S_n} (-1)^{\varepsilon} a_{k_1 1} \cdots a_{k_{i-1},i-1} (\lambda a_{k_i i} + \mu b_{k_i i}) a_{k_{i+1},i+1} \cdots a_{k_n n} \\
+                                ={} & \lambda \left(\sum_{(k_1, k_2, \ldots, k_n) \in S_n} (-1)^{\varepsilon} a_{k_1 1} \cdots a_{k_{i-1},i-1} a_{k_i i} a_{k_{i+1},i+1} \cdots a_{k_n n} \right) + \\
+                                 {} & \mu \left(\sum_{(k_1, k_2, \ldots, k_n) \in S_n} (-1)^{\varepsilon} a_{k_1 1} \cdots a_{k_{i-1},i-1} b_{k_i i} \cdots a_{k_n n}\right) \\
+                                ={} & \lambda D(\alpha_1, \ldots, \alpha_i, \ldots, \alpha_n) + \mu D(\alpha_1, \ldots, \beta_i, \ldots, \alpha_n),
+                            \end{align*}
+                            其中 $\varepsilon = \tau(k_1, k_2, \ldots, k_n)$ 表示排列 $(k_1, k_2, \ldots, k_n)$ 的逆序数.
+
+                        \item （反对称性）对于 $D(\alpha_1, \ldots, \alpha_i, \ldots, \alpha_j, \ldots, \alpha_n)$ 逆序数定义展开式中的任意一项
+                            \[
+                                (-1)^{\tau(k_1, \ldots, k_i, \ldots, k_j, \ldots, k_n)} a_{k_1 1} \cdots a_{k_i i} \cdots a_{k_j j} \cdots a_{k_n n},
+                            \]
+
+                            其可以对应 $D(\alpha_1, \ldots, \alpha_j, \ldots, \alpha_i, \ldots, \alpha_n)$ 逆序数定义展开式中的一项
+                            \[
+                                (-1)^{\tau(k_1, \ldots, k_j, \ldots, k_i, \ldots, k_n)} a_{k_1 1} \cdots a_{k_j j} \cdots a_{k_i i} \cdots a_{k_n n}.
+                            \]
+
+                            而排列 $(k_1, \ldots, k_i, \ldots, k_j, \ldots, k_n)$ 与 $(k_1, \ldots, k_j, \ldots, k_i, \ldots, k_n)$ 的奇偶性必定相反，故以上两个对应项为相反数，因此有
+                            \[
+                                D(\alpha_1, \ldots, \alpha_j, \ldots, \alpha_i, \ldots, \alpha_n) = -D(\alpha_1, \ldots, \alpha_i, \ldots, \alpha_j, \ldots, \alpha_n).
+                            \]
+
+                        \item （规范性）$E_n$ 的逆序数定义展开式中只有一项
+                            \[
+                                (-1)^{\tau(1, 2, \ldots, n)} a_{11} a_{22} \cdots a_{nn}
+                            \]
+                            不为零，故 $|E_n| = 1$.
+                    \end{enumerate}
+            \end{enumerate}
+        \end{answer}
 
         \item 设$\alpha_1,\alpha_2,\alpha_3$为三维列向量，令$A=(\alpha_1,\alpha_2,\alpha_3)$，且$|A|=2$，求$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|$.
+        \begin{answer}
+            使用倍加列变换的性质，可得$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|=6|\alpha_1,\alpha_2,\alpha_3|=12$.
+        \end{answer}
 
         \item 求证以下命题：
         \begin{enumerate}
@@ -1909,12 +2052,64 @@
 
             \item 若$A$是$n$阶可逆对称矩阵，$B$是$n$阶反对称矩阵，则当$n$为奇数时，齐次线性方程组$(AB)X=O$有非零解.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 首先由反对称矩阵的性质，有$A^T=-A$，其次由矩阵与行列式的性质，可得$|A^T|=|A|$，则可推出$|A|=|-A|=(-1)^n|A|$，又n为奇数，故$|A|=0$，矩阵$A$不可逆.
+
+                \item 只需证明$AB$的秩小于$n$，即$|AB|=0$即可. $B$是奇数阶反对称矩阵，$|B|=0$,则$|AB|=|A||B|=0$得证.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A$、$B$分别为$m$、$n$阶可逆矩阵，且$|A|=a$，$|B|=b$，求$\begin{pmatrix}
                 A & O \\ O & B
             \end{pmatrix}^*$和$\begin{pmatrix}
                 O & A \\ B & O
             \end{pmatrix}^*$.
+        \begin{answer}
+            根据伴随矩阵的性质，$\begin{pmatrix}
+                A & O \\ O & B
+            \end{pmatrix}^* = \begin{vmatrix}
+                A & O \\ O & B
+            \end{vmatrix} \cdot \begin{pmatrix}
+                A & O \\ O & B
+            \end{pmatrix}^{-1}$. 其中，对$\begin{vmatrix}
+                A & O \\ O & B
+            \end{vmatrix}$做递归式展开，有$\begin{vmatrix}
+                A & O \\ O & B
+            \end{vmatrix}=\displaystyle\sum_{k=1}^{m}(-1)^{1+k}a_{1k}\begin{vmatrix}
+                M_{1k} & O \\ O & B
+            \end{vmatrix}$，依此逐次展开可得$\begin{vmatrix}
+                A & O \\ O & B
+            \end{vmatrix}=|A||B|=ab$. 又$ab\begin{pmatrix}
+                A & O \\ O & B
+            \end{pmatrix}^{-1}=ab\begin{pmatrix}
+                A^{-1} & O \\ O & B^{-1}
+            \end{pmatrix}=\begin{pmatrix}
+                b\cdot aA^{-1} & O \\ O & a\cdot bB^{-1}
+            \end{pmatrix}$，最终可得$\begin{pmatrix}
+                A & O \\ O & B
+            \end{pmatrix}^* = \begin{pmatrix}
+                bA^* & O \\ O & aB^*
+            \end{pmatrix}$.
+
+            与前一个式子的展开类似，$\begin{pmatrix}
+                    O & A \\ B & O
+                \end{pmatrix}^*=\begin{vmatrix}
+                    O & A \\ B & O
+                \end{vmatrix}\cdot \begin{pmatrix}
+                    O & A \\ B & O
+                \end{pmatrix}^{-1}$，其中对前一步推导做少量修正后可得$\begin{vmatrix}
+                    O & A \\ B & O
+                \end{vmatrix}=(-1)^{mn}|A||B|=(-1)^{mn}ab$,则$(-1)^{mn}ab\begin{pmatrix}
+                    O & A \\ B & O
+                \end{pmatrix}^{-1}=(-1)^{mn}\begin{pmatrix}
+                    O & a\cdot bB^{-1} \\ b\cdot aA^{-1} & O
+                \end{pmatrix}$，最终可得$\begin{pmatrix}
+                    O & A \\ B & O
+                \end{pmatrix}^*=(-1)^{mn}\begin{pmatrix}
+                    O & aB^* \\ bA^* & O
+                \end{pmatrix}$.
+        \end{answer}
 
         \item 证明：
         \begin{enumerate}
@@ -1922,14 +2117,51 @@
 
             \item 若$A$为对称矩阵，则$A^*$也为对称矩阵；$A$为反对称矩阵，则$A^*$为偶数阶时也为反对称矩阵，奇数阶时为对称矩阵.
         \end{enumerate}
+        \begin{answer}
+            证明；\begin{enumerate}
+                \item 对正整数$k$，有$(A^k)^*=(A^*)^k$. 从而若$A^m=A$，则$(A^*)^m=(A^m)^*=A^*$. 即$A$是幂等矩阵，则$A^*$也是幂等矩阵. 同样，若$A^m=0$，则$(A^*)^m=(A^m)^*=0$. 即$A$是幂零矩阵，则$A^*$也是幂零矩阵.
+
+                \item $(A^*)^T=(A^T)^*=A^*$. 从而若$A$是对称矩阵，则$A^*$也是对称矩阵$. (A^*)^T=(A^T)^*=(-A)^*=(-1)^{n-1}A^*$. 从而若$A^*$为偶数阶时也为反对称矩阵，奇数阶时为对称矩阵.
+            \end{enumerate}
+        \end{answer}
 
         \item 证明：上（下）三角矩阵的伴随矩阵是上（下）三角矩阵（对角矩阵为特例）.
+        \begin{answer}
+            对于上三角矩阵，只需看其伴随矩阵的下半部分元素，即$A_{ij},j>i$. 对这些代数余子式，要么有一整行或整列为零，要么对角线存在零元素，则这些余子式均为零，伴随矩阵是上三角矩阵.\par 或者使用另法，当$A$是可逆矩阵，即$A$对角线元素不为零，则$A^*=|A|\cdot A^{-1}$，其中$A^{-1}$也是上三角矩阵，因此伴随矩阵$A^*$是上三角矩阵.
+        \end{answer}
 
         \item 设$A$为$n$阶方阵，证明：若$|A|=0$，则$A$中任意两行（列）对应元素的代数余子式成比例.
+        \begin{answer}
+            $|A|=0$，则$r(A)<n$，故$r(A^*)=\begin{cases}
+                1, & r(A)=n-1 \\
+                0, & r(A)<n-1
+            \end{cases}$. 当$r(A^*)=0$时，答案显然成立；当$r(A^*)=1$时，由矩阵秩的定义，任意两行（列）必成比例，否则秩大于1，矛盾. 综上，原题得证.
+        \end{answer}
 
         \item 设向量$\alpha_1,\alpha_2,\alpha_3$线性无关，讨论向量$\alpha_1-\alpha_2-2\alpha_3,\ 2\alpha_1+\alpha_2-\alpha_3,\ 3\alpha_1+\alpha_2+2\alpha_3$的线性相关性.
+        \begin{answer}
+            $(\alpha_1-\alpha_2-2\alpha_3,2\alpha_1+\alpha_2-\alpha_3,3\alpha_1+\alpha_2+2\alpha_3)=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}
+                1 & 2 & 3 \\ -1 & 1 & 1 \\ -2 & -1 & 2
+            \end{pmatrix}$，又$\begin{vmatrix}
+                1 & 2 & 3 \\ -1 & 1 & 1 \\ -2 & -1 & 2
+            \end{vmatrix}=12\neq 0$，因此该矩阵可逆，则$(\alpha_1-\alpha_2-2\alpha_3,2\alpha_1+\alpha_2-\alpha_3,3\alpha_1+\alpha_2+2\alpha_3)$与$(\alpha_1,\alpha_2,\alpha_3)$秩相等，因此这三个向量线性无关.
+        \end{answer}
 
         \item 设$W=\spa(\alpha_1,\alpha_2)$是$\mathbf{R}^4$的一个子空间，其中$\alpha_1=(1,2,1,-1)^\mathrm{T}$，$\alpha_2=(1,4,-1,-1)^\mathrm{T}$，试将$\alpha_1,\alpha_2$扩充为$\mathbf{R}^4$的基.
+        \begin{answer}
+            只要取$\alpha_3,\alpha_4 \in \mathbf{R}^4$，使得$D(\alpha_1,\alpha_2,\alpha_3,\alpha_4) \neq 0$即可. 易得$\begin{vmatrix}
+                1  & 1  & 0 & 0 \\
+                2  & 4  & 0 & 0 \\
+                1  & -1 & 1 & 0 \\
+                -1 & 1  & 0 & 1
+            \end{vmatrix}=\begin{vmatrix}
+                1 & 1 \\
+                2 & 4
+            \end{vmatrix} \cdot \begin{vmatrix}
+                1 & 0 \\
+                0 & 1
+            \end{vmatrix}=2 \neq 0$. 于是可取$\alpha_3=(0,0,1,0)^T,\alpha_4=(0,0,0,1)^T$，能使得${\alpha_1,\alpha_2,\alpha_3,\alpha_4}$为$\mathbf{R}^4$的一组基.
+        \end{answer}
 
         \item $ D_n=\begin{vmatrix}
                 1      & 2      & 3      & 4      & \cdots & n-1    & n      \\
@@ -1940,6 +2172,39 @@
                 x      & x      & x      & x      & \cdots & 1      & 2      \\
                 x      & x      & x      & x      & \cdots & x      & 1      \\
             \end{vmatrix}$（提示：考虑滚动消去法）.
+        \begin{answer}
+            考虑滚动消去法，每行减下一行，得
+            \[ \begin{vmatrix}
+                    1-x    & 1      & 1      & 1      & \ldots & 1      & 1      \\
+                    0      & 1-x    & 1      & 1      & \ldots & 1      & 1      \\
+                    0      & 0      & 1-x    & 1      & \ldots & 1      & 1      \\
+                    0      & 0      & 0      & 1-x    & \ldots & 1      & 1      \\
+                    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                    0      & 0      & 0      & 0      & \ldots & 1-x    & 1      \\
+                    x      & x      & x      & x      & \ldots & x      & 1      \\
+                \end{vmatrix}. \]
+            第一行乘$(-x)$到第$n$行，得
+            \[\begin{vmatrix}
+                    1-x    & 1      & 1      & 1      & \ldots & 1      & 1      \\
+                    0      & 1-x    & 1      & 1      & \ldots & 1      & 1      \\
+                    0      & 0      & 1-x    & 1      & \ldots & 1      & 1      \\
+                    0      & 0      & 0      & 1-x    & \ldots & 1      & 1      \\
+                    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                    0      & 0      & 0      & 0      & \ldots & 1-x    & 1      \\
+                    x^2    & 0      & 0      & 0      & \ldots & 0      & 1-x    \\
+                \end{vmatrix}.\]
+            按第$n$行展开，得$D_n=(1-x)^n+(-1)^{n+1}x^2T_{n-1}$，其中
+            \[T_{n-1}=\begin{vmatrix}
+                    1      & 1      & 1      & \ldots & 1      & 1      \\
+                    1-x    & 1      & 1      & \ldots & 1      & 1      \\
+                    0      & 1-x    & 1      & \ldots & 1      & 1      \\
+                    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                    0      & 0      & 0      & \ldots & 1      & 1      \\
+                    0      & 0      & 0      & \ldots & 1-x    & 1      \\
+                \end{vmatrix}.\]
+            按第$n-1$行展开$T_{n-1}$，有$T_{n-1}=T_{n-2}+(-1)(1-x)T_{n-2}=xT_{n-2}$. 由$T_2=\begin{vmatrix}
+                    1&1\\1-x&1\end{vmatrix}=x$，递推得$T_{n-1}=x^{n-2}$. 代入可解得$D_n=(1-x)^n-(-x)^n$.
+        \end{answer}
 
         \item $ D_n=\begin{vmatrix}
                 a_1 & b_1 &     &        &         \\
@@ -1948,6 +2213,9 @@
                     &     &     & \ddots & b_{n-1} \\
                 b_n &     &     &        & a_n
             \end{vmatrix}$.
+        \begin{answer}
+            按第一列展开，得$D_n=\displaystyle\prod_{i=1}^na_i+(-1)^{n+1}\prod_{i=1}^nb_i$.
+        \end{answer}
 
         \item $D_n=\begin{vmatrix}
                 a+b & ab  &        &     &     \\
@@ -1956,8 +2224,97 @@
                     &     & \ddots & a+b & ab  \\
                     &     &        & 1   & a+b \\
             \end{vmatrix}$.
+        \begin{answer}
+            按第一列展开，得
+            \begin{align*}
+                D_{n} & =(a+b) D_{n-1}-\begin{vmatrix}
+                                            a b    & 0      & 0      & 0   & \cdots & 0      & 0      \\
+                                            1      & a+b    & a b    & 0   & \cdots & 0      & 0      \\
+                                            0      & 1      & a+b    & a b & \cdots & 0      & 0      \\
+                                            \vdots & \vdots & \vdots & a+b & \ddots & \vdots & \vdots \\
+                                            0      & 0      & 0      & 0   & \cdots & a+b    & a b    \\
+                                            0      & 0      & 0      & 0   & \cdots & 1      & a+b
+                                        \end{vmatrix} \\
+                        & =(a+b) D_{n-1}-a b D_{n-2}.
+            \end{align*}
+            \begin{enumerate}
+                \item 方法一：特征方程法. 有特征方程$r^2-(a+b)r+ab=(r-a)(r-b)=0$，先考虑$a\neq b$，则$D_n=C_1a^n+C_2b^n$，$D_{1}=a+b$，$D_{2}=a^{2}+a b+b^{2}$，则有
+                        \[\begin{cases}
+                                C_1a+C_2b=a+b \\
+                                C_1a^2+C_2b^2=a^2+ab+b^2
+                            \end{cases},\]
+                        考虑Cramer法则，首先判断系数行列式$\begin{vmatrix}
+                                a   & b   \\
+                                a^2 & b^2
+                            \end{vmatrix}=ab(b-a)$，若$a=b=0$，原行列式为0；若$a=0,b\neq 0$，则有$C_2=1$，$D_n=b^n$；同理若$a=0,b\neq 0$，$D_n=a^n$. 考虑$a\neq 0,b\neq 0$，则系数行列式非0，根据Cramer法则可以解得
+                        \[C_1=\frac{\begin{vmatrix}
+                                    a+b        & b   \\
+                                    a^2+ab+b^2 & b^2
+                                \end{vmatrix}}{ab(b-a)}=\frac{a}{a-b},\quad
+                            C_2=\frac{\begin{vmatrix}
+                                    a   & a+b        \\
+                                    a^2 & a^2+ab+b^2
+                                \end{vmatrix}}{ab(b-a)}=-\frac{b}{a-b}.\]
+                        故$D_n=\displaystyle\frac{a^{n+1}-b^{n+1}}{a-b}$. 考虑到$a$或$b$为0时也符合该公式，故合并为同一公式. 再考虑$a=b$，则$D_n=(C_1+C_2n)a^n$，有方程
+                        \[\begin{cases}
+                                (C_1+C_2)a=2a \\
+                                (C_1+2C_2)a^2=3a^2
+                            \end{cases},\]
+                        $a=0$，则$D_n=0$；$a\neq 0$，可以解得$C_1=C_2=1$，有$D_n=(n+1)a^n$. 考虑到$a=0$时$D_n$也符合该式，故合并. 综上有
+                        \[D_n=\begin{cases}
+                                \displaystyle\frac{a^{n+1}-b^{n+1}}{a-b}, & a\neq b \\
+                                (n+1)a^n,                                 & a=b
+                            \end{cases}.\]
+
+                \item 方法二：递推式变形法. 递推式变形, 得
+                        \[\mathrm{D}_{n}-a D_{n-1}=b\left(D_{n-1}-a D_{n-2}\right),\]
+                        由于 $D_{1}=a+b, D_{2}=a^{2}+a b+b^{2}$,从而利用上述递推公式得
+                        \begin{align*}
+                            \mathrm{D}_{n}-a D_{n-1} & =b\left(D_{n-1}-a D_{n-2}\right)                \\
+                                                    & =b^{2}\left(D_{n-2}-a D_{n-3}\right)            \\
+                                                    & =\cdots=b^{n-2}\left(D_{2}-a D_{1}\right)=b^{n}.
+                        \end{align*}
+                        故\begin{align*}
+                            D_{n} & =a D_{n-1}+b^{n}=a\left(a D_{n-2}+b^{n-1}\right)+b^{n}     \\
+                                  & =\cdots=a^{n-1} D_{1}+a^{n-2} b^{2}+\cdots+a b^{n-1}+b^{n} \\
+                                  & =a^{n}+a^{n-1} b+\cdots+a b^{n-1}+b^{n}                    \\
+                                  & =\begin{cases}
+                                        \displaystyle\frac{a^{n+1}-b^{n+1}}{a-b}, & a\neq b \\
+                                        (n+1)a^n,                                 & a=b
+                                     \end{cases}.
+                        \end{align*}
+            \end{enumerate}
+        \end{answer}
 
         \item 用递推法解\autoref{ex:递推法}.
+        \begin{answer}
+            与数归法相同，先得到 $D_n$ 的递推式：
+            \[
+                D_n - 2 \cos \beta D_{n-1} + D_{n-2} = 0,
+            \]
+            其中 $D_1 = \cos \beta, \enspace D_2 = \cos 2\beta$.
+
+            现求其特征方程
+            \[
+                \lambda^2 - 2 \lambda \cos \beta + 1 = 0
+            \]
+            的根，有
+            \[
+                \lambda = 2 \cos \beta \pm 2 \mathrm{i} \sin \beta.
+            \]
+            故令
+            \[
+                D_n = C_1 \cos n\beta + C_2 \sin n\beta,
+            \]
+            代入初值，有
+            \[
+                \begin{cases}
+                    C_1 \cos \beta + C_2 \sin \beta = \cos \beta, \\
+                    C_1 \cos 2\beta + C_2 \sin 2\beta = \cos 2\beta.
+                \end{cases}
+            \]
+            易知 $C_1 = 1, C_2 = 0$ 为其解，故 $D_n = \cos n\beta$.
+        \end{answer}
 
         \item 解行列式 $ \begin{vmatrix}
                 a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
@@ -1965,6 +2322,39 @@
                 c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
                 d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
             \end{vmatrix} $.
+        \begin{answer}
+            \begin{enumerate}
+                \item 方法一：慢慢消去.
+                      \begin{align*}
+                          \begin{vmatrix}
+                              a^{2} & (a+1)^{2} & (a+2)^{2} & (a+3)^{2} \\
+                              b^{2} & (b+1)^{2} & (b+2)^{2} & (b+3)^{2} \\
+                              c^{2} & (c+1)^{2} & (c+2)^{2} & (c+3)^{2} \\
+                              d^{2} & (d+1)^{2} & (d+2)^{2} & (d+3)^{2}
+                          \end{vmatrix}
+                           & = \begin{vmatrix}
+                                   a^{2} & 2a+1 & 4a+4 & 6a+9 \\
+                                   b^{2} & 2b+1 & 4b+4 & 6b+9 \\
+                                   c^{2} & 2c+1 & 4c+4 & 6c+9 \\
+                                   d^{2} & 2d+1 & 4d+4 & 6d+9
+                               \end{vmatrix} \\
+                           & = \begin{vmatrix}
+                                   a^{2} & 2a+1 & 4a+4 & 4 \\
+                                   b^{2} & 2b+1 & 4b+4 & 4 \\
+                                   c^{2} & 2c+1 & 4c+4 & 4 \\
+                                   d^{2} & 2d+1 & 4d+4 & 4
+                               \end{vmatrix}    \\
+                           & = 4\begin{vmatrix}
+                                    a^{2} & 2a & 4a & 1 \\
+                                    b^{2} & 2b & 4b & 1 \\
+                                    c^{2} & 2c & 4c & 1 \\
+                                    d^{2} & 2d & 4d & 1
+                                \end{vmatrix}=0.
+                      \end{align*}
+
+                \item 关注到行列式中只有$(a^2, b^2, c^2, d^2)^\mathrm{T}, (a, b, c, d)^\mathrm{T}$和$(1, 1, 1, 1)^\mathrm{T}$三个线性无关列向量，则一眼看出线性相关. 因此设原行列式为$|\alpha_1, \alpha_2, \alpha_3, \alpha_4|$，有$\alpha_4=\alpha_1-3\alpha_2+3\alpha_3$，因此原行列式值为0.
+            \end{enumerate}
+        \end{answer}
 
         \item 设
         \[ D=\begin{vmatrix}
@@ -1978,6 +2368,63 @@
 
             \item 硬拆$D$为$2^n$个行列式，计算出结果.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item \begin{align*}
+                          D_n & =\begin{vmatrix}
+                                     D_{n-1} & a   \\
+                                     b       & a_n
+                                 \end{vmatrix},a=(0, \ldots, 0, -a_{n-1})^\mathrm{T}, b=(1, \ldots, 1) \\
+                              & =a_nD_{n-1}+a_{n-1}\begin{vmatrix}
+                                                       D_{n-2} & 1_{n-2} \\
+                                                       1_{n-2} & 1
+                                                   \end{vmatrix}
+                          \quad \text{($1_{n-2}$表示由$(n-2)$个1构成的行/列向量)}                      \\
+                              & =a_nD_{n-1}+a_{n-1}
+                          \begin{vmatrix}
+                              a_1    & 0      & 0      & \ldots & 0       & 1      \\
+                              0      & a_2    & 0      & \ldots & 0       & 1      \\
+                              0      & 0      & a_3    & \ldots & 0       & 1      \\
+                              \vdots & \vdots & \vdots & \ddots & \vdots  & \vdots \\
+                              0      & 0      & 0      & \ldots & a_{n-2} & 1      \\
+                              0      & 0      & 0      & \ldots & 0       & 1      \\
+                          \end{vmatrix} \quad \text{($1-n$列用第$n$列减)}                         \\
+                              & =a_nD_{n-1}+\prod_{i=1}^{n-1}a_i.
+                      \end{align*}
+                      递推可得$\displaystyle D_n=\left(\prod_{k=1}^na_k\right)
+                          \left(1+\sum_{i=1}^n\frac{1}{a_i}\right)$.
+
+                \item 将 1 写成 $1+0$, 将 $D$ 硬拆成 $2^{n}$ 个行列式, 只有如下的 $n+1$ 个行列式非 0：
+                      \begin{align*}
+                          D_n = & \begin{vmatrix}
+                                      1      &       &        &       \\
+                                      1      & a_{2} &        &       \\
+                                      \vdots &       & \ddots &       \\
+                                      1      &       &        & a_{n}
+                                  \end{vmatrix}
+                          +\begin{vmatrix}
+                               a_{1} & 1      &                \\
+                                     & 1      &                \\
+                                     & \vdots & \ddots &       \\
+                                     & 1      &        & a_{n}
+                           \end{vmatrix}+\cdots+                    \\
+                                & \begin{vmatrix}
+                                      a_{1} &       &        & 1      \\
+                                            & a_{2} &        & 1      \\
+                                            &       & \ddots & \vdots \\
+                                            &       &        & 1
+                                  \end{vmatrix}
+                          +\begin{vmatrix}
+                               a_{1} &                      \\
+                                     & a_{2} &              \\
+                                     &       & \ddots &     \\
+                                     &       &        & a_n
+                           \end{vmatrix}                       \\
+                          =     & \left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}}
+                          \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n} \frac{1}{a_{i}}\right).
+                      \end{align*}
+            \end{enumerate}
+        \end{answer}
 
         \item 解行列式
         \begin{enumerate}
@@ -1996,8 +2443,140 @@
                           n      & 1      & \cdots & n-2    & n-1
                       \end{vmatrix}$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 行列式中2比较多，用全是2的第二行去消，然后按第2行展开.
+                      \[D=\begin{vmatrix}
+                              -1     & 0      & \cdots & 0      & 0      \\
+                              2      & 2      & \cdots & 2      & 2      \\
+                              \vdots & \vdots & \ddots & \vdots & \vdots \\
+                              0      & 0      & \cdots & n-3    & 0      \\
+                              0      & 0      & \cdots & 0      & n-2
+                          \end{vmatrix}=2\cdot(-1)\cdot(n-2)!=-2(n-2)!.\]
+
+                \item \begin{enumerate}
+                          \item 方法一：考虑滚动消去法，有
+                                \begin{align*}
+                                    D & =\begin{vmatrix}
+                                             1      & 2      & 3      & \cdots & n-1    & n      \\
+                                             1      & 1      & 1      & \cdots & 1      & 1-n    \\
+                                             1      & 1      & 1      & \cdots & 1-n    & 1      \\
+                                             \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                             1      & 1      & 1-n    & \cdots & 1      & 1      \\
+                                             1      & 1-n    & 1      & \cdots & 1      & 1
+                                         \end{vmatrix}                                    \\&=\begin{vmatrix}
+                                        0      & n+1    & 2      & \cdots & n-2    & n-1    \\
+                                        0      & n      & 0      & \cdots & 0      & -n     \\
+                                        0      & n      & 0      & \cdots & -n     & 0      \\
+                                        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                        0      & n      & -n     & \cdots & 0      & 0      \\
+                                        1      & 1-n    & 1      & \cdots & 1      & 1
+                                    \end{vmatrix}\\
+                                      & =(-1)^{n+1}\begin{vmatrix}
+                                                       n+1    & 2      & \cdots & n-2    & n-1    \\
+                                                       n      & 0      & \cdots & 0      & -n     \\
+                                                       n      & 0      & \cdots & -n     & 0      \\
+                                                       \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                                       n      & -n     & \cdots & 0      & 0
+                                                   \end{vmatrix}                                   \\
+                                      & =(-1)^{n+1}(-1)^{\frac{(n-2)(n-3)}{2}}
+                                    \begin{vmatrix}
+                                        n+1    & n-1    & \cdots & 3      & 2      \\
+                                        n      & -n     & \cdots & 0      & 0      \\
+                                        n      & 0      & \cdots & 0      & 0      \\
+                                        \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                        n      & 0      & \cdots & 0      & -n
+                                    \end{vmatrix}                                                  \\
+                                      & =(-1)^{\frac{n^2-3n+8}{2}}\begin{vmatrix}
+                                                                      \frac{n(n+1)}{2} & n-1    & \cdots & 3      & 2      \\
+                                                                      0                & -n     & \cdots & 0      & 0      \\
+                                                                      0                & 0      & \cdots & 0      & 0      \\
+                                                                      \vdots           & \vdots & \ddots & \vdots & \vdots \\
+                                                                      0                & 0      & \cdots & 0      & -n
+                                                                  \end{vmatrix}=(-1)^{\frac{n^2-n+12}{2}}\frac{n^{n-1}(n+1)}{2}.
+                                \end{align*}
+
+                          \item 方法二：考虑连加法. 将第 $2,3, \ldots, n$ 列都加到第 1 列, 提出公因子 $\dfrac{1}{2} n(n+1)$, 再依次将第 $n-1$ 行乘 $(-1)$ 加到第 $n$ 行, $\cdots$, 第 2 行乘 $(-1)$ 加到第 3 行, 第 1 行乘 $(-1)$ 加到第 2 行, 然后对第 1 列展开, 得到一个 $n-1$ 阶行列式, 它的副对角元为 $1-$ $n$, 其余元素均为 1 . 再把它的各列加到第 1 列, 并把它的第 1 行乘 $(-1)$ 加到其余各行, 得
+                                \begin{align*}
+                                    D & =\frac{n(n+1)}{2}\begin{vmatrix}
+                                                             1      & 2      & \cdots & n-1    & n      \\
+                                                             1      & 3      & \cdots & n      & 1      \\
+                                                             1      & 4      & \cdots & 1      & 2      \\
+                                                             \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                                             1      & 1      & \cdots & n-2    & n-1
+                                                         \end{vmatrix} \\
+                                      & =\frac{n(n+1)}{2}\begin{vmatrix}
+                                                             1      & 2      & 3      & \cdots & n      \\
+                                                             0      & 1      & 1      & \cdots & 1-n    \\
+                                                             \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                                             0      & 1      & 1-n    & \cdots & 1      \\
+                                                             0      & 1-n    & 1      & \cdots & 1
+                                                         \end{vmatrix}_{n} \\
+                                      & =\frac{n(n+1)}{2}
+                                    \begin{vmatrix}
+                                        1      & 1      & \cdots & 1      & 1-n \\
+                                        \vdots & \vdots & \ddots & \vdots & 1   \\
+                                        1      & 1-n    & \cdots & 1      & 1   \\
+                                        1-n    & 1      & \cdots & 1      & 1
+                                    \end{vmatrix}                         \\
+                                      & =\frac{n(n+1)}{2}\begin{vmatrix}
+                                                             -1     & 1      & \cdots & 1      & 1-n    \\
+                                                             0      & 0      & \cdots & -n     & n      \\
+                                                             \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                                             0      & -n     & \cdots & 0      & n      \\
+                                                             0      & 0      & \cdots & 0      & n
+                                                         \end{vmatrix}_{n-1}
+                                \end{align*}
+                                将上式先对第 1 列展开, 得到一个 $n-2$ 阶行列式, 再将它对最后一行展开, 得
+                                \begin{align*}
+                                    D & =\frac{-n(n+1)}{2} n
+                                    \begin{vmatrix}
+                                        0      & 0      & \cdots & 0      & -n     \\
+                                        0      & 0      & \cdots & -n     & 0      \\
+                                        \vdots & \vdots & \ddots & \vdots & \vdots \\
+                                        0      & -n     & \cdots & 0      & 0      \\
+                                        -n     & 0      & \cdots & 0      & 0
+                                    \end{vmatrix}_{n-3}                      \\
+                                      & =-\frac{n^{2}(n+1)}{2}(-1)^{\frac{(n-3)(n-4)}{2}}(-n)^{n-3} \\
+                                      & =(-1)^{\frac{n(n-1)}{2} }\frac{(n+1) n^{n-1}}{2}.
+                                \end{align*}
+                                事实上，两种方法得到的答案是等价的.
+                      \end{enumerate}
+            \end{enumerate}
+        \end{answer}
 
         \item 记$a_{ij}=|i-j|$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
+        \begin{answer}
+            \begin{enumerate}
+                \item 若 $n=1$，则 $|A| = |0| = 0$；
+
+                \item 若 $n=2$, 则 $|A| = \begin{vmatrix} 0 & -1 \\ 1 & 0 \end{vmatrix} = 1$；
+
+                \item 若 $n>2$，考虑使用滚动消去法：
+                    \begin{align*}
+                        |A| &= \begin{vmatrix}
+                            0      & -1     & -2     & \cdots & -n+1   \\
+                            1      & 0      & -1     & \cdots & -n+2   \\
+                            2      & 1      & 0      & \cdots & -n+3   \\
+                            \vdots & \vdots & \vdots & \ddots & \vdots \\
+                            n-1    & n-2    & n-3    & \cdots & 0
+                        \end{vmatrix} \\
+                        &= \begin{vmatrix}
+                            1 & 1 & \cdots & 1 & -n+1 \\
+                            1 & 1 & \cdots & 1 & -n+2 \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            1 & 1 & \cdots & 1 & 0
+                        \end{vmatrix} \\
+                        &= \begin{vmatrix}
+                            1 & 0 & \cdots & 0 & -n+1 \\
+                            1 & 0 & \cdots & 0 & -n+2 \\
+                            \vdots & \vdots & \ddots & \vdots & \vdots \\
+                            1 & 0 & \cdots & 0 & 0
+                        \end{vmatrix}
+                        = 0.
+                    \end{align*}
+            \end{enumerate}
+        \end{answer}
 
         \item 计算行列式$D=\begin{vmatrix}
                 1 & 0 & 2 & 0 & x   \\
@@ -2006,6 +2585,43 @@
                 0 & 5 & 0 & 3 & 0   \\
                 1 & 0 & 8 & 0 & x^3
             \end{vmatrix}$.
+        \begin{answer}
+            我们可以先构造分块对角矩阵，然后分别处理两个低阶的行列式：
+            \[
+                D = (-1)^{3+3} \begin{vmatrix}
+                    1 & 2 & x   & 0 & 0 \\
+                    1 & 4 & x^2 & 0 & 0 \\
+                    1 & 8 & x^3 & 0 & 0 \\
+                    0 & 0 & 0   & 2 & 1 \\
+                    0 & 0 & 0   & 5 & 3
+                \end{vmatrix} = (-1)^{3+3} \begin{vmatrix}
+                    1 & 2 & x   \\
+                    1 & 4 & x^2 \\
+                    1 & 8 & x^3
+                \end{vmatrix} \begin{vmatrix}
+                    2 & 1 \\
+                    5 & 3
+                \end{vmatrix} = \begin{vmatrix}
+                    1 & 2 & x   \\
+                    1 & 4 & x^2 \\
+                    1 & 8 & x^3
+                \end{vmatrix}.
+            \]
+
+            该行列式可以通过加边法构造范德蒙行列式：
+            \[
+                D = \begin{vmatrix}
+                    1 & 2 & x   \\
+                    1 & 4 & x^2 \\
+                    1 & 8 & x^3
+                \end{vmatrix} = \begin{vmatrix}
+                    1 & 1 & 1 & 1   \\
+                    0 & 1 & 2 & x   \\
+                    0 & 1 & 4 & x^2 \\
+                    0 & 1 & 8 & x^3
+                \end{vmatrix} = 2x(x-1)(x-2).
+            \]
+        \end{answer}
 
     \end{exgroup}
 
@@ -2020,22 +2636,146 @@
 
             \item $M_{41}+M_{42}+M_{43}+M_{44}$.
         \end{enumerate}
+        \begin{answer}
+            这三小问实际上都是对原行列式中的某一行进行了替换进行计算.
+            \begin{enumerate}
+                \item \begin{align*}
+                            A_{21}+A_{22}+A_{23}+A_{24}
+                            & = \begin{vmatrix}
+                                    3 & 0  & 4  & 1 \\
+                                    1 & 1  & 1  & 1 \\
+                                    0 & -7 & 8  & 3 \\
+                                    5 & 3  & -2 & 2
+                                \end{vmatrix}
+                            = \begin{vmatrix}
+                                3 & -3 & 1  & -2 \\
+                                1 & 0  & 0  & 0  \\
+                                0 & -7 & 8  & 3  \\
+                                5 & -2 & -7 & -3
+                            \end{vmatrix}             \\
+                            & = (-1)^{2+1} \begin{vmatrix}
+                                                -3 & 1  & -1 \\
+                                                -7 & 8  & 3  \\
+                                                -2 & -7 & -3
+                                            \end{vmatrix} \\
+                            & = 148.
+                        \end{align*}
+
+                \item \begin{align*}
+                            A_{31}+A_{33}
+                            & = 1A_{31}+0A_{32}+1A_{33}+0A_{34}
+                            = \begin{vmatrix}
+                                3 & 0 & 4  & 1 \\
+                                2 & 3 & 1  & 4 \\
+                                1 & 0 & 1  & 0 \\
+                                5 & 3 & -2 & 2
+                            \end{vmatrix}
+                            = 3 \begin{vmatrix}
+                                    3 & 0 & 4  & 1 \\
+                                    2 & 1 & 1  & 4 \\
+                                    1 & 0 & 1  & 0 \\
+                                    5 & 1 & -2 & 2
+                                \end{vmatrix}                   \\
+                            & = 3 \begin{vmatrix}
+                                    3 & 0 & 1  & 1 \\
+                                    2 & 1 & -1 & 4 \\
+                                    1 & 0 & 0  & 0 \\
+                                    5 & 3 & -7 & 2
+                                \end{vmatrix}
+                            = 3 \cdot (-1)^{3+1} \begin{vmatrix}
+                                                    0 & 1  & 1 \\
+                                                    1 & -1 & 4 \\
+                                                    3 & -7 & 2
+                                                \end{vmatrix}  \\
+                            & = -12.
+                        \end{align*}
+
+                \item \begin{align*}
+                            M_{41}+M_{42}+M_{43}+M_{44}
+                            & = -A_{41}+A_{42}-A_{43}+A_{44}
+                            = \begin{vmatrix}
+                                3  & 0  & 4  & 1 \\
+                                2  & 3  & 1  & 4 \\
+                                0  & -7 & 8  & 3 \\
+                                -1 & 1  & -1 & 1
+                            \end{vmatrix}                     \\
+                            & = \begin{vmatrix}
+                                    3  & 3  & 1  & 4 \\
+                                    2  & 5  & -1 & 6 \\
+                                    0  & -7 & 8  & 3 \\
+                                    -1 & 0  & 0  & 0
+                                \end{vmatrix}
+                            = {-1}^{4+1} \cdot (-1) \begin{vmatrix}
+                                                        3  & 1  & 4 \\
+                                                        5  & -1 & 6 \\
+                                                        -7 & 8  & 3
+                                                    \end{vmatrix} \\
+                            & = -78.
+                        \end{align*}
+            \end{enumerate}
+        \end{answer}
 
         \item 求参数 $a,b$  的值，使得$\begin{vmatrix}1 & 1 & 1 \\ x & y & z \\u & v & w\end{vmatrix}=1,
             \begin{vmatrix}1 & 2 & -5 \\ x & y & z \\u & v & w\end{vmatrix}=2,
             \begin{vmatrix}2 & 3 & b \\ x & y & z \\u & v & w\end{vmatrix}=a$都成立，并求$\begin{vmatrix}x & y & z \\ 1 & -1 & 5 \\u & v & w\end{vmatrix}$.
+        \begin{answer}
+            有问题，之后可能会考虑修改题目，此处略.
+        \end{answer}
 
         \item 设$A,B$为三阶矩阵，且$|A|=3,|B|=2$，且$|A^{-1}+B|=2$，求$|A+B^{-1}|$.
+        \begin{answer}
+            \begin{align*}
+                \lvert A+B^{-1} \rvert ={} & \lvert B^{-1}BA+B^{-1}E \rvert = \lvert B^{-1} \rvert \cdot \lvert BA+E \rvert                  \\
+                ={}                        & \frac{1}{2} \lvert BA+A^{-1}A \rvert = \frac{1}{2} \lvert B+A^{-1} \rvert \cdot \lvert A \rvert \\
+                ={}                        & \frac{3}{2} \lvert A^{-1}+B \rvert = 3.
+            \end{align*}
+        \end{answer}
 
         \item 设$A$为$n$阶正交矩阵，即$AA^\mathrm{T}=A^\mathrm{T}A=E$，且$|A|<0$，证明：$|E+A|=0$.
+        \begin{answer}
+            正交矩阵满足 $AA^{\mathrm{T}} = A^{\mathrm{T}}A = E$，所以 $\lvert AA^{\mathrm{T}} \rvert = \lvert A \rvert^2 = \lvert E \rvert = 1$. 而 $\lvert A \rvert < 0$，所以 $\lvert A \rvert = -1$.
+            \[\lvert E+A \rvert = \lvert AA^{\mathrm{T}}+A \rvert = \lvert A \rvert \cdot \lvert A^{\mathrm{T}}+E \rvert = -\lvert (A+E)^{\mathrm{T}} \rvert = -\lvert E+A \rvert.\]
+            故 $\lvert E+A \rvert = 0$.
+
+            以上两道题都多次运用了 $E = AA^{-1} = A^{-1}A$ 的技巧，请大家留意.
+        \end{answer}
 
         \item 设实方阵$A$的伴随矩阵$A^*=\begin{pmatrix}
                 1 & 0 & 0 \\ 0 & 1 & 0 \\ 1 & 0 & 1
             \end{pmatrix}$，且$|A|>0$，已知矩阵$B$满足$AB=E+3A$，求矩阵$B$.
+        \begin{answer}
+            由 $A$ 为三阶矩阵，可得 $|A|^2 = |A^*| = 1$，而 $|A|>0$，所以 $|A|=1$. $AB=E+3A$ 经变形可得 $A(B-3E) = E$，故有
+            \[
+                B = 3E + A^{-1} = 3E + \frac{A^*}{|A|} = \begin{pmatrix}
+                    4 & 0 & 0 \\ 0 & 4 & 0 \\ 1 & 0 & 4
+                \end{pmatrix}.
+            \]
+        \end{answer}
 
         \item 设$B=\begin{pmatrix}
                 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1
             \end{pmatrix}$，矩阵$A$满足方程$BA=B^\mathrm{T}B$，求$|A^*-2E|$.
+        \begin{answer}
+            $|B|=1$，对 $BA=B^\mathrm{T}B$ 两边同时取行列式有
+            \[
+                |B||A| = |B^\mathrm{T}||B| = |B|^2,
+            \]
+            故 $|A| = 1$. 从而有
+            \[
+                A^* = |A|A^{-1} = B^{-1} \left(B^\mathrm{T}\right)^{-1} B.
+            \]
+            $B^{-1} = \begin{pmatrix}
+                1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -1 & 1
+            \end{pmatrix}$，于是有
+            \[
+                |A^*-2E| = \lvert B^{-1} \left(B^\mathrm{T}\right)^{-1} B - 2 B^{-1} B \rvert
+                         = \lvert B^{-1} \rvert \lvert \left(B^\mathrm{T}\right)^{-1} - 2E \rvert \lvert B \rvert
+                         = \begin{vmatrix}
+                            -1 & 0 & 0 \\ -1 & -1 & 0 \\ 0 & -1 & -1
+                         \end{vmatrix}
+                         = -1.
+            \]
+        \end{answer}
 
         \item 已知齐次线性方程组
         \[\begin{cases} \begin{aligned}
@@ -2050,8 +2790,27 @@
 
             \item 若$r(A)=n-1$，则方程组的解全是$(M_1,-M_2,\ldots,(-1)^{n-1}M_n)$的倍数.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 由于行列式
+                      \[ D = \begin{vmatrix}
+                              a_{11}     & a_{12}     & a_{13}     & \cdots & a_{1n}     \\
+                              a_{11}     & a_{12}     & a_{13}     & \cdots & a_{1n}     \\
+                              a_{21}     & a_{22}     & a_{23}     & \cdots & a_{2n}     \\
+                              \vdots     & \vdots     & \vdots     & \ddots & \vdots     \\
+                              a_{n-1, 1} & a_{n-1, 2} & a_{n-1, 3} & \cdots & a_{n-1, n}
+                          \end{vmatrix} = 0,\]
+                      而 $M_1, -M_2, \ldots, (-1)^{n-1}M_n$ 恰是 $D$ 的第一行元素的代数余子式，所以将 $D$ 按第一行展开，可知\[a_{11}M_1+a_{12}(-M_2)+\cdots+a_{1n}(-1)^{n-1}M_n=0.\]
+                      而 $D$ 的其他行元素与第一行元素的代数余子式乘积之和为 0，于是结论成立.
+
+                \item 因为 $r(A) = n-1$，所以 $M_1, -M_2, \ldots, (-1)^{n-1}M_n$，不全为 0. 且该方程组解空间维数为 1，$M_1, -M_2, \ldots, (-1)^{n-1}M_n$ 正是该方程组的非零解，结论成立.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A,B$均为$n$阶矩阵，且$|A|=2,|B|=1$，求$|2A^*B^*-A^{-1}B^{-1}|$.
+        \begin{answer}
+            $A^* = \lvert A \rvert A^{-1} = 2A^{-1}, B^* = \lvert B \rvert B^{-1} = B^{-1}$，故 \[\lvert 2A^*B^*-A^{-1}B^{-1} \rvert = \lvert 4A^{-1}B^{-1}-A^{-1}B^{-1} \rvert = \lvert 3A^{-1}B^{-1} \rvert = \dfrac{3^n}{\lvert A \rvert \lvert B \rvert} = \dfrac{3^n}{2}.\]
+        \end{answer}
 
         \item 若$n$阶非零矩阵$A$满足$A^\mathrm{T}=A^*$，证明：
         \begin{enumerate}
@@ -2063,8 +2822,26 @@
 
             \item $n>2$且为奇数时，$|E-A|=0$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 设 $A = (a_{ij})$，则 $A^* = (A_{ji})$（$A^*$ 的表达式）. 而 $A^T = A^*$，有 $a_{ij} = A_{ij}, \forall i, j = 1, 2, \ldots, n$. 而 $A$ 非零，故 $\exists a_{kl} \neq 0$，从而有 \[ \lvert A \rvert = a_{k1}A_{k1}+\cdots+a_{kn}A_{kn} = a_{k1}^2+\cdots+a_{kn}^2 > 0.\]
+
+                \item $\lvert A \rvert > 0$ 有 $A$ 是可逆的，故 $A^* = \lvert A \rvert A^{-1} = A^{\mathrm{T}}$，从而 $A^{\mathrm{T}}A = \lvert A \rvert E$. 两侧取行列式有 $\lvert A \rvert^2 = \lvert A \rvert^n $，结合 $\lvert A \rvert > 0$ 有 $\lvert A \rvert = 1$.
+
+                \item $\lvert A \rvert = 1$，故 $A^{-1} = A^{\mathrm{T}}$，$A$ 是正交矩阵.
+
+                \item \begin{align*}
+                          \lvert E-A \rvert & = \lvert AA^{\mathrm{T}}-AE \rvert = \lvert A \rvert \lvert A^{\mathrm{T}}-E\rvert = \lvert A^{\mathrm{T}}-E\rvert = \lvert (A-E)^{\mathrm{T}} \rvert \\
+                                            & = \lvert A-E \rvert = (-1)^n\lvert E-A \rvert.
+                      \end{align*}
+                      $n$ 为奇数，则 $\lvert E-A \rvert = -\lvert E-A \rvert$，即 $\lvert E-A \rvert = 0$.
+            \end{enumerate}
+        \end{answer}
 
         \item 已知$A$是一个秩为$n-1$的$n\enspace(n \geqslant 2)$阶方阵，且已知某个元素$a_{ij}$的代数余子式$A_{ij} \neq 0$，求方程组$AX=0$的基础解系.
+        \begin{answer}
+            $r(A) = n-1$，则 $\lvert A \rvert = 0$ 且 $AX = 0$ 的解空间的维数为 1. 而考虑 $AA^* = \lvert A \rvert E = 0$，且 $\exists A_{ij} \neq 0$，所以 $(A_{i1}, A_{i2}, \ldots , A_{in})^{\mathrm{T}}$ 是所求的基础解系.
+        \end{answer}
 
         \item 设$D=|a_{ij}|_{n \times n}$，$A_{ij}$是$a_{ij}$的代数余子式. 求证：
         \[\begin{vmatrix}
@@ -2073,8 +2850,41 @@
                 \vdots    & \vdots    & \ddots & \vdots      \\
                 A_{n-1,1} & A_{n-1,2} & \cdots & A_{n-1,n-1}
             \end{vmatrix}=a_{nn}D^{n-2}.\]
+        \begin{answer}
+            设 \[A = \begin{pmatrix}
+                a_{11} & a_{12} & \cdots & a_{1n} \\
+                a_{21} & a_{22} & \cdots & a_{2n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{n1} & a_{n2} & \cdots & a_{nn} \\
+            \end{pmatrix},\]
+            则 \[A^* = \begin{pmatrix}
+                    A_{11}     & A_{21}     & \cdots & A_{n-1, 1}   & A_{n1}     \\
+                    A_{12}     & A_{22}     & \cdots & A_{n-1, 2}   & A_{n2}     \\
+                    \vdots     & \vdots     & \ddots & \vdots       & \vdots     \\
+                    A_{1, n-1} & A_{2, n-1} & \cdots & A_{n-1, n-1} & A_{n, n-1} \\
+                    A_{1n}     & A_{2n}     & \cdots & A_{n-1, n}   & A_{nn}     \\
+                \end{pmatrix}.\]
+            注意到目标行列式是 $A^*$ 中元素 $A_{nn}$ 的代数余子式，也就是 $(A^*)^*$ 中 $(n, n)$ 位置的元素. 由 {例13.9(4)} $(A^*)^* = \lvert A \rvert^{n-2}A$ 可知结论成立. % FIXME: xref
+        \end{answer}
 
         \item 设$a_1,a_2,\ldots,a_n$为互不相等的实数，$b_1,b_2,\ldots,b_n$为任意给定的实数. 证明：存在唯一的$n-1$次多项式，满足$f(a_i)=b_i,\enspace i=1,2,\ldots,n$.
+        \begin{answer}
+            设 $f(x) = c_0+c_1x+c_2x^2+\cdots+c_{n-1}x^{n-1}$，则有
+            \[\begin{cases} \begin{aligned}
+                        c_0+c_1a_1+c_2a_1^2+\cdots+c_{n-1}a_1^{n-1} & = b_1,            \\
+                        c_0+c_1a_2+c_2a_2^2+\cdots+c_{n-1}a_2^{n-1} & = b_2,            \\
+                                                                    & \vdotswithin{ = } \\
+                        c_0+c_1a_n+c_2a_n^2+\cdots+c_{n-1}a_n^{n-1} & = b_n.            \\
+                    \end{aligned} \end{cases}\]
+            注意此处我们研究的对象是 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$. 因为系数行列式
+            \[D = \begin{vmatrix}
+                    1      & a_1    & \cdots & a_1^{n-1} \\
+                    1      & a_2    & \cdots & a_2^{n-1} \\
+                    \vdots & \vdots & \ddots & \vdots    \\
+                    1      & a_n    & \cdots & a_n^{n-1} \\
+                \end{vmatrix} = \prod_{1 \leqslant j < i \leqslant n} (a_i-a_j) \neq 0.\]
+            所以由 Cramer 法则，上述关于 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$ 的方程组有唯一解，所以满足条件的多项式函数 $f$ 是唯一存在的.
+        \end{answer}
 
         \item 设 $a_1,a_2,\ldots,a_n$ 是 $n$ 个两两互异的实数，$f_1(x),f_2(x),\ldots,f_n(x)$ 是 $n$ 个次数不大于 $n-2$ 的实系数多项式，证明：
 
@@ -2084,6 +2894,13 @@
                 \vdots   & \vdots   & \ddots & \vdots   \\
                 f_n(a_1) & f_n(a_2) & \cdots & f_n(a_n)
             \end{vmatrix}=0.\]
+        \begin{answer}
+            设 $f_i(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_{n-2} x^{n-2} \in R[x]_{n-1}$，由于 $n-1$ 维线性空间中的 $n$ 个向量必线性相关，我们可以得到 $\left\{ f_1(x), f_2(x), \ldots, f_n(x) \right\}$ 线性相关. 即存在不全为零的 $k_1, k_2, \ldots, k_n$，使得 $\forall x \in \mathbb{R}, k_1 f_1(x) + k_2 f_2(x) + \cdots + k_n f_n(x) = 0$. 设原行列式的行向量分别为 $\alpha_1, \alpha_2, \ldots, \alpha_n$，则有
+            \[
+                k_1 \alpha_1 + k_2 \alpha_2 + \cdots + k_n \alpha_n = \mathbf{0}.
+            \]
+            原行列式的行向量组线性相关，因此其值为 $0$.
+        \end{answer}
 
         \item 证明：$n$维向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关的充要条件是
         \[\begin{vmatrix}
@@ -2092,8 +2909,33 @@
                 \vdots                      & \vdots                      & \ddots & \vdots                      \\
                 \alpha_n^\mathrm{T}\alpha_1 & \alpha_n^\mathrm{T}\alpha_2 & \cdots & \alpha_n^\mathrm{T}\alpha_n
             \end{vmatrix}\neq 0.\]
+        \begin{answer}
+            令 $A = (\alpha_1, \alpha_2, \ldots, \alpha_n), B = \begin{pmatrix}
+                \alpha_1^{\mathrm{T}}\alpha_1 & \alpha_1^{\mathrm{T}}\alpha_2 & \cdots & \alpha_1^{\mathrm{T}}\alpha_n \\
+                \alpha_2^{\mathrm{T}}\alpha_1 & \alpha_2^{\mathrm{T}}\alpha_2 & \cdots & \alpha_2^{\mathrm{T}}\alpha_n \\
+                \vdots                        & \vdots                        & \ddots & \vdots                        \\
+                \alpha_n^{\mathrm{T}}\alpha_1 & \alpha_n^{\mathrm{T}}\alpha_2 & \cdots & \alpha_n^{\mathrm{T}}\alpha_n \\
+            \end{pmatrix}$，显然 $B = A^{\mathrm{T}}A$，由 {11.4 秩不等式第 4 个} 有 $r(B) = r(A)$. 进而 $n$ 维向量组 $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ 线性无关等价于 $r(A) = n$，也就等价于 $r(B) = n$，进而等价于 $\lvert B \rvert \neq 0$，命题得证. % FIXME: xref
+        \end{answer}
 
         \item 设$a_1,\ldots,a_n$为$n$个$n$维向量，证明：向量组$a_1,\ldots,a_n$线性无关的充要条件是任一个$n$维向量都可以由其线性表示（不使用线性空间维数的方式完成）.
+        \begin{answer}
+            $(\implies)$ 记 $A = (\alpha_1, \alpha_2, \ldots, \alpha_n), \varepsilon_i = (0, \ldots, 1, 0, \ldots, 0)^{\mathrm{T}}$(第 $i$ 个为 1)，$E = (\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n)$. 因为 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 是 $n$ 维线性无关的向量组，故 $\lvert A \rvert \neq 0$，即 $A$ 可逆，$A = EA, AA^{-1} = E$,\[(\alpha_1, \alpha_2, \ldots, \alpha_n) = (\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n)A, (\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n) = (\alpha_1, \alpha_2, \ldots, \alpha_n)A^{-1}.\] 即 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 与 $\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n$ 等价. $\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n$ 为 $\mathbf{R}^n$ 的一个基，能表出任一 $n$ 维向量，故 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 能表出 $\mathbf{R}^n$ 中任一 $n$ 维向量.
+
+            $(\impliedby)$ 若 $\alpha_1, \alpha_2, \ldots, \alpha_n$ 能表出任一 $n$ 维向量，则 $\varepsilon_i = \lambda_{i1}\alpha_1+\cdots+\lambda_{in}\alpha_n, i = 1, 2, \ldots, n$. 即
+            \[E = (\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n) = (\alpha_1, \alpha_2, \ldots, \alpha_n)\begin{pmatrix}
+                    \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+                    \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+                    \vdots       & \vdots       & \ddots & \vdots       \\
+                    \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+                \end{pmatrix}.\]
+            进而 $\lvert \alpha_1, \alpha_2, \ldots, \alpha_n \rvert \begin{vmatrix}
+                    \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+                    \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+                    \vdots       & \vdots       & \ddots & \vdots       \\
+                    \lambda_{11} & \lambda_{21} & \cdots & \lambda_{n1} \\
+                \end{vmatrix} = 1$，所以 $\lvert \alpha_1, \alpha_2, \ldots, \alpha_n \rvert \neq 0$，$\alpha_1, \alpha_2, \ldots, \alpha_n$ 线性无关.
+        \end{answer}
 
         \item 设$s \times n\enspace(s\leqslant n)$矩阵为
         \[\begin{pmatrix}
@@ -2103,6 +2945,18 @@
                 1      & a^s    & a^{2s} & \cdots & a^{s(n-1)}
             \end{pmatrix}\]
         且$a^r\neq 1\enspace(0<r<n)$，求$A$的秩和它的列向量组的一个极大线性无关组.
+        \begin{answer}
+            $A$ 的前 $s$ 列组成的 $s$ 阶子式为Vandermonde行列式
+            \[D = \begin{vmatrix}
+                    1      & a      & a^2    & \cdots & a^{s-1}    \\
+                    1      & a^2    & a^4    & \cdots & a^{2(s-1)} \\
+                    \vdots & \vdots & \vdots & \ddots & \vdots     \\
+                    1      & a^s    & a^{2s} & \cdots & a^{s(s-1)} \\
+                \end{vmatrix}.\]
+            由于当 $0 < r < n$ 时，$a^r \neq 1$，因此 $a, a^2, \ldots, a^s$ 两两不同，进而 $D \neq 0$，于是 $r(A) \geqslant s$. 又因为 $A$ 的行数是 $s$，所以 $r(A) \leqslant s$. 从而 $r(A) = s$.
+
+            由于 $D \neq 0$，故 $D$ 的列向量线性无关，因此 $A$ 的前 $s$ 个列向量即为其列向量组的一个极大线性无关组.
+        \end{answer}
 
         \item 设$A,B,C,D \in \mathbf{F}^{n \times n}$，定义变换 $ T : \mathbf{F}^{n \times n} \to \mathbf{F}^{n \times n}$ 为
         \[ T(X) = AXB+CX+XD \]
@@ -2112,12 +2966,64 @@
 
             \item 当$C=D=0$时，$T$可逆的充要条件是$|AB| \neq 0$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 线性变换的验证省略.
+
+                \item $(\implies)$ 若 $\lvert AB \rvert = 0$，则 $\lvert A \rvert = 0$ 或 $\lvert B \rvert = 0$，故 $A$ 或 $B$ 不可逆. 不妨假设 $A$ 不可逆，则存在 $X_0 \neq 0$ 使得 $AX_0 = 0$，$T(X_0) = AX_0B = 0$. 但 $T$ 是可逆的，所以 $T$ 是单射，$T(X) = 0 \Leftrightarrow X = 0$，矛盾.
+
+                      $(\impliedby)$ $\lvert AB \rvert \neq 0$ 则 $A, B$ 可逆，故 $T(X) = AXB$ 的逆映射为 $T^{-1}(X) = A^{-1}XB^{-1}$.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A$为$n$阶矩阵，且$r(A) < n$，又$A_{11} \neq 0$，证明：存在常数$k$，使得$(A^*)^2=kA^*$.
+        \begin{answer}
+            因为 $r(A) < n, A_{11} \neq 0$，所以 $r(A) = n-1$，进而由 {例13.9 (6)} 可知 $r(A^*) = 1$，所以有 % FIXME: xref
+            \[A^* = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} (\lambda_1, \lambda_2, \ldots, \lambda_n).\]
+            设 $(\lambda_1, \lambda_2, \ldots, \lambda_n) \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} = k$，则
+            \begin{align*}
+                (A^*)^2 & = \begin{pmatrix}a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}
+                (\lambda_1, \lambda_2, \ldots, \lambda_n)
+                \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}
+                (\lambda_1, \lambda_2, \ldots, \lambda_n)                                     \\
+                        & = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} \cdot k
+                \cdot (\lambda_1, \lambda_2, \ldots, \lambda_n) = k
+                \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}
+                (\lambda_1, \lambda_2, \ldots, \lambda_n) = kA^*.
+            \end{align*}
+        \end{answer}
 
         \item 设$V$是一个$n$维实线性空间，证明：存在$V$中的一个由可列无穷多个向量组成的向量组$\{\alpha_i \mid i\in\mathbf{Z}_+\}$，使得其中任意$n$个向量组成的向量组都是$V$的一组基.
+        \begin{answer}
+            $\forall a_i \in \mathbf{R}, i \in \mathbf{Z}_{+}$ 满足：若 $i \neq j$，则 $a_i \neq a_j$，考虑以Vandermonde行列式的形式进行排布. 设
+            \[ A = \begin{pmatrix}
+                    1         & 1         & \cdots & 1         & \cdots \\
+                    a_1       & a_2       & \cdots & a_k       & \cdots \\
+                    a_1^2     & a_2^2     & \cdots & a_k^2     & \cdots \\
+                    \vdots    & \vdots    & \ddots & \vdots    &        \\
+                    a_1^{n-1} & a_2^{n-1} & \cdots & a_k^{n-1} & \cdots
+                \end{pmatrix}.\]
+            考虑 $A$ 的任意 $n$ 阶主子式 $D_n$，其均构成 Vandermonde 行列式，又 $i \neq j$ 有 $a_i \neq a_j$，所以值均不为 0，也就是说任意 $n$ 个向量都线性无关，其个数也恰好为 $n$，构成 $V$ 的一组基，命题得证.
+        \end{answer}
 
         \item 回顾\autoref{ex:函数和数列线性空间} 中数列极限的例子，证明：以$0$为极限的实数数列全体构成的线性空间是无限维线性空间.
+        \begin{answer}
+            易证以 $0$ 为极限的实数数列全体可以构成一个线性空间 $W$，下使用反证法证明 $W$ 为无限维线性空间：
+
+            假设 $W$ 为有限维线性空间，不妨设 $\dim W = k$.
+
+            取 $W$ 中的 $k+1$ 个数列 $\{a_n^{(1)}, a_n^{(2)}, \ldots, a_n^{(k)}, a_n^{(k+1)}\}$，满足 $a_n^{(i)} = (i+1)^{-n} \to 0^+ \enspace (n \to +\infty)$. 分别取这 $k+1$ 个数列的前 $k+1$ 项，构造 Vandermonde 行列式：
+            \[
+                D = \begin{vmatrix}
+                    1          & 1          & \cdots & 1              \\
+                    2^{-1}     & 3^{-1}     & \cdots & (k+2)^{-1}     \\
+                    2^{-2}     & 3^{-2}     & \cdots & (k+2)^{-2}     \\
+                    \vdots     & \vdots     & \ddots & \vdots         \\
+                    2^{-(k-1)} & 3^{-(k-1)} & \cdots & (k+2)^{-(k-1)}
+                \end{vmatrix} \neq 0,
+            \]
+            故行列式的列向量线性无关. 由于线性无关的向量组在补充分量后仍然线性无关，我们可以得到 $k+1$ 个数列 $\{a_n^{(1)}, a_n^{(2)}, \cdots, a_n^{(k)}, a_n^{(k+1)}\}$ 线性无关，这与 $\dim W = k$ 矛盾，因此 $W$ 为无限维线性空间.
+        \end{answer}
 
         \item 解行列式
         \begin{enumerate} \begin{multicols}{2}
@@ -2148,6 +3054,34 @@
                         0 & 0 & 1 & 3
                     \end{vmatrix} $
             \end{multicols} \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 连加法得结果为160；
+
+                \item 连加法得结果为$(\lambda-1)(\lambda+3)^3$；
+
+                \item 如果对数据敏感能看出线性相关，可以直接由$\alpha_4-\alpha_1=3(\alpha_3-\alpha_2)$证得其线性相关，则为0. 也可以使用滚动消去法，如\[
+                          \begin{vmatrix}
+                              1 & 4 & 9  & 16 \\
+                              3 & 5 & 7  & 9  \\
+                              5 & 7 & 9  & 11 \\
+                              7 & 9 & 11 & 13
+                          \end{vmatrix}=\begin{vmatrix}
+                              1 & 4 & 9 & 16 \\
+                              3 & 5 & 7 & 9  \\
+                              2 & 2 & 2 & 2  \\
+                              2 & 2 & 2 & 2
+                          \end{vmatrix}=0.\]
+
+                \item 当然是递推法的常见形式，但是只有4阶，所以可以暴算，转化为上三角行列式，如\[
+                          \begin{vmatrix}
+                              3 & 2           & 0            & 0             \\
+                              0 & \frac{7}{3} & 2            & 0             \\
+                              0 & 0           & \frac{15}{7} & 2             \\
+                              0 & 0           & 0            & \frac{31}{15}
+                          \end{vmatrix}=31.\]
+            \end{enumerate}
+        \end{answer}
 
         \item 解行列式 $\begin{vmatrix}
                 a_{1}+a_{2}         & a_{2}+a_{3}         & \cdots & a_{n-1}+a_n         & a_n+a_{1}         \\
@@ -2155,6 +3089,37 @@
                 \vdots              & \vdots              & \ddots & \vdots              & \vdots            \\
                 a_{1}^{n}+a_{2}^{n} & a_{2}^{n}+a_{3}^{n} & \cdots & a_{n-1}^{n}+a_n^{n} & a_n^{n}+a_{1}^{n}
             \end{vmatrix}$.
+        \begin{answer}
+            暴力拆成$2^n$个行列式，其中只有2个每列各不相同，其他都因为有相同列而为0. 因此有
+            \begin{align*}
+                \text{原式} & =\begin{vmatrix}
+                                    a_{1}     & a_{2}     & \cdots & a_{n-1}     & a_{n}     \\
+                                    a_{1}^{2} & a_{2}^{2} & \cdots & a_{n-1}^{2} & a_{n}^{2} \\
+                                    \vdots    & \vdots    & \ddots & \vdots      & \vdots    \\
+                                    a_{1}^{n} & a_{2}^{n} & \cdots & a_{n-1}^{n} & a_{n}^{n}
+                                \end{vmatrix}+
+                \begin{vmatrix}
+                    a_{2}     & a_{3}     & \cdots & a_{n}     & a_{1}     \\
+                    a_{2}^{2} & a_{3}^{2} & \cdots & a_{n}^{2} & a_{1}^{2} \\
+                    \vdots    & \vdots    & \ddots & \vdots    & \vdots    \\
+                    a_{2}^{n} & a_{3}^{n} & \cdots & a_{n}^{n} & a_{1}^{n}
+                \end{vmatrix}                                               \\
+                            & =(1+(-1)^{n-1})\begin{vmatrix}
+                                                a_{1}     & a_{2}     & \cdots & a_{n-1}     & a_{n}     \\
+                                                a_{1}^{2} & a_{2}^{2} & \cdots & a_{n-1}^{2} & a_{n}^{2} \\
+                                                \vdots    & \vdots    & \ddots & \vdots      & \vdots    \\
+                                                a_{1}^{n} & a_{2}^{n} & \cdots & a_{n-1}^{n} & a_{n}^{n}
+                                            \end{vmatrix}                \\
+                            & =(1+(-1)^{n-1})\prod_{i=1}^na_i
+                \begin{vmatrix}
+                    1           & 1           & \cdots & 1             & 1           \\
+                    a_{1}       & a_{2}       & \cdots & a_{n-1}       & a_{n}       \\
+                    \vdots      & \vdots      & \ddots & \vdots        & \vdots      \\
+                    a_{1}^{n-1} & a_{2}^{n-1} & \cdots & a_{n-1}^{n-1} & a_{n}^{n-1}
+                \end{vmatrix}                                     \\
+                            & =(1+(-1)^{n-1})\left(\prod_{i=1}^na_i\right)\prod_{1\leqslant i<j\leqslant n}(a_j-a_i). \\
+            \end{align*}
+        \end{answer}
 
         \item 解行列式
         \begin{multicols}{2} \begin{enumerate}
@@ -2170,8 +3135,90 @@
                               xz    & yz    & z^2+1
                           \end{vmatrix}$
             \end{enumerate} \end{multicols}
+        \begin{answer}
+            \begin{enumerate}
+                \item 可以硬拆成8个行列式，其中只有2个非零，则得到
+                      \[D=\begin{vmatrix}
+                              ax & ay & az \\
+                              ay & az & ax \\
+                              az & ax & ay
+                          \end{vmatrix}+\begin{vmatrix}
+                              by & bz & bx \\
+                              bz & bx & by \\
+                              bx & by & bz \\
+                          \end{vmatrix}=(a+b)\begin{vmatrix}
+                              x & y & z \\
+                              y & z & x \\
+                              z & x & y \\
+                          \end{vmatrix}=(a^3+b^3)(3xyz-\sum x^2),\]
+                      另解：分解成两个矩阵相乘再各自求行列式. 这其实是看出这是一种线性变换的本质之后的做法：
+                      \[D=\begin{vmatrix}
+                              \begin{pmatrix}
+                                  a & b & 0 \\
+                                  0 & a & b \\
+                                  b & 0 & a \\
+                              \end{pmatrix}
+                              \begin{pmatrix}
+                                  x & y & z \\
+                                  y & z & x \\
+                                  z & x & y \\
+                              \end{pmatrix}
+                          \end{vmatrix}.\]
+
+                \item 其实直接用三阶行列式的公式也不错，这里介绍基于硬拆的方法
+                      \begin{align*}
+                          D & =x\begin{vmatrix}
+                                    x & xy    & xz    \\
+                                    y & y^2+1 & yz    \\
+                                    z & yz    & z^2+1
+                                \end{vmatrix}+\begin{vmatrix}
+                                                  1 & xy    & xz    \\
+                                                  0 & y^2+1 & yz    \\
+                                                  0 & yz    & z^2+1
+                                              \end{vmatrix} \\
+                            & =x\begin{vmatrix}
+                                    x & 0 & 0 \\
+                                    y & 1 & 0 \\
+                                    z & 0 & 1
+                                \end{vmatrix}+\begin{vmatrix}
+                                                  y^2+1 & yz    \\
+                                                  yz    & z^2+1
+                                              \end{vmatrix}
+                          =\sum x^2+1.
+                      \end{align*}
+            \end{enumerate}
+        \end{answer}
 
         \item 计算行列式$|2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|$，其中$\alpha_1=(a_1,a_2,\ldots,a_n),\enspace \beta_1=(b_1,b_2,\ldots,b_n),\enspace \alpha_2=(c_1,c_2,\ldots,c_n),\enspace \beta_2 = (d_1,d_2,\ldots,d_n)$.（提示：利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$）
+        \begin{answer}
+            利用$|\lambda E_m-AB|=\lambda^{m-n}|\lambda E_n-BA|$
+            \begin{align*}
+                |2E-\alpha_1^\mathrm{T}\beta_1-\alpha_2^\mathrm{T}\beta_2|
+                & =\begin{vmatrix}
+                        2E-\begin{pmatrix}
+                        \alpha_1^\mathrm{T} & \alpha_2^\mathrm{T}
+                    \end{pmatrix}\begin{pmatrix}
+                                        \beta_1 \\\beta_2
+                                    \end{pmatrix}
+                    \end{vmatrix}
+                =2^{n-2}\begin{vmatrix}
+                            2E-\begin{pmatrix}
+                        \beta_1 \\\beta_2
+                    \end{pmatrix}\begin{pmatrix}
+                                        \alpha_1^\mathrm{T} & \alpha_2^\mathrm{T}
+                                    \end{pmatrix}
+                        \end{vmatrix}         \\
+                & =2^{n-2}\begin{vmatrix}
+                            2-\beta_1\alpha_1^\mathrm{T} & -\beta_1\alpha_2^\mathrm{T}  \\
+                            -\beta_2\alpha_1^\mathrm{T}  & 2-\beta_2\alpha_2^\mathrm{T}
+                        \end{vmatrix} \\
+                & =2^{n-2}
+                \left(\left(2-\sum_{i=1}^na_ib_i\right)
+                \left(2-\sum_{i=1}^nc_id_i\right)
+                -\left(\sum_{i=1}^na_id_i\right)
+                \left(\sum_{i=1}^nb_ic_i\right)\right)
+            \end{align*}
+        \end{answer}
 
         \item 求$2n$阶行列式的值（空缺处都是0）：
         \[\begin{vmatrix}
@@ -2182,10 +3229,77 @@
                   & \iddots &   &   & \ddots  &   \\
                 b &         &   &   &         & a
             \end{vmatrix}.\]
+        \begin{answer}
+            设所求 $2n$ 阶行列式为 $D$.
+            \begin{enumerate}
+                \item 若 $a=0$，则
+                    \[
+                        D = \begin{vmatrix}
+                            0 &         &   &   &         & b \\
+                              & \ddots  &   &   &         &   \\
+                              &         & 0 & b &         &   \\
+                              &         & b & 0 &         &   \\
+                              &         &   &   & \ddots  &   \\
+                            b &         &   &   &         & 0
+                        \end{vmatrix}
+                        = (-1)^{\frac{2n(2n-1)}{2}} \begin{vmatrix}
+                            b &         &   &   &         & 0 \\
+                              & \ddots  &   &   &         &   \\
+                              &         & b & 0 &         &   \\
+                              &         & 0 & b &         &   \\
+                              &         &   &   & \ddots  &   \\
+                            0 &         &   &   &         & b
+                        \end{vmatrix}
+                        = b^{2n}.
+                    \]
+                \item 若 $b \neq 0$，我们将第 $i$ 列乘以 $-\dfrac{b}{a}$ 后加到第 $2n-i+1$ 列，化为下三角矩阵：
+                    \[
+                        D = \begin{vmatrix}
+                            a &         &   &                   &         & 0                 \\
+                              & \ddots  &   &                   &         &                   \\
+                              &         & a & 0                 &         &                   \\
+                              &         & b & a - \frac{b^2}{a} &         &                   \\
+                              &         &   &                   & \ddots  &                   \\
+                            b &         &   &                   &         & a - \frac{b^2}{a}
+                        \end{vmatrix}
+                        = a^n (a - \frac{b^2}{a})^n
+                        = (a^2 - b^2)^n.
+                    \]
+            \end{enumerate}
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
         \item 设$A=(a_{ij})$是$n\enspace(n\geqslant 2)$阶整数方阵，满足对任意的$i,j$，$|A|$均可整除$a_{ij}$，证明：$|A|=\pm 1$.
+        \begin{answer}
+            设 $a_{ij} = |A| b_{ij}$，其中 $b_{ij}$ 为整数，则
+            \[
+                |A| = \begin{vmatrix}
+                    |A| b_{11} & |A| b_{12} & \cdots & |A| b_{1n} \\
+                    |A| b_{21} & |A| b_{22} & \cdots & |A| b_{2n} \\
+                    \vdots     & \vdots     & \ddots & \vdots     \\
+                    |A| b_{n1} & |A| b_{n2} & \cdots & |A| b_{nn}
+                \end{vmatrix}
+                = |A|^n \begin{vmatrix}
+                    b_{11} & b_{12} & \cdots & b_{1n} \\
+                    b_{21} & b_{22} & \cdots & b_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    b_{n1} & b_{n2} & \cdots & b_{nn}
+                \end{vmatrix}.
+            \]
+
+            由此可得
+            \[
+                |A|^{n-1} \begin{vmatrix}
+                    b_{11} & b_{12} & \cdots & b_{1n} \\
+                    b_{21} & b_{22} & \cdots & b_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    b_{n1} & b_{n2} & \cdots & b_{nn}
+                \end{vmatrix} = 1.
+            \]
+
+            由于 $a_{ij}$ 与 $b_{ij}$ 均为整数，所以 $|A|$ 与 $|b_{ij}|_{n \times n}$ 也为整数，且 $|A| \neq 0$，所以 $|A| = \pm 1$.
+        \end{answer}
 
         \item 设$f_{ij}(t)$是可微函数，
         \[F(t)=\begin{vmatrix}
@@ -2201,19 +3315,208 @@
                 \vdots    & \vdots    & \ddots & \vdots                                   & \vdots & \vdots    \\[2ex]
                 f_{n1}(t) & f_{n2}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{nj}(t) & \cdots & f_{nn}(t)
             \end{vmatrix}.\]
+        \begin{answer}
+            使用数学归纳法证明. 当 $n=1$ 时，$\dfrac{\mathrm{d}}{\mathrm{d}t}F(t) = \left\lvert \dfrac{\mathrm{d}}{\mathrm{d}t}f_{11}(t) \right\rvert$，结论成立.
+
+            假设 $n=k-1$ 时结论成立，下证 $n=k$ 时结论也成立. 设 $G_{ij}(t)$ 为 $F(t)$ 对 $f_{ij}(t)$ 的代数余子式，将 $F(t)$ 按第一列展开：
+            \[
+                F(t) = \sum_{i=1}^k f_{i1}(t) G_{i1}(t),
+            \]
+
+            对 $t$ 求导，有
+            \[
+                \dfrac{\mathrm{d}}{\mathrm{d}t}F(t) = \sum_{i=1}^k \dfrac{\mathrm{d}f_{i1}(t)}{\mathrm{d}t} G_{i1}(t) + \sum_{i=1}^k f_{i1}(t) \dfrac{\mathrm{d}G_{i1}(t)}{\mathrm{d}t}.
+            \]
+
+            上式第一部分和即为 $F_1(t)$. 下求第二部分的和：
+
+            设 $F_{ij}(t)$ 为 $F_j(t)$ 对 $f_{i1}$ 的代数余子式，即
+            \[
+                F_{ij}(t) = \begin{vmatrix}
+                    f_{12}(t) & f_{13}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{1j}(t) & \cdots & f_{1k}(t) \\[2ex]
+                    f_{22}(t) & f_{23}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{2j}(t) & \cdots & f_{2k}(t) \\[2ex]
+                    \vdots    & \vdots    &        & \vdots                                   & \vdots & \vdots    \\[2ex]
+                    f_{i-1,2}(t) & f_{i-1,3}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{i-1,j}(t) & \cdots & f_{i-1,k}(t) \\[2ex]
+                    f_{i+1,2}(t) & f_{i+1,3}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{i+1,j}(t) & \cdots & f_{i+1,k}(t) \\[2ex]
+                    \vdots    & \vdots    &        & \vdots                                   & \vdots & \vdots    \\[2ex]
+                    f_{k2}(t) & f_{k3}(t) & \cdots & \dfrac{\mathrm{d}}{\mathrm{d}t}f_{kj}(t) & \cdots & f_{kk}(t)
+                \end{vmatrix}.
+            \]
+
+            将第二部分中的 $\dfrac{\mathrm{d}G_{i1}(t)}{\mathrm{d}t}$ 按归纳假设展开，可得
+            \begin{align*}
+                \sum_{i=1}^k f_{i1}(t) \dfrac{\mathrm{d}G_{i1}(t)}{\mathrm{d}t}
+                &= \sum_{i=1}^k \sum_{j=2}^k F_{ij}(t) f_{i1}(t) \\
+                &= \sum_{j=2}^k \sum_{i=1}^k F_{ij}(t) f_{i1}(t) \\
+                &= \sum_{j=2}^k F_j(t).
+            \end{align*}
+
+            与第一部分合并可得
+            \[
+                \dfrac{\mathrm{d}}{\mathrm{d}t}F(t)=\sum\limits_{j=1}^nF_j(t).
+            \]
+
+        \end{answer}
 
         \item 设$A,B,C,D$均为$n$阶方阵，$\lvert A \rvert \neq 0$且$AC=CA$. 证明：
         \[\begin{vmatrix}
                 A & B \\ C & D
             \end{vmatrix} = |AD-CB|.\]
+        \begin{answer}
+            对原矩阵进行分块初等变换化为上三角块矩阵后进行计算. 因为 $\lvert A \rvert \neq 0$，所以 $A$ 可逆，进而有如下变换：
+            \[\begin{pmatrix}
+                    E        & O \\
+                    -CA^{-1} & E
+                \end{pmatrix} \begin{pmatrix}
+                    A & B \\
+                    C & D \\
+                \end{pmatrix} = \begin{pmatrix}
+                    A & B          \\
+                    O & D-CA^{-1}B
+                \end{pmatrix},\]
+            所以
+            \begin{align*}
+                    & \begin{vmatrix}
+                            A & B \\
+                            C & D \\
+                        \end{vmatrix}
+                = \begin{vmatrix}
+                        E        & O \\
+                        -CA^{-1} & E \\
+                    \end{vmatrix}
+                \begin{vmatrix}
+                    A & B \\
+                    C & D \\
+                \end{vmatrix}       \\
+                ={} & \begin{vmatrix}
+                            A & B          \\
+                            O & D-CA^{-1}B
+                        \end{vmatrix}
+                = \lvert A \rvert \lvert D-CA^{-1}B \rvert = \lvert AD-ACA^{-1}B \rvert.
+            \end{align*} 由于 $AC = CA$，所以有 $ACA^{-1} = CAA^{-1} = C$，所以
+            \[\begin{vmatrix}
+                    A & B \\
+                    C & D \\
+                \end{vmatrix} = \lvert AD-CB \rvert.\]
+        \end{answer}
 
         \item 设$A$为$n$阶可逆矩阵，$\alpha,\beta$为$n$维列向量，证明：
         \[|A+\alpha\beta^{\mathrm{T}}|=|A|(1+\beta^\mathrm{T}A^{-1}\alpha).\]
+        \begin{answer}
+            这道题目我们利用了一个分块矩阵作为中间``桥梁''使得其通过分块初等变换之后能分别得到两个方向上的结果. 考虑矩阵 $\begin{pmatrix}
+                A                   & \alpha \\
+                -\beta^{\mathrm{T}} & 1
+            \end{pmatrix}$，有
+            \[\begin{pmatrix}
+                    A                   & \alpha \\
+                    -\beta^{\mathrm{T}} & 1
+                \end{pmatrix} \begin{pmatrix}
+                    E                  & O \\
+                    \beta^{\mathrm{T}} & E
+                \end{pmatrix} = \begin{pmatrix}
+                    A+\alpha \beta^{\mathrm{T}} & \alpha \\
+                    O                           & 1
+                \end{pmatrix},\]
+            所以
+            \[\begin{vmatrix}
+                    A                   & \alpha \\
+                    -\beta^{\mathrm{T}} & 1
+                \end{vmatrix} = \begin{vmatrix}
+                    A                   & \alpha \\
+                    -\beta^{\mathrm{T}} & 1
+                \end{vmatrix} \begin{vmatrix}
+                    E                  & O \\
+                    \beta^{\mathrm{T}} & E
+                \end{vmatrix} = \begin{vmatrix}
+                    A+\alpha \beta^{\mathrm{T}} & \alpha \\
+                    O                           & 1
+                \end{vmatrix} = \lvert A+\alpha \beta^{\mathrm{T}} \rvert.\]
+            另一方面，
+            \[\begin{pmatrix}
+                    E                        & O \\
+                    \beta^{\mathrm{T}}A^{-1} & 1
+                \end{pmatrix} \begin{pmatrix}
+                    A                   & \alpha \\
+                    -\beta^{\mathrm{T}} & 1
+                \end{pmatrix} = \begin{pmatrix}
+                    A & \alpha                           \\
+                    O & 1+\beta^{\mathrm{T}}A^{-1}\alpha
+                \end{pmatrix}.\]
+            注意 $\beta^{\mathrm{T}}A^{-1}\alpha$ 的最终结果是一个数. 进而
+            \[\begin{vmatrix}
+                    A                   & \alpha \\
+                    -\beta^{\mathrm{T}} & 1
+                \end{vmatrix} = \begin{vmatrix}
+                    E                        & O \\
+                    \beta^{\mathrm{T}}A^{-1} & 1
+                \end{vmatrix} \begin{vmatrix}
+                    A                   & \alpha \\
+                    -\beta^{\mathrm{T}} & 1
+                \end{vmatrix} = \begin{vmatrix}
+                    A & \alpha                           \\
+                    O & 1+\beta^{\mathrm{T}}A^{-1}\alpha
+                \end{vmatrix} = \lvert A \rvert(1+\beta^{\mathrm{T}}A^{-1}\alpha).\]
+            所以有
+            \[\lvert A+\alpha \beta^{\mathrm{T}} \rvert = \lvert A \rvert(1+\beta^{\mathrm{T}}A^{-1}\alpha).\]
+        \end{answer}
 
         \item 设$A,B$均为$n$阶方阵，证明：
         \[\begin{vmatrix}
                 A & B \\ B & A
             \end{vmatrix} = |A+B||A-B|.\]
+        \begin{answer}
+            依旧是对分块矩阵做初等分块变换. 考虑到
+            \begin{align*}
+                \left(\begin{pmatrix}
+                            E & E \\
+                            O & E
+                        \end{pmatrix}
+                \begin{pmatrix}
+                    A & B \\
+                    B & A
+                \end{pmatrix} \right)
+                \begin{pmatrix}
+                    E & -E \\
+                    O & E
+                \end{pmatrix}
+                & = \begin{pmatrix}
+                        A+B & A+B \\
+                        B   & A
+                    \end{pmatrix}
+                \begin{pmatrix}
+                    E & -E \\
+                    O & E
+                \end{pmatrix}      \\
+                & = \begin{pmatrix}
+                        A+B & O   \\
+                        B   & A-B
+                    \end{pmatrix},
+            \end{align*}
+            所以有 \begin{align*}
+                \begin{vmatrix}
+                    A & B \\
+                    B & A
+                \end{vmatrix}
+                & = \begin{vmatrix}
+                        E & E \\
+                        O & E
+                    \end{vmatrix}
+                \begin{vmatrix}
+                    A & B \\
+                    B & A
+                \end{vmatrix}
+                \begin{vmatrix}
+                    E & -E \\
+                    O & E
+                \end{vmatrix}
+                = \begin{vmatrix}
+                        A+B & O   \\
+                        B   & A-B
+                    \end{vmatrix}    \\
+                & =
+                \lvert (A+B)(A-B) \rvert = \lvert A+B \rvert \lvert A-B \rvert
+            \end{align*}
+        \end{answer}
 
         \item 设$A,B,C,D$均为$n$阶方阵，且$r\begin{pmatrix}
                 A & B \\ C & D
@@ -2221,14 +3524,192 @@
         \[\begin{vmatrix}
                 |A| & |B| \\ |C| & |D|
             \end{vmatrix} = 0.\]
+        \begin{answer}
+            首先有 $\begin{vmatrix}
+                \lvert A \rvert & \lvert B \rvert \\
+                \lvert C \rvert & \lvert D \rvert
+            \end{vmatrix} = \lvert A \rvert \lvert D \rvert-\lvert B \rvert \lvert C \rvert$.
+            \begin{enumerate}
+                \item 若 $\lvert A \rvert \neq 0$，即 $A$ 可逆. 因为矩阵的初等变换不改变矩阵的秩，所以由
+                    \[\begin{pmatrix}
+                            E        & O \\
+                            -CA^{-1} & E
+                        \end{pmatrix} \begin{pmatrix}
+                            A & B \\
+                            C & D
+                        \end{pmatrix} \begin{pmatrix}
+                            E & -A^{-1}B \\
+                            O & E        \\
+                        \end{pmatrix} = \begin{pmatrix}
+                            A & O          \\
+                            O & D-CA^{-1}B
+                        \end{pmatrix},\]
+                    条件 $r\left(\begin{pmatrix}
+                                A & B \\
+                                C & D
+                            \end{pmatrix}\right) = n$ 以及 $A$ 可逆，可以得到
+                    \[D-CA^{-1}B = O.\]
+                    即若 $A$ 可逆，则 $D = CA^{-1}B$，并且
+                    \[\begin{vmatrix}
+                            \lvert A \rvert & \lvert B \rvert \\
+                            \lvert C \rvert & \lvert D \rvert
+                        \end{vmatrix} = \lvert A \rvert \lvert CA^{-1}B \rvert-\lvert B \rvert \lvert C \rvert = \lvert A \rvert \lvert C \rvert \lvert A^{-1} \rvert \lvert B \rvert-\lvert B \rvert \lvert C \rvert = 0.\]
+
+                \item 若 $\lvert A \rvert = 0$，只需证 $\lvert B \rvert \lvert C \rvert = 0$. 若 $\lvert B \rvert \neq 0$，则由
+                    \[\begin{pmatrix}
+                            E        & O \\
+                            -DB^{-1} & E
+                        \end{pmatrix} \begin{pmatrix}
+                            A & B \\
+                            C & D
+                        \end{pmatrix} \begin{pmatrix}
+                            E        & O \\
+                            -B^{-1}A & E
+                        \end{pmatrix} = \begin{pmatrix}
+                            O          & B \\
+                            C-DB^{-1}A & O
+                        \end{pmatrix},\]
+                    有 $C-DB^{-1}A = O$. 注意到 $\lvert A \rvert = 0$，故 \[\lvert C \rvert = \lvert DB^{-1}A \rvert = \lvert D \rvert \lvert B^{-1} \rvert \lvert A \rvert = 0.\] 同理可证若 $\lvert C \rvert \neq 0$，则 $\lvert B \rvert = 0$.
+            \end{enumerate}
+            综上，结论成立.
+        \end{answer}
 
         \item 设$A$为$n$阶实对称矩阵（$n>1$），$|A|=0$，证明：$A_{ii}A_{jj}=(A_{ij})^2(i,j=1,\ldots,n)$.
+        \begin{answer}
+            由 $|A| = 0$ 可知 $r(A) < n$. 利用结论
+            \[
+                r(A^*)=\begin{cases}
+                    n & r(A)=n     \\
+                    1 & r(A)=n-1   \\
+                    0 & r(A) < n-1
+                \end{cases}
+            \]
+            可知 $r(A^*) \leqslant 1$.
+
+            若 $r(A^*) = 0$，则 $A^* = O$，故 $A_{ii} = A_{jj} = A_{ij} = 0$，自然有 $A_{ii}A_{jj}=(A_{ij})^2$；
+
+            若 $r(A^*) = 1$，则 $A^*$ 的任意两个列向量线性相关，可得 $A_{ii}A_{jj} = A_{ij}A_{ji}$. 又由 $A$ 是实对称矩阵，有 $A_{ij} = A_{ji}$，因此 $A_{ii}A_{jj} = (A_{ij})^2$.
+
+        \end{answer}
 
         \item 求$\begin{pmatrix}
                 A & C \\ O & B
             \end{pmatrix}^*$，并求当$A$可逆时的$\begin{pmatrix}
                 A & B \\ C & D
             \end{pmatrix}^*$.
+        \begin{answer}
+            \begin{enumerate}
+                \item 设 $\begin{pmatrix}
+                              A & C \\
+                              O & B
+                          \end{pmatrix}$ 的伴随矩阵为 $\begin{pmatrix}
+                              X & Y \\
+                              Z & W
+                          \end{pmatrix}$. 而 $\begin{vmatrix}
+                              A & C \\
+                              O & B
+                          \end{vmatrix} = \lvert A\rvert \lvert B \rvert$，所以有
+                      \[\begin{pmatrix}
+                              A & C \\
+                              O & B
+                          \end{pmatrix} \begin{pmatrix}
+                              X & Y \\
+                              Z & W
+                          \end{pmatrix} = \lvert A\rvert \lvert B \rvert \begin{pmatrix}
+                              E & O \\
+                              O & E
+                          \end{pmatrix}.\]
+                      得到方程组
+                      \[\begin{cases}
+                              AX+CZ = \lvert A \rvert \lvert B \rvert E \\
+                              AY+CW = O                                 \\
+                              BZ    = O                                 \\
+                              BW    = \lvert A \rvert \lvert B \rvert E
+                          \end{cases}.\]
+                      考虑一般情况，我们不再单独讨论 $B$ 是否等于 $O$. 所以 $Z = O$, $X = \lvert B \rvert A^*$, $W = \lvert A \rvert B^*$, $Y = -A^*CB^*$. 即 \[\begin{pmatrix}
+                              A & C \\
+                              O & B
+                          \end{pmatrix}^* = \begin{pmatrix}
+                              \lvert B \rvert A^* & -A^*CB^*            \\
+                              O                   & \lvert A \rvert B^*
+                          \end{pmatrix}.\]
+
+                \item 若 $A$ 可逆，则可以通过以下的初等分块变换将其化为上三角块矩阵.
+                      \[\begin{pmatrix}
+                              E        & O \\
+                              -CA^{-1} & E
+                          \end{pmatrix} \begin{pmatrix}
+                              A & B \\
+                              C & D
+                          \end{pmatrix} = \begin{pmatrix}
+                              A & B          \\
+                              O & D-CA^{-1}B
+                          \end{pmatrix}.\]
+                      两侧取伴随有
+                      \begin{align*}
+                              & \left(\begin{pmatrix}
+                                              E        & O \\
+                                              -CA^{-1} & E
+                                          \end{pmatrix}
+                          \begin{pmatrix}
+                                  A & B \\
+                                  C & D
+                              \end{pmatrix}\right)^*
+                          = \begin{pmatrix}
+                                A & B \\
+                                C & D
+                            \end{pmatrix}^*
+                          \begin{pmatrix}
+                              E        & O \\
+                              -CA^{-1} & E
+                          \end{pmatrix}^*            \\
+                          ={} & \begin{pmatrix}
+                                    A & B          \\
+                                    O & D-CA^{-1}B
+                                \end{pmatrix}^*
+                          = \begin{pmatrix}
+                                \lvert D-CA^{-1}B \rvert A^* & -A^*B(D-CA^{-1}B)^*            \\
+                                O                            & \lvert A \rvert (D-CA^{-1}B)^*
+                            \end{pmatrix}
+                      \end{align*},
+                      而
+                      \[\begin{pmatrix}
+                              E        & O \\
+                              -CA^{-1} & E
+                          \end{pmatrix}^* \begin{pmatrix}
+                              E        & O \\
+                              -CA^{-1} & E
+                          \end{pmatrix} = \begin{vmatrix}
+                              E        & O \\
+                              -CA^{-1} & E
+                          \end{vmatrix} \begin{pmatrix}
+                              E & O \\
+                              O & E
+                          \end{pmatrix} = \begin{pmatrix}
+                              E & O \\
+                              O & E
+                          \end{pmatrix},\]
+                      所以
+                      \begin{align*}
+                              & \begin{pmatrix}
+                                    A & B \\
+                                    C & D
+                                \end{pmatrix}^*                                                                         \\
+                          ={} & \begin{pmatrix}
+                                    \lvert D-CA^{-1}B \rvert A^* & -A^*B(D-CA^{-1}B)^*            \\
+                                    O                            & \lvert A \rvert (D-CA^{-1}B)^*
+                                \end{pmatrix}
+                          \begin{pmatrix}
+                              E        & O \\
+                              -CA^{-1} & E
+                          \end{pmatrix}                                                                                \\
+                          ={} & \begin{pmatrix}
+                                    \lvert D-CA^{-1}B \rvert A^*+A^*B(D-CA^{-1}B)^*CA^{-1} & -A^*B(D-CA^{-1}B)^*            \\
+                                    -\lvert A \rvert (D-CA^{-1}B)^*CA^{-1}                 & \lvert A \rvert (D-CA^{-1}B)^*
+                                \end{pmatrix}. &
+                      \end{align*}
+            \end{enumerate}
+        \end{answer}
 
         \item 下面三个小问探讨伴随矩阵的反问题，即对任意给定的$n$阶方阵$B$，是否存在$n$阶方阵$A$使得$A^*=B$.
         \begin{enumerate}
@@ -2249,6 +3730,163 @@
                           1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1
                       \end{pmatrix}$，求矩阵$B$使得$B^*=A$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 因为 $n=2$ 时 $(A^*)^* = A$，所以 $B = (B^*)^* = A^*$，而 $B$ 的伴随矩阵是唯一的，所以存在唯一的2阶方阵 $A = B^*$ 使得 $A^* = B$.
+
+                \item $(\impliedby)$ 由 {例13.9(6)} 可得. % FIXME: xref
+
+                      $(\implies)$ \begin{enumerate}
+                          \item $r(B) = n$ 时，若存在 $A$ 使得 $A^* = B$，则由 $(A^*)^* = \lvert A \rvert^{n-2}A$，有
+                                \[A = \dfrac{1}{\lvert A \rvert^{n-2}}(A^*)^* = \dfrac{1}{\lvert A \rvert^{n-2}}B^* = \dfrac{1}{\lvert A \rvert^{n-2}}\lvert B \rvert B^{-1},\]
+                                而
+                                \[\lvert B \rvert = \lvert A^* \rvert = \lvert A \rvert^{n-1},\]
+                                代入上式可得
+                                \[A = \lvert A \rvert B^{-1} = \sqrt[n-1]{\lvert B \rvert} B^{-1}.\]
+                                从而满足 $A^* = B$ 的矩阵 $A$ 存在，且有 $n-1$ 个.
+
+                          \item $r(B) = 1$ 时，存在可逆矩阵 $P, Q$ 使得
+                                \[B = P\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix}Q.\]
+                                若存在 $A$ 满足 $A^{*} = B$，则 $r(A) = n-1$，从而存在可逆矩阵 $G, H$ 使得
+                                \[A = G\begin{pmatrix}
+                                        0 & O       \\
+                                        O & E_{n-1}
+                                    \end{pmatrix}H,\]
+                                则
+                                \[A^* = H^*\begin{pmatrix}
+                                        0 & O       \\
+                                        O & E_{n-1}
+                                    \end{pmatrix}^*G^* = H^*\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix}G^* = \lvert HG \rvert H^{-1}\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix}G^{-1},\]
+                                由 $A^* = B$ 可得
+                                \[\lvert HG \rvert H^{-1}\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix}G^{-1} = P\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix}Q,\]
+                                即
+                                \[\lvert HG \rvert\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix} = HP\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix}QG,\]
+                                记 $C = HP$, $D = QG$，且分块为 $C = \begin{pmatrix}
+                                        C_{11} & C_{12} \\
+                                        C_{21} & C_{22}
+                                    \end{pmatrix}$, $D = \begin{pmatrix}
+                                        D_{11} & D_{12} \\
+                                        D_{21} & D_{22}
+                                    \end{pmatrix}$，其中 $C_{22}, D_{22}$ 是 $n-1$ 阶矩阵，则
+                                \[\lvert HG \rvert\begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix} = \begin{pmatrix}
+                                        C_{11} & C_{12} \\
+                                        C_{21} & C_{22}
+                                    \end{pmatrix} \begin{pmatrix}
+                                        1 & O \\
+                                        O & O \\
+                                    \end{pmatrix} \begin{pmatrix}
+                                        D_{11} & D_{12} \\
+                                        D_{21} & D_{22}
+                                    \end{pmatrix} = \begin{pmatrix}
+                                        C_{11}D_{11} & C_{11}D_{12} \\
+                                        C_{21}D_{11} & C_{21}D_{12}
+                                    \end{pmatrix},\]
+                                于是
+                                \[\lvert HG \rvert = C_{11}D_{11}, C_{11}D_{12} = O, C_{21}D_{11} = O, C_{21}D_{12} = O.\]
+                                因为 $H, G$ 可逆，所以 $C_{11} \neq 0, D_{11} \neq 0$，于是 $C_{21} = O = D_{12}$. 从而
+                                \begin{align*}
+                                    A & = G\begin{pmatrix}
+                                               0 & O       \\
+                                               O & E_{n-1}
+                                           \end{pmatrix}H
+                                    = Q^{-1}D\begin{pmatrix}
+                                                 0 & O       \\
+                                                 O & E_{n-1}
+                                             \end{pmatrix}CP^{-1}      \\
+                                      & = Q^{-1}\begin{pmatrix}
+                                                    D_{11} & O      \\
+                                                    D_{21} & D_{22}
+                                                \end{pmatrix}
+                                    \begin{pmatrix}
+                                        0 & O       \\
+                                        O & E_{n-1}
+                                    \end{pmatrix}
+                                    \begin{pmatrix}
+                                        C_{11} & C_{12} \\
+                                        O      & C_{22}
+                                    \end{pmatrix} P^{-1}               \\
+                                      & = Q^{-1} \begin{pmatrix}
+                                                     0 & O            \\
+                                                     O & D_{22}C_{22}
+                                                 \end{pmatrix} P^{-1}.
+                                \end{align*}
+                                又
+                                \[C_{11}D_{11} = \lvert HG \rvert = \lvert CP^{-1}Q^{-1}D \rvert = \dfrac{1}{\lvert PQ \rvert}\lvert DC \rvert.\]
+                                接下来转为求 $\lvert DC \rvert$. 而
+                                \[DC = \begin{pmatrix}
+                                        D_{11} & O      \\
+                                        D_{21} & D_{22}
+                                    \end{pmatrix} \begin{pmatrix}
+                                        C_{11} & C_{12} \\
+                                        O      & C_{22}
+                                    \end{pmatrix} = \begin{pmatrix}
+                                        D_{11}C_{11} & D_{11}C_{12}              \\
+                                        D_{21}C_{11} & D_{21}C_{12}+D_{22}C_{22}
+                                    \end{pmatrix}.\]
+                                考虑初等分块变换
+                                \begin{align*}
+                                    \begin{pmatrix}
+                                        1                  & O       \\
+                                        -D_{21}D_{11}^{-1} & E_{n-1}
+                                    \end{pmatrix}DC
+                                     & = \begin{pmatrix}
+                                             1                  & O       \\
+                                             -D_{21}D_{11}^{-1} & E_{n-1}
+                                         \end{pmatrix}
+                                    \begin{pmatrix}
+                                        D_{11}C_{11} & D_{11}C_{12}              \\
+                                        D_{21}C_{11} & D_{21}C_{12}+D_{22}C_{22}
+                                    \end{pmatrix} \\
+                                     & = \begin{pmatrix}
+                                             D_{11}C_{11} & D_{11}C_{12} \\
+                                             O            & D_{22}C_{22}
+                                         \end{pmatrix},
+                                \end{align*}
+                                故
+                                \[C_{11}D_{11} = \dfrac{1}{\lvert PQ \rvert}\lvert DC \rvert = \dfrac{1}{\lvert PQ \rvert}D_{11}C_{11} \lvert D_{22}C_{22} \rvert,\]
+                                从而
+                                \[\dfrac{1}{\lvert PQ \rvert} \lvert D_{22}C_{22} \rvert = 1,\]
+                                即
+                                \[\lvert D_{22}C_{22} \rvert = \lvert PQ \rvert.\]
+                                命题得证.
+
+                          \item $r(B) = 0$ 则是平凡情况，其是所有 $r \leqslant n-2$ 矩阵的伴随矩阵.
+                      \end{enumerate}
+
+                \item 由 $r(B^*) = r(A) = 1$ 可知 $r(B) = 2$. $B^*B = \lvert B \rvert E = 0$，由此可知 $B$ 的列向量为方程组 $B^*X = 0$ 的解，其基础解系为
+                      \[\alpha_1 = (-1, 1, 0)^{\mathrm{T}}, \alpha_2 = (-1, 0, 1)^{\mathrm{T}}.\]
+                      令 $B = (\alpha_1, \alpha_2, \alpha_3)$，其中 $\alpha_3 = k_1\alpha_1+k_2\alpha_2 = (k_1+k_2, -k_1, -k_2)^{\mathrm{T}}$. 由 $BB^* = 0$ 解得 $k_1 = k_2 = 1$，从而
+                      \[B = \begin{pmatrix}
+                              -1 & -1 & 2  \\
+                              1  & 0  & -1 \\
+                              0  & 1  & -1
+                          \end{pmatrix}.\]
+            \end{enumerate}
+        \end{answer}
 
         \item 证明$\begin{vmatrix}
                 a      & c      & c      & \cdots & c      \\
@@ -2257,6 +3895,20 @@
                 \vdots & \vdots & \vdots & \ddots & \vdots \\
                 b      & b      & b      & \cdots & a
             \end{vmatrix}=\dfrac{b(a-c)^{n}-c(a-b)^{n}}{b-c}$，其中 $b \neq c$, 等式左端是 $n$ 阶行列式.
+        \begin{answer}
+            我们将第 $i$ 行乘 $(-1)$ 加到第 $i-1$ 行（$i$ 依次取 $n, n-1, \ldots, 2$），再对第 1 列展开,
+            \[D_{n}=\begin{vmatrix}
+                    a-b    & c-a    & 0      & \cdots & 0      \\
+                    0      & a-b    & c-a    & \cdots & 0      \\
+                    \vdots & \vdots & \vdots & \ddots & \vdots \\
+                    0      & 0      & 0      & \cdots & c-a    \\
+                    b      & b      & b      & \cdots & a
+                \end{vmatrix}=(a-b)D_{n-1}+(-1)^{n+1}b(c-a)^{n-1},\]
+            有了递推式，但是递推式中有$(-1)^{n+1}$，递推比较麻烦可能还需要处理. 如果用数归证明的话应该可以直接下手了，但是有更聪明的办法：取转置，则行列式的值不变，但是 $b$ 与 $c$ 的位置交换，由此可以写出 $D_n$ 的第二个递推式：$D_n=(a-c)D_{n-1}+(-1)^{n+1}c(b-a)^{n-1}$. 两个递推式分别乘以 $a-c$ 与 $a-b$ 后相减即有
+            \[
+                D_n=\dfrac{b(a-c)^{n}-c(a-b)^{n}}{b-c}.
+            \]
+            \end{answer}
 
         \item 计算$n$阶行列式
         \[|A|=\begin{vmatrix}
@@ -2266,6 +3918,21 @@
                 \vdots & \vdots & \vdots & \ddots & \vdots \\
                 a_nb_1 & a_nb_2 & a_nb_3 & \cdots & a_nb_n
             \end{vmatrix}.\]
+        \begin{answer}
+            \begin{enumerate}
+                \item $n=1$ 时，显然有 $|A|=a_1b_1$.
+
+                \item $n \geqslant 2$ 时，
+                    \[
+                        A = \begin{pmatrix}
+                            a_1 \\ a_2 \\ \vdots \\ a_n
+                        \end{pmatrix} \begin{pmatrix}
+                            b_1 & b_2 & \cdots & b_n
+                        \end{pmatrix},
+                    \]
+                    故 $r(A) = 1 < n$，$A$ 不可逆，因此 $|A| = 0$.
+            \end{enumerate}
+        \end{answer}
 
         \item 计算$n$阶行列式
         \[|A|=\begin{vmatrix}
@@ -2274,6 +3941,49 @@
                 \vdots  & \vdots  & \ddots & \vdots  \\
                 a_na_1  & a_na_2  & \cdots & 1+a_n^2
             \end{vmatrix}.\]
+        \begin{answer}
+            设
+            \[
+                D_n = \begin{vmatrix}
+                    1+a_1^2 & a_1a_2  & \cdots & a_1a_n  \\
+                    a_2a_1  & 1+a_2^2 & \cdots & a_2a_n  \\
+                    \vdots  & \vdots  & \ddots & \vdots  \\
+                    a_na_1  & a_na_2  & \cdots & 1+a_n^2
+                \end{vmatrix},
+            \]
+
+            利用行列式公理化定义中的线性性，有
+            \begin{align*}
+                D_n &= \begin{vmatrix}
+                    1+a_1^2 & a_1a_2  & \cdots & a_1a_n  \\
+                    a_2a_1  & 1+a_2^2 & \cdots & a_2a_n  \\
+                    \vdots  & \vdots  & \ddots & \vdots  \\
+                    a_na_1  & a_na_2  & \cdots & a_n^2
+                \end{vmatrix} + \begin{vmatrix}
+                    1+a_1^2 & a_1a_2  & \cdots & 0       \\
+                    a_2a_1  & 1+a_2^2 & \cdots & 0       \\
+                    \vdots  & \vdots  & \ddots & \vdots  \\
+                    a_na_1  & a_na_2  & \cdots & 1
+                \end{vmatrix} \\
+                &= a_n \begin{vmatrix}
+                    1+a_1^2 & a_1a_2  & \cdots & a_1     \\
+                    a_2a_1  & 1+a_2^2 & \cdots & a_2     \\
+                    \vdots  & \vdots  & \ddots & \vdots  \\
+                    a_na_1  & a_na_2  & \cdots & a_n
+                \end{vmatrix} + D_{n-1} \\
+                &= a_n \begin{vmatrix}
+                    1      & 0      & \cdots & a_1     \\
+                    0      & 1      & \cdots & a_2     \\
+                    \vdots & \vdots & \ddots & \vdots  \\
+                    0      & 0      & \cdots & a_n
+                \end{vmatrix} \\
+                &= D_{n-1} + a_n^2.
+            \end{align*}
+            而 $D_1 = 1 + a_1^2$, 因此
+            \[
+                |A| = D_n = 1 + \sum_{i=1}^n a_i^2.
+            \]
+        \end{answer}
 
         \item 计算$n$阶行列式
         \[|A|=\begin{vmatrix}
@@ -2282,6 +3992,86 @@
                 \vdots & \vdots  & \ddots & \vdots  \\
                 1+x_n  & 1+x_n^2 & \cdots & 1+x_n^n
             \end{vmatrix}.\]
+        \begin{answer}
+            使用硬拆法，将 $A$ 的第 $i$ 行分解为 $(1, 1, \ldots, 1) + (x_i, x_i^2, \ldots, x_i^n)$. 考虑到拆出的行列式中包含不少于两列为 $(1, 1, \ldots, 1)$ 的项均为 $0$，因此可将 $|A|$ 化简为
+            \[
+                \begin{vmatrix}
+                    x_1    & x_1^2  & \cdots & x_1^n  \\
+                    x_2    & x_2^2  & \cdots & x_2^n  \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    x_n    & x_n^2  & \cdots & x_n^n
+                \end{vmatrix} + \sum_{j=1}^n \begin{vmatrix}
+                    x_1     & x_1^2     & \cdots & x_1^n     \\
+                    \vdots  & \vdots    &        & \vdots    \\
+                    x_{i-1} & x_{i-1}^2 & \cdots & x_{i-1}^n \\
+                    1       & 1         & \cdots & 1         \\
+                    x_{i+1} & x_{i+1}^2 & \cdots & x_{i+1}^n \\
+                    \vdots  & \vdots    &        & \vdots    \\
+                    x_n     & x_n^2     & \cdots & x_n^n
+                \end{vmatrix}.
+            \]
+
+            上式中第一项可利用 Vandermonde 行列式化简：
+            \[
+                \begin{vmatrix}
+                    x_1    & x_1^2  & \cdots & x_1^n  \\
+                    x_2    & x_2^2  & \cdots & x_2^n  \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    x_n    & x_n^2  & \cdots & x_n^n
+                \end{vmatrix} = \prod_{i=1}^n x_i \begin{vmatrix}
+                    1      & x_1    & x_1^2  & \cdots & x_1^n  \\
+                    1      & x_2    & x_2^2  & \cdots & x_2^n  \\
+                    \vdots & \vdots & \vdots & \ddots & \vdots \\
+                    1      & x_n    & x_n^2  & \cdots & x_n^n
+                \end{vmatrix} = \left(\prod_{i=1}^n x_i\right) \left(\prod_{1 \leqslant i < j \leqslant n} (x_j - x_i)\right).
+            \]
+
+            对于第二项，
+            \begin{align*}
+                \begin{vmatrix}
+                    x_1     & x_1^2     & \cdots & x_1^n     \\
+                    \vdots  & \vdots    &        & \vdots    \\
+                    x_{i-1} & x_{i-1}^2 & \cdots & x_{i-1}^n \\
+                    1       & 1         & \cdots & 1         \\
+                    x_{i+1} & x_{i+1}^2 & \cdots & x_{i+1}^n \\
+                    \vdots  & \vdots    &        & \vdots    \\
+                    x_n     & x_n^2     & \cdots & x_n^n
+                \end{vmatrix}
+                &= \begin{vmatrix}
+                    x_1     & x_1 (x_1-1)         & \cdots & x_1^{n-1} (x_1-1)         \\
+                    \vdots  & \vdots              &        & \vdots                    \\
+                    x_{i-1} & x_{i-1} (x_{i-1}-1) & \cdots & x_{i-1}^{n-1} (x_{i-1}-1) \\
+                    1       & 0                   & \cdots & 0                         \\
+                    x_{i+1} & x_{i+1} (x_{i+1}-1) & \cdots & x_{i+1}^{n-1} (x_{i+1}-1) \\
+                    \vdots  & \vdots              &        & \vdots                    \\
+                    x_n     & x_n (x_n-1)         & \cdots & x_n^{n-1} (x_n-1)
+                \end{vmatrix} \\
+                &= \begin{vmatrix}
+                    x_1-1     & x_1 (x_1-1)         & \cdots & x_1^{n-1} (x_1-1)         \\
+                    \vdots    & \vdots              &        & \vdots                    \\
+                    x_{i-1}-1 & x_{i-1} (x_{i-1}-1) & \cdots & x_{i-1}^{n-1} (x_{i-1}-1) \\
+                    1         & 0                   & \cdots & 0                         \\
+                    x_{i+1}-1 & x_{i+1} (x_{i+1}-1) & \cdots & x_{i+1}^{n-1} (x_{i+1}-1) \\
+                    \vdots    & \vdots              &        & \vdots                    \\
+                    x_n-1     & x_n (x_n-1)         & \cdots & x_n^{n-1} (x_n-1)
+                \end{vmatrix} \\
+                &= (-1)^{i+1} \prod_{j \neq i} (x_j - 1) \begin{vmatrix}
+                    1      & x_1     & \cdots & x_1^{n-1}     \\
+                    \vdots & \vdots  &        & \vdots        \\
+                    1      & x_{i-1} & \cdots & x_{i-1}^{n-1} \\
+                    1      & x_{i+1} & \cdots & x_{i-1}^{n+1} \\
+                    \vdots & \vdots  &        & \vdots        \\
+                    1      & x_n     & \cdots & x_n^{n-1}
+                \end{vmatrix} \\
+                &= (-1)^{i+1} \prod_{j \neq i} \frac{x_j - 1}{x_j - x_i} \prod_{1 \leqslant k < j \leqslant n} (x_j - x_k).
+            \end{align*}
+
+            综上可得，
+            \[
+                |A| = \left( \prod_{i=1}^n x_i + \sum_{i=1}^n (-1)^{i+1} \prod_{j \neq i} \frac{x_j - 1}{x_j - x_i} \right) \prod_{1 \leqslant i < j \leqslant n} (x_j - x_i).
+            \]
+
+        \end{answer}
 
         \item 计算$n$阶行列式，其中$x,y,z$为任意实常数：
         \[|A|=\begin{vmatrix}
@@ -2291,5 +4081,81 @@
                 \vdots & \vdots & \vdots & \ddots & \vdots \\
                 z      & z      & z      & \cdots & x_n
             \end{vmatrix}.\]
+        \begin{answer}
+            \begin{enumerate}
+                \item 若 $y = z$，
+                    则
+                    \[
+                        |A| = \begin{vmatrix}
+                            x_1    & y      & y      & \cdots & y      \\
+                            y      & x_2    & y      & \cdots & y      \\
+                            y      & y      & x_3    & \cdots & y      \\
+                            \vdots & \vdots & \vdots & \ddots & \vdots \\
+                            y      & y      & y      & \cdots & x_n
+                        \end{vmatrix}.
+                    \]
+
+                    \begin{enumerate}
+                        \item 若存在 $i \neq j$，使得 $x_i = x_j = y$，则 $A$ 中有两列元素全为 $y$，因此 $|A|$ 为 $0$.
+
+                        \item 若存在唯一 $i$，使得 $x_i = y$，则
+                            \begin{align*}
+                                |A| &= (-1)^{i - 1 + i - 1} \begin{vmatrix}
+                                    x_i    & y      & y      & \cdots & y      \\
+                                    y      & x_1    & y      & \cdots & y      \\
+                                    y      & y      & x_2    & \cdots & y      \\
+                                    \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                    y      & y      & y      & \cdots & x_n
+                                \end{vmatrix} \\
+                                &= \begin{vmatrix}
+                                    y      & y       & y       & \cdots & y       \\
+                                    0      & x_1 - y & 0       & \cdots & 0       \\
+                                    0      & 0       & x_2 - y & \cdots & 0       \\
+                                    \vdots & \vdots  & \vdots  & \ddots & \vdots  \\
+                                    0      & 0       & 0       & \cdots & x_n - y
+                                \end{vmatrix} \\
+                                &= y \prod_{j \neq i} (x_j - y).
+                            \end{align*}
+
+                            \item 若不存在 $i$，使得 $x_i = y$，则
+                                \begin{align*}
+                                    |A| &= \begin{vmatrix}
+                                        1      & y      & y      & y      & \cdots & y      \\
+                                        0      & x_1    & y      & y      & \cdots & y      \\
+                                        0      & y      & x_2    & y      & \cdots & y      \\
+                                        0      & y      & y      & x_3    & \cdots & y      \\
+                                        \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                        0      & y      & y      & y      & \cdots & x_n
+                                    \end{vmatrix}_{n+1} \\
+                                    &= \begin{vmatrix}
+                                        1      & y      & y      & y      & \cdots & y      \\
+                                        -1     & x_1-y  & 0      & 0      & \cdots & 0      \\
+                                        -1     & 0      & x_2-y  & 0      & \cdots & 0      \\
+                                        -1     & 0      & 0      & x_3-y  & \cdots & 0      \\
+                                        \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                        -1     & 0      & 0      & 0      & \cdots & x_n-y
+                                    \end{vmatrix}_{n+1} \\
+                                    &= \begin{vmatrix}
+                                        1 + \sum_{j=1}^n \frac{y}{x_j-y} & y      & y      & y      & \cdots & y      \\
+                                        0                                & x_1-y  & 0      & 0      & \cdots & 0      \\
+                                        0                                & 0      & x_2-y  & 0      & \cdots & 0      \\
+                                        0                                & 0      & 0      & x_3-y  & \cdots & 0      \\
+                                        \vdots                           & \vdots & \vdots & \vdots & \ddots & \vdots \\
+                                        0                                & 0      & 0      & 0      & \cdots & x_n-y
+                                    \end{vmatrix} \\
+                                    &= \prod_{j=1}^n (x_j - y) + y\sum_{i=1}^n \prod_{j \neq i} (x_j - y).
+                                \end{align*}
+                    \end{enumerate}
+                    综上，当 $y = z$ 时，
+                    \[
+                        |A| = \prod_{j=1}^n (x_j - y) + y\sum_{i=1}^n \prod_{j \neq i} (x_j - y).
+                    \]
+
+                \item 若 $y \neq z$，则可按照与第 10 题完全相同的方法进行处理，最后得到
+                    \[
+                        |A| = \frac{z \prod_{i=1}^n (x_i - y) - y \prod_{i=1}^n (x_i - z)}{z - y}.
+                    \]
+            \end{enumerate}
+        \end{answer}
     \end{exgroup}
 \end{exercise}
