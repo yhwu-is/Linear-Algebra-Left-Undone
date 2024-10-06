@@ -457,7 +457,30 @@
     \begin{exgroup}
         \item 完善\autoref{thm:复数乘法构造} 中的证明，即证明$\mathbf{R}^2$在平面向量加法和如\autoref*{thm:复数乘法构造} 定义的乘法下构成一个域.
 
-        \item 完成教材48页第13题.
+        \item 下列集合中的关系 \( R \) 是否是等价关系？如果是，说明等价类的意义，并写出集合关于 \( R \) 的商集.
+        \begin{enumerate}
+            \item 实数集上定义关系：\( xRy \iff x - y \) 为无理数或 0;
+            \item 集合 \( S = \{ (x, y) | |x| \leq 1, |y| \leq 1 \} \) 上定义关系：\[ (x_1, y_1) R (x_2, y_2) \iff x_1 = x_2; \]
+            \item 集合 \( S = \{ (x, y) | x| < +\infty, |y| < +\infty \} \) 上定义关系：\[ (x_1, y_1) R (x_2, y_2) \iff x_1^2 + y_1^2 = x_2^2 + y_2^2; \]
+            \item 平面上所有直线组成的集合 \( L \) 上分别定义关系 \( R_1 \) 和 \( R_2 \) 为：\[ l_1 R_1 l_2 \iff l_1 \perp l_2; \quad l_1 R_2 l_2 \iff l_1 \text{与 $l_2$ 相交};\]
+            \item 集合 \( S = \{ (x, y) | 0 < |x| < +\infty, 0 < |y| < +\infty \} \) 上定义关系：\[ (x_1, y_1) R (x_2, y_2) \iff x_1 x_2 > 0 \ \text{且} \ y_1 y_2 > 0; \]
+            \item 集合 \( C^* = \{ a + bi | a, b \in \mathbb{R}, a \neq 0 \} \) 上定义关系：\[ (a_1 + b_1 i) R (a_2 + b_2 i) \iff a_1 a_2 > 0; \]
+            \item 在集合 \( A = (a_1, a_2, a_3, a_4) \) 的幂集 \( P(A) \) 上定义关系：\[ A_1 R A_2 \iff |A_1| = |A_2| \]
+            \item 在集合 \( \mathbb{N}^* \times \mathbb{N}^* \) 上定义关系：\[ (m_1, n_1) R (m_2, n_2) \iff m_1 n_2 = m_2 n_1.\]
+        \end{enumerate}
+
+        \begin{answer}
+            \begin{enumerate}
+                \item 不是;
+                \item 是, 矩形内平行于 \(y\) 轴的直线段, \(S/R = \{ \text{线段} \ x = c (|y| \leq 1) : |c| \leq 1 \} \);
+                \item 是, 以原点为心的同心圆, \(S/R = \{ x^2 + y^2 = r^2 | r \geq 0 \} \);
+                \item 均不是;
+                \item 是, \(S/R = \{ \text{不含坐标轴的四个象限} \} \);
+                \item 是, \(S/R = \{ \text{复平面的左半平面和右半平面} \} \);
+                \item 是, \(S/R = \{ S_i | i = 0, 1, 2, 3, 4 \}, S_i \) 是含 \(i\) 个元素的子集组成的集合, \(S_0 = \{ \emptyset \}\);
+                \item 是, \(S/R = \{ (m,n) \mid \frac{m}{n} = c | c \in \mathbb{Q} \}\).
+            \end{enumerate}
+        \end{answer}
 
         \item 求齐次线性方程组$\begin{cases}
                 x_1+x_2+x_3+4x_4-3x_5=0   \\

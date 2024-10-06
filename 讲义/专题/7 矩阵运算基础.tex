@@ -929,6 +929,10 @@
         \item 证明：若$AB=BA$，$AC=CA$，则$A,B,C$为同阶方阵，且
         \[A(BC)=(BC)A,\enspace A(B+C)=(B+C)A.\]
 
+        \begin{answer}
+            由 $AB=BA$ 得 $A(BC)=(AB)C=(BA)C=B(AC)=BCA=(BC)A$，由$AC=CA$ 得 $A(B+C)=AB+AC=BA+CA=B+C$.
+        \end{answer}
+
         \item $A,B$都是$n$阶矩阵，求下列等式成立的充分条件：
         \begin{enumerate}
             \item $(A+B)^3=A^3+3A^2B+3AB^2+B^3$；
@@ -936,18 +940,50 @@
             \item $(A+B)(A-B)=A^2-B^2$.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item $(A+B)^3=A^3+3A^2B+3AB^2+B^3$的充分条件是$AB=BA$；
+
+                \item $(A+B)(A-B)=A^2-B^2$的充分条件是$AB=BA$.
+            \end{enumerate}
+        \end{answer}
+
         \item 设$A$是$n$阶方阵且$A^n=O$，证明：
         \[(E_n-A)(E_n+A+A^2+\cdots+A^{n-1})=E_n.\]
+        \begin{answer}
+            由$A^n=O$得$A^n-E_n^n=-E_n$，即$(A-E_n)(A^{n-1}+A^{n-2}+\cdots+A+E_n)=-E_n$，即$(E_n-A)(E_n+A+A^2+\cdots+A^{n-1})=E_n$.
+        \end{answer}
 
         \item 证明：若线性映射$\sigma \in \mathcal{L}(V_1,V_2)$可逆，则其逆映射唯一.
+        \begin{answer}
+            设$\sigma$的逆映射为$\tau_1,\tau_2$，则$\sigma\tau_1=\sigma\tau_2=E$，则$\sigma(\tau_1-\tau_2)=0$.
+
+            因为 $\sigma$ 可逆，所以对于任意 $x \neq 0$，有 $\sigma(x) \neq 0$.
+
+            而 $\forall x, \sigma((\tau_1-\tau_2)(x))=0$，故 $\tau_1-\tau_2=0, \tau_1=\tau_2$.
+        \end{answer}
 
         \item 证明：有一行元素或一列元素全为0的$n$阶方阵必定不可逆.
+        \begin{answer}
+            设$A$的第$i$行全为0，则$A$的第$i$行与$A$的任意行线性相关，记 $A$ 为 $n$ 阶矩阵，则$r(A) < n$.
+
+            故对任意 $n$ 阶矩阵 $B$，有 $r(AB) \leq r(A) < n = r(E_n)$，故 $A$ 不可逆.
+        \end{answer}
 
         \item 设$\alpha,\beta$为三维列向量，且$\alpha\beta^\mathrm{T}=\begin{pmatrix}
                 -1 & 2  & 1  \\
                 1  & -2 & -1 \\
                 2  & -4 & -2
             \end{pmatrix}$，求$\alpha^\mathrm{T}\beta$.
+        \begin{answer}
+            记 $\alpha = (a_1,a_2,a_3)$, $\beta = (b_1,b_2,b_3)$，则 $\alpha\beta^\mathrm{T} = \begin{pmatrix}
+                    a_1b_1 & a_1b_2 & a_1b_3 \\
+                    a_2b_1 & a_2b_2 & a_2b_3 \\
+                    a_3b_1 & a_3b_2 & a_3b_3
+                \end{pmatrix}$,
+            则有：$\text{tr}(\alpha\beta^\mathrm{T}) = a_1b_1+a_2b_2+a_3b_3 = \alpha^\mathrm{T}\beta$ ，因此 $\alpha^\mathrm{T}\beta = -1-2-2 = -5$.
+        \end{answer}
+
     \end{exgroup}
 
     \begin{exgroup}
@@ -965,8 +1001,22 @@
 
             \item 若$A=P^{-1}BP$，证明：$f(A)=Pf(B)P^{-1}$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 因为 $A^k=\begin{pmatrix}\lambda_1^k & 0 \\ 0 & \lambda_2^k\end{pmatrix}$，所以 $f(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E = \begin{pmatrix}f(\lambda_1) & 0 \\ 0 & f(\lambda_2)\end{pmatrix}$.
+                \item $A=PBP^{-1}$，则 $A^2=(PBP^{-1})(PBP^{-1})=PB^2P^{-1}$. 由归纳法得 $A^k=PB^kP^{-1}$，于是
+                      \begin{align*}
+                          f(A) & = a_mPB^mP^{-1}+a_{m-1}PB^{m-1}P^{-1}+\cdots+a_0                         \\
+                               & =P\begin{pmatrix}f(\lambda_1) & 0 \\ 0 & f(\lambda_2)\end{pmatrix}P^{-1} \\
+                               & =Pf(B)P^{-1}
+                      \end{align*}
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A$为$n$阶可逆矩阵，$A$的每行各元素之和都等于$k$，证明：$k \neq 0$且$A^{-1}$的每行各元素之和都等于$\vphantom{\cfrac{1}{k}}\dfrac{1}{k}$.
+        \begin{answer}
+            为使得``每行元素之和''的条件有用，我们用 $\alpha=\begin{pmatrix}1 \\ 1 \\ \vdots \\ 1\end{pmatrix}$ 去乘以 $A$. 则 $A\alpha=\begin{pmatrix}k \\ k \\ \vdots \\ k\end{pmatrix}=k\alpha$. 因为 $A$ 可逆所以 $k\neq 0$，同时由上面的式子有 $\alpha=kA^{-1}\alpha$，得 $A^{-1}\alpha=\dfrac{1}{k}\alpha\enspace(k\neq 0)$. 故 $A^{-1}$ 每行和为 $\dfrac{1}{k}$ 成立.
+        \end{answer}
 
         \item 已知矩阵$A=\begin{pmatrix}1 & 2 & a  \\
                1 & 3 & 0  \\
@@ -978,6 +1028,19 @@
 
             \item 求满足$AP=B$的可逆矩阵$P$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 由题意 $r(A)=r(B)$. $A$ 可由初等变换为 $\begin{pmatrix}1 & 2 & a \\ 1 & 3 & 0 \\ 0 & 0 & 0\end{pmatrix}$，$B$ 可由初等变换为 $\begin{pmatrix}1 & a & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 2-a\end{pmatrix}$. 由于秩相同故 $2-a=0,a=2$.
+
+                \item $(A,B)=\begin{pmatrix}1 & 2 & a & 1 & a & 2 \\ 1 & 3 & 0 & 0 & 1 & 1 \\ 2 & 7 & -a & -1 & 1 & 1\end{pmatrix}\rightarrow\begin{pmatrix}1 & 0 & 6 & 3 & 4 & 4 \\ 0 & 1 & -2 & -1 & -1 & -1 \\ 0 & 0 & 0 & 0 & 0 & 0\end{pmatrix}$
+
+                        $X = \begin{pmatrix}-6k_1+3 \\ 2k_1-1 \\ k_1\end{pmatrix},Y = \begin{pmatrix}-6k_2+4 \\ 2k_2-1 \\ k_2\end{pmatrix},Z = \begin{pmatrix}-6k_3+4 \\ 2k_3-1 \\ k_3\end{pmatrix}$
+
+                        $\begin{pmatrix}-6k_1+3 & -6k_2+4 & -6k_3+4 \\ 2k_1-1 & 2k_2-1 & 2k_3-1 \\ k_1 & k_2 & k_3\end{pmatrix}\rightarrow \begin{pmatrix}1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & k_3-k_2\end{pmatrix}$
+
+                        因为 $P$ 可逆，所以 $k_2\neq k_3$，故 $P=\begin{pmatrix}-6k_1+3 & -6k_2+4 & -6k_3+4 \\ 2k_1-1 & 2k_2-1 & 2k_3-1 \\ k_1 & k_2 & k_3\end{pmatrix},k_2\neq k_3,\enspace k_1,k_2,k_3 \in \mathbf{R}$.
+            \end{enumerate}
+        \end{answer}
 
         \item 证明以下两个命题：
         \begin{enumerate}
@@ -1024,6 +1087,23 @@
 
     \begin{exgroup}
         \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
+        \begin{answer}
+            首先设
+            \[A=\begin{pmatrix}a_1 & a_2 \\ a_3 & a_4\end{pmatrix},B=\begin{pmatrix}b_1 & b_2 \\ b_3 & b_4\end{pmatrix},C=\begin{pmatrix}c_1 & c_2 \\ c_3 & c_4\end{pmatrix}.\]
+            由于 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关，所以将 $A,B,C$ 的元素排为一列，可知矩阵
+            \[\begin{pmatrix}a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3 \\ a_4 & b_4 & c_4\end{pmatrix}\]
+            的秩为 3，这里不妨设前三个行向量线性无关，即有
+            \[D=\begin{pmatrix}a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3\end{pmatrix}\]
+            为可逆矩阵.
+
+            另外，注意到对任意的 $x_1,x_2,x_3$，有
+            \[x_1A+x_2B+x_3C=\begin{pmatrix}a_1x_1+b_1x_2+c_1x_3 & a_2x_1+b_2x_2+c_2x_3 \\ a_3x_1+b_3x_2+c_3x_3 & a_4x_1+b_4x_2+c_4x_3\end{pmatrix}.\]
+            现在考虑方程组
+            \[\begin{cases}a_1x_1+b_1x_2+c_1x_3 = 0 \\ a_2x_1+b_2x_2+c_2x_3 = 1 \\ a_3x_1+b_3x_2+c_3x_3 = 1\end{cases}\]
+            其系数矩阵为 $D$，这是一个可逆矩阵，所以上述方程存在唯一解，不妨记为 $(x_1',x_2',x_3')$，此时就有 $\lvert x_1'A+x_2'B+x_3'C \rvert = \begin{vmatrix}0 & 1 \\ 1 & \ast\end{vmatrix} = -1$.
+
+            所以 $x_1'A+x_2'B+x_3'C$ 为可逆矩阵.
+        \end{answer}
 
         \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
     \end{exgroup}
