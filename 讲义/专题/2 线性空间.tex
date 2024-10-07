@@ -134,7 +134,7 @@
 }
 \end{proof}
 
-接下来看一些例子，它们说明其它的线性空间公理要求都是不可或缺的
+接下来看一些例子，它们说明其它的线性空间公理要求都是不可或缺的.
 
 \begin{example}{}{去除一条线性空间公理}
     \begin{enumerate}
@@ -703,6 +703,65 @@
                   对题(4)所定义的加法和数量乘法.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item 有理数集 $Q$ 关于实数乘法不封闭，不构成实数域上的线性空间.
+
+                \item $\mathbf{R}^2$ 关于通常向量加法构成交换群，封闭性也显然成立. 再看数乘.
+                      \begin{enumerate}
+                          \item $\exists \lambda=1$ 使得 $\lambda\cdot(x,y)=(\lambda x,y)=(x,y)$.
+
+                          \item $\lambda(\mu\cdot(x,y))=\lambda\cdot(\mu x,y)=((\lambda\mu)x,y)=(\lambda\mu)\cdot(x,y)$.
+
+                          \item $(\lambda+\mu)\cdot(x,y)=((\lambda+\mu)x,y)=(\lambda x,y)+(\mu x,y)$. 因此$(\lambda+\mu)\cdot(x,y)=\lambda\cdot(x,y)+\mu\cdot(x,y)$ 成立.
+
+                          \item $\lambda((x_1,y_1)+(x_2,y_2))=\lambda\cdot(x_1+x_2,y_1+y_2)=(\lambda x_1+\lambda x_2,y_1+y_2)=(\lambda x_1,y_1)+(\lambda x_2,y_2)$，因此$\lambda((x_1,y_1)+(x_2,y_2))=(\lambda x_1,y_1)+(\lambda x_2,y_2)$.
+
+                          \item （封闭性）$\forall \lambda \in \mathbf{R},\lambda\cdot(x,y)=(\lambda x,y)\in \mathbf{R}^2$，封闭性满足.
+
+                                综上，$\mathbf{R}^2$ 关于通常向量加法与该数乘构成实数域上的向量空间.
+                      \end{enumerate}
+
+                \item \begin{enumerate}
+                          \item 对于加法，显然，封闭性，结合律，交换律成立. 存在加法单位元 $(1,1,\ldots,1)$ 有
+                                \begin{align*}
+                                    (1,1,\ldots,1)+(a_1,a_2,\ldots,a_n) & = (a_1,a_2,\ldots,a_n)+(1,1,\ldots,1) \\
+                                                                        & = (a_1,a_2,\ldots,a_n)
+                                \end{align*}
+                                由于为正实数向量，则对于 $(a_1,\ldots,a_n)$，存在唯一的逆元 $\left(\dfrac 1{a_1},\ldots,\dfrac 1{a_n}\right)$，使得 $(a_1,\ldots,a_n)+\left(\dfrac 1{a_1},\ldots,\dfrac 1{a_n}\right)=(1,\ldots,1)$.
+
+                          \item 对于数乘，显然有封闭性成立，乘法单位元为 $\lambda_0=1$. 又有
+                                \begin{enumerate}
+                                    \item \begin{align*}
+                                                  & \lambda(\mu\cdot(a_1,\ldots,a_n))            \\
+                                              ={} & \lambda\cdot(a_1^\mu,\ldots,a_n^\mu)         \\
+                                              ={} & ((a_1^\mu)^\lambda,\ldots,(a_n^\mu)^\lambda) \\
+                                              ={} & (a_1^{\lambda\mu},\ldots,a_n^{\lambda\mu})
+                                          \end{align*}
+                                          因此 $\lambda(\mu\cdot(a_1,\ldots,a_n))=(\lambda\mu)\cdot(a_1,\ldots,a_n)$ 成立.
+
+                                    \item \begin{align*}
+                                                  & (\lambda+\mu)\cdot(a_1,\ldots,a_n)                         \\
+                                              ={} & (a_1^{\mu+\lambda},\ldots,a_n^{\mu+\lambda})               \\
+                                              ={} & (a_1^\lambda a_1^\mu,\ldots,a_n^\lambda a_n^\mu)           \\
+                                              ={} & (a_1^\lambda,\ldots,a_n^\lambda)+(a_1^\mu,\ldots,a_n^\mu),
+                                          \end{align*}
+                                          因此 $(\lambda+\mu)\cdot(a_1,\ldots,a_n)=\lambda\cdot(a_1,\ldots,a_n)+\mu(a_1,\ldots,a_n)$，第一个加号为数的加法，第二个加号为定义的向量加法.
+
+                                    \item $\lambda\cdot((a_1,\ldots,a_n)+(b_1,\ldots,b_n))=\lambda\cdot(a_1b_1,\ldots,a_nb_n)=(a_1^\lambda b_1^\lambda,\ldots,a_n^\lambda b_n^\lambda)=(a_1^\lambda,\ldots,a_n^\lambda)+(b_1^\lambda,\ldots,b_n^\lambda)$，因此 $\lambda\cdot((a_1,\ldots,a_n)+(b_1,\ldots,b_n))=\lambda\cdot(a_1,\ldots,a_n)+\lambda\cdot(b_1,\ldots,b_n)$.
+                                \end{enumerate}
+                                综上有 $\mathbf{R}_+^n$ 对如下加法和数乘构成实数域线性空间.
+                      \end{enumerate}
+
+
+                        \item 当 $\lambda<0$ 时，$(\lambda\circ f)(x)=\lambda f(x)\leqslant 0$，是函数值 $\le0$ 的实变量函数，则 $\lambda f(x)\not\in V$，即关于数乘不封闭，不构成线性空间.
+
+                        \item $V_1$ 是奇函数集合，只需验证 $V_1$ 对加法和数乘封闭即可. 这显然成立. 则 $V_1$ 构成线性空间. 对于 $V_2$：当 $\lambda\neq 1$，有 $(\lambda\circ f)(0)=\lambda f(0)=\lambda\neq 1$. 则 $(\lambda\circ f)(x)\in V_2$，$V_2$ 不封闭，不构成线性空间.
+
+                        \item 先验证 $V$ 非空：有 $f(x)=0,\forall x\in \mathbf{R}$，则 $f(x)\in V$，即 $V$ 非空. 再验证封闭性：对于 $(f\oplus g)(x)$，有 $(f\oplus g)(-x)=f(-x)+g(-x)=\overline{f(x)}+\overline{g(x)}=\overline{f(x)+g(x)}=\overline{(f\oplus g)(x)}$. 对于 $(\lambda\circ f)(x)$，有 $(\lambda\circ f)(-x)=\lambda f(-x)=\lambda\overline{f(x)}$. 由于 $\lambda \in \mathbf{R}$，则 $\lambda \overline{f(x)}=\overline{\lambda f(x)}=\overline{(\lambda\circ f)(x)}$. 因此 $V$ 关于 $\mathbf{R}$ 的函数加法和数乘封闭. 再给出加法零元 $f(x)=0$，数乘单位元 $\lambda=1$. 其余性质还请读者自行验证. 总之，$V$ 构成 $\mathbf{R}$ 上线性空间.
+            \end{enumerate}
+        \end{answer}
+
         \item 判断下列子集是否为给定线性空间的子空间：
         \begin{enumerate}
             \item $W = \{(x_1,\ldots,x_n) \in F^n \mid a_1 x_1+\cdots +a_n x_n =0\}$, 其中 $a_1, \ldots, a_n$ 为域 $F$ 中的固定数量.
@@ -718,8 +777,176 @@
             \item $W_1 = \{p(x) \in R[x] \mid p(1) = 0\}$, $W_2 = \{P(x) \in R[x]_n \mid p(1) = p(0)\}$（此题主要就是要判断满足一定条件的多项式是否构成子空间）.
 
             \item $W = \{f \in F(-\infty, +\infty) \mid f(-x)=f(x), \forall x \in R\}$, 其中 $F(-\infty, +\infty)$ 是所有定义在 $(-\infty, +\infty)$ 上的实值函数对通常的函数加法及数与函数的乘法在实数域上构成的线性空间.
-
         \end{enumerate}
+
+        \begin{answer}
+            \begin{enumerate}
+                \item 对于集合 \( W = \{(x_1, \dots, x_n) \in F^n \mid a_1x_1 + \cdots + a_nx_n = 0\} \)：
+
+                首先，我们来判断该集合是否为线性空间的子空间。判断一个集合是否为线性空间的子空间需要满足以下三个条件：
+
+                \begin{enumerate}
+                    \item \text{零向量在其中}：
+
+                    当 \( x_1 = x_2 = \cdots = x_n = 0 \) 时，方程 \( a_1x_1 + \cdots + a_nx_n = 0 \) 显然成立，因此零向量 \( (0, 0, \dots, 0) \) 属于 \( W \)。
+
+                    \item \text{封闭性（加法）}：
+
+                    假设 \( \mathbf{v} = (x_1, \dots, x_n) \) 和 \( \mathbf{w} = (y_1, \dots, y_n) \) 属于 \( W \)，即：
+                    \[
+                    a_1x_1 + \cdots + a_nx_n = 0 \quad \text{且} \quad a_1y_1 + \cdots + a_ny_n = 0。
+                    \]
+                    那么，对于 \( \mathbf{v} + \mathbf{w} = (x_1 + y_1, \dots, x_n + y_n) \)，有：
+                    \[
+                    a_1(x_1 + y_1) + \cdots + a_n(x_n + y_n) = (a_1x_1 + \cdots + a_nx_n) + (a_1y_1 + \cdots + a_ny_n) = 0 + 0 = 0。
+                    \]
+                    因此，\( \mathbf{v} + \mathbf{w} \in W \)。
+
+                    \item \text{封闭性（数乘）}：
+
+                    对于任意 \( \mathbf{v} = (x_1, \dots, x_n) \in W \) 和任意 \( \lambda \in F \)，有：
+                    \[
+                    a_1(\lambda x_1) + \cdots + a_n(\lambda x_n) = \lambda (a_1x_1 + \cdots + a_nx_n) = \lambda \cdot 0 = 0。
+                    \]
+                    因此，\( \lambda \mathbf{v} \in W \)。
+                \end{enumerate}
+
+                由于上述三个条件均满足，集合 \( W \) 是 \( F^n \) 的一个子空间。
+
+                \item 对于集合 \( W_1 = \{(x, 1, 0) \in \mathbb{R}^3\} \) 和 \( W_2 = \{(x, y, 0) \in \mathbb{R}^3\} \)：
+
+                \begin{enumerate}
+                    \item \text{对于 \( W_1 \)}：
+
+                    \begin{itemize}
+                        \item \text{零向量在其中}：零向量 \( (0, 0, 0) \) 不在 \( W_1 \) 中，因为 \( W_1 \) 中的第二个分量始终为 1，因此零向量不在 \( W_1 \) 中。
+                        \item 因为零向量不在 \( W_1 \) 中，所以 \( W_1 \) 不是子空间。
+                    \end{itemize}
+
+                    \item \text{对于 \( W_2 \)}：
+
+                    \begin{itemize}
+                        \item \text{零向量在其中}：当 \( x = 0, y = 0 \) 时，向量 \( (0, 0, 0) \in W_2 \)。
+                        \item \text{封闭性（加法）}：假设 \( \mathbf{v} = (x_1, y_1, 0) \in W_2 \) 和 \( \mathbf{w} = (x_2, y_2, 0) \in W_2 \)，则：
+                        \[
+                        \mathbf{v} + \mathbf{w} = (x_1 + x_2, y_1 + y_2, 0) \in W_2。
+                        \]
+                        \item \text{封闭性（数乘）}：对于 \( \lambda \in \mathbb{R} \) 和 \( \mathbf{v} = (x, y, 0) \in W_2 \)，有：
+                        \[
+                        \lambda \mathbf{v} = (\lambda x, \lambda y, 0) \in W_2。
+                        \]
+                    \end{itemize}
+                \end{enumerate}
+
+                因此，\( W_2 \) 是 \( \mathbb{R}^3 \) 的一个子空间。
+
+                \item 对于集合 $W_1 = \{(x, y, z) \in \mathbb{R}^3 \mid x - 3y + z = 0\}$ 和 $W_2 = \{(x, y, z) \in \mathbb{R}^3 \mid x - 3y + z = 1\}$：
+                \begin{enumerate}
+                    \item \text{零向量在其中}：当 $x = 0, y = 0, z = 0$ 时，方程 $x - 3y + z = 0$ 显然成立，因此零向量 $(0, 0, 0) \in W_1$。
+                    \item \text{封闭性（加法）}：假设 $\mathbf{v} = (x_1, y_1, z_1) \in W_1$ 和 $\mathbf{w} = (x_2, y_2, z_2) \in W_1$，则：
+                    \[
+                    (x_1 - 3y_1 + z_1) = 0 \quad \text{且} \quad (x_2 - 3y_2 + z_2) = 0。
+                    \]
+                    对于 $\mathbf{v} + \mathbf{w} = (x_1 + x_2, y_1 + y_2, z_1 + z_2)$，有：
+                    \[
+                    (x_1 + x_2) - 3(y_1 + y_2) + (z_1 + z_2) = (x_1 - 3y_1 + z_1) + (x_2 - 3y_2 + z_2) = 0 + 0 = 0。
+                    \]
+                    因此，$\mathbf{v} + \mathbf{w} \in W_1$。
+                    \item \text{封闭性（数乘）}：对于任意 $\lambda \in \mathbb{R}$ 和 $\mathbf{v} = (x, y, z) \in W_1$，有：
+                    \[
+                    \lambda x - 3(\lambda y) + \lambda z = \lambda(x - 3y + z) = \lambda \cdot 0 = 0。
+                    \]
+                    因此，$\lambda \mathbf{v} \in W_1$。
+                \end{enumerate}
+                综上所述，$W_1$ 是 $\mathbb{R}^3$ 的一个子空间。
+                \begin{enumerate}
+                    \item \text{零向量不在其中}：若 $(0, 0, 0) \in W_2$，则必须满足 $0 - 3 \cdot 0 + 0 = 1$，这显然不成立，因此零向量不在 $W_2$ 中。
+                \end{enumerate}
+                因为零向量不在 $W_2$ 中，所以 $W_2$ 不是子空间。
+
+                \item 对于集合 $W_1 = \left\{(x, y, z) \in \mathbb{R}^3 \mid \frac{x}{2} = \frac{y - 4}{1} = \frac{z - 1}{-3} \right\}$ 和 $W_2 = \{(x, y, z) \in \mathbb{R}^3 \mid x - y = 0, x + y + z = 0\}$：
+
+                这个集合的方程表示一个直线的参数方程。通常直线不是子空间，因为它不通过原点。因此，$W_1$ 不是子空间。
+
+                \begin{enumerate}
+                    \item \text{零向量在其中}：当 $x = 0, y = 0, z = 0$ 时，方程 $x - y = 0$ 和 $x + y + z = 0$ 都成立，因此零向量 $(0, 0, 0) \in W_2$。
+                    \item \text{封闭性（加法）}：假设 $\mathbf{v} = (x_1, y_1, z_1) \in W_2$ 和 $\mathbf{w} = (x_2, y_2, z_2) \in W_2$，即：
+                    \[
+                    x_1 - y_1 = 0, \quad x_1 + y_1 + z_1 = 0
+                    \]
+                    \[
+                    x_2 - y_2 = 0, \quad x_2 + y_2 + z_2 = 0
+                    \]
+                    对于 $\mathbf{v} + \mathbf{w} = (x_1 + x_2, y_1 + y_2, z_1 + z_2)$，有：
+                    \[
+                    (x_1 + x_2) - (y_1 + y_2) = (x_1 - y_1) + (x_2 - y_2) = 0 + 0 = 0，
+                    \]
+                    \[
+                    (x_1 + x_2) + (y_1 + y_2) + (z_1 + z_2) = (x_1 + y_1 + z_1) + (x_2 + y_2 + z_2) = 0 + 0 = 0。
+                    \]
+                    因此，$\mathbf{v} + \mathbf{w} \in W_2$。
+                    \item \text{封闭性（数乘）}：对于任意 $\lambda \in \mathbb{R}$ 和 $\mathbf{v} = (x, y, z) \in W_2$，有：
+                    \[
+                    \lambda x - \lambda y = \lambda (x - y) = \lambda \cdot 0 = 0，
+                    \]
+                    \[
+                    \lambda x + \lambda y + \lambda z = \lambda (x + y + z) = \lambda \cdot 0 = 0。
+                    \]
+                    因此，$\lambda \mathbf{v} \in W_2$。
+                \end{enumerate}
+                综上所述，$W_2$ 是 $\mathbb{R}^3$ 的一个子空间。
+
+                \item 对于集合 $W_1 = \{p(x) \in \mathbb{R}[x] \mid p(1) = 0\}$ 和 $W_2 = \{P(x) \in \mathbb{R}[x]_n \mid p(1) = p(0)\}$：
+
+                \begin{enumerate}
+                    \item \text{零多项式在其中}：零多项式 $p(x) = 0$ 满足 $p(1) = 0$，因此零多项式 $p(x) = 0 \in W_1$。
+                    \item \text{封闭性（加法）}：假设 $p(x), q(x) \in W_1$，即 $p(1) = 0$ 且 $q(1) = 0$，那么对于 $p(x) + q(x)$，有：
+                    \[
+                    (p(x) + q(x))(1) = p(1) + q(1) = 0 + 0 = 0，
+                    \]
+                    因此 $p(x) + q(x) \in W_1$。
+                    \item \text{封闭性（数乘）}：对于任意实数 $\lambda$ 和 $p(x) \in W_1$，有：
+                    \[
+                    (\lambda p(x))(1) = \lambda p(1) = \lambda \cdot 0 = 0，
+                    \]
+                    因此 $\lambda p(x) \in W_1$。
+                \end{enumerate}
+                综上所述，$W_1$ 是一个子空间。
+
+                \begin{enumerate}
+                    \item \text{零多项式在其中}：零多项式 $p(x) = 0$ 显然满足 $p(1) = p(0)$，因此零多项式 $p(x) = 0 \in W_2$。
+                    \item \text{封闭性（加法）}：假设 $p(x), q(x) \in W_2$，即 $p(1) = p(0)$ 且 $q(1) = q(0)$，那么对于 $p(x) + q(x)$，有：
+                    \[
+                    (p(x) + q(x))(1) = p(1) + q(1), \quad (p(x) + q(x))(0) = p(0) + q(0)。
+                    \]
+                    因为 $p(1) = p(0)$ 和 $q(1) = q(0)$，所以 $p(1) + q(1) = p(0) + q(0)$，即 $p(x) + q(x) \in W_2$。
+                    \item \text{封闭性（数乘）}：对于任意实数 $\lambda$ 和 $p(x) \in W_2$，有：
+                    \[
+                    (\lambda p(x))(1) = \lambda p(1), \quad (\lambda p(x))(0) = \lambda p(0)。
+                    \]
+                    因为 $p(1) = p(0)$，所以 $\lambda p(1) = \lambda p(0)$，即 $\lambda p(x) \in W_2$。
+                \end{enumerate}
+                综上所述，$W_2$ 是一个子空间。
+
+                \item 对于集合 $W = \{f \in F(-\infty, +\infty) \mid f(-x) = f(x), \forall x \in \mathbb{R}\}$：
+
+                \begin{enumerate}
+                    \item \text{零函数在其中}：零函数 $f(x) = 0$ 显然满足 $f(-x) = f(x)$，因此零函数 $f(x) = 0 \in W$。
+                    \item \text{封闭性（加法）}：假设 $f(x), g(x) \in W$，即 $f(-x) = f(x)$ 且 $g(-x) = g(x)$，那么对于 $f(x) + g(x)$，有：
+                    \[
+                    (f + g)(-x) = f(-x) + g(-x) = f(x) + g(x) = (f + g)(x)，
+                    \]
+                    因此 $f(x) + g(x) \in W$。
+                    \item \text{封闭性（数乘）}：对于任意实数 $\lambda$ 和 $f(x) \in W$，有：
+                    \[
+                    (\lambda f)(-x) = \lambda f(-x) = \lambda f(x) = (\lambda f)(x)，
+                    \]
+                    因此 $\lambda f(x) \in W$。
+                \end{enumerate}
+                综上所述，$W$ 是一个子空间。
+
+            \end{enumerate}
+        \end{answer}
 
         \item 对于 \autoref{ex:去除一条线性空间公理} 中的每个例子，举例说明它们为什么违反了对应的公理，又为什么能满足其它的公理.
     \end{exgroup}
@@ -728,6 +955,9 @@
         \item 证明：已知线性空间$V(\mathbf{F})$，$\lambda,\lambda_1,\ldots,\lambda_r\in\mathbf{F}$，$\beta,\alpha_1,\ldots,\alpha_r\in V$，有$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=\vec{0}$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$.
 
         \item 设$V$是一个线性空间，$W$是$V$的子集，证明：$W$是$V$的子空间$\iff \spa(W)=W$.
+        \begin{answer}
+            $W$ 是 $V$ 的子空间等价于 $\forall \alpha_1,\ldots,\alpha_k\in W$，$\forall \lambda_1,\ldots,\lambda_k\in \mathbf{F}$（$\mathbf{F}$ 是 $V$ 对应数域）有 $\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k\in W$. 根据线性扩张的定义，以上描述等价于 $\spa(W)\subseteq W$，又 $\spa(W)$ 是 $W$ 的线性扩张，即 $W\subseteq\spa(W)$，故$\spa(W)\subseteq W \iff \spa(W)=W$. 综上 $W$ 是 $V$ 的子空间，得证.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
@@ -739,6 +969,15 @@
 
             \item 证明：若$V$是$\mathbf{F}$上的一个线性空间，则$V$也是$\mathbf{E}$上的一个线性空间.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 此处仅验证数乘封闭性，其余性质留给读者. $\forall \alpha\in \mathbf{F},\lambda\in \mathbf{E}$. 由于$\mathbf{E}\subseteq \mathbf{F}$，因此$\lambda\in \mathbf{F}$. 由于 $\mathbf{F}$ 本身是封闭的，故$\lambda\alpha\in F$，则 $F$ 构成 $\mathbf{E}$ 上的线性空间. 例： $\mathbf{C}$ 构成 $\mathbf{R}$ 上的线性空间.
+
+                \item 例如：$\mathbf{R}$ 不是 $\mathbf{C}$ 上的线性空间. 因为 $\forall a\in\mathbf{R}$，有 $i\cdot a=a\cdot i\not\in\mathbf{R}$. 故数乘不封闭，不构成线性空间.
+
+                \item $\forall\lambda\in \mathbf{E}$ 有 $\lambda\in \mathbf{F}$，则 $V$ 关于 $\mathbf{E}$ 的数乘运算肯定是封闭的，其余性质与在 $\mathbf{F}$ 上一致. 又 $\mathbf{E}$ 本身也封闭，则 $V$ 也是 $\mathbf{E}$ 上的一个线性空间，得证.
+            \end{enumerate}
+        \end{answer}
 
         \item 考虑在第一章定义的有限域 $\mathbf{F}_4$ 和 $\mathbf{Z}_2$. 证明：$\mathbf{Z}_2$ 可以看作 $\mathbf{F}_4$ 的一个子域. 并给出 $\mathbf{F}_4$ 在 $\mathbf{Z}_2$ 上的线性空间结构. 验证 $\mathbf{Z}_p$ 一定是 $\mathbf{F}_{p^n}$ 的一个子域.
     \end{exgroup}

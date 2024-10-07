@@ -1078,7 +1078,19 @@
 
     \begin{exgroup}
         \item 设$\sigma: V_1\to V_2$是线性映射. 证明：$\sigma(W_1)$和$\sigma^{-1}(W_2)$分别是$V_2$和$V_1$的子空间.
-
+        
+        \begin{answer}
+            $\sigma(W_1)$是$V_2$的子空间. $\forall v_1,v_2\in\sigma(W_1)$，$\exists w_1,w_2\in W_1$使得$\sigma(w_1)=v_1$，$\sigma(w_2)=v_2$，因此
+            \[\sigma(w_1+w_2)=\sigma(w_1)+\sigma(w_2)=v_1+v_2\in\sigma(W_1),\]
+            \[\sigma(\lambda w_1)=\lambda\sigma(w_1)=\lambda v_1\in\sigma(W_1),\]
+            因此$\sigma(W_1)$是$V_2$的子空间.
+            
+            $\sigma^{-1}(W_2)$是$V_1$的子空间. $\forall v_1,v_2\in\sigma^{-1}(W_2)$，$\sigma(v_1),\sigma(v_2)\in W_2$，因此
+            \[\sigma(v_1+v_2)=\sigma(v_1)+\sigma(v_2)\in W_2,\]
+            \[\sigma(\lambda v_1)=\lambda\sigma(v_1)\in W_2,\]
+            因此$v_1+v_2\in\sigma^{-1}(W_2)$，$\lambda v_1\in\sigma^{-1}(W_2)$，因此$\sigma^{-1}(W_2)$是$V_1$的子空间.
+        \end{answer}
+        
         \item 设$\sigma,\tau \in \mathcal{L}(V,V)$且$\sigma^2=\sigma$，$\tau^2=\tau$. 证明：
         \begin{enumerate}
             \item $\sigma^k=\sigma$（幂等变换）；
@@ -1087,16 +1099,109 @@
 
             \item 设$\sigma\tau=\tau\sigma$，则$(\sigma+\tau-\sigma\tau)^2=\sigma+\tau-\sigma\tau$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 使用数学归纳法证明即可.
+  
+                \item 由 $ (\sigma + \tau)^2 = \sigma + \tau $，
+                      \[ (\sigma + \tau)^2 = \sigma^2 + + \sigma \tau + \tau \sigma + \tau^2 = \sigma + \tau \]
+                      得
+                      \begin{equation} \label{eq:5:A:2:1}
+                          \sigma \tau + \tau \sigma = \theta
+                      \end{equation}
+                      \autoref{eq:5:A:2:1} 两边左乘 $ \sigma $ 得
+                      \begin{align}
+                          \sigma(\sigma \tau + \tau \sigma) & = \sigma^2 \tau + \sigma \tau \sigma = \sigma \theta \notag    \\
+                                                            & = \sigma \tau + \sigma \tau \sigma = \theta \label{eq:5:A:2:2}
+                      \end{align}
+                      \autoref{eq:5:A:2:1} 两边右乘 $ \sigma $ 得
+                      \begin{align}
+                          (\sigma \tau + \tau \sigma)\sigma & = \sigma \tau \sigma + \tau \sigma^2 = \theta \sigma \notag    \\
+                                                            & = \sigma \tau \sigma + \tau \sigma = \theta \label{eq:5:A:2:3}
+                      \end{align}
+                      \autoref{eq:5:A:2:3} 减去\autoref{eq:5:A:2:2} 得
+                      \begin{equation}
+                          \sigma \tau - \tau \sigma = \theta \label{eq:5:A:2:4}
+                      \end{equation}
+                      由\autoref{eq:5:A:2:1} 与\autoref{eq:5:A:2:4} 得
+                      \[ \sigma \tau = \theta \]
+  
+                \item 若 $ \sigma \tau = \tau \sigma $，则
+                      \begin{align*}
+                              & (\sigma + \tau - \sigma \tau)^2                                                                                             \\
+                          ={} & \sigma^2 + \tau^2 + 2 \sigma \tau - \sigma \tau \sigma - \sigma \tau^2 - \sigma^2 \tau - \tau \sigma \tau + \sigma^2 \tau^2 \\
+                          ={} & \sigma + \tau + 2 \sigma \tau - \sigma \tau \sigma - \sigma \tau - \sigma \tau - \tau \sigma - \sigma \tau + \sigma \tau    \\
+                          ={} & \sigma + \tau - \sigma \tau
+                      \end{align*}
+            \end{enumerate}  
+        \end{answer}
 
         \item 是否存在$\mathbf{R}^3$到$\mathbf{R}^2$的线性映射$\sigma$使得$\sigma(1,-1,1)=(1,0)$，$\sigma(1,1,1)=(0,1)$？
 
+        \begin{answer}
+            存在. 设
+          \begin{align}
+              \sigma(1, -1, 1) & = \sigma(\vec{e}_1 - \vec{e}_2 + \vec{e}_3) \notag                 \\
+                               & = \sigma(\vec{e}_1) - \sigma(\vec{e}_2) + \sigma(\vec{e}_3) \notag \\
+                               & = (1, 0) = \vec{\varepsilon}_1 \label{eq:5:A:3:1}
+          \end{align} \\
+          \begin{align}
+              \sigma(1, 1, 1) & = \sigma(\vec{e}_1 + \vec{e}_2 + \vec{e}_3) \notag                 \\
+                              & = \sigma(\vec{e}_1) + \sigma(\vec{e}_2) + \sigma(\vec{e}_3) \notag \\
+                              & = (0, 1) = \vec{\varepsilon}_2 \label{eq:5:A:3:2}
+          \end{align}
+          可取 $ \sigma(\vec{e}_3) = (0, 0) $. 联立\autoref{eq:5:A:3:1} 与\autoref{eq:5:A:3:2} 解得
+          \begin{align*}
+              \sigma(\vec{e}_1) & = \frac{1}{2} (\vec{\varepsilon}_1 + \vec{\varepsilon}_2) \\
+              \sigma(\vec{e}_2) & = \frac{1}{2} (\vec{\varepsilon}_1 - \vec{\varepsilon}_2)
+          \end{align*}
+          因此存在线性映射 $ \sigma : \mathbf{R}^3 \to \mathbf{R}^2 $ 满足题设条件，其关于 $ \mathbf{R}^3 $ 基的像为
+          \begin{align*}
+              \sigma(\vec{e}_1) & = \frac{1}{2} (\vec{\varepsilon}_1 + \vec{\varepsilon}_2) \\
+              \sigma(\vec{e}_2) & = \frac{1}{2} (\vec{\varepsilon}_1 - \vec{\varepsilon}_2) \\
+              \sigma(\vec{e}_3) & = (0, 0)
+          \end{align*}
+
+        \end{answer}
+
         \item 是否存在$\mathbf{R}^2$到$\mathbf{R}^3$的线性映射$\sigma$使得$\sigma(3,2)=(1,0,0)$，$\sigma(1,5)=(1,1,0)$，$\sigma(-1,4)=(1,1,1)$？
 
+        \begin{answer}
+            不存在. 不存在从 $ \mathbf{R}^2 $ 到 $ \mathbf{R}^3 $ 的满射.
+        \end{answer}
         \item 求$\sigma(x_1,x_2,\ldots,x_n)=(x_1,0,\ldots,0)$的像、核与秩.
+        \begin{answer}
+            \[ \sigma(x_1, x_2, \ldots, x_n) = x_1(1, 0, \ldots, 0) \]
+          所以
+          \begin{gather*}
+              \sigma(V) = \spa(\vec{e}_1) \\
+              r(\sigma) = 1
+          \end{gather*}
+          由于 $ \sigma(\vec{e}_1) = \vec{e}_1,\enspace \sigma(\vec{e}_2) = \cdots = \sigma(\vec{e}_n) = \vec{0} $，所以
+          \begin{gather*}
+              \ker \sigma = \spa(\vec{e}_2, \vec{e}_3, \ldots, \vec{e}_n) \\
+              \dim \ker \sigma = n - 1
+          \end{gather*}
+        \end{answer}
 
         \item 证明：同构映射的逆、复合仍然是同构映射.
+        \begin{answer}
+            其逆映射是同构映射是显然的.我们只证明复合映射
+
+            对于两个同构映射 $\sigma: V_1 \to V_2, \tau: V_2 \to V_3$，我们有其核空间
+            $\ker \sigma \tau$,$\tau$是单的，将$0$映射到$0$，$\sigma$也是单的，故$\sigma\tau$是单的，将$0$映射到$0$；
+            $\sigma$是满的，$\tau$也是满的，故$\sigma\tau$是满的，故$\sigma\tau$是双射，是同构映射.
+
+
+            如果从矩阵的角度来理解：
+            同构映射对应的矩阵是可逆矩阵；
+            可逆矩阵的逆矩阵，可逆矩阵的乘积矩阵仍然是可逆矩阵.
+        \end{answer}
 
         \item 证明：\autoref{def:积空间} 中定义的线性空间的积构成一个线性空间.
+        \begin{answer}
+           根据定义一一验证，只需要注意对于每一个位置的加法和数乘都是独立的即可.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
@@ -1107,7 +1212,29 @@
         \end{gather*}
         是否存在$\sigma\in \mathcal{L}(\mathbf{R}^2,\mathbf{R}^2)$，使得$\sigma(\alpha_i)=\beta_i,\enspace i=1,2,3$？
 
+        \begin{answer}
+            不存在. 假设存在，则由 $ \alpha_1 + \alpha_2 + \alpha_3 = \vec{0} $ 有
+          \begin{align*}
+              \sigma(\vec{0}) & = \sigma(\alpha_1 + \alpha_2 + \alpha_3)                 \\
+                              & = \sigma(\alpha_1) + \sigma(\alpha_2) + \sigma(\alpha_3) \\
+                              & = \beta_1 + \beta_2 + \beta_3 = \vec{0}
+          \end{align*}
+          这与 $ \beta_1 + \beta_2 + \beta_3 = (2, 2) $ 矛盾.
+        \end{answer}
+
         \item 设$\alpha_1,\alpha_2$是线性空间$V(\mathbf{F})$的一组基，$x_1\alpha_1+x_2\alpha_2 \in V$. 定义$T(x_1\alpha_1+x_2\alpha_2)=r_1x_1\alpha_1+r_2x_2\alpha_2$，其中$r_1,r_2$是域$\mathbf{F}$中的两个常数. 证明：$T$是$V$上的一个线性变换. 当$V=\mathbf{R}^2$时，说明$T$的几何意义.
+
+        \begin{answer}
+            $ \forall x_1, x_2, y_1, y_2, k_1, k_2 \in \mathbf{F} $，有
+          \begin{align*}
+                  & T(k_1(x_1 \alpha_1 + x_2 \alpha_2) + k_2(y_1 \alpha_1 + y_2 \alpha_2))                \\
+              ={} & r_1(k_1 x_1 + k_2 y_1) \alpha_1 + r_2(k_1 x_2 + k_2 y_2) \alpha_2                     \\
+              ={} & k_1 (r_1 x_1 \alpha_1 + r_2 x_2 \alpha_2) + k_2 (r_1 y_1 \alpha_1 + r_2 y_2 \alpha_2) \\
+              ={} & k_1 T(x_1 \alpha_1 + x_2 \alpha_2) + k_2 T(y_1 \alpha_1 + y_2 \alpha_2)
+          \end{align*}
+          因此 $ T $ 是线性映射. 其几何意义：将 $ \mathbf{R}^2 $ 中向量沿 $ x, y $ 轴分别变为原来的 $ r_1, r_2 $ 倍.
+        \end{answer}
+
 
         \item 已知$\mathbf{R}$上的线性变换$\sigma(x_1,x_2)=(x_1-x_2,x_1+x_2)$，$\tau(x_1,x_2)=(x_1-x_2,x_2-x_1)$.
         \begin{enumerate}
@@ -1117,6 +1244,34 @@
 
             \item 求$\xi\in \mathcal{L}(\mathbf{R}^2,\mathbf{R}^2)$，使得$\xi\tau=\theta$（零变换）.
         \end{enumerate}
+
+        \begin{answer}
+            \begin{enumerate}
+                \item \begin{align*}
+                          \sigma^2(x_1, x_2) & = \sigma(\sigma(x_1, x_2))                               \\
+                                             & = \sigma(x_1 - x_2, x_1 + x_2)                           \\
+                                             & = ((x_1 - x_2) - (x_1 + x_2), (x_1 - x_2) + (x_1 + x_2)) \\
+                                             & = (-2 x_2, 2 x_1)
+                      \end{align*}
+  
+                \item $ \sigma $ 可逆的充分必要条件是存在线性变换 $ \tau $ 使得 $ \sigma \tau = I $. 于是，$ \forall \alpha \in \mathbf{R}^2 $，令 $ (\tau \sigma)(\alpha) = \alpha $，即
+                      \[ (\tau \sigma)(x_1, x_2) = \tau(x_1 - x_2, x_1 + x_2) = \tau(y_1, y_2) = (x_1, x_2) \]
+                      解得
+                      \begin{gather*}
+                          x_1 = \frac{y_1 + y_2}{2} \\
+                          x_2 = \frac{y_1 - y_2}{2}
+                      \end{gather*}
+                      所以
+                      \[ \tau(x_1, x_2) = \sigma^{-1}(x_1, x_2) = \left(\frac{x_1 + x_2}{2}, \frac{x_1 - x_2}{2}\right) \]
+  
+                \item 当 $ \xi = \theta $ 时，显然满足 $ \xi \tau = \theta $. 当 $ \xi \neq \theta $ 时，
+                      \[ \xi \tau(x_1, x_2) = \xi(x_1 - x_2, x_2 - x_1) = (0, 0) \]
+                      记 $ y_1 = x_1 - x_2,\enspace y_2 = x_2 - x_1 $. 由于 $ y_1 + y_2 = 0 $，
+                      \[ \tau(y_1, y_2) = (y_1 + y_2, y_1 + y_2) \]
+                      即 $ \tau(x_1, x_2) = (x_1 + x_2, x_1 + x_2) $ 满足 $ \xi \tau = \theta $.
+            \end{enumerate}
+  
+        \end{answer}
 
         \item 已知$\mathbf{R}^3$上的两个线性变换$\sigma,\tau$为：
         \begin{gather*}
@@ -1130,9 +1285,66 @@
 
             \item 求$\im\tau+\ker\tau$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item \begin{align*}
+                          r(\theta)   & = 1                          \\
+                          r(\tau)     & = 2                          \\
+                          \im \theta  & = \spa(\vec{e}_1)            \\
+                          \ker \theta & = \spa(\vec{e}_1, \vec{e}_2)
+                      \end{align*}
+  
+                \item \begin{gather*}
+                          (\sigma \tau)(x_1, x_2, x_3) = \sigma(x_1 + x_2 + x_3, x_1 - x_2, 0) = (0, 0, 0) \\
+                          r(\sigma \tau) = 0
+                      \end{gather*}
+                      \begin{gather*}
+                          (\tau \sigma)(x_1, x_2, x_3) = \tau(x_3, 0, 0) = (x_3, x_3, 0) \\
+                          \tau \sigma \neq \theta = \sigma \tau
+                      \end{gather*}
+                      求 $ r(\tau \sigma) $，方法 1：
+                      \begin{gather*}
+                          (\tau \sigma)(V) = \spa((1, 1, 0)) \\
+                          r(\tau \sigma) = 1
+                      \end{gather*}
+                      方法 2：由 $ \tau \sigma \neq \theta $ 知
+                      \[ 1 \leqslant r(\tau \sigma) \leqslant \min\{r(\tau), r(\sigma)\} = 1 \]
+                      因此 $ r(\tau \sigma) = 1 $.
+  
+                      \begin{gather*}
+                          \begin{aligned}
+                              (\sigma + \tau)(x_1, x_2, x_3) & = \sigma(x_1, x_2, x_3) + \tau(x_1, x_2, x_3) \\
+                                                             & = (x_1 + x_2 + 2 x_3, x_1 - x_2, 0)           \\
+                                                             & = x_1(1, 1, 0) + x_2(1, -1, 0) + x_3(2, 0, 0)
+                          \end{aligned} \\
+                          r(\sigma + \tau) = r\{(1, 1, 0), (1, -1, 0), (2, 0, 0)\} = 2
+                      \end{gather*}
+  
+                \item \begin{gather*}
+                          \begin{aligned}
+                              \im \tau & = \spa((1, 1, 0), (1, -1, 0), (2, 0, 0)) \\
+                                       & = \spa((1, 1, 0), (1, -1, 0))
+                          \end{aligned} \\
+                          \ker \tau = \spa((1, 1, -2))
+                      \end{gather*}
+                      可得
+                      \[ \im \tau + \ker \tau = \spa((1, 1, 0), (1, -1, 0), (1, 1, -2)) = \mathbf{R}^3 \]
+            \end{enumerate}
+        \end{answer}
 
         \item 设 $\sigma$ 是线性空间 $V$ 上的线性变换，如果 $\sigma^{k-1}(\alpha) \neq 0$，但 $\sigma^{k}(\alpha) = 0$，证明：\\
         $\alpha,\sigma(\alpha),\ldots,\sigma^{k-1}(\alpha)\enspace(k>0)$ 线性无关（本题还有对应的矩阵版本，解法基本一致）.
+
+        \begin{answer}
+            使用反证法. 假设 $ \alpha, \sigma(\alpha), \ldots, \sigma^{k - 1}(\alpha) $ 线性相关，则存在不全为 0 的 $ l_0, l_1, \ldots, l_{k - 1} $ 使得
+          \[ l_0 \alpha + l_1 \sigma(\alpha) + \cdots + l_{k - 1} \sigma^{k - 1}(\alpha) = \vec{0} \]
+          记 $ i = \min\{k \mid l_k \neq 0\} $，则
+          \[ l_i \sigma^{i}(\alpha) + l_{i + 1} \sigma^{i + 1}(\alpha) + \cdots + l_{k - 1} \sigma^{k - 1}(\alpha) = \vec{0} \]
+          两边同时作用 $ \sigma^{k - i - 1} $. 由于 $ \sigma^{k}(\alpha) = \vec{0} $，故 $ \sigma^{k + 1}(\alpha) = \sigma^{k + 2}(\alpha) = \cdots = \vec{0} $，上式成为
+          \[ l_i \sigma^{k - 1}(\alpha) = \vec{0} \]
+          而 $ l_i \neq 0,\enspace \sigma^{k - 1}(\alpha) \neq \vec{0} $，矛盾！
+
+        \end{answer}
 
         \item 设$\mathbf{R}[x]_3$是次数小于3的实系数多项式和全体零多项式一起组成的集合关于多项式加法和数乘多项式运算构成的实数域上的线性空间.
         \begin{enumerate}
@@ -1142,6 +1354,15 @@
 
             \item 设$f,g,h \in \mathbf{R}[x]_3$且$f(1)=g(1)=h(1)=0$，证明：$f,g,h$线性相关.
         \end{enumerate}
+        \begin{answer}
+        \begin{enumerate}
+        \item 证明略,根据定义直接套即可
+        设$$f(x)=ax^2+bx+c,f(1)=0\Rightarrow a+b+c=0$$解得$$(a,b,c)=k_1(1,0,-1)+k_2(0,1,-1)$$\\
+        故$$W=\spa \{x^2-1,x-1\},\dim W=2$$.
+        \item 证明仍然是根据线性映射的定义验证即可，此处略去；$\ker T$即为第一问的W,$\im T$=$\spa\{1\}$.
+        \item 由于二维线性空间任意三个向量线性相关，$f,g,h \in W$ 故线性相关.
+        \end{enumerate}
+        \end{answer}
 
         \item 设$\sigma(p(x))=p'(x)$（求导），$\forall p(x) \in \mathbf{R}[x]_n$.
         \begin{enumerate}
@@ -1153,6 +1374,33 @@
 
             \item 求$r(\sigma)+\dim\ker\sigma$，问：$\mathbf{R}[x]_n=\ker\sigma+\im \sigma$是否成立.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 证明：$ \forall p_1(x), p_2(x) \in \mathbf{R}[x]_n,\enspace \forall k_1, k_2 \in \mathbf{R} $，有
+                      \begin{align*}
+                          \sigma(k_1 p_1 + k_2 p_2) & = (k_1 p_1(x) + k_2 p_2(x))'                                    \\
+                                                    & = k_1 p_1'(x) + k_2 p_2'(x) = k_1 \sigma(p_1) + k_2 \sigma(p_2)
+                      \end{align*}
+                      因此 $ \sigma $ 是 $ \mathbf{R}[x]_n $ 上的线性变换.
+        
+                \item \begin{gather*}
+                          \begin{aligned}
+                              \im \sigma & = \spa(\sigma(1), \sigma(x), \sigma(x^2), \ldots, \sigma(x^{n - 1})) \\
+                                         & = \spa(1, 2x, \ldots, (n - 1) x^{n - 2})                             \\
+                                         & = \spa(1, x, \ldots, x^{n - 2})
+                          \end{aligned} \\
+                          r(\sigma) = n - 1
+                      \end{gather*}
+                      可知 $ \sigma $ 不是单射，因此不可逆.
+        
+                \item 由 $ \sigma(p(x)) = 0 $ 可知 $ p(x) = c $（常数）. 因此 $ \ker \sigma = \spa(1),\enspace \dim \ker \sigma = 1 $.
+        
+                \item \begin{gather*}
+                          r(\sigma) + \dim \ker \sigma = (n - 1) + 1 = n \\
+                          \im \sigma + \ker \sigma = \spa(1, x, \ldots, x^{n - 2}) = \im \sigma \neq \mathbf{R}[x]_n
+                      \end{gather*}
+            \end{enumerate}
+        \end{answer}
 
         \item 设$V$为有限维线性空间，$T\in \mathcal{L}(V,V)$且$T$不是恒等变换也不是零变换，问：下列情况是否可能发生？如果可能请举例，不可能请说明理由.
         \begin{enumerate}
@@ -1165,6 +1413,36 @@
             \item $\ker T \subseteq \im T$.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item 可能. 例如 $ \sigma(x, y) = (x + y, x + y) $.
+                      \begin{gather*}
+                          \im \sigma = \spa(\vec{e}_1 + \vec{e}_2) \\
+                          \ker \sigma = \spa(\vec{e}_1 - \vec{e}_2) \\
+                          \im \sigma \cap \ker \sigma = \{\vec{0}\}
+                      \end{gather*}
+        
+                \item 可能. 例如 $ \sigma(x, y, z) = (x - y, x - y, x - y) $.
+                      \begin{gather*}
+                          \im \sigma = \spa((1, 1, 1)) \\
+                          \ker \sigma = \spa((1, 1, 1), (1, 1, 0)) \\
+                          \im \sigma \subseteq \ker \sigma
+                      \end{gather*}
+        
+                \item 可能. 例如 $ \sigma(x, y) = (x - y, x - y) $.
+                      \begin{gather*}
+                          \im \sigma = \ker \sigma = \spa((1, 1))
+                      \end{gather*}
+        
+                \item 可能. 例如 $ \sigma(x, y) = (x, x - y) $.
+                      \begin{gather*}
+                          \im \sigma = \mathbf{R}^2 \\
+                          \ker \sigma = \{\vec{0}\} \\
+                          \ker \sigma \subseteq \im \sigma
+                      \end{gather*}
+            \end{enumerate}
+        \end{answer}
+
         \item 若$\sigma_1,\sigma_2\in \mathcal{L}(V,V)$，判断下列说法是否正确，正确请给出证明，反之给出反例：
         \begin{enumerate}
             \item 由$r(\sigma)+\dim\ker\sigma=n$可知$V=\ker\sigma+\im \sigma$；
@@ -1176,6 +1454,35 @@
             \item $(I-\sigma)(V)+\sigma(V)=V$，其中$I$为恒等映射.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item 错误. 一个反例为 $ \sigma(x_1, x_2) = (x_1 - x_2, x_1 - x_2) $，则 $ \im \sigma + \ker \sigma = \spa((1, 1)) $.
+        
+                \item 正确. $ \im \sigma + \ker \sigma \subseteq V $，此时 $ \dim(\im \sigma + \ker \sigma) = \dim \im \sigma + \dim \ker \sigma - 0 = \dim V $，所以 $ \im \sigma + \ker \sigma = V $.
+        
+                \item \label{item:6:B:2:3}
+                      错误. $ \forall \alpha \in V $ 有
+                      \[ (\sigma_1 + \sigma_2)(\alpha) = \sigma_1(\alpha) + \sigma_2(\alpha) \in \sigma_1(V) + \sigma_2(V) \]
+                      所以
+                      \[ (\sigma_1 + \sigma_2)(V) \subseteq \sigma_1(V) + \sigma_2(V) \]
+                      但上式中等号不一定成立. 反例：$ V = \mathbf{R}^3 $ 上的线性变换 $ \sigma_1, \sigma_2 $ 关于 $ \mathbf{R}^3 $ 的基 $ \vec{e}_1, \vec{e}_2, \vec{e}_3 $ 的像分别为
+                      \begin{gather*}
+                          \sigma_1(\vec{e}_1) = \vec{e}_1,\enspace \sigma_1(\vec{e}_2) = \sigma_1(\vec{e}_3) = \vec{e}_2 \\
+                          \sigma_2(\vec{e}_1) = \vec{e}_1,\enspace \sigma_2(\vec{e}_2) = \sigma_2(\vec{e}_3) = \vec{e}_3 \\
+                          \sigma_1(V) = \spa(\vec{e}_1, \vec{e}_2),\enspace \sigma_2(V) = \spa(\vec{e}_1, \vec{e}_3) \\
+                          \sigma_1(V) + \sigma_2(V) = \spa(\vec{e}_1, \vec{e}_2, \vec{e}_3) = \mathbf{R}^3
+                      \end{gather*}
+                      而
+                      \begin{gather*}
+                          (\sigma_1 + \sigma_2)(\vec{e}_1) = \vec{e}_1 + \vec{e}_1 = 2 \vec{e}_1 \\
+                          (\sigma_1 + \sigma_2)(\vec{e}_2) = (\sigma_1 + \sigma_2)(\vec{e}_3) = \vec{e}_2 + \vec{e}_3 \\
+                          (\sigma_1 + \sigma_2)(V) = \spa(\vec{e}_1, \vec{e}_2 + \vec{e}_3) \neq \mathbf{R}^3
+                      \end{gather*}
+        
+                \item 错误. $ (I - \sigma)(V) + \sigma(V) \subseteq V $，等号不一定成立，原因同 \ref*{item:6:B:2:3}，此时只需将 $ I - \sigma $ 视作 $ \sigma_1 $，将 $ \sigma $ 视作 $ \sigma_2 $.
+            \end{enumerate}
+        \end{answer}
+
         \item 设$V(\mathbf{R})$是线性空间，$\sigma$是$V(\mathbf{R})$到$\mathbf{R}^3$的同构映射，且$\sigma(\alpha_1)=(1,0,1),\enspace\allowbreak\sigma(\alpha_2)=(-2,1,0),\enspace\allowbreak\sigma(\alpha_3)=(-3,2,1),\enspace\allowbreak\sigma(\alpha_4)=(1,1,2)$.
         \begin{enumerate}
             \item $\alpha_1$在$\spa(\alpha_2,\alpha_3)$中吗？
@@ -1183,12 +1490,88 @@
             \item 设$W_1=\spa(\alpha_1,\alpha_2),\enspace W_2=\spa(\alpha_3,\alpha_4)$，求$W_1\cap W_2$.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item 在. 因为
+                      \[ \sigma(\alpha_1) = -2 \sigma(\sigma_2) + \sigma(\alpha_3) = \sigma(-2 \alpha_2 + \alpha_3) \]
+                      同构映射 $ \sigma $ 可逆. 所以
+                      \[ \alpha_1 = -2 \alpha_2 + \alpha_3 \in \spa(\alpha_2, \alpha_3) \]
+                \item 对于注意力惊人的同学，直接观察当然可得答案；如果没什么思路，我们可以先从定义入手;
+                由于同构是将基映射到基的，我们可以将对于$\alpha$的操作看做对于其像的操作，为了方便，在这里直接用 $a$ 来代替$\alpha$的像，若 $\beta \in W_1\cap W_2$，则
+                \[ \beta = x_1 a_1+x_2 a_2=x'_3 a_3+x'_4 a_4 \implies  x_1 a_1+x_2 a_2-x'_3 a_3-x'_4 a_4 = 0 \]
+                改写$x'_3,x'_4$为$x_3,x_4$，则转换为
+                \[ x_1 a_1+x_2 a_2+x_3 a_3+x_4 a_4 = 0 \]
+                对应的系数矩阵为
+                \[ \begin{pmatrix}
+                    1 & -2 & -3 & 1 \\
+                    0 & 1 & 2 & 1\\
+                    1 & 0 & 1 & 2
+                \end{pmatrix} \]
+                四个未知数，三个方程，解得其基础解系为
+                \[ \begin{pmatrix}
+                    -1 \\
+                    -2 \\
+                    1 \\
+                    0
+                \end{pmatrix} \]
+
+                故$\beta = k(-a_1+-2a_2=-a_3)$其中$k\in \mathbf{R}$.故所求交空间的基为$\alpha_3$(注意要对应回$V(R)$中)
+            \end{enumerate}
+        \end{answer}
+
         \item 设$c_1,c_2,\ldots,c_n$是$n$个互异的实常数. 证明：$\mathbf{R}[x]_n$到$\mathbf{R}$的一个映射$\sigma$：
         \[\sigma(p(x))=(p(c_1),p(c_2),\ldots,p(c_n))\]
         是$\mathbf{R}[x]_n$到$\mathbf{R}$的一个同构映射.
+        \begin{answer}
+            我们仅对 $ n = 3 $ 的情况给出证明. % TODO P117/7
+
+          先证 $ \sigma $ 是线性映射. $ \forall p(x), q(x) \in \mathbf{R}[x]_3,\enspace \forall k_1, k_2 \in \mathbf{R} $ 有
+          \begin{align*}
+                  & \sigma(k_1 p(x) + k_2 q(x))                                                 \\
+              ={} & (k_1 p(c_1) + k_2 q(c_1), k_1 p(c_2) + k_2 q(c_2), k_1 p(c_3) + k_2 q(c_3)) \\
+              ={} & k_1(p(c_1), p(c_2), p(c_3)) + k_1(q(c_1), q(c_2), q(c_3))                   \\
+              ={} & k_1 \sigma(p(x)) + k_2 \sigma(q(x))
+          \end{align*}
+
+          再证 $ \sigma $ 是双射，即 $ \forall (d_1, d_2, d_3) \in \mathbf{R}^3 $，存在唯一的
+          \[ p(x) = a + bx + cx^2 \in \mathbf{R}[x]_3 \]
+          使 $ \sigma(p(x)) = (d_1, d_2, d_3) $. 根据
+          \[ \sigma(p(x)) = (p(c_1), p(c_2), p(c_3)) \]
+          以及 $ \sigma(p(x)) = (d_1, d_2, d_3) $，有
+          \[ \begin{cases}
+                  a + bc_1 + cc_1^2 = d_1 \\
+                  a + bc_2 + cc_2^2 = d_2 \\
+                  a + bc_3 + cc_3^3 = d_3
+              \end{cases} \]
+          方程组是关于未知元 $ a, b, c $ 的三元线性非齐次方程组，其中 $ c_1, c_2, c_3 $ 是互异的实常数. 用高斯消元法，易将其增广矩阵变换为下列阶梯形矩阵，即
+          \begin{align} % TODO 增广矩阵
+                             & \begin{pmatrix}
+                                   1 & c_1 & c_1^2 & \Bigm| & d_1 \\
+                                   1 & c_2 & c_2^2 & \Bigm| & d_2 \\
+                                   1 & c_3 & c_3^3 & \Bigm| & d_3
+                               \end{pmatrix} \notag                                                                    \\
+              \implies \quad & \begin{pmatrix}
+                                   1 & c_1 & c_1^2     & \Bigm| & d_1                                                         \\[1ex]
+                                   0 & 1   & c_2 + c_1 & \Bigm| & \dfrac{d_1 - d_2}{c_1 - c_2}                                \\[2ex]
+                                   0 & 0   & c_3 - c_2 & \Bigm| & \dfrac{d_3 - d_1}{c_3 - c_1} - \dfrac{d_2 - d_1}{c_2 - c_1}
+                               \end{pmatrix} \label{item:6:B:6:1}
+          \end{align}
+          阶梯性矩阵 \ref*{item:6:B:6:1}（其中 $ c_3 - c_2, c_3 - c_1, c_2 - c_1 $ 均为非零常数）对应的方程组有唯一解 $ a, b, c $，即存在唯一的
+          \[ p(x) = a + bx + cx^2 \in \mathbf{R}[x]_3 \]
+          使得 $ \sigma(p(x)) = (d_1, d_2, d_3) $ 成立. 所以 $ \sigma $ 是线性双射，即 $ \mathbf{R}[x]_3 $ 到 $ \mathbf{R}^3 $ 的同构映射.
+        \end{answer}
 
         \item 设$\sigma$和$\tau$分别为有限维线性空间$U\to V$和$V\to W$的线性映射，证明
-        \[\dim\ker\sigma+\dim(\im\sigma\cap\ker\sigma)=\dim\ker(\tau\sigma).\]
+        \[\dim\ker\sigma+\dim(\im\sigma\cap\ker\tau)=\dim\ker(\tau\sigma).\]
+        
+        \begin{answer}
+            我们先观察等式的右边，在 $\ker \tau \sigma$中的元素 $u$,会满足 $\tau \sigma (u) = 0 $,仔细想想什么元素会满足这个式子
+            \begin{itemize}
+                \item $\sigma(u)=0$的元素，亦即$u\in \ker \sigma$；
+                \item $v=\sigma(u)\neq 0$，但是$\tau(v)=0$的元素，亦即$v\in \im \sigma \cap \ker \tau$.
+            \end{itemize}
+            这恰好对应左边的两项，所以等式显然是成立的.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
@@ -1198,19 +1581,95 @@
 
             \item $\sigma$ 可逆$\iff$有一常数项不为 0 的多项式 $p(x)$ 使 $p(\sigma) = \theta$.
         \end{enumerate}
-
+        \begin{answer}
+            \begin{enumerate}
+                \item \label{item:5:C:1:1}
+                      $ \mathcal{L}(V, V) $ 是 $ n^2 $ 维线性空间，其中 $ n^2 + 1 $ 个元素 $ I, \sigma, \sigma^2, \ldots, \sigma^{n^2} $ 线性相关，即 $ \exists a_i\enspace (i = 1, 2, \ldots, n^2) $ 使得
+                      \[ a_0 I + a_1 \sigma + \ldots + a_{n^2} \sigma^{n^2} = \theta \]
+                      于是 $ \exists p(x) = a_0 + a_1 x + \ldots + a_{n^2} x^{n^2} \in \mathbf{F}[x] $ 使得 $ p(\sigma) = \theta $.
+  
+                \item 必要性：设有一常数项不为 0 的多项式
+                      \[ p(x) = a_0 + a_1 x + \cdots + a_k x^k \qquad a_0 \neq 0 \]
+                      满足
+                      \[ p(\sigma) = a_0 I + a_1 \sigma + \cdots + a_k \sigma^k = \theta \]
+                      所以
+                      \[ \sigma(a_1 I + a_2 \sigma + \cdots + a_k \sigma^{k - 1}) = -a_0 I \]
+                      因此
+                      \[ \sigma^{-1} = -a_0^{-1} (a_1 I + a_2 \sigma + \cdots + a_k \sigma^{k - 1}) \]
+  
+                      充分性：由 \ref*{item:5:C:1:1} 可知存在次数 $ k \leqslant n^2 $ 的多项式
+                      \[ p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_k x^k \]
+                      满足
+                      \[ p(\sigma) = a_0 I + a_1 \sigma + \cdots + a_k \sigma^k = \theta \]
+                      若 $ a_0 \neq 0 $，则 $ p(x) $ 即为所求多项式.
+  
+                      若 $ a_0 = a_1 = \cdots = a_{i - 1} = 0,\enspace a_i \neq 0 $，即
+                      \[ a_i I + a_{i + 1} \sigma + \cdots + a_k \sigma^{k - i} = \theta \]
+                      于是
+                      \[ P(x) = a_i + a_{i + 1} x + \cdots + a_k x^{k - i} \qquad a_i \neq 0 \]
+                      为所求的多项式.
+            \end{enumerate}
+        \end{answer} 
         \item 已知$\sigma_1,\sigma_2,\ldots,\sigma_s$是线性空间$V$上的$s$个两两不同的线性变换，证明：在$V$中必存在向量$\alpha$使得$\sigma_1(\alpha),\sigma_2(\alpha),\ldots,\sigma_s(\alpha)$也两两不同.
-
+        \begin{answer}
+            $\alpha \in V$使得$\sigma_i(\alpha) \neq \sigma_j(\alpha)$当且仅当$\alpha \notin \ker(\sigma_i - \sigma_j)$,我们可以只考虑该核空间不是零空间的情况，因为我们所取出的$\alpha$显然不可能是零，
+            又因为我们的线性映射是两两不相同的，所以该核空间一定是一个真子空间，对于$m$个非平凡子空间，我们总可以取到一个不属于任意一个这些子空间的向量(相关的习题在第四章A组第5题已经给出)\autoref{eg:4:A:5}，这样我们就找到了所需要的$\alpha$        
+        \end{answer} 
         \item 设$V$是一个$n$维线性空间，$V=W_1\oplus W_2,\enspace\sigma\in \mathcal{L}(V,V)$. 证明：$\sigma$可逆$\iff V=\sigma(W_1)+\sigma(W_2)$.
+        \begin{answer}
+            证明：必要性：$ \forall \alpha \in V $，由 $ \sigma $ 可逆，存在唯一的 $ \beta \in V $ 使得 $ \sigma(\beta) = \alpha $ 且 $ \beta = \beta_1 + \beta_2 $，其中 $ \beta_1 \in W_1 $，$ \beta_2 \in W_2 $. 于是
+          \[ \alpha = \sigma(\beta) = \sigma(\beta_1) + \sigma(\beta_2) \in \sigma(W_1) + \sigma(W_2) \]
+          所以 $ V \subseteq \sigma(W_1) + \sigma(W_2) $.
 
+          $ \sigma(W_1), \sigma(W_2) $ 都是 $ V $ 的子空间，它们的和也是 $ V $ 的子空间. 所以 $ \sigma(W_1) + \sigma(W_2) \subseteq V $，故 $ V = \sigma(W_1) + \sigma(W_2) $.
+
+          充分性：$ \forall \alpha \in V = \sigma(W_1) + \sigma(W_2) $，$ \exists \alpha_i \in \sigma(W_i) $ 且 $ \exists \beta_i \in W_i $ 使 $ \alpha_i = \sigma(\beta_i) $（$ i = 1, 2 $）使得
+          \[ \alpha = \alpha_1 + \alpha_2 = \sigma(\beta_1) + \sigma(\beta_2) = \sigma(\beta_1 + \beta_2) = \sigma(\beta) \]
+          其中 $ \beta = \beta_1 + \beta_2 \in W_1 + W_2 = V $，所以 $ \sigma $ 为满射.
+
+          由于 $ n $ 维线性空间上的线性映射为满射时也必为单射，从而必是双射，所以 $ \sigma $ 可逆.
+        \end{answer}
         \item 设$V_1,V_2,V_3$分别为$m,n,s$维线性空间，$\sigma\in \mathcal{L}(V_1,V_2),\enspace\tau\in \mathcal{L}(V_2,V_3)$，则
         \[r(\sigma)+r(\tau)-n \leqslant r(\tau\sigma) \leqslant \min\{r(\sigma),r(\tau)\}.\]
+        \begin{answer}
+            证明：先证右边. 由于 $ \sigma(V_1) \subseteq V_2 $，所以 $ (\tau \sigma)(V_1) \subseteq \tau(V_2) $，如下图所示. 因此
+          \[ \dim(\tau \sigma)(V_1) \leqslant \dim \tau(V_2) \]
+          即 $ r(\tau \sigma) \leqslant r(\tau) $.
+          \begin{figure}[H]
+              \centering
+              \includegraphics[scale=.5]{figs/5C.4.1.jpg}
+          \end{figure}
+          又因为 $ (\tau \sigma)(V_1) = \tau(\sigma(V_1)) $，所以又有
+          \[ \dim(\tau \sigma)(V_1) \leqslant \dim \sigma(V_1) \]
+          即 $ r(\tau \sigma) \leqslant r(\sigma) $.
+
+          再证左边. 由线性映射维数公式，
+          \begin{gather*}
+              r(\tau) + \dim \ker \tau = n \\
+              r(\tau \sigma) + \dim \ker(\tau \sigma) = m
+          \end{gather*}
+          又 $ \dim \ker(\tau \sigma) \leqslant \dim \ker \tau $，所以
+          \[ m - r(\tau \sigma) = \dim \ker(\tau \sigma) \leqslant \dim \ker \tau \]
+          代入线性映射维数公式，得 $ \dim \ker \tau = n - r(\tau) \geqslant m - r(\sigma) $，即
+          \begin{align*}
+              r(\tau \sigma) & \geqslant m + r(\tau) - n         \\
+                             & \geqslant r(\sigma) + r(\tau) - n
+          \end{align*}
+        \end{answer}
 
         \item 设$V_1$是有限维线性空间，$\sigma,\tau\in \mathcal{L}(V_1,V_2)$，则
         \[r(\sigma+\tau) \leqslant r(\sigma)+r(\tau).\]
 
         事实上前两题的结论在后续章节矩阵的秩中都会涉及，此处有兴趣的同学可以尝试从线性映射的角度理解这两个秩不等式. 如果无法找到合适方式，可以考虑化为矩阵进行证明.
-
+        \begin{answer}
+            证明：由于 $ \forall \beta \in (\sigma + \tau)(V_1),\enspace \exists \alpha \in V_1 $ 使 $ \beta = (\sigma + \tau)(\alpha) = \sigma(\alpha) + \tau(\alpha) \in \sigma(V_1) + \tau(V_1) $，所以
+          \[ (\sigma + \tau)(V_1) \subseteq \sigma(V_1) + \tau(V_1) \]
+          因此
+          \begin{align*}
+              \dim(\sigma + \tau)(V_1) & \leqslant \dim(\sigma(V_1) + \tau(V_1))     \\
+                                       & \leqslant \dim \sigma(V_1) + \dim \tau(V_1)
+          \end{align*}
+        \end{answer}
         \item 设$\sigma\in \mathcal{L}(V,V)$，$\dim V_1=n$，且$\sigma^2=\sigma$，$I$是$V$上的恒等变换. 证明：
         \begin{enumerate}
             \item $(I-\sigma)(V) \in \ker\sigma$；
@@ -1218,11 +1677,45 @@
             \item $r(I-\sigma)+r(\sigma)=n$.
         \end{enumerate}
 
+        \begin{answer}
+            \begin{enumerate}
+                \item \label{item:5:C:6:1}
+                      $ \forall \sigma \in \mathcal{L}(V, V) $，则 $ I - \sigma \in \mathcal{L}(V, V) $. $ \forall \alpha \in (I - \sigma)(V),\enspace \exists \beta \in V $，有
+                      \begin{gather*}
+                          \alpha = (I - \sigma)(\beta) = \beta - \sigma(\beta) \\
+                          \sigma(\alpha) = \sigma(\beta - \sigma(\beta)) = \sigma(\beta) - \sigma^2(\beta)
+                      \end{gather*}
+                      而由于 $ \sigma^2 = \sigma $，所以 $ \sigma(\alpha) = \vec{0} $，于是 $ \alpha \in \ker \sigma $，因此 $ (I - \sigma)(V) \subseteq \ker \sigma $.
+  
+                \item 利用 $ r(\sigma + \tau) \leqslant r(\sigma) + r(\tau) $ 和 $ r(\sigma) + \dim \ker \sigma = n $，由 \ref*{item:6:C:4:1} 可得
+                      \begin{equation} \label{eq:5:C:6:2:1}
+                          r(I - \sigma) + r(\sigma) \leqslant n
+                      \end{equation}
+                      又因为
+                      \begin{equation} \label{eq:5:C:6:2:2}
+                          r(I - \sigma) + r(\sigma) \geqslant r(I - \sigma + \sigma) = r(I) = n
+                      \end{equation}
+                      于是由\autoref{eq:5:C:6:2:1} 和\autoref{eq:5:C:6:2:2} 即可得到 $ r(I - \sigma) + r(\sigma) = n $.
+            \end{enumerate}
+        \end{answer}
+            
+
         \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\sigma^2=\theta$（零映射）. 证明：
         \begin{enumerate}
             \item $\sigma$的像空间维数不超过$\dfrac{n}{2}$；
 
             \item 设$A$是$\sigma$在某组基下的矩阵，则方程组$AX=0$的基础解系至少有$\dfrac{n}{2}$个解.
         \end{enumerate}
+        \begin{answer}
+            证明：\begin{enumerate}
+                \item \label{item:5:C:7:1}
+                      $ \forall \alpha \in \im \sigma,\enspace \exists \beta \in V $ 使得 $ \sigma(\beta) = \alpha $. 由 $ \sigma^2 = \theta $ 可得 $ \sigma(\alpha) = \sigma^2(\beta) = \vec{0} $，因此 $ \alpha \in \ker \sigma $，从而 $ \im \sigma \subseteq \ker \sigma $. 于是我们得到
+                      \[ n = \dim \im \sigma + \dim \ker \sigma \geqslant 2 \dim \im \sigma \]
+                      即 $ \dim \im \sigma \leqslant \dfrac{n}{2} $.
+  
+                \item 由 \ref*{item:5:C:7:1} 可知，方程组 $ AX = \vec{0} $ 的基础解系含有 $ n - r(A) = \dim \ker \sigma \geqslant \dfrac{n}{2} $ 个解向量，所以结论成立.
+            \end{enumerate}
+  
+        \end{answer}
     \end{exgroup}
 \end{exercise}

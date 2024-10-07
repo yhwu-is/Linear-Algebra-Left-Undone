@@ -20,7 +20,7 @@
 
 在上述定理中，线性变换在一组基下矩阵表示为对角矩阵，这样的线性变换我们称其为可对角化的，我们将这一定义严谨写下：
 \begin{definition}{}{}
-    设$\sigma\in\mathcal{L}(V)$，如果存在$V$的一组基使得$\sigma$在这组基下的矩阵是对角矩阵，则称$\sigma$可对角化
+    设$\sigma\in\mathcal{L}(V)$，如果存在$V$的一组基使得$\sigma$在这组基下的矩阵是对角矩阵，则称$\sigma$可对角化.
 \end{definition}
 
 在上述定理的证明中我们可以直接观察到，如果一个线性变换可对角化，那么对应于对角矩阵的基中每一个向量必然是特征向量，因此我们很容易想到可对角化的下一个等价条件就是线性变换有一组由特征向量构成的基. 当然这只是一个观察，基于这一观察我们可以进一步扩展，得到下面这一关于线性变换可对角化等价条件的核心定理：
@@ -409,7 +409,9 @@
     设$\sigma\in\mathcal{L}(V)$，设$n=\dim V$，则$V=\ker \sigma^n\oplus \im \sigma^n$.
 \end{theorem}
 \begin{proof}
+    设 $v \in \ker \sigma^n \cap \im \sigma^n$，则$\exists u \in V$，使得$是v=\sigma^n(u)$，从而$u \in \ker \sigma^{2n}$，进而$u \in \ker \sigma^{n}$， $v=\sigma^n(u)=0$，这表明$\ker \sigma^n \cap \im \sigma^n=\{0\}$.
 
+    结合$\dim \ker\sigma^n+\dim \im\sigma^n=n=\dim V$可知$V=\ker\sigma^n\oplus\im\sigma^n$.
 \end{proof}
 
 因此，如果我们考虑$\ker(\sigma-\lambda I)^n$，其中$n$是$\sigma$对应线性空间的维数，那么我们可以获得比特征子空间更大的核空间，这样扩张后的核空间的直和是否可以张成整个原空间呢？我们可以提前给出答案：可以，这便是我们下一小节中要证明的主要定理，在此之前，我们需要首先给这一扩张后的特征子空间一个新的名字.
@@ -502,7 +504,22 @@
 \end{example}
 
 \begin{solution}
+    $\sigma$在$\mathcal{L}(\mathbf{C}^3)$的自然基下的矩阵是
+    \[ \begin{pmatrix}
+        6 & 3 & 4 \\
+        0 & 6 & 2 \\
+        0 & 0 & 7
+    \end{pmatrix} \]
+    $\sigma$的特征值为$\lambda_1=6,\lambda_2=7$.
 
+    解方程可以得到两个广义特征子空间$G(\lambda_1,\sigma)=\spa((1,0,0),(0,\dfrac{1}{3},0))$，$G(\lambda_2,\sigma)=\spa((0,2,1))$.
+
+    取$\alpha_1=(1,0,0),\alpha_2=\dfrac{1}{3},\alpha_3=(0,2,1)$，则$\sigma$在基$\{\alpha_1,\alpha_2,\alpha_3\}$下有分块对角矩阵
+    \[ \begin{pmatrix}
+        6 & 1 & 0 \\
+        0 & 6 & 0 \\
+        0 & 0 & 7
+    \end{pmatrix} \]
 \end{solution}
 
 事实上，读者会发现虽然整体思路是很简单的，但是中间求解广义特征子空间的过程还是存在一定的困难. 因为当$\dim V$较大时，$G(\lambda,\sigma)=\ker (\sigma-\lambda I)^{\dim V}$的求解需要反复计算幂次，是比较复杂的；而如果根据核空间停止增长的性质不断提升矩阵的幂次，直到得到的广义特征子空间不再发生改变就能够停止计算也是一种可行的思路，只是每次算出一个幂次后都要判断线性变换或矩阵的秩是否下降. 在之后的章节中我们会通过多项式的理论来降低$\ker (\sigma-\lambda I)^{\dim V}$所需的幂次.
@@ -542,7 +559,12 @@
 \end{theorem}
 定理的证明实际上只需要计算验证即可，非常简单：
 \begin{proof}
+$1 \implies 2$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵$A=(a_{ij})_{n\times n}$是上三角的，即$a_{ij}=0,\forall i>j$. 则对于$\forall j \in \{1,\ldots,n\}$，有$\sigma(v_j)=\displaystyle\sum_{i=1}^{n}a_{ij}v_i=\displaystyle\sum_{i=1}^{j}a_{ij}v_i\in  \spa(v_1,\ldots,v_n)$.
 
+$2 \implies 3$：对$\forall v=\displaystyle\sum_{i=1}^{j}a_iv_i \in \spa(v_1,\ldots,v_j)$，有$\sigma(v)=\sigma(\displaystyle\sum_{i=1}^{j}a_iv_i)=\displaystyle\sum_{i=1}^{j}a_i\sigma(v_i)$.
+由2知对于$\forall i \in \{1,\ldots,j\}$，有$\sigma(v_i) \in \spa(v_1,\ldots,v_i) \subseteq \spa(v_1,\ldots,v_j)$，从而知$\sigma(v) \in \spa(v_1,\ldots,v_j)$，$\spa(v_1,\ldots,v_j)$在$\sigma$下不变.
+
+$3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\times n}$对于$\forall j \in \{1,\ldots,n\}$，$\sigma(v_j)=\displaystyle\sum_{i=1}^{n}a_{ij}v_i\in \spa(v_1,\ldots,v_n)$，从而有$a_{j+1,j}=\cdots=a_{n,j}=0$，即$\forall i>j,a_{ij}=0$. 故$A$为上三角矩阵.
 \end{proof}
 
 这一定理给出了上三角矩阵的几个充要条件，因此我们的想法就是利用等价条件中的某一个条件来验证任意线性变换是否可以得到上三角矩阵. 幸运的是，的确对于任意的复向量空间上的线性变换，我们可以找到一组基使得其关于这组基有上三角矩阵.
@@ -596,11 +618,29 @@
 
 事实上，我们在这里介绍这一证明的一个重要的目的在于，这一证明给了我们一个求解线性变换（或矩阵）上三角化的方法. 与对角化等类似，线性变换的上三角化依赖于矩阵上三角化，因此我们这里只讨论矩阵的情况. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
 \begin{example}{}{}
-    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x+y,5y+3z,8z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
+    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x,0,x+2z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
 \end{example}
 
 \begin{solution}
+    $\sigma$在$\mathbf{C}^3$的自然基下的矩阵$A$为
+    \[ \begin{pmatrix}
+        2 & 0 & 0 \\
+        0 & 0 & 0 \\
+        1 & 0 & 2
+    \end{pmatrix} \]
 
+    令$|\lambda_E-A|=0$，知$A$的一个特征值是$0$，相应的一个特征向量为$\alpha_1=(0,1,0)$.$\sigma$在$\alpha_1,e_1,e_3$下的矩阵为矩阵
+    \[ \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 2 & 0 \\
+        0 & 1 & 2
+    \end{pmatrix} \]
+    再考虑矩阵
+    \[ \begin{pmatrix}
+        2 & 0 \\
+        1 & 2
+    \end{pmatrix} \]
+    这个矩阵的特征值为$2$，相应的特征向量为$\alpha_2=(2,0,1)$. 最后取$\alpha_3=(0,0,1)$，则$\sigma$在$\alpha_1,\alpha_2,\alpha_3$下的矩阵为上三角矩阵.
 \end{solution}
 
 另一方面，我们可以再给出一个\autoref{thm:上三角矩阵存在} 的证明与这一矩阵的证明方法对应：
@@ -644,11 +684,22 @@
     \begin{enumerate}
         \item 设$\lambda_1,\ldots,\lambda_s$是$\sigma$的$s$个不同的特征值，$V_{\lambda_1},\ldots,V_{\lambda_s}$是对应的特征子空间. 根据\autoref{thm:线性变换可交换}，$V_{\lambda_1},\ldots,V_{\lambda_s}$是$\tau$的不变子空间，并且根据\autoref{thm:线性变换可交换} 的2的证明我们可以在每个特征子空间中找到一个公共的特征向量，这样我们就找到了$s$个公共且线性无关的特征向量.
 
-        \item 这一结论的证明与\autoref{thm:上三角矩阵存在} 类似，也有矩阵和商空间两个版本.
-              \begin{enumerate}
-                  \item
-                  \item
-              \end{enumerate}
+        \item 这一结论的证明与\autoref{thm:上三角矩阵存在} 类似，也有矩阵和商空间两个版
+        限于篇幅这里只给出商空间版本的证明：
+        我们对维数$n$归纳证明.
+        \begin{enumerate}
+            \item $n=1$时，结论显然成立.
+            \item 假设命题对$n-1$成立. 由于$\sigma \tau=\tau \sigma$，故$\exists \alpha\in V$，使得$\alpha$同时为$\sigma$和$\tau$的特征向量.
+
+            设$U=\spa{\alpha}$，则$U$是$\sigma$和$\tau$的不变子空间. 考虑商映射$\sigma/U,\tau/U$.
+            对于$\forall v+U\in V/U$，有$((\sigma/U)(\tau/U))(v+U)=(\sigma/U)(\tau(v)+U)=\sigma(\tau(v))+U=\tau(\sigma(v))+U=((\tau/U)(\sigma/U))(v+U)$，即$(\sigma/U)(\tau/U)=(\tau/U)(\sigma/U)$.
+
+            由$\dim V/U=n-1$，结合归纳假设可知：存在$V/U$的一组基$v_1+U,\ldots,v_{n-1}+U$，使得$\sigma/U$和$\tau/U$在这组基下都是上三角矩阵.
+
+            则$(\sigma/U)(v_i+U)=\sigma(v_i)+U \in \spa(v_1+U,\ldots,v_i+U)$，从而$\sigma(v_i)\in \spa(\alpha,v_1,\ldots,v_i),\forall i=1,2,\ldots,n-1$.
+
+            容易验证：$\alpha,v_1,\ldots,v_{n-1}$线性无关，从而构成$V$的基. 由上面的叙述可知$\sigma$在这组基下的矩阵为上三角矩阵. 同理，$\tau$在这组基下也为上三角矩阵，命题对$n$成立. 从而命题成立.
+        \end{enumerate}
     \end{enumerate}
 \end{proof}
 
@@ -782,9 +833,14 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item
+        \item 由于$tr(A)=tr(AB-BA)=tr(AB)-tr(BA)=0$，而$tr(A)$为$A$的所有特征值之积，这表明$0$是$A$的特征值，从而$A$不可逆.
+        \item 由$AB-BA=A$知$AB=BA+A$.
 
-        \item
+        考虑从$\mathbf{M}_n(F)$到自身的映射$\sigma:\sigma(X)=XB-BX$，则$\sigma(A)=A$.
+
+        容易验证$\sigma$是线性映射. 归纳容易证明：$\sigma(A^k)=kA^k,\forall k\in \mathbb{N}^*$
+
+        假设$A$不是幂零的，则对$\forall k \in \mathbb{N}^*$，有$A^k \neq 0,\sigma(A^k)=kA^k$. 这表明任意正整数$k$都是$\sigma$的特征值，这与$\sigma$最多只有$n^2$个特征值矛盾. 故$A$是幂零矩阵.
     \end{enumerate}
 \end{proof}
 
@@ -807,9 +863,18 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item
+        \item 从$\sqrt{1+x}=1+a_1x+a_2x^2+\cdots$受到启发，我们猜测$I+N$有形如$I+a_1N+a_2N^2+\cdots$的平方根.
+        由于$N$是幂零的，故存在正整数$m$，使得$N^m=0$，从而上面的式子成为一个有限和$I+a_1N+a_2N^2+\cdots+a_{m-1}N^{m-1}$.
 
-        \item
+        我们希望$(I+a_1N+a_2N^2+\cdots+a_{m-1}N^{m-1})^2=I+2a_1N+(2a_2+a_1)N^2+(2a_3+2a_1a_2)N^3+\cdots+(2a_{m-1}+f(a_1,\ldots,a_{m-2})N^{m-1})$等于$I+N$. 所以取$2a_1=1$，再取$a_2$使得$2a_2+a_1^2=0$.
+
+        对所有$j=3,4,\ldots,m-1$如此进行下去，每次都能得到相应的$a_j$，我们并不关心$a_j$的显式公式，只需知道这些$a_j$的选取确实给出了$(I+N)$的一个平方根.
+        \item 设$\lambda_1,\ldots,\lambda_m$是$T$所有互不相同的本征值，则对每个$j$都存在一个幂零算子$N_j\in \mathcal{L}(G(\lambda_j,T))$使得$T|G_{(\lambda_j,T)}=\lambda_jI+N_j$. 因为$T$可逆，所以$\lambda_j \neq 0$，于是有$T|G_{\lambda_j,T}=\lambda_j(I+\dfrac{N_j}{\lambda_j})$.
+        显然$\dfrac{N_j}{\lambda_j}$也是幂零的，故$(I+\dfrac{N_j}{\lambda_j})$有平方根，从而我们可以得到$T|G_{(\lambda_j,T)}$的一个平方根$R_j$.
+
+        对于$\forall v\in V$，$v$可以唯一地写成$v=u_1+\cdots+u_m$，其中$u_j\in G(\lambda_j,T)$.
+
+        我们定义算子$R\in\mathcal{L}(V):Rv=R_1u_1+\cdots+R_mu_m$. 不难验证我们定义的$R$即为$T$的平方根.
     \end{enumerate}
 \end{proof}
 
@@ -822,7 +887,7 @@
 \end{example}
 
 \begin{solution}
-
+    由于$N^4=0$，我们设$\sqrt{I+N}=I+a_1N+a_2N^2+a_3N^3$，则$I+N=(I+a_1N+a_2N^2+a_3N^3)^2=I+2a_1N+(a_1^2+2a_2)N^2+(2a_3+2a_1a_2)N^3$，有$a_1=\dfrac{1}{2},a_2=-\dfrac{1}{8},a_3=\dfrac{1}{16}$. 代入即可算出$(I+N)$的一个平方根.
 \end{solution}
 
 最后，在开始习题内容前，我们需要讲解一类特殊的题型，即举例或举反例的问题. 一般而言，我们有如下两种思路：
@@ -831,14 +896,47 @@
           \begin{example}{}{}
               找出有限维实向量空间的一个线性变换$\sigma$，使得0是$\sigma$仅有的特征值但$\sigma$不是幂零线性变换.
           \end{example}
+          \begin{solution}
+            我们定义$\sigma\in\mathcal{L}({\mathbf{R}^3})$，$\sigma$在自然基下的矩阵为
+            \[ \begin{pmatrix}
+                0 & 1 & 0 \\
+                -1 & 0 & 0 \\
+                0 & 0 & 0
+            \end{pmatrix} \]
+            则$0$是$\sigma$仅有的特征值，但$\sigma^3=-\sigma\neq 0$，$\sigma$不为幂零线性变换.
+          \end{solution}
           \begin{example}{}{}
               找出一个$\sigma\in L(\mathbf{R}^2)$使得$\sigma^4=-I$.
           \end{example}
-
+          \begin{solution}
+            从旋转的角度考虑可以得到$\sigma(x,y)=(x,y)\cdot$
+            \[ \begin{pmatrix}
+                \dfrac{\sqrt{2}}{2} & -\dfrac{\sqrt{2}}{2} \\[2ex]
+                \dfrac{\sqrt{2}}{2} & \dfrac{\sqrt{2}}{2}
+            \end{pmatrix} \]
+            满足.
+          \end{solution}
     \item 考虑简单的情况：例如考虑2阶、3阶的简单线性变换/矩阵
           \begin{example}{}{}
               证明或给出反例：$V$上的幂零线性变换的集合是$L(V)$的子空间.
           \end{example}
+          \begin{solution}
+            反例：$V=\mathbf{R}^2,\sigma,\tau$在自然基下的矩阵分别为
+            \[ \begin{pmatrix}
+                0 & 1 \\
+                0 & 0
+            \end{pmatrix}, \quad
+            \begin{pmatrix}
+                0 & 0 \\
+                1 & 0
+            \end{pmatrix}\]
+            则$\sigma+\tau$在自然基下的矩为
+            \[ \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+            \end{pmatrix} \]
+            表明$\sigma+\tau$不是幂零线性变换. 从而命题不成立.
+          \end{solution}
           很多时候一些反例很难构想就选择记住这一构造思想即可. 一些反例可能基于一些简单的结论，但如果未思考到位可能很难构造.
 \end{enumerate}
 
@@ -855,7 +953,13 @@
 
     \begin{exgroup}
         \item 请举例：存在两个矩阵相抵但不相似.
-
+        \begin{answer}
+            非常简单，可以举$\begin{pmatrix}
+                1 & 0 \\ 0 & 1
+            \end{pmatrix}$和$\begin{pmatrix}
+                1 & 0 \\ 0 & 2
+            \end{pmatrix}$的例子，也可以举一个可对角化另一个不可对角化的例子，因为上述情况矩阵对应的相似标准形不一样，故不相似.
+        \end{answer}
         \item 求矩阵
         \[A = \begin{pmatrix}
                 0  & -1 & 1 \\
@@ -863,7 +967,9 @@
                 1  & 1  & 0
             \end{pmatrix}\]
         的所有特征值，对应的特征子空间，以及与 $A$ 相似的一个对角矩阵.
-
+        \begin{answer}
+            解$|\lambda E-A|=0$可得特征值为$1,1,-2$. 然后解$(E-A)X=0$得$X=t_1(-1,1,0)^\mathrm{T}+t_2(1,0,1)^\mathrm{T}$；解$(-2E-A)X=0$，得$X=t(-1,-1,1)^\mathrm{T}$. 可见特征值1对应的特征子空间为$\spa((-1,1,0)^\mathrm{T},(1,0,1)^\mathrm{T})$，特征值$-2$对应的特征子空间为 $\spa((-1,-1,1)^\mathrm{T})$. 可知与$A$相似的对角矩阵为 $\diag(1,1,-2)$.
+        \end{answer}
         \item 设$A=\begin{pmatrix}
                 a & b \\ c & d
             \end{pmatrix}$为二阶实矩阵.
@@ -872,7 +978,15 @@
 
             \item 若$ad-bc=1$，$|a+d|>2$，问：$A$是否可对角化.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item $f(\lambda)=|\lambda E-A|=\begin{vmatrix}
+                              \lambda-a & -b \\ -c & \lambda-d
+                          \end{vmatrix}=\lambda^2-(a+d)\lambda+(ad-bc)=\lambda^2-(a+d)\lambda+|A|$. 由于$|A|<0$，因此判别式$\Delta=(a+d)^2-4|A|>0$，因此二阶矩阵$A$有两个互异特征值，故可对角化，因此与对角矩阵相似；
 
+                \item 同 (1)，判别式$\Delta=(a+d)^2-4|A|>0$，因此二阶矩阵$A$有两个不同的特征值，故可对角化.
+            \end{enumerate}
+        \end{answer}
         \item 设$A=\begin{pmatrix}
                 1 & 1 & a \\
                 1 & a & 1 \\
@@ -885,26 +999,73 @@
 
             \item 求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+              \item 由Cramer法则，$A$为方阵且$AX=\beta$有解但不唯一，即$|A|\neq 0$，解得$a=-2$或$a=1$，分别代入可知$a=1$时增广矩阵的秩为2，而$r(A)=1$，故无解；$a=-2$时增广矩阵的秩为2，而$r(A)=2$，故有解，故$a=-2$.
 
+              \item 容易求得特征值为$0,-3,3$，求特征向量可知$P=\begin{pmatrix}
+                            1 & -1 & 1 \\ 1 & 0 & -2 \\ 1 & 1 & 1
+                        \end{pmatrix}$.
+          \end{enumerate}
+        \end{answer}
         \item 设$A$为三阶矩阵，$\alpha_1,\alpha_2,\alpha_3$线性无关，且$A\alpha_1=\alpha_1,A\alpha_2=\alpha_1+\alpha_2-2\alpha_3,A\alpha_3=\alpha_1-2\alpha_2+\alpha_3$，求$A$的特征值.
-
+        \begin{answer}
+            由分块矩阵乘法，$A(\alpha_1,\alpha_2,\alpha_3)=(A\alpha_1,A\alpha_2,A\alpha_3)=(\alpha_1,\alpha_1+\alpha_2-2\alpha_3,\alpha_1-2\alpha_2+\alpha_3)=(\alpha_1,\alpha_2,\alpha_3)\begin{pmatrix}
+                1 & 1 & 1 \\ 0 & 1 & -2 \\ 0 & -2 & 1
+            \end{pmatrix}$. 令$P=(\alpha_1,\alpha_2,\alpha_3)$，则$AP=P\begin{pmatrix}
+                1 & 1 & 1 \\ 0 & 1 & -2 \\ 0 & -2 & 1
+            \end{pmatrix}=PB$，即$P^{-1}AP=B$，故$A$与$B$相似，故两矩阵的特征值相同，简单求解$B$的特征值即得$A$的特征值为$1,-1,3$.
+        \end{answer}
         \item 设三阶实对称矩阵$A$的各行元素之和为3，向量$\alpha_1=(-1,2,-1)^\mathrm{T}$，$\alpha_2=(0,-1,1)^\mathrm{T}$是方程组$AX=0$的两个解，求矩阵$P$使得$P^{-1}AP$为对角矩阵.
+        \begin{answer}
+            每行元素之和为3，则我们知道$\alpha=(1,1,1)^\mathrm{T}$是3对应的特征向量（具体理由只需要验证$A\alpha=3\alpha$即可，这是很常用的性质），而$AX=0$的解是对应特征值0的特征向量，故由题意可知取$P=\begin{pmatrix}
+                1 & -1 & 0 \\ 1 & 2 & -1 \\ 1 & -1 & 1
+            \end{pmatrix}$，则$P^{-1}AP=\begin{pmatrix}
+                3 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+            \end{pmatrix}$.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
         \item 设$a\neq b$，且$(aE-A)(bE-A)=O$. 证明：$A$可对角化（特例：对合矩阵）；
+        \begin{answer}
+            回忆例题中$A^2=2A$，即$A(A-2E)=O$的证明，我们知道$A$的特征值只能为$a$或$b$，然后我们可以证明$r(aE-A)+r(bE-A)\leqslant n$和$r(aE-A)+r(bE-A)\geqslant n$，因此$r(aE-A)+r(bE-A)=n$，即$A$可对角化（由于和例题完全类似，这里不再展开具体做法）.
+        \end{answer}
 
         \item 证明：满足$A^2=E$且特征值只有1的矩阵只能是$E$，特征值只有$-1$的矩阵只能是$-E$.
+        \begin{answer}
+            若$A^2=E$，则$A$可对角化.设$A=P^{-1}BP$，$B$为对角矩阵，若$A$的特征值只有$1$，则$B=E$，从而$A=P^{-1}EP=E$.若$A$的特征值只有$-1$，则$B=-E$，从而$A=-E$.
+        \end{answer}
 
         \item 设$A$为三阶矩阵，$A^2=A$且$r(A)=r$，求$|A-2E|$.
+        \begin{answer}
+            根据例题中关于$A^2=A$的讨论可知，满足$A^2=A$的矩阵$A$可对角化（设过渡矩阵为$P$），特征值0和1的重数分别为$n-r$和$r$，因此$|A-2E|=|P^{-1}||A-2E||P|=|\diag(-1,\ldots,-1,-2,\ldots,-2)|=(-1)^r(-2)^{n-r}$.
+        \end{answer}
 
         \item 设$T\in \mathcal{L}(\mathbf{C}^3)$使得6和7是$T$的特征值，且$T$不可对角化. 证明：存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
+        \begin{answer}
+            三阶矩阵如果有三个特征值则一定可对角化，故由题意$T$只能有6和7两个特征值. 故$\lambda\neq 6,7$时$T-\lambda I$都是可逆的（回顾正文中的定理），故$T-8I$可逆（故是满射），因此一定存在$(x,y,z)\in\mathbf{C}^3$使得$(T-8I)(x,y,z)=(17,\sqrt{5},2\pi)$，因此存在$(x,y,z)\in\mathbf{C}^3$使得$T(x,y,z)=(17+8x,\sqrt{5}+8y,2\pi+8z)$.
+        \end{answer}
 
         \item 证明：两个可对角化的同阶矩阵特征值相同（包括重数）等价于它们相似. 对于不可对角化的矩阵来说，这一结论还成立吗？
+        \begin{answer}
+            可对角化矩阵特征值（包括重数）相等则相似标准形（对角矩阵）相等，故一定相似. 不可对角化的举例说明不成立：$\begin{pmatrix}
+                0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
+            \end{pmatrix}$和$\begin{pmatrix}
+                0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+            \end{pmatrix}$的特征值全为0（重数均为3），但它们对应不同的若当标准形（之后章节会介绍），因此不相似.
+        \end{answer}
 
         \item 设$A=\begin{pmatrix}
                 2 & 2 & 0 \\ 8 & 2 & a \\ 0 & 0 & 6
             \end{pmatrix}$相似于对角矩阵，求常数$a$，并求可逆矩阵$P$使得$P^{-1}AP$为对角矩阵.
+        \begin{answer}
+            直接计算$|\lambda E-A|=0$，得到$A$的特征值为$-2,6,6$，因为$A$可对角化，则特征值6对应的特征子空间为2维，即$(6E-A)X=0$的解空间为2维，根据齐次线性方程组一般理论，$r(6E-A)=3-2=1$，即$r\begin{pmatrix}
+                4 & -2 & 0 \\ -8 & 4 & -a \\ 0 & 0 & 0
+            \end{pmatrix}=1$，显然$a=0$. 接下来求解-2和6对应的特征向量即可，得到可行的解$P=\begin{pmatrix}
+                -1 & 1 & 0 \\ 2 & 2 & 0 \\ 0 & 0 & 1
+            \end{pmatrix}$.
+        \end{answer}
 
         \item 设$A=(a_{ij})_{n\times n}$是上三角矩阵.
         \begin{enumerate}
@@ -914,6 +1075,15 @@
 
             \item 若$n$个主对角元相等且$A$不为对角矩阵，证明：$A$不与对角阵相似.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 上三角矩阵特征值就是所有主对角元$a_{ii},\enspace i=1,2,\ldots,n$；
+
+                \item 由（1）知主对角元互不相等表示$A$有$n$个互不相等的特征值，故可对角化；
+
+                \item 由（1）知此时$A$有一个$n$重特征值，记为$c$，则所有特征向量都在$(cE-A)X=0$的解空间中，而$r(cE-A)=1$，故解空间维数为$n-1<n$，故$A$不可对角化.
+            \end{enumerate}
+        \end{answer}
 
         \item 已知$\mathbf{R}^3$的一个线性变换
         \[\sigma(x_1,x_2,x_3)=(2x_1-2x_2,-2x_1+x_2-2x_3,-2x_2).\]
@@ -924,12 +1094,40 @@
 
             \item 求矩阵$C_1$，使$C_1^{-1}BC_1=A$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item $A=\begin{pmatrix}
+                              2 & -2 & 0 \\ -2 & 1 & -2 \\ 0 & -2 & 0
+                          \end{pmatrix}$；
+
+                \item $B=\begin{pmatrix}
+                              0 & -2 & 0 \\ -3 & 1 & -2 \\ 1 & -1 & 2
+                          \end{pmatrix}$；
+
+                \item 根据讲义本讲开头的定理（线性变换在不同基下的表示），$C_1$实际上就是基$\alpha_1,\alpha_2,\alpha_3$变为自然基$e_1,e_2,e_3$的过渡矩阵，简单计算可得$\begin{pmatrix}
+                              1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -1 & 1
+                          \end{pmatrix}$.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A=\begin{pmatrix}
                 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0
             \end{pmatrix},B=\begin{pmatrix}
                 1 & 0 & 0 \\ 0 & 1 & 2 \\ 0 & -1 & -2
             \end{pmatrix}$，证明：$A\sim B$，并求可逆矩阵$P$使得$P^{-1}AP=B$.
+        \begin{answer}
+            不难解得$A$和$B$的特征值均为$-1,0,1$，因此它们都与$\begin{pmatrix}
+                -1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1
+            \end{pmatrix}$相似，即$A$与$B$相似. 我们也可以解得$P_1=\begin{pmatrix}
+                -1 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 1
+            \end{pmatrix}$和$P_2=\begin{pmatrix}
+                0 & 0 & 1 \\ -1 & -2 & 0 \\ 1 & 1 & 0
+            \end{pmatrix}$使得$P_1^{-1}AP_1=P_2^{-1}BP_2=\begin{pmatrix}
+                -1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1
+            \end{pmatrix}$，故$(P_1P_2^{-1})^{-1}A(P_1P_2^{-1})=B$，即题目要求的$P=P_1P_2^{-1}=\begin{pmatrix}
+                1 & -1 & -2 \\ 0 & -1 & -1 \\ 1 & 1 & 2
+            \end{pmatrix}$.
+        \end{answer}
 
         \item 已知$A=\begin{pmatrix}
                 2 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & x
@@ -941,17 +1139,89 @@
 
             \item 求一个可逆矩阵$P$，使$P^{-1}AP$为对角矩阵.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item $A$与$B$相似则特征值相等，我们知道矩阵的对角线元素之和等于特征值之和，行列式等于特征值之积，则它们也一定相等. 根据这一原理非常容易解得$x=0,y=1$.
+
+                \item 事实上$B$就是对角矩阵，实际上这里就是求过渡矩阵$P$使$A$对角化，具体步骤不再赘述，得到$P=\begin{pmatrix}
+                              1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & -1
+                          \end{pmatrix}$.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A=\begin{pmatrix}
                 1 & 2 & 0 & 0  & 0 \\ 4 & 3 & 0 & 0 & 0 \\ 0 & 0 & 1 & -3 & 3 \\ 0 & 0 & 3 & -5 & 3 \\
                 0 & 0 & 6 & -6 & 4
             \end{pmatrix}$，求$A$的特征值. 若$A$可对角化，求可逆矩阵$P$，使$P^{-1}AP$为对角矩阵.
+        \begin{answer}
+            令$A_1=\begin{pmatrix}
+                1 & 2 \\ 4 & 3
+            \end{pmatrix}$，$A_2=\begin{pmatrix}
+                1 & -3 & 3 \\ 3 & -5 & 3 \\ 6 & -6 & 4
+            \end{pmatrix}$，则$A=\begin{pmatrix}
+                A_1 & O \\ O & A_2
+            \end{pmatrix}$. 首先得到$A_1$和$A_2$的特征值分别为$-1,5$和$-2,-2,4$. 分别求过渡矩阵$P_1$和$P_2$使得$A_1$，$A_2$对角化，容易解得$P_1=\begin{pmatrix}
+                -1 & 1 \\ 1 & 2
+            \end{pmatrix}$，$P_2=\begin{pmatrix}
+                1 & 1 & 1 \\ 1 & 0 & 1 \\ 0 & -1 & 2
+            \end{pmatrix}$. 令$P=\begin{pmatrix}
+                P_1 & O \\ O & P_2
+            \end{pmatrix}$，则
+        \[P^{-1}AP=\begin{pmatrix}
+                P_1^{-1}A_1P_1 & O \\ O & P_2^{-1}A_2P_2
+            \end{pmatrix}=\begin{pmatrix}
+                -1 & 0 & 0 & 0 & 0 \\ 0 & 5 & 0 & 0 & 0 \\ 0 & 0 & -2 & 0 & 0 \\ 0 & 0 & 0 & -2 & 0 \\ 0 & 0 & 0 & 0 & 4
+            \end{pmatrix},\]
+        即$P^{-1}AP=\diag(-1,5,-2,-2,4)$，故$A$与$\diag(-1,5,-2,-2,4)$相似. 总之，$A$的特征值为$-1,5,-2,-2,4$，过渡矩阵$P=\begin{pmatrix}
+                P_1 & O \\ O & P_2
+            \end{pmatrix}=\begin{pmatrix}
+                -1 & 1 & 0 & 0 & 0 \\ 1 & 2 & 0 & 0 & 0 \\ 0 & 0 & 1 & 1 & 1 \\ 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 0 & -1 & 2
+            \end{pmatrix}$.
+
+        （注：通过本题也可以看出分块对角矩阵的特征值是两个对角块矩阵的并集，过渡矩阵就是两个过渡矩阵按同样分块方式排列得到的矩阵.）
+        \end{answer}
 
         \item 设三阶矩阵$A$的特征值为$\lambda_1=1,\lambda_2=2,\lambda_3=3$，它们对应的特征向量为$\xi_1=(1,1,1)^\mathrm{T}, \xi_2=(1,2,4)^\mathrm{T},\xi_3=(1,3,9)^\mathrm{T}$，又$\beta=(1,1,3)^\mathrm{T}$，计算$A^n\beta$.
+        \begin{answer}
+            回顾对角化过程可知，令$P=(\xi_1,\xi_2,\xi_3)=\begin{pmatrix}
+                1 & 1 & 1 \\ 1 & 2 & 3 \\ 1 & 4 & 9
+            \end{pmatrix}$，则$P^{-1}AP=\begin{pmatrix}
+                1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3
+            \end{pmatrix}$，即$P^{-1}A^nP=\begin{pmatrix}
+                1 & 0 & 0 \\ 0 & 2^n & 0 \\ 0 & 0 & 3^n
+            \end{pmatrix}$，故$A^n=P\begin{pmatrix}
+                1 & 0 & 0 \\ 0 & 2^n & 0 \\ 0 & 0 & 3^n
+            \end{pmatrix}P^{-1}$，最后可以计算得到$A^n\beta=\begin{pmatrix}
+                2-2^{n+1}+3^n \\ 2-2^{n+2}+3^{n+1} \\ 2-2^{n+3}+3^{n+2}
+            \end{pmatrix}$.
+        \end{answer}
 
         \item 设$A=\begin{pmatrix}
                 3 & 4 & 0 & 0 \\ 4 & -3 & 0 & 0 \\ 0 & 0 & 2 & 4 \\ 0 & 0 & 0 & 2
             \end{pmatrix}$，求$A^n(n\in\mathbf{N}_+)$.
+        \begin{answer}
+            设$A=\begin{pmatrix}
+                A_1 & O \\ O & A_2
+            \end{pmatrix}$，其中$A_1=\begin{pmatrix}
+                3 & 4 \\ 4 & -3
+            \end{pmatrix}$，$A_2=\begin{pmatrix}
+                2 & 4 \\ 0 & 2
+            \end{pmatrix}$. 回顾矩阵运算进阶中介绍的求幂方法，我们发现$A_2=2E+B$，其中$B=\begin{pmatrix}
+                0 & 4 \\ 0 & 0
+            \end{pmatrix}$，且$B^2=O$，因此$A_2^n=(2E+B)^n=2^nE+n2^{n-1}B=\begin{pmatrix}
+                2^n & n2^{n+1} \\ 0 & 2^n
+            \end{pmatrix}$. 再看$A_1$，我们用对角化方法求幂，容易求得$P=\begin{pmatrix}
+                2 & -1 \\ 1 & 2
+            \end{pmatrix}$使得$P^{-1}A_1P=\begin{pmatrix}
+                5 & 0 \\ 0 & -5
+            \end{pmatrix}$，故$A_1^n=P\begin{pmatrix}
+                5^n & 0 \\ 0 & (-5)^n
+            \end{pmatrix}P^{-1}=5^{n-1}\begin{pmatrix}
+                4+(-1)^n & 2+2(-1)^{n+1} \\ 2+2(-1)^{n+1} & 1+4(-1)^n
+            \end{pmatrix}$，最后结合上面的讨论得到$A^n=\begin{pmatrix}
+                A_1^n & O \\ O & A_2^n
+            \end{pmatrix}$.
+        \end{answer}
 
         \item 已知三阶矩阵$A$和三元列向量$X$，使得向量组$X,AX,A^2X$线性无关，且满足
         \[A^3X=3AX-2A^2X.\]
@@ -960,10 +1230,26 @@
 
             \item 计算行列式$|A+E|$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+              \item 由题意，$PB=AP$，利用分块矩阵乘法可知$PB=AP=(AX,A^2X,A^3X)=(AX,A^2X,3AX-2A^2X)$（注意$(AX,A^2X,A^3X)B=(AXB,A^2XB,A^3XB)$是错误的，因为这是$1\times 3$分块和$1\times 1$分块相乘，显然不能这么乘）.
+
+                    则$PB=(AX,A^2X,3AX-2A^2X)=(X,AX,A^X)\begin{pmatrix}
+                            0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2
+                        \end{pmatrix}$. 等号两边左乘$P^{-1}$有$B=\begin{pmatrix}
+                            0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2
+                        \end{pmatrix}$.
+
+              \item 由于$A$与$B$相似，故有相同的特征值，易求得$B$的特征值为$0,-3,1$，则$A$的特征值也为$0,-3,1$，则$A+E$的特征值根据正文例题可知为$1,-2,2$，则$A+E$的行列式为其特征值之积，即为$-4$.
+          \end{enumerate}
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
         \item 设$V$是有限维复向量空间，$\sigma\in \mathcal{L}(V)$. 证明：$\sigma$可对角化当且仅当对每个$\lambda\in\mathbf{C}$有$V=\ker(\sigma-\lambda I)\oplus\im(\sigma-\lambda I)$.
+        \begin{answer}
+            暂略，有需要可以参考\href{https://linearalgebras.com/5c.html}{《线性代数应该这样学》作者给出的答案（见网页第五题）}；
+        \end{answer}
 
         \item 设$B=\alpha\alpha^\mathrm{T}$，其中$\alpha=(a_1,\ldots,a_n)^\mathrm{T}\neq 0\enspace(a_i\in\mathbf{R},\enspace i=1,2,\ldots,n)$.
         \begin{enumerate}
@@ -971,6 +1257,21 @@
 
             \item 求可逆阵$P$使得$P^{-1}BP$为对角矩阵，并写出该对角矩阵.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item $B^2=\alpha(\alpha^\mathrm{T}\alpha)\alpha^\mathrm{T}=m\alpha\alpha^\mathrm{T}=mB$，其中$m=\alpha^\mathrm{T}\alpha=a_1^2+\cdot+a_n^2$，且易知这就是$\tr(B)$. 用归纳法可知$B^k=m^{k-1}B$，令$t=m^{k-1}$则得证，其中$t=(\tr(B))^{k-1}$.
+
+                \item 这是经典的秩1矩阵，由于$B$的秩为1，则$BX=0$的解空间维数为$n-1$，因此0是$B$的$n-1$重特征值. 而特征值之和等于矩阵的迹. 则剩下一个一重特征值为$\tr(B)$（由题意迹不为0）.
+
+                      然后求特征向量，这里需要一些观察. 特征值0对应的特征向量即为$BX=0$的解，设解为$(x_1,\ldots,x_n)$，不失一般性地，设$a_1\neq 0$，由于$B$的秩为1，因此将$BX=0$展开为线性方程组后，每一行（除去全0的）代表的方程是完全一致的（因为它们成比例），因此我们只需考虑第一行方程
+                      \[a_1^2x_1+a_1a_2x_2+\cdots+a_1a_nx_n=0,\]
+                      解得$n-1$个线性无关特征向量为
+                      \[X_1=(-a_2,a_1,0,\ldots,0),X_2=(-a_3,0,a_1,0,\ldots,0),\ldots,X_{n-1}=(-a_n,0,\ldots,0,a_1).\]
+                      对于特征值$\tr(B)=\alpha^\mathrm{T}\alpha$，我们可以设特征向量为$X$，则$(\tr(B)E-B)X=(\alpha^\mathrm{T}\alpha E-\alpha\alpha^\mathrm{T})X=0$，即$\alpha^\mathrm{T}X=\alpha\alpha^\mathrm{T}X$，我们可以观察发现$\alpha$就是一个解，则$X_n=\alpha$是其特征向量. 则$P=\begin{pmatrix}
+                              -a_2 & -a_3 & \cdots & -a_n & a_1 \\ a_1 & 0 & \cdots & 0 & a_2 \\ 0 & a_1 & \cdots & 0 & a_3 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & a_1 & a_n
+                          \end{pmatrix}$，且对角矩阵为$\diag(0,\ldots,0,\alpha^\mathrm{T}\alpha)$.
+            \end{enumerate}
+        \end{answer}
 
         \item （秩为1的矩阵）设$n$阶矩阵$A$的元素均为1.
         \begin{enumerate}
@@ -980,6 +1281,39 @@
 
             \item 设$B$是$n$阶实对称矩阵，每行元素之和都为$b$，若$b$是$f(\lambda)=|\lambda E-B|$的单根，求$B$属于$b$的特征向量；当$f(\lambda)=(\lambda-b)g(\lambda)$时（其中$f(B)=0$），证明：$g(B)=kA$，其中$k$为常数，$A$为元素全部为1的$n$阶矩阵.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 由题意知$A$的秩为1，因此特征值0对应的特征子空间为$AX=0$的解空间，维数为$n-1$，故特征值0的重数至少为$n-1$. 剩下可能还有一个特征值，我们知道特征值之和等于对角线元素之和，因此最后一个特征值等于$n$，$n$对应的特征子空间维数至少为1，结合0对应特征子空间维数为$n-1$可知$n$对应的特征子空间维数就是1，二者可以张成整个$\mathbf{R}^n$，因此可以对角化.
+
+                      下面求过渡矩阵，$n$对应的特征向量只需解方程$(nE-A)X=0$，即得$X_1=(1,1,\ldots,1)^\mathrm{T}$. 0对应的$n-1$个线性无关特征向量就是$AX=0$的基础解系，即$X_2=(-1,1,0,\ldots,0)^\mathrm{T},X_3=(-1,0,1,0,\ldots,0)^\mathrm{T},\ldots,X_n=(-1,0,\ldots,0,1)^\mathrm{T}$，令$P=(X_1,X_2,\ldots,X_n)=\begin{pmatrix}
+                              1 & -1 & -1 & \cdots & -1 \\ 1 & 1 & 0 & \cdots & 0 \\ 1 & 0 & 1 & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 1 & 0 & 0 & \cdots & 1
+                          \end{pmatrix}$，则有$P^{-1}AP=\varLambda=\diag(n,0,\ldots,0)$.
+
+                \item 由上一小问可知$A=P\varLambda P^{-1}$，则$A^k=P\varLambda^kP^{-1}$，故
+                      \[A^k=P\varLambda^kP^{-1}=P\diag(n^k,0,\ldots,0)P^{-1},\]
+                      故
+                      \begin{align*}
+                          f(A) & =a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A                                                                                                   \\
+                               & =P(a_m\varLambda^m+a_{m-1}\varLambda^{m-1}+\cdots+a_1\varLambda)P^{-1}                                                               \\
+                               & =P\begin{pmatrix}
+                                       a_mn^m+a_{m-1}n^{m-1}+\cdots+a_1n & 0 & \cdots & 0 \\ 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 0
+                                   \end{pmatrix}P^{-1} \\
+                               & =\begin{pmatrix}
+                                      f(n) & 0 & \cdots & 0 \\ 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 0
+                                  \end{pmatrix}=\dfrac{f(n)}{n}P\begin{pmatrix}
+                                                                    n & 0 & \cdots & 0 \\ 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 0
+                                                                \end{pmatrix}P^{-1}    \\
+                               & =\dfrac{f(n)}{n}P\varLambda P^{-1}=kA.
+                      \end{align*}
+                      其中$k=\dfrac{f(n)}{n}$. 故$f(A)=kA$.
+
+                \item 显然$X=(1,1,x\cdots,1)^\mathrm{T}$是$B$关于特征值$b$的特征向量，由于$b$是特征多项式的单根，则特征子空间维数也为1，故特征向量就是$kX$（其中$k$为非零常数）.
+
+                      又$f(B)=(B-bE)g(B)=O$，则$Bg(B)=bg(B)$. 令$g(B)$的列向量组为$\alpha_1,\ldots,\alpha_n$，则上式可以写为$B(\alpha_1,\ldots,\alpha_n)=(b\alpha_1,\ldots,b\alpha_n)$，即$B\alpha_i=b\alpha_i$，即$\alpha_i$是$B$关于特征值$b$的特征向量，故$\alpha_i=k_iX=(k_i,k_i,\ldots,k_i)^{\mathrm{T}}$，即$g(B)=\begin{pmatrix}
+                              k_1 & k_2 & \cdots & k_n \\ k_1 & k_2 & \cdots & k_n \\ \vdots & \vdots & \ddots & \vdots \\ k_1 & k_2 & \cdots & k_n
+                          \end{pmatrix}$. 由于$B$是实对称矩阵，故$g(B)$也是实对称矩阵（很容易验证实对称矩阵经过幂次、加法运算后仍是实对称矩阵），因此$g(B)=(g(B))^\mathrm{T}$，故$k_1=k_2=\cdots=k_n=k$，即$g(B)=kA$.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A,B$为$n$阶矩阵，且$A+B=AB$，求证：
         \begin{enumerate}
@@ -989,21 +1323,79 @@
 
             \item $r(A)=r(B)$.
         \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 设$\alpha$是$B$的特征向量，对应的特征值为$\lambda$，即$B\alpha=\lambda\alpha$，则$A\alpha+B\alpha-AB\alpha=0$，即$A\alpha+\lambda\alpha-A\lambda\alpha=0$，即$(1-\lambda)A\alpha=-\lambda\alpha$. 若$\lambda=1$，则$\alpha=0$，与它是特征向量矛盾，故$\lambda\neq 1$，从而$A\alpha=\dfrac{-\lambda}{1-\lambda}\alpha$，这就说明了$B$的特征向量就是$A$的特征向量.
+
+                      由$A+B=AB$可知，$(A-E)(B-E)=E$，故$A-E$可逆，且$(A-E)^{-1}=B-E$，从而$E=(B-E)(A-E)=BA-A-B+E$，故$BA=A+B$，同上理可得$A$的特征向量也是$B$的，得证.
+
+                \item \begin{enumerate}
+                          \item 必要性：若$A$可对角化，则$\mathbf{R}^n$有一组由$A$的特征向量张成的基，由（1）知$B$与$A$特征向量一致，故$\mathbf{R}^n$也有一组由$B$的特征向量张成的基，即$B$可对角化.
+
+                          \item 充分性与必要性类似.
+                      \end{enumerate}
+
+                \item 由$A+B=AB$可知$A=(A-E)B$且$B=A(B-E)$，由此可得$r(A)\leqslant r(B)\leqslant r(A)$，故$r(A)=r(B)$.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A,B\in \mathbf{M}_n(\mathbf{R})$，证明$A$与$B$在$\mathbf{R}$上相似当且仅当在$\mathbf{C}$上相似.
 
         {\kaishu 注：实际上相似这一性质与数域无关，本题是这一结论的特例.}
+        \begin{answer}
+            \begin{enumerate}
+                \item 必要性：$A$和$B$在实数域上相似，则存在可逆实矩阵$C$使得$B=C^{-1}AC$，将$A,B,C$视为复数域上的矩阵，则可知$A$和$B$在复数域上也相似.
+
+                \item 充分性：若$A$和$B$在复数域上相似，则存在可逆复矩阵$P=P_1+\i P_2$使得$B=P^{-1}AP$，其中$P_1,P_2$是实矩阵，即$AP=PB$，从而$A(P_1+\i P_2)=(P_1+\i P_2)B$，比较实部虚部可知$AP_1=P_1B$且$AP_2=P_2B$. 构造实系数多项式$f(t)=|P_1+tP_2|$，显然$f(\i)=|P|\neq 0$，则$f(t)$是非零多项式，所以$f(t)$的根只有有限多个，从而存在$t_0\in\mathbf{R}$使得$f(t_0)\neq 0$，则$|P_1+t_0P_2|\neq 0$，从而$P_1+t_0P_2$可逆，从而$A(P_1+t_0P_2)=AP_1+t_0AP_2=P_1B+t_0P_2B=(P_1+t_0P_2)B$，即$(P_1+t_0P_2)^{-1}A(P_1+t_0P_2)=B$，即$A$和$B$在实数域上相似.
+            \end{enumerate}
+        \end{answer}
 
         \item \begin{enumerate}
             \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，证明：$AB=BA$当且仅当$A$的特征向量也是$B$的特征向量；
 
             \item 若$A,B$均可对角化，且$AB=BA$，则对角化的过渡矩阵可以相同.
         \end{enumerate}
+        \begin{answer} \label{ex:交换对角化}
+            \begin{enumerate}
+                \item \begin{enumerate}
+                          \item 必要性：$A$有$n$个互不相等的特征值，则$A$一定可对角化，则$A$有$n$个线性无关特征向量，记为$X_1,\ldots,X_n$，则$AX_i=\lambda_iX_i\enspace (X_i\neq 0)$，则$A(BX_i)=B(AX_i)=\lambda_i(BX_i)$，即$BX_i$属于$A$的特征子空间$V_{\lambda_i}$，又$\lambda_i$是$A$的单重特征值，对应的特征子空间是一维的，故$V_{\lambda_i}$中任两个向量成比例，即$BX_i=\mu_iX_i$，故$X_i$也是$B$关于特征值$\mu_i$的特征向量.
+
+                          \item 充分性：必要性：$A$有$n$个互不相等的特征值，则$A$一定可对角化，则$A$有$n$个线性无关特征向量$X_1,\ldots,X_n$，由于它们也是$B$的特征向量，故$B$可对角化. 设$P=(X_1,\ldots,X_n)$，则$P^{-1}AP=\varLambda_1$，$P^{-1}BP=\varLambda_2$，其中$\varLambda_1$和$\varLambda_2$都是对角矩阵，则它们乘法可交换，即$(P^{-1}AP)(P^{-1}BP)=\varLambda_1\varLambda_2=\varLambda_2\varLambda_1=(P^{-1}BP)(P^{-1}AP)$，上式两边左乘$P$，右乘$P^{-1}$，则$AB=BA$.
+                      \end{enumerate}
+
+                \item 由于$A$可对角化，所以存在可逆矩阵$P$使得$P^{-1}AP=\diag(\lambda_1E_1,\ldots,\lambda_sE_s)$，其中$\lambda_1,\ldots,\lambda_s$是$A$的所有互异特征值，$E_1,\ldots,E_s$分别是$r_2,\ldots,r_s$阶单位矩阵，且$r_1+\cdots+r_s=n$，由$AB=BA$可知$P^{-1}APP^{-1}BP=P^{-1}BPP^{-1}AP$，根据正文矩阵运算进阶中对矩阵乘法可交换问题的讨论中准对角矩阵的结论，我们有$P^{-1}BP=\diag(B_1,\ldots,B_s)$，其中$B_i$是$r_i$阶矩阵. 由于$B$可对角化，因此$P^{-1}BP$也可对角化（因为它和$B$相似，故它们有相同的相似标准形），从而$B_1,\ldots,B_s$都可对角化，故对于任意的$B_i(i=1,2,\ldots,s)$，存在可逆矩阵$Q_i$使得$Q_i^{-1}B_iQ_i$是对角矩阵. 取$Q=\diag(Q_1,\ldots,Q_s)$，则$Q^{-1}P^{-1}BPQ=\diag(Q_1^{-1}B_1Q_1,\ldots,Q_s^{-1}B_sQ_s)$是对角矩阵，同时有
+                      \[Q^{-1}P^{-1}APQ=\diag(\lambda_1E_1,\ldots,\lambda_sE_s),\]
+                      则$Q^{-1}P^{-1}APQ=\diag(\lambda_1Q_1^{-1}Q_1,\ldots,\lambda_sQ_s^{-1}Q_s)=\diag(\lambda_1E_1,\ldots,\lambda_sE_s)$为对角矩阵，因此取$T=PQ$就有$T^{-1}AT$和$T^{-1}BT$都是对角矩阵.
+            \end{enumerate}
+        \end{answer}
 
         \item 设$A,B\in \mathbf{M}_n(\mathbf{F})$，$A$有$n$个不同的特征值，且$AB=BA$. 证明：存在次数小于等于$n-1$的多项式$f(x)$使得$B=f(A)$.
+        \begin{answer}
+            此题条件与C组 \ref*{ex:交换对角化} 题相同，因此我们知道存在可逆矩阵$P$使得$P^{-1}AP$和$P^{-1}BP$都是对角矩阵（因为$A$的$n$个线性无关特征向量也是$B$的线性无关特征向量）. 设$P^{-1}AP=\diag(\lambda_1,\ldots,\lambda_n)$，$P^{-1}BP=\diag(\mu_1,\ldots,\mu_n)$，并设$f(x)=a_{n-1}x^{n-1}+\cdots+a_1x+a_0$满足$f(A)=B$，则$a_{n-1}A^{n-1}+\cdots+a_1A+a_0E=B$，从而
+          \[a_{n-1}(P^{-1}AP)^{n-1}+\cdots+a_1(P^{-1}AP)+a_0E=P^{-1}BP,\]
+          即
+          \[\begin{cases} \begin{aligned}
+                      a_{n-1}\lambda_1^{n-1}+\cdots+a_1\lambda_1+a_0 & = \mu_1           \\
+                      a_{n-1}\lambda_2^{n-1}+\cdots+a_1\lambda_2+a_0 & = \mu_2           \\
+                                                                     & \vdotswithin{ = } \\
+                      a_{n-1}\lambda_n^{n-1}+\cdots+a_1\lambda_n+a_0 & = \mu_n
+                  \end{aligned} \end{cases}\]
+          由于$\lambda_1,\ldots,\lambda_n$两两不同，故上述方程组有唯一解（回忆范德蒙行列式和Cramer法则），从而$a_0,\ldots,a_{n-1}$有唯一解，得证.
+        \end{answer}
 
         \item 设$T\in \mathcal{L}(V)$，$\lambda\in\mathbf{F}$. 证明：对$V$的每个使得$T$有上三角矩阵的基，$\lambda$出现在$T$的矩阵的对角线上的次数等于$\lambda$作为$T$的特征值的重数.
+        \begin{answer}
+            设$T$在这样的基下的矩阵为上三角矩阵$A$，则$T$的特征多项式$f(\lambda)=|\lambda E-A|=(\lambda-\lambda_1)^{r_1}\cdots(\lambda-\lambda_m)^{r_m}$，其中$r_i$是特征值$\lambda_i$在矩阵对角线上出现的次数，而$f(\lambda)=(\lambda-\lambda_1)^{\dim E(\lambda_1,T)}\cdots(\lambda-\lambda_m)^{\dim E(\lambda_m,T)}$，因此有$r_i=\dim E(\lambda_i,T)$.
+            即$\lambda$出现在$T$的矩阵的对角线上的次数等于$\lambda$作为$T$的特征值的重数.
+        \end{answer}
 
         \item 证明：$A$为幂零矩阵$\iff \forall k \in \mathbf{N}_+,\enspace\tr(A^k)=0$.
+        \begin{answer}
+            $A$为幂零矩阵$\iff A$的所有特征值均为0.
+
+            设$A=P^{-1}BP$,其中$B$为上三角矩阵，设$B$对角线上元素为$\lambda_1,\lambda_2,\ldots,\lambda_n$，则对$\forall k\in \mathbf{N}_+$，$B^k$为上三角矩阵且对角线上为$\lambda_1^k,\lambda_2^k,\ldots,\lambda_n^k$.
+
+            这表明$A$是幂零矩阵$\iff B$只有特征值$0\iff \forall k\in\mathbf{N}_+,B^k$特征值全为$0\iff \forall k\in\mathbf{N}_+,A^k$特征值全为$0\iff \forall k\in\mathbf{N}_+,\tr(A^k)=0$.
+        \end{answer}
     \end{exgroup}
 \end{exercise}
