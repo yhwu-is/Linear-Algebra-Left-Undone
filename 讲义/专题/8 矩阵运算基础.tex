@@ -2,23 +2,27 @@
 
 上一节我们将前面逐步搭建的线性空间与线性映射的抽象转变为具象的表达——矩阵——这是我们上一节最后内容总结中提到的利用坐标映射同构到最简单的向量空间的优越性的体现. 从本讲起的三讲内容中，我们的目光都会聚焦于具象的矩阵，但我们的视角时常会结合线性映射同步进行. 本讲我们首先介绍矩阵的基本运算的定义（及其与线性映射的关联）、性质与基本技巧，之后我们会在此基础上从线性映射的秩出发定义矩阵的秩，得到第一个重要的矩阵标准形——相抵标准形. 最后我们会更进一步加强运算技巧，介绍一些在解题或者是实际应用中常用的矩阵运算技巧.
 
-\section{矩阵乘法}
+\section{矩阵乘法} \label{sec:矩阵乘法}
 
 \subsection{矩阵乘法的定义与基本性质}
 
 我们在前文证明过线性映射的复合仍然是线性映射，当我们写出 $(\tau{\color{lightgray}\circ}\sigma)(\alpha) = \tau(\sigma(\alpha))$ 时我们通过映射复合定义了映射的乘法（只有这样才能在形式上说结合律成立）. 于是矩阵作为一种特殊的映射，其乘法应当继承自矩阵的复合，我们注意到映射 $\tau\sigma$ 能够存在的条件是 $\tau$ 的出发空间和 $\sigma$ 的到达空间相同，即两个映射可以通过一个公共的中间空间``连接''起来
+
 \[
     \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
     \begin{tikzcd}
-        V_1 \arrow[r, "\sigma"] \arrow[rr, bend right, "\tau{\color{lightgray}{}\circ{}}\sigma"'] & V_2 \arrow[r, "\tau"] & V_3
+        V_1 \arrow[r, "\sigma"] \arrow[rd, "\tau \circ \sigma"'] & V_2 \arrow[d, "\tau"] \\
+        & V_3
     \end{tikzcd}
 \]
 
 我们假设读者已经熟知映射的相乘即复合，在后文中我们将会省去映射复合的符号 ${\color{lightgray}\circ}$.  那么将 $V_1, V_2, V_3$ 分别替换为我们熟悉的 $\mathbf{F}^n, \mathbf{F}^m, \mathbf{F}^p$，我们就理应能够将 $p\times m$ 和 $m\times n$ 的两个矩阵相乘
+
 \[
     \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
     \begin{tikzcd}
-        \mathbf{F}^n \arrow[r, "B"] \arrow[rr, bend right, "AB"'] & \mathbf{F}^m \arrow[r, "A"] & \mathbf{F}^p
+        \mathbf{F}^n \arrow[r, "B"] \arrow[rd, "AB"'] & \mathbf{F}^m \arrow[d, "A"] \\
+        & \mathbf{F}^p
     \end{tikzcd}
 \]
 
@@ -106,12 +110,8 @@
 
     \item 则 $\tau\sigma \in L(V_1,V_3)$ 关于基 $B_1$ 和 $B_3$ 的矩阵 $C=(c_{ij})_{p\times n}$ 中第 $j$ 列元素 $c_{1j},c_{2j},\ldots,c_{pj}$ 是 $\tau\sigma(\varepsilon_j)$ 在基 $B_3$ 下的坐标. 于是有：
           \begin{align*}
-            \tau\sigma(\varepsilon_j)
-            &=\tau(\sigma(\varepsilon_j))
-            &=\tau\left(\sum_{k=1}^{m}b_{kj}\zeta_k\right) \\
-            &=\sum_{k=1}^{m}b_{kj}\tau(\zeta_k) \\
-            &=\sum_{k=1}^{m}b_{kj}\left(\sum_{i=1}^{p}a_{ik}\eta_i\right) \\
-            &=\sum_{i=1}^{p}\left(\sum_{k=1}^{m}a_{ik}b_{kj}\right)\eta_i
+            \tau\sigma(\varepsilon_j) &= \tau(\sigma(\varepsilon_j)) \\
+            &= \tau\left(\sum_{k=1}^{m}b_{kj}\zeta_k\right) = \sum_{k=1}^{m}b_{kj}\tau(\zeta_k) = \sum_{k=1}^{m}b_{kj}\left(\sum_{i=1}^{p}a_{ik}\eta_i\right) = \sum_{i=1}^{p}\left(\sum_{k=1}^{m}a_{ik}b_{kj}\right)\eta_i
           \end{align*}
 
           即得：$c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots+a_{im}b_{mj}$. 换言之，表示矩阵的乘积等于乘积（复合）的表示矩阵，这也可以通过映射的复合得到简单的验证
@@ -119,61 +119,29 @@
             \mathbf{M}_{\color{lightgray} B_2, B_3} (\tau) \mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)
             &= (B_3^{-1} \tau B_2) (B_2^{-1} \sigma B_1) \\
             &= B_3^{-1} \tau (B_2 B_2^{-1}) \sigma B_1 \\
-            &= B_3^{-1} (\tau \sigma) B_1 \\
-            &= \mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \sigma)
+            &= B_3^{-1} (\tau \circ \sigma) B_1 \\
+            &= \mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \circ \sigma)
           \end{align*}
 
-          如果从交换图的视角看，我们可以通过绘制箭头简单地看出，根据映射复合构造出的三个表示矩阵显然满足 $\mathbf{M}_{\color{lightgray} B_2, B_3} (\tau) \mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma) = \mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \sigma)$:
+          如果从交换图的视角看，我们可以通过绘制箭头简单地看出，根据映射复合构造出的三个表示矩阵显然满足 $\mathbf{M}_{\color{lightgray} B_2, B_3} (\tau) \mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma) = \mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \circ \sigma)$:
           \[
             \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
             \begin{tikzcd}
-                V_1
-                    \arrow[rr, "\sigma"]
-                    \arrow[rrrr, bend left, "\tau\sigma"]
-                    \arrow[d, shift left, lightgray, "B_1^{-1}"]
-                && V_2
-                    \arrow[rr, "\tau"]
-                    \arrow[d, shift left, lightgray, "B_2^{-1}"]
-                && V_3
-                    \arrow[d, shift left, lightgray, "B_3^{-1}"]
-                \\ \mathbf{F}^n
-                    \arrow[u, shift left, "B_1"]
-                    \arrow[rrrr, bend right, "\mathbf{M}_{\color{lightgray} B_1, B_3} (\tau\sigma)"']
-                    \arrow[rr, "\mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)"']
-                && \mathbf{F}^m
-                    \arrow[u, shift left, "B_2"]
-                    \arrow[rr, "\mathbf{M}_{\color{lightgray} B_2, B_3} (\tau)"']
-                && \mathbf{F}^p
-                    \arrow[u, shift left, "B_3"]
+                & V_1 \arrow[rrr, "\sigma"] \arrow[rrrdd, near start, "\tau \circ \sigma"] & & & V_2 \arrow[dd, "\tau"] \\
+                \mathbf{F}^n \arrow[rrr, "\mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)", crossing over] \arrow[ru, leftrightarrow] \arrow[rrrdd, "\mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \circ \sigma)", swap] & & & \mathbf{F}^m \arrow[dd, "\mathbf{M}_{\color{lightgray} B_2, B_3} (\tau)", crossing over, swap] \arrow[ru, leftrightarrow] \\
+                & & & & V_3 \\
+                & & & \mathbf{F}^p \arrow[ru, leftrightarrow]
             \end{tikzcd}
           \]
 
-          但是需要注意的是，这要求在两个映射矩阵表示的基底选择中，$V_2$ 选取的基底是相同的，否则这个过程就会失败，基底不同时我们就无法写出 $\mathbf{M}(\tau)\mathbf{M}(\sigma) = \mathbf{M}(\tau\sigma)$
+          但是需要注意的是，这要求在两个映射矩阵表示的基底选择中，$V_2$ 选取的基底是相同的，否则这个过程就会失败，基底不同时我们就无法写出 $\mathbf{M}_{\color{lightgray} B_2, B_3}(\tau)\mathbf{M}_{\color{lightgray} B_1, B'_2}(\sigma) = \mathbf{M}_{\color{lightgray} B_1, B_3}(\tau\sigma)$
           \[
             \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
             \begin{tikzcd}
-                & V_1
-                    \arrow[rd, "\sigma"]
-                    \arrow[rr, "\tau\sigma"]
-                    \arrow[dl, shift left, lightgray, "B_1^{-1}"]
-                && V_3
-                    \arrow[dr, shift left, lightgray, "B_3^{-1}"]
-                \\ \mathbf{F}^n
-                    \arrow[ur, shift left, "B_1"]
-                    \arrow[rrrr, bend right=90, "\mathbf{M}_{\color{lightgray} B_1, B_3} (\tau\sigma)"']
-                    \arrow[rd, "\mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)"']
-                && V_2
-                    \arrow[ur, "\tau"]
-                    \arrow[dl, shift left, lightgray, "B_2^{-1}"]
-                    \arrow[dr, shift left, lightgray, "(B_2')^{-1}"]
-                && \mathbf{F}^p
-                    \arrow[ul, shift left, "B_3"]
-                \\ & \mathbf{F}^m
-                    \arrow[ur, shift left, "B_2"]
-                    \arrow[rr, dashed, "?"']
-                && \mathbf{F}^m
-                    \arrow[ul, shift left, "B_2'"]
-                    \arrow[ur, "\mathbf{M}_{\color{lightgray} B_2', B_3} (\tau)"']
+                & V_1 \arrow[rrrr, "\sigma"] \arrow[rrrrdd, near start, "\tau \circ \sigma"] & \quad & & & V_2 \arrow[dd, "\tau"] \arrow[dddlllll, leftrightarrow] \\
+                \mathbf{F}^n \arrow[rrrr, "\mathbf{M}_{\color{lightgray} B_1, B_2} (\sigma)", crossing over] \arrow[dd] \arrow[ru, leftrightarrow] \arrow[rrrrdd, "\mathbf{M}_{\color{lightgray} B_1, B_3} (\tau \circ \sigma)", swap, near end, crossing over] & & \quad & & \mathbf{F}^m \arrow[dd, "\mathbf{M}_{\color{lightgray} B_2, B_3} (\tau)", crossing over, swap] \arrow[ru, leftrightarrow] \\
+                & & & & & V_3 \\
+                \mathbf{F}^m \arrow[rrrr] & & & & \mathbf{F}^p \arrow[ru, leftrightarrow]
             \end{tikzcd}
           \]
 \end{enumerate}
@@ -253,7 +221,7 @@
 
 在本节最后，我们有四个非常重要的问题需要仔细探讨：
 \begin{enumerate}
-    \item 在有了矩阵乘法的定义后，高斯消元法中我们将线性方程组简记为$AX=b$实际上是相当自然的，除此之外，我们将向量坐标表示为列向量的形式，例如将向量 $v$ 对基 $\alpha$ 分解
+    \item 在有了矩阵乘法的定义后，高斯-若当消元法中我们将线性方程组简记为$AX=b$实际上是相当自然的，除此之外，我们将向量坐标表示为列向量的形式，例如将向量 $v$ 对基 $\alpha$ 分解
           \[v=(\alpha_1,\alpha_2,\ldots,\alpha_n)\begin{pmatrix}
                   x_1 \\ x_2 \\ \vdots \\ x_n
               \end{pmatrix}\]
@@ -577,7 +545,7 @@
 \end{example}
 
 \begin{solution}
-    以 $A$ 为系数矩阵的非齐次线性方程组 $AX=b$，对于任意的 $b=(b_1,b_2,b_3)$，可以用高斯消元法将其增广矩阵
+    以 $A$ 为系数矩阵的非齐次线性方程组 $AX=b$，对于任意的 $b=(b_1,b_2,b_3)$，可以用高斯-若当消元法将其增广矩阵
 
     \[(A,b)=\left(\begin{array}{ccc:c}
                 1 & -1 & 1 & b_1 \\
@@ -681,7 +649,7 @@
         \end{pmatrix}$.
 \end{solution}
 
-关于转置我们还有一个重要的例题需要读者掌握：
+关于转置我们有一个重要的例题需要读者掌握：
 \begin{example}{}{转置求幂}
     设$\alpha=(1,-1,2)^\mathrm{T},\enspace\beta=(3,1,-2)^\mathrm{T},\enspace A=\alpha\beta^\mathrm{T}$，求$A^n$.
 \end{example}
@@ -693,6 +661,27 @@
 \end{solution}
 
 事实上，在将来讲解矩阵运算技巧时我们还会大量运用本题的技巧，因此请读者务必重视本题. 除此之外，此前的所有矩阵运算我们都介绍了它们在线性映射中的对应，转置具备一定的特殊性，因为转置后的矩阵行列数交换，这意味着原先的线性映射出发空间和到达空间的维数交换，这使得对它的解读会更加复杂，我们需要以将来对偶空间的语言来讨论.
+
+\begin{example}{}{}
+    数域$\mathbf{F}$上所有$n$阶方阵组成的线性空间$V=\mathbf{M}_n(\mathbf{F})$，$V_1$表示所有对称矩阵组成的集合，$V_2$表示所有反对称矩阵组成的集合. 证明：$V_1,V_2$都是$V$的子空间，且$V=V_1\oplus V_2$.
+\end{example}
+
+\begin{proof}
+    首先证明和. 事实上，对于任意矩阵$A\in V$，有
+    \[A=B+C,\enspace B=\frac{1}{2}(A+A^T),\enspace C=\frac{1}{2}(A-A^T),\]
+    其中$B$是对称矩阵，$C$是反对称矩阵，即$B\in V_1$，$C\in V_2$，因此$V_1+V_2=V$（因为$V$中任意元素都可以写成$V_1$和$V_2$元素和的形式，根据和的定义可知成立）.
+
+    下面证明直和. 我们有如下三种方法：
+    \begin{enumerate}
+        \item 利用零向量分解唯一：设$O$是$n$阶零矩阵，设$O=B+C$，其中$B$是对称矩阵，$C$是反对称矩阵. 由于$B$是对称矩阵，因此$B^T=B$，由于$C$是反对称矩阵，因此$C^T=-C$，因此
+              \[O=O^T=(B+C)^T=B^T+C^T=B-C\]
+              解得$B=C=O$，因此零向量分解唯一，故直和得证；
+
+        \item 利用$V_1\cap V_2=\{0\}$：设$A\in V_1\cap V_2$，则$A=A^T=-A$，因此$A=-A$，即$A=O$，因此$V_1\cap V_2=\{0\}$，故直和得证；
+
+        \item 利用$\dim V_1+\dim V_2=\dim V$：这一方法较为复杂，我们简单阐述思想. 设$E_{ij}$是第$i$行第$j$列元素为1，其余元素为0的矩阵，则$V$的一组基为$E_{ij},\enspace i,j=1,2,\ldots,n$，$V_1$的一组基为$E_{ij}+E_{ji},\enspace i<j$和$E_{ii},\enspace i=1,2,\ldots,n$，$V_2$的一组基为$E_{ij}-E_{ji},\enspace i<j$，则$\dim V_1=\dfrac{n(n-1)}{2},\enspace \dim V_2=\dfrac{n(n-1)}{2}$，因此$\dim V_1+\dim V_2=n^2$，因此$\dim V_1+\dim V_2=\dim V$，故直和得证.
+    \end{enumerate}
+\end{proof}
 
 \subsection{对阵矩阵与反对称矩阵}
 
@@ -1047,26 +1036,41 @@
             \item 证明：任一$n$阶方阵都可以表示为一个对称矩阵与一个反对称矩阵的和.
             \item 设$A$是$n$阶复矩阵，若$\overline{A}^\mathrm{T}=A$，则称$A$是一个Hermite矩阵. 若$\overline{A}^\mathrm{T}=-A$，则称$A$是一个斜Hermite矩阵. 证明：任一$n$阶复矩阵都可以表示为一个Hermite矩阵与一个斜Hermite矩阵的和.
         \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
 
         \item 证明以下两个命题：
         \begin{enumerate}
             \item 设$A$为$m\times n$阶实矩阵，则$A^\mathrm{T}A=O$的充要条件为$A=O$.
             \item 设$A$为$m\times n$阶复矩阵，则$\overline{A^\mathrm{T}}A=O$的充要条件为$A=O$.
         \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
 
         \item 证明以下两个命题：
         \begin{enumerate}
             \item 设$A$为$n$阶对称矩阵，证明：$A$是零矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
             \item 设$A$为$n$阶方阵，证明：$A$为反对称矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
         \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
 
         \item 证明：设$A$是实对称矩阵，若$A^2=O$，则$A=O$.
+        \begin{answer}
+
+        \end{answer}
 
         \item 设$A,B$为$n$阶方阵，证明：
         \begin{enumerate}
             \item 若$A,B$为对称矩阵，则$AB$为对称矩阵的充要条件为$AB=BA$，$AB$为反对称矩阵的充要条件为$AB=-BA$.
             \item 若$A$为对称矩阵，$B$为反对称矩阵，则$AB$为反对称矩阵的充要条件为$AB=BA$，$AB$为对称矩阵的充要条件为$AB=-BA$.
         \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
 
         \item 求矩阵$\begin{pmatrix}
                 a  & b  & c  & d  \\
@@ -1074,6 +1078,9 @@
                 -c & -d & a  & b  \\
                 -d & c  & -b & a
             \end{pmatrix}$的逆.
+            \begin{answer}
+
+            \end{answer}
 
         \item 设 $V=\{(a_{ij})_{n \times n} \mid \forall i,j,\enspace a_{ij}=a_{ji}\}$.
         \begin{enumerate}
@@ -1081,11 +1088,127 @@
 
             \item 求$V$的基和维数.
         \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
 
         \item $\mathbf{M}_n(\mathbf{R})$表示所有实$n$阶方阵构成的集合. 设$W=\{A\in \mathbf{M}_n(\mathbf{R}) \mid a_{ji}=ka_{ij},\enspace i \leqslant j\}$，求当$k=0,1,2$时，$W$的一组基和维数.
+        \begin{answer}
+
+        \end{answer}
+
+        \item 设$\mathbf{F}$为数域，$V_1=\{A\in\mathbf{F}^{n\times n} \mid A^\mathrm{T}=A\},\enspace
+            V_2=\{A\in\mathbf{F}^{n\times n} \mid A^\mathrm{T}=-A\},\enspace V_3=\{A\in\mathbf{F}^{n\times n} \mid A\text{~为上三角矩阵}\}$.
+        \begin{enumerate}
+            \item 证明：$V_1,V_2,V_3$都是$\mathbf{F}^{n\times n}$的子空间；
+
+            \item 证明：$\mathbf{F}^{n\times n}=V_1+V_3$但不为直和，$\mathbf{F}^{n\times n}=V_2\oplus V_3$.
+        \end{enumerate}
+
+       \begin{answer}
+        \begin{enumerate}
+            \item 只需证明 $V_1,V_2,V_3$ 的封闭性，以 $V_3$ 为例，$\forall A,B\in V_3$,有 $A=\begin{pmatrix}
+                          a_{11} & \cdots & a_{1n} \\
+                          0      & \cdots & 0      \\
+                          \vdots &        & \vdots \\
+                          0      & \cdots & a_{nn}
+                      \end{pmatrix},B=\begin{pmatrix}
+                          b_{11} & \cdots & b_{1n} \\
+                          0      & \cdots & 0      \\
+                          \vdots &        & \vdots \\
+                          0      & \cdots & b_{nn}
+                      \end{pmatrix}$，则 $\lambda A+\mu B=\begin{pmatrix}
+                          \lambda a_{11}+\mu b_{11} & \cdots & a\lambda a_{1n}+\mu b_{1n} \\
+                          \vdots                    &        & \vdots                     \\
+                          0                         & \cdots & \lambda a_{nn}+\mu b_{nn}
+                      \end{pmatrix}$，$V_3$ 封闭得证. 其余 $V_1,V_2$ 也同理可证.
+
+            \item $\forall A\in \mathbf{F}^{n\times n},A=\begin{pmatrix}
+                          a_{11} & \cdots & a_{1n} \\
+                          \vdots &        & \vdots \\
+                          a_{n1} & \cdots & a_{nn}
+                      \end{pmatrix}$，总可将$A$写成 $\begin{pmatrix}
+                          a_{11} & a_{21} & \cdots & a_{n1} \\
+                          \vdots &        &        & \vdots \\
+                          a_{n1} & \cdots & \cdots & a_{nn}
+                      \end{pmatrix}+\begin{pmatrix}
+                          a0     & a_{12}-a_{21} & \cdots & a_{1n}-a_{n1} \\
+                          \vdots &               &        & \vdots        \\
+                          a_{n1} & \cdots        & \cdots & a_{nn}
+                      \end{pmatrix}$ 的形式. 又左边矩阵属于 $V_1$，右边矩阵属于 $V_3$，则$\mathbf{F}^{n \times n}=V_1+V_3$. 但对于 $I=\begin{pmatrix}
+                          1      & \cdots & 0      \\
+                          \vdots &        & \vdots \\
+                          0      & \cdots & 1
+                      \end{pmatrix} $ $,I \in V_1$且$I \in V_3$，则$V_1\cap V_3\ne\{0\}$，不是直和. 总可将$A$写成 $A_1+A_2$ 的形式，其中
+                  \[A_1=\begin{pmatrix}
+                          0      & -a_{21} & \cdots     & -a_{n1} \\
+                          a_{21} &         &            & \vdots  \\
+                          \vdots &         &            & \vdots  \\
+                          a_{n1} & \cdots  & a_{n(n-1)} & 0
+                      \end{pmatrix},A_2=\begin{pmatrix}
+                          a_{11} & \cdots & a_{1n}+a_{n1} \\
+                          \vdots &        & \vdots        \\
+                          0      & \cdots & a_{nn}
+                      \end{pmatrix},\]
+                  $A_1\in V_2,A_2\in V_3,\mathbf{F}^{n\times n}=V_2+V_3$. 又对于 $\forall B\in V_2\cap V_3$, $B$ 是反对称的. 并且 $B$ 是上三角的. 综合可得  $B=0$. 因此 $V_2\cap V_3=\{0\}$，$F_{n\times n}=V_2\oplus V_3$ 得证.
+        \end{enumerate}
+       \end{answer}
+
+       \item 设\[W_1=\left\{\begin{pmatrix}
+            x & -x \\ y & z
+        \end{pmatrix} \;\middle|\; x,y,z\in \mathbf{F} \right\},W_2=\left\{\begin{pmatrix}
+            a & b \\ -a & c
+        \end{pmatrix} \;\middle|\; a,b,c\in \mathbf{F} \right\}.\]
+
+        \begin{enumerate}
+            \item 证明：$W_1,W_2$是$\mathbf{M}_2(\mathbf{F})$的子空间，并求$\dim W_1,\dim W_2,\dim(W_1+W_2),\dim(W_1\cap W_2)$;
+
+            \item 求$W_1\cap W_2$的一组基，并求$A=\begin{pmatrix}
+                        3 & -3 \\ -3 & 1
+                    \end{pmatrix}$关于这组基的坐标.
+        \end{enumerate}
+
+        \begin{answer}
+            \begin{enumerate}
+                \item 只需证明 $W_1$ 封闭即可. 对于 $A=\begin{pmatrix}x & -x \\ y & z\end{pmatrix},A'=\begin{pmatrix} x' & -x' \\ y' & z' \end{pmatrix}$ 有 $\lambda A+\mu A'=\begin{pmatrix}
+                            \lambda x+\mu x' & -(\lambda x+\mu x') \\
+                            \lambda y+\mu y  & \lambda z+\mu z
+                        \end{pmatrix}$，则$W_1$封闭，$W_1$是$\mathbf{M}_2(\mathbf{F})$的子空间.	$W_2$同理可证.
+
+                \item $W_1$的基：$B_1=\begin{pmatrix}1&-1\\0&0\end{pmatrix},B_2=\begin{pmatrix}0&0\\1&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
+
+                    $W_2$的基：$B_1=\begin{pmatrix}1&0\\-1&0\end{pmatrix},B_2=\begin{pmatrix}0&1\\0&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
+
+                    则$\dim W_1=3,\dim W_2=3$. 要求$\dim  (W_1+W_2)$，只需求$B_1,B_2,\ldots ,B_6$的极大无关组即可. 可知 $B_1,B_2,B_3,B_4$是极大线性无关组.	$\dim(W_1+W_2)=4$. 根据维数公式$\dim (W_1\cap W_2)=\dim W_1+\dim W_2-\dim (W_1+W_2)=2$.
+
+                \item $W_1\cap W_2=\left\{\begin{pmatrix}x&-x\\-x&y\end{pmatrix} \mid x,y\in \mathbf{F}\right\}$. 则一组基为$E_1=\begin{pmatrix}1&-1\\-1&0\end{pmatrix},E_2=\begin{pmatrix}0&0\\0&1\end{pmatrix}$. $A$ 的坐标即为 $(3,1)$.
+            \end{enumerate}
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
+        \item 设$V$是域$\mathbf{F}$上的$n$阶对称矩阵关于矩阵加法和数乘运算构成的线性空间，令
+        \[U=\{A\in V \mid \tr(A)=0\},\enspace W=\{\lambda E \mid \lambda\in\mathbf{F}\}.\]
+        \begin{enumerate}
+            \item 证明：$U,W$为$V$的子空间；
+
+            \item 分别求$U,W$的一组基和维数；
+
+            \item 证明：$V=U\oplus W$.
+        \end{enumerate}
+        \begin{answer}
+            注：$\tr$是矩阵的迹，定义为矩阵对角元素之和.
+            \begin{enumerate}
+                \item 根据定义可知$\tr$是线性的，有 $\tr(\lambda A+\mu B)=\lambda\tr(A)+\mu\tr(B)=0$，则$U$是封闭的，又$W$封闭是显然的，则 $U,W$ 是 $V$ 的子空间.
+
+                \item 对于$W$,基为$\{E\}$，$\dim W=1$. 对于$u$,设$E_{ij}$是 $a_{ij}=1$，其余元素为0的$n$阶方阵. 则由于$u$是对称矩阵，在非对角线元素上，$u$的基包含$E_{12}+E_{21},E_{13}+E_{31},\ldots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
+                      \[\begin{pmatrix}a_{11}\\ \vdots\\ a_{nn}	\end{pmatrix}=k_1\begin{pmatrix}1 \\ -1 \\ 0\\ \vdots \\0	\end{pmatrix}=k_2\begin{pmatrix}1 \\ 0 \\ -1\\ \vdots \\0	\end{pmatrix}+\cdots+k_{n-1}\begin{pmatrix}1 \\ 0 \\ 0\\ \vdots \\-1	\end{pmatrix}.\]
+                      则还有$n-1$个基$E_{11}-E_{22},E_{11}-E_{33},\ldots ,E_{11}-E_{nn}$. 故 $\dim U=\dfrac{n^2-n}2+n-2=\dfrac{n^2+n-2}2$.
+
+                \item 设$V'=U+W$. 先证明直和，即$U\cap W=\{0\}$. 这是显然的，因为$\tr(\lambda E)=n\lambda$，仅当 $\lambda=0$ 时 $\lambda E\in U$ 即 $U\cap W=\{0\}$得证. 又$\dim U+\dim W=\dim V'=n=\dim V$，则$V=V'=U\oplus W$得证.
+            \end{enumerate}
+        \end{answer}
+
         \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
         \begin{answer}
             首先设
@@ -1106,5 +1229,8 @@
         \end{answer}
 
         \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
+        \begin{answer}
+
+        \end{answer}
     \end{exgroup}
 \end{exercise}

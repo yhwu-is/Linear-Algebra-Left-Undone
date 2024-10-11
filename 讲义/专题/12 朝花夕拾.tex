@@ -59,6 +59,13 @@
 
 实际上在前面的讨论中，无论是\nameref{thm:有解条件}的结论，都与列向量组成的线性空间有关，仿佛从未出现过行向量有关的定理. 事实上，我们将在未来讨论了内积空间正交性后展开对行向量空间的讨论，现在囿于概念上的缺乏无法叙述相关定理.
 
+\begin{theorem}{}{基础解系是基}
+    设$AX=\vec{0}$的基础解系为$X_1,\ldots,X_{n-r}$，则$X_1,\ldots,X_{n-r}$线性无关.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
 \subsection{非齐次线性方程组解的一般理论}
 
 回顾\autoref{ex:常见子空间} 中的讨论我们发现，非齐次线性方程组的解不构成线性空间，但我们可以尝试将其与齐次线性方程组解空间联系起来研究. 对于非齐次线性方程组
@@ -209,7 +216,7 @@
     \end{enumerate}
 \end{proof}
 
-实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系（复杂的题目可能涉及子空间交与和的维数公式）以及已知的简单秩不等式进行证明. 可能部分题目较为困难，但至少请掌握上面例题中的情况.
+实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系（复杂的题目可能涉及子空间交与和的维数公式）以及已知的简单秩不等式进行证明. 可能部分题目较为困难，但至少请掌握上面例题中的情况. 接下来我们讨论伴随矩阵的秩的问题，这一例题的结论和证明都非常重要：
 \begin{example}{}{伴随矩阵的秩}
     设$A^*$为矩阵$A$的伴随矩阵，证明：
     \[r(A^*)=\begin{cases}
@@ -229,6 +236,33 @@
     \end{enumerate}
 \end{proof}
 
+接下来是一个利用\nameref{thm:线性空间维数公式}以及\nameref{thm:线性映射基本定理}中``设小扩大''的思想解决的问题：
+\begin{example}{}{维数公式技巧例题}
+    已知$A,B$分别是数域$\mathbf{F}$上的$l \times k$和$k \times n$矩阵，$X$是$n \times 1$的列向量. 证明：所有满足$ABX=0$的$BX$构成一个线性空间$V$，且$\dim V = r(B) - r(AB)$.
+\end{example}
+
+\begin{proof}
+    $V$是线性空间只需要说明其中元素关于加法数乘封闭即可，因为这样$V$就是$\mathbf{F}^k$的子空间. 这一证明非常基本，我们在此略过.
+
+    记$V_1=\{X\mid BX=0\},\enspace V_2=\{X\mid ABX=0\}$，则$V_1\subseteq V_2$，因为$\forall X\in V_1$，有$BX=0$，因此$ABX=A0=0$，即$X\in V_2$，因此$V_1\subseteq V_2$. 利用``设小扩大''的思想，取$V_1$的一组基$\alpha_1,\ldots,\alpha_r$，则可以扩充为$V_2$的一组基，记为$\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\ldots,\alpha_m$，则$r=n-r(B)$，$s=n-r(AB)$，于是
+    \begin{align*}
+        V & =\{BX\mid ABX=0\}                                                \\
+          & =\spa(B\alpha_1,\ldots,B\alpha_r,B\alpha_{r+1},\ldots,B\alpha_m) \\
+          & =\spa(B\alpha_{r+1},\ldots,B\alpha_m).
+    \end{align*}
+    下面证明$B\alpha_{r+1},\ldots,B\alpha_m$线性无关. 为此，设
+    \[c_{r+1}B\alpha_{r+1}+\cdots+c_mB\alpha_m=0,\]
+    则
+    \[B(c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m)=0,\]
+    因此$c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m\in V_1$，因此存在$c_1,\ldots,c_r$使得
+    \[c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_n=c_1\alpha_1+\cdots+c_r\alpha_r,\]
+    即
+    \[c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m-c_1\alpha_1-\cdots-c_r\alpha_r=0.\]
+    由于$\alpha_1,\ldots,\alpha_m$线性无关，因此
+    \[c_{r+1}=\cdots=c_m=c_1=c_2=\cdots=c_r=0,\]
+    因此$B\alpha_{r+1},\ldots,B\alpha_m$线性无关，因此$V$的维数为$s-r=(n-r(AB))-(n-r(B))=r(B)-r(AB)$，得证.
+\end{proof}
+
 \section{线性方程组拓展题型}
 
 本节我们将介绍与线性方程组有关的一些题型，可能与高中数学讨论``题型''的学习风格有些类似. 需要注意的是，除了含参问题外，其余问题我们都将分别从齐次和非齐次两个方面进行讨论，给出问题的一般解法. 但实际上这里给出的解法并非能直接套用到所有的题目中，在习题中我们会遇到更多特别的题目. 因此更重要的应当是理解解题思路，而不是死记硬背解题方法.
@@ -237,7 +271,7 @@
 
 此类问题一般考察对于含参数的线性方程组，参数取值如何时有解/无解/有唯一解等. 本质而言，\nameref{thm:有解条件}完全可以解决这一问题.
 
-事实上，利用\autoref{thm:方程组解} 在有解情况下只需计算行列式判断非常方便，但判断无解需要利用\nameref{thm:有解条件}，其中线性相关性的判断通常仍然需要我们对系数矩阵进行高斯消元法. 我们来看一个简单的例子：
+事实上，利用\autoref{thm:方程组解} 在有解情况下只需计算行列式判断非常方便，但判断无解需要利用\nameref{thm:有解条件}，其中线性相关性的判断通常仍然需要我们对系数矩阵进行高斯-若当消元法. 我们来看一个简单的例子：
 \begin{example}{}{}
     当$k$取何值时，方程组：
     \[\begin{cases}
@@ -246,7 +280,7 @@
     有唯一解、无解、有无穷多解？在有解的情况下，求出方程组的全部解.
 \end{example}
 \begin{solution}
-    对于有无解的区别，我们一般都考虑直接使用高斯消元法. 由高斯消元法有（省略中间步骤直接得到阶梯矩阵）：
+    对于有无解的区别，我们一般都考虑直接使用高斯-若当消元法. 由高斯-若当消元法有（省略中间步骤直接得到阶梯矩阵）：
     \[\begin{pmatrix}
             1  & 1  & k & 4   \\
             -1 & k  & 1 & k^2 \\
@@ -935,6 +969,18 @@
         \item 设$A$为$m \times n$矩阵，$r(A)=m$，$B$是$m$阶可逆矩阵，已知$A$的行空间$R(A^\mathrm{T})$是方程组$CX=\vec{0}$的解空间，证明：$BA$的行向量也是$CX=\vec{0}$的一个基础解系.
         \begin{answer}
             由$r(A)=m$可知，$A$的$m$个行向量（$A^\mathrm{T}$的$m$个列向量）线性无关，它们是方程组$CX=0$的一个基础解系. 由$CA^\mathrm{T}=O$和$n-r(C)=m$，得$r(C)=n-m$. 因此，由$CA^\mathrm{T}B^\mathrm{T}=C(BA^\mathrm{T})=O$，可知$(BA)^\mathrm{T}$的$m$个行向量线性无关，它们也是$CX=0$的一个基础解系.
+        \end{answer}
+
+        \item 设$A$是数域$\mathbf{F}$上的一个$n$阶可逆方阵，$A$的前$r$个行向量组成的矩阵为$B$，后$n-r$个行向量组成的矩阵为$C$，$n$元线性方程组$BX=0$与$CX=0$的解空间分别为$V_1,V_2$. 证明：$\mathbf{F}^n=V_1\oplus V_2$.
+        \begin{answer}
+            先记$W=V_1+V_2$，若$\alpha\in V_1\cap V_2$，则$B\alpha=C\alpha=0$，所以
+            \[A\alpha=\begin{pmatrix}
+                    B \\
+                    C
+                \end{pmatrix}\alpha=0,\]
+            由于$A$可逆，因此$\alpha=0$，即$V_1\cap V_2=\{0\}$，因此$V_1+V_2$是直和，因此只需证$W=\mathbf{F}^n$即可. 事实上，我们知道$r(B)=r,r(C)=n-r$，因此$\dim V_1=n-r,\enspace \dim V_2=n-(n-r)=r$，所以
+            \[\dim W=\dim V_1+\dim V_2=n-r+r=n=\dim \mathbf{F}^n,\]
+            又$W=V_1\oplus V_2\subseteq \mathbf{F}^n$，因此$W=\mathbf{F}^n$，故得证.
         \end{answer}
 
         \item 设$A$是$n$阶矩阵，且$A_{11}\neq 0$，证明：方程组$AX=\vec{b}$（$\vec{b}$为非零向量）有无穷多解的充要条件为$A^*\vec{b}=\vec{0}$.

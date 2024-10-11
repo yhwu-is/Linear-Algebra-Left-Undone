@@ -2,9 +2,10 @@
 
 在上一讲的讨论中我们定义了线性映射的基本概念与性质，以及线性映射像空间与核空间之间的关联，引出了我们目前为止最核心的概念——同构. 同构使得我们研究的抽象层次更上一层，而本讲将在这抽象的制高点获得最具象的表达形式——矩阵，介绍线性映射矩阵表示的定义，以及这一定义下线性映射与矩阵的一一对应关系，从而使得我们后续的研究都可以基于具象的矩阵.
 
-\section{线性映射矩阵表示}
+\section{引入：基本思想与工具}
 
-最开始我们在高斯消元时引入了矩阵作为符号简化和方程组求解的工具，严格地来说，我们之前的定义是：
+如何将抽象的线性映射与具象的由数字构成的矩阵联系起来？这似乎不是一个很直接的过程，因此本节我们将从最简单的情况出发，并引入一些必要的工具，便于读者接受线性映射矩阵表示的正式定义. 我们首先回顾矩阵的定义. 最开始我们在高斯消元时引入了矩阵作为符号简化和方程组求解的工具，我们回顾当时给出的矩阵定义：
+
 \begin{definition}{}{}
     域$\mathbf{F}$中的$m\times n$个元素$a_{ij}\enspace(i=1,\ldots,m,\enspace j=1,\ldots,n)$排成$m$行$n$列的矩形数表，称为域$\mathbf{F}$上的一个$m\times n$矩阵，记作
     \[A=\begin{pmatrix}
@@ -16,23 +17,15 @@
     或简记为$(a_{ij})_{m\times n}$，其中$a_{ij}$表示矩阵$A$的第$i$行第$j$列的元素.
 \end{definition}
 
-但是笔者将会在下文用不同的方式引出一种新的定义. 为了探究线性映射的性质，我们需要先研究一些特殊案例，然后从特殊到一般，矩阵就是对特殊案例——$\mathbf{F}^n$ 这样空间的研究. 不妨先考察 $\mathbf{F}^n\to\mathbf{F}^m$ 的线性映射，其可以写成 $y = \sigma(x)$，其中 $x\in\mathbf{F}^n, y\in\mathbf{F}^m$. 我们给出如下结论：
+从这一定义来看，矩阵就是一堆数字的排列组合. 为了将矩阵与线性映射建立联系，我们自然地想到同样由``一些数字''构成的线性空间之间的线性映射，即 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射，然后从这一特殊情况出发得到一般的关联.
+
+考察一个 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射 $y = \sigma(x)$，其中 $x\in\mathbf{F}^n, y\in\mathbf{F}^m$. 我们不难得到如下结论：
 \begin{lemma}{}{}
-    设
-    \begin{align*}
-        \sigma \colon \mathbf{F}^n &\to \mathbf{F}^m \\
-        x = (x_1, \cdots, x_n) & \mapsto y = (y_1, \cdots, y_m)
-    \end{align*}
-    是线性映射，则映射具有形式，称矩阵 $(a_{ij})_{m\times n}$ 为线性映射 $\sigma\colon\mathbf{F}^n\to\mathbf{F}^m$ 的标准表示
-    \begin{align*}
-        y_1 &= a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n \\
-        y_2 &= a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n \\
-        & \cdots\\
-        y_m &= a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n
-    \end{align*}
+    任意的 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射 $y = \sigma(x)$ 都可以写成 $y = Ax$ 的形式，其中 $A$ 是一个 $m \times n$ 的矩阵，并且这样的矩阵是唯一的.
 \end{lemma}
+
 \begin{proof}
-    考虑 $\sigma$ 在 $\mathbf{F}^n$ 的标准基底 $e_1, e_2, \ldots, e_n$ 上的值，设
+    对于一个线性映射，我们通常可以从一组基上的表现来研究. 考虑 $\sigma$ 在 $\mathbf{F}^n$ 的自然基 $e_1, e_2, \ldots, e_n$ 上的值，设
     \[
         \sigma(e_1) = \begin{pmatrix} a_{11} \\ a_{21} \\ \vdots \\ a_{m1} \end{pmatrix},
         \sigma(e_2) = \begin{pmatrix} a_{12} \\ a_{22} \\ \vdots \\ a_{m2} \end{pmatrix},
@@ -55,6 +48,8 @@
         \end{pmatrix}
     \end{align*}
 \end{proof}
+
+称矩阵 $(a_{ij})_{m\times n}$ 为线性映射 $\sigma\colon\mathbf{F}^n\to\mathbf{F}^m$ 的标准表示.
 
 不难发现这里的 $a_{ij}$ 项实际上反映了输入的第 $j$ 项对输出的第 $i$ 项有多少权重，而只要确定了这 $m\times n$ 个权重，我们就得到了一个 $\mathbf{F}^n\to\mathbf{F}^m$ 的线性映射. 换言之，$\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 和这些权重是一一对应的，于是一个映射可以等价地被记为一个矩阵，它接受一个 $\mathbf{F}^n$ 的向量，返回一个 $\mathbf{F}^m$ 的向量，由于标准基的存在，所以我们有同构 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m) \cong \mathbf{F}^{m\times n}$ 后面不再区分 $\mathbf{F}^{m\times n}$ 和 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$.
 \[
@@ -88,7 +83,7 @@
     \end{pmatrix}
 \]
 
-回顾第一章对线性方程的两种表示，一种是写成若干条方程，从行看去，每一行反映了输出的一项如何由输入线性组合得来. 另一种是像\autoref{线性方程的向量表示}中一样写成一条向量方程 $x_1\beta_1 + x_2\beta_2 + \cdots + x_n\beta_n = 0$，从列看去，每一列反映了输入的每一项会对输出产生怎么样的影响.
+回顾第一章对线性方程的两种表示，一种是写成若干条方程，从行看去，每一行反映了输出的一项如何由输入线性组合得来. 另一种是像\eqref{eq:线性方程的向量表示}中一样写成一条向量方程 $x_1\beta_1 + x_2\beta_2 + \cdots + x_n\beta_n = 0$，从列看去，每一列反映了输入的每一项会对输出产生怎么样的影响.
 
 我们注意到虽然证明过程中我们假设了 $\sigma(e_j) = (a_{1j}, a_{2j}, \ldots, a_{mj})^{\mathrm{T}}$，但是即使把矩阵的列改成任意向量空间 $V$ 中的向量而非 $\mathbf{R}^m$ 中的向量也并不改变论证的有效性，也就是说矩阵的列完全可以被替换为任意向量空间中的元素，这样我们也就得到了 $\mathbf{R}^n \to V$ 的映射的一般表示方法——写成长度为 $n$ 的一行，每列分别是一个向量，例如当 $V = \mathbf{R}[x]_4$ 时，我们可以写出
 \[
@@ -99,11 +94,22 @@
 
 我们可以将上面的运算称作使用 $\mathbf{F}^n$ 中向量的系数对一个向量组做线性组合. 特别地，由于基底也是一个向量组，当 $A$ 作为 $n$ 维向量空间 $V$ 的一个基底时，它作为 $\mathbf{F}^n\to V$ 的同构将坐标映射到空间中对应的点，和将点映射到坐标的坐标映射 $V\to\mathbf{F}^n$ 互为逆映射. 如果回顾\hyperlink{基底的矩阵写法}{基底的矩阵写法}我们便会发现前面的符号和此处达成了统一.
 
-我们有一些常用的矩阵，例如零矩阵，即所有元素均为0的矩阵，通常记为$O$；单位矩阵也十分常见，它表示对角线上元素为1，其余元素为0的矩阵，通常记为$E$（若已知阶数为$n$也可特别记为$E_n$）其第 $j$ 列恰好为标准基底中的 $e_j$.
+我们有一些常用的矩阵，例如零矩阵，即所有元素均为0的矩阵，通常记为$O$；单位矩阵也十分常见，它表示对角线上元素为1，其余元素为0的矩阵，通常记为$E$（若已知阶数为$n$也可特别记为$E_n$）其第 $j$ 列恰好为自然基中的 $e_j$.
 
 除此之外，我们通常记域$\mathbf{F}$上的$m\times n$矩阵全体为$\mathbf{F}^{m\times n}$或$\mathbf{M}_{m\times n}(\mathbf{F})$. 当$m=n$时矩阵称为方阵，域$\mathbf{F}$上全体$n$阶矩阵（或称$n$阶方阵）记为$\mathbf{F}^{n\times n}$或$\mathbf{M}_n(\mathbf{F})$.
 
-在了解矩阵的定义之后，我们可以引入线性映射矩阵表示的概念. 经过前面大量的关于坐标同构的铺垫之后，想必读者对于如何将抽象的映射转化为矩阵有一个大致的思路，将一般的向量空间同构到我们熟悉的 $\mathbf{F}^n$，然后就可以得到矩阵表示. 但是在这之前笔者认为需要带读者了解交换图的基本工具
+在了解矩阵的定义之后，我们可以引入线性映射矩阵表示的概念. 经过前面大量的关于坐标同构的铺垫之后，想必读者对于如何将抽象的映射转化为矩阵有一个大致的思路，将一般的向量空间同构到我们熟悉的 $\mathbf{F}^n$，然后就可以得到矩阵表示. 但是在这之前笔者认为需要带读者了解交换图的基本工具：
+
+\begin{definition}{交换图}{}
+    我们首先定义什么是一个\term{图（diagram）}. 一个图可以视为以一个代数结构（例如线性空间）为顶点，以某种映射（例如线性映射）为边的图，例如：
+    \begin{center}
+        \begin{tikzcd}
+            V_1 \arrow[r, "\sigma_1"] \arrow[rd, "\sigma_3"'] & V_2 \arrow[d, "\sigma_2"] \\
+            & V_3
+        \end{tikzcd}
+    \end{center}
+    如果我们称一个图是\term{交换的（commutative）}，则意味着对于图中的任意两个顶点间的任意两条有向路径，路径上映射的复合结果相同. 例如上图中，我们考察从$V_1$到$V_3$的两条路径，则如果$\sigma_2\circ\sigma_1=\sigma_3$，这个图是交换的.
+\end{definition}
 
 我们把空间抽象出来称为一个节点，空间之间的函数用箭头来表示，例如，如果有映射 $\psi\colon V_1 \to V_2, \sigma\colon V_2 \to V_3$，那么我们可以绘制交换图
 \[
@@ -123,7 +129,9 @@
 
 从图中我们可以读出 $\sigma\circ(\rho\circ\psi) = (\sigma\circ\rho)\circ\psi$，即映射复合的结合律. 自此，构造出指定的映射就可以图形化地表示成在图上画箭头，只要能够找到两个节点之间的一条通路，就能够通过映射的复合构造出一个映射.
 
-接下来回到一般的线性映射. 我们知道一个 $\mathbf{F}$ 上的 $m\times n$ 矩阵可以作为一个 $\mathbf{F}^n\to\mathbf{R}^m$ 的映射，所以矩阵对应的应该是从 $\mathbf{F}^n$ 指向 $\mathbf{F}^m$ 的箭头. 一个向量组可以作为一个 $\mathbf{F}^n\to V$ 的映射，所以一个 $n$ 元向量组对应一条 $\mathbf{F}^n$ 指向 $V$ 的箭头. 对于基底这种特殊的向量组，其特性是可逆，于是在 $\mathbf{F}^n\to V$ 外可以另外添加一条反向的箭头表示坐标映射. 不妨设 $V_1$ 是 $\mathbf{F}$ 上的 $n$ 维向量空间，而 $V_2$ 是 $\mathbf{F}$ 上的 $m$ 维向量空间. 为了把映射 $\sigma\colon V_1\to V_2$ 用矩阵表示，我们需要先取两个基底：$B_1 = (\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n)\colon \mathbf{F}^n\to V_1$ 和 $B_2 = (\alpha_1, \alpha_2, \ldots, \alpha_m)\colon\mathbf{F}^m\to V_2$. 根据上面的两组基和一个映射画出交换图
+\section{线性映射矩阵表示}
+
+接下来回到一般的线性映射. 我们知道一个 $\mathbf{F}$ 上的 $m\times n$ 矩阵可以作为一个 $\mathbf{F}^n \to \mathbf{F}^m$ 的映射，所以矩阵对应的应该是从 $\mathbf{F}^n$ 指向 $\mathbf{F}^m$ 的箭头. 一个向量组可以作为一个 $\mathbf{F}^n\to V$ 的映射，所以一个 $n$ 元向量组对应一条 $\mathbf{F}^n$ 指向 $V$ 的箭头. 对于基底这种特殊的向量组，其特性是可逆，于是在 $\mathbf{F}^n\to V$ 外可以另外添加一条反向的箭头表示坐标映射. 不妨设 $V_1$ 是 $\mathbf{F}$ 上的 $n$ 维向量空间，而 $V_2$ 是 $\mathbf{F}$ 上的 $m$ 维向量空间. 为了把映射 $\sigma\colon V_1\to V_2$ 用矩阵表示，我们需要先取两个基底：$B_1 = (\varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n)\colon \mathbf{F}^n\to V_1$ 和 $B_2 = (\alpha_1, \alpha_2, \ldots, \alpha_m)\colon\mathbf{F}^m\to V_2$. 根据上面的两组基和一个映射画出交换图
 \[
     \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
     \begin{tikzcd}
@@ -576,8 +584,6 @@
     \end{pmatrix},\]
 事实上，我们很容易验证这样的常用基的确是线性空间$\mathbf{F}^{m\times n}$的一组基，因为它们显然是线性无关的，且张成整个空间（请读者自行验证），然后我们也知道这样的常用基中矩阵有$m\times n$个，由此我们也得到了$\dim\mathcal{L}(V_1,V_2)=mn$. 当然我们还可以有另一种理解方式，如果读者已经学习过编程中二维数组的概念，事实上二维数组在计算机中的存储形式是一行存完接着马上存下一行，因此事实上我们可以将二维数组看作是一个长为$m\times n$的一维数组（方法就是第一行写完后在同一行马上接着写第二行元素，写完后在同一行接着写第三行元素，依此类推），因此我们也可以理解为$\mathbf{F}^{m\times n}$和$\mathbf{F}^{mn}$是没有区别的（容易验证是同构的），因此$\dim\mathbf{F}^{m\times n}=mn$.
 
-\section{线性映射与矩阵的进一步讨论}
-
 \begin{summary}
 
     在上一讲同构中我们已经知道，两个（有限维）线性空间中的元素是向量还是多项式还是函数并不是核心差别，只要它们维数相同，我们就可以遮蔽掉元素的差别——因为它们都可以通过坐标映射同构于 $\mathbf{F}^n$，因此一切线性空间在坐标作用下都变成了向量空间，变成了最直观的可以用一个一个数字写出来的向量，而本讲我们正基于此将所有无论多么抽象的线性映射也表示成能用一个一个数字写出来的东西，即所谓的矩阵. 我们利用坐标映射将之前抽象的线性空间和线性映射转化为具象的数字表达，使得我们之后的研究更加具体.
@@ -605,7 +611,7 @@
                       &   &        & 1 & a_n
                 \end{pmatrix} \]
             是 $ T $ 关于基 $ B $ 的表示矩阵.
-  
+
             $ T $ 是同构 $ \iff T $ 是双射 $ \iff r(T) = n $，满秩. 所以当 $ a_1 \neq 0 $ 时，$ r(T) = n $ 满秩，此时 $ T $ 是同构映射.
         \end{answer}
 
@@ -617,11 +623,11 @@
 
             \item 设$f=1+2x+3x^2$，求$\sigma(f)$.
         \end{enumerate}
-        
+
         \begin{answer}
             \begin{enumerate}
                 \item 只需要证明$f_1,f_2,f_3$是线性无关的即可，事实上，这也十分显然(考虑其在$1,x,x^2$下的坐标表示线性无关),想必读者可以自行证明
-  
+
                 \item 方法一：设 $ (\sigma(f_1), \sigma(f_2), \sigma(f_3)) = (f_1, f_2, f_3) A $，则由
                       \[ (\sigma(f_1), \sigma(f_2), \sigma(f_3)) = (1, x, x^2) \begin{pmatrix}
                               2 & 0 & 1 \\
@@ -660,7 +666,7 @@
                                 -1 & -1 & -1
                             \end{pmatrix}
                       \end{align*}
-  
+
                       方法二：通过待定系数法解方程组
                       \[ \begin{cases}
                               \sigma(f_1) = -f_1 + 3 f_2 - f_3   \\
@@ -673,7 +679,7 @@
                               3  & 2  & 3  \\
                               -1 & -1 & -1
                           \end{pmatrix} \]
-  
+
                 \item \begin{align*}
                           \sigma(f) & = \sigma\left((1, x, x^2)
                           \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}\right)= \sigma\left((f_1, f_2, f_3)
@@ -704,7 +710,7 @@
                           \begin{pmatrix} -4 \\ 3 \\ 2 \end{pmatrix}                          \\
                                     & = 2x^2 + 3x - 4
                       \end{align*}
-  
+
                       或也可采用待定系数法求出 $ f = -2 f_1 + 3 f_2 $，所以 $ \sigma(f) = -2 \sigma(f_1) + 3 \sigma(f_2) = 2x^2 + 3x - 4 $.
             \end{enumerate}
         \end{answer}
@@ -731,9 +737,9 @@
                                                  & = k_1 \varphi(X) + k_2 \varphi(Y)
                       \end{align*}
                       所以 $ \varphi $ 是 $ \mathbf{M}_2(\mathbf{R}) $ 上的线性映射.
-  
+
                 \item 证明：易知 $ B $ 可逆. 当 $ \lambda = -1 $ 时，$ A $ 可逆. 故 $ \varphi $ 可逆，$ \varphi^{-1}(X) = A^{-1} X B^{-1} $.
-  
+
                 \item $ \lambda = -1 $ 时，取 $ V $ 的一组基 $ \alpha_1 = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \alpha_2 = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \alpha_3 = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \alpha_4 = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} $，有
                       \begin{gather*}
                           \begin{aligned}
@@ -743,14 +749,14 @@
                           \ker \sigma = \spa\left(\begin{pmatrix} 2 & -3 \\ 0 & 1 \end{pmatrix}, \begin{pmatrix} 1 & 0 \\ 1 & 0 \end{pmatrix}\right)
                       \end{gather*}
                       （步骤略，答案不唯一）
-  
+
                 \item 取 $ \begin{pmatrix} 1 & 2 \\ -1 & -2 \end{pmatrix}, \begin{pmatrix} -1 & -1 \\ 1 & 1 \end{pmatrix}, \alpha_3, \alpha_4 $ 即可. 此时矩阵为$ \begin{pmatrix}
                               2 & -2 & -1 & 0 \\
                               4 & -2 & 0  & 1 \\
                               0 & 1  & 0  & 0 \\
                               0 & 0  & 0  & 0
                           \end{pmatrix} $. （答案不唯一）
-            \end{enumerate}  
+            \end{enumerate}
         \end{answer}
 
         \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
@@ -803,7 +809,7 @@
                               d = 0
                           \end{cases} \implies f(x) = t(x^3 - x) \]
                       故 $ N(T) = \spa(x^3 - x) $.
-  
+
                       求像空间，取 $ \mathbf{R}[x]_4 $ 的自然基 $ 1, x, x^2, x^3 $.
                       \[ \begin{matrix}
                               T(1) = \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}   & T(x) = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}   \\
@@ -821,7 +827,7 @@
                           \implies{} & k_1 = k_2 = k_3 = 0
                       \end{align*}
                       故 $ T(1), T(x), T(x^2) $ 线性无关. 故 $ R(T) = \spa\left(\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}\right) $.
-  
+
                 \item 我们只需要将$2 \times 2$矩阵的第二列拼到第一列下方就可以变为我们熟悉的列向量形式，所以其矩阵表示也是简单的
                       \[
                         T(1,x,x^2,x^3)=(e_1,e_2,e_3,e_4)\begin{pmatrix}
@@ -845,7 +851,7 @@
 
             \item 证明：$\xi_1,\xi_2,\xi_3$线性无关.
         \end{enumerate}
-        
+
         \begin{answer}
             \begin{enumerate}
                 \item 对非齐次线性方程组$AX=\xi_1$，\\
@@ -935,14 +941,14 @@
         \begin{answer}
             证明：\begin{enumerate}
                 \item 由于 $ \ker \sigma = \im \sigma $，由 $ \dim \im \sigma + \dim \ker \sigma = \dim V $ 可得.
-  
+
                 \item 设 $ \beta_1, \ldots, \beta_n $ 为 $ V $ 的一组基，则
                       \[ \im \sigma = \spa(\sigma(\beta_1), \ldots, \sigma(\beta_n)) = \ker \sigma \]
                       设 $ \sigma(\beta_1), \ldots, \sigma(\beta_{\frac{n}{2}}) $ 为 $ \im \sigma $ 的基，则可以证明
                       \[ \sigma(\beta_1), \ldots, \sigma(\beta_{\frac{n}{2}}), \beta_1, \ldots, \beta_{\frac{n}{2}} \]
                       线性无关，且 $ \sigma $ 在此基下的矩阵即为所求的形式.
             \end{enumerate}
-  
+
         \end{answer}
     \end{exgroup}
 

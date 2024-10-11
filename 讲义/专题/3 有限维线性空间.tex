@@ -428,6 +428,38 @@
     对于线性空间$\mathbf{C}(\mathbf{C})$中的任一向量 $a + b\i$，其总可以被向量 $\alpha = 1$表示，数乘系数为 $\lambda = a + b\i$，所以$\mathbf{C}(\mathbf{C})$维数为1；对于线性空间$\mathbf{C}(\mathbf{R})$，向量组 $\alpha = 1, \beta = \i$线性无关，且任一向量 $u = a + b\i = a·\alpha + b·\beta$，可被 $\alpha, \beta$表示，所以$\mathbf{C}(\mathbf{R})$维数为2.
 \end{proof}
 
+\begin{example}{}{线性方程组的解的维数}
+    设 $V_1, V_2$ 分别是 $\mathbf{R}$ 上齐次线性方程组 $x_1 = x_2 = \cdots = x_n = 0$ 和 $x_1 + x_2 + \cdots + x_n = 0$ 的解空间，求 $V_1, V_2$ 的基与维数.
+\end{example}
+
+在\autoref{ex:常见子空间}的\ref{item:2:常见子空间:3}中我们已经知道，齐次线性方程组的所有解构成一个线性空间（即解空间），这一例子就是希望读者能够通过求解基和维数的进一步理解解空间的基本结构.
+
+\begin{solution}
+    直接求解两个线性方程组. $V_1$ 对应的线性方程组我们只需要将连等号拆开成多个方程即可：
+    \[\begin{cases}
+        x_1 - x_2 = 0, \\
+        x_2 - x_3 = 0, \\
+        \cdots \\
+        x_{n-1} - x_n = 0.
+    \end{cases}\]
+    其它的方程例如 $x_1 - x_3 = 0$ 等都可以由这些方程表示出来，因此消元过程中会被直接消去，我们只需要求解上述方程组即可. 很容易看出方程组的解为
+    \[(x_1,x_2,\cdots,x_n)^\mathrm{T} = k(1,1,\ldots,1)^\mathrm{T}\]
+    其中 $k\in\mathbf{R}$，根据线性扩张的定义，
+    \[V_1 = \spa\{(1,1,\ldots,1)\}\]
+    所以 $V_1$ 的一组基为 $(1,1,\ldots,1)$，$\dim V_1 = 1$. 接下来是 $V_2$，它对应的线性方程组的解可以直接写出为
+    \begin{align*}
+        &\quad\ (x_1,x_2,\ldots,x_n)^\mathrm{T} \\
+        &= k_1(-1,1,0,\ldots,0)^\mathrm{T} + k_2(-1,0,1,\ldots,0)^\mathrm{T} + \cdots + k_{n-1}(-1,0,\ldots,0,1)^\mathrm{T}
+    \end{align*}
+    其中 $k_1,k_2,\ldots,k_{n-1}\in\mathbf{R}$，根据线性扩张的定义
+    \[V_2 = \spa\{(-1,1,0,\ldots,0)^\mathrm{T},(-1,0,1,\ldots,0)^\mathrm{T},\ldots,(-1,0,\ldots,0,1)^\mathrm{T}\}\]
+    并且这些向量都是线性无关的，故而我们得到 $V_2$ 的一组基为
+    \[(-1,1,0,\ldots,0)^\mathrm{T},(-1,0,1,\ldots,0)^\mathrm{T},\ldots,(-1,0,\ldots,0,1)^\mathrm{T},\]
+    进一步有 $\dim V_2 = n - 1$.
+\end{solution}
+
+我们发现，上述齐次线性方程组的解空间实际上就是由基础解系作为一组基张成的线性空间，因为上述方程的基础解系是线性无关向量组. 事实上这一结论是具有一般性的，即任意齐次线性方程组的解空间都可以由基础解系作为一组基张成，这一结论我们会在\nameref{chap:朝花夕拾}一讲中给出证明.
+
 \begin{example}{}{}
     证明：$1,(x-5)^2,(x-5)^3$是$\mathbf{R}[x]_4$的子空间$U$的一组基，其中$U$定义为
     \[U=\{p\in\mathbf{R}[x]_4 \mid p'(5)=0\}.\]
@@ -542,7 +574,7 @@
             1 & 0 & 1 & 0 & 0 & 0 \\
             1 & 3 & 0 & 1 & 0 & 0 \\
             0 & 1 & 0 & 0 & 1 & 0 \\
-            0 & 2 & 0 & 0 & 0 & 1
+            0 & 1 & 0 & 0 & 0 & 1
         \end{pmatrix}
         \xLongrightarrow{\text{初等行变换}}
         \begin{pmatrix}
@@ -574,9 +606,7 @@
 \begin{enumerate}
     \item \hypertarget{基底的矩阵写法}若向量$\alpha$在基$\beta_1,\beta_2,\ldots,\beta_n$下的坐标为$\alpha_B=(a_1,a_2,\ldots,a_n)$，则我们也可以写为
           \[\alpha=(\beta_1, \beta_2, \ldots, \beta_n)\begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}\]
-          实际上我们在学习矩阵乘法后就会意识到这一记号是很自然的，因为这样的表示就等价于
-          \[\alpha=a_1\beta_1+a_2\beta_2+\cdots+a_n\beta_n,\]
-          但当前没有学习矩阵乘法，因此我们只能将其视为一种记号.
+          这一记号与\autoref{eq:矩阵左乘列向量}中给出的规则是一致的.
 
     \item 回顾坐标的定义，事实上取向量的坐标相当于将一个$n$维线性空间$V$中的元素$\alpha$转化为$\mathbf{F}^n$中的元素$\alpha_B$. 因此我们可以将求向量坐标的过程视为一个映射$\varphi$，即从原线性空间$V(\mathbf{F})$到$\mathbf{F}^n$的坐标映射，那么我们很容易看到以下结果：
           \begin{enumerate}
@@ -815,6 +845,11 @@
             \end{enumerate}
         \end{answer}
 
+        \item 求解子空间 $V_1 = \{(a,0,b) \mid a,b \in \mathbf{R}\}$ 和 $V_2 = \{(a,2a,b) \mid a,b \in \mathbf{R}\}$ 的基和维数.
+        \begin{answer}
+
+        \end{answer}
+
         \item 证明：$B=\{1,x-a,(x-a)^2\}\enspace(a\neq 0)$是$\mathbf{R}[x]_3$的一组基，并求$\mathbf{R}[x]_3$的自然基$\{1,x,x^2\}$中每个向量关于基$B$的坐标.
         \begin{answer}
             只需证明 $B$ 线性无关即可. $\lambda_1+\lambda_2(x_a)+\lambda_3(x-a)^2$求导，增加方程数得到
@@ -912,7 +947,8 @@
             只需证明 $\alpha_r$ 可以被 $\alpha_1,\ldots,\alpha_{r-1},\beta$ 表示即可. 由于 $\beta$ 是 $\alpha_1,\ldots,\alpha_{r-1}$ 的线性组合，若 $\lambda_r=0$，则 $\beta$ 是 $\alpha_1,\ldots,\alpha_{r-1}$ 的线性组合. 这与条件矛盾. 因此 $\alpha_r=-\vspace{1ex}\dfrac 1{\lambda_r}(\lambda_1\alpha_1+\cdots+\lambda_{r-1}\alpha_{r-1}-\beta)$，则这两组向量等价. $\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$ 得证.
         \end{answer}
 
-        \item 设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：
+        \item \label{item:3:正实数线性空间}
+        设$\mathbf{R}^+$是所有正实数组成的集合，加法和数乘定义如下：
         \[ \forall a,b \in \mathbf{R}_+,\enspace k\in \mathbf{R}\colon\enspace a\oplus b = ab,\enspace k\odot a = a^k \]
         则 $\mathbf{R}^+$关于这一加法和数乘构成一个实线性空间. 求$\mathbf{R}^+$的一组基.
         \begin{answer}
