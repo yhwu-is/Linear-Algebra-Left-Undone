@@ -30,6 +30,118 @@
     无解；$|A|\neq 0$可知$r(A)=n$，$r(A_1)=n-1$，因此系数矩阵$A_1$的秩小于增广矩阵$A$的秩$n$，故无解.
 \end{solution}
 
+\section{Cramer法则}
+
+从历史角度来开，引入行列式是用于求解线性方程组的. 瑞士数学家克莱姆（Cramer）于1750年在他的《线性代数分析导言》中发表了这一方法. 事实上莱布尼兹〔1693〕，以及麦克劳林〔1748〕亦研究了这一法则，但他们的记法不如克莱姆清晰. 接下来我们介绍这一充满历史底蕴的定理：
+\begin{theorem}{Cramer法则}{Cramer} \index{Cramer@Cramer 法则 (Cramer's rule)}
+    对线性方程组
+    \begin{gather}
+        \label{eq:13:线性方程组1}
+        \begin{cases} \begin{aligned}
+                a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n & = 0             \\
+                a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n & = 0             \\
+                                                     & \vdotswithin{=} \\
+                a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n & = 0
+            \end{aligned} \end{cases}
+        \\
+        \label{eq:13:线性方程组2}
+        \begin{cases} \begin{aligned}
+                a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n & = b_1           \\
+                a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n & = b_2           \\
+                                                     & \vdotswithin{=} \\
+                a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n & = b_n
+            \end{aligned} \end{cases}
+    \end{gather}
+
+    令$D=\begin{vmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & a_{nn}
+        \end{vmatrix}$，称为系数行列式.
+
+    令$D_1=\begin{vmatrix}
+            b_1    & a_{12} & \cdots & a_{1n} \\
+            b_2    & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            b_n    & a_{n2} & \cdots & a_{nn}
+        \end{vmatrix},\ldots,D_n=\begin{vmatrix}
+            a_{11} & a_{12} & \cdots & b_1    \\
+            a_{21} & a_{22} & \cdots & b_2    \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & b_n
+        \end{vmatrix}$.
+
+    \begin{enumerate}
+        \item 方程组 \ref{eq:13:线性方程组1} 只有零解$\iff D \neq 0$，\\
+              方程组 \ref{eq:13:线性方程组1} 有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
+
+        \item 方程组 \ref{eq:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，\\
+              当$D=0$时，方程组 \ref{eq:13:线性方程组2} 要么无解，要么有无穷多解.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    我们不区分齐次与非齐次方程组进行证明，实际上齐次的结论只是下面证明的特例. 事实上，对于任意线性方程组$AX=b$，其中$b$可以是零向量，若$D=|A|\neq 0$，则$A$可逆，因此方程组有解
+    \[X=A^{-1}b=\frac{1}{|A|}A^*b=\frac{1}{D}A^*b,\]
+    即
+    \[\begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix}= \dfrac{1}{D}\begin{pmatrix}
+            A_{11} & A_{21} & \cdots & A_{n1} \\
+            A_{12} & A_{22} & \cdots & A_{n2} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            A_{1n} & A_{2n} & \cdots & A_{nn}
+        \end{pmatrix}\begin{pmatrix}
+            b_1 \\ b_2 \\ \vdots \\ b_n
+        \end{pmatrix},\]
+    于是根据\autoref{def:递归式定义}，
+    \[x_i=\frac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\frac{D_i}{D}\enspace(i=1,2,\ldots,n)\]
+    事实上此时解唯一，因为可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
+
+    反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:双射等价条件} 可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$. 综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
+
+    剩下的无解、无穷解的结论就很显然了. 若$AX=b$无解或有无穷解，反证法，若$D\neq 0$，则$A$可逆，从而$AX=b$有唯一解，矛盾，故$D=0$. 反之，若$D=0$，则$A$不可逆，反证法，若$AX=b$有唯一解，$A$可逆，矛盾，故$AX=b$无解或有无穷解（完全就是前面$AX=b$有唯一解$\iff D=|A|\neq 0$的推论）.
+\end{proof}
+
+我们可以用 Cramer 法则求解线性方程组，但要注意只有方程个数与未知数个数相等时才能使用，并且需要系数行列式不为0.
+\begin{example}{}{}
+    求解方程组$\begin{cases}
+            x_1+x_2+x_3=1          \\
+            a_1x_1+a_2x_2+a_3x_3=0 \\
+            a_1^2x_1+a_2^2x_2+a_3^2x_3=0
+        \end{cases}$，其中$a_1,a_2,a_3$两两不等.
+\end{example}
+
+\begin{solution}
+    $a_1,a_2,a_3$两两不等时，我们有
+    \[D=\begin{vmatrix}
+            1     & 1     & 1     \\
+            a_1   & a_2   & a_3   \\
+            a_1^2 & a_2^2 & a_3^2
+        \end{vmatrix}=(a_2-a_1)(a_3-a_1)(a_3-a_2)\neq 0,\]
+    根据Cramer法则，方程组有唯一解，且
+    \[D_1=\begin{vmatrix}
+            1 & 1     & 1     \\
+            0 & a_2   & a_3   \\
+            0 & a_2^2 & a_3^2
+        \end{vmatrix}=(a_3-a_2)a_2a_3,\]
+    \[D_2=\begin{vmatrix}
+            1     & 1 & 1     \\
+            a_1   & 0 & a_3   \\
+            a_1^2 & 0 & a_3^2
+        \end{vmatrix}=(a_1-a_3)a_1a_3,\]
+    \[D_3=\begin{vmatrix}
+            1     & 1     & 1 \\
+            a_1   & a_2   & 0 \\
+            a_1^2 & a_2^2 & 0
+        \end{vmatrix}=(a_2-a_1)a_1a_2,\]
+    因此
+    \[x_1=\dfrac{D_1}{D}=\dfrac{a_2a_3}{(a_2-a_1)(a_3-a_1)},\]\[x_2=\dfrac{D_2}{D}=\dfrac{a_1a_3}{(a_1-a_2)(a_3-a_2)},\]\[x_3=\dfrac{D_3}{D}=\dfrac{a_1a_2}{(a_1-a_3)(a_2-a_3)}.\]
+\end{solution}
+
+事实上，Cramer法则在定理内容中已经给我们提供了关于线性方程组解的理论的重要结论——它实现了我们第一讲中提到的方程组解的情况的更一般化的讨论，即不需要化为简化阶梯矩阵就可以利用更为一般化的结论判断方程组解的情况，我们将在朝花夕拾中进行更完整的讨论.
+
 \subsection{齐次线性方程组解的一般理论}
 
 接下来我们将分别针对齐次和非齐次线性方程组的情况展开关于解的结构性质的讨论. 回顾\autoref{ex:常见子空间} 中的讨论，对于齐次线性方程组$AX=0$，我们有：
@@ -156,6 +268,79 @@
     \[k_1=k_2=\cdots=k_{n-r+1}=0,\]
     即$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-r+2}-\eta_1$线性无关，因此$AX=\vec{0}$的解向量至少有$n-r+1$个线性无关，这与$AX=\vec{0}$的解空间维数为$n-r$矛盾，故假设不成立，命题得证.
 \end{proof}
+
+\subsection{从对偶到线性方程组}
+
+接下来从对偶空间的角度探讨一下线性方程组的结构问题. 考虑方程组 $Ax = b$，我们将其写开：
+
+\[
+\begin{cases}
+\begin{aligned}
+    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n & = b_1 \\
+    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n & = b_2 \\
+    \vdotswithin{=} \\
+    a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n & = b_m
+\end{aligned}
+\end{cases}
+\]
+
+我们最开始已经提到过这个直觉：线性方程组无非是一族超平面的交. 现在，用线性泛函的语言重述一下这个性质，记：
+
+\[
+\varphi_k(x_1, x_2, \cdots, x_n) = a_{k1} x_1 + a_{k2} x_2 + \cdots + a_{kn} x_n
+\]
+
+则我们知道，上述线性方程组的可行解就是
+
+\[
+\bigcap_{i = 1}^k \varphi_i^{-1} (b_i)
+\]
+
+我们知道，这样的一组纤维构成一个仿射子集，而仿射子集无非就是一个超平面，所以，现在上面的直观已经被用代数的语言描述了. 接下来，让我们考察仿射子集的交，也就是以下引理：
+
+\begin{lemma}
+    仿射子集的交如果非空，则它依然是仿射子集.
+\end{lemma}
+
+从直观上看，这个结果就是说，两个线性的东西的交集依然是线性的. 不妨设想一下三维情形，两个平面交于一条直线，而直线依然是一个线性的对象. 在下面的证明中，我们会给出这条直线的构造，而在后面关于射影几何代数的未竟专题当中，这将称为我们讨论的一个核心.
+
+\begin{proof}
+    考虑两个仿射子集 $v_1 + W_1, v_2 + W_2$. 如果向量 $u \in v_1 + W_1 \cap v_2 + W_2$，那么也就是说它可以表示成
+
+    \[
+    u = v_1 + w_1 = v_2 + w_2
+    \]
+
+    为了证明它是一个仿射子集，显然的想法就是，它减掉某一个东西之后构成一个线性空间. 那么这个东西是什么呢？很简单，只要假定它存在就可以了. 令 $u_0 \in v_1 + W_1 \cap v_2 + W_2$，记其为 $v_1 + \hat w_1 = v_2 + \hat w_2$，则
+
+    \[
+    u - u_0 = w_1 - \hat w_1 = w_2 - \hat w_2 \in W_1 \cap W_2
+    \]
+
+    因此，下面我们直接考虑证明 $v_1 + W_1 \cap v_2 + W_2 = u_0 + W_1 \cap W_2$. 现在，我们已经证明了左边包含于右边. 考虑 $u_0 + w \in u_0 + W_1 \cap W_2$，则我们知道
+
+    \[
+    u_0 + w = v_1 + \hat w_1 + w = v_1 + (\hat w_1 + w) \in v_1 + W_1
+    \]
+
+    同理可证 $u_0 + w \in v_2 + W_2$. 因此右边包含于左边. 从此得证.
+\end{proof}
+
+参照这个构造，应用归纳法，我们知道：
+
+\[
+\bigcap_{i = 1}^n v_i + W_i = v_0 + \bigcap_{i = 1}^n W_i
+\]
+
+其中 $v_0$ 为一个已经选出的代表元. 因此，我们展开线性方程的可行解的表达方式，因为 $\varphi_i^(-1) (b) = v_0 + \ker \varphi$，所以：
+
+\[
+\bigcap_{i = 1}^m \varphi_i^{-1} (b_i) = v_0 + \bigcap_{i = 0}^m \ker \varphi_i
+\]
+
+我们将前面部分称为特解，后面部分称为通解. 而通解如我们所见就是 $Ax = 0$ 的解. 于是，参照我们在 1.3 节末尾给出的评述，$Ax = 0$ 的解空间的维数就是 $\dim N(\mathop{\mathrm{span}} \{\varphi_i\}) = \dim V - \mathop{\mathrm{span}} \{\varphi_i\}$. 因此，我们只需考察在 $m$ 个线性泛函当中，有多少个是线性无关的. 而在我们给出了对偶空间中的坐标之后，这就等价于是一个求矩阵秩的问题了.
+
+最后的一个反思是，对偶空间的意义到底在哪？在最开始，我们已经提到过，线性泛函就是超平面，超平面与点具备对偶关系. 而这样的对偶关系延伸开去，就是两种对线性方程组的视角，其中，超平面的交的视角在上文中已经得到了充分的解释，而点的视角还没说明.如果将 $(a_{i1}, a_{i2}, \cdots, a_{in})$ 视作一个点，那么我们的求解任务就是找一个超平面过 $m$ 个点. 而我们在中学阶段就已经知道，要证明一组点共面是一个比较麻烦的事情，但是求一组面是否有交点往往来说是比较轻松的. 因此，我们通过对偶空间进行了一个翻译工作，将求一组点所共的那些面转化成了一些面所交的那些点，进而对问题完成了简化.
 
 \section{理论应用}
 
@@ -964,6 +1149,25 @@
 
                 因此，记 $A = PBP^{-1}$，其中 $B$ 为对角矩阵，则 $(A+E)(A-E)=P(B-E)(B+E)P^{-1}=0$，故命题得证.
         \end{enumerate}
+        \end{answer}
+
+        \item 设$a_1,a_2,\ldots,a_n$为互不相等的实数，$b_1,b_2,\ldots,b_n$为任意给定的实数. 证明：存在唯一的$n-1$次多项式，满足$f(a_i)=b_i,\enspace i=1,2,\ldots,n$.
+        \begin{answer}
+            设 $f(x) = c_0+c_1x+c_2x^2+\cdots+c_{n-1}x^{n-1}$，则有
+            \[\begin{cases} \begin{aligned}
+                        c_0+c_1a_1+c_2a_1^2+\cdots+c_{n-1}a_1^{n-1} & = b_1,            \\
+                        c_0+c_1a_2+c_2a_2^2+\cdots+c_{n-1}a_2^{n-1} & = b_2,            \\
+                                                                    & \vdotswithin{ = } \\
+                        c_0+c_1a_n+c_2a_n^2+\cdots+c_{n-1}a_n^{n-1} & = b_n.            \\
+                    \end{aligned} \end{cases}\]
+            注意此处我们研究的对象是 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$. 因为系数行列式
+            \[D = \begin{vmatrix}
+                    1      & a_1    & \cdots & a_1^{n-1} \\
+                    1      & a_2    & \cdots & a_2^{n-1} \\
+                    \vdots & \vdots & \ddots & \vdots    \\
+                    1      & a_n    & \cdots & a_n^{n-1} \\
+                \end{vmatrix} = \prod_{1 \leqslant j < i \leqslant n} (a_i-a_j) \neq 0.\]
+            所以由 Cramer 法则，上述关于 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$ 的方程组有唯一解，所以满足条件的多项式函数 $f$ 是唯一存在的.
         \end{answer}
 
         \item 设$A$为$m \times n$矩阵，$r(A)=m$，$B$是$m$阶可逆矩阵，已知$A$的行空间$R(A^\mathrm{T})$是方程组$CX=\vec{0}$的解空间，证明：$BA$的行向量也是$CX=\vec{0}$的一个基础解系.

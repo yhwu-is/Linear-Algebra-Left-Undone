@@ -122,41 +122,37 @@
 \begin{enumerate}
     \item 从充分性和必要性两个角度证明：
     \begin{enumerate}
-        \item 充分性：只需证明 $\langle F\colon+\rangle$，$\langle F\setminus\{0\}\colon\circ\rangle$ 是交换群，并且乘法对加法满足左、右分配律.
+        \item 充分性：只需证明 $\langle F\colon+\rangle$，$\langle F\setminus\{0\}\colon\circ\rangle$ 是交换群，并且乘法对加法满足左、右分配律. 交换群的第一条是运算封闭性，这在充分性的出发点中已经包含. 下面我们证明其它性质：
         \begin{enumerate}
             \item $\langle F\colon+\rangle$ 是交换群：
             \begin{enumerate}
-                \item 对任意 $a, b \in F$，$a + b \in F$；
-                \item $F$ 包含加法单位元 $0$，即对于任意 $a \in F$，有 $a + 0 = a$；
-                \item 对于每个 $a \in F$，存在加法逆元 $-a \in F$，使得 $a + (-a) = 0$；
-                \item 加法满足交换律：对任意 $a, b \in F$，有 $a + b = b + a$；
-                \item 加法满足结合律：对任意 $a, b, c \in F$，有 $(a + b) + c = a + (b + c)$；
+                \item 加法结合律和交换律是小学数学基础知识，故必然满足；
+                \item 加法单位元：因为我们要求 $F$ 包含 $0$，在普通数的运算中就是自然的加法单位元；
+                \item 加法逆元：因为我们要求减法封闭，对于任意的 $a \in F$，$0 - a = -a \in F$，而 $a + (-a) = 0$，故 $F$ 中的每个元素都有加法逆元.
             \end{enumerate}
             因此，$F$ 在加法下构成一个交换群.
             \item $\langle F\setminus\{0\}\colon\circ\rangle$ 是交换群：
             \begin{enumerate}
-                \item 对任意 $a, b \in F$，$a \times b \in F$；
-                \item $F$ 包含乘法单位元 $1 \neq 0$，即对任意 $a \in F$，有 $a \times 1 = a$；
-                \item 对于每个 $a \in F$ 且 $a \neq 0$，存在乘法逆元 $a^{-1} \in F$，使得 $a \times a^{-1} = 1$；
-                \item 乘法满足交换律：对任意 $a, b \in F$，有 $a \times b = b \times a$；
-                \item 乘法满足结合律：对任意 $a, b, c \in F$，有 $(a \times b) \times c = a \times (b \times c)$；
+                \item 乘法结合律和交换律是小学数学基础知识，故必然满足；
+                \item 乘法单位元：因为我们要求 $F$ 包含 $1$，在普通数的运算中就是自然的乘法单位元；
+                \item 乘法逆元：因为我们要求除法封闭，对于任意的 $a \in F \backslash \{0\}$，$1/a \in F$，而 $a \cdot (1/a) = 1$，故 $F$ 中的每个非零元素都有乘法逆元.
             \end{enumerate}
             因此，$F$ 中的非零元素在乘法下构成一个交换群.
-            \item 乘法对加法满足左、右分配律，显然.
+            \item 乘法对加法满足左、右分配律，这也是小学数学基础知识，故必然满足.
         \end{enumerate}
         因此，$F$ 对数的加法和乘法构成数域.
 
-        \item 必要性：因为 $F$ 对加法构成数域，所以 $F$ 对数的加减封闭，且包含单位元 $0$；因为 $F$ 对乘法构成数域，所以 $F$ 对数的乘除封闭，且包含单位元 $1$.
+        \item 必要性：因为 $F$ 对加法构成阿贝尔群，所以 $F$ 对数的加减封闭，且包含单位元 $0$；因为 $F \backslash \{0\}$ 对乘法构成阿贝尔群，所以 $F$ 对数的乘除封闭，且包含单位元 $1$.
     \end{enumerate}
 
-    \item 设 $\mathbf{F}$ 是一个数域，我们将证明 $\mathbf{Q} \subseteq \mathbf{F}$.
+    \item 设 $\mathbf{F}$ 是任意的一个数域，我们将证明 $\mathbf{Q} \subseteq \mathbf{F}$.
     \begin{enumerate}
         \item 由于 $\mathbf{F}$ 是一个数域，它至少包含乘法单位元 $1 \neq 0$.通过交换律和结合律，我们可以反复使用加法构造正整数：
         \[
         1, \ 1 + 1 = 2, \ 1 + 1 + 1 = 3, \dots
         \]
         因此，所有正整数都属于 $\mathbf{F}$.对于负整数，由于加法逆元的存在性，对于每个正整数 $n$，$-n \in \mathbf{F}$，即负整数也在数域 $\mathbf{F}$ 中.因此，所有整数 $\mathbf{Z}$ 都在 $\mathbf{F}$ 中.
-        \item 由于 $\mathbf{F}$ 是一个数域，所以它对乘法和除法封闭，故 $\forall p,q \in \mathbf{Z}, p,q \in \mathbf{F}, \dfrac{p}{q} \in \mathbf{F}$，故 $\mathbf{Q} \subseteq \mathbf{F}$.
+        \item 由于 $\mathbf{F}$ 是一个数域，所以它对乘法和除法（除数不为 $0$）封闭，故 $\forall p,q \in \mathbf{Z}, p,q \in \mathbf{F}, \dfrac{p}{q} \in \mathbf{F}$，故 $\mathbf{Q} \subseteq \mathbf{F}$.
     \end{enumerate}
 \end{enumerate}
 \end{proof}
@@ -195,45 +191,44 @@
 
 \begin{proof}
 \begin{enumerate}
-    \item 首先证明整数集 $\mathbf{Z}$ 对整数的加法和乘法构成一个交换环：
+    \item 证明整数集 $\mathbf{Z}$ 对整数的加法和乘法构成一个交换环：
     \begin{enumerate}
         \item 加法封闭性：对任意 $a, b \in \mathbf{Z}$，有
         $a + b \in \mathbf{Z}$；
 
-        \item 加法结合律：对任意 $a, b, c \in \mathbf{Z}$，有$a + (b + c) = (a + b) + c$；
+        \item 加法结合律：小学数学，不再赘述；
 
-        \item 加法单位元：存在加法的单位元 $0 \in \mathbf{Z}$，使得对任意 $a \in \mathbf{Z}$，有$a + 0 = a$；
+        \item 加法单位元：取 $0 \in \mathbf{Z}$ 作为加法单位元即可，因为对任意 $a \in \mathbf{Z}$，有$a + 0 = 0 + a = a$；
 
-        \item 加法逆元：对任意 $a \in \mathbf{Z}$，存在加法逆元 $-a \in \mathbf{Z}$，使得$ a + (-a) = 0$；
+        \item 加法逆元：取相反数 $-a \in \mathbf{Z}$ 即可，因为对任意 $a \in \mathbf{Z}$，有 $a + (-a) = 0$；
 
-        \item 加法交换律：对任意 $a, b \in \mathbf{Z}$，有$a + b = b + a$.
+        \item 加法交换律：小学数学，不再赘述；
 
         \item 乘法封闭性：对任意 $a, b \in \mathbf{Z}$，有$a \cdot b \in \mathbf{Z}$；
 
-        \item 乘法结合律：对任意 $a, b, c \in \mathbf{Z}$，有$a \cdot (b \cdot c) = (a \cdot b) \cdot c$；
+        \item 乘法结合律：小学数学，不再赘述；
 
-        \item 乘法单位元：存在乘法的单位元 $1 \in \mathbf{Z}$，使得对任意 $a \in \mathbf{Z}$，有$a \cdot 1 = a$；
+        \item 乘法单位元：取 $1 \in \mathbf{Z}$ 作为乘法单位元即可，因为对任意 $a \in \mathbf{Z}$，有 $1 \cdot a = a \cdot 1 = a$；
 
-        \item 分配律：对任意 $a, b, c \in \mathbf{Z}$，有$a \cdot (b + c) = a \cdot b + a \cdot c$；
+        \item 分配律：小学数学，不再赘述.
         因此，整数集 $\mathbf{Z}$ 对整数的加法和乘法构成一个交换环.
     \end{enumerate}
     但是 $\mathbf{Z}$ 不是域，因为 $\mathbf{Z}$ 中的非零元素没有乘法逆元. 例如 $2$ 的逆元 $\dfrac{1}{2} \notin \mathbf{Z}$.
     \item 此题关于环的证明和上题类似，留给读者自行证明.
-    \item 我们要证明 $\mathbf{Q}(\sqrt{2})$，即证明它对加法和乘法封闭，在加法和乘法下分别满足交换律、结合律、分配律，具有加法、乘法单位元，每个元素都有加法逆元，每个非零元素都有乘法逆元.
+    \item 证明 $\mathbf{Q}(\sqrt{2})$ 是一个数域：
     \begin{enumerate}
         \item 加法封闭性：对任意 $x, y \in \mathbf{Q}(\sqrt{2})$，有$x + y = (a + b\sqrt{2}) + (c + d\sqrt{2}) = (a + c) + (b + d)\sqrt{2} \in \mathbf{Q}(\sqrt{2})$，故加法封闭；
         \item 乘法封闭性：对任意 $x, y \in \mathbf{Q}(\sqrt{2})$，有$x \cdot y = (a + b\sqrt{2}) \cdot (c + d\sqrt{2}) = (ac + 2bd) + (ad + bc)\sqrt{2} \in \mathbf{Q}(\sqrt{2})$，故乘法封闭；
-        \item 交换律和结合律：$\mathbf{Q}$ 中的加法和乘法本身满足交换律和结合律，而 $\sqrt{2}$ 是无理数，与有理数的运算也满足这些律. 因此，在 $\mathbf{Q}(\sqrt{2})$ 中，加法和乘法同样满足交换律和结合律；
-        \item 加法单位元：$0 + 0\sqrt{2} \in \mathbf{Q}(\sqrt{2})$，且 $\forall x \in \mathbf{Q}(\sqrt{2}), x + (0 + 0\sqrt{2}) = x$；
-        \item 乘法单位元：$1 + 0\sqrt{2} \in \mathbf{Q}(\sqrt{2})$，且 $\forall x \in \mathbf{Q}(\sqrt{2}), x \cdot (1 + 0\sqrt{2}) = x$；
+        \item 交换律和结合律：$\mathbf{Q}$ 中的加法和乘法本身满足交换律和结合律，而 $\sqrt{2}$ 是无理数，与有理数的运算也满足这些运算律. 因此，在 $\mathbf{Q}(\sqrt{2})$ 中，加法和乘法同样满足交换律和结合律；
+        \item 加法单位元：取 $0 + 0\sqrt{2} \in \mathbf{Q}(\sqrt{2})$ 即可；
+        \item 乘法单位元：取 $1 + 0\sqrt{2} \in \mathbf{Q}(\sqrt{2})$ 即可；
         \item 加法逆元，对于任意 $x = a + b\sqrt{2} \in \mathbf{Q}(\sqrt{2})$，它的加法逆元是 $-a - b\sqrt{2} \in \mathbf{Q}(\sqrt{2})$；
-        \item 乘法逆元，对于任意 $x = a + b\sqrt{2} \in \mathbf{Q}(\sqrt{2})$，它的乘法逆元是 $y = \frac{1}{a + b\sqrt{2}} \in \mathbf{Q}(\sqrt{2})$，我们将 $y$ 继续化简：
-        $$
-        y = \frac{1}{a + b\sqrt{2}} = \frac{a - b\sqrt{2}}{(a + b\sqrt{2})(a - b\sqrt{2})} = \frac{a - b\sqrt{2}}{a^2 - 2b^2}
-        $$
+        \item 乘法逆元，除 $0$ 以外，对于任意 $x = a + b\sqrt{2} \in \mathbf{Q}(\sqrt{2})$，它的乘法逆元是 $y = \dfrac{1}{a + b\sqrt{2}} \in \mathbf{Q}(\sqrt{2})$，我们将 $y$ 继续化简：
+        \[ y = \frac{1}{a + b\sqrt{2}} = \frac{a - b\sqrt{2}}{(a + b\sqrt{2})(a - b\sqrt{2})} = \frac{a - b\sqrt{2}}{a^2 - 2b^2}\]
         $a,b \in Q$，故 $a^2 - 2b^2 \neq 0$，分母是有理数.
-        因此，$\mathbf{Q}(\sqrt{2})$ 是一个数域.
+        \item 分配律：过于冗长且平凡的计算，不再赘述. 当然根据前面的讨论，读者自行证明时只需要验证其中一个分配律即可.
     \end{enumerate}
+    综上，$\mathbf{Q}(\sqrt{2})$ 是一个数域.
 \end{enumerate}
 \end{proof}
 
@@ -351,15 +346,15 @@
 \end{theorem}
 
 为了证明这一定理，我们首先需要一个引理：
-\begin{lemma}{}{}
+\begin{lemma}{}{等价引理}
     设$R$是集合$A$的等价关系，$a,b\in A$，则$\overline{a}=\overline{b}\iff a\,R\,b$.
 \end{lemma}
 这一引理说明 $a$ 和 $b$ 等价当且仅当它们所在的等价类相同，或者说在同一个等价类中，相信根据等价类的定义这是很显然的结论.
 
 \begin{proof}
 \begin{enumerate}
-    \item 充分性：$\overline{a}=\{ x \in A \mid a \,R\, x \}$，$\overline{b}=\{ x \in A \mid b \,R\, x \}$，因为 $\overline{a} = \overline{b}$，所以 $a \in \overline{b}$，故 $a \,R\, b$.
-    \item 必要性：若 $a \,R\, b$，则由等价关系的传递性，$\overline{a} = \{ x \in A \mid a \,R\, x \} = \{ x \in A \mid b \,R\, x \} = \overline{b}$.
+    \item 充分性：$\overline{a}=\{ x \in A \mid x \,R\, a \}$，$\overline{b}=\{ x \in A \mid x \,R\, b \}$，因为 $a \in \overline{a}$，并且 $\overline{a} = \overline{b}$，所以 $a \in \overline{b}$，故 $a \,R\, b$.
+    \item 必要性：$\forall c \in \overline{a}$，我们有 $c \,R\, a$，若 $a \,R\, b$，根据传递性可得 $c \,R\, b$，即 $c \in \overline{b}$，故 $\overline{a} \subseteq \overline{b}$，同理可得 $\overline{b} \subseteq \overline{a}$，故 $\overline{a} = \overline{b}$.
 \end{enumerate}
 \end{proof}
 
@@ -374,19 +369,14 @@
 \end{corollary}
 
 \begin{proof}
-$\forall a,b \in A$，$a \,R\, b$、$a,b$ 不等价必成立其一.
-\begin{enumerate}
-    \item 若 $a$ 和 $b$ 并不等价，则若存在 $x \in \overline{a}$ 且 $x \in \overline{b}$，则由传递性可得 $a \,R\, b$，矛盾，故 $\overline{a}\cap\overline{b}=\varnothing$.
-    \item 若 $a \,R\, b$，则由上一引理可得 $\overline{a}=\overline{b}$.
-\end{enumerate}
-综上，$\overline{a}\cap\overline{b}=\varnothing$ 和 $\overline{a}=\overline{b}$ 必成立其一.
+    要证明二者成立其一，经过简单的逻辑变换就知道，我们只需要证明一条不成立时另一条必然成立即可. 我们假设第一条不成立，即 $\overline{a}\cap\overline{b}\neq\varnothing$，则存在 $x \in \overline{a}$ 且 $x \in \overline{b}$. 因此有 $x \,R\, a$ 且 $x \,R\, b$，由等价关系的对称性可得 $a \,R\, x$，再由传递性可得 $a \,R\, b$，则由\autoref{lem:等价引理}可得 $\overline{a}=\overline{b}$.
 \end{proof}
 
 由这一结论我们便可以很容易地完成\autoref{thm:等价类的性质}的证明：
 
 \begin{proof}
 \begin{enumerate}
-    \item 要证明所有不同的等价类构成的子集族是 $A$ 的一个分划，只需证每个元素 $a$ 都至少属于一个子集，且任意两个不同的子集交为空集. 前者显然，后者由上一推论易得.
+    \item 要证明所有不同的等价类构成的子集族是 $A$ 的一个分划，只需证每个元素 $a$ 都至少属于一个子集，且任意两个不同的子集交为空集. 前者显然，后者由\autoref{cor:等价类的性质}易得.
     \item 设 $ \mathcal{P} $ 是集合 $ A $ 的一个分划，我们可以构造等价关系 $ R $：对于任意 $ a, b \in A $，定义 $ a \,R\, b $ 当且仅当存在一个子集 $ C \in \mathcal{P} $ 使得 $ a \in C $ 且 $ b \in C $.
 
     接下来验证 $R$ 是等价关系：
@@ -543,11 +533,11 @@ $\forall a,b \in A$，$a \,R\, b$、$a,b$ 不等价必成立其一.
 
 因此矩阵直观来看就是一个二维的数表. 此前我们提到的 $\mathbf{R}^n$ 中的元素（$n$ 元列向量）就可以视为一个 $n \times 1$ 的矩阵，$n$ 元行向量则可以视为一个 $1 \times n$ 的矩阵. 接下来是此前提到过的转置的正式定义：
 
-\begin{definition}{矩阵的转置}{}
+\begin{definition}{矩阵的转置}{矩阵的转置}
     设 $A = (a_{ij})_{m \times n}$，则 $A$ 的\term{转置矩阵}\index{zhuanzhi@转置 (transpose)}是一个 $n \times m$ 矩阵，记作 $A^\mathrm{T}$，它的第 $k$ 行正好是 $A$ 的第 $k$ 列（$k = 1,2,\ldots,n$）；它的第 $r$ 列正好是 $A$ 的第 $r$ 行（$r = 1,2,\ldots,m$）.
 \end{definition}
 
-根据定义，矩阵的转置等价于第 $i$ 行第 $j$ 列的元素变成转置后矩阵的第 $j$ 行第 $i$ 列的元素. 我们来看一个简单的例子，设 $A = \begin{pmatrix}1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 9 & 10 & 11 & 12\end{pmatrix}$，则 $A^\mathrm{T} = \begin{pmatrix}1 & 5 & 9 \\ 2 & 6 & 10 \\ 3 & 7 & 11 \\ 4 & 8 & 12\end{pmatrix}$. 除此之外，此前列向量等于行向量的转置不难验证也是符合这一定义的.
+根据定义，矩阵的转置显然等价于第 $i$ 行第 $j$ 列的元素变成转置后矩阵的第 $j$ 行第 $i$ 列的元素. 一个简单的例子是，令 $A = \begin{pmatrix}1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 9 & 10 & 11 & 12\end{pmatrix}$，则 $A^\mathrm{T} = \begin{pmatrix}1 & 5 & 9 \\ 2 & 6 & 10 \\ 3 & 7 & 11 \\ 4 & 8 & 12\end{pmatrix}$. 此外，转置符号之前我们已经使用过，即列向量等于行向量的转置，不难验证这的确是符合更一般的矩阵转置定义的.
 
 事实上，在求转置的时候，我们只需要把第一行保持顺序变成第一列，第二行保持顺序变成第二列，以此类推. 因为这样第一行第 $i$ 列的元素就变成了第 $i$ 行第一列的元素，符合转置的要求，其它行的元素也是类似的，从上面的例子也能看出这一点.
 
@@ -641,7 +631,7 @@ $\forall a,b \in A$，$a \,R\, b$、$a,b$ 不等价必成立其一.
 \begin{equation} \label{eq:矩阵左乘列向量}
     AX =  x_1\vec{\beta}_1 + x_2\vec{\beta}_2 + \cdots + x_n\vec{\beta}_n
 \end{equation}
-其中 $x_i$ 是列向量 $X$ 的第 $i$ 个分量，$\vec{\beta}_i$ 是系数矩阵 $A$ 的第 $i$ 列. 我们使用带数值的例子来练习一下这一运算规则：
+其中 $x_i$ 是列向量 $X$ 的第 $i$ 个分量，$\vec{\beta}_i$ 是系数矩阵 $A$ 的第 $i$ 列. 关于此式的更进一步的解释，我们放在\nameref{sec:分块矩阵}一节中给出. 我们使用带数值的例子来练习一下这一运算规则：
 \[
     \begin{pmatrix}
         1 & 2 & 3 \\ 4 & 5 & 6
