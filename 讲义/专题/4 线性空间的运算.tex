@@ -408,9 +408,28 @@
     证明：$V$的非空子集$A$是$V$的仿射子集当且仅当对所有的$v,w\in A$和$\lambda\in\mathbf{F}$均有$\lambda v+(1-\lambda)w\in A$.
 \end{example}
 
-\begin{solution}
+\begin{proof}
+    \begin{enumerate}
+        \item 若已知 $A$ 是 $V$ 的仿射子集,则 $A=\alpha+U$,其中 $\alpha\in V$ 且 $U$ 是 $V$ 的子空间.因此,对任意 $\lambda \in \mathbf{F}$,
+        和任意的 $v=\alpha+u_1,w=\alpha+u_2 \in A$,有
+        \[
+            \lambda v+(1-\lambda)w=\lambda(\alpha+u_1)+(1-\lambda)(\alpha+u_2)=\alpha+\lambda u_1+(1-\lambda)u_2 \in A
+        \]
+        因此对于仿射子集中的元素$v,w$具有上述性质.
+        \item 若已知$\lambda v+(1-\lambda)w \in A$,令$\alpha \in A$,则
+        \[
+            A-\alpha=\{v-\alpha|v\in A\}
+        \]
+        我们的目标是证明这是一个子空间；此时我们有$\lambda x + (1 - \lambda) \alpha \in A$,这是因为我们的假设是$\lambda v + (1 - \lambda) w \in A$;
+        即$\lambda (x-\alpha) \in A- \alpha $，这样就证明了数乘封闭；对于$x-\alpha,y-\alpha \in A-\alpha$,
 
-\end{solution}
+        \[
+           x-\alpha+y-\alpha=(x+y)-2\alpha=2(\dfrac{x+y}{2}-\alpha) \in A-\alpha
+        \]
+
+        这里运用了数乘封闭来证明加法封闭性；因此$A-\alpha$是一个子空间.
+    \end{enumerate}
+\end{proof}
 
 事实上，结合我们之前所说的仿射子集几何意义，这一结论在平面上来看正是我们高中学习的平面向量中学习的三点共线的等价条件的同义表达：
 \begin{theorem}{}{}
@@ -486,7 +505,15 @@
 \end{example}
 
 \begin{solution}
+    \begin{enumerate}
+        \item 首先求 $AX=0$ 的解，得到其基础解系为$k(1,3,1)^{\mathrm{T}},k \in \mathbf{R}$,故其解空间的一组基为$\{(1,3,1)^{\mathrm{T}}\}$.
+        \item 先将其扩张为$\mathbf{R^3}$的一组基，如$\{(1,3,1)^{\mathrm{T}},(1,0,0)^{\mathrm{T}},(0,1,0)^{\mathrm{T}}\}$,即可，然后将基中加上$W$,即可得到商空间的一组基.为
+        \[
+            \{(1,0,0)^{\mathrm{T}}+W,(0,1,0)^{\mathrm{T}}+W\}
+        \]
+        维数为2;这可以从基的数量得到，也可以从$R^3$ 的维数减去$W$的维数得到.
 
+    \end{enumerate}
 \end{solution}
 
 \begin{summary}
