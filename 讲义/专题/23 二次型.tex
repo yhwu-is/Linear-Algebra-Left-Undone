@@ -13,9 +13,9 @@
                               & = a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2                                        \\
                               & \quad +2a_{12}x_1x_2+\cdots+2a_{1n}x_1x_n+2a_{23}x_2x_3+\cdots+2a_{n-1,n}x_{n-1}x_n
     \end{align*}
-    称为数域$\mathbf{F}$上的$n$元二次型（简称\term{二次型}）.
+    称为域$\mathbf{F}$上的$n$元二次型（简称\term{二次型}）.
 \end{definition}
-先考虑实数域上的情况. 若令$a_{ij}=a_{ji}\enspace(1\leqslant i<j\leqslant n)$，则二次型可表示为
+先考虑实域上的情况. 若令$a_{ij}=a_{ji}\enspace(1\leqslant i<j\leqslant n)$，则二次型可表示为
 \[f(x_1,x_2,\ldots,x_n)=\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j=X^\mathrm{T}AX\]
 其中$X=(x_1,x_2,\ldots,x_n)^\mathrm{T}\in\mathbf{R}^n$，$A=(a_{ij})_{n\times n}$为实对称矩阵，并称对称矩阵$A$为二次型$f(x_1,x_2,\ldots,x_n)$的相伴矩阵.
 
@@ -52,7 +52,7 @@
 \end{definition}
 矩阵相合（合同）有如下基本性质：
 \begin{enumerate}
-    \item 合同是等价关系；合同不同于相似，是与数域有关的；合同要求$C$必须可逆，因此是一种特殊的相抵；
+    \item 合同是等价关系；合同不同于相似，是与域有关的；合同要求$C$必须可逆，因此是一种特殊的相抵；
 
     \item $A\simeq B$一般不能得到$A^m\simeq B^m$（但是$A,B$为实对称矩阵时可以），但如果可逆，我们有$A^{-1}\simeq B^{-1}$，同时如果$A_1\simeq A_2,B_1\simeq B_2$，则有$\begin{pmatrix}
                   A_1 & O \\ O & B_1
@@ -76,7 +76,7 @@
 所以用矩阵的语言表示的话，求解二次型的标准形就是寻找可逆矩阵 $C$ 使得 $C^\mathrm{T}AC$ 为对角矩阵. 最基础的想法就是如同相抵标准型那样，通过初等变换将矩阵变换为对角矩阵.
 
 \begin{lemma}{}{初等变换与合同变换引理1}
-    对称阵 $A$ 的下列变换都是相合变换：
+    对称矩阵 $A$ 的下列变换都是相合变换：
     \begin{enumerate}
         \item 对换 $A$ 的第 $i$ 行与第 $j$ 行，再对换第 $i$ 列与第 $j$ 列；
 
@@ -89,13 +89,13 @@
 接下来的问题是，如何进行合适的初等变换来将一个对称矩阵对角化.
 
 \begin{lemma}{}{初等变换与合同变换引理2}
-    设 $A$ 是数域 $\mathbf{K}$ 上的非零对称阵，则必定存在可逆矩阵 $C$ 使得 $C^\mathrm{T}AC$ 的第 $(1, 1)$ 个元素不为 $0$.
+    设 $A$ 是域 $\mathbf{F}$ 上的非零对称矩阵，则必定存在可逆矩阵 $C$ 使得 $C^\mathrm{T}AC$ 的第 $(1, 1)$ 个元素不为 $0$.
 \end{lemma}
 
 \begin{proof}
     \begin{enumerate}
         \item 若 $a_{11} = 0$ 而 $a_{ii} \neq 0$，则将 $A$ 的第 $1$ 行与第 $i$ 行对换，再将第 $1$ 列与第 $i$ 列对换，即可使得 $a_{11} \neq 0$.
-        \item 若 $a_{ii} = 0, \forall i$，那么设 $a_{ij} \neq 0(i \neq j)$，将 $A$ 的第 $j$ 行加到第 $i$ 行，再将第 $j$ 列加到第 $i$ 列. 因为 $A$ 是对称阵，所以 $a_{ij} = a_{ji} \neq 0$，第 $(i, i)$ 元素在变换后变为 $2 a_{ij} \neq 0$，便可根据第一种情况处理.
+        \item 若 $a_{ii} = 0, \forall i$，那么设 $a_{ij} \neq 0(i \neq j)$，将 $A$ 的第 $j$ 行加到第 $i$ 行，再将第 $j$ 列加到第 $i$ 列. 因为 $A$ 是对称矩阵，所以 $a_{ij} = a_{ji} \neq 0$，第 $(i, i)$ 元素在变换后变为 $2 a_{ij} \neq 0$，便可根据第一种情况处理.
     \end{enumerate}
     而根据\autoref{lem:初等变换与合同变换引理1}，这些变换都是相合变换，结论得证.
 \end{proof}
@@ -103,7 +103,7 @@
 由此，便可以得到以下结论.
 
 \begin{theorem}{}{}
-    设 $A$ 是数域 $\mathbf{K}$ 上的 $n$ 阶对称阵，则必存在 $\mathbf{K}$ 上的 $n$ 阶可逆矩阵 $C$，使得 $C^\mathrm{T}AC$ 为对角矩阵.
+    设 $A$ 是域 $\mathbf{F}$ 上的 $n$ 阶对称矩阵，则必存在 $\mathbf{F}$ 上的 $n$ 阶可逆矩阵 $C$，使得 $C^\mathrm{T}AC$ 为对角矩阵.
 \end{theorem}
 
 \begin{proof}
@@ -117,7 +117,7 @@
             0 & b_{n2} & b_{n3} & \cdots & b_{nn}
         \end{pmatrix}.
     \]
-    右下角是一个 $n - 1$ 阶对称阵，记为 $A_1$，根据归纳假设，存在 $n - 1$ 阶可逆矩阵 $D$ 使得 $D^\mathrm{T}A_1D$ 为对角矩阵，所以
+    右下角是一个 $n - 1$ 阶对称矩阵，记为 $A_1$，根据归纳假设，存在 $n - 1$ 阶可逆矩阵 $D$ 使得 $D^\mathrm{T}A_1D$ 为对角矩阵，所以
     \[
         \begin{pmatrix}
             1 & O \\
@@ -185,22 +185,22 @@
             1 & 1 & 0 \\
             0 & 0 & 1
         \end{array}\right) & \\
-        \xrightarrow[r_2-\frac{1}{2}r_1]{c_2-\frac{1}{2}c_1} & \left(\begin{array}{ccc}
+        \xrightarrow[r_2-\dfrac{1}{2}r_1]{c_2-\dfrac{1}{2}c_1} & \left(\begin{array}{ccc}
             2 & 0 & 0 \\
-            0 & -\frac{1}{2} & 1  \\
+            0 & -\dfrac{1}{2} & 1  \\
             0 & 1 & 0 \\
             \hdashline
-            1 & -\frac{1}{2} & 0 \\
-            1 & \frac{1}{2} & 0 \\
+            1 & -\dfrac{1}{2} & 0 \\
+            1 & \dfrac{1}{2} & 0 \\
             0 & 0 & 1
         \end{array}\right)
         \xrightarrow[r_3+2r_2]{c_3+2c_2} \left(\begin{array}{ccc}
             2 & 0 & 0 \\
-            0 & -\frac{1}{2} & 0  \\
+            0 & -\dfrac{1}{2} & 0  \\
             0 & 0 & 2 \\
             \hdashline
-            1 & -\frac{1}{2} & -1 \\
-            1 & \frac{1}{2} & 1 \\
+            1 & -\dfrac{1}{2} & -1 \\
+            1 & \dfrac{1}{2} & 1 \\
             0 & 0 & 1
         \end{array}\right) & \\
     \end{align*}
@@ -296,7 +296,7 @@
 \begin{enumerate}
     \item 我们可以按相合关系对全体$n$阶实对称矩阵分类，因为实对称矩阵相合意味着规范形唯一，我们可以按照$+1$、$-1$、0个数的不同划分为$\vphantom{\cfrac{n+1}{2}}\dfrac{(n+1)(n+2)}{2}$个等价类；
 
-    \item 实数域上两个实对称矩阵相合的充要条件是它们有相同的正负惯性指数，两个对角矩阵相合的充要条件是对角线上正、负、零个数相同.
+    \item 实域上两个实对称矩阵相合的充要条件是它们有相同的正负惯性指数，两个对角矩阵相合的充要条件是对角线上正、负、零个数相同.
 \end{enumerate}
 
 而对于复二次型，若其已经化为标准形
@@ -305,9 +305,11 @@
 \]
 其中 $d_i \neq 0$，$r$ 为该矩阵的秩. 设 $d_j = r_j(\cos \theta_j + \i \sin \theta_j)$，$0 \leqslant \theta_j < 2 \pi$ 那么根据棣莫弗公式（De Moivre's Formula），有
 \[
-    (\pm \sqrt{r_j}(\cos \frac{\theta_j}{2} + \i \sin \frac{\theta_j}{2}))^2 = d_j.
+    (\pm \sqrt{r_j}(\cos \dfrac{\theta_j}{2} + \i \sin \dfrac{\theta_j}{2}))^2 = d_j.
 \]
-记 $\sqrt{r_j}(\cos \frac{\theta_j}{2} + \i \sin \frac{\theta_j}{2})$ 为 $\sqrt{d_j}$，那么做如下的坐标变换$X=CY$，其中 $C = \diag(\frac{1}{\sqrt{d_1}}, \ldots, \frac{1}{\sqrt{d_r}}, 1, \ldots, 1)$，便可以将复二次型化为标准形
+记 $\sqrt{r_j}(\cos \dfrac{\theta_j}{2} + \i \sin \dfrac{\theta_j}{2})$ 为 $\sqrt{d_j}$，那么做如下的坐标变换$X=CY$，其中
+\[C = \diag(\dfrac{1}{\sqrt{d_1}}, \ldots, \dfrac{1}{\sqrt{d_r}}, 1, \ldots, 1)\]
+便可以将复二次型化为标准形
 \[
     f(Y) = y_1^2 + \cdots + y_r^2.
 \]

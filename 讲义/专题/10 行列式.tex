@@ -759,7 +759,7 @@
     由于$V_1,V_2,\ldots,V_s$是$V$的非平凡子空间，因此每个子空间最多包含$\{\beta_k\}$中$n-1$个向量，进而$V_1\cup V_2\cup\cdots\cup V_s$只包含$\{\beta_k\}$中有限个向量，所以必然存在一个向量$\beta_j$使得$\beta_j \notin V_1\cup V_2\cup\cdots\cup V_s$.
 \end{proof}
 
-行列式计算的核心思想：观察行列式的特征，通过用一行消去其它所有行或者通过逐行相减化出更多的 $0$，得到模板行列式（例如上三角、箭形等）求解；或者通过一些明显的技巧性方法（例如递推法）来求解.
+下面我们将介绍行列式运算的一些技巧，这些技巧有一些可以总结的核心思想：观察行列式的特征，通过用一行消去其它所有行或者通过逐行相减化出更多的 $0$，得到模板行列式（例如上三角、箭形等）求解；或者通过一些明显的技巧性方法（例如递推法）来求解.
 
 \subsection{化三角形法}
 
@@ -837,26 +837,26 @@
     观察到每一行的和都是相同的，所以我们可以将每一列都累加到第一列上，得到
     \begin{align*}
         D_n & =\begin{vmatrix}
-                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2    & \cdots & x_n    \\
-                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2-m  & \cdots & x_n    \\
+                   \displaystyle\sum_{i=1}^{n}\limits x_i-m & x_2    & \cdots & x_n    \\
+                   \displaystyle\sum_{i=1}^{n}\limits x_i-m & x_2-m  & \cdots & x_n    \\
                    \vdots                            & \vdots & \ddots & \vdots \\
-                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2    & \cdots & x_n-m
+                   \displaystyle\sum_{i=1}^{n}\limits x_i-m & x_2    & \cdots & x_n-m
                \end{vmatrix} \\
-            & =\left(\sum_{i=1}^{n} x_i-m\right)
+            & =\left(\sum_{i=1}^{n}\limits x_i-m\right)
         \begin{vmatrix}
             1      & x_2    & \cdots & x_n    \\
             1      & x_2-m  & \cdots & x_n    \\
             \vdots & \vdots & \ddots & \vdots \\
             1      & x_2    & \cdots & x_n-m
         \end{vmatrix}                                   \\
-            & =\left(\sum_{i=1}^{n} x_i-m\right)
+            & =\left(\sum_{i=1}^{n}\limits x_i-m\right)
         \begin{vmatrix}
             1 & x_2 & \cdots & x_n \\
               & -m  &        &     \\
               &     & \ddots &     \\
               &     &        & -m
         \end{vmatrix}                                              \\
-            & =(-m)^{n-1}\left(\sum_{i=1}^{n} x_i-m\right).
+            & =(-m)^{n-1}\left(\sum_{i=1}^{n}\limits x_i-m\right).
     \end{align*}
 \end{solution}
 
@@ -1503,7 +1503,7 @@
 
 \section{Cauchy-Binet 公式}
 
-我们已经证明，方阵乘积的行列式等于各方阵行列式之积. 现在的问题是：如果 $A$ 是 $m \times n$ 矩阵，$B$ 是 $n \times m$ 矩阵，$AB$ 是 $m$ 阶方阵，则行列式 $|AB|$ 应该等于什么？Cauchy-Binet（柯西–毕内）公式回答了这个问题. 它可以看成是矩阵乘法的行列式定理的推广.
+我们已经证明，方阵乘积的行列式等于各方阵行列式之积. 现在的问题是：如果 $A$ 是 $m \times n$ 矩阵，$B$ 是 $n \times m$ 矩阵，$AB$ 是 $m$ 阶方阵，则行列式 $|AB|$ 应该等于什么？Cauchy-Binet 公式回答了这个问题. 它可以看成是矩阵乘法的行列式定理的推广.
 
 \begin{theorem}{Cauchy-Binet 公式}{Cauchy-Binet 公式}
     设 $A = (a_{ij})$ 是 $m \times n$ 矩阵，$B = (b_{ij})$ 是 $n \times m$ 矩阵.
@@ -1516,9 +1516,9 @@
     表示 $A$ 的一个 $s$ 阶子式，它由 $A$ 的第 $i_1, \cdots, i_s$ 行与第 $j_1, \cdots, j_s$ 列交点上的元素按原次序排列组成的行列式. 同理可定义 $B$ 的 $s$ 阶子式.
     \begin{enumerate}
         \item 若 $m > n$，则必有 $|AB| = 0$；
-        \item 若 $m \leq n$，则必有
+        \item 若 $m \leqslant n$，则必有
         $$
-        |AB| = \sum_{1 \leq j_1 < j_2 < \cdots < j_m \leq n} A
+        |AB| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
         \begin{pmatrix}
         1 & 2 & \cdots & m \\
         j_1 & j_2 & \cdots & j_m
@@ -1557,9 +1557,9 @@
     |M| = (-1)^{(n+1)+(n+2)+\cdots+(n+m)} \cdot I_n ||AB| = (-1)^{n(m+1)} |AB|.
     $$
 
-    再来计算 $|C|$，用 Laplace 定理按前 $m$ 行展开. 这时若 $m > n$，则前 $m$ 行中任意一个 $m$ 阶子式至少有一列全为零，因此行列式值等于零，即 $|AB| = 0$. 若 $m \leq n$，则由 Laplace 定理得
+    再来计算 $|C|$，用 Laplace 定理按前 $m$ 行展开. 这时若 $m > n$，则前 $m$ 行中任意一个 $m$ 阶子式至少有一列全为零，因此行列式值等于零，即 $|AB| = 0$. 若 $m \leqslant n$，则由 Laplace 定理得
     $$
-    |C| = \sum_{1 \leq j_1 < j_2 < \cdots < j_m \leq n} A
+    |C| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
     \begin{pmatrix}
     1 & 2 & \cdots & m \\
     j_1 & j_2 & \cdots & j_m
@@ -1595,7 +1595,7 @@
 
     注意到 $ (i_1 + i_2 + \cdots + i_{n-m}) + (j_1 + j_2 + \cdots + j_m) = 1 + 2 + \cdots + n $.综合上面的结论，经过简单计算不难得到
 
-    $$ |AB| = \sum_{1 \leq j_1 < j_2 < \cdots < j_m \leq n} A
+    $$ |AB| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
     \begin{pmatrix}
         1 & 2 & \cdots & m \\
         j_1 & j_2 & \cdots & j_m
@@ -1611,17 +1611,18 @@
 下面的定理是 Cauchy-Binet 公式的进一步推广，它告诉我们如何求矩阵乘积的 $r$ 阶子式.
 
 \begin{theorem}{}{Cauchy-Binet 公式推广}
-    设 $A = (a_{ij})$ 是 $m \times n$ 矩阵，$B = (b_{ij})$ 是 $n \times m$ 矩阵，$r$ 是一个正整数且 $r \leq m$.
+    设 $A = (a_{ij})$ 是 $m \times n$ 矩阵，$B = (b_{ij})$ 是 $n \times m$ 矩阵，$r$ 是一个正整数且 $r \leqslant m$.
     \begin{enumerate}
         \item 若 $r > n$，则 $AB$ 的任意一个 $r$ 阶子式等于零；
-        \item 若 $r \leq n$，则 $AB$ 的 $r$ 阶子式
-        $$
+        \item 若 $r \leqslant n$，则 $AB$ 的 $r$ 阶子式
+    \end{enumerate}
+    \[
         AB
         \begin{pmatrix}
             i_1 & i_2 & \cdots & i_r \\
             j_1 & j_2 & \cdots & j_r
         \end{pmatrix}
-        = \sum_{1 \leq k_1 < k_2 < \cdots < k_r \leq n} A
+        = \sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
         \begin{pmatrix}
             i_1 & i_2 & \cdots & i_r \\
             k_1 & k_2 & \cdots & k_r
@@ -1631,8 +1632,7 @@
             k_1 & k_2 & \cdots & k_r \\
             j_1 & j_2 & \cdots & j_r
         \end{pmatrix}.
-        $$
-    \end{enumerate}
+    \]
 \end{theorem}
 
 \begin{proof}
@@ -1665,14 +1665,14 @@
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         j_1 & j_2 & \cdots & j_r
-    \end{pmatrix} = 0$；当 $r \leq n$ 时，
+    \end{pmatrix} = 0$；当 $r \leqslant n$ 时，
     $$
     C
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         j_1 & j_2 & \cdots & j_r
     \end{pmatrix} $$
-    $$ =\sum_{1 \leq k_1 < k_2 < \cdots < k_r \leq n} A
+    $$ =\sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         k_1 & k_2 & \cdots & k_r
@@ -1693,36 +1693,36 @@ $$ A
 如果满足条件 $i_1 = j_1, i_2 = j_2, \cdots, i_r = j_r$，则称为主子式.
 
 \begin{corollary}{}{}
-    设 $A$ 是 $m \times n$ 实矩阵，则矩阵 $AA'$ 的任一主子式都非负.
+    设 $A$ 是 $m \times n$ 实矩阵，则矩阵 $AA\mathrm{T}$ 的任一主子式都非负.
 \end{corollary}
 
 \begin{proof}
-    若 $r \leq n$，则由 \autoref{thm:Cauchy-Binet 公式推广} 得到：
-    $$ AA'
+    若 $r \leqslant n$，则由 \autoref{thm:Cauchy-Binet 公式推广} 得到：
+    $$ AA\mathrm{T}
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         i_1 & i_2 & \cdots & i_r
     \end{pmatrix}
-    = \sum_{1 \leq k_1 < k_2 < \cdots < k_r \leq n} A
+    = \sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         k_1 & k_2 & \cdots & k_r
-    \end{pmatrix}^2 \geq 0; $$
-    若 $r > n$，则 $AA'$ 的任一 $r$ 阶主子式等于零，结论也成立.
+    \end{pmatrix}^2 \geqslant 0; $$
+    若 $r > n$，则 $AA\mathrm{T}$ 的任一 $r$ 阶主子式等于零，结论也成立.
 \end{proof}
 
-下面介绍 Cauchy-Binet 公式的两个重要应用. 它们分别是著名的 Lagrange (拉格朗日) 恒等式和 Cauchy-Schwarz (柯西-许瓦茨) 不等式. 这两个结论也可以用其他方法证明，但用矩阵方法显得非常简洁.
+下面介绍 Cauchy-Binet 公式的两个重要应用. 它们分别是著名的 Lagrange 恒等式和 Cauchy-Schwarz 不等式. 这两个结论也可以用其他方法证明，但用矩阵方法显得非常简洁.
 
 \begin{example}{}{}
-    证明 Lagrange 恒等式 $(n \geq 2)$：
-    $$ \left( \sum_{i=1}^{n} a_i^2 \right) \left( \sum_{i=1}^{n} b_i^2 \right) - \left( \sum_{i=1}^{n} a_i b_i \right)^2 = \sum_{1 \leq i < j \leq n} (a_i b_j - a_j b_i)^2. $$
+    证明 Lagrange 恒等式 $(n \geqslant 2)$：
+    $$ \left( \sum_{i=1}^{n}\limits a_i^2 \right) \left( \sum_{i=1}^{n}\limits b_i^2 \right) - \left( \sum_{i=1}^{n}\limits a_i b_i \right)^2 = \sum_{1 \leqslant i < j \leqslant n} (a_i b_j - a_j b_i)^2. $$
 \end{example}
 
 \begin{solution}
     左边的式子等于
     $$ \begin{vmatrix}
-        \sum_{i=1}^{n} a_i^2 & \sum_{i=1}^{n} a_i b_i \\
-        \sum_{i=1}^{n} a_i b_i & \sum_{i=1}^{n} b_i^2
+        \sum_{i=1}^{n}\limits a_i^2 & \sum_{i=1}^{n}\limits a_i b_i \\
+        \sum_{i=1}^{n}\limits a_i b_i & \sum_{i=1}^{n}\limits b_i^2
     \end{vmatrix}, $$
 
     这个行列式对应的矩阵可化为：
@@ -1740,22 +1740,22 @@ $$ A
 
     $$
     \begin{vmatrix}
-        \sum_{i=1}^{n} a_i^2 & \sum_{i=1}^{n} a_i b_i \\
-        \sum_{i=1}^{n} a_i b_i & \sum_{i=1}^{n} b_i^2
+        \sum_{i=1}^{n}\limits a_i^2 & \sum_{i=1}^{n}\limits a_i b_i \\
+        \sum_{i=1}^{n}\limits a_i b_i & \sum_{i=1}^{n}\limits b_i^2
     \end{vmatrix}
-    = \sum_{1 \leq i < j \leq n}
+    = \sum_{1 \leqslant i < j \leqslant n}
     \begin{vmatrix}
         a_i & a_j \\
         b_i & b_j
     \end{vmatrix}^2
-    = \sum_{1 \leq i < j \leq n} (a_i b_j - a_j b_i)^2.
+    = \sum_{1 \leqslant i < j \leqslant n} (a_i b_j - a_j b_i)^2.
     $$
 \end{solution}
 
 \begin{example}{}{}
     设 $a_i, b_i$ 都是实数，证明 Cauchy-Schwarz 不等式：
     $$
-    \left( \sum_{i=1}^{n} a_i^2 \right) \left( \sum_{i=1}^{n} b_i^2 \right) \geq \left( \sum_{i=1}^{n} a_i b_i \right)^2.
+    \left( \sum_{i=1}^{n}\limits a_i^2 \right) \left( \sum_{i=1}^{n}\limits b_i^2 \right) \geqslant \left( \sum_{i=1}^{n}\limits a_i b_i \right)^2.
     $$
 \end{example}
 
@@ -2581,7 +2581,7 @@ $$ A
                                      &       &        & a_n
                            \end{vmatrix}                       \\
                           =     & \left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}}
-                          \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n} \frac{1}{a_{i}}\right).
+                          \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n}\limits \frac{1}{a_{i}}\right).
                       \end{align*}
             \end{enumerate}
         \end{answer}
@@ -3411,6 +3411,11 @@ $$ A
     \end{exgroup}
 
     \begin{exgroup}
+        \item 证明：无法定义非方阵的行列式，使其与方阵行列式的定义相容.
+        \begin{answer}
+
+        \end{answer}
+
         \item 设$A=(a_{ij})$是$n\enspace(n\geqslant 2)$阶整数方阵，满足对任意的$i,j$，$|A|$均可整除$a_{ij}$，证明：$|A|=\pm 1$.
         \begin{answer}
             设 $a_{ij} = |A| b_{ij}$，其中 $b_{ij}$ 为整数，则
