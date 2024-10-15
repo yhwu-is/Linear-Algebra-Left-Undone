@@ -52,48 +52,48 @@
 
     \begin{itemize}
         \item
-        由于 $W_1, W_2$ 都是 $V$ 的子空间，零向量 $\mathbf{0} \in W_1$ 且 $\mathbf{0} \in W_2$。因此，$\mathbf{0} \in W_1 \cap W_2$。
+        由于 $W_1, W_2$ 都是 $V$ 的子空间，零向量 $\mathbf{0} \in W_1$ 且 $\mathbf{0} \in W_2$. 因此，$\mathbf{0} \in W_1 \cap W_2$.
 
         \item
-        对于任意的 $x, y \in W_1 \cap W_2$，有 $x \in W_1$ 且 $x \in W_2$，$y \in W_1$ 且 $y \in W_2$。
-        由于 $W_1$ 和 $W_2$ 都是 $V$ 的子空间，所以 $x + y \in W_1$ 且 $x + y \in W_2$。
-        因此，$x + y \in W_1 \cap W_2$。
+        对于任意的 $x, y \in W_1 \cap W_2$，有 $x \in W_1$ 且 $x \in W_2$，$y \in W_1$ 且 $y \in W_2$.
+        由于 $W_1$ 和 $W_2$ 都是 $V$ 的子空间，所以 $x + y \in W_1$ 且 $x + y \in W_2$.
+        因此，$x + y \in W_1 \cap W_2$.
 
         \item
-        对于任意的 $x \in W_1 \cap W_2$ 和任意的标量 $\lambda \in \mathbf{F}$，有 $x \in W_1$ 且 $x \in W_2$。
-        由于 $W_1$ 和 $W_2$ 都是 $V$ 的子空间，所以 $\lambda x \in W_1$ 且 $\lambda x \in W_2$。
-        因此，$\lambda x \in W_1 \cap W_2$。
+        对于任意的 $x \in W_1 \cap W_2$ 和任意的标量 $\lambda \in \mathbf{F}$，有 $x \in W_1$ 且 $x \in W_2$.
+        由于 $W_1$ 和 $W_2$ 都是 $V$ 的子空间，所以 $\lambda x \in W_1$ 且 $\lambda x \in W_2$.
+        因此，$\lambda x \in W_1 \cap W_2$.
     \end{itemize}
 
-    所以 $W_1 \cap W_2$ 是 $V$ 的子空间。
+    所以 $W_1 \cap W_2$ 是 $V$ 的子空间.
 
 
     下证$W_1 + W_2$ 是 $V$ 的子空间:
     \begin{itemize}
         \item
-        由于 $W_1$ 和 $W_2$ 是 $V$ 的子空间，$\mathbf{0} \in W_1$ 且 $\mathbf{0} \in W_2$。
-        因此，$\mathbf{0} = \mathbf{0} + \mathbf{0} \in W_1 + W_2$。
+        由于 $W_1$ 和 $W_2$ 是 $V$ 的子空间，$\mathbf{0} \in W_1$ 且 $\mathbf{0} \in W_2$.
+        因此，$\mathbf{0} = \mathbf{0} + \mathbf{0} \in W_1 + W_2$.
 
         \item
-        对于任意的 $u_1, u_2 \in W_1 + W_2$，存在 $x_1, x_2 \in W_1$ 和 $y_1, y_2 \in W_2$，使得 $u_1 = x_1 + y_1$，$u_2 = x_2 + y_2$。
+        对于任意的 $u_1, u_2 \in W_1 + W_2$，存在 $x_1, x_2 \in W_1$ 和 $y_1, y_2 \in W_2$，使得 $u_1 = x_1 + y_1$，$u_2 = x_2 + y_2$.
         则
         $$
         u_1 + u_2 = (x_1 + y_1) + (x_2 + y_2) = (x_1 + x_2) + (y_1 + y_2).
         $$
         由于 $W_1$ 和 $W_2$ 是 $V$ 的子空间，$x_1 + x_2 \in W_1$ 且 $y_1 + y_2 \in W_2$，
-        因此，$u_1 + u_2 \in W_1 + W_2$。
+        因此，$u_1 + u_2 \in W_1 + W_2$.
 
         \item
-        对于任意的 $u \in W_1 + W_2$ 和标量 $\lambda \in \mathbf{F}$，存在 $x \in W_1$ 和 $y \in W_2$，使得 $u = x + y$。
+        对于任意的 $u \in W_1 + W_2$ 和标量 $\lambda \in \mathbf{F}$，存在 $x \in W_1$ 和 $y \in W_2$，使得 $u = x + y$.
         则
         $$
         \lambda u = \lambda (x + y) = \lambda x + \lambda y.
         $$
         由于 $W_1$ 和 $W_2$ 是 $V$ 的子空间，$\lambda x \in W_1$ 且 $\lambda y \in W_2$，
-        因此，$\lambda u \in W_1 + W_2$。
+        因此，$\lambda u \in W_1 + W_2$.
     \end{itemize}
 
-    因此，$W_1 + W_2$ 也是 $V$ 的子空间。
+    因此，$W_1 + W_2$ 也是 $V$ 的子空间.
 \end{proof}
 我们只在此证明定理的前两条，第三条我们留作习题供读者练习，因为在考试中有出现过. 前两条还可以进行推广，即$V$的有限个子空间的交与和仍然是$V$的子空间.
 
@@ -162,13 +162,26 @@
 
 我们不难发现，两个线性空间的和的求法就是将两个空间的基合并后求极大线性无关组，而交的求法则更具技巧性. 当然这里使用的是简单的向量空间的例子，如果是一般的线性空间，则可以先转化为基下的坐标然后使用上面的方法求解.
 
+当然我们也可以将前面定义的交、并、和的概念推广到有限个子空间的情况，即
+\begin{definition}{}{}
+    设 $W_1,W_2,\ldots,W_s$ 是线性空间 $V(\mathbf{F})$ 的 $s$ 个子空间，则
+    \begin{align*}
+        W_1 \cap W_2 \cap \cdots \cap W_s & =\{\alpha \mid \alpha\in W_1 \text{~且~} \alpha\in W_2 \text{~且~} \cdots \text{~且~} \alpha\in W_s\} \\
+        W_1 \cup W_2 \cup \cdots \cup W_s & =\{\alpha \mid \alpha\in W_1 \text{~或~} \alpha\in W_2 \text{~或~} \cdots \text{~或~} \alpha\in W_s\} \\
+        W_1 + W_2 + \cdots + W_s          & =\{\alpha_1+\alpha_2+\cdots+\alpha_s \mid \alpha_1\in W_1,\enspace\alpha_2\in W_2,\enspace\cdots,\enspace\alpha_s\in W_s\}
+    \end{align*}
+    分别称为 $W_1,W_2,\ldots,W_s$ 的交、并、和.
+\end{definition}
+
 \section{覆盖定理}
 
+本节我们希望探究一个经典问题，即数域上的线性空间是否可以被有限个子空间的并覆盖，下面的覆盖定理就是对这一问题的回答：
+
 \begin{theorem}{覆盖定理}{覆盖定理} \index{fugaidingli@覆盖定理}
-    设$V_1,V_2,\ldots,V_s$是线性空间$V$的$s$个非平凡子空间，证明：$V$中至少存在一个向量不属于$V_1,V_2,\ldots,V_s$中的任何一个，即$V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V$.
+    设 $V_1,V_2,\ldots,V_s$ 是数域 $\mathbf{F}$ 上线性空间 $V(\mathbf{F})$ 的 $s$ 个非平凡子空间，证明：$V$ 中至少存在一个向量不属于 $V_1,V_2,\ldots,V_s$ 中的任何一个，即 $V_1 \cup V_2 \cup \cdots \cup V_s\subsetneq V$.
 \end{theorem}
 
-覆盖定理表明任何一个线性空间都不能被自身有限个非平凡子空间通过并得到. 初看可能有些不够自然，但我们可以从简单的几何意义获得直观的理解：有限条直线的并不可能是一个平面. 下面我们利用数学归纳法进行证明.
+覆盖定理表明任何一个数域 $\mathbf{F}$ 上的线性空间都不能被自身有限个非平凡子空间通过并得到. 初看可能有些不够自然，但我们可以从简单的几何意义获得直观的理解：有限条直线的并不可能是一个平面. 下面我们利用数学归纳法进行证明.
 
 \begin{proof}
     \begin{enumerate}
@@ -189,11 +202,13 @@
 
 \section{维数公式}
 
+一个很自然的问题是，两个子空间的和的维数与两个子空间的维数之间是否有关系. 事实上，我们有如下重要的结果：
+
 \begin{theorem}{线性空间维数公式}{线性空间维数公式}
     设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间，则
     \[\dim W_1+\dim W_2=\dim(W_1+W_2)+\dim(W_1\cap W_2).\]
 \end{theorem}
-上式称为子空间的维数公式，区别于下一专题中的线性映射基本定理的维数公式. 这一定理的证明思想非常重要，因此此处我们给出证明.
+上式称为子空间的维数公式，区别于下一专题中的线性映射基本定理的维数公式. 初看这一结论可能会想起中学阶段就已熟知的集合的``容斥原理''，因此记忆上的难度并不大，当然这只是形式上的类似，毕竟这里是研究子空间集合的维数之间的关联，而非集合元素个数的关联. 这一定理的证明思想非常重要，因此我们给出详细的证明.
 
 \begin{proof}
     设$\dim W_1=s,\enspace \dim W_2=t,\enspace \dim(W_1\cap W_2)=r$. 设$W_1\cap W_2$的一组基为$\alpha_1,\alpha_2,\ldots,\alpha_r$，则可以扩充为$W_1$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_r,\beta_1,\ldots,\beta_{s-r}$；也可以扩充为$W_2$的一组基，记为$\alpha_1,\alpha_2,\ldots,\alpha_r,\gamma_1,\ldots,\gamma_{t-r}$. 则我们有
@@ -215,32 +230,7 @@
     由于$\alpha_1,\ldots,\alpha_r,\gamma_1,\ldots,\gamma_{t-r}$是$W_2$的基，因此\autoref{eq:4:维数公式证明3} 所有系数都为0，即$c_1=\cdots=c_{t-r}=d_1=\cdots=d_r=0$. 代入\autoref{eq:4:维数公式证明2} 后，由于$\alpha_1,\ldots,\alpha_r,\beta_1,\ldots,\beta_{s-r}$是$W_1$的基，因此可得$a_1=\cdots=a_r=b_1=\cdots=b_{s-r}=0$，因此，代入\autoref{eq:4:维数公式证明1} 后可知$\alpha_1,\ldots,\alpha_r,\beta_1,\ldots,\beta_{s-r},\gamma_1,\ldots,\gamma_{t-r}$必定线性无关（因为根据前述证明所有系数只能为0），故得证.
 \end{proof}
 
-总结而言，这一定理证明用到的思想就是``设小扩大''. 我们设出最小空间$V_1\cap V_2$的基，然后分别扩充为$V_1$和$V_2$的基，然后观察要证明的等式和已知的联系，然后利用\autoref{eq:4:维数公式证明2} 构造等式两边属于不同空间的向量这一技巧即可. 下面是一个证明思想类似的例子，需要用到矩阵的相关知识，暂未学到的同学可以先略过本题：
-\begin{example}{}{}
-    已知$A,B$分别是数域$\mathbf{F}$上的$l \times k$和$k \times n$矩阵，$X$是$n \times 1$的列向量. 证明：所有满足$ABX=0$的$BX$构成一个线性空间$V$，且$\dim V = r(B) - r(AB)$.
-\end{example}
-
-\begin{proof}
-    $V$是线性空间只需要说明其中元素关于加法数乘封闭即可，因为这样$V$就是$\mathbf{F}^k$的子空间. 这一证明非常基本，我们在此略过.
-
-    记$V_1=\{X\mid BX=0\},\enspace V_2=\{X\mid ABX=0\}$，则$V_1\subseteq V_2$，因为$\forall X\in V_1$，有$BX=0$，因此$ABX=A0=0$，即$X\in V_2$，因此$V_1\subseteq V_2$. 利用``设小扩大''的思想，取$V_1$的一组基$\alpha_1,\ldots,\alpha_r$，则可以扩充为$V_2$的一组基，记为$\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\ldots,\alpha_m$，则$r=n-r(B)$，$s=n-r(AB)$，于是
-    \begin{align*}
-        V & =\{BX\mid ABX=0\}                                                \\
-          & =\spa(B\alpha_1,\ldots,B\alpha_r,B\alpha_{r+1},\ldots,B\alpha_m) \\
-          & =\spa(B\alpha_{r+1},\ldots,B\alpha_m).
-    \end{align*}
-    下面证明$B\alpha_{r+1},\ldots,B\alpha_m$线性无关. 为此，设
-    \[c_{r+1}B\alpha_{r+1}+\cdots+c_mB\alpha_m=0,\]
-    则
-    \[B(c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m)=0,\]
-    因此$c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m\in V_1$，因此存在$c_1,\ldots,c_r$使得
-    \[c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_n=c_1\alpha_1+\cdots+c_r\alpha_r,\]
-    即
-    \[c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m-c_1\alpha_1-\cdots-c_r\alpha_r=0.\]
-    由于$\alpha_1,\ldots,\alpha_m$线性无关，因此
-    \[c_{r+1}=\cdots=c_m=c_1=c_2=\cdots=c_r=0,\]
-    因此$B\alpha_{r+1},\ldots,B\alpha_m$线性无关，因此$V$的维数为$s-r=(n-r(AB))-(n-r(B))=r(B)-r(AB)$，得证.
-\end{proof}
+总结而言，这一定理证明用到的思想就是``设小扩大''. 我们设出最小空间$V_1\cap V_2$的基，然后分别扩充为$V_1$和$V_2$的基，然后观察要证明的等式和已知的联系，然后利用\autoref{eq:4:维数公式证明2} 构造等式两边属于不同空间的向量这一技巧即可. 这一``设小扩大''的技巧我们之后还会很多见，例如\autoref{thm:线性映射基本定理}以及\autoref{ex:维数公式技巧例题}.
 
 \section{线性空间的直和}
 
@@ -255,7 +245,7 @@
 \begin{theorem}{}{直和等价命题}
     对于子空间$W_1,W_2$，下列命题等价：
     \begin{enumerate}
-        \item $W_1+W_2$是直和，即$W_1 \cap W_2=\{0\}$；
+        \item $W_1+W_2$是直和，即$W_1 \cap W_2=\{\vec{0}\}$；
 
         \item $W_1+W_2$中的每个向量$\alpha$的分解式$\alpha=\alpha_1+\alpha_2\enspace(\alpha_1\in W_1,\enspace\alpha_2\in W_2)$唯一；
 
@@ -268,65 +258,59 @@
 定理的证明是基本的.
 \begin{proof}
     上述命题等价，只需证明 (1) $\implies$ (2) $\implies$ (3) $\implies$ (4) $\implies$ (1).
-
-    先证 (1) $\implies$ (2): 设 $W_1 + W_2$ 中的 $\alpha$ 有两个分解式
-    $$
-    \alpha = \alpha_1 + \alpha_2 = \beta_1 + \beta_2, \quad \alpha_1, \beta_1 \in W_1, \ \alpha_2, \beta_2 \in W_2,
-    $$
-    则 $\alpha_1 - \beta_1 = \beta_2 - \alpha_2 \in W_1 \cap W_2 = \{\mathbf{0}\}$，于是得 $\beta_1 = \alpha_1, \beta_2 = \alpha_2$，故 $\alpha$ 的分解式是唯一的。
-
-    其次证 (2) $\implies$ (3): 由 $W_1 + W_2$ 中零向量的分解式唯一性以及 $0 = 0 + 0$，立即得命题 (3) 成立.
-
-    再证 (3) $\implies$ (4): 由命题 (3) 可推出 $W_1 \cap W_2 = \{\mathbf{0}\}$，因为若 $W_1 \cap W_2 \ne \{\mathbf{0}\}$，则存在 $0 \ne a \in W_1 \cap W_2$，使得 $0 = \alpha + (-\alpha)$，（其中 $\alpha \in W_1, -\alpha \in W_2$），这与命题 (3) 相矛盾。再根据维数公式 就得命题 (4)。
-
-    最后由命题 (4) 及维数公式 立即得命题 (1) 成立.
+    \begin{enumerate}
+        \item 先证 (1) $\implies$ (2): 设 $W_1 + W_2$ 中的 $\alpha$ 有两个分解式
+        $$
+        \alpha = \alpha_1 + \alpha_2 = \beta_1 + \beta_2, \quad \alpha_1, \beta_1 \in W_1, \ \alpha_2, \beta_2 \in W_2,
+        $$
+        则 $\alpha_1 - \beta_1 = \beta_2 - \alpha_2 \in W_1 \cap W_2 = \{\mathbf{0}\}$，于是得 $\beta_1 = \alpha_1, \beta_2 = \alpha_2$，故 $\alpha$ 的分解式是唯一的.
+        \item 其次证 (2) $\implies$ (3): 由 $W_1 + W_2$ 中零向量的分解式唯一性以及 $\vec{0} = \vec{0} + \vec{0}$，立即得命题 (3) 成立.
+        \item 再证 (3) $\implies$ (4): 由命题 (3) 可推出 $W_1 \cap W_2 = \{\mathbf{0}\}$，因为若 $W_1 \cap W_2 \ne \{\mathbf{0}\}$，则存在 $\vec{0} \ne a \in W_1 \cap W_2$，使得 $\vec{0} = \alpha + (-\alpha)$，（其中 $\alpha \in W_1, -\alpha \in W_2$），这与命题 (3) 相矛盾. 再根据维数公式 就得命题 (4).
+        \item 最后由命题 (4) 及维数公式 立即得命题 (1) 成立.
+    \end{enumerate}
 \end{proof}
 在实际运用中我们要非常熟悉这些等价条件，因为都可能使用到.
 
-我们也可以定义有限个子空间的直和，即$V=W_1\oplus W_2\oplus\cdots\oplus W_n \iff W_i \cap \sum\limits_{j \neq i}W_j=\{0\}$，即每个子空间与其余子空间的和的交都是$\{0\}$. 等价命题也是上述定理的推广，例如唯一分解、$\vec{0}$的分解以及维数公式推广，此处不再赘述. 除此之外，我们还有一个与多空间直和相关的定理：
+我们也可以定义有限个子空间的直和，即$V=W_1\oplus W_2\oplus\cdots\oplus W_n \iff W_i \cap \sum\limits_{j \neq i}W_j=\{\vec{0}\}$，即每个子空间与其余子空间的和的交都是$\{\vec{0}\}$. 等价命题也是上述定理的推广，例如唯一分解、$\vec{0}$的分解以及维数公式推广，此处不再赘述. 除此之外，我们还有一个与多空间直和相关的定理：
 \begin{theorem}{}{多空间直和}
     若$V=V_1\oplus V_2,\enspace V_1=V_{11}\oplus\cdots\oplus V_{1s},\enspace V_2=V_{21}\oplus\cdots\oplus V_{2t}$，则
     \[V=V_{11}\oplus\cdots\oplus V_{1s}\oplus V_{21}\oplus\cdots\oplus V_{2t}\]
 \end{theorem}
-这一定理的证明是很简单的，实际上利用零向量分解唯一即可. 进一步地，我们可以定义无穷个子空间的直和，推广\autoref{thm:直和等价命题}的 $2$，无穷个子空间的直和结果中的元素也可以表达为每个子空间的元素之和，但我们需要额外要求和式中只有有限项非零. 直观地，这其实是为了保证和式的收敛性.
+这一定理的证明是很简单的，实际上利用零向量分解唯一即可，这里不再赘述. 进一步地，我们可以定义无穷个子空间的直和，推广\autoref{thm:直和等价命题}的 $2$，无穷个子空间的直和结果中的元素也可以表达为每个子空间的元素之和，但我们需要额外要求和式中只有有限项非零. 直观地，这其实是为了保证和式的收敛性.
 
-在习题中我们证明直和一般有两种思路，一种是先证和，再证直和，我们来看一个例子（没有学到矩阵的可以先略过）：
+在习题中我们证明直和一般有两种思路，一种是先证和，再证直和，我们来看一个例子：
 \begin{example}{}{}
-    数域$\mathbf{F}$上所有$n$阶方阵组成的线性空间$V=\mathbf{M}_n(\mathbf{F})$，$V_1$表示所有对称矩阵组成的集合，$V_2$表示所有反对称矩阵组成的集合. 证明：$V_1,V_2$都是$V$的子空间，且$V=V_1\oplus V_2$.
+    考虑 $\mathbf{R}$上（即定义在实数域上）的所有实值函数（即取值于实数域）构成的集合 $\mathbf{R}^\mathbf{R} = \{f \mid f: \mathbf{R} \to \mathbf{R}\}$.  函数 $f: \mathbf{R} \to \mathbf{R}$ 被称为偶函数，若 $f(-x) = f(x)$ 对所有 $x \in \mathbf{R}$ 成立；函数 $f: \mathbf{R} \to \mathbf{R}$ 被称为奇函数，若 $f(-x) = -f(x)$ 对所有 $x \in \mathbf{R}$ 成立. 令 $V_e$ 代表 $\mathbf{R}$ 上的实值（函数取值于实数域）偶函数构成的集合，$V_o$ 代表 $\mathbf{R}$ 上的实值奇函数构成的集合，证明：$\mathbf{R}^\mathbf{R} = V_e \oplus V_o$.
 \end{example}
 
 \begin{proof}
-    首先证明和. 事实上，对于任意矩阵$A\in V$，有
-    \[A=B+C,\enspace B=\frac{1}{2}(A+A^T),\enspace C=\frac{1}{2}(A-A^T),\]
-    其中$B$是对称矩阵，$C$是反对称矩阵，即$B\in V_1$，$C\in V_2$，因此$V_1+V_2=V$（因为$V$中任意元素都可以写成$V_1$和$V_2$元素和的形式，根据和的定义可知成立）.
-
-    下面证明直和. 我们有如下三种方法：
     \begin{enumerate}
-        \item 利用零向量分解唯一：设$O$是$n$阶零矩阵，设$O=B+C$，其中$B$是对称矩阵，$C$是反对称矩阵. 由于$B$是对称矩阵，因此$B^T=B$，由于$C$是反对称矩阵，因此$C^T=-C$，因此
-              \[O=O^T=(B+C)^T=B^T+C^T=B-C\]
-              解得$B=C=O$，因此零向量分解唯一，故直和得证；
+        \item 首先我们证明 $\mathbf{R}^\mathbf{R} = V_e + V_o$，因为 $V_e + V_o \subseteq \mathbf{R}^\mathbf{R}$ 是显然的，所以只需证明 $\mathbf{R}^\mathbf{R} \subseteq V_e + V_o$ 即可，即证明任意实值函数 $f: \mathbf{R} \to \mathbf{R}$ 都可以表示为一个偶函数与一个奇函数之和. 令 $f: \mathbf{R} \to \mathbf{R}$ 为任意实值函数，定义
+        \[ f_e(x) = \frac{f(x) + f(-x)}{2}, \quad f_o(x) = \frac{f(x) - f(-x)}{2}, \]
+        根据定义不难验证 $f_e(x)$ 为偶函数，$f_o(x)$ 为奇函数，且 $f(x) = f_e(x) + f_o(x)$ 对任意 $x \in \mathbf{R}$ 成立，故任意实值函数 $f$ 都可以表示为一个偶函数与一个奇函数之和，故 $\mathbf{R}^\mathbf{R} = V_e + V_o$ 成立.
+        \item 再证明和为直和，我们有很多种证明方式，对应于直和等价条件的前三条，最后一条因为 $\mathbf{R}^\mathbf{R}$ 显然是无限维空间，因此不能使用.
 
-        \item 利用$V_1\cap V_2=\{0\}$：设$A\in V_1\cap V_2$，则$A=A^T=-A$，因此$A=-A$，即$A=O$，因此$V_1\cap V_2=\{0\}$，故直和得证；
-
-        \item 利用$\dim V_1+\dim V_2=\dim V$：这一方法较为复杂，我们简单阐述思想. 设$E_{ij}$是第$i$行第$j$列元素为1，其余元素为0的矩阵，则$V$的一组基为$E_{ij},\enspace i,j=1,2,\ldots,n$，$V_1$的一组基为$E_{ij}+E_{ji},\enspace i<j$和$E_{ii},\enspace i=1,2,\ldots,n$，$V_2$的一组基为$E_{ij}-E_{ji},\enspace i<j$，则$\dim V_1=\dfrac{n(n-1)}{2},\enspace \dim V_2=\dfrac{n(n-1)}{2}$，因此$\dim V_1+\dim V_2=n^2$，因此$\dim V_1+\dim V_2=\dim V$，故直和得证.
+        我们考虑证明交集为 $\{\vec{0}\}$，因为这比较容易. 设 $f(x) \in V_e \cap V_o$，则 $f(x)$ 既是偶函数又是奇函数，即 $f(x) = f(-x) = -f(x)$，解得 $f(x) = 0$ 对任意的 $x \in \mathbf{R}$ 成立，故 $f(x)$ 为零函数，这显然是 $\mathbf{R}^\mathbf{R}$ 中的零元，故 $V_e \cap V_o = \{\vec{0}\}$，故我们有 $V_e \oplus V_o = \mathbf{R}^\mathbf{R}$.
     \end{enumerate}
 \end{proof}
 
-还有一种证明$V=V_1\oplus V_2$的方式是先令$W=V_1+V_2$，先证明和为直和（即交为$\{0\}$）再证$W=V$即可，下面是一个例子：
+我们也可以首先证明分解唯一，然后证明直和，但相对而言更加复杂. 反之，由于我们已经利用交集为 $\{\vec{0}\}$ 得到了 $V_e \oplus V_o = \mathbf{R}^\mathbf{R}$，现在我们可以``曲线救国''式地证明任意实值函数 $f$ 都可以唯一表示为一个偶函数与一个奇函数之和.
+
+还有一种证明 $V = V_1 \oplus V_2$ 的方式是先令 $W = V_1 + V_2$，先用直和等价条件证明和为直和，再证 $W = V$ 即可，下面是一个例子：
 \begin{example}{}{}
-    设$A$是数域$\mathbf{F}$上的一个$n$阶可逆方阵，$A$的前$r$个行向量组成的矩阵为$B$，后$n-r$个行向量组成的矩阵为$C$，$n$元线性方程组$BX=0$与$CX=0$的解空间分别为$V_1,V_2$. 证明：$\mathbf{F}^n=V_1\oplus V_2$.
+    设 $V_1, V_2$ 分别是 $\mathbf{R}$ 上齐次线性方程组 $x_1 = x_2 = \cdots = x_n = 0$ 和 $x_1 + x_2 + \cdots + x_n = 0$ 的解空间，证明 $\mathbf{R}^n = V_1 \oplus V_2$.
 \end{example}
 
 \begin{proof}
-    先记$W=V_1+V_2$，若$\alpha\in V_1\cap V_2$，则$B\alpha=C\alpha=0$，所以
-    \[A\alpha=\begin{pmatrix}
-            B \\
-            C
-        \end{pmatrix}\alpha=0,\]
-    由于$A$可逆，因此$\alpha=0$，即$V_1\cap V_2=\{0\}$，因此$V_1+V_2$是直和，因此只需证$W=\mathbf{F}^n$即可. 事实上，我们知道$r(B)=r,r(C)=n-r$，因此$\dim V_1=n-r,\enspace \dim V_2=n-(n-r)=r$，所以
-    \[\dim W=\dim V_1+\dim V_2=n-r+r=n=\dim \mathbf{F}^n,\]
-    又$W=V_1\oplus V_2\subseteq \mathbf{F}^n$，因此$W=\mathbf{F}^n$，故得证.
+    设 $W = V_1 + V_2$. 对于任意向量 $x = (x_1,\cdots,x_n) \in V_1 \cap V_2$，必然同时满足 $V_1, V_2$ 对应的两个方程组，即是下述方程组的解：
+    \[\begin{cases}
+            x_1 + \cdots + x_n = 0 \\
+            x_1= \cdots = x_n
+        \end{cases} \implies x_1 = \cdots = x_n = 0,\]
+    故 $V_1 \cap V_2 = \{\vec{0}\}$，由直和条件可知，$W = V_1 \oplus V_2$. 下证$W = \mathbf{F}^n$，因为 $W \subset \mathbf{F}^n$，只需证明维数相同即可，根据\autoref{ex:线性方程组的解的维数}，$V_1$ 的维数为 $n - 1$，$V_2$ 的维数为 $n - 1$，由于 $W = V_1 \oplus V_2$，有 $\dim W = \dim V_1 + \dim V_2 = n$，故 $W = \mathbf{F}^n$ 得证.
 \end{proof}
+
+总结这一解法的思路，令 $W = V_1 + V_2$，先证明 $W = V_1 \oplus V_2$. 而我们知道 $W$ 必然是全空间 $V$ 的一个子空间，因此只需证明 $\dim W = \dim V$ 即可证明 $W = V$，即得 $V = V_1 \oplus V_2$.
 
 最后我们要提醒读者注意的是，有限维线性空间的一个子空间的补空间并不唯一，如下面的例子：
 \begin{example}{}{}
@@ -424,9 +408,28 @@
     证明：$V$的非空子集$A$是$V$的仿射子集当且仅当对所有的$v,w\in A$和$\lambda\in\mathbf{F}$均有$\lambda v+(1-\lambda)w\in A$.
 \end{example}
 
-\begin{solution}
+\begin{proof}
+    \begin{enumerate}
+        \item 若已知 $A$ 是 $V$ 的仿射子集,则 $A=\alpha+U$,其中 $\alpha\in V$ 且 $U$ 是 $V$ 的子空间.因此,对任意 $\lambda \in \mathbf{F}$,
+        和任意的 $v=\alpha+u_1,w=\alpha+u_2 \in A$,有
+        \[
+            \lambda v+(1-\lambda)w=\lambda(\alpha+u_1)+(1-\lambda)(\alpha+u_2)=\alpha+\lambda u_1+(1-\lambda)u_2 \in A
+        \]
+        因此对于仿射子集中的元素$v,w$具有上述性质.
+        \item 若已知$\lambda v+(1-\lambda)w \in A$,令$\alpha \in A$,则
+        \[
+            A-\alpha=\{v-\alpha|v\in A\}
+        \]
+        我们的目标是证明这是一个子空间；此时我们有$\lambda x + (1 - \lambda) \alpha \in A$,这是因为我们的假设是$\lambda v + (1 - \lambda) w \in A$;
+        即$\lambda (x-\alpha) \in A- \alpha $，这样就证明了数乘封闭；对于$x-\alpha,y-\alpha \in A-\alpha$,
 
-\end{solution}
+        \[
+           x-\alpha+y-\alpha=(x+y)-2\alpha=2(\dfrac{x+y}{2}-\alpha) \in A-\alpha
+        \]
+
+        这里运用了数乘封闭来证明加法封闭性；因此$A-\alpha$是一个子空间.
+    \end{enumerate}
+\end{proof}
 
 事实上，结合我们之前所说的仿射子集几何意义，这一结论在平面上来看正是我们高中学习的平面向量中学习的三点共线的等价条件的同义表达：
 \begin{theorem}{}{}
@@ -502,7 +505,15 @@
 \end{example}
 
 \begin{solution}
+    \begin{enumerate}
+        \item 首先求 $AX=0$ 的解，得到其基础解系为$k(1,3,1)^{\mathrm{T}},k \in \mathbf{R}$,故其解空间的一组基为$\{(1,3,1)^{\mathrm{T}}\}$.
+        \item 根据\autoref{thm:商空间的维数公式}的证明过程，我们将 $W$ 的基扩张为 $\mathbf{R^3}$ 的一组基，如 $\{(1,3,1)^{\mathrm{T}},(1,0,0)^{\mathrm{T}},(0,1,0)^{\mathrm{T}}\}$，然后将扩张的基中``加上''$W$ 变成仿射子集，即可得到商空间的一组基：
+        \[
+            \{(1,0,0)^{\mathrm{T}}+W,(0,1,0)^{\mathrm{T}}+W\}
+        \]
+        维数为 $2$. 这可以从基的数量得到，也可以由 $\mathbf{R}^3$ 的维数减去 $W$ 的维数得到.
 
+    \end{enumerate}
 \end{solution}
 
 \begin{summary}
@@ -522,17 +533,17 @@
         \item 设$V=\{(a_1,a_2,a_3,a_4) \mid a_1+a_2+a_3+a_4=0\}$，$W=\{(a_1,a_2,a_3,a_4) \mid a_1-a_2-a_3+a_4=0,a_1+a_2+a_3-a_4=0\}$.
         \begin{enumerate}
             \item 证明：$V$和$W$为$\mathbf{R}^4$的子空间；
-            \item 分别求$V \cap W$，$V+W$以及$W$的补空间的维数与一组基. 
+            \item 分别求$V \cap W$，$V+W$以及$W$的补空间的维数与一组基.
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
                 \item 显然任意$\alpha\in v,\beta \in w$, 有 $\alpha,\beta\in \mathbf{R}^4$ 成立，因此只需证明 $v,w$ 封闭即可. 由于 $v,w$ 内向量的约束条件都是齐次线性方程，封闭性自然满足，则 $v,w$ 都是 $\mathbf{R}^4$ 的子空间.
-  
+
                 \item \begin{enumerate}
                           \item $V\cap W=\{(a_1,a_2,a_3,a_4) \mid a_1+a_2+a_3+a_4=0,a_1-a_2-a_3+a_4=0,a_1+a_2+a_3-a_4=0\}$ 或者是 $\{(0,a,-a,0) \mid \alpha\in \mathbf{R}\}$.
-  
+
                           \item 由维数公式：$\dim V+\dim W=\dim (V\cap W)+\dim (V+W)$，易得$\dim V=3,\enspace \dim W=2,\enspace \dim (V\cap W)=1$，因此$\dim (V+W)=4$，则有$V+W=\mathbf{R}^4$.
-  
+
                           \item 先得到$W$的基：列出齐次线性方程组：
                                 \[\begin{cases}
                                         a_1-a_2-a_3+a_4=0 \\
@@ -544,7 +555,7 @@
                                         0 & 1 & 1 & -1
                                     \end{pmatrix}\]
                                 秩为2，基分别为$\beta_1= (0,-1,1,0)$，$\beta_2= (0,1,0,1)$，则$W$的补空间维数是$\dim \mathbf{R}^4 - \dim W=2$.
-  
+
                                 利用基的扩张求其补空间的基. 也即求$\beta_1,\beta_2,e_1,e_2,e_3,e_4$的极大无关组，其中$e_1,e_2,e_3,e_4$是自然基.
                                 \[\begin{pmatrix}
                                         0  & 0 & 1 & 0 & 0 & 0 \\
@@ -559,7 +570,7 @@
                                     \end{pmatrix}\]
                                 则$\beta_1,\beta_2,e_1,e_2$即是扩张后的基，因此$W$的补空间的一组基为$e_1,e_2$.
                       \end{enumerate}
-            \end{enumerate} 
+            \end{enumerate}
         \end{answer}
         \item 设 $f_1=-1+x,\ f_2=1-x^2,\ f_3=1-x^3,\ g_1=x-x^2,\ g_2=x+x^3,\ V_1=\spa(f_1,f_2,f_3),\ V_2=\spa(g_1,g_2)$，求：
         \begin{enumerate}
@@ -588,13 +599,13 @@
                  0 & 0  & 0  & 0 & 1
                           \end{pmatrix}\]
                       则极大线性无关组为 $f_1,f_2,f_3,g_2$，因此 $V_1+V_2$ 的基为 $f_1,f_2,f_3,g_2$，维数为4.
-  
+
                 \item 易得$\dim V_1=3,\enspace \dim V_2=2$. 则$\dim (V_1\cap V_2)= \dim V_1+\dim V_2-\dim (V_1+V_2)=1$. 只需找到属于$V_1\cap V_2$的一个向量，其就是$V_1\cap V_2$的基.
                       \[U=\lambda_1f_1+\lambda_2f_2+\lambda_3f_3= \mu_1g_1+\mu_2g_2,\]
                       已知$g_1$可被$f_1,f_2,f_3,g_2$表示，则只需取$\mu_1=1$，再求解其它系数即解得：
                       \[\lambda_1=1,\lambda_2=1,\lambda_3=0,\mu_2=0,\]
                       因此$u=g_1=(0,1,-1,0)$或者$x-x^2$是$V_1\cap V_2$的一组基.
-  
+
                 \item 只需求$g_1,g_2,e_1,e_2,e_3,e_4$的极大无关组即可.
                       \[\begin{pmatrix}
                               0  & 0 & 1 & 0 & 0 & 0 \\
@@ -608,18 +619,20 @@
                               0 & 0 & 0 & 1 & 1 & -1\end{pmatrix}\]
                       则$g_1,g_2,e_1,e_2$是一组极大无关组. $V_2$在$\mathbf{R}[x]_4$的补是$\spa(e_1,e_2)$其中$e_1=1,e_2=x$.
             \end{enumerate}
-        \end{answer}     
-        \item 在数域$\mathbf{F}$上，已知$V_1,V_2$分别为方程组$x_1+x_2+\cdots+x_n=0$与$x_1=x_2=\cdots=x_n$的解空间. 证明：$\mathbf{F}^n=V_1\oplus V_2$.
+        \end{answer}
+        \item 证明或给出反例：
+        \begin{enumerate}
+            \item 设 $U_1, U_2, U_3$ 都是 $V$ 的子空间，若 $U_1 + U_3 = U_2 + U_3$，则 $U_1 = U_2$.
+            \item 设 $U_1, U_2, U_3$ 都是 $V$ 的子空间，若 $U_1 \oplus U_3 = U_2 \oplus U_3$，则 $U_1 = U_2$.
+        \end{enumerate}
         \begin{answer}
-            设$W=V_1+V_2$. 对于任意向量$\alpha$属于$V_1\cap V_2$，有条件：
-          \[\begin{cases}
-                  \alpha_1+\cdots +\alpha_n=0 \\
-                  \alpha_1= \cdots  =\alpha_n
-              \end{cases}\implies \alpha_1 = \cdots = \alpha_n = 0,\]
-          即$\alpha=0$. 由直和条件可知，$W=V_1\oplus V_2$. 下证$W=\mathbf{F}^n$. 只需证明维数相同即可求解$V_1$的维数，求方程组的解可得：
-          \[u_1=(-1,1,0,\ldots ,0),u_2=(-1,0,1,\ldots,0),u_{n-1}=(-1,0,\ldots ,0,1),\]
-          是$V_1$的一组基，则$\dim V_1=n-1$. 求解$V_2$的维数：$V= (1,1,\ldots ,1)$是$V_2$的基，有$\dim V_2=1$. 综上，由于$W=V_1\oplus V_2$，因此$\dim W=\dim V_1+\dim V_2$. 所以$\dim W=n=\dim \mathbf{F}^n$，且$W\subset \mathbf{F}^n$，则$V_1\oplus V_2=W=\mathbf{F}^n$，得证.
-        \end{answer}    
+
+        \end{answer}
+
+        \item 若 $V$ 的子空间 $U_1,U_2,U_3$ 满足 $U_1 \cap U_2 = U_2 \cap U_3 = U_3 \cap U_1 = \{0\}$，问 $U_1 + U_2 + U_3$ 是否是直和？
+        \begin{answer}
+
+        \end{answer}
 
         \item 设 $V_1,V_2$ 是线性空间 $V$ 的两个非平凡子空间，证明: $\exists \alpha \in V$,使得$\alpha \notin V_1$ 且 $\alpha \notin V_2$.并在$\mathbf{R}^3$ 中举一例.
         \begin{answer}
@@ -628,12 +641,12 @@
         \end{answer}
         \item 设 $V_1,\ldots,V_m (m > 2)$ 是线性空间$V$的$m$个非平凡子空间，证明：$V$ 中存在一个同时不属于任何一个$V_i(1 \leqslant i \leqslant m)$的向量.并在$\mathbf{R}^3$ 中举一例.
         \begin{answer}\label{eg:4:A:5}
-          \textbf{证:} （归纳法）当 $r=2$ 时由上题知成立. 
-          假设 $r = k-1$ 时也成立, 即存在 $\alpha \in V$ 
-          使得 $\alpha$ 同时不属于 $V_i (i=1,2,\ldots,k-1)$ 
+          \textbf{证:} （归纳法）当 $r=2$ 时由上题知成立.
+          假设 $r = k-1$ 时也成立, 即存在 $\alpha \in V$
+          使得 $\alpha$ 同时不属于 $V_i (i=1,2,\ldots,k-1)$
           下面证明 $r=k$ 时也成立. 显然当此 $\alpha \notin V_k$ 则 $\alpha$ 即为所求.
            若 $\alpha \in V_k$, 由于 $V_k$ 是 $V$ 的真子空间, 故有 $\beta \notin V_k$, 易知对任意 $V_i (i=1,2,\ldots,k-1)$ 都至多有一个 $k_i$, 使得 $\beta + k_i \alpha \notin V_i; i=1,2,\ldots,k-1$, 我们取异于 $k_i$ 的数 $k$, 则必有 $\beta + k \alpha \notin V_i; i=1,2,\ldots,k-1$. 又由于 $\alpha \in V_k, \beta \notin V_k$ 故有 $\beta + k \alpha \notin V_k$, 故 $\beta + k \alpha \notin V_k (i = 1,2,\dots,k)$.
-        \end{answer}    
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
@@ -661,10 +674,10 @@
                  0 & 0   & 0  & 0
                           \end{pmatrix}\]
                       则解向量$u_1=\left(\dfrac {3}{17},\dfrac{19}{17},1,0\right)^T,u_2=\left(\dfrac{13}{17},-\dfrac{20}{17},0,1\right)^T$. $u_1,u_2$是$V_1\cap V_2$的基，则其维数为2.
-  
+
                 \item 易得$\dim V_1=2,\dim V_2=2$，则由维数公式$\dim (V_1+V_2)=\dim V_1+\dim V_2-\dim (V_1\cap V_2)= 2$又$V_1\cap V_2\subseteq V_1+V_2$，且二者维数相等. 则$V_1\cap V_2=V_1+V_2$，亦即$V_1=V_2$. 所以$V_1+V_2$的基也是$u_1,u_2$，同$V_1\cap V_2$.
             \end{enumerate}
-        \end{answer}    
+        \end{answer}
         \item 设$W_1,W_2$是线性空间$V(\mathbf{F})$的两个子空间. 证明以下命题等价：
         \begin{enumerate}
             \item $W_1 \cup W_2$为$V$ 的子空间；
@@ -682,36 +695,14 @@
           (2) (3) 的等价性留待读者自行验证，与证明 (1) (2) 等价是基本一致的.
         \end{answer}
 
-        \item 设\[W_1=\left\{\begin{pmatrix}
-                x & -x \\ y & z
-            \end{pmatrix} \;\middle|\; x,y,z\in \mathbf{F} \right\},W_2=\left\{\begin{pmatrix}
-                a & b \\ -a & c
-            \end{pmatrix} \;\middle|\; a,b,c\in \mathbf{F} \right\}.\]
-
-        \begin{enumerate}
-            \item 证明：$W_1,W_2$是$\mathbf{M}_2(\mathbf{F})$的子空间，并求$\dim W_1,\dim W_2,\dim(W_1+W_2),\dim(W_1\cap W_2)$;
-
-            \item 求$W_1\cap W_2$的一组基，并求$A=\begin{pmatrix}
-                          3 & -3 \\ -3 & 1
-                      \end{pmatrix}$关于这组基的坐标.
-        \end{enumerate}
-
+        \item 证明：每个 $n$ 维空间均可以表示为 $n$ 个一维子空间的直和.
         \begin{answer}
+            我们很自然地想到，可以任取 $n$ 维空间 $V$ 的一组基 $\alpha_1,\alpha_2,\ldots,\alpha_n$，然后取 $V_i = \spa(\alpha_i)$. 如果 $V = V_1 \oplus V_2 \oplus \cdots \oplus V_n$，我们就成功地为每个 $n$ 维空间找到了写成 $n$ 个一维子空间直和的分解形式. 下面我们来证明这一构造的正确性：
             \begin{enumerate}
-                \item 只需证明 $W_1$ 封闭即可. 对于 $A=\begin{pmatrix}x & -x \\ y & z\end{pmatrix},A'=\begin{pmatrix} x' & -x' \\ y' & z' \end{pmatrix}$ 有 $\lambda A+\mu A'=\begin{pmatrix}
-                              \lambda x+\mu x' & -(\lambda x+\mu x') \\
-                              \lambda y+\mu y  & \lambda z+\mu z
-                          \end{pmatrix}$，则$W_1$封闭，$W_1$是$\mathbf{M}_2(\mathbf{F})$的子空间.	$W_2$同理可证.
-  
-                \item $W_1$的基：$B_1=\begin{pmatrix}1&-1\\0&0\end{pmatrix},B_2=\begin{pmatrix}0&0\\1&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
-  
-                      $W_2$的基：$B_1=\begin{pmatrix}1&0\\-1&0\end{pmatrix},B_2=\begin{pmatrix}0&1\\0&0\end{pmatrix},B_3=\begin{pmatrix}0&0\\0&1\end{pmatrix}$.
-  
-                      则$\dim W_1=3,\dim W_2=3$. 要求$\dim  (W_1+W_2)$，只需求$B_1,B_2,\ldots ,B_6$的极大无关组即可. 可知 $B_1,B_2,B_3,B_4$是极大线性无关组.	$\dim(W_1+W_2)=4$. 根据维数公式$\dim (W_1\cap W_2)=\dim W_1+\dim W_2-\dim (W_1+W_2)=2$.
-  
-                \item $W_1\cap W_2=\left\{\begin{pmatrix}x&-x\\-x&y\end{pmatrix} \mid x,y\in \mathbf{F}\right\}$. 则一组基为$E_1=\begin{pmatrix}1&-1\\-1&0\end{pmatrix},E_2=\begin{pmatrix}0&0\\0&1\end{pmatrix}$. $A$ 的坐标即为 $(3,1)$.
-            \end{enumerate}  
-        \end{answer} 
+                \item
+                \item
+            \end{enumerate}
+        \end{answer}
 
         \item 设$V$是域$\mathbf{F}$上的$n$维线性空间，$\alpha_1,\alpha_2,\ldots,\alpha_n$是$V$的一组基，且
         \begin{gather*}
@@ -728,9 +719,9 @@
         \begin{answer}
             \begin{enumerate}
                 \item 显然$V_2\subseteq V$，只需证明$V_2$封闭即可. 对于$v=k_1\alpha_1+\cdots+k_n\alpha_n,v'=k_1'\alpha_1+\cdots+k_n'\alpha_n$. $\lambda v+\mu v'=(\lambda k_1+\mu k_1')\alpha_1+\cdots+(\lambda k_n+\mu k'_n)\alpha_n$，因此  $\lambda v+\mu v'\in V_2\in V_2$，$V_2$ 封闭，则$V_2$是$V$的子空间.
-  
+
                 \item 设$W=V_1+V_2$. 对任意 $v\in V_1,v=\lambda \alpha_1+2\lambda\alpha_2+\cdots+n\lambda\alpha_n$，则 $\lambda+2\dfrac{\lambda}2+\allowbreak\cdots+n\dfrac{\lambda}n=n\lambda$，因此当$v\ne 0$时，$v\not\in v_2$，则 $V_1\cap V_2=\{0\}$，有$W=V_1\oplus V_2$.
-  
+
                       下证$W=V$，易得$\dim V_1=1$. 对于$V_2$，写成坐标形式，则其是一个方程组的解空间，系数矩阵 $A=\begin{pmatrix}
                               1 & \frac 12 & \cdots & \frac 1n \\
                               0 &          &        &          \\
@@ -741,83 +732,25 @@
             \end{enumerate}
         \end{answer}
 
-        \item 设$\mathbf{F}$为数域，$V_1=\{A\in\mathbf{F}^{n\times n} \mid A^\mathrm{T}=A\},\enspace
-            V_2=\{A\in\mathbf{F}^{n\times n} \mid A^\mathrm{T}=-A\},\enspace V_3=\{A\in\mathbf{F}^{n\times n} \mid A\text{~为上三角矩阵}\}$.
+        \item 完成以下三个问题：
         \begin{enumerate}
-            \item 证明：$V_1,V_2,V_3$都是$\mathbf{F}^{n\times n}$的子空间；
-
-            \item 证明：$\mathbf{F}^{n\times n}=V_1+V_3$但不为直和，$\mathbf{F}^{n\times n}=V_2\oplus V_3$.
+            \item 设 $U = \{(x,x,y,y) \mid x,y\in \mathbf{F}\}$，求 $\mathbf{F}^4$ 的一个子空间 $W$，使得 $\mathbf{F}^4 = U \oplus W$.
+            \item 设 $U = \{(x,y,x+y,x-y,2x) \mid x,y\in \mathbf{F}\}$，求 $\mathbf{F}^5$ 的一个子空间 $W$，使得 $\mathbf{F}^5 = U \oplus W$.
+            \item 设 $U = \{(x,y,x+y,x-y,2x) \mid x,y\in \mathbf{F}\}$，求 $\mathbf{F}^5$ 的三个都不为 $\{\vec{0}\}$ 的子空间 $W_1,W_2,W_3$，使得 $\mathbf{F}^5 = U \oplus W_1 \oplus W_2 \oplus W_3$.
         \end{enumerate}
+        \begin{answer}
 
-       \begin{answer}
-        \begin{enumerate}
-            \item 只需证明 $V_1,V_2,V_3$ 的封闭性，以 $V_3$ 为例，$\forall A,B\in V_3$,有 $A=\begin{pmatrix}
-                          a_{11} & \cdots & a_{1n} \\
-                          0      & \cdots & 0      \\
-                          \vdots &        & \vdots \\
-                          0      & \cdots & a_{nn}
-                      \end{pmatrix},B=\begin{pmatrix}
-                          b_{11} & \cdots & b_{1n} \\
-                          0      & \cdots & 0      \\
-                          \vdots &        & \vdots \\
-                          0      & \cdots & b_{nn}
-                      \end{pmatrix}$，则 $\lambda A+\mu B=\begin{pmatrix}
-                          \lambda a_{11}+\mu b_{11} & \cdots & a\lambda a_{1n}+\mu b_{1n} \\
-                          \vdots                    &        & \vdots                     \\
-                          0                         & \cdots & \lambda a_{nn}+\mu b_{nn}
-                      \end{pmatrix}$，$V_3$ 封闭得证. 其余 $V_1,V_2$ 也同理可证.（通过之后的学习会了解$V_1$对称矩阵、$V_2$反对称矩阵的更多性质）
-
-            \item $\forall A\in \mathbf{F}^{n\times n},A=\begin{pmatrix}
-                          a_{11} & \cdots & a_{1n} \\
-                          \vdots &        & \vdots \\
-                          a_{n1} & \cdots & a_{nn}
-                      \end{pmatrix}$，总可将$A$写成 $\begin{pmatrix}
-                          a_{11} & a_{21} & \cdots & a_{n1} \\
-                          \vdots &        &        & \vdots \\
-                          a_{n1} & \cdots & \cdots & a_{nn}
-                      \end{pmatrix}+\begin{pmatrix}
-                          a0     & a_{12}-a_{21} & \cdots & a_{1n}-a_{n1} \\
-                          \vdots &               &        & \vdots        \\
-                          a_{n1} & \cdots        & \cdots & a_{nn}
-                      \end{pmatrix}$ 的形式. 又左边矩阵属于 $V_1$，右边矩阵属于 $V_3$，则$\mathbf{F}^{n \times n}=V_1+V_3$. 但对于 $I=\begin{pmatrix}
-                          1      & \cdots & 0      \\
-                          \vdots &        & \vdots \\
-                          0      & \cdots & 1
-                      \end{pmatrix} $ $,I \in V_1$且$I \in V_3$，则$V_1\cap V_3\ne\{0\}$，不是直和. 总可将$A$写成 $A_1+A_2$ 的形式，其中
-                  \[A_1=\begin{pmatrix}
-                          0      & -a_{21} & \cdots     & -a_{n1} \\
-                          a_{21} &         &            & \vdots  \\
-                          \vdots &         &            & \vdots  \\
-                          a_{n1} & \cdots  & a_{n(n-1)} & 0
-                      \end{pmatrix},A_2=\begin{pmatrix}
-                          a_{11} & \cdots & a_{1n}+a_{n1} \\
-                          \vdots &        & \vdots        \\
-                          0      & \cdots & a_{nn}
-                      \end{pmatrix},\]
-                  $A_1\in V_2,A_2\in V_3,\mathbf{F}^{n\times n}=V_2+V_3$. 又对于 $\forall B\in V_2\cap V_3$, $B$ 是反对称的. 并且 $B$ 是上三角的. 综合可得  $B=0$. 因此 $V_2\cap V_3=\{0\}$，$F_{n\times n}=V_2\oplus V_3$ 得证.
-        \end{enumerate}
-       \end{answer}
+        \end{answer}
 
         \item 已知$V_1,V_2$是有限维线性空间$V$的子空间，且$\dim(V_1+V_2)=\dim(V_1 \cap V_2)+1$. 证明：要么$V_1 \subseteq V_2$，要么$V_2 \subseteq V_1$.
 
         \begin{answer}
             \begin{enumerate}
                 \item 法一：反证法. 如果$\exists v_1\in V_1,v_1\not\in V_2$,且 $\exists v_2\in V_2,v_2\not\in V_1$，则有 $v_1,v_2\not \in V_1\cap V_2$ 并且 $v_1,v_2$ 线性无关. 设 $A=\{\alpha_1,\ldots ,\alpha_n\}$是 $V_1\cap V_2$的基. 由基扩张，设$B=\{\alpha_1,\ldots ,\alpha_n,\alpha_{n+1},\ldots ,\alpha_{n+k}\}$是$V_1+V_2$的基. 由于$v_1,v_2$不在$V_1\cap V_2$中，因此$A$无法表出$v_1,v_2$. 则$\alpha_1,\ldots ,\alpha_n,v_1,v_2$ 线性无关. 又$v_1,v_2\in V_1+V_2$，则$\alpha_1,\ldots ,\alpha_n,v_1,v_2$可由$\alpha_1,\ldots ,\alpha_{n+k}$ 线性表出. 由定理 $3.3$ 得 $n+2\leqslant n+k$，即 $\dim (V_1+V_2)\ge\dim (V_1\cap V_2)+2$，这与条件矛盾. 因此，$\forall v_1\in V_1,v_1\in V_2$ 或 $\forall v_2\in V_2,v_2\in V_1$. 即 $V_1\subseteq V_2$ 或 $V_2\subseteq V_1$，得证.
-  
+
                 \item 法二：维数公式. $\dim V_1+\dim V_2=\dim  (V_1+V_2)+\dim  (V_1\cap V_2)=2\dim  (V_1\cap V_2)+1$，即 $(\dim V_1-\dim  (V_1\cap V_2))+ (\dim V_2-\dim  (V_1\cap V_2))=1$. 于是，要么 $\dim V_1-\dim  (V_1\cap V_2)=0$，要么 $\dim V_2-\dim  (V_1\cap V_2)=0$，即 $V_1\subseteq V_2$ 或 $V_2\subseteq V_1$，得证.
             \end{enumerate}
         \end{answer}
-
-        \item 证明：和$\sum\limits_{i=1}^{s}V_i$为直和的充要条件是$V_i \cap \sum\limits_{j=1}^{i-1}V_j=\{0\},\enspace i=1,2,\ldots,s$.
-        \begin{answer}
-            \begin{enumerate}
-                \item 充分性：已知 $V_i\cap \displaystyle\sum_{j=1}^{i-1}V_j=\{0\}$. 设 $0=\alpha_1+\cdots+\alpha_s,\alpha_i\in V_i$，则 $\alpha_s=0,\alpha_1+\cdots+\alpha_{s-1}=0$，则$\alpha_s=0,\alpha_1+\cdots+\alpha_{s-1}=0$. 递推可得 $\alpha_s=\alpha_{s-1}=\cdots=\alpha_1=0$，因此零向量分解唯一. $\displaystyle\sum_{i=1}^sV_i$ 是直和.
-  
-                \item 必要性：$\displaystyle\sum_{i=1}^sV_i$ 是直和，则两两相交均为 $\{0\}$，则 $V_i\cap \displaystyle\sum_{j=1}^{i-1}V_j=\{0\}$.
-            \end{enumerate}
-  
-        \end{answer}
-        
 
         \item 判断下列说法是否正确：
         \begin{enumerate}
@@ -832,55 +765,54 @@
               \item 错误，反例：设 $V_1,V_2,V_3$ 是平面$K$上三条过原点$O$的不重合直线，则$V\subseteq K=V_1+V_2$，但$V\cap V_1=\{0\},V\cap V_2=\{0\}$，$V\ne (V\cap V_1)+(V\cap V_2)$.
           \end{enumerate}
         \end{answer}
-        \item 设$V$为有限维线性空间，$V_1$为其非零子空间. 证明：存在唯一的子空间$V_2$，使得$V=V_1\oplus V_2$的充要条件为$V_1=V_2$.
+        \item 设$V$为有限维线性空间，$V_1$为其非零子空间. 证明：存在唯一的子空间$V_2$，使得$V=V_1\oplus V_2$的充要条件为$V_1=V$.
         \begin{answer}
-            \begin{enumerate}
-                \item 充分性：显然，若$V_1=V_2$，则$V_1^c=V_2=\empty$ 是唯一的.
-  
-                \item 必要性：反证法，如果$V_1\ne V_2$,即$V_1\not\subseteqq V$. 设$V_1$的基是$\alpha_1,\ldots ,\alpha_m$，将其扩张为$V$的基$\alpha_1,\ldots  ,\alpha_m,\alpha_{m+1},\ldots ,\alpha_n$. 则$V=V_1\oplus \spa(\alpha_{m+1},\ldots ,\alpha_n)$，$=V_1\oplus \spa(\alpha_{m+1}+\alpha_ 1,\alpha_{m+2},\ldots ,\alpha_n)$. 又$\spa(\alpha_{m+1},\ldots ,\alpha_n)\ne \spa(\alpha_{m+1}+\alpha_1,\ldots,\alpha_n)$, 矛盾，则$V_1=V$得证.
-            \end{enumerate}
+
         \end{answer}
+
        \item 设$A_1$和$A_2$均为$V$的仿射子集，证明：$A_1\cap A_2$是$V$的仿射子集或空集（可推广至任意交）.
        \begin{answer}
         设$A,B$为$V$的仿射子集,若$A,B$交于一点$v$,则令$\{0\}$为子空间，此时$A \cap B = v+\{0\} $,仍然是子空间，若至少有两点$u,v \in A \cap B$,则$ \forall u,v \in A \cap B$,我们
         \begin{align*}
          \lambda u + (1-\lambda)v \in A \\
             \lambda u + (1-\lambda)v \in B\\
-            \lambda u + (1-\lambda)v \in A \cap B  
+            \lambda u + (1-\lambda)v \in A \cap B
         \end{align*}
        故A,B的交集是仿射子集.
-       空集的情况显然不必多说。
+       空集的情况显然不必多说.
        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
-        \item 设$V$是域$\mathbf{F}$上的$n$阶对称矩阵关于矩阵加法和数乘运算构成的线性空间，令
-        \[U=\{A\in V \mid \tr(A)=0\},\enspace W=\{\lambda E \mid \lambda\in\mathbf{F}\}.\]
-        \begin{enumerate}
-            \item 证明：$U,W$为$V$的子空间；
-
-            \item 分别求$U,W$的一组基和维数；
-
-            \item 证明：$V=U\oplus W$.
-        \end{enumerate}
-        \begin{answer}
-            注：$\tr$是矩阵的迹，定义为矩阵对角元素之和.
-            \begin{enumerate}
-                \item 根据定义可知$\tr$是线性的，有 $\tr(\lambda A+\mu B)=\lambda\tr(A)+\mu\tr(B)=0$，则$U$是封闭的，又$W$封闭是显然的，则 $U,W$ 是 $V$ 的子空间.
-  
-                \item 对于$W$,基为$\{E\}$，$\dim W=1$. 对于$u$,设$E_{ij}$是 $a_{ij}=1$，其余元素为0的$n$阶方阵. 则由于$u$是对称矩阵，在非对角线元素上，$u$的基包含$E_{12}+E_{21},E_{13}+E_{31},\ldots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
-                      \[\begin{pmatrix}a_{11}\\ \vdots\\ a_{nn}	\end{pmatrix}=k_1\begin{pmatrix}1 \\ -1 \\ 0\\ \vdots \\0	\end{pmatrix}=k_2\begin{pmatrix}1 \\ 0 \\ -1\\ \vdots \\0	\end{pmatrix}+\cdots+k_{n-1}\begin{pmatrix}1 \\ 0 \\ 0\\ \vdots \\-1	\end{pmatrix}.\]
-                      则还有$n-1$个基$E_{11}-E_{22},E_{11}-E_{33},\ldots ,E_{11}-E_{nn}$. 故 $\dim U=\dfrac{n^2-n}2+n-2=\dfrac{n^2+n-2}2$.
-  
-                \item 设$V'=U+W$. 先证明直和，即$U\cap W=\{0\}$. 这是显然的，因为$\tr(\lambda E)=n\lambda$，仅当 $\lambda=0$ 时 $\lambda E\in U$ 即 $U\cap W=\{0\}$得证. 又$\dim U+\dim W=\dim V'=n=\dim V$，则$V=V'=U\oplus W$得证.
-            \end{enumerate}  
-        \end{answer}
-
         \item 设$W_0,W_1,W_2,\ldots,W_s$是线性空间$V$的$s+1$个非平凡子空间，且$W_0 \subseteq W_1 \cup W_2 \cup \cdots \cup W_s$. 证明：必存在$i$使得$W_0\subseteq W_i$.
         \begin{answer}
             由前 $B$ 组第 8 题的证明可知 $W_0=(W_1\cap W_2)\cup\cdots\cup(W_s\cap W_0)$. 由于$W_1\cap W_2\cdots W_s\cap W_0$都是$W_0$的子空间，根据覆盖定理，必存在$i$，使得$W_0=W_i\cap W_0$，即 $W_0\subseteq W_i$ 得证.
         \end{answer}
-        
+
+        \item 受三个有限集之并集的元素数量公式的启发，你可能会这样猜测：如果 $V_1,V_2,V_3$ 是一有限维向量空间的子空间，那么有
+        \begin{align*}
+            \dim(V_1+V_2+V_3) =\ &\dim V_1+\dim V_2+\dim V_3 \\
+            &-\dim(V_1\cap V_2)-\dim(V_1\cap V_3)-\dim(V_2\cap V_3) \\
+            &+\dim(V_1\cap V_2\cap V_3).
+        \end{align*}
+        解释一下为什么这样猜测，然后证明以上公式或给出一反例.
+        \begin{answer}
+
+        \end{answer}
+
+        \item 证明：如果 $V_1,V_2,V_3$ 是一有限维向量空间的子空间，那么
+        \begin{align*}
+            &\dim(V_1+V_2+V_3) \\
+            &= \dim V_1+\dim V_2+\dim V_3 \\
+            &-\dfrac{\dim(V_1\cap V_2)+\dim(V_1\cap V_3)+\dim(V_2\cap V_3)}{3} \\
+            &+\dfrac{\dim((V_1 + V_2) \cap V_3) - \dim((V_1 + V_3) \cap V_2) + \dim((V_2 + V_3) \cap V_1)}{3}.
+        \end{align*}
+
+        注：以上公式可能显得有点奇怪，因为右边看着不像一个整数.
+        \begin{answer}
+
+        \end{answer}
+
         \item 设$v_1,\ldots,v_m\in V$. 令
         \[A=\{\lambda_1v_1+\cdots+\lambda_mv_m \mid \lambda_1,\ldots,\lambda_m\in\mathbf{F}\text{~且~}\lambda_1+\cdots+\lambda_m=1\}.\]
         证明：
@@ -894,34 +826,34 @@
     \begin{answer}
         \begin{enumerate}
             \item 对于 $v=\lambda_1 v_1+\cdots+\lambda_m v_m\in A$ 和 $w=\eta_1 v_1+\cdots+\eta_m v_m\in A$, 且 $\lambda_1,\cdots,\lambda_m\in  \mathbf{F}$, $\lambda_1+\cdots+\lambda_m=1$ , $\eta_1,\cdots,\eta_m\in \mathbf{F}$, $\eta_1+\cdots+\eta_m=1$. 对于任意的$\lambda\in \mathbf{F}$, 我们有
-            \begin{align*} 
-                \lambda v+(1-\lambda) w=\sum_{i=1}^m(\lambda\lambda_i+(1-\lambda)\eta_i)v_i. 
-            \end{align*} 
-            注意到 
+            \begin{align*}
+                \lambda v+(1-\lambda) w=\sum_{i=1}^m(\lambda\lambda_i+(1-\lambda)\eta_i)v_i.
+            \end{align*}
+            注意到
             \[ \sum_{i=1}^m(\lambda\lambda_i+(1-\lambda)\eta_i)=\lambda\sum_{i=1}^m\lambda_i+(1-\lambda)\sum_{i=1}^n\eta_i=\lambda+(1-\lambda)=1, \]
             我们有$\lambda v+(1-\lambda) w\in A$. 故 $A$ 是 $V$ 的一个仿射子集
-        \item 我们使用数学归纳法来证明，对于任意 $V$ 的仿射子集 $W$ ,其包含$v_1$, $\cdots$, $v_m$$k\le m$, 
+        \item 我们使用数学归纳法来证明，对于任意 $V$ 的仿射子集 $W$ ,其包含$v_1$, $\cdots$, $v_m$$k\le m$,
             如果 $\lambda_1+\cdots+\lambda_k=1$,
             我们有 \[ \sum_{j=1}^k\lambda_jv_j\in W. \]
-            
-            当$k=1$ 和 $k=2$ 时，结论是显然的.  
-            假设 $k$ 时成立, 
-            接下来对于 $k+1$ ($k+1\leqslant m$). 
-            我们假设$\lambda_1+\cdots+\lambda_{k+1}=1$. 
+
+            当$k=1$ 和 $k=2$ 时，结论是显然的.
+            假设 $k$ 时成立,
+            接下来对于 $k+1$ ($k+1\leqslant m$).
+            我们假设$\lambda_1+\cdots+\lambda_{k+1}=1$.
             若 $\lambda_{k+1}=1$, 那么\[\sum_{j=1}^{k+1}\lambda_jv_j=v_{k+1}\in W.\]
             若$\lambda_{k+1}\ne 1$,那么\[ \frac{1}{1-\lambda_{k+1}}(\lambda_1+\cdots+\lambda_k)=1. \]
             由归纳假设，我们有\[ \frac{1}{1-\lambda_{k+1}}(\lambda_1v_1+\cdots+\lambda_kv_k)\in W. \]
             也有 \[ (1-a_{k+1})\left(\frac{1}{1-\lambda_{k+1}}(\lambda_1v_1+\cdots+\lambda_kv_k)\right)+a_{k+1}v_{k+1}\in W, \]
             即 \[ \lambda_1v_1+\cdots+\lambda_{k+1}v_{k+1}\in W. \]
-            故而 $\lambda_1,\cdots,\lambda_m\in  \mathbf{F}$, $\lambda_1+\cdots+\lambda_m=1$, 
+            故而 $\lambda_1,\cdots,\lambda_m\in  \mathbf{F}$, $\lambda_1+\cdots+\lambda_m=1$,
             \[\lambda_1 v_1+\cdots+\lambda_m v_m\in W,\]有$A\subset W$.
         \item  注意到$\lambda_1+\cdots+\lambda_m=1$, 我们有\[ \lambda_1 v_1+\cdots+\lambda_m v_m=v_1+\lambda_2(v_2-v_1)+\cdots+\lambda_m(v_m-v_1). \]所以 $A\subset v_1+\spa(v_2-v_1,\cdots,v_m-v_1)$.
             类似的，对于任意\[v\in v_1+\spa(v_2-v_1,\cdots,v_m-v_1),\]$v$ 可以被写为 \[ v_1+\sum_{i=2}^m \lambda_i(v_i-v_1)=(1-\lambda_2-\cdots-\lambda_m)v_1+\sum_{i=2}^m \lambda_i v_i \]
             对于 $\lambda_2$, $\cdots$, $\lambda_m\in \mathbf{F}$. 注意到\[ (1-\lambda_2-\cdots-\lambda_m)+\sum_{i=2}^m \lambda_i=1, \]
-            可以推出 $v_1+\spa(v_2-v_1,\cdots,v_m-v_1)\subset A$. 
+            可以推出 $v_1+\spa(v_2-v_1,\cdots,v_m-v_1)\subset A$.
             因此\[A=v_1+\spa(v_2-v_1,\cdots,v_m-v_1).\]
             $v=v_1，U=\spa(v_2-v_1,\cdots,v_m-v_1)$, 有 $\dim U\le m-1$
-        \end{enumerate}    
+        \end{enumerate}
     \end{answer}
             \item (加强的覆盖定理) 设 $A_1, A_2, \ldots, A_n$ 是域 $\mathbf{F}$ 上向量空间 $V$ 的仿射子集，证明 $A_1\cup A_2\cup \cdots \cup A_n$ 不能覆盖 $V$，即存在 $\alpha \in V$ 但是 $\forall 1\leqslant i\leqslant n, \alpha \notin A_n$
     \end{exgroup}

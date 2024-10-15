@@ -93,6 +93,15 @@
     设 $u, v$ 是 $V$ 中的正交向量，则 $\lVert u + v \rVert^2 = \lVert u \rVert^2 + \lVert v \rVert^2 $.
 \end{theorem}
 
+\begin{proof}
+    因为 $u, v$ 互相正交，所以 $\langle u, v \rangle = \langle v, u \rangle = 0$.
+    \begin{align*}
+        \lVert u + v \rVert^2 & = \langle u + v, u + v \rangle \\
+                              & = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle \\
+                              & = \lVert u \rVert^2 + \lVert v \rVert^2
+    \end{align*}
+\end{proof}
+
 注意勾股定理的逆定理仅在实内积空间上成立.
 
 借助于正交的性质，我们能够简化很多与内积相关的计算，进而会很自然的思考这样一个问题：一个向量能否分解两个互相正交的向量？

@@ -413,18 +413,18 @@
 利用反函数定理，我们甚至可以利用它研究隐函数. 所谓``隐''函数，对于一个函数 $f(x, y)$ 来说，就是方程 $f(x, y) = c$ 实际上隐含的将 $y$ 定义为 $x$ 的函数，\term{隐函数定理}具体将这个函数构造了出来，下面是一个很有启发性的例子：
 
 \begin{example}{}{隐函数}
-    设 $f\colon\mathbf{R}^2\to\mathbf{R}^2$ 为 $C^{k}$ 函数，$k\geqslant 1$， $\dfrac{\partial f}{\partial y}(x^0, y^0)\neq 0$，在 $(x^0, y^0)$ 附近解方程 $f(x, y) = f(x_0, y_0)$.
+    设 $f\colon\mathbf{R}^2\to\mathbf{R}^2$ 为 $C^{k}$ 函数，$k\geqslant 1$， $\dfrac{\partial f}{\partial y}(x_0, y_0)\neq 0$，在 $(x_0, y_0)$ 附近解方程 $f(x, y) = f(x_0, y_0)$.
 \end{example}
 
 \begin{solution}
     显然 $(x_0, y_0)$ 是方程的解，利用反函数定理，我们可以在 $(x_0, y_0)$ 附近找到别的解，因此构造函数\[F\colon \mathbf{R}^2\to \mathbf{R}^2,\enspace F(x, y) = (x, f(x, y)),\]
-    在 $(x^0, y^0)$ 处，有 \[\det JF(x^0, y^0) = \begin{vmatrix}
+    在 $(x_0, y_0)$ 处，有 \[\det JF(x_0, y_0) = \begin{vmatrix}
             1                                        & 0                                        \\[1ex]
-            \dfrac{\partial f}{\partial x}(x^0, y^0) & \dfrac{\partial f}{\partial y}(x^0, y^0)
-        \end{vmatrix} = \dfrac{\partial f}{\partial y}(x^0, y^0)\neq 0.\]
-    由反函数定理，在 $(x^0, y^0)$ 附近 $F$ 为可逆映射. 于是当 $x$ 在 $x^0$ 附近时，记 \[F^{-1}(x, f(x^0, y^0)) = (\varphi(x), \psi(x)),\]
-    则 $\varphi(x)$ 与 $\psi(x)$ 均为 $C^k$ 函数. 根据 $F$ 的定义可得 \[(\varphi(x), f(\varphi(x), \psi(x))) = (x, f(x^0, y^0)).\]
-    这说明 $\varphi(x) = x$，并且 $f(x, \psi(x)) = f(x^0, y^0)$，所以 $\psi(x)$ 就是我们要找的隐函数. 对 $x$ 求导还可以得到 \[\frac{\partial f}{\partial x}(x, \psi(x)) + \frac{\partial f}{\partial y}(x, \psi(x))\psi'(x) = 0,\]
+            \dfrac{\partial f}{\partial x}(x_0, y_0) & \dfrac{\partial f}{\partial y}(x_0, y_0)
+        \end{vmatrix} = \dfrac{\partial f}{\partial y}(x_0, y_0)\neq 0.\]
+    由反函数定理，在 $(x_0, y_0)$ 附近 $F$ 为可逆映射. 于是当 $x$ 在 $x^0$ 附近时，记 \[F^{-1}(x, f(x_0, y_0)) = (\varphi(x), \psi(x)),\]
+    则 $\varphi(x)$ 与 $\psi(x)$ 均为 $C^k$ 函数. 根据 $F$ 的定义可得 \[(\varphi(x), f(\varphi(x), \psi(x))) = (x, f(x_0, y_0)).\]
+    这说明 $\varphi(x) = x$，并且 $f(x, \psi(x)) = f(x_0, y_0)$，所以 $\psi(x)$ 就是我们要找的隐函数. 对 $x$ 求导还可以得到 \[\frac{\partial f}{\partial x}(x, \psi(x)) + \frac{\partial f}{\partial y}(x, \psi(x))\psi'(x) = 0,\]
     从而有 \[\psi'(x) = -[\frac{\partial f}{\partial y}(x, \psi(x))]^{-1}\frac{\partial f}{\partial x}(x, \psi(x)).\]
     这就给出了对 $y = \psi(x)$ 的刻画.
 \end{solution}

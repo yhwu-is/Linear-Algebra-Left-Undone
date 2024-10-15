@@ -832,12 +832,67 @@
 
 % 从这里我们进一步加深类比.
 
+\begin{example}{镜像变换}{镜像变换}
+    镜像变换(或镜面反射)--$\mathbf{R}^2$中每个向量关于过原点的直线$L$(看作镜面)相对称的变换 $\varphi$，即
+        \[
+        \varphi: \forall \alpha = \vec{OA} \in \mathbf{R}^2,\\
+        \varphi(\alpha) = \alpha'= \vec{OB}
+        \]
+        \begin{center}
+            \begin{tikzpicture}[scale=1.8]
+                \tikzset{>=latex, every path/.style={thick}, ->-/.style={
+                    decoration={markings, mark=at position .4 with {\arrow{>}}}, postaction={decorate}
+                }}
+                \draw[->] (0, 0) -- (0, 2) node[above] {$y$};
+                \draw[->] (0, 0) -- (2, 0) node[right] {$x$};
+                \draw (0,0) coordinate (O)
+                    (0.5, 1.5) coordinate (A)
+                    (1.5,0.5) coordinate (B);
+                \draw node[above] at (A) {$A$}
+                    node[below left] at (A) {$\boldsymbol{\alpha}$}
+                    node[below] at (B) {$B$};
+                \draw[->] (O) -- (A);
+                \draw[->] (O) -- (B)
+                    node[pos=.5, below] {$\boldsymbol{\alpha}'$};
+                \draw[->] (A) -- (B)
+                    node[pos=.35, above=3pt] {$C$};
+                \draw[->-] (O) -- (1.6, 1.6)
+                    node[pos=.4, below right] {$\boldsymbol{\omega}$}
+                    node[below right] {$L$};
+                \draw node[below left] at (O) {$O$};
+            \end{tikzpicture}
+        \end{center}
+\end{example}
+
+\begin{proof}
+    事实上，设直线 $L$ 的某个方向的单位向量为$\omega$,则$\vec{OC}=(\alpha,\omega)\omega$,其中$(\alpha,\omega)$为向量$\alpha$和$\omega$的内积，对于刚接触内积的读者来说，这可能并不是这么显然，但是稍加思考，我们发现这是很自然的，因为$\vec{OC}$是$\vec{OA}$在$\omega$方向上的投影，而求一个向量在另一个向量上的投影，我们高中时已经见了无数遍了,不妨设$\vec{OA}$与$\omega$的夹角为$\theta$，则$\vec{OC}=\vert\alpha \vert cos\theta\omega$，又
+    \[
+        \vert\alpha \vert\cos\theta=\vert\alpha \vert\dfrac{\alpha\cdot\omega}{\vert \alpha\vert\cdot\vert\omega\vert}=\dfrac{(\alpha,\omega)}{\vert\omega\vert}.
+    \]
+    代入单位向量模为$1$即可，不过是把我们高中的知识稍加变形罢了. 于是我们有
+
+    \[
+    \varphi(\alpha)=\alpha'=\vec{OB}=\vec{OA}+2\vec{AC}= \alpha + 2(\vec{OC}-\alpha)=-\alpha+2(\alpha,\omega)\omega.
+    \]
+
+    接下来验证 $\varphi$ 是 $\mathbf{R}^2$ 上的一个线性变换也很简单，我们留给读者自行验证.
+
+    不过还有一个值得一提的地方\\
+    如果设 $\alpha = (x,y),\omega =(\cos \theta,\sin \theta)$,则
+    \begin{align*}
+        \varphi(x,y)&=(-x,-y)+2(x\cos\theta+y\sin\theta)(\cos \theta,\sin \theta)\\
+        &=(-x + 2x \cos^2 \theta + 2y \sin \theta \cos \theta, -y + 2x \sin \theta \cos \theta + 2y^2 \sin^2 \theta)\\
+        &=(x \cos 2\theta + y \sin 2\theta, x \sin 2\theta - y \cos 2\theta).
+    \end{align*}
+    不难发现，这与旋转变换实质上是同一个东西，镜面变换不过是旋转了2倍的夹角罢了.
+\end{proof}
+
 \begin{summary}
 
 \end{summary}
 
 \begin{exercise}
-    % \exquote[]{}
+    \exquote[S. 乌拉姆（Stanisław Ulam）]{一个定理有什么用并不重要，真正重要的是它有多优雅。}
 
     \begin{exgroup}
         \item 证明：上三角的酉矩阵必为对角矩阵.

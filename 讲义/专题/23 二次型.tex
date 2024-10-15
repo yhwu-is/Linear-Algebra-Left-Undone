@@ -1,0 +1,461 @@
+\chapter{二次型}
+
+\section{二次型的定义}
+
+在几何部分中，我们讨论了二次曲线和二次曲面的分类. 对于平面二次曲线
+\[ax^2 + by^2 + cxy + dx + ey + f = 0,\]
+常见的处理手段是通过旋转变换消去交叉项$xy$，然后平移变换消去一次项，最终得到标准形式. 类似的多项式和变换形式在数学与物理中也有很多应用，为了方便我们考虑二次齐次多项式，也就引入了二次型的概念.
+
+\begin{definition}{二次型}{} \index{ercixing@二次型 (quadratic form)}
+    $n$个元$x_1,x_2,\ldots,x_n$的二次齐次多项式
+    \begin{align*}
+        f(x_1,x_2,\ldots,x_n) & = \sum_{i=1}^{n}a_{ii}x_i^2+\sum\limits_{1\leqslant i<j\leqslant n}2a_{ij}x_ix_j    \\
+                              & = a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2                                        \\
+                              & \quad +2a_{12}x_1x_2+\cdots+2a_{1n}x_1x_n+2a_{23}x_2x_3+\cdots+2a_{n-1,n}x_{n-1}x_n
+    \end{align*}
+    称为域$\mathbf{F}$上的$n$元二次型（简称\term{二次型}）.
+\end{definition}
+先考虑实域上的情况. 若令$a_{ij}=a_{ji}\enspace(1\leqslant i<j\leqslant n)$，则二次型可表示为
+\[f(x_1,x_2,\ldots,x_n)=\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j=X^\mathrm{T}AX\]
+其中$X=(x_1,x_2,\ldots,x_n)^\mathrm{T}\in\mathbf{R}^n$，$A=(a_{ij})_{n\times n}$为实对称矩阵，并称对称矩阵$A$为二次型$f(x_1,x_2,\ldots,x_n)$的相伴矩阵.
+
+\begin{example}{}{}
+    已知二次型
+    \[f(X)=(x_1,x_2,x_3,x_4)\begin{pmatrix}
+            1 & 2 & 3 & -4 \\ 3 & 2 & 1 & 4 \\ -4 & 3 & -7 & 2 \\ 0 & -6 & 8 & 4
+        \end{pmatrix}\begin{pmatrix}
+            x_1 \\ x_2 \\ x_3 \\ x_4
+        \end{pmatrix}\]
+    写出二次型$f(X)$的相伴矩阵.
+\end{example}
+
+实际上一个形如$f(x_1,x_2,\ldots,x_n)=\displaystyle\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j$的函数可以对应的矩阵是很多的，但不唯一的矩阵表示会给我们带来很多不便. 而选取对称矩阵作为二次型的相伴矩阵，不仅是因为简化了计算，还是因为二次型和对称矩阵之间存在一一对应的关系.
+
+\begin{example}{}{}
+    回答以下问题：
+    \begin{enumerate}
+        \item 已知$A$是一个$n$阶矩阵，则$A$为反对称矩阵的充要条件是对任意$n$元列向量$X$都有$X^\mathrm{T}AX=0$；
+
+        \item 若二次型$f(x_1,x_2,\ldots,x_n)=X^\mathrm{T}AX$对任意$n$元列向量$X$都有$f(x_1,x_2,\ldots,x_n)=0$，证明：$A=O$；
+
+        \item 设二次型$f(x_1,x_2,\ldots,x_n)=X^\mathrm{T}AX,\enspace g(x_1,x_2,\ldots,x_n)=X^\mathrm{T}BX$.\\
+              证明：若$f(x_1,x_2,\ldots,x_n)=g(x_1,x_2,\ldots,x_n)$，则$A=B$.
+    \end{enumerate}
+\end{example}
+
+\section{矩阵相合的定义与性质}
+
+二次型的基本问题是寻找一个线性变换将其变换为只包含平方项的所谓“标准形”，这反映在矩阵上便是对角化. 而我们将二次曲线标准化的操作抽象出来，便会发现这是我们熟悉的坐标变换. 考虑原坐标为$X$，新坐标为$Y$，原二次型为$f(X) = X^\mathrm{T}AX$. 因为变换是线性的，并且坐标长度不变，因此我们有$X=PY$，其中$P$是可逆矩阵. 而用$Y$代换$X$，便可以得到$g(Y) = Y^\mathrm{T}(P^\mathrm{T}AP)Y$，虽然未必能立刻得到标准形，但这一变换是二次型的一个基本操作，我们称之为相合变换.
+
+\begin{definition}{}{}
+    我们称$n$阶矩阵$A$相合于$B$（记作$A\simeq B$），如果存在可逆矩阵$C$使得$B=C^\mathrm{T}AC$.
+\end{definition}
+矩阵相合（合同）有如下基本性质：
+\begin{enumerate}
+    \item 合同是等价关系；合同不同于相似，是与域有关的；合同要求$C$必须可逆，因此是一种特殊的相抵；
+
+    \item $A\simeq B$一般不能得到$A^m\simeq B^m$（但是$A,B$为实对称矩阵时可以），但如果可逆，我们有$A^{-1}\simeq B^{-1}$，同时如果$A_1\simeq A_2,B_1\simeq B_2$，则有$\begin{pmatrix}
+                  A_1 & O \\ O & B_1
+              \end{pmatrix}\simeq\begin{pmatrix}
+                  A_2 & O \\ O & B_2
+              \end{pmatrix}$；
+
+    \item $A\simeq B$表明$A$可以每次做相同的初等行列变换得到$B$，反之亦然.
+\end{enumerate}
+
+% \begin{example}{}{}
+%     设$A\simeq B$，$C\simeq D$，且它们都是$n$阶实对称矩阵，问：$A+C\simeq B+D$ 是否成立.
+% \end{example}
+
+% \begin{example}{}{}
+%     判断：矩阵相似是否一定合同？矩阵合同是否一定相似？对于实对称矩阵上述论断又是否正确呢？正确请说明理由，不正确请举出反例.
+% \end{example}
+
+\section{二次型标准形的定义与求解}
+
+所以用矩阵的语言表示的话，求解二次型的标准形就是寻找可逆矩阵 $C$ 使得 $C^\mathrm{T}AC$ 为对角矩阵. 最基础的想法就是如同相抵标准型那样，通过初等变换将矩阵变换为对角矩阵.
+
+\begin{lemma}{}{初等变换与合同变换引理1}
+    对称矩阵 $A$ 的下列变换都是相合变换：
+    \begin{enumerate}
+        \item 对换 $A$ 的第 $i$ 行与第 $j$ 行，再对换第 $i$ 列与第 $j$ 列；
+
+        \item 将非零数 $k$ 乘以 $A$ 的第 $i$ 行，再将 $k$ 乘以 $A$ 的第 $i$ 列；
+
+        \item 将 $A$ 的第 $i$ 行乘以 $k$ 加到第 $j$ 行，再将 $A$ 的第 $i$ 列乘以 $k$ 加到第 $j$ 列.
+    \end{enumerate}
+\end{lemma}
+
+接下来的问题是，如何进行合适的初等变换来将一个对称矩阵对角化.
+
+\begin{lemma}{}{初等变换与合同变换引理2}
+    设 $A$ 是域 $\mathbf{F}$ 上的非零对称矩阵，则必定存在可逆矩阵 $C$ 使得 $C^\mathrm{T}AC$ 的第 $(1, 1)$ 个元素不为 $0$.
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 若 $a_{11} = 0$ 而 $a_{ii} \neq 0$，则将 $A$ 的第 $1$ 行与第 $i$ 行对换，再将第 $1$ 列与第 $i$ 列对换，即可使得 $a_{11} \neq 0$.
+        \item 若 $a_{ii} = 0, \forall i$，那么设 $a_{ij} \neq 0(i \neq j)$，将 $A$ 的第 $j$ 行加到第 $i$ 行，再将第 $j$ 列加到第 $i$ 列. 因为 $A$ 是对称矩阵，所以 $a_{ij} = a_{ji} \neq 0$，第 $(i, i)$ 元素在变换后变为 $2 a_{ij} \neq 0$，便可根据第一种情况处理.
+    \end{enumerate}
+    而根据\autoref{lem:初等变换与合同变换引理1}，这些变换都是相合变换，结论得证.
+\end{proof}
+
+由此，便可以得到以下结论.
+
+\begin{theorem}{}{}
+    设 $A$ 是域 $\mathbf{F}$ 上的 $n$ 阶对称矩阵，则必存在 $\mathbf{F}$ 上的 $n$ 阶可逆矩阵 $C$，使得 $C^\mathrm{T}AC$ 为对角矩阵.
+\end{theorem}
+
+\begin{proof}
+    由\autoref{lem:初等变换与合同变换引理2}，不妨设 $A = (a_{ij})$ 中 $a_{11} \neq 0$，若 $a_{i1} \neq 0$，则可将第 $1$ 行乘以 $-a_{11}^{-1}a_{i1}$ 加到第 $i$ 行上，再将第 $1$ 列乘以 $-a_{11}^{-1}a_{i1}$ 加到第 $i$ 列上，因为 $a_{i1} = a_{1i}$，所以新得到的矩阵的第 $(i, 1)$ 元素和第 $(1, i)$ 元素均等于 $0$，并且和 $A$ 相合. 重复这一过程，便可以将 $A$ 的第 $1$ 列和第 $1$ 行的非对角元素全部变为 $0$，所以 $A$ 相合与以下形式的矩阵：
+    \[
+        \begin{pmatrix}
+            a_{11} & 0 & 0 & \cdots & 0 \\
+            0 & b_{22} & b_{23} & \cdots & b_{2n} \\
+            0 & b_{32} & b_{33} & \cdots & b_{3n} \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & b_{n2} & b_{n3} & \cdots & b_{nn}
+        \end{pmatrix}.
+    \]
+    右下角是一个 $n - 1$ 阶对称矩阵，记为 $A_1$，根据归纳假设，存在 $n - 1$ 阶可逆矩阵 $D$ 使得 $D^\mathrm{T}A_1D$ 为对角矩阵，所以
+    \[
+        \begin{pmatrix}
+            1 & O \\
+            O & D^\mathrm{T}
+        \end{pmatrix}
+        \begin{pmatrix}
+            a_{11} & O \\
+            O & A_1
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & O \\
+            O & D
+        \end{pmatrix} = \begin{pmatrix}
+            a_{11} & O \\
+            O & D^\mathrm{T}A_1D
+        \end{pmatrix}
+    \]
+
+    是一个对角阵，并且
+
+    \[
+        \begin{pmatrix}
+            1 & O \\
+            O & D
+        \end{pmatrix}^\mathrm{T} = \begin{pmatrix}
+            1 & O \\
+            O & D^\mathrm{T}
+        \end{pmatrix}
+    \]
+
+    所以 $A$ 相合于对角阵.
+\end{proof}
+
+注意到整个证明过程暗含了如何利用初等矩阵得到相合标准形的操作，但如果想要得到坐标变换矩阵 $C$ 还需要一点额外的操作.
+
+\begin{example}{}{相合标准形例1}
+    利用初等变换法将二次型 $f(x_1,x_2,x_3)=2x_1x_2-2x_1x_3+2x_2x_3$ 化为标准形，并且求出坐标变换矩阵$C$.
+\end{example}
+
+\begin{solution}
+    类似于利用初等变换求矩阵的逆，我们将相伴矩阵和单位矩阵拼接为 $\begin{pmatrix}
+        A \\ E
+    \end{pmatrix}$，对 $A$ 进行初等行列变换，使其变为对角矩阵，同时对 $E$ 进行对应的列变换，最终得到的 $\begin{pmatrix}
+        \Lambda \\ C
+    \end{pmatrix}$ 就是我们要求的结果.
+
+    \begin{align*}
+        \left(\begin{array}{c}
+            A \\ \hdashline E
+        \end{array}\right) ={} & \left(\begin{array}{ccc}
+            0 & 1 & -1 \\
+            1 & 0 & 1  \\
+            -1 & 1 & 0 \\
+            \hdashline
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{array}\right)
+        \xrightarrow[r_1+r_2]{c_1+c_2} \left(\begin{array}{ccc}
+            2 & 1 & 0 \\
+            1 & 0 & 1  \\
+            0 & 1 & 0 \\
+            \hdashline
+            1 & 0 & 0 \\
+            1 & 1 & 0 \\
+            0 & 0 & 1
+        \end{array}\right) & \\
+        \xrightarrow[r_2-\dfrac{1}{2}r_1]{c_2-\dfrac{1}{2}c_1} & \left(\begin{array}{ccc}
+            2 & 0 & 0 \\
+            0 & -\dfrac{1}{2} & 1  \\
+            0 & 1 & 0 \\
+            \hdashline
+            1 & -\dfrac{1}{2} & 0 \\
+            1 & \dfrac{1}{2} & 0 \\
+            0 & 0 & 1
+        \end{array}\right)
+        \xrightarrow[r_3+2r_2]{c_3+2c_2} \left(\begin{array}{ccc}
+            2 & 0 & 0 \\
+            0 & -\dfrac{1}{2} & 0  \\
+            0 & 0 & 2 \\
+            \hdashline
+            1 & -\dfrac{1}{2} & -1 \\
+            1 & \dfrac{1}{2} & 1 \\
+            0 & 0 & 1
+        \end{array}\right) & \\
+    \end{align*}
+\end{solution}
+
+初等变换法虽然泛用性比较广，但是操作起来比较繁琐，通常情况下使用配方法更加方便. 配方法的思想非常简单，就是利用配方消除混合乘积项，将二次型表示成几个平方和的形式，最后通过坐标变换$X=CY$化标准形，其中$C$是可逆矩阵.
+
+\begin{example}{}{相合标准形例2}
+    用配方法把三元二次型
+    \[f(x_1,x_2,x_3)=2x_1^2+3x_2^2+x_3^2+4x_1x_2-4x_1x_3-8x_2x_3\]
+    化为标准形，并求所用的坐标变换$X=CY$即变换矩阵$C$.
+\end{example}
+
+配方法的合理性是可逆的坐标变换所保证的，只要配方成功的消除了所有交叉项，便可以得到标准形. 但配方法在处理一些情况的时候需要一些技巧，比如\autoref{ex:相合标准形例1}，需要先通过坐标变换构造出平方项，再通过配方法消除交叉项.
+
+不过需要注意的是，以上两种方法得到的对角矩阵不一定是相伴矩阵的相似对角化，相似对角化要求是 $P^{-1}AP$ 为对角矩阵，而相合对角化是 $P^\mathrm{T}AP$ 为对角矩阵，二者一致的话需要满足 $P^{-1} = P^\mathrm{T}$，也就是说 $P$ 是正交矩阵. 不过这一点并不是难以做到的，因为 $A$ 是实对称矩阵，根据\nameref{thm:实谱定理}，$A$ 的标准化后的特征向量组成的矩阵便是正交矩阵$P$，所以我们也可以通过正交变换求解二次型的相合标准形.
+
+\begin{example}{}{}
+    用正交变换法将二次型 $f(x_1,x_2) = 2x_1^2 + 5x_2^2 + 4x_1x_2$ 化为标准形，并给出变换矩阵 $P$.
+\end{example}
+
+\section{相合规范形 \quad 惯性定理}
+
+从前面求解相合标准形的例子可以发现，使用配方法、初等变换法得到的相合标准形，会因为配方方式或者初等变换顺序不同而各不相同，所以相合标准形并不是唯一的. 但相抵标准形是唯一的，相似标准形不考虑特征值排列组合因素也是唯一的，因此我们也希望统一相合标准形.
+
+不难发现，任一对角矩阵一定相合于$\diag(1,\ldots,1,-1,\ldots,-1,0,\ldots,0)$，我们称这一相合标准形为相合规范形，其中$+1$的个数称为矩阵的正惯性指数，$-1$的个数称为矩阵的负惯性指数. 并且由于变换矩阵可逆，根据相抵标准形的结论，我们有原矩阵$A$的秩$r(A)$等于这一对角矩阵的秩，于是也等于正负惯性指数之和. 显然，$A$可逆时，其相合规范形主对角元没有0.
+
+但我们没有说明一个矩阵的相合规范形是否唯一，实际上这就是下面惯性定理的结果：
+\begin{theorem}{惯性定理}{}
+    实对称矩阵的相合规范形唯一.
+\end{theorem}
+这一定理有很多等价表述，例如实对称矩阵正、负惯性指数唯一，或者实对称矩阵相合标准形中对角线上正、负、零的个数唯一. 或者实对称矩阵特征值中正、负、零的个数唯一等.
+
+\begin{proof}
+    采取证明等价表述：实对称矩阵正、负惯性指数唯一.
+
+    设 $f(X) = X^\mathrm{T}AX$ 为一实二次型，通过可逆坐标变换$X = BY$ 和 $X = CZ$ 得到了相合规范形
+    \begin{align*}
+        f ={} & y_1^2 + \cdots + y_p^2 - y_{p+1}^2 - \cdots - y_r^2 \\
+          ={} & z_1^2 + \cdots + z_k^2 - z_{q+1}^2 - \cdots - z_r^2.
+    \end{align*}
+    其中 $r$ 为 $A$ 的秩，我们希望证明此时一定有$p = k$，使用反证法.
+
+    假设 $p > k$，由 $Z = C^{-1}X = C^{-1}BY$，定义 $D = C^{-1}B$，则 $Z = DY$，写作线性方程组的形式为
+
+    \[
+        \begin{cases}
+            z_1 & = d_{11}y_1 + \cdots + d_{1n}y_n, \\
+            z_2 & = d_{21}y_1 + \cdots + d_{2n}y_n, \\
+            & \vdotswithin{=} \\
+            z_k & = d_{k1}y_1 + \cdots + d_{kn}y_n, \\
+            & \vdotswithin{=} \\
+            z_{n} & = d_{n1}y_1 + \cdots + d_{nn}y_n.
+        \end{cases}
+    \]
+
+    矛盾的构造点在于 $f$ 的取值，比较明显的构造便是一种表达下为正，而另一种表达下为负. 所以令 $z_1 = z_2 = \cdots = z_k = 0$，以及 $y_{p + 1} = y_{p + 2} = \cdots = y_n = 0$. 结合上面列出的方程组，我们可以得到新的方程组.
+
+    \[
+        \begin{cases}
+            d_{11}y_1 + d_{12}y_2 + \cdots + d_{1n}y_n & = 0, \\
+            d_{21}y_1 + d_{22}y_2 + \cdots + d_{2n}y_n & = 0, \\
+            & \vdotswithin{=} \\
+            d_{k1}y_1 + d_{k2}y_2 + \cdots + d_{kn}y_n & = 0. \\
+            y_{p + 1} = 0, \\
+            y_{p + 2} = 0, \\
+            \cdots \\
+            y_n = 0.
+        \end{cases}
+    \]
+
+    这一方程组有 $n$ 个变量，但只有 $k + (n - p) = n - (p - k) < n$ 个方程，所以必定有非零解，而 $y_{p + 1} = y_{p + 2} = \cdots = y_n = 0$，说明 $y_1, y_2, \ldots, y_p$ 不全为 $0$. 代入 $f$ 的表达式，可以得到
+
+    \[
+        f = y_1^2 + y_2^2 + \cdots + y_p^2 > 0.
+    \]
+
+    将 $Y$ 代入 $Z$ 关于 $Y$ 的方程中，再将得到的 $Z$ 代入 $f$ 的表达式，因为 $z_1 = z_2 = \cdots = z_k = 0$，所以
+
+    \[
+        f = -z_{k + 1}^2 - z_{k + 2}^2 - \cdots - z_n^2 \leqslant 0.
+    \]
+
+    这两者显然矛盾，所以 $p > k$ 不成立，必然有 $p \leqslant k$，同理可证 $k \leqslant p$，所以 $p = k$，也就有实对称矩阵的相合规范形唯一.
+
+\end{proof}
+
+\begin{example}{}{}
+    确定二次型$f(x_1,x_2,\ldots,x_{10})=x_1x_2+x_3x_4+x_5x_6+x_7x_8+x_9x_{10}$的秩以及正、负惯性指数.
+\end{example}
+
+惯性定理的``惯性''二字与物理中的惯性有关，实际上透露着某种不变性. 根据惯性定理，我们有如下结论：
+\begin{enumerate}
+    \item 我们可以按相合关系对全体$n$阶实对称矩阵分类，因为实对称矩阵相合意味着规范形唯一，我们可以按照$+1$、$-1$、0个数的不同划分为$\vphantom{\cfrac{n+1}{2}}\dfrac{(n+1)(n+2)}{2}$个等价类；
+
+    \item 实域上两个实对称矩阵相合的充要条件是它们有相同的正负惯性指数，两个对角矩阵相合的充要条件是对角线上正、负、零个数相同.
+\end{enumerate}
+
+而对于复二次型，若其已经化为标准形
+\[
+    f(X) = d_1x_1^2 + d_2x_2^2 + \cdots + d_rx_r^2,
+\]
+其中 $d_i \neq 0$，$r$ 为该矩阵的秩. 设 $d_j = r_j(\cos \theta_j + \i \sin \theta_j)$，$0 \leqslant \theta_j < 2 \pi$ 那么根据棣莫弗公式（De Moivre's Formula），有
+\[
+    (\pm \sqrt{r_j}(\cos \dfrac{\theta_j}{2} + \i \sin \dfrac{\theta_j}{2}))^2 = d_j.
+\]
+记 $\sqrt{r_j}(\cos \dfrac{\theta_j}{2} + \i \sin \dfrac{\theta_j}{2})$ 为 $\sqrt{d_j}$，那么做如下的坐标变换$X=CY$，其中
+\[C = \diag(\dfrac{1}{\sqrt{d_1}}, \ldots, \dfrac{1}{\sqrt{d_r}}, 1, \ldots, 1)\]
+便可以将复二次型化为标准形
+\[
+    f(Y) = y_1^2 + \cdots + y_r^2.
+\]
+所以复二次型的标准形是唯一的，只与其秩有关.
+
+\section{正定二次型和正定矩阵}
+
+二次型的保号性也是其被广泛研究并运用的原因之一.
+
+\begin{definition}{}{}
+    设 $f(X) = X^\mathrm{T}AX$ 是 $n$ 元实二次型，$A$ 是相伴矩阵.
+    \begin{enumerate}
+        \item 若对任意非零 $n$ 元实列向量 $X$，都有 $f(X) > 0$，则称 $f(X)$ 是正定二次型，$A$ 是正定矩阵；
+        \item 若对任意非零 $n$ 元实列向量 $X$，都有 $f(X) \geqslant 0$，则称 $f(X)$ 是半正定二次型，$A$ 是半正定矩阵；
+        \item 若对任意非零 $n$ 元实列向量 $X$，都有 $f(X) < 0$，则称 $f(X)$ 是负定二次型，$A$ 是负定矩阵；
+        \item 若对任意非零 $n$ 元实列向量 $X$，都有 $f(X) \leqslant 0$，则称 $f(X)$ 是半负定二次型，$A$ 是半负定矩阵；
+        \item 若存在 $n$ 元实列向量 $X_1, X_2$，使得 $f(X_1) > 0$ 且 $f(X_2) < 0$，则称 $f(X)$ 是不定二次型.
+    \end{enumerate}
+\end{definition}
+
+其中我们重点研究正定和半正定二次型，因为负定和半负定二次型可以通过符号变换得到.
+
+很自然的一个问题是如何判断一个二次型是正定或半正定的，我们也期望使用二次型内禀的性质来判断矩阵的性质. 显然
+\[f(X) = x_1^2 + x_2^2 + \cdots + x_n^2\]
+是一个正定二次型，它也是相合规范形的一种. 而对于
+\[g(X) = x_1^2 + x_2^2 + \cdots + x_{n - 1}^2 + 0 \cdot x_n^2,\]
+我们便可以构造出$X_n=(0, 0, \ldots, 0, 1)$使得$g(X)=0$，但去除掉$X_n$生成的子空间和零向量后，剩下的$X$都满足$g(X) > 0$，这是一个半正定二次型. 所以我们可以感觉到正定二次型的条件应当较为严苛，半正定二次型的条件略有放松，但都应该和惯性指数有着密切的联系，这也符合于我们的直觉.
+
+\begin{theorem}{}{}
+    设$f(X)$是$n$元实二次型，$A$是$f(X)$的相伴矩阵，$r$为$A$的秩，$r_+$为$A$的正惯性指数. 则
+    \begin{enumerate}
+        \item $f(X)$是正定二次型当且仅当$r_+=n$；
+        \item $f(X)$是半正定二次型当且仅当$r_+=r$.
+    \end{enumerate}
+\end{theorem}
+
+由此而得到的一个显然的推论如下：
+
+\begin{corollary}{}{}
+    $n$阶实对称矩阵$A$是正定矩阵当且仅当其合同于单位阵$E_n$，是半正定矩阵当且仅当其合同于对角阵$\begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix}$.
+\end{corollary}
+
+所以考虑正定矩阵$A$，其经过合同变换得到单位阵$E_n$，即$C^\mathrm{T}AC = E_n$，两侧取行列式有$\det(C^\mathrm{T})\det(A)\det(C)=\det(C)^2\det(A)=\det(E_n)=1$，所以$\det(A)>0$，即正定矩阵的行列式大于$0$. 而考虑对正定矩阵做限制，即只取前$r$行$r$列，得到的$r$阶子矩阵也是正定矩阵，回忆\hyperref[def:子式、主子式、顺序主子式]{顺序主子式的定义}，这启示我们可以通过顺序主子式的符号来判断矩阵的正定性.
+
+\begin{theorem}{}{}
+    $n$阶实对称矩阵$A$是正定阵的充分必要条件是$A$的所有顺序主子式的行列式都大于$0$.
+\end{theorem}
+
+\begin{example}{}{}
+    求$t$的取值范围，使得下面的二次型是正定的：
+    \[f(x_1,x_2,x_3,x_4) = x_1^2+4x_2^2+4x_3^2+3x_4^2+2tx_1x_2-2x_1x_3+4x_1x_2.\]
+\end{example}
+
+而通过一些简单的行列对换，我们可以得到这一定理的推论：
+\begin{corollary}{}{}
+    若 $A$ 是正定矩阵，则：
+    \begin{enumerate}
+        \item $A$的任一$k$阶主子阵都是正定阵；
+        \item $A$的所有主子式均为正，特别地，$A$的主对角元素全大于零.
+    \end{enumerate}
+\end{corollary}
+
+再考虑对正定二次型进行正交变换，得到$f(X) = \lambda_1 x_1^2 + \lambda_2 x_2^2 + \cdots + \lambda_n x_n^2$，其中$\lambda_i$均为$A$的特征值，显然根据上面的推论我们也可以得到如下定理：
+
+\begin{theorem}{}{}
+    $n$元实二次型$f(X)$的特征值都是正数当且仅当$f(X)$是正定二次型.
+\end{theorem}
+
+不过也可以根据正定矩阵的分解得到以上的结论，对于正定矩阵，我们有如下的引理：
+
+\begin{lemma}{}{}
+    设$A$是$n$阶实对称矩阵，那么$A$是正定矩阵的充要条件是存在$n$阶可逆矩阵$C$使得$A=C^\mathrm{T}C$.
+\end{lemma}
+
+设$\lambda$为$A$的任一特征值，$X$为对应的特征向量，则有$AX = \lambda X$，代入引理得到$C^\mathrm{T}CX = \lambda X$，两侧同时左乘$X^\mathrm{T}$，得到
+\begin{gather*}
+    X^\mathrm{T}C^\mathrm{T}CX = \lambda X^\mathrm{T}X, \\
+    (CX)^\mathrm{T}(CX) = \lambda X^\mathrm{T}X,
+\end{gather*}
+
+取欧几里得内积，得到
+\[||CX||^2 = \lambda ||X||^2,\]
+因为$C$可逆且$X \neq 0$，所以$\lambda > 0$，即$A$的特征值均为正数.
+
+在先前我们介绍过$LU$分解，对于正定矩阵，我们有更加高效的分解方法，即 Choelsky 分解.
+
+\begin{theorem}{}{Choelsky 分解}
+    对于正定矩阵$A$，存在唯一的下三角矩阵$L$使得$A=LL^\mathrm{T}$，并且$L$的对角元素均为正数.
+\end{theorem}
+
+半正定矩阵关于以上的结论也是类似的，但相应地有条件的减弱，以及部分等价条件不再成立.
+\begin{theorem}{}{}
+    若$A$为$n$阶实对称矩阵，则
+    \begin{enumerate}
+        \item 若$A$为半正定矩阵，则$A$的顺序主子式非负；
+        \item $A$为半正定矩阵等价于$A$的各阶主子式非负；
+        \item 若$A$为半正定矩阵，则存在矩阵$C$使得$A=C^{\mathrm{T}}C$（注意$C$未必可逆）；
+        \item $A$为半正定矩阵等价于$A$的所有特征值非负.
+        \item 若$A$为半正定矩阵，则存在对角线上元素非负的下三角矩阵$L$使得$A=LL^{\mathrm{T}}$.
+    \end{enumerate}
+\end{theorem}
+
+而到如今，我们回望实内积空间时，会发现所谓的 Gram 矩阵其实就是一个半正定矩阵，内积也可以写作一个二次型的形式. 使用任意一个半正定矩阵都可以定义一个内积，而内积空间的基本性质也可以通过半正定矩阵的性质来推导.但对于复内积空间来说，这就依赖于 Hermite 型和 Hermite 矩阵的性质了，不再过多展开.
+
+\section{标准形的应用}
+
+我们已经讨论了三种标准形，即相抵标准形，相似标准形和相合标准形，实际上它们之间的关系我们已经讨论，即相似一定相抵，相合一定相抵，但相似和相合互相没有包含关系. 本节我们考虑一些基于矩阵分解的问题，利用之前所学的相抵标准形、相似标准形、相合标准形的分解解决一些问题. 本节内容可以选择性掌握.
+
+首先看一个关于幂等矩阵的例题，需要用到相抵标准形、相似标准形的分解：
+\begin{example}{}{}
+    解答以下两个问题：
+    \begin{enumerate}
+        \item 证明：任意一个方阵都可以分解成一个可逆矩阵和一个幂等矩阵的乘积；
+
+        \item 已知$A$是一个秩为$r$的$n$级非零矩阵，证明：$A$为幂等矩阵的充要条件是存在列满秩的$n\times r$矩阵$B$和行满秩的$r\times n$矩阵$C$使得$A=BC$且$CB=E_r$.
+    \end{enumerate}
+\end{example}
+下面是一个利用相合标准形进行分解的例子：
+\begin{example}{}{}
+    （与正交有关）证明：每个秩为$r$的$n\enspace(r<n)$阶实对称矩阵均可表示为$n-r$个秩为$n-1$的实对称矩阵的乘积.
+\end{example}
+
+\begin{summary}
+
+\end{summary}
+
+\begin{exercise}
+    % \exquote[]{}
+
+    \begin{exgroup}
+        \item 设$A=\begin{pmatrix}
+            1 & 2 & 0 \\ 2 & 1 & 0 \\ 0 & 0 & 3
+        \end{pmatrix},\enspace B=\begin{pmatrix}
+            -2 & 0 & 0 \\ 0 & 2 & 1 \\ 0 & 1 & 2
+        \end{pmatrix}$，判断$A$与$B$是否相合.
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 设$n$元二次型$f(x_1,x_2,\ldots,x_n)=l_1^2+\cdots+l_p^2-l_{p+1}^2-\cdots-l_{p+q}^2$，其中$l_i\enspace (i=1,2,\ldots,p+q)$是关于$x_1,x_2,\ldots,x_n$的一次齐次式. 证明：$f(x_1,x_2,\ldots,x_n)$的正惯性指数$\leqslant p$，负惯性指数$\leqslant q$；
+
+        \item 已知$A$为$m$阶实对称矩阵，$C$为$m\times n$实矩阵，证明：$C^\mathrm{T}AC$的正负惯性指数分别小于等于$A$的正负惯性指数.
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item
+    \end{exgroup}
+\end{exercise}

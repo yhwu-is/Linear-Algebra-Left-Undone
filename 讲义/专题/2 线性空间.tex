@@ -2,7 +2,7 @@
 
 本讲我们将开始回答第 1 讲最后留下的问题，即线性方程组有唯一解、无穷解或无解的本质原因. 这段旅程或许有些漫长，中间会有很多的铺垫，我们将从其中最为基础的概念——线性空间出发进行探讨.
 
-回忆高斯消元法，方程组中每一行或一列都可以视为向量. 我们可以先看下面这个例子：
+回忆高斯-若当消元法，方程组中每一行或一列都可以视为向量. 我们可以先看下面这个例子：
 \begin{example}{}{线性空间引入}
     考虑如下两个方程组
     \begin{multicols}{2}
@@ -20,7 +20,7 @@
                       \end{cases}$
         \end{enumerate}
     \end{multicols}
-    不难解得，第一个方程组有无穷解，第二个方程组有唯一解. 从高斯消元法的过程来看，第一个方程组的简化阶梯矩阵出现了全零行，其原因是显而易见的：因为方程组第一行和第二行相加正好是第三行，因此可以直接消去第三行，即三行的系数矩阵的三个行向量
+    不难解得，第一个方程组有无穷解，第二个方程组有唯一解. 从高斯-若当消元法的过程来看，第一个方程组的简化阶梯矩阵出现了全零行，其原因是显而易见的：因为方程组第一行和第二行相加正好是第三行，因此可以直接消去第三行，即三行的系数矩阵的三个行向量
     \[\alpha_1=(1,1,1),\enspace\alpha_2=(1,2,3),\enspace\alpha_3=(2,3,4)\]
     满足$\alpha_1+\alpha_2=\alpha_3$. 而第二个方程组系数矩阵行向量间没有类似的可互相消去的关系.
 \end{example}
@@ -35,7 +35,7 @@
     \begin{enumerate}
         \item (加法结合律) $\alpha+(\beta+\gamma)=(\alpha+\beta)+\gamma,\enspace\forall \alpha,\beta,\gamma \in V$；
 
-        \item (加法单位元) $\exists 0 \in V$使得$\forall\alpha\in V$ 有 $\alpha+0=0+\alpha$；
+        \item (加法单位元) $\exists 0 \in V$使得$\forall\alpha\in V$ 有 $\alpha + 0 = 0 + \alpha = \alpha$；
 
         \item (逆元) $\forall\alpha\in V,\enspace \exists \beta \in V$，有$\alpha+\beta=\beta+\alpha=0$，记$\beta=-\alpha$；
 
@@ -57,19 +57,23 @@
 \end{definition}
 关于线性空间的定义，我们还有如下说明：
 \begin{enumerate}
-    \item 线性空间还有一个重要的概念是运算封闭，即线性空间中的元素进行加法或数乘运算后，得到的元素仍然是属于线性空间的. 这一点是定义要求的，加法封闭是 Abel 群的要求，因为 Abel 群要求加法运算定义为映射 $V\times V\to V$，因此$V$中两个元素相加后必须仍在$V$中（事实上这是代数系统的共性），数乘注意前述定义中数乘运算``取值于$V$''的要求，即它是 $F\times V\to V$ 的映射；
+    \item 线性空间还有一个重要的概念是运算封闭，即线性空间中的元素进行加法或数乘运算后，得到的元素仍然是属于线性空间的. 这一点是定义要求的，加法封闭是 Abel 群的要求，因为 Abel 群要求加法运算定义为映射 $V\times V\to V$，因此$V$中两个元素相加后必须仍在$V$中（事实上这是代数系统的共性），数乘注意前述定义中数乘运算``取值于$V$''的要求，即它是 $\mathbf{F}\times V\to V$ 的映射；
 
-    \item 特别注意线性空间定义在非空集合上，事实上根据加法构成Abel群的要求，最小的线性空间也必须至少包含加法单位元（可以记为$V=\{0\}$）.
+    \item 在正文中如没有特殊说明，我们都默认 $\mathbf{F}$ 是数域（特征 $0$ 的域，如 $\mathbf{R}$ 和 $\mathbf{C}$），有限域上的情况我们会放在\nameref{chap:有限域矩阵}中进行讨论.
+
+    \item 特别注意线性空间定义在非空集合上，事实上根据加法构成Abel群的要求，最小的线性空间也必须至少包含加法单位元（可以记为$V=\{\vec{0}\}$）. 需要注意的一点是，这里为了区分$V$中的零元和数域中的数0，我们将$V$中零元加粗，此后熟悉记号之后我们可能不再作区分，请读者务必仔细理解区分.
+
+    \item 注意数乘结合律并不是平凡的，事实上 $\lambda(\mu\alpha)$ 是先对 $\alpha$ 数乘 $\mu$，然后数乘 $\lambda$，而 $(\lambda\mu)\alpha$ 是先让 $\lambda$ 和 $\mu$ 做了域 $\mathbf{F}$ 上的乘法，然后再数乘 $\alpha$，这两者的计算过程显然是不同的. 左右分配律也可以做这样的分解，左分配律中等号左侧的加法是 $\mathbf{F}$ 上的加法，右侧的加法是 $V$ 上的加法，右分配律等号两侧的加法都是 $V$ 上的加法. 总而言之，区分清楚这里的加法和数乘在运算定义不再是普通数的加法、数乘的时候非常关键，之后我们会看到这样的例子.
 
     \item 结合我们上一讲对公理化的研究，事实上我们到目前为止也只定义了上面的加法、数乘运算和几条规则，我们需要忘记其他任何规则，由此出发进行推导出一些看似显然但公理没有直接给出的重要运算性质：
           \begin{enumerate}
-              \item 由于加法运算构成Abel群，因此加法零元和逆元是唯一的，并且我们可以定义减法运算为加上一个元素的逆，即$\alpha-\beta=\alpha+(-\beta)$；
+              \item 由于加法运算构成Abel群，因此加法零元和逆元是唯一的，从而我们可以定义减法运算为加上一个元素的逆，即$\alpha-\beta=\alpha+(-\beta)$；
 
               \item 事实上，根据公理中的性质，我们可以逐步得到$\lambda(\alpha-\beta)+\lambda\beta=\lambda((\alpha-\beta)+\beta)=\lambda((\alpha+(-\beta))+\beta)=\lambda(\alpha+((-\beta)+\beta))=\lambda(\alpha+\vec{0})=\lambda\alpha$，两边分别加$-(\lambda\beta)$即可以得到
                     \begin{equation}\label{eq:2:线性空间运算性质1}
                         \lambda(\alpha-\beta)=\lambda\alpha-\lambda\beta.
                     \end{equation}
-                    上面推导过程中第一个等号来源于数乘分配律，第二个等号来源于减法的定义（加上逆元），第三个等号来源于加法结合律，第四个等号来源于逆元的定义（加起来等于向量加法零元$\vec{0}$），最后一个等号来源于加法单位元的定义. 事实上这一过程是非常清晰的. 需要注意的一点是，接下来为了区分$V$中的零元和数域中的数0，我们将$V$中零元加粗，请读者务必仔细区分.
+                    上面推导过程中第一个等号来源于数乘分配律，第二个等号来源于减法的定义（加上逆元），第三个等号来源于加法结合律，第四个等号来源于逆元的定义（加起来等于向量加法零元$\vec{0}$），最后一个等号来源于加法单位元的定义. 事实上这一过程是非常清晰的.
 
                     除此之外，$(\lambda-\mu)\alpha+\mu\alpha=(\lambda-\mu+\mu)\alpha=\lambda\alpha$，两边分别加$-(\mu\alpha)$即可以得到
                     \begin{equation}\label{eq:2:线性空间运算性质2}
@@ -103,7 +107,7 @@
           \end{enumerate}
 \end{enumerate}
 
-或许同学们会疑惑为什么线性空间会要求上述这8条性质（加法、数乘各4条）. 事实上，这里的加法交换律是可以被其他7条推出的，感兴趣的同学可以自行尝试证明. 其余的7条公理彼此独立（除了逆元的定义依赖于单位元），每一条均不可取消，否则就不能构成线性空间. 有兴趣的同学可以看下面的推导过程和示例，先是加法交换律可以被其它定律推出
+或许读者会疑惑为什么线性空间会要求上述这 $8$ 条性质（加法、数乘各 $4$ 条）. 首先需要强调的是技术性层面的结果，这里的加法交换律是可以被其他 $7$ 条推出的，然后注意到逆元的定义依赖于单位元，因此去除掉加法交换律以及单位元存在后其余的 $6$ 条彼此独立，因为我们可以找到这样的例子使得一个集合满足除了其中任意一条公理之外的其它所有公理. 下面我们首先给出加法交换律可以被其它定律推出的证明，然后在 B 组习题\ref{item:2:去除一条线性空间公理}中给出的一些集合满足除了其中任意一条公理之外的其它所有公理例子供读者验证.
 
 \begin{proof}
 {
@@ -134,90 +138,31 @@
 }
 \end{proof}
 
-接下来看一些例子，它们说明其它的线性空间公理要求都是不可或缺的.
+接下来我们讨论这些公理蕴含的想法. 不难发现线性空间中定义的运算规则与我们高中学习的平面向量的加法和数乘是非常类似的，我们回顾未竟专题一关于公理化的讨论，实际上这些公理就可以视为从简单的向量加法和数乘抽象出来的一些规则. 而公理的诞生应当是要尽可能简洁——线性空间公理的独立性表明了这一点，而且有足够的表达力——这一点我们将来基于这一定义不断推出线性空间的性质时就会发现非常足够，事实上你现在就能通过我们上面证明的运算性质初步感知到这一点. 因此皮亚诺在 1888 年正式给出这一定义并沿用至今. 但我们需要知道他的工作也是基于前人（如格拉斯曼）的工作不断修正而来的，只是当这些公理被直接摆在我们眼前时，这一自然的不断推进的公理化过程变得很突兀. 回到现实问题，我们需要熟知、记忆这 $8$ 条性质，当然其实难度并不大，Abel 群 $4$ 条性质都有名称标注，数乘运算也是易于记忆的结合律和分配律加单位元性质. 当然，有的同学可能会怀疑，既然加法交换律可以被推出，那么为什么还要写出来呢？我们姑且当作是历史原因——阿贝尔群是一个如此自然美观的结构，为什么不使用呢？当然也有一些深层次的解释这里不便给出.
 
-\begin{example}{}{去除一条线性空间公理}
+最后，公理化定义的一个重要作用是使得我们可以不仅仅在向量集合的背景下定义线性空间，这使得我们可以将对于很多结构的研究都转化为对于线性空间的研究. 在下一节中我们将给出一些经典的线性空间的例子，它们分别代表着线性空间在某些方面的抽象，希望读者仔细体会.
+
+\section{线性空间的例子}
+
+我们从最平凡的例子开始，即向量空间 $\mathbf{F}^n$ 和与之有着显然相关性的多项式空间 $\mathbf{F}[x]_{n+1}$.
+\begin{example}{平凡的常识}{}
     \begin{enumerate}
-        \item 加法结合律
-
-        考虑集合 $F = \mathbf{R}, V = \{(x, y)\in\mathbf{R}^2 \mid xy = 0\}$，即 $x$ 轴和 $y$ 轴的并，在其上自定义加法和乘法
-        \begin{align*}
-            (x_1, x_2) + (y_1, y_2) &= \begin{cases}
-                (0, 0), & (x_1+x_2)(y_1+y_2) \notin V\\
-                (x_1+x_2, y_1+y_2), & (x_1+x_2)(y_1+y_2) \in V
-            \end{cases} \\
-            k\cdot (x_1, x_2) &= (k x_1, k x_2)
-        \end{align*}
-        不难验证其满足除了加法结合律以外的所有要求（验证留作练习，下同）.
-
-        \item 加法逆元
-
-        因为如果去掉加法单位元要求会导致逆元无法定义，所以跳过仅仅去掉加法单位元的情况. 考虑 $F = \mathbf{R}$，构造这样一个集合：向实数集中人为添加一个元素 $0'$，保持其它数的加法，称这个集合为 $V$，对 $0'$ 定义加法
+        \item $\mathbf{F}^n = \{(a_1,a_2,\cdots,a_n)^\mathrm{T} \mid a_i \in \mathbf{F}\}$ 关于向量的加法和数乘构成线性空间，具体展开而言便是 $\forall (a_1,a_2,\cdots,a_n)^\mathrm{T},(b_1,b_2,\cdots,b_n)^\mathrm{T} \in \mathbf{F}^n, \enspace \forall \lambda \in \mathbf{F}$，有
+        \begin{gather*}
+            (a_1,a_2,\cdots,a_n)^\mathrm{T} + (b_1,b_2,\cdots,b_n)^\mathrm{T} = (a_1+b_1,a_2+b_2,\cdots,a_n+b_n)^\mathrm{T},\\
+            \lambda(a_1,a_2,\cdots,a_n)^\mathrm{T} = (\lambda a_1,\lambda a_2,\cdots,\lambda a_n)^\mathrm{T}.
+        \end{gather*}
+        \item $\mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$关于多项式的加法和数乘构成线性空间，具体展开而言便是
         \[
-            0' + \alpha = \alpha + 0 = \alpha
+            (p_1+p_2)(x)=p_1(x)+p_2(x),\enspace(\lambda p)(x)=\lambda p(x),\enspace\forall p_1,p_2,p\in\mathbf{F}[x]_{n+1},\enspace\forall \lambda\in\mathbf{F}.
         \]
-        注意到此时 $0 + 0' = 0$，也就是说 $0'$ 是真正的加法单位元，对 $\alpha\ne 0$，沿用实数集中``正常''的乘法. 对 $0'$ 定义乘法
-        \[
-            k\cdot 0' = 0'
-        \]
-        则可以验证除了逆元以外其它的公理都得到了满足，但是对于一般的 $\alpha$，我们无法找到 $\beta$ 使得 $\alpha + \beta = 0$. 这个例子的来源可以是考虑 $0$ 的邻域内如下的函数集合族
-        \[
-            V = \{a+o(1)\mid a\in\mathbf{R}\} \cup \{o(x)\}
-        \]
-        有 $(a+o(1)) + (b+o(1)) = (a+b) + o(1)$. 用 $o(x)$ 加上一个 $a+o(1)$ 并不改变结果，然而用两个 $o(1)$ 的函数族加出一个 $o(x)$ 是不可能的.
-
-        \item 数乘单位元
-
-        考虑 $F = V = \mathbf{R}$. 在实数集中保持加法不变，令 $k\cdot \alpha = 0$. 读者不难验证它事实上满足除了乘法单位元以外的所有要求.
-
-        \item 数乘结合律
-
-        仍然保持实数上的加法不变，考虑 $F=\mathbf{C}, V=\mathbf{R}$，定义乘法
-        \[
-            k\cdot \alpha = (\Re k) \alpha
-        \]
-        其中 $\Re k$ 表示复数 $k$ 的实部，读者不难验证它满足除了乘法结合律以外的所有要求.
-
-        \item 左分配律
-
-        考虑 $F=V=\mathbf{R}$. 保持实数集中加法不变，定义
-        \[
-            k\cdot \alpha = \alpha
-        \]
-        读者不难验证它除了左分配律以外的公理都满足.
-
-        \item 右分配律
-
-        （笔者暂时没有想到更好的例子，所以这个例子会略微抽象）考虑 $F=\mathbf{C}, V=\mathbf{C}^2$. 保持 $\mathbf{C}^2$ 上的加法不变，对 $k\in\mathbf{C}, \alpha = (z_1, z_2)$ 定义乘法
-        \[
-            k\cdot\alpha = \begin{cases}
-                (k z_1, k z_2), & z_1 = 0~\text{或}~\Im(z_2 / z_1) \geqslant 0\\
-                (\overline{k} z_1, \overline{k} z_2), & \text{其它}
-            \end{cases}
-        \]
-        这里 $\Im$ 表示复数的虚部，则读者可以验证它满足除右分配律以外的所有公理.
+        这也能解释常见记号的含义：$(k_1p_1+k_2p_2)(x)=k_1p_1(x)+k_2p_2(x)$.
+        但我们需要注意 $\mathbf{F}[x]'_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}, a_n\neq 0\}$ 不构成线性空间.
     \end{enumerate}
 \end{example}
 
-我们发现线性空间中定义的运算规则与我们高中学习的平面向量的加法和数乘是非常类似的，我们回顾未竟专题一关于公理化的讨论，实际上这就可以视为从简单的向量加法和数乘抽象出来的一些规则. 而公理的诞生应当是要尽可能简洁，而且有足够的表达力——这一点我们将来基于这一定义不断推出线性空间的性质时就会发现非常足够（事实上你现在就能通过我们上面证明的运算性质初步感知到这一点，因为7条公理中任何一条的缺失都会使得上面某条显然而合理的性质不再满足，从而允许各种意想不到的反例出现，而定义了这些公理之后我们未来需要的性质都可以由此导出），因此皮亚诺在1888年正式给出这一定义并沿用至今. 但我们需要知道他的工作也是基于前人（如格拉斯曼）的工作不断修正而来的，只是我们被动接受这一概念使得这一自然的过程变得很突兀. 当然这门课只要求你记忆这8条性质，并请务必牢记于心，考试可能要求你验证线性空间. 记忆难度也并不大，Abel 群4条性质都有名称标注，数乘运算也是易于记忆的结合律和分配律加单位元性质.
-
-除此之外，公理化定义还有一个很重要的作用就是使得我们可以不仅仅在向量集合的背景下定义线性空间，这使得我们可以将对于很多结构的研究都转化为对于线性空间的研究. 接下来我们给出一些与向量无关的线性空间的例子，它们分别代表着线性空间在某些方面的抽象，希望读者仔细体会：
-
-\begin{example}{}{}
-    （平凡的常识：多项式）$\mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$关于多项式的加法和数乘构成线性空间，具体展开而言便是
-    \[
-        (p_1+p_2)(x)=p_1(x)+p_2(x),\enspace(\lambda p)(x)=\lambda p(x),\enspace\forall p_1,p_2,p\in\mathbf{F}[x]_{n+1},\enspace\forall \lambda\in\mathbf{F}.
-    \]
-    这也能解释常见记号的含义：$(k_1p_1+k_2p_2)(x)=k_1p_1(x)+k_2p_2(x)$.
-    但我们需要注意
-    \[\mathbf{F}[x]'_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}, a_n\neq 0\}\]
-    不构成线性空间.
-
-    注：书上常将多项式记为$\mathbf{F}[x]_{n+1}$，表示次数不超过$n$的多项式的集合，而《线性代数应该这样学》中使用 $\mathcal{P}_n(\mathbf{F})$ 表示相同的集合.
-\end{example}
-
 \begin{proof}
-    我们对八条性质进行逐条验证即可.
+    $\mathbf{F}^n$ 的例子过于平凡，不再验证. 我们针对多项式的例子逐条验证公理.
     \begin{enumerate}
         \item $\forall p_1(x), p_2(x), p_3(x) \in \mathbf{F}[x]_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}\}$，有
               \begin{align*}
@@ -281,10 +226,12 @@
     但是对\[\mathbf{F}[x]'_{n+1}=\{a_0+a_1x+\cdots+a_nx^n \mid a_i\in\mathbf{F}, a_n\neq 0\}\]不构成线性空间，其原因在于我们加法不封闭，例如我们取$\mathbf{F}[x]'_{n+1}$中的两个元素$x^n$和$-x^n$，它们的和为$0$，不再满足$\mathbf{F}[x]'_{n+1}$中关于$a_n\neq 0$的条件，因此运算不封闭，不构成线性空间.
 \end{proof}
 
-第一个例子实际上是与向量有很大的联系的，因为次数不高于$n-1$次的多项式中，我们可以把所有系数$a_i(i=1,\ldots,n-1)$拼成向量$\alpha=(a_1,\ldots,a_{n-1})$，因此多项式和向量实际上是很类似的，所以这一例子是平凡的，并且应当作为常识，因为日后会非常常见. 并且请特别注意不构成线性空间的例子，这里我们使用运算不封闭这一条件否认，这是非常常用的，在习题中我们还会见到这样的例子.
+为什么说多项式空间与向量有很显然的联系，是因为我们可以把次数不高于 $n-1$ 次的多项式的所有系数 $a_i(i=1,\ldots,n-1)$ 拼成向量 $\alpha=(a_1,\ldots,a_{n-1})$，因此多项式和向量实际上是很类似的，所以这一例子是平凡的，并且应当作为常识，因为日后会非常常见. 并且请特别注意不构成线性空间的例子，这里我们使用运算不封闭这一条件否认，这是非常常用的，在习题中我们还会见到这样的例子.
 
-\begin{example}{}{函数和数列线性空间}
-    （向量层面的抽象）线性空间定义中$V$中的元素可以不是向量，也不是类似于上例中多项式的常规的、平凡的形式，可以是非常抽象的与我们认知中``向量''一次相去甚远的，例如：
+除此之外，这里有一个记号上的问题需要澄清，很多教材（包括本书）用 $\mathbf{F}[x]_{n+1}$ 表示次数不超过 $n$ 的多项式的集合，也有一些教材使用 $\mathcal{P}_n(\mathbf{F})$ 表示相同的集合. 其中核心的区别在于下标 $n$ 和多项式次数的关联，读者在面对不同的教材或者试题时应当看清楚相应的定义. 有时我们可能会看到没有下标的 $\mathbf{F}[x]$ 和 $\mathcal{P}(\mathbf{F})$，这两者分别表示全体任意次数多项式的集合.
+
+下面我们将讨论``不平凡''的例子，所谓的不平凡的原因来源于线性空间定义的三个要素：集合 $V$、数域 $\mathbf{F}$ 和两种运算. 我们将逐一讨论这三个要素的变化对线性空间的影响. 首先是集合中元素的抽象，即线性空间定义中 $V$ 中的元素可以不是向量，也不是类似于上例中多项式的常规的、平凡的形式，可以是非常抽象的与我们认知中``向量''一词相去甚远的，例如：
+\begin{example}{向量层面的抽象}{函数和数列线性空间}
     \begin{enumerate}
         \item 设$V=C[a,b]$为定义在闭区间$[a,b]$上的连续实值函数全体，定义$V(\mathbf{R})$，其中加法运算定义为
               \[(f+g)(x)=f(x)+g(x),\enspace\forall f,g\in C[a,b].\]
@@ -298,20 +245,21 @@
     \end{enumerate}
 \end{example}
 
-本例的证明我们不再像多项式的例子一样展开，因为方法类似. 我们只需要强调$C[a,b]$中的零元就是$f(x)=0,\enspace\forall x\in[a,b]$的恒等于$0$的函数，而极限为0的数列中的零元就是每一项都为$0$的全零数列.
+本例的证明我们不再像多项式的例子一样展开，因为方法类似. 我们只需要强调 $C[a,b]$ 中的零元就是 $f(x) = 0, \enspace \forall x \in [a,b]$ 的恒等于 $0$ 的函数，而极限为 $0$ 的数列中的零元就是每一项都为 $0$ 的全零数列.
 
-\begin{example}{}{}
-    （数域层面的抽象）复数集$\mathbf{C}$是数域$\mathbf{C}$或数域$\mathbf{R}$上的线性空间，实数集$\mathbf{R}$是实数域$\mathbf{R}$上的线性空间，但实数集$\mathbf{R}$不是复数域$\mathbf{C}$上的线性空间. 除此之外，定义在整数集$\mathbf{Z}$上的全体实数$\mathbf{R}$不构成线性空间.
+接下来我们考虑数域上的抽象，即线性空间定义中的数域 $\mathbf{F}$ 可以很多变，并且会导致线性空间性质的不同：
+\begin{example}{数域层面的抽象}{}
+    复数集$\mathbf{C}$是数域$\mathbf{C}$或数域$\mathbf{R}$上的线性空间，实数集$\mathbf{R}$是实数域$\mathbf{R}$上的线性空间，但实数集$\mathbf{R}$不是复数域$\mathbf{C}$上的线性空间. 除此之外，全体实数$\mathbf{R}$定义在整数集$\mathbf{Z}$上不构成线性空间.
 
-    总结而言就是，$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$以及$\mathbf{R(R)}$都构成线性空间，但$\mathbf{R}(\mathbf{C})$和$\mathbf{R}(\mathbf{Z})$不构成线性空间.
+    总结而言，$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$以及$\mathbf{R(R)}$都构成线性空间，但$\mathbf{R}(\mathbf{C})$和$\mathbf{R}(\mathbf{Z})$不构成线性空间.
 \end{example}
 
-这一例子表明，同一集合可以在不同数域上构成不同的线性空间，在下一讲接触维数的定义后，我们也将知道构成线性空间的$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$二者的维数是不一样的（见\autoref{ex:不同数域的维数}）. 当然，不同的集合也可以在同一个数域上构成不同的线性空间，例如$\mathbf{C(R)}$和$\mathbf{R(R)}$.
+这一例子表明，同一集合可以在不同数域上构成不同的线性空间. 事实上，在下一讲接触维数的定义后，我们将知道构成线性空间的 $\mathbf{C}(\mathbf{R})$ 和 $\mathbf{C}(\mathbf{C})$ 二者的维数是不一样的（见\autoref{ex:不同数域的维数}）. 当然，不同的集合也可以在同一个数域上构成不同的线性空间，例如$\mathbf{C(R)}$和$\mathbf{R(R)}$.
 
 关于数域我们需要强调的并不多，只有一条非常关键的，那就是数域在线性空间$V(\mathbf{F})$中的作用只与数乘运算有关，加法运算与数域没有关系，只和集合$V$中的元素有关，这一点根据定义是显然的. 因此在验证线性空间的过程中，例如$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$之间的差别只在于数域不同，故加法性质是共同满足的，只需各自验证数乘的性质.
 
 \begin{proof}
-    这里我们验证$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$都构成线性空间，$\mathbf{R(R)}$证明类似. 我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}\colon+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
+    这里我们验证$\mathbf{C}(\mathbf{R})$和$\mathbf{C}(\mathbf{C})$都构成线性空间，$\mathbf{R(R)}$证明类似. 我们应当对八条性质逐条验证，但我们在第一讲已经说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}\colon+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
     \begin{enumerate}
         \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
 
@@ -335,39 +283,34 @@
                    & = \lambda(a_1+b_1\i)+\lambda(a_2+b_2\i) = \lambda \alpha_1 + \lambda \alpha_2.
               \end{align*}
     \end{enumerate}
-    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间. 同理我们应当对八条性质逐条验证，但我们在第一讲以及说明了全体复数构成一个域，因此$\mathbf{C}(\mathbf{C})$自动满足线性空间的所有条件，此处不再赘述. 除此之外，$\mathbf{C}(\mathbf{R})$的加法运算与实数无关（回顾线性空间定义，实数只用来参与数乘运算），因此加法Abel群事实上与$\mathbf{C}(\mathbf{C})$一致，都是群$\langle \mathbf{C}\colon+\rangle$，此处也不再验证. 因此这里只验证$\mathbf{C}(\mathbf{R})$数乘运算是否满足线性空间定义的要求：
-    \begin{enumerate}
-        \item 取定 $1 \in \mathbf{R}, \forall \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R},\enspace 1 \cdot \alpha = 1 \cdot (a+b\i) = a+b\i = \alpha$.
-
-        \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
-              \begin{align*}
-                  \lambda(\mu \alpha) = \lambda(\mu (a+b\i)) = \lambda(\mu a+\mu b\i) = \lambda \mu a + \lambda \mu b\i = (\lambda \mu)(a+b\i) = (\lambda \mu)\alpha.
-              \end{align*}
-
-        \item $\forall \lambda, \mu \in \mathbf{R},\enspace \alpha = a+b\i \in \mathbf{C},\enspace a, b \in \mathbf{R}$,
-              \begin{align*}
-                  (\lambda + \mu) \alpha
-                   & = (\lambda a + \lambda b\i) + (\mu a + \mu b\i)            \\
-                   & = \lambda(a+b\i)+\mu(a+b\i) = \lambda \alpha + \mu \alpha.
-              \end{align*}
-
-        \item $\forall \lambda \in \mathbf{R},\enspace \alpha_1 = a_1+b_1\i, \alpha_2 = a_2+b_2\i \in \mathbf{C},\enspace a_i, b_i \in \mathbf{R},\enspace i = 1, 2$,
-              \begin{align*}
-                  \lambda(\alpha_1+\alpha_2)
-                   & = \lambda((a_1+b_1\i)+(a_2+b_2\i)) = \lambda((a_1+a_2)+(b_1+b_2)\i)                             \\
-                   & = \lambda(a_1+a_2)+\lambda(b_1+b_2)\i = (\lambda a_1+\lambda b_1\i)+(\lambda a_2+\lambda b_2\i) \\
-                   & = \lambda(a_1+b_1\i)+\lambda(a_2+b_2\i) = \lambda \alpha_1 + \lambda \alpha_2.
-              \end{align*}
-    \end{enumerate}
-    所以$\mathbf{C}(\mathbf{C})$和$\mathbf{C}(\mathbf{R})$均构成线性空间.
+    由此我们证明了 $\mathbf{C}(\mathbf{R})$ 构成线性空间.
 
     对于$\mathbf{R(R)}$的验证同理，下面考察$\mathbf{R}(\mathbf{C})$，它与$\mathbf{R(R)}$定义的集合一致，都是实数集合$\mathbf{R}$，因此加法性质共同满足，因此我们只需验证数乘运算不满足要求即可. 事实上仍然是运算不封闭导致的，回顾封闭的要求$\mathbf{F}\times V\to V$，现在$\mathbf{R(C)}$中的$V=\mathbf{R}$，数域$\mathbf{F}=\mathbf{C}$，我们取复数$i$与实数$1$进行数乘，结果为$i\notin\mathbf{R}$，破坏了封闭性，故$\mathbf{R(C)}$不构成线性空间.
-
-    最后我们考察$\mathbf{R(Z)}$，事实上我们会发现运算封闭以及与运算规律都是满足的，那为何不是线性空间呢？事实上这里开了个小玩笑，这是因为$\mathbf{Z}$不是数域！我们知道最小的数域是有理数域$\mathbf{Q}$，因而$\mathbf{Z}\subsetneq\mathbf{Q}$不是数域，因此$\mathbf{R(Z)}$不构成线性空间（实际上抽象代数中有类似的概念叫环上的模，$\mathbf{Q}$ 便是整数环 $\mathbf{Z}$ 上的模，而在有些更加抽象的课本中线性空间被定义为交换除环上的模）.
 \end{proof}
 
-\begin{example}{}{运算与同构}
-    （运算层面的抽象）$V$是正实数全体$\mathbf{R}^+$，定义$V(\mathbf{R})$上的加法和数乘为
+最后我们考察 $\mathbf{R(Z)}$，事实上我们会发现运算封闭以及与运算规律都是满足的，那为何不是线性空间呢？事实上这里开了个小玩笑，这是因为 $\mathbf{Z}$ 不是数域！我们知道最小的数域是有理数域 $\mathbf{Q}$，因而 $\mathbf{Z} \subsetneq \mathbf{Q}$ 不是数域，因此 $\mathbf{R(Z)}$ 不构成线性空间.
+
+实际上抽象代数中有一个与线性空间类似的概念，但数乘运算可以使用环，不强制要求域，这称为环上的模，我们给出其定义：
+\begin{definition}{模的定义}{}
+    设 $R$ 是一个环，$M$ 是一个加法Abel群，若定义了数乘运算 $R \times M \to M$，满足
+    \begin{enumerate}
+        \item $\forall \alpha \in M, \enspace 1\alpha = \alpha$；
+        \item $\forall r, s \in R, \forall \alpha \in M, \enspace r(s\alpha) = (rs)\alpha$；
+        \item $\forall r, s \in R, \forall \alpha \in M, \enspace (r+s)\alpha = r\alpha + s\alpha$；
+        \item $\forall r \in R, \forall \alpha, \beta \in M, \enspace r(\alpha + \beta) = r\alpha + r\beta$.
+    \end{enumerate}
+    则称 $M$ 是环 $R$ 上的左模，或左 $R$-模，简记为 $_R M$. 对称地，也可以定义右模，即上述定义环 $R$ 中的元素是乘在模 $M$ 元素右边的，记作 $M_R$. 如果有环 $R, S$，$M$ 是左 $R$-模，又是右 $S$-模，且
+    \[
+        \forall r \in R, s \in S, \alpha \in M, (r \alpha) s = r (\alpha s)
+    \]
+    则称它为 $(R, S)$-双模，记作 $_R M_S$.
+\end{definition}
+
+不难验证 $\mathbf{R}$ 是 $(\mathbf{Z},\mathbf{Z})$-双模.
+
+最后，我们考虑运算的抽象，即线性空间定义中的加法和数乘可以不是我们熟悉的数之间的运算：
+\begin{example}{运算层面的抽象}{运算与同构}
+    $V$是正实数全体$\mathbf{R}^+$，定义$V(\mathbf{R})$上的加法和数乘为
     \begin{gather*}
         a\oplus b=ab \\
         \lambda\circ a=a^\lambda
@@ -375,7 +318,7 @@
     则如上定义的$V(\mathbf{R})$是$\mathbf{R}$上的线性空间.
 \end{example}
 
-这一例子给出了一个非常不自然的运算定义，当然证明时仍然是按照运算封闭和八条性质逐条验证即可，我们留作下一讲的习题供读者验证，这里给出另一种基于同构的理解其构成线性空间的方式.
+这一例子给出了一个非常不自然的运算定义，当然证明时仍然是按照运算封闭和八条性质逐条验证即可，我们留作下一讲的 B 组习题\ref{item:3:正实数线性空间}供读者验证，这里给出另一种基于同构的理解其构成线性空间的方式.
 
 我们可以定义映射$\varphi\colon\mathbf{R}\to\mathbf{R}^+$，其中$\phi(x)=e^x$，则$\varphi$是一个双射（这是一个有反函数$\ln x$的可逆映射）. 我们如何理解这个双射呢？实际上在两个集合之间建立双射就说明两个集合之间的元素具有一一对应的关系，例如每个$\mathbf{R}$中的元素$a$对应唯一的一个$\mathbf{R}^+$中的元素$e^a$，反之每个$\mathbf{R}^+$中的元素$b$对应唯一的一个$\mathbf{R}$中的元素$\ln b$. 例如$\mathbf{R}$中的元素$0$唯一对应于$\mathbf{R}^+$中的1，而$\mathbf{R}^+$中的1又反过来唯一与$\mathbf{R}$中的$0$对应，事实上两个集合中所有元素都可以像$0$和$1$这样两两凑对（例如$(1,e)$也能凑对，可以记为$(a,\varphi(a))$），这就是双射``一一对应''的意义.
 
@@ -399,112 +342,7 @@
 
 我们将在后续章节中进一步讨论同构的性质，现在我们可以总结经过这一例子对于同构的认识：事实上同构就是两个线性空间之间元素有了一一对应的关系，并且其中一个线性空间的元素做了加法和数乘的运算，另一个线性空间对应的元素也做了加法和数乘运算（这两个运算分别是两个线性空间中对应的），因此这样两个线性空间事实上可以看成是``一模一样的''，因为我们可以集合上做元素的对应，然后它们运算也是有对应关系，这已经将线性空间``在集合上定义运算''的所有要素集齐，故可以说是``一模一样''的. 因此通过构建了$\varphi$这一映射，我们发现在这一奇特的运算定义下，$\mathbf{R}^+$事实上拥有了和$\mathbf{R}$一样的结构，所以它自然就是一个线性空间，本质上无需多余的验证. 当然，如果觉得上面这段话无法完全说服你，那在后续正式讨论同构之后我们再回过头看想必会有更深的理解.
 
-% \begin{solution}
-%     \begin{enumerate}
-%         \item 这里定义的``加法''和``数乘''与一般的不同，不过也只需要验证八条性质就行.
-%               \begin{enumerate}
-%                   \item $\forall \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n), \gamma = (c_1, c_2, \ldots, c_n) \in V, $
-%                         \begin{align*}
-%                             (\alpha \oplus \beta) \oplus \gamma
-%                              & = ((a_1, a_2, \ldots, a_n)\oplus (b_1, b_2, \ldots, b_n)) \oplus (c_1, c_2, \ldots, c_n)  \\
-%                              & = (a_1b_1, a_2b_2, \ldots, a_nb_n) \oplus (c_1, c_2, \ldots, c_n)                         \\
-%                              & = (a_1b_1c_1, a_2b_2c_2, \ldots, a_nb_nc_n)                                               \\
-%                              & = (a_1, a_2, \ldots, a_n)\oplus (b_1c_1, b_2c_2, \ldots, b_nc_n)                          \\
-%                              & = (a_1, a_2, \ldots, a_n) \oplus ((b_1, b_2, \ldots, b_n) \oplus (c_1, c_2, \ldots, c_n)) \\
-%                              & = \alpha \oplus (\beta \oplus \gamma)
-%                         \end{align*}
-
-%                   \item 取定 $e = (1, 1, \ldots , 1) \in V,\enspace \forall \alpha = (a_1, a_2, \ldots, a_n) \in V$,
-%                         \begin{align*}
-%                             e \oplus \alpha & =(1, 1, \ldots , 1) \oplus (a_1, a_2, \ldots, a_n) =(a_1, a_2, \ldots, a_n) = \alpha \\
-%                                             & =(a_1, a_2, \ldots, a_n) \oplus (1, 1, \ldots , 1) =\alpha \oplus e.
-%                         \end{align*}
-
-%                   \item $\forall \alpha = (a_1, a_2, \ldots, a_n) \in V,\enspace \exists \beta = \left(\dfrac{1}{a_1}, \dfrac{1}{a_2}, \ldots, \dfrac{1}{a_n}\right),\enspace \alpha \oplus \beta = \beta \oplus \alpha = e$.
-
-%                   \item $\forall \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n) \in V$,
-%                         \begin{align*}
-%                             \alpha \oplus \beta
-%                              & = (a_1, a_2, \ldots, a_n) \oplus (b_1, b_2, \ldots, b_n) = (a_1b_1, a_2b_2, \ldots, a_nb_n)                        \\
-%                              & = (b_1a_1, b_2a_2, \ldots, b_na_n) = (b_1, b_2, \ldots, b_n) \oplus (a_1, a_2, \ldots, a_n) = \beta \oplus \alpha.
-%                         \end{align*}
-
-%                   \item 取定 $\lambda = 1 \in \mathbf{R},\enspace \forall \alpha = (a_1, a_2, \ldots, a_n) \in V$,
-%                         \[\lambda \circ \alpha = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) = (a_1, a_2, \ldots, a_n) = \alpha.\]
-
-%                   \item $\forall \lambda, \mu \in \mathbf{R}, \forall \alpha \in = (a_1, a_2, \ldots, a_n) \in V$,
-%                         \begin{align*}
-%                             \lambda \circ(\mu \circ \alpha)
-%                              & = \lambda \circ(\mu \circ (a_1, a_2, \ldots, a_n)) = \lambda \circ (a_1^\mu, a_2^\mu, \ldots, a_n^\mu) \\
-%                              & = (a_1^{\lambda\mu}, a_2^{\lambda\mu}, \ldots, a_n^{\lambda\mu}) = (\lambda \mu)\circ \alpha.
-%                         \end{align*}
-
-%                   \item $\forall \lambda, \mu \in \mathbf{R},\enspace \forall \alpha \in = (a_1, a_2, \ldots, a_n) \in V$,
-%                         \begin{align*}
-%                             (\lambda + \mu) \circ \alpha
-%                              & = (\lambda + \mu) \circ (a_1, a_2, \ldots, a_n) = (a_1^{\lambda + \mu}, a_2^{\lambda + \mu}, \ldots, a_n^{\lambda + \mu})                                              \\
-%                              & = (a_1^\lambda a_1^\mu, a_2^\lambda a_2^\mu, \ldots, a_n^\lambda a_n^\mu) = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) \oplus (a_1^\mu, a_2^\mu, \ldots, a_n^\mu) \\
-%                              & = (\lambda \circ (a_1, a_2, \ldots, a_n)) \oplus (\mu \circ (a_1, a_2, \ldots, a_n))                                                                                   \\
-%                              & = (\lambda \circ \alpha) \oplus (\mu \circ \alpha).
-%                         \end{align*}
-
-%                   \item $\forall \lambda \in \mathbf{R},\enspace \alpha = (a_1, a_2, \ldots, a_n), \beta = (b_1, b_2, \ldots, b_n) \in V$,
-%                         \begin{align*}
-%                             \lambda \circ (\alpha \oplus \beta)
-%                              & = \lambda \circ ((a_1, a_2, \ldots, a_n) \oplus (b_1, b_2, \ldots, b_n))                                            \\
-%                              & = \lambda \circ (a_1b_1, a_2b_2, \ldots , a_nb_n) = ((a_1b_1)^\lambda, (a_2b_2)^\lambda, \ldots , (a_nb_n)^\lambda) \\
-%                              & = (a_1^\lambda b_1^\lambda, a_2^\lambda b_2^\lambda, \ldots , a_n^\lambda b_n^\lambda)                              \\
-%                              & = (a_1^\lambda, a_2^\lambda, \ldots, a_n^\lambda) \oplus (b_1^\lambda, b_2^\lambda, \ldots, b_n^\lambda)            \\
-%                              & = (\lambda \circ (a_1, a_2, \ldots, a_n)) \oplus (\lambda \circ (b_1, b_2, \ldots, b_n))                            \\
-%                              & = (\lambda \circ \alpha) \oplus (\lambda \circ \beta).
-%                         \end{align*}
-%               \end{enumerate}
-%               所以$V$构成在此``加法''和``数乘''下的线性空间.
-
-%         \item 这题主要注意需要验证封闭的性质是什么就可以了.
-%               \begin{enumerate}
-%                   \item $\forall f, g, h \in V$,
-%                         \begin{align*}
-%                             ((f \oplus g) \oplus h)(x) & = (f \oplus g)(x)+h(x)                                \\
-%                                                        & = (f(x)+g(x))+h(x) = f(x)+(g(x)+h(x))                 \\
-%                                                        & = f(x)+ (g \oplus h)(x) = (f \oplus (g \oplus h))(x).
-%                         \end{align*}
-
-%                   \item 取定 $e(x)=0,\enspace \forall x \in \mathbf{R},\enspace e(-x)=0=\overline{e(x)},\enspace \forall f \in V$,
-%                         \begin{align*}
-%                             (f \oplus e)(x) = f(x) + e(x) = f(x) = e(x) + f(x) = (e \oplus f)(x).
-%                         \end{align*}
-
-%                   \item $\forall f \in V,\enspace \exists g \in V,\enspace g(x) := -f(x),\enspace \forall x \in \mathbf{R}$,
-%                         \begin{gather*}
-%                             g(-x) = -f(-x) = -\overline{f(x)} = \overline{g(x)} \\
-%                             (f \oplus g)(x) = f(x)+g(x) = 0 = e(x) = g(x) + f(x) = (g \oplus f)(x).
-%                         \end{gather*}
-
-%                   \item $\forall f, g \in V,\enspace (f \oplus g)(x) = f(x)+g(x) = g(x)+f(x) = (g \oplus f)(x)$.
-
-%                   \item 取定 $\lambda = 1 \in \mathbf{R},\enspace \forall f \in V,\enspace (\lambda \circ f)(x) = \lambda f(x) = f(x)$.
-
-%                   \item $\forall \lambda, \mu \in \mathbf{R},\enspace f \in V$,
-%                         \[(\lambda \circ (\mu \circ f))(x) = \lambda((\mu \circ f)(x)) = \lambda (\mu f(x)) = (\lambda \mu) f(x) = ((\lambda \mu) \circ f)(x).\]
-
-%                   \item $\forall \lambda, \mu \in \mathbf{R},\enspace f \in V$,
-%                         \begin{align*}
-%                                 & ((\lambda + \mu) \circ f)(x) = (\lambda + \mu)f(x) = \lambda f(x) + \mu f(x)           \\
-%                             ={} & (\lambda \circ f)(x) + (\mu \circ f)(x) = ((\lambda \circ f) \oplus (\mu \circ f))(x).
-%                         \end{align*}
-
-%                   \item $\forall \lambda \in \mathbf{R},\enspace f, g \in V$,
-%                         \begin{align*}
-%                                 & (\lambda \circ (f \oplus g))(x) = \lambda((f \oplus g)(x)) = \lambda (f(x)+g(x)) = \lambda f(x) + \lambda g(x) \\
-%                             ={} & (\lambda \circ f)(x) + (\lambda \circ g)(x) = ((\lambda \circ f) \oplus (\lambda \circ g))(x).
-%                         \end{align*}
-%               \end{enumerate}
-%               所以$V$构成在此``加法''和``数乘''下的线性空间.
-%     \end{enumerate}
-% \end{solution}
-
-在上例以及习题中我们可以看到很多特殊的线性空间，它们集合中的元素不一定是数或向量，运算也不一定是熟知的数的运算和向量的数乘，对这些空间我们需要学会熟练判断，从而加深对``在集合上定义运算''的理解. 除此之外我们也简单引入了同构的概念遮蔽了两个线性空间之间运算的不同，因此即使运算变得面目全非，$\mathbf{R}^+$仍然构成了线性空间. 需要注意的是，同构是线性空间中非常重要的概念，我们将在后续详细讨论.
+总而言之，在上例以及习题中我们可以看到很多特殊的线性空间，它们集合中的元素不一定是数或向量，运算也不一定是熟知的数的运算和向量的数乘，对这些空间我们需要学会熟练判断，从而加深对``在集合上定义运算''的理解. 除此之外我们也简单引入了同构的概念遮蔽了两个线性空间之间运算的不同，因此即使运算变得面目全非，$\mathbf{R}^+$仍然构成了线性空间. 需要注意的是，同构是线性空间中非常重要的概念，我们将在后续详细讨论.
 
 \section{线性子空间}
 
@@ -513,28 +351,19 @@
     设$W$是线性空间$V(\mathbf{F})$的非空子集，如果$W$对$V$中的运算也构成域$\mathbf{F}$上的线性空间，则称$W$是$V$的\term{线性子空间}（简称\term{子空间}）.
 \end{definition}
 
-请一定注意定义中的非空子集，建议验证子空间时先验证非空. 接下来自然的问题便是，什么时候$V$的子集$W$对$V$中的运算也构成域$\mathbf{F}$上的线性空间？事实上这一条件是惊人地简单与美观的：
+请注意定义中的非空子集的要求，建议验证子空间时先验证非空. 接下来自然的问题便是，什么时候$V$的子集$W$对$V$中的运算也构成域$\mathbf{F}$上的线性空间？事实上这一条件是惊人地简单与美观的：
 \begin{theorem}{}{子空间判别}
-    线性空间$V(\mathbf{F})$的非空子集$W$为$V$的子空间的充分必要条件是$W$对于$V(\mathbf{F})$的线性运算封闭.
+    数域 $\mathbf{F}$ 上的线性空间$V(\mathbf{F})$的非空子集$W$为$V$的子空间的充分必要条件是$W$对于$V(\mathbf{F})$的线性运算封闭.
 \end{theorem}
 
-这表明只要子空间非空且其中的元素满足对原空间的加法和数乘运算封闭即可构成原空间的子空间. 这一定理的证明也非常简单，必要性显然（构成线性空间必须满足运算封闭），充分性我们只需要作如下思考：
+这表明只要子空间非空且其中的元素满足对原空间的加法和数乘运算封闭即可构成原空间的子空间. 这一定理的证明也非常简单，必要性显然，因为子空间也是线性空间，而构成线性空间必须满足运算封闭，故不再赘述. 对于充分性，实际上要证明的是满足运算封闭的子集一定仍然能保持线性空间的八条性质. 我们只需要作如下思考：
 \begin{enumerate}
-    \item 结合律、分配律运算律是一定不变的，例如我们回顾加法结合律的定义$a+(b+c)=(a+b)+c,\enspace\forall a,b,c\in V$，由于这一性质对于任意$V$中元素成立，则若$a,b,c\in W\subseteq V$也必有这一性质成立（更通俗而言就是子集$W$中的元素也是$V$中的，因此必然受$V$中运算性质的限制）；
+    \item 结合律、分配律以及数乘运算律是一定满足的，例如我们回顾加法结合律的定义$a+(b+c)=(a+b)+c,\enspace\forall a,b,c\in V$，由于这一性质对于任意$V$中元素成立，则若$a,b,c\in W\subseteq V$也必有这一性质成立（更通俗而言就是子集$W$中的元素也是$V$中的，因此必然受$V$中运算性质的限制）；
 
-    \item 我们根据上面的原则对8条性质一一验证，发现加法单位元和逆元仍不能保证存在，因为这不仅与运算法则相关，更与集合中元素的存在相关——取子集可能使得加法单位元和逆元被拿掉. 但在定理要求的数乘封闭性下这是不可能的：由于$\mathbf{F}$是数域，因此所有有理数都是其子集，因此$0,-1\in\mathbf{F}$. $\forall \alpha\in V$，我们由于数乘封闭性可知，$0\cdot\alpha=0\in W$，$(-1)\cdot\alpha=-\alpha\in W$，因此$W$中也有加法单位元和逆元.
+    \item 于是现在还剩下加法单位元和逆元仍不能保证存在，因为这不仅与运算法则相关，更与集合中元素的存在相关——取子集可能使得加法单位元和逆元被拿掉. 但在定理要求的数乘封闭性下这是不可能的：由于$\mathbf{F}$是数域，因此所有有理数都是其子集，因此$0,-1\in\mathbf{F}$. $\forall \alpha\in V$，我们由于数乘封闭性可知，$0\cdot\alpha=0\in W$，$(-1)\cdot\alpha=-\alpha\in W$，因此$W$中也有加法单位元和逆元.
 \end{enumerate}
 
-\begin{proof}
-    \begin{enumerate}
-        \item 必要性显然，否则 $W$ 关于 $V$ 的运算不构成线性空间，所以只需证明充分性.
-        \item 由于 $W$ 是 $V$ 的子集，所以 $V(\mathbf{F})$ 中数乘满足的4条性质及加法的交换律与结合律对 $W$ 都成立. 因此只要再证 $V$ 的零元 $0\in W$，$W$中每个元 $\alpha$ 的负元 $(-\alpha)\in W$. 由于 $W$ 对数乘封闭，所以取 $\lambda=0$和$\lambda=-1$，即得：
-              \[ 0\cdot\alpha=0\in W,(-1)\cdot\alpha=-\alpha\in W \]
-              故 $W$ 是 $V(\mathbf{F})$ 的线性子空间.
-    \end{enumerate}
-\end{proof}
-
-下面我们来看两个常见的例子体会子空间的判别方法：
+具体的证明只需要将上面的描述形式化即可，这里不再赘述. 下面我们来看两个常见的例子体会子空间的判别方法：
 \begin{example}{}{常见子空间}
     回答下列关于子空间的判定问题：
     \begin{enumerate}
@@ -545,7 +374,7 @@
               判断$W_1=\left\{(x,y,z) \;\middle|\; \dfrac{x}{3}=\dfrac{y}{2}=z\right\},\enspace W_2=\{(x,y,z) \mid x+y+z=1,\enspace x-y+z=1\}$是否为$\mathbf{R}^3$的子空间；
 
         \item \label{item:2:常见子空间:3}
-              （线性方程组的解）试说明齐次线性方程组$AX=0$的解集是线性空间$\mathbf{F}^n$的一个子空间，但非齐次线性方程组的解不再构成线性空间.
+              试说明齐次线性方程组$AX=0$的解集是线性空间$\mathbf{F}^n$的一个子空间（我们称之为齐次线性方程组的\term{解空间}），但非齐次线性方程组的解不再构成线性空间.
     \end{enumerate}
 \end{example}
 
@@ -590,7 +419,7 @@
     \end{enumerate}
 \end{solution}
 
-上例中 \ref*{item:2:常见子空间:2} 表明过原点的直线/平面构成三维空间的子空间，不过原点的无法保持线性性. 事实上 \ref*{item:2:常见子空间:2} 和 \ref*{item:2:常见子空间:3} 在表述同一个问题，\ref*{item:2:常见子空间:2} 从几何角度描述了 \ref*{item:2:常见子空间:3} 中齐次/非齐次线性方程组的解集. 事实上，在定义了子空间后， 如果一个线性空间的子集也构成线性空间，我们就可以对其进行同样的研究. 这一想法在我们后续的内容中十分重要， 现在需要大家先熟知子空间的定义和判别.
+上例中 \ref*{item:2:常见子空间:2} 表明过原点的直线/平面构成三维空间的子空间，不过原点的无法保持线性性. 事实上 \ref*{item:2:常见子空间:2} 和 \ref*{item:2:常见子空间:3} 在表述同一个问题，\ref*{item:2:常见子空间:2} 从几何角度描述了 \ref*{item:2:常见子空间:3} 中齐次/非齐次线性方程组的解集. 事实上，在定义了子空间后，如果一个线性空间的子集也构成线性空间，我们就可以对其进行同样的研究. 这一想法在我们后续的内容中十分重要， 现在需要大家先熟知子空间的定义和判别.
 
 最后我们需要注意一个名词的定义. 线性空间有两个子空间称为平凡子空间，即仅含零元的子集$\{0\}$和其自身$V$. 而其它子空间称为非平凡子空间.
 
@@ -608,7 +437,7 @@
     \[ \spa(S)=\{\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k \mid \lambda_1,\ldots,\lambda_k\in\mathbf{F},\enspace\alpha_1,\ldots,\alpha_k\in S,\enspace k\in\mathbf{N}_+\} \]
     为$S$的\term{线性扩张}，即$S$中所有有限子集在域$\mathbf{F}$上的一切线性组合组成的$V(\mathbf{F})$的子集.
 \end{definition}
-注意，$\spa$参考的是《线性代数应该这样学》的记号，《大学数学——代数与几何》中使用$L$表示线性扩张. 考虑到本讲义记号统一性，我们采用更加常用并且不会与之后其它定义的记号冲突的$\spa$.
+注意，有的教材中也中使用 $L$ 表示线性扩张. 考虑到本讲义记号统一性，我们采用更加常用并且不会与之后其它定义的记号冲突的$\spa$.
 
 下面的定理告诉我们可以通过线性扩张构造子空间：
 \begin{theorem}{}{线性扩张构造子空间}
@@ -644,35 +473,16 @@
 
 上述证明的重要性在于，我们在这一个证明中练习了子集的证明方法、子空间的充要条件以及对于``最小''问题证明的一般方法. 希望读者能掌握其中的每一个思想与技巧. 此外，这一定理有很强的直观性，因为线性扩张实际上就是将子集中的元素进行无穷次重复的线性组合，将所有可能经过线性运算获得的向量都生成了，因此线性扩张的结果一定保障了线性运算的封闭.
 
-最后我们再说明有限维线性空间和无限维线性空间的定义，本课程研究的内容都在有限维线性空间，如果少数时间拓展至无限维空间我们会给出说明：
-\begin{definition}{}{}
-    $V(\mathbf{F})$称为有限维线性空间，如果$V$中存在一个有限子集$S$使得$\spa(S)=V$，反之称为无限维线性空间.
-\end{definition}
-
-\begin{example}{}{}
-    证明：$\mathbf{R}[x]_3$是有限维线性空间，$\mathbf{R}[x]$是无限维线性空间.
-\end{example}
-
-\begin{proof}
-    \begin{enumerate}
-        \item 显然$\mathbf{R}[x]_3$的有限子集$S=\{1,x,x^2\}$可以张成$\mathbf{R}[x]_3$，因此$\mathbf{R}[x]_3$是有限维线性空间；
-
-        \item 对于$\mathbf{R}[x]$，我们只需证明其任意有限子集都无法张成其本身. 我们取其任意有限子集，则其中多项式元素的次数一定有最大值，我们记为$m$，那么$z^{m+1}$以及更高次数的无法被表示，因此$\mathbf{R}[x]$是无限维线性空间.
-    \end{enumerate}
-\end{proof}
-
-事实上，基于这一例子我们也可以说明定义在$[a,b]$上的连续实值函数全体$C[a,b]$在实数域上构成的线性空间是无限维的，因为$C[a,b]$包含全体多项式，而全体多项式都无法被有限个向量表示，更不用说全体连续函数了. 当然，事实上\autoref{ex:函数和数列线性空间} 中的另一个数列的例子也构成无限维线性空间，这一点我们将在行列式一节作为习题，因为使用范德蒙行列式的结论更为便捷.
-
 \begin{summary}
 
-    本讲我们追随着第一讲最末尾关于线性方程组为什么无解、有唯一解或无穷解的问题，展开我们对线性方程组一般理论的讨论. 我们首先通过一个例子引入我们为什么要研究线性空间——因为我们需要了解向量之间的关联，从直觉上这与线性方程组解的情况是有关系的. 我们给出了线性空间的定义——其核心仍然是在集合上定义满足一定条件的运算，事实上就是对我们高中就熟知的向量加法数乘规则的抽象，然后我们讨论了基于这一公理化的定义我们可以得到的性质. 我们介绍了线性空间的子空间的定义与判别方法，引入了线性表示、线性扩张的概念并说明了我们如何通过线性扩张得到子空间——这一定理蕴含着所谓``闭包''的思想，我们将在未来讨论仿射子集时再次见到，实际上是非常符合几何直观的.
+    本讲我们追随着第一讲最末尾关于线性方程组为什么无解、有唯一解或无穷解的问题，展开我们对线性方程组一般理论的讨论. 我们首先通过一个例子引入我们为什么要研究线性空间——因为我们需要了解向量之间的关联，从直觉上这与线性方程组解的情况是有关系的. 我们给出了线性空间的定义——其核心仍然是在集合上定义满足一定条件的运算，事实上就是对我们高中就熟知的向量加法数乘规则的抽象，然后我们讨论了基于这一公理化的定义我们可以得到的性质. 我们介绍了线性空间的子空间的定义与判别方法，引入了线性表示、线性扩张的概念并说明了我们如何通过线性扩张得到子空间——实际上这些内容放在向量空间中都可以找到直观的几何解释，因此理解起来并不困难.
 
     事实上，这一讲的内容是比较抽象的，因为线性空间的定义实际上就是将我们熟知的向量加法数乘运算抽象出来，从而适用于所有有类似结构的集合，因此读者在学习时可能会自动带入一些高中平面向量的直观，然后发现显然的问题不用证，复杂的问题摸不着头脑，但读者应当在未竟专题一中训练了基于定义和公理的数学证明思想，我们也尽力给出大量经典的例子，将推导过程写得非常详细，所以整体而言思路应当是清晰易懂的.
 
 \end{summary}
 
 \begin{exercise}
-    \exquote[美国哥伦比亚大学校长L·C·柏林格]{1520年以来，全世界只有85个机构存活至今，其中50家是大学. 大学依靠梦想、希望生存下去——这就是大学的历史.}
+    \exquote[毕达哥拉斯]{在数学的天地里，重要的不是我们知道什么，而是我们怎么知道什么.}
 
     \begin{exgroup}
         \item 检验下列集合对指定的加法和数乘运算是否构成实数域上的线性空间.
@@ -783,35 +593,35 @@
             \begin{enumerate}
                 \item 对于集合 \( W = \{(x_1, \dots, x_n) \in F^n \mid a_1x_1 + \cdots + a_nx_n = 0\} \)：
 
-                首先，我们来判断该集合是否为线性空间的子空间。判断一个集合是否为线性空间的子空间需要满足以下三个条件：
+                首先，我们来判断该集合是否为线性空间的子空间. 判断一个集合是否为线性空间的子空间需要满足以下三个条件：
 
                 \begin{enumerate}
                     \item \text{零向量在其中}：
 
-                    当 \( x_1 = x_2 = \cdots = x_n = 0 \) 时，方程 \( a_1x_1 + \cdots + a_nx_n = 0 \) 显然成立，因此零向量 \( (0, 0, \dots, 0) \) 属于 \( W \)。
+                    当 \( x_1 = x_2 = \cdots = x_n = 0 \) 时，方程 \( a_1x_1 + \cdots + a_nx_n = 0 \) 显然成立，因此零向量 \( (0, 0, \dots, 0) \) 属于 \( W \).
 
                     \item \text{封闭性（加法）}：
 
                     假设 \( \mathbf{v} = (x_1, \dots, x_n) \) 和 \( \mathbf{w} = (y_1, \dots, y_n) \) 属于 \( W \)，即：
                     \[
-                    a_1x_1 + \cdots + a_nx_n = 0 \quad \text{且} \quad a_1y_1 + \cdots + a_ny_n = 0。
+                    a_1x_1 + \cdots + a_nx_n = 0 \quad \text{且} \quad a_1y_1 + \cdots + a_ny_n = 0.
                     \]
                     那么，对于 \( \mathbf{v} + \mathbf{w} = (x_1 + y_1, \dots, x_n + y_n) \)，有：
                     \[
-                    a_1(x_1 + y_1) + \cdots + a_n(x_n + y_n) = (a_1x_1 + \cdots + a_nx_n) + (a_1y_1 + \cdots + a_ny_n) = 0 + 0 = 0。
+                    a_1(x_1 + y_1) + \cdots + a_n(x_n + y_n) = (a_1x_1 + \cdots + a_nx_n) + (a_1y_1 + \cdots + a_ny_n) = 0 + 0 = 0.
                     \]
-                    因此，\( \mathbf{v} + \mathbf{w} \in W \)。
+                    因此，\( \mathbf{v} + \mathbf{w} \in W \).
 
                     \item \text{封闭性（数乘）}：
 
                     对于任意 \( \mathbf{v} = (x_1, \dots, x_n) \in W \) 和任意 \( \lambda \in F \)，有：
                     \[
-                    a_1(\lambda x_1) + \cdots + a_n(\lambda x_n) = \lambda (a_1x_1 + \cdots + a_nx_n) = \lambda \cdot 0 = 0。
+                    a_1(\lambda x_1) + \cdots + a_n(\lambda x_n) = \lambda (a_1x_1 + \cdots + a_nx_n) = \lambda \cdot 0 = 0.
                     \]
-                    因此，\( \lambda \mathbf{v} \in W \)。
+                    因此，\( \lambda \mathbf{v} \in W \).
                 \end{enumerate}
 
-                由于上述三个条件均满足，集合 \( W \) 是 \( F^n \) 的一个子空间。
+                由于上述三个条件均满足，集合 \( W \) 是 \( F^n \) 的一个子空间.
 
                 \item 对于集合 \( W_1 = \{(x, 1, 0) \in \mathbb{R}^3\} \) 和 \( W_2 = \{(x, y, 0) \in \mathbb{R}^3\} \)：
 
@@ -819,57 +629,57 @@
                     \item \text{对于 \( W_1 \)}：
 
                     \begin{itemize}
-                        \item \text{零向量在其中}：零向量 \( (0, 0, 0) \) 不在 \( W_1 \) 中，因为 \( W_1 \) 中的第二个分量始终为 1，因此零向量不在 \( W_1 \) 中。
-                        \item 因为零向量不在 \( W_1 \) 中，所以 \( W_1 \) 不是子空间。
+                        \item \text{零向量在其中}：零向量 \( (0, 0, 0) \) 不在 \( W_1 \) 中，因为 \( W_1 \) 中的第二个分量始终为 1，因此零向量不在 \( W_1 \) 中.
+                        \item 因为零向量不在 \( W_1 \) 中，所以 \( W_1 \) 不是子空间.
                     \end{itemize}
 
                     \item \text{对于 \( W_2 \)}：
 
                     \begin{itemize}
-                        \item \text{零向量在其中}：当 \( x = 0, y = 0 \) 时，向量 \( (0, 0, 0) \in W_2 \)。
+                        \item \text{零向量在其中}：当 \( x = 0, y = 0 \) 时，向量 \( (0, 0, 0) \in W_2 \).
                         \item \text{封闭性（加法）}：假设 \( \mathbf{v} = (x_1, y_1, 0) \in W_2 \) 和 \( \mathbf{w} = (x_2, y_2, 0) \in W_2 \)，则：
                         \[
-                        \mathbf{v} + \mathbf{w} = (x_1 + x_2, y_1 + y_2, 0) \in W_2。
+                        \mathbf{v} + \mathbf{w} = (x_1 + x_2, y_1 + y_2, 0) \in W_2.
                         \]
                         \item \text{封闭性（数乘）}：对于 \( \lambda \in \mathbb{R} \) 和 \( \mathbf{v} = (x, y, 0) \in W_2 \)，有：
                         \[
-                        \lambda \mathbf{v} = (\lambda x, \lambda y, 0) \in W_2。
+                        \lambda \mathbf{v} = (\lambda x, \lambda y, 0) \in W_2.
                         \]
                     \end{itemize}
                 \end{enumerate}
 
-                因此，\( W_2 \) 是 \( \mathbb{R}^3 \) 的一个子空间。
+                因此，\( W_2 \) 是 \( \mathbb{R}^3 \) 的一个子空间.
 
                 \item 对于集合 $W_1 = \{(x, y, z) \in \mathbb{R}^3 \mid x - 3y + z = 0\}$ 和 $W_2 = \{(x, y, z) \in \mathbb{R}^3 \mid x - 3y + z = 1\}$：
                 \begin{enumerate}
-                    \item \text{零向量在其中}：当 $x = 0, y = 0, z = 0$ 时，方程 $x - 3y + z = 0$ 显然成立，因此零向量 $(0, 0, 0) \in W_1$。
+                    \item \text{零向量在其中}：当 $x = 0, y = 0, z = 0$ 时，方程 $x - 3y + z = 0$ 显然成立，因此零向量 $(0, 0, 0) \in W_1$.
                     \item \text{封闭性（加法）}：假设 $\mathbf{v} = (x_1, y_1, z_1) \in W_1$ 和 $\mathbf{w} = (x_2, y_2, z_2) \in W_1$，则：
                     \[
-                    (x_1 - 3y_1 + z_1) = 0 \quad \text{且} \quad (x_2 - 3y_2 + z_2) = 0。
+                    (x_1 - 3y_1 + z_1) = 0 \quad \text{且} \quad (x_2 - 3y_2 + z_2) = 0.
                     \]
                     对于 $\mathbf{v} + \mathbf{w} = (x_1 + x_2, y_1 + y_2, z_1 + z_2)$，有：
                     \[
-                    (x_1 + x_2) - 3(y_1 + y_2) + (z_1 + z_2) = (x_1 - 3y_1 + z_1) + (x_2 - 3y_2 + z_2) = 0 + 0 = 0。
+                    (x_1 + x_2) - 3(y_1 + y_2) + (z_1 + z_2) = (x_1 - 3y_1 + z_1) + (x_2 - 3y_2 + z_2) = 0 + 0 = 0.
                     \]
-                    因此，$\mathbf{v} + \mathbf{w} \in W_1$。
+                    因此，$\mathbf{v} + \mathbf{w} \in W_1$.
                     \item \text{封闭性（数乘）}：对于任意 $\lambda \in \mathbb{R}$ 和 $\mathbf{v} = (x, y, z) \in W_1$，有：
                     \[
-                    \lambda x - 3(\lambda y) + \lambda z = \lambda(x - 3y + z) = \lambda \cdot 0 = 0。
+                    \lambda x - 3(\lambda y) + \lambda z = \lambda(x - 3y + z) = \lambda \cdot 0 = 0.
                     \]
-                    因此，$\lambda \mathbf{v} \in W_1$。
+                    因此，$\lambda \mathbf{v} \in W_1$.
                 \end{enumerate}
-                综上所述，$W_1$ 是 $\mathbb{R}^3$ 的一个子空间。
+                综上所述，$W_1$ 是 $\mathbb{R}^3$ 的一个子空间.
                 \begin{enumerate}
-                    \item \text{零向量不在其中}：若 $(0, 0, 0) \in W_2$，则必须满足 $0 - 3 \cdot 0 + 0 = 1$，这显然不成立，因此零向量不在 $W_2$ 中。
+                    \item \text{零向量不在其中}：若 $(0, 0, 0) \in W_2$，则必须满足 $0 - 3 \cdot 0 + 0 = 1$，这显然不成立，因此零向量不在 $W_2$ 中.
                 \end{enumerate}
-                因为零向量不在 $W_2$ 中，所以 $W_2$ 不是子空间。
+                因为零向量不在 $W_2$ 中，所以 $W_2$ 不是子空间.
 
                 \item 对于集合 $W_1 = \left\{(x, y, z) \in \mathbb{R}^3 \mid \frac{x}{2} = \frac{y - 4}{1} = \frac{z - 1}{-3} \right\}$ 和 $W_2 = \{(x, y, z) \in \mathbb{R}^3 \mid x - y = 0, x + y + z = 0\}$：
 
-                这个集合的方程表示一个直线的参数方程。通常直线不是子空间，因为它不通过原点。因此，$W_1$ 不是子空间。
+                这个集合的方程表示一个直线的参数方程. 通常直线不是子空间，因为它不通过原点. 因此，$W_1$ 不是子空间.
 
                 \begin{enumerate}
-                    \item \text{零向量在其中}：当 $x = 0, y = 0, z = 0$ 时，方程 $x - y = 0$ 和 $x + y + z = 0$ 都成立，因此零向量 $(0, 0, 0) \in W_2$。
+                    \item \text{零向量在其中}：当 $x = 0, y = 0, z = 0$ 时，方程 $x - y = 0$ 和 $x + y + z = 0$ 都成立，因此零向量 $(0, 0, 0) \in W_2$.
                     \item \text{封闭性（加法）}：假设 $\mathbf{v} = (x_1, y_1, z_1) \in W_2$ 和 $\mathbf{w} = (x_2, y_2, z_2) \in W_2$，即：
                     \[
                     x_1 - y_1 = 0, \quad x_1 + y_1 + z_1 = 0
@@ -882,77 +692,137 @@
                     (x_1 + x_2) - (y_1 + y_2) = (x_1 - y_1) + (x_2 - y_2) = 0 + 0 = 0，
                     \]
                     \[
-                    (x_1 + x_2) + (y_1 + y_2) + (z_1 + z_2) = (x_1 + y_1 + z_1) + (x_2 + y_2 + z_2) = 0 + 0 = 0。
+                    (x_1 + x_2) + (y_1 + y_2) + (z_1 + z_2) = (x_1 + y_1 + z_1) + (x_2 + y_2 + z_2) = 0 + 0 = 0.
                     \]
-                    因此，$\mathbf{v} + \mathbf{w} \in W_2$。
+                    因此，$\mathbf{v} + \mathbf{w} \in W_2$.
                     \item \text{封闭性（数乘）}：对于任意 $\lambda \in \mathbb{R}$ 和 $\mathbf{v} = (x, y, z) \in W_2$，有：
                     \[
                     \lambda x - \lambda y = \lambda (x - y) = \lambda \cdot 0 = 0，
                     \]
                     \[
-                    \lambda x + \lambda y + \lambda z = \lambda (x + y + z) = \lambda \cdot 0 = 0。
+                    \lambda x + \lambda y + \lambda z = \lambda (x + y + z) = \lambda \cdot 0 = 0.
                     \]
-                    因此，$\lambda \mathbf{v} \in W_2$。
+                    因此，$\lambda \mathbf{v} \in W_2$.
                 \end{enumerate}
-                综上所述，$W_2$ 是 $\mathbb{R}^3$ 的一个子空间。
+                综上所述，$W_2$ 是 $\mathbb{R}^3$ 的一个子空间.
 
                 \item 对于集合 $W_1 = \{p(x) \in \mathbb{R}[x] \mid p(1) = 0\}$ 和 $W_2 = \{P(x) \in \mathbb{R}[x]_n \mid p(1) = p(0)\}$：
 
                 \begin{enumerate}
-                    \item \text{零多项式在其中}：零多项式 $p(x) = 0$ 满足 $p(1) = 0$，因此零多项式 $p(x) = 0 \in W_1$。
+                    \item \text{零多项式在其中}：零多项式 $p(x) = 0$ 满足 $p(1) = 0$，因此零多项式 $p(x) = 0 \in W_1$.
                     \item \text{封闭性（加法）}：假设 $p(x), q(x) \in W_1$，即 $p(1) = 0$ 且 $q(1) = 0$，那么对于 $p(x) + q(x)$，有：
                     \[
                     (p(x) + q(x))(1) = p(1) + q(1) = 0 + 0 = 0，
                     \]
-                    因此 $p(x) + q(x) \in W_1$。
+                    因此 $p(x) + q(x) \in W_1$.
                     \item \text{封闭性（数乘）}：对于任意实数 $\lambda$ 和 $p(x) \in W_1$，有：
                     \[
                     (\lambda p(x))(1) = \lambda p(1) = \lambda \cdot 0 = 0，
                     \]
-                    因此 $\lambda p(x) \in W_1$。
+                    因此 $\lambda p(x) \in W_1$.
                 \end{enumerate}
-                综上所述，$W_1$ 是一个子空间。
+                综上所述，$W_1$ 是一个子空间.
 
                 \begin{enumerate}
-                    \item \text{零多项式在其中}：零多项式 $p(x) = 0$ 显然满足 $p(1) = p(0)$，因此零多项式 $p(x) = 0 \in W_2$。
+                    \item \text{零多项式在其中}：零多项式 $p(x) = 0$ 显然满足 $p(1) = p(0)$，因此零多项式 $p(x) = 0 \in W_2$.
                     \item \text{封闭性（加法）}：假设 $p(x), q(x) \in W_2$，即 $p(1) = p(0)$ 且 $q(1) = q(0)$，那么对于 $p(x) + q(x)$，有：
                     \[
-                    (p(x) + q(x))(1) = p(1) + q(1), \quad (p(x) + q(x))(0) = p(0) + q(0)。
+                    (p(x) + q(x))(1) = p(1) + q(1), \quad (p(x) + q(x))(0) = p(0) + q(0).
                     \]
-                    因为 $p(1) = p(0)$ 和 $q(1) = q(0)$，所以 $p(1) + q(1) = p(0) + q(0)$，即 $p(x) + q(x) \in W_2$。
+                    因为 $p(1) = p(0)$ 和 $q(1) = q(0)$，所以 $p(1) + q(1) = p(0) + q(0)$，即 $p(x) + q(x) \in W_2$.
                     \item \text{封闭性（数乘）}：对于任意实数 $\lambda$ 和 $p(x) \in W_2$，有：
                     \[
-                    (\lambda p(x))(1) = \lambda p(1), \quad (\lambda p(x))(0) = \lambda p(0)。
+                    (\lambda p(x))(1) = \lambda p(1), \quad (\lambda p(x))(0) = \lambda p(0).
                     \]
-                    因为 $p(1) = p(0)$，所以 $\lambda p(1) = \lambda p(0)$，即 $\lambda p(x) \in W_2$。
+                    因为 $p(1) = p(0)$，所以 $\lambda p(1) = \lambda p(0)$，即 $\lambda p(x) \in W_2$.
                 \end{enumerate}
-                综上所述，$W_2$ 是一个子空间。
+                综上所述，$W_2$ 是一个子空间.
 
                 \item 对于集合 $W = \{f \in F(-\infty, +\infty) \mid f(-x) = f(x), \forall x \in \mathbb{R}\}$：
 
                 \begin{enumerate}
-                    \item \text{零函数在其中}：零函数 $f(x) = 0$ 显然满足 $f(-x) = f(x)$，因此零函数 $f(x) = 0 \in W$。
+                    \item \text{零函数在其中}：零函数 $f(x) = 0$ 显然满足 $f(-x) = f(x)$，因此零函数 $f(x) = 0 \in W$.
                     \item \text{封闭性（加法）}：假设 $f(x), g(x) \in W$，即 $f(-x) = f(x)$ 且 $g(-x) = g(x)$，那么对于 $f(x) + g(x)$，有：
                     \[
                     (f + g)(-x) = f(-x) + g(-x) = f(x) + g(x) = (f + g)(x)，
                     \]
-                    因此 $f(x) + g(x) \in W$。
+                    因此 $f(x) + g(x) \in W$.
                     \item \text{封闭性（数乘）}：对于任意实数 $\lambda$ 和 $f(x) \in W$，有：
                     \[
                     (\lambda f)(-x) = \lambda f(-x) = \lambda f(x) = (\lambda f)(x)，
                     \]
-                    因此 $\lambda f(x) \in W$。
+                    因此 $\lambda f(x) \in W$.
                 \end{enumerate}
-                综上所述，$W$ 是一个子空间。
+                综上所述，$W$ 是一个子空间.
 
             \end{enumerate}
         \end{answer}
-
-        \item 对于 \autoref{ex:去除一条线性空间公理} 中的每个例子，举例说明它们为什么违反了对应的公理，又为什么能满足其它的公理.
     \end{exgroup}
 
     \begin{exgroup}
         \item 证明：已知线性空间$V(\mathbf{F})$，$\lambda,\lambda_1,\ldots,\lambda_r\in\mathbf{F}$，$\beta,\alpha_1,\ldots,\alpha_r\in V$，有$\lambda\beta+\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_r\alpha_r=\vec{0}$在$\lambda\neq 0$时的解为$\beta=-\lambda^{-1}\lambda_1\alpha_1-\lambda^{-1}\lambda_2\alpha_2-\cdots-\lambda^{-1}\lambda_r\alpha_r$.
+
+        \item \label{item:2:去除一条线性空间公理}
+        下面是一些集合满足除了其中任意一条公理之外的其它所有公理的例子，它们说明线性空间定义中各条公理是独立的：
+        \begin{enumerate}
+            \item 加法结合律
+
+            考虑集合 $\mathbf{F} = \mathbf{R}, V = \{(x, y)\in\mathbf{R}^2 \mid xy = 0\}$，即 $x$ 轴和 $y$ 轴的并，在其上自定义加法和乘法
+            \begin{align*}
+                (x_1, x_2) + (y_1, y_2) &= \begin{cases}
+                    (0, 0), & (x_1+x_2)(y_1+y_2) \neq 0 \\
+                    (x_1+x_2, y_1+y_2), & (x_1+x_2)(y_1+y_2) = 0
+                \end{cases} \\
+                k\cdot (x_1, x_2) &= (k x_1, k x_2)
+            \end{align*}
+            请验证其满足除了加法结合律以外的所有要求.
+
+            \item 加法逆元
+
+            因为如果去掉加法单位元要求会导致逆元无法定义，所以跳过仅仅去掉加法单位元的情况. 考虑 $\mathbf{F} = \mathbf{R}$，构造这样一个集合：向实数集中人为添加一个元素 $0'$，保持其它数的加法，称这个集合为 $V$，然后对 $0'$ 参与的所有加法运算定义
+            \[
+                0' + \alpha = \alpha + 0' = \alpha
+            \]
+            注意到此时 $0' + 0 = 0 + 0' = 0$，也就是说 $0'$ 是真正的加法单位元，对 $\alpha \neq 0$，沿用实数集中``正常''的乘法. 对 $0'$ 定义数乘
+            \[
+                k \cdot 0' = 0'
+            \]
+            请验证除了逆元以外其它的公理都得到了满足，但是对于一般的 $\alpha$，我们无法找到 $\beta$ 使得 $\alpha + \beta = 0'$.
+
+            \item 数乘单位元
+
+            考虑 $\mathbf{F} = V = \mathbf{R}$. 在实数集中保持加法不变，令 $k\cdot \alpha = 0$. 请验证它满足除了乘法单位元以外的所有要求.
+
+            \item 数乘结合律
+
+            仍然保持实数上的加法不变，考虑 $\mathbf{F}=\mathbf{C}, V=\mathbf{R}$，定义乘法
+            \[
+                k\cdot \alpha = (\Re k) \alpha
+            \]
+            其中 $\Re k$ 表示复数 $k$ 的实部，请验证它满足除了乘法结合律以外的所有要求.
+
+            \item 左分配律
+
+            考虑 $\mathbf{F}=V=\mathbf{R}$. 保持实数集中加法不变，定义
+            \[
+                k\cdot \alpha = \alpha
+            \]
+            请验证它除了左分配律以外的公理都满足.
+
+            \item 右分配律
+
+            （笔者暂时没有想到更好的例子，所以这个例子会略微抽象）考虑 $\mathbf{F}=\mathbf{C}, V=\mathbf{C}^2$. 保持 $\mathbf{C}^2$ 上的加法不变，对 $k\in\mathbf{C}, \alpha = (z_1, z_2)$ 定义乘法
+            \[
+                k\cdot\alpha = \begin{cases}
+                    (k z_1, k z_2), & z_1 = 0~\text{或}~\Im(z_2 / z_1) \geqslant 0\\
+                    (\overline{k} z_1, \overline{k} z_2), & \text{其它}
+                \end{cases}
+            \]
+            这里 $\Im$ 表示复数的虚部，请验证它满足除右分配律以外的所有公理.
+        \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
 
         \item 设$V$是一个线性空间，$W$是$V$的子集，证明：$W$是$V$的子空间$\iff \spa(W)=W$.
         \begin{answer}

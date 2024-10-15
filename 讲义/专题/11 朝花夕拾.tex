@@ -11,8 +11,16 @@
 \begin{theorem}{线性方程组有解的充要条件}{有解条件}
     线性方程组有解的充分必要条件是其系数矩阵与增广矩阵有相同的秩.
 \end{theorem}
-定理的证明非常简单，这里简要介绍思路：将方程组视为$x_1\beta_1+x_2\beta_2+\cdots+x_n\beta_n=\vec{b}$（$\beta_i$就是系数矩阵的第$i$列），则有解的条件为$\vec{b}$可以被$\beta_1,\ldots,\beta_n$线性表示，这等价于向量组$(\beta_1,\ldots,\beta_n)$与$(\beta_1,\ldots,\beta_n,\vec{b})$等价，故定理成立.
+定理的证明非常简单，这里简要介绍思路：将方程组视为$x_1\beta_1+x_2\beta_2+\cdots+x_n\beta_n=\vec{b}$（$\beta_i$就是系数矩阵的第$i$列），则有解的条件为$\vec{b}$可以被$\beta_1,\ldots,\beta_n$线性表示，这等价于向量组$(\beta_1,\ldots,\beta_n)$与$(\beta_1,\ldots,\beta_n,\vec{b})$等价，故定理成立. 下面是一个应用的例子：
 
+\begin{example}{}{}
+    设$n$阶矩阵$A$的行列式$|A|\neq 0$，记$A$的前$n-1$列形成的矩阵为$A_1$，$A$的第$n$列为$\vec{b}$，问：线性方程组$A_1X=\vec{b}$是否有解？
+\end{example}
+\begin{solution}
+    无解；$|A|\neq 0$可知$r(A)=n$，$r(A_1)=n-1$，因此系数矩阵$A_1$的秩小于增广矩阵$A$的秩$n$，故无解.
+\end{solution}
+
+下面这一定理讨论方程组有解的情况下，唯一解和无穷解的条件，根据高斯消元法这一定理是很显然的：
 \begin{theorem}{}{方程组解}
     当方程组有解时（注意这个前提），以下定理成立：
     \begin{enumerate}
@@ -21,14 +29,116 @@
         \item 如果$A$的秩小于$n$，则方程组有无穷多个解.
     \end{enumerate}
 \end{theorem}
-实际上，当系数矩阵为方阵时，这一定理就是 \nameref{thm:Cramer}结论的一部分，我们不再赘述其证明. 实际上，通过上面两个定理我们首先了解了线性方程组有无解的一般准则，然后讨论了有解前提下唯一解、无穷解对应于什么情况. 事实上，有关线性方程组解的情况的讨论至此文意已尽. 无论是理论层面或是解决题目的方面，这两个定理都为我们提供了足量的信息.
+
+当系数矩阵为方阵时，这一定理就是著名的\nameref{thm:Cramer}结论的一部分. 从历史角度来开，引入行列式是用于求解线性方程组的. 瑞士数学家克莱姆（Cramer）于1750年在他的《线性代数分析导言》中发表了这一方法. 事实上莱布尼兹〔1693〕，以及麦克劳林〔1748〕亦研究了这一法则，但他们的记法不如克莱姆清晰. 接下来我们介绍这一充满历史底蕴的定理：
+\begin{theorem}{Cramer法则}{Cramer} \index{Cramer@Cramer 法则 (Cramer's rule)}
+    对线性方程组
+    \begin{gather}
+        \label{eq:13:线性方程组1}
+        \begin{cases} \begin{aligned}
+                a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n & = 0             \\
+                a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n & = 0             \\
+                                                     & \vdotswithin{=} \\
+                a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n & = 0
+            \end{aligned} \end{cases}
+        \\
+        \label{eq:13:线性方程组2}
+        \begin{cases} \begin{aligned}
+                a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n & = b_1           \\
+                a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n & = b_2           \\
+                                                     & \vdotswithin{=} \\
+                a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n & = b_n
+            \end{aligned} \end{cases}
+    \end{gather}
+
+    令$D=\begin{vmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & a_{nn}
+        \end{vmatrix}$，称为系数行列式.
+
+    令$D_1=\begin{vmatrix}
+            b_1    & a_{12} & \cdots & a_{1n} \\
+            b_2    & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            b_n    & a_{n2} & \cdots & a_{nn}
+        \end{vmatrix},\ldots,D_n=\begin{vmatrix}
+            a_{11} & a_{12} & \cdots & b_1    \\
+            a_{21} & a_{22} & \cdots & b_2    \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & b_n
+        \end{vmatrix}$.
+
+    \begin{enumerate}
+        \item 方程组 \ref{eq:13:线性方程组1} 只有零解$\iff D \neq 0$，\\
+              方程组 \ref{eq:13:线性方程组1} 有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
+
+        \item 方程组 \ref{eq:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，\\
+              当$D=0$时，方程组 \ref{eq:13:线性方程组2} 要么无解，要么有无穷多解.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    我们不区分齐次与非齐次方程组进行证明，实际上齐次的结论只是下面证明的特例. 事实上，对于任意线性方程组$AX=b$，其中$b$可以是零向量，若$D=|A|\neq 0$，则$A$可逆，因此方程组有解
+    \[X=A^{-1}b=\frac{1}{|A|}A^*b=\frac{1}{D}A^*b,\]
+    即
+    \[\begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix}= \dfrac{1}{D}\begin{pmatrix}
+            A_{11} & A_{21} & \cdots & A_{n1} \\
+            A_{12} & A_{22} & \cdots & A_{n2} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            A_{1n} & A_{2n} & \cdots & A_{nn}
+        \end{pmatrix}\begin{pmatrix}
+            b_1 \\ b_2 \\ \vdots \\ b_n
+        \end{pmatrix},\]
+    于是根据\autoref{def:递归式定义}，
+    \[x_i=\frac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\frac{D_i}{D}\enspace(i=1,2,\ldots,n)\]
+    事实上此时解唯一，因为可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
+
+    反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:双射等价条件} 可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$. 综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
+
+    剩下的无解、无穷解的结论就很显然了. 若$AX=b$无解或有无穷解，反证法，若$D\neq 0$，则$A$可逆，从而$AX=b$有唯一解，矛盾，故$D=0$. 反之，若$D=0$，则$A$不可逆，反证法，若$AX=b$有唯一解，$A$可逆，矛盾，故$AX=b$无解或有无穷解（完全就是前面$AX=b$有唯一解$\iff D=|A|\neq 0$的推论）.
+\end{proof}
+
+我们可以用 Cramer 法则求解线性方程组，但要注意只有方程个数与未知数个数相等时才能使用，并且需要系数行列式不为0.
 \begin{example}{}{}
-    设$n$阶矩阵$A$的行列式$|A|\neq 0$，记$A$的前$n-1$列形成的矩阵为$A_1$，$A$的第$n$列为$\vec{b}$，问：线性方程组$A_1X=\vec{b}$是否有解？
+    求解方程组$\begin{cases}
+            x_1+x_2+x_3=1          \\
+            a_1x_1+a_2x_2+a_3x_3=0 \\
+            a_1^2x_1+a_2^2x_2+a_3^2x_3=0
+        \end{cases}$，其中$a_1,a_2,a_3$两两不等.
 \end{example}
 
 \begin{solution}
-    无解；$|A|\neq 0$可知$r(A)=n$，$r(A_1)=n-1$，因此系数矩阵$A_1$的秩小于增广矩阵$A$的秩$n$，故无解.
+    $a_1,a_2,a_3$两两不等时，我们有
+    \[D=\begin{vmatrix}
+            1     & 1     & 1     \\
+            a_1   & a_2   & a_3   \\
+            a_1^2 & a_2^2 & a_3^2
+        \end{vmatrix}=(a_2-a_1)(a_3-a_1)(a_3-a_2)\neq 0,\]
+    根据Cramer法则，方程组有唯一解，且
+    \[D_1=\begin{vmatrix}
+            1 & 1     & 1     \\
+            0 & a_2   & a_3   \\
+            0 & a_2^2 & a_3^2
+        \end{vmatrix}=(a_3-a_2)a_2a_3,\]
+    \[D_2=\begin{vmatrix}
+            1     & 1 & 1     \\
+            a_1   & 0 & a_3   \\
+            a_1^2 & 0 & a_3^2
+        \end{vmatrix}=(a_1-a_3)a_1a_3,\]
+    \[D_3=\begin{vmatrix}
+            1     & 1     & 1 \\
+            a_1   & a_2   & 0 \\
+            a_1^2 & a_2^2 & 0
+        \end{vmatrix}=(a_2-a_1)a_1a_2,\]
+    因此
+    \[x_1=\dfrac{D_1}{D}=\dfrac{a_2a_3}{(a_2-a_1)(a_3-a_1)},\]\[x_2=\dfrac{D_2}{D}=\dfrac{a_1a_3}{(a_1-a_2)(a_3-a_2)},\]\[x_3=\dfrac{D_3}{D}=\dfrac{a_1a_2}{(a_1-a_3)(a_2-a_3)}.\]
 \end{solution}
+
+因此通过上述定理我们首先了解了线性方程组有无解的一般准则，然后讨论了有解前提下唯一解、无穷解对应于什么情况，并且给出了求解的方法. 事实上，有关线性方程组解的情况的讨论至此文意已尽. 无论是理论层面或是解决题目的方面，这两个定理都为我们提供了足量的信息.
 
 \subsection{齐次线性方程组解的一般理论}
 
@@ -58,6 +168,13 @@
 \end{proof}
 
 实际上在前面的讨论中，无论是\nameref{thm:有解条件}的结论，都与列向量组成的线性空间有关，仿佛从未出现过行向量有关的定理. 事实上，我们将在未来讨论了内积空间正交性后展开对行向量空间的讨论，现在囿于概念上的缺乏无法叙述相关定理.
+
+\begin{theorem}{}{基础解系是基}
+    设$AX=\vec{0}$的基础解系为$X_1,\ldots,X_{n-r}$，则$X_1,\ldots,X_{n-r}$线性无关.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
 
 \subsection{非齐次线性方程组解的一般理论}
 
@@ -150,6 +267,77 @@
     即$\eta_2-\eta_1,\eta_3-\eta_1,\ldots,\eta_{n-r+2}-\eta_1$线性无关，因此$AX=\vec{0}$的解向量至少有$n-r+1$个线性无关，这与$AX=\vec{0}$的解空间维数为$n-r$矛盾，故假设不成立，命题得证.
 \end{proof}
 
+\section{线性方程组解的几何解释}
+
+接下来从对偶空间的角度探讨一下线性方程组的结构问题. 考虑方程组 $Ax = b$，我们将其写开：
+
+\[
+\begin{cases}
+\begin{aligned}
+    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n & = b_1 \\
+    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n & = b_2 \\
+    \vdotswithin{=} \\
+    a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n & = b_m
+\end{aligned}
+\end{cases}
+\]
+
+我们最开始已经提到过这个直觉：线性方程组无非是一族超平面的交. 现在，用线性泛函的语言重述一下这个性质，记：
+
+\[
+\varphi_k(x_1, x_2, \cdots, x_n) = a_{k1} x_1 + a_{k2} x_2 + \cdots + a_{kn} x_n
+\]
+
+则我们知道，上述线性方程组的可行解就是
+
+\[
+\bigcap_{i = 1}^k \varphi_i^{-1} (b_i)
+\]
+
+我们知道，这样的一组纤维构成一个仿射子集，而仿射子集无非就是一个超平面，所以，现在上面的直观已经被用代数的语言描述了. 接下来，让我们考察仿射子集的交，也就是以下引理：
+
+\begin{lemma}{}{}
+    仿射子集的交如果非空，则它依然是仿射子集.
+\end{lemma}
+
+从直观上看，这个结果就是说，两个线性的东西的交集依然是线性的. 不妨设想一下三维情形，两个平面交于一条直线，而直线依然是一个线性的对象. 在下面的证明中，我们会给出这条直线的构造，而在后面关于射影几何代数的未竟专题当中，这将称为我们讨论的一个核心.
+
+\begin{proof}
+    考虑两个仿射子集 $v_1 + W_1, v_2 + W_2$. 如果向量 $u \in v_1 + W_1 \cap v_2 + W_2$，那么也就是说它可以表示成
+
+    \[
+    u = v_1 + w_1 = v_2 + w_2
+    \]
+
+    为了证明它是一个仿射子集，显然的想法就是，它减掉某一个东西之后构成一个线性空间. 那么这个东西是什么呢？很简单，只要假定它存在就可以了. 令 $u_0 \in v_1 + W_1 \cap v_2 + W_2$，记其为 $v_1 + \hat w_1 = v_2 + \hat w_2$，则
+
+    \[
+    u - u_0 = w_1 - \hat w_1 = w_2 - \hat w_2 \in W_1 \cap W_2
+    \]
+
+    因此，下面我们直接考虑证明 $v_1 + W_1 \cap v_2 + W_2 = u_0 + W_1 \cap W_2$. 现在，我们已经证明了左边包含于右边. 考虑 $u_0 + w \in u_0 + W_1 \cap W_2$，则我们知道
+
+    \[
+    u_0 + w = v_1 + \hat w_1 + w = v_1 + (\hat w_1 + w) \in v_1 + W_1
+    \]
+
+    同理可证 $u_0 + w \in v_2 + W_2$. 因此右边包含于左边. 从此得证.
+\end{proof}
+
+参照这个构造，应用归纳法，我们知道：
+
+\[
+\bigcap_{i = 1}^n v_i + W_i = v_0 + \bigcap_{i = 1}^n W_i
+\]
+
+其中 $v_0$ 为一个已经选出的代表元. 因此，我们展开线性方程的可行解的表达方式，因为 $\varphi_i^(-1) (b) = v_0 + \ker \varphi$，所以：
+
+\[
+\bigcap_{i = 1}^m \varphi_i^{-1} (b_i) = v_0 + \bigcap_{i = 0}^m \ker \varphi_i
+\]
+
+我们将前面部分称为特解，后面部分称为通解. 而通解如我们所见就是 $Ax = 0$ 的解. 于是，参照\autoref{thm:零化子维数}以及\autoref{lem:NU性质}，$Ax = 0$ 的解空间的维数就是 $\dim N(\mathop{\mathrm{span}} \{\varphi_i\}) = \dim V - \mathop{\mathrm{span}} \{\varphi_i\}$. 因此，我们只需考察在 $m$ 个线性泛函当中，有多少个是线性无关的. 而在我们给出了对偶空间中的坐标之后，这就等价于是一个求矩阵秩的问题了.
+
 \section{理论应用}
 
 本节我们将综合线性方程组解的一般理论和之前所学的知识讨论一些秩的等式/不等式问题. 我们首先来看四个最为经典的问题：
@@ -209,7 +397,7 @@
     \end{enumerate}
 \end{proof}
 
-实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系（复杂的题目可能涉及子空间交与和的维数公式）以及已知的简单秩不等式进行证明. 可能部分题目较为困难，但至少请掌握上面例题中的情况.
+实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系（复杂的题目可能涉及子空间交与和的维数公式）以及已知的简单秩不等式进行证明. 可能部分题目较为困难，但至少请掌握上面例题中的情况. 接下来我们讨论伴随矩阵的秩的问题，这一例题的结论和证明都非常重要：
 \begin{example}{}{伴随矩阵的秩}
     设$A^*$为矩阵$A$的伴随矩阵，证明：
     \[r(A^*)=\begin{cases}
@@ -229,6 +417,33 @@
     \end{enumerate}
 \end{proof}
 
+接下来是一个利用\nameref{thm:线性空间维数公式}以及\nameref{thm:线性映射基本定理}中``设小扩大''的思想解决的问题：
+\begin{example}{}{维数公式技巧例题}
+    已知$A,B$分别是数域$\mathbf{F}$上的$l \times k$和$k \times n$矩阵，$X$是$n \times 1$的列向量. 证明：所有满足$ABX=0$的$BX$构成一个线性空间$V$，且$\dim V = r(B) - r(AB)$.
+\end{example}
+
+\begin{proof}
+    $V$是线性空间只需要说明其中元素关于加法数乘封闭即可，因为这样$V$就是$\mathbf{F}^k$的子空间. 这一证明非常基本，我们在此略过.
+
+    记$V_1=\{X\mid BX=0\},\enspace V_2=\{X\mid ABX=0\}$，则$V_1\subseteq V_2$，因为$\forall X\in V_1$，有$BX=0$，因此$ABX=A0=0$，即$X\in V_2$，因此$V_1\subseteq V_2$. 利用``设小扩大''的思想，取$V_1$的一组基$\alpha_1,\ldots,\alpha_r$，则可以扩充为$V_2$的一组基，记为$\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\ldots,\alpha_m$，则$r=n-r(B)$，$s=n-r(AB)$，于是
+    \begin{align*}
+        V & =\{BX\mid ABX=0\}                                                \\
+          & =\spa(B\alpha_1,\ldots,B\alpha_r,B\alpha_{r+1},\ldots,B\alpha_m) \\
+          & =\spa(B\alpha_{r+1},\ldots,B\alpha_m).
+    \end{align*}
+    下面证明$B\alpha_{r+1},\ldots,B\alpha_m$线性无关. 为此，设
+    \[c_{r+1}B\alpha_{r+1}+\cdots+c_mB\alpha_m=0,\]
+    则
+    \[B(c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m)=0,\]
+    因此$c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m\in V_1$，因此存在$c_1,\ldots,c_r$使得
+    \[c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_n=c_1\alpha_1+\cdots+c_r\alpha_r,\]
+    即
+    \[c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m-c_1\alpha_1-\cdots-c_r\alpha_r=0.\]
+    由于$\alpha_1,\ldots,\alpha_m$线性无关，因此
+    \[c_{r+1}=\cdots=c_m=c_1=c_2=\cdots=c_r=0,\]
+    因此$B\alpha_{r+1},\ldots,B\alpha_m$线性无关，因此$V$的维数为$s-r=(n-r(AB))-(n-r(B))=r(B)-r(AB)$，得证.
+\end{proof}
+
 \section{线性方程组拓展题型}
 
 本节我们将介绍与线性方程组有关的一些题型，可能与高中数学讨论``题型''的学习风格有些类似. 需要注意的是，除了含参问题外，其余问题我们都将分别从齐次和非齐次两个方面进行讨论，给出问题的一般解法. 但实际上这里给出的解法并非能直接套用到所有的题目中，在习题中我们会遇到更多特别的题目. 因此更重要的应当是理解解题思路，而不是死记硬背解题方法.
@@ -237,7 +452,7 @@
 
 此类问题一般考察对于含参数的线性方程组，参数取值如何时有解/无解/有唯一解等. 本质而言，\nameref{thm:有解条件}完全可以解决这一问题.
 
-事实上，利用\autoref{thm:方程组解} 在有解情况下只需计算行列式判断非常方便，但判断无解需要利用\nameref{thm:有解条件}，其中线性相关性的判断通常仍然需要我们对系数矩阵进行高斯消元法. 我们来看一个简单的例子：
+事实上，利用\autoref{thm:方程组解} 在有解情况下只需计算行列式判断非常方便，但判断无解需要利用\nameref{thm:有解条件}，其中线性相关性的判断通常仍然需要我们对系数矩阵进行高斯-若当消元法. 我们来看一个简单的例子：
 \begin{example}{}{}
     当$k$取何值时，方程组：
     \[\begin{cases}
@@ -246,7 +461,7 @@
     有唯一解、无解、有无穷多解？在有解的情况下，求出方程组的全部解.
 \end{example}
 \begin{solution}
-    对于有无解的区别，我们一般都考虑直接使用高斯消元法. 由高斯消元法有（省略中间步骤直接得到阶梯矩阵）：
+    对于有无解的区别，我们一般都考虑直接使用高斯-若当消元法. 由高斯-若当消元法有（省略中间步骤直接得到阶梯矩阵）：
     \[\begin{pmatrix}
             1  & 1  & k & 4   \\
             -1 & k  & 1 & k^2 \\
@@ -932,9 +1147,40 @@
         \end{enumerate}
         \end{answer}
 
+        \item 设$a_1,a_2,\ldots,a_n$为互不相等的实数，$b_1,b_2,\ldots,b_n$为任意给定的实数. 证明：存在唯一的$n-1$次多项式，满足$f(a_i)=b_i,\enspace i=1,2,\ldots,n$.
+        \begin{answer}
+            设 $f(x) = c_0+c_1x+c_2x^2+\cdots+c_{n-1}x^{n-1}$，则有
+            \[\begin{cases} \begin{aligned}
+                        c_0+c_1a_1+c_2a_1^2+\cdots+c_{n-1}a_1^{n-1} & = b_1,            \\
+                        c_0+c_1a_2+c_2a_2^2+\cdots+c_{n-1}a_2^{n-1} & = b_2,            \\
+                                                                    & \vdotswithin{ = } \\
+                        c_0+c_1a_n+c_2a_n^2+\cdots+c_{n-1}a_n^{n-1} & = b_n.            \\
+                    \end{aligned} \end{cases}\]
+            注意此处我们研究的对象是 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$. 因为系数行列式
+            \[D = \begin{vmatrix}
+                    1      & a_1    & \cdots & a_1^{n-1} \\
+                    1      & a_2    & \cdots & a_2^{n-1} \\
+                    \vdots & \vdots & \ddots & \vdots    \\
+                    1      & a_n    & \cdots & a_n^{n-1} \\
+                \end{vmatrix} = \prod_{1 \leqslant j < i \leqslant n} (a_i-a_j) \neq 0.\]
+            所以由 Cramer 法则，上述关于 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$ 的方程组有唯一解，所以满足条件的多项式函数 $f$ 是唯一存在的.
+        \end{answer}
+
         \item 设$A$为$m \times n$矩阵，$r(A)=m$，$B$是$m$阶可逆矩阵，已知$A$的行空间$R(A^\mathrm{T})$是方程组$CX=\vec{0}$的解空间，证明：$BA$的行向量也是$CX=\vec{0}$的一个基础解系.
         \begin{answer}
             由$r(A)=m$可知，$A$的$m$个行向量（$A^\mathrm{T}$的$m$个列向量）线性无关，它们是方程组$CX=0$的一个基础解系. 由$CA^\mathrm{T}=O$和$n-r(C)=m$，得$r(C)=n-m$. 因此，由$CA^\mathrm{T}B^\mathrm{T}=C(BA^\mathrm{T})=O$，可知$(BA)^\mathrm{T}$的$m$个行向量线性无关，它们也是$CX=0$的一个基础解系.
+        \end{answer}
+
+        \item 设$A$是数域$\mathbf{F}$上的一个$n$阶可逆方阵，$A$的前$r$个行向量组成的矩阵为$B$，后$n-r$个行向量组成的矩阵为$C$，$n$元线性方程组$BX=0$与$CX=0$的解空间分别为$V_1,V_2$. 证明：$\mathbf{F}^n=V_1\oplus V_2$.
+        \begin{answer}
+            先记$W=V_1+V_2$，若$\alpha\in V_1\cap V_2$，则$B\alpha=C\alpha=0$，所以
+            \[A\alpha=\begin{pmatrix}
+                    B \\
+                    C
+                \end{pmatrix}\alpha=0,\]
+            由于$A$可逆，因此$\alpha=0$，即$V_1\cap V_2=\{0\}$，因此$V_1+V_2$是直和，因此只需证$W=\mathbf{F}^n$即可. 事实上，我们知道$r(B)=r,r(C)=n-r$，因此$\dim V_1=n-r,\enspace \dim V_2=n-(n-r)=r$，所以
+            \[\dim W=\dim V_1+\dim V_2=n-r+r=n=\dim \mathbf{F}^n,\]
+            又$W=V_1\oplus V_2\subseteq \mathbf{F}^n$，因此$W=\mathbf{F}^n$，故得证.
         \end{answer}
 
         \item 设$A$是$n$阶矩阵，且$A_{11}\neq 0$，证明：方程组$AX=\vec{b}$（$\vec{b}$为非零向量）有无穷多解的充要条件为$A^*\vec{b}=\vec{0}$.

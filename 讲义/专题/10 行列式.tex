@@ -4,11 +4,11 @@
 
 事实上，我们将在本讲义之后再介绍一次行列式，那时我们将会介绍行列式更丰富的应用，并表明是否引入行列式可能对于线性代数完整理论的构建而言重要程度是有限的. 但是我们完全无法否认行列式的历史地位，从17世纪起行列式就是用于求解线性方程组的重要的工具，历经数百年也逐渐发展出了许多重要的理论和应用，因此我们仍然需要完整的章节来讲述行列式的相关内容.
 
-\section{行列式的定义}
+\section{行列式的公理化定义}
+
+\subsection{从判别式到公理化定义}
 
 或许行列式是线性代数基础内容中最难下定义的一个概念了——不同的教材通常会给出不同的行列式引入和定义方式，且不同的思路各有其优劣. 通常有三种基本的定义方式：``逆序数''定义（最常见的方式）、递归式定义（按行（列）展开）以及公理化定义（使用一些规则描述），这三种定义方式也是完全等价的. 在本讲中，我们从公理化定义出发，将递归式定义作为性质进行介绍，然后在行列式的基本运算中引入逆序数定义. 在读者已经适应公理化定义的体系后，我想这样的思路更具有几何直观，很多的推导也非常便捷.
-
-\subsection{公理化定义}
 
 \begin{definition}{行列式}{公理化定义} \index{hanglieshi@行列式 (determinant)}
     数域$\mathbf{F}$上的一个$n$阶\term{行列式}是取值于$\mathbf{F}$的$n$个$n$维向量$\alpha_1,\alpha_2,\ldots,\alpha_n \in \mathbf{F}^n$的一个函数，且$\forall \alpha_i,\beta_i \in \mathbf{F}^n$和$\forall \lambda \in \mathbf{F}$，满足下列规则：
@@ -30,6 +30,10 @@
 在公理化定义中，我们将行列式定义为一个满足特定的运算性质的从列向量组合到数的函数. 需要注意的是，行列式除了上述记法外，如果设矩阵 $A = (\alpha_1,\ldots,\alpha_n)$，那么行列式 $D(\alpha_1,\ldots,\alpha_n)$ 也可以记为 $|A|$.
 
 除此之外，我们不难看出公理化定义可以形象地理解为对$n$维空间中体积的定义，对几何意义感兴趣的同学可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容.
+
+\subsection{行列式的简单性质}
+
+下面的例子给出了从公理化定义出发证明的行列式的一些简单性质：
 \begin{example}{}{公理化定义}
     使用\autoref{def:公理化定义} 验证下述命题的正确性：
     \begin{enumerate}
@@ -90,6 +94,7 @@
     \end{enumerate}
 \end{proof}
 
+下面这一例子应用了行列式的公理化定义：
 \begin{example}{}{公理化定义2}
     设向量$\alpha_1,\alpha_2,\beta_1,\beta_2$为三维列向量，又$A=(\alpha_1,\alpha_2,\beta_1),B=(\alpha_1,\alpha_2,\beta_2)$，且$|A|=3$，$|B|=2$，求$|2A+3B|$.
 \end{example}
@@ -104,6 +109,137 @@
     \end{align*}
 \end{solution}
 
+\section{行列式的逆序数定义}
+
+\subsection{从判别式到逆序数定义}
+
+
+\subsection{从公理化定义到逆序数定义}
+
+给定一个行列式
+\[|A| = \begin{vmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nn}
+    \end{vmatrix},\]
+到目前为止，根据上面的例题我们已经有三种基本方法来计算行列式的值. 但是，有的读者或许对这三种逐步展开或变换的方法感到繁琐：或许我们可以直接写出一个公式来计算行列式的值？当然这样的公式需要我们通过逐步的展开或变换来得到.
+
+我们使用公理化定义来展开这一行列式，为了叙述方便，我们记 $A = (\alpha_1,\ldots,\alpha_n)$，并记 $e_i$ 为 $n$ 维单位向量，即 $e_i = (0,\ldots,1,\ldots,0)$，其中 $1$ 在第 $i$ 个位置. 这样，行列式的第 $j$ 列就可以表达为
+
+\[\alpha_j = a_{1j}e_1 + a_{2j}e_2 + \cdots + a_{nj}e_n = \sum_{i=1}^{n}a_{ij}e_i.\]
+
+于是，根据行列式公理化定义\autoref{def:公理化定义} 的线性性质，我们有
+
+\begin{align*}
+    |A| & = |\alpha_1,\alpha_2,\ldots,\alpha_n| = |\sum\limits_{i=1}^{n}a_{i1}e_i,\alpha_2,\ldots,\alpha_n| \\
+        & = \sum\limits_{i=1}^{n}a_{i1}|e_i,\alpha_2,\ldots,\alpha_n|.
+\end{align*}
+
+对行列式 $|e_i,\alpha_2,\ldots,\alpha_n|$ 继续展开，由 $\alpha_2 = \sum\limits_{j=1}^{n}a_{j2}e_j$，我们有
+
+\[|e_i,\alpha_2,\ldots,\alpha_n| = \sum\limits_{j=1}^{n}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|.\]
+
+于是 $|A| = \sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{i1}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|$. 不断展开，我们最终得到
+
+\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} a_{k_11}a_{k_22}\cdots a_{k_nn}|e_{k_1},e_{k_2},\ldots,e_{k_n}|.\]
+
+注意行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 在某对 $k_i,k_j$ 重复时的值为 $0$，所以在不为 $0$ 的项中，$(k_1,k_2,\ldots,k_n)$ 必定是 $(1,2,\ldots,n)$ 的一个全排列，即在 $k_1,k_2,\ldots,k_n$ 中，$1,2,\ldots,n$ 中每个数都出现且仅出现一次. 设 $S_n$ 为 $1,2,\ldots,n$ 所有全排列构成的集合，那么 $S_n$ 的元素个数为 $n!$.
+
+进一步地，当 $(k_1,k_2,\ldots,k_n) \in S_n$ 时，行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 的每一行、每一列都有且只有一个元素等于 $1$，其余元素都等于 $0$，因此 $|e_{k_1},e_{k_2},\ldots,e_{k_n}| = \pm 1$，因此 $|A|$ 的展开式一共有 $n!$ 项，可以表达为
+
+\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} (-1)^\varepsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
+
+那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\ldots,e_n| = 1$ 的次数有关，因此 $\varepsilon$ 只和 $k_1,k_2,\ldots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\varepsilon$ 的值：
+
+\begin{definition}{逆序数}{}
+    设 $k_1,k_2,\ldots,k_n \in S_n$，如果 $i < j$ 且 $k_i > k_j$，则称 $k_i,k_j$ 是这个排列的一个\term{逆序对}\index{nixudui@逆序对}，排序中所有逆序对的总数称为这个排列的\term{逆序数}\index{nixushu@逆序数}，记作 $\tau(k_1,k_2,\ldots,k_n)$.
+\end{definition}
+
+逆序数的定义是非常易懂的，就是位置在前但数值更大的情况出现的次数. 直观上来看，逆序数衡量了与\term{常序排列} $(1,2,\ldots,n)$ 之间的距离，逆序数越大，排列与常序排列的差距越大. 逆序数的求法也非常简单：设排列为 $(k_1,k_2,\ldots,k_n)$，那么我们先看 $k_1$ 后面有多少个数比 $k_1$ 小，然后看 $k_2$ 后面有多少个数比 $k_2$ 小，以此类推，最后将所有这些数相加即可. 我们来看一个简单的例子：
+
+\begin{example}{}{}
+    求排列 $(3,1,4,2)$ 的逆序数.
+\end{example}
+
+\begin{solution}
+    我们可以直接计算：$3$ 后面有 $2$ 个数比 $3$ 小，$1$ 后面没有数比 $1$ 小，$4$ 后面有 $1$ 个数比 $4$ 小，$2$ 后面没有数比 $2$ 小，因此逆序数为 $2+0+1+0=3$.
+\end{solution}
+
+基于逆序数的定义，我们可以将排列做一个简单的分类：
+
+\begin{definition}{奇排列和偶排列}{}
+    如果一个排列的逆序数是偶数（包括零），则称这个排列是\term{偶排列}\index{oupailie@偶排列}；如果一个排列的逆序数是奇数，则称这个排列是\term{奇排列}\index{jipailie@奇排列}.
+\end{definition}
+
+不难证明奇偶排列有如下简单的性质：
+\begin{example}{奇偶排列的性质}{}
+    \begin{enumerate}
+        \item 设 $(k_1,k_2,\ldots,k_n) \in S_n$，若将 $k_i$ 与 $k_j$ 交换，其余数不动，那么排列的奇偶性会改变；
+        \item 设 $n \geqslant 2$，则 $S_n$ 中奇排列和偶排列的个数相等.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 首先我们考虑相邻两个数的对换. 若 $k_i > k_{i+1}$，则对换后逆序数会减少 $1$，因此奇偶性会改变；若 $k_i < k_{i+1}$，则对换后逆序数会增加 $1$，奇偶性也会改变. 对于一般情形，$k_i$ 和 $k_j$ 的对换可以通过多次相邻两个数的对换来实现：不妨设 $i < j$，那么我们可以先将 $k_i$ 与 $k_{i+1}$ 对换，然后与 $k_{i+2}$ 对换，以此类推，最后与 $k_j$ 对换，这样就可以将 $k_i$ 和 $k_j$ 对换（一共对换了 $j-i$ 次）；接下来还需要将 $k_j$ 与 $k_{j-1}$ 对换，然后与 $k_{j-2}$ 对换，以此类推，最后与 $k_{i+1}$ 对换（一共对换了 $j-i-1$ 次），这样就可以将 $k_j$ 和 $k_i$ 对换. 因此，总的相邻对换次数为 $j-i+j-i-1=2(j-i)-1$，奇偶性会改变.
+        \item 设 $S_n$ 中奇排列有 $p$ 个，偶排列有 $q$ 个，因为 $n \geqslant 2$，故可以将每个奇排列的头两个数对换一下，则所有的奇排列都变成了互不相同的偶排列，故 $p \leqslant q$；同理，可以将每个偶排列的头两个数对换一下，所有的偶排列都变成了互不相同的奇排列，故 $q \leqslant p$，因此 $p = q$.
+    \end{enumerate}
+\end{proof}
+
+讨论到此，我们终于可以给出逆序数与行列式展开中每项的符号之间的联系：
+
+\begin{theorem}{}{}
+    设 $(k_1,k_2,\ldots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\ldots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\ldots,k_n)$ 变为 $(1,2,\ldots,n)$，因此 $\varepsilon = \tau(k_1,k_2,\ldots,k_n)$.
+\end{theorem}
+
+\begin{proof}
+    对 $n$ 进行归纳. $n=1$ 时结论显然成立，设对 $1,2,\ldots,n-1$ 的任一排列结论成立，我们来证明 $n$ 的情形. 设 $n$ 在排列 $(k_1,\ldots,k_n)$ 的第 $i$ 位，即 $k_i = n$，$n$ 贡献的逆序数为 $m_i = n - i$. 将 $k_i$ 与 $k_{i+1}$ 对换，再与 $k_{i+2}$ 对换，以此类推，最后与 $k_n$ 对换，这样 $n$ 就到了第 $n$ 位. 注意到
+
+    \[ \tau(k_1,\ldots,k_n) = \tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) + m_i,\]
+
+    且 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 经过 $\tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 次相邻对换可以变为 $(1,2,\ldots,n-1)$，结合上面的讨论可知 $(k_1,\ldots,k_n)$ 经过 $\tau(k_1,\ldots,k_n)$ 次相邻对换可以变为 $(1,2,\ldots,n)$，因此 $\varepsilon = \tau(k_1,\ldots,k_n)$.
+\end{proof}
+
+由此我们可以得到行列式的逆序数定义：
+
+\begin{theorem}{行列式的逆序数定义}{}
+    设
+    \[|A| = \begin{vmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & a_{nn}
+        \end{vmatrix},\]
+    则 $|A| = \sum\limits_{(k_1,k_2,\ldots,k_n) \in S_n} (-1)^{\tau(k_1,k_2,\ldots,k_n)}a_{k_11}a_{k_22}\cdots a_{k_nn}$.
+\end{theorem}
+
+根据逆序数定义，我们可以重解 \autoref{ex:行列式基本运算} 中的行列式：
+\begin{solution}
+    我们知道三阶行列式的逆序数计算公式为 $D=\begin{vmatrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+        \end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$，因此$D=1 \cdot 3 \cdot 2+2 \cdot 1 \cdot 3+3 \cdot 2 \cdot 1-3 \cdot 3 \cdot 3-2 \cdot 2 \cdot 2-1 \cdot 1 \cdot 1=-18$.
+\end{solution}
+
+下面的例子会让我们更进一步地理解逆序数定义中``排列''的含义：
+\begin{example}{}{}
+    设
+    \[f(x)=\begin{vmatrix}
+            x-a_{11} & -a_{12}  & \cdots & -a_{1n}  \\
+            -a_{21}  & x-a_{22} & \cdots & -a_{2n}  \\
+            \vdots   & \vdots   & \ddots & \vdots   \\
+            -a_{n1}  & -a_{n2}  & \cdots & x-a_{nn}
+        \end{vmatrix},\]
+    其中$x$是未知数，$a_{ij}$是常数，证明：$f(x)$是一个最高次项系数为1的$n$次多项式，且其$n-1$次项的系数等于$-(a_{11}+\cdots+a_{nn})$.
+\end{example}
+
+\begin{proof}
+    根据逆序数定义，我们知道 $f(x)$ 的最高次项出现在展开式中的单项 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$ 中，且展开式中的其他单项作为 $x$ 的多项式的次数必定小于等于 $n-2$（因为我们要求 $(k_1,\ldots,k_n)$ 是全排列）. 因此 $f(x)$ 是一个最高次项系数为 $1$ 的 $n$ 次多项式，且其 $n-1$ 次项的系数只能来源于 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$，故等于 $-(a_{11}+\cdots+a_{nn})$.
+\end{proof}
+
+\section{行列式的性质}
 \subsection{递归式定义}
 
 首先我们需要引入余子式和代数余子式的概念：
@@ -486,8 +622,9 @@
 
 还有一部分由这些性质可以推导的其他性质将出现在C组习题中供参考. 这部分主要是技巧性内容，可以选择性完成.
 
-\section{行列式的基本运算}
+\section{行列式的计算}
 
+\subsection{行列式的基本计算}
 首先我们用一个简单的三阶行列式的例子回顾行列式的多种最基本的计算方法. 这里选取三阶行列式主要原因也是三阶行列式在未来实际解题中最为常见，这里希望读者比较选择最适合自己的方法在未来更便捷地使用：
 \begin{example}{}{行列式基本运算}
     计算行列式$D=\begin{vmatrix}
@@ -563,131 +700,6 @@
     \end{enumerate}
 \end{solution}
 
-\subsection{逆序数定义}
-
-给定一个行列式
-\[|A| = \begin{vmatrix}
-        a_{11} & a_{12} & \cdots & a_{1n} \\
-        a_{21} & a_{22} & \cdots & a_{2n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{n1} & a_{n2} & \cdots & a_{nn}
-    \end{vmatrix},\]
-到目前为止，根据上面的例题我们已经有三种基本方法来计算行列式的值. 但是，有的读者或许对这三种逐步展开或变换的方法感到繁琐：或许我们可以直接写出一个公式来计算行列式的值？当然这样的公式需要我们通过逐步的展开或变换来得到.
-
-我们使用公理化定义来展开这一行列式，为了叙述方便，我们记 $A = (\alpha_1,\ldots,\alpha_n)$，并记 $e_i$ 为 $n$ 维单位向量，即 $e_i = (0,\ldots,1,\ldots,0)$，其中 $1$ 在第 $i$ 个位置. 这样，行列式的第 $j$ 列就可以表达为
-
-\[\alpha_j = a_{1j}e_1 + a_{2j}e_2 + \cdots + a_{nj}e_n = \sum_{i=1}^{n}a_{ij}e_i.\]
-
-于是，根据行列式公理化定义\autoref{def:公理化定义} 的线性性质，我们有
-
-\begin{align*}
-    |A| & = |\alpha_1,\alpha_2,\ldots,\alpha_n| = |\sum\limits_{i=1}^{n}a_{i1}e_i,\alpha_2,\ldots,\alpha_n| \\
-        & = \sum\limits_{i=1}^{n}a_{i1}|e_i,\alpha_2,\ldots,\alpha_n|.
-\end{align*}
-
-对行列式 $|e_i,\alpha_2,\ldots,\alpha_n|$ 继续展开，由 $\alpha_2 = \sum\limits_{j=1}^{n}a_{j2}e_j$，我们有
-
-\[|e_i,\alpha_2,\ldots,\alpha_n| = \sum\limits_{j=1}^{n}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|.\]
-
-于是 $|A| = \sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{i1}a_{j2}|e_i,e_j,\alpha_3,\ldots,\alpha_n|$. 不断展开，我们最终得到
-
-\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} a_{k_11}a_{k_22}\cdots a_{k_nn}|e_{k_1},e_{k_2},\ldots,e_{k_n}|.\]
-
-注意行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 在某对 $k_i,k_j$ 重复时的值为 $0$，所以在不为 $0$ 的项中，$(k_1,k_2,\ldots,k_n)$ 必定是 $(1,2,\ldots,n)$ 的一个全排列，即在 $k_1,k_2,\ldots,k_n$ 中，$1,2,\ldots,n$ 中每个数都出现且仅出现一次. 设 $S_n$ 为 $1,2,\ldots,n$ 所有全排列构成的集合，那么 $S_n$ 的元素个数为 $n!$.
-
-进一步地，当 $(k_1,k_2,\ldots,k_n) \in S_n$ 时，行列式 $|e_{k_1},e_{k_2},\ldots,e_{k_n}|$ 的每一行、每一列都有且只有一个元素等于 $1$，其余元素都等于 $0$，因此 $|e_{k_1},e_{k_2},\ldots,e_{k_n}| = \pm 1$，因此 $|A|$ 的展开式一共有 $n!$ 项，可以表达为
-
-\[|A| = \sum\limits_{k_1,k_2,\ldots,k_n} (-1)^\varepsilon a_{k_11}a_{k_22}\cdots a_{k_nn},\]
-
-那么接下来的任务就是确定每项 $-1$ 的幂次，这显然与行列对换得到 $|e_1,e_2,\ldots,e_n| = 1$ 的次数有关，因此 $\varepsilon$ 只和 $k_1,k_2,\ldots,k_n$ 的取值有关. 接下来我们引入逆序数的概念来帮助我们确定 $\varepsilon$ 的值：
-
-\begin{definition}{逆序数}{}
-    设 $k_1,k_2,\ldots,k_n \in S_n$，如果 $i < j$ 且 $k_i > k_j$，则称 $k_i,k_j$ 是这个排列的一个\term{逆序对}\index{nixudui@逆序对}，排序中所有逆序对的总数称为这个排列的\term{逆序数}\index{nixushu@逆序数}，记作 $\tau(k_1,k_2,\ldots,k_n)$.
-\end{definition}
-
-逆序数的定义是非常易懂的，就是位置在前但数值更大的情况出现的次数. 直观上来看，逆序数衡量了与\term{常序排列} $(1,2,\ldots,n)$ 之间的距离，逆序数越大，排列与常序排列的差距越大. 逆序数的求法也非常简单：设排列为 $(k_1,k_2,\ldots,k_n)$，那么我们先看 $k_1$ 后面有多少个数比 $k_1$ 小，然后看 $k_2$ 后面有多少个数比 $k_2$ 小，以此类推，最后将所有这些数相加即可. 我们来看一个简单的例子：
-
-\begin{example}{}{}
-    求排列 $(3,1,4,2)$ 的逆序数.
-\end{example}
-
-\begin{solution}
-    我们可以直接计算：$3$ 后面有 $2$ 个数比 $3$ 小，$1$ 后面没有数比 $1$ 小，$4$ 后面有 $1$ 个数比 $4$ 小，$2$ 后面没有数比 $2$ 小，因此逆序数为 $2+0+1+0=3$.
-\end{solution}
-
-基于逆序数的定义，我们可以将排列做一个简单的分类：
-
-\begin{definition}{奇排列和偶排列}{}
-    如果一个排列的逆序数是偶数（包括零），则称这个排列是\term{偶排列}\index{oupailie@偶排列}；如果一个排列的逆序数是奇数，则称这个排列是\term{奇排列}\index{jipailie@奇排列}.
-\end{definition}
-
-不难证明奇偶排列有如下简单的性质：
-\begin{example}{奇偶排列的性质}{}
-    \begin{enumerate}
-        \item 设 $(k_1,k_2,\ldots,k_n) \in S_n$，若将 $k_i$ 与 $k_j$ 交换，其余数不动，那么排列的奇偶性会改变；
-        \item 设 $n \geqslant 2$，则 $S_n$ 中奇排列和偶排列的个数相等.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-    \begin{enumerate}
-        \item 首先我们考虑相邻两个数的对换. 若 $k_i > k_{i+1}$，则对换后逆序数会减少 $1$，因此奇偶性会改变；若 $k_i < k_{i+1}$，则对换后逆序数会增加 $1$，奇偶性也会改变. 对于一般情形，$k_i$ 和 $k_j$ 的对换可以通过多次相邻两个数的对换来实现：不妨设 $i < j$，那么我们可以先将 $k_i$ 与 $k_{i+1}$ 对换，然后与 $k_{i+2}$ 对换，以此类推，最后与 $k_j$ 对换，这样就可以将 $k_i$ 和 $k_j$ 对换（一共对换了 $j-i$ 次）；接下来还需要将 $k_j$ 与 $k_{j-1}$ 对换，然后与 $k_{j-2}$ 对换，以此类推，最后与 $k_{i+1}$ 对换（一共对换了 $j-i-1$ 次），这样就可以将 $k_j$ 和 $k_i$ 对换. 因此，总的相邻对换次数为 $j-i+j-i-1=2(j-i)-1$，奇偶性会改变.
-        \item 设 $S_n$ 中奇排列有 $p$ 个，偶排列有 $q$ 个，因为 $n \geqslant 2$，故可以将每个奇排列的头两个数对换一下，则所有的奇排列都变成了互不相同的偶排列，故 $p \leqslant q$；同理，可以将每个偶排列的头两个数对换一下，所有的偶排列都变成了互不相同的奇排列，故 $q \leqslant p$，因此 $p = q$.
-    \end{enumerate}
-\end{proof}
-
-讨论到此，我们终于可以给出逆序数与行列式展开中每项的符号之间的联系：
-
-\begin{theorem}{}{}
-    设 $(k_1,k_2,\ldots,k_n) \in S_n$，则通过 $\tau(k_1,k_2,\ldots,k_n)$ 次相邻对换可以将 $(k_1,k_2,\ldots,k_n)$ 变为 $(1,2,\ldots,n)$，因此 $\varepsilon = \tau(k_1,k_2,\ldots,k_n)$.
-\end{theorem}
-
-\begin{proof}
-    对 $n$ 进行归纳. $n=1$ 时结论显然成立，设对 $1,2,\ldots,n-1$ 的任一排列结论成立，我们来证明 $n$ 的情形. 设 $n$ 在排列 $(k_1,\ldots,k_n)$ 的第 $i$ 位，即 $k_i = n$，$n$ 贡献的逆序数为 $m_i = n - i$. 将 $k_i$ 与 $k_{i+1}$ 对换，再与 $k_{i+2}$ 对换，以此类推，最后与 $k_n$ 对换，这样 $n$ 就到了第 $n$ 位. 注意到
-
-    \[ \tau(k_1,\ldots,k_n) = \tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) + m_i,\]
-
-    且 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n) \in S_{n-1}$，由归纳假设知 $(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 经过 $\tau(k_1,\ldots,k_{i-1},k_{i+1},\ldots,n)$ 次相邻对换可以变为 $(1,2,\ldots,n-1)$，结合上面的讨论可知 $(k_1,\ldots,k_n)$ 经过 $\tau(k_1,\ldots,k_n)$ 次相邻对换可以变为 $(1,2,\ldots,n)$，因此 $\varepsilon = \tau(k_1,\ldots,k_n)$.
-\end{proof}
-
-由此我们可以得到行列式的逆序数定义：
-
-\begin{theorem}{行列式的逆序数定义}{}
-    设
-    \[|A| = \begin{vmatrix}
-            a_{11} & a_{12} & \cdots & a_{1n} \\
-            a_{21} & a_{22} & \cdots & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{n1} & a_{n2} & \cdots & a_{nn}
-        \end{vmatrix},\]
-    则 $|A| = \sum\limits_{(k_1,k_2,\ldots,k_n) \in S_n} (-1)^{\tau(k_1,k_2,\ldots,k_n)}a_{k_11}a_{k_22}\cdots a_{k_nn}$.
-\end{theorem}
-
-根据逆序数定义，我们可以重解 \autoref{ex:行列式基本运算} 中的行列式：
-\begin{solution}
-    我们知道三阶行列式的逆序数计算公式为 $D=\begin{vmatrix}
-            a_{11} & a_{12} & a_{13} \\
-            a_{21} & a_{22} & a_{23} \\
-            a_{31} & a_{32} & a_{33}
-        \end{vmatrix}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{12}a_{21}a_{33}-a_{11}a_{23}a_{32}$，因此$D=1 \cdot 3 \cdot 2+2 \cdot 1 \cdot 3+3 \cdot 2 \cdot 1-3 \cdot 3 \cdot 3-2 \cdot 2 \cdot 2-1 \cdot 1 \cdot 1=-18$.
-\end{solution}
-
-下面的例子会让我们更进一步地理解逆序数定义中``排列''的含义：
-\begin{example}{}{}
-    设
-    \[f(x)=\begin{vmatrix}
-            x-a_{11} & -a_{12}  & \cdots & -a_{1n}  \\
-            -a_{21}  & x-a_{22} & \cdots & -a_{2n}  \\
-            \vdots   & \vdots   & \ddots & \vdots   \\
-            -a_{n1}  & -a_{n2}  & \cdots & x-a_{nn}
-        \end{vmatrix},\]
-    其中$x$是未知数，$a_{ij}$是常数，证明：$f(x)$是一个最高次项系数为1的$n$次多项式，且其$n-1$次项的系数等于$-(a_{11}+\cdots+a_{nn})$.
-\end{example}
-
-\begin{proof}
-    根据逆序数定义，我们知道 $f(x)$ 的最高次项出现在展开式中的单项 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$ 中，且展开式中的其他单项作为 $x$ 的多项式的次数必定小于等于 $n-2$（因为我们要求 $(k_1,\ldots,k_n)$ 是全排列）. 因此 $f(x)$ 是一个最高次项系数为 $1$ 的 $n$ 次多项式，且其 $n-1$ 次项的系数只能来源于 $(x-a_{11})(x-a_{22})\cdots(x-a_{nn})$，故等于 $-(a_{11}+\cdots+a_{nn})$.
-\end{proof}
-
 \subsection{范德蒙（Vandermonde）行列式}
 接下来我们需要介绍一个非常重要的行列式，我们称之为范德蒙（Vandermonde）行列式：
 \begin{example}{}{}
@@ -747,9 +759,7 @@
     由于$V_1,V_2,\ldots,V_s$是$V$的非平凡子空间，因此每个子空间最多包含$\{\beta_k\}$中$n-1$个向量，进而$V_1\cup V_2\cup\cdots\cup V_s$只包含$\{\beta_k\}$中有限个向量，所以必然存在一个向量$\beta_j$使得$\beta_j \notin V_1\cup V_2\cup\cdots\cup V_s$.
 \end{proof}
 
-\section{行列式计算技巧}
-
-行列式计算的核心思想：观察行列式的特征，通过用一行消去其它所有行或者通过逐行相减化出更多的 $0$，得到模板行列式（例如上三角、箭形等）求解；或者通过一些明显的技巧性方法（例如递推法）来求解.
+下面我们将介绍行列式运算的一些技巧，这些技巧有一些可以总结的核心思想：观察行列式的特征，通过用一行消去其它所有行或者通过逐行相减化出更多的 $0$，得到模板行列式（例如上三角、箭形等）求解；或者通过一些明显的技巧性方法（例如递推法）来求解.
 
 \subsection{化三角形法}
 
@@ -827,26 +837,26 @@
     观察到每一行的和都是相同的，所以我们可以将每一列都累加到第一列上，得到
     \begin{align*}
         D_n & =\begin{vmatrix}
-                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2    & \cdots & x_n    \\
-                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2-m  & \cdots & x_n    \\
+                   \displaystyle\sum_{i=1}^{n}\limits x_i-m & x_2    & \cdots & x_n    \\
+                   \displaystyle\sum_{i=1}^{n}\limits x_i-m & x_2-m  & \cdots & x_n    \\
                    \vdots                            & \vdots & \ddots & \vdots \\
-                   \displaystyle\sum_{i=1}^{n} x_i-m & x_2    & \cdots & x_n-m
+                   \displaystyle\sum_{i=1}^{n}\limits x_i-m & x_2    & \cdots & x_n-m
                \end{vmatrix} \\
-            & =\left(\sum_{i=1}^{n} x_i-m\right)
+            & =\left(\sum_{i=1}^{n}\limits x_i-m\right)
         \begin{vmatrix}
             1      & x_2    & \cdots & x_n    \\
             1      & x_2-m  & \cdots & x_n    \\
             \vdots & \vdots & \ddots & \vdots \\
             1      & x_2    & \cdots & x_n-m
         \end{vmatrix}                                   \\
-            & =\left(\sum_{i=1}^{n} x_i-m\right)
+            & =\left(\sum_{i=1}^{n}\limits x_i-m\right)
         \begin{vmatrix}
             1 & x_2 & \cdots & x_n \\
               & -m  &        &     \\
               &     & \ddots &     \\
               &     &        & -m
         \end{vmatrix}                                              \\
-            & =(-m)^{n-1}\left(\sum_{i=1}^{n} x_i-m\right).
+            & =(-m)^{n-1}\left(\sum_{i=1}^{n}\limits x_i-m\right).
     \end{align*}
 \end{solution}
 
@@ -1491,6 +1501,268 @@
     \end{align*}
 \end{solution}
 
+\section{Cauchy-Binet 公式}
+
+我们已经证明，方阵乘积的行列式等于各方阵行列式之积. 现在的问题是：如果 $A$ 是 $m \times n$ 矩阵，$B$ 是 $n \times m$ 矩阵，$AB$ 是 $m$ 阶方阵，则行列式 $|AB|$ 应该等于什么？Cauchy-Binet 公式回答了这个问题. 它可以看成是矩阵乘法的行列式定理的推广.
+
+\begin{theorem}{Cauchy-Binet 公式}{Cauchy-Binet 公式}
+    设 $A = (a_{ij})$ 是 $m \times n$ 矩阵，$B = (b_{ij})$ 是 $n \times m$ 矩阵.
+    $$
+    \begin{pmatrix}
+    i_1 & \cdots & i_s \\
+    j_1 & \cdots & j_s
+    \end{pmatrix}
+    $$
+    表示 $A$ 的一个 $s$ 阶子式，它由 $A$ 的第 $i_1, \cdots, i_s$ 行与第 $j_1, \cdots, j_s$ 列交点上的元素按原次序排列组成的行列式. 同理可定义 $B$ 的 $s$ 阶子式.
+    \begin{enumerate}
+        \item 若 $m > n$，则必有 $|AB| = 0$；
+        \item 若 $m \leqslant n$，则必有
+        $$
+        |AB| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
+        \begin{pmatrix}
+        1 & 2 & \cdots & m \\
+        j_1 & j_2 & \cdots & j_m
+        \end{pmatrix}
+        B
+        \begin{pmatrix}
+        j_1 & j_2 & \cdots & j_m \\
+        1 & 2 & \cdots & m
+        \end{pmatrix}.
+        $$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    令
+    $$
+    C =
+    \begin{pmatrix}
+    A & O \\
+    -I_n & B
+    \end{pmatrix}.
+    $$
+    我们将用不同的方法来计算行列式 $|C|$.
+
+    首先，对 $C$ 进行第三类分块初等变换到矩阵 $M = \begin{pmatrix} O & AB \\ -I_n & B \end{pmatrix}$. 事实上，$M$ 可写为
+    $$
+    M =
+    \begin{pmatrix}
+    I_m & A \\
+    O & I_n
+    \end{pmatrix}
+    C,
+    $$
+    因此 $|M| = |C|$. 用 Laplace 定理来计算 $|M|$，按前 $m$ 行展开得
+    $$
+    |M| = (-1)^{(n+1)+(n+2)+\cdots+(n+m)} \cdot I_n ||AB| = (-1)^{n(m+1)} |AB|.
+    $$
+
+    再来计算 $|C|$，用 Laplace 定理按前 $m$ 行展开. 这时若 $m > n$，则前 $m$ 行中任意一个 $m$ 阶子式至少有一列全为零，因此行列式值等于零，即 $|AB| = 0$. 若 $m \leqslant n$，则由 Laplace 定理得
+    $$
+    |C| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
+    \begin{pmatrix}
+    1 & 2 & \cdots & m \\
+    j_1 & j_2 & \cdots & j_m
+    \end{pmatrix}
+    \hat{C}
+    \begin{pmatrix}
+    1 & 2 & \cdots & m \\
+    j_1 & j_2 & \cdots & j_m
+    \end{pmatrix},
+    $$
+    其中 $\hat{C} = A \begin{pmatrix} 1 & 2 & \cdots & m \\ j_1 & j_2 & \cdots & j_m \end{pmatrix}$ 是矩阵 $C$ 中的代数余子式.
+
+    显然
+    $$
+    \hat{C} = (-1)^{\frac{m(m+1) + (j_1 + j_2 + \cdots + j_m)}{2}} \cdot | - e_{i_1}, - e_{i_2}, \cdots, - e_{i_{n-m}}, B |,
+    $$
+    其中 $i_1, i_2, \cdots, i_{n-m}$ 是 $C$ 前 $n$ 列去掉 $j_1, j_2, \cdots, j_m$ 列后余下的列序数. $e_{i_1}, e_{i_2}, \cdots, e_{i_{n-m}}$ 是相应的 $n$ 维标准单位向量（标准单位向量定义见习题 1）. 记
+    $$
+    |N| = | - e_{i_1}, - e_{i_2}, \cdots, - e_{i_{n-m}}, B |.
+    $$
+    现在计算 $|N|$. 用 Laplace 定理按前 $n-m$ 列展开. 注意只有一个子式非零，其值等于 $| - I_{n-m}| = (-1)^{n-m}$. 而这个子式的余子式为
+    $$
+    B \begin{pmatrix} j_1 & j_2 & \cdots & j_m \\ 1 & 2 & \cdots & m \end{pmatrix}.
+    $$
+
+    因此
+    $$ |N| = (-1)^{(n-m) + (i_1 + i_2 + \cdots + i_{n-m}) + (j_1 + j_2 + \cdots + j_m)} B
+    \begin{pmatrix}
+        j_1 & j_2 & \cdots & j_m \\
+        1 & 2 & \cdots & m
+    \end{pmatrix}
+    $$
+
+    注意到 $ (i_1 + i_2 + \cdots + i_{n-m}) + (j_1 + j_2 + \cdots + j_m) = 1 + 2 + \cdots + n $.综合上面的结论，经过简单计算不难得到
+
+    $$ |AB| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
+    \begin{pmatrix}
+        1 & 2 & \cdots & m \\
+        j_1 & j_2 & \cdots & j_m
+    \end{pmatrix}
+    B
+    \begin{pmatrix}
+        j_1 & j_2 & \cdots & j_m \\
+        1 & 2 & \cdots & m
+    \end{pmatrix}.
+    $$
+\end{proof}
+
+下面的定理是 Cauchy-Binet 公式的进一步推广，它告诉我们如何求矩阵乘积的 $r$ 阶子式.
+
+\begin{theorem}{}{Cauchy-Binet 公式推广}
+    设 $A = (a_{ij})$ 是 $m \times n$ 矩阵，$B = (b_{ij})$ 是 $n \times m$ 矩阵，$r$ 是一个正整数且 $r \leqslant m$.
+    \begin{enumerate}
+        \item 若 $r > n$，则 $AB$ 的任意一个 $r$ 阶子式等于零；
+        \item 若 $r \leqslant n$，则 $AB$ 的 $r$ 阶子式
+    \end{enumerate}
+    \[
+        AB
+        \begin{pmatrix}
+            i_1 & i_2 & \cdots & i_r \\
+            j_1 & j_2 & \cdots & j_r
+        \end{pmatrix}
+        = \sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
+        \begin{pmatrix}
+            i_1 & i_2 & \cdots & i_r \\
+            k_1 & k_2 & \cdots & k_r
+        \end{pmatrix}
+        B
+        \begin{pmatrix}
+            k_1 & k_2 & \cdots & k_r \\
+            j_1 & j_2 & \cdots & j_r
+        \end{pmatrix}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    设 $C = AB$，则 $C = (c_{ij})$ 是 $m$ 阶矩阵且
+
+    $$ c_{ij} = a_{i_1} b_{j_1} + a_{i_2} b_{j_2} + \cdots + a_{i_n} b_{j_n}. $$
+    因此
+    $$
+    C
+    \begin{pmatrix}
+        i_1 & i_2 & \cdots & i_r \\
+        j_1 & j_2 & \cdots & j_r
+    \end{pmatrix}
+    =
+    \begin{vmatrix}
+        a_{i_1} & a_{i_2} & \cdots & a_{i_n} \\
+        a_{i_1} & a_{i_2} & \cdots & a_{i_n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{i_1} & a_{i_2} & \cdots & a_{i_n}
+    \end{vmatrix}
+    \begin{vmatrix}
+        b_{j_1} & b_{j_2} & \cdots & b_{j_r} \\
+        b_{j_1} & b_{j_2} & \cdots & b_{j_r} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        b_{j_1} & b_{j_2} & \cdots & b_{j_r}
+    \end{vmatrix}.
+    $$
+
+    由 Cauchy-Binet 公式可知：$r > n$ 时，$C
+    \begin{pmatrix}
+        i_1 & i_2 & \cdots & i_r \\
+        j_1 & j_2 & \cdots & j_r
+    \end{pmatrix} = 0$；当 $r \leqslant n$ 时，
+    $$
+    C
+    \begin{pmatrix}
+        i_1 & i_2 & \cdots & i_r \\
+        j_1 & j_2 & \cdots & j_r
+    \end{pmatrix} $$
+    $$ =\sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
+    \begin{pmatrix}
+        i_1 & i_2 & \cdots & i_r \\
+        k_1 & k_2 & \cdots & k_r
+    \end{pmatrix}
+    B
+    \begin{pmatrix}
+        k_1 & k_2 & \cdots & k_r \\
+        j_1 & j_2 & \cdots & j_r
+    \end{pmatrix}. $$
+\end{proof}
+
+矩阵 $A$ 的子式
+$$ A
+\begin{pmatrix}
+    i_1 & i_2 & \cdots & i_r \\
+    j_1 & j_2 & \cdots & j_r
+\end{pmatrix} $$
+如果满足条件 $i_1 = j_1, i_2 = j_2, \cdots, i_r = j_r$，则称为主子式.
+
+\begin{corollary}{}{}
+    设 $A$ 是 $m \times n$ 实矩阵，则矩阵 $AA\mathrm{T}$ 的任一主子式都非负.
+\end{corollary}
+
+\begin{proof}
+    若 $r \leqslant n$，则由 \autoref{thm:Cauchy-Binet 公式推广} 得到：
+    $$ AA\mathrm{T}
+    \begin{pmatrix}
+        i_1 & i_2 & \cdots & i_r \\
+        i_1 & i_2 & \cdots & i_r
+    \end{pmatrix}
+    = \sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
+    \begin{pmatrix}
+        i_1 & i_2 & \cdots & i_r \\
+        k_1 & k_2 & \cdots & k_r
+    \end{pmatrix}^2 \geqslant 0; $$
+    若 $r > n$，则 $AA\mathrm{T}$ 的任一 $r$ 阶主子式等于零，结论也成立.
+\end{proof}
+
+下面介绍 Cauchy-Binet 公式的两个重要应用. 它们分别是著名的 Lagrange 恒等式和 Cauchy-Schwarz 不等式. 这两个结论也可以用其他方法证明，但用矩阵方法显得非常简洁.
+
+\begin{example}{}{}
+    证明 Lagrange 恒等式 $(n \geqslant 2)$：
+    $$ \left( \sum_{i=1}^{n}\limits a_i^2 \right) \left( \sum_{i=1}^{n}\limits b_i^2 \right) - \left( \sum_{i=1}^{n}\limits a_i b_i \right)^2 = \sum_{1 \leqslant i < j \leqslant n} (a_i b_j - a_j b_i)^2. $$
+\end{example}
+
+\begin{solution}
+    左边的式子等于
+    $$ \begin{vmatrix}
+        \sum_{i=1}^{n}\limits a_i^2 & \sum_{i=1}^{n}\limits a_i b_i \\
+        \sum_{i=1}^{n}\limits a_i b_i & \sum_{i=1}^{n}\limits b_i^2
+    \end{vmatrix}, $$
+
+    这个行列式对应的矩阵可化为：
+    $$ \begin{pmatrix}
+        a_1 & a_2 & \cdots & a_n \\
+        b_1 & b_2 & \cdots & b_n
+    \end{pmatrix}
+    \begin{pmatrix}
+        a_1 & b_1 \\
+        a_2 & b_2 \\
+        \vdots & \vdots \\
+        a_n & b_n
+    \end{pmatrix}. $$
+    用 Cauchy-Binet 公式得
+
+    $$
+    \begin{vmatrix}
+        \sum_{i=1}^{n}\limits a_i^2 & \sum_{i=1}^{n}\limits a_i b_i \\
+        \sum_{i=1}^{n}\limits a_i b_i & \sum_{i=1}^{n}\limits b_i^2
+    \end{vmatrix}
+    = \sum_{1 \leqslant i < j \leqslant n}
+    \begin{vmatrix}
+        a_i & a_j \\
+        b_i & b_j
+    \end{vmatrix}^2
+    = \sum_{1 \leqslant i < j \leqslant n} (a_i b_j - a_j b_i)^2.
+    $$
+\end{solution}
+
+\begin{example}{}{}
+    设 $a_i, b_i$ 都是实数，证明 Cauchy-Schwarz 不等式：
+    $$
+    \left( \sum_{i=1}^{n}\limits a_i^2 \right) \left( \sum_{i=1}^{n}\limits b_i^2 \right) \geqslant \left( \sum_{i=1}^{n}\limits a_i b_i \right)^2.
+    $$
+\end{example}
+
+\begin{solution}
+    由上一个例题，恒等式右边总非负，即得结论.
+\end{solution}
+
 \section{伴随矩阵}
 
 伴随矩阵是一个重要的概念，它给出了逆矩阵与原矩阵的关联，并且其性质都比较经典，很适合于练习.
@@ -1638,124 +1910,12 @@
         \end{pmatrix}$.
 \end{solution}
 
-\section{Cramer法则}
-
-从历史角度来开，引入行列式是用于求解线性方程组的. 瑞士数学家克莱姆（Cramer）于1750年在他的《线性代数分析导言》中发表了这一方法. 事实上莱布尼兹〔1693〕，以及麦克劳林〔1748〕亦研究了这一法则，但他们的记法不如克莱姆清晰. 接下来我们介绍这一充满历史底蕴的定理：
-\begin{theorem}{Cramer法则}{Cramer} \index{Cramer@Cramer 法则 (Cramer's rule)}
-    对线性方程组
-    \begin{gather}
-        \label{eq:13:线性方程组1}
-        \begin{cases} \begin{aligned}
-                a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n & = 0             \\
-                a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n & = 0             \\
-                                                     & \vdotswithin{=} \\
-                a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n & = 0
-            \end{aligned} \end{cases}
-        \\
-        \label{eq:13:线性方程组2}
-        \begin{cases} \begin{aligned}
-                a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n & = b_1           \\
-                a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n & = b_2           \\
-                                                     & \vdotswithin{=} \\
-                a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n & = b_n
-            \end{aligned} \end{cases}
-    \end{gather}
-
-    令$D=\begin{vmatrix}
-            a_{11} & a_{12} & \cdots & a_{1n} \\
-            a_{21} & a_{22} & \cdots & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{n1} & a_{n2} & \cdots & a_{nn}
-        \end{vmatrix}$，称为系数行列式.
-
-    令$D_1=\begin{vmatrix}
-            b_1    & a_{12} & \cdots & a_{1n} \\
-            b_2    & a_{22} & \cdots & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            b_n    & a_{n2} & \cdots & a_{nn}
-        \end{vmatrix},\ldots,D_n=\begin{vmatrix}
-            a_{11} & a_{12} & \cdots & b_1    \\
-            a_{21} & a_{22} & \cdots & b_2    \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{n1} & a_{n2} & \cdots & b_n
-        \end{vmatrix}$.
-
-    \begin{enumerate}
-        \item 方程组 \ref{eq:13:线性方程组1} 只有零解$\iff D \neq 0$，\\
-              方程组 \ref{eq:13:线性方程组1} 有非零解（无穷多解）$\iff D=0$，即$r(A)<n$；
-
-        \item 方程组 \ref{eq:13:线性方程组2} 有唯一解$\iff D \neq 0$，此时$x_i=\dfrac{D_i}{D}\enspace(i=1,2,\ldots,n)$，\\
-              当$D=0$时，方程组 \ref{eq:13:线性方程组2} 要么无解，要么有无穷多解.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    我们不区分齐次与非齐次方程组进行证明，实际上齐次的结论只是下面证明的特例. 事实上，对于任意线性方程组$AX=b$，其中$b$可以是零向量，若$D=|A|\neq 0$，则$A$可逆，因此方程组有解
-    \[X=A^{-1}b=\frac{1}{|A|}A^*b=\frac{1}{D}A^*b,\]
-    即
-    \[\begin{pmatrix}
-            x_1 \\ x_2 \\ \vdots \\ x_n
-        \end{pmatrix}= \dfrac{1}{D}\begin{pmatrix}
-            A_{11} & A_{21} & \cdots & A_{n1} \\
-            A_{12} & A_{22} & \cdots & A_{n2} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            A_{1n} & A_{2n} & \cdots & A_{nn}
-        \end{pmatrix}\begin{pmatrix}
-            b_1 \\ b_2 \\ \vdots \\ b_n
-        \end{pmatrix},\]
-    于是根据\autoref{def:递归式定义}，
-    \[x_i=\frac{1}{D}(b_1A_{1i}+b_2A_{2i}+\cdots+b_nA_{ni})=\frac{D_i}{D}\enspace(i=1,2,\ldots,n)\]
-    事实上此时解唯一，因为可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
-
-    反之，若方程组$AX=b$只有唯一解，说明方阵$A$对应的线性映射$\sigma$是单射，并且因为$A$是方阵，因此$\sigma$出发空间与到达空间维数相同，由\autoref{thm:双射等价条件} 可知$\sigma$是双射，因此$A$可逆，从而$|A|\neq 0$. 综上可以证明方程组$AX=b$有唯一解$\iff D=|A|\neq 0$.
-
-    剩下的无解、无穷解的结论就很显然了. 若$AX=b$无解或有无穷解，反证法，若$D\neq 0$，则$A$可逆，从而$AX=b$有唯一解，矛盾，故$D=0$. 反之，若$D=0$，则$A$不可逆，反证法，若$AX=b$有唯一解，$A$可逆，矛盾，故$AX=b$无解或有无穷解（完全就是前面$AX=b$有唯一解$\iff D=|A|\neq 0$的推论）.
-\end{proof}
-
-我们可以用 Cramer 法则求解线性方程组，但要注意只有方程个数与未知数个数相等时才能使用，并且需要系数行列式不为0.
-\begin{example}{}{}
-    求解方程组$\begin{cases}
-            x_1+x_2+x_3=1          \\
-            a_1x_1+a_2x_2+a_3x_3=0 \\
-            a_1^2x_1+a_2^2x_2+a_3^2x_3=0
-        \end{cases}$，其中$a_1,a_2,a_3$两两不等.
-\end{example}
-
-\begin{solution}
-    $a_1,a_2,a_3$两两不等时，我们有
-    \[D=\begin{vmatrix}
-            1     & 1     & 1     \\
-            a_1   & a_2   & a_3   \\
-            a_1^2 & a_2^2 & a_3^2
-        \end{vmatrix}=(a_2-a_1)(a_3-a_1)(a_3-a_2)\neq 0,\]
-    根据Cramer法则，方程组有唯一解，且
-    \[D_1=\begin{vmatrix}
-            1 & 1     & 1     \\
-            0 & a_2   & a_3   \\
-            0 & a_2^2 & a_3^2
-        \end{vmatrix}=(a_3-a_2)a_2a_3,\]
-    \[D_2=\begin{vmatrix}
-            1     & 1 & 1     \\
-            a_1   & 0 & a_3   \\
-            a_1^2 & 0 & a_3^2
-        \end{vmatrix}=(a_1-a_3)a_1a_3,\]
-    \[D_3=\begin{vmatrix}
-            1     & 1     & 1 \\
-            a_1   & a_2   & 0 \\
-            a_1^2 & a_2^2 & 0
-        \end{vmatrix}=(a_2-a_1)a_1a_2,\]
-    因此
-    \[x_1=\dfrac{D_1}{D}=\dfrac{a_2a_3}{(a_2-a_1)(a_3-a_1)},\]\[x_2=\dfrac{D_2}{D}=\dfrac{a_1a_3}{(a_1-a_2)(a_3-a_2)},\]\[x_3=\dfrac{D_3}{D}=\dfrac{a_1a_2}{(a_1-a_3)(a_2-a_3)}.\]
-\end{solution}
-
-事实上，Cramer法则在定理内容中已经给我们提供了关于线性方程组解的理论的重要结论——它实现了我们第一讲中提到的方程组解的情况的更一般化的讨论，即不需要化为简化阶梯矩阵就可以利用更为一般化的结论判断方程组解的情况，我们将在朝花夕拾中进行更完整的讨论.
-
 \section{行列式的秩}
 
 \subsection{行列式的秩}
 
 首先我们需要给出矩阵的子式、主子式的定义，然后给出相关的顺序主子式的定义.
-\begin{definition}{}{}
+\begin{definition}{}{子式、主子式、顺序主子式}
     矩阵$A=(a_{ij})_{n \times n}$的任意$k$行（$i_1<i_2<\cdots<i_k$行）和任意$k$列（$j_1<j_2<\cdots<j_k$列）的交点上的$k^2$个元素排成的行列式
     \[\begin{vmatrix}
             a_{i_1j_1} & a_{i_1j_2} & \cdots & a_{i_1j_k} \\
@@ -1889,7 +2049,7 @@
 
 \begin{summary}
 
-    在这一讲中我们引入了一个重要的工具——行列式. 我们不同于一般教材的逆序数定义（我们将会在史海拾遗中从历史角度介绍这一定义），首先给出了公理化的定义，并且发现行列式事实上就是在描述$n$维空间中物体的体积. 接下来我们也介绍了递归式定义（即按一行一列展开）和逆序数定义，并讨论了行列式的一些性质，介绍了常用的范德蒙行列式，在此基础上也介绍了大量的运算技巧——或许读者能回想起中学时代刷题的感觉. 接下来我们也介绍了伴随矩阵及其大量性质，在性质的证明中希望读者体会这类证明的一般想法. 我们也介绍了Cramer法则，它是最开始研究线性方程组理论的一个核心结果，因此在讨论线性方程组一般理论的朝花夕拾一讲中我们还会再遇见它的身影. 最后我们讨论了行列式的秩，这也是我们最后一个``秩''的定义，我们讨论了向量组、线性映射、矩阵、行列式的秩的统一性，这也是我们这一学期学习的秩的概念的一个总结，也希望读者能在练习中更深刻体会它们的关联.
+    在这一讲中我们引入了一个重要的工具——行列式. 我们不同于一般教材的逆序数定义（我们将会在史海拾遗中从历史角度介绍这一定义），首先给出了公理化的定义，并且发现行列式事实上就是在描述$n$维空间中物体的体积. 接下来我们也介绍了递归式定义（即按一行一列展开）和逆序数定义，并讨论了行列式的一些性质，介绍了常用的范德蒙行列式，在此基础上也介绍了大量的运算技巧——或许读者能回想起中学时代刷题的感觉. 接下来我们也介绍了伴随矩阵及其大量性质，在性质的证明中希望读者体会这类证明的一般想法. 最后我们讨论了行列式的秩，这也是我们最后一个``秩''的定义，我们讨论了向量组、线性映射、矩阵、行列式的秩的统一性，这也是我们这一学期学习的秩的概念的一个总结，也希望读者能在练习中更深刻体会它们的关联.
 
     事实上，我们很难说服读者行列式以什么样的方式引入是最为合适的，或许在史海拾遗的历史讲述中我们可能才能窥见行列式诞生的奥秘，那是最为自然的描述，但需要过多的准备以至于可能令人厌烦. 但至少公理化定义是非常简单的，并且有一定的几何背景，由此也直接可以得出行列式大量的优良性质，例如矩阵可逆等价于行列式等于零——这一性质在将来关于线性方程组、特征多项式等的讨论中是核心的.
 
@@ -2421,7 +2581,7 @@
                                      &       &        & a_n
                            \end{vmatrix}                       \\
                           =     & \left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}}
-                          \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n} \frac{1}{a_{i}}\right).
+                          \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n}\limits \frac{1}{a_{i}}\right).
                       \end{align*}
             \end{enumerate}
         \end{answer}
@@ -2867,25 +3027,6 @@
             注意到目标行列式是 $A^*$ 中元素 $A_{nn}$ 的代数余子式，也就是 $(A^*)^*$ 中 $(n, n)$ 位置的元素. 由 {例13.9(4)} $(A^*)^* = \lvert A \rvert^{n-2}A$ 可知结论成立. % FIXME: xref
         \end{answer}
 
-        \item 设$a_1,a_2,\ldots,a_n$为互不相等的实数，$b_1,b_2,\ldots,b_n$为任意给定的实数. 证明：存在唯一的$n-1$次多项式，满足$f(a_i)=b_i,\enspace i=1,2,\ldots,n$.
-        \begin{answer}
-            设 $f(x) = c_0+c_1x+c_2x^2+\cdots+c_{n-1}x^{n-1}$，则有
-            \[\begin{cases} \begin{aligned}
-                        c_0+c_1a_1+c_2a_1^2+\cdots+c_{n-1}a_1^{n-1} & = b_1,            \\
-                        c_0+c_1a_2+c_2a_2^2+\cdots+c_{n-1}a_2^{n-1} & = b_2,            \\
-                                                                    & \vdotswithin{ = } \\
-                        c_0+c_1a_n+c_2a_n^2+\cdots+c_{n-1}a_n^{n-1} & = b_n.            \\
-                    \end{aligned} \end{cases}\]
-            注意此处我们研究的对象是 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$. 因为系数行列式
-            \[D = \begin{vmatrix}
-                    1      & a_1    & \cdots & a_1^{n-1} \\
-                    1      & a_2    & \cdots & a_2^{n-1} \\
-                    \vdots & \vdots & \ddots & \vdots    \\
-                    1      & a_n    & \cdots & a_n^{n-1} \\
-                \end{vmatrix} = \prod_{1 \leqslant j < i \leqslant n} (a_i-a_j) \neq 0.\]
-            所以由 Cramer 法则，上述关于 $(c_0, c_1, \ldots, c_{n-1})^{\mathrm{T}}$ 的方程组有唯一解，所以满足条件的多项式函数 $f$ 是唯一存在的.
-        \end{answer}
-
         \item 设 $a_1,a_2,\ldots,a_n$ 是 $n$ 个两两互异的实数，$f_1(x),f_2(x),\ldots,f_n(x)$ 是 $n$ 个次数不大于 $n-2$ 的实系数多项式，证明：
 
         \[\begin{vmatrix}
@@ -3270,6 +3411,11 @@
     \end{exgroup}
 
     \begin{exgroup}
+        \item 证明：无法定义非方阵的行列式，使其与方阵行列式的定义相容.
+        \begin{answer}
+
+        \end{answer}
+
         \item 设$A=(a_{ij})$是$n\enspace(n\geqslant 2)$阶整数方阵，满足对任意的$i,j$，$|A|$均可整除$a_{ij}$，证明：$|A|=\pm 1$.
         \begin{answer}
             设 $a_{ij} = |A| b_{ij}$，其中 $b_{ij}$ 为整数，则
