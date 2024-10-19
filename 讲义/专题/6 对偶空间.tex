@@ -336,25 +336,25 @@
 \begin{definition}{}{}
     设 $U$ 为 $V^*$ 的子空间，则定义
     \[
-        N(U) = \{v \in V: \forall \varphi \in U, \varphi(v) = 0\}
+        Z(U) = \{v \in V: \forall \varphi \in U, \varphi(v) = 0\}
     \]
 \end{definition}
 
-也就是说，$N(U)$ 就是那些 $U$ 中的线性泛函的公共零点的集合，即：
+也就是说，$Z(U)$ 就是那些 $U$ 中的线性泛函的公共零点的集合，即：
 \[
-    N(U) = \bigcap_{\varphi \in U} \ker \varphi
+    Z(U) = \bigcap_{\varphi \in U} \ker \varphi
 \]
 它显然也是一个线性空间. 这样，上面引理的第一、第二条就有了一个看上去更加对称的推论：
 
 \begin{lemma}{}{NU性质}
     \begin{enumerate}
-        \item 如果 $U$ 是 $V^*$ 的子空间，则 $U = N(U)^0$
-        \item 如果 $U$ 是 $V$ 的子空间，则 $U = N(U^0)$
+        \item 如果 $U$ 是 $V^*$ 的子空间，则 $U = Z(U)^0$
+        \item 如果 $U$ 是 $V$ 的子空间，则 $U = Z(U^0)$
     \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-    我们只证明第一条. 考虑 $\phi \in U$，则 $N(U)$ 中的所有元素一定包含于 $\ker \phi$ 中，因此，$\phi$ 一定把其中的所有元素映到 $0$，即 $\phi \in N(U)^0, U \subset N(U)^0$. 然后，我们需要考虑维数问题. 考虑 $U$ 中的一组基 $e_1, e_2,\ldots, e_m$，其对偶基 $e_1^*, e_2^*, ..., e_m^*$ 可以扩张成 $V$ 的一组基 $e_1^*, e_2^*, \cdots e_m^*, e_{m + 1},\ldots, e_n$，则根据基的线性无关性，不难得出 $N(U)$ 的基就是 $e_{m + 1},\ldots, e_n$. 也就是说，$\dim N(U) = \dim V - \dim U$，于是 $\dim U = \dim N(U)^0$，我们得到 $U = N(U)^0$.
+    我们只证明第一条. 考虑 $\phi \in U$，则 $Z(U)$ 中的所有元素一定包含于 $\ker \phi$ 中，因此，$\phi$ 一定把其中的所有元素映到 $0$，即 $\phi \in Z(U)^0, U \subset Z(U)^0$. 然后，我们需要考虑维数问题. 考虑 $U$ 中的一组基 $e_1, e_2,\ldots, e_m$，其对偶基 $e_1^*, e_2^*, ..., e_m^*$ 可以扩张成 $V$ 的一组基 $e_1^*, e_2^*, \cdots e_m^*, e_{m + 1},\ldots, e_n$，则根据基的线性无关性，不难得出 $Z(U)$ 的基就是 $e_{m + 1},\ldots, e_n$. 也就是说，$\dim Z(U) = \dim V - \dim U$，于是 $\dim U = \dim Z(U)^0$，我们得到 $U = Z(U)^0$.
 \end{proof}
 
 于是，我们有了一个更加舒适的视角来理解零化子：它无非就是对偶空间中的零点集. 因此，我们应当很容易理解对于单个线性映射，以下性质无非是这条结论的推论：
@@ -390,7 +390,7 @@
 
 这个引理粗看有点线性性的意味，它的证明也是如此，在此就不赘述了. 而在发现这个引理之后，也就不难联想到以下结果，它完整地描述了纤维的结构：
 
-\begin{theorem}{}{}
+\begin{theorem}{}{纤维的结构}
     $\varphi^{-1} (r) = v' + \ker \varphi$，其中 $v'$ 为 $\varphi^{-1} (r)$ 中的任意一个向量.
 \end{theorem}
 
