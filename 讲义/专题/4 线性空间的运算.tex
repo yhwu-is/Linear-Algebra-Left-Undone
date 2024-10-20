@@ -673,7 +673,7 @@
                  0 & 0   & 0  & 0   \\
                  0 & 0   & 0  & 0
                           \end{pmatrix}\]
-                      则解向量$u_1=\left(\dfrac {3}{17},\dfrac{19}{17},1,0\right)^T,u_2=\left(\dfrac{13}{17},-\dfrac{20}{17},0,1\right)^T$. $u_1,u_2$是$V_1\cap V_2$的基，则其维数为2.
+                      则解向量$u_1=\left(\frac {3}{17},\frac{19}{17},1,0\right)^\mathrm{T},u_2=\left(\frac{13}{17},-\frac{20}{17},0,1\right)^\mathrm{T}$. $u_1,u_2$是$V_1\cap V_2$的基，则其维数为2.
 
                 \item 易得$\dim V_1=2,\dim V_2=2$，则由维数公式$\dim (V_1+V_2)=\dim V_1+\dim V_2-\dim (V_1\cap V_2)= 2$又$V_1\cap V_2\subseteq V_1+V_2$，且二者维数相等. 则$V_1\cap V_2=V_1+V_2$，亦即$V_1=V_2$. 所以$V_1+V_2$的基也是$u_1,u_2$，同$V_1\cap V_2$.
             \end{enumerate}
@@ -791,7 +791,7 @@
 
         \item 受三个有限集之并集的元素数量公式的启发，你可能会这样猜测：如果 $V_1,V_2,V_3$ 是一有限维向量空间的子空间，那么有
         \begin{align*}
-            \dim(V_1+V_2+V_3) =\ &\dim V_1+\dim V_2+\dim V_3 \\
+            \dim(V_1+V_2+V_3) ={} &\dim V_1+\dim V_2+\dim V_3 \\
             &-\dim(V_1\cap V_2)-\dim(V_1\cap V_3)-\dim(V_2\cap V_3) \\
             &+\dim(V_1\cap V_2\cap V_3).
         \end{align*}
@@ -803,7 +803,7 @@
         \item 证明：如果 $V_1,V_2,V_3$ 是一有限维向量空间的子空间，那么
         \begin{align*}
             &\dim(V_1+V_2+V_3) \\
-            &= \dim V_1+\dim V_2+\dim V_3 \\
+            ={} & \dim V_1+\dim V_2+\dim V_3 \\
             &-\dfrac{\dim(V_1\cap V_2)+\dim(V_1\cap V_3)+\dim(V_2\cap V_3)}{3} \\
             &+\dfrac{\dim((V_1 + V_2) \cap V_3) - \dim((V_1 + V_3) \cap V_2) + \dim((V_2 + V_3) \cap V_1)}{3}.
         \end{align*}
