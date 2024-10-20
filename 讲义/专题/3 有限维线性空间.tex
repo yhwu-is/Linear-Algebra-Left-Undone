@@ -110,85 +110,83 @@
 
     \item 从齐次线性方程组看
           \begin{example}{}{}
-           判断 $\mathbf{R}^3$ 中向量组 $\{\alpha_1, \alpha_2, \alpha_3\}$ 和 $\{\beta_1, \beta_2, \beta_3\}$ 的线性相关性, 其中
+              判断 $\mathbf{R}^3$ 中向量组 $\{\alpha_1, \alpha_2, \alpha_3\}$ 和 $\{\beta_1, \beta_2, \beta_3\}$ 的线性相关性, 其中
 
-            \[
-            \alpha_1 = (1, 1, 0), \quad \alpha_2 = (0, 1, 1), \quad \alpha_3 = (1, 0, -1),
-            \]
-            \[
-            \beta_1 = (1, -3, 1), \quad \beta_2 = (-1, 2, -2), \quad \beta_3 = (1, 1, 3).
-            \]
+              \[
+                  \alpha_1 = (1, 1, 0), \quad \alpha_2 = (0, 1, 1), \quad \alpha_3 = (1, 0, -1),
+              \]
+              \[
+                  \beta_1 = (1, -3, 1), \quad \beta_2 = (-1, 2, -2), \quad \beta_3 = (1, 1, 3).
+              \]
           \end{example}
           \begin{solution}
-           容易看出, $\alpha_3 = \alpha_1 - \alpha_2$, 所以 $\alpha_1, \alpha_2, \alpha_3$ 线性相关. 但对 $\beta_1, \beta_2, \beta_3$ 不易看出是否有线性关系, 要按定义来判别. 设
+              容易看出, $\alpha_3 = \alpha_1 - \alpha_2$, 所以 $\alpha_1, \alpha_2, \alpha_3$ 线性相关. 但对 $\beta_1, \beta_2, \beta_3$ 不易看出是否有线性关系, 要按定义来判别. 设
 
-            \[
-            x_1 \beta_1 + x_2 \beta_2 + x_3 \beta_3 = 0, \tag{1}
-            \]
+              \begin{equation} \label{eq:线性相关性:1}
+                  x_1 \beta_1 + x_2 \beta_2 + x_3 \beta_3 = 0
+              \end{equation}
 
-            即
+              即
 
-            \[
-            x_1(1, -3, 1) + x_2(-1, 2, -2) + x_3(1, 1, 3) = (0, 0, 0).
-            \]
+              \[
+                  x_1(1, -3, 1) + x_2(-1, 2, -2) + x_3(1, 1, 3) = (0, 0, 0).
+              \]
 
-            这个向量方程等价于以下的三个元线性齐次方程组:
+              这个向量方程等价于以下的三个元线性齐次方程组:
 
-            \[
-            \begin{cases}
-            x_1 - x_2 + x_3 = 0 \\
-            -3x_1 + 2x_2 + x_3 = 0 \\
-            x_1 - 2x_2 + 3x_3 = 0
-            \end{cases},
-            \]
+              \[
+                  \begin{cases}
+                      x_1 - x_2 + x_3 = 0    \\
+                      -3x_1 + 2x_2 + x_3 = 0 \\
+                      x_1 - 2x_2 + 3x_3 = 0
+                  \end{cases},
+              \]
 
-            容易解得这个方程组只有零解 $x_1 = x_2 = x_3 = 0$. 即只有全为零的 $x_1, x_2, x_3$ 才使得 (1) 成立, 故 $\beta_1, \beta_2, \beta_3$ 线性无关.
+              容易解得这个方程组只有零解 $x_1 = x_2 = x_3 = 0$. 即只有全为零的 $x_1, x_2, x_3$ 才使得\autoref{eq:线性相关性:1} 成立, 故 $\beta_1, \beta_2, \beta_3$ 线性无关.
 
-            一般若 $\beta_1 = (a_1, b_1, c_1), \beta_2 = (a_2, b_2, c_2), \beta_3 = (a_3, b_3, c_3)$, 则 $\beta_1, \beta_2, \beta_3$ 线性相关（线性无关）的充要条件是三元线性齐次方程组
+              一般若 $\beta_1 = (a_1, b_1, c_1), \beta_2 = (a_2, b_2, c_2), \beta_3 = (a_3, b_3, c_3)$, 则 $\beta_1, \beta_2, \beta_3$ 线性相关（线性无关）的充要条件是三元线性齐次方程组
 
-            \[
-            \begin{cases}
-            a_1 x_1 + a_2 x_2 + a_3 x_3 = 0 \\
-            b_1 x_1 + b_2 x_2 + b_3 x_3 = 0 \\
-            c_1 x_1 + c_2 x_2 + c_3 x_3 = 0
-            \end{cases}
-            \]
+              \[
+                  \begin{cases}
+                      a_1 x_1 + a_2 x_2 + a_3 x_3 = 0 \\
+                      b_1 x_1 + b_2 x_2 + b_3 x_3 = 0 \\
+                      c_1 x_1 + c_2 x_2 + c_3 x_3 = 0
+                  \end{cases}
+              \]
 
-            有非零解（只有零解）. 用此法可得 $\mathbf{R}^n$ 中任何 4 个向量, $\mathbf{R}^n$ 中任何 $n + 1$ 个向量都线性相关.
+              有非零解（只有零解）. 用此法可得 $\mathbf{R}^n$ 中任何 4 个向量, $\mathbf{R}^n$ 中任何 $n + 1$ 个向量都线性相关.
 
+              总的来说，我们有以下结论：
 
-          总的来说，我们有以下结论：
+              列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$有非零解;
 
-          列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$有非零解;
-
-          列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$只有零解.
-         \end{solution}
+              列向量组$\alpha_1,\alpha_2,\ldots,\alpha_m$线性无关$\iff$齐次线性方程组$x_1\alpha_1+x_2\alpha_2+\cdots+x_m\alpha_m=0$只有零解.
+          \end{solution}
     \item 从向量组与它的部分组的关系看
           \begin{example}{}{}
-            如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关，则其任意子集也线性无关，如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则其任意包含它的向量组也线性相关.
+              如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关，则其任意子集也线性无关，如果向量组 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则其任意包含它的向量组也线性相关.
           \end{example}
           \begin{proof}
-            我们先证明前者，不失一般性，设子集为 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$, 其中 $1 \leqslant i_1 < i_2 < \cdots < i_k \leqslant n$, 若存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 使得
+              我们先证明前者，不失一般性，设子集为 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$, 其中 $1 \leqslant i_1 < i_2 < \cdots < i_k \leqslant n$, 若存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 使得
 
-            \[
-            \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k} = 0,
-            \]
+              \[
+                  \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k} = 0,
+              \]
 
-            则将上式扩充为
+              则将上式扩充为
 
-            \[
-                \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k}  + 0 \alpha_{i_{k+1}} + \cdots + 0 \alpha_{i_n} = 0,
-            \]
+              \[
+                  \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k}  + 0 \alpha_{i_{k+1}} + \cdots + 0 \alpha_{i_n} = 0,
+              \]
+              其中 $\lambda_{k+1} = \lambda_{k+2} = \cdots = \lambda_n = 0$, 且 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 不全为零，（即将不在子集中的其它元素以$0$作为系数加到方程中，这样就找到了一个满足线性相关定义的式子）这与 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关矛盾. 故 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$ 线性无关.
 
-            其中 $\lambda_{k+1} = \lambda_{k+2} = \cdots = \lambda_n = 0$, 且 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 不全为零，（即将不在子集中的其它元素以$0$作为系数加到方程中，这样就找到了一个满足线性相关定义的式子）这与 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关矛盾. 故 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$ 线性无关.
+              相同的方法证明后者，设 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_n$ 使得
 
-            相同的方法证明后者，设 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性相关，则存在不全为零的 $\lambda_1,\lambda_2,\ldots,\lambda_n$ 使得
+              \[
+                  \lambda_1 \alpha_1 + \lambda_2 \alpha_2 + \cdots + \lambda_n \alpha_n = 0,
+              \]
 
-            \[
-            \lambda_1 \alpha_1 + \lambda_2 \alpha_2 + \cdots + \lambda_n \alpha_n = 0,
-            \]
-
-            则对于任意包含它的向量组,我们也可以将多出来的向量系数取$0$,这样就找到了一个满足线性相关定义的式子,因此包含它的向量组也线性相关.
+              则对于任意包含它的向量组,我们也可以将多出来的向量系数取$0$,这样就找到了一个满足线性相关定义的式子,因此包含它的向量组也线性相关.
           \end{proof}
           如果向量组的一个部分组线性相关，那么整个向量组也线性相关；
 
@@ -510,11 +508,11 @@
     我们只证明倍加变换的性质，其余两种变换的性质留作习题. 设矩阵为
 
     \[\begin{pmatrix}
-        a_{11} & a_{12} & \cdots & a_{1n} \\
-        a_{21} & a_{22} & \cdots & a_{2n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{m1} & a_{m2} & \cdots & a_{mn}
-    \end{pmatrix}\]
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \cdots & a_{mn}
+        \end{pmatrix}\]
 
     对其进行倍加变换，即将第 $i$ 行的 $k$ 倍加到第 $j$ 行上，即第 $j$ 行变为 $a_{j1} + ka_{i1}, a_{j2} + ka_{i2}, \ldots, a_{jn} + ka_{in}$. 记原先的列向量为 $S_A = \{\alpha_1, \alpha_2, \ldots, \alpha_n\}$，新的列向量为 $S_B = \{\beta_1, \beta_2, \ldots, \beta_n\}$.
 
@@ -529,33 +527,37 @@
 \begin{example}{}{}
     已知 $\mathbf{R}^4$ 的一个子集 $S = \{a_1, a_2, a_3, a_4\}$, 其中
     \[
-    a_1 = (1,1,0,1), \quad a_2 = (0,1,2,4), \quad
-    a_3 = (2,1,-2,2), \quad a_4 = (0,1,1,1).
+        a_1 = (1,1,0,1), \quad a_2 = (0,1,2,4), \quad
+        a_3 = (2,1,-2,2), \quad a_4 = (0,1,1,1).
     \]
     试求 $\spa(S)$ 的维数及其一组基$B$。
 \end{example}
 
 \begin{solution}
 
-显然这一问题的关键就是求出 $S$ 的一组极大线性无关组，因为 $S$ 的任一极大线性无关组 $B$ 都是 $\spa(S)$ 的基. 为了达到这一目标，我们首先将四个向量按列排成矩阵，即
+    显然这一问题的关键就是求出 $S$ 的一组极大线性无关组，因为 $S$ 的任一极大线性无关组 $B$ 都是 $\spa(S)$ 的基. 为了达到这一目标，我们首先将四个向量按列排成矩阵，即
 
-\[\begin{pmatrix}
-    1 & 0 & 2 & 0 \\
-    1 & 1 & 1 & 1 \\
-    0 & 2 & -2 & 1 \\
-    1 & 4 & -2 & 1
-\end{pmatrix} \tag{1}\]
+    \begin{equation} \label{eq:极大线性无关组:1}
+        \begin{pmatrix}
+            1 & 0 & 2  & 0 \\
+            1 & 1 & 1  & 1 \\
+            0 & 2 & -2 & 1 \\
+            1 & 4 & -2 & 1
+        \end{pmatrix}
+    \end{equation}
 
-对上述矩阵作初等行变换，所得的阶梯矩阵为
+    对上述矩阵作初等行变换，所得的阶梯矩阵为
 
-\[\begin{pmatrix}
-    1 & 0 & 2 & 0 \\
-    0 & 1 & -1 & 0 \\
-    0 & 0 & 0 & 1 \\
-    0 & 0 & 0 & 0
-\end{pmatrix} \tag{2}\]
+    \begin{equation} \label{eq:极大线性无关组:2}
+        \begin{pmatrix}
+            1 & 0 & 2  & 0 \\
+            0 & 1 & -1 & 0 \\
+            0 & 0 & 0  & 1 \\
+            0 & 0 & 0  & 0
+        \end{pmatrix}
+    \end{equation}
 
-根据上面的引理，我们知道矩阵（1）中的列的线性相关性与矩阵（2）中的列的线性相关性是一致的，而（2）中的经过初等变换的线性相关关系非常容易看出来：我们直接找每一行第一个非零元素所在的列对应的向量即可得到极大线性无关组，即 $S$ 的一个极大线性无关组为 $\{a_1, a_2, a_4\}$. 故 $a_1, a_2, a_4$ 是 $L(S)$ 的一组基，$L(S)$ 的维数为 3.
+    根据上面的引理，我们知道矩阵 \eqref{eq:极大线性无关组:1} 中的列的线性相关性与矩阵 \eqref{eq:极大线性无关组:2} 中的列的线性相关性是一致的，而 \eqref{eq:极大线性无关组:2} 中的经过初等变换的线性相关关系非常容易看出来：我们直接找每一行第一个非零元素所在的列对应的向量即可得到极大线性无关组，即 $S$ 的一个极大线性无关组为 $\{a_1, a_2, a_4\}$. 故 $a_1, a_2, a_4$ 是 $\spa(S)$ 的一组基，$\spa(S)$ 的维数为 3.
 \end{solution}
 
 我们总结以上方法的关键步骤，抽象出一般的极大线性无关组的求法：
