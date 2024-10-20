@@ -7,27 +7,27 @@
 行列式是线性代数中非常重要的工具，引入行列式这一概念的核心路线有两条，一条是从线性方程的判别式出发的，这是一条代数的路线，而另一条是从体积的变化出发的，这是一条几何的路线. 然而代数和几何之间很多时候是一体两面，从两条路线能够得到相同的结果，我们在导言中不会谈论行列式是什么，但是我们会先告诉读者它具有哪些性质并阐述它们的关系.
 
 先看一看判别式的路线，我们不妨先回顾一下二次方程的判别式，二次方程中
-$$
+\[
 ax^2 + bx + c = 0
-$$
+\]
 经过化简得到了
-$$
+\[
 \left(x- \frac{b}{2a}\right)^2 - \frac1{4a^2}(b^2 - 4ac) = 0
-$$
+\]
 于是我们有了\term{判别式（discriminant）} $\Delta = b^2 - 4ac$，当 $\Delta = 0$ 时意味着方程产生了重根. 或许你不知道的是三次方程
-$$
+\[
 x^3+ax+b=0
-$$
+\]
 也有判别式 $4a^3 + 27b^2$，它给出了三次方程重根的判据. 如果说 $b^2 - 4ac$ 给出了二次方程重根的判定条件，是圆锥曲线研究中不可或缺的多项式，$4a^3+27b^2$ 给出了三次方程重根的判定条件，贯穿椭圆曲线和相关的密码学，那么线性代数中它的对应物就是\term{行列式（determinant）}，而线性方程组的重根就意味着 $Ax=0$ 有不止 $0$ 这一个根，按照常识大多数情况下 $n$ 个方程能够解出 $n$ 个未知数，所以这里我们限制方程数量和未知数数量相等，即 $A$ 是方阵，这样的判别式我们记作 $\det A$. 由此可见，正如 $\Delta = 0$ 是一元多项式方程重根的标志，$\det A = 0$ 是线性方程组重根的标志，即解不唯一的标志，这等价于方阵不满秩，同时由于解不唯一，这也说明映射不可逆.
 
 虽然从英文的单词形式上看，二者是较为相似的，但是中文上，``判别式''和``行列式''两个词看起来便完全没有关系了，然而我还是希望读者能够将它理解为一种线性方程组版本的``判别式''，我们这章的目的便是找出这样一种判别式.
 
 下面再看体积变化的路线. 当我们考虑一个空间到自己的映射时，一个较为容易理解的与映射相关量是体积乘以的倍数，例如线性变换
-$$
+\[
 \begin{pmatrix}
 \lambda_1 \\ & \lambda_2 \\ && \ddots \\ &&& \lambda_n
 \end{pmatrix}
-$$
+\]
 显然是将每个坐标轴拉长到了原来的 $\lambda_i$ 倍，体积变化的倍数便是 $\lambda_1 \lambda_2 \cdots \lambda_n$. 从直观上，线性变换使得每块区域的体积（实际上是 $n$ 维的体积）都会以相同的倍数变化，所以这样的一个与矩阵相关的量理应是存在的. 而且显然地应该满足矩阵复合的体积变化倍数等于体积变化倍数的乘积，即 $\det(AB) = \det A \cdot \det B$，而我们之后严格定义行列式后也会证明这一点.
 
 最方便的做法便是取定单位正方形，考虑变换后的几个向量形成的平行四边形面积（或者高维空间的对应物）：
@@ -1608,17 +1608,17 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
 \begin{theorem}{Cauchy-Binet 公式}{Cauchy-Binet 公式}
     设 $A = (a_{ij})$ 是 $m \times n$ 矩阵，$B = (b_{ij})$ 是 $n \times m$ 矩阵.
-    $$
+    \[
     \begin{pmatrix}
     i_1 & \cdots & i_s \\
     j_1 & \cdots & j_s
     \end{pmatrix}
-    $$
+    \]
     表示 $A$ 的一个 $s$ 阶子式，它由 $A$ 的第 $i_1, \cdots, i_s$ 行与第 $j_1, \cdots, j_s$ 列交点上的元素按原次序排列组成的行列式. 同理可定义 $B$ 的 $s$ 阶子式.
     \begin{enumerate}
         \item 若 $m > n$，则必有 $|AB| = 0$；
         \item 若 $m \leqslant n$，则必有
-        $$
+        \[
         |AB| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
         \begin{pmatrix}
         1 & 2 & \cdots & m \\
@@ -1629,37 +1629,37 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
         j_1 & j_2 & \cdots & j_m \\
         1 & 2 & \cdots & m
         \end{pmatrix}.
-        $$
+        \]
     \end{enumerate}
 \end{theorem}
 
 \begin{proof}
     令
-    $$
+    \[
     C =
     \begin{pmatrix}
     A & O \\
     -I_n & B
     \end{pmatrix}.
-    $$
+    \]
     我们将用不同的方法来计算行列式 $|C|$.
 
     首先，对 $C$ 进行第三类分块初等变换到矩阵 $M = \begin{pmatrix} O & AB \\ -I_n & B \end{pmatrix}$. 事实上，$M$ 可写为
-    $$
+    \[
     M =
     \begin{pmatrix}
     I_m & A \\
     O & I_n
     \end{pmatrix}
     C,
-    $$
+    \]
     因此 $|M| = |C|$. 用 Laplace 定理来计算 $|M|$，按前 $m$ 行展开得
-    $$
+    \[
     |M| = (-1)^{(n+1)+(n+2)+\cdots+(n+m)} \cdot I_n ||AB| = (-1)^{n(m+1)} |AB|.
-    $$
+    \]
 
     再来计算 $|C|$，用 Laplace 定理按前 $m$ 行展开. 这时若 $m > n$，则前 $m$ 行中任意一个 $m$ 阶子式至少有一列全为零，因此行列式值等于零，即 $|AB| = 0$. 若 $m \leqslant n$，则由 Laplace 定理得
-    $$
+    \[
     |C| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
     \begin{pmatrix}
     1 & 2 & \cdots & m \\
@@ -1670,33 +1670,33 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
     1 & 2 & \cdots & m \\
     j_1 & j_2 & \cdots & j_m
     \end{pmatrix},
-    $$
+    \]
     其中 $\hat{C} = A \begin{pmatrix} 1 & 2 & \cdots & m \\ j_1 & j_2 & \cdots & j_m \end{pmatrix}$ 是矩阵 $C$ 中的代数余子式.
 
     显然
-    $$
+    \[
     \hat{C} = (-1)^{\frac{m(m+1) + (j_1 + j_2 + \cdots + j_m)}{2}} \cdot | - e_{i_1}, - e_{i_2}, \cdots, - e_{i_{n-m}}, B |,
-    $$
+    \]
     其中 $i_1, i_2, \cdots, i_{n-m}$ 是 $C$ 前 $n$ 列去掉 $j_1, j_2, \cdots, j_m$ 列后余下的列序数. $e_{i_1}, e_{i_2}, \cdots, e_{i_{n-m}}$ 是相应的 $n$ 维标准单位向量（标准单位向量定义见习题 1）. 记
-    $$
+    \[
     |N| = | - e_{i_1}, - e_{i_2}, \cdots, - e_{i_{n-m}}, B |.
-    $$
+    \]
     现在计算 $|N|$. 用 Laplace 定理按前 $n-m$ 列展开. 注意只有一个子式非零，其值等于 $| - I_{n-m}| = (-1)^{n-m}$. 而这个子式的余子式为
-    $$
+    \[
     B \begin{pmatrix} j_1 & j_2 & \cdots & j_m \\ 1 & 2 & \cdots & m \end{pmatrix}.
-    $$
+    \]
 
     因此
-    $$ |N| = (-1)^{(n-m) + (i_1 + i_2 + \cdots + i_{n-m}) + (j_1 + j_2 + \cdots + j_m)} B
+    \[ |N| = (-1)^{(n-m) + (i_1 + i_2 + \cdots + i_{n-m}) + (j_1 + j_2 + \cdots + j_m)} B
     \begin{pmatrix}
         j_1 & j_2 & \cdots & j_m \\
         1 & 2 & \cdots & m
     \end{pmatrix}
-    $$
+    \]
 
     注意到 $ (i_1 + i_2 + \cdots + i_{n-m}) + (j_1 + j_2 + \cdots + j_m) = 1 + 2 + \cdots + n $.综合上面的结论，经过简单计算不难得到
 
-    $$ |AB| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
+    \[ |AB| = \sum_{1 \leqslant j_1 < j_2 < \cdots < j_m \leqslant n} A
     \begin{pmatrix}
         1 & 2 & \cdots & m \\
         j_1 & j_2 & \cdots & j_m
@@ -1706,7 +1706,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
         j_1 & j_2 & \cdots & j_m \\
         1 & 2 & \cdots & m
     \end{pmatrix}.
-    $$
+    \]
 \end{proof}
 
 下面的定理是 Cauchy-Binet 公式的进一步推广，它告诉我们如何求矩阵乘积的 $r$ 阶子式.
@@ -1739,9 +1739,9 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 \begin{proof}
     设 $C = AB$，则 $C = (c_{ij})$ 是 $m$ 阶矩阵且
 
-    $$ c_{ij} = a_{i_1} b_{j_1} + a_{i_2} b_{j_2} + \cdots + a_{i_n} b_{j_n}. $$
+    \[ c_{ij} = a_{i_1} b_{j_1} + a_{i_2} b_{j_2} + \cdots + a_{i_n} b_{j_n}. \]
     因此
-    $$
+    \[
     C
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
@@ -1760,20 +1760,20 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
         \vdots & \vdots & \ddots & \vdots \\
         b_{j_1} & b_{j_2} & \cdots & b_{j_r}
     \end{vmatrix}.
-    $$
+    \]
 
     由 Cauchy-Binet 公式可知：$r > n$ 时，$C
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         j_1 & j_2 & \cdots & j_r
     \end{pmatrix} = 0$；当 $r \leqslant n$ 时，
-    $$
+    \[
     C
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         j_1 & j_2 & \cdots & j_r
-    \end{pmatrix} $$
-    $$ =\sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
+    \end{pmatrix} \]
+    \[ =\sum_{1 \leqslant k_1 < k_2 < \cdots < k_r \leqslant n} A
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         k_1 & k_2 & \cdots & k_r
@@ -1782,15 +1782,15 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
     \begin{pmatrix}
         k_1 & k_2 & \cdots & k_r \\
         j_1 & j_2 & \cdots & j_r
-    \end{pmatrix}. $$
+    \end{pmatrix}. \]
 \end{proof}
 
 矩阵 $A$ 的子式
-$$ A
+\[ A
 \begin{pmatrix}
     i_1 & i_2 & \cdots & i_r \\
     j_1 & j_2 & \cdots & j_r
-\end{pmatrix} $$
+\end{pmatrix} \]
 如果满足条件 $i_1 = j_1, i_2 = j_2, \cdots, i_r = j_r$，则称为主子式.
 
 \begin{corollary}{}{}
@@ -1799,7 +1799,7 @@ $$ A
 
 \begin{proof}
     若 $r \leqslant n$，则由 \autoref{thm:Cauchy-Binet 公式推广} 得到：
-    $$ AA\mathrm{T}
+    \[ AA\mathrm{T}
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         i_1 & i_2 & \cdots & i_r
@@ -1808,7 +1808,7 @@ $$ A
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         k_1 & k_2 & \cdots & k_r
-    \end{pmatrix}^2 \geqslant 0; $$
+    \end{pmatrix}^2 \geqslant 0; \]
     若 $r > n$，则 $AA^\mathrm{T}$ 的任一 $r$ 阶主子式等于零，结论也成立.
 \end{proof}
 
@@ -1816,18 +1816,18 @@ $$ A
 
 \begin{example}{}{}
     证明 Lagrange 恒等式 $(n \geqslant 2)$：
-    $$ \left( \sum_{i=1}^{n}\limits a_i^2 \right) \left( \sum_{i=1}^{n}\limits b_i^2 \right) - \left( \sum_{i=1}^{n}\limits a_i b_i \right)^2 = \sum_{1 \leqslant i < j \leqslant n} (a_i b_j - a_j b_i)^2. $$
+    \[ \left( \sum_{i=1}^{n}\limits a_i^2 \right) \left( \sum_{i=1}^{n}\limits b_i^2 \right) - \left( \sum_{i=1}^{n}\limits a_i b_i \right)^2 = \sum_{1 \leqslant i < j \leqslant n} (a_i b_j - a_j b_i)^2. \]
 \end{example}
 
 \begin{solution}
     左边的式子等于
-    $$ \begin{vmatrix}
+    \[ \begin{vmatrix}
         \sum_{i=1}^{n}\limits a_i^2 & \sum_{i=1}^{n}\limits a_i b_i \\
         \sum_{i=1}^{n}\limits a_i b_i & \sum_{i=1}^{n}\limits b_i^2
-    \end{vmatrix}, $$
+    \end{vmatrix}, \]
 
     这个行列式对应的矩阵可化为：
-    $$ \begin{pmatrix}
+    \[ \begin{pmatrix}
         a_1 & a_2 & \cdots & a_n \\
         b_1 & b_2 & \cdots & b_n
     \end{pmatrix}
@@ -1836,10 +1836,10 @@ $$ A
         a_2 & b_2 \\
         \vdots & \vdots \\
         a_n & b_n
-    \end{pmatrix}. $$
+    \end{pmatrix}. \]
     用 Cauchy-Binet 公式得
 
-    $$
+    \[
     \begin{vmatrix}
         \sum_{i=1}^{n}\limits a_i^2 & \sum_{i=1}^{n}\limits a_i b_i \\
         \sum_{i=1}^{n}\limits a_i b_i & \sum_{i=1}^{n}\limits b_i^2
@@ -1850,7 +1850,7 @@ $$ A
         b_i & b_j
     \end{vmatrix}^2
     = \sum_{1 \leqslant i < j \leqslant n} (a_i b_j - a_j b_i)^2.
-    $$
+    \]
 \end{solution}
 
 \section{伴随矩阵}
