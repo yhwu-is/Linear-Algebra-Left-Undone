@@ -645,7 +645,7 @@
           假设 $r = k-1$ 时也成立, 即存在 $\alpha \in V$
           使得 $\alpha$ 同时不属于 $V_i (i=1,2,\ldots,k-1)$
           下面证明 $r=k$ 时也成立. 显然当此 $\alpha \notin V_k$ 则 $\alpha$ 即为所求.
-           若 $\alpha \in V_k$, 由于 $V_k$ 是 $V$ 的真子空间, 故有 $\beta \notin V_k$, 易知对任意 $V_i (i=1,2,\ldots,k-1)$ 都至多有一个 $k_i$, 使得 $\beta + k_i \alpha \notin V_i; i=1,2,\ldots,k-1$, 我们取异于 $k_i$ 的数 $k$, 则必有 $\beta + k \alpha \notin V_i; i=1,2,\ldots,k-1$. 又由于 $\alpha \in V_k, \beta \notin V_k$ 故有 $\beta + k \alpha \notin V_k$, 故 $\beta + k \alpha \notin V_k (i = 1,2,\dots,k)$.
+           若 $\alpha \in V_k$, 由于 $V_k$ 是 $V$ 的真子空间, 故有 $\beta \notin V_k$, 易知对任意 $V_i (i=1,2,\ldots,k-1)$ 都至多有一个 $k_i$, 使得 $\beta + k_i \alpha \notin V_i; i=1,2,\ldots,k-1$, 我们取异于 $k_i$ 的数 $k$, 则必有 $\beta + k \alpha \notin V_i; i=1,2,\ldots,k-1$. 又由于 $\alpha \in V_k, \beta \notin V_k$ 故有 $\beta + k \alpha \notin V_k$, 故 $\beta + k \alpha \notin V_k \enspace (i = 1,2,\ldots,k)$.
         \end{answer}
     \end{exgroup}
 
@@ -673,7 +673,7 @@
                  0 & 0   & 0  & 0   \\
                  0 & 0   & 0  & 0
                           \end{pmatrix}\]
-                      则解向量$u_1=\left(\dfrac {3}{17},\dfrac{19}{17},1,0\right)^T,u_2=\left(\dfrac{13}{17},-\dfrac{20}{17},0,1\right)^T$. $u_1,u_2$是$V_1\cap V_2$的基，则其维数为2.
+                      则解向量$u_1=\left(\frac {3}{17},\frac{19}{17},1,0\right)^\mathrm{T},u_2=\left(\frac{13}{17},-\frac{20}{17},0,1\right)^\mathrm{T}$. $u_1,u_2$是$V_1\cap V_2$的基，则其维数为2.
 
                 \item 易得$\dim V_1=2,\dim V_2=2$，则由维数公式$\dim (V_1+V_2)=\dim V_1+\dim V_2-\dim (V_1\cap V_2)= 2$又$V_1\cap V_2\subseteq V_1+V_2$，且二者维数相等. 则$V_1\cap V_2=V_1+V_2$，亦即$V_1=V_2$. 所以$V_1+V_2$的基也是$u_1,u_2$，同$V_1\cap V_2$.
             \end{enumerate}
@@ -791,7 +791,7 @@
 
         \item 受三个有限集之并集的元素数量公式的启发，你可能会这样猜测：如果 $V_1,V_2,V_3$ 是一有限维向量空间的子空间，那么有
         \begin{align*}
-            \dim(V_1+V_2+V_3) =\ &\dim V_1+\dim V_2+\dim V_3 \\
+            \dim(V_1+V_2+V_3) ={} &\dim V_1+\dim V_2+\dim V_3 \\
             &-\dim(V_1\cap V_2)-\dim(V_1\cap V_3)-\dim(V_2\cap V_3) \\
             &+\dim(V_1\cap V_2\cap V_3).
         \end{align*}
@@ -803,7 +803,7 @@
         \item 证明：如果 $V_1,V_2,V_3$ 是一有限维向量空间的子空间，那么
         \begin{align*}
             &\dim(V_1+V_2+V_3) \\
-            &= \dim V_1+\dim V_2+\dim V_3 \\
+            ={} & \dim V_1+\dim V_2+\dim V_3 \\
             &-\dfrac{\dim(V_1\cap V_2)+\dim(V_1\cap V_3)+\dim(V_2\cap V_3)}{3} \\
             &+\dfrac{\dim((V_1 + V_2) \cap V_3) - \dim((V_1 + V_3) \cap V_2) + \dim((V_2 + V_3) \cap V_1)}{3}.
         \end{align*}

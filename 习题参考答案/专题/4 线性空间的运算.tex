@@ -40,7 +40,7 @@
                                   \end{pmatrix}\]
                               则$\beta_1,\beta_2,e_1,e_2$即是扩张后的基，因此$W$的补空间的一组基为$e_1,e_2$.
                     \end{enumerate}
-          \end{enumerate} 
+          \end{enumerate}
 
     \item \begin{enumerate}
               \item 先将各向量用坐标表示：
@@ -226,14 +226,14 @@
           \begin{enumerate}
               \item 根据定义可知$\tr$是线性的，有 $\tr(\lambda A+\mu B)=\lambda\tr(A)+\mu\tr(B)=0$，则$U$是封闭的，又$W$封闭是显然的，则 $U,W$ 是 $V$ 的子空间.
 
-              \item 对于$W$,基为$\{E\}$，$\dim W=1$. 对于$u$,设$E_{ij}$是 $a_{ij}=1$，其余元素为0的$n$阶方阵. 则由于$u$是对称矩阵，在非对角线元素上，$u$的基包含$E_{12}+E_{21},E_{13}+E_{31},\ldots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
+              \item 对于$W$,基为$\{E\}$，$\dim W=1$. 对于$U$,设$E_{ij}$是 $a_{ij}=1$，其余元素为0的$n$阶方阵. 则由于$U$中的矩阵均为对称矩阵，在非对角线元素上，$U$的基包含$E_{12}+E_{21},E_{13}+E_{31},\ldots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
                     \[\begin{pmatrix}a_{11}\\ \vdots\\ a_{nn}	\end{pmatrix}=k_1\begin{pmatrix}1 \\ -1 \\ 0\\ \vdots \\0	\end{pmatrix}=k_2\begin{pmatrix}1 \\ 0 \\ -1\\ \vdots \\0	\end{pmatrix}+\cdots+k_{n-1}\begin{pmatrix}1 \\ 0 \\ 0\\ \vdots \\-1	\end{pmatrix}.\]
-                    则还有$n-1$个基$E_{11}-E_{22},E_{11}-E_{33},\ldots ,E_{11}-E_{nn}$. 故 $\dim U=\dfrac{n^2-n}2+n-2=\dfrac{n^2+n-2}2$.
+                    则还有$n-1$个基$E_{11}-E_{22},E_{11}-E_{33},\ldots ,E_{11}-E_{nn}$. 故 $\dim U=\dfrac{n^2-n}2+n-1=\dfrac{n^2+n-2}2$.
 
               \item 设$V'=U+W$. 先证明直和，即$U\cap W=\{0\}$. 这是显然的，因为$\tr(\lambda E)=n\lambda$，仅当 $\lambda=0$ 时 $\lambda E\in U$ 即 $U\cap W=\{0\}$得证. 又$\dim U+\dim W=\dim V'=n=\dim V$，则$V=V'=U\oplus W$得证.
           \end{enumerate}
 
-    \item 由前 $B$ 组第 8 题的证明可知 $W_0=(W_1\cap W_2)\cup\cdots\cup(W_s\cap W_0)$. 由于$W_1\cap W_2\cdots W_s\cap W_0$都是$W_0$的子空间，根据覆盖定理，必存在$i$，使得$W_0=W_i\cap W_0$，即 $W_0\subseteq W_i$ 得证.
+    \item 由前 B 组第 8 题的证明可知 $W_0=(W_1\cap W_2)\cup\cdots\cup(W_s\cap W_0)$. 由于$W_1\cap W_0, \ldots, W_s\cap W_0$都是$W_0$的子空间，根据覆盖定理，因为 $W_0$ 是有限维的，必存在$i$，使得$W_0=W_i\cap W_0$，即 $W_0\subseteq W_i$ 得证.
 \end{enumerate}
 
 \clearpage

@@ -591,22 +591,22 @@
 
         \begin{answer}
             \begin{enumerate}
-                \item 对于集合 \( W = \{(x_1, \dots, x_n) \in F^n \mid a_1x_1 + \cdots + a_nx_n = 0\} \)：
+                \item 对于集合 \( W = \{(x_1, \ldots, x_n) \in F^n \mid a_1x_1 + \cdots + a_nx_n = 0\} \)：
 
                 首先，我们来判断该集合是否为线性空间的子空间. 判断一个集合是否为线性空间的子空间需要满足以下三个条件：
 
                 \begin{enumerate}
                     \item \text{零向量在其中}：
 
-                    当 \( x_1 = x_2 = \cdots = x_n = 0 \) 时，方程 \( a_1x_1 + \cdots + a_nx_n = 0 \) 显然成立，因此零向量 \( (0, 0, \dots, 0) \) 属于 \( W \).
+                    当 \( x_1 = x_2 = \cdots = x_n = 0 \) 时，方程 \( a_1x_1 + \cdots + a_nx_n = 0 \) 显然成立，因此零向量 \( (0, 0, \ldots, 0) \) 属于 \( W \).
 
                     \item \text{封闭性（加法）}：
 
-                    假设 \( \mathbf{v} = (x_1, \dots, x_n) \) 和 \( \mathbf{w} = (y_1, \dots, y_n) \) 属于 \( W \)，即：
+                    假设 \( \mathbf{v} = (x_1, \ldots, x_n) \) 和 \( \mathbf{w} = (y_1, \ldots, y_n) \) 属于 \( W \)，即：
                     \[
                     a_1x_1 + \cdots + a_nx_n = 0 \quad \text{且} \quad a_1y_1 + \cdots + a_ny_n = 0.
                     \]
-                    那么，对于 \( \mathbf{v} + \mathbf{w} = (x_1 + y_1, \dots, x_n + y_n) \)，有：
+                    那么，对于 \( \mathbf{v} + \mathbf{w} = (x_1 + y_1, \ldots, x_n + y_n) \)，有：
                     \[
                     a_1(x_1 + y_1) + \cdots + a_n(x_n + y_n) = (a_1x_1 + \cdots + a_nx_n) + (a_1y_1 + \cdots + a_ny_n) = 0 + 0 = 0.
                     \]
@@ -614,7 +614,7 @@
 
                     \item \text{封闭性（数乘）}：
 
-                    对于任意 \( \mathbf{v} = (x_1, \dots, x_n) \in W \) 和任意 \( \lambda \in F \)，有：
+                    对于任意 \( \mathbf{v} = (x_1, \ldots, x_n) \in W \) 和任意 \( \lambda \in F \)，有：
                     \[
                     a_1(\lambda x_1) + \cdots + a_n(\lambda x_n) = \lambda (a_1x_1 + \cdots + a_nx_n) = \lambda \cdot 0 = 0.
                     \]
