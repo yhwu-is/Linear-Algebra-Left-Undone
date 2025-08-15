@@ -223,36 +223,6 @@
     又由于$\xi$在线性无关向量组$\alpha_1,\ldots,\alpha_n$下的坐标唯一，故我们有$X=AY$，即$Y=A^{-1}X$.
 \end{proof}
 
-% 事实上这一结论放在交换图上来看也是简单的. 假设向量 $\xi$ 在两个基底下分别有坐标 $X,Y$, 则由于 $A$ 可逆，从图中可以读出 $Y=A^{-1}X:$
-% \[
-%     \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
-%     \begin{tikzcd}
-%         & V
-%             \arrow[dl, shift left, "\varphi_{B_1}"]
-%             \arrow[dr, shift left, "\varphi_{B_2}"]
-%         \\ \mathbf{F}^n
-%             \arrow[ur, shift left, "\varphi_{B_1}^{-1}"]
-%         && \mathbf{F}^n
-%             \arrow[ul, shift left, "\varphi_{B_2}^{-1}"]
-%             \arrow[ll, "A"]
-%     \end{tikzcd}
-% \]
-
-% 我们再来看一个例子：
-% \begin{example}{}{}
-%     设$\sigma:\mathbf{F}^n\to\mathbf{F}^m$，定义为$\sigma(X)=AX$，其中$A=(a_{ij})_{m\times n}$. 求$\sigma$在$\mathbf{F}^n$和$\mathbf{F}^m$自然基下的表示矩阵.
-% \end{example}
-
-% \begin{solution}
-%     设$\mathbf{F}^n$和$\mathbf{F}^m$的自然基分别为$\varepsilon_1,\ldots,\varepsilon_n$和$\eta_1,\ldots,\eta_m$，其中$\varepsilon_i$和$\eta_j$分别是第$i$个和第$j$个位置为1，其余位置为0的向量.
-
-%     由于$\sigma(\varepsilon_i)=A\varepsilon_i=(a_{1i},\ldots,a_{mi})^\mathrm{T}=(eta_1,\ldots,\eta_m)A_i$，其中$A_i$是$A$的第$i$列，故$\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)=(\eta_1,\ldots,\eta_m)A$，即$\sigma$在$\mathbf{F}^n$和$\mathbf{F}^m$自然基下的表示矩阵为$A$.
-% \end{solution}
-
-% 我们会惊奇地发现，定义成$\sigma(X)=AX$的映射在向量空间自然基下的矩阵表示就是$A$！即我们讨论的$\tau:V\to W$和$\sigma$不仅可以视为同步进行的映射，它们的矩阵表示也是一致的，只要$\sigma$取在自然基下的矩阵. 有了这样一个结论后，从今往后我们只要看到一个矩阵$A$，要联系它的线性映射时，我们都可以认为$A$来源于映射$\sigma(X)=AX$在自然基下矩阵，因为其它所有的映射$\tau$经过上图中的坐标同构变换后都与这一映射完全对应.
-
-% 事实上，在之后的大量讨论中我们将不区分矩阵和线性映射，其本质也在于任何矩阵$A$都可与$\sigma(X)=AX$等同，这一点在之后我们会深有体会.
-
 有了过渡矩阵的定义，我们可以介绍第二个重要的定理，也是本节的核心：我们想知道\textbf{同一个线性映射在不同的基下的矩阵表示之间有什么关系}，下面的定理回答了这一问题：
 \begin{theorem}{换基公式}{换基公式}
     设 $\sigma \in \mathcal{L}(V_1,V_2)$，$B_1,B_1'$ 是 $V_1$ 的两组基，$B_2,B_2'$ 是 $V_2$ 的两组基. 设 $P$ 是 $B_1$ 变为 $B_1'$ 的过渡矩阵，$Q$ 是 $B_2$ 变为 $B_2'$ 的过渡矩阵，则 $\mathbf{M}_{B_1',B_2'}(\sigma) = Q^{-1}\mathbf{M}_{B_1,B_2}(\sigma)P$.
@@ -323,7 +293,7 @@
                   \end{pmatrix}=(\alpha_{1}, \alpha_{2}, \alpha_{3}) C,\]
               其中 $C$ 是可逆矩阵，且
               \[(\alpha_{1},\alpha_{2},\alpha_{3})=(\beta_{1},\beta_{2},\beta_{3}) C^{-1},\]
-              将上式代入已知条件得
+              使用\autoref{thm:基的选择对变换矩阵的影响}可以直接得到 $B=C^{-1} A C$，或者根据\autoref{eq:7:基与矩阵的"结合律"}，将上式代入已知条件得
               \[\sigma((\beta_{1}, \beta_{2}, \beta_{3}) C^{-1})=((\beta_{1}, \beta_{2}, \beta_{3}) C^{-1}) A,\]
               \[(\sigma(\beta_{1}, \beta_{2}, \beta_{3})) C^{-1}=(\beta_{1}, \beta_{2}, \beta_{3})(C^{-1} A),\]
               从而得 $\sigma(\beta_{1}, \beta_{2}, \beta_{3})=(\beta_{1}, \beta_{2}, \beta_{3})(C^{-1} A C)$，故 $\sigma$ 关于基 $\beta_{1}, \beta_{2}, \beta_{3}$ 下对应的矩阵为
@@ -397,6 +367,8 @@
             E_r & O \\ O & O
         \end{pmatrix} = U_r\]
     其中 $E_r$ 表示 $r$ 阶单位矩阵.
+
+    （严格来说，这里的三个零矩阵应该加上不同的下标，各自的阶数由 $m, n, r$ 决定.）
 \end{theorem}
 
 这一定理也就自然给出了相抵以及相抵标准形的定义：设 $A$ 和 $B$ 是 $m \times n$ 矩阵，如果存在可逆矩阵 $P$ 和 $Q$，使得 $PAQ = B$，则称 $A$ 和 $B$ 是\term{相抵}的. 称 $PAQ = U_r$ 中的 $U_r$ 为矩阵 $A$ 的\term{相抵标准形}，其中 $E_r$ 表示 $r$ 阶单位矩阵，$r = r(A)$. 此后我们还会基于初等变换讨论矩阵的相抵标准形，届时我们再展开讨论``相抵''这一概念.
@@ -405,11 +377,11 @@
     \begin{enumerate}
         \item 充分性：设 $A$ 对应于线性映射 $\sigma$ 的矩阵表示. 根据\autoref{thm:换基公式}，对矩阵 $A$ 左右乘可逆矩阵 $P$ 和 $Q$ 实际上得到了 $\sigma$ 在另一组基（根据\autoref{thm:过渡性质1}的推论，对一组基作用任意可逆矩阵后得到的仍然是一组基）下的矩阵表示为 $U_r$，这表明 $r(\sigma) = r$，因此 $\sigma$ 任意基下的矩阵表示 $A$ 的秩都满足 $r(A) = r$.
 
-        \item 必要性：必要性直接根据线性映射基本定理找出一组基使得线性映射的矩阵表示为 $U_r$，然后利用\autoref{thm:换基公式}找出过渡矩阵 $P$ 和 $Q$ 即可. 回忆线性映射的矩阵表示，如果我们希望矩阵表示出现这么多的 $0$，一个自然的想法就是使得出发空间的基由核空间扩充而来——这又让我们想起了线性映射基本定理，下面的证明也的确基于此：
+        \item 必要性：我们的思路是根据线性映射基本定理找出一组基使得线性映射的矩阵表示为 $U_r$，然后利用\autoref{thm:换基公式}找出过渡矩阵 $P$ 和 $Q$ 即可.
 
-        设$\sigma:V_1\to V_2$，且$\sigma$在$V_1$和$V_2$的基$B_1=\{\varepsilon_1,\ldots,\varepsilon_n\}$和$B_2=\{\eta_1,\ldots,\eta_m\}$下的矩阵表示为$A$.
+        设$\sigma:V_1\to V_2$，且$\sigma$在$V_1$和$V_2$的基$B_1=\{\varepsilon_1,\ldots,\varepsilon_n\}$和$B_2=\{\eta_1,\ldots,\eta_m\}$下的矩阵表示为$A$. 我们要做的就是构造$V_1$和$V_2$的另一组基$B_1'$和$B_2'$使得$\sigma$在这两组基下的矩阵表示为上面的形式.
 
-        现在我们构造$V_1$和$V_2$的另一组基$B_1'$和$B_2'$使得$\sigma$在这两组基下的矩阵表示为上面的形式. 我们设矩阵的秩为$r$，也就是$\sigma$像空间的维数为$r$，因此核空间维数由线性映射基本定理为$n-r$. 由于$U_r$出现了大量的0，因此我们应当从$\sigma$核空间的基入手. 我们取$\sigma$核空间一组基$\alpha_{r+1},\ldots,\alpha_n$，将其扩充为$V_1$的一组基$B_1'=(\alpha_1,\ldots,\alpha_n)$.
+        回忆线性映射的矩阵表示，如果我们希望矩阵表示出现这么多的 $0$，一个自然的想法就是使得出发空间的基由核空间扩充而来. 我们设矩阵的秩为$r$，也就是$\sigma$像空间的维数为$r$，因此核空间维数由线性映射基本定理为$n-r$. 我们取$\sigma$核空间一组基$\alpha_{r+1},\ldots,\alpha_n$，将其扩充为$V_1$的一组基$B_1'=(\alpha_1,\ldots,\alpha_n)$.
 
         我们进一步观察发现除了0之外，$U_r$中的元素均为1，且它们排列在$E_r$的对角线上. 因此我们可以考虑取像空间的一组基$\sigma(\alpha_1),\ldots,\sigma(\alpha_r)$，将其扩充为$V_2$的一组基$B_2'=(\sigma(\alpha_1),\ldots,\sigma(\alpha_r),\beta_{r+1},\ldots,\beta_m)$. 至于为什么$\sigma(\alpha_1),\ldots,\sigma(\alpha_r)$是像空间的一组基，我们可以回顾线性映射基本定理的证明.
 
@@ -549,7 +521,7 @@
     从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面，等式左侧可以化简为
     \[X + \left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1} = X + B,\]
     另一方面，等式右侧可以化简为
-    \[X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A + B) = X A^{-1}(A + B),\]
+    \[X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A + B) = X A^{-1}(A + B) = X + X A^{-1} B,\]
     于是 $X = A = (A^{-1})^{-1} = \begin{pmatrix}
             -\dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{3}  \\
             \dfrac{2}{3}  & \dfrac{1}{3} & -\dfrac{2}{3} \\
@@ -557,7 +529,7 @@
         \end{pmatrix}$.
 \end{solution}
 
-初等矩阵的可逆性是平凡的结论，但反过来，可逆矩阵是否都可以表达为初等矩阵的乘积则显得更为有趣. 事实上答案是肯定的，我们将其写在下述定理中，这是一个相当重要的定理，在之后很多讨论和解题中都扮演关键角色：
+初等矩阵的可逆性是平凡的，但反过来，可逆矩阵是否都可以表达为初等矩阵的乘积则显得有趣. 事实上答案是肯定的，我们将其写在下述定理中，这是一个相当重要的定理，在之后很多讨论和解题中都扮演关键角色：
 \begin{theorem}{}{可逆与初等变换}
     任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
 \end{theorem}
@@ -573,7 +545,7 @@
 \subsection{逆矩阵的求解（基本方法II）}
 
 本节我们将基于上述对初等矩阵的讨论给出逆矩阵求解中另一种基本且更常用的方法. 我们首先给出一个引理：
-\begin{lemma}{}{}
+\begin{lemma}{}{初等变换求逆矩阵}
     设$A$为$n$阶可逆矩阵，如果对$A$和$n$阶单位矩阵$E$做相同的初等行变换，即$P_1,P_2,\ldots,P_k$后$A$变为$E$时，$E$变为$A^{-1}$.
 \end{lemma}
 
@@ -669,13 +641,13 @@
 \begin{proof}
     \begin{enumerate}
         \item 充分性：根据\autoref{thm:可逆与初等变换}，可逆矩阵 $P$ 和 $Q$ 都可以分别表示为若干个初等矩阵的乘积，结合\autoref{thm:初等变换不改变秩} 可知 $r(A) = r(U_r) = r$.
-        \item 必要性：我们可以通过对任何一个矩阵做一系列初等行变换 $P_1,\ldots,P_s$ 得到（行）简化阶梯矩阵，再做一系列初等列变换 $Q_1,\ldots,Q_t$，即可将矩阵化为 $U_l$ 的形式（其中 $l$ 为小于等于 $m$ 和 $n$ 的常数）. 令$P = P_1 \cdots P_s$，$Q = Q_1 \cdots Q_t$，则上述过程可以总结为 $PAQ = U_l$，且 $P$ 和 $Q$ 都是可逆矩阵，因为初等矩阵都是可逆矩阵，可逆矩阵的乘积仍然为可逆矩阵. 又我们知道 $U_l$ 的行秩=列秩$=l=$矩阵的秩，由\autoref{thm:初等变换不改变秩} 可知，$U_l$ 的秩与$A$的秩相等，因此 $l = r(A) = r$ 成立，综上得证.
+        \item \label{pf:初等变换求相抵标准形PQ} 必要性：我们可以通过对任何一个矩阵做一系列初等行变换 $P_1,\ldots,P_s$ 得到（行）简化阶梯矩阵，再做一系列初等列变换 $Q_1,\ldots,Q_t$，即可将矩阵化为 $U_l$ 的形式（其中 $l$ 为小于等于 $m$ 和 $n$ 的常数）. 令$P = P_s \cdots P_1$，$Q = Q_1 \cdots Q_t$，则上述过程可以总结为 $PAQ = U_l$，且 $P$ 和 $Q$ 都是可逆矩阵，因为初等矩阵都是可逆矩阵，可逆矩阵的乘积仍然为可逆矩阵. 又我们知道 $U_l$ 的行秩=列秩$=l=$矩阵的秩，由\autoref{thm:初等变换不改变秩} 可知，$U_l$ 的秩与$A$的秩相等，因此 $l = r(A) = r$ 成立，综上得证.
     \end{enumerate}
 \end{proof}
 
 根据上面的描述，我们可以给出相抵的等价定义：
 \begin{definition}{}{}
-    我们称两个矩阵相抵即两个矩阵可以通过一系列初等变换可以互相转化.
+    我们称两个矩阵相抵当且仅当两个矩阵可以通过一系列初等变换互相转化.
 \end{definition}
 
 根据前面的讨论，我们总结出以下几点：
@@ -722,13 +694,74 @@
               \[\begin{pmatrix}
                       1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0
                   \end{pmatrix}.\]
+        \item 这里介绍两种方法（严格来说，两种方法是一样的）.
 
-        \item 实际上就是求解如何通过初等变换得到相抵标准形，所有行变换相乘得到$P$，所有列变换相乘得到$Q$，此处略去步骤，给出答案为
+              法一：直接将所有行变换相乘得到$P$，所有列变换相乘得到$Q$，此处略去步骤，给出答案为
               \[P=\begin{pmatrix}
                       1 & 0 & 0 \\ -2 & 1 & 0 \\ -1 & 1 & 1
                   \end{pmatrix},\enspace Q=\begin{pmatrix}
-                      1 & 0 & 2 & -4 \\ 0 & 1 & 1 & -2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1
+                      1 & 0 & -2 & 4 \\ 0 & 1 & 1 & -2 \\ 0 & 0 & 1  & 0 \\ 0 & 0 & 0 & 1
                   \end{pmatrix}.\]
+
+              法二：我们用\autoref{lem:初等变换求逆矩阵}中的思想，将\hyperref[pf:初等变换求相抵标准形PQ]{相抵标准形另证}中的过程具象化. 具体来说，对 $m\times n$ 阶矩阵 $A$：
+              \begin{gather}
+                  \left(\begin{array}{c:c}
+                      A & E_m
+                  \end{array}\right)\xrightarrow{\text{初等行变换}}\left(\begin{array}{c:c}
+                      A_1 & P
+                  \end{array}\right)\\
+                  \left(\begin{array}{c}
+                      A_1 \\ \hdashline E_n
+                  \end{array}\right)\xrightarrow{\text{初等列变换}}\left(\begin{array}{c}
+                      U_r \\ \hdashline Q
+                  \end{array}\right)
+              \end{gather}
+              其中 $A_1$ 为（行）简化阶梯矩阵，$P = P_s \cdots P_1$，$Q = Q_1 \cdots Q_t$为所求矩阵.
+
+              以本题为例：
+              \begin{gather*}
+                  (A, E) =
+                  \left(\begin{array}{cccc:cccc}
+                          1  & 0  & 2  & -4 & 1 & 0 & 0 \\
+                          2  & 1  & 3  & -6 & 0 & 1 & 0 \\
+                          -1 & -1 & -1 & 2  & 0 & 0 & 1
+                      \end{array}\right) \\
+                  \xrightarrow{[2] + [1] \times (-2)}
+                  \left(\begin{array}{cccc:cccc}
+                          1  & 0  & 2  & -4 & 1  & 0 & 0 \\
+                          0  & 1  & -1 & 2  & -2 & 1 & 0 \\
+                          -1 & -1 & -1 & 2  & 0  & 0 & 1
+                      \end{array}\right) \\
+                  \xrightarrow{\substack{[3] + [1] \\ [3] + [2]}}
+                  \left(\begin{array}{cccc:cccc}
+                          1 & 0 & 2  & -4 & 1  & 0 & 0 \\
+                          0 & 1 & -1 & 2  & -2 & 1 & 0 \\
+                          0 & 0 & 0  & 0  & -1 & 1 & 1
+                      \end{array}\right) \\
+                  \left(\begin{array}{c}
+                      A_1 \\ \hdashline E_n
+                  \end{array}\right) =
+                  \left(\begin{array}{cccc}
+                      1 & 0 & 2  & -4 \\
+                      0 & 1 & -1 & 2  \\
+                      0 & 0 & 0  & 0  \\ \hdashline
+                      1 & 0 & 0  & 0  \\
+                      0 & 1 & 0  & 0  \\
+                      0 & 0 & 1  & 0  \\
+                      0 & 0 & 0  & 1
+                  \end{array}\right)
+                  \xrightarrow{\substack{[3] + [1] \times (-2) \\ [3] + [2] \\ [4] + [1] \times 4 \\ [4] + [2] \times (-2)}}
+                  \left(\begin{array}{cccc}
+                      1 & 0 & 0  & 0  \\
+                      0 & 1 & 0  & 0  \\
+                      0 & 0 & 0  & 0  \\ \hdashline
+                      1 & 0 & -2 & 4  \\
+                      0 & 1 & 1  & -2 \\
+                      0 & 0 & 1  & 0  \\
+                      0 & 0 & 0  & 1
+                  \end{array}\right)
+              \end{gather*}
+              从而可以得到 $P$，$Q$，结果同上.
     \end{enumerate}
 \end{solution}
 

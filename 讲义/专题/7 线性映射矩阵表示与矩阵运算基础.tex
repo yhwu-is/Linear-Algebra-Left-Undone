@@ -21,11 +21,11 @@
 
 除此之外，我们通常记域$\mathbf{F}$上的$m\times n$矩阵全体为$\mathbf{F}^{m\times n}$或$\mathbf{M}_{m\times n}(\mathbf{F})$. 当$m=n$时矩阵称为方阵，域$\mathbf{F}$上全体$n$阶矩阵（或称$n$阶方阵）记为$\mathbf{F}^{n\times n}$或$\mathbf{M}_n(\mathbf{F})$.
 
-下面开始讨论本节的核心问题，即如何将抽象的线性映射与具象的由数字构成的矩阵联系起来？这似乎不是一个很直接的过程，因为从矩阵的定义来看，似乎就是一堆数字的排列组合，与抽象的映射似乎有些距离，因此我们会首先想到同样由``一些数字''构成的线性空间之间的线性映射，即 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射，然后从这一特殊情况出发得到一般的关联.
+下面开始讨论本节的核心问题，即如何将抽象的线性映射与具象的由数字构成的矩阵联系起来？这似乎不是一个很直接的过程，因为矩阵从定义来看似乎就是一堆数字的排列组合，与抽象的映射有些距离，因此我们会首先想到同样由``一些数字''构成的线性空间之间的线性映射，即 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射，然后从这一特殊情况出发得到一般的关联.
 
 考察一个 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射 $\sigma$，我们可以得到如下结论：
 \begin{lemma}{}{向量空间线性映射的矩阵表示}
-    任意的 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射 $\sigma$ 都可以写成 $\sigma(x) = Ax$ 的形式，其中 $A$ 是一个 $m \times n$ 的矩阵，并且符合要求的矩阵是唯一的.
+    任意的 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射 $\sigma$ 都可以写成 $\sigma(x) = Ax$ 的形式，其中 $A$ 是一个 $m \times n$ 的矩阵，并且符合要求的矩阵是唯一的（这里$\mathbf{F}^n$和$\mathbf{F}^m$的基均为自然基）.
 \end{lemma}
 
 \begin{proof}
@@ -46,7 +46,7 @@
         &= \begin{pmatrix}
             a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n \\
             a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n \\
-            \cdots\\
+            \vdots\\
             a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n
         \end{pmatrix}
     \end{align*}
@@ -59,23 +59,16 @@
             a_{m1} & a_{m2} & \cdots & a_{mn}
         \end{pmatrix}
     \]
-    于是最后一个等号后的向量实际上就是 $AX$，故我们得到了 $\sigma(x) = Ax$. 下面证明唯一性. 假设存在另一个矩阵 $B$ 使得 $\sigma(x) = Bx$，则有 $Ax = Bx$ 对任意的 $x \in \mathbf{F}^n$ 成立，特别地，取 $x = e_j$（即第 $j$ 个位置为 $1$，其余位置全为 $0$ 的向量，$j$ 可以取遍 $1,\ldots,n$），有 $Ae_j = Be_j$. 根据计算规则\autoref{eq:矩阵左乘列向量}，这意味着 $A$ 的第 $j$ 列等于 $B$ 的第 $j$ 列，且对于任意的 $j = 1,\ldots,n$ 都成立，所以 $A = B$，唯一性得证.
+    于是最后一个等号后的向量实际上就是 $Ax$，故我们得到了 $\sigma(x) = Ax$.
+
+    下面证明唯一性. 假设存在另一个矩阵 $B$ 使得 $\sigma(x) = Bx$，则有 $Ax = Bx$ 对任意的 $x \in \mathbf{F}^n$ 成立，特别地，取 $x = e_j$（即第 $j$ 个位置为 $1$，其余位置全为 $0$ 的向量，$1\leqslant j\leqslant n$），有 $Ae_j = Be_j$. 根据计算规则\autoref{eq:矩阵左乘列向量}，这意味着 $A$ 的第 $j$ 列等于 $B$ 的第 $j$ 列，且对任意 $j = 1,\ldots,n$ 都成立，所以 $A = B$，唯一性得证.
 \end{proof}
 
 因此，任给一个 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射 $\sigma$，我们都可以找到唯一的对应的矩阵 $A$，使得 $\sigma(x) = Ax$. 反之，任给一个 $m \times n$ 的矩阵 $A$，$\sigma(x) = Ax$ 直接给出了唯一的一个 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射. 故 $m \times n$ 的矩阵与 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射是一一对应的，因此我们可以将引理中的 $A$ 视为 $\sigma$ 的矩阵表示. 回忆全体 $\mathbf{F}^n \to \mathbf{F}^m$ 的线性映射可以记为 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$，事实上这样我们就建立了 $\mathbf{F}^{m\times n}$ 和 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 之间的对应关系. 之后我们将证明，这种对应关系是一个同构，即 $\mathbf{F}^{m \times n} \cong \mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$.
 
 上面的讨论为我们提供了一个从线性映射到矩阵的想法，但问题在于，一般的线性映射可以定义在任意的线性空间 $V$ 上，而不仅仅是向量空间 $\mathbf{F}^n$ 上. 但是，\nameref{sec:向量的坐标}一节的讨论告诉我们，任意的 $n$ 维抽象空间 $V$ 都可以通过一个基底 $B$ 与 $\mathbf{F}^n$ 建立坐标映射 $\varphi_B$ 这一同构. 我们仿佛看到了胜利的曙光：可以将一般的向量空间同构到我们熟悉的 $\mathbf{F}^n$，然后就可以得到矩阵表示.
 
-% 我们注意到虽然证明过程中我们假设了 $\sigma(e_j) = (a_{1j}, a_{2j}, \ldots, a_{mj})^{\mathrm{T}}$，但是即使把矩阵的列改成任意向量空间 $V$ 中的向量而非 $\mathbf{R}^m$ 中的向量也并不改变论证的有效性，也就是说矩阵的列完全可以被替换为任意向量空间中的元素，这样我们也就得到了 $\mathbf{R}^n \to V$ 的映射的一般表示方法——写成长度为 $n$ 的一行，每列分别是一个向量，例如当 $V = \mathbf{R}[x]_4$ 时，我们可以写出
-% \[
-% (1, x, x^2, x^3) \begin{pmatrix}
-%     1 \\ 2 \\ 3 \\ 4
-% \end{pmatrix} = 1 + 2x + 3x^2 + 4x^3
-% \]
-
-% 我们可以将上面的运算称作使用 $\mathbf{F}^n$ 中向量的系数对一个向量组做线性组合. 特别地，由于基底也是一个向量组，当 $A$ 作为 $n$ 维向量空间 $V$ 的一个基底时，它作为 $\mathbf{F}^n\to V$ 的同构将坐标映射到空间中对应的点，和将点映射到坐标的坐标映射 $V\to\mathbf{F}^n$ 互为逆映射. 如果回顾\hyperlink{基底的矩阵写法}{基底的矩阵写法}我们便会发现前面的符号和此处达成了统一.
-
-我们在交换图上讲这一直观想法具体且形象地表达（交换图的定义与例子请参考\autoref{def:交换图}）. 这一交换图首先有一个 $V_1$ 到 $V_2$ 的箭头，代表我们研究的映射 $\sigma$. 然后根据前面的讨论，我们需要将这两个空间对应到向量空间. 于是我们设 $\dim V_1 = n$，$\dim V_2 = m$，并取 $V_1$ 和 $V_2$ 的基底 $B_1$ 和 $B_2$，则有两个坐标映射 $\varphi_{B_1}$ 和 $\varphi_{B_2}$ 和它们的逆映射 $\varphi_{B_1}^{-1}$ 和 $\varphi_{B_2}^{-1}$，都标在箭头上. 于是我们得到了下面的交换图：
+我们在交换图上将这一直观想法具体且形象地表达（交换图的定义与例子请参考\autoref{def:交换图}）. 这一交换图首先有一个 $V_1$ 到 $V_2$ 的箭头，代表我们研究的映射 $\sigma$. 然后根据前面的讨论，我们需要将这两个空间对应到向量空间. 于是我们设 $\dim V_1 = n$，$\dim V_2 = m$，并取 $V_1$ 和 $V_2$ 的基底 $B_1$ 和 $B_2$，则有两个坐标映射 $\varphi_{B_1}$ 和 $\varphi_{B_2}$ 和它们的逆映射 $\varphi_{B_1}^{-1}$ 和 $\varphi_{B_2}^{-1}$，都标在箭头上. 于是我们得到了下面的交换图：
 \[
     \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
     \begin{tikzcd}
@@ -192,7 +185,7 @@
     \end{enumerate}
 \end{solution}
 
-上述第二问有一种常见的错误解法，这里我需要加粗强调，下面这种解法是\textbf{完全错误的！！！}这里展示这一解法是为了让读者将前面所学的知识完全厘清：
+上述第二问有一种常见的错误解法，在此展示一下（加粗强调，下面这种解法是\textbf{完全错误的！！！}展示该解法是为了让读者将前面所学的知识完全厘清）：
 
 \begin{solution}[错误解法！！！]
     $
@@ -209,7 +202,8 @@
 \begin{enumerate}
     \item 为什么这种解法是错误的：我们可以直接比较\autoref{eq:7:线性映射矩阵表示} 和这一解法中，\autoref*{eq:7:线性映射矩阵表示} 的等号左边是$n$个向量在$\sigma$下的像，而上述解法$\sigma(x_1,x_2,x_3)^{\mathrm{T}}$只是$\sigma$在一个向量下的像，这显然是不一样的！！！同样，等号右边括号内\autoref*{eq:7:线性映射矩阵表示} 是到达空间的一组基，而上述解法中仍然只是一个向量. 我们从未定义过这样解题的结果是什么，所以千万不能做这种无意义的事！！！
 
-          容易导致混淆的原因可能在于我们书写$(x,y,z)$向量时是排列成一行的，可能看起来和$(e_1,e_2,e_3)$有点相似，但是如果我们回忆在第一章中的约定：写作行向量，实际是列向量，把 $\mathbf{R}^3$ 的向量按列书写之后我们得到的应该是
+          容易导致混淆的原因可能在于我们书写$(x,y,z)$向量时是排列成一行的，可能看起来和$(e_1,e_2,e_3)$有点相似，但是如果我们回忆在第一章中的约定：写作行向量，实际是列向量，把 $\mathbf{R}^3$ 的向量按列书写之后我们得到的应该是：
+
           \[
             \sigma\begin{pmatrix}
                 x_1 \\ x_2 \\ x_3
@@ -224,7 +218,8 @@
                 1 & 1 & 0 \\ 1 & 0 & -1 \\  0 & 1 & 0
             \end{pmatrix}
           \]
-          当注意到这点之后，实际上我们也可以直接写出矩阵形式的 $\mathbf{R}^3 \to \mathbf{R}^3$ 的映射，由于标准基 $B_1 = B_2 = E$ 是单位阵，即恒同映射（坐标等于向量）所以 $\sigma\circ E = E\circ \mathbf{M}(\sigma)$ 退化为其标准表示 $\mathbf{M} = \sigma = \begin{pmatrix}
+
+          当注意到这点之后，实际上我们可以根据\autoref{lem:向量空间线性映射的矩阵表示}与\autoref{def:线性映射矩阵表示}后的叙述，直接写出矩阵表示 $\mathbf{M}(\sigma) = \begin{pmatrix}
               1 & 1 & 0 \\ 1 & 0 & -1 \\  0 & 1 & 0
           \end{pmatrix}$.
 
@@ -244,7 +239,7 @@
         这里将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$的结果按行排列成矩阵，对比标准答案的 $(\sigma(e_1), \sigma(e_2), \sigma(e_3))$ 是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$在$\mathbf{R}^3$自然基下的坐标按列排列成矩阵，回忆$\mathbf{R}^n$向量在自然基下坐标是其本身这一性质，标准答案就是将$\sigma(e_1),\sigma(e_2),\sigma(e_3)$按列排列成矩阵，由此我们解释了行列互换发生的原因.
 \end{enumerate}
 
-这也就是为什么我强调读者不要参考之前提到的第二种方法\autoref{ex:线性映射的像空间求解2}来求解像空间——很容易导致这里矩阵表示犯这样的错误，并且容易导致初学时无法区分求解像空间和线性映射矩阵表示的方法. 在这里我必须再次强调：在没有完全熟练掌握这些概念和方法前，不要乱用方法！！！
+这也就是为什么之前笔者向读者强调不要参考\autoref{ex:线性映射的像空间求解2}提到的第二种方法来求解像空间——很容易导致这里矩阵表示犯这样的错误，并且容易导致初学时无法区分求解像空间和线性映射矩阵表示的方法. 再次强调：在没有完全熟练掌握这些概念和方法前，不要乱用方法！！！
 
 接下来，我们还需要介绍旋转变换的矩阵表示. 这一矩阵形式可以记忆，在之后会多次出现，因为其几何含义是明确的：
 \begin{example}{}{}
@@ -254,10 +249,10 @@
     求解的过程是很自然简单的，我们只需要考虑$\sigma$在常用基$e_1,e_2$下的像，即
     \[
     \begin{cases}
-        \sigma(e_1)=\cos\theta e_1+\sin\theta e_2=(e_1,e_2)\begin{pmatrix}
+        \sigma(e_1)=\cos\theta\cdot e_1+\sin\theta\cdot e_2=(e_1,e_2)\begin{pmatrix}
             \cos\theta \\ \sin\theta
         \end{pmatrix} \\
-        \sigma(e_2)=-\sin\theta e_1+\cos\theta e_2=(e_1,e_2)\begin{pmatrix}
+        \sigma(e_2)=-\sin\theta\cdot e_1+\cos\theta\cdot e_2=(e_1,e_2)\begin{pmatrix}
             -\sin\theta \\ \cos\theta
         \end{pmatrix}
     \end{cases}
@@ -293,53 +288,6 @@
 \end{align*}
 
 同样地，$\lambda \sigma$ 的矩阵表示的第 $j$ 列就是 $\sigma$ 的矩阵表示的第 $j$ 列的每个元素乘以 $\lambda$ 的结果. 由于 $j$ 的任意性，我们可以得到 $\lambda \sigma$ 的矩阵表示就是 $\sigma$ 的矩阵表示的每个元素乘以 $\lambda$. 总结前面的讨论，我们可以得到如下定义：
-
-% 则 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 中映射和其在 $\mathbf{F}^{m\times n}$ 中的标准表示一一对应. 于是 $\mathbf{F}^{m\times n}$ 便可以自然地从映射构成的线性空间 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 中继承加法和数乘. 先考虑加法，由于 $(\sigma+\tau)(x) = \sigma(x) + \tau(x)$，令 $\sigma = (a_{ij})_{m\times n}, \tau = (b_{ij})_{m\times n}$ 则有
-% \begin{align*}
-%     &\phantom{=\ }((a_{ij})_{m\times n} + (b_{ij})_{m\times n})(x)\\
-%     &= (a_{ij})_{m\times n} (x) + (b_{ij})_{m\times n} (x) \\
-%     &= \begin{pmatrix}
-%         a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n \\
-%         a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n \\
-%         \cdots\\
-%         a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n
-%     \end{pmatrix} + \begin{pmatrix}
-%         b_{11} x_1 + b_{12} x_2 + \cdots + b_{1n} x_n \\
-%         b_{21} x_1 + b_{22} x_2 + \cdots + b_{2n} x_n \\
-%         \cdots\\
-%         b_{m1} x_1 + b_{m2} x_2 + \cdots + b_{mn} x_n
-%     \end{pmatrix} \\
-%     &= \begin{pmatrix}
-%         (a_{11} + b_{11}) x_1 + (a_{12} + b_{12}) x_2 + \cdots + (a_{1n} + b_{1n}) x_n \\
-%         (a_{21} + b_{21}) x_1 + (a_{22} + b_{22}) x_2 + \cdots + (a_{2n} + b_{2n}) x_n \\
-%         \cdots\\
-%         (a_{m1} + b_{m1}) x_1 + (a_{m2} + b_{m2}) x_2 + \cdots + (a_{mn} + b_{mn}) x_n
-%     \end{pmatrix} \\
-%     &= \begin{pmatrix}
-%         a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
-%         a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
-%         \cdots\\
-%         a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
-%     \end{pmatrix}
-%     \begin{pmatrix}
-%         x_1 \\ x_2 \\ \vdots \\ x_n
-%     \end{pmatrix}
-% \end{align*}
-
-% 即应该有
-% \[
-%     (a_{ij})_{m\times n} + (b_{ij})_{m\times n} = (a_{ij} + b_{ij})_{m\times n}
-% \]
-
-% 类似地，由线性映射的数乘 $(\lambda \sigma)(x) = \lambda\cdot(\sigma(x)), \forall \lambda\in\mathbf{F}, x\in V$ 可以导出
-% \[
-%     \lambda (a_{ij})_{m\times n} = (\lambda a_{ij})_{m\times n} = \begin{pmatrix}
-%         \lambda a_{11} & \lambda a_{12} & \cdots & \lambda a_{1n} \\
-%         \lambda a_{21} & \lambda a_{22} & \cdots & \lambda a_{2n} \\
-%         \vdots & \vdots & \ddots & \vdots \\
-%         \lambda a_{m1} & \lambda a_{m2} & \cdots & \lambda a_{mn}
-%     \end{pmatrix}
-% \]
 
 \begin{definition}{矩阵加法和数乘}{}
     \begin{enumerate}
@@ -412,7 +360,7 @@
 
 此前我们已经知道，$\tau$ 就是将 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 中的元素在 $\mathbf{F}^n$ 和 $\mathbf{F}^m$ 的自然基下进行矩阵表示，因此是一般的矩阵表示的特殊情况，因此符合线性性. 而在\autoref{lem:向量空间线性映射的矩阵表示}的讨论中我们知道，$\tau$ 是可逆的，因为 $\mathcal{L}(\mathbf{F}^n, \mathbf{F}^m)$ 和 $\mathbf{F}^{m \times n}$ 中的元素一一对应，所以 $\tau$ 也是一个线性同构. 故我们可以直接写出 $\varphi^{-1}(M) = \varphi_{B_2}^{-1} \circ \tau^{-1}(M) \circ \varphi_{B_1}$，不难验证 $\varphi^{-1}(\varphi(\sigma)) = \sigma$ 和 $\varphi(\varphi^{-1}(M)) = M$，并且线性映射复合仍然是线性映射，故 $\varphi$ 是线性双射. 由此我们得到了以下定理：
 
-\begin{theorem}{线性映射与矩阵的同构}{}
+\begin{theorem}{线性映射与矩阵的同构}{线性映射与矩阵的同构}
     设 $V_1, V_2$ 分别是 $n$ 维和 $m$ 维线性空间，则 $\mathcal{L}(V_1, V_2) \cong \mathbf{F}^{m \times n}$ 是同构的.
 \end{theorem}
 
@@ -512,10 +460,10 @@
         \sum_{j=1}^n\limits b_{mj} x_j
     \end{pmatrix} \\
     &= \begin{pmatrix}
-        \sum_{k=1}^n\limits a_{1k} \sum_{j=1}^n\limits b_{kj} x_j \\
-        \sum_{k=1}^n\limits a_{2k} \sum_{j=1}^n\limits b_{kj} x_j \\
+        \sum_{k=1}^m\limits a_{1k} \sum_{j=1}^n\limits b_{kj} x_j \\
+        \sum_{k=1}^m\limits a_{2k} \sum_{j=1}^n\limits b_{kj} x_j \\
         \vdots \\
-        \sum_{k=1}^n\limits a_{pk} \sum_{j=1}^n\limits b_{kj} x_j
+        \sum_{k=1}^m\limits a_{pk} \sum_{j=1}^n\limits b_{kj} x_j
     \end{pmatrix} = \begin{pmatrix}
         \sum\limits_{j=1}^n\left(\sum\limits_{k=1}^m a_{1k} b_{kj}\right) x_j \\
         \sum\limits_{j=1}^n\left(\sum\limits_{k=1}^m a_{2k} b_{kj}\right) x_j \\
@@ -710,15 +658,17 @@
           \[X=\begin{pmatrix}
                   x_1 \\ x_2 \\ \vdots \\ x_n
               \end{pmatrix}\]
-          由$AX=b$和线性映射矩阵表示，我们有
+          这里沿用\autoref{def:线性映射矩阵表示}中出发空间和到达空间的基的记号，我们有：
           \begin{equation}\label{eq:7:方程组与核空间1}
               (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))\begin{pmatrix}
                   x_1 \\ x_2 \\ \vdots \\ x_n
-              \end{pmatrix}=(\alpha_1,\alpha_2,\ldots,\alpha_m)A\begin{pmatrix}
-                  x_1 \\ x_2 \\ \vdots \\ x_n
-              \end{pmatrix}=\beta
+              \end{pmatrix}=(\alpha_1,\alpha_2,\ldots,\alpha_m)AX
           \end{equation}
-          即 $b$ 是 $\beta$ 在基 $\alpha_1,\alpha_2,\ldots,\alpha_m$ 下的坐标. 由上式可知 $x_1\sigma(\varepsilon_1)+x_2\sigma(\varepsilon_2)+\cdots+x_n\sigma(\varepsilon_n)=\beta$，即
+          我们设 $\beta$ 为满足基 $\alpha_1,\alpha_2,\ldots,\alpha_m$ 下的坐标表示为 $b$ 的向量，则有：
+          \[
+              x_1\sigma(\varepsilon_1)+x_2\sigma(\varepsilon_2)+\cdots+x_n\sigma(\varepsilon_n)=(\alpha_1,\alpha_2,\ldots,\alpha_m)b=\beta
+          \]
+          即：
           \begin{equation}\label{eq:7:方程组与核空间2}
               \sigma(x_1\varepsilon_1+x_2\varepsilon_2+\cdots+x_n\varepsilon_n)=\beta.
           \end{equation}
@@ -734,7 +684,7 @@
                     \end{example}
                     \begin{proof}
                         设$A=(a_{ij})_{m\times n}$，$B=(b_{ij})_{n\times l}$，且设$AB=(c_{ij})_{m\times l}$的第$i$行为0，则根据前面的讨论可知就是$A$的第$i$行乘以$B$得到了全0行向量. 因此若$A$的第$i$行为0，则结论成立；否则$A$的第$i$行中存在某个元素大于0，不妨设$a_{ik}>0$，则此时$B$的第$k$行各元素必须均为0，否则若$b_{kj}>0$，我们有
-                        \[c_{ij}=a_{i1}b_{1j}+\cdots+a_{ik}b_{kj}+\cdots+a_{in}b_{nj}>0,\]
+                        \[c_{ij}=a_{i1}b_{1j}+\cdots+a_{ik}b_{kj}+\cdots+a_{in}b_{nj}\geqslant a_{ik}b_{kj}>0\]
                         综上可知结论成立.
                     \end{proof}
 
@@ -766,10 +716,10 @@
               & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A
           \end{align*}
           事实上两个记号是等价的，只有记号上的差别，含义完全相同. 有时我们还会看到一个很特别的书写方式
-          \[
+          \begin{equation}\label{eq:7:基与矩阵的"结合律"}
             (\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))B
             =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)B)
-          \]
+          \end{equation}
           这容易导致读者的困惑，因此我们这里简要说明它们的确是成立的，从而接下来读者可以放心地自由使用这一结论. 根据上述的第一个性质可知，我们只需要证明对$B$的某一列上式成立即可，因为乘法结果是列与列对应的. 我们设$B$的第$k$列为
           \[B_k=\begin{pmatrix}
                   b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
@@ -781,10 +731,10 @@
                   b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
               \end{pmatrix}
                & =(\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))\begin{pmatrix}
-                                                                                                b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
-                                                                                            \end{pmatrix} \\
-               & =b_{1k}\sigma(\varepsilon_1)+b_{2k}\sigma(\varepsilon_2)+\cdots+b_{nk}\sigma(\varepsilon_n)                    \\
-               & =\sigma(b_{1k}\varepsilon_1+b_{2k}\varepsilon_2+\cdots+b_{nk}\varepsilon_n)                                    \\
+                   b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
+               \end{pmatrix}  \\
+               & =b_{1k}\sigma(\varepsilon_1)+b_{2k}\sigma(\varepsilon_2)+\cdots+b_{nk}\sigma(\varepsilon_n)  \\
+               & =\sigma(b_{1k}\varepsilon_1+b_{2k}\varepsilon_2+\cdots+b_{nk}\varepsilon_n)  \\
                & =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)
               \begin{pmatrix}
                   b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
@@ -800,7 +750,7 @@
     \item 但是注意数量矩阵（即对角线上元素都相等，其余均为0，单位矩阵是其特例）和任何同阶的矩阵相乘都是可交换的，这一点在矩阵求幂时很有用；
 
     \item \label{item:7:矩阵乘法:3}
-          $A\neq O$且$B\neq O$不能推出$AB\neq O$. 例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$ 在环上这种元素通常被称为零因子.
+          $A\neq O$且$B\neq O$不能推出$AB\neq O$. 例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$. 在环上这种元素通常被称为零因子.
 
     \item 消去律也不一定满足：即$AB = AC$不一定$B = C$. 原因在于$AB=AC \implies A(B-C)=O$，由 \ref*{item:7:矩阵乘法:3} 可知不一定$B = C$.
 \end{enumerate}
@@ -963,7 +913,7 @@
 \end{theorem}
 
 \begin{proof}
-    若存在两个不同的矩阵 $B,C$ 使得 $BA=AB=CA=AC=E$，则必有 $B=BE=B(AC)=(BA)C=EC=C$，与假设矛盾.
+    若 $B,C$ 都是 $A$ 的逆矩阵，则 $BA=AB=CA=AC=E$，从而 $B=BE=B(AC)=(BA)C=EC=C$，故逆矩阵唯一.
 \end{proof}
 注意这个唯一性的证明，我们在证明群的单位元唯一时使用了完全一致的思想.
 
@@ -1188,7 +1138,7 @@
 
 % 那么，让我们思考一下怎么给出这个表示. 现在，我们的第一反应是，它一定是一个反变的东西. 其次，它一定对于任意行数和列数的矩阵都存在. 那么，最简单的想法就是，它是不是就是矩阵的转置？矩阵的转置看起来符合反变的直观，而且也带有我们已经给出的性质. 而下面的问题是，如何验证这种直观.
 \begin{theorem}{}{对偶映射的矩阵表示}
-    $V$和$W$为有限维线性空间. $V$的一组基为$\alpha_1,\ldots,\alpha_n$，$W$的一组基为$\beta_1,\ldots,\beta_m$，它们对偶空间的基分别为$f_1,\ldots,f_n$和$g_1,\ldots,g_m$. 设$\sigma\in\mathcal{L}(V,W)$，它在上述$V$和$W$的基下的矩阵为$A=(a_{ij})_{m \times n}$，则$\sigma^*\in\mathcal{L}(W^*,V^*)$在上述对偶基下的矩阵为$C=(c_{ij})_{n \times m}=A^\mathrm{T}$.
+    $V$和$W$为有限维线性空间. $V$的一组基为$\alpha_1,\ldots,\alpha_n$，$W$的一组基为$\beta_1,\ldots,\beta_m$，它们的对偶基分别为$f_1,\ldots,f_n$和$g_1,\ldots,g_m$. 设$\sigma\in\mathcal{L}(V,W)$，它在上述$V$和$W$的基下的矩阵为$A=(a_{ij})_{m \times n}$，则$\sigma^*\in\mathcal{L}(W^*,V^*)$在上述对偶基下的矩阵为$C=(c_{ij})_{n \times m}=A^\mathrm{T}$.
 \end{theorem}
 
 \begin{proof}
@@ -1207,9 +1157,9 @@
     a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = 1
 \]
 
-我们记 $a = (a_1,a_2,\ldots,a_n)^\mathrm{T}, x = (x_1,x_2,\ldots,x_n)^\mathrm{T}$，于是上面的方程可以简化为 $a^\mathrm{T} x = 1$. 根据线性空间同构于其对偶，$a \in \mathbf{F}^n$ 与 $a^\mathrm{T} x = 1$（视为 $(\mathbf{F}^n)^*$ 中的元素） 是一一对应的关系. 于是我们接下来可以给出\autoref{thm:对偶映射的矩阵表示} 从几何上的理解. 考虑超平面方程 $a^\mathrm{T} x = 1$，则与这个超平面对偶的点是 $a$. 设 $\sigma \in \mathcal{L}(\mathbf{F}^n,\mathbf{F}^m)$，根据\autoref{lem:向量空间线性映射的矩阵表示}，$\sigma$ 与一个矩阵 $M$ 对应.
+我们记 $a = (a_1,a_2,\ldots,a_n)^\mathrm{T}, x = (x_1,x_2,\ldots,x_n)^\mathrm{T}$，于是上面的方程可以简化为 $a^\mathrm{T} x = 1$. 根据线性空间同构于其对偶，$a \in \mathbf{F}^n$ 与 $a^\mathrm{T} x = 1$（视为 $(\mathbf{F}^n)^*$ 中的元素，回忆\autoref{eq:6:线性泛函与超平面对应} ）是一一对应的关系. 于是我们接下来可以给出\autoref{thm:对偶映射的矩阵表示} 从几何上的理解. 考虑超平面方程 $a^\mathrm{T} x = 1$，则与这个超平面对偶的点是 $a$. 设 $\sigma \in \mathcal{L}(\mathbf{F}^n,\mathbf{F}^m)$，根据\autoref{lem:向量空间线性映射的矩阵表示}，$\sigma$ 与一个矩阵 $M$ 对应.
 
-我们对 $a \in \mathbf{F}^n$ 作用上 $\sigma$，得到了 $\sigma(a) = Ma \in \mathbf{F}^m$. 而与 $\tilde{x}'$ 对应的超平面方程是 $(Ma)^\mathrm{T} x = 1$，即 $(a^\mathrm{T}M^\mathrm{T}) x = 1$，即新的超平面和原来的超平面相差一个 $M^\mathrm{T}$，即 $(\mathbf{F}^m)^*$ 与 $(\mathbf{F}^n)^*$ 之间相差了 $M^\mathrm{T}$. 因此，从几何直观上，我们也验证了转置和对偶映射的对应关系.
+我们对 $a \in \mathbf{F}^n$ 作用上 $\sigma$，得到了 $\sigma(a) = Ma \in \mathbf{F}^m$. 而与 $\sigma(a)$ 对应的超平面方程是 $(Ma)^\mathrm{T} x' = 1$，即 $(a^\mathrm{T}M^\mathrm{T}) x' = 1$，即新的超平面和原来的超平面相差一个 $M^\mathrm{T}$，即 $(\mathbf{F}^m)^*$ 与 $(\mathbf{F}^n)^*$ 之间相差了 $M^\mathrm{T}$. 因此，从几何直观上，我们也验证了转置和对偶映射的对应关系.
 
 \section{矩阵的共轭}
 
@@ -1284,7 +1234,7 @@
                   A_1B \\ \vdots \\ A_sB
               \end{pmatrix}.\]
 
-    \item 分块矩阵求逆通常有两种方法，其一直接使用设未知数的方式完成，我们下面将给出例子，当然也可以利用后续介绍的分块矩阵初等变换进行解决：
+    \item 分块矩阵求逆通常有两种方法，一种是直接使用设未知数的方式完成，我们下面将给出例子，当然也可以利用后续介绍的分块矩阵初等变换进行解决：
           \begin{example}{}{}
               设$n$阶矩阵$A$分块为$A=\begin{pmatrix}
                       B & O \\ C & D
@@ -1304,11 +1254,13 @@
                   \end{pmatrix}=\begin{pmatrix}
                       E_k & O \\ O & E_m
                   \end{pmatrix},\]
-              又由题意$A$可逆有$B,D$可逆，因此$BX=E_k$可得$X=B^{-1}$，$BY=O$可得$Y=O$，$CY+DT=DT=E_m$可得$T=D^{-1}$，$CX+DZ=CB^{-1}+DZ=O$可得$Z=-D^{-1}CB^{-1}$，因此
+              又由题意$A$可逆，$B,D$可逆，因此$BX=E_k$可得$X=B^{-1}$，$BY=O$可得$Y=O$，$CY+DT=DT=E_m$可得$T=D^{-1}$，$CX+DZ=CB^{-1}+DZ=O$可得$Z=-D^{-1}CB^{-1}$，因此
               \[A^{-1}=\begin{pmatrix}
                       B^{-1} & O \\ -D^{-1}CB^{-1} & D^{-1}
                   \end{pmatrix}.\]
           \end{solution}
+
+          上述求解过程其实蕴含了一点：按照上述分块方式，$A$ 可逆当且仅当 $B,D$ 可逆.
 
     \item 分析分块矩阵与普通矩阵的运算性质的异同：
           \begin{enumerate}
@@ -1369,7 +1321,7 @@
         \end{pmatrix}$. 上面的具体展开计算略过，我们这里只需要体会分块矩阵的运算性质即可.
 \end{solution}
 
-在这个例子中我们可以得到一个很关键的经验：分块对角矩阵求逆实际上就是对每一个分块求逆.
+从中我们能得到一个关键经验：分块对角矩阵求逆实际上就是对每一个分块求逆.
 
 \begin{summary}
 
