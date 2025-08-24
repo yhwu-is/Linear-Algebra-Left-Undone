@@ -359,7 +359,7 @@
 
 上述结论其实蕴含着一个直觉，即对于满足一定条件的矩阵 $A$，只有有限个 $\lambda$ 会使得 $A-\lambda E$ 是不可逆的.
 
-% 这里应该再写点东西，但是我的知识储备太小，写不下了（
+% 这里应该再写点东西，比如加上谢启鸿《高等代数》2.11 中关于摄动法的内容
 
 凑因子法可以更具技巧性，下面的例子展示了这一点：
 
@@ -2321,15 +2321,15 @@
 
         \item 利用打洞法完成以下两个问题（\ref*{item:11:C:1} 也可以不使用打洞法，可以思考其他方式解决）：
         \begin{enumerate}
-            \item 设$n$阶方阵$A,B,C,D$满足$AC+BD=E$，证明：$r(AB) = r(A)+r(B)-n$；
+            \item 设$n$阶方阵$A,B,C,D$满足$CA+BD=E$，证明：$r(AB) = r(A)+r(B)-n$；
 
             \item \label{item:11:C:1}
                   $n$阶方阵$A,B$满足$AB=BA$，证明：$r(AB)+r(A+B)\leqslant r(A)+r(B)$.
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
-                \item 由 \[\begin{pmatrix}A & 0 \\ 0 & B\end{pmatrix}\rightarrow \begin{pmatrix}A & AC \\ 0 & B\end{pmatrix}\rightarrow \begin{pmatrix}A & AC+BD \\ 0 & B\end{pmatrix}=\begin{pmatrix}A & E \\ 0 & B\end{pmatrix}\]
-                      \[\rightarrow \begin{pmatrix}0 & E \\ -AB & B\end{pmatrix}\rightarrow \begin{pmatrix}0 & E \\ AB & 0\end{pmatrix}\]
+                \item 由 \[\begin{pmatrix}B & 0 \\ 0 & A\end{pmatrix}\rightarrow \begin{pmatrix}B & BD \\ 0 & A\end{pmatrix}\rightarrow \begin{pmatrix}B & BD+CA \\ 0 & A\end{pmatrix}=\begin{pmatrix}B & E \\ 0 & A\end{pmatrix}\]
+                      \[\rightarrow \begin{pmatrix}0 & E \\ -AB & A\end{pmatrix}\rightarrow \begin{pmatrix}0 & E \\ AB & 0\end{pmatrix}\]
                       可得.
 
                 \item 用分块矩阵的方法，我们知道

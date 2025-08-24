@@ -83,7 +83,7 @@
 \begin{proof}
     考虑 $f$ 在向量空间中的任取的一点 $v \neq 0$ 上的取值 $f(v)$. 如果 $f(v)$ 不为 $0$，此时，根据线性性我们就有
     \[f(\dfrac{1}{f(v)}v)=\dfrac{1}{f(v)}f(v)=1,\]
-    因此 $(\dfrac{1}{f(v)}v \in \{x: f(x) = 1\}$，也就是说它在 $f$ 确定的超平面上. 又$\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，因此我们也有 $g(\dfrac{1}{f(v)} v) = 1$，从而再次由线性性得出 $g(v) = f(v)$.
+    因此 $\dfrac{1}{f(v)}v \in \{x: f(x) = 1\}$，也就是说它在 $f$ 确定的超平面上. 又$\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，因此我们也有 $g(\dfrac{1}{f(v)} v) = 1$，从而再次由线性性得出 $g(v) = f(v)$.
 
     如果 $f(v)=0$，取$v'$使得$f(v')\neq 0$，由之前的讨论可知$f(v')=g(v')$，同理由线性性可知$0\neq f(v+v')=g(v+v')$，因此$g(v)=g(v+v')-g(v')=f(v+v')-f(v')=f(v)$.
 \end{proof}
@@ -232,7 +232,7 @@
 
 我们已经认识到\autoref{def:对偶映射} 的定义非常自然，并且具有反变的性质，接下来我们来看这一映射是否也具有我们希望拥有的其它性质. 在线性代数中，显然我们希望线性映射的对偶映射也是线性的，这一点我们可以直接验证：
 \begin{lemma}{}{}
-    给定线性映射 $f\colon V \to W$，则 $f^*: W^* \to V^*$ 是线性映射.
+    给定线性映射 $\sigma\colon V \to W$，则 $\sigma^*: W^* \to V^*$ 是线性映射.
 \end{lemma}
 \begin{proof}
     我们直接按照定义展开验证即可：
@@ -264,7 +264,7 @@
 \end{theorem}
 
 \begin{proof}
-    又一次我们遇到了映射套映射的情况，那当然类似于之前对偶映射的讨论，我们的处理手段就是对需要定义的映射进行``取值计算''. 于是我们取$\psi$在$v\in V$上的值，得到$\psi(v)$，它是一个将线性泛函映到实数的线性泛函. 这仍然是映射套映射的情况，于是我们不妨更进一步，取在$f\colon V^*\to\R$上的值，我们有$(\psi(v))(f)$是一个实数，这时我们要素齐全，直接令
+    我们又一次遇到了映射套映射的情况，那当然类似于之前对偶映射的讨论，我们的处理手段就是对需要定义的映射进行``取值计算''. 于是我们取$\psi$在$v\in V$上的值，得到$\psi(v)$，它是一个将线性泛函映到实数的线性泛函. 这仍然是映射套映射的情况，于是我们不妨更进一步，取$\psi(v)$在$f\colon V^*\to\R$上的值，我们有$(\psi(v))(f)$是一个实数，这时我们要素齐全，直接令
     \[(\psi(v))(f) = f(v),\enspace\forall f\in V^*,\enspace v\in V.\]
     类似于对偶映射，这是我们最自然的选择，并且这一映射完全不依赖于基的选择，因此是自然的. 剩下的工作就是验证这个映射具有我们希望的性质，我们放在下面这一例题中证明.
 \end{proof}
@@ -283,9 +283,36 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item
-        \item
-        \item
+        \item 首先要搞清楚我们要证明的映射是$\psi: V \to V^{**}$，因此验证线性性即证明：\[\forall a,b \in \mathbf{F}, \enspace \forall v_1,v_2 \in V, \enspace \psi(av_1 + bv_2) = a\psi(v_1) + b\psi(v_2).\]
+        由于
+        \begin{align*}
+            \psi(av_1 + bv_2)(f) &= f(av_1 + bv_2) \\
+            &= af(v_1) + bf(v_2) \\
+            &= a\psi(v_1)(f) + b\psi(v_2)(f),
+        \end{align*}
+        因此，$\psi$是线性映射.
+        \item 这里可能有点抽象，我们还是用``取值运算''搞清楚$\sigma^{**}$与$\psi$究竟在干什么：
+        \begin{enumerate}
+            \item $\sigma^{**}$是$\sigma^*\colon V^* \to V^*$的对偶映射，即$\sigma^{**}\colon V^{**} \to V^{**}$，且对$\varphi\in V^{**}$，$\sigma^{**}(\varphi)=\varphi\circ\sigma^*$，也就是说$\sigma^{**}$接受一个$V^{**}$中的元素（即将线性泛函映射到实数的线性泛函），然后将其映射到$V^{**}$中的一个元素；
+            \item $\psi\colon V \to V^{**}$在上面也说过，它接受一个$V$中的元素$v$，然后将其映射到$V^{**}$中的一个元素；
+        \end{enumerate}
+        从而$\sigma^{**}$正好接收$\psi(v)$，将其映射为$\psi(v)\circ\sigma^*$，因此对$\forall v \in V, \enspace f \in V^*$，有：
+        \[(\sigma^{**}\circ\psi(v))(f) = \psi(v)(\sigma^*(f)) = f\circ\sigma(v) = (\psi\circ\sigma(v))(f)\]
+        故$\sigma^{**}\circ\psi=\psi\circ\sigma$.
+        \item 在线性性的基础上，只需要证明$\psi$是双射即可：
+        \begin{enumerate}
+            \item 单射：如果$\psi(v)=0$，则$\forall f\in V^*$，有$(\psi(v))(f)=f(v)=0$，由于$V^*$包含了所有将$v$映到实数的线性泛函，因此只能$v=0$，从而$\psi$是单射；
+            \item 满射：即证明：对于任意的$\varphi \in V^{**}$，存在$v \in V$，使得对任意的$f \in V^*$，都有$(\psi(v))(f)=\varphi(f)=f(v)$.
+
+            取$v_1,\cdots,v_n$为$V$的任意一组基，$f_1,\cdots,f_n$为其对偶基，设$f=a_1f_1+\cdots+a_nf_n$，则
+            \begin{gather*}
+                \varphi(f) = \varphi(a_1f_1+\cdots+a_nf_n)
+                           = a_1\varphi(f_1)+\cdots+a_n\varphi(f_n) \\
+                f(v) = a_1f_1(v)+\cdots+a_nf_n(v)
+            \end{gather*}
+            不难知取$v=\varphi(f_1)v_1+\cdots+\varphi(f_n)v_n$即可，从而$\psi$是满射.
+        \end{enumerate}
+        综上：$\psi$是$V$到$V^{**}$的同构映射.
     \end{enumerate}
 \end{proof}
 
@@ -324,6 +351,8 @@
 \end{proof}
 
 那么，定义了一个线性空间之后，我们的第一个问题就是，它的维数是多少. 为了解决这一问题，我们首先给出一个非常有对称性的定理，零化子的维数是这一定理自然的推论：
+
+% ? 感觉这里需要条件加强为正交补，wiki的介绍和我对于R^2的验证似乎都指向这一点
 
 \begin{theorem}{}{对偶空间的维数引理}
     设 $V = U_1 \oplus U_2$，则 $V^* = U_1^0 \oplus U_2^0$，而且 $U_1^0 = U_2^*, U_2^0 = U_1^*$.

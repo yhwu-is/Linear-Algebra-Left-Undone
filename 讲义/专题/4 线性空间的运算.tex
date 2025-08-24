@@ -408,24 +408,24 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 若已知 $A$ 是 $V$ 的仿射子集,则 $A=\alpha+U$,其中 $\alpha\in V$ 且 $U$ 是 $V$ 的子空间.因此,对任意 $\lambda \in \mathbf{F}$,
+        \item 必要性：若已知 $A$ 是 $V$ 的仿射子集,则 $A=\alpha+U$,其中 $\alpha\in V$ 且 $U$ 是 $V$ 的子空间.因此,对任意 $\lambda \in \mathbf{F}$,
         和任意的 $v=\alpha+u_1,w=\alpha+u_2 \in A$,有
         \[
             \lambda v+(1-\lambda)w=\lambda(\alpha+u_1)+(1-\lambda)(\alpha+u_2)=\alpha+\lambda u_1+(1-\lambda)u_2 \in A
         \]
         因此对于仿射子集中的元素$v,w$具有上述性质.
-        \item 若已知$\lambda v+(1-\lambda)w \in A$,令$\alpha \in A$,则
+        \item 充分性：令$\alpha \in A$,则
         \[
             A-\alpha=\{v-\alpha|v\in A\}
         \]
         我们的目标是证明这是一个子空间.
 
-        对于任意的$x \in A$，我们有$\lambda x + (1 - \lambda) \alpha \in A$（由假设$\lambda v + (1 - \lambda) w \in A$可得）,即$\lambda (x-\alpha) \in A- \alpha $，这样就证明了数乘封闭；
+        对于任意的$x \in A$，有$\lambda x + (1 - \lambda) \alpha \in A$（由假设$\lambda v + (1 - \lambda) w \in A$可得）,即$\lambda (x-\alpha) \in A- \alpha $，这样就证明了数乘封闭；
 
         对于$x-\alpha,y-\alpha \in A-\alpha$,
 
         \[
-           x-\alpha+y-\alpha=(x+y)-2\alpha=2(\dfrac{x+y}{2}-\alpha) \in A-\alpha
+           x-\alpha+y-\alpha=(x+y)-2\alpha=2\left(\dfrac{x+y}{2}-\alpha\right) \in A-\alpha
         \]
 
         这里运用了数乘封闭来证明加法封闭性；因此$A-\alpha$是一个子空间.
