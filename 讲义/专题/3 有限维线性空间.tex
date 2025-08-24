@@ -86,7 +86,7 @@
               解得 $\lambda_1 = \lambda_2 = \lambda_3 = 0$，此向量组线性无关.
     \end{enumerate}
 \end{solution}
-注意上述 \ref*{item:3:线性相关性:3} 到 \ref*{item:3:线性相关性:5} 题为不能代入特殊的$x$值来说明，例如 \ref*{item:3:线性相关性:3} 令$x=0$得到线性相关的做法是错误的，因为\ref*{item:3:线性相关性:3} 中线性空间就是多项式构成的线性空间，其中的元素就是多项式，不能代入值. 注意 \ref*{item:3:线性相关性:5} 是特殊题型，需要构造更多的方程来求解这一问题.
+注意上述 \ref*{item:3:线性相关性:3} 到 \ref*{item:3:线性相关性:5} 题不能代入特殊的$x$值来说明，例如 \ref*{item:3:线性相关性:3} 令$x=0$得到线性相关的做法是错误的，因为\ref*{item:3:线性相关性:3} 中线性空间就是多项式构成的线性空间，其中的元素就是多项式，不能代入值. 但是注意 \ref*{item:3:线性相关性:5} 是特殊题型，代入特殊值构造多个方程实际上是利用了``整体满足的性质局部一定满足''的思想.
 
 \subsection{线性相关性的定理}
 
@@ -154,7 +154,7 @@
                   \end{cases}
               \]
 
-              有非零解（只有零解）. 用此法可得 $\mathbf{R}^n$ 中任何 4 个向量, $\mathbf{R}^n$ 中任何 $n + 1$ 个向量都线性相关.
+              有非零解（只有零解）. 用此法可得 $\mathbf{R}^3$ 中任何 4 个向量, $\mathbf{R}^n$ 中任何 $n + 1$ 个向量都线性相关.
 
               总的来说，我们有以下结论：
 
@@ -176,7 +176,7 @@
               则将上式扩充为
 
               \[
-                  \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k}  + 0 \alpha_{i_{k+1}} + \cdots + 0 \alpha_{i_n} = 0,
+                  \lambda_1 \alpha_{i_1} + \lambda_2 \alpha_{i_2} + \cdots + \lambda_k \alpha_{i_k}  + \lambda_{k+1} \alpha_{i_{k+1}} + \cdots + \lambda_n \alpha_{i_n} = 0,
               \]
               其中 $\lambda_{k+1} = \lambda_{k+2} = \cdots = \lambda_n = 0$, 且 $\lambda_1,\lambda_2,\ldots,\lambda_k$ 不全为零，（即将不在子集中的其它元素以$0$作为系数加到方程中，这样就找到了一个满足线性相关定义的式子）这与 $\{ \alpha_1,\alpha_2,\ldots,\alpha_n \}$ 线性无关矛盾. 故 $\{ \alpha_{i_1},\alpha_{i_2},\ldots,\alpha_{i_k} \}$ 线性无关.
 
@@ -188,6 +188,8 @@
 
               则对于任意包含它的向量组,我们也可以将多出来的向量系数取$0$,这样就找到了一个满足线性相关定义的式子,因此包含它的向量组也线性相关.
           \end{proof}
+          总结一下即为：
+
           如果向量组的一个部分组线性相关，那么整个向量组也线性相关；
 
           如果向量组线性无关，那么它的任何一个部分组也线性无关.
@@ -251,7 +253,7 @@
 
 在上一节中我们介绍了很基本的线性无关的等价表述，现在我们回到我们的主线，即我们希望解决有限维线性空间至少需要多少个向量张成的问题，接下来的讨论将逐步逼近问题的答案.
 \begin{lemma}{}{线性相关性引理}
-    设$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，则有$j\in\{1,2,\ldots,m\}$使得：
+    设$\alpha_1,\alpha_2,\ldots,\alpha_m$线性相关，则存在$j\in\{1,2,\ldots,m\}$使得：
     \begin{enumerate}
         \item \label{item:3:线性相关性引理:1}
               $\alpha_j \in \spa(\alpha_1,\alpha_2,\ldots,\alpha_{j-1})$；
@@ -414,7 +416,7 @@
 \begin{proof}
     充分性：因为 $\alpha_1,\ldots,\alpha_n$ 可以线性表示出 $V$ 中的任意向量，所以 $V$ 的一组基 $\beta_1, \ldots, \beta_n$ 也能由 $\alpha_1,\ldots,\alpha_n$ 表示. 而由基的性质，$\alpha_1,\ldots,\alpha_n$ 又能被 $\beta_1, \ldots, \beta_n$ 表示，所以这两个向量组等价，$\alpha_1,\ldots,\alpha_n$ 的秩就是 $n$，所以 $\alpha_1,\ldots,\alpha_n$ 线性无关.
 
-    必要性：由 \ref*{item:3:基与维数:5} 可知，$\forall \beta \in V, \alpha_1, \ldots, \alpha_n, \beta$ 必线性相关，又 $\alpha_1,\ldots,\alpha_n$，由\autoref{thm:线性无关等价表示唯一} 可知，$\beta$ 可以被 $\alpha_1,\ldots,\alpha_n$ 唯一表示，因此 $V$ 中的任意向量都可以被 $\alpha_1,\ldots,\alpha_n$ 线性表示.
+    必要性：由 \ref*{item:3:基与维数:5} 可知，$\forall \beta \in V, \alpha_1, \ldots, \alpha_n, \beta$ 必线性相关，又 $\alpha_1,\ldots,\alpha_n$ 线性无关，由\autoref{thm:线性无关等价表示唯一} 可知，$\beta$ 可以被 $\alpha_1,\ldots,\alpha_n$ 唯一表示，因此 $V$ 中的任意向量都可以被 $\alpha_1,\ldots,\alpha_n$ 线性表示.
 \end{proof}
 
 除此之外，我们也在此给出一些求解或验证线性空间的基和维数的基本例题，在习题以及后续章节中会有更多的例子.
@@ -466,7 +468,7 @@
 \begin{proof}
     易知$1,(x-5)^2,(x-5)^3$线性无关，且这三个向量都属于子空间$U$，下证$U$的维数是 3.
 
-    设 $p = a + bx + cx^2 + dx^3 \in U$. 因为 $p'(5) = 0$，即 $b + 10c +75d = 0$，所以将$b$代入后有 $p = a + c·(-10x + x^2) + d·(-75x + x^3)$，因此$U$中任意向量可被$1, -10x + x^2, -75x + x^3$表示，所以$U$的维数是 3，进而由基的性质可知$1,(x-5)^2,(x-5)^3$是$U$的一组基.
+    设 $p = a + bx + cx^2 + dx^3 \in U$. 因为 $p'(5) = 0$，即 $b + 10c +75d = 0$，所以将$b$代入后有 $p = a + c·(-10x + x^2) + d·(-75x + x^3)$，因此$U$中任意向量可被$1, -10x + x^2, -75x + x^3$表示，且它们线性无关，所以$U$的维数是 3，进而由基的性质可知$1,(x-5)^2,(x-5)^3$是$U$的一组基.
 \end{proof}
 
 我们在后续讨论中经常会涉及子空间和原空间之间的关联，特别是它们的基之间的关联，下面这一定理能很好地满足我们的需求：

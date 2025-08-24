@@ -59,7 +59,9 @@
 \section{对偶空间与对偶映射}
 
 很直观地，我们发现，上面所给的方程无非是一个从 $\R^n$ 到 $\R$ 的线性映射
-\[f(x_1, x_2, \ldots, x_n) = a_1 x_1 + a_2 x_2 + \cdots + a_n x_n\]
+\begin{equation}\label{eq:6:线性泛函与超平面对应}
+    f(x_1, x_2, \ldots, x_n) = a_1 x_1 + a_2 x_2 + \cdots + a_n x_n
+\end{equation}
 在取值$1$下的完全原像$\{x: f(x) = 1\}$（记$x=(x_1,x_2,\ldots,x_n)$）. 因此，我们类似地考虑从 $V$ 到基域 $\R$的线性映射，并给它一个新名字：
 
 \begin{definition}{}{}
@@ -81,7 +83,7 @@
 \begin{proof}
     考虑 $f$ 在向量空间中的任取的一点 $v \neq 0$ 上的取值 $f(v)$. 如果 $f(v)$ 不为 $0$，此时，根据线性性我们就有
     \[f(\dfrac{1}{f(v)}v)=\dfrac{1}{f(v)}f(v)=1,\]
-    因此 $(\dfrac{1}{f(v)}v \in \{x: f(x) = 1\}$，也就是说它在 $f$ 确定的超平面上. 又$\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，因此我们也有 $g(\dfrac{1}{f(v)} v) = 1$，从而再次由线性性得出 $g(v) = f(v)$.
+    因此 $\dfrac{1}{f(v)}v \in \{x: f(x) = 1\}$，也就是说它在 $f$ 确定的超平面上. 又$\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，因此我们也有 $g(\dfrac{1}{f(v)} v) = 1$，从而再次由线性性得出 $g(v) = f(v)$.
 
     如果 $f(v)=0$，取$v'$使得$f(v')\neq 0$，由之前的讨论可知$f(v')=g(v')$，同理由线性性可知$0\neq f(v+v')=g(v+v')$，因此$g(v)=g(v+v')-g(v')=f(v+v')-f(v')=f(v)$.
 \end{proof}
@@ -145,14 +147,37 @@
 \end{example}
 
 \begin{solution}
+    \begin{enumerate}
+        \item 由于$(f_1, f_2, f_3)$的长度已经等于$\dim V^*$，从而只需要证明它们线性无关即可。
 
+        对$g(x)=a+bx+cx^2$，$\displaystyle\int g(x)\,\mathrm{d}x=a+\dfrac{b}{2}x^2+\dfrac{c}{3}x^3+C$，从而$f_1(1, x, x^2)=(1, \dfrac{1}{2}, \dfrac{1}{3})$，$f_2(1, x, x^2)=(2, 2, \dfrac{8}{3})$，$f_3(1, x, x^2)=(-1, \dfrac{1}{2}, -\dfrac{1}{3})$，故
+        \[k_1f_1+k_2f_2+k_3f_3=0\]
+        等价于
+        \begin{gather*}
+            k_1 + 2k_2 - k_3 = 0 \\
+            \frac{1}{2}k_1 + 2k_2 + \frac{1}{2}k_3 = 0 \\
+            \frac{1}{3}k_1 + \frac{8}{3}k_2 - \frac{1}{3}k_3 = 0
+        \end{gather*}
+        用高斯消元法可知该齐次线性方程组有唯一解$k_1=k_2=k_3=0$，因此$f_1,f_2,f_3$线性无关，故它们是$V^*$的一组基.
+        \item 设 $g_j(x)=a_j+b_jx+c_jx^2$，则有
+        \[
+            \begin{aligned}
+                f_1(g_1(x)) & = \int_0^1 g_1(x) \,\mathrm{d}x = a_1 + \dfrac{b_1}{2} + \dfrac{c_1}{3} = 1 \\
+                f_2(g_1(x)) & = \int_0^2 g_1(x) \,\mathrm{d}x = 2a_1 + 2b_1 + \dfrac{8}{3}c_1 = 0 \\
+                f_3(g_1(x)) & = \int_0^{-1} g_1(x) \,\mathrm{d}x = -a_1 + \dfrac{1}{2}b_1 - \dfrac{1}{3}c_1 = 0
+            \end{aligned}
+        \]
+        可解得$a_1=1$，$b_1=1$，$c_1=-\dfrac{3}{2}$，即$g_1(x)=1+x-\dfrac{3}{2}x^2$.
+
+        同理可以解得$g_2(x)=-\dfrac{1}{6}+\dfrac{1}{2}x^2$，$g_3(x)=-\dfrac{1}{3}+x-\dfrac{1}{2}x^2$.
+    \end{enumerate}
 \end{solution}
 
 除此之外需要强调的是，这样一组基一定依赖于原来的基，上面构造出的同构也是如此——如果我们一开始给$V$取的是另一组基，这里的对偶基一定是另一组基，同构映射也会发生变化. 像这样随着基的取法不同而发生变化的同构映射根据我们在\nameref{subsec:自然同构}中的描述应当称其为不自然的. 事实上，不存在从 $V$ 到 $V^*$ 的自然同构，这个命题在 Mac Lane 提出范畴论的原始论文中被称为是可以由范畴论所形式化的，而范畴论是数学中更为高深的分支，在此我们就不再深入探讨，待本书的最后一个未竟专题展开讨论.
 
 但是，另一个范畴论的观点还是可以讨论的. 当我们说对偶的时候，我们提到了关于对象的叙述的翻译的问题，如开头中的例子点与线之间的相互翻译对应——这一点我们已经通过线性空间与其对偶空间的同构形式化. 但我们似乎还忽略了一个翻译，就是``确定''和``交于''的之间的翻译. 很自然地，这两个词汇实际上就是线性空间元素之间的对应，即线性映射，于是我们接下来讲探讨线性映射之间的翻译. 在进一步讲解之前，我们首先需要介绍交换图的概念：
 \begin{definition}{交换图}{交换图}
-    我们首先定义什么是一个\term{图（diagram）}. 一个图可以视为以一个代数结构（例如线性空间）为顶点，以某种映射（例如线性映射）为边的图，例如：
+    我们首先定义什么是一个\term{图（diagram）}. 在本书中一个图可以视为以一个代数结构（例如线性空间）为顶点，以某种映射（例如线性映射）为边的图，例如：
     \begin{center}
         \begin{tikzcd}
             V_1 \arrow[r, "\sigma_1"] \arrow[rd, "\sigma_3"'] & V_2 \arrow[d, "\sigma_2"] \\
@@ -207,7 +232,7 @@
 
 我们已经认识到\autoref{def:对偶映射} 的定义非常自然，并且具有反变的性质，接下来我们来看这一映射是否也具有我们希望拥有的其它性质. 在线性代数中，显然我们希望线性映射的对偶映射也是线性的，这一点我们可以直接验证：
 \begin{lemma}{}{}
-    给定线性映射 $f\colon V \to W$，则 $f^*: W^* \to V^*$ 是线性映射.
+    给定线性映射 $\sigma\colon V \to W$，则 $\sigma^*: W^* \to V^*$ 是线性映射.
 \end{lemma}
 \begin{proof}
     我们直接按照定义展开验证即可：
@@ -239,7 +264,7 @@
 \end{theorem}
 
 \begin{proof}
-    又一次我们遇到了映射套映射的情况，那当然类似于之前对偶映射的讨论，我们的处理手段就是对需要定义的映射进行``取值计算''. 于是我们取$\psi$在$v\in V$上的值，得到$\psi(v)$，它是一个将线性泛函映到实数的线性泛函. 这仍然是映射套映射的情况，于是我们不妨更进一步，取在$f\colon V^*\to\R$上的值，我们有$(\psi(v))(f)$是一个实数，这时我们要素齐全，直接令
+    我们又一次遇到了映射套映射的情况，那当然类似于之前对偶映射的讨论，我们的处理手段就是对需要定义的映射进行``取值计算''. 于是我们取$\psi$在$v\in V$上的值，得到$\psi(v)$，它是一个将线性泛函映到实数的线性泛函. 这仍然是映射套映射的情况，于是我们不妨更进一步，取$\psi(v)$在$f\colon V^*\to\R$上的值，我们有$(\psi(v))(f)$是一个实数，这时我们要素齐全，直接令
     \[(\psi(v))(f) = f(v),\enspace\forall f\in V^*,\enspace v\in V.\]
     类似于对偶映射，这是我们最自然的选择，并且这一映射完全不依赖于基的选择，因此是自然的. 剩下的工作就是验证这个映射具有我们希望的性质，我们放在下面这一例题中证明.
 \end{proof}
@@ -258,9 +283,36 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item
-        \item
-        \item
+        \item 首先要搞清楚我们要证明的映射是$\psi: V \to V^{**}$，因此验证线性性即证明：\[\forall a,b \in \mathbf{F}, \enspace \forall v_1,v_2 \in V, \enspace \psi(av_1 + bv_2) = a\psi(v_1) + b\psi(v_2).\]
+        由于
+        \begin{align*}
+            \psi(av_1 + bv_2)(f) &= f(av_1 + bv_2) \\
+            &= af(v_1) + bf(v_2) \\
+            &= a\psi(v_1)(f) + b\psi(v_2)(f),
+        \end{align*}
+        因此，$\psi$是线性映射.
+        \item 这里可能有点抽象，我们还是用``取值运算''搞清楚$\sigma^{**}$与$\psi$究竟在干什么：
+        \begin{enumerate}
+            \item $\sigma^{**}$是$\sigma^*\colon V^* \to V^*$的对偶映射，即$\sigma^{**}\colon V^{**} \to V^{**}$，且对$\varphi\in V^{**}$，$\sigma^{**}(\varphi)=\varphi\circ\sigma^*$，也就是说$\sigma^{**}$接受一个$V^{**}$中的元素（即将线性泛函映射到实数的线性泛函），然后将其映射到$V^{**}$中的一个元素；
+            \item $\psi\colon V \to V^{**}$在上面也说过，它接受一个$V$中的元素$v$，然后将其映射到$V^{**}$中的一个元素；
+        \end{enumerate}
+        从而$\sigma^{**}$正好接收$\psi(v)$，将其映射为$\psi(v)\circ\sigma^*$，因此对$\forall v \in V, \enspace f \in V^*$，有：
+        \[(\sigma^{**}\circ\psi(v))(f) = \psi(v)(\sigma^*(f)) = f\circ\sigma(v) = (\psi\circ\sigma(v))(f)\]
+        故$\sigma^{**}\circ\psi=\psi\circ\sigma$.
+        \item 在线性性的基础上，只需要证明$\psi$是双射即可：
+        \begin{enumerate}
+            \item 单射：如果$\psi(v)=0$，则$\forall f\in V^*$，有$(\psi(v))(f)=f(v)=0$，由于$V^*$包含了所有将$v$映到实数的线性泛函，因此只能$v=0$，从而$\psi$是单射；
+            \item 满射：即证明：对于任意的$\varphi \in V^{**}$，存在$v \in V$，使得对任意的$f \in V^*$，都有$(\psi(v))(f)=\varphi(f)=f(v)$.
+
+            取$v_1,\cdots,v_n$为$V$的任意一组基，$f_1,\cdots,f_n$为其对偶基，设$f=a_1f_1+\cdots+a_nf_n$，则
+            \begin{gather*}
+                \varphi(f) = \varphi(a_1f_1+\cdots+a_nf_n)
+                           = a_1\varphi(f_1)+\cdots+a_n\varphi(f_n) \\
+                f(v) = a_1f_1(v)+\cdots+a_nf_n(v)
+            \end{gather*}
+            不难知取$v=\varphi(f_1)v_1+\cdots+\varphi(f_n)v_n$即可，从而$\psi$是满射.
+        \end{enumerate}
+        综上：$\psi$是$V$到$V^{**}$的同构映射.
     \end{enumerate}
 \end{proof}
 
@@ -299,6 +351,8 @@
 \end{proof}
 
 那么，定义了一个线性空间之后，我们的第一个问题就是，它的维数是多少. 为了解决这一问题，我们首先给出一个非常有对称性的定理，零化子的维数是这一定理自然的推论：
+
+% ? 感觉这里需要条件加强为正交补，wiki的介绍和我对于R^2的验证似乎都指向这一点
 
 \begin{theorem}{}{对偶空间的维数引理}
     设 $V = U_1 \oplus U_2$，则 $V^* = U_1^0 \oplus U_2^0$，而且 $U_1^0 = U_2^*, U_2^0 = U_1^*$.
