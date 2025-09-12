@@ -339,28 +339,6 @@
     \end{enumerate}
 \end{proof}
 
-上述示例其实可以归结为如下结论：
-
-\begin{lemma}{}{多项式零点为特征值}
-    设 $A \in \mathbf{F}^{n \times n}$，且存在多项式 $p(x)\in \mathbf{F}[x]$ 使得 \[p(A)=a_mA^m+a_{m-1}A^{m-1}+\cdots+a_1A+a_0E=O,\]则对于任意的 $\lambda \in \mathbf{F}$，$p(\lambda) \neq 0 \implies A-\lambda E_n$ 可逆.
-\end{lemma}
-
-\begin{proof}
-    $p(\lambda) \neq 0$ 表明不存在多项式 $q(x) \in \mathbf{F}[x]$ 使得 $p(x) = (x - \lambda)q(x)$，用多项式带余除法的语言来说，存在 $q(x) \in \mathbf{F}[x]$ 使得：
-    \[p(x)=(x - \lambda)q(x) + r\]
-    其中 $r$ 是不为0的常数.
-
-    将其对应成矩阵多项式：
-    \[p(A)=(A - \lambda E_n)q(A) + rE_n=O\]
-    由于 $r \neq 0$，因此我们可知 $(A - \lambda E_n)^{-1}=-\dfrac{1}{r}q(A)$，得证.
-\end{proof}
-
-上述结论的反命题不成立，即 $A-\lambda E_n$ 可逆不能推出 $p(\lambda) \neq 0$（比如取 $A=2E_n$，$\lambda = 1$，$p(x)=(x-1)(x-2)$即可说明不成立）. 当然这与 $A^2-3A+2E=O$ 推不出 $A=E$ 或 $A=2E$ 并不矛盾，希望读者谨记.
-
-上述结论其实蕴含着一个直觉，即对于满足一定条件的矩阵 $A$，只有有限个 $\lambda$ 会使得 $A-\lambda E$ 是不可逆的.
-
-% 这里应该再写点东西，比如加上谢启鸿《高等代数》2.11 中关于摄动法的内容
-
 凑因子法可以更具技巧性，下面的例子展示了这一点：
 
 \begin{example}{}{凑因子3}
@@ -706,7 +684,7 @@
     \item 利用对角化和若当标准形：我们将在后续相应章节中讲解.
 \end{enumerate}
 
-\section{分块矩阵初等变换（打洞法）}
+\section{分块矩阵初等变换（打洞法）} \label{sec:分块矩阵初等变换}
 
 \subsection{基本概念}
 分块矩阵的初等变换实际上可以视为一般矩阵初等变换的推广，实际上也有三种相应的推广形式：
