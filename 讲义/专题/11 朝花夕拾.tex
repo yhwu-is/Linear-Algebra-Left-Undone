@@ -197,7 +197,9 @@
     由\autoref{thm:齐次维数}，$r(A)=n-\dim N(A)$，$r(B)=n-\dim N(B)$，由于$AX=\vec{0}$的解都是$BX=\vec{0}$的解，即$N(A) \subset N(B)$，因此$\dim N(A) \leqslant \dim N(B)$，故$r(B) \leqslant r(A)$.
 \end{proof}
 
-实际上在前面的讨论中，无论是\nameref{thm:有解条件}的结论，都与列向量组成的线性空间有关，仿佛从未出现过行向量有关的定理. 事实上，我们将在未来讨论了内积空间正交性后展开对行向量空间的讨论，现在囿于概念上的缺乏无法叙述相关定理.
+% 有关行向量：爬过内积一章之后似乎并没有发现有关行向量空间特别细致的研究，只在酉矩阵那里提了一嘴；在第一章中也提到有关行向量的部分在对偶空间中会解释，但是只能通过第六章+第七章矩阵转置一节末的解释中粗略看出行向量某种程度上可看作有限维线性空间对应的线性泛函，挖个小坑将来把这部分补一下（
+
+实际上在前面的讨论中，无论是\nameref{thm:有解条件}的结论，还是\autoref{thm:齐次维数} 中对于$N(A)$性质的讨论，都与列向量组成的线性空间有关，但好像从未出现过行向量有关的定理. 事实上，我们将在未来讨论了内积空间正交性后展开对行向量空间的讨论，现在囿于概念上的缺乏无法叙述相关定理.
 
 \subsection{非齐次线性方程组解的一般理论}
 
@@ -215,7 +217,7 @@
 \end{theorem}
 其中$\gamma_0$为\autoref{eq:15:非齐次} 的一个解（称为特解），$W$为\autoref{eq:15:齐次} 的解空间（\autoref*{eq:15:齐次} 的解称为通解）. 更具体地，设非齐次线性方程组$AX=b$有特解$X_0$，方程$AX=0$的基础解系为$X_1,\ldots,X_n$，则这一定理告诉我们$AX=b$的任何一个解都可以写为
 \[X=X_0+k_1X_1+k_2X_2+\cdots+k_nX_n,\]
-的形式. 事实上，对于这种通解+特解的结构，如果读者在此之前学习了商空间一节，那么我们就会发现$U$实际上就是$W$的一个仿射子集. 当然如果没有学习相关概念，我们可以想象一个三元非齐次线性方程$ax + by + cz = d$ 和齐次线性方程$ax + by + cz = 0$. 非齐次线性方程的解显然对应一个不过原点的平面，而齐次则过原点. 我们便可以认为是齐次线性方程解平面沿着特解对应的向量平移到非齐次线性方程的解平面，这便是这一结论的几何解释. 同时我们可以得到下述结论：
+的形式. 事实上，对于这种通解+特解的结构，如果读者在此之前学习了商空间一节，那么我们就会发现$U$实际上就是$W$的一个仿射子集. 当然如果没有学习相关概念，我们可以想象一个三元非齐次线性方程$ax + by + cz = d$ 和齐次线性方程$ax + by + cz = 0$. 非齐次线性方程的解显然对应一个不过原点的平面，而齐次则过原点. 我们便可以认为是齐次线性方程解平面沿着特解对应的向量平移到非齐次线性方程的解平面，这便是这一结论的几何解释（三维情形下）. 同时我们可以得到下述结论：
 \begin{enumerate}
     \item $n$元非齐次线性方程组 \ref*{eq:15:非齐次} 的两个解的差是它的导出组 \ref*{eq:15:齐次} 的一个解；
 
@@ -326,39 +328,33 @@
 从直观上看，这个结果就是说，两个线性的东西的交集依然是线性的. 不妨设想一下三维情形，两个平面交于一条直线，而直线依然是一个线性的对象. 在下面的证明中，我们会给出这条直线的构造，而在后面关于射影几何代数的未竟专题当中，这将称为我们讨论的一个核心.
 
 \begin{proof}
-    考虑两个仿射子集 $v_1 + W_1, v_2 + W_2$. 如果向量 $u \in v_1 + W_1 \cap v_2 + W_2$，那么也就是说它可以表示成
-
+    考虑两个仿射子集 $v_1 + W_1, v_2 + W_2$. 如果向量 $u \in (v_1 + W_1) \cap (v_2 + W_2)$，那么也就是说它可以表示成
     \[
     u = v_1 + w_1 = v_2 + w_2
     \]
-
-    为了证明它是一个仿射子集，显然的想法就是，它减掉某一个东西之后构成一个线性空间. 那么这个东西是什么呢？很简单，只要假定它存在就可以了. 令 $u_0 \in v_1 + W_1 \cap v_2 + W_2$，记其为 $v_1 + \hat w_1 = v_2 + \hat w_2$，则
-
+    为了证明它是一个仿射子集，显然的想法就是，它减掉某一个东西之后构成一个线性空间. 那么这个东西是什么呢？很简单，只要假定它存在就可以了. 令 $u_0 \in (v_1 + W_1) \cap (v_2 + W_2)$，记其为 $v_1 + \hat w_1 = v_2 + \hat w_2$，则
     \[
     u - u_0 = w_1 - \hat w_1 = w_2 - \hat w_2 \in W_1 \cap W_2
     \]
-
-    因此，下面我们直接考虑证明 $v_1 + W_1 \cap v_2 + W_2 = u_0 + W_1 \cap W_2$. 现在，我们已经证明了左边包含于右边. 考虑 $u_0 + w \in u_0 + W_1 \cap W_2$，则我们知道
-
+    因此，下面我们直接考虑证明 $(v_1 + W_1) \cap (v_2 + W_2) = u_0 + W_1 \cap W_2$. 现在已经证明了左边包含于右边. 考虑 $u_0 + w \in u_0 + W_1 \cap W_2$，则
     \[
     u_0 + w = v_1 + \hat w_1 + w = v_1 + (\hat w_1 + w) \in v_1 + W_1
     \]
-
     同理可证 $u_0 + w \in v_2 + W_2$. 因此右边包含于左边. 从此得证.
 \end{proof}
 
 参照这个构造，应用归纳法，我们知道：
 
 \[
-\bigcap_{i = 1}^n v_i + W_i = v_0 + \bigcap_{i = 1}^n W_i
+\bigcap_{i = 1}^n (v_i + W_i) = v_0 + \bigcap_{i = 1}^n W_i
 \]
 
-其中 $v_0$ 为一个已经选出的代表元. 因此，我们展开线性方程的可行解的表达方式，根据\autoref{thm:纤维的结构}有 $\varphi_i^{-1}(b)$ 可以表达为 $v_i + \ker \varphi$ 的形式，所以：
+其中 $v_0$ 为一个已经选出的代表元. 因此，我们展开线性方程的可行解的表达方式，根据\autoref{thm:纤维的结构} 有 $\varphi_i^{-1}(b)$ 可以表达为 $v_i + \ker \varphi$ 的形式，所以：
 \[
 \bigcap_{i = 1}^m \varphi_i^{-1} (b_i) = v_0 + \bigcap_{i = 0}^m \ker \varphi_i
 \]
 
-我们将前面部分称为特解，后面部分称为通解. 而通解如我们所见就是 $Ax = 0$ 的解. 于是，参照\autoref{thm:零化子维数}以及\autoref{lem:NU性质}，$Ax = 0$ 的解空间的维数就是 $\dim Z(\spa\{\varphi_1,\ldots,\varphi_m\}) = \dim V - \dim\spa\{\varphi_1,\ldots,\varphi_m\}$. 因此，我们只需考察在 $m$ 个线性泛函当中，有多少个是线性无关的. 而实际上我们知道线性泛函 $a^\mathrm{T}x = 1$ 与向量 $a$ 一一对应，故这一问题就转化为求这些向量拼成的矩阵的秩的问题了. 而这些向量本身来源于线性方程组的系数，因此拼成的矩阵就是系数矩阵，所以我们从几何的角度也得到了\autoref{thm:齐次维数}的结论.
+我们将前面部分称为特解，后面部分称为通解. 而通解如我们所见就是 $Ax = 0$ 的解. 于是，参照\autoref{thm:零化子维数} 以及\autoref{lem:NU性质}，$Ax = 0$ 的解空间的维数就是 $\dim Z(\spa\{\varphi_1,\ldots,\varphi_m\}) = \dim V - \dim\spa\{\varphi_1,\ldots,\varphi_m\}$. 因此，我们只需考察在 $m$ 个线性泛函当中，有多少个是线性无关的. 而实际上我们知道线性泛函 $a^\mathrm{T}x = 1$ 与向量 $a$ 一一对应，故这一问题就转化为求这些向量拼成的矩阵的秩的问题了. 而这些向量本身来源于线性方程组的系数，因此拼成的矩阵就是系数矩阵，所以我们从几何的角度也得到了\autoref{thm:齐次维数} 的结论.
 
 \section{理论应用}
 
@@ -370,7 +366,7 @@
 
         \item 设$A,B$分别是$m \times n$和$n \times s$矩阵，且$AB=O$，证明：$r(A)+r(B)\leqslant n$；
 
-        \item 设$A$是$m \times n$实矩阵，证明：$r(A^\mathrm{T}A)=r(A)$；
+        \item 设$A$是$m \times n$实矩阵，证明：$r(A^\mathrm{T}A)=r(AA^\mathrm{T})=r(A)$；
 
         \item $A^2=A \iff r(A)+r(E-A)=n$.
     \end{enumerate}
@@ -386,7 +382,7 @@
 
         \item 由前证$r(AB)\leqslant\min\{r(A),r(B)\}$，可知$r(AA^\mathrm{T})\leqslant r(A)$，因此只需证明$r(AA^\mathrm{T})\geqslant r(A)$，即只需证$N(AA^\mathrm{T})\subset N(A)$.
 
-              设$AA^\mathrm{T}X=\vec{0}$，因此$X^\mathrm{T}(AA^\mathrm{T})X=0$，即$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=0$. 由于$A^\mathrm{T}X\in\mathbf{R}^n$，我们设$A^\mathrm{T}X=(a_1,a_2,\ldots,a_n)^\mathrm{T}$，则$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=a_1^2+a_2^2+\cdots+a_n^2=0$可得$a_1=a_2=\cdots=a_n=0$，即$A^\mathrm{T}X=\vec{0}$，因此$X \in N(A)$，因此$N(AA^\mathrm{T})\subset N(A)$，得证.
+              设$AA^\mathrm{T}X=\vec{0}$，因此$X^\mathrm{T}(AA^\mathrm{T})X=0$，即$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=0$. 由于$A^\mathrm{T}X\in\mathbf{R}^n$，我们设$A^\mathrm{T}X=(a_1,a_2,\ldots,a_n)^\mathrm{T}$，则$(A^\mathrm{T}X)^\mathrm{T}(A^\mathrm{T}X)=a_1^2+a_2^2+\cdots+a_n^2=0$可得$a_1=a_2=\cdots=a_n=0$，即$A^\mathrm{T}X=\vec{0}$，因此$X \in N(A)$，因此$N(AA^\mathrm{T})\subset N(A)$，从而$r(AA^\mathrm{T})=r(A)$，用$A^\mathrm{T}$换$A$即有$r(A^\mathrm{T}A)=r(A)$.
 
         \item 对于$A^2=A$，考虑分块矩阵$\begin{pmatrix}
                       A & O \\ O & A-E
@@ -401,19 +397,19 @@
                          A & E \\ O & A-E
                      \end{pmatrix}
                   \to\begin{pmatrix}
-                         O & E \\ -A(A-E) & A-E
+                         O & E \\ -(A-E)A & A-E
                      \end{pmatrix}                  \\
                                    & \to\begin{pmatrix}
-                                            O & E \\ -A(A-E) & O
+                                            O & E \\ -(A-E)A & O
                                         \end{pmatrix}.
               \end{align*}
               事实上第一次变换是第二行乘以$-E$加到第一行，第二次变换是第一列加到第二列，第三次变换是第二列乘以$-A$加到第一列，第四次变换是第一行乘以$E-A$加到第二行，注意每一步都是分块矩阵初等变换，因此不改变矩阵的秩，因此有
               \[r\begin{pmatrix}
                       A & O \\ O & A-E
                   \end{pmatrix}=r\begin{pmatrix}
-                      O & E \\ -A(A-E) & O
+                      O & E \\ -(A-E)A & O
                   \end{pmatrix}.\]
-              即$r(A)+r(A-E)=n+r(-A(A-E))$，故$r(A)+r(A-E)=n$等价于$r(-A(A-E))=0$，即$-A(A-E)=O$，即$A^2=A$，得证.
+              即$r(A)+r(A-E)=n+r(-(A-E)A)$，故$r(A)+r(A-E)=n$等价于$r(-(A-E)A)=0$，即$-A(A-E)=O$，即$A^2=A$，得证.
 
               事实上，如果我们只需要证明$A^2=A \implies r(A)+r(E-A)=n$，我们可以用如下方法：由$A^2=A$可知$A(A-E)=O$，由本例第二问知$r(A)+r(A-E)\leqslant n$，又根据秩不等式$r(A)+r(B)\geqslant r(A+B)$，因此$r(A)+r(E-A)\geqslant r(A+(E-A))=r(E)=n$. 综上可知，$r(A)+r(E-A)=n$.
     \end{enumerate}
@@ -421,7 +417,7 @@
 
 实际上，我们解决此类问题，很多时候等式都需要拆为小于等于和大于等于同时成立进行证明，经常利用维数公式变形的齐次线性方程组解的一般理论，将问题转化为对像与核空间的研究，然后利用包含关系（复杂的题目可能涉及子空间交与和的维数公式）以及已知的简单秩不等式进行证明. 可能部分题目较为困难，但至少请掌握上面例题中的情况. 接下来我们讨论伴随矩阵的秩的问题，这一例题的结论和证明都非常重要：
 \begin{example}{}{伴随矩阵的秩}
-    设$A^*$为矩阵$A$的伴随矩阵，证明：
+    设$A^*$为$n$阶方阵$A$的伴随矩阵，证明：
     \[r(A^*)=\begin{cases}
             n & r(A)=n \\ 1 & r(A)=n-1 \\ 0 & r(A) < n-1
         \end{cases}.\]
@@ -447,7 +443,7 @@
 \begin{proof}
     $V$是线性空间只需要说明其中元素关于加法数乘封闭即可，因为这样$V$就是$\mathbf{F}^k$的子空间. 这一证明非常基本，我们在此略过.
 
-    记$V_1=\{X\mid BX=0\},\enspace V_2=\{X\mid ABX=0\}$，则$V_1\subseteq V_2$，因为$\forall X\in V_1$，有$BX=0$，因此$ABX=A0=0$，即$X\in V_2$，因此$V_1\subseteq V_2$. 利用``设小扩大''的思想，取$V_1$的一组基$\alpha_1,\ldots,\alpha_r$，则可以扩充为$V_2$的一组基，记为$\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\ldots,\alpha_m$，则$r=n-r(B)$，$s=n-r(AB)$，于是
+    记$V_1=\{X\mid BX=0\},\enspace V_2=\{X\mid ABX=0\}$，则$V_1\subseteq V_2$，因为$\forall X\in V_1$，有$BX=0$，因此$ABX=A0=0$，即$X\in V_2$，因此$V_1\subseteq V_2$. 利用``设小扩大''的思想，取$V_1$的一组基$\alpha_1,\ldots,\alpha_r$，则可以扩充为$V_2$的一组基，记为$\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\ldots,\alpha_m$，则$r=n-r(B)$，$m=n-r(AB)$，于是
     \begin{align*}
         V & =\{BX\mid ABX=0\}                                                \\
           & =\spa(B\alpha_1,\ldots,B\alpha_r,B\alpha_{r+1},\ldots,B\alpha_m) \\
@@ -463,7 +459,7 @@
     \[c_{r+1}\alpha_{r+1}+\cdots+c_m\alpha_m-c_1\alpha_1-\cdots-c_r\alpha_r=0.\]
     由于$\alpha_1,\ldots,\alpha_m$线性无关，因此
     \[c_{r+1}=\cdots=c_m=c_1=c_2=\cdots=c_r=0,\]
-    因此$B\alpha_{r+1},\ldots,B\alpha_m$线性无关，因此$V$的维数为$s-r=(n-r(AB))-(n-r(B))=r(B)-r(AB)$，得证.
+    因此$B\alpha_{r+1},\ldots,B\alpha_m$线性无关，因此$V$的维数为$m-r=(n-r(AB))-(n-r(B))=r(B)-r(AB)$，得证.
 \end{proof}
 
 \section{线性方程组拓展题型}
@@ -567,13 +563,13 @@
 \end{theorem}
 
 \begin{proof}
-    事实上两个条件分别对应于两方程均无解和均有解的情况，无解情况显然正确，下面讨论有解情况：
+    事实上两个条件分别对应于两方程均无解和均有解的情况，无解情况显然正确. 对于$n$维向量$X=(x_1,\ldots,x_n)^\mathrm{T}$，记$X_1=(x_1,\ldots,x_n,-1)^\mathrm{T}$，并认为方程$(A,\vec{b})X_1=0$中的$X_1$与$AX=\vec{b}$中的$X$在考虑同解问题时是等价的. 下面讨论有解情况：
     \begin{enumerate}
         \item 必要性：事实上$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
-                  \end{pmatrix}X=0\iff AX=\vec{b},BX=\vec{d}$，因此由$AX=\vec{b},BX=\vec{d}$同解可知，$\begin{pmatrix}
+                  \end{pmatrix}X_1=0\iff AX=\vec{b},BX=\vec{d}$，因此由$AX=\vec{b},BX=\vec{d}$同解可知，$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
-                  \end{pmatrix}X=0\iff AX=\vec{b}$，因此$r\begin{pmatrix}
+                  \end{pmatrix}X_1=0\iff AX=\vec{b}$，因此$r\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
                   \end{pmatrix}=r(A,\vec{b})$，同理可证$r\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
@@ -581,17 +577,19 @@
                       A & \vec{b} \\ B & \vec{d}
                   \end{pmatrix}=r(A,\vec{b})=r(B,\vec{d})$，由于此时对应有解情况，故$r\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
+                  \end{pmatrix}=r\begin{pmatrix}
+                      A \\ B
                   \end{pmatrix}=r(A,\vec{b})=r(B,\vec{d})=r(A)=r(B)$.
 
         \item 充分性：事实上$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
-                  \end{pmatrix}X=0$的解一定是$AX=\vec{b}$的解，设这两个方程的解集合（此时非齐次线性方程组不是子空间）分别为$S_1,S_2$，因此$S_1$是$S_2$的子集. 且由\autoref{ex:非齐次线性无关解} 可知，$S_1$的秩为$n-r\begin{pmatrix}
+                  \end{pmatrix}X_1=0$的解一定是$AX=\vec{b}$的解，设这两个方程的解集合（此时非齐次线性方程组不是子空间）分别为$S_1,S_2$，因此$S_1$是$S_2$的子集. 且由\autoref{ex:非齐次线性无关解} 可知，$S_1$的秩为$n-r\begin{pmatrix}
                       A \\ B
                   \end{pmatrix}+1$，$S_2$的秩为$n-r(A)+1$，因此$S_1=S_2$，即$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
-                  \end{pmatrix}X=0$和$AX=\vec{b}$同解. 同理可知$\begin{pmatrix}
+                  \end{pmatrix}X_1=0$和$AX=\vec{b}$同解. 同理可知$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
-                  \end{pmatrix}X=0$和$BX=\vec{d}$同解，得证.
+                  \end{pmatrix}X_1=0$和$BX=\vec{d}$同解，得证.
     \end{enumerate}
 \end{proof}
 
