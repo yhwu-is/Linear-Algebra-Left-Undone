@@ -319,7 +319,7 @@
                            & \iff (\alpha_1,\ldots,\alpha_n)AX=(\alpha_1,\ldots,\alpha_n)(\lambda X)            \\
                            & \iff AX=\lambda X
 \end{align*}
-其中第一行与第二行间的等价关系用到了\autoref{eq:7:基与矩阵的"结合律"} 的结论. 从而我们可以取定一组基$\alpha_1,\ldots,\alpha_n$，将求解线性变换的特征值的问题转化为求解线性变换在这组基下矩阵表示的特征值的问题，而特征向量也仅仅是向量与坐标的关系.
+其中第一行与第二行间的等价关系用到了\autoref{eq:7:基与矩阵的"结合律"} 的结论. 从而可以取定一组基$\alpha_1,\ldots,\alpha_n$，将求解线性变换的特征值的问题转化为求解线性变换在这组基下矩阵表示的特征值的问题，而特征向量也仅仅是向量与坐标的关系.
 
 但是从推导过程中可以看出，基$\alpha_1,\ldots,\alpha_n$的选取没有限制，也就是说线性变换任意一组基下的矩阵都有相同的特征值，或者说，相似的矩阵就有相同的特征值. 这一性质我们在定义了特征多项式之后再进行证明，现在先来看如何具体求解特征值与特征向量，首先需要证明一个定理做一个简单的观察：
 % 由上述讨论可知$\lambda$同时是线性变换和矩阵的特征值，与基的选取无关. 但矩阵的特征向量$X$是线性映射特征向量在基下的坐标，这与基的选取有关. 由于基$\alpha_1,\ldots,\alpha_n$可以是任取的，于是求解线性变换的特征值的问题完全转化为了求线性变换任意一个矩阵表示的特征值，而特征向量也仅仅是向量与坐标的关系. 于是接下来我们讨论如何具体求解特征值与特征向量. 我们首先需要证明一个定理做一个简单的观察：
@@ -371,26 +371,6 @@
         \end{vmatrix}=9-a=0,\]
     因此$a=9$.
 \end{solution}
-
-现在我们可以证明\autoref{def:矩阵的特征值} 后的讨论中留下的问题：
-\begin{theorem}{}{相似矩阵特征多项式相同}
-    相似矩阵有相同的特征多项式（逆命题不成立），即$A\sim B$有$|\lambda E-A|=|\lambda E-B|$，从而有相同的迹，行列式，特征值，但特征向量不一定相同.
-\end{theorem}
-\begin{proof}
-    设$B=P^{-1}AP$，则$|\lambda E-B|=|\lambda E-P^{-1}AP|=|P^{-1}(\lambda E-A)P|=|P^{-1}||\lambda E-A||P|=|\lambda E-A|$. 因此$A\sim B$有$|\lambda E-A|=|\lambda E-B|$.
-
-    我们知道特征多项式相同则特征值相同，迹等于所有特征值之和，行列式等于所有特征值之积，因此相似矩阵有相同的迹，行列式，特征值.
-
-    相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同.
-
-    事实上，取$A=\begin{pmatrix}
-        1 & 0 \\
-        0 & 1
-    \end{pmatrix}$，$B=\begin{pmatrix}
-        1 & 1 \\
-        0 & 1
-    \end{pmatrix}$，则$|\lambda E-A|=|\lambda E-B|=(\lambda-1)^2$，但$P^{-1}AP=E\neq B$，这就是一个反例. 因此有相同特征多项式的矩阵不一定相似.
-\end{proof}
 
 接下来，我们将特征多项式定义中的行列式展开得到以下定理：
 \begin{theorem}{}{特征多项式展开}
@@ -453,6 +433,37 @@
 即特征值按重数求和为矩阵的迹（即矩阵对角线元素之和），特征值按重数求积为矩阵行列式. 这一结论在解决某些问题时有一定作用.
 
 事实上，我们这里给出的特征多项式只是矩阵的特征多项式的定义，关于线性变换特征多项式的定义以及进一步讨论将在后续章节进行，我们也会说明两种特征多项式的定义是统一的.
+
+现在我们可以证明\autoref{def:矩阵的特征值} 后的讨论中留下的问题：
+\begin{theorem}{}{相似矩阵特征多项式相同}
+    相似矩阵有相同的特征多项式（逆命题不成立），即$A\sim B$有$|\lambda E-A|=|\lambda E-B|$，从而有相同的迹，行列式，特征值，但特征向量不一定相同.
+\end{theorem}
+\begin{proof}
+    设$B=P^{-1}AP$，则$|\lambda E-B|=|\lambda E-P^{-1}AP|=|P^{-1}(\lambda E-A)P|=|P^{-1}||\lambda E-A||P|=|\lambda E-A|$. 因此$A\sim B$有$|\lambda E-A|=|\lambda E-B|$.
+
+    我们知道特征多项式相同则特征值相同，迹等于所有特征值之和，行列式等于所有特征值之积，因此相似矩阵有相同的迹，行列式，特征值.
+
+    相似矩阵来源于同一线性变换在不同基下的表示，因此它们的特征向量是线性变换的特征向量在不同基下的坐标，因此不一定相同.
+
+    事实上，取$A=\begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{pmatrix}$，$B=\begin{pmatrix}
+        1 & 1 \\
+        0 & 1
+    \end{pmatrix}$，则$|\lambda E-A|=|\lambda E-B|=(\lambda-1)^2$，但$P^{-1}AP=E\neq B$，这就是一个反例. 因此有相同特征多项式的矩阵不一定相似.
+\end{proof}
+
+而相似矩阵的特征向量的关系可以用下面这个例子说明：
+\begin{example}{}{}
+    设$P^{-1}AP=B$，证明：存在$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
+\end{example}
+
+\begin{proof}
+    由$AX=\lambda_0 X$以及$A=PBP^{-1}$，我们有$PBP^{-1}X=\lambda_0 X$，即$BP^{-1}X=\lambda_0 P^{-1}X$，因此$P^{-1}X$是$B$属于$\lambda_0$的特征向量，即$P^{-1}X$是$B$的特征向量，取$Y=P^{-1}X$即可.
+\end{proof}
+
+实际上本题是\autoref{thm:基的选择对向量坐标的影响} 的推论，原因在于$P^{-1}AP=B$说明$A$和$B$是同一个线性变换（设为$\sigma$）在不同基下的矩阵，因此$X$和$Y$只是$\sigma$关于$\lambda_0$在两组基下的坐标，因此二坐标之间相差一个过渡矩阵.
 
 \subsection{特征值的基本性质}
 
@@ -591,6 +602,65 @@
     \end{enumerate}
 \end{solution}
 
+除了利用具体的特征值计算，很多时候也会要求基于特征值的定义与性质进行证明，比如下面这个例子（实际上在行列式一讲中已给出类似结论，但我们现在从特征值角度考虑这一结论）：
+
+\begin{example}{}{}
+    回答以下两个问题：
+    \begin{enumerate}
+        \item \label{item:18:特征值相同:1}
+              设$A,B$均为$n$阶矩阵，证明：若$\lambda\neq 0$是$AB$的特征值，则$\lambda$也是$BA$的特征值；
+
+        \item \label{item:18:特征值相同:2}
+              设$A\in \mathbf{M}_{m\times n}(\mathbf{C}),\enspace B\in \mathbf{M}_{n\times m}(\mathbf{C})$，证明：
+              \[ \begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}\sim\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix} \]
+              并由此推出$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 设$X$是$AB$属于$\lambda$的特征向量，则$ABX=\lambda X$，因此$B(ABX)=B(\lambda X)$，即$(BA)(BX)=\lambda(BX)$，因此$BX$是$BA$属于$\lambda$的特征向量，故$\lambda$也是$BA$的特征值.
+
+              实际上这里还有一点需要说明，就是$BX\neq 0$，否则它将不能作为特征向量. 事实上证明是简单的，假设$BX=0$，则$ABX=0$，由于$\lambda\neq 0$，因此必然有$X=0$，但这与$X$是$AB$属于$\lambda$的特征向量矛盾，因此$BX\neq 0$.
+
+        \item 根据分块矩阵初等变换的性质，我们可以通过不断尝试选取到$P=\begin{pmatrix}
+                      E_m & A \\ O & E_n
+                  \end{pmatrix}$，其逆矩阵为$P^{-1}=\begin{pmatrix}
+                      E_m & -A \\ O & E_n
+                  \end{pmatrix}$，我们发现恰有
+              \[\begin{pmatrix}
+                      E_m & -A \\ O & E_n
+                  \end{pmatrix}\begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}\begin{pmatrix}
+                      E_m & A \\ O & E_n
+                  \end{pmatrix}=\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix}.\]
+              因此$\begin{pmatrix}
+                      AB & O \\ B & O
+                  \end{pmatrix}$与$\begin{pmatrix}
+                      O & O \\ B & BA
+                  \end{pmatrix}$相似，因此它们的特征多项式相同，即
+              \[\begin{vmatrix}
+                      \lambda E_m-AB & O \\ -B & \lambda E_n
+                  \end{vmatrix}=\begin{vmatrix}
+                      \lambda E_m & O \\ -B & \lambda E_n-BA
+                  \end{vmatrix}.\]
+              根据行列式的计算性质$\begin{vmatrix}
+                      A & O \\ C & B
+                  \end{vmatrix}=|A||B|$，我们有
+              \[|\lambda E_m-AB||\lambda E_n|=|\lambda E_m||\lambda E_n-BA|,\]
+              即$\lambda^n|\lambda E_m-AB|=\lambda^m|\lambda E_n-BA|$，因此$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
+    \end{enumerate}
+\end{proof}
+
+不难发现上例中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广，因为由\ref*{item:18:特征值相同:2} 我们得到了$|\lambda E-AB|=|\lambda E-BA|(\lambda\neq 0)$.
+
 \subsection{特征向量的基本性质}
 
 这一部分的定理与下一讲中得到简单矩阵的可对角化的等价条件直接相关，实际上有了本节的定理，可对角化条件是很显然的.
@@ -663,7 +733,7 @@
 
 事实上，由于$n$阶矩阵的特征多项式是$n$次的，因此所有特征值的代数重数之和等于$n$，但是根据上述定理可知所有特征值的几何重数之和小于等于$n$，即所有特征子空间的直和不一定能够得到原空间$V$. 这将构成我们接下来讨论的一个核心：我们在下一讲中将要讨论代数重数和几何重数相等情况下的最简单的矩阵表示，以及二者不相等的时候如何对原空间进行分解（因为此时$V$不能被分解为特征子空间直和）使得我们可以获得较为简单的矩阵表示.
 
-最后我们再通过一个例子体会特征向量和特征子空间的一些性质：
+我们再通过一个例子体会特征向量和特征子空间的一些性质：
 \begin{example}{}{}
     设$V(\mathbf{F})$是$n$维线性空间，$\sigma\in \mathcal{L}(V)$，证明：
     \begin{enumerate}
@@ -689,92 +759,7 @@
 
 事实上，本题的结论是十分具有启发性的. 它表明，即便所有特征子空间的直和等于全空间$V$，这也不表明$V$中所有向量都是特征向量，只有特征值唯一时才能做到这一点. 原因在于不同特征子空间之间是直和，因此我们无法通过两个特征子空间的基向量的线性组合（系数非零）来得到任意特征子空间中的向量，相反，这样的线性组合会使得得到的新向量不在任何一个特征子空间中，因此无法使得$V$中所有向量都是特征向量.
 
-下面我们通过一个例子给出一种由特征向量出发生成线性无关向量组的方法，这一例子将在后续的讨论中起到重要作用：
-\begin{example}{}{特征向量生成线性无关组}
-    设$A\in \mathbf{M}_n(\mathbf{F})$，$E$ 是 $n$ 阶单位矩阵，$\alpha_1 \in \mathbf{F}^n$ 是 $A$ 的属于特征值 $\lambda$ 的一个特征向量，向量组 $\alpha_1,\alpha_2,\ldots,\alpha_s$ 按如下方式产生：$(A-\lambda E)\alpha_{i+1}=\alpha_i,\enspace i=1,2,\ldots,s-1$. 证明向量组 $\{\alpha_1,\alpha_2,\ldots,\alpha_s\}$ 线性无关.
-\end{example}
-
-\begin{proof}
-    由于$\alpha_1$是$A$属于特征值$\lambda$的特征向量，故有$(A-\lambda E)\alpha_1=0$. 设$\displaystyle\sum_{i=1}^{s}k_i\alpha_i=0$，两边同时左乘$A-\lambda E$可知
-    \begin{align*}
-        (A-\lambda E)\displaystyle\sum_{i=1}^{s}k_i\alpha_i &= \displaystyle\sum_{i=1}^{s}k_i(A-\lambda E)\alpha_i \\
-        &= k_1(A-\lambda E)\alpha_1+\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=0.
-    \end{align*}
-    以此类推，在等式两边不断左乘 $(A-\lambda E)$ 可知：对于 $\forall r \in \{1,\cdots,s-1\}$ 都有 $\displaystyle\sum_{i=1}^{s-r}k_{i+r}\alpha_i=0$. 令$r=s-1$得到$k_s\alpha_1=0,k_s=0$. 再依次代回不难得到$k_i=0,\forall i \in \{1,\cdots,s\}$，从而向量组$\alpha_1,\cdots,\alpha_s$线性无关.
-\end{proof}
-
-\subsection{特征值与特征向量性质的进一步运用}
-
-下面我们讨论一些重要的例子. 首先要引入的例子也是重要的结论，实际上在行列式一讲中已给出类似结论，但我们现在从特征值角度考虑这一结论：
-\begin{example}{}{}
-    回答以下两个问题：
-    \begin{enumerate}
-        \item \label{item:18:特征值相同:1}
-              设$A,B$均为$n$阶矩阵，证明：若$\lambda\neq 0$是$AB$的特征值，则$\lambda$也是$BA$的特征值；
-
-        \item \label{item:18:特征值相同:2}
-              设$A\in \mathbf{M}_{m\times n}(\mathbf{C}),\enspace B\in \mathbf{M}_{n\times m}(\mathbf{C})$，证明：
-              \[ \begin{pmatrix}
-                      AB & O \\ B & O
-                  \end{pmatrix}\sim\begin{pmatrix}
-                      O & O \\ B & BA
-                  \end{pmatrix} \]
-              并由此推出$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
-    \end{enumerate}
-\end{example}
-
-\begin{proof}
-    \begin{enumerate}
-        \item 设$X$是$AB$属于$\lambda$的特征向量，则$ABX=\lambda X$，因此$B(ABX)=B(\lambda X)$，即$(BA)(BX)=\lambda(BX)$，因此$BX$是$BA$属于$\lambda$的特征向量，故$\lambda$也是$BA$的特征值.
-
-              实际上这里还有一点需要说明，就是$BX\neq 0$，否则它将不能作为特征向量. 事实上证明是简单的，假设$BX=0$，则$ABX=0$，由于$\lambda\neq 0$，因此必然有$X=0$，但这与$X$是$AB$属于$\lambda$的特征向量矛盾，因此$BX\neq 0$.
-
-        \item 根据分块矩阵初等变换的性质，我们可以通过不断尝试选取到$P=\begin{pmatrix}
-                      E_m & A \\ O & E_n
-                  \end{pmatrix}$，其逆矩阵为$P^{-1}=\begin{pmatrix}
-                      E_m & -A \\ O & E_n
-                  \end{pmatrix}$，我们发现恰有
-              \[\begin{pmatrix}
-                      E_m & -A \\ O & E_n
-                  \end{pmatrix}\begin{pmatrix}
-                      AB & O \\ B & O
-                  \end{pmatrix}\begin{pmatrix}
-                      E_m & A \\ O & E_n
-                  \end{pmatrix}=\begin{pmatrix}
-                      O & O \\ B & BA
-                  \end{pmatrix}.\]
-              因此$\begin{pmatrix}
-                      AB & O \\ B & O
-                  \end{pmatrix}$与$\begin{pmatrix}
-                      O & O \\ B & BA
-                  \end{pmatrix}$相似，因此它们的特征多项式相同，即
-              \[\begin{vmatrix}
-                      \lambda E_m-AB & O \\ -B & \lambda E_n
-                  \end{vmatrix}=\begin{vmatrix}
-                      \lambda E_m & O \\ -B & \lambda E_n-BA
-                  \end{vmatrix}.\]
-              根据行列式的计算性质$\begin{vmatrix}
-                      A & O \\ C & B
-                  \end{vmatrix}=|A||B|$，我们有
-              \[|\lambda E_m-AB||\lambda E_n|=|\lambda E_m||\lambda E_n-BA|,\]
-              即$\lambda^n|\lambda E_m-AB|=\lambda^m|\lambda E_n-BA|$，因此$AB$和$BA$非零特征值相同，且$m=n$时有$|\lambda E-AB|=|\lambda E-BA|$.
-    \end{enumerate}
-\end{proof}
-
-不难发现上述例子中 \ref*{item:18:特征值相同:2} 是 \ref*{item:18:特征值相同:1} 的推广，因为由\ref*{item:18:特征值相同:2} 我们得到了$|\lambda E-AB|=|\lambda E-BA|(\lambda\neq 0)$.
-
-下面这个例子非常重要，在解决一些题目时使用这一结论会更便捷：
-\begin{example}{}{}
-    设$P^{-1}AP=B$，证明：存在$A,B$分别属于同一特征值$\lambda$的特征向量$X$和$Y$满足$Y=P^{-1}X$.
-\end{example}
-
-\begin{proof}
-    由$AX=\lambda_0 X$以及$A=PBP^{-1}$，我们有$PBP^{-1}X=\lambda_0 X$，即$BP^{-1}X=\lambda_0 P^{-1}X$，因此$P^{-1}X$是$B$属于$\lambda_0$的特征向量，即$P^{-1}X$是$B$的特征向量，取$Y=P^{-1}X$即可.
-\end{proof}
-
-实际上本题是\autoref{thm:基的选择对向量坐标的影响} 的推论，原因在于$P^{-1}AP=B$说明$A$和$B$是同一个线性变换（设为$\sigma$）在不同基下的矩阵，因此$X$和$Y$只是$\sigma$关于$\lambda_0$在两组基下的坐标，因此二坐标之间相差一个过渡矩阵.
-
-最后我们谈一个拓展题型，我们考虑矩阵方程$AX-XB=O$，若$A,B$都是$n$阶方阵且$X$可逆，则方程可以改写为$X^{-1}AX=B$，即$A$与$B$相似. 事实上，这一矩阵方程的解空间的维数实际上刻画了$A$与$B$的相似程度. 我们有如下结论：
+接下来我们谈一个拓展题型，我们考虑矩阵方程$AX-XB=O$，若$A,B$都是$n$阶方阵且$X$可逆，则方程可以改写为$X^{-1}AX=B$，即$A$与$B$相似. 事实上，这一矩阵方程的解空间的维数实际上刻画了$A$与$B$的相似程度. 我们有如下结论：
 \begin{theorem}{}{}
     设$A,B$分别为数域$\mathbf{F}$上$n$阶、$m$阶方阵，$A,B$有$r$个两两不等的公共特征值，则矩阵方程$AX-XB=O$有秩为$r$的矩阵解. 反之，若数域为复数域，矩阵方程$AX-XB=O$有秩为$r$的矩阵解，则$A,B$至少有$r$个公共的特征值（计重数）.
 \end{theorem}
@@ -833,6 +818,20 @@
 
 \begin{proof}
     设$V$是所有$m\times n$矩阵构成的线性空间，定义$V$上的线性变换$\sigma(X)=AX-XB,\enspace X\in V$. 由于$A$和$B$无公共复特征值，所以$\sigma(X)=AX-XB=O$只有零解，即$\sigma$为$V$上单射，由\autoref{thm:双射等价条件} 可知$\sigma$是满射且是同构映射. 于是，对任意的$C\in V$，都存在唯一的$X_0\in V$使得$\sigma(X_0)=C$，即矩阵方程$AX-XB=C$存在唯一解$X_0$.
+\end{proof}
+
+最后我们通过一个例子给出一种由特征向量出发生成线性无关向量组的方法，这一例子将在后续的讨论中起到重要作用：
+\begin{example}{}{特征向量生成线性无关组}
+    设$A\in \mathbf{M}_n(\mathbf{F})$，$E$ 是 $n$ 阶单位矩阵，$\alpha_1 \in \mathbf{F}^n$ 是 $A$ 的属于特征值 $\lambda$ 的一个特征向量，向量组 $\alpha_1,\alpha_2,\ldots,\alpha_s$ 按如下方式产生：$(A-\lambda E)\alpha_{i+1}=\alpha_i,\enspace i=1,2,\ldots,s-1$. 证明向量组 $\{\alpha_1,\alpha_2,\ldots,\alpha_s\}$ 线性无关.
+\end{example}
+
+\begin{proof}
+    由于$\alpha_1$是$A$属于特征值$\lambda$的特征向量，故有$(A-\lambda E)\alpha_1=0$. 设$\displaystyle\sum_{i=1}^{s}k_i\alpha_i=0$，两边同时左乘$A-\lambda E$可知
+    \begin{align*}
+        (A-\lambda E)\displaystyle\sum_{i=1}^{s}k_i\alpha_i &= \displaystyle\sum_{i=1}^{s}k_i(A-\lambda E)\alpha_i \\
+        &= k_1(A-\lambda E)\alpha_1+\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=0.
+    \end{align*}
+    以此类推，在等式两边不断左乘 $(A-\lambda E)$ 可知：对于 $\forall r \in \{1,\cdots,s-1\}$ 都有 $\displaystyle\sum_{i=1}^{s-r}k_{i+r}\alpha_i=0$. 令$r=s-1$得到$k_s\alpha_1=0,k_s=0$. 再依次代回不难得到$k_i=0,\forall i \in \{1,\cdots,s\}$，从而向量组$\alpha_1,\cdots,\alpha_s$线性无关.
 \end{proof}
 
 \section{实数域与复数域的讨论}

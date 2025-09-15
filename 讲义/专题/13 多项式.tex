@@ -238,7 +238,7 @@
 \begin{theorem}{裴蜀定理}{裴蜀定理} \index{peishudingli@裴蜀定理 (Bézout's Lemma)}
     设$(x),q(x)\in\mathbf{F}[x]$，则$p(x)$和$q(x)$互素的充要条件是存在$u(x),v(x)\in\mathbf{F}[x]$使得\[u(x)p(x)+v(x)q(x)=1.\]
 \end{theorem}
-这一定理称之为\term{裴蜀定理}\footnote{事实上，更一般的裴蜀定理是指：对于任意两个多项式$p(x),q(x)\in\mathbf{F}[x]$，$d(x)=(p(x),q(x))$为它们的最大公因式，则对任意的$f(x)\in\mathbf{F}[x]$，存在$u(x),v(x)\in\mathbf{F}[x]$，使得$u(x)p(x)+v(x)q(x)=f(x)d(x)$，特别的，存在$u_0(x),v_0(x)\in\mathbf{F}[x]$使得$u_0(x)p(x)+v_0(x)q(x)=d(x)$. 不难知\autoref{thm:裴蜀定理} 是其特例.}，事实上在数论中也有相对应的结论，证明是非常自然的. 习题中我们会给出另一种基于线性映射的证明思路供读者练习，这里我们延续数论的思路给出证明：
+这一定理称之为\term{裴蜀定理}\footnote{事实上，更一般的裴蜀定理是指：对于任意两个多项式$p(x),q(x)\in\mathbf{F}[x]$，$d(x)=(p(x),q(x))$为它们的最大公因式，则对任意的$f(x)\in\mathbf{F}[x]$，存在$u(x),v(x)\in\mathbf{F}[x]$，使得$u(x)p(x)+v(x)q(x)=f(x)d(x)$，特别的，存在$u_0(x),v_0(x)\in\mathbf{F}[x]$使得$u_0(x)p(x)+v_0(x)q(x)=d(x)$. 不难知其和\autoref{thm:裴蜀定理} 是等价的.}，事实上在数论中也有相对应的结论，证明是非常自然的. 习题中我们会给出另一种基于线性映射的证明思路供读者练习，这里我们延续数论的思路给出证明：
 \begin{proof}
     \begin{enumerate}
         \item 必要性：若$(p(x),q(x))=1$，由\nameref{thm:欧几里得算法}知存在$u(x),v(x)\in\mathbf{F}[x]$使得$u(x)p(x)+v(x)q(x)=1$.
@@ -329,7 +329,7 @@
     \[u_j(x)q_k(x)+v_j(x)q_j(x)=1,\]
     其中$j\neq k$，故令
     \[
-    p_k(x) =\prod_{\substack{1 \leq j \leq n \\ j \neq k}}(v_j(x)q_j(x))=\prod_{\substack{1 \leq j \leq n \\ j \neq k}}(1-u_j(x)q_k(x)),
+    p_k(x) =\prod_{\substack{1 \leqslant j \leqslant n \\ j \neq k}}(v_j(x)q_j(x))=\prod_{\substack{1 \leqslant j \leqslant n \\ j \neq k}}(1-u_j(x)q_k(x)),
     \]
     显然$p_k(x)$符合要求，因此我们构造出了这组方程的解为$p(x)=\sum\limits_{k=1}^nr_k(x)p_k(x)$.
 
@@ -487,11 +487,11 @@
     \[q(x)=1+b_kx^k+\cdots+b_nx^n,\]
     其中$k$是使得$b_k\neq 0$的最小整数，换言之，$b_k\neq 0$.
 
-    进一步地，我们取$\beta\in\mathbf{C}$满足$\beta^k=-\dfrac{1}{b_k}$，事实上这样的$\beta$一定存在，因为可以设$-\dfrac{1}{b_k}=re^{i\theta}$，取$\beta=r^{1/k}e^{i\theta/k}$即可. 此时我们有$\sum\limits_{i=k+1}^n |b_i\beta^i|\geqslant |q(\beta)|=|\sum\limits_{i=k+1}^n b_i\beta^i|\geqslant 1$，从而对任意的$t\in(0,1)$有
+    进一步地，我们取$\beta\in\mathbf{C}$满足$\beta^k=-\dfrac{1}{b_k}$，事实上这样的$\beta$一定存在，因为可以设$-\dfrac{1}{b_k}=re^{i\theta}$，取$\beta=r^{1/k}e^{i\theta/k}$即可. 此时我们有$\sum\limits_{i=k+1}^n |b_i\beta^i|\geqslant |q(\beta)|=\left|\sum\limits_{i=k+1}^n b_i\beta^i\right|\geqslant 1$，从而对任意的$t\in(0,1)$有
     \begin{align*}
         |q(t\beta)|
-        &= \left|1+b_kt^k\beta^k+t^{k+1}\sum\limits_{i=k+1}^n b_i t^i \beta^i \right| \\
-        &\leqslant |1+b_kt^k\beta^k|+t^{k+1}\sum\limits_{i=k+1}^n t^i |b_i\beta^i| \\
+        &= \left|1+b_kt^k\beta^k+t^{k+1}\sum\limits_{i=k+1}^n b_i t^{i-k-1} \beta^i \right| \\
+        &\leqslant |1+b_kt^k\beta^k|+t^{k+1}\sum\limits_{i=k+1}^n t^{i-k-1} |b_i\beta^i| \\
         &\leqslant |1- t^k|+t^{k+1}\sum\limits_{i=k+1}^n |b_i\beta^i|,
     \end{align*}
     记$c=\sum\limits_{i=k+1}^n |b_i\beta^i|\geqslant 1$，从而$|q(t\beta)|\leqslant 1-t^k(1-tc)$.

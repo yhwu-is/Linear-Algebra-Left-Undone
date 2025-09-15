@@ -6,7 +6,7 @@
 
 行列式是线性代数中非常重要的工具，笔者将从两条路线引入这一概念：一条从线性方程的判别式出发，属于代数范畴；而另一条从体积的变化出发，属于几何范畴. 然而代数和几何之间很多时候是一体两面，从两条路线能够得到相同的结果. 在导言中我们不会给出行列式的严格定义，而是先通过直观分析，帮助读者建立对于行列式的初步印象.
 
-\subsection{从判别式到行列式}
+\subsection{从判别式到行列式}\label{subsec:从判别式到行列式}
 
 对于二次方程$ax^2 + bx + c = 0$，我们熟知其\term{判别式（discriminant）}$\Delta = b^2 - 4ac$， $\Delta = 0$ 意味着方程产生了重根. 如果读者了解三次方程求根公式的话可能知道，三次方程 $x^3+ax+b=0$ 同样存在判别式 $4a^3 + 27b^2$，与二次方程的判别式类似，它给出了三次方程重根的判据.
 
@@ -79,7 +79,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
     \caption{可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容}
 \end{figure}
 
-这个变化的比例，实际上就是行列式. 读者可以自行验证对于二阶矩阵乃至三阶矩阵，由高斯消元计算得到的行列式与上述体积变化的比例是相等的.
+这个变化的比例，实际上就是行列式. 读者可以自行验证：对于二阶矩阵与三阶矩阵，由高斯消元计算得到的行列式与上述体积变化的比例是相等的. 我们将其放在习题中.
 
 从几何视角还可推导出行列式的重要性质：矩阵的乘积对应于线性映射的复合，那么矩阵复合的体积变化倍数应当等于体积变化倍数的乘积，即 $\det(AB) = \det A \cdot \det B$，而在严格定义行列式之后也会证明这一点.
 
@@ -2756,6 +2756,25 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
     \exquote[约翰·纳皮尔]{我总是尽我的精力和才能来摆脱那种繁重而单调的计算. }
 
     \begin{exgroup}
+        \item 证明：对于二阶矩阵与三阶矩阵，由高斯消元计算得到的行列式与上述体积变化的比例是相等的.
+        \begin{answer}
+            从\nameref{subsec:从判别式到行列式}一节中我们得知
+                $\det\begin{pmatrix}
+                    a_{11} & a_{12} \\
+                    a_{21} & a_{22}
+                \end{pmatrix} = a_{11}a_{22} - a_{12}a_{21}, \\
+                \det\begin{pmatrix}
+                    a_{11} & a_{12} & a_{13} \\
+                    a_{21} & a_{22} & a_{23} \\
+                    a_{31} & a_{32} & a_{33}
+                \end{pmatrix} = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33}$.
+            \begin{enumerate}
+                \item 二维情形可以使用鞋带公式：对于$\triangle OAB$，$A(x_1,y_1)$，$B(x_2,y_2)$，$O(0,0)$，$\triangle AOB$的面积为$S_{\triangle OAB}=\dfrac{1}{2}(x_1y_2-x_2y_1)$，这里的面积为有向面积，逆时针为正. 代入$A(a_{11}, a_{12})$，$B(a_{21}, a_{22})$即可（注意计算的为平行四边形，面积要乘以$2$）.
+                \item 三维情形可按计算平行六面体体积的方法进行. 对由向量$\overrightarrow{OA}=(a_{11},a_{21},a_{31})$，$\overrightarrow{OB}=(a_{12},a_{22},a_{32})$，$\overrightarrow{OC}=(a_{13},a_{23},a_{33})$所张成的平行六面体，利用\nameref{chap:线性代数与几何}中关于叉积的定义，我们可以计算$\overrightarrow{OA}\times\overrightarrow{OB}$. 设$\vec{x}=(x_1,x_2,x_3)$，且$\vec{x}\cdot\overrightarrow{OA}=0$，$\vec{x}\cdot\overrightarrow{OB}=0$，计算可得\[x_1=k(a_{21}a_{32}-a_{31}a_{22}), x_2=k(a_{31}a_{12}-a_{11}a_{32}), x_3=k(a_{11}a_{22}-a_{21}a_{12}),\]
+
+                其中$k\in\mathbf{R}\backslash\{0\}$. 并且其长度需要满足$\|\vec{x}\|^2=\|\overrightarrow{OA}\|^2\|\overrightarrow{OB}\|^2-(\overrightarrow{OA}\cdot\overrightarrow{OB})^2$，计算得知$k=1$. 此时$\vec{x}\cdot\overrightarrow{OC}$即为平行六面体的体积，计算可得$\vec{x}\cdot\overrightarrow{OC}=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}$.
+            \end{enumerate}
+        \end{answer}
         \item 设$\alpha_1,\alpha_2,\alpha_3$为三维列向量，令$A=(\alpha_1,\alpha_2,\alpha_3)$，且$|A|=2$，求$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|$.
         \begin{answer}
             使用倍加列变换的性质，可得$|\alpha_1+\alpha_2+\alpha_3,\alpha_1+3\alpha_2+9\alpha_3,\alpha_1+4\alpha_2+16\alpha_3|=6|\alpha_1,\alpha_2,\alpha_3|=12$.

@@ -70,7 +70,23 @@
     若运算$\circ$满足结合律，则称代数系统$\langle G\colon\circ\rangle$为\term{半群}\index{qun!banqun@半群 (semigroup)}；若在半群基础上存在单位元，则称之为\term{含幺半群}\index{qun!hanyaobanqun@含幺半群 (monoid)}；若在含幺半群基础上每个元素存在逆元，则称之为\term{群}；若在群的基础上运算还满足交换律，则称之为\term{Abel 群}，也称\term{交换群}\index{qun!abel@Abel 群 (Abelian group), 交换群 (commutative group)}.
 \end{definition}
 
-\autoref{def:群} 给出了我们本节第一个要讨论的代数结构——群的定义. 事实上，教材中42--44页给出了大量抽象的例子有助于同学们理解上述一系列群的定义，并且我们在后续学习矩阵的时候也会遇到一些群结构，相信这些实例能使读者体会到``在集合上定义运算''的方式的多样与抽象.
+\autoref{def:群} 给出了本节第一个要讨论的代数结构——群的定义. 下面给出了一些具体的例子帮助读者理解上述一系列群的定义，并且我们在后续学习矩阵的时候也会遇到一些群结构，相信这些实例能使读者体会到``在集合上定义运算''的方式的多样与抽象.
+
+\begin{example}{}{}
+    \begin{enumerate}
+        \item 设$+$，$\times$分别为数的加法与乘法，则$\langle\mathbf{N}^+\colon +\rangle$，$\langle\mathbf{N}^+\colon \times\rangle$，$\langle\mathbf{Z}\colon \times\rangle$均为交换半群；$\langle\mathbf{Q}^+\colon \times\rangle$，$\langle\mathbf{R}^+\colon \times\rangle$均为交换群，且$\mathbf{Q}^+$是$\mathbf{R}^+$关于乘法运算的子群；而$\langle\{1,-1\}\colon \times\rangle$是仅有两个元素的交换群. 一般，含有限个元素的群称为有限群，否则称为无限群；
+        \item 设$\mathbf{R}^3$为全体空间几何向量组成的几何，则$\mathbf{R}^3$关于向量加法构成一个交换群，其中单位元$e$为零向量$\vec{0}$，任一向量$\vec{\alpha}$的逆元为$-\vec{\alpha}$；
+        \item 设$\mathbf{R}[x]_3=\{a_0+a_1x+a_2x^2\mid a_0,a_1,a_2\in\mathbf{R}\}$，则$\mathbf{R}[x]_3$关于多项式的加法构成交换群，单位元$e$为零多项式，但关于多项式的乘法不构成半群.
+        \item 设$G$为某班的学生集，且任意两个人的身高互异，运算$\circ$为比高矮，规定
+        \[
+        a \circ b = b \circ a = \begin{cases}
+            a, & \text{若 $a$ 比 $b$ 高} \\
+            b, & \text{若 $b$ 比 $a$ 高}
+        \end{cases}; a\circ a=a,\enspace\forall a \in G.
+        \]
+        该运算为$G$的代数运算，且满足结合律，运算的单位元$e$为最矮的学生，因此$\langle G\colon\circ\rangle$为含幺半群.
+    \end{enumerate}
+\end{example}
 
 为方便书写，对于\autoref{def:群} 定义的群$\langle G\colon\circ\rangle$，在不引起混淆的情况下我们可以简写为群$G$. 除此之外，我们还需要指出以下两点：
 \begin{theorem}{}{群的单位元逆元唯一}

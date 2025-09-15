@@ -697,7 +697,7 @@ $3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\tim
 
 \section{复数域上相似标准形理论的应用}
 
-我们在前文已经基本完成了对复数域上线性变换的相似标准形基本理论的讨论，这一理论包括对角标准形的充要条件，任意线性映射的广义特征子空间分解与分块对角矩阵标准形，以及上三角矩阵的等价条件与存在性. 接下来我们将利用这些理论来解决一些具体的问题，本节我们主要讨论幂等矩阵、幂零矩阵的性质以及线性变换的平方根问题.
+我们在前文已经基本完成了对复数域上线性变换的相似标准形基本理论的讨论，这一理论包括对角标准形的充要条件，任意线性映射的广义特征子空间分解与分块对角矩阵标准形，以及上三角矩阵的等价条件与存在性，接下来我们将利用这些理论来解决一些具体的问题.
 
 \subsection{幂等矩阵}
 
@@ -871,8 +871,102 @@ $3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\tim
 \end{example}
 
 \begin{solution}
-    由于$N^4=0$，我们设$\sqrt{I+N}=I+a_1N+a_2N^2+a_3N^3$，则$I+N=(I+a_1N+a_2N^2+a_3N^3)^2=I+2a_1N+(a_1^2+2a_2)N^2+(2a_3+2a_1a_2)N^3$，有$a_1=\dfrac{1}{2},a_2=-\dfrac{1}{8},a_3=\dfrac{1}{16}$. 代入即可算出$(I+N)$的一个平方根.
+    由于$N^4=0$，我们设$\sqrt{I+N}=I+a_1N+a_2N^2+a_3N^3$，则
+    \begin{align*}
+        I+N&=(I+a_1N+a_2N^2+a_3N^3)^2 \\
+        &=I+2a_1N+(a_1^2+2a_2)N^2+(2a_3+2a_1a_2)N^3,
+    \end{align*}
+    可解得$a_1=\dfrac{1}{2},a_2=-\dfrac{1}{8},a_3=\dfrac{1}{16}$. 代入即可算出$(I+N)$的一个平方根.
 \end{solution}
+
+\subsection{算子的复化}
+
+在\autoref{thm:特征值与不变子空间} 中我们谈到了``复化''的思想，接下来我们将这一思想用严格的定义写出来. 先从实线性空间出发定义复化的概念：
+
+\begin{definition}{}{}
+    设$V$是实线性空间，定义$V$的复化为$V\times V$，记为$V_{\mathbf{C}}$，其元素$(u,v)$我们记为$u+v\i$，其中$u,v\in V$，并定义$V_{\mathbf{C}}$上的加法和数乘如下：
+    \begin{itemize}
+        \item 定义$V_{\mathbf{C}}$上的加法为$(u_1+v_1\i)+(u_2+v_2\i)=(u_1+u_2)+(v_1+v_2)\i$，其中$u_1,u_2,v_1,v_2\in V$；
+        \item 定义$V_{\mathbf{C}}$上的数乘为$(a+b\i)(u+v\i)=(au-bv)+(av+bu)\i$，其中$a,b\in\mathbf{R},\enspace u,v\in V$.
+    \end{itemize}
+\end{definition}
+
+读者可以自行验证基于$V$扩展而来的$V_{\mathbf{C}}$是复线性空间，并且基于我们对``复化''的直觉，下面的结论也是容易得到的（证明我们留作习题）：
+
+\begin{example}{}{复化空间的维数}
+    设$V$是实线性空间，若$v_1,\ldots,v_n$是$V$（作为实线性空间）的一组基，那么它也是$V_{\mathbf{C}}$（作为复线性空间）的一组基，从而$\dim V_{\mathbf{C}}=\dim V$.
+\end{example}
+
+一个帮助读者理解所谓``对复化的直觉''的例子是，$\mathbf{R}^n(\mathbf{R})$的复化为$\mathbf{C}^n(\mathbf{C})$，这表明复化过程并没有改变空间的维数，而是将实数域上的向量扩展到了复数域上.
+
+基于实线性空间的复化，我们可以进一步定义实线性空间上线性变换的复化：
+
+\begin{definition}{}{}
+    设$V$是实线性空间，$\sigma\in \mathcal{L}(V)$，定义$\sigma$的复化为$\sigma_{\mathbf{C}}\in \mathcal{L}(V_{\mathbf{C}})$，其作用为$\sigma_{\mathbf{C}}(u+v\i)=\sigma(u)+\sigma(v)\i$，其中$u,v\in V$.
+\end{definition}
+
+请读者自行验证，$\sigma_{\mathbf{C}}$是良定义的且确实属于$\mathcal{L}(V_{\mathbf{C}})$. 并且基于\autoref{ex:复化空间的维数}，我们有（证明同样留作习题）：
+
+\begin{example}{}{复化线性变换的矩阵表示}
+    设$V$是实线性空间，$\sigma\in \mathcal{L}(V)$，若$A$是$\sigma$在某一组基下的矩阵表示，则$A$也是$\sigma_{\mathbf{C}}$在同一组基下的矩阵表示.
+\end{example}
+
+在此基础上，我们可以讨论复化的特征值与特征向量的性质：
+
+\begin{theorem}{}{复化线性变换的特征值与特征向量}
+    设$V$是实线性空间，$\sigma\in \mathcal{L}(V)$，
+    \begin{enumerate}
+        \item 若$\lambda\in\mathbf{R}$，则$\lambda$是$\sigma_{\mathbf{C}}$的特征值的充分必要条件是$\lambda$是$\sigma$的特征值；
+        \item 若$\lambda=a+b\i(a,b\in\mathbf{R})$，则$\lambda$是$\sigma_{\mathbf{C}}$的特征值的充分必要条件是存在不全为零的$\alpha,\beta\in V$使得
+        \[\sigma(\alpha)=a\alpha-b\beta,\enspace \sigma(\beta)=b\alpha+a\beta.\]
+        此时$\alpha+\beta\i$是$\sigma_{\mathbf{C}}$属于$\lambda$的特征向量.
+        \item 若$\lambda=a+b\i \in\mathbf{C}$，$\alpha,\beta\in V$，$j$为非负整数，那么
+        \[(\sigma_{\mathbf{C}}-\lambda I)^j(\alpha+\beta\i)=0 \iff (\sigma_{\mathbf{C}}-\overline{\lambda} I)^j(\alpha-\beta\i)=0.\]
+        特别的，取$j=1$，则$\lambda$是$\sigma_{\mathbf{C}}$的特征值的充分必要条件是$\overline{\lambda}$是$\sigma_{\mathbf{C}}$的特征值.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 充分性：设$\lambda$是$\sigma$的特征值，$\alpha\in V$是$\sigma$属于$\lambda$的特征向量，则$\sigma_{\mathbf{C}}(\alpha)=\sigma(\alpha)=\lambda\alpha$，因此$\alpha$也是$\sigma_{\mathbf{C}}$属于$\lambda$的特征向量，因此$\lambda$是$\sigma_{\mathbf{C}}$的特征值.
+
+              必要性：设$\lambda$是$\sigma_{\mathbf{C}}$的特征值，$\alpha+\beta\i\in V_{\mathbf{C}}(\alpha,\beta\in V)$是$\sigma_{\mathbf{C}}$属于$\lambda$的特征向量，则
+              \[\sigma_{\mathbf{C}}(\alpha+\beta\i)=\sigma(\alpha)+\sigma(\beta)\i=\lambda(\alpha+\beta\i).\]
+              展开括号，我们有
+              \[\sigma(\alpha)=\lambda\alpha,\enspace \sigma(\beta)=\lambda\beta.\]
+              因为$\alpha+\beta\i\neq 0$，所以$\alpha,\beta$不全为零，因此至少有一个不为零的向量是$\sigma$属于$\lambda$的特征向量，因此$\lambda$是$\sigma$的特征值.
+        \item 充分性：设$\alpha,\beta\in V$使得$\sigma(\alpha)=a\alpha-b\beta,\enspace \sigma(\beta)=b\alpha+a\beta$，则
+              \[\sigma_{\mathbf{C}}(\alpha+\beta\i)=\sigma(\alpha)+\sigma(\beta)\i=(a\alpha-b\beta)+(b\alpha+a\beta)\i=(a+b\i)(\alpha+\beta\i),\]
+              因此$\alpha+\beta\i$是$\sigma_{\mathbf{C}}$属于$\lambda$的特征向量，因此$\lambda$是$\sigma_{\mathbf{C}}$的特征值.
+
+              必要性：设$\lambda=a+b\i$是$\sigma_{\mathbf{C}}$的特征值，$\alpha+\beta\i\in V_{\mathbf{C}}(\alpha,\beta\in V)$是$\sigma_{\mathbf{C}}$属于$\lambda$的特征向量，则
+              \[\sigma_{\mathbf{C}}(\alpha+\beta\i)=\sigma(\alpha)+\sigma(\beta)\i=(a+b\i)(\alpha+\beta\i).\]
+              展开括号，我们有$\sigma(\alpha)=a\alpha-b\beta,\enspace \sigma(\beta)=b\alpha+a\beta$. 因为$\alpha+\beta\i\neq 0$，所以$\alpha,\beta$不全为零，故必要性成立.
+        \item 对$j$用归纳法，若$j=0$，由于一个算子的$0$次幂为恒等算子，因此结论即为$u+v\i=0 \iff u-v\i=0$，显然成立.
+
+              假设$j=k-1$时结论成立，考虑$j=k$的情况. 注意到
+              \[
+              (\sigma_{\mathbf{C}}-\lambda I)^k(\alpha+\beta\i)=(\sigma_{\mathbf{C}}-\lambda I)^{k-1}(\sigma_{\mathbf{C}}-\lambda I)(\alpha+\beta\i),
+              \]
+              而
+              \begin{gather*}
+                (\sigma_{\mathbf{C}}-\lambda I)(\alpha+\beta\i)=(\sigma(\alpha)-a\alpha+b\beta)+(\sigma(\beta)-b\alpha-a\beta)\i, \\
+                (\sigma_{\mathbf{C}}-\overline{\lambda} I)(\alpha-\beta\i)=(\sigma(\alpha)-a\alpha+b\beta)-(\sigma(\beta)-b\alpha-a\beta)\i.
+              \end{gather*}
+              故由归纳假设可知
+              \[
+              (\sigma_{\mathbf{C}}-\lambda I)^{k-1}((\sigma(\alpha)-a\alpha+b\beta)+(\sigma(\beta)-b\alpha-a\beta)\i)=0
+              \]
+              当且仅当
+              \[
+              (\sigma_{\mathbf{C}}-\overline{\lambda} I)^{k-1}((\sigma(\alpha)-a\alpha+b\beta)-(\sigma(\beta)-b\alpha-a\beta)\i)=0
+              \]
+              即\[(\sigma_{\mathbf{C}}-\lambda I)^k(\alpha+\beta\i)=0 \iff (\sigma_{\mathbf{C}}-\overline{\lambda} I)^k(\alpha-\beta\i)=0.\]
+              由归纳法知结论成立.
+    \end{enumerate}
+\end{proof}
+
+\autoref{thm:复化线性变换的特征值与特征向量} 的结论表明，实线性空间上线性变换的复化的非实特征值成对出现，并且它们对应的特征向量也成共轭. 这一结论我们在\nameref{chap:多项式的进一步讨论}一节还会进一步讨论.
 
 最后，在开始习题内容前，我们需要讲解一类特殊的题型，即举例或举反例的问题. 一般而言，我们有如下两种思路：
 \begin{enumerate}
@@ -928,7 +1022,7 @@ $3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\tim
 
 \begin{summary}
 
-    本讲我们介绍了相似的定义与性质，并介绍了第一个且是最简单的相似标准形——对角矩阵. 我们介绍了线性变换和矩阵可对角化的定义以及二者的统一性，介绍了如何求解线性变换/矩阵的对角化问题. 我们也探讨了线性变换/矩阵可对角化的几个充分必要条件，并通过大量的例题运用了这些条件. 最后我们介绍了幂等矩阵这一特殊矩阵，它有很多值得探讨的性质，并且很适合于作为本讲的一个运用.
+    本讲我们介绍了相似的定义与性质，并介绍了第一个且是最简单的相似标准形——对角矩阵. 我们介绍了线性变换和矩阵可对角化的定义以及二者的统一性，介绍了如何求解线性变换/矩阵的对角化问题. 我们也探讨了线性变换/矩阵可对角化的几个充分必要条件，并通过大量的例题运用了这些条件. 最后我们介绍了幂等矩阵、幂零矩阵、算子的平方根问题与复化问题等内容，它们有很多值得探讨的性质，适合作为本讲的一个应用.
 
     从下一讲开始，我们将要介绍当线性变换/矩阵不可对角化时，它们可以有哪些退而求其次的也比较简单的相似标准形.
 
@@ -1009,6 +1103,20 @@ $3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\tim
             \end{pmatrix}$，则$P^{-1}AP=\begin{pmatrix}
                 3 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
             \end{pmatrix}$.
+        \end{answer}
+        \item 证明\autoref{ex:复化空间的维数}.
+        \begin{answer}
+            由于$v_1,\ldots,v_n$为实线性空间$V$的一组基，因此在复线性空间$V_{\mathbf{C}}$中，$\spa(v_1,\ldots,v_n)$包含了所有的$v_1,\i v_1,\ldots,v_n,\i v_n$，自然可以张成任意的$u+v\i,\enspace u,v\in V$，因此$v_1,\ldots,v_n$张成了整个$V_{\mathbf{C}}$. 故只需证明它们在$V_\mathbf{C}$中线性无关.
+
+            设$\lambda_1,\ldots,\lambda_n\in\mathbf{C}$使得
+            \[\lambda_1 v_1+\cdots+\lambda_n v_n=0,\]
+            则\[\operatorname{Re}(\lambda_1)v_1+\cdots+\operatorname{Re}(\lambda_n)v_n=0,\operatorname{Im}(\lambda_1)v_1+\cdots+\operatorname{Im}(\lambda_n)v_n=0.\]
+            由于$v_1,\ldots,v_n$在$V$中线性无关，因此$\operatorname{Re}(\lambda_1)=\cdots=\operatorname{Re}(\lambda_n)=0$，$\operatorname{Im}(\lambda_1)=\cdots=\operatorname{Im}(\lambda_n)=0$，从而$\lambda_1=\cdots=\lambda_n=0$. 因此$v_1,\ldots,v_n$在$V_{\mathbf{C}}$中线性无关，从而$v_1,\ldots,v_n$是$V_{\mathbf{C}}$的一组基.
+        \end{answer}
+        \item 证明\autoref{ex:复化线性变换的矩阵表示}.
+        \begin{answer}
+            略微有点反直觉，但只需注意到基在复化之后仍为基，且对$\forall u\in V$，$\sigma_{\mathbf{C}}(u)=\sigma(u)$，设$A$是$\sigma$在基$(v_1,\ldots,v_n)$下的矩阵表示，则\[\sigma_{\mathbf{C}}(v_1,\ldots,v_n)=\sigma(v_1,\ldots,v_n)=(v_1,\ldots,v_n)A,\]
+            从而$A$也是$\sigma_{\mathbf{C}}$在$v_1,\ldots,v_n$下的矩阵表示.
         \end{answer}
     \end{exgroup}
 

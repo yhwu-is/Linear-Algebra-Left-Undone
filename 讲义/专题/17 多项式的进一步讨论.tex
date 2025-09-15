@@ -1,4 +1,4 @@
-\chapter{多项式的进一步讨论}
+\chapter{多项式的进一步讨论} \label{chap:多项式的进一步讨论}
 
 在之前的讨论中，我们从不变子空间的角度出发，得到复数域上线性变换和矩阵的相似标准形理论，包括对角化、上三角化、分块对角化以及终极目标若当标准形. 接下来我们将从多项式的视角再次讨论相似标准形理论，这将会为我们很多时候的讨论带来便捷，因为相比于抽象的不变子空间，多项式的角度更具体且可以通过直接的计算解决问题.
 
@@ -34,9 +34,20 @@
 这一定理能给我们一个启发. 回顾\autoref{thm:广义特征性质}，我们设$\sigma$的特征值为$\lambda_1,\ldots,\lambda_m$，则有广义特征子空间分解$V=G_{\lambda_1},\oplus\cdots\oplus G_{\lambda_m}$，且每个广义特征子空间都是不变子空间. 我们设每个广义特征子空间$G_{\lambda_i}$的维数为$d_i$，故$\sigma\vert_{G_{\lambda_i}}$的特征多项式就是$(\lambda-\lambda_i)^{d_i}$，因为特征值只有$\lambda_i$，次数等于空间维数. 则根据上面的定理，我们有
 \[f(\lambda)=\prod_{i=1}^m f_i(\lambda)=\prod_{i=1}^m (\lambda-\lambda_i)^{d_i}.\]
 我们发现它和\autoref{eq:18:特征多项式} 的形式是一致的，因此我们可以得到$\lambda_i$对应的广义特征子空间的维数$d_i$就是特征值$\lambda_i$的代数重数. 即我们有如下推论：
-\begin{corollary}{}{}
+\begin{corollary}{}{代数重数等于广义特征空间维数}
     设$\sigma\in \mathcal{L}(V)$，$\lambda_i$为其任意特征值，$d_i$为$\lambda_i$的代数重数，则$\lambda_i$对应的广义特征子空间的维数也为$d_i$.
 \end{corollary}
+
+% TODO: 下面的内容为复化算子的共轭特征值的重数相同，后续修改这章时进行整合.
+% 基于\autoref{thm:复化线性变换的特征值与特征向量} 的 3 以及\autoref{cor:代数重数等于广义特征空间维数} 立刻可以得到如下结论：
+
+% \begin{corollary}{}{}
+%     设$V$是实线性空间，$\sigma\in \mathcal{L}(V)$，$\lambda\in\mathbf{C}$是$\sigma_{\mathbf{C}}$的特征值，则$\lambda$作为$\sigma_{\mathbf{C}}$的特征值的代数重数等于$\overline{\lambda}$作为$\sigma_{\mathbf{C}}$的特征值的代数重数.
+% \end{corollary}
+
+% \begin{proof}
+%     设$u_1+v_1\i,\ldots,u_m+v_m\i$是广义特征空间$G(\lambda,\sigma_{\mathbf{C}})$的基，则基于\autoref{thm:复化线性变换的特征值与特征向量} 的 3 不难验证$u_1-v_1\i,\ldots,u_m-v_m\i$是广义特征空间$G(\overline{\lambda},\sigma_{\mathbf{C}})$的基，因此两个特征值的代数重数相同.
+% \end{proof}
 
 因此未来我们提到代数重数（或者简称重数）时，我们可以从两个角度来理解. 于是下面这一例子我们可以从两种重数的定义出发给出不同的证明：
 \begin{example}{}{}
