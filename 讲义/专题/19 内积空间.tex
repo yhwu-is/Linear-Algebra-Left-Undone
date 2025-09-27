@@ -89,7 +89,7 @@
 
 然后是熟悉的勾股定理在内积空间上的推广：
 
-\begin{theorem}{}{}
+\begin{theorem}{}{勾股定理在内积空间上的推广}
     设 $u, v$ 是 $V$ 中的正交向量，则 $\lVert u + v \rVert^2 = \lVert u \rVert^2 + \lVert v \rVert^2 $.
 \end{theorem}
 
@@ -108,24 +108,74 @@
 
 从而便引进了正交分解：
 
-\begin{theorem}{}{}
+\begin{theorem}{}{内积空间上向量的正交分解}
     设 $u, v \in V$ 且 $v \neq \vec{0}$. 令 $ c = \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}, \enspace w = u - \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}v$. 则 $\langle w, v\rangle = 0$且 $u = cv + w$.
 \end{theorem}
 
 而通过正交分解，我们可以证明一个数学中最重要的不等式（之一）：\term{Cauchy-Schwarz 不等式}.
 
-\begin{theorem}{Cauchy-Schwarz 不等式}{} \index{Cauchy@Cauchy-Schwarz 不等式 (Cauchy-Schwarz inequality)}
+\begin{theorem}{Cauchy-Schwarz 不等式}{Cauchy-Schwarz 不等式} \index{Cauchy@Cauchy-Schwarz 不等式 (Cauchy-Schwarz inequality)}
     设 $u, v \in V$. 则 $\left\lvert \left\langle u, v\right\rangle \right\rvert \leqslant \lVert u \rVert\lVert v \rVert$. 等号成立当且仅当 $u, v$ 之一是另一个的标量倍.
 \end{theorem}
 
+\begin{proof}
+    若 $v = \mathbf{0}$，显然成立.
+
+    若 $v \ne \mathbf{0}$，根据\autoref{thm:内积空间上向量的正交分解}，令 $ c = \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}, \enspace w = u - \dfrac{\langle u, v\rangle}{\lVert v \rVert^2}v$.
+
+    现在我们计算 $\lVert u \rVert^2$：
+    \begin{align*}
+        \lVert u \rVert^2 & = \lVert c v + w \rVert^2 \\
+                          & = \langle c v + w, c v + w \rangle \\
+                          & = \langle c v, c v \rangle + \langle w, w \rangle + \langle c v, w \rangle + \langle w, c v \rangle \\
+                          & = \lvert c \rvert^2\lVert v \rVert^2 + \lVert w \rVert^2
+    \end{align*}
+
+    因为 $\lVert w \rVert^2 \geqslant 0$，所以 $\lVert u \rVert^2 \geqslant \lvert c \rvert^2\lVert v \rVert^2$.
+
+    将 $ c $ 的表达式代入得到：
+    \begin{align*}
+        \lVert u \rVert^2 & \geqslant \lvert c \rvert^2\lVert v \rVert^2 = \dfrac{\left\lvert \left\langle u, v\right\rangle \right\rvert^2}{\lVert v \rVert^4}\lVert v \rVert^2
+    \end{align*}
+
+    移项，两边开平方，得到：$\left\lvert \left\langle u, v\right\rangle \right\rvert \leqslant \lVert u \rVert\lVert v \rVert$.
+
+    当等号成立，则 $\lVert w \rVert^2 = 0$，即 $ w = u - cv = \mathbf{0}$.
+
+    可得 $ u = c v $， 说明 $ u $ 是 $ v $ 的标量倍.
+\end{proof}
+
+
 也可以通过引入参数，利用二次三项式的判别式证明.
+
+\begin{proof}
+考虑向量 $u - c v$ 的范数的平方，其中 $c$ 是一个标量.
+
+为方便起见，若 $\langle u, v \rangle \ne 0$，可设 $\alpha = \frac{\overline{\langle u, v \rangle}}{|\langle u, v \rangle|}$，然后\textbf{考虑二次三项式 $\|u - t \alpha v\|^2$}，其中 $t \in \mathbb{R}$。
+
+展开范数平方，并利用 $\|u - t \alpha v\|^2 \ge 0$ 恒成立，通过\textbf{判别式 $\Delta \le 0$} 即可得证。
+\end{proof}
 
 借助 Cauchy-Schwarz 不等式，我们可以得到三角不等式：
 
-\begin{theorem}{}{}
+\begin{theorem}{}{内积空间上的三角不等式}
     设 $u, v \in V$. 则 $\lVert u, v \rVert \leqslant \lVert u \rVert + \lVert v \rVert$. 等号成立当且仅当 $u, v$ 之一是另一个的非负标量倍.
 \end{theorem}
 
+\begin{proof}
+    我们考察 $\lVert u + v \rVert^2$:
+    \begin{align*}
+    \lVert u + v \rVert^2 & = \langle u + v, u + v \rangle \\
+                          & = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle \\
+                          & = \lVert u \rVert^2 + \langle u, v \rangle + \overline{\langle u, v \rangle} + \lVert v \rVert^2 \\
+                          & = \lVert u \rVert^2 + 2 \text{Re}(\langle u, v \rangle) + \lVert v \rVert^2 \\
+                          & \leqslant \lVert u \rVert^2 + 2 \left\lvert \left\langle u, v\right\rangle \right\rvert + \lVert v \rVert^2 \\
+                          & \leqslant \lVert u \rVert^2 + 2 \lVert u \rVert\lVert v \rVert + \lVert v \rVert^2 \\
+                          & = (\lVert u \rVert + \lVert v \rVert)^2
+    \end{align*}
+    因为 $\lVert u + v \rVert$ 和 $(\lVert u \rVert + \lVert v \rVert)$ 都是非负实数，两边开平方，即得：
+    $$\lVert u + v \rVert \le \lVert u \rVert + \lVert v \rVert$$
+\end{proof}
 其几何解释就是俗称的三角形两边之和小于第三边.
 
 另一个与几何相关的结论就是平行四边形恒等式：
@@ -133,6 +183,13 @@
 \begin{theorem}{}{}
     设 $u, v \in V$. 则 $ \lVert u + v \rVert^{2} + \lVert u - v \rVert^{2} = 2(\lVert u \rVert^{2} + \lVert v \rVert^{2})$.
 \end{theorem}
+
+\begin{proof}
+    计算 $\lVert u + v \rVert^2, \lVert u - v \rVert^2$：
+    $$\lVert u + v \rVert^2 = \langle u + v, u + v \rangle = \lVert u \rVert^2 + \langle u, v \rangle + \langle v, u \rangle + \lVert v \rVert^2$$
+    $$\lVert u - v \rVert^2 = \langle u - v, u - v \rangle = \lVert u \rVert^2 - \langle u, v \rangle - \langle v, u \rangle + \lVert v \rVert^2$$
+    将两式相加得证.
+\end{proof}
 
 其几何解释为任意的平行四边形两对角线的长度的平方和等于四边长度的平方和.
 
@@ -162,6 +219,74 @@
     \end{enumerate}
 
 \end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item $ (19.1) $ 实空间极化恒等式
+
+        将右侧展开即可得证.
+
+        \item $ (19.2) $ 实空间极化恒等式
+
+        我们展开等式右侧的两项，利用线性算子 $T$ 的线性性：
+        \begin{align*}
+            \langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle
+            & = \langle Tu + Tv, u + v \rangle - \langle Tu - Tv, u - v \rangle \\
+            & = \left(\langle Tu, u \rangle + \langle Tu, v \rangle + \langle Tv, u \rangle + \langle Tv, v \rangle\right) \\
+            & \quad - \left(\langle Tu, u \rangle - \langle Tu, v \rangle - \langle Tv, u \rangle + \langle Tv, v \rangle\right) \\
+            & = \langle Tu, v \rangle - (-\langle Tu, v \rangle) + \langle Tv, u \rangle - (-\langle Tv, u \rangle) \\
+            & = 2\langle Tu, v \rangle + 2\langle Tv, u \rangle \\
+            & = 2 (\langle Tu, v \rangle + \langle Tv, u \rangle)
+        \end{align*}
+        两边同除以 $2$ 即得：
+        $$\langle Tu, v\rangle + \langle Tv, u\rangle = \frac{1}{2}\left(\langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle\right)$$
+
+        \item $ (19.3) $ 复空间极化恒等式
+
+        首先，我们利用复数内积 $\langle v, u \rangle = \overline{\langle u, v \rangle}$ 得到实部项：
+        $$\lVert u + v \rVert^2 - \lVert u - v \rVert^2 = 4 \text{Re}(\langle u, v \rangle)$$
+        接下来计算虚部项 $\lVert u + \i v \rVert^2 - \lVert u - \i v \rVert^2$:
+        \begin{align*}
+            \lVert u + \i v \rVert^2 - \lVert u - \i v \rVert^2
+            & = \langle u + \i v, u + \i v \rangle - \langle u - \i v, u - \i v \rangle \\
+            & = \left(\lVert u \rVert^2 - \i \langle u, v \rangle + \i \langle v, u \rangle + \lVert v \rVert^2\right) - \left(\lVert u \rVert^2 + \i \langle u, v \rangle - \i \langle v, u \rangle + \lVert v \rVert^2\right) \\
+            & = -2\i \langle u, v \rangle + 2\i \langle v, u \rangle \\
+            & = 2\i (\overline{\langle u, v \rangle} - \langle u, v \rangle) \\
+            & = 2\i (-2\i \text{Im}(\langle u, v \rangle)) \\
+            & = 4 \text{Im}(\langle u, v \rangle)
+        \end{align*}
+        代入原恒等式右侧：
+        \begin{align*}
+            \text{RHS} &= \frac{1}{4}\left(\left(4 \text{Re}(\langle u, v \rangle)\right) + \i\left(4 \text{Im}(\langle u, v \rangle)\right)\right) \\
+            & = \text{Re}(\langle u, v \rangle) + \i \text{Im}(\langle u, v \rangle) \\
+            & = \langle u, v \rangle
+        \end{align*}
+
+        \vspace{1em}
+
+        \item $ (19.4) $ 复空间算子恒等式
+        我们将右侧分解为 $\frac{1}{4} (\text{Part A} + \i \cdot \text{Part B})$。
+
+        $$\text{Part A} = \langle T(u + v), u + v\rangle - \langle T(u - v), u - v\rangle = 2\langle Tu, v \rangle + 2\langle Tv, u \rangle$$
+
+        \begin{align*}
+            \text{Part B} & = \langle T(u + \i v), u + \i v\rangle - \langle T(u - \i v), u - \i v\rangle \\
+            & = \left(\langle Tu, u \rangle - \i \langle Tu, v \rangle + \i \langle Tv, u \rangle + \langle Tv, v \rangle\right) \\
+            &\quad - \left(\langle Tu, u \rangle + \i \langle Tu, v \rangle - \i \langle Tv, u \rangle + \langle Tv, v \rangle\right) \\
+            & = -2\i \langle Tu, v \rangle + 2\i \langle Tv, u \rangle \\
+            & = 2\i (\langle Tv, u \rangle - \langle Tu, v \rangle)
+        \end{align*}
+
+        将 $\text{Part A}$ 和 $\text{Part B}$ 代入右边得到：
+        \begin{align*}
+            \frac{1}{4}\left(\text{Part A} + \i \cdot \text{Part B}\right)
+            & = \frac{1}{4}\left(\left(2\langle Tu, v \rangle + 2\langle Tv, u \rangle\right) + \i \left(2\i (\langle Tv, u \rangle - \langle Tu, v \rangle)\right)\right) \\
+            & = \frac{1}{4}\left(2\langle Tu, v \rangle + 2\langle Tv, u \rangle - 2\langle Tv, u \rangle + 2\langle Tu, v \rangle\right) \\
+            & = \frac{1}{4}\left(4\langle Tu, v \rangle\right) \\
+            & = \langle Tu, v \rangle
+        \end{align*}
+    \end{enumerate}
+\end{solution}
 
 \section{标准正交基}
 
