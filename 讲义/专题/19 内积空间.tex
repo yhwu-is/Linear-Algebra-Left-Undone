@@ -306,24 +306,39 @@
 
 标准正交组的优势在于处理其线性组合的范数很方便.
 
-\begin{theorem}{}{}
+\begin{theorem}{}{勾股定理推广}
     若 $e_1, \ldots , e_m$ 是 $ V $ 中的标准正交向量组，则对 $\forall a_1, \ldots, a_m \in \mathbf{F}$ 均有
     \[ \lVert a_1e_1 + \cdots + a_ne_n\rVert^2 = \lvert a_1 \rvert^2 + \cdots + \lvert a_n \rvert^2.\]
 \end{theorem}
 
-反复使用勾股定理即可证明. 该定理也有一个重要推论：
+\begin{proof}
+    根据向量范数平方的定义 $\lVert u \rVert^2 = \langle u, u \rangle$，设 $u = a_1e_1 + \cdots + a_m e_m$. 我们计算 $\lVert u \rVert^2$:
+    \begin{align*}
+        \lVert u \rVert^2 & = \left\langle \sum_{i=1}^{m} a_i e_i, \sum_{j=1}^{m} a_j e_j \right\rangle \\
+        & = \sum_{i=1}^{m} \sum_{j=1}^{m} \left\langle a_i e_i, a_j e_j \right\rangle \\
+        & = \sum_{i=1}^{m} \sum_{j=1}^{m} a_i \overline{a_j} \left\langle e_i, e_j \right\rangle
+    \end{align*}
+    由于 $\left\{e_1, \ldots, e_m\right\}$ 是标准正交向量组，内积 $\left\langle e_i, e_j \right\rangle$ 满足：
+    \[
+        \left\langle e_i, e_j \right\rangle = \begin{cases} 1 & i = j \\ 0 & i \ne j \end{cases}
+    \]
+    因此，在所有求和项中，只有当 $i = j$ 时，项的值才非零：
+    \begin{align*}
+        \lVert u \rVert^2 &= \sum_{i=1}^{m} a_i \overline{a_i} \left\langle e_i, e_i \right\rangle \\
+        & = \sum_{i=1}^{m} a_i \overline{a_i} \cdot 1 \\
+        & = \sum_{i=1}^{m} \lvert a_i \rvert^2
+    \end{align*}
+    即
+    $$ \lVert a_1e_1 + \cdots + a_m e_m\rVert^2 = \lvert a_1 \rvert^2 + \cdots + \lvert a_m \rvert^2. $$
+\end{proof}
+
+其本质可以看作勾股定理的推广，该定理也有一个重要推论：
 
 \begin{theorem}{}{}
     任何标准正交向量组都是线性无关的.
 \end{theorem}
 
 令其线性组合为 $ \vec{0} $ 即证.
-
-\begin{example}{}{标准正交组}
-    设 $e_1, \ldots , e_m$ 是 $ V $ 的标准正交组. 设 $ v \in V $. 证明
-    \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2 \]
-    当且仅当 $ v \in \spa(e_1, \ldots , e_m)$.
-\end{example}
 
 既然标准正交组都是线性无关的，很自然我们就会想到在线性空间中最有用的线性无关组：基. 也就有了标准正交基的定义.
 
@@ -344,7 +359,81 @@
     \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2. \]
 \end{theorem}
 
-此为\autoref{ex:标准正交组} 的特例. \autoref{eq:23:Fourier展开} 也被称为 $ v $ 的 Fourier 展开，其中每个系数 $ \langle v, e_j \rangle $ 被称为 $ v $ 的 Fourier 系数.
+\begin{proof}
+    由于 $\{e_1, \ldots, e_n\}$ 是 $V$ 的标准正交基，它同时也是 $V$ 的一组基. 因此，对于任意 $v \in V$，存在唯一的标量 $a_1, \ldots, a_n \in \mathbf{F}$，使得
+    \[ v = a_1 e_1 + \cdots + a_n e_n \]
+
+    为了找到系数 $a_j$，我们用 $v$ 与任意一个基向量 $e_j$ 作内积：
+    \[ \langle v, e_j \rangle = \left\langle \sum_{i=1}^{n} a_i e_i, e_j \right\rangle \ = \sum_{i=1}^{n} a_i \langle e_i, e_j \rangle \]
+    由于 $\{e_i\}$ 是标准正交基，$\langle e_i, e_j \rangle = \delta_{ij}$，求和项中只有 $i=j$ 时非零：
+    \[ \langle v, e_j \rangle = a_j \langle e_j, e_j \rangle  = a_j \]
+    因此，坐标系数 $a_j = \langle v, e_j \rangle$. 代入原线性组合即得第一个结论：
+    \[ v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_n \rangle e_n \]
+
+    我们计算 $\lVert v \rVert^2$，并将上一步得出的 $v$ 的展开式代入：
+    \begin{align*}
+        \lVert v \rVert^2 = \langle v, v \rangle & = \left\langle \sum_{i=1}^{n} \langle v, e_i \rangle e_i, \sum_{j=1}^{n} \langle v, e_j \rangle e_j \right\rangle \\
+        & = \sum_{i=1}^{n} \sum_{j=1}^{n} \langle v, e_i \rangle \overline{\langle v, e_j \rangle} \langle e_i, e_j \rangle \\
+        & = \sum_{i=1}^{n} \langle v, e_i \rangle \overline{\langle v, e_i \rangle} \langle e_i, e_i \rangle \\
+        & = \sum_{i=1}^{n} \lvert \langle v, e_i \rangle \rvert^2
+    \end{align*}
+    即
+    \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_n\rangle \rvert^2. \]
+    两个结论均得证.
+\end{proof}
+
+ \autoref{eq:23:Fourier展开} 被称为 $ v $ 的 Fourier 展开，其中每个系数 $ \langle v, e_j \rangle $ 被称为 $ v $ 的 Fourier 系数.
+
+
+\begin{example}{}{标准正交组}
+    设 $e_1, \ldots , e_m$ 是 $ V $ 的标准正交组. 设 $ v \in V $. 证明
+    \[ \lVert v \rVert^2 = \lvert \langle v, e_1\rangle \rvert^2 + \cdots + \lvert \langle v, e_m\rangle \rvert^2 \]
+    当且仅当 $ v \in \spa(e_1, \ldots , e_m)$.
+\end{example}
+
+\begin{solution}
+    记 $W = \spa(e_1, \ldots , e_m)$.
+
+    必要性 ($\Rightarrow$):
+
+    $\lVert v \rVert^2 = \sum_{i=1}^{m} \lvert \langle v, e_i \rangle \rvert^2$.
+    构造向量 $u = \sum_{i=1}^{m} \langle v, e_i \rangle e_i$. 显然 $u \in W$.
+
+    令 $w = v - u$. 证明 $w$ 与 $u$ 正交，即 $w = v - u$ 与所有 $e_j$ 正交：
+    \[
+        \langle w, e_j \rangle = \left\langle v - \sum_{i=1}^{m} \langle v, e_i \rangle e_i, e_j \right\rangle = \langle v, e_j \rangle - \sum_{i=1}^{m} \langle v, e_i \rangle \langle e_i, e_j \rangle
+    \]
+    由于 $\langle e_i, e_j \rangle = \delta_{ij}$，
+    \[
+        \langle w, e_j \rangle = \langle v, e_j \rangle - \langle v, e_j \rangle \langle e_j, e_j \rangle = 0
+    \]
+    因此 $w$ 与 $u$ 正交，$\langle w, u \rangle = 0$.
+
+    计算 $\lVert w \rVert^2$:
+    \begin{align*}
+        \lVert w \rVert^2 &= \langle w, w \rangle = \langle w, v - u \rangle = \langle w, v \rangle - \langle w, u \rangle \\
+        &= \langle w, v \rangle = \langle v - u, v \rangle = \langle v, v \rangle - \langle u, v \rangle \\
+        &= \lVert v \rVert^2 - \sum_{i=1}^{m} \langle v, e_i \rangle \langle e_i, v \rangle \\
+        &= \lVert v \rVert^2 - \sum_{i=1}^{m} \langle v, e_i \rangle \overline{\langle v, e_i \rangle} \\
+        &= \lVert v \rVert^2 - \sum_{i=1}^{m} \lvert \langle v, e_i \rangle \rvert^2
+    \end{align*}
+    根据假设 $\lVert v \rVert^2 = \sum_{i=1}^{m} \lvert \langle v, e_i \rangle \rvert^2$，故 $\lVert w \rVert^2 = 0$.
+    由范数正定性 $w = \vec{0}$，即 $v = u$.
+
+    由于 $u \in W$，所以 $v \in \spa(e_1, \ldots , e_m)$.
+
+    \\
+
+    充分性 ($\Leftarrow$):
+
+    $v \in \spa(e_1, \ldots , e_m)$.
+    由于 $\{e_1, \ldots, e_m\}$ 是标准正交组，且 $v \in \spa(e_1, \ldots , e_m)$，故 $v$ 可以唯一地表示为：
+    \[ v = \sum_{i=1}^{m} a_i e_i \]
+    其中 $a_i = \langle v, e_i \rangle$.
+    根据\autoref{thm:勾股定理推广} $\lVert a_1e_1 + \cdots + a_m e_m\rVert^2 = \lvert a_1 \rvert^2 + \cdots + \lvert a_m \rvert^2$:
+    \[ \lVert v \rVert^2 = \left\lVert \sum_{i=1}^{m} \langle v, e_i \rangle e_i \right\rVert^2 = \sum_{i=1}^{m} \lvert \langle v, e_i \rangle \rvert^2 \]
+    充分性得证.
+\end{solution}
 
 标准正交基的性质十分美妙，但我们取出一组基使得其恰好是标准正交基是十分困难的，所幸前人已经研究出了一套算法，可以将所有线性无关组转变为标准正交组，且张成空间相同.
 
@@ -359,9 +448,46 @@
 
 让我们简单运用一下 Gram-Schmidt 过程.
 \begin{example}{}{}
-    求 $\mathbf{R}[x]_2$ 的一组标准正交基，内积定义为 $\langle p, q \rangle = \displaystyle\int_{-1}^1 p(x)q(x)\,\mathrm{d}x$.
+    求 $\mathbf{R}[x]_3$ 的一组标准正交基，内积定义为 $\langle p, q \rangle = \displaystyle\int_{-1}^1 p(x)q(x)\,\mathrm{d}x$.
 \end{example}
 
+\begin{solution}
+    取 $\mathbf{R}[x]_3$ 的一组基 $\{v_1, v_2, v_3\} = \{1, x, x^2\}$.
+
+    我们使用 Gram-Schmidt 过程.
+
+    首先计算 $\lVert v_1 \rVert^2$:
+    \[ \lVert v_1 \rVert^2 = \langle 1, 1 \rangle = \int_{-1}^1 1 \,\mathrm{d}x = 2 \]
+    \[ e_1 = \frac{v_1}{\lVert v_1 \rVert} = \frac{1}{\sqrt{2}} \]
+
+    正交化：
+    \[ u_2 = v_2 - \langle v_2, e_1 \rangle e_1 \]
+    计算投影系数：
+    \[ \langle v_2, e_1 \rangle = \left\langle x, \frac{1}{\sqrt{2}} \right\rangle = \frac{1}{\sqrt{2}} \int_{-1}^1 x \,\mathrm{d}x = 0 \]
+    因此 $u_2 = x - 0 \cdot e_1 = x$.
+
+    单位化：
+    \[ \lVert u_2 \rVert^2 = \langle x, x \rangle = \int_{-1}^1 x^2 \,\mathrm{d}x = \left[\frac{1}{3}x^3\right]_{-1}^1 = \frac{2}{3} \]
+    \[ e_2 = \frac{u_2}{\lVert u_2 \rVert} = \frac{x}{\sqrt{2/3}} = \sqrt{\frac{3}{2}} x \]
+
+    正交化：
+    \[ u_3 = v_3 - \langle v_3, e_1 \rangle e_1 - \langle v_3, e_2 \rangle e_2 \]
+    计算投影系数：
+    \begin{align*}
+        \langle v_3, e_1 \rangle &= \left\langle x^2, \frac{1}{\sqrt{2}} \right\rangle = \frac{1}{\sqrt{2}} \int_{-1}^1 x^2 \,\mathrm{d}x = \frac{\sqrt{2}}{3} \\
+        \langle v_3, e_2 \rangle &= \left\langle x^2, \sqrt{\frac{3}{2}} x \right\rangle = \sqrt{\frac{3}{2}} \int_{-1}^1 x^3 \,\mathrm{d}x = 0
+    \end{align*}
+    计算 $u_3$:
+    \[ u_3 = x^2 - \left(\frac{\sqrt{2}}{3}\right) e_1 - 0 = x^2 - \frac{\sqrt{2}}{3} \cdot \frac{1}{\sqrt{2}} = x^2 - \frac{1}{3} \]
+
+    单位化：
+    \[ \lVert u_3 \rVert^2 = \left\langle x^2 - \frac{1}{3}, x^2 - \frac{1}{3} \right\rangle = \int_{-1}^1 \left(x^4 - \frac{2}{3}x^2 + \frac{1}{9}\right) \,\mathrm{d}x = \frac{8}{45} \]
+    \[ e_3 = \frac{u_3}{\lVert u_3 \rVert} = \frac{x^2 - 1/3}{\sqrt{8/45}} = \sqrt{\frac{45}{8}} \left(x^2 - \frac{1}{3}\right) = \frac{\sqrt{10}}{4} (3x^2 - 1) \]
+
+    综上，$\mathbf{R}[x]_3$ 的一组标准正交基是 $\left\{e_1, e_2, e_3\right\}$，其中
+    \[ e_1(x) = \frac{1}{\sqrt{2}}, \quad e_2(x) = \sqrt{\frac{3}{2}} x, \quad e_3(x) = \frac{\sqrt{10}}{4} (3x^2 - 1). \]
+
+\end{solution}
 不难发现，Gram-Schmidt 过程实际上可以分成两部分：
 \begin{enumerate}
     \item 正交化：定义 $ u_1 = v_1 , \enspace u_j = v_j - \langle v_j, e_1 \rangle e_1 - \cdots - \langle v_j, e_{j - 1} \rangle e_{j - 1}, \enspace j = 2, \ldots , m$，此时 $u_1, \ldots , u_m$ 已经互相正交.
