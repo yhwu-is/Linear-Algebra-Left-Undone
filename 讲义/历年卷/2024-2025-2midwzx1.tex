@@ -1,0 +1,63 @@
+\section{2024-2025学年线性代数II（H）期中}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+
+    考试时间：2025年4月21日（星期一）10:00-12:00
+
+    鸣谢 CC98@葡萄海
+\end{center}
+
+\begin{enumerate}
+    \item （10 分）判断下列两条直线
+        \[ L_1\colon\begin{cases}
+            x=2t \\ y=-3+3t \\ z=4t
+        \end{cases}, \quad L_2\colon\frac{x-1}{1}=\frac{y+2}{1}=\frac{z-2}{2}\]
+        是否共面？是否相交？如果相交求其交点.
+
+    \item （10 分）设 \(U\) 是 \(V\) 的子空间使得 \(\dim V/U = 1\). 证明：存在 \(\varphi \in \mathcal{L}(V,F)\) 使得 \(\operatorname{null} \varphi = U \).
+
+    \item （10 分）下列 \(V'\) 表示线性空间 \(V(\mathbf{F})\) 的对偶空间.
+    \begin{enumerate}
+        \item 设 \(\varphi\in V'\)，设 \(u\in V \notin \operatorname{null}\varphi\). 证明：\(V=\operatorname{null}\varphi\oplus\{au|a\in\mathbf{F}\}\).
+
+        \item 设 \(V\) 是有限维的，\(\varphi_1,\varphi_2,\ldots,\varphi_n\) 是 \(V'\) 的基.证明：存在 \(V\) 的基使得其对偶基为 \(\varphi_1,\varphi_2,\ldots,\varphi_n\).
+    \end{enumerate}
+
+    \item （10 分）设 \(p,q\in \mathcal{P}(\mathbf{C})\) 为两个无公共零点的非常数多项式，记 \(m =\deg p, n = \deg q\)，证明：\(\exists r \in \mathcal{P}_{n-1}(\mathbf{C}), s \in \mathcal{P}_{m-1}(\mathbf{C})\)，使得 \(rp+sq=1\).
+
+    \item （10 分）设 \(V\) 是有限维的且 \(S,T\in \mathcal{L}(V)\). 证明：\(ST\) 和 \(TS\) 有相同的本征值.
+
+    \item （10 分）设 \(V\) 是有限维的，\(T\in \mathcal{L}(V)\)，\(p\in \mathcal{P}(\mathbf{C})\) 是非常数多项式，\(\alpha \in \mathbf{C}\). 证明：\(\alpha\) 是 \(p(T)\) 的本征值当且仅当 \(T\) 有一个本征值 \(\lambda\) 使得 \(\alpha = p(\lambda)\).
+
+    \item （10 分）设 \(S\in \mathcal{L}(V)\) 是 \(V\) 上的一个单的算子，定义 \(\langle\cdot,\cdot\rangle_1\) 如下：对 \(u,v\in V\) 有 \(\langle u,v\rangle_1 = \langle Su,Sv\rangle\). 证明：\(\langle\cdot,\cdot\rangle_1\) 是 \(V\) 上的一个内积.
+
+    \item （10 分）设 \(n\) 是正整数，\(f\in C[-\pi,\pi]\)，这里 \(C[-\pi,\pi]\) 表示 \([-\pi,\pi]\) 上的实值连续函数构成的向量空间.
+
+    \begin{enumerate}
+        \item 证明
+        \[\frac{1}{\sqrt{2\pi}},\frac{\cos x}{\sqrt{\pi}},\frac{\cos2x}{\sqrt{\pi}},\ldots,\frac{\cos nx}{\sqrt{\pi}},\frac{\sin x}{\sqrt{\pi}},\frac{\sin2x}{\sqrt{\pi}},\ldots,\frac{\sin nx}{\sqrt{\pi}}\]
+        是 \(C[-\pi,\pi]\) 的规范正交组，其上的内积为
+        \[ \langle f,g\rangle=\int_{-\pi}^\pi f(x)g(x)\,\mathrm{d}x. \]
+
+        \item 对每个非负整数 \(k\)，定义 \[a_k = \dfrac{1}{\sqrt{\pi}}\int^{\pi}_{-\pi}f(x)\cos (kx)\,\mathrm{d}x,\quad b_k = \dfrac{1}{\sqrt{\pi}}\int^{\pi}_{-\pi}f(x)\sin (kx)\,\mathrm{d}x.\]
+        证明
+        \[\dfrac{a_0^2}{2}+\sum\limits_{k=1}^{\infty}(a_k^2+b_k^2)\leq \int_{-\pi}^{\pi}f^2(x)\,\mathrm{d}x.\]
+    \end{enumerate}
+
+    \item （20 分）判断：
+    \begin{enumerate}
+        \item 设 \(\varphi \in \mathcal{L}(V,\mathbf{F})\)，则 \(\varphi\) 或者是满射，或者是零映射.
+
+        \item 设 $U$ 是 $V$ 的子空间. $\Gamma\colon\mathcal{L}(V/U,W)\to\mathcal{L}(V,W)$ 定义为 $\Gamma(S)=S\circ\pi$，则 \(\operatorname{range}\Gamma=\{T\in\mathcal{L}(V,W)|\forall u\in U , Tu=0\}\).
+
+        \item $\mathbf{R}^2$ 上存在内积使得该内积确定的范数为：$\forall (x,y)\in\mathbf{R}^2$ 有 $\|(x,y)\|=\max\{|x|,|y|\}.$
+
+        \item
+        设 $\varphi$ 是 $C[-1,1]$ 上由 $\varphi(f)=f(0)$ 定义的线性泛函，则存在 $g\in C[-1,1]$ 使得对每个 $f\in C[-1,1]$ 均有 $\varphi(f)=\langle f,g\rangle$，其中 $C[-1,1]$ 上的内积定义为：
+        \[\langle f,g\rangle=\int_{-1}^1f(x)g(x)\,\mathrm{d}x.\]
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage

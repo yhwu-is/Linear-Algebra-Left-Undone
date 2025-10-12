@@ -179,7 +179,7 @@
               \end{align*}
               注意，在证明过程中，我们用了形式的加法定义（逐次数将系数相加），并诉诸域 $\mathbf{F}$ 上的结合律，这种诉诸基域性质的方式在以后的证明中会经常碰上.
 
-        \item 取定 $p_0(x) = 0 \in V$ 则有 $\forall p(x) \in \mathbf{F}[x]_{n+1}, p(x) + p_0(x) = p_0(x) + p(x)$.
+        \item 取定 $p_0(x) = 0 \in V$ 则有 $\forall p(x) \in \mathbf{F}[x]_{n+1}, p(x) + p_0(x) = p_0(x) + p(x) = p(x)$.
 
         \item $\forall p(x) = a_0 + a_1x + \cdots + a_nx^n \in \mathbf{F}[x]_{n+1}, \exists p^*(x) = -a_0 - a_1x - \cdots - a_nx^n \in \mathbf{F}[x]_{n+1}, p(x) + p^*(x) = p^*(x) + p(x) = p_0(x) = 0$.
 
@@ -465,9 +465,9 @@
               \end{enumerate}
               综上，$\spa(S)$是$V$的子空间；
 
-        \item 接下来我们证明$\spa(S)$是包含$S$的最小子空间. 设$W$是$V$的任一子空间，我们只需证明$\spa(S)\subseteq W$.
+        \item 接下来我们证明$\spa(S)$是包含$S$的最小子空间. 设$W$是$V$的任一包含$S$的子空间，我们只需证明$\spa(S)\subseteq W$.
 
-              事实上，类似于前面$S\subseteq\spa(S)$的证明我们有$S\subseteq W$，故$S$中元素都在$W$中. 且由\autoref{thm:子空间判别} 可知子空间中元素一定关于加法、数乘封闭，因此$\forall {\alpha}=\lambda_1\alpha_1+\cdots+\lambda_k\alpha_k\in\spa(S)$. 由于$\alpha_1,\ldots,\alpha_k\in S\subseteq W,\enspace\lambda_1,\ldots,\lambda_k\in\mathbf{F}$，因此$\alpha\in W$，从而$\spa(S)\subseteq W$，由此得证.
+              由于$S\subseteq W$，故$S$中元素都在$W$中. 且由\autoref{thm:子空间判别} 可知子空间中元素一定关于加法、数乘封闭，因此$S$中元素的任意线性组合都在$W$中. 而$\spa(S)$正是$S$中元素的任意线性组合的集合，因此$\spa(S)\subseteq W$，由此得证.
     \end{enumerate}
 \end{proof}
 
