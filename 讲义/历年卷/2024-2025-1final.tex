@@ -1,0 +1,74 @@
+\section{2024-2025学年线性代数I（H）期末}
+
+\begin{center}
+    任课老师：统一命卷\hspace{4em} 考试时长：120分钟
+\end{center}
+
+\begin{enumerate}
+    \item （12 分）
+    \[  A=\begin{pmatrix}
+        1 & a & 1 \\
+        1 & 1 & 1 \\
+        1 & 2a & 1
+    \end{pmatrix}, b=(3,4,4)^\mathrm{T}, X=(x_1,x_2,x_3)^\mathrm{T}.\]
+    问 \(a\) 取什么值能使得 \(AX=b\) 有解，并给出一般解.
+
+    \item （12 分）已知矩阵
+    \[  \begin{pmatrix}
+        2 & t & 2 \\
+        t & 1 & 0 \\
+        2 & 0 & 3
+    \end{pmatrix}
+    \]
+    求 \(t\) 的范围使得：(1) 矩阵正定;\quad(2) 矩阵半正定;\quad(3) \(X^\mathrm{T}AX\) 的负惯性指数为 \(1\).
+
+    \item （8 分）矩阵 \(A=
+    \begin{pmatrix}
+    1 & 0 & 25 & 8\\
+    1 & 1 & 2 & 2\\
+    0 & 0 & 4 & 3\\
+    0 & 0 & 6 & 5
+    \end{pmatrix}\)，求 \(|A|\) 与 \(A^{-1}\).
+
+    \item （12 分）线性空间 \(V=\mathbf{R}[x]_3\).
+    \begin{enumerate}
+        \item 证明 \(W=\{f \in \mathbf{R}[x]_3 | f(1)=0\}\) 为 \(V\) 子空间;
+        \item 求 \(W\) 的一组基;
+        \item 求 \(\sigma \in \mathcal{L}(V, V)\)，使得 \(\sigma^2=\sigma, \im(\sigma)=W,\sigma(1)=0\).
+    \end{enumerate}
+
+    \item （12 分）\(A\) 为 \(n\times n\) 实矩阵，且\(\exists\beta \in \mathbf{R}^n\)，满足 \(A^n \beta =0, A^{n-1} \beta\neq 0\). 证明：
+    \begin{enumerate}
+        \item \(\beta, A\beta, A^2\beta,\cdots,A^{n-1}\beta\) 是 \(\mathbf{R}^n\) 的一组基;
+        \item \(A^n=0\);
+        \item \(A\) 以 \(0\) 为特征值的特征空间维数为 \(1\).
+    \end{enumerate}
+
+    \item （16 分）有线性变换\(T \in \mathcal{L}(\mathbf{R}^4,\mathbf{R}^3), T(x_1,x_2,x_3,x_4)^\mathrm{T}=(x_1-x_2+x_4, x_1+2x_3+2x_4, x_1+x_2+4x_3+3x_4)^\mathrm{T}\).
+    \begin{enumerate}
+        \item 求在自然基下 \(T\) 的矩阵表示;
+        \item 求 \(T\) 的值域与核空间;
+        \item 求可逆矩阵 \(P,Q\) 使得
+        \(AP=Q\begin{pmatrix}
+            E_r & O \\
+            O & O
+        \end{pmatrix}\).
+    \end{enumerate}
+
+    \item （12 分）\(A\) 为 \(n\times n\) 矩阵，\(n\geqslant 3\)，\(r(A)=2\).
+    \begin{enumerate}
+        \item 证明：存在列向量 \(\alpha_1, \alpha_2, \beta_1, \beta_2\) 使得 \(A=\beta_1\alpha_1^\mathrm{T}+\beta_2\alpha_2^\mathrm{T}\);
+        \item 用 \(\alpha_1,\alpha_2,\beta_1,\beta_2\) 表述一个 \(A\) 可对角化的充分条件;
+        \item 用 \(\alpha_1,\alpha_2,\beta_1,\beta_2\) 表述一个 \(A\) 可对角化的必要条件.
+    \end{enumerate}
+
+    \item （16 分）如果正确请简单证明，错误请举出反例：
+    \begin{enumerate}
+        \item \(\alpha_1\) 与 \(\alpha_2\) 线性相关，\(\beta_1\) 与 \(\beta_2\) 线性相关，则 \(\alpha_1+\beta_1\) 与 \(\alpha_2+\beta_2\) 线性相关;
+        \item 若实对称矩阵 \(A\) 满足 \(A^2=0\)，则 \(A=0\);
+        \item 若复对称矩阵 \(A\) 满足 \(A^2=0\)，则 \(A=0\);
+        \item \(\sigma\in \mathcal{L}(V,V)\)，则 \(V=\im\sigma+\ker\sigma\).
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

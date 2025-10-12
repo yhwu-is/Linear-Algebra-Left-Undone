@@ -1,40 +1,87 @@
 \chapter{内积空间上的算子}
 
-\section{内积空间的同构}
-
 由前面一章，我们成功的给线性空间加上了度量，使其升格成了内积空间. 依照之前的研究线性空间的习惯，我们也需要研究内积空间的结构. 线性空间结构的区分依靠的是同构关系，也就是维数，而内积空间除去维数外还有内积的结构. 所以，我们研究内积空间的结构依靠的是能够保持内积的同构映射.
+
+\section{内积空间的同构}
 
 \subsection{内积空间的同构}
 
 \begin{definition}{}{}
-    设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. $ S: V \rightarrow U $ 是一个线性映射. 若 $ \forall u, v \in V,\enspace \langle Su, Sv \rangle = \langle u, v \rangle $，则称 $ S $ 是一个保持内积的线性映射. 若 $ S $ 是双射，则称 $ S $ 是一个\term{保积同构}.
+    设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. $ S: V \rightarrow U $ 是一个线性映射. 若 $ \forall u, v \in V,\enspace \langle Su, Sv \rangle_U = \langle u, v \rangle_V $，则称 $ S $ 是一个保持内积的线性映射. 若 $ S $ 是双射，则称 $ S $ 是一个\term{保积同构}.
 \end{definition}
 
-在内积空间的语境下，保积同构也被称作同构. 显然，因为其能够保持内积，所以也能够保持范数. 自然地，其对偶问题也是我们关心的.
+在内积空间的语境下，保积同构也被称作同构. 显然，因为其能够保持内积，所以也能够保持范数. 那么其逆命题能否成立？很幸运，答案是肯定的.
 
 \begin{theorem}{}{}
-    若 $ S : V \rightarrow U $ 是一个保持范数的线性映射，则 $ S $ 是一个保积同构.
+    若 $ S : V \rightarrow U $ 是一个保持范数的线性映射，则 $ S $ 保持内积.
 \end{theorem}
+
+\begin{proof}
+    由于我们的条件是范数的保持，结论是内积的保持，所以这里需要用范数来表示内积，回想起\autoref{eq:23:内积和范数的性质1} 与\autoref{eq:23:内积和范数的性质3}，我们有
+    \begin{enumerate}
+        \item $\mathbf{F}=\mathbf{R}$时
+        \begin{align*}
+            \langle Su, Sv \rangle_U & = \frac{\lVert Su + Sv \rVert_U^2 - \lVert Su - Sv \rVert_U^2}{4} \\
+                                     & = \frac{\lVert u + v \rVert_V^2 - \lVert u - v \rVert_V^2}{4}     \\
+                                     & = \langle u, v \rangle_V.
+        \end{align*}
+        \item $\mathbf{F}=\mathbf{C}$时
+        \begin{align*}
+            \langle Su, Sv \rangle_U & = \frac{\lVert Su + Sv \rVert_U^2 - \lVert Su - Sv \rVert_U^2 + \i(\lVert Su + \i Sv \rVert_U^2 - \lVert Su - \i Sv \rVert_U^2)}{4} \\
+                                     & = \frac{\lVert u + v \rVert_V^2 - \lVert u - v \rVert_V^2 + \i(\lVert u + \i v \rVert_V^2 - \lVert u - \i v \rVert_V^2)}{4}     \\
+                                     & = \langle u, v \rangle_V.
+        \end{align*}
+    \end{enumerate}
+    从而总有 $ \langle Su, Sv \rangle_U = \langle u, v \rangle_V $，所以 $ S $ 保持内积.
+\end{proof}
 
 而回忆此前同构映射将空间的基映射到空间的基，内积空间中我们使用的是标准正交基. 所以，我们可以得到如下的结论.
 
 \begin{theorem}{}{}
     设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个 $ n $ 维内积空间. 若 $ S : V \rightarrow U $ 是一个线性映射，则以下条件等价：
-    \begin{enumerate}
-        \item $ S $ 保持内积.
-        \item $ S $ 是保积同构.
-        \item $ S $ 将 $ V $ 的任一组标准正交基映射到 $ U $ 的一组标准正交基.
-        \item $ S $ 将 $ V $ 的某一组标准正交基映射到 $ U $ 的一组标准正交基.
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{item:20:保积同构条件:1}
+            $ S $ 保持内积.
+        \item \label{item:20:保积同构条件:2}
+            $ S $ 是保积同构.
+        \item \label{item:20:保积同构条件:3}
+            $ S $ 将 $ V $ 的任一组标准正交基映射到 $ U $ 的一组标准正交基.
+        \item \label{item:20:保积同构条件:4}
+            $ S $ 将 $ V $ 的某一组标准正交基映射到 $ U $ 的一组标准正交基.
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    \begin{itemize}
+        \item[\ref*{item:20:保积同构条件:1}$\implies$\ref*{item:20:保积同构条件:2}] 由内积的保持可知范数的保持，从而对于任意 $v\in V$，$ Sv=\vec{0} \iff \|Sv\|=\|v\|=\vec{0} \iff v=\vec{0}$，所以 $ S $ 是单射. 而 $ V $ 和 $ U $ 维数相同，进而是双射.
+
+        \item[\ref*{item:20:保积同构条件:2}$\implies$\ref*{item:20:保积同构条件:3}] 设 $ e_1, \ldots , e_n $ 是 $ V $ 的任意一组标准正交基，则
+        \[ \langle Se_i, Se_j \rangle_U = \langle e_i, e_j \rangle_V = \delta_{ij},\enspace i, j = 1, \ldots , n. \]
+        所以 $ Se_1, \ldots , Se_n $ 是 $ U $ 的一组标准正交基.
+
+        \item[\ref*{item:20:保积同构条件:3}$\implies$\ref*{item:20:保积同构条件:4}] 显然.
+
+        \item[\ref*{item:20:保积同构条件:4}$\implies$\ref*{item:20:保积同构条件:1}] 设 $ e_1, \ldots , e_n $ 是 $ V $ 的一组标准正交基，$ f_1, \ldots , f_n $ 是 $ U $ 的一组标准正交基，且 $ Se_i = f_i,\enspace i = 1, \ldots , n $. 对任意的 $ u, v \in V $, 存在唯一的一组标量 $ a_1, \ldots , a_n, b_1, \ldots , b_n \in \mathbf{F} $, 使得
+        \[ u = a_1e_1 + a_2e_2 + \cdots + a_ne_n, \enspace v = b_1e_1 + b_2e_2 + \cdots + b_ne_n. \]
+        则
+        \begin{align*}
+            \langle Su, Sv \rangle_U & = \left\langle S\left(\sum_{i=1}^{n} a_ie_i\right), S\left(\sum_{j=1}^{n} b_je_j\right) \right\rangle_U    \\
+                                & = \left\langle \sum_{i=1}^{n} a_if_i, \sum_{j=1}^{n} b_jf_j \right\rangle_U   \\
+                                & = \sum_{i=1}^{n} a_i\overline{b_i} \langle f_i, f_i \rangle_U + \sum_{i \neq j} a_i\overline{b_j} \langle f_i, f_j \rangle_U \\
+                                & = \sum_{i=1}^{n} a_i\overline{b_i} \langle e_i, e_i \rangle_V + \sum_{i \neq j} a_i\overline{b_j} \langle e_i, e_j \rangle_V \\
+                                & = \langle u, v \rangle_V.
+        \end{align*}
+        故 $ S $ 保持内积.
+    \end{itemize}
+\end{proof}
 
 有了这个等价条件的刻画，我们就会发现，区分内积空间的结构的本质还是落在了维数上.
 
 \begin{theorem}{}{}
-    设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. 则二者同构的充分必要条件是它们有相同的维数.
+    设 $ V $ 和 $ U $ 是数域 $ \mathbf{F} $ 上的两个内积空间. 则二者之间存在保积同构的充分必要条件是它们有相同的维数.
 \end{theorem}
 
-下面我们理应研究同一线性空间下的保积同构，也就是线性变换. 但在此之前，我们需要讲明线性映射在内积作用下的对称性问题.
+由于同构只与维数有关，为了研究的简便，我们不妨研究同一线性空间下的保积同构，也就是线性变换. 但在此之前，我们需要讲明线性映射在内积作用下的对称性问题.
 
 \subsection{伴随}
 
@@ -46,6 +93,32 @@
 
 伴随映射的定义利用的是 \nameref{thm:Riesz}，只需将 $ T^*w $ 定义成 $ u $ 即可.
 
+利用伴随映射的定义不难得到伴随的如下基本性质：
+
+\begin{example}{伴随的运算性质}{}
+\begin{enumerate}
+    \item $ \forall S, T \in \mathcal{L}(V, W),\enspace (S + T)^* = S^* + T^* $;
+
+    \item $ \forall \lambda \in \mathbf{F},\enspace T \in \mathcal{L}(V, W),\enspace (\lambda T)^* = \overline{\lambda} T^* $;
+
+    \item $ \forall T \in \mathcal{L}(V, W),\enspace (T^*)^* = T $;
+
+    \item 对 $ V $ 上的恒等算子 $ I $ 有 $ I^* = I $;
+
+    \item $ \forall T \in \mathcal{L}(V, W),\enspace S \in \mathcal{L}(W, U),\enspace (ST)^* = T^*S^* $.
+\end{enumerate}
+\end{example}
+
+\begin{proof}
+    前 4 条性质均不难验证. 这里仅证明第 5 条性质，事实上也非常简单：
+
+    对于任意的 $ v \in V, w \in W $，有
+    \[
+        \langle (ST)v, w \rangle = \langle S(Tv), w \rangle = \langle Tv, S^*w \rangle = \langle v, T^*S^*w \rangle,
+    \]
+    因此 $ (ST)^* = T^*S^* $.
+\end{proof}
+
 那么伴随与原映射的对称性究竟体现在何处呢？其中之一体现在对应标准正交基下的表示矩阵. 为此，我们先补充一种在复内积空间下的矩阵操作.
 
 \begin{definition}{共轭转置}{} \index{gongezhuanzhi@共轭转置 (conjugate transpose)}
@@ -54,7 +127,7 @@
     即矩阵 $ A = (a_{ij})_{m \times n} $，则 $ A $ 的共轭转置阵 $ A^{\mathrm{H}} = (\overline{a_{ji}})_{n \times m} $
 \end{definition}
 
-这种操作的地位近似于实空间中的转置，与复空间上内积的共轭对称性相关联. 伴随映射与原映射在对应标准正交基下的表示矩阵正是这种对称关系. 而显然这一对称关系在实内积空间下变为转置.
+这种操作的地位近似于实空间中的转置，与复空间上内积的共轭对称性相关联. 伴随映射与原映射在对应标准正交基下的表示矩阵正是这种对称关系（该对称关系在实内积空间下变为转置）.
 
 \begin{theorem}{}{}
     设 $ T \in \mathcal{L}(V, W) $，$ e_1, \ldots , e_n $ 是 $ V $ 的一组标准正交基，$ f_1, \ldots , f_m $ 是 $ W $ 的一组标准正交基，有 $ T(e_1, \ldots , e_n) = (f_1, \ldots , f_m)A $，$ A = (a_{ij})_{m \times n} $，$ T^*(f_1, \ldots , f_m) =(e_1, \ldots , e_n)B $，$ B = (b_{ij})_{n \times m} $，则 $ B $ 是 $ A $ 的共轭转置.
@@ -68,8 +141,9 @@
     所以，矩阵 $ B $ 是 $ A $ 的共轭转置.
 \end{proof}
 
-这一对称性同样寓于伴随映射与原映射的核空间、像空间之间.
+从伴随映射与原映射的核空间、像空间之间的关系可以看出伴随与原映射之间的对称性，具体来说：
 
+\begin{theorem}{}{}
 设 $ T \in \mathcal{L}(V, W) $. 则
 
 \begin{enumerate}
@@ -81,30 +155,42 @@
 
     \item $ \im T = (\ker T^*)^{\perp} $.
 \end{enumerate}
+\end{theorem}
 
-也寓于对应的特征值、不变子空间，这里给出两道例题.
+\begin{proof}
+    仅证明第 1, 2 条性质，利用 $(T^*)^*=T$ 可得到 3, 4 的正确性.
+    \begin{enumerate}
+        \item 设 $ w \in \ker T^* $，则 $ T^*w = 0 $，所以 $ \forall v \in V, \langle Tv, w \rangle = \langle v, T^*w \rangle = 0 $，即 $ w \in (\im T)^{\perp} $，所以 $ \ker T^* \subset (\im T)^{\perp} $.
+
+        设 $ w \in (\im T)^{\perp} $，则 $ \forall v \in V, \langle Tv, w \rangle = 0 $，所以 $ \forall v \in V, \langle v, T^*w \rangle = 0 $，故 $ T^*w = 0 $，即 $ w \in \ker T^* $，从而 $ (\im T)^{\perp} \subset \ker T^* $.
+
+        因此，$ \ker T^* = (\im T)^{\perp} $.
+
+        \item 设 $ v \in \im T^* $，则存在 $ w \in W $ 使得 $ v = T^*w $，所以 $ \forall u \in \ker T, \langle u, v \rangle = \langle u, T^*w \rangle = \langle Tu, w \rangle = 0 $，即 $ v \in (\ker T)^{\perp} $，因此 $ \im T^* \subset (\ker T)^{\perp} $.
+
+        设 $ v \in (\ker T)^{\perp} $，则 $ \forall u \in \ker T, \langle u, v \rangle = 0 $，考虑线性泛函 $ \varphi: \im T \to \mathbf{F} $ 定义为 $ \varphi(Tu) = \langle u, v \rangle $，该定义良好且线性，由 Riesz 表示定理存在 $ w \in W $ 使得 $ \varphi(y) = \langle y, w \rangle $，于是 $ \langle u, v \rangle = \langle Tu, w \rangle = \langle u, T^*w \rangle $，故 $ v = T^*w $，即 $ v \in \im T^* $，因此 $ (\ker T)^{\perp} \subset \im T^* $.
+
+        因此，$ \im T^* = (\ker T)^{\perp} $.
+    \end{enumerate}
+\end{proof}
+
+这一对称性同样寓于对应的特征值、不变子空间中：
 
 \begin{example}{}{伴随与特征值}
     设 $ T \in \mathcal{L}(V),\enspace \lambda \in \mathbf{F} $. 证明：$ \lambda $ 是 $ T $ 的特征值当且仅当 $ \overline{\lambda} $是 $ T^* $ 的特征值.
 \end{example}
 
+% \begin{proof}
+
+% \end{proof}
+
 \begin{example}{}{伴随与不变子空间}
     设 $ T \in \mathcal{L}(V) $ 且 $ U $ 是 $ V $ 的子空间. 证明：$ U $ 在 $ T $ 下不变当且仅当 $ U^{\perp} $ 在 $ T^* $ 下不变.
 \end{example}
 
-然后是伴随的运算性质.
-
-\begin{enumerate}
-    \item $ \forall S, T \in \mathcal{L}(V, W),\enspace (S + T)^* = S^* + T^* $;
-
-    \item $ \forall \lambda \in \mathbf{F},\enspace T \in \mathcal{L}(V, W),\enspace (\lambda T)^* = \overline{\lambda} T^* $;
-
-    \item $ \forall T \in \mathcal{L}(V, W),\enspace (T^*)^* = T $;
-
-    \item 对 $ V $ 上的恒等算子 $ I $ 有 $ I^* = I $;
-
-    \item $ \forall T \in \mathcal{L}(V, W),\enspace S \in \mathcal{L}(W, U),\enspace (ST)^* = T^*S^* $.
-\end{enumerate}
+\begin{proof}
+$U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可知对任意的 $v\in U^{\perp}$，$\langle Tu, v \rangle = \langle u, T^*v \rangle = 0$，所以 $T^*v \in U^{\perp}$，即 $U^{\perp}$ 在 $T^*$ 下不变. 反之亦然.
+\end{proof}
 
 伴随映射这一对称性问题是我们在内积空间中的凭依，在它的基础上我们才能讨论内积空间上的映射相关的问题.
 
@@ -231,7 +317,7 @@
 
 写成内积的语言就是 $ \forall v, w \in V,\enspace \langle Tv, w \rangle = \langle v, Tw \rangle $.
 
-为了研究自伴算子的酉相似（正交相似）标准型，首先得了解自伴算子的特征值和不变子空间的情况. 回忆伴随部分的\autoref{ex:伴随与特征值}，我们可以给出自伴算子的特征值的描述.
+为了研究自伴算子的酉相似（正交相似）标准型，首先得了解自伴算子的特征值和不变子空间的情况. 回忆伴随部分的\autoref{ex:伴随与特征值}，我们不难得到自伴算子的特征值的性质.
 
 \begin{theorem}{}{}
     自伴算子的特征值都是实数.
@@ -239,7 +325,7 @@
 
 该性质的几何意义就是自伴算子对特征向量方向上的向量仅仅是拉伸的作用，而不产生旋转或对称的作用.
 
-虽然我们阐明了自伴算子的特征值不与复数纠缠在一块，但还有另外一个阴影，就是它会不会像正交矩阵对应的算子那样，在实数域上没有特征值，这也是我们不希望看到的一点. 不过我们可以给出存在性的证明，这需要一点技巧，我们先从一个引理开始.
+虽然我们阐明了自伴算子的特征值不与复数纠缠在一块，但还有另外一个阴影，就是它会不会像正交矩阵对应的算子那样，在实数域上没有特征值，这也是我们不希望看到的一点. 幸运的是，可以证明实特征值的存在性，这需要一点技巧，我们先从一个引理开始.
 
 \begin{lemma}{}{实谱定理引理1}
     设 $ T \in \mathcal{L}(V) $ 是自伴的，并设 $ b, c \in \mathbf{R} $使得 $ b^2 < 4c $，则
@@ -301,7 +387,9 @@
     \end{enumerate}
 \end{lemma}
 
-第一条参考\autoref{ex:伴随与不变子空间}，第二条和第三条则是直接利用了自伴算子的定义. 不过自伴算子在不变子空间上的限制还是自伴算子这样的一条性质给归纳法提供了一个很好的切入点，我们此处选择依靠它来给出自伴算子的完全描述.
+对于该引理的证明，第一条参考\autoref{ex:伴随与不变子空间}，第二条和第三条直接利用自伴算子的定义即可.
+
+该引理表明，自伴算子在不变子空间上的限制还是自伴算子. 这样的一条性质给归纳法提供了一个很好的切入点，利用它可以给出自伴算子的完全描述，我们称之为实谱定理.
 
 \begin{theorem}{实谱定理}{实谱定理} \index{pudingli!shi@实谱定理}
     设 $ \mathbf{F} = \mathbf{R} $ 且 $ T \in \mathcal{L}(V) $. 则以下条件等价：
@@ -318,7 +406,7 @@
 \end{theorem}
 
 \begin{proof}
-    我们将采取 3 $\implies$ 1 $\implies$ 2 $\implies$ 3 进行证明.
+    采取 3 $\implies$ 1 $\implies$ 2 $\implies$ 3 进行证明.
 
     \begin{itemize}
         \item[\ref*{item:24:实谱定理:3}$\implies$\ref*{item:24:实谱定理:1}] $ T $ 关于 $ V $ 的某个标准正交基具有对角矩阵，实内积空间上对角矩阵等于其共轭转置，故 $ T^* = T $，$ T $ 是自伴的.
@@ -327,15 +415,17 @@
 
               $ \dim V = 1 $ 时显然成立.
 
-              设 $ \dim V > 1 $ 且在维数更小的实内积空间上成立. 因为\autoref{lem:实谱定理引理2}，设 $ T $ 有一个特征向量 $ u $ 且 $ \lVert u \rVert = 1 $，$ U = \spa(u) $，则 $ U $ 是 $ V $ 的一个一维子空间且在 $ T $ 下不变，有\autoref{lem:实谱定理引理3}，算子 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的.
+              设 $ \dim V > 1 $ 且在维数更小的实内积空间上成立. 因为\autoref{lem:实谱定理引理2}，设 $ T $ 有一个特征向量 $ u $ 且 $ \lVert u \rVert = 1 $，$ U = \spa(u) $，则 $ U $ 是 $ V $ 的一个一维子空间且在 $ T $ 下不变，由\autoref{lem:实谱定理引理3}，算子 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 是自伴的.
 
-              由归纳假设，$ U^{\perp } $ 有一个由 $ T|_{U^{\perp }} $ 的特征向量构成的标准正交基. 将 $ u $ 添加进这组基，就得到了 $ V $ 的一组由 $ T $ 的特征向量构成的标准正交基，得证.
+              由归纳假设，$ U^{\perp } $ 有一组由 $ T|_{U^{\perp }} $ 的特征向量构成的标准正交基. 将 $ u $ 添加进这组基，就得到了 $ V $ 的一组由 $ T $ 的特征向量构成的标准正交基，得证.
 
         \item[\ref*{item:24:实谱定理:2}$\implies$\ref*{item:24:实谱定理:3}] 这是平凡的.
     \end{itemize}
 \end{proof}
 
 上述的证明虽然都是在实内积空间上进行的，但复内积空间上也依然成立.
+
+% TODO: 实对称矩阵可正交对角化+习题
 
 \section{正规算子}
 
@@ -345,13 +435,29 @@
     若算子 $ T \in \mathcal{L}(V) $ 满足 $ TT^* = T^*T $，则其被称为\term{正规算子}.
 \end{definition}
 
-正规算子在标准正交基下的表示矩阵便称为\term{正规矩阵}，在实内积空间下满足 $ AA^{\mathrm{T}} = A^{\mathrm{T}}A $，复内积空间下满足 $ AA^{\mathrm{H}} = A^{\mathrm{H}}A $. 我们就可以发现，其实自伴算子、酉算子、正交算子都是特殊的正规算子，正规算子将我们先前研究的算子都囊括了进来.
+正规算子在标准正交基下的表示矩阵便称为\term{正规矩阵}，在实内积空间下满足 $ AA^{\mathrm{T}} = A^{\mathrm{T}}A $，复内积空间下满足 $ AA^{\mathrm{H}} = A^{\mathrm{H}}A $. 不难发现，其实自伴算子、酉算子、正交算子都是特殊的正规算子，正规算子将我们先前研究的算子都囊括了进来.
 
 在研究正规算子的特征值与特征向量前，我们先来看看它的一个性质.
 
 \begin{theorem}{}{正规算子的等价条件}
     算子 $ T \in \mathcal{L}(V) $ 是正规的当且仅当 $ \forall v \in V,\enspace \lVert Tv \rVert = \lVert T^*v \rVert $.
 \end{theorem}
+
+\begin{proof}
+    设 $ T $ 是正规的，则 $ TT^* = T^*T $，对任意 $ v \in V $ 有
+    \[
+    \lVert Tv \rVert^2 = \langle Tv, Tv \rangle = \langle T^*Tv, v \rangle = \langle TT^*v, v \rangle = \langle T^*v, T^*v \rangle = \lVert T^*v \rVert^2.
+    \]
+
+    反之，设 $ \forall v \in V,\enspace \lVert Tv \rVert = \lVert T^*v \rVert $，则
+    \begin{align*}
+        0 & = \lVert Tv \rVert^2 - \lVert T^*v \rVert^2               \\
+          & = \langle Tv, Tv \rangle - \langle T^*v, T^*v \rangle     \\
+          & = \langle T^*Tv, v \rangle - \langle TT^*v, v \rangle     \\
+          & = \langle (T^*T - TT^*)v, v \rangle.
+    \end{align*}
+    记 $ S = T^*T - TT^* $，则 $S$ 是自伴的，由\autoref{thm:实谱定理} 可知 $V$ 可拆成 $S$ 的若干特征子空间 $U_1,\ldots,U_m$ 的直和，对于任意的 $u \in U_i$，$\langle Su, u \rangle = 0$，故 $Su \in U_i^{\perp}$，但 $U_i$ 在 $S$ 下不变，故 $Su \in U_i \cap U_i^{\perp} = \{\vec{0}\}$，所以 $S\vert_{U_i} = 0$，$ i = 1, \ldots, m $，从而 $ S = 0 $，即 $ TT^* = T^*T $，$ T $ 是正规的.
+\end{proof}
 
 这意味着正规算子与其伴随对向量范数作用的效果是一致的. 也可以得出对于任意一个正规算子 $ T $ ，其核空间和其伴随映射的核空间相等的结论.
 
@@ -430,6 +536,8 @@
 \end{proof}
 
 当然，证明方法不止一种，我们也可以用证明实谱定理的思路来证明，作为例题供读者思考.
+
+% TODO: 复正规矩阵正交对角化+实正规矩阵正交分块对角化 习题
 
 \begin{example}{}{}
     仿照实谱定理的证明方法，证明复谱定理.

@@ -335,6 +335,8 @@
 \end{enumerate}
 由此就可以断定命题对于从$n_0$开始的所有自然数$n$都成立.
 
+将上述五条公理合在一起，就得到了所谓\term{皮亚诺公理}\index{piyanuogongli@皮亚诺公理 (Peano axioms)}.
+
 接下来需要解决一个更复杂的问题：我们还没有定义自然数之间的运算，例如加法、乘法以及指数运算等. 事实上，从增长到加法、从加法到乘法以及乘法到指数运算，我们都可以通过类似的方法定义，因此这里我们只严格证明加法的相关性质，而其它的运算的性质及详细证明读者可以自行证明或参考《陶哲轩实分析》.
 
 事实上，我们在正式讨论皮亚诺公理之前就已经简单讨论过加法的思想，例如$5+3$实际上就是5增长3次，即$\suc(\suc(\suc(5)))$. 因此我们可以如下定义加法为：
@@ -387,17 +389,18 @@
 这事实上就表明上面的定义是合理的——因为任意两个自然数之间都可以比较，并且比较的结果是三种之中确定的一种. 定理证明只需对$a$作归纳，具体证明我们放在习题中供读者练习. 事实上，我们引入序结构主要目的是介绍下面的强归纳法原理，或称第二数学归纳法：
 
 \begin{theorem}{强归纳法原理}{强归纳法原理}\index{qiangguinafayuanli@强归纳法原理 (principle of strong induction)}
-    设$m_0$是一个自然数，$P(m)$是一个依赖于任意自然数$m$的性质. 设对于每个$m\geqslant m_0$都有下述蕴含关系：如果$P(m')$对于一切满足$m_0\leqslant m'<m$的自然数$m'$都成立，那么$P(m)$也成立，那么我们可以断定$P(m)$对于所有自然数$m\geqslant m_0$都成立.
+    设$m_0$是一个自然数，$P(m)$是一个依赖于任意自然数$m$的性质. 设$P(m_0)$成立，且对于每个$m > m_0$都有下述蕴含关系：如果$P(m')$对于一切满足$m_0\leqslant m'<m$的自然数$m'$都成立，那么$P(m)$也成立，那么我们可以断定$P(m)$对于所有自然数$m\geqslant m_0$都成立.
 \end{theorem}
 
 该定理的证明我们也留作习题，当然我们更多地是直接使用它. 或许上面的描述有些抽象，这里给出第二数学归纳法的框架，对照理解更为直观：
 \begin{enumerate}
     \item (归纳奠基) 证明当$m=m_0$时命题成立；
 
-    \item (归纳递推) 假设当$m_0\leqslant k\enspace(k\in\mathbf{N},\enspace k>m_0)$时命题成立，证明当$m=k+1$时命题也成立.
+    \item (归纳递推) 假设当$m_0\leqslant m \leqslant k\enspace(k\in\mathbf{N},\enspace k>m_0)$时命题成立，证明当$m=k+1$时命题也成立.
 \end{enumerate}
+由此就可以断定命题对于从$m_0$开始的所有自然数$m$都成立，取框架中$k+1=m'$容易看出这与强归纳法原理一致.
 
-由此就可以断定命题对于从$m_0$开始的所有自然数$m$都成立. 如果取框架中$k+1=m'$就很容易看出这与强归纳法原理一致了. 我们不难发现能用第一数学归纳法证明的命题都可以用第二数学归纳法证明，但反之不一定成立，因此第二数学归纳法原理更强，因为它假设所有小于等于$k$的自然数都满足命题推出$k+1$时成立，而第一数学归纳法只需要假设等于$k$满足命题即可证明（不过很多时候使用第一归纳法证明就足够了）. 但是，需要注意的是，作为两条公理，它们是等价的，有兴趣的读者可自行完成证明.
+我们不难发现第二数学归纳法``更强''——能用第一数学归纳法证明的命题都可以用第二数学归纳法证明，但使用第二数学归纳法可证明的命题使用第一数学归纳法有时却难以下手，因为第二数学归纳法的归纳假设条件更强（不过很多时候使用第一归纳法证明就足够解决问题）. 但实际上，数学归纳原理与强归纳法原理是等价的，证明我们留作习题供读者练习.
 
 至此我们结束对皮亚诺公理的讨论——事实上我们已经讨论了非常多，而且显得有些枯燥，因此接下来最后一个例子我们会更轻松一些. 我们希望通过罗素悖论和公理化集合论的例子和故事进一步说明公理化如何助于构建完备公理体系. 事实上，我们可以穿插着谈一些简单的历史. 十九世纪下半叶，德国数学家康托（Georg Cantor）创立了著名的集合论，在集合论刚产生时，曾遭到许多人的猛烈攻击，但不久这一开创性成果就为广大数学家所接受了，并且获得广泛而高度的赞誉. 数学家们发现，从自然数与康托尔集合论出发可建立起整个数学大厦，因而集合论成为现代数学的基石. 这一发现使数学家们为之陶醉，数学界甚至整个科学界笼罩在一片喜悦祥和的气氛之中. 数学家，尤其是弗雷格（Gottlob Frege）等逻辑主义者普遍认为，数学的系统性和严密性已经达到，数学大厦已经基本建成. 然而，1903年，包括英国数学家罗素以及创始人康托在内的几位数学家先后提出了几条悖论，它们使集合论产生了危机，在弗雷格的著作《算数的基本规律》第二卷中，就留下了那个至今仍让人胆寒的段落：
 
@@ -482,10 +485,38 @@
 
     \begin{exgroup}[2] % start numbering from B
         \item 依照皮亚诺公理的定义证明：对于任意自然数$n,m$，有$n+m=m+n$.
+        \begin{answer}
+            对$n$进行归纳，当$n=0$时，$0+m=m$，且已经证明$m+0=m$，归纳奠基成立.
+
+            现假设$n+m=m+n$成立，从而
+            \[\operatorname{suc}(n)+m=\operatorname{suc}(n+m)=\operatorname{suc}(m+n)=m+\operatorname{suc}(n).\]
+            其中第一个等号用到了加法的定义，第二个等号是归纳假设，第三个等号则用到了之前证明过的$n+\operatorname{suc}(m)=\operatorname{suc}(n+m)$，故归纳步骤成立. 由数学归纳原理可知，对于任意自然数$n,m$，有$n+m=m+n$.
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
-        \item 证明闵可夫斯基不等式和$\ell_p$范数的三角不等式.
+        \item 证明闵可夫斯基不等式，即对于$p \geqslant 1$与任意的$n$元实向量$\vec{x}=(x_1,\ldots,x_n),\vec{y}=(y_1,\ldots,y_n)$有
+        \[
+        \sqrt[p]{\sum_{i=1}^n|x_i+y_i|^p} \leqslant \sqrt[p]{\sum_{i=1}^n|x_i|^p} + \sqrt[p]{\sum_{i=1}^n|y_i|^p}.
+        \]
+
+        \begin{answer}
+            当$p=1$时，由三角不等式知成立. 现假设$p>1$，先介绍赫尔德不等式：对于$p,q>1$且$\dfrac{1}{p}+\dfrac{1}{q}=1$，有\[\sum_{k=1}^n |a_ib_i| \leqslant \left(\sum_{k=1}^n |a_k|^p\right)^{\frac{1}{p}}\left(\sum_{k=1}^n |b_k|^{q}\right)^{\frac{1}{q}}.\]
+            赫尔德不等式的证明需要用到Young不等式，感兴趣的读者可自行查找资料. 现在我们来证明闵可夫斯基不等式. 由三角不等式知
+            \[|x_i+y_i|^p = |x_i+y_i||x_i+y_i|^{p-1} \leqslant (|x_i|+|y_i|)|x_i+y_i|^{p-1},\]
+            设$a_i=|x_i|$，$b_i=|y_i|$，$c_i=|x_i+y_i|^{p-1}$，$q=\dfrac{p}{p-1}$，则$\dfrac{1}{p}+\dfrac{1}{q}=1$，从而由赫尔德不等式知
+            \begin{align*}
+                \sum_{i=1}^n |x_i+y_i|^p &\leqslant \sum_{i=1}^n |a_ic_i| + |b_ic_i| \\
+                &\leqslant \left(\sum_{k=1}^n |a_k|^p\right)^{\frac{1}{p}}\left(\sum_{k=1}^n |c_k|^{q}\right)^{\frac{1}{q}} + \left(\sum_{k=1}^n |b_k|^{p}\right)^{\frac{1}{p}}\left(\sum_{k=1}^n |c_k|^{q}\right)^{\frac{1}{q}} \\
+                &= \left(\sqrt[p]{\sum_{i=1}^n|x_i|^p} + \sqrt[p]{\sum_{i=1}^n|y_i|^p}\right) \left(\sum_{k=1}^n |x_k+y_k|^{(p-1)\times\frac{p}{p-1}}\right)^{\frac{p-1}{p}} \\
+                &= \left(\sqrt[p]{\sum_{i=1}^n|x_i|^p} + \sqrt[p]{\sum_{i=1}^n|y_i|^p}\right)\left(\sum_{k=1}^n |x_k+y_k|^p\right)^{\frac{p-1}{p}}.
+            \end{align*}
+            整理即有
+            \[
+            \sqrt[p]{\sum_{i=1}^n|x_i+y_i|^p} \leqslant \sqrt[p]{\sum_{i=1}^n|x_i|^p} + \sqrt[p]{\sum_{i=1}^n|y_i|^p}.
+            \]
+            得证.
+        \end{answer}
 
         \item 利用皮亚诺公理，证明如下命题：设$a$和$b$是自然数，那么下面三个命题中恰有一个是真的：
         \begin{enumerate}
@@ -495,9 +526,32 @@
 
             \item $a>b$.
         \end{enumerate}
+        \begin{answer}
+            对$a$进行归纳，当$a=0$时，$b=0$时成立第一个命题，$b\neq 0$时成立第二个命题，归纳奠基成立.
+
+            现假设当$a=k$时结论成立，现考虑$a=\operatorname{suc}(k)$的情况. 若$b=0$，则成立第三个命题；否则可设$b=\operatorname{suc}(b_1)$，则由归纳假设知下面三个命题中恰有一个是真的：
+            \begin{enumerate}
+                \item $k=b_1$；
+
+                \item $k<b_1$；
+
+                \item $k>b_1$.
+            \end{enumerate}
+            若$k=b_1$，则$\operatorname{suc}(k)=\operatorname{suc}(b_1)$，即$a=b$；
+
+            若$k<b_1$，设$b_1=k+m$，$m$是正整数，则$\operatorname{suc}(b_1)=\operatorname{suc}(k+m)=\operatorname{suc}(k)+m$，即$b=a+m$，$m$是正整数，则$a<b$；同理，若$k>b_1$，则$a>b$.
+
+            从而 $a=b$，$a<b$，$a>b$ 三个命题中恰有一个是真的，故归纳步骤成立. 由数学归纳法得证.
+        \end{answer}
 
         \item 利用皮亚诺公理，证明\nameref{thm:强归纳法原理}.
+        \begin{answer}
+            设$P(m)$是一个依赖于任意自然数$m$的性质. $P(m_0)$成立，且对于每个$m > m_0$都有下述蕴含关系：如果$P(m')$对于一切满足$m_0\leqslant m'<m$的自然数$m'$都成立，那么$P(m)$也成立. 特别的，对于每个$m \geqslant m_0$，若$P(m')$对于$m'=m-1<m$成立，那么$P(m)$成立. 根据数学归纳原理，可知$P(m)$对于所有自然数$m\geqslant m_0$都成立. 从而强归纳法原理成立.
+        \end{answer}
 
         \item 利用\nameref{thm:强归纳法原理}反推\nameref{axm:数学归纳原理}.
+        \begin{answer}
+            设$P(n)$是一个依赖于任意自然数$n$的性质. 设$P(n_0)$成立，且对于每个$n \geqslant n_0$都有下述蕴含关系：如果$P(n)$成立，那么$P(n+1)$也成立. 从而对于每个$n > n_0$，$P(n_0)$成立，$P(n_0+1)$成立，$\ldots$，$P(n-1)$成立，$P(n)$成立. 也就是说，$P(n')$对于一切满足$n_0\leqslant n'<n$的自然数$n'$都成立，且$P(n)$也成立. 根据强归纳法原理，可知$P(n)$对于所有自然数$n\geqslant n_0$都成立. 从而数学归纳原理成立.
+        \end{answer}
     \end{exgroup}
 \end{exercise}
