@@ -26,7 +26,7 @@
     因此：
     \begin{enumerate}
         \item \(A\)正定\(\iff 1-\dfrac{3}{2}t^{2}>0\)，即\(\vert t\vert<\sqrt{\dfrac{2}{3}}\).
-        \item \(A\)半正定\(\iff 1-\dfrac{3}{2}t^{2} \geq 0\)，即\(\vert t\vert \leq \sqrt{\dfrac{2}{3}}\).
+        \item \(A\)半正定\(\iff 1-\dfrac{3}{2}t^{2} \geqslant 0\)，即\(\vert t\vert \leqslant \sqrt{\dfrac{2}{3}}\).
         \item \(X^\mathrm{T}AX\)的负惯性指数为\(1\)，即\(\vert t\vert > \sqrt{\dfrac{2}{3}}\).
     \end{enumerate}
 
@@ -56,7 +56,7 @@
         \item 显然 \(x^{2}-1\)，\(x - 1\) 为一组基.
         \item 令 \(\sigma(x^{i})=x^{i}-1\)，\(i = 0,1,2\)，我们证明此即为所求.
 
-        一方面我们验证其满足题设。显然 \(\sigma(1)=0\)，且对 \(\forall f \in \mathbf{R}[x]_{3}\)，设 \(f(x)=a_{0}+a_{1}x+a_{2}x^{2}\)，则 \(\sigma(f(x))=a_{1}(x - 1)+a_{2}(x^{2}-1)\)，且 \(x - 1\)，\(x^{2}-1\) 为 \(W\) 的一组基，故 \(\mathrm{Im}(\sigma)=W\).
+        一方面我们验证其满足题设。显然 \(\sigma(1)=0\)，且对 \(\forall f \in \mathbf{R}[x]_{3}\)，设 \(f(x)=a_{0}+a_{1}x+a_{2}x^{2}\)，则 \(\sigma(f(x))=a_{1}(x - 1)+a_{2}(x^{2}-1)\)，且 \(x - 1\)，\(x^{2}-1\) 为 \(W\) 的一组基，故 \(\im(\sigma)=W\).
 
         另一方面，由一组基上的像可唯一确定一个线性映射，故 \(\sigma\) 唯一，即其为所求.
     \end{enumerate}
@@ -65,8 +65,8 @@
     \begin{enumerate}
         \item 设 \(k_1\beta+k_2 A\beta+\cdots k_n A^{n-1}\beta=0\). 同时左乘\(A\)得 \[ k_1 A\beta+\cdots+k_n A^n\beta=k_1 A\beta+\cdots+k_{n-1} A^{n-1}\beta=0. \]
 
-        一直如此可得到 \(k_1 A^{n-1}\beta=0\). 由条件 \(A^i\beta\neq 0, \enspace\forall 0\leq i \leq n-1 \implies k_1=0\)，将其回代可得到 $k_2 = \cdots = k_n = 0$. 即这些向量线性无关，且长度为n，因此是一组基.
-        \item 由(1)知对 \(\forall \alpha \in \mathbf{R}^{n}\)，存在 \(k_{1}, k_{2}, \cdots, k_{n}\) 使得 \(\alpha=k_{1}\beta + k_{2}A\beta+\cdots + k_{n}A^{n - 1}\beta\).
+        一直如此可得到 \(k_1 A^{n-1}\beta=0\). 由条件 \(A^i\beta\neq 0, \enspace\forall 0\leqslant i \leqslant n-1 \implies k_1=0\)，将其回代可得到 $k_2 = \cdots = k_n = 0$. 即这些向量线性无关，且长度为 $n$，因此是一组基.
+        \item 由(1)知对 \(\forall \alpha \in \mathbf{R}^{n}\)，存在 \(k_{1}, k_{2}, \ldots, k_{n}\) 使得 \(\alpha=k_{1}\beta + k_{2}A\beta+\cdots + k_{n}A^{n - 1}\beta\).
 
         从而对任意$\alpha$，\(A^n\alpha=k_1 A^n\beta+\cdots+k_n A^{2n-1}\beta=0 \implies A^n=0\).
         \item 即证\(\dim N(A)=1\).
@@ -75,9 +75,9 @@
         \[
         A(k_{1}X_{1}+k_{2}X_{2})=\sum_{i = 1}^{n}(k_{1}a_{i}+k_{2}b_{i})A^{i}\beta=\sum_{i = 1}^{n - 1}(k_{1}a_{i}+k_{2}b_{i})A^{i}\beta = 0.
         \]
-        由 \(A\beta, \cdots, A^{n - 1}\beta\) 线性无关知 \(k_{1}a_{i}+k_{2}b_{i}=0, \enspace\forall i = 1,2,\cdots, n - 1\).
+        由 \(A\beta, \ldots, A^{n - 1}\beta\) 线性无关知 \(k_{1}a_{i}+k_{2}b_{i}=0, \enspace\forall i = 1,2,\ldots, n - 1\).
 
-        由 \(k_{1}, k_{2}\) 任意性知 \(a_{i}=b_{i}=0, \enspace\forall i = 1,2,\cdots, n - 1\).
+        由 \(k_{1}, k_{2}\) 任意性知 \(a_{i}=b_{i}=0, \enspace\forall i = 1,2,\ldots, n - 1\).
         故 \(X_{1}=a_{n}A^{n - 1}\beta\)，\(X_{2}=b_{n}A^{n - 1}\beta\)，从而 \(X_{1}\) 与 \(X_{2}\) 线性相关，故 \(\dim N(A)=1\).
     \end{enumerate}
 
@@ -104,7 +104,7 @@
         \end{pmatrix}\).
 
         \item
-            求 $AX=0$ 可得 $x_2 = 0, x_4 = -2x_3, x_1 = 2x_3$，即$X=(x_1,x_2,x_3,x_4)^\mathrm{T} = k(2,0,1,-2)^\mathrm{T}$，核空间为$\operatorname{span}\{(2,0,1,-2)^\mathrm{T}\}$.
+            求 $AX=0$ 可得 $x_2 = 0, x_4 = -2x_3, x_1 = 2x_3$，即$X=(x_1,x_2,x_3,x_4)^\mathrm{T} = k(2,0,1,-2)^\mathrm{T}$，核空间为$\spa\{(2,0,1,-2)^\mathrm{T}\}$.
 
             取出发空间的一组自然基$e_1,\ldots,e_4$，则$T(e_1)=(1,1,1)^\mathrm{T}$，$T(e_2)=(-2,0,1)^\mathrm{T}$，$T(e_3)=(0,2,4)^\mathrm{T}$，$T(e_4)=(1,2,3)^\mathrm{T}$. 从而可以对 $A$ 作初等列变换：
             \[
@@ -134,7 +134,7 @@
             \]
             可得像空间的一组基为 $T(e_1), T(e_2), T(e_3)$.
 
-            故像空间为$\operatorname{span}\{(1,1,1)^\mathrm{T}, (-2,0,1)^\mathrm{T}, (0,2,4)^\mathrm{T}\}$.
+            故像空间为$\spa\{(1,1,1)^\mathrm{T}, (-2,0,1)^\mathrm{T}, (0,2,4)^\mathrm{T}\}$.
         \item 即求$P,Q$使得
             \[
             Q^{-1}AP =
@@ -229,7 +229,7 @@
             % \end{pmatrix}
             % \]
             % 故
-            参考 LALU 8.5 节例 8.6，具体过程略，结果为：
+            参考\autoref{ex:初等变换求相抵标准形PQ}，具体过程略，结果为：
             \[
             P =
             \begin{pmatrix}
@@ -254,31 +254,30 @@
         \[
             A = P \diag(1,1,0,\ldots, 0)Q = P\diag(1,0,\ldots, 0)Q + P\diag(0,1,0,\ldots, 0)Q.
         \]
-        设 \(P = (\beta_{1}, \beta_{2}, \cdots, \beta_{n})\)，\(Q^\mathrm{T}=(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{n})\)，则
+        设 \(P = (\beta_{1}, \beta_{2}, \ldots, \beta_{n})\)，\(Q^\mathrm{T}=(\alpha_{1}, \alpha_{2}, \ldots, \alpha_{n})\)，则
         \[
-            P\diag(1,0,\cdots, 0)Q=(\beta_{1}, \cdots, \beta_{n})\begin{pmatrix}
-            1 \\
-            0 \\
-            \vdots \\
-            0
-            \end{pmatrix}\begin{pmatrix}
-            1 & 0 & \cdots & 0
-            \end{pmatrix}\begin{pmatrix}
-            \alpha_{1}^\mathrm{T} \\
-            \alpha_{2}^\mathrm{T} \\
-            \vdots \\
-            \alpha_{n}^\mathrm{T}
+            P\diag(1,0,\ldots, 0)Q=(\beta_{1}, \ldots, \beta_{n})\begin{pmatrix}
+                1 \\
+                0 \\
+                \vdots \\
+                0
+            \end{pmatrix}(1,0,\ldots,0)
+            \begin{pmatrix}
+                \alpha_{1}^\mathrm{T} \\
+                \alpha_{2}^\mathrm{T} \\
+                \vdots \\
+                \alpha_{n}^\mathrm{T}
             \end{pmatrix}=\beta_{1}\alpha_{1}^\mathrm{T}.
         \]
-        同理 \(P\diag(0,1,0,\cdots, 0)Q=\beta_{2}\alpha_{2}^\mathrm{T}\)，即 \(A=\beta_{1}\alpha_{1}^\mathrm{T}+\beta_{2}\alpha_{2}^\mathrm{T}\)，得证.
+        同理 \(P\diag(0,1,0,\ldots, 0)Q=\beta_{2}\alpha_{2}^\mathrm{T}\)，即 \(A=\beta_{1}\alpha_{1}^\mathrm{T}+\beta_{2}\alpha_{2}^\mathrm{T}\)，得证.
 
-        \item \(\beta_{1}=\alpha_{1}=(1,0,\cdots, 0)^\mathrm{T}\)，\(\beta_{2}=\alpha_{2}=(0,1,0,\cdots, 0)^\mathrm{T}\)，自行验证 \(A\) 的确可对角化.
+        \item \(\beta_{1}=\alpha_{1}=(1,0,\ldots, 0)^\mathrm{T}\)，\(\beta_{2}=\alpha_{2}=(0,1,0,\ldots, 0)^\mathrm{T}\)，自行验证 \(A\) 的确可对角化.
 
-        \item 对于将 \(A\) 对角化处理的矩阵 \(C\)（即 \(C^{-1}AC\) 中的 \(C\)）的列向量 \(X\)，要么 \(X \in \mathrm{span}\{\beta_{1}, \beta_{2}\}\)，要么 \(X \perp \alpha_{1}\) 且 \(X \perp \alpha_{2}\).
+        \item 对于将 \(A\) 对角化处理的矩阵 \(C\)（即 \(C^{-1}AC\) 中的 \(C\)）的列向量 \(X\)，要么 \(X \in \spa\{\beta_{1}, \beta_{2}\}\)，要么 \(X \perp \alpha_{1}\) 且 \(X \perp \alpha_{2}\).
 
-        证明：设 \(C=(X_{1}, \cdots, X_{n})\)，则
+        证明：设 \(C=(X_{1}, \ldots, X_{n})\)，则
         \[
-        AC = C\mathrm{diag}\left(\lambda_{1}, \cdots, \lambda_{n}\right) \iff \beta_{1}\alpha_{1}^\mathrm{T}X_{i}+\beta_{2}\alpha_{2}^\mathrm{T}X_{i}=\lambda_{i}X_{i}
+        AC = C\diag\left(\lambda_{1}, \ldots, \lambda_{n}\right) \iff \beta_{1}\alpha_{1}^\mathrm{T}X_{i}+\beta_{2}\alpha_{2}^\mathrm{T}X_{i}=\lambda_{i}X_{i}
         \]
         若 \(\lambda_{i} \neq 0\)，则 \(X_{i}\) 为 \(\beta_{1}\)，\(\beta_{2}\) 的线性扩张（注意到 \(\alpha_{1}^\mathrm{T}X_{i}\) 与 \(\alpha_{2}^\mathrm{T}X_{i}\) 都是实数）.
 
@@ -288,13 +287,13 @@
     \item
     \begin{enumerate}
         \item 错. \(\alpha_{1}=(1,0)\)，\(\alpha_{2}=(-1,0)\)，\(\beta_{1}=(0,1)\)，\(\beta_{2}=(0,-2)\) 即有矛盾.
-        \item 对. 设 \(A = (\alpha_{1}, \cdots, \alpha_{n})\)，则
+        \item 对. 设 \(A = (\alpha_{1}, \ldots, \alpha_{n})\)，则
         \[
         A^{2}=\begin{pmatrix}
             \alpha_{1}^\mathrm{T} \\
             \vdots \\
             \alpha_{n}^\mathrm{T}
-        \end{pmatrix}\left(\alpha_{1}, \cdots, \alpha_{n}\right)
+        \end{pmatrix}\left(\alpha_{1}, \ldots, \alpha_{n}\right)
         \]
         其第 \(i\) 个主对角元元素为 \(\alpha_{i}^\mathrm{T}\alpha_{i}=\vert\alpha_{i}\vert^{2}=0\)，故 \(\alpha_{i}=0\)，即 \(A = 0\).
         \item 错. \(A=\begin{pmatrix}
