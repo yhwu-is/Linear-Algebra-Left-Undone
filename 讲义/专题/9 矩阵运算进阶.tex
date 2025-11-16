@@ -360,7 +360,7 @@
 \end{proof}
 
 有了这一结果后，我们可以证明一个计算数学中非常常见的公式：Sherman-Morrison-Woodbury公式.
-\begin{example}{}{}
+\begin{example}{}{Sherman-Morrison-Woodbury}
     设 $A$ 为 $n$ 阶可逆矩阵，考虑 $B = A + XRY$，其中 $X$ 是 $n \times r$ 矩阵，$Y$ 是 $r \times n$ 矩阵，而 $R$ 是 $r \times r$ 的可逆矩阵. 若 $R^{-1} + YA^{-1}X$ 可逆，则
     \[B^{-1}=A^{-1}-A^{-1}X(R^{-1}+YA^{-1}X)^{-1}YA^{-1}.\]
 \end{example}
@@ -377,6 +377,8 @@
 初看这一公式想必一定会发出``这么复杂的公式为什么有用''的感叹. 事实上，我们考虑$r$比$n$小很多的情况，那么这个时候对$R$和$R^{-1}+YA^{-1}X$求逆会更容易，因为它们的阶数会低很多，计算量也小很多. 考虑极端情况，若$x$和$y$是非零列向量，取$X=x$，$Y=y^\mathrm{T}$，$R=(1)$，且满足$1+y^\mathrm{T}A^{-1}x\neq 0$，我们可以得到Sherman-Morrison-Woodbury公式的一个特殊情形（称为Sherman-Morrison公式）：
 \[(A+xy^\mathrm{T})^{-1}=A^{-1}-(1+y^\mathrm{T}A^{-1}x)^{-1}A^{-1}xy^\mathrm{T}A^{-1}.\]
 这也称为``秩 1 校正''，因为 $xy^\mathrm{T}$ 是一个秩 1 矩阵，在最优化理论中是常见的.
+
+此外，上面给出的 Sherman-Morrison-Woodbury 公式的证明技巧性可能太强，显得不够自然，因此在后续讨论了分块矩阵初等变换后还会给出另一个更为简单清晰的证明.
 
 \begin{example}{}{}
     求 $n$ 阶矩阵 $A = \begin{pmatrix}
@@ -809,13 +811,25 @@
         \end{pmatrix}.\]
 \end{solution}
 
-注意到本例中我们专门给出了条件$A-BD^{-1}C$可逆，然后在结果中也看到这一形式的大量出现. 基于这一性质，我们称其为$P$矩阵中$D$矩阵的Schur补（因为此时$D$可逆，若$A$可逆也可以定义出$A$的Schur补），记为$P/D$. 于是矩阵$P$的逆可以写成
-\[\begin{pmatrix}
+注意到本例中我们专门给出了条件 $A - BD^{-1}C$ 可逆，然后在结果中也看到这一形式的大量出现. 基于这一性质，我们称其为 $P$ 矩阵中 $D$ 矩阵的 Schur 补（因为此时 $D$ 可逆），记为 $P / D$. 于是矩阵 $P$ 的逆可以写成
+\begin{equation} \label{eq:打洞法逆1}
+    \begin{pmatrix}
         (P/D)^{-1} & -(P/D)^{-1}BD^{-1} \\ -D^{-1}C(P/D)^{-1} & D^{-1}+D^{-1}C(P/D)^{-1}BD^{-1}
-    \end{pmatrix}.\]
-我们在之后讨论分块矩阵行列式的相关运算技巧时还会遇到Schur补，由此可见其在矩阵计算中的重要性. 我们会在很多习题中遇到类似于Schur补的形式，希望读者都能认出并指明其本质只是为了打洞而做初等变换得到的.
+    \end{pmatrix}.
+\end{equation}
+类似地，如果 $A$ 和 $D - CA^{-1}B$（也称为矩阵 $A$ 的 Schur 补，记为 $P / A$）可逆，我们也可以通过打洞法得到 $P$ 的逆为
+\begin{equation} \label{eq:打洞法逆2}
+    \begin{pmatrix}
+        A^{-1}+A^{-1}B(P/A)^{-1}CA^{-1} & -A^{-1}B(P/A)^{-1} \\ -(P/A)^{-1}CA^{-1} & (P/A)^{-1}
+    \end{pmatrix}.
+\end{equation}
+比较\eqref{eq:打洞法逆1}和\eqref{eq:打洞法逆2}的左上角分块，并将两个 Schur 补展开写，可以得到
+\[ (A - BD^{-1}C)^{-1} = A^{-1} + A^{-1}B(D - CA^{-1}B)^{-1}CA^{-1}, \]
+不难看出这就是\autoref{ex:Sherman-Morrison-Woodbury}中给出的 Sherman-Morrison-Woodbury 公式. 由此我们便给出了该公式更为简单直接的证明.
 
+需要强调的是，我们在之后讨论分块矩阵行列式的相关运算技巧时还会遇到 Schur 补，由此可见其在矩阵计算中的重要性. 我们会在很多习题中遇到类似于 Schur 补的形式，希望读者都能认出并指明其本质只是为了打洞而做初等变换得到的.
 
+除了应用于证明 Sherman-Morrison-Woodbury 公式外，打洞法还有一些很巧妙的应用，下面来看两个例子：
 \begin{example}{}{打洞法求逆1}
     设$A,B$为$n$阶矩阵，证明：$E\pm AB$可逆$\iff E\pm BA$可逆.
 \end{example}

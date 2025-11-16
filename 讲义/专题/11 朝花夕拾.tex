@@ -1160,7 +1160,7 @@
         \item 设$A$为方阵，证明：$A^2=E \iff r(A+E)+r(A-E)=n$.
         \begin{answer}
         \begin{enumerate}
-            \item 充分性：有 $(A+E)(A-E) = A^2 - E = 0$, 由定理 $BC=0 \implies r(B)+r(C) \leq n$，得 $r(A+E)+r(A-E) \leq n$；而 $r(A+E)+r(A-E) \geq r(A+E+A-E) = n$，故 $r(A+E)+r(A-E)=n$.
+            \item 充分性：有 $(A+E)(A-E) = A^2 - E = 0$, 由定理 $BC=0 \implies r(B)+r(C) \leqslant n$，得 $r(A+E)+r(A-E) \leqslant n$；而 $r(A+E)+r(A-E) \geqslant r(A+E+A-E) = n$，故 $r(A+E)+r(A-E)=n$.
             \item 必要性：由$r(A+E)+r(A-E)=n$可得出 $A$ 的特征值仅可能为 1 或者 -1，并且可以对角化.
 
                 因此，记 $A = PBP^{-1}$，其中 $B$ 为对角矩阵，则 $(A+E)(A-E)=P(B-E)(B+E)P^{-1}=0$，故命题得证.
