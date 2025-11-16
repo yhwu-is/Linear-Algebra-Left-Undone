@@ -13,7 +13,7 @@
 
 \[a_1 x_1 + a_2 x_2 + \cdots + a_n x_n = 1\]
 
-最后的值是 $1$ 是因为，如果该等式结果为 $b$，那我们（在它非零时，等于零的情况我们将来会发现十分特殊）总是可以把它除到左边去，通过改变系数的手法让它能够化为这样的一个方程. 这也已经暗示了这是一个 $n-1$ 维的对象，因为我们通过一个 $n$ 个未知量的方程降低了一个``自由度''. 接下来我们将更深入地研究一下这个余一维的对象.
+最后的值是 $1$ 是因为，如果该等式结果为 $b$，那我们（在它非零时，等于零的情况我们在将来关于\nameref{sec:射影空间}的讨论中会发现十分特殊）总是可以把它除到左边去，通过改变系数的手法让它能够化为这样的一个方程. 这也已经暗示了这是一个 $n-1$ 维的对象，因为我们通过一个 $n$ 个未知量的方程降低了一个``自由度''. 接下来我们将更深入地研究一下这个余一维的对象.
 
 \section{对偶空间与对偶映射}
 
@@ -40,9 +40,9 @@
 \end{lemma}
 
 \begin{proof}
-    考虑 $f$ 在向量空间中的任取的一点 $v \neq 0$ 上的取值 $f(v)$. 如果 $f(v)$ 不为 $0$，此时，根据线性性我们就有
-    \[f(\dfrac{1}{f(v)}v)=\dfrac{1}{f(v)}f(v)=1,\]
-    因此 $\dfrac{1}{f(v)}v \in \{x: f(x) = 1\}$，也就是说它在 $f$ 确定的超平面上. 又$\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，因此我们也有 $g(\dfrac{1}{f(v)} v) = 1$，从而再次由线性性得出 $g(v) = f(v)$.
+    考虑 $f$ 在向量空间中的任取的一点 $v \neq 0$ 上的取值 $f(v)$. 如果 $f(v)$ 不为 $0$，此时，根据线性性有
+    \[f\left(\dfrac{1}{f(v)}v\right)=\dfrac{1}{f(v)}f(v)=1,\]
+    因此 $\dfrac{1}{f(v)}v \in \{x: f(x) = 1\}$，也就是说它在 $f$ 确定的超平面上. 又$\{x: f(x) = 1\}$ 和 $\{x: g(x) = 1\}$ 表示同一个超平面，因此我们也有 $g\left(\dfrac{1}{f(v)} v\right) = 1$，从而再次由线性性得出 $g(v) = f(v)$.
 
     如果 $f(v)=0$，取$v'$使得$f(v')\neq 0$，由之前的讨论可知$f(v')=g(v')$，同理由线性性可知$0\neq f(v+v')=g(v+v')$，因此$g(v)=g(v+v')-g(v')=f(v+v')-f(v')=f(v)$.
 \end{proof}
@@ -109,7 +109,7 @@
     \begin{enumerate}
         \item 由于$(f_1, f_2, f_3)$的长度已经等于$\dim V^*$，从而只需要证明它们线性无关即可。
 
-        对$g(x)=a+bx+cx^2$，$\displaystyle\int g(x)\,\mathrm{d}x=a+\dfrac{b}{2}x^2+\dfrac{c}{3}x^3+C$，从而$f_1(1, x, x^2)=(1, \dfrac{1}{2}, \dfrac{1}{3})$，$f_2(1, x, x^2)=(2, 2, \dfrac{8}{3})$，$f_3(1, x, x^2)=(-1, \dfrac{1}{2}, -\dfrac{1}{3})$，故
+        对$g(x)=a+bx+cx^2$，$\displaystyle\int g(x)\,\mathrm{d}x=a+\dfrac{b}{2}x^2+\dfrac{c}{3}x^3+C$，从而$f_1(1, x, x^2)=\left(1, \dfrac{1}{2}, \dfrac{1}{3}\right)$，$f_2(1, x, x^2)=\left(2, 2, \dfrac{8}{3}\right)$，$f_3(1, x, x^2)=\left(-1, \dfrac{1}{2}, -\dfrac{1}{3}\right)$，故
         \[k_1f_1+k_2f_2+k_3f_3=0\]
         等价于
         \[
@@ -291,7 +291,7 @@
     为 $U$ 的\term{零化子}.
 \end{definition}
 
-在零化子中的线性泛函，是那些零点集包含 $U$ 中的线性泛函. 为什么不定义零点集恰好是 $U$ 的线性泛函构成的集合呢？稍微想一想就会发现那样定义的集合结构非常难看：它对于线性泛函的加法和数乘都不封闭. 这就引出了零化子的第一个性质：
+在零化子中的线性泛函，是那些零点集包含 $U$ 的线性泛函. 为什么不定义零点集恰好是 $U$ 的线性泛函构成的集合呢？稍微想一想就会发现那样定义的集合结构非常难看：它对于线性泛函的加法和数乘都不封闭. 这就引出了零化子的第一个性质：
 
 \begin{theorem}{}{}
     零化子构成一个对偶空间的子空间.
@@ -314,7 +314,7 @@
 % ? 感觉这里需要条件加强为正交补，wiki的介绍和我对于R^2的验证似乎都指向这一点
 
 \begin{theorem}{}{对偶空间的维数引理}
-    设 $V = U_1 \oplus U_2$，则 $V^* = U_1^0 \oplus U_2^0$，而且 $U_1^0 = U_2^*, U_2^0 = U_1^*$.
+    设 $V = U_1 \oplus U_2$，则 $V^* = U_1^0 \oplus U_2^0$，而且 $U_1^0 \cong U_2^*, U_2^0 \cong U_1^*$.
 \end{theorem}
 
 % 在证明这个定理之前，读者请先停下来观察一下这里的对称性. 需要关注的是，零化子是一个相对于某个大空间来说的东西，于是，这个定理说的就是，我们可以用一个相对于大空间来说的东西描述其中的小空间的对偶空间，这也就是为什么在讨论了对偶空间之后，我们立刻就引入了零化子的概念.
@@ -322,27 +322,27 @@
 \begin{proof}
     为了证明直和，我们首先要证 $U_1^0 \cap U_2^0 = 0$. 考虑 $U_1^0 \cap U_2^0$ 中的线性泛函 $\phi$，则不难发现对于任意的 $U_1 \oplus U_2$ 中的元素 $u_1 + u_2, u_1 \in U_1, u_2 \in U_2$，都有 $\phi(u_1 + u_2) = \phi(u_1) + \phi(u_2) = 0$. 因此，$\phi$ 是零泛函.
 
-    接下来，为了验证同构，我们考虑定义线性泛函 $\phi \in U_2^*$ 的扩张为一个 $V^*$ 中的线性泛函 $\tilde{\phi}$，它限制在 $U_2$ 上的取值均与 $\phi$ 相同，而限制在 $U_1$ 上为零泛函，中间部分由这两部分线性张成. 按照定义，不难发现 $\tilde \phi \in U_1^0$. 如此就构造了 $U_2^* \to U_1^0$ 的线性映射，其逆映射为 $U_1^0$ 中的泛函限制到 $U_2^*$ 上. 在此构造的基础上，请读者自行填充剩下的验证细节.
+    接下来，为了验证同构，我们考虑定义线性泛函 $\phi \in U_2^*$ 的扩张为一个 $V^*$ 中的线性泛函 $\tilde{\phi}$，它限制在 $U_2$ 上的取值均与 $\phi$ 相同，而限制在 $U_1$ 上为零泛函，其余部分由这两部分线性张成. 按照定义，不难发现 $\tilde \phi \in U_1^0$. 如此就构造了 $U_2^* \to U_1^0$ 的线性映射，其逆映射为 $U_1^0$ 中的泛函限制到 $U_2^*$ 上. 在此构造的基础上，请读者自行填充剩下的验证细节.
 \end{proof}
 
 于是，我们就有了一个显然的推论：
 
 \begin{theorem}{}{零化子维数}
-    $\dim U^0 = \dim V - \dim U$
+    设 $V$ 是有限维线性空间，$U$ 是 $V$ 的子空间，则有 $\dim U^0 = \dim V - \dim U$.
 \end{theorem}
 \begin{proof}
-    设$V=U\oplus W$，则由\autoref{thm:对偶空间的维数引理} 有$V^*=U^0\oplus W^0$，且$W^0=U^*$，于是$\dim U^0=\dim V^*-\dim W^0=\dim V-\dim U^*=\dim V-\dim U$.
+    设$V=U\oplus W$，则由\autoref{thm:对偶空间的维数引理} 有$V^*=U^0\oplus W^0$，且$W^0 \cong U^*$，于是$\dim U^0=\dim V^*-\dim W^0=\dim V-\dim U^*=\dim V-\dim U$.
 \end{proof}
 
 % U^{00}作为V^{**}的子空间，可以认为U和U^{00}自然同构，但是直接相等还是不太好接受（
-看到减号，我们不难发现，$U^{00}$，即两次取零化子的过程保持维数不变. 继续参照上面的定理的精神，我们不难发现，$U = U^{00}$，这个结论的证明方法有多种，留作习题请读者自行完成. 一个提示是，这个结论同样只对有限维线性空间成立.
+看到减号，我们不难发现，$U^{00}$，即两次取零化子的过程保持维数不变. 继续参照上面的定理的精神，我们不难发现，$U \cong U^{00}$，这个结论的证明方法有多种，留作习题请读者自行完成. 一个提示是，这个结论同样只对有限维线性空间成立.
 
-这个时候，让我们再回头来看看怎么形象的理解这个零化子. 为此，首先要做的是建立零点集和零化子之间的关系. 以下几个性质都是显然的：
+接下来，让我们再回头来看看怎么形象地理解这个零化子. 为此，首先要做的是建立零点集和零化子之间的关系. 以下几个性质都是显然的：
 
 \begin{lemma}{}{}
     \begin{enumerate}
-        \item $f \in (\ker f)^0$
-        \item $\forall f \in U^0, \ker f \subset U$
+        \item $f \in (\ker f)^0$；
+        \item $\forall f \in U^0, U \subseteq \ker f$.
     \end{enumerate}
 \end{lemma}
 
@@ -351,91 +351,108 @@
 \begin{definition}{}{}
     设 $U$ 为 $V^*$ 的子空间，则定义
     \[
-        Z(U) = \{v \in V: \forall \varphi \in U, \varphi(v) = 0\}
+        Z(U) = \{v \in V: \forall \varphi \in U, \varphi(v) = 0\}.
     \]
 \end{definition}
 
 也就是说，$Z(U)$ 就是那些 $U$ 中的线性泛函的公共零点的集合，即：
 \[
-    Z(U) = \bigcap_{\varphi \in U} \ker \varphi
+    Z(U) = \bigcap_{\varphi \in U} \ker \varphi.
 \]
-它显然也是一个线性空间. 这样，上面引理的第一、第二条就有了一个看上去更加对称的推论：
+它显然也是一个线性空间. 这样，上面引理的第一、第二条就有了一个看上去更加对称的表述：
 
-\begin{lemma}{}{NU性质}
+\begin{theorem}{}{NU性质}
     \begin{enumerate}
-        \item 如果 $U$ 是 $V^*$ 的子空间，则 $U = Z(U)^0$
-        \item 如果 $U$ 是 $V$ 的子空间，则 $U = Z(U^0)$
+        \item 如果 $U$ 是 $V^*$ 的子空间，则 $U = Z(U)^0$；
+        \item 如果 $U$ 是 $V$ 的子空间，则 $U = Z(U^0)$.
     \end{enumerate}
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
-    我们只证明第一条. 考虑 $\phi \in U$，则 $Z(U)$ 中的所有元素一定包含于 $\ker \phi$ 中，因此，$\phi$ 一定把其中的所有元素映到 $0$，即 $\phi \in Z(U)^0, U \subset Z(U)^0$. 然后，我们需要考虑维数问题. 考虑 $U$ 中的一组基 $e_1, e_2,\ldots, e_m$，其对偶基 $e_1^*, e_2^*, ..., e_m^*$ 可以扩张成 $V$ 的一组基 $e_1^*, e_2^*, \cdots e_m^*, e_{m + 1},\ldots, e_n$，则根据基的线性无关性，不难得出 $Z(U)$ 的基就是 $e_{m + 1},\ldots, e_n$. 也就是说，$\dim Z(U) = \dim V - \dim U$，于是 $\dim U = \dim Z(U)^0$，我们得到 $U = Z(U)^0$.
+    下面只证明第一条. 考虑 $\phi \in U$，则 $Z(U)$ 中的所有元素一定包含于 $\ker \phi$ 中，因此，$\phi$ 一定把其中的所有元素映到 $0$，即 $\phi \in Z(U)^0$，故 $U \subseteq Z(U)^0$. 然后考虑维数问题. 取 $U$ 的一组基 $e_1, e_2,\ldots, e_m$，其对偶基 $e_1^*, e_2^*, ..., e_m^*$ 可以扩张成 $V$ 的一组基 $e_1^*, e_2^*, \cdots e_m^*, e_{m + 1}^*,\ldots, e_n^*$，则根据基的线性无关性以及对偶基的定义，不难得出 $Z(U)$ 的基就是 $e_{m + 1}^*,\ldots, e_n^*$. 也就是说，$\dim Z(U) = \dim V - \dim U$，于是 $\dim U = \dim Z(U)^0$，结合包含关系可以得到 $U = Z(U)^0$.
 \end{proof}
 
-于是，我们有了一个更加舒适的视角来理解零化子：它无非就是对偶空间中的零点集. 因此，我们应当很容易理解对于单个线性映射，以下性质无非是这条结论的推论：
+上述定理表明，零点集和零化子本质上是一组对偶概念，从而我们有了一个更加舒适的视角来理解零化子.
+
+在本节最后，我们讨论单个线性映射及其对偶映射的像和核的关系，这些关系可以通过零化子来描述：
 
 \begin{theorem}{}{对偶映射像和核的性质}
     设 $V$ 和 $W$ 都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
     \begin{enumerate}
-        \item $\ker\sigma^*=(\im\sigma)^0$；
+        \item \label{item:6:对偶映射像和核的性质1} $\ker\sigma^*=(\im\sigma)^0$；
         \item $\dim\ker\sigma^*=\dim\ker\sigma+\dim W-\dim V$；
         \item $\dim\im\sigma^*=\dim\im\sigma$；
-        \item $\im\sigma^*=(\ker\sigma)^0$.
+        \item \label{item:6:对偶映射像和核的性质4} $\im\sigma^*=(\ker\sigma)^0$.
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 取 $\varphi \in \ker \sigma^*$，则 $\sigma^*(\varphi) = \varphi \circ \sigma = 0$，即对于任意 $v \in V$，都有 $\varphi(\sigma(v)) = 0$，因此 $\varphi$ 在 $\im \sigma$ 上恒为零，即 $\varphi \in (\im \sigma)^0$，故 $\ker \sigma^* \subseteq (\im \sigma)^0$. 反过来，取 $\varphi \in (\im \sigma)^0$，则对于任意 $v \in V$，都有 $\varphi(\sigma(v)) = 0$，即 $\sigma^*(\varphi) = \varphi \circ \sigma = 0$，故 $\varphi \in \ker \sigma^*$，从而 $(\im \sigma)^0 \subseteq \ker \sigma^*$，综上所述，$\ker \sigma^* = (\im \sigma)^0$.
+        \item $\dim \ker \sigma^* = \dim (\im \sigma)^0 = \dim W - \dim \im \sigma = \dim W - (\dim V - \dim \ker \sigma) = \dim \ker \sigma + \dim W - \dim V$.
+        \item $\dim \im \sigma^* = \dim W^* - \dim \ker \sigma^* = \dim W - (\dim \ker \sigma + \dim W - \dim V) = \dim V - \dim \ker \sigma = \dim \im \sigma$.
+        \item 取 $\varphi \in \im \sigma^*$，则存在 $\psi \in W^*$，使得 $\varphi = \sigma^*(\psi) = \psi \circ \sigma$，则对于任意 $u \in \ker \sigma$，都有 $\varphi(u) = \psi(\sigma(u)) = \psi(0) = 0$，因此 $\varphi \in (\ker \sigma)^0$，故 $\im \sigma^* \subseteq (\ker \sigma)^0$. 然后证明两个空间的维数相等即可：
+        \[\dim (\ker \sigma)^0 = \dim V - \dim \ker \sigma = \dim \im \sigma = \dim \im \sigma^*.\]
+        结合包含关系可得 $\im \sigma^* = (\ker \sigma)^0$.
+    \end{enumerate}
+\end{proof}
 
 \begin{corollary}{}{对偶映射单满射}
     设$V$和$W$都是有限维线性空间，$\sigma\in\mathcal{L}(V,W)$，则
     \begin{enumerate}
         \item $\sigma$是单射当且仅当$\sigma^*$是满射；
-
         \item $\sigma$是满射当且仅当$\sigma^*$是单射.
     \end{enumerate}
 \end{corollary}
 
+\begin{proof}
+    根据\autoref{thm:对偶映射像和核的性质}的\ref{item:6:对偶映射像和核的性质4}，有
+    \[ \sigma\text{是单射} \Leftrightarrow \ker\sigma = \{0\} \Leftrightarrow (\ker\sigma)^0 = V^* \Leftrightarrow \im\sigma^* = V^* \Leftrightarrow \sigma^*\text{是满射}. \]
+    同理可证第二条.
+\end{proof}
+
 \section{再论商空间}
 
-我们已经探讨了很多直和的式子，也讨论了零点之类的问题. 现在，我们想问的是，这种零点是否依然还有别的方式来理解？为此，我们需要仔细观察一下零空间的结构. 首先，我们考虑单个线性泛函 $\varphi$ 的情形.
-
-我们就已经知道，$\ker \varphi$ 是一个线性空间，而这个东西无非就是 $\varphi^{-1} (0)$. 那么，我们就自然想要知道 $\varphi^{-1} (\lambda)$ 到底长什么样，这些东西一般被称为 $\varphi$ 的\term{纤维}. 下面我们考虑一个引理：
+我们已经探讨了很多关于线性泛函零点的问题，那么这种零点是否依然还有别的方式来理解？为此，我们需要仔细观察一下零空间的结构. 首先考虑单个线性泛函 $\varphi$ 的情形. 已知 $\ker \varphi$ 是一个线性空间，而这个东西无非就是 $\varphi^{-1} (0)$. 那么，我们就自然想要知道 $\varphi^{-1} (\lambda)$ 到底长什么样，这一般被称为 $\varphi$ 的\term{纤维}. 下面考虑一个引理：
 
 \begin{lemma}{}{}
     设 $r \in \R$，则对于任意 $v' \in \varphi^{-1}(r), v \in \ker \varphi$，都有 $v + v' \in \varphi^{-1} (r)$.
 \end{lemma}
 
-这个引理粗看有点线性性的意味，它的证明也是如此，在此就不赘述了. 而在发现这个引理之后，也就不难联想到以下结果，它完整地描述了纤维的结构：
+这个引理粗看有点线性性的意味，它的证明也是如此，非常简单故在此不赘述. 而在发现这个引理之后，也就不难联想到以下结果，它完整地描述了纤维的结构：
 
 \begin{theorem}{}{纤维的结构}
     $\varphi^{-1} (r) = v' + \ker \varphi$，其中 $v'$ 为 $\varphi^{-1} (r)$ 中的任意一个向量.
 \end{theorem}
 
 \begin{proof}
-    我们仅证明左侧包含于右侧，另一个包含由上面的引理保证. 考虑 $v'' \in \phi^{-1} (r)$，则 $\varphi (v') = \varphi (v'') = r$，因此 $\varphi(v' - v'') = 0, v' - v'' \in \ker \varphi$.
+    我们仅证明左侧包含于右侧，另一个包含由上面的引理保证. 考虑 $v'' \in \varphi^{-1} (r)$，则 $\varphi (v') = \varphi (v'') = r$，因此 $\varphi(v' - v'') = 0, v' - v'' \in \ker \varphi$.
 \end{proof}
 
-事实上这就是一个仿射子集，我们在商空间中已经介绍过. 根据语境的不同，我们也会称其为线性簇甚至线性流形. 于是我们从线性泛函的纤维再次推导出了仿射子集的结构，这相比于之前基于等价关系的推导更为直观. 很显然，超平面$a^\mathrm{T}x = 1$就是一个仿射子集，而且，一个泛函所对应的超平面，按照\autoref{lem:线性泛函与超平面} 所述，就是它在 $1$ 处的纤维. 于是我们也再次理解了仿射子集的几何意义，它所表达的就是那些``近似线性对象''，比如线、面，等等.
+事实上这就是一个仿射子集，我们在商空间中已经介绍过. 根据语境的不同，我们也会称其为线性簇甚至线性流形. 于是我们从线性泛函的纤维再次推导出了仿射子集的结构，这相比于之前基于等价关系的推导更为直观. 很显然，超平面$a^\mathrm{T}x = 1$就是一个仿射子集，而且，一个泛函所对应的超平面，按照\autoref{lem:线性泛函与超平面} 所述，就是它在 $1$ 处的纤维. 于是我们也再次理解了仿射子集的几何意义，它表达的就是那些``近似线性对象''，比如线、面，等等.
 
 按照泛函的纤维的线性性的直观，我们也应该有以下结论：
 
-\begin{lemma}{}{}
+\begin{corollary}{}{纤维的运算}
     设 $\lambda, \mu$ 为两个实数，$v_\lambda \in \varphi^{-1}(\lambda), v_\mu \in \varphi^{-1} (\mu)$ 则
 
     \begin{enumerate}
-        \item $\varphi^{-1} (\lambda + \mu) = v_\lambda + v_\mu + \ker \varphi$
+        \item $\varphi^{-1} (\lambda + \mu) = v_\lambda + v_\mu + \ker \varphi = \varphi^{-1} (\lambda) + \varphi^{-1} (\mu)$；
         \item $\varphi^{-1} (\lambda \mu) = \mu v_\lambda + \ker \varphi = \lambda v_\mu + \ker \varphi = \mu \varphi^{-1} (\lambda) = \lambda \varphi^{-1} (\mu)$
     \end{enumerate}
-\end{lemma}
+\end{corollary}
 
-其证明如上显然. 然后，我们发现，按照这样的方式，所有纤维所构成的集合就定义了加法和数乘运算，而且不难验证它构成了一个线性空间；其维数则无非是压到了 $\R$ 的维数，也就是 $1$.
+其证明如上显然. 事实上，按照这样的方式，所有纤维所构成的集合上就定义了加法和数乘运算，而且不难验证它构成了一个线性空间（实际上就是商空间 $V/\ker \varphi$）。并且根据引理第二条中的 $\mu \varphi^{-1} (\lambda) = \lambda \varphi^{-1} (\mu)$，不同的纤维之间实际上是线性相关的，故 $\dim V/\ker \varphi = 1$.
 
-按照这样的观点，则不难理解如何将这样的结论推广到一般的线性映射上去. 一个线性映射 $f\colon V \to W$ 无非就是将一个线性空间线性地压缩到了 $\im f$ 上去，其在原像集上的体现无非是那一族纤维. 这个性质由以下定理描述：
+按照这样的观点，不难理解如何将上述结论推广到一般的线性映射上去. 以下定理是\autoref{thm:纤维的结构}在一般线性映射情形下的推广：
 
 \begin{theorem}{}{}
     设 $f\colon V \to W$ 是一个线性映射，则 $f^{-1} (w) = v_0 + \ker f$，其中 $w \in W, v_0 \in f^{-1} (w)$.
 \end{theorem}
 
-回忆所有这样的纤维（仿射子集）构成的集合就是商空间 $V/\ker f$. 因此我们可以重述上面的结论，就是 $V/\ker f$ 是一个线性空间，而且 $V/\ker f \simeq \im f$. 更进一步的，实际上我们有一个天然的漂亮的方法，来给出这样的一个核：
+类似于\autoref{cor:纤维的运算}，我们也可以定义一般线性映射的纤维的加法和数乘（留给读者自行思考），从而使其构成线性空间 $V/\ker f$. 然后取 $\im f$ 的任意一组基 $w_1, w_2,\ldots, w_m$，不难证明 $f^{-1} (w_1), f^{-1} (w_2),\ldots, f^{-1} (w_m)$ 张成了 $V/\ker f$，并且它们线性无关，因此 $\dim V/\ker f = \dim \im f = \dim V - \dim \ker f$，其中最后一个等号来源于\nameref{thm:线性映射基本定理}.
 
+进一步地，下面的引理表明，任意子空间都可以是某个线性映射的核：
 \begin{lemma}{}{}
     若 $W$ 是 $V$ 的一个子空间，则存在线性映射 $V \to V$，使得其在 $W$ 上的点取值均为 $0$，而在 $W$ 以外的点取值均不为 $0$.
 \end{lemma}
@@ -444,53 +461,50 @@
     考虑 $V$ 的直和分解 $V = W \oplus W'$. 构造线性映射 $f$ 使得其在 $W$ 上为零映射，在 $W'$ 上为恒同映射即可.
 \end{proof}
 
-因此，任意子空间都是线性映射的一个核，我们就给出了以下定理：
-
-\begin{theorem}{}{}
-    设 $W$ 为 $V$ 的子空间，则 $V/W$ 是一个线性空间，而且 $\dim V/W = \dim V - \dim W$.
-\end{theorem}
-
-这是在上面的构造中，$V/W \simeq W'$. 到此为止，本节最核心的结果就已经建成了. 最后的一个结果将本节的三个核心概念：对偶空间、零化子和商空间串联起来：
-
-\begin{theorem}{}{}
-    $(V/W)^* = W^0$.
-\end{theorem}
-
-\begin{proof}
-    我们已经表明，$V/W \simeq W'$ 并给出了一个同构. 考虑 $W \oplus W' = V$，则 $V^* = W^* \oplus (W')^*$，其中 $(W')^* = W^0$.
-\end{proof}
+综合 $\dim V/\ker f = \dim \im f = \dim V - \dim \ker f$ 和上述引理，我们可以再次给出商空间的维数公式：
 
 \begin{corollary}{}{}
-    设$U$是有限维线性空间$V$的子空间，则
-    \[\dim V/U=\dim V-\dim U.\]
+    设 $W$ 为 $V$ 的子空间，则 $V/W$ 是一个线性空间，而且 $\dim V/W = \dim V - \dim W$.
 \end{corollary}
 
-第二点是，商空间具备泛性质. 我们在很久以前就提到过泛性质的问题，而在这里，商空间实际上可以被看成一个推出，也就是说，如果以下图表中的实线箭头交换，则：
+到此为止，本节最核心的结果就已经建成了. 最后的一个结果将本节的三个核心概念：对偶空间、零化子和商空间串联起来：
 
-\begin{center}
-    \begin{tikzcd}
-        W \rar[hook, "i"] \dar[twoheadrightarrow, "p"] & V \dar[twoheadrightarrow, "p_*"] \arrow[rdd, bend left, "\varphi"] & \\
-        1 \rar[hook, "i_*"] \arrow[rrd, bend right, "\tilde{i}"] & V/W \arrow[rd, dashed, "\varphi_*"] & \\
-        & & Q
-    \end{tikzcd}
-\end{center}
-
-则存在唯一的虚线箭头使得图表交换. 下面我们给出证明.
+\begin{theorem}{}{}
+    设 $W$ 为 $V$ 的子空间，则有同构 $(V/W)^* \cong W^0$.
+\end{theorem}
 
 \begin{proof}
-    上图中的 $i, p, i_*, p_*$ 和 $\tilde{i}$ 都是显然看出的，所以，我们只要按照正常的方式，从 $\varphi$ 构造出 $\varphi_*$ 即可. 左下方三角的交换性是毋庸置疑的，因此，只要有右上的三角的交换性即可. 考虑 $V/W$ 中的元素 $v + W$，我们定义
-    \[ \varphi_*(v + W) = \varphi(v) \]
-    这个映射是良定且唯一的，这由 $\varphi$ 对商的相容性保证，请读者自行在习题中完成证明.
+    令 $V = W \oplus W'$，则 $W' \cong V/W$. 由\autoref{thm:对偶空间的维数引理} 可知 $(W')^* \cong W^0$，从而 $(V/W)^* \cong W^0$.
 \end{proof}
 
-这样的构造也被称为余纤维积. 更深入地探讨这样的构造不是我们在这里会去做的事情，但是我们会把更多关于推出的问题留在习题中，以供有兴趣的同学参考.
+% TODO: 这一段应该放在后面的章节里面
+% 第二点是，商空间具备泛性质. 我们在很久以前就提到过泛性质的问题，而在这里，商空间实际上可以被看成一个推出，也就是说，如果以下图表中的实线箭头交换，则：
 
-最后的一个反思是，对偶空间的意义到底在哪？在最开始，我们已经提到过，线性泛函就是超平面，超平面与点具备对偶关系. 而这样的对偶关系延伸开去，就是两种对线性方程组的视角，其中，超平面的交的视角我们将在线性方程组一般理论的讨论中展开，这里我们给出点的视角. 如果将 $(a_{i1}, a_{i2},\ldots, a_{in})$ 视作一个点，那么我们的求解任务就是找一个超平面过 $m$ 个点. 而我们在中学阶段就已经知道，要证明一组点共面是一个比较麻烦的事情，但是求一组面是否有交点往往来说是比较轻松的. 因此，我们通过对偶空间进行了一个翻译工作，将求一组点所共的那些面转化成了一些面所交的那些点，进而对问题完成了简化.
+% \begin{center}
+%     \begin{tikzcd}
+%         W \rar[hook, "i"] \dar[twoheadrightarrow, "p"] & V \dar[twoheadrightarrow, "p_*"] \arrow[rdd, bend left, "\varphi"] & \\
+%         1 \rar[hook, "i_*"] \arrow[rrd, bend right, "\tilde{i}"] & V/W \arrow[rd, dashed, "\varphi_*"] & \\
+%         & & Q
+%     \end{tikzcd}
+% \end{center}
+
+% 则存在唯一的虚线箭头使得图表交换. 下面我们给出证明.
+
+% \begin{proof}
+%     上图中的 $i, p, i_*, p_*$ 和 $\tilde{i}$ 都是显然看出的，所以，我们只要按照正常的方式，从 $\varphi$ 构造出 $\varphi_*$ 即可. 左下方三角的交换性是毋庸置疑的，因此，只要有右上的三角的交换性即可. 考虑 $V/W$ 中的元素 $v + W$，我们定义
+%     \[ \varphi_*(v + W) = \varphi(v) \]
+%     这个映射是良定且唯一的，这由 $\varphi$ 对商的相容性保证，请读者自行在习题中完成证明.
+% \end{proof}
+
+% 这样的构造也被称为余纤维积. 更深入地探讨这样的构造不是我们在这里会去做的事情，但是我们会把更多关于推出的问题留在习题中，以供有兴趣的同学参考.
+
+最后的一个反思是，对偶空间的意义到底在哪？在最开始，我们已经提到过，线性泛函就是超平面，超平面与点具备对偶关系. 而这样的对偶关系延伸开去，就是两种对线性方程组的视角，其中，超平面的交的视角我们将在线性方程组一般理论的讨论中展开，这里我们给出点的视角. 如果将线性方程组每一行的系数 $(a_{i1}, a_{i2},\ldots, a_{in})$ 视作一个点，那么我们的求解任务就是找一个超平面过 $m$ 个点. 而我们在中学阶段就已经知道，要证明一组点共面是一个比较麻烦的事情，但是求一组面是否有交点往往来说是比较轻松的. 因此，我们通过对偶空间进行了一个翻译工作，将求一组点所共的那些面转化成了一些面所交的那些点，进而对问题完成了简化.
 
 \begin{summary}
-
+    本章我们从点和超平面之间的对偶关系出发，自然引入了对偶空间、对偶基和对偶映射的概念并讨论了它们的性质，并且讨论了线性空间与其双对偶空间之间的自然同构. 进而，我们研究线性泛函零点集相关的话题，引入了零化子的概念，并讨论了零化子的维数以及零化子与零点集之间的关系. 最后，我们重新审视了商空间的结构，通过与线性泛函和线性映射的纤维的联系，再次定义了商空间，并讨论了商空间的维数以及商空间与零化子之间的关系. 本章涉及的内容相对较为抽象且深入，进一步的内容会在张量积等章节中继续探讨.
 \end{summary}
 
+% TODO: 需要补充更多计算题
 \begin{exercise}
     \exquote[塞尔日·兰（Serge Lang）]{如果一本教科书只能让学生按部就班地阅读，那该是多么无趣的一件事啊！}
 
