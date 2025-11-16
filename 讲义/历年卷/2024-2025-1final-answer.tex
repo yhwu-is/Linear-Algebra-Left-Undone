@@ -1,0 +1,307 @@
+\section{2024-2025学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item 增广矩阵为
+    \begin{align*}
+        \begin{pmatrix}[ccc|c]
+        1 & a & 1 & 3 \\
+        1 & 1 & 1 & 4 \\
+        1 & 2a & 1 & 4
+        \end{pmatrix} & \to
+        \begin{pmatrix}[ccc|c]
+        1 & a & 1 & 3 \\
+        0 & 1 - a & 0 & 1 \\
+        0 & a & 0 & 1
+        \end{pmatrix}
+    \end{align*}
+    故有 \((1 - a)x_{2} = ax_{2} = 1 \implies a = \dfrac{1}{2}, x_{2} = 2, x_{1} + x_{3} = 2\).
+
+    即一般解为 \((x_{1}, x_{2}, x_{3})^\mathrm{T}=(0,2,2)^\mathrm{T}+k(1,0,-1)^\mathrm{T}\).
+
+    \item 对 \(X=(x_1,x_2,x_3)^\mathrm{T}\)，
+    \begin{align*}
+        X^\mathrm{T}AX &= 2x_{1}^{2}+x_{2}^{2}+3x_{3}^{2}+2tx_{1}x_{2}+4x_{1}x_{3} \\
+        &= 2\left(x_{1}+\dfrac{t}{2}x_{2}+x_{3}\right)^{2}+\left(x_{3}-tx_{2}\right)^{2}+\left(1-\dfrac{3}{2}t^{2}\right)x_{2}^{2}
+    \end{align*}
+    因此：
+    \begin{enumerate}
+        \item \(A\)正定\(\iff 1-\dfrac{3}{2}t^{2}>0\)，即\(\vert t\vert<\sqrt{\dfrac{2}{3}}\).
+        \item \(A\)半正定\(\iff 1-\dfrac{3}{2}t^{2} \geqslant 0\)，即\(\vert t\vert \leqslant \sqrt{\dfrac{2}{3}}\).
+        \item \(X^\mathrm{T}AX\)的负惯性指数为\(1\)，即\(\vert t\vert > \sqrt{\dfrac{2}{3}}\).
+    \end{enumerate}
+
+    \item \(A=\begin{pmatrix}
+    1 & 0 & 25 & 8 \\
+    1 & 1 & 2 & 2 \\
+    0 & 0 & 4 & 3 \\
+    0 & 0 & 6 & 5
+    \end{pmatrix}\)，计算得
+    \begin{gather*}
+        A_{11}=2, A_{12}=-2, A_{13}=0, A_{14}=0, \\
+        A_{21}=0, A_{22}=2, A_{23}=0, A_{24}=0, \\
+        A_{31}=-77, A_{32}=79, A_{33}=5, A_{34}=-6, \\
+        A_{41}=43, A_{42}=-47, A_{43}=-3, A_{44}=4.
+    \end{gather*}
+    故
+    \(\vert A\vert = 4\times5 - 3\times6 = 2\)，
+    \(A^{-1}=\begin{pmatrix}
+        1 & 0 & -\dfrac{77}{2} & \dfrac{43}{2} \\[0.5em]
+        -1 & 1 & \dfrac{79}{2} & -\dfrac{47}{2} \\[0.5em]
+        0 & 0 & \dfrac{5}{2} & -\dfrac{3}{2} \\
+        0 & 0 & -3 & 2
+    \end{pmatrix}\).
+    \item
+    \begin{enumerate}
+        \item 分别验证 \(W\) 关于加法和数乘封闭性即可.
+        \item 显然 \(x^{2}-1\)，\(x - 1\) 为一组基.
+        \item 令 \(\sigma(x^{i})=x^{i}-1\)，\(i = 0,1,2\)，我们证明此即为所求.
+
+        一方面我们验证其满足题设。显然 \(\sigma(1)=0\)，且对 \(\forall f \in \mathbf{R}[x]_{3}\)，设 \(f(x)=a_{0}+a_{1}x+a_{2}x^{2}\)，则 \(\sigma(f(x))=a_{1}(x - 1)+a_{2}(x^{2}-1)\)，且 \(x - 1\)，\(x^{2}-1\) 为 \(W\) 的一组基，故 \(\im(\sigma)=W\).
+
+        另一方面，由一组基上的像可唯一确定一个线性映射，故 \(\sigma\) 唯一，即其为所求.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 设 \(k_1\beta+k_2 A\beta+\cdots + k_nA^{n-1}\beta=0\). 同时左乘\(A\)得 \[ k_1 A\beta+\cdots+k_n A^n\beta=k_1 A\beta+\cdots+k_{n-1} A^{n-1}\beta=0. \]
+
+        一直如此可得到 \(k_1 A^{n-1}\beta=0\). 由条件 \(A^i\beta\neq 0, \enspace\forall 0\leqslant i \leqslant n-1 \implies k_1=0\)，将其回代可得到 $k_2 = \cdots = k_n = 0$. 即这些向量线性无关，且长度为 $n$，因此是一组基.
+        \item 由(1)知对 \(\forall \alpha \in \mathbf{R}^{n}\)，存在 \(k_{1}, k_{2}, \ldots, k_{n}\) 使得 \(\alpha=k_{1}\beta + k_{2}A\beta+\cdots + k_{n}A^{n - 1}\beta\).
+
+        从而对任意$\alpha$，\(A^n\alpha=k_1 A^n\beta+\cdots+k_n A^{2n-1}\beta=0 \implies A^n=0\).
+        \item 即证\(\dim N(A)=1\).
+
+        任取 \(X_{1}, X_{2} \in N(A)\)，设 \(X_{1}=\displaystyle\sum\limits_{i = 1}^{n}a_{i}A^{i - 1}\beta\)，\(X_{2}=\displaystyle\sum\limits_{i = 1}^{n}b_{i}A^{i - 1}\beta\). 则对 \(\forall k_{1}, k_{2} \in \mathbf{R}\)，由 \(k_{1}X_{1}+k_{2}X_{2} \in N(A)\)，有
+        \[
+        A(k_{1}X_{1}+k_{2}X_{2})=\sum_{i = 1}^{n}(k_{1}a_{i}+k_{2}b_{i})A^{i}\beta=\sum_{i = 1}^{n - 1}(k_{1}a_{i}+k_{2}b_{i})A^{i}\beta = 0.
+        \]
+        由 \(A\beta, \ldots, A^{n - 1}\beta\) 线性无关知 \(k_{1}a_{i}+k_{2}b_{i}=0, \enspace\forall i = 1,2,\ldots, n - 1\).
+
+        由 \(k_{1}, k_{2}\) 任意性知 \(a_{i}=b_{i}=0, \enspace\forall i = 1,2,\ldots, n - 1\).
+        故 \(X_{1}=a_{n}A^{n - 1}\beta\)，\(X_{2}=b_{n}A^{n - 1}\beta\)，从而 \(X_{1}\) 与 \(X_{2}\) 线性相关，故 \(\dim N(A)=1\).
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item
+        \begin{align*}
+            T(x_{1}, x_{2}, x_{3}, x_{4})^\mathrm{T} &= (x_{1}-x_{2}+x_{4}, x_{1}+2x_{3}+2x_{4}, x_{1}+x_{2}+4x_{3}+3x_{4})^\mathrm{T} \\
+            &=\begin{pmatrix}
+                1 & -2 & 0 & 1 \\
+                1 & 0 & 2 & 2 \\
+                1 & 1 & 4 & 3
+            \end{pmatrix}\begin{pmatrix}
+                x_{1} \\
+                x_{2} \\
+                x_{3} \\
+                x_{4}
+            \end{pmatrix}
+        \end{align*}
+        故所求即为 \(A=\begin{pmatrix}
+            1 & -2 & 0 & 1 \\
+            1 & 0 & 2 & 2 \\
+            1 & 1 & 4 & 3
+        \end{pmatrix}\).
+
+        \item
+            求 $AX=0$ 可得 $x_2 = 0, x_4 = -2x_3, x_1 = 2x_3$，即$X=(x_1,x_2,x_3,x_4)^\mathrm{T} = k(2,0,1,-2)^\mathrm{T}$，核空间为$\spa\{(2,0,1,-2)^\mathrm{T}\}$.
+
+            取出发空间的一组自然基$e_1,\ldots,e_4$，则$T(e_1)=(1,1,1)^\mathrm{T}$，$T(e_2)=(-2,0,1)^\mathrm{T}$，$T(e_3)=(0,2,4)^\mathrm{T}$，$T(e_4)=(1,2,3)^\mathrm{T}$. 从而可以对 $A$ 作初等列变换：
+            \[
+            \begin{pmatrix}
+                1 & -2 & 0 & 1 \\
+                1 & 0 & 2 & 2 \\
+                1 & 1 & 4 & 3
+            \end{pmatrix}
+            \to
+            \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                1 & 2 & 2 & 1 \\
+                1 & 3 & 4 & 2
+            \end{pmatrix}
+            \to
+            \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                1 & 2 & 1 & 0 \\
+                1 & 3 & 2 & 0
+            \end{pmatrix}
+            \to
+            \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 1 & 1 & 0 \\
+                0 & 1 & 2 & 0
+            \end{pmatrix}
+            \]
+            可得像空间的一组基为 $T(e_1), T(e_2), T(e_3)$.
+
+            故像空间为$\spa\{(1,1,1)^\mathrm{T}, (-2,0,1)^\mathrm{T}, (0,2,4)^\mathrm{T}\}$.
+        \item 即求$P,Q$使得
+            \[
+            Q^{-1}AP =
+            \begin{pmatrix}
+                E_r & O \\
+                O & O
+            \end{pmatrix}
+            \]
+            % 利用行列变换得：
+            % \begin{align*}
+            %     \begin{pmatrix}[cccc|cccc]
+            %     1 & -2 & 0 & 1  & 1 & 0 & 0 \\
+            %     1 & 0 & 2 & 2  & 0 & 1 & 0 \\
+            %     1 & 1 & 4 & 3  & 0 & 0 & 1
+            %     \end{pmatrix}
+            %     \to
+            %     \begin{pmatrix}[cccc|cccc]
+            %         1 & -2 & 0 & 1  & 1 & 0 & 0 \\
+            %         0 & 2 & 2 & 1  & -1 & 1 & 0 \\
+            %         0 & 3 & 4 & 2  & -1 & 0 & 1
+            %     \end{pmatrix}
+            %     \to
+            %     \begin{pmatrix}[cccc|cccc]
+            %         1 & -2 & 0 & 1  & 1 & 0 & 0 \\
+            %         0 & 1 & 2 & 1  & 0 & -1 & 1 \\
+            %         0 & 0 & 2 & 1  & 1 & -3 & 2
+            %     \end{pmatrix}
+            % \end{align*}
+            % \[
+            % \begin{pmatrix}
+            %     1 & -2 & 0 & 1 \\
+            %     0 & 1 & 2 & 1 \\
+            %     0 & 0 & 2 & 1 \\
+            %     \hline
+            %     1 & 0 & 0 & 0 \\
+            %     0 & 1 & 0 & 0 \\
+            %     0 & 0 & 1 & 0 \\
+            %     0 & 0 & 0 & 1
+            % \end{pmatrix}
+            % \to
+            % \begin{pmatrix}
+            %     1 & 0 & 0 & 0 \\
+            %     0 & 1 & 2 & 1 \\
+            %     0 & 0 & 2 & 1 \\
+            %     \hline
+            %     1 & 2 & 0 & -1 \\
+            %     0 & 1 & 0 & 0 \\
+            %     0 & 0 & 1 & 0 \\
+            %     0 & 0 & 0 & 1
+            % \end{pmatrix}
+            % \to
+            % \begin{pmatrix}
+            %     1 & 0 & 0 & 0 \\
+            %     0 & 1 & 0 & 0 \\
+            %     0 & 0 & 1 & 1 \\
+            %     \hline
+            %     1 & 2 & -1 & -3 \\
+            %     0 & 1 & -1 & -1 \\
+            %     0 & 0 & 1 & 0 \\
+            %     0 & 0 & 0 & 1
+            % \end{pmatrix}
+            % \to
+            % \begin{pmatrix}
+            %     1 & 0 & 0 & 0 \\
+            %     0 & 1 & 0 & 0 \\
+            %     0 & 0 & 1 & 0 \\
+            %     \hline
+            %     1 & 2 & -1 & -2 \\
+            %     0 & 1 & -1 & 0 \\
+            %     0 & 0 & 1 & -1 \\
+            %     0 & 0 & 0 & 1
+            % \end{pmatrix}
+            % \]
+            % 利用初等行变换求$Q^{-1}$：
+            % \[
+            % \begin{pmatrix}[ccc|ccc]
+            %     1 & 0 & 0  & 1 & 0 & 0 \\
+            %     0 & -1 & 1  & 0 & 1 & 0 \\
+            %     1 & -3 & 2  & 0 & 0 & 1
+            % \end{pmatrix}
+            % \to
+            % \begin{pmatrix}[ccc|ccc]
+            %     1 & 0 & 0  & 1 & 0 & 0 \\
+            %     0 & -1 & 1  & 0 & 1 & 0 \\
+            %     0 & 3 & -2  & 1 & 0 & -1
+            % \end{pmatrix}
+            % \to
+            % \begin{pmatrix}[ccc|ccc]
+            %     1 & 0 & 0  & 1 & 0 & 0 \\
+            %     0 & 1 & 0  & 1 & 2 & -1 \\
+            %     0 & 0 & 1  & 1 & 3 & -1
+            % \end{pmatrix}
+            % \]
+            % 故
+            参考\autoref{ex:初等变换求相抵标准形PQ}，具体过程略，结果为：
+            \[
+            P =
+            \begin{pmatrix}
+                1 & 2 & -1 & -2 \\
+                0 & 1 & -1 & 0 \\
+                0 & 0 & 1 & -1 \\
+                0 & 0 & -1 & 2
+            \end{pmatrix},
+            Q =
+            \begin{pmatrix}
+                1 & 0 & 0 \\
+                1 & 2 & -1 \\
+                1 & 3 & -1
+            \end{pmatrix}.
+            \]
+        (尽管笔者记得考场上的结果是\(r(A)=2\)，可能是回忆卷出现误差，但是重要的还是求\(P,Q\)的方法.)
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 由相抵标准型知存在 \(P, Q\) 为可逆矩阵，且
+        \[
+            A = P \diag(1,1,0,\ldots, 0)Q = P\diag(1,0,\ldots, 0)Q + P\diag(0,1,0,\ldots, 0)Q.
+        \]
+        设 \(P = (\beta_{1}, \beta_{2}, \ldots, \beta_{n})\)，\(Q^\mathrm{T}=(\alpha_{1}, \alpha_{2}, \ldots, \alpha_{n})\)，则
+        \[
+            P\diag(1,0,\ldots, 0)Q=(\beta_{1}, \ldots, \beta_{n})\begin{pmatrix}
+                1 \\
+                0 \\
+                \vdots \\
+                0
+            \end{pmatrix}(1,0,\ldots,0)
+            \begin{pmatrix}
+                \alpha_{1}^\mathrm{T} \\
+                \alpha_{2}^\mathrm{T} \\
+                \vdots \\
+                \alpha_{n}^\mathrm{T}
+            \end{pmatrix}=\beta_{1}\alpha_{1}^\mathrm{T}.
+        \]
+        同理 \(P\diag(0,1,0,\ldots, 0)Q=\beta_{2}\alpha_{2}^\mathrm{T}\)，即 \(A=\beta_{1}\alpha_{1}^\mathrm{T}+\beta_{2}\alpha_{2}^\mathrm{T}\)，得证.
+
+        \item \(\beta_{1}=\alpha_{1}=(1,0,\ldots, 0)^\mathrm{T}\)，\(\beta_{2}=\alpha_{2}=(0,1,0,\ldots, 0)^\mathrm{T}\)，自行验证 \(A\) 的确可对角化.
+
+        \item 对于将 \(A\) 对角化处理的矩阵 \(C\)（即 \(C^{-1}AC\) 中的 \(C\)）的列向量 \(X\)，要么 \(X \in \spa\{\beta_{1}, \beta_{2}\}\)，要么 \(X \perp \alpha_{1}\) 且 \(X \perp \alpha_{2}\).
+
+        证明：设 \(C=(X_{1}, \ldots, X_{n})\)，则
+        \[
+        AC = C\diag\left(\lambda_{1}, \ldots, \lambda_{n}\right) \iff \beta_{1}\alpha_{1}^\mathrm{T}X_{i}+\beta_{2}\alpha_{2}^\mathrm{T}X_{i}=\lambda_{i}X_{i}
+        \]
+        若 \(\lambda_{i} \neq 0\)，则 \(X_{i}\) 为 \(\beta_{1}\)，\(\beta_{2}\) 的线性扩张（注意到 \(\alpha_{1}^\mathrm{T}X_{i}\) 与 \(\alpha_{2}^\mathrm{T}X_{i}\) 都是实数）.
+
+        若不然，由于 \(\beta_{1}\) 与 \(\beta_{2}\) 线性无关，有 \(\alpha_{1}^\mathrm{T}X_{i}=0\) 和 \(\alpha_{2}^\mathrm{T}X_{i}=0\)，即 \(X_{i} \perp \alpha_{1}\) 且 \(X_{i} \perp \alpha_{2}\).
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 错. \(\alpha_{1}=(1,0)\)，\(\alpha_{2}=(-1,0)\)，\(\beta_{1}=(0,1)\)，\(\beta_{2}=(0,-2)\) 即有矛盾.
+        \item 对. 设 \(A = (\alpha_{1}, \ldots, \alpha_{n})\)，则
+        \[
+        A^{2}=\begin{pmatrix}
+            \alpha_{1}^\mathrm{T} \\
+            \vdots \\
+            \alpha_{n}^\mathrm{T}
+        \end{pmatrix}\left(\alpha_{1}, \ldots, \alpha_{n}\right)
+        \]
+        其第 \(i\) 个主对角元元素为 \(\alpha_{i}^\mathrm{T}\alpha_{i}=\vert\alpha_{i}\vert^{2}=0\)，故 \(\alpha_{i}=0\)，即 \(A = 0\).
+        \item 错. \(A=\begin{pmatrix}
+        i & 1 \\
+        1 & -i
+        \end{pmatrix}\) 即为反例。
+        \item 错. \(\sigma(x, y)=(y, 0)\) 即为反例.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage
