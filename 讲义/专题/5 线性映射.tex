@@ -421,7 +421,7 @@
     \item 核空间可以直接利用定义令$\sigma(\alpha)=0$，利用解线性方程组得到解集即为结果，注意也许表示为线性扩张的形式.
 \end{enumerate}
 
-\begin{example}{}{}
+\begin{example}{}{线性映射的像空间求解}
     已知$\mathbf{R}^3$到$\mathbf{R}^2$的映射$\sigma$为$\sigma(x_1,x_2,x_3)^{\color{lightgray}\mathrm{T}}=(x_1+x_2,x_2-x_3)^{\color{lightgray}\mathrm{T}}$，求$\sigma$的像和核.
 \end{example}
 注：这里需要对记号进行一个澄清，事实上 $\mathbf{R}^n$ 空间中的向量都应当是列向量，但为了节省空间，一些教材在描述映射的情形下会写成行向量的形式. 但笔者认为线性映射相关的地方行和列的混乱容易导致一些困惑，为此，笔者有时会在向量的右上角加上一个浅色的转置 $({}^{\color{gray}\mathrm{T}})$ 以代表它是列向量.
@@ -449,7 +449,7 @@
 \end{solution}
 
 下面我们也给出另一种求像空间的方法，但是为了防止读者混淆这一方法和之后线性映射矩阵表示的方法，希望读者能按照笔者首先介绍的方法求解.
-\begin{solution}\label{ex:线性映射的像空间求解2}
+\begin{solution}
     \begin{align*}
         \sigma(x_1, x_2, x_3)^{\color{lightgray}\mathrm{T}} &= (x_1 + x_2, x_2 - x_3)^{\color{lightgray}\mathrm{T}}\\
         &= x_1(1, 0)^{\color{lightgray}\mathrm{T}} + x_2(1, 1)^{\color{lightgray}\mathrm{T}} + x_3(0, -1)^{\color{lightgray}\mathrm{T}}

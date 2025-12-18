@@ -856,7 +856,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                   \end{vmatrix} = 0 = |A||B|.
               \]
 
-              若 $B$ 可逆，则
+              若 $B$ 可逆，则可利用分块矩阵初等变换转换矩阵：
               \[
                   \begin{pmatrix}
                       A & O \\ C & B
@@ -870,7 +870,15 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                       E_k & O \\ O & B
                   \end{pmatrix},
               \]
-              而分块倍加矩阵的行列式
+              对 $\begin{pmatrix}
+                      E_k & O \\ O & B
+                  \end{pmatrix}$ 按第一行展开可得 $\begin{vmatrix}
+                      E_k & O \\ O & B
+                  \end{vmatrix} = \begin{vmatrix}
+                      E_{k-1} & O \\ O & B
+                  \end{vmatrix}$，如此展开下去可得到其行列式等于 $|B|$. 同理可得 $\begin{vmatrix}
+                      A & O \\ O & E_r
+                  \end{vmatrix} = |A|$. 而分块倍加矩阵的行列式
               \[
                   \begin{vmatrix}
                       E_k & O \\ -B^{-1} C & E_r
@@ -882,6 +890,10 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                       A & O \\ C & B
                   \end{vmatrix} = \begin{vmatrix}
                       A & O \\ O & B
+                  \end{vmatrix} = \begin{vmatrix}
+                      A & O \\ O & E_r
+                  \end{vmatrix} \begin{vmatrix}
+                      E_k & O \\ O & B
                   \end{vmatrix} = |A||B|.
               \]
               其余推导部分同上.
@@ -1358,14 +1370,14 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
 \begin{example}{}{}
     利用定义求矩阵$\begin{pmatrix}
-            1 & 1 & -1 & 3 \\ 1 & 2 & 1 & 1 \\ 2 & 3 & 0 & 4
+            1 & 1 & -1 & 3 \\ 1 & 2 & 1 & 1 \\ 3 & 3 & 0 & 4
         \end{pmatrix}$的行列式秩.
 \end{example}
 
 \begin{solution}
     记该矩阵为$A$，由于$A$为3行4列矩阵，因此$r(A)\leqslant 3$. 又我们可以发现其三阶子式
     \[\begin{vmatrix}
-            1 & -1 & 3 \\ 1 & 1 & 1 \\ 2 & 0 & 4
+            1 & -1 & 3 \\ 1 & 1 & 1 \\ 3 & 0 & 4
         \end{vmatrix}=-4\neq 0,\]
     故$r(A)\geqslant 3$，因此$r(A)=3$.
 \end{solution}
@@ -4686,7 +4698,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                     x_2    & x_2^2  & \cdots & x_2^n  \\
                     \vdots & \vdots & \ddots & \vdots \\
                     x_n    & x_n^2  & \cdots & x_n^n
-                \end{vmatrix} + \sum_{j=1}^n \begin{vmatrix}
+                \end{vmatrix} + \sum_{i=1}^n \begin{vmatrix}
                     x_1     & x_1^2     & \cdots & x_1^n     \\
                     \vdots  & \vdots    &        & \vdots    \\
                     x_{i-1} & x_{i-1}^2 & \cdots & x_{i-1}^n \\
@@ -4723,38 +4735,22 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                     \vdots  & \vdots    &        & \vdots    \\
                     x_n     & x_n^2     & \cdots & x_n^n
                 \end{vmatrix}
-                &= \begin{vmatrix}
-                    x_1     & x_1 (x_1-1)         & \cdots & x_1^{n-1} (x_1-1)         \\
-                    \vdots  & \vdots              &        & \vdots                    \\
-                    x_{i-1} & x_{i-1} (x_{i-1}-1) & \cdots & x_{i-1}^{n-1} (x_{i-1}-1) \\
-                    1       & 0                   & \cdots & 0                         \\
-                    x_{i+1} & x_{i+1} (x_{i+1}-1) & \cdots & x_{i+1}^{n-1} (x_{i+1}-1) \\
-                    \vdots  & \vdots              &        & \vdots                    \\
-                    x_n     & x_n (x_n-1)         & \cdots & x_n^{n-1} (x_n-1)
-                \end{vmatrix} \\
-                &= \begin{vmatrix}
-                    x_1-1     & x_1 (x_1-1)         & \cdots & x_1^{n-1} (x_1-1)         \\
-                    \vdots    & \vdots              &        & \vdots                    \\
-                    x_{i-1}-1 & x_{i-1} (x_{i-1}-1) & \cdots & x_{i-1}^{n-1} (x_{i-1}-1) \\
-                    1         & 0                   & \cdots & 0                         \\
-                    x_{i+1}-1 & x_{i+1} (x_{i+1}-1) & \cdots & x_{i+1}^{n-1} (x_{i+1}-1) \\
-                    \vdots    & \vdots              &        & \vdots                    \\
-                    x_n-1     & x_n (x_n-1)         & \cdots & x_n^{n-1} (x_n-1)
-                \end{vmatrix} \\
-                &= (-1)^{i+1} \prod_{j \neq i} (x_j - 1) \begin{vmatrix}
+                &= \prod_{j \neq i} x_j \begin{vmatrix}
                     1      & x_1     & \cdots & x_1^{n-1}     \\
                     \vdots & \vdots  &        & \vdots        \\
                     1      & x_{i-1} & \cdots & x_{i-1}^{n-1} \\
+                    1      & 1^1     & \cdots & 1^{n-1}       \\
                     1      & x_{i+1} & \cdots & x_{i-1}^{n+1} \\
                     \vdots & \vdots  &        & \vdots        \\
                     1      & x_n     & \cdots & x_n^{n-1}
                 \end{vmatrix} \\
-                &= (-1)^{i+1} \prod_{j \neq i} \frac{x_j - 1}{x_j - x_i} \prod_{1 \leqslant k < j \leqslant n} (x_j - x_k).
+                &= \prod_{j \neq i} x_j \cdot \prod_{1 \leqslant k < j \leqslant n} (x_j - x_k) \cdot \prod_{1 \leqslant j < i} \frac{1 - x_j}{x_i - x_j} \cdot \prod_{i < j \leqslant n} \frac{x_j - 1}{x_j - x_i}  \\
+                &= \prod_{j \neq i} x_j \cdot \prod_{j \neq i} \frac{x_j - 1}{x_j - x_i} \cdot \prod_{1 \leqslant k < j \leqslant n} (x_j - x_k).
             \end{align*}
 
             综上可得，
             \[
-                |A| = \left( \prod_{i=1}^n x_i + \sum_{i=1}^n (-1)^{i+1} \prod_{j \neq i} \frac{x_j - 1}{x_j - x_i} \right) \prod_{1 \leqslant i < j \leqslant n} (x_j - x_i).
+                |A| = \left( 1 + \sum_{i=1}^n \frac{1}{x_i} \prod_{j \neq i} \frac{x_j - 1}{x_j - x_i} \right) \prod_{i=1}^n x_i \cdot \prod_{1 \leqslant k < j \leqslant n} (x_j - x_k).
             \]
 
         \end{answer}
@@ -4792,8 +4788,8 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                                     y      & y      & x_2    & \cdots & y      \\
                                     \vdots & \vdots & \vdots & \ddots & \vdots \\
                                     y      & y      & y      & \cdots & x_n
-                                \end{vmatrix} \\
-                                &= \begin{vmatrix}
+                                \end{vmatrix}
+                                = \begin{vmatrix}
                                     y      & y       & y       & \cdots & y       \\
                                     0      & x_1 - y & 0       & \cdots & 0       \\
                                     0      & 0       & x_2 - y & \cdots & 0       \\
