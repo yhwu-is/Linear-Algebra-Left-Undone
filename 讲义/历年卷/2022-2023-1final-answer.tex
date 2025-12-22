@@ -1,0 +1,94 @@
+\section{2022-2023学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item 利用高斯-若当消元法：
+    \[
+    \begin{pmatrix}
+        1 & k & 1 & 1 \\
+        1 & -1 & 1 & 1 \\
+        k & 1 & 2 & 1
+    \end{pmatrix} \to \begin{pmatrix}
+        1 & k & 1 & 1 \\
+        0 & k+1 & 0 & 0 \\
+        0 & 0 & 2-k & 1-k
+    \end{pmatrix}
+    \]
+    故 $k=2$ 时无解，$k=-1$ 时有解 $(0,-\dfrac{1}{3},\dfrac{2}{3})^\mathrm{T}+k(1,1,0)^\mathrm{T}$，当 $k\neq 2$ 且 $k\neq -1$ 时有唯一解 $(\dfrac{1}{2-k},0,\dfrac{1-k}{2-k})^\mathrm{T}$.
+
+    \item 配方得 $f(x_1,x_2,x_3)=(x_1+x_2)^2-(x_2-x_3)^2$. 令 $\begin{cases}
+        y_1=x_1+x_2 \\ y_2=x_2 - x_3 \\ y_3=x_3
+    \end{cases}$，则 $Y=\begin{pmatrix}
+        1 & 1 & 0 \\
+        0 & 1 & -1 \\
+        0 & 0 & 1
+    \end{pmatrix}X$，所求的变换矩阵为 $\begin{pmatrix}
+        1 & 1 & 0 \\
+        0 & 1 & -1 \\
+        0 & 0 & 1
+    \end{pmatrix}^{-1}=\begin{pmatrix}
+        1 & -1 & -1 \\
+        0 & 1 & 1 \\
+        0 & 0 & 1
+    \end{pmatrix}$. 正负惯性指数均为 $1$.
+
+    \item 利用 $AA^*=|A|E$ 与 $|A^*|=|A|^{n-1}=|A|^2$ 可得 $|A|=\pm 4$，$A = \pm\begin{pmatrix}
+        2 & 1 & 1 \\
+        1 & 2 & 1 \\
+        1 & 1 & 2
+    \end{pmatrix}$.
+
+    \item \begin{enumerate}
+        \item 自行验证即可.
+        \item 详见\autoref{ex:维数公式技巧例题}.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 容易知道 $A$ 的三个特征值为 $1,2,-1$.
+        \item 由 $|\lambda E - A|=\prod_{i=1}^n (\lambda - \lambda_i)$ 可知 $|A+3E| = \prod_{i=1}^3 (3 + \lambda_i) = 20$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 取 $\alpha_{r+1},\ldots,\alpha_n$ 为 $N(A)$ 的一组基，将其扩充为 $\mathbf{R}^n$ 的一组基 $\alpha_1, \ldots, \alpha_n$，令 $P=(\alpha_1,\ldots,\alpha_n)$，则有
+        \[ P^{-1}AP = P^{-1}(A\alpha_1, \ldots, A\alpha_r, A\alpha_{r+1}, \ldots, A\alpha_n) = (P^{-1}A\alpha_1, \ldots, P^{-1}A\alpha_r, \vec{0}, \ldots, \vec{0}). \]
+        满足要求（后 $n-r$ 列为零列）.
+        \item 由于 $A$ 秩为 $1$，因此可作相抵标准型分解 $A = P\begin{pmatrix}
+            1 & O \\
+            O & O
+        \end{pmatrix}Q=\alpha\beta^\mathrm{T}$，其中 $\alpha$ 与 $\beta$ 均为 $n$ 维非零向量，且 $\beta^\mathrm{T}\alpha=\tr(A)=1$，故 $A^2=\alpha(\beta^\mathrm{T}\alpha)\beta^\mathrm{T}=\alpha\beta^\mathrm{T}=A$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 自行验证即可.
+        \item 取 $\mathbf{R}^3$ 的一组基 $B_1=\{1,x,x^2\}:=\{\alpha_1,\alpha_2,\alpha_3\}$，取 $\mathbf{R}^{2 \times 2}$ 的一组基 $B_2=\left\{\begin{pmatrix}
+            1 & 0 \\ 0 & 0
+        \end{pmatrix}, \begin{pmatrix}
+            0 & 1 \\ 0 & 0
+        \end{pmatrix}, \begin{pmatrix}
+            0 & 0 \\ 1 & 0
+        \end{pmatrix}, \begin{pmatrix}
+            0 & 0 \\ 0 & 1
+        \end{pmatrix}\right\}:=\{\beta_1,\beta_2,\beta_3,\beta_4\}$，则 $\sigma(e_1) = \beta_4$，$\sigma(e_2) = -\beta_1$，$\sigma(e_3) = -3\beta_1$，从而 $\sigma$ 在基 $B_1$ 与 $B_2$ 下的矩阵为 $\begin{pmatrix}
+            0 & -1 & -3 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix}$.
+        \item 由上一问可知 $\im\sigma = \spa\{\beta_1,\beta_4\}$.
+
+        对于核空间，$\sigma(p(x))=0$ 等价于 $p(1)-p(2)=0$，$p(0)=0$，也就是 $a_0=0$，$3a_2+a_1=0$，因此 $\ker\sigma = \spa\{x^2-3x\}$.
+
+        \item 只需要维数相同即可，例如 $\spa\{1,x\}$ 同构于 $\im\sigma$，$\spa\{\beta_1\}$ 同构于 $\ker\sigma$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 错. 令所有的 $\alpha_i=\vec{0}$，但 $\beta \neq \vec{0}$ 即可.
+        \item 错. 反例：平面上三线共点的两两直线均可张成平面, 但是任意两条不同的直线显然线性无关.
+        \item 错. 反例：$\begin{pmatrix}
+            1 & 0 \\
+            0 & 0
+        \end{pmatrix}$.
+        \item 对. 相似与相合均满足秩相等，即相抵.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

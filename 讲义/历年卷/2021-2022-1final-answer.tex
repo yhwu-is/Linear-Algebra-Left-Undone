@@ -1,0 +1,88 @@
+\section{2021-2022学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item 自行验证其满足线性性，略.
+        \item 设 $A=\begin{pmatrix}
+            1 & -1 & 0 & \ldots & 0 \\
+            0 & 1 & -1 & \ldots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            -1 & 0 & 0 & \ldots & 1 \\
+        \end{pmatrix}$，解 $AX=0$ 可得 $X = k(1,1,\ldots,1)^\mathrm{T}$，故 $\dim \ker T = 1$，$\dim \im T = n-1$.
+    \end{enumerate}
+
+    \item $X=k(-1,1,0,0)^\mathrm{T}+(\dfrac{1}{3},0,\dfrac{1}{3},0)^\mathrm{T}$.
+
+    \item \begin{enumerate}
+        \item $A=\begin{pmatrix}
+            1 & 1 & -2 \\
+            1 & 1 & -3 \\
+            -2 & -3 & 0
+        \end{pmatrix}$.
+        \item $f(x,y,z)=(x+y-2z)^2-4(z+\dfrac{1}{4}y)^2+\dfrac{1}{4}y^2$. 故 $A$ 和矩阵 $\diag(1,-4,\dfrac{1}{4})$ 合同.
+        \item 正惯性指数为 $2$，负惯性指数为 $1$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 设 $\alpha_1=(1,-1,0,1)$， $\alpha_2=(1,1,2,3)$， $\alpha_3=(1,2,3,4)$，注意到 $\alpha_3=-\dfrac{1}{2}\alpha_1+\dfrac{3}{2}\alpha_2$，且 $\alpha_1$， $\alpha_2$ 线性无关，故 $r(A)=2$.
+        \item 取 $V$ 的自然基 $e_1,e_2,e_3,e_4$，则 $T(e_1)=(1,1,1)^\mathrm{T}$， $T(e_2)=(-1,1,2)^\mathrm{T}$， $T(e_3)=(0,2,3)^\mathrm{T}=T(e_1)+T(e_2)$， $T(e_4)=(1,3,4)^\mathrm{T}=2T(e_1)+T(e_2)$，故 $T(e_3-e_1-e_2)=T(e_4-2e_1-e_2)=(0,0,0)^\mathrm{T}$，且不难验证 $e_1$, $e_2$, $e_3-e_1-e_2$, $e_4-2e_1-e_2$ 线性无关，故所求：
+        \[
+            \varepsilon_1=\begin{pmatrix}
+                1 \\ 0 \\ 0 \\ 0
+            \end{pmatrix}, \varepsilon_2=\begin{pmatrix}
+                0 \\ 1 \\ 0 \\ 0
+            \end{pmatrix}, \varepsilon_3=\begin{pmatrix}
+                -1 \\ -1 \\ 1 \\ 0
+            \end{pmatrix}, \varepsilon_4=\begin{pmatrix}
+                -2 \\ -1 \\ 0 \\ 1
+            \end{pmatrix}, \eta_1=\begin{pmatrix}
+                1 \\ 1 \\ 1
+            \end{pmatrix}, \eta_2=\begin{pmatrix}
+                -1 \\ 1 \\ 2
+            \end{pmatrix}.
+        \]
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 自行验证线性无关即可，略.
+        \item 按照\autoref{def:内积的定义} 验证即可，略.
+        \item 过程略，结果：$\beta_1=\begin{pmatrix}
+            1 & 0 \\ 0 & 0
+        \end{pmatrix}$，$\beta_2=\begin{pmatrix}
+            0 & 1 \\ 0 & 0
+        \end{pmatrix}$，$\beta_3=\begin{pmatrix}
+            0 & 0 \\ 1 & 0
+        \end{pmatrix}$，$\beta_4=\begin{pmatrix}
+            0 & 0 \\ 0 & 1
+        \end{pmatrix}$.
+    \end{enumerate}
+
+    \item $|\lambda E - A|=(\lambda-1)^2(\lambda+2)$，因此所有的特征值为 $1,-2$. $1$ 对应的特征子空间为 $\spa\{(1,0,1)^\mathrm{T},(0,1,1)^\mathrm{T}\}$，$-2$ 对应的特征子空间为 $\spa\{(1,1,-1)^\mathrm{T}\}$. 与 $A$ 相似的对角矩阵为 $\diag(1,1,-2)$.
+
+    \item \begin{enumerate}
+        \item 设 $V$ 的自然基为 $e_1,e_2,e_3$，则 $T(e_1+2e_2) = -(1,0,2)$， $T(e_2+2e_3)=-(2,1,0)$， $T(e_3+2e_1)=-(0,2,1)$，解得 $T(e_1) = (\dfrac{1}{3}, -\dfrac{2}{3}, -\dfrac{2}{3})$，$T(e_2) = (-\dfrac{2}{3}, \dfrac{1}{3}, -\dfrac{2}{3})$，$T(e_3) = (-\dfrac{2}{3}, -\dfrac{2}{3}, \dfrac{1}{3})$，故
+        \begin{align*}
+            (T(e_1), T(e_2), T(e_3)) &= (\dfrac{1}{3}e_1-\dfrac{2}{3}e_2-\dfrac{2}{3}e_3, -\dfrac{2}{3}e_1+\dfrac{1}{3}e_2-\dfrac{2}{3}e_3, -\dfrac{2}{3}e_1-\dfrac{2}{3}e_2+\dfrac{1}{3}e_3) \\
+            &= (e_1, e_2, e_3)\begin{pmatrix}
+                \dfrac{1}{3} & -\dfrac{2}{3} & -\dfrac{2}{3} \\[0.5em]
+                -\dfrac{2}{3} & \dfrac{1}{3} & -\dfrac{2}{3} \\[0.5em]
+                -\dfrac{2}{3} & -\dfrac{2}{3} & \dfrac{1}{3}
+            \end{pmatrix} := (e_1, e_2, e_3)M(T).
+        \end{align*}
+        则 $M(T)$ 即为所求矩阵.
+        \item 证明 $M(T)^\mathrm{T}=M(T)^{-1}$ 即可.
+        \item 自行构造方程求解即可. 最终可得单位向量 $\eta=(\dfrac{1}{\sqrt{3}}, \dfrac{1}{\sqrt{3}}, \dfrac{1}{\sqrt{3}})^\mathrm{T}$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 正确. 详见\autoref{ex:线性方程组理论与秩不等式}.
+        \item 错误. 反例：$A=\begin{pmatrix}
+            1 & \i \\
+            -\i & 1
+        \end{pmatrix}$.
+        \item 错误. 令 $V=\spa\{(1,2)\}$，$W=\spa\{(1,3)\}$，但 $V \cup W$ 不为线性空间.
+        \item 正确. 1,2推3，1,3推2均显然. 2,3推1利用可逆矩阵的唯一性即可.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage
