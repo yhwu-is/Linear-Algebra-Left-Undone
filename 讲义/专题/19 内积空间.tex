@@ -192,7 +192,7 @@ $V$ 上的内积是一个函数，它把 $ V $ 中元素的每个有序对 $(u, 
 
 而通过正交分解，我们可以证明一个数学中最重要的不等式（之一）：\term{Cauchy-Schwarz 不等式}.
 
-\begin{theorem}{Cauchy-Schwarz 不等式}{} \index{Cauchy@Cauchy-Schwarz 不等式 (Cauchy-Schwarz inequality)}
+\begin{theorem}{Cauchy-Schwarz 不等式}{Cauchy-Schwarz 不等式} \index{Cauchy@Cauchy-Schwarz 不等式 (Cauchy-Schwarz inequality)}
     设 $u, v \in V$. 则 $\left\lvert \left\langle u, v\right\rangle \right\rvert \leqslant \lVert u \rVert\lVert v \rVert$. 等号成立当且仅当 $u, v$ 之一是另一个的标量倍.
 \end{theorem}
 
@@ -505,7 +505,7 @@ $V$ 上的内积是一个函数，它把 $ V $ 中元素的每个有序对 $(u, 
     因此 $u_2 = x - 0 \cdot e_1 = x$.
 
     单位化：
-    \[ \lVert u_2 \rVert^2 = \langle x, x \rangle = \int_{-1}^1 x^2 \,\mathrm{d}x = \left(\frac{1}{3}x^3\right)\displaystyle\vert_{-1}^1 = \frac{2}{3}, e_2 = \frac{u_2}{\lVert u_2 \rVert} = \frac{x}{\sqrt{2/3}} = \sqrt{\frac{3}{2}} x. \]
+    \[ \lVert u_2 \rVert^2 = \langle x, x \rangle = \int_{-1}^1 x^2 \,\mathrm{d}x = \left.\left(\frac{1}{3}x^3\right)\right\vert_{-1}^1= \frac{2}{3}, e_2 = \frac{u_2}{\lVert u_2 \rVert} = \frac{x}{\sqrt{2/3}} = \sqrt{\frac{3}{2}} x. \]
 
     正交化：
     \[ u_3 = v_3 - \langle v_3, e_1 \rangle e_1 - \langle v_3, e_2 \rangle e_2, \]

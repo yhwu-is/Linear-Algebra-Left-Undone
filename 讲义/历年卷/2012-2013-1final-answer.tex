@@ -1,5 +1,63 @@
 \section{2012-2013学年线性代数I（H）期末答案}
 
+\begin{enumerate}
+    \item 用高斯-若当消元法即可，解为 $x_1=\dfrac{10}{7}$，$x_2=-\dfrac{1}{7}$，$x_3=-\dfrac{2}{7}$.
 
+    \item
+    \begin{enumerate}
+        \item $r(A)=1 \implies$ 列空间维数为 1. 所有列向量共线，即 $A = (\beta c_1, \dots, \beta c_n) = \beta (c_1, \dots, c_n)$. 令 $X=\beta, Y=(c_1, \dots, c_n)^\mathrm{T}$ 即可.
+        \item 不唯一. $X$ 可乘常数 $k$，$Y$ 乘 $1/k$.
+    \end{enumerate}
+
+    \item 对于方程组 $\begin{cases}
+        x_1 + x_2 = 0 \\
+        x_2 + x_3 = 0 \\
+        \ldots \\
+        x_n + x_1 = 0
+    \end{cases}$，容易得知，若 $n$ 为奇数，则只有零解；若 $n$ 为偶数，则有非零解 $k(1, -1, \ldots, 1, -1)^\mathrm{T}$.
+
+    从而 $n$ 为奇数时，$\dim \im T = n$，$\dim \ker T = 0$；$n$ 为偶数时，$\dim \im T = n-1$，$\dim \ker T = 1$.
+
+    \item 充分性显然成立，考虑必要性.
+
+    取 $V$ 的一组基 $\alpha_1, \alpha_2, \ldots, \alpha_n$，则存在 $\lambda_1, \ldots, \lambda_n \in \mathbf{F}$ 使得 $T(\alpha_i) = \lambda_i \alpha_i, 1\leqslant i \leqslant n$. 则对任意的 $1 \leqslant i < j \leqslant n$，存在 $k_{ij} \in \mathbf{F}$ 使得 $T(\alpha_i + \alpha_j) = k_{ij}(\alpha_i + \alpha_j) = \lambda_i \alpha_i + \lambda_j \alpha_j$，即 $(k_{ij} - \lambda_i) \alpha_i + (k_{ij} - \lambda_j) \alpha_j = 0$，由基的线性无关性可知 $k_{ij} = \lambda_i = \lambda_j$.
+
+    从而 $\lambda_1 = \lambda_2 = \cdots = \lambda_n := \lambda$，从而对任意的 $v \in V$，$T(v) = \lambda v$.
+
+    \item
+    \begin{enumerate}
+        \item $A$ 可逆 $\implies |A| \neq 0 \implies$ 无零特征值.
+        \item 由于 $|\lambda E - A|=(\lambda-a)(\lambda-d)-bc = 0$，故
+        \[
+        (\lambda E - A) \begin{pmatrix} b \\ \lambda-a \end{pmatrix} = \begin{pmatrix} \lambda - a & -b \\ -c & \lambda - d \end{pmatrix} \begin{pmatrix} b \\ \lambda-a \end{pmatrix} = \begin{pmatrix} 0 \\ (\lambda-a)(\lambda-d)-bc \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}.\] 故 $(b, \lambda - a)^\mathrm{T}$ 为对应于特征值 $\lambda$ 的特征向量.
+        \item 由于上一问中 $\lambda$ 的一般性，故 $\lambda_i$ 均有对应的特征向量 $v_i = (b, \lambda_i - a)^\mathrm{T}, i=1,2$. 由于矩阵为 $2$ 阶，且 $\lambda_1 \neq \lambda_2$，故 $P=(v_1, v_2)$ 即满足要求.
+    \end{enumerate}
+
+    \item $|\lambda E - A| = (\lambda-1)^2(\lambda+2)$. $1$ 对应的特征向量为 $(1,-1,0)^\mathrm{T}, (1,0,1)^\mathrm{T}$，$-2$ 对应的特征向量为 $(1,1,-1)^\mathrm{T}$. 注意到 $(1,1,-1)^\mathrm{T}$ 已经和 $1$ 对应的特征向量正交，故只需对 $(1,-1,0)^\mathrm{T}, (1,0,1)^\mathrm{T}$ 作施密特正交化并最终归一化即可.
+
+    最终可得三个标准正交特征向量分别为 $\dfrac{1}{\sqrt{2}}(-1,1,0)^\mathrm{T}, \dfrac{1}{\sqrt{6}}(1,1,2)^\mathrm{T}, \dfrac{1}{\sqrt{3}}(1,1,-1)^\mathrm{T}$. 故最终所求的正交矩阵为 $\begin{pmatrix}
+        -\dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{6}} & \dfrac{1}{\sqrt{3}} \\[0.5em]
+        \dfrac{1}{\sqrt{2}} & \dfrac{1}{\sqrt{6}} & \dfrac{1}{\sqrt{3}} \\[0.5em]
+        0 & \dfrac{2}{\sqrt{6}} & -\dfrac{1}{\sqrt{3}}
+    \end{pmatrix}$.
+
+    \item 必要性显然，下面考虑充分性.
+
+    由条件，对 $\forall v\in V$，$\langle T(u) - \lambda u, v\rangle = 0$. 特别的，对 $v = T(u) - \lambda u$，有 $\langle T(u) - \lambda u, T(u) - \lambda u \rangle = 0$，由正定性可知 $T(u) - \lambda u = \vec{0}$，即 $T(u) = \lambda u$，充分性成立.
+
+    \item
+    \begin{enumerate}
+        \item $(A-\lambda E_n)(A - (6-\lambda) E_n) = A^2 - 6A + \lambda(6-\lambda) E_n = -(\lambda-1)(\lambda-5)E_n$. 从而 $A$ 的特征值只能是 $1$ 或 $5$，即 $A$ 的特征值一定是正数，故正定.
+        \item 由上一问可知所有可能的对角矩阵为 $\diag(1,1), \diag(1,5), \diag(5,1), \diag(5,5)$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 错. 对角化后可能有 $0$ 特征值（如零映射）.
+        \item 错. $AB$ 对称需 $AB=BA$，而这不一定成立.
+        \item 对. $AB = A(BA)A^{-1}$.
+        \item 错. $A$ 可以是幂零矩阵，如 $\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$.
+    \end{enumerate}
+\end{enumerate}
 
 \clearpage
