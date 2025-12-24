@@ -1,0 +1,60 @@
+\section{2010-2011学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item 增广矩阵化简可得 $\begin{pmatrix}[ccc|c]
+        1 & -1 & -2 & -3 \\
+        0 & 5 & 7 & 11 \\
+        0 & 0 & 3a+24 & 4a+52
+    \end{pmatrix}$.
+
+    $a=-8$ 时，$4a+52 \neq 0$，方程组无解.
+
+    $a\neq -8$ 时，系数矩阵满秩，故方程组有唯一解.
+
+    综上：$\forall a \in \mathbf{R} \backslash \{-8\}$ 满足要求.
+
+    \item
+    \begin{enumerate}
+        \item 验证 $T(\lambda A + \mu B) = \lambda T(A) + \mu T(B)$ 即可.
+        \item 设 $M_{3\times 2}(\mathbf{F})$ 的自然基为 $\{E_{11}, E_{12}, E_{21}, E_{22}, E_{31}, E_{32}\}$，计算可得 $T(E_{11}) = O$, $T(E_{12}) = E_{11}$, $T(E_{21}) = O$, $T(E_{22}) = E_{11}+E_{21}$, $T(E_{31}) = O$, $T(E_{32}) = O$. 故像空间为 $\spa\{E_{11}, E_{21}\}$，核空间为 $\spa\{E_{11}, E_{21}, E_{31}, E_{32}\}$.
+        \item 由上一问知 $\dim \ker T = 4$，$\dim \im T = 2$，故 $r(T) + \dim \im(T) = 2 + 4 = 6 = \dim M_{3 \times 2}(\mathbf{F})$. 维数公式成立.
+    \end{enumerate}
+
+    \item 取行列式，$\det(AB) = \det(-BA) = (-1)^n \det(B)\det(A)$. 因 $n$ 为奇数，$\det(A)\det(B) = - \det(A)\det(B)$，故 $\det(A)\det(B)=0$. 即 $A$ 不可逆或 $B$ 不可逆.
+
+    \item 柯西-施瓦茨不等式取等号的充要条件. 柯西-施瓦茨不等式的证明见\autoref{thm:Cauchy-Schwarz 不等式}.
+
+    \item
+    \begin{enumerate}
+        \item 由于 $A$ 为正交矩阵，因此其列向量构成标准正交基. 因此每个列向量的模均为 $1$，故 $|a_{ij}|\leqslant 1$，从而 $\left|\displaystyle\sum_{i=1}^n a_{ii}\right| \leqslant \displaystyle\sum_{i=1}^n |a_{ii}| \leqslant n$.
+        \item 等号成立当且仅当每个 $a_{ii}$ 的绝对值均为 $1$ 且符号相同，此时其他的 $a_{ij}$ 必须为零，故 $A=E$ 或 $A=-E$.
+    \end{enumerate}
+
+    \item $A = P \Lambda P^{-1} = \begin{pmatrix} 1 & 2 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 1 & 1 \end{pmatrix}^{-1} = \begin{pmatrix} 0 & 2 \\ -1 & 3 \end{pmatrix}$.
+
+    \item $A, B$ 可对角化且特征子空间相同，说明它们有共同的特征向量基 $P$，
+
+    使得 $A=P\Lambda_A P^{-1}, B=P\Lambda_B P^{-1}$. 由于对角矩阵乘法可交换，故 \[ AB = P \Lambda_A \Lambda_B P^{-1} = P \Lambda_B \Lambda_A P^{-1} = BA. \]
+
+    \item
+    \begin{enumerate}
+        \item $A = \begin{pmatrix} 2 & -4 & -8 \\ -4 & 1 & 7 \\ -8 & 7 & 5 \end{pmatrix}$.
+        \item 配方：\begin{align*}
+            f(x_1,x_2,x_3) &= 2x_1^2 + x_2^2 + 5x_3^2 - 8x_1x_2 -16x_1x_3 + 14x_2x_3 \\
+            &= 2(x_1-2x_2-4x_3)^2 - 7(x_2+\frac{9}{7}x_3)^2 - \frac{108}{7} x_3^2.
+        \end{align*}
+
+        因此一个满足要求的对角矩阵为 $\begin{pmatrix} 2 & 0 & 0 \\ 0 & -7 & 0 \\ 0 & 0 & -\dfrac{108}{7} \end{pmatrix}$.
+        \item 秩为 $3$，正惯性指数 $1$，负惯性指数 $2$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对. 基向量像确定，则线性映射唯一确定.
+        \item 错. 例如 $A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}$，幂恒不为零但不可逆.
+        \item 错. 只要 $W$ 维数高于 $V$ 即可.
+        \item 错. 相似矩阵特征值相同，但特征向量一般不同（$Y=P^{-1}X$，见\autoref{ex:相似矩阵坐标变换}）.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

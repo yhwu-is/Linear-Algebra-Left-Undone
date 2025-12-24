@@ -1,0 +1,178 @@
+\section{2014-2015学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item 设出直线参数方程并让方向向量与平面的法向量平行即可，最终得到的参数方程为 $\begin{cases}
+        x=2+t\\
+        y=2t\\
+        z=-1-t
+    \end{cases},t\in\mathbf{R}$，标准方程为 $\dfrac{x-2}{1}=\dfrac{y}{2}=-\dfrac{z+1}{1}$，方向余弦为 $(\dfrac{1}{\sqrt{6}},\dfrac{2}{\sqrt{6}},-\dfrac{1}{\sqrt{6}})$.
+
+    \item 原题有误，应将所求的行列式改为：$\begin{vmatrix}
+        x & y & z \\
+        1 & -1 & 13 \\
+        u & v & w
+    \end{vmatrix}$.
+
+    将三个行列式均按第一行展开，并记三个行列式的代数余子式 $A_{11} = c_1, A_{12} = c_2, A_{13} = c_3$，则有方程组
+    \[
+        \begin{cases}
+            c_1 + c_2 + c_3 = 1\\
+            c_1 + 2c_2 - 5c_3 = 2\\
+            2c_1 + 3c_2 + bc_3 = a
+        \end{cases}
+    \]
+    整理有 $(b+4)c_3 = a-3$，故 $a=3, b=-4$.
+
+    待定系数可得所求为 $-\begin{vmatrix}
+        1 & -1 & 13 \\
+        x & y & z \\
+        u & v & w
+    \end{vmatrix} = -c_1 + c_2 - 13c_3 = 2(c_1 + 2c_2 - 5c_3) - 3(c_1 + c_2 + c_3) = 1$.
+
+    \item $B$ 可化为分块对角矩阵 $\begin{pmatrix}
+        B_1 & 0 \\
+        0 & B_2
+    \end{pmatrix}$，其中 $B_1 = \begin{pmatrix}
+        1 & 0 \\
+        -1 & 1
+    \end{pmatrix}, B_2 = \begin{pmatrix}
+        1 & -1 & -1 \\
+        -2 & -2 & 2 \\
+        -3 & -3 & 3
+    \end{pmatrix}$.
+
+    $B_1 = E + N_1$，其中 $N_1 = \begin{pmatrix}
+        0 & 0 \\
+        -1 & 0
+    \end{pmatrix}$，且 $N_1^2 = 0$，故 $B_1^n = (E + N_1)^n = E + nN_1 = \begin{pmatrix}
+        1 & 0 \\
+        -n & 1
+    \end{pmatrix}$.
+
+    将 $B_2$ 对角化可得 $P^{-1}B_2P = D =\begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 1+\sqrt{5} & 0 \\
+        0 & 0 & 1-\sqrt{5}
+    \end{pmatrix}$，其中 $P = \begin{pmatrix}
+        1 & 5 & 5 \\
+        0 & -2\sqrt{5} & 2\sqrt{5} \\
+        0 & -3\sqrt{5} & 3\sqrt{5}
+    \end{pmatrix}$，$P^{-1} = \dfrac{1}{20}\begin{pmatrix}
+        0 & -30 & 20 \\
+        2 & 3-\sqrt{5} & -2 \\
+        2 & 3+\sqrt{5} & -2
+    \end{pmatrix}$. 故 $B_2^n = PD^nP^{-1}$，其中 $D^n = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & (1+\sqrt{5})^n & 0 \\
+        0 & 0 & (1-\sqrt{5})^n
+    \end{pmatrix}$. 令 $\lambda_1=1+\sqrt{5}$，$\lambda_2=1-\sqrt{5}$，整理可得 \[ B_2^n = \begin{pmatrix}
+        \frac{1}{2}(\lambda_1^n+\lambda_2^n) & \frac{1}{4}((3-\sqrt{5})\lambda_1^n + (3+\sqrt{5})\lambda_2^n) & -\frac{1}{2}(\lambda_1^n+\lambda_2^n) \\
+        \frac{-\sqrt{5}}{5}(\lambda_1^n - \lambda_2^n) & \frac{-\sqrt{5}}{10}((3-\sqrt{5})\lambda_1^n - (3+\sqrt{5})\lambda_2^n) & \frac{\sqrt{5}}{5}(\lambda_1^n - \lambda_2^n) \\
+        \frac{-3\sqrt{5}}{10}(\lambda_1^n - \lambda_2^n) & \frac{-3\sqrt{5}}{20}((3-\sqrt{5})\lambda_1^n - (3+\sqrt{5})\lambda_2^n) & \frac{3\sqrt{5}}{10}(\lambda_1^n - \lambda_2^n)
+    \end{pmatrix}. \]
+    注意到 $3-\sqrt{5}=\dfrac{1}{2}(1-\sqrt{5})^2, 3+\sqrt{5}=\dfrac{1}{2}(1+\sqrt{5})^2$，且 $(1-\sqrt{5})(1+\sqrt{5}) = 1 - 5 = -4$，故上式可进一步简化为：
+    \[
+        \begin{pmatrix}
+            \frac{1}{2}(\lambda_1^n+\lambda_2^n) & 2(\lambda_1^{n-2} + \lambda_2^{n-2}) & -\frac{1}{2}(\lambda_1^n+\lambda_2^n) \\
+            \frac{-\sqrt{5}}{5}(\lambda_1^n - \lambda_2^n) & \frac{-4\sqrt{5}}{5}(\lambda_1^{n-2} - \lambda_2^{n-2}) & \frac{\sqrt{5}}{5}(\lambda_1^n - \lambda_2^n) \\
+            \frac{-3\sqrt{5}}{10}(\lambda_1^n - \lambda_2^n) & \frac{-6\sqrt{5}}{5}(\lambda_1^{n-2} - \lambda_2^{n-2}) & \frac{3\sqrt{5}}{10}(\lambda_1^n - \lambda_2^n)
+        \end{pmatrix}
+    \]
+    从而可得 \[ B^n = \begin{pmatrix}
+        1 & 0 & 0 & 0 & 0 \\
+        -n & 1 & 0 & 0 & 0 \\
+        0 & 0 & \frac{1}{2}(\lambda_1^n+\lambda_2^n) & 2(\lambda_1^{n-2} + \lambda_2^{n-2}) & -\frac{1}{2}(\lambda_1^n+\lambda_2^n) \\
+        0 & 0 & \frac{-\sqrt{5}}{5}(\lambda_1^n - \lambda_2^n) & \frac{-4\sqrt{5}}{5}(\lambda_1^{n-2} - \lambda_2^{n-2}) & \frac{\sqrt{5}}{5}(\lambda_1^n - \lambda_2^n) \\
+        0 & 0 & \frac{-3\sqrt{5}}{10}(\lambda_1^n - \lambda_2^n) & \frac{-6\sqrt{5}}{5}(\lambda_1^{n-2} - \lambda_2^{n-2}) & \frac{3\sqrt{5}}{10}(\lambda_1^n - \lambda_2^n)
+    \end{pmatrix}. \] 其中 $\lambda_1 = 1+\sqrt{5}, \lambda_2 = 1-\sqrt{5}$.
+
+    \item 不难求得 $W$ 的一组基为 $\{(-1, 3, 1, 0)^\mathrm{T}, (-1, -2, 0, 1)^\mathrm{T}\}$，施密特正交化可得
+    \begin{gather*}
+        e_1 = \dfrac{1}{\sqrt{11}}(-1, 3, 1, 0)^\mathrm{T},\quad e_2 = \dfrac{1}{\sqrt{451}}(-16,-7,5,11)^\mathrm{T}, \\
+        e_3 = \dfrac{1}{\sqrt{3}}(1,0,1,1)^\mathrm{T},\quad e_4 = \dfrac{1}{\sqrt{123}}(1,3,-8,7)^\mathrm{T}.
+    \end{gather*}
+
+    \item 设 $T(k_1\alpha_1 + k_2\alpha_2 + k_3\alpha_3) = (k_1 + k_2 + k_3)\alpha_1 + (k_1 - k_2 + 2k_3)\alpha_2 = 0$，可解得 $\dfrac{k_1}{-3} = \dfrac{k_2}{1} = \dfrac{k_3}{2}$，故 $\ker T = \spa\{-3\alpha_1 + \alpha_2 + 2\alpha_3\}$.
+
+    由于 $\dfrac{3}{2}T(\alpha_1) - \dfrac{1}{2}T(\alpha_2) = \alpha_1 + 2\alpha_2 = T(\alpha_3)$，故 $\im T = \spa\{\alpha_1+\alpha_2, \alpha_1 - \alpha_2\}$. $r(T) = 2$.
+    \item 见\autoref{ex:多项式与对角化例子}.
+    \item \begin{enumerate}
+        \item 考虑自然基 $e_1=1,e_2=x,e_3=x^2$，则 $(\alpha_1,\alpha_2,\alpha_3)=(e_1,e_2,e_3)\begin{pmatrix}
+            1 & 0 & 0 \\
+            -1 & -1 & 3 \\
+            0 & 1 & -2
+        \end{pmatrix}:=(e_1,e_2,e_3)M_A$，$(\beta_1,\beta_2,\beta_3)=(e_1,e_2,e_3)\begin{pmatrix}
+            0 & -1 & 0 \\
+            4 & 0 & 3 \\
+            5 & 0 & 4
+        \end{pmatrix}:=(e_1,e_2,e_3)M_B$，故所求的过渡矩阵为$M_A^{-1}M_B = \begin{pmatrix}
+            0 & -1 & 0 \\
+            23 & -2 & 18 \\
+            9 & -1 & 7
+        \end{pmatrix}$.
+
+        \item 即求解方程组 $\begin{pmatrix}
+            0 & -1 & 0 \\
+            23 & -2 & 18 \\
+            9 & -1 & 7
+        \end{pmatrix}\begin{pmatrix}
+            y_1 \\ y_2 \\ y_3
+        \end{pmatrix}=\begin{pmatrix}
+            1 \\ 1 \\ -1
+        \end{pmatrix}$，可得坐标为 $(-29,-1,37)^\mathrm{T}$.
+    \end{enumerate}
+
+    \item 先证明一个引理：考虑欧式内积，则实对称矩阵 $A$ 的不同特征值对应的特征向量是正交的.（该结论在线代II上会学到）.
+
+    设 $\lambda_i \neq \lambda_j$ 为 $A$ 的两个不同的特征值，对应的特征向量分别为 $\alpha_i, \alpha_j$，即 $A\alpha_i = \lambda_i \alpha_i, A\alpha_j = \lambda_j \alpha_j$. 考虑 $\alpha_i^\mathrm{T}A\alpha_j$，有两种计算方式：
+    \[
+        \alpha_i^\mathrm{T}A\alpha_j = \lambda_j \alpha_i^\mathrm{T}\alpha_j = \alpha_i^\mathrm{T}A^\mathrm{T}\alpha_j = (A\alpha_i)^\mathrm{T}\alpha_j = \lambda_i \alpha_i^\mathrm{T}\alpha_j.
+    \]
+    也就是 $(\lambda_j - \lambda_i)\alpha_i^\mathrm{T}\alpha_j = 0$，由于 $\lambda_i \neq \lambda_j$，故 $\alpha_i^\mathrm{T}\alpha_j = 0$，即 $\alpha_i, \alpha_j$ 正交. 由 $\lambda_i, \lambda_j$ 的任意性可知，结论成立. 引理得证.
+
+    回到原题，由于 $A$ 和 $\diag(1,2,-1)$ 相似，故 $A$ 的特征值为 $1,2,-1$，互不相同. 设 $2$ 对应的特征向量为 $\vec{x}=(x_1,x_2,x_3)$，故由引理可得 $\begin{cases}
+        x_1 - x_2 = 0\\
+        x_1 + x_2 - 2x_3 = 0
+    \end{cases}$，可得 $\vec{x} = t(1,1,1)^\mathrm{T}$，可取 $t=1$，这样 $A=P\diag(1,2,-1)P^{-1}$，其中 $P = \begin{pmatrix}
+        1 & 1 & 1 \\
+        -1 & 1 & 1 \\
+        0 & 1 & -2
+    \end{pmatrix}$，$P^{-1} = \dfrac{1}{6}\begin{pmatrix}
+        3 & -3 & 0 \\
+        2 & 2 & 2 \\
+        1 & 1 & -2
+    \end{pmatrix}$. 故 $A^n = P\diag(1,2^n,(-1)^n)P^{-1}$，整理可得
+    \[
+        A^n = \dfrac{1}{6}\begin{pmatrix}
+            3+(-1)^n+2^{n+1} & -3+(-1)^n+2^{n+1} & 2^{n+1}-2(-1)^n \\
+            -3+(-1)^n+2^{n+1} & 3+(-1)^n+2^{n+1} & 2^{n+1}-2(-1)^n \\
+            2^{n+1}-2(-1)^n & 2^{n+1}-2(-1)^n & 2^{n+1}+4(-1)^n
+        \end{pmatrix}.
+    \]
+
+    \item \begin{enumerate}
+        \item 错误. $A=\begin{pmatrix}
+            1 & 0 \\
+            0 & 2
+        \end{pmatrix}$，$B=\begin{pmatrix}
+            1 & 1 \\
+            1 & 2
+        \end{pmatrix}$，则 $AB=\begin{pmatrix}
+            1 & 1 \\
+            2 & 4
+        \end{pmatrix}$，不是对称矩阵.
+
+        \item 正确. $\left|\det\begin{pmatrix}
+            O & B \\
+            A & C
+        \end{pmatrix}\right| = \left|\det\begin{pmatrix}
+            A & C \\
+            O & B
+        \end{pmatrix}\right| = |\det(A)||\det(B)| \neq 0$，故原分块矩阵可逆.
+
+        \item 错误. 取函数 $f(x) = \sqrt{R(x)}$，其中 $R(x)$ 是黎曼函数，则 $\langle f, f \rangle = \int_0^1 R(x) \mathrm{d}x = 0$，但 $f \neq 0$，与正定性矛盾.
+        \item 正确. 详见\nameref{chap:朝花夕拾}习题 B 组第 15 题.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

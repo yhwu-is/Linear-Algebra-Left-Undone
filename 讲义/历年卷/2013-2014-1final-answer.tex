@@ -1,0 +1,102 @@
+\section{2013-2014学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item 自行验证即可.
+        \item $M(T)=\begin{pmatrix}
+            2 & 3 & -1 \\
+            1 & 0 & 1
+        \end{pmatrix}$.
+        \item 解方程 $\begin{cases}
+            2x_1 + 3x_2 - x_3 = 0 \\
+            x_1 + x_3 = 0
+        \end{cases}$ 可得 $(x_1,x_2,x_3)^\mathrm{T} = k(-1, 1, 1)^\mathrm{T}, k \in \mathbf{R}$，因此 $\ker(T) = \spa\{(-1,1,1)^\mathrm{T}\}$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 即为函数的加法和数乘. 零向量为 $f(x) \equiv 0$.
+        \item 设 $k_1 x + k_2 \sin x + k_3 e^x = 0$.
+
+        求两次导可得 $-k_2 \sin x + k_3 e^x = 0$，再求两次导可得 $k_2 \sin x + k_3 e^x = 0$.
+
+        综合以上式子可得 $k_1=k_2=k_3=0$，因此该集合中的函数线性无关.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 由于 $\{v_i\}$ 是 $V$ 的一组单位正交基，因此对任意的 $x, y \in V$，$x=\displaystyle\sum_{i=1}^n \langle x, v_i \rangle v_i$，$y=\displaystyle\sum_{i=1}^n \langle y, v_i \rangle v_i$，并令 $x_i = \langle x, v_i \rangle, y_i = \langle y, v_i \rangle, 1\leqslant i \leqslant n$，则
+        \[
+            \langle x, y \rangle = \left\langle \sum_{i=1}^n x_i v_i, \sum_{j=1}^n y_j v_j \right\rangle = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \langle v_i, v_j \rangle = \sum_{i=1}^n x_i y_i = \sum_{i=1}^n \langle x, v_i \rangle \langle y, v_i \rangle.
+        \]
+
+        \item 由条件 $\langle x, v_i \rangle = (-1)^i, \langle y, v_i \rangle = 1, 1\leqslant i \leqslant n$，故
+        \[
+            \cos\theta = \frac{\langle x, y \rangle}{\|x\| \|y\|} = \frac{\sum_{i=1}^n \langle x, v_i \rangle \langle y, v_i \rangle}{\sqrt{\sum_{i=1}^n \langle x, v_i \rangle^2} \sqrt{\sum_{i=1}^n \langle y, v_i \rangle^2}} = \frac{\sum_{i=1}^n (-1)^i}{n} = \frac{-1+(-1)^n}{2n}.
+        \]
+        当 $n$ 为偶数时，$\cos\theta = 0$，即 $x \perp y$；
+
+        当 $n$ 为奇数时，$\cos\theta = -\dfrac{1}{n}$，二者不正交.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item $|A|=|(3\alpha_1, 7\alpha_2, \alpha_3, \beta_1)| = 21 d_1$.
+        \item $|B| = 5|(\beta_1, \alpha_1, \alpha_2, \alpha_3)| + 6|(\beta_2, \alpha_1, \alpha_2, \alpha_3)| = -5d_1 - 6d_2$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 见 2012-2013 学年线性代数I（H）期末第 4 题.
+
+        \item 若 $T$ 为零映射，则 $r(T)=0$，$\dim\ker T = n$；否则 $r(T)=n$，$\dim\ker T = 0$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item $|\lambda E - A| = \lambda^3 - (y+1)\lambda^2 + (y+2)\lambda + x-y-1 = \lambda^3 + \lambda + 2$，故 $y=-1, x=2$.
+        \item $f(\lambda)=0$ 在实数范围内有唯一解 $\lambda=-1$，对应的特征子空间为 $\spa\{(-2,1,1)^\mathrm{T}\}$，维数小于 $3$，因此不可对角化.
+        \item $f(\lambda)=0$ 在复数范围内除了 $\lambda=-1$ 外还有两个共轭复根，因此 $A$ 有三个互异的特征值，一定可对角化.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 若 $\lambda$ 是 $AB$ 的特征值，则存在非零向量 $x \in \mathbf{F}^m$ 使得 $ABx = \lambda x$，则 $BA(Bx) = B(ABx) = B(\lambda x) = \lambda (Bx)$.若 $Bx = \vec{0}$，则 $\lambda x = ABx = \vec{0}$，与假设矛盾，故 $Bx \neq \vec{0}$，因此 $\lambda$ 也是 $BA$ 的特征值.
+
+        由于 $m$ 和 $n$ 地位对称，因此若 $\lambda$ 是 $BA$ 的特征值，则 $\lambda$ 也是 $AB$ 的特征值. 得证.
+
+        \item $E_m - AB$ 可逆 $\iff$ $1$ 不是 $AB$ 的特征值 $\iff$ $1$ 不是 $BA$ 的特征值 $\iff$ $E_n - BA$ 可逆.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item $A=\begin{pmatrix}
+            2 & -2 & 0 \\
+            -2 & 1 & -2 \\
+            0 & -2 & 0
+        \end{pmatrix}$.
+        \item 配方得 $f(x_1,x_2,x_3) = (\sqrt{2}(x_1-x_2))^2 - (x_2 + 2x_3)^2 + (2x_3)^2$，
+
+        故 $P = \begin{pmatrix}
+            \sqrt{2} & -\sqrt{2} & 0 \\
+            0 & 1 & 2 \\
+            0 & 0 & 2
+        \end{pmatrix}^{-1} = \begin{pmatrix}
+            \dfrac{\sqrt{2}}{2} & 1 & -1 \\
+            0 & 1 & -1 \\
+            0 & 0 & \dfrac{1}{2}
+        \end{pmatrix}$.
+        \item 正惯性指数为 $2$，负惯性指数为 $1$，因此 $f$ 既非正定也非负定.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 错误. 取 $A=\begin{pmatrix}
+            1 & 0 \\
+            0 & 0
+        \end{pmatrix}$，$B=\begin{pmatrix}
+            0 & 0 \\
+            0 & 1
+        \end{pmatrix}$，则 $A,B$ 都是不可逆矩阵，但 $A+B=\begin{pmatrix}
+            1 & 0 \\
+            0 & 1
+        \end{pmatrix}$ 是可逆矩阵，因此不可逆矩阵的集合不封闭于加法运算.
+        \item 正确. 不难验证 $A_{ij} = A_{ji}$，故 $A^*$ 也是对称矩阵.
+        \item 正确. 设 $r_c$ 与 $r_r$ 分别表示列秩和行秩，则 $r(B)=r_c(B) \geqslant r_c(E_m) = m$，$r(B)=r_r(B) \leqslant m$，因此 $r(B)=m$.
+        \item 正确. 不存在低维空间到高维空间的满射.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

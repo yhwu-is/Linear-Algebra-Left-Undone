@@ -1330,7 +1330,7 @@
 
         \item 设$A=(a_{ij})_{m\times n}$，$\vec{b}$和$X$为$m$元列向量，$Y$为$n$元列向量，证明：
         \begin{enumerate}
-            \item 若$AY=\vec{b}$有解，则$A^\mathrm{T}X=\vec{0}$的任一组解都满足$\vec{b}^\mathrm{T}X=\vec{0}$；
+            \item 若$AY=\vec{b}$有解，则$A^\mathrm{T}X=\vec{0}$的任一组解都满足$\vec{b}^\mathrm{T}X=0$；
 
             \item 方程组$AY=\vec{b}$有解的充要条件是方程组$\begin{pmatrix}
                           A^\mathrm{T} \\ \vec{b}^\mathrm{T}
@@ -1339,7 +1339,14 @@
                       \end{pmatrix}$无解（其中$\vec{0}$是$n$元零向量）.
         \end{enumerate}
         \begin{answer}
-            见教材P213第6题.
+            \begin{enumerate}
+                \item 由条件 $(A^\mathrm{T}X)^\mathrm{T}Y=X^\mathrm{T}(AY)=X^\mathrm{T}\vec{b}=0$，故 $\vec{b}^\mathrm{T}X=0$.
+                \item 必要性由上一问显然成立.
+
+                充分性：由条件可知，若 $X_0$ 使得 $A^\mathrm{T}X_0=\vec{0}$，则 $\vec{b}^\mathrm{T}X_0=0$，否则令 $X_1 =\dfrac{X_0}{\vec{b}^\mathrm{T}X_0}$，则 $X_1$ 是方程组 $\begin{pmatrix} A^\mathrm{T} \\ \vec{b}^\mathrm{T} \end{pmatrix}$ 的解，与条件矛盾.
+
+                也就是说 $A^\mathrm{T}X=\vec{0}$ 与 $\begin{pmatrix} A^\mathrm{T} \\ \vec{b}^\mathrm{T} \end{pmatrix} X = \vec{0}$ 同解，从而 $r(A^\mathrm{T}) = r\begin{pmatrix} A^\mathrm{T} \\ \vec{b}^\mathrm{T} \end{pmatrix}$，这表明 $\vec{b}^\mathrm{T}$ 可由 $A^\mathrm{T}$ 的行向量（即 $A$ 的列向量）线性表示，因此 $AY=\vec{b}$ 有解.
+            \end{enumerate}
         \end{answer}
 
         \item 判断：设 $A$ 是复数域上 $m \times n$ 阶矩阵，则矩阵秩 $r\left(A^T A\right)=r(A)$.
@@ -1352,7 +1359,9 @@
 
         \item 证明：对于$m \times n$实矩阵$A$，方程$A^\mathrm{T}AX = A^\mathrm{T}\vec{b}$总是有解，且$A$为方阵时，$A^\mathrm{T}AX = \vec{0}$和$AX=\vec{0}$同解. 当$r(A)=n$时求其解，并证明$A(A^\mathrm{T}A)^{-1}A^\mathrm{T}$是幂等的对称矩阵.
         \begin{answer}
-            见教材P214第8题.
+            由于 $\vec{b}$ 的任意性，$A^\mathrm{T}\vec{b}$ 可以取遍 $R(A^\mathrm{T})$ 中的任意元素，这里 $R(A^\mathrm{T})$ 表示 $A^\mathrm{T}$ 的列向量张成的空间. 因此我们只需证明 $R(A^\mathrm{T}) = R(A^\mathrm{T}A)$.
+
+            $A^\mathrm{T}A$ 的每一列都是 $A^\mathrm{T}$ 的列向量的线性组合，因此 $R(A^\mathrm{T}A) \subseteq R(A^\mathrm{T})$. 而根据\autoref{ex:线性方程组理论与秩不等式} 的结论，有 $r(A^\mathrm{T}A) = r(A)$，因此 $A^\mathrm{T}A$ 的列向量组和 $A^\mathrm{T}$ 的列秩相等，即 $\dim R(A^\mathrm{T}) = \dim R(A^\mathrm{T}A)$. 从而 $R(A^\mathrm{T}) = R(A^\mathrm{T}A)$，命题得证.
         \end{answer}
 
         \item 设$A,B,C$为$n$阶实方阵，且$BAA^\mathrm{T}=CAA^\mathrm{T}$，证明：$BA=CA$.

@@ -1,0 +1,74 @@
+\section{2019-2020学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item 注意到在 $M_{41},M_{42},M_{44}$ 的第一行和第二行分别成比例，故 $A_{41}=A_{42}=A_{43}=0$，从而结果为 $0$.
+    \item 对 $A$ 进行相抵标准型分解：$A=P\begin{pmatrix}E_{r}&O\\ O&O\end{pmatrix}Q$. 记 $m=\min\{s-r,n\}$，构造 $B=Q^{-1}\begin{pmatrix}O&O\\ O&E_m\end{pmatrix}$，则 $AB=P\begin{pmatrix}E_{r}&O\\ O&O\end{pmatrix}\begin{pmatrix}O&O\\ O&E_m\end{pmatrix}=O$.
+    \item \begin{enumerate}
+        \item 由内积的性质：$\langle x+y, \alpha \rangle$，$\langle \lambda x, \alpha \rangle = \lambda \langle x, \alpha \rangle$ 可得 $\sigma(x+y)=\sigma(x)+\sigma(y)$，$\sigma(\lambda x)=\lambda \sigma(x)$，故 $\sigma$ 为线性变换. 像空间为 $\spa\{\alpha\}$.
+        \item 记 $e_1=(1,0,0), e_2=(0,1,0), e_3=(0,0,1)$，$\xi_1=(1,1,1), \xi_2=(1,1,0), \xi_3=(1,0,0)$. 设 $\sigma(e_1,e_2,e_3)=(e_1,e_2,e_3)A$，$\sigma(\xi_1,\xi_2,\xi_3)=(\xi_1,\xi_2,\xi_3)B$，其中 $A,B$ 即为待求矩阵. 易得 $A=\begin{pmatrix} 1&0&-2 \\ 0&0&0 \\ -2&0&4 \end{pmatrix}$，且 $B_1$ 变为 $B_2$ 的过渡矩阵 $C=\begin{pmatrix}1&1&1\\ 1&1&0\\ 1&0&0\end{pmatrix}$，故 $B=C^{-1}AC=\begin{pmatrix}2&-2&-2\\ -2&2&2\\ -1&1&1\end{pmatrix}$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item $A(E-A)^{-1} = (E-(E-A))(E-A)^{-1} = (E-A)^{-1} - E = (E-A)^{-1}(E-(E-A)) = (E-A)^{-1}A$.
+        \item 由于 $A$ 反对称，故 $(E+A)^\mathrm{T}=E-A$ 可逆. 利用 $E+A$ 与 $(E-A)^{-1}$ 可交换按照定义自行验证转置等于逆矩阵.
+
+        对于第二部分，采用反证法，假设存在非零向量 $x$ 使得 $(E-A)(E+A)^{-1}x = -x$，设 $y=(E+A)^{-1}x$，则有 $(E-A)y = -(E+A)y$，即 $y=-y$，从而 $y=0$，由于 $E+A$ 可逆，故 $x=0$，与假设矛盾，得证.
+    \end{enumerate}
+
+    \item $t_1 \neq 0$ 或 $t_2 \neq 0$.
+
+    $t_1 \neq 0$ 时剩余向量为 $\alpha_s$，$t_1=0$ 时剩余向量为 $\alpha_1$.
+
+    \item \begin{enumerate}
+        \item 二次型矩阵 $A=\begin{pmatrix}a&1&1\\ 1&a&-1\\ 1&-1&a\end{pmatrix}$. 特征值为 $a+1, a+1, a-2$. 由于对角化秩不变，不难得知 $a=2$.
+        \item 配方得 $X^\mathrm{T}AX=(\sqrt{2}x_1+\dfrac{\sqrt{2}}{2} x_2 + \dfrac{\sqrt{2}}{2} x_3)^2+(\dfrac{\sqrt{6}}{2} x_2 - \dfrac{\sqrt{2}}{2} x_3)^2$.
+
+        令 $\begin{cases}
+            y_1 = \sqrt{2}x_1+\dfrac{\sqrt{2}}{2} x_2 + \dfrac{\sqrt{2}}{2} x_3 \\
+            y_2 = \dfrac{\sqrt{6}}{2} x_2 - \dfrac{\sqrt{2}}{2} x_3 \\
+            y_3 = x_3
+        \end{cases}$，则 $Y=\begin{pmatrix}
+            \sqrt{2} & \dfrac{\sqrt{2}}{2} & \dfrac{\sqrt{2}}{2} \\[0.5em]
+            0 & \dfrac{\sqrt{6}}{2} & -\dfrac{\sqrt{2}}{2} \\[0.5em]
+            0 & 0 & 1
+        \end{pmatrix} X$，所求的 $Q = \begin{pmatrix}
+            \dfrac{\sqrt{2}}{2} & -\dfrac{\sqrt{6}}{6} & -1 \\[0.5em]
+            0 & \dfrac{\sqrt{6}}{3} & 1 \\[0.5em]
+            0 & 0 & 1
+        \end{pmatrix}$. 二次型的正惯性系数为 $2$，负惯性系数为 $0$.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 封闭性自行验证.
+
+        关于该子空间的维度，设矩阵的对角线元素为 $a, b, c$，$\lambda = a+b+c$，则矩阵可表示为 $\begin{pmatrix}
+            a & x & \lambda - a - x \\
+            \lambda - b - y & b & y \\
+            z & \lambda - c - z & c
+        \end{pmatrix}$，其中 $a, b, c, x, y, z$ 可任意取值，共 $6$ 个自由变量，故维数为 $6$.
+
+        \item 记 $\lambda=\displaystyle\sum_{j=1}^3 a_{1j} = \displaystyle\sum_{j=2}^3 a_{2j} = \displaystyle\sum_{j=3}^3 a_{3j}$，则 $A\begin{pmatrix}
+            1 \\ 1 \\ 1
+        \end{pmatrix} = \lambda \begin{pmatrix}
+            1 \\ 1 \\ 1
+        \end{pmatrix}$，故 $\lambda$ 为 $A$ 的特征值.
+
+        等式两边同乘以 $A^{-1}$ 可得 $A^{-1}\begin{pmatrix}
+            1 \\ 1 \\ 1
+        \end{pmatrix} = \dfrac{1}{\lambda} \begin{pmatrix}
+            1 \\ 1 \\ 1
+        \end{pmatrix}$，故 $\dfrac{1}{\lambda}$ 也是 $A^{-1}$ 的特征值.
+        \item 由上一问可知可逆矩阵 $A \in X$ 当且仅当每行元素之和相等（记为 $\lambda$）且 $\lambda \neq 0$ 是 $A$ 的特征值，同时 $\tr(A) = \lambda$. 那么要证明 $A^{-1} \in X$，只需证明 $\tr(A^{-1}) = \dfrac{1}{\lambda}$.（因为由上一问，$(1,1,1)^\mathrm{T}$ 是 $A^{-1}$ 的特征值 $\dfrac{1}{\lambda}$ 对应的特征向量，这说明 $A^{-1}$ 的各行元素之和等于 $\dfrac{1}{\lambda}$）.
+
+        记 $A$ 的特征值为 $\lambda, \lambda_1, \lambda_2$，则 $\tr(A) = \lambda = \lambda + \lambda_1 + \lambda_2$，故 $\lambda_1 + \lambda_2 = 0$. 从而 $\tr(A^{-1}) = \dfrac{1}{\lambda} + \dfrac{1}{\lambda_1} + \dfrac{1}{\lambda_2} = \dfrac{1}{\lambda} + \dfrac{\lambda_1 + \lambda_2}{\lambda_1 \lambda_2} = \dfrac{1}{\lambda}$，得证.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 正确. 从 $A_1, \ldots, A_{n+1}$ 中分别取出第一列向量 $\alpha_1, \ldots, \alpha_{n+1}$，则 $\alpha_1, \ldots, \alpha_{n+1}$ 为 $n$ 维向量空间中的 $n+1$ 个向量，必线性相关，故存在不全为 $0$ 的 $\lambda_1, \lambda_2, \ldots, \lambda_{n+1}$ 使得 $\lambda_1 A_1 + \cdots + \lambda_{n+1} A_{n+1}$ 的第一列为 $0$，矩阵不可逆.
+        \item 错误. $\dim \mathbf{C}=1$，而 $\dim \mathbf{C}^{2}=2$.
+        \item 错误. 需 $\lambda \geqslant 0$ 才成立.
+        \item 错误. 可举反例 $A=\begin{pmatrix}0&1&0\\ 0&0&1\\ 0&0&0\end{pmatrix}$，$B=\begin{pmatrix} 0&1&0 \\ 0&0&0 \\ 0&0&0 \end{pmatrix}$.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

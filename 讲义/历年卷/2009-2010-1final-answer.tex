@@ -1,0 +1,72 @@
+\section{2009-2010学年线性代数I（H）期末答案}
+
+\begin{enumerate}
+    \item $\|f(x)\|=\sqrt{\displaystyle\int_0^{2\pi} x^2 \, \mathrm{d}x}=2\pi\sqrt{\dfrac{2\pi}{3}}$，$\|g(x)\|=\sqrt{\displaystyle\int_0^{2\pi} \sin^2 x \,\mathrm{d}x}=\sqrt{\pi}$，
+
+    $\langle f,g \rangle = \displaystyle\int_0^{2\pi} x \sin x \,\mathrm{d}x = -2\pi$，故 $\cos\theta = -\dfrac{\sqrt{6}}{2\pi}$，$\theta = \arccos\left(-\dfrac{\sqrt{6}}{2\pi}\right)$.
+
+    \item $T(1)=1, T(x)=2x, T(x^2)=3x^2$. 特征值为 $1, 2, 3$.
+
+    属于 $1$ 的特征子空间为 $\spa\{1\}$；属于 $2$ 的特征子空间为 $\spa\{x\}$；属于 $3$ 的特征子空间为 $\spa\{x^2\}$.
+
+    \item 设 $B$ 为 $3\times 1$ 矩阵，$C$ 为 $1\times 3$ 矩阵，则 $r(BC) \leqslant \min(r(B), r(C)) \leqslant 1$.
+
+    若 $r(A)=1$，则 $A$ 的列向量共线，存在非零列向量 $\beta$ 使得 $A$ 的各列均为 $\beta$ 的倍数，即 $A = (\beta c_1, \beta c_2, \beta c_3) = \beta (c_1, c_2, c_3)$. 令 $B=\beta, C=(c_1, c_2, c_3)$ 即可.
+
+    \item \begin{enumerate}
+        \item 计算行列式 $|A| = (a-1)^2(a+2)$. 方程组有解但不唯一意味着 $|A|=0$，即 $a=1$ 或 $a=-2$.
+
+        当 $a=1$ 时，增广矩阵秩不等于系数矩阵秩，无解.
+
+        当 $a=-2$ 时，方程组有无穷多解. 通解为 $(\dfrac{1}{3}, -\dfrac{2}{3}, 0)^\mathrm{T} + k(1, -1, 1)^\mathrm{T}$. 因此，$a=-2$.
+
+        \item 由上知一般解为 $(\dfrac{1}{3}, -\dfrac{2}{3}, 0)^\mathrm{T} + k(1, -1, 1)^\mathrm{T}, k \in \mathbf{R}$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item $(A^\mathrm{T}A)^\mathrm{T} = A^\mathrm{T}(A^\mathrm{T})^\mathrm{T} = A^\mathrm{T}A$，故是对称矩阵.
+        \item 对任意 $x \neq 0$，由于 $A$ 可逆，则 $Ax \neq 0$，故 $x^\mathrm{T}A^\mathrm{T}Ax = (Ax)^\mathrm{T}(Ax) = \|Ax\|^2 > 0$，故正定.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item $A$ 对应的二次型为 $f(x_1, x_2, x_3) = -2x_2^2 - x_3^2 + 2x_1x_2 + 2x_1x_3 + 4x_2x_3 = (x_1+3x_2)^2 - 7x_2^2 - (x_1+2x_2-x_3)^2$.
+
+        令 $\begin{cases}
+            y_1 = x_1 + 3x_2 \\
+            y_2 = x_2 \\
+            y_3 = x_1 + 2x_2 - x_3
+        \end{cases}$，可得 $\begin{cases}
+            x_1 = y_1 - 3y_2 \\
+            x_2 = y_2 \\
+            x_3 = y_1 - y_2 - y_3
+        \end{cases}$，即 $Q=\begin{pmatrix}
+            1 & -3 & 0 \\
+            0 & 1 & 0 \\
+            1 & -1 & -1
+        \end{pmatrix}$.
+
+        \item 根据上一问可知，$Q^\mathrm{T}AQ = \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & -7 & 0 \\
+            0 & 0 & -1
+        \end{pmatrix}$，因此正惯性指数为 $1$，负惯性指数为 $2$，矩阵既不正定也不负定.
+    \end{enumerate}
+
+    \item $T$ 关于基 $\beta$ 的矩阵为 $A = \begin{pmatrix} 0 & 0 & \dots & a_1 \\ 1 & 0 & \dots & a_2 \\ & \ddots & & \vdots \\ 0 & & 1 & a_n \end{pmatrix}$.
+    $T$ 是同构当且仅当 $|A| \neq 0$，即 $a_1 \neq 0$（按第一行展开可得）.
+
+    \item 设 $\lambda_1$ 与 $\lambda_2$ 的代数重数分别为 $m_1$ 和 $m_2$，则 $n-1 = \dim V_{\lambda_1} \leqslant m_1$. 又 $m_1 + m_2 = n$，故 $m_1$ 只能为 $n-1$（此时另一特征值 $\lambda_2$ 重数为1）.
+    此时代数重数等于几何重数，故 $A$ 可对角化.
+
+    \item
+    \begin{enumerate}
+        \item 对. 扩充 $v$ 为一组基，在指定 $T(v)=w$ 的基础上任意指定其他基上的像即可.
+        \item 对. 自由变量个数大于 $0$.
+        \item 对. 满秩即行列式不为 $0$.
+        \item 错. 在实数域上旋转变换（如转 $90$ 度）无特征值，不可对角化.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage
