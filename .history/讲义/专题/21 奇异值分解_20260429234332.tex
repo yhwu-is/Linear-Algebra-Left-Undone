@@ -25,13 +25,13 @@
 
         \item 若 $v \in \ker T$，则 $Tv = 0$，从而 $T^*Tv = 0$，故 $\ker T \subseteq \ker T^*T$. 反过来，若 $v \in \ker T^*T$，则 $0 = \langle T^*Tv, v \rangle = \lVert Tv \rVert^2$，因而 $Tv = 0$，即 $v \in \ker T$. 故 $\ker T^*T = \ker T$.
 
-        \item 由\autoref{thm:伴随核空间像空间}可知 $\im T^* = (\ker T)^{\perp}$，又因为 $T^*T$ 是自伴算子，所以 $\im T^*T = (\ker T^*T)^{\perp}$. 结合前述第 2 条，有 $\im T^*T = (\ker T^*T)^{\perp} = (\ker T)^{\perp} = \im T^*$.
+        \item 由 \autoref{thm:伴随核空间像空间} 可知 $\im T^* = (\ker T)^{\perp}$，又因为 $T^*T$ 是自伴算子，所以 $\im T^*T = (\ker T^*T)^{\perp}$. 结合前述第 2 条，有 $\im T^*T = (\ker T^*T)^{\perp} = (\ker T)^{\perp} = \im T^*$.
 
-        \item 由线性映射基本定理（\autoref{thm:线性映射基本定理}）有 $\dim \im T = \dim V - \dim \ker T$. 同理，结合\autoref{thm:伴随核空间像空间}有 $\dim \im T^* = \dim V - \dim \ker T = \dim \im T$，再由前述第 3 条知 $\dim \im T^*T = \dim \im T^*$，因此 $\dim \im T = \dim \im T^* = \dim \im T^*T$.
+        \item 由线性映射基本定理（\autoref{thm:线性映射基本定理}）有 $\dim \im T = \dim V - \dim \ker T$. 同理，结合 \autoref{thm:伴随核空间像空间} 有 $\dim \im T^* = \dim V - \dim \ker T = \dim \im T$，再由前述第 3 条知 $\dim \im T^*T = \dim \im T^*$，因此 $\dim \im T = \dim \im T^* = \dim \im T^*T$.
     \end{enumerate}
 \end{proof}
 
-根据\autoref{thm:T^*T的性质}的第一条，结合正算子特征值非负的性质，我们可以做出如下定义.
+而正算子的特征值非负，所以我们可以做出如下的定义.
 
 \begin{definition}{奇异值}{} \index{qiyizhi@奇异值 (singular value)}
     设 $T \in \mathcal{L}(V, W)$. 则 $T^*T$ 的特征值的算术平方根称为 $T$ 的\term{奇异值}. 我们总将奇异值按降序排列，并且每个奇异值按对应特征子空间的维数重复书写.
@@ -52,11 +52,23 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 由定义知，$0$ 是 $T$ 的奇异值当且仅当 $0$ 是 $T^*T$ 的特征值. 对于正算子而言，这又等价于 $\ker T^*T \neq \{\vec{0}\}$. 由\autoref{thm:T^*T的性质} 第 2 条可知 $\ker T^*T = \ker T$，故 $0$ 不是 $T$ 的奇异值当且仅当 $\ker T = \{\vec{0}\}$，也即 $T$ 是单射.
+        \item 由定义知，$0$ 是 $T$ 的奇异值当且仅当 $0$ 是 $T^*T$ 的特征值. 对于正算子而言，这又等价于 $\ker T^*T \neq \{\vec{0}\}$. 由\autoref{thm:T^*T的性质} 第 2 条可知
+              \[
+                  \ker T^*T = \ker T,
+              \]
+              故 $0$ 不是 $T$ 的奇异值当且仅当 $\ker T = \{\vec{0}\}$，也即 $T$ 是单射.
 
-        \item 设 $\dim V = n$. 则 $T^*T$ 的 $0$ 特征值的重数为 $\dim \ker T^*T = \dim \ker T$. 因而正奇异值的个数为 $n - \dim \ker T = \dim \im T$，最后一步由线性映射基本定理得到.
+        \item 设 $\dim V = n$. 则 $T^*T$ 的 $0$ 特征值的重数为
+              \[
+                  \dim \ker T^*T = \dim \ker T.
+              \]
+              因而正奇异值的个数为
+              \[
+                  n - \dim \ker T = \dim \im T,
+              \]
+              最后一步由线性映射基本定理得到.
 
-        \item $T$ 满射当且仅当 $\dim \im T = \dim W$. 再结合上述第 2 条，便得到结论.
+        \item $T$ 满射当且仅当 $\dim \im T = \dim W$. 再结合第 2 条，便得到结论.
     \end{enumerate}
 \end{proof}
 
@@ -73,11 +85,11 @@
 $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算子，所以我们可以对它应用谱定理，并由此给出我们所谓的“对角化”的方式——奇异值分解.
 
 \begin{theorem}{奇异值分解}{奇异值分解定理} \index{qiyizhi!fenjie@奇异值分解 (singular value decomposition)}
-    设 $T \in \mathcal{L}(V, W)$，$\dim V = n,\enspace \dim W = m$，其正奇异值按重数计为
+    设 $T \in \mathcal{L}(V, W)$，$\dim V = n,\enspace \dim W = p$，其正奇异值按重数计为
     \[
         s_1 \geqslant s_2 \geqslant \cdots \geqslant s_r > 0.
     \]
-    则存在 $V$ 的一组标准正交基 $e_1, \ldots, e_n$ 和 $W$ 的一组标准正交基 $f_1, \ldots, f_m$，使得
+    则存在 $V$ 的一组标准正交基 $e_1, \ldots, e_n$ 和 $W$ 的一组标准正交基 $f_1, \ldots, f_p$，使得
     \[
         Te_k = s_k f_k,\enspace k = 1, \ldots, r;\qquad Te_k = 0,\enspace k = r+1, \ldots, n.
     \]
@@ -88,7 +100,7 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 \end{theorem}
 
 \begin{proof}
-    因为 $T^*T$ 是自伴的，由实谱定理（\autoref{thm:实谱定理}），存在 $V$ 的一组标准正交基 $e_1, \ldots, e_n$，使得
+    因为 $T^*T$ 是正算子，所以它是自伴的. 由谱定理，存在 $V$ 的一组标准正交基 $e_1, \ldots, e_n$，使得
     \[
         T^*Te_k = s_k^2 e_k,\enspace k = 1, \ldots, n,
     \]
@@ -107,16 +119,29 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
           = \frac{s_k}{s_j}\langle e_j, e_k \rangle
           = \delta_{jk}.
     \end{align*}
-    因此 $f_1, \ldots, f_r$ 的确是 $W$ 的标准正交组. 对于 $k = r+1, \ldots, n$，因为 $T^*Te_k = 0$，由\autoref{thm:T^*T的性质} 第 2 条知 $e_k \in \ker T$，从而 $Te_k = 0$. 接下来将 $f_1, \ldots, f_r$ 扩充为 $W$ 的一组标准正交基 $f_1, \ldots, f_m$. 对任意 $v \in V$，由于 $e_1, \ldots, e_n$ 是 $V$ 的一组标准正交基，故
+    因此 $f_1, \ldots, f_r$ 的确是 $W$ 的标准正交组.
+
+    对于 $k = r+1, \ldots, n$，因为 $T^*Te_k = 0$，由\autoref{thm:T^*T的性质} 第 2 条知 $e_k \in \ker T$，从而
+    \[
+        Te_k = 0.
+    \]
+
+    接下来将 $f_1, \ldots, f_r$ 扩充为 $W$ 的一组标准正交基 $f_1, \ldots, f_p$. 对任意 $v \in V$，由于 $e_1, \ldots, e_n$ 是 $V$ 的一组标准正交基，故
     \[
         v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_n \rangle e_n.
     \]
     于是
-    \[ Tv = \langle v, e_1 \rangle Te_1 + \cdots + \langle v, e_n \rangle Te_n = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_r \langle v, e_r \rangle f_r. \]
+    \begin{align*}
+        Tv
+         & = \langle v, e_1 \rangle Te_1 + \cdots + \langle v, e_n \rangle Te_n \\
+         & = s_1 \langle v, e_1 \rangle f_1 + \cdots + s_r \langle v, e_r \rangle f_r.
+    \end{align*}
     命题得证.
 \end{proof}
 
-由此我们也可以得出 $T$ 在这两组标准正交基下的矩阵表示. 若将 $T$ 在 $(e_1, \ldots, e_n)$ 与 $(f_1, \ldots, f_m)$ 下的矩阵记为 $\Sigma = (\sigma_{ij})_{m \times n}$，则
+这一结果告诉我们：对于一般线性映射而言，虽然未必能在同一个空间里找到一组基把它化成对角矩阵，但如果允许在定义域和值域分别选取不同的标准正交基，那么它依然可以被化成极其简单的形式. 这正是奇异值分解与若当标准型并不矛盾的原因.
+
+由此我们也可以得出 $T$ 在这两组标准正交基下的矩阵表示. 若将 $T$ 在 $(e_1, \ldots, e_n)$ 与 $(f_1, \ldots, f_p)$ 下的矩阵记为 $\Sigma = (\sigma_{ij})_{p \times n}$，则
 \[
     \sigma_{ij} =
     \begin{cases}
@@ -130,14 +155,17 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
     设 $A = (a_{ij})_{m \times n}$，若当 $i \neq j$ 时总有 $a_{ij} = 0$，则称 $A$ 为\term{矩形对角矩阵}.
 \end{definition}
 
-总而言之，\autoref{thm:奇异值分解定理}告诉我们：对于一般线性映射而言，虽然未必能在同一个空间里找到一组基把它化成对角矩阵，但如果允许在定义域和值域分别选取不同的标准正交基，那么它依然可以被化成极其简单的形式. 这正是奇异值分解与若当标准型并不矛盾的原因.
-
 通过线性映射的矩阵表示过程，我们也可以得到矩阵形式的奇异值分解.
 
 \begin{theorem}{矩阵的奇异值分解}{矩阵的奇异值分解}
-    设 $A$ 为一 $m \times n$ 阶复矩阵，则存在 $m \times m$ 阶酉矩阵 $U$，$n \times n$ 阶酉矩阵 $V$ 以及 $m \times n$ 阶非负实数矩形对角矩阵 $\Sigma$，使得 $A = U \Sigma V^*$. 这称为矩阵 $A$ 的奇异值分解.
-
-    特别地，当 $A$ 是实矩阵时，$U, V$ 可以取为正交矩阵，此时分解写成 $A = U \Sigma V^{\mathrm{T}}$.
+    设 $A$ 为一 $m \times n$ 阶复矩阵，则存在 $m \times m$ 阶酉矩阵 $U$、$n \times n$ 阶酉矩阵 $V$ 以及 $m \times n$ 阶非负实数矩形对角矩阵 $\Sigma$，使得
+    \[
+        A = U \Sigma V^*.
+    \]
+    这称为矩阵 $A$ 的奇异值分解. 特别地，当 $A$ 是实矩阵时，$U, V$ 可以取为正交矩阵，此时分解写成
+    \[
+        A = U \Sigma V^{\mathrm{T}}.
+    \]
 \end{theorem}
 
 \begin{proof}
@@ -149,16 +177,24 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
     \[
         Av_k = s_k u_k,\enspace k = 1, \ldots, r;\qquad Av_k = 0,\enspace k = r+1, \ldots, n.
     \]
-    令 $U = (u_1, \ldots, u_m), V = (v_1, \ldots, v_n)$. 因为两组列向量都是标准正交基，所以 $U, V$ 均为酉矩阵（实数域上就是正交矩阵）. 设 $\Sigma$ 为 $m \times n$ 阶矩形对角矩阵，其对角线上前 $r$ 个元素依次为 $s_1, \ldots, s_r$，其余元素全为 $0$. 则
+    令
+    \[
+        U = (u_1, \ldots, u_m),\qquad V = (v_1, \ldots, v_n).
+    \]
+    因为两组列向量都是标准正交基，所以 $U, V$ 分别是酉矩阵（实数域上就是正交矩阵）.
+
+    设 $\Sigma$ 为 $m \times n$ 阶矩形对角矩阵，其对角线上前 $r$ 个元素依次为 $s_1, \ldots, s_r$，其余元素全为 $0$. 则
     \[
         AV = (Av_1, \ldots, Av_n) = (s_1u_1, \ldots, s_ru_r, 0, \ldots, 0) = U\Sigma.
     \]
-    两边右乘 $V^*$ 即得 $A = U\Sigma V^*$，命题得证.
+    两边右乘 $V^*$ 即得
+    \[
+        A = U\Sigma V^*.
+    \]
+    命题得证.
 \end{proof}
 
 这也表明所有矩阵的作用都可以看成三步：先在定义域中做一次保长度的变换 $V^*$，再沿着若干彼此正交的方向做伸缩 $\Sigma$，最后在值域中做一次保长度的变换 $U$.
-
-在理解了奇异值分解的存在性及其意义后，下面的目标则是给出一个矩阵，我们能求出其奇异值分解。下面的例子基于前述讨论给出了一套求矩阵奇异值分解的通用步骤，并在具体例题中演示了如何执行这些步骤.
 
 \begin{example}{求矩阵的奇异值分解}{奇异值分解步骤例题}
     求矩阵
@@ -197,7 +233,48 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
     下面按此步骤计算.
 
     \begin{enumerate}
-        \item 先求 $A^{\mathrm{T}}A$ 的特征值与特征向量，不难得到其特征值为 $4$ 和 $2$，对应的特征向量分别为 $(1, 1)^{\mathrm{T}}$ 和 $(1, -1)^{\mathrm{T}}$. 归一化后得到一组标准正交特征向量
+        \item 先求 $A^{\mathrm{T}}A$：
+              \[
+                  A^{\mathrm{T}}A =
+                  \begin{pmatrix}
+                      1 & 1 & 1  \\
+                      1 & 1 & -1
+                  \end{pmatrix}
+                  \begin{pmatrix}
+                      1 & 1  \\
+                      1 & 1  \\
+                      1 & -1
+                  \end{pmatrix}
+                  =
+                  \begin{pmatrix}
+                      3 & 1 \\
+                      1 & 3
+                  \end{pmatrix}.
+              \]
+
+              其特征多项式为
+              \[
+                  \left| \lambda E - A^{\mathrm{T}}A \right|
+                  =
+                  \begin{vmatrix}
+                      \lambda - 3 & -1          \\
+                      -1          & \lambda - 3
+                  \end{vmatrix}
+                  =
+                  (\lambda - 3)^2 - 1
+                  =
+                  (\lambda - 4)(\lambda - 2).
+              \]
+              所以特征值为 $4$ 与 $2$.
+
+              对应地，
+              \[
+                  \lambda = 4 \text{ 时，可取特征向量 } (1, 1)^{\mathrm{T}},
+              \]
+              \[
+                  \lambda = 2 \text{ 时，可取特征向量 } (1, -1)^{\mathrm{T}}.
+              \]
+              归一化后得到一组标准正交特征向量
               \[
                   v_1 = \frac{1}{\sqrt{2}}\begin{pmatrix}
                       1 \\
@@ -209,18 +286,91 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
                   \end{pmatrix}.
               \]
 
-        \item 因此 $A$ 的奇异值为 $s_1 = \sqrt{4} = 2, s_2 = \sqrt{2}$.
+        \item 因此 $A$ 的奇异值为
+              \[
+                  s_1 = \sqrt{4} = 2,\qquad s_2 = \sqrt{2}.
+              \]
 
-        \item 由 $u_i = \dfrac{1}{s_i}Av_i$ 求出左奇异向量为
-              \[ u_1 = \frac{1}{2}\begin{pmatrix}
+        \item 由 $u_i = \dfrac{1}{s_i}Av_i$ 求左奇异向量.
+
+              对于 $v_1$，
+              \[
+                  Av_1
+                  =
+                  \frac{1}{\sqrt{2}}
+                  \begin{pmatrix}
+                      1 & 1  \\
+                      1 & 1  \\
+                      1 & -1
+                  \end{pmatrix}
+                  \begin{pmatrix}
+                      1 \\
+                      1
+                  \end{pmatrix}
+                  =
+                  \frac{1}{\sqrt{2}}
+                  \begin{pmatrix}
+                      2 \\
+                      2 \\
+                      0
+                  \end{pmatrix}
+                  =
+                  \begin{pmatrix}
+                      \sqrt{2} \\
+                      \sqrt{2} \\
+                      0
+                  \end{pmatrix},
+              \]
+              故
+              \[
+                  u_1 = \frac{1}{2}Av_1
+                  =
+                  \frac{1}{\sqrt{2}}
+                  \begin{pmatrix}
                       1 \\
                       1 \\
                       0
-                  \end{pmatrix}, \qquad u_2 = \frac{1}{\sqrt{2}}\begin{pmatrix}
+                  \end{pmatrix}.
+              \]
+
+              对于 $v_2$，
+              \[
+                  Av_2
+                  =
+                  \frac{1}{\sqrt{2}}
+                  \begin{pmatrix}
+                      1 & 1  \\
+                      1 & 1  \\
+                      1 & -1
+                  \end{pmatrix}
+                  \begin{pmatrix}
+                      1  \\
+                      -1
+                  \end{pmatrix}
+                  =
+                  \frac{1}{\sqrt{2}}
+                  \begin{pmatrix}
+                      0 \\
+                      0 \\
+                      2
+                  \end{pmatrix}
+                  =
+                  \begin{pmatrix}
+                      0      \\
+                      0      \\
+                      \sqrt{2}
+                  \end{pmatrix},
+              \]
+              故
+              \[
+                  u_2 = \frac{1}{\sqrt{2}}Av_2
+                  =
+                  \begin{pmatrix}
                       0 \\
                       0 \\
                       1
-                  \end{pmatrix}. \]
+                  \end{pmatrix}.
+              \]
 
         \item 由于 $A$ 是 $3 \times 2$ 矩阵，$U$ 还需要第三个列向量. 我们只需补一个与 $u_1, u_2$ 都正交的单位向量即可，例如取
               \[
@@ -256,15 +406,20 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
                       0 & 0
                   \end{pmatrix}.
               \]
-              因而得到 $A = U\Sigma V^{\mathrm{T}}$，至此，奇异值分解求得.
+              因而得到
+              \[
+                  A = U\Sigma V^{\mathrm{T}}.
+              \]
     \end{enumerate}
+
+    至此，奇异值分解求得.
 \end{solution}
 
 \section{奇异值分解的应用}
 
 \subsection{奇异值的几何解释}
 
-此前我们已经提到，根据奇异值分解的表达式，奇异值分解把一个一般的线性映射（矩阵）分解成了“旋转（或镜像）$+$ 拉伸 $+$ 旋转（或镜像）”三步. 本节希望更细致地描述这一点，进而揭示奇异值的几何意义.
+奇异值分解最重要的意义之一，在于它把一个一般的线性变换分解成了“旋转（或镜像）$+$ 拉伸 $+$ 旋转（或镜像）”三步. 因而奇异值并不是某种纯粹代数的数字，而是直接描述线性变换几何行为的量.
 
 为了叙述方便，本小节只讨论实矩阵的情形. 设
 \[
@@ -274,12 +429,12 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 \[
     s_1 \geqslant s_2 \geqslant \cdots \geqslant s_r > 0.
 \]
-记 $B = \{x \in \mathbf{R}^n \mid \lVert x \rVert \leqslant 1\}$ 为 $\mathbf{R}^n$ 的单位球. 我们来研究 $T_A(B)$ 的形状，其中 $T_A(x) = Ax$.
+记 $B = \{x \in \mathbf{R}^n \mid \lVert x \rVert \leqslant 1\}$ 为 $\mathbf{R}^n$ 的单位球. 我们来研究 $A(B)$ 的形状.
 
 \begin{theorem}{}{奇异值的椭球解释}
-    设 $A = U\Sigma V^{\mathrm{T}} \in \mathbf{R}^{m \times n}$ 的正奇异值为 $s_1, \ldots, s_r$. 则单位球 $B$ 在 $T_A$ 下的像是位于 $\im T_A$ 中的一个（可能退化的）椭球：
+    设 $A = U\Sigma V^{\mathrm{T}} \in \mathbf{R}^{m \times n}$ 的正奇异值为 $s_1, \ldots, s_r$. 则单位球 $B$ 在 $A$ 下的像是位于 $\im A$ 中的一个（可能退化的）椭球：
     \[
-        T_A(B) =
+        A(B) =
         \left\{
             U
             \begin{pmatrix}
@@ -296,9 +451,29 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 \end{theorem}
 
 \begin{proof}
-    任取 $x \in B$，令 $z = V^{\mathrm{T}}x$. 由于 $V$ 是正交矩阵，所以 $\lVert z \rVert = \lVert x \rVert \leqslant 1$. 又因为 $Ax = U\Sigma V^{\mathrm{T}}x = U\Sigma z$，$U$ 是正交矩阵，代表旋转（或镜像），所以只需研究 $\Sigma$ 对单位球的作用.
+    任取 $x \in B$，令 $z = V^{\mathrm{T}}x$. 由于 $V$ 是正交矩阵，所以
+    \[
+        \lVert z \rVert = \lVert x \rVert \leqslant 1.
+    \]
+    又因为
+    \[
+        Ax = U\Sigma V^{\mathrm{T}}x = U\Sigma z,
+    \]
+    所以只需研究 $\Sigma$ 对单位球的作用.
 
-    设 $z = (z_1, \ldots, z_n)^{\mathrm{T}}$，则 $\Sigma z = (s_1z_1, \ldots, s_rz_r, 0, \ldots, 0)^{\mathrm{T}}$. 若记 $y_i = s_i z_i,\enspace i = 1, \ldots, r$，则由 $z_1^2 + \cdots + z_n^2 \leqslant 1$ 可得
+    设
+    \[
+        z = (z_1, \ldots, z_n)^{\mathrm{T}},
+    \]
+    则
+    \[
+        \Sigma z = (s_1z_1, \ldots, s_rz_r, 0, \ldots, 0)^{\mathrm{T}}.
+    \]
+    若记
+    \[
+        y_i = s_i z_i,\enspace i = 1, \ldots, r,
+    \]
+    则由 $z_1^2 + \cdots + z_n^2 \leqslant 1$ 可得
     \[
         \frac{y_1^2}{s_1^2} + \cdots + \frac{y_r^2}{s_r^2}
         = z_1^2 + \cdots + z_r^2
@@ -314,13 +489,24 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
     \]
     便有 $\lVert z \rVert \leqslant 1$，从而对应某个 $x = Vz \in B$.
 
-    这就说明 $\Sigma(B)$ 正是一个坐标轴方向上的椭球，而左乘正交矩阵 $U$ 只是把这个椭球整体旋转（或镜像）到值域中的另一个位置，不改变半轴长度. 因此 $T_A(B)$ 是一个半轴长度分别为 $s_1, \ldots, s_r$ 的椭球，且这些半轴方向恰好由 $U$ 的前 $r$ 个列向量，也就是左奇异向量给出.
+    这就说明 $\Sigma(B)$ 正是一个坐标轴方向上的椭球，而左乘正交矩阵 $U$ 只是把这个椭球整体旋转（或镜像）到值域中的另一个位置，不改变半轴长度. 因此 $A(B)$ 是一个半轴长度分别为 $s_1, \ldots, s_r$ 的椭球，且这些半轴方向恰好由 $U$ 的前 $r$ 个列向量，也就是左奇异向量给出.
 \end{proof}
 
-总结上述证明过程，右奇异向量给出了 $T_A$ 出发空间中彼此正交的一系列方向，$T_A$ 在这些方向上的伸张倍数分别就是奇异值，最后左奇异向量给出这些方向在到达空间中旋转后得到的方向. 下面的示意图展示了二维情形下“单位圆 $\to$ 轴对齐椭圆 $\to$ 旋转后的椭圆”的过程.
+这一结论十分值得反复体会：
+\begin{enumerate}
+    \item 右奇异向量给出定义域中彼此正交的“特殊方向”.
+
+    \item 线性变换 $A$ 在这些方向上的伸张倍数分别就是奇异值.
+
+    \item 左奇异向量给出这些方向在值域中的落点方向.
+
+    \item 最大奇异值对应最强的拉伸方向，最小的正奇异值对应最弱的非零拉伸方向.
+\end{enumerate}
+
+下面这张示意图展示了二维情形下“单位圆 $\to$ 轴对齐椭圆 $\to$ 旋转后的椭圆”的过程.
 
 \begin{center}
-    \begin{tikzpicture}[scale=0.9, >=latex]
+    \begin{tikzpicture}[scale=1.0, >=latex]
         \tikzset{every path/.style={thick}}
 
         \begin{scope}[xshift=-5.2cm]
@@ -339,7 +525,7 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
             \draw[dashed] (-1.7,0) -- (1.7,0);
             \draw[dashed] (0,-0.8) -- (0,0.8);
             \node[above right] at (1.7,0) {$s_1$};
-            \node[right] at (0,1) {$s_2$};
+            \node[right] at (0,0.8) {$s_2$};
             \node at (0,-1.8) {经 $\Sigma$ 拉伸后};
         \end{scope}
 
@@ -347,14 +533,14 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
             \draw[->] (-2.1,0) -- (2.3,0);
             \draw[->] (0,-1.4) -- (0,1.6);
             \draw[rotate=28] (0,0) ellipse (1.7 and 0.8);
-            \draw[->,red] (0,0) -- ({1.7*cos(28)},{1.7*sin(28)}) node[above right] {$u_1$};
-            \draw[->,red] (0,0) -- ({-0.8*sin(28)},{0.8*cos(28)}) node[above left] {$u_2$};
+            \draw[->,red] (0,0) -- ({1.5*cos(28)},{1.5*sin(28)}) node[above right] {$u_1$};
+            \draw[->,red] (0,0) -- ({-0.7*sin(28)},{0.7*cos(28)}) node[above left] {$u_2$};
             \node at (0,-1.8) {再经 $U$ 旋转后};
         \end{scope}
     \end{tikzpicture}
 \end{center}
 
-在这个意义下，奇异值分解把一个一般线性映射矩阵的几何本质完全揭示了出来：它无非就是先在出发空间中调整观察方向，再沿着若干互相正交的方向做不同比例的拉伸，最后再把结果旋转到到达空间中的适当位置.
+在这个意义下，奇异值分解把一个一般矩阵的几何本质完全揭示了出来：它无非就是先在定义域中调整观察方向，再沿着若干互相正交的方向做不同比例的拉伸，最后再把结果旋转到值域中的适当位置.
 
 \subsection{极分解定理}
 
@@ -366,7 +552,10 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 其中 $\dfrac{z}{\lvert z \rvert}$ 是一个单位复数. 那么由此我们可以类比得出一个对 $V$ 上任意算子的漂亮的描述，因其形式类似于复数极坐标分解，所以称为\term{极分解定理}.
 
 \begin{theorem}{极分解定理}{极分解定理} \index{jifenjiedingli@极分解定理 (polar decomposition theorem)}
-    设 $T \in \mathcal{L}(V)$，则存在一个等距同构 $S \in \mathcal{L}(V)$，使得 $T = S\sqrt{T^*T}$.
+    设 $T \in \mathcal{L}(V)$，则存在一个等距同构 $S \in \mathcal{L}(V)$，使得
+    \[
+        T = S\sqrt{T^*T}.
+    \]
 \end{theorem}
 
 \begin{proof}
@@ -501,7 +690,15 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 
 问题在于：在实际应用中，图像张数 $m$ 通常只有几百，而像素数 $n$ 往往达到几万. 因此直接对 $n \times n$ 的矩阵 $A^{\mathrm{T}}A$ 做特征值分解，计算代价非常高. 这时奇异值分解就发挥作用了.
 
-设 $A = U\Sigma V^{\mathrm{T}}$ 是 $A$ 的奇异值分解，其中 $U \in \mathbf{R}^{m \times m}, V \in \mathbf{R}^{n \times n}$ 为正交矩阵，$\Sigma \in \mathbf{R}^{m \times n}$ 为非负实数矩形对角矩阵. 则
+设
+\[
+    A = U\Sigma V^{\mathrm{T}}
+\]
+是 $A$ 的奇异值分解，其中
+\[
+    U \in \mathbf{R}^{m \times m},\qquad V \in \mathbf{R}^{n \times n}
+\]
+为正交矩阵，$\Sigma \in \mathbf{R}^{m \times n}$ 为非负实数矩形对角矩阵. 则
 \[
     AA^{\mathrm{T}} = U(\Sigma \Sigma^{\mathrm{T}})U^{\mathrm{T}},\qquad
     A^{\mathrm{T}}A = V(\Sigma^{\mathrm{T}}\Sigma)V^{\mathrm{T}}.
@@ -552,7 +749,7 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 
 从线性代数的角度看，特征人脸算法之所以高效，正是因为奇异值分解把“求大矩阵 $A^{\mathrm{T}}A$ 的主特征向量”这一任务，转化成了“求小矩阵 $AA^{\mathrm{T}}$ 的主特征向量再回代恢复”的任务. 这也是奇异值分解在数据分析中极其重要的原因之一.
 
-\subsection{算子范数}
+\subsection*{算子范数}
 
 奇异值除了刻画各个特殊方向上的伸缩倍数之外，还控制了线性映射整体上“能够把向量拉多长”. 这就引出算子范数的概念.
 
@@ -620,7 +817,7 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
     \]
     其中 $U, V$ 保长度，$\Sigma$ 负责沿正交方向拉伸. 因而奇异值分解不仅是一个代数分解，更是一个几何分解：单位球在 $A$ 下的像是一个椭球，而奇异值正是这个椭球的半轴长度.
 
-    在应用上，奇异值分解既能帮助我们理解线性映射的几何本质，也能用来刻画算子范数，还能服务于数据降维、图像处理和数值计算等问题. 特征人脸算法便是其中一个典型例子.
+    在应用上，奇异值分解既能帮助我们理解线性变换的几何本质，也能用来刻画算子范数，还能服务于数据降维、图像处理和数值计算等问题. 特征人脸算法便是其中一个典型例子.
 \end{summary}
 
 \begin{exercise}

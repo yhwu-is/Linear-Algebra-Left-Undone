@@ -366,7 +366,10 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 其中 $\dfrac{z}{\lvert z \rvert}$ 是一个单位复数. 那么由此我们可以类比得出一个对 $V$ 上任意算子的漂亮的描述，因其形式类似于复数极坐标分解，所以称为\term{极分解定理}.
 
 \begin{theorem}{极分解定理}{极分解定理} \index{jifenjiedingli@极分解定理 (polar decomposition theorem)}
-    设 $T \in \mathcal{L}(V)$，则存在一个等距同构 $S \in \mathcal{L}(V)$，使得 $T = S\sqrt{T^*T}$.
+    设 $T \in \mathcal{L}(V)$，则存在一个等距同构 $S \in \mathcal{L}(V)$，使得
+    \[
+        T = S\sqrt{T^*T}.
+    \]
 \end{theorem}
 
 \begin{proof}
@@ -501,7 +504,15 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 
 问题在于：在实际应用中，图像张数 $m$ 通常只有几百，而像素数 $n$ 往往达到几万. 因此直接对 $n \times n$ 的矩阵 $A^{\mathrm{T}}A$ 做特征值分解，计算代价非常高. 这时奇异值分解就发挥作用了.
 
-设 $A = U\Sigma V^{\mathrm{T}}$ 是 $A$ 的奇异值分解，其中 $U \in \mathbf{R}^{m \times m}, V \in \mathbf{R}^{n \times n}$ 为正交矩阵，$\Sigma \in \mathbf{R}^{m \times n}$ 为非负实数矩形对角矩阵. 则
+设
+\[
+    A = U\Sigma V^{\mathrm{T}}
+\]
+是 $A$ 的奇异值分解，其中
+\[
+    U \in \mathbf{R}^{m \times m},\qquad V \in \mathbf{R}^{n \times n}
+\]
+为正交矩阵，$\Sigma \in \mathbf{R}^{m \times n}$ 为非负实数矩形对角矩阵. 则
 \[
     AA^{\mathrm{T}} = U(\Sigma \Sigma^{\mathrm{T}})U^{\mathrm{T}},\qquad
     A^{\mathrm{T}}A = V(\Sigma^{\mathrm{T}}\Sigma)V^{\mathrm{T}}.
