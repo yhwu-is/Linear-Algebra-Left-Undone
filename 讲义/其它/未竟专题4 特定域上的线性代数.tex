@@ -460,9 +460,32 @@
 
 在本讲中，我们只需要注意一个简单事实：循环群都是 Abel 群，因此都是可解群. 于是有限域扩张的 Galois 群由于是循环群，自动是可解的.
 
-最后，为了完成交换环上的 Galois 理论，我们还需要一个关于群作用的定义：
+最后，为了描述交换环上的 Galois 理论，我们还需要一个关于群作用的定义：
 
-%TODO: 定义群作用
+\begin{definition}{群作用}{}
+    设 $G$ 是群，$X$ 是集合. 若给定映射
+    \[
+        G\times X\to X,\quad (g,x)\mapsto g\cdot x,
+    \]
+    满足
+    \[
+        e\cdot x=x,\quad (gh)\cdot x=g\cdot(h\cdot x),
+        \quad \forall g,h\in G,\ x\in X,
+    \]
+    则称 $G$ \term{作用 (act)}在 $X$ 上，或称 $X$ 是一个 $G$-集合. 等价地，群作用就是一个群同态
+    \[
+        G\to S_X,
+    \]
+    其中 $S_X$ 表示 $X$ 到自身的所有双射构成的置换群.
+
+    若 $X$ 还带有额外的代数结构，并且每个 $g\in G$ 给出的映射 $x\mapsto g\cdot x$ 都保持这个结构，则称 $G$ 通过自同构作用在 $X$ 上. 此时称
+    \[
+        X^G=\{x\in X\mid g\cdot x=x,\ \forall g\in G\}
+    \]
+    为这个作用的不动点集.
+\end{definition}
+
+例如，若 $L/K$ 是 Galois 扩张，则 $G=\Gal(L/K)$ 通过域自同构作用在 $L$ 上，而 $L^G=K$. 这句话正是 Galois 对应的最短形式：基域就是所有 Galois 对称性共同固定的元素集合. 在交换环情形中，我们仍然希望从一个有限群 $G$ 对环 $B$ 的自同构作用出发，把固定子环 $B^G$ 看作基环 $A$，并由此发展一套类似的 Galois 理论. 只是由于环上的模不再像域上的线性空间那样良好，这一步需要额外的技术条件.
 
 \subsection{有限域的 Galois 理论}
 
@@ -591,14 +614,107 @@
 
 这迫使我们考虑交换环同态 $A\to B$，其中 $A$ 是一个交换环，$B$ 是另一个交换环，并且 $B$ 作为 $A$-模满足某些良好性质. 它可以被看作域扩张 $\mathbf{K}\subset\mathbf{L}$ 的环论版本. 不过，这一步会立刻带来新的困难：$B$ 不再是 $A$ 上的向量空间，而只是一个 $A$-模；模未必有基，未必是自由的，也未必表现得像有限维线性空间. 此外，环中可能有零因子、幂零元，素数也可能在扩张后分解、保持素性或发生分歧. 因此，交换环上的 Galois 理论并不是把``域''机械替换成``环''就能得到的理论.
 
-% TODO:
-% 主要的问题是，如何把环上的张量积做出来……
-% 1. 定义 twisted group ring
-% 2. 引入 Dedekind Lemma
-% 3. 定义 G-Galois extension
-% 4. Nakayama 引理
-% 5. 证明 faithfully flat 的条件
-% 6. 证明 G-Galois extension 的 Galois 对应：Chase-Harrison-Rosenberg, 1965
+首先需要把向量空间的张量积替换为模的张量积. 设 $A$ 是交换环，$M,N$ 是 $A$-模. 它们的\term{张量积 (tensor product)} $M\otimes_A N$ 是一个 $A$-模，并带有一个双加性且 $A$-平衡的映射
+\[
+    M\times N\to M\otimes_A N,\quad (m,n)\mapsto m\otimes n,
+\]
+满足
+\[
+    (m+m')\otimes n=m\otimes n+m'\otimes n,\quad
+    m\otimes(n+n')=m\otimes n+m\otimes n',
+\]
+以及
+\[
+    (am)\otimes n=m\otimes(an)=a(m\otimes n).
+\]
+它的本质性质是泛性质：任意从 $M\times N$ 出发的双加性且 $A$-平衡的映射，都唯一地穿过 $M\otimes_A N$. 这与向量空间张量积的定义完全平行，只是这里的纯量来自一个可能很复杂的环 $A$.
+
+若 $A\to B$ 是交换环同态，则 $B$ 是 $A$-模，于是可以构造 $B\otimes_A B$. 在域扩张 $K\subset L$ 中，$L\otimes_K L$ 可以理解为把 $L$ 的两个副本放在同一个 $K$ 上相乘；在环扩张中也一样，$B\otimes_A B$ 同时记录了 $B$ 的两个 $A$-代数结构. 这就是交换环 Galois 理论的第一个关键对象.
+
+现在设有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上，也就是说每个 $\sigma\in G$ 都是保持 $A$ 中元素不动的环自同构. 此时可以定义一个规范映射
+\[
+    \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
+    b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}.
+\]
+在域的情形中，若 $L/K$ 是有限 Galois 扩张，这个映射正是
+\[
+    L\otimes_K L\cong \prod_{\sigma\in\Gal(L/K)}L
+\]
+的抽象形式. 因此，交换环上 Galois 扩张的定义也应当要求这个映射是同构.
+
+\begin{definition}{$G$-Galois 扩张}{}
+    设 $A\to B$ 是交换环同态，有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上. 若
+    \[
+        A\to B^G
+    \]
+    是同构，并且规范映射
+    \[
+        \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
+        b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}
+    \]
+    是同构，并且 $B$ 作为 $A$-模是忠实平坦的，则称 $A\to B$ 是一个 \term{$G$-Galois 扩张}.
+\end{definition}
+
+这里出现的\term{忠实平坦 (faithfully flat)} 是一个模论条件. 平坦性大致意味着张量上 $B$ 不会破坏短正合列；忠实性则意味着张量上 $B$ 之后若某个 $A$-模变成零，那么原来的模已经是零. 换言之，$B$ 足够忠实地反映 $A$ 上的代数信息. 对域扩张来说这件事几乎自动成立，因为向量空间都是自由模；但对一般交换环而言，它必须被认真处理.
+
+为了理解上面的规范映射为什么是正确条件，还可以引入一个与群表示更接近的对象. 定义\term{扭群环 (twisted group ring)}
+\[
+    B\{G\}=\bigoplus_{\sigma\in G}B u_\sigma,
+\]
+其中乘法由
+\[
+    (b u_\sigma)(c u_\tau)=b\sigma(c)u_{\sigma\tau}
+\]
+给出. 它自然作用在 $B$ 上：
+\[
+    b u_\sigma\colon x\mapsto b\sigma(x).
+\]
+于是得到一个环同态
+\[
+    \Theta\colon B\{G\}\to \operatorname{End}_A(B).
+\]
+在 Galois 情形中，这个映射应当是同构. 直观地说，$B$ 上的每个 $A$-线性自同态都可以唯一地写成若干个 Galois 对称性与乘法操作的线性组合. 这正是域扩张中``自同构给出所有共轭方向''这一事实在环论中的版本.
+
+这里有一个经典引理作为思想来源：
+
+\begin{lemma}{Dedekind 引理}{}
+    设 $L/K$ 是域扩张，$\sigma_1,\ldots,\sigma_n$ 是互不相同的 $K$-同态 $L\to \Omega$，其中 $\Omega$ 是包含这些像的域. 那么 $\sigma_1,\ldots,\sigma_n$ 在 $\Omega$ 上线性无关. 也就是说，若
+    \[
+        a_1\sigma_1(x)+\cdots+a_n\sigma_n(x)=0,\quad \forall x\in L,
+    \]
+    其中 $a_i\in\Omega$，则 $a_1=\cdots=a_n=0$.
+\end{lemma}
+
+在域的 Galois 理论中，Dedekind 引理保证不同的自同构不会产生非平凡的线性关系，因此 $L\{\Gal(L/K)\}\to \operatorname{End}_K(L)$ 的单射性是可信的. 交换环情形更微妙，因为我们不能随意除以非零元素，也不能总把模当作自由空间来处理. 常见做法是先局部化到局部环，再化到剩余域上用域上的结论，最后再把局部信息粘回全局. 这正是 Nakayama 引理发挥作用的地方.
+
+\begin{lemma}{Nakayama 引理}{}
+    设 $A$ 是局部环，$\mathfrak{m}$ 是其极大理想，$M$ 是有限生成 $A$-模. 若 $M=\mathfrak{m}M$，则 $M=0$. 更一般地，若 $m_1,\ldots,m_r\in M$ 在商模 $M/\mathfrak{m}M$ 中的像生成 $M/\mathfrak{m}M$，则 $m_1,\ldots,m_r$ 生成 $M$.
+\end{lemma}
+
+这个引理的意义是：有限生成模的许多性质可以通过模掉极大理想后的向量空间来检测. 因此，在证明 $G$-Galois 扩张的性质时，我们可以把 $A$ 局部化为局部环，再看
+\[
+    B\otimes_A \kappa(\mathfrak{p}),
+\]
+其中 $\kappa(\mathfrak{p})$ 是素理想 $\mathfrak{p}$ 处的剩余域. 在这个纤维上，问题重新变成域或有限维代数上的问题，Dedekind 引理可以控制不同群元素的独立性，而 Nakayama 引理则把纤维上的生成性提升回局部环. 通过这一路线可以证明：满足上述规范映射同构条件的扩张在良好有限性假设下是有限投射的，因而平坦；再结合 $B^G=A$，可进一步得到忠实性. 这就是``从域到环''时最核心的技术过渡.
+
+有了这些准备，交换环上的 Galois 对应可以表述为如下形式：
+
+\begin{theorem}{Chase-Harrison-Rosenberg 的 Galois 对应}{}
+    设 $A\to B$ 是有限群 $G$ 的 $G$-Galois 扩张. 则每个子群 $H\leq G$ 都给出中间环
+    \[
+        B^H=\{b\in B\mid \sigma(b)=b,\ \forall\sigma\in H\},
+    \]
+    且 $B^H\to B$ 是 $H$-Galois 扩张. 在 Chase-Harrison-Rosenberg 的理论中，子群 $H\leq G$ 与 $A$-可分的中间子环 $A\subset C\subset B$ 之间存在反向的格对应：
+    \[
+        H\longmapsto B^H,\quad
+        C\longmapsto \{\sigma\in G\mid \sigma(c)=c,\ \forall c\in C\}.
+    \]
+    在没有非平凡幂等元的连通情形中，这正是经典 Galois 对应在交换环上的直接推广. 此外，正规子群对应于正规中间扩张；若 $H\triangleleft G$，则 $A\to B^H$ 的 Galois 群为 $G/H$.
+\end{theorem}
+
+这一定理是由 Chase、Harrison 与 Rosenberg 在 1965 年系统建立的. 从形式上看，它和域扩张的 Galois 对应几乎一致：子群对应固定环，包含关系反转，正规子群对应商群. 真正新增的是``可分''、``忠实平坦''和``幂等元''这些环论现象. 它们说明，环上的 Galois 理论并不是丢掉除法后的域论，而是一套以张量积和下降理论为核心的结构理论.
+
+本章不再继续证明这一理论. 对我们的主线而言，重要的是看清楚它与线性代数的关系：域扩张时，有限维向量空间、迹、范数和自同构群已经足以支撑 Galois 理论；交换环扩张时，向量空间被模取代，基与维数被有限投射和忠实平坦取代，而 $L\otimes_K L\cong\prod_G L$ 这条线性代数式的分解则被提升为 $G$-Galois 扩张的核心定义. 换言之，线性代数并没有消失，只是变成了模论与张量积的语言.
 
 \section{代数数论中的 Galois 理论}
 
