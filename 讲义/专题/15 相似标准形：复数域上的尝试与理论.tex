@@ -566,7 +566,7 @@ $1 \implies 2$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵$A=(a_{ij})_{n\times 
 $2 \implies 3$：对$\forall v=\displaystyle\sum_{i=1}^{j}a_iv_i \in \spa(v_1,\ldots,v_j)$，有$\sigma(v)=\sigma(\displaystyle\sum_{i=1}^{j}a_iv_i)=\displaystyle\sum_{i=1}^{j}a_i\sigma(v_i)$.
 由2知对于$\forall i \in \{1,\ldots,j\}$，有$\sigma(v_i) \in \spa(v_1,\ldots,v_i) \subseteq \spa(v_1,\ldots,v_j)$，从而知$\sigma(v) \in \spa(v_1,\ldots,v_j)$，即$\spa(v_1,\ldots,v_j)$在$\sigma$下不变.
 
-$3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\times n}$，对于$\forall j \in \{1,\ldots,n\}$，$\sigma(v_j)=\displaystyle\sum_{i=1}^{n}a_{ij}v_i\in \spa(v_1,\ldots,v_n)$，从而有$a_{j+1,j}=\cdots=a_{n,j}=0$，即$\forall i>j,a_{ij}=0$. 故$A$为上三角矩阵.
+$3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\times n}$，对于$\forall j \in \{1,\ldots,n\}$，$\sigma(v_j)=\displaystyle\sum_{i=1}^{n}a_{ij}v_i\in \spa(v_1,\ldots,v_j)$，从而有$a_{j+1,j}=\cdots=a_{n,j}=0$，即$\forall i>j,a_{ij}=0$. 故$A$为上三角矩阵.
 \end{proof}
 
 这一定理给出了上三角矩阵的几个充要条件，因此我们的想法就是利用等价条件中的某一个条件来验证任意线性变换是否可以得到上三角矩阵. 幸运的是，的确对于任意的复向量空间上的线性变换，我们可以找到一组基使得其关于这组基有上三角矩阵.
@@ -591,7 +591,7 @@ $3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\tim
         对$n-1$阶矩阵$A_{n-1}$应用归纳假设，存在可逆矩阵$P_2$使得$P_2^{-1}A_{n-1}P_2$为上三角矩阵，取$P=P_1\begin{pmatrix}
             1 & O \\ O & P_2
         \end{pmatrix}$，直接有\[P^{-1}AP=\begin{pmatrix}
-            \lambda & \alpha'P_1 \\ O & P_2^{-1}A_{n-1}P_2
+            \lambda & \alpha'P_2 \\ O & P_2^{-1}A_{n-1}P_2
         \end{pmatrix}\]
         为上三角矩阵，因此$n$阶复矩阵一定相似于上三角矩阵.
 

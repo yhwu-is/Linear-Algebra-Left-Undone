@@ -137,7 +137,7 @@
     设$\sigma\in \mathcal{L}(V)$，若$V$的子空间$U$满足$\forall \alpha\in U,\enspace \sigma(\alpha)\in U$，则称$U$是$\sigma$的\term{不变子空间}\index{xianxingkongjian!zi!bubian@不变子空间 (invariant subspace)}，或称$U$在$\sigma$下不变，简称为$\sigma$-子空间.
 \end{definition}
 
-即线性变换把不变子空间$U$中的元素全都映射到$U$自身的元素，所以``不变''这一形容词是非常形象的. 为了日后描述的方便，我们需要引入一个限制映射的概念. 我们给出标准的定义如下：
+即线性变换把不变子空间$U$中的元素全都映射到$U$自身的元素，所以``不变''这一形容词是非常形象的. 为了日后描述的方便，我们需要引入限制映射的概念. 标准的定义如下：
 \begin{definition}{}{} \index{xianxingyingshe!xianzhi@限制 (restriction map)}
     设$V$是数域$\mathbf{F}$上的线性空间，$\sigma\in\mathcal{L}(V)$，我们在$V$的子空间$U$上定义映射$\sigma\vert_U$如下：
     \[\sigma\vert_U:U\to V,\enspace\sigma\vert_U(\alpha)=\sigma(\alpha),\enspace\forall \alpha\in U,\]
@@ -890,7 +890,7 @@
     \begin{enumerate}
         \item 在实数域上无特征值和特征向量；
 
-        \item 复数域上特征值为$\pm\i$，其中$\i$对应的特征向量为$(w,-wi)$，$-\i$对应的特征向量为$(w,wi)$，其中$w\in\mathbf{R}$且$w\neq 0$.
+        \item 复数域上特征值为$\pm\i$，其中$\i$对应的特征向量为$(w,-w\i)$，$-\i$对应的特征向量为$(w,w\i)$，其中$w\in\mathbf{R}$且$w\neq 0$.
     \end{enumerate}
 \end{solution}
 
@@ -898,9 +898,9 @@
 
 事实上，我们可以抛开程序式的解题步骤，仔细观察这里的映射定义，我们会发现，在实数域内这一变换$\sigma$就是二维平面中将向量绕原点逆时针旋转90$^\circ$的旋转变换，因此在实数域内无特征值（实特征值实际上只能将特征向量沿着原方向伸缩）. 但为何复数域内有特征值呢？我们回忆复数的极坐标表示，任意复数$z$可表示为$z=re^{\i\theta}$，因此直观而言复特征值除了伸缩效应外也有旋转的效应.
 
-本题中两个特征向量可以写为$\alpha\pm \i\beta$，则$T$在$(\alpha,\beta)$这组基下的矩阵表示就是一个表示旋转90$^\circ$的矩阵乘以单位矩阵（表明伸缩为比例1），这表明线性变换对空间的伸缩作用与特征值模长对应，旋转作用与辐角对应（本题特征值$\pm \i=1\cdot(\cos 90^\circ\pm \i\sin 90^\circ)$）.
+本题中两个特征向量可以写为$\alpha\pm \beta\i$，则$T$在$(\alpha,\beta)$这组基下的矩阵表示就是一个表示旋转90$^\circ$的矩阵乘以单位矩阵（表明伸缩为比例1），这表明线性变换对空间的伸缩作用与特征值模长对应，旋转作用与辐角对应（本题特征值$\pm \i=1\cdot(\cos 90^\circ\pm \i\sin 90^\circ)$）.
 
-我们还可以延伸到三维空间. 设三阶矩阵$A=(a_{ij})_{3\times 3}$，设这一矩阵有三个互异特征值，则根据多项式的性质可知，其中两个为共轭复数$\lambda_{1,2}=a\pm b\i$，还有一个实数$\lambda_3=c$，对应的特征向量为$v_{1,2}=\alpha\pm \i\beta,v_3=\gamma$，则$T$在$\alpha,\beta,\gamma$下的矩阵表示为
+我们还可以延伸到三维空间. 设三阶矩阵$A=(a_{ij})_{3\times 3}$，设这一矩阵有三个互异特征值，则根据多项式的性质可知，其中两个为共轭复数$\lambda_{1,2}=a\pm b\i$，还有一个实数$\lambda_3=c$，对应的特征向量为$v_{1,2}=\alpha\pm \beta\i,v_3=\gamma$，则$T$在$\alpha,\beta,\gamma$下的矩阵表示为
 \[ B=\begin{pmatrix}
         a & b & 0 \\ -b & a & 0 \\ 0 & 0 & c
     \end{pmatrix}, \]
