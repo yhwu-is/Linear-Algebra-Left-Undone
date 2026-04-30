@@ -49,14 +49,14 @@
 
         \item $|\lambda E-A|=(\lambda+3)(\lambda-2)^{2}=0$，特征值为 $-3, 2, 2$.
 
-        方程组 $(-3E-A)X = 0, (2E-A)X = 0$ 的基础解系为 $(-1,0,2)^T, (0,1,0)^T, (2,0,1)^T$.
+        方程组 $(-3E-A)X = 0, (2E-A)X = 0$ 的基础解系为 $(-1,0,2)^\mathrm{T}, (0,1,0)^\mathrm{T}, (2,0,1)^\mathrm{T}$.
 
-        正交规范化得变换矩阵 $Q=(\gamma_{1},\gamma_{2},\gamma_{3})$，其中 $\gamma_1=\dfrac{1}{\sqrt{5}}(-1,0,2)^T, \gamma_2=(0,1,0)^T, \gamma_3=\dfrac{1}{\sqrt{5}}(2,0,1)^T$.
+        正交规范化得变换矩阵 $Q=(\gamma_{1},\gamma_{2},\gamma_{3})$，其中 $\gamma_1=\dfrac{1}{\sqrt{5}}(-1,0,2)^\mathrm{T}, \gamma_2=(0,1,0)^\mathrm{T}, \gamma_3=\dfrac{1}{\sqrt{5}}(2,0,1)^\mathrm{T}$.
 
         \item 由于 $A$ 有负的特征值，因此非正定.
     \end{enumerate}
 
-    \item 见\autoref{ex:非齐次解的进一步结构}.
+    \item 见\autoref{ex:非齐次解的进一步结构}. 根据该例题的结论，我们有 $AX=\beta$ 的任意解都可以表示成 $X_0, X_0+X_1, \ldots, X_0+X_s$ 的线性组合，且它们线性无关，不难证明它们的线性扩张就是所求的 $W$，基即为该向量组，维数为 $s+1$.
 
     \item \begin{enumerate}
         \item 取自然基 $e_1=(1,0,0), e_2=(0,1,0), e_3=(0,0,1)$，则 \[ T(e_1,e_2,e_3) = (e_1, e_2, e_3)\begin{pmatrix} 4&0&1 \\ 2&3&2 \\ 1&0&4 \end{pmatrix} \] 故特征多项式为 $(\lambda-3)^{2}(\lambda-5)$，特征值 $\lambda_{1}=\lambda_{2}=3, \lambda_{3}=5$.

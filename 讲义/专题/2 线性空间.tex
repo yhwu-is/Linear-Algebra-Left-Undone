@@ -517,20 +517,9 @@
             \begin{enumerate}
                 \item 有理数集 $Q$ 关于实数乘法不封闭，不构成实数域上的线性空间.
 
-                \item $\mathbf{R}^2$ 关于通常向量加法构成交换群，封闭性也显然成立. 再看数乘.
-                      \begin{enumerate}
-                          \item $\exists \lambda=1$ 使得 $\lambda\cdot(x,y)=(\lambda x,y)=(x,y)$.
+                \item $\mathbf{R}^2$ 关于所定义的数乘不封闭，注意到 $(\lambda+\mu)\cdot(x,y)=((\lambda+\mu)x,y) = (\lambda x,\frac{1}{2}y)+(\mu x, \frac{1}{2} y) \neq (\lambda x,y)+(\mu x,y)$ 当 $y \neq 0$ 时，因此不构成实数域上的线性空间.
 
-                          \item $\lambda(\mu\cdot(x,y))=\lambda\cdot(\mu x,y)=((\lambda\mu)x,y)=(\lambda\mu)\cdot(x,y)$.
-
-                          \item $(\lambda+\mu)\cdot(x,y)=((\lambda+\mu)x,y)=(\lambda x,y)+(\mu x,y)$. 因此$(\lambda+\mu)\cdot(x,y)=\lambda\cdot(x,y)+\mu\cdot(x,y)$ 成立.
-
-                          \item $\lambda((x_1,y_1)+(x_2,y_2))=\lambda\cdot(x_1+x_2,y_1+y_2)=(\lambda x_1+\lambda x_2,y_1+y_2)=(\lambda x_1,y_1)+(\lambda x_2,y_2)$，因此$\lambda((x_1,y_1)+(x_2,y_2))=(\lambda x_1,y_1)+(\lambda x_2,y_2)$.
-
-                          \item （封闭性）$\forall \lambda \in \mathbf{R},\lambda\cdot(x,y)=(\lambda x,y)\in \mathbf{R}^2$，封闭性满足.
-
-                                综上，$\mathbf{R}^2$ 关于通常向量加法与该数乘构成实数域上的向量空间.
-                      \end{enumerate}
+                注：不要将这里的向量加法和内积混淆了.
 
                 \item \begin{enumerate}
                           \item 对于加法，显然，封闭性，结合律，交换律成立. 存在加法单位元 $(1,1,\ldots,1)$ 有
