@@ -168,6 +168,8 @@
 
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\cha}{char}
 \newcommand{\cC}{\mathcal{C}}
 \newcommand{\cD}{\mathcal{D}}
 \newcommand{\FVect}{\mathsf{FVect}}
