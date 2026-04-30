@@ -544,7 +544,7 @@
             1 & 0 & 2  & 0 \\
             1 & 1 & 1  & 1 \\
             0 & 2 & -2 & 1 \\
-            1 & 4 & 2 & 1
+            1 & 4 & -2 & 1
         \end{pmatrix}
     \end{equation}
 
@@ -763,7 +763,7 @@
                     1 & 2   & 1   \\
                     0 & -5  & -4  \\
                     0 & -10 & a-6 \\
-                    0 & -6  & -4
+                    0 & -5  & -4
                 \end{pmatrix}\rightarrow\begin{pmatrix}
                     1 & 2  & 1   \\
                     0 & -5 & -4  \\
@@ -962,12 +962,12 @@
                     k_1\lambda_1\cdot e^{\lambda_1 x}+k_2\lambda_2\cdot e^{\lambda_2 x}=0 \\
                     k_1\lambda_1^2\cdot e^{\lambda_1 x}+k_2\lambda_2^2\cdot e^{\lambda_2 x}=0
                 \end{cases},\]
-          由后两式可知$k_1k_2(\lambda_1-\lambda_0)=0$. 又 $\lambda_1\neq\lambda_2$，故$k_1=k_2=0$，代回第一式得 $k_0=0$，则 $1,e^{\lambda_1x},e^{\lambda_2x}$ 线性无关，得证.
+          由后两式可知$k_1k_2(\lambda_1-\lambda_2)=0$. 又 $\lambda_1\neq\lambda_2$，故$k_1=k_2=0$，代回第一式得 $k_0=0$，则 $1,e^{\lambda_1x},e^{\lambda_2x}$ 线性无关，得证.
         \end{answer}
 
         \item 设线性空间$V(\mathbf{F})$中，向量$\beta$是$\alpha_1,\ldots,\alpha_r$的线性组合，但不是$\alpha_1,\ldots,\alpha_{r-1}$的线性组合. 证明：$\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$.
         \begin{answer}
-            只需证明 $\alpha_r$ 可以被 $\alpha_1,\ldots,\alpha_{r-1},\beta$ 表示即可. 由于 $\beta$ 是 $\alpha_1,\ldots,\alpha_{r-1}$ 的线性组合，若 $\lambda_r=0$，则 $\beta$ 是 $\alpha_1,\ldots,\alpha_{r-1}$ 的线性组合. 这与条件矛盾. 因此 $\alpha_r=-\vspace{1ex}\dfrac 1{\lambda_r}(\lambda_1\alpha_1+\cdots+\lambda_{r-1}\alpha_{r-1}-\beta)$，则这两组向量等价. $\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$ 得证.
+            只需证明 $\alpha_r$ 可以被 $\alpha_1,\ldots,\alpha_{r-1},\beta$ 表示即可. 由于 $\beta$ 是 $\alpha_1,\ldots,\alpha_r$ 的线性组合，若 $\lambda_r=0$，则 $\beta$ 是 $\alpha_1,\ldots,\alpha_{r-1}$ 的线性组合. 这与条件矛盾. 因此 \[\alpha_r=-\vspace{1ex}\dfrac 1{\lambda_r}(\lambda_1\alpha_1+\cdots+\lambda_{r-1}\alpha_{r-1}-\beta),\] 则这两组向量等价，即 $\spa(\alpha_1,\ldots,\alpha_{r-1},\alpha_r)=\spa(\alpha_1,\ldots,\alpha_{r-1},\beta)$，得证.
         \end{answer}
 
         \item \label{item:3:正实数线性空间}

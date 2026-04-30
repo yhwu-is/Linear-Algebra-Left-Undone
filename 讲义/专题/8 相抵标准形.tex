@@ -519,11 +519,11 @@
             1 &  & \\ & 1 & \\ & & -1
         \end{pmatrix},\]
     从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面，等式左侧可以化简为
-    \[X + \left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1} = X + B,\]
+    \[X + \left(B\left(A^\mathrm{T} B^{2}\right)^{-1} A^\mathrm{T}\right)^{-1} = X + B,\]
     另一方面，等式右侧可以化简为
-    \[X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A + B) = X A^{-1}(A + B) = X + X A^{-1} B,\]
+    \[X\left(A^{2}\left(B^\mathrm{T} A\right)^{-1} B^\mathrm{T}\right)^{-1}(A + B) = X A^{-1}(A + B) = X + X A^{-1} B,\]
     于是 $X = A = (A^{-1})^{-1} = \begin{pmatrix}
-            -\dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{3}  \\
+            -\dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{3}  \\[0.5em]
             \dfrac{2}{3}  & \dfrac{1}{3} & -\dfrac{2}{3} \\
             -2           & -1          & 1
         \end{pmatrix}$.
@@ -1306,7 +1306,7 @@
 
         \item 设 $A$ 和 $B$ 是两个 $m \times n$ 矩阵，且存在两个方阵 $C,D$ 使得 $A = BC, B = AD$，证明：存在可逆矩阵 $M$ 使得 $B = AM$.
         \begin{answer}
-
+            由于 $A = BC$，故 $A$ 的每一列都为 $B$ 的列向量的线性组合，同样由于$B = AD$，故 $B$ 的每一列都为 $A$ 的列向量的线性组合，所以 $A$ 与 $B$ 的列向量可以互相表示，因此它们的过渡矩阵可逆.
         \end{answer}
     \end{exgroup}
 

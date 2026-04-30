@@ -1,0 +1,78 @@
+\section{2025-2026学年线性代数I（H）期末}
+
+\begin{center}
+    任课老师：统一命卷\hspace{4em} 考试时长：120分钟
+\end{center}
+
+\begin{enumerate}
+    \item （10 分）设 $4$ 阶矩阵 $A = (a_{ij})_{4 \times 4}$，其中$a_{ij}=\begin{cases}
+        2, & i=j \\
+        (-1)^{|i-j|}, & i \neq j
+    \end{cases}$，求 $|A|$.
+
+    \item （10 分）设 $A \in M_{m \times n}$，若方程组 $A\vec{x}=b$ 有 $\vec{x}_1, \vec{x}_2$ 两个不同解.
+    \begin{enumerate}
+        \item 若 $n \leqslant m$，证明存在 $\vec{c}$，使得 $A\vec{x}=\vec{c}$ 无解.
+        \item 若 $n > m$，是否存在 $A$，使得对于任意 $\vec{c}$，方程 $A\vec{x}=\vec{c}$ 都有两个不同解，若存在请举例，若不存在请说明理由.
+    \end{enumerate}
+
+    \item （10 分）设 $A$ 为 $4 \times 2$ 矩阵，且满足：
+    \[
+    AA^\mathrm{T} = \begin{pmatrix}
+    1 & -1 & 1 & 2 \\
+    -1 & 2 & 0 & -1 \\
+    1 & 0 & b_{11} & b_{12} \\
+    2 & -1 & b_{21} & b_{22}
+    \end{pmatrix}
+    \]
+    \begin{enumerate}
+        \item 求 $r(A)$；
+        \item 求 $B = \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}$ 的值.
+    \end{enumerate}
+
+    \item （10 分）已知二次型 $f(x_1, x_2, x_3, x_4) = \lambda(x_1^2 + x_2^2 + x_3^2) + x_4^2 + 2x_1x_2 + 2x_1x_3 - 2x_2x_3$.
+    \begin{enumerate}
+        \item 求该二次型的标准型及变换矩阵；
+        \item 若该二次型正定，求 $\lambda$ 的取值范围.
+    \end{enumerate}
+
+    \item （10 分）设 $V = \{ p(x)e^{-x} \mid p(x) \in \mathbf{R}[x]_3 \}$，定义变换 $D(f) = f'$.
+    \begin{enumerate}
+        \item 写出一组基，并求 $D$ 在这组基下的变换矩阵；
+        \item 判断 $D$ 是否可对角化.
+    \end{enumerate}
+
+    \item （10 分）设 $A \in M_{n \times n}$.
+    \begin{enumerate}
+        \item 证明：$r(A) < n \iff \exists\, C \neq 0, ACA=0$；（注：原题没有 $C \neq 0$，但这样过于平凡了）
+        \item 若 $ABA=A$ 且 $B$ 唯一，证明 $BAB=B$.
+    \end{enumerate}
+
+    \item （10 分）设 $5$ 阶实矩阵 $A$ 可逆，且 $A$ 与 $A^{-1}$ 相似.
+    \begin{enumerate}
+        \item 证明 $A - A^{-1} \sim A^{-1} - A$；
+        \item 证明 $A - A^{-1}$ 的特征值必有 0；
+        \item 证明 $A$ 的特征值必有 1 或 -1.
+    \end{enumerate}
+
+    \item （10 分）设 $\sigma_P(A) = P^{-1}AP$，其中 $A \in M_3(\mathbf{F})$，记 $V = M_3(\mathbf{F})$.
+    \begin{enumerate}
+        \item 说明 $\sigma_P$ 的线性性，并求 $\dim(\mathcal{L}(V, V))$；
+        \item 设 $W = \{ \sigma_P \mid P \text{ 为可逆矩阵} \}$，判断 $W$ 是否为 $\mathcal{L}(V, V)$ 的子空间；
+        \item 定义转置变换 $\tau(A) = A^\mathrm{T}$，证明 $\tau \notin W$.
+    \end{enumerate}
+
+    \item （20 分）如果正确请简单证明，错误请举出反例：
+    \begin{enumerate}
+        \item 设 $V=\mathbf{R}^n$，$\alpha_1, \dots, \alpha_m \in V$，$\beta_1, \dots, \beta_m \in V$，且已知 $\alpha_1, \dots, \alpha_m$ 线性无关，判断：$\beta_1, \dots, \beta_m$ 线性无关 $\iff \beta_1, \dots, \beta_m$ 与 $\alpha_1, \dots, \alpha_m$ 等价；
+
+        \item 若 $W_1+W_2+W_3$ 为直和，则 $W_1+W_2$，$W_2+W_3$，$W_1+W_3$ 也为直和；
+
+        \item 对于 $\mathbf{R}^3$ 上任意的线性变换 $\sigma$，有 $\im\sigma \neq \ker\sigma$；
+
+        \item 若 $A$ 可逆，则 $(A^*)^* = A$.
+    \end{enumerate}
+
+\end{enumerate}
+
+\clearpage

@@ -715,6 +715,44 @@
     \begin{exgroup}
         \item 完善\autoref{thm:复数乘法构造} 中的证明，即证明$\mathbf{R}^2$在平面向量加法和如\autoref*{thm:复数乘法构造} 定义的乘法下构成一个域.
 
+        \begin{answer}
+            $\mathbf{R}^2$ 关于向量加法显然构成交换群，因此只需验证 $\mathbf{R}^2 \setminus \{(0,0)\} $ 关于我们定义的乘法构成交换群，以及该乘法对向量加法的分配律成立.
+
+            \begin{enumerate}
+                \item 乘法交换律：对于 $u=(a,b)$、$v=(c,d) \in \mathbf{R}^2$，有
+                      \[
+                          u \circ v = (ac - bd, ad + bc) = (ca - db, cb + da) = v \circ u.
+                      \] 因此交换律成立.
+                \item 乘法结合律：对于 $u=(a,b)$、$v=(c,d)$、$w=(e,f) \in \mathbf{R}^2$，有
+                      \begin{align*}
+                          (u \circ v) \circ w & = (ac - bd, ad + bc) \circ (e,f)                         \\
+                                              & = ((ac - bd)e - (ad + bc)f, (ac - bd)f + (ad + bc)e)     \\
+                                              & = (ace - bde - adf - bcf, acf - bdf + ade + bce)         \\
+                                              & = (a(ce - df) - b(de + cf), a(cf + de) + b(ce - df))     \\
+                                              & = u \circ (ce - df, cf + de)                             \\
+                                              & = u \circ (v \circ w).
+                      \end{align*}
+                \item 乘法单位元与乘法逆元：由\autoref{thm:复数乘法构造} 可知乘法单位元就是 $\vec{e}_1 = (1,0)$. 对于任意不为 $(0,0)$ 的 $u=(a,b) \in \mathbf{R}^2$，要证明乘法逆元存在，即要寻找 $v = (x, y)$ 使得 $\begin{cases}
+                            ax - by = 1 \\
+                            ay + bx = 0
+                        \end{cases}$，解得 $\begin{cases}
+                            x = \dfrac{a}{a^2 + b^2} \\
+                            y = -\dfrac{b}{a^2 + b^2}
+                \end{cases}$，从而其乘法逆元 $v = \left( \dfrac{a}{a^2+b^2}, -\dfrac{b}{a^2+b^2} \right)$ 确实存在.
+
+                \item 乘法分配律：对于 $u=(a,b)$、$v=(c,d)$、$w=(e,f) \in \mathbf{R}^2$，有
+                      \begin{align*}
+                          u \circ (v + w) & = (a,b) \circ (c+e, d+f)                                 \\
+                                          & = (a(c+e) - b(d+f), a(d+f) + b(c+e))                   \\
+                                          & = (ac - bd + ae - bf, ad + bc + af + be)               \\
+                                          & = (ac - bd, ad + bc) + (ae - bf, af + be)             \\
+                                          & = u \circ v + u \circ w.
+                      \end{align*}
+                      同理可以验证 $(v + w) \circ u = v \circ u + w \circ u$.
+            \end{enumerate}
+            综上：$\mathbf{R}^2 \setminus \{(0,0)\} $ 关于乘法构成交换群，且乘法对向量加法满足分配律，因此 $\langle\mathbf{R}^2\colon+,\circ\rangle$ 构成一个域.
+        \end{answer}
+
         \item 下列集合中的关系 $ R $ 是否是等价关系？如果是，说明等价类的意义，并写出集合关于 $ R $ 的商集.
         \begin{enumerate}
             \item 实数集上定义关系：$ xRy \iff x - y $ 为无理数或 0;

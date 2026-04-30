@@ -62,10 +62,10 @@
 
 再进一步观察这样的一组向量，我们发现这组向量似乎与\autoref{thm:循环子空间} 中提到的循环基有些类似：它们都是从一个向量开始，不断作用一个线性变换等到的一组向量. 这里我们给出一个定义来详细地说明一些术语：
 \begin{definition}{}{若当循环基}
-    设$\sigma\in\mathcal{L}(V)$，$v\in V$是关于特征值$\lambda\in\mathbf{C}$的一个广义特征向量. 设$n$是使得$(\sigma-\lambda I)^n v=0$成立的最小正整数，则称$\{(\sigma-\lambda I)^{n-1}(v),(\sigma-\lambda I)^{n-2}(v),\ldots,(\sigma-\lambda I)(v),v\}$是\term{$\sigma$关于特征值$\lambda$的循环广义特征向量组}（不引起歧义的情况下也可称循环向量），其中$(\sigma-\lambda I)^{n-1}(v)$称为其起始向量，$v$称为其终止向量.
+    设$\sigma\in\mathcal{L}(V)$，$v\in V$是关于特征值$\lambda\in\mathbf{C}$的一个广义特征向量. 设$n$是使得$(\sigma-\lambda I)^n v=0$成立的最小正整数，则称$\{(\sigma-\lambda I)^{n-1}(v),(\sigma-\lambda I)^{n-2}(v),\ldots,(\sigma-\lambda I)(v),v\}$是 \term{$\sigma$关于特征值$\lambda$的循环广义特征向量组}（不引起歧义的情况下也可称循环向量），其中$(\sigma-\lambda I)^{n-1}(v)$称为其起始向量，$v$称为其终止向量.
 \end{definition}
 
-给出这一定义后，便可以开始研究这一组向量与我们目标中的若当基之间的关联. 我们需要暂时停下前进的脚步，仔细思考我们需要什么. 我们的最终目标是证明，对于任意复向量空间上的线性变换，都能找到一组基，其矩阵表示为分块对角矩阵，且每一对角块为若当块. 根据\autoref{thm:不变子空间与分块对角矩阵}，我们要求每个若当块对应的基向量张成的子空间是不变子空间，因为这样才能保证生成一个对角块. 而根据之前的推导，我们知道生成若当块必须要这样的一组循环向量，那么自然地我们会有两个问题：
+给出这一定义后，便可以开始研究这一组向量与我们目标中的若当基之间的关联. 我们需要暂时停下前进的脚步，仔细思考我们需要什么. 我们的最终目标是证明，对于任意复向量空间上的线性变换，都能找到一组基，其矩阵表示为分块对角矩阵，且每一对角块为若当块. 根据\autoref{thm:不变子空间与分块对角矩阵}，我们要求每个若当块对应的基向量张成的子空间是不变子空间，因为这样才能保证生成一个对角块. 而根据之前的推导，我们知道生成若当块必须要这样的一组循环向量，那么自然地会有两个问题：
 \begin{enumerate}
     \item 循环向量生成的子空间一定是不变子空间吗？因为这样才能保证生成一个对角块；
     \item 我们是从一组基$v_1,\ldots,v_n$可以得到若当块出发定义出这样的循环向量的，那么是不是一组向量满足这样的定义也一定线性无关的呢？因为这样只需要找到这样一组循环向量就一定可以构成若当基的一部分.
@@ -138,7 +138,7 @@
 
     我们记$U=\im(\sigma-\lambda I)\vert_{G_\lambda}$，这是一个维数更低的子空间，现在我们需要说明它是某个线性变换的广义特征子空间. 事实上我们可以直接考虑$\sigma\vert_U$，因为$\sigma$在全空间$V$上关于特征值$\lambda$的广义特征子空间是$G_\lambda$，因此限制在$G_\lambda$的子集上的映射$\sigma\vert_U$关于特征值$\lambda$的广义特征子空间必然就是$U$，因为对于任意的$u\in U\subset G_\lambda$，必然存在正整数$j$使得$(\sigma-\lambda I)^ju=0$. 于是根据归纳假设，$U$有一组由不相交的若当循环基取并集构成的基，记作$B=B_1\cup B_2\cup\cdots\cup B_q$（因为是基所以起始向量也必定线性无关）.
 
-    于是接下来我们要将这组基扩充成$G_\lambda$的一组基，并保持若当循环基的特点. 观察$U=\im(\sigma-\lambda I)\vert_{G_\lambda}$和$G_\lambda$的区别，其一在于$\sigma-\lambda I$将$G_\lambda$的一些向量映射进了$U$，但这些向量本身没能被其它向量映射到$U$中，其二在于$\sigma-\lambda I$将$G_\lambda$中的一些向量（实际上就是特征向量）化零，因此我们就从这两个角度扩充.
+    于是接下来我们要将这组基扩充成$G_\lambda$的一组基，并保持若当循环基的特点. 观察$U=\im(\sigma-\lambda I)\vert_{G_\lambda}$和$G_\lambda$的区别，其一在于$\sigma-\lambda I$将$G_\lambda$的一些向量映射进了$U$，但这些向量本身不在$U$中，其二在于$\sigma-\lambda I$将$G_\lambda$中的一些向量（实际上就是特征向量）化零，而这些特征向量不在$U$中，因此我们就从这两个角度扩充.
     \begin{enumerate}
         \item 我们考虑任一若当循环基$B_i$的终止向量，它应当是某个$v_i\in G_\lambda$在$\sigma-\lambda I$下的像，我们直接将$v_i$加入到$B_i$中，这样我们就得到了$\tilde{B_i}=B_i\cup\{v_i\},\enspace i=1,\ldots,q$，它们仍然是满足循环向量组定义的.
         \item $B$中的特征向量实际上就是每个$B_i$的起始向量，我们记为$w_1,\ldots,w_q$，它们是特征子空间$V_\lambda$的一组线性无关向量，因此可以将其扩充为$V_\lambda$的一组基
@@ -151,7 +151,7 @@
     由\autoref{lem:若当循环基合并性质}，$\tilde{B}$必然线性无关. 最后我们证明$\tilde{B}$是$G_\lambda$的一组基. 假设$B$包含$r=\dim U$个向量，于是$\tilde{B}$包含$r+q+s$个向量. 又因为$w_1,\ldots,w_q,u_1,\ldots,u_s$是$V_\lambda$的一组基，而$V_\lambda=\ker(\sigma-\lambda I)\vert_{G_\lambda}$，由线性映射基本定理，
     \[\dim G_\lambda=\dim\ker(\sigma-\lambda I)\vert_{G_\lambda}+\dim\im(\sigma-\lambda I)\vert_{G_\lambda}=q+s+r,\]
 
-    因此$\tilde{B}$线性无关且长度等于$G_\lambda$的维数，故是$G_\lambda$的一组若当循环基.
+    因此$\tilde{B}$线性无关且长度等于$G_\lambda$的维数，故是$G_\lambda$的一组若当循环基. 这样我们就完成了归纳过渡的证明，由归纳法知结论成立.
 \end{proof}
 
 由此，我们证明了复数域上线性变换的广义特征子空间一定有一组由若干个若当循环基合并而成的基，根据\autoref{eq:17:循环子空间分解} 的推导过程，下面这一定理也就自然成立：
@@ -183,11 +183,12 @@
 \end{lemma}
 
 \begin{proof}
-    \begin{enumerate}
-        \item 直接利用定义，$v\in G_j(\lambda,\sigma)\backslash G_{j-1}(\lambda,\sigma)$表明$N^jv=0$且$N^{j-1}v\neq 0$，因此有$N^{j-i}(N^iv)=0$且$N^{j-i-1}(N^iv)\neq 0$，即$N^iv\in G_{j-i}(\lambda,\sigma)\backslash G_{j-i-1}(\lambda,\sigma)$.
+    % \begin{enumerate}
+    %     \item 直接利用定义，$v\in G_j(\lambda,\sigma)\backslash G_{j-1}(\lambda,\sigma)$表明$N^jv=0$且$N^{j-1}v\neq 0$，因此有$N^{j-i}(N^iv)=0$且$N^{j-i-1}(N^iv)\neq 0$，即$N^iv\in G_{j-i}(\lambda,\sigma)\backslash G_{j-i-1}(\lambda,\sigma)$.
 
-        \item 与\autoref{thm:若当循环基的性质} 理由一致，不再赘述.
-    \end{enumerate}
+    %     \item 与\autoref{thm:若当循环基的性质} 理由一致，不再赘述.
+    % \end{enumerate}
+    直接利用定义，$v\in G_j(\lambda,\sigma)\backslash G_{j-1}(\lambda,\sigma)$表明$N^jv=0$且$N^{j-1}v\neq 0$，因此有$N^{j-i}(N^iv)=0$且$N^{j-i-1}(N^iv)\neq 0$，即$N^iv\in G_{j-i}(\lambda,\sigma)\backslash G_{j-i-1}(\lambda,\sigma)$.
 \end{proof}
 
 这一定理对于Young图从行来看的性质提供了一个合理性的保证. 如\autoref{fig:17:若当基Young图形式} 所示，首先我们知道最上方一行是起始向量，因此都是特征向量，故这一行的向量都属于$G_1(\lambda,\sigma)$（或者$G_1(\lambda,\sigma)\backslash G_0(\lambda,\sigma)$）. 然后根据\autoref{lem:Young图行性质}，$N$的次数增加1，对应的$G_i(\lambda,\sigma)$的下标$i$就会减小1，这也就得到了\autoref{fig:17:若当基Young图形式} 中每行右侧的标注的含义. 由此我们得到了Young图的行性质，接下来我们就基于Young图的行列性质求解若当基.
@@ -274,11 +275,11 @@
     令$r_j$表示Young图从上至下第$j$行的格数，则有（其中$N=\sigma-\lambda I$）：
     \begin{enumerate}
         \item $r_1=\dim V-r(N)$；
-        \item $r_j=r(N)^{j-1}-r(N)^j(j>1)$.
+        \item $r_j=r(N^{j-1})-r(N^j)(j>1)$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    根据\autoref{fig:17:若当基Young图形式} 中每行右侧的标注的含义，第一行的格数就是$G_1(\lambda,\sigma)$的维数，即特征子空间的维数，即$\dim V-r(N)$；第$j(j>1)$行的格数就是$G_j(\lambda,\sigma)$的维数减去$G_{j-1}(\lambda,\sigma)$的维数，由线性映射基本定理，$\dim G_j(\lambda,\sigma)=\dim G_\lambda-r(N)^j$，$\dim G_{j-1}(\lambda,\sigma)=\dim G_\lambda-r(N)^{j-1}$，因此第$j$行的格数就是$r(N)^{j-1}-r(N)^j$.
+    根据\autoref{fig:17:若当基Young图形式} 中每行右侧的标注的含义，第一行的格数就是$G_1(\lambda,\sigma)$的维数，即特征子空间的维数，即$\dim V-r(N)$；第$j(j>1)$行的格数就是$G_j(\lambda,\sigma)$的维数减去$G_{j-1}(\lambda,\sigma)$的维数，由线性映射基本定理，$\dim G_j(\lambda,\sigma)=\dim G_\lambda-r(N^j)$，$\dim G_{j-1}(\lambda,\sigma)=\dim G_\lambda-r(N^{j-1})$，因此第$j$行的格数就是$r(N^{j-1})-r(N^j)$.
 \end{proof}
 
 基于上述定理，我们可以进一步得到每个特征值对应的若当块个数和每个若当块大小的公式. 进一步地，这些公式实际上就表明了若当标准形的唯一性，因为每个特征值对应的若当块的个数和大小都可以被如下公式唯一确定. 我们将这一定理总结如下：
@@ -294,7 +295,7 @@
     以上公式表明，除若当块的排列次序外，一个线性变换对应的若当标准形唯一.
 \end{theorem}
 \begin{proof}
-    实际上，证明这一定理就是要从\autoref{thm:Young图行长度} 中得到的Young图每行的长度推出Young图有多少列，以及每列的长度. 很显然，Young图的列数就是第一行的长度，即$\dim V-r(N_j)$. 进一步观察，我们知道Young图第$j$行与第$j+1$行的长度之差来源于有$r_j-r_{j+1}$（记号来源于\autoref{thm:Young图行长度}）组循环若当基长度终止于$j$，因此大小为$j$的若当块的个数就是$r_j-r_{j+1}=r(N_j)^{t+1}+r(N_j)^{t-1}-2r(N_j)^t$.
+    实际上，证明这一定理就是要从\autoref{thm:Young图行长度} 中得到的Young图每行的长度推出Young图有多少列，以及每列的长度. 很显然，Young图的列数就是第一行的长度，即$\dim V-r(N_j)$. 进一步观察，我们知道Young图第$j$行与第$j+1$行的长度之差来源于有$r_j-r_{j+1}$（记号来源于\autoref{thm:Young图行长度}）组循环若当基长度终止于$j$，因此大小为$j$的若当块的个数就是$r_j-r_{j+1}=r(N_j^{t+1})+r(N_j^{t-1})-2r(N_j^t)$.
 \end{proof}
 
 尽管我们理论上可以通过上述过程得到任意复向量空间上的线性变换的若当块的个数和大小，但我们知道，直接对线性变换计算特征值是困难的，因此更多的时候我们仍然是利用线性变换和它的矩阵表示的特征值与广义特征向量的对应关系，将求解线性变换的若当标准形转化为求解其某个矩阵表示的若当标准形.
@@ -305,11 +306,11 @@
 \begin{theorem}{}{}
     设$A$是$n$阶复矩阵，$\lambda_1,\ldots,\lambda_m$为其互异的特征值，则主对角元为$\lambda_j$的若当块的个数$n_j$为
     \begin{equation} \label{eq:17:矩阵若当块个数}
-        n_j=n-r(A-\lambda_j I),
+        n_j=n-r(A-\lambda_j E),
     \end{equation}
     其中$t$级若当块$J_t(\lambda_j)$的个数$n_j(t)$为
     \begin{equation} \label{eq:17:矩阵若当块大小}
-        n_j(t)=r(A-\lambda_j I)^{t+1}+r(A-\lambda_j I)^{t-1}-2r(A-\lambda_j I)^t,
+        n_j(t)=r(A-\lambda_j E)^{t+1}+r(A-\lambda_j E)^{t-1}-2r(A-\lambda_j E)^t,
     \end{equation}
     以上公式表明，除若当块的排列次序外，一个矩阵对应的若当标准形唯一.
 \end{theorem}
@@ -317,14 +318,31 @@
 最后我们需要提到一点，根据上面的叙述，若当标准形在不考虑若当块的排列顺序的情况下是唯一的. 因此任一复数域上矩阵均有唯一的若当标准形（相似标准形），因此我们可以知道，两矩阵相似的一个充要条件是两矩阵有相同的若当标准形（不考虑若当块的排列顺序），这也是判定两个矩阵是否相似的关键，当然之后我们还会学到其它判定方式，届时我们再做总结.
 
 接下来我们将讨论如何求出Young图中所有方格中的向量，当然实际上只需确定每个终止向量即可得到所有向量. 在正式讨论之前，我们先考虑一种投机取巧的方式. 事实上，如果题目只要求我们求解矩阵的若当标准形时，如果我们要求解过渡矩阵，也有简单的方法. 要求$P$使得$P^{-1}AP=J$，则有$AP=PJ$. 假定$P$为$n$阶矩阵，我们可以设$P=(X_1,\ldots,X_n)$，剩下的任务就是解方程了. 因此这种方法非常简单，缺陷在于绕开了若当基这一本质的问题.
-\begin{example}{}{}
+\begin{example}{}{求若当标准形过渡矩阵}
     利用上述方法求解矩阵\[\begin{pmatrix}
             2 & 3 & 2 \\ 1 & 8 & 2 \\ -2 & -14 & -3
         \end{pmatrix}\]的若当标准形以及对应的过渡矩阵.
 \end{example}
 
 \begin{solution}
+    记 $A=\begin{pmatrix}
+        2 & 3 & 2 \\ 1 & 8 & 2 \\ -2 & -14 & -3
+    \end{pmatrix}$，可以解得$A$的特征多项式为 $(\lambda-1)(\lambda-3)^2$，因此特征值为$1$和$3$，且$A-3E=\begin{pmatrix}
+        -1 & 3 & 2 \\ 1 & 5 & 2 \\ -2 & -14 & -6
+    \end{pmatrix}$的秩为$2$，因此$3$对应的若当块个数为$3-2=1$，故若当标准型为$\begin{pmatrix}
+        3 & 1 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 1
+    \end{pmatrix}$.
 
+    设过渡矩阵为$P=(X_1, X_2, X_3)$，则有$AP=PJ$，即
+    \[
+        \begin{cases}
+            AX_1=3X_1 \\ AX_2=X_1+3X_2 \\ AX_3=X_3
+        \end{cases}
+    \]
+    求解方程组 $AX=X$ 可得 $X_3=(2,0,-1)^\mathrm{T}$，求解方程组 $AX=3X$ 可得 $X_1=(1,-1,2)^\mathrm{T}$，将 $X_1$ 代入方程组 $AX=X_1+3X$ 可得 $X_2=(-1,0,0)^\mathrm{T}+k(1,-1,2)^\mathrm{T}$，取 $k=0$ 即可得到 $X_2=(-1,0,0)^\mathrm{T}$，因此过渡矩阵为
+    \[P=\begin{pmatrix}
+        1 & -1 & 2 \\ -1 & 0 & 0 \\ 2 & 0 & -1
+    \end{pmatrix}.\]
 \end{solution}
 
 下面我们将讨论对于一般的线性变换，无法投机取巧时，或者希望从更本质的角度求解时，我们应当使用的方法.
@@ -334,15 +352,15 @@
 \end{center}
 
 \begin{enumerate}
-    \item 实际上，我们在前述求解若当块大小的过程中求出了各个$G_j(\lambda,\sigma)$，接下来我们需要利用这些向量将之前确定形状的阶梯内容填满. 我们首先将阶梯最上方的向量确定，实际上就是利用求出的$G_{m_1+1}(\lambda,\sigma)$（也就是$V$）和$G_{m_1}(\lambda,\sigma)$求出二者之差. 似乎很简单，但若仔细思索便会发现线性空间的差并不一定好求. 举一个简单的例子，设$G_{m_1+1}(\lambda,\sigma)=\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\}$，$G_{m_1}(\lambda,\sigma)=\{\beta_1,\beta_2\}$. 这其中出现的所有向量可能都完全不一样，所以作差并不容易. 但我们有一种好方法，如果我们每次从$G_{m_1+1}(\lambda,\sigma)$中挑选两个向量和$G_{m_1}(\lambda,\sigma)$中的两个向量放在一起，如果这四个向量线性无关，这就说明这两个挑出的向量就是作差的结果. 原因在于这相当于$G_{m_1}(\lambda,\sigma)$直和这两个向量长成的空间后得到了$G_{m_1+1}(\lambda,\sigma)$. 如果四个向量线性相关，这说明挑选的向量有在$G_{m_1}(\lambda,\sigma)$中的.
+    \item 实际上，我们在前述求解若当块大小的过程中求出了各个$G_j(\lambda,\sigma)$，接下来我们需要利用这些向量将之前确定形状的阶梯内容填满. 我们首先确定Young图最后一行的向量，也就是 $G_{m_1+1}(\lambda,\sigma) \backslash G_{m_1}(\lambda,\sigma)$，其中 $G_{m_1+1}(\lambda,\sigma)$ 就是$V$，需要求出它和$G_{m_1}(\lambda,\sigma)$的差. 似乎很简单，但若仔细思索便会发现线性空间的差并不一定好求. 举一个简单的例子，设$G_{m_1+1}(\lambda,\sigma)=\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\}$，$G_{m_1}(\lambda,\sigma)=\{\beta_1,\beta_2\}$. 这其中出现的所有向量可能都完全不一样，所以作差并不容易. 但我们有一种好方法，如果我们能从$G_{m_1+1}(\lambda,\sigma)$中挑选两个向量和$G_{m_1}(\lambda,\sigma)$中的两个向量放在一起，并且这四个向量线性无关，这就说明这两个挑出的向量就是作差的结果. 原因在于线性无关意味着$G_{m_1}(\lambda,\sigma)$与这两个向量构成的空间作和为直和，考虑维数即可知得到的是$G_{m_1+1}(\lambda,\sigma)$. 而要找到这样的向量，可以参考\autoref{lem:极大线性无关组的求法} 后续讨论中求一组线性无关向量扩张成一组基的方法，实际上扩张进来的向量就是作差的结果.
 
-    \item 接下来继续计算第二行中的向量. 实际上算出第一行后第二行中部分向量就已经确定了，例如图上的$Nv_1$和$Nv_2$. 我们这时用类似的方法求解$G_{m_1}(\lambda,\sigma)$和$G_{m_1-1}(\lambda,\sigma)$的差，如图只需要确定一个向量，但这一个向量的确定除了要像（a）中一样每次从$G_{m_1}(\lambda,\sigma)$中选择一个与$G_{m_1-1}(\lambda,\sigma)$的基一起判断线性相关性外，还需要确保这个向量和已经求出的$Nv_1$和$Nv_2$是线性无关的，因为它们构成$G_{m_1}(\lambda,\sigma)$的一组基.
+    \item 接下来继续计算倒数第二行中的向量. 实际上算出倒数第一行后倒数第二行中部分向量就已经确定了，例如\autoref{fig:17:若当基Young图形式} 上的$Nv_1$和$Nv_2$. 我们这时用类似的方法求解$G_{m_1}(\lambda,\sigma)$和$G_{m_1-1}(\lambda,\sigma)$的差，但新选出的向量除了需要和$G_{m_1-1}(\lambda,\sigma)$中的向量线性无关以外，还需要和同一行中已经求出的向量（$Nv_1,Nv_2$）线性无关，因此可以将这两部分向量合并成一个集合，求它和 $G_{m_1}(\lambda,\sigma)$ 的差即可，步骤和之前一样.
 
-          总结一下，处于$G_j(\lambda,\sigma)\backslash G_{j-1}(\lambda,\sigma)$对应的行的需要补充的向量$v$应当满足如下三个条件：
+          这其实不局限于倒数第二行，对于任意的 $1 \leqslant j \leqslant m_1$，处于$G_j(\lambda,\sigma)\backslash G_{j-1}(\lambda,\sigma)$对应的行的需要补充的向量$v$应当满足如下三个条件：
           \begin{enumerate}
               \item $v\in G_j(\lambda,\sigma)$；
 
-              \item $v\notin G_{j-1}(\lambda,\sigma)$（通过加入$G_{j-1}(\lambda,\sigma)$）的基保证线性无关判断）；
+              \item $v\notin G_{j-1}(\lambda,\sigma)$；
 
               \item $v$与同一行中左边已求出的向量线性无关.
           \end{enumerate}
@@ -357,7 +375,24 @@
     求$V$的一组基使得$\sigma$在这组基下的矩阵是若当标准形.
 \end{example}
 \begin{solution}
+    由于对多项式求导会降低次数，因此$\sigma$显然是幂零的（也可以直接写出$\sigma$在题目中给出的这组基的矩阵表示，不难得知其为对角线全为$0$的上三角矩阵），因此唯一特征值为$0$. 为了表示简便，这里用 $G_j$ 代替之前的记号 $G_j(\lambda,\sigma)=\ker (\sigma-\lambda I)^j$.
 
+    不难得到：
+    \begin{itemize}
+        \item $G_1 = \ker \sigma = \spa\{1, y, y^2\}$，$\dim G_1 = 3$；
+        \item $G_2 = \ker \sigma^2 = \spa\{1, y, y^2, x, xy\}$，$\dim G_2 = 5$；
+        \item $G_3 = \ker \sigma^3 = \spa\{1, y, y^2, x, xy, x^2\} = V$，$\dim G_3 = 6$.
+    \end{itemize}
+
+    从而根据\autoref{thm:Young图行长度}，Young图的行长度分别为 $r_1 = 3, r_2 = 2, r_3 = 1$，我们按照刚刚的讨论填充Young图.
+
+    \begin{enumerate}
+        \item 倒数第一层中，我们需要找到一个向量 $v_1 \in G_3 \backslash G_2$，因为这里$G_1, G_2, G_3$的基非常好的满足了包含关系，所以作差变得非常简单：注意到 $G_3 = \spa\{G_2, x^2\}$，我们直接挑出 $v_1=x^2$ 即可.
+        \item 倒数第二层中，我们需要找到一个向量 $v_2 \in G_2 \backslash G_1$，且 $v_2$ 与该层已有向量 $\sigma(v_1)=2x$ 线性无关. 注意到 $G_2 = \spa\{G_1, x, xy\}$，在 $G_2$ 中，$\{1, y, y^2, 2x, xy\}$ 线性无关且张成 $G_2$，故可取 $v_2 = xy$.
+        \item 第一层中，我们需要找到一个向量 $v_3 \in G_1$，且 $v_3$ 与该层已有向量 $\sigma^2(v_1)=2, \sigma(v_2)=y$ 线性无关. 注意到 $G_1 = \spa\{1, y, y^2\}$. 显然 $\{2, y, y^2\}$ 是 $G_1$ 的一组基，故可取 $v_3 = y^2$.
+    \end{enumerate}
+
+    从而我们得到了若当基 $\{2, 2x, x^2, y, xy, y^2\}$.
 \end{solution}
 
 \section{若当标准形的应用}
@@ -428,7 +463,7 @@
     \[B=\begin{pmatrix}
             A & C \\ O & D
         \end{pmatrix},\]
-    于是$\sigma\vert_W$的矩阵为$A$，对应特征多项式$|\lambda E-A|$可以整除$\sigma$的特征多项式$|\lambda E-B|=|\lambda E-A||\lambda E-D|$，由于$\sigma$有$n$个不同的特征值，因此$\sigma\vert_W$必定有$m$个不同的特征值$\lambda_{l_1},\ldots,\lambda_{l_m}$，且$1\leqslant l_1<\cdots<l_m\leqslant n$，而对每个特征值$\lambda_{l_i}$都有特征向量$\alpha_i\in W$，满足$\sigma\vert_W(\alpha_i)=\lambda_{l_i}\alpha_i$，因此$\sigma(\alpha)=\lambda_{l_i}\alpha_i$，即$\alpha_i\in V_{\lambda_{l_i}}$，故$V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}}\subset U$. 再结合
+    于是$\sigma\vert_U$的矩阵为$A$，对应特征多项式$|\lambda E-A|$，而$\sigma$的特征多项式$|\lambda E-B|=|\lambda E-A||\lambda E-D|$，由于$\sigma$有$n$个不同的特征值，因此$\sigma\vert_U$必定有$m$个不同的特征值$\lambda_{l_1},\ldots,\lambda_{l_m}$，且$1\leqslant l_1<\cdots<l_m\leqslant n$. 而对每个特征值$\lambda_{l_i}$都有特征向量$\alpha_i\in U$，满足$\sigma\vert_U(\alpha_i)=\lambda_{l_i}\alpha_i$，因此$\sigma(\alpha_i)=\lambda_{l_i}\alpha_i$，即$\alpha_i\in V_{\lambda_{l_i}}$，故$V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}}\subset U$. 再结合
     \[\dim(V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}})=m=\dim U,\]
     故$U=V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}}$，故所有不变子空间都是之前讨论的$2^n$种之一，命题得证.
 \end{solution}
@@ -439,14 +474,32 @@
 
 若当标准形的另一个应用在于我们可以利用它计算矩阵的幂，因为若当块的幂的计算是简单的，这一点与对角矩阵是类似的：
 \[J_k(a)^n=(aE+J_k(0))^n=a^nE+\mathrm{C}_n^1a^{n-1}J_k(0)+\cdots+\mathrm{C}_n^nJ_k(0)^n\]
-同时我们也知道$J_k(0)^k=O$（幂零矩阵），所以利用若当标准形求解矩阵的幂是简单的. 我们来看一个例子：
+同时我们也知道$J_k(0)^k=O$（幂零矩阵），并且通过简单的找规律不难找到$J_k(0)$的任意次幂的表达式，所以利用若当标准形求解矩阵的幂是简单的. 我们来看一个例子：
 \begin{example}{}{}
     设$A=\begin{pmatrix}
             2 & 6 & -15 \\ 1 & 1 & -5 \\ 1 & 2 & -6
         \end{pmatrix}$，求$A^{m}(m\geqslant 1)$.
 \end{example}
 \begin{solution}
-
+    首先求 $A$ 的若当标准形，$|\lambda E - A|=(\lambda + 1)^3$，$-1$为唯一特征值，几何重数为$3$，而$A+E=\begin{pmatrix}
+            3 & 6 & -15 \\ 1 & 2 & -5 \\ 1 & 2 & -5
+        \end{pmatrix}$为秩为$1$的矩阵，因此由\autoref{thm:若当标准形唯一}，若当块有$3-1=2$个，只可能是$J_2(-1)$和$J_1(-1)$，因此$A=PJP^{-1}$，其中$J=\begin{pmatrix}
+            -1 & 1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1
+        \end{pmatrix}$，用\autoref{ex:求若当标准形过渡矩阵} 中的方法，可得$P=\begin{pmatrix}
+            3 & 1 & 2 \\ 1 & 0 & -1 \\ 1 & 0 & 0
+        \end{pmatrix}$，$P^{-1}=\begin{pmatrix}
+            0 & 0 & 1 \\ 1 & 2 & -5 \\ 0 & -1 & 1
+        \end{pmatrix}$，故$A^m=PJ^mP^{-1}$，其中
+        \[
+            J^m=\begin{pmatrix}
+                (-1)^m E + m(-1)^{m-1}J_2(0) & O \\ O & (-1)^m
+            \end{pmatrix}=(-1)^m\begin{pmatrix}
+                1 & -m & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+            \end{pmatrix},
+        \]
+        整理可得 $A^m=(-1)^m\begin{pmatrix}
+            1-3m & -6m & 15m \\ -m & 1-2m & 5m \\ -m & -2m & 1+5m
+        \end{pmatrix}$.
 \end{solution}
 
 下面是一个非常经典的例子，在接下来的讨论中还会有应用：
@@ -464,11 +517,11 @@
               \[J^{-1}=\dfrac{1}{a}E_n-\dfrac{1}{a^2}J_n(0)+\cdots+(-1)^{n-1}\dfrac{1}{a^n}J_n(0)^{n-1}.\]
               故$r(J^{-1}-\dfrac{1}{a}E_n)=r(-\dfrac{1}{a^2}J_n(0)+\cdots+(-1)^{n-1}\dfrac{1}{a^n}J_n(0)^{n-1})=n-1$，因此$J^{-1}$的若当块个数为$n-(n-1)=1$，因此$J^{-1}$的若当标准形就是$J_n(a^{-1})$.
 
-              最后处理$m\leqslant -2$的情况，注意到$J^m=(J_n^{-1})^{-m}$，故根据前面$m\geqslant 1$的讨论，$J^m$的若当标准形就是$J_n((a^{-1})^{-m})=J_n(a^m)$.
+              最后处理$m\leqslant -2$的情况，注意到$J^m=(J^{-1})^{-m}$，故根据前面$m\geqslant 1$的讨论，$J^m$的若当标准形就是$J_n((a^{-1})^{-m})=J_n(a^m)$.
 
               综上所述，无论$m$取什么整数值，$J^m$的若当标准形就是$J_n(a^m)$.
 
-        \item 当$a=0$时，我们有$m\geqslant n$时$J^m=O$，此时若当标准形也就是零矩阵. 我们考虑$m<n$的情况，我们需要使用\autoref{thm:若当标准形唯一} 的结论来辅助我们求解$J^m$的若当标准形，因此我们需要研究$(J^m)^k$的秩. 我们做带余除法，$n=mq+r(0\leqslant r<m)$，则根据$J_n(0)$的幂次的特点，我们有
+        \item 当$a=0$时，$J$不可逆，因此只考虑$m>0$的情形. 我们有$m\geqslant n$时$J^m=O$，此时若当标准形也就是零矩阵. 我们考虑$m<n$的情况，我们需要使用\autoref{thm:若当标准形唯一} 的结论来辅助我们求解$J^m$的若当标准形，因此我们需要研究$(J^m)^k$的秩. 我们做带余除法，$n=mq+r(0\leqslant r<m)$，则根据$J_n(0)$的幂次的特点，我们有
               \[r((J^m)^k)=n-mk,\enspace 0\leqslant k\leqslant q,\enspace r((J^m)^k)=0,\enspace k\geqslant q+1.\]
               因此
               \begin{enumerate}
@@ -484,9 +537,9 @@
 由于复数域上任意矩阵都有若当标准形，因此利用若当标准形，我们可以求出复数域上任意矩阵的任意幂次. 于是我们会有一个问题，即任意给定一个矩阵，当我们取其幂次趋向于无穷时，会得到一个什么样的矩阵呢？是所有元素都有限的矩阵，还是有些元素可能趋于无穷了呢？
 
 \subsection{若当标准形与矩阵分解}
-矩阵分解是我们讨论标准形时绕不开的话题，接下来我们讨论若当标准形应用于矩阵分解的情形. 我们首先讨论平方根分解，这一点是之前线性变换平方根讨论的延续. 下面这一结论是相当经典的：
+矩阵分解是讨论标准形时绕不开的话题. 接下来我们讨论若当标准形在矩阵分解中的应用，先从矩阵方根问题开始. 下面的结论是前文线性变换平方根问题的自然延续：
 \begin{theorem}{}{若当标准形m次根}
-    在复数域上，我们有如下关于若当标准形的根式结论：
+    设$m\geqslant 2$为整数. 在复数域上有如下关于若当块方根的结论：
     \begin{enumerate}
         \item 设$a\neq 0$，则存在矩阵$A$使得$A^m=J_n(a)$；
         \item 当$n\geqslant 2$时，不存在矩阵$A$使得$A^m=J_n(0)$.
@@ -495,22 +548,22 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item 根据\autoref{ex:若当m次幂}，我们知道$J_n(a)^m\sim J_n(a^m)$. 设$b^m=a$（在复数域上一定存在这样的$b$），则$J_n(b)^m\sim J_n(a)$，因此存在可逆矩阵$P$使得$P^{-1}J_n(b)^mP=J_n(a)$，取$A=P^{-1}J_n(b)P$即可.
+        \item 根据\autoref{ex:若当m次幂}，若$b\neq 0$，则$J_n(b)^m\sim J_n(b^m)$. 取$b\in\mathbf{C}$使得$b^m=a$，则$J_n(b)^m\sim J_n(a)$，因此存在可逆矩阵$P$使得$P^{-1}J_n(b)^mP=J_n(a)$. 令$A=P^{-1}J_n(b)P$，便有$A^m=J_n(a)$.
 
         \item 反证法. 若存在矩阵$A$使得$A^m=J_n(0)$，则$A$显然也为$n$阶幂零矩阵，因此有$A^n=O$（因此至少有$m\leqslant n$）. 设$n=mq-r(m\geqslant 2,0\leqslant r<m)$，则$O=A^{n+r}=(A^m)^q=J_n(0)^q\neq O$，这是因为$J_n(0)$至少需要$n$次才能化零，但$n=mq-r(m\geqslant 2,0\leqslant r<m)$表明$q<n$，故矛盾.
     \end{enumerate}
 \end{proof}
 
-接下来我们考虑之前已经证明的\autoref{thm:幂零平方根} 的\ref*{item:16:幂零平方根:2}，即可逆线性变换一定有平方根，我们现在可以使用若当标准形的方式证明. 我们直接使用矩阵证明即可，因为基固定的情况下矩阵和线性映射一一对应. 因为可逆线性变换对应可逆矩阵$A$，可逆矩阵特征值均不为0，因此每个对应的若当标准形$J$的若当块对角线上都不为0，均有平方根（即上述定理中$m=2$，我们记$B^2=J$）. 进一步地，由于一定存在可逆矩阵$P$使得$P^{-1}AP=J$，我们取$C=PBP^{-1}$，则$C^2=PB^2P^{-1}=PJP^{-1}=A$，故我们找到了任意可逆矩阵对应的平方根$C$. 这一结论显然可以进一步推广，即任意复数域上的可逆线性变换和可逆矩阵一定有$m$次方根.
+由此可以重新证明\autoref{thm:幂零平方根} 的\ref*{item:16:幂零平方根:2}：复数域上的可逆线性变换一定有平方根，我们现在可以使用若当标准形的方式证明. 只需证明矩阵版本，因为基固定的情况下矩阵和线性映射一一对应. 设可逆变换对应可逆复矩阵$A$，则$A$的若当标准形$J$中每个若当块的特征值均非零. 根据上一定理，每个若当块都有平方根，故$J$有平方根，记为$B$，即$B^2=J$. 若$P^{-1}AP=J$，取$C=PBP^{-1}$，则$C^2=PB^2P^{-1}=PJP^{-1}=A$，故我们找到了任意可逆矩阵对应的平方根$C$. 这一结论显然可以进一步推广，即任意复数域上的可逆线性变换和可逆矩阵一定有$m$次方根.
 
-利用若当标准形，我们还可以有以下著名的Jordan-Chevalley分解. 这一定理的证明过程将会给出我们利用若当标准形证明一般矩阵性质的通用方法，一般包含如下步骤：
+若当标准形还可以导出著名的Jordan-Chevalley分解. 这一证明也展示了利用若当标准形证明一般矩阵性质的常用范式：
 \begin{enumerate}
     \item 证明结论对于若当块成立；
     \item 证明结论对于若当标准形成立；
     \item 利用问题在相似下的不变性证明结论对于一般矩阵成立.
 \end{enumerate}
 
-事实上，上面讨论任意复可逆矩阵均有平方根也是遵循这一范式证明的，我们也是先证明了对角线元素非零的若当块一定有平方根，那么自然若当标准形是由若当块构成的分块对角矩阵也满足这一性质，然后利用$(P^{-1}AP)^n=P^{-1}A^nP$这一相似具有的运算特点证明对一般可逆矩阵有平方根成立. 总而言之，当我们希望使用若当标准形证明矩阵具有的性质时，这些性质在相似下要有一定的不变性，然后我们遵照上述范式即可给出证明. 因此，我们发现了研究相似标准形的一个重要的意义，因为这些很简单的矩阵一般而言都是具有很好的性质的，再结合很多性质在相似下都可以保持，因此我们可以通过研究更容易处理的相似标准形来研究一般矩阵的性质. 下面我们就开始证明这一著名的分解：
+上面对复可逆矩阵方根的讨论正是这一范式的例子：先证明非零特征值的若当块有方根，再推广到若当标准形，最后通过相似变换得到一般可逆矩阵的结论. 总而言之，当我们希望使用若当标准形证明矩阵具有的性质时，这些性质在相似下要有一定的不变性，然后遵照上述范式即可给出证明. 这也体现出研究相似标准形的一个重要意义：通过研究形式简单的相似标准形的良好性质，结合研究性质的相似不变性，即可通过研究更容易处理的相似标准形来研究一般矩阵的性质. 接下来我们证明这一著名的分解：
 
 \begin{theorem}{Jordan-Chevalley分解}{}
     设$A$是$n$阶复矩阵，则$A$可分解为$A=B+C$，其中$B,C$满足如下条件：
@@ -524,10 +577,13 @@
 \end{theorem}
 
 \begin{proof}
-    我们首先对若当块$J_n(a)$证明这一定理. 事实上这非常显然，我们取$B=aE_n$，$C=J_n(0)$，则$B$可对角化，$C$是幂零的，且$BC=CB=aJ_n(0)$. 又因为$O=C^n=(J_n(a)-B)^n$，因此我们取$f(x)=(x-a)^n+a$，代入$x=J_n(a)$有
-    $f(J_n(a))=(J_n(a)-aE_n)^n+aE_n=aE_n=B$，因此$B$表示为了$A$的多项式，而$C=J_n(a)-B=J_n(a)-f(J_n(a))$也是$A$的多项式.
+    先证明存在性. 首先从若当块入手，对于若当块$J_n(a)=aE_n+J_n(0)$，取$B=aE_n, C=J_n(0)$，则$B$可对角化，$C$幂零，且$BC=CB$. 又因为$C^n=(J_n(a)-B)^n$，故取$f(x)=(x-a)^n+a$，则
+    \[
+        f(J_n(a))=(J_n(a)-aE_n)^n+aE_n=aE_n=B.
+    \]
+    因此$B$可表示为$J_n(a)$的多项式，$C=J_n(a)-B$也可表示为$J_n(a)$的多项式.
 
-    接下来推广到若当标准形$J$，我们假设$J$互不相同的特征值为$\lambda_1,\ldots,\lambda_m$，设每个特征值$\lambda_i$对应$s_i$个若当块，则可以将$J$表示为
+    接下来推广到若当标准形$J$. 设$J$的互异特征值为$\lambda_1,\ldots,\lambda_m$，特征值$\lambda_i$对应$s_i$个若当块. 将$J$表示为
     \[J=\begin{pmatrix}
             J_{11} &        &          &        &        &        &          \\
                    & \ddots &          &        &        &        &          \\
@@ -537,13 +593,32 @@
                    &        &          &        &        & \ddots &          \\
                    &        &          &        &        &        & J_{ms_m}
         \end{pmatrix}.\]
-    对每个若当块$J_{ij}$，假设若当块大小为$k_{ij}$，我们类似于前面对若当块的讨论取出每个$M_{ij}=\lambda_i E_{k_{ij}}$，$N_{ij}=J_{k_{ij}}(0)$，然后将这些矩阵按$J$的顺序排列成分块对角矩阵即可得到$M$和$N$，则$J=M+N$，$M$可对角化，$N$是幂零的，且$MN=NM$是容易验证的.
+    对每个$J_{ij}$，设若当块大小为$k_{ij}$. 类似于前面对若当块的讨论，对每个若当块取$M_{ij}=\lambda_i E_{k_{ij}}, N_{ij}=J_{k_{ij}}(0)$，并按$J$中若当块的顺序排列成分块对角矩阵$M,N$，则$J=M+N$，$M$可对角化，$N$是幂零的，且$MN=NM$容易验证.
 
-    我们设每个特征值$\lambda_i$对应的最大的若当块的阶数为$k_i$，因此$(J_{ij}-\lambda_{ij})^{k_i}=O$. 我们知道$(\lambda-\lambda_1)^{k_1},\ldots,(\lambda-\lambda_m)^{k_m}$是两两互素的多项式，因此由\nameref{thm:中国剩余定理}可知，存在多项式$f(\lambda)$满足
-    \[f(\lambda)=g_i(\lambda)(\lambda-\lambda_i)^{k_i}+\lambda_i,\enspace i=1,\ldots,m\]
-    故$f(J_{ij})=g_i(J_{ij})(J_{ij}-\lambda_i)^{k_i}+\lambda_iE_{k_{ij}}=\lambda_iE_{k_{ij}}=M_{ij}$，因此$f(J)=M$也成立. 同理$N=J-M=J-f(J)$也是$J$的多项式，因此命题结论对若当标准形都成立.
+    设特征值$\lambda_i$对应的最大若当块阶数为$k_i$，则对所有$j$都有$(J_{ij}-\lambda_iE_{k_{ij}})^{k_i}=O$. 由于$(x-\lambda_1)^{k_1},\ldots,(x-\lambda_m)^{k_m}$两两互素，由\nameref{thm:中国剩余定理}，存在多项式$f(x)$满足
+    \[
+        f(x)\equiv \lambda_i \pmod{(x-\lambda_i)^{k_i}},\enspace i=1,\ldots,m.
+    \]
+    因而存在多项式$g_i(x)$使得
+    \[
+        f(x)=g_i(x)(x-\lambda_i)^{k_i}+\lambda_i.
+    \]
+    代入$J_{ij}$可得
+    \[
+        f(J_{ij})=g_i(J_{ij})(J_{ij}-\lambda_iE_{k_{ij}})^{k_i}+\lambda_iE_{k_{ij}}
+        =M_{ij}.
+    \]
+    故$f(J)=M$，于是$N=J-M=J-f(J)$也是$J$的多项式.
 
-    接下来考虑一般情形，设$P^{-1}AP=J$，则$A=PJP^{-1}=P(M+N)P^{-1}=PMP^{-1}+PNP^{-1}$. 取$B=PMP^{-1}$，$C=PNP^{-1}$，则$B$可对角化，$C$是幂零的，且$BC=CB$，$B,C$均可以表示为$A$的多项式都可以从$M,N$具有这样的性质立刻得到，即这一问题是在相似下不变的.
+    接下来考虑一般情形，对一般矩阵$A$，取可逆矩阵$P$使得$P^{-1}AP=J$. 由$J=M+N$可得
+    \[
+        A=PJP^{-1}=PMP^{-1}+PNP^{-1}.
+    \]
+    令$B=PMP^{-1}$，$C=PNP^{-1}$. 相似变换保持可对角化、幂零性与乘法交换性，因此$B$可对角化，$C$幂零，且$BC=CB$. 又
+    \[
+        B=Pf(J)P^{-1}=f(PJP^{-1})=f(A),
+    \]
+    故$B$是$A$的多项式，$C=A-B$也是$A$的多项式.
 
     最后证明唯一性. 假设$A$有另一满足1-3的分解$A=B'+C'$，则$B-B'=C'-C$，由$B'C'=C'B'$，结合$A=B'+C'$可知$AB'=B'A,AC'=C'A$，又因为$B=f(A)$，故$BB'=B'B$，同理有$CC'=C'C$. 设$C^r=O,C'^t=O$，用二项式定理可知$(C-C')^{r+t}=O$，因此$(B-B')^{r+t}=O$.
 
@@ -555,13 +630,13 @@
 \subsection{求解微分方程}
 
 取一常系数微分方程如下：
-\[\dfrac{\mathrm{d}f_1}{\mathrm{d}x^2}-a\dfrac{\mathrm{d}f_1}{\mathrm{d}x}=bf_1.\]
+\[\dfrac{\mathrm{d}^2f_1}{\mathrm{d}x^2}-a\dfrac{\mathrm{d}f_1}{\mathrm{d}x}=bf_1.\]
 令$\dfrac{\mathrm{d}f_1}{\mathrm{d}x}=f_2$，则上式可以改写为
 \[\begin{cases}
-        \dfrac{\mathrm{d}f_1}{\mathrm{d}x}=f_2, \\
+        \dfrac{\mathrm{d}f_1}{\mathrm{d}x}=f_2, \\[0.5em]
         \dfrac{\mathrm{d}f_2}{\mathrm{d}x}=af_2+bf_1.
     \end{cases}\]
-我们可以将上述方程写成矩阵形式：
+上述方程可写成矩阵形式：
 \[\dfrac{\mathrm{d}}{\mathrm{d}x}\begin{pmatrix}
         f_1 \\ f_2
     \end{pmatrix}=\begin{pmatrix}
@@ -571,7 +646,7 @@
     \end{pmatrix}.\]
 
 类似地，$n$阶常微分方程
-\[\dfrac{\mathrm{d}f_1}{\mathrm{d}x^n}-a_{n-1}\dfrac{\mathrm{d}f_1}{\mathrm{d}x^{n-1}}-\cdots-a_1\dfrac{\mathrm{d}f_1}{\mathrm{d}x}=bf_1\]
+\[\dfrac{\mathrm{d}^nf_1}{\mathrm{d}x^n}-a_{n-1}\dfrac{\mathrm{d}^{n-1}f_1}{\mathrm{d}x^{n-1}}-\cdots-a_1\dfrac{\mathrm{d}f_1}{\mathrm{d}x}=bf_1\]
 可以改写为
 \[\dfrac{\mathrm{d}}{\mathrm{d}x}\begin{pmatrix}
         f_1 \\ f_2 \\ \vdots \\ f_n
@@ -592,121 +667,158 @@
     \end{pmatrix}=\begin{pmatrix}
         g_1 \\ g_2 \\ \vdots \\ g_n
     \end{pmatrix},\]
-于是我们有
+于是有
 \[\dfrac{\mathrm{d}}{\mathrm{d}x}\begin{pmatrix}
         g_1 \\ g_2 \\ \vdots \\ g_n
     \end{pmatrix}=J\begin{pmatrix}
         g_1 \\ g_2 \\ \vdots \\ g_n
     \end{pmatrix}.\]
 
-一个直观的事情是$J$越简单方程越容易解，因此这时若当标准形就能帮助我们解决这一问题.
+若当标准形的作用在此处十分明确：方程组被分解为若干个若当块对应的方程组. 对一个$r$阶若当块$J_r(\lambda)=\lambda E_r+N$，其中$N=J_r(0)$且$N^r=O$，矩阵指数满足
+\[
+    \mathrm{e}^{J_r(\lambda)x}
+    =\mathrm{e}^{\lambda x}\mathrm{e}^{Nx}
+    =\mathrm{e}^{\lambda x}\left(E_r+xN+\frac{x^2}{2!}N^2+\cdots+\frac{x^{r-1}}{(r-1)!}N^{r-1}\right).
+\]
+因此若$h'(x)=J_r(\lambda)h(x)$，则
+\[
+    h(x)=\mathrm{e}^{J_r(\lambda)x}h(0).
+\]
+对分块对角矩阵$J$逐块使用上述公式，再由
+\[
+    \begin{pmatrix}
+        f_1 \\ f_2 \\ \vdots \\ f_n
+    \end{pmatrix}
+    =P\begin{pmatrix}
+        g_1 \\ g_2 \\ \vdots \\ g_n
+    \end{pmatrix}
+\]
+即可得到原微分方程的通解. 这说明若当标准形把常系数线性微分方程组的求解化为若当块指数的计算，而后者只涉及有限次幂.
 
 \subsection{求解线性递推方程}
 
 数列的线性递推方程求解是我们高中就曾经接触过的问题，在行列式的运算技巧中我们也曾提及二阶齐次线性递推方程的求解，不过那种方法显然缺乏普适性. 很自然地，我们希望能寻求某种方法来解决$m$阶线性递推方程，不过在此之前，我们需要明确这其中蕴含的线性性究竟在何处.
 
-让我们先从二阶开始，考虑$a_n = k_1 a_{n - 1} + k_2 a_{n - 2}$，显然其特征方程为$x^2 - k_1 x - k_2 = 0$，考虑无重根（$\Delta = k_1 + 4k_2 \neq 0$）的情况，有$\lambda_1 = \dfrac{k_1 + \sqrt{k_1 + 4k_2}}{2}, \lambda_2 = \dfrac{k_1 - \sqrt{k_1 + 4k_2}}{2}$，且通项为$a_n = A \lambda_1^n + B \lambda_2^n$，其中$A, B$为待定常数. 而事实上，这个递推方程可以用一个线性映射去表示. 设$T \in \mathcal{L}(\mathbf{F}^2)$为$T(x_1, x_2) = (x_2, k_2 x_1 + k_1 x_2)$，则有$T(a_{n - 2}, a_{n - 1}) = (a_{n - 1}, a_n)$，便可以得到$T^n(a_0, a_1) = (a_n, a_{n + 1})$，也就是说，如果对初值进行$n$次线性变换，我们便可以得到第$n$项的值，但这个计算量过于庞大了. 而回忆我们先前处理算子的幂的方法，很快便能回想起相似标准型，所以接下来我们需要转向求出这一算子的特征值与特征向量.
+先从二阶情形开始. 考虑$a_n=k_1a_{n-1}+k_2a_{n-2}$，其特征方程为$x^2-k_1x-k_2=0$. 当$\Delta=k_1^2+4k_2\neq 0$时，两个根为
+\[
+    \lambda_1=\frac{k_1+\sqrt{k_1^2+4k_2}}{2},\qquad
+    \lambda_2=\frac{k_1-\sqrt{k_1^2+4k_2}}{2},
+\]
+通项形式为$a_n=A\lambda_1^n+B\lambda_2^n$.
 
-考虑$T(x_1, x_2) = \lambda (x_1, x_2)$，得到方程组$\begin{cases} x_2 = \lambda x_1 \\ k_2 x_1 + k_1 x_2 = \lambda x_2 \end{cases}.$ 考虑到特征向量不为零向量，所以消去$x_1, x_2$后可以得到关于$\lambda$的方程$\lambda^2 - k_1 \lambda - k_2 = 0$，所以这个方程才会被称为特征方程，因为它的根是算子的特征值. 在没有重根的情况下，解得两个特征值为$\lambda_1, \lambda_2$，而对应的特征向量为$v_1 = (1, \lambda_1), v_2 = (1, \lambda_2)$. 我们知道对应不同特征值的特征向量是线性无关的，并且这里的数量正好等于空间维数，所以这两个特征向量构成了空间的一组基，且算子在这组基下的矩阵表示是简单的，为对角阵$\Lambda = \begin{pmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}$. 设$(a_0, a_1) = c_1 v_1 + c_2 v_2$，而使用矩阵求出坐标再代入基是计算量较小的，所以有 $\Lambda^n \begin{pmatrix}
+事实上，这一递推方程可以由线性映射表示. 设$T\in\mathcal{L}(\mathbf{F}^2)$为
+\[
+    T(x_1,x_2)=(x_2,k_2x_1+k_1x_2).
+\]
+则$T(a_{n-2},a_{n-1})=(a_{n-1},a_n)$，从而$T^n(a_0,a_1)=(a_n,a_{n+1})$. 然而直接计算$T^n$并不方便，回忆之前对算子幂的处理方法，很快便能想到引入相似标准形来处理，因此接下来我们转向求该算子的特征值与特征向量.
+
+考虑$T(x_1,x_2)=\lambda(x_1,x_2)$，得到方程组
+\[
+    \begin{cases}
+        x_2=\lambda x_1,\\
+        k_2x_1+k_1x_2=\lambda x_2.
+    \end{cases}
+\]
+由于特征向量非零，消去$x_1,x_2$后得到$\lambda^2-k_1\lambda-k_2=0$，所以这个方程才会被称为特征方程，因为它的根就是算子的特征值. 在无重根情形下，两个特征值为$\lambda_1,\lambda_2$，对应特征向量可取为$v_1=(1,\lambda_1), v_2=(1,\lambda_2)$. 我们知道不同特征值对应的特征向量线性无关，因此$v_1,v_2$构成$\mathbf{F}^2$的一组基，且$T$在这组基下的矩阵为
+\[
+    \Lambda=\begin{pmatrix}
+        \lambda_1 & 0 \\ 0 & \lambda_2
+    \end{pmatrix}.
+\]
+设$(a_0,a_1)=c_1v_1+c_2v_2$，则
+\[
+    \Lambda^n \begin{pmatrix}
         c_1 \\ c_2
     \end{pmatrix} = \begin{pmatrix}
         c_1 \lambda_1^n \\ c_2 \lambda_2^n
-    \end{pmatrix}$，这便是$(a_n, a_{n + 1})$在这组基下的坐标，代入$v_1, v_2$即可得到通解$a_n = c_1 \lambda_1^n + c_2 \lambda_2^n$.
+    \end{pmatrix}.
+\]
+这便是$(a_n,a_{n+1})$在基$v_1,v_2$下的坐标，代回原基可得
+\[
+    a_n=c_1\lambda_1^n+c_2\lambda_2^n.
+\]
 
-而对于$m$阶线性递推方程$a_n = k_1 a_{n - 1} + k_2 a_{n - 2} + \cdots + k_m a_{n - m}$，其无重根的情况是二阶的简单推广. 考虑$T \in \mathcal{L}(F^m)$，$T(x_1, x_2, \ldots, x_m) = (x_2, x_3, \ldots, k_m x_1 + k_{m - 1} x_2 + \cdots + k_1 x_m)$，则$T(a_{n - m}, a_{n - m + 1}, \ldots, a_{n - 1}) = (a_{n - m + 1}, a_{n - m + 2}, \ldots, a_n)$，对应的特征方程为$x^m - k_1 x^{m - 1} - \cdots - k_m = 0$，得到特征值为$\lambda_1, \lambda_2, \ldots, \lambda_m$，而对应的特征向量为$v_i = (1, \lambda_i, \lambda_i^2, \ldots, \lambda_i^{m - 1})$，通解为$a_n = \sum_{i = 1}^m c_i \lambda_i^n$. 另一个有趣的事实是所有的特征向量也能组成一个 Vandermonde 矩阵，这也可以从另一个侧面印证为什么要求没有重根.
+而对于$m$阶线性递推方程$a_n=k_1a_{n-1}+k_2a_{n-2}+\cdots+k_ma_{n-m}$，无重根情形是二阶情形的简单推广. 取$T\in\mathcal{L}(\mathbf{F}^m)$为
+\[
+    T(x_1,x_2,\ldots,x_m)=(x_2,x_3,\ldots,k_mx_1+k_{m-1}x_2+\cdots+k_1x_m).
+\]
+则
+\[
+    T(a_{n-m},a_{n-m+1},\ldots,a_{n-1})=(a_{n-m+1},a_{n-m+2},\ldots,a_n),
+\]
+对应特征方程为
+\[
+    x^m-k_1x^{m-1}-\cdots-k_m=0.
+\]
+得到$m$个互异特征值$\lambda_1,\ldots,\lambda_m$，对应特征向量可以取为
+\[
+    v_i=(1,\lambda_i,\lambda_i^2,\ldots,\lambda_i^{m-1}),\enspace i=1,\ldots,m.
+\]
+这些向量组成Vandermonde矩阵，因$\lambda_i$两两不同而线性无关. 因此$T$可对角化，通解为
+\[
+    a_n=\sum_{i=1}^m c_i\lambda_i^n.
+\]
 
-那么如果存在重根又会发生什么情况呢？我们依然先以一个二阶线性递推方程为例，考虑$a_n = 2 \lambda_0 a_{n - 1} - \lambda_0^2 a_{n - 2}$，构造相应的算子$T(x_1, x_2) = (x_2, 2 \lambda_0 x_2 - \lambda_0^2 x_1)$，则$T(a_{n - 2}, a_{n - 1}) = (a_{n - 1}, a_n)$，特征值易求得为$\lambda_0$，对应特征向量为$(1, \lambda_0)$. 特征空间为一维的，显然不能够对角化，所以它应该对应为二阶的若当块的情况，已知$v_1 = (1, \lambda_0)$，求出满足$(T - \lambda_0 I)v_2 = v_1$的$v_2$即求出了若当基. 满足条件的一个$v_2 = (0, 1)$，在这组基下$T$的矩阵表示为$\begin{pmatrix} \lambda_0 & 1 \\ 0 & \lambda_0 \end{pmatrix} = \lambda_0 I + J$，其中$J = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ 且 $J^2 = O$. 设$(a_0, a_1) = c_1v_1 + c_2v_2$，那么有
+那么存在重根时又会发生什么情况呢？依旧以二阶情形为例，设$a_n=2\lambda_0a_{n-1}-\lambda_0^2a_{n-2}$，对应的线性映射为$T(x_1,x_2)=(x_2,2\lambda_0x_2-\lambda_0^2x_1)$，特征值只有$\lambda_0$，一个特征向量为$v_1=(1,\lambda_0)$. 特征空间只有一维，显然不能够对角化，所以应该考虑若当标准形，已知 $v_1=(1,\lambda_0)$，求 $v_2$ 使得 $(T-\lambda_0I)v_2=v_1$，则 $v_1,v_2$ 构成若当基. 一个容易发现的解为 $v_2=(0,1)$，$T$在基$v_1,v_2$下的矩阵为
+\[
+    \begin{pmatrix}
+        \lambda_0 & 1 \\ 0 & \lambda_0
+    \end{pmatrix}
+    =\lambda_0I+N,\quad N=\begin{pmatrix}0&1\\0&0\end{pmatrix}, N^2=O.
+\]
+设$(a_0,a_1)=c_1v_1+c_2v_2$，则
 \begin{align*}
-    M^n \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}
-     & = (\lambda_0 I + J)^n \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}                                                          \\
-     & = (\lambda^n I + n \lambda^{n - 1} J) \begin{pmatrix} c_1 \\ c_2 \end{pmatrix}                                          \\
-     & = \begin{pmatrix} \lambda^n & n \lambda^{n - 1} \\ 0 & \lambda^n \end{pmatrix} \begin{pmatrix} c_1 \\ c_2 \end{pmatrix} \\
-     & = \begin{pmatrix} c_1 \lambda^n + n c_2 \lambda^{n - 1} \\ d \lambda^n \end{pmatrix}.
+    (\lambda_0I+N)^n\begin{pmatrix}c_1\\c_2\end{pmatrix}
+     &=(\lambda_0^nI+n\lambda_0^{n-1}N)\begin{pmatrix}c_1\\c_2\end{pmatrix}              \\
+     &=\begin{pmatrix}
+            \lambda_0^n & n\lambda_0^{n-1} \\ 0 & \lambda_0^n
+        \end{pmatrix}
+        \begin{pmatrix}c_1\\c_2\end{pmatrix}                                             \\
+     &=\begin{pmatrix}
+            c_1\lambda_0^n+nc_2\lambda_0^{n-1} \\ c_2\lambda_0^n
+        \end{pmatrix}.
 \end{align*}
 从而代入$v_1, v_2$有$a_n = c_1 \lambda_0^n + n c_2 \lambda_0^{n - 1}$.
 
-进而我们可以考虑一个$m$阶线性递推方程，且其特征方程有$m$重根$\lambda_0 \neq 0$的情况（特征值为$0$是退化的），这时对应的是一个$m$阶的若当块，重点在于求出其对应的若当基. 首先对应的算子$T$的形式应当为$T(x_1, x_2, \ldots, x_m) = (x_2, x_3, \ldots, (-1)^{m + 1} \binom{m}{0} \lambda_0^m x_1 + (-1)^m \binom{m}{1} \lambda_0^{m - 1} x_2 + \cdots + (-1)^2 \binom{m}{m - 1} \lambda_0 x_{m})$，要求出特征向量即求出满足$(T - \lambda_0 I)v_1 = 0$的$v_1$，这一线性方程组的系数矩阵如下：
+一般地，设递推方程的伴随矩阵为$C$，特征多项式为$p(x)$. 记
 \[
-    \begin{pmatrix}
-        -\lambda_0                            & 1                                     & 0                                           & \cdots & 0                                       \\
-        0                                     & -\lambda_0                            & 1                                           & \cdots & 0                                       \\
-        \vdots                                & \vdots                                & \vdots                                      & \ddots & \vdots                                  \\
-        0                                     & 0                                     & 0                                           & \cdots & 1                                       \\
-        (-1)^{m + 1} \binom{m}{0} \lambda_0^m & (-1)^m \binom{m}{1} \lambda_0^{m - 1} & (-1)^{m - 1} \binom{m}{2} \lambda_0^{m - 2} & \cdots & ((-1)^2 \binom{m}{m - 1} - 1) \lambda_0
-    \end{pmatrix}
+    v(x)=(1,x,x^2,\ldots,x^{m-1})^{\mathrm{T}},\qquad e_m=(0,\ldots,0,1)^{\mathrm{T}}.
 \]
-我们能轻松得到$v_1 = (\lambda_0^0, \lambda_0, \lambda_0^2, \ldots, \lambda_0^{m - 1})$是满足前$m-1$行的，代入验证也满足第$m$行. 因为前$m-1$行是线性无关的，所以我们基本上可以宣称第$m$行是前$m-1$行的线性组合，也就是说这个矩阵的秩为$m-1$. 但是，这个线性组合的系数在后续求解若当基的过程中相当重要，所以我们还是要求出来. 记以上系数矩阵为$\begin{pmatrix}
-        \beta_1 \\ \beta_2 \\ \vdots \\ \beta_m
-    \end{pmatrix}$，$\beta_i$均是行向量. 这个系数求解的关键在于第$2$到第$m-1$个坐标都是有两个行向量来控制的，并且$\beta_m$每个是以组合数为基础的，我们能够很自然的联想到杨辉三角. 首先第$1$个坐标能够给出第一个系数$t_1 = (-1)^m \binom{m - 1}{0} \lambda_0^{m - 1}$，然后第$2$个坐标结合杨辉三角便可以得到$t_2 = (-1)^{m - 1} \binom{m - 1}{1} \lambda_0^{m - 2}$，以此类推，直到第$m-1$个坐标$t_{i - 1} = (-1)^2 \binom{m-1}{m-2} \lambda_0$. 第$m$个坐标我们需要验证其正确性，因为其减去了$1$所以形式上有所区别，但我们可以将其改写为$((-1)^2 \binom{m}{m - 1} - \binom{m - 1}{m - 1}) \lambda_0 = ((-1)^2 \binom{m - 1}{m - 2}) \lambda_0$，与$t_{i-1}$一致. 所以我们有 \[
-    \beta_m = t_1 \beta_1 + t_2 \beta_2 + \cdots + t_{m - 1} \beta_{m - 1}.
-\]
-其中$t_i = (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \lambda_0^{m - i}$.
-
-因为$v_1$的求解是基于齐次线性方程组，所以系数的作用不是很明确. 但当我们开始求解$v_2, v_3, \ldots, v_m$时，这就意味着我们需要处理非齐次线性方程组，需要验证$v_1, v_2, \ldots, v_{m-1}$的第$m$个坐标能根据前$m-1$个坐标由系数$t_i$组合得到. 以$v_2$为例，我们需要验证$\lambda_0^{m-1} = \sum_{i = 1}^{m-1} t_i \lambda_0^{i-1} = \sum_{i = 1}^{m-1} (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \lambda_0^{m - 1}$. 我们可以将其化简为 \begin{align*}
-    \sum_{i = 1}^{m-1} (-1)^{m + 1 - i} \binom{m - 1}{i - 1} & = 1  \\
-    \sum_{i = 0}^{m-1} \binom{m-1}{i} (-1)^{m - i}           & = 0.
-\end{align*}
-这是二项式定理的一个特殊情况，所以这个等式是成立的. 根据前$m-1$行，我们可以得到$v_2 = (0, 1, 2 \lambda_0, 3 \lambda_0^2, \ldots, (m - 1) \lambda_0^{m - 2})$. 以此类推，仅依据前$m-1$行的计算，我们可以得到$v_j = (0, 0, \ldots, \binom{j - 1}{j - 1} \lambda_0^0, \binom{j}{j - 1} \lambda_0^1, \ldots, \binom{m - 1}{j - 1} \lambda_0^{m - j})$，且第$1$个非零坐标为第$j$个. 接下来便需要验证$v_j, 1 \leqslant j \leqslant m - 1$的第$m$个坐标能由前$m-1$个坐标线性组合得到，即 \[
-    \binom{m - 1}{j - 1} \lambda_0^{m - j} = \sum_{i = 1}^{m - 1} t_i \binom{i - 1}{j - 1} \lambda_0^{i - 1}.
-\]
-代入后化简得到需要证明的组合恒等式 \[
-    \sum_{i = j}^m (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \binom{i - 1}{j - 1} = 0.
-\]
-
-\begin{proof}
-    注意到 \begin{align*}
-        \binom{m - 1}{i - 1} \binom{i - 1}{j - 1} & = \dfrac{(m - 1)!}{(i - 1)! (m - i)!} \dfrac{(i - 1)!}{(j - 1)! (i - j)!} \\ & = \dfrac{(m - 1)!}{(j - 1)! (m - j)!} \dfrac{(m - j)!}{(i - j)! (m - i)!} \\ & = \binom{m - 1}{j - 1} \binom{m - j}{i - j},
-    \end{align*}
-    所以 \begin{align*}
-        \sum_{i = j}^m (-1)^{m + 1 - i} \binom{m - 1}{i - 1} \binom{i - 1}{j - 1}
-         & = \sum_{i = j}^m (-1)^{m + 1 - i} \binom{m - 1}{j - 1} \binom{m - j}{i - j}  \\
-         & = \binom{m - 1}{j - 1} \sum_{t = 0}^k (-1)^(k + i - t  + 1 - i) \binom{k}{t} \\
-         & = \binom{m - 1}{j - 1} \sum_{t = 0}^k \binom{k}{t} (-1)^{k + 1 - t}          \\
-         & = \binom{m - 1}{j - 1} (-1) (1 - 1)^k = 0.
-    \end{align*}
-    其中 $t = i - j, k = m - j$.
-\end{proof}
-
-由上可知$v_j$的求解是正确的，这样我们便得到了对应的若当基，$T$在这组基下的表示矩阵为$\lambda_0 I + J$. 设初值在若当基下的表示系数为$c_1, c_2, \ldots, c_m$，则有
-\begin{align*}
-    M^n \begin{pmatrix}
-            c_1 \\ c_2 \\ \vdots \\ c_m
-        \end{pmatrix}
-     & = (\lambda_0 I + J)^n
-    \begin{pmatrix}
-        c_1 \\ c_2 \\ \vdots \\ c_m
-    \end{pmatrix}                                                                               \\
-     & = (\lambda_0^n I + n \lambda_0^{n - 1} J + \cdots + \binom{n}{m - 1} \lambda_0^{n - m + 1} J^{m - 1})
-    \begin{pmatrix}
-        c_1 \\ c_2 \\ \vdots \\ c_m
-    \end{pmatrix}                                                                               \\
-     & = \begin{pmatrix}
-             \lambda_0^n & n \lambda_0^{n - 1} & \cdots & \binom{n}{m - 1} \lambda_0^{n - m + 1} \\
-             0           & \lambda_0^n         & \cdots & \binom{n}{m - 2} \lambda_0^{n - m + 2} \\
-             \vdots      & \vdots              & \ddots & \vdots                                 \\
-             0           & 0                   & \cdots & \lambda_0^n
-         \end{pmatrix}
-    \begin{pmatrix}
-        c_1 \\ c_2 \\ \vdots \\ c_m
-    \end{pmatrix}                                                                               \\
-     & = \begin{pmatrix}
-             c_1 \lambda_0^n + n c_2 \lambda_0^{n - 1} + \cdots + \binom{n}{m - 1} c_m \lambda_0^{n - m + 1} \\
-             c_2 \lambda_0^n + n c_3 \lambda_0^{n - 1} + \cdots + \binom{n}{m - 2} c_m \lambda_0^{n - m + 2} \\
-             \vdots                                                                                          \\
-             c_m \lambda_0^n
-         \end{pmatrix}.
-\end{align*}
-
-代入$\{v_j\}$即可得到通解
+由伴随矩阵的定义可直接验证
 \[
-    a_n = \sum_{i = 1}^m c_i \binom{n}{i - 1} \lambda_0^{n - i + 1}.
+    (C-xE)v(x)=-p(x)e_m.
 \]
+若$\lambda_0$是$p(x)$的$r$重根，则$p^{(s)}(\lambda_0)=0\enspace(s=0,1,\ldots,r-1)$. 对上式求$s$阶导数并代入$x=\lambda_0$，得到
+\[
+    (C-\lambda_0E)v^{(s)}(\lambda_0)=s\,v^{(s-1)}(\lambda_0),\enspace s=1,\ldots,r-1.
+\]
+令
+\[
+    v_j=\frac{1}{(j-1)!}v^{(j-1)}(\lambda_0),\enspace j=1,\ldots,r,
+\]
+则
+\[
+    (C-\lambda_0E)v_1=0,\qquad (C-\lambda_0E)v_j=v_{j-1}\enspace(j=2,\ldots,r).
+\]
+这正是一条长度为$r$的若当链. 具体写出为
+\[
+    v_j=(\underbrace{0,\ldots,0}_{j-1},1,\binom{j}{j-1}\lambda_0,\binom{j+1}{j-1}\lambda_0^2,\ldots,\binom{m-1}{j-1}\lambda_0^{m-j})^{\mathrm{T}}.
+\]
+不同特征值对应的广义特征向量线性无关，而各重根的重数之和为$m$，于是这些若当链合并后给出伴随矩阵的一组若当基.
 
-而对于一般的若当标准型来说，只需要求出相应的基，然后利用分块对角矩阵的幂次运算即可得到坐标，代入基即可求得通解. 不过需要注意的是，对于$m$阶若当标准型下$n$阶的若当块，其对应的若当基是我们在$m$重根中讨论的前$n$个向量，即
-\begin{align*}
-    v_1 & = (1, \lambda_0, \lambda_0^2, \ldots, \lambda_0^{m - 1}), \\ v_2 & = (0, 1, 2 \lambda_0, \ldots, (n - 1) \lambda_0^{m - 2}), \\ & \ldots \\ v_n & = (0, 0, \ldots, \binom{n - 1}{n - 1} \lambda_0^0, \binom{n}{n - 1} \lambda_0^1, \ldots, \binom{m - 1}{n - 1} \lambda_0^{m - n}),
-\end{align*}
-而非前$n$个坐标.
+因此，若$p(x)$在复数域上分解为
+\[
+    p(x)=\prod_{i=1}^s(x-\lambda_i)^{r_i},
+\]
+且所有$\lambda_i$均非零，则递推方程的通解可以写为
+\[
+    a_n=\sum_{i=1}^s\left(c_{i0}\lambda_i^n+c_{i1}\binom{n}{1}\lambda_i^{n-1}+\cdots+c_{i,r_i-1}\binom{n}{r_i-1}\lambda_i^{n-r_i+1}\right),
+\]
+其中$c_{ij}$由初值决定. 这也常写为
+\[
+    a_n=\sum_{i=1}^s q_i(n)\lambda_i^n,
+\]
+其中$q_i(n)$是次数小于$r_i$的多项式. 若出现特征值$0$，对应的是幂零若当块，其贡献可直接由$J_r(0)^n$计算；当$n\geqslant r$时该块的贡献为$0$.
 
 下面给出一道例题，请读者自行尝试.
 
@@ -716,43 +828,162 @@
 
 \section{实数域上的若当标准形} \label{sec:实数域上的若当标准形}
 
+复数域上的若当标准形依赖于代数学基本定理：任意复矩阵的特征多项式都能分解为一次因式. 在实数域上，这一点不再成立. 例如矩阵
+\[
+    \begin{pmatrix}
+        0 & 1 \\ -1 & 0
+    \end{pmatrix}
+\]
+的特征多项式为$\lambda^2+1$，没有实特征值，因此不可能相似于通常意义下的若当标准形. 不过，实矩阵的非实特征值总是成共轭对出现，于是可以把一对共轭复若当块合并成一个实分块. 这便得到实数域上的若当标准形.
+
+下面先证明一个用于从复相似回到实相似的结论. 一般的数域扩张版本也成立，但本节只需要实数域与复数域之间的版本.
+
 \begin{theorem}{}{相似域不变性}
-    设$A,B$为域$\mathbf{F}$上的同阶方阵，域$\mathbf{K}$是域$\mathbf{F}$的一个扩域，则$A,B$在域$\mathbf{K}$上相似当且仅当它们在域$\mathbf{F}$上也相似.
+    设$A,B$为同阶实矩阵，则$A,B$在复数域上相似当且仅当它们在实数域上相似.
 \end{theorem}
 \begin{proof}
+    若$A,B$在实数域上相似，则相同的实可逆矩阵也可以视为复可逆矩阵，因此$A,B$在复数域上相似.
 
+    反过来，若$A,B$在复数域上相似，则存在复可逆矩阵$P$使得$AP=PB$，将$P$写成$P=P_1+\i P_2$，其中$P_1,P_2$都是实矩阵. 因为$A,B$都是实矩阵，比较实部与虚部可得
+    \[
+        AP_1=P_1B,\qquad AP_2=P_2B.
+    \]
+    对任意$t\in\mathbf{R}$，令$P(t)=P_1+tP_2$，则
+    \[
+        AP(t)=P(t)B.
+    \]
+    又$\det(P_1+tP_2)$是关于$t$的实系数多项式. 由于
+    \[
+        \det(P_1+\i P_2)=\det P\neq 0,
+    \]
+    该多项式不是零多项式，因此只有有限多个实根. 取$t_0\in\mathbf{R}$使得$\det(P_1+t_0P_2)\neq 0$，则$P(t_0)$是实可逆矩阵，并且
+    \[
+        AP(t_0)=P(t_0)B.
+    \]
+    故$P(t_0)^{-1}AP(t_0)=B$，即$A,B$在实数域上相似.
 \end{proof}
+
+有了相似域不变性，要把复若当标准形转回实形式，关键在于替每一对共轭的复若当块构造合适的实矩阵块. 下面就来定义所需的实分块.
+
+对$a,b\in\mathbf{R}$且$b\neq 0$，记
+\[
+    R(a,b)=\begin{pmatrix}
+        a & b \\ -b & a
+    \end{pmatrix},\qquad
+    C_2=\begin{pmatrix}
+        0 & 0 \\ 1 & 0
+    \end{pmatrix}.
+\]
+其中$R(a,b)$的特征值为$a+b\i$与$a-b\i$. 对正整数$s$，定义两个$2s$阶实矩阵
+\[
+    J_s(a,b)=\begin{pmatrix}
+        R(a,b) & E_2    &        &        &     \\
+               & R(a,b) & E_2    &        &     \\
+               &        & \ddots & \ddots &     \\
+               &        &        & R(a,b) & E_2 \\
+               &        &        &        & R(a,b)
+    \end{pmatrix},
+\]
+以及
+\[
+    \tilde{J}_s(a,b)=\begin{pmatrix}
+        R(a,b) & C_2    &        &        &     \\
+               & R(a,b) & C_2    &        &     \\
+               &        & \ddots & \ddots &     \\
+               &        &        & R(a,b) & C_2 \\
+               &        &        &        & R(a,b)
+    \end{pmatrix}.
+\]
+二者都是一对共轭复若当块的实表现，区别只在于选取实基的方式不同. 下面的引理确认了它们回到复数域时的若当结构.
+
+\begin{lemma}{}{实若当块的复化}
+    设$\alpha=a+b\i$，其中$a,b\in\mathbf{R}$且$b\neq 0$. 则$J_s(a,b)$与$\tilde{J}_s(a,b)$在复数域上都相似于
+    \[
+        \diag(J_s(\alpha),J_s(\overline{\alpha})).
+    \]
+\end{lemma}
+\begin{proof}
+    先考虑$J_s(a,b)$. 取
+    \[
+        S=\begin{pmatrix}
+            1 & 1 \\ \i & -\i
+        \end{pmatrix},
+    \]
+    则
+    \[
+        S^{-1}R(a,b)S=\begin{pmatrix}
+            \alpha & 0 \\ 0 & \overline{\alpha}
+        \end{pmatrix},\qquad S^{-1}E_2S=E_2.
+    \]
+    于是用分块对角矩阵$\diag(S,\ldots,S)$对$J_s(a,b)$作相似变换后，得到对角块为$\diag(\alpha,\overline{\alpha})$、上方相邻分块为$E_2$的分块矩阵. 再交换基向量顺序，将$\alpha$对应的向量放在一起、$\overline{\alpha}$对应的向量放在一起，便得到
+    \[
+        \diag(J_s(\alpha),J_s(\overline{\alpha})).
+    \]
+
+    再考虑$\tilde{J}_s(a,b)$. 记$T=\tilde{J}_s(a,b)$，$D=R(a,b)-\alpha E_2$. 由于$T-\lambda E$是分块上三角矩阵，故
+    \[
+        |\lambda E-T|=\bigl((\lambda-a)^2+b^2\bigr)^s,
+    \]
+    因此$\alpha$与$\overline{\alpha}$都是$T$的$s$重特征值. 只需说明它们对应的特征空间均为一维.
+
+    设$w=(w_1,\ldots,w_s)^\mathrm{T}$是$T$关于$\alpha$的特征向量，其中$w_j\in\mathbf{C}^2$. 则
+    \[
+        Dw_s=0,\qquad Dw_j+C_2w_{j+1}=0,\enspace j=1,\ldots,s-1.
+    \]
+    直接计算可知
+    \[
+        \ker D=\spa\{(1,\i)^\mathrm{T}\},\qquad \im D=\spa\{(1,-\i)^\mathrm{T}\}.
+    \]
+    若$w_s=c(1,\i)^\mathrm{T}$，则$C_2w_s=c(0,1)^\mathrm{T}$. 但$(0,1)^\mathrm{T}\notin\im D$，所以上述方程要求$c=0$，即$w_s=0$. 逐步向前递推可得$w_s=w_{s-1}=\cdots=w_2=0$，而$w_1\in\ker D$. 因此$\alpha$对应的特征空间为一维. 对$\overline{\alpha}$同理.
+
+    于是$\tilde{J}_s(a,b)$在复数域上的若当标准形中，$\alpha$和$\overline{\alpha}$各对应一个$s$阶若当块，即
+    \[
+        \tilde{J}_s(a,b)\sim \diag(J_s(\alpha),J_s(\overline{\alpha})).
+    \]
+\end{proof}
+
+现在可以将复数域上的结果“下降”到实数域，得到实数域上的若当标准形.
 
 \begin{theorem}{}{实数域上的若当标准形}
-    设$A$是$n$阶实矩阵，则$A$在实数域上相似于如下分块对角矩阵：
+    设$A$是$n$阶实矩阵，则$A$在实数域上相似于如下任一形式的分块对角矩阵：
     \begin{enumerate}
-        \item $J=\diag(J_{r_1}(\lambda_1),\ldots,J_{r_k}(\lambda_k),J_{s_1}(a_1,b_1),J_{s_l}(a_l,b_l))$；
-        \item $\tilde{J}=\diag(J_{r_1}(\lambda_1),\ldots,J_{r_k}(\lambda_k),\tilde{J}_{s_1}(a_1,b_1),\tilde{J}_{s_l}(a_l,b_l))$
+        \item $J=\diag(J_{r_1}(\lambda_1),\ldots,J_{r_k}(\lambda_k),J_{s_1}(a_1,b_1),\ldots,J_{s_l}(a_l,b_l))$；
+        \item $\tilde{J}=\diag(J_{r_1}(\lambda_1),\ldots,J_{r_k}(\lambda_k),\tilde{J}_{s_1}(a_1,b_1),\ldots,\tilde{J}_{s_l}(a_l,b_l))$.
     \end{enumerate}
-    其中$\lambda_1,\ldots,\lambda_k,a_1,b_1,\ldots,a_l,b_l$都是实数，$b_1,\ldots,b_l$都非零，$J_{r_i}(\lambda_i)$表示以$\lambda_i$为特征值的通常意义下的若当块，$R_j=\begin{pmatrix}
-            a_j & b_j \\ -b_j & a_j
-        \end{pmatrix},C_2=\begin{pmatrix}
-            0 & 0 \\ 1 & 0
-        \end{pmatrix}$，
-    \[J_{s_i}(a_i,b_i)=\begin{pmatrix}
-            R_i & I_2 &        &        &     \\
-                & R_i & I_2    &        &     \\
-                &     & \ddots & \ddots &     \\
-                &     &        & R_i    & I_2 \\
-                &     &        &        & R_i
-        \end{pmatrix},\enspace \tilde{J}_{s_i}(a_i,b_i)=\begin{pmatrix}
-            R_i & C_2 &        &        &     \\
-                & R_i & C_2    &        &     \\
-                &     & \ddots & \ddots &     \\
-                &     &        & R_i    & C_2 \\
-                &     &        &        & R_i
-        \end{pmatrix}.\]
+    其中$\lambda_1,\ldots,\lambda_k,a_1,\ldots,a_l,b_1,\ldots,b_l$都是实数，$b_1,\ldots,b_l$均非零，$J_{r_i}(\lambda_i)$表示通常意义下以$\lambda_i$为特征值的若当块.
 \end{theorem}
 \begin{proof}
+    将实矩阵$A$视为复矩阵. 根据复数域上的若当标准形存在性，$A$在复数域上相似于一个复若当标准形$J_{\mathbf{C}}$.
 
+    因为$A$是实矩阵，若$\alpha$是$A$的非实特征值，则$\overline{\alpha}$也是$A$的特征值. 更进一步，二者对应的若当块大小完全相同. 事实上，对任意$v\in\mathbf{C}^n$都有
+    \[
+        \overline{(A-\alpha E)^m v}=(A-\overline{\alpha}E)^m\overline{v},
+    \]
+    因此共轭映射给出了$\ker(A-\alpha E)^m$与$\ker(A-\overline{\alpha}E)^m$之间的一一对应. 由\autoref{thm:若当标准形唯一} 中若当块大小由这些核空间维数决定可知，$\alpha$与$\overline{\alpha}$对应的若当块可以按相同大小一一配对.
+
+    于是$J_{\mathbf{C}}$中的实特征值对应部分已经是通常的实若当块；每一对非实共轭特征值$a_j\pm b_j\i$对应的一对同阶复若当块
+    \[
+        J_{s_j}(a_j+b_j\i),\qquad J_{s_j}(a_j-b_j\i)
+    \]
+    可以由\autoref{lem:实若当块的复化} 替换为实矩阵块$J_{s_j}(a_j,b_j)$，也可以替换为$\tilde{J}_{s_j}(a_j,b_j)$.
+
+    这样得到的$J$与$\tilde{J}$都是实矩阵，并且它们作为复矩阵都与$A$相似. 由\autoref{thm:相似域不变性} 可知，$A$与$J$、$\tilde{J}$实际上在实数域上相似. 命题得证.
 \end{proof}
 
+\begin{example}{}{}
+    矩阵
+    \[
+        A=\begin{pmatrix}
+            0 & 1 \\ -1 & 0
+        \end{pmatrix}
+    \]
+    的特征多项式为$\lambda^2+1$，在实数域上没有特征值，因此不能化为通常意义下的若当标准形. 但它本身就是一个实若当块$J_1(0,1)=R(0,1)$，对应于复数域上的一对共轭特征值$\i$与$-\i$.
+\end{example}
+
+由此可见，实数域上的若当标准形并没有完全保留复数域上``一维链''的形式，而是把每一条非实共轭若当链合并为一条由二维实块组成的链. 实特征值仍给出通常的若当块，非实特征值则给出$2s$阶实若当块. 因此它是复若当标准形在实数域上的最直接替代.
+
 \begin{summary}
+    本讲在复数域上建立了若当标准形的存在性与唯一性. 存在性来自广义特征子空间到若当循环子空间的分解；唯一性可由Young图以及$r((A-\lambda E)^k)$所决定的若当块大小推出. 在应用部分，若当标准形将矩阵幂、矩阵方根、Jordan-Chevalley分解、常系数线性微分方程组和线性递推方程统一为对若当块的计算. 最后，实数域上不能保证特征多项式完全分裂，因此通常的若当块需要与表示共轭复特征值的二维实块共同组成实若当标准形.
 
 \end{summary}
 
