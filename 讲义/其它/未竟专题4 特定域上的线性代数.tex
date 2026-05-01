@@ -854,7 +854,7 @@ Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基�
         \item 给出\autoref{thm:有限域是素域上的有限维线性空间} 的完整证明.
         \item 利用 $\mathbf{F}_2[x]/(x^2+x+1)$ 重新推导\autoref{ex:四元素有限域的例子} 中的乘法表. 列出 $\mathbf{F}_3[x]/(x^2+1)$ 中所有元素.
         \item 设 $d$ 是一个不是有理数平方的有理数. 证明 $\Q(\sqrt{d})=\{a+b\sqrt{d}\mid a,b\in\Q\}$，并求 $\Gal(\Q(\sqrt{d})/\Q)$，计算 $\Q(\sqrt{d})/\Q$ 中元素 $a+b\sqrt{d}$ 的迹与范数.
-        \item 证明任意 Abel 群都是可解群，并证明任意循环群的子群都是正规子群.
+        \item 证明任意循环群的子群都是正规子群.
     \end{exgroup}
 
     \begin{exgroup}
@@ -881,7 +881,7 @@ Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基�
             a u_\sigma\mapsto (x\mapsto a\sigma(x)).
         \]
         \begin{enumerate}
-            \item 把 $\operatorname{End}_K(L)$ 看作左 $L$-线性空间，证明
+            \item 把 $\operatorname{End}_K(L)$ 看作 $L$-线性空间，证明
             \[
                 L\otimes_K L\to \operatorname{Hom}_L(\operatorname{End}_K(L),L),\quad
                 a\otimes b\mapsto\bigl(T\mapsto aT(b)\bigr)
@@ -895,11 +895,7 @@ Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基�
             \]
             \item 当 $G=\Gal(L/K)$ 且 $|G|=[L:K]$ 时，说明 $\Theta_L$ 为同构当且仅当 $\Gamma_L$ 为同构.
         \end{enumerate}
-        \item 本题补充有限投射模和平坦模的基本工具. 设 $A$ 是交换环，$M$ 是 $A$-模. 若存在 $A$-模 $N$ 与非负整数 $r$，使得
-        \[
-            M\oplus N\cong A^r,
-        \]
-        则称 $M$ 是一个\term{有限投射（finite projective）}$A$-模；换言之，有限投射模就是有限自由模的直和因子. 若有限个元素 $x_i\in M$ 与 $A$-线性映射 $\varphi_i\in\operatorname{Hom}_A(M,A)$ 满足对任意 $x\in M$ 都有 $x=\sum_i x_i\varphi_i(x)$，则称它们构成 $M$ 的一组有限\term{对偶基（dual basis）}.
+        \item 本题补充有限投射模和平坦模的基本工具. 设 $A$ 是交换环，$M$ 是 $A$-模. 若存在 $A$-模 $N$ 与非负整数 $r$，使得 $M\oplus N\cong A^r$，则称 $M$ 是一个\term{有限投射（finite projective）}$A$-模；换言之，有限投射模就是有限自由模的直和因子. 若有限个元素 $x_i\in M$ 与 $A$-线性映射 $\varphi_i\in\operatorname{Hom}_A(M,A)$ 满足对任意 $x\in M$ 都有 $x=\sum_i x_i\varphi_i(x)$，则称它们构成 $M$ 的一组有限对偶基.
         \begin{enumerate}
             \item 设 $e\in A$ 满足 $e^2=e$. 证明理想 $eA$ 是有限投射 $A$-模. 进一步地，写出 $A=eA\oplus(1-e)A$，并给出 $eA$ 的一组有限对偶基.
             \item 若存在有限个元素 $x_1,\ldots,x_r\in M$ 与 $A$-线性映射 $\varphi_1,\ldots,\varphi_r\in\operatorname{Hom}_A(M,A)$，使得对任意 $x\in M$ 都有
@@ -907,7 +903,7 @@ Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基�
                 x=\sum_{i=1}^r x_i\varphi_i(x),
             \]
             则证明 $M$ 是有限投射 $A$-模. 提示：构造 $A^r\to M$ 与 $M\to A^r$，并证明它们的复合为 $\operatorname{id}_M$.
-            \item 反过来，若 $M$ 是有限投射 $A$-模，则证明存在满足上一问条件的 $x_i$ 与 $\varphi_i$. 因此，有限投射模等价于存在这样一组有限\term{对偶基（dual basis）}.
+            \item 反过来，若 $M$ 是有限投射 $A$-模，则证明存在满足上一问条件的 $x_i$ 与 $\varphi_i$. 因此，有限投射模等价于存在这样一组有限对偶基.
             \item 称 $A$-模 $P$ 是\term{平坦（flat）}的，如果对任意单射 $N_1\to N_2$，诱导映射
             \[
                 N_1\otimes_A P\to N_2\otimes_A P
