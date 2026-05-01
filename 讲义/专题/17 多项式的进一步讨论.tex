@@ -136,7 +136,7 @@
     \[u(x)p_1(x)+v(x)p_2(x)=1,\]
     代入$\sigma$有
     \[u(\sigma)p_1(\sigma)+v(\sigma)p_2(\sigma)=I,\]
-    于是对于任意$v\in V$，我们有
+    于是对于任意$v\in \ker p(\sigma) \subseteq V$，我们有
     \begin{equation} \label{eq:18:多项式分解与核空间直和}
         v=u(\sigma)p_1(\sigma)v+v(\sigma)p_2(\sigma)v,
     \end{equation}
@@ -160,7 +160,8 @@
 \[\ker f(\sigma)=V=\ker (\sigma-\lambda_1I)^{r_1}\oplus\cdots\oplus\ker (\sigma-\lambda_mI)^{r_m},\]
 这或许就是一种巧合，我们从多项式的角度也推导出了和广义特征子空间相近的结论. 我们回顾\autoref{thm:广义特征性质}：
 \[V=G(\lambda_1,\sigma)\oplus\cdots\oplus G(\lambda_m,\sigma),\]
-其中$G(\lambda_i,\sigma)=\ker (\sigma-\lambda_iI)^{\dim V}$，这与上式的形式是类似的，但这里将广义特征子空间定义中$(\sigma-\lambda I)$由于核空间扩张所需的幂次降低了，并且我们可以直接利用多项式的因式分解显得更加直接与具体.
+其中$G(\lambda_i,\sigma)=\ker (\sigma-\lambda_iI)^{\dim V}$，这与上式的形式是类似的. 事实上由于 $\ker (\sigma-\lambda_iI)^{r_i}\subseteq \ker (\sigma-\lambda_iI)^{\dim V} = G(\lambda_i,\sigma)$，且 $\ker f(\sigma)=V$，因此有 $G(\lambda_i,\sigma)=\ker (\sigma-\lambda_iI)^{r_i}$. 因此这里将广义特征子空间定义中$(\sigma-\lambda I)$由于核空间扩张所需的幂次降低了. 事实上，根据\autoref{thm:核空间性质}中的核空间增长性质，\autoref{cor:代数重数等于广义特征空间维数} 也说明了这一点.
+
 \begin{example}{}{}
     设$\sigma\in \mathcal{L}(V)$，$p(z)=a_nx^n+\cdots+a_1x\in\mathbf{F}[x]$是$\sigma$的一个零化多项式，其中$a_1\neq 0$，证明：
     \[V=\ker \sigma\oplus\im\sigma.\]

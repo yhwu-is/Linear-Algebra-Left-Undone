@@ -506,17 +506,15 @@
 \end{example}
 
 \begin{solution}
-    $\sigma$在$\mathcal{L}(\mathbf{C}^3)$的自然基下的矩阵是
+    不难写出 $\sigma$ 在$\mathcal{L}(\mathbf{C}^3)$的自然基下的矩阵是
     \[ \begin{pmatrix}
         6 & 3 & 4 \\
         0 & 6 & 2 \\
         0 & 0 & 7
     \end{pmatrix}, \]
-    $\sigma$的特征值为$\lambda_1=6,\lambda_2=7$.
+    则 $\sigma$的特征值为 $\lambda_1 = 6,\lambda_2 = 7$. 解方程可以得到两个广义特征子空间 $G(\lambda_1,\sigma) = \spa\left((1,0,0),\left(0,\dfrac{1}{3},0\right)\right)$，$G(\lambda_2,\sigma)=\spa((10,2,1))$.
 
-    解方程可以得到两个广义特征子空间$G(\lambda_1,\sigma)=\spa((1,0,0),(0,\dfrac{1}{3},0))$，$G(\lambda_2,\sigma)=\spa((10,2,1))$.
-
-    取$\alpha_1=(1,0,0),\alpha_2=(0,\dfrac{1}{3},0),\alpha_3=(10,2,1)$，则$\sigma$在基$\{\alpha_1,\alpha_2,\alpha_3\}$下有分块对角矩阵
+    取$\alpha_1=(1,0,0),\alpha_2=\left(0,\dfrac{1}{3},0\right),\alpha_3=(10,2,1)$，则$\sigma$在基$\{\alpha_1,\alpha_2,\alpha_3\}$下有分块对角矩阵
     \[ \begin{pmatrix}
         6 & 1 & 0 \\
         0 & 6 & 0 \\
@@ -602,31 +600,87 @@ $3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\tim
     \end{enumerate}
 \end{proof}
 
-\autoref{thm:上三角矩阵存在} 的证明之法二的意义在于，这一证明给了我们一个求解矩阵上三角化的方法（与对角化等类似，线性变换的上三角化依赖于矩阵上三角化，因此这里只讨论矩阵的情况）. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
+\autoref{thm:上三角矩阵存在} 证明的法二的意义在于，这一证明给了我们一个求解矩阵上三角化的方法（与对角化等类似，线性变换的上三角化依赖于矩阵上三角化，因此这里只讨论矩阵的情况）. 根据上面的证明，我们只需任意挑选$n$阶矩阵的一个特征值和一个对应的特征向量，然后问题就转化为求解$n-1$阶矩阵的上三角化问题，那么我们继续求出$n-1$阶矩阵的一个特征值和一个对应的特征向量，依次类推直到一阶的情况. 我们给出下面的例子供读者运用这一方法：
 \begin{example}{}{}
-    设$\sigma\in\mathbf{C}^3$定义为$\sigma(x,y,z)=(2x,0,x+2z)$，求$\mathbf{C}^3$的一组基使得$\sigma$在这组基下的矩阵为上三角矩阵.
+    设$\sigma\in \mathcal{L}(\mathbf{C}^4)$定义为
+    \[\sigma(z_1,z_2,z_3,z_4)=(-z_1+z_2,-z_1+z_2+z_3,z_1-z_2+2z_3+z_4,-z_1+z_2-z_3+3z_4),\]
+    求$\mathbf{C}^4$的一组基，使得$\sigma$在这组基下的矩阵为上三角矩阵.
 \end{example}
 
 \begin{solution}
-    $\sigma$在$\mathbf{C}^3$的自然基下的矩阵$A$为
-    \[ \begin{pmatrix}
-        2 & 0 & 0 \\
-        0 & 0 & 0 \\
-        1 & 0 & 2
-    \end{pmatrix} \]
-
-    令$|\lambda_E-A|=0$，知$A$的一个特征值是$0$，相应的一个特征向量为$\alpha_1=(0,1,0)$.$\sigma$在$\alpha_1,e_1,e_3$下的矩阵为矩阵
-    \[ \begin{pmatrix}
-        0 & 0 & 0 \\
-        0 & 2 & 0 \\
-        0 & 1 & 2
-    \end{pmatrix} \]
-    再考虑矩阵
-    \[ \begin{pmatrix}
-        2 & 0 \\
-        1 & 2
-    \end{pmatrix} \]
-    这个矩阵的特征值为$2$，相应的特征向量为$\alpha_2=(2,0,1)$. 最后取$\alpha_3=(0,0,1)$，则$\sigma$在$\alpha_1,\alpha_2,\alpha_3$下的矩阵为上三角矩阵.
+    记$\mathbf{C}^4$的自然基为$e_1,e_2,e_3,e_4$，则$\sigma$在自然基下的矩阵为
+    \[
+        A=\begin{pmatrix}
+            -1 & 1  & 0  & 0 \\
+            -1 & 1  & 1  & 0 \\
+            1  & -1 & 2  & 1 \\
+            -1 & 1  & -1 & 3
+        \end{pmatrix}.
+    \]
+    下面按照\autoref{thm:上三角矩阵存在} 证明的法二逐步构造相似变换矩阵. 注意到 $A(1,1,0,0)^\mathrm{T} = 0$，因此 $0$ 是 $A$ 的一个特征值，对应的特征向量可取 $\alpha_1=(1,1,0,0)^\mathrm{T}$. 令 $P_1 = (\alpha_1,e_2,e_3,e_4)$，则
+    \[ P_1^{-1}AP_1 = \begin{pmatrix}
+            0 & 1  & 0  & 0 \\
+            0 & 0  & 1  & 0 \\
+            0 & -1 & 2  & 1 \\
+            0 & 1  & -1 & 3
+        \end{pmatrix}. \]
+    其右下角三阶矩阵记为 $B_1$. 由于$B_1(1,1,0)^\mathrm{T} = (1,1,0)^\mathrm{T}$，故 $1$ 是 $B_1$ 的一个特征值. 取 $Q_2 = \begin{pmatrix}
+            1 & 0 & 0 \\
+            1 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}$，则
+    \[
+        Q_2^{-1}B_1Q_2
+        =
+        \begin{pmatrix}
+            1 & 1  & 0 \\
+            0 & 1  & 1 \\
+            0 & -1 & 3
+        \end{pmatrix}.
+    \]
+    再看 $Q_2^{-1}B_1Q_2$ 的右下角二阶矩阵，记为 $B_2$，有 $B_2(1,1)^\mathrm{T} = 2(1,1)^\mathrm{T}$，故 $2$ 是 $B_2$ 的一个特征值. 取 $Q_3= \begin{pmatrix}
+            1 & 0 \\
+            1 & 1
+        \end{pmatrix}$，则
+    \[
+        Q_3^{-1}B_2Q_3
+        =
+        \begin{pmatrix}
+            2 & 1 \\
+            0 & 2
+        \end{pmatrix}.
+    \]
+    至此，可以逐步构造出相似变换矩阵. 首先得到
+    \[
+        P_2 = Q_2
+        \begin{pmatrix}
+            1 & O \\ O & Q_3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            1 & 0 & 0 \\
+            1 & 1 & 0 \\
+            0 & 1 & 1
+        \end{pmatrix}.
+    \]
+    则 $P_2$ 使得 $P_2^{-1}B_1P_2$ 为上三角矩阵. 进而得到
+    \[
+        P = P_1 \begin{pmatrix}
+            1 & O \\ O & P_2
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            1 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 0 \\
+            0 & 0 & 1 & 1
+        \end{pmatrix}. \]
+    也就是说，取 $\alpha_1=(1,1,0,0)^\mathrm{T}, \alpha_2=(0,1,1,0)^\mathrm{T}, \alpha_3=(0,0,1,1)^\mathrm{T}, \alpha_4=(0,0,0,1)^\mathrm{T}$，则$\sigma$在基$\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\}$下的矩阵为上三角矩阵
+    \[
+        P^{-1}AP = \begin{pmatrix}
+            0 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 0 \\
+            0 & 0 & 2 & 1 \\
+            0 & 0 & 0 & 2
+        \end{pmatrix}. \]
 \end{solution}
 
 综合\autoref{thm:上三角矩阵等价条件} 的 3 和\autoref{thm:上三角矩阵存在}，我们可以观察到不变子空间的另一个有趣的性质：
@@ -726,7 +780,26 @@ $3 \implies 1$：设$\sigma$关于$v_1,\ldots,v_n$的矩阵为$A=(a_{ij})_{n\tim
     \end{enumerate}
 \end{proof}
 
-实际上，幂等矩阵还有很多其他的性质，我们可以回到线性变换的角度去理解这一矩阵，不仅仅是将上述定理换成线性变换的描述进行讨论（因为根据线性映射矩阵表示很容易知道，幂等线性变换在任意一组基下的矩阵表示都是幂等矩阵），我们还可以讨论其与投影变换的等价性，这一点我们将在后续内积空间讲解投影变换时中给出详细说明. 下面是一个技巧性较强的题目，读者可以在此题中体会``幂等''这一性质的特点：
+实际上，幂等矩阵还有很多其他的性质，我们可以回到线性变换的角度去理解这一矩阵，不仅仅是将上述定理换成线性变换的描述进行讨论（因为根据线性映射矩阵表示很容易知道，幂等线性变换在任意一组基下的矩阵表示都是幂等矩阵），我们还可以讨论其与投影变换的等价性. 我们首先给出投影变换的定义，读者不难验证如下定义的投影变换确实是一个线性变换：
+
+\begin{definition}{}{}
+    设$V$是数域$\mathbf{F}$上的线性空间，$U,W$是$V$的子空间且$V=U\oplus W$. 定义 $V$ 到 $U$ 上的\term{投影变换}为如下线性变换$\pi\in \mathcal{L}(V)$：对任意$v\in V$，由直和分解唯一地写成$v=u+w,\enspace u\in U,\enspace w\in W$，然后令$\pi(v)=u$.
+\end{definition}
+
+\begin{theorem}{}{幂等变换等价于投影变换}
+    设$V$是数域$\mathbf{F}$上的线性空间，$\sigma\in \mathcal{L}(V)$. 则$\sigma$幂等当且仅当$\sigma$是一个投影变换. 更具体地，$\sigma$ 是 $V$ 到 $\im \sigma$ 上的投影变换.
+\end{theorem}
+
+\begin{proof}
+    必要性：若$\sigma$是沿 $V$ 到 $U$ 上的投影变换，则对任意$v=u+w\enspace(u\in U,\enspace w\in W)$，有$\sigma(v)=u$，从而$\sigma^2(v)=\sigma(u)=u=\sigma(v)$，故$\sigma^2=\sigma$.
+
+    充分性：若 $\sigma^2 = \sigma$，根据\autoref{sec:像与核的进一步讨论}的讨论，有 $V = \im \sigma \oplus \ker \sigma$. 因此对任意 $v = u + w \enspace(u \in \im \sigma, \enspace w \in \ker \sigma)$，由 $u \in \im \sigma$可设 $u = \sigma(y)$，于是$\sigma(u)=\sigma^2(y)=\sigma(y)=u$，并且$\sigma(w)=0$，故$\sigma(v)=\sigma(u+w)=u$. 这表明$\sigma$正是 $V$ 到 $\im \sigma$ 上的投影变换.
+\end{proof}
+
+这一结论的直观意义是：幂等变换做一次之后再做第二次不会再发生新的变化，因此它一定是在``保留某个分量，消去另一个分量''. 在分解$V=\im \sigma\oplus\ker \sigma$中，$\im \sigma$中的向量是已经被保留下来的部分，而$\ker \sigma$中的向量则是在投影过程中被消去的部分. 这也解释了为什么投影变换天然满足幂等性：一个向量一旦已经落在目标子空间中，再投影一次就不会改变.
+
+进一步地，在实数域上，对称幂等变换等价于正交投影变换，这将在后续讲解内积空间时说明（\autoref{thm:对称幂等变换与正交投影的关系}）. 最后给出一个技巧性较强的题目，读者可以在此题中体会``幂等''这一性质的特点：
+
 \begin{example}{}{}
     设$A$，$B$为两个$n$阶幂等矩阵，证明：
     \begin{enumerate}

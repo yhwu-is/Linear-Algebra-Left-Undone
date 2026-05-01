@@ -1304,9 +1304,36 @@
 
         \end{answer}
 
-        \item 设 $A$ 和 $B$ 是两个 $m \times n$ 矩阵，且存在两个方阵 $C,D$ 使得 $A = BC, B = AD$，证明：存在可逆矩阵 $M$ 使得 $B = AM$.
+        \item \begin{enumerate}
+            \item 设 $A$ 和 $B$ 是两个 $m \times n$矩阵，证明：存在可逆矩阵 $M$ 使得$B = AM$ 的充要条件是 $A$ 和 $B$ 的列向量可以互相表示；
+            \item 设 $A$ 和 $B$ 是两个 $m \times n$ 矩阵，且存在两个方阵 $C, D$ 使得 $A = BC, B = AD$，证明：存在可逆矩阵 $M$ 使得 $B = AM$.
+        \end{enumerate}
         \begin{answer}
-            由于 $A = BC$，故 $A$ 的每一列都为 $B$ 的列向量的线性组合，同样由于$B = AD$，故 $B$ 的每一列都为 $A$ 的列向量的线性组合，所以 $A$ 与 $B$ 的列向量可以互相表示，因此它们的过渡矩阵可逆.
+            \begin{enumerate}
+                \item 必要性：$B = AM$，则 $B$ 的每一列都为 $A$ 的列向量的线性组合，所以 $B$ 的列向量可以由 $A$ 的列向量表示. 反之，由于 $M$ 可逆，所以 $A = BM^{-1}$，则 $A$ 的每一列都为 $B$ 的列向量的线性组合，所以 $A$ 的列向量可以由 $B$ 的列向量表示.
+
+                充分性：由于 $A$ 与 $B$ 的列向量组等价，则 $A$ 与 $B$ 的列空间相同，令其维数为 $r$. 对 $A, B$ 分别作初等列变换，存在可逆矩阵 $Q_1, Q_2 \in \mathbf{R}^{n\times n}$，使得
+                \[ AQ_1 = (A_1, 0), \qquad BQ_2 = (B_1, 0), \]
+                其中 $A_1, B_1 \in \mathbf{R}^{m\times r}$ 均列满秩。又因 $A$ 与 $B$ 的列空间相同，故 $A_1$ 与 $B_1$ 是同一列空间的两组基，因此存在可逆矩阵 $M_1 \in \mathbf{R}^{r\times r}$，使得 $B_1 = A_1M_1$。
+
+                于是
+                \[ BQ_2=(B_1,0) = (A_1M_1,0) = (A_1,0) \begin{pmatrix}
+                    M_1 & 0 \\ 0 & I_{n-r}
+                \end{pmatrix} = AQ_1 \begin{pmatrix}
+                    M_1 & 0 \\ 0 & I_{n-r}
+                \end{pmatrix}. \]
+                因此
+                \[ B = AQ_1 \begin{pmatrix}
+                    M_1 & 0\\ 0 & I_{n-r}
+                \end{pmatrix} Q_2^{-1}. \]
+                令
+                \[ M = Q_1 \begin{pmatrix}
+                    M_1 & 0 \\ 0 & I_{n-r}
+                    \end{pmatrix} Q_2^{-1}, \]
+                则 $M$ 可逆，且 $B = AM$。
+
+                \item 由于 $A = BC$，故 $A$ 的每一列都为 $B$ 的列向量的线性组合，同样由于$B = AD$，故 $B$ 的每一列都为 $A$ 的列向量的线性组合，所以 $A$ 与 $B$ 的列向量可以互相表示，因此它们的过渡矩阵可逆.
+            \end{enumerate}
         \end{answer}
     \end{exgroup}
 

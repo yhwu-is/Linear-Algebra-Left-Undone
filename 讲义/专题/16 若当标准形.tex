@@ -8,7 +8,7 @@
 \begin{example}{}{}
     设$\sigma\in\mathcal{L}(\mathbf{C})^6$满足
     \[\sigma(x_1,x_2,x_3,x_4,x_5,x_6)=(2x_1+x_2,2x_2+x_3,2x_3,2x_4,3x_5+x_6,3x_6),\]
-    则我们很容易写出其在$(\mathbf{C})^6$自然基下的矩阵表示为
+    则我们很容易写出其在$\mathbf{C}^6$自然基下的矩阵表示为
     \[\left(\begin{array}{ccc:c:cc}
                 2 & 1 & 0 & 0 & 0 & 0 \\
                 0 & 2 & 1 & 0 & 0 & 0 \\
@@ -85,7 +85,7 @@
     \end{enumerate}
 \end{proof}
 
-在以上问题被解决后，我们的目标将非常清晰，即对任意的复数域上的线性变换是否一定能找到一组基是由不同的若当循环基合并而成的，从而在在这组基下的矩阵表示是若当标准形？似乎有些困难，我们需要一些观察：事实上，若当循环基中的每个向量都是关于某个特征值$\lambda$的广义特征向量，因此它们张成的子空间应当是广义特征子空间$G_\lambda$的一部分（当然也可能张成整个广义特征子空间）. 于是站在\autoref{thm:广义特征性质} 中广义特征子空间分解的基础上，我们的目标可以转化为对其中的每一个广义特征子空间，找到一组由一个或多个若当循环基合并而成的基？这样首先利用\autoref{thm:广义特征性质} 中广义特征子空间分解，再利用广义特征子空间的若当循环基分解，我们就可以得到一组由不同的若当循环基合并而成的基，从而得到若当标准形.
+在以上问题被解决后，我们的目标将非常清晰，即对任意的复数域上的线性变换是否一定能找到一组基是由不同的若当循环基合并而成的，从而在在这组基下的矩阵表示是若当标准形？似乎有些困难，我们需要一些观察：事实上，若当循环基中的每个向量都是关于某个特征值$\lambda$的广义特征向量，因此它们张成的子空间应当是广义特征子空间$G_\lambda$的一部分（当然也可能张成整个广义特征子空间）. 于是站在\autoref{thm:广义特征性质} 中广义特征子空间分解的基础上，我们的目标可以转化为对其中的每一个广义特征子空间，找到一组由一个或多个若当循环基合并而成的基. 这样首先利用\autoref{thm:广义特征性质} 中广义特征子空间分解，再利用广义特征子空间的若当循环基分解，我们就可以得到一组由不同的若当循环基合并而成的基，从而得到若当标准形.
 
 为了更清晰地展示，我们将上述过程形式化. 设$\sigma\in\mathcal{L}(V)$，$\lambda_1,\ldots,\lambda_m$是$\sigma$的互异特征值，$G_{\lambda_i}$是关于特征值$\lambda_i$的广义特征子空间. 根据\autoref{thm:广义特征性质}，我们知道
 \[V=G_{\lambda_1}\oplus\cdots\oplus G_{\lambda_m}=\bigoplus_{i=1}^m G_{\lambda_i},\]
@@ -238,7 +238,7 @@
               \label{fig:17:若当基Young图形式}
           \end{figure}
 
-    \item 接下来要确定每个若当循环基的长度，也就是Young图每一列的长度，我们应当从行的性质入手，因为这是我们目前仅有的可以计算的信息. 我们需要求解每个$G_j(\lambda,\sigma)$及其维数（目前只有维数有用，但后续求解具体若当基时其中的向量也是有用的），直到某个$G_j(\lambda,\sigma)$的维数等于$G_\lambda$的维数，因为Young图中所有方格与$G_\lambda$的一组基一一对应，因此方格总数就等于$G_\lambda$的维数. 另一方面由\autoref{thm:广义特征性质}，$N$是$G_\lambda$上的幂零线性变换，且在其它广义特征子空间上是双射，因此在核空间最高次数也只能是$G_\lambda$的维数.
+    \item 接下来要确定每个若当循环基的长度，也就是Young图每一列的长度，我们应当从行的性质入手，因为这是我们目前仅有的可以计算的信息. 我们需要求解每个$G_j(\lambda,\sigma)$及其维数（目前只有维数有用，但后续求解具体若当基时其中的向量也是有用的），直到某个$G_j(\lambda,\sigma)$的维数等于$G_\lambda$的维数，因为Young图中所有方格与$G_\lambda$的一组基一一对应，因此方格总数就等于$G_\lambda$的维数. 另一方面由\autoref{thm:广义特征性质}，$N$是$G_\lambda$上的幂零线性变换，且在其它广义特征子空间上是双射，因此 $N$ 的各幂次的核空间最高维数也只能是$G_\lambda$的维数.
 
           在求出各个$G_j(\lambda,\sigma)$的维数后阶梯形状也即确定，因为各层向量个数确定了. 举个简单的例子，假设$G_\lambda$是11维空间，满足$G_1(\lambda,\sigma)$，$G_2(\lambda,\sigma)$，$G_3(\lambda,\sigma)$的维数分别为5,9,11. 对照Young图每行右侧的标注，这说明从最上方一行往下的向量个数依次为5，4($=9-5$)，2($=11-9$)，具体Young图为
           \begin{figure}[H]
@@ -303,7 +303,7 @@
 于是我们讨论矩阵的情况. 我们考虑$P^{-1}AP=J$，其中$P$为过渡矩阵，$J$为$A$的若当标准形. 我们可以将$A$视为$\sigma(\alpha)=A\alpha$在自然基下的矩阵，于是$\sigma$在\autoref{cor:若当基存在} 给出的基（记为$B$）下的表示矩阵的求解方式就是$\sigma(B)=(B)J$，将$B$组成的矩阵记作$P$，代入$\sigma$的定义，$\sigma(B)=(B)J$就等同于$AP=PJ$，即$P^{-1}AP=J$，故如果我们要求矩阵相似于其若当标准形的过渡矩阵，问题转化为求解$\sigma(\alpha)=A\alpha$的若当基然后排列成矩阵即可.
 
 然而我们知道，求解$\sigma$的若当基需要求解各个$G_i(\lambda,\sigma)=\ker(\sigma-\lambda I)^i$，代入$\sigma(\alpha)=A\alpha$可知，$G_i(\lambda,\sigma)$实际上就是$(A-\lambda I)^iX=0$的解. 所以对于矩阵而言，上述所有的过程都只是不断对矩阵求幂然后解线性方程组，因此是一定可解的. 我们用解空间替代各个$G_i(\lambda,\sigma)$重复上述过程可以得到如下定理：
-\begin{theorem}{}{}
+\begin{theorem}{}{矩阵若当标准形唯一}
     设$A$是$n$阶复矩阵，$\lambda_1,\ldots,\lambda_m$为其互异的特征值，则主对角元为$\lambda_j$的若当块的个数$n_j$为
     \begin{equation} \label{eq:17:矩阵若当块个数}
         n_j=n-r(A-\lambda_j E),
@@ -329,7 +329,7 @@
         2 & 3 & 2 \\ 1 & 8 & 2 \\ -2 & -14 & -3
     \end{pmatrix}$，可以解得$A$的特征多项式为 $(\lambda-1)(\lambda-3)^2$，因此特征值为$1$和$3$，且$A-3E=\begin{pmatrix}
         -1 & 3 & 2 \\ 1 & 5 & 2 \\ -2 & -14 & -6
-    \end{pmatrix}$的秩为$2$，因此$3$对应的若当块个数为$3-2=1$，故若当标准型为$\begin{pmatrix}
+    \end{pmatrix}$的秩为$2$，因此$3$对应的若当块个数为$3-2=1$，结合\autoref{thm:矩阵若当标准形唯一}的结论不难得到若当标准型为$\begin{pmatrix}
         3 & 1 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 1
     \end{pmatrix}$.
 
@@ -387,7 +387,7 @@
     从而根据\autoref{thm:Young图行长度}，Young图的行长度分别为 $r_1 = 3, r_2 = 2, r_3 = 1$，我们按照刚刚的讨论填充Young图.
 
     \begin{enumerate}
-        \item 倒数第一层中，我们需要找到一个向量 $v_1 \in G_3 \backslash G_2$，因为这里$G_1, G_2, G_3$的基非常好的满足了包含关系，所以作差变得非常简单：注意到 $G_3 = \spa\{G_2, x^2\}$，我们直接挑出 $v_1=x^2$ 即可.
+        \item 倒数第一层中，我们需要找到一个向量 $v_1 \in G_3 \backslash G_2$，因为这里$G_1, G_2, G_3$的基满足了包含关系，所以作差变得非常简单：直接挑出 $v_1=x^2$ 即可.
         \item 倒数第二层中，我们需要找到一个向量 $v_2 \in G_2 \backslash G_1$，且 $v_2$ 与该层已有向量 $\sigma(v_1)=2x$ 线性无关. 注意到 $G_2 = \spa\{G_1, x, xy\}$，在 $G_2$ 中，$\{1, y, y^2, 2x, xy\}$ 线性无关且张成 $G_2$，故可取 $v_2 = xy$.
         \item 第一层中，我们需要找到一个向量 $v_3 \in G_1$，且 $v_3$ 与该层已有向量 $\sigma^2(v_1)=2, \sigma(v_2)=y$ 线性无关. 注意到 $G_1 = \spa\{1, y, y^2\}$. 显然 $\{2, y, y^2\}$ 是 $G_1$ 的一组基，故可取 $v_3 = y^2$.
     \end{enumerate}
@@ -463,7 +463,7 @@
     \[B=\begin{pmatrix}
             A & C \\ O & D
         \end{pmatrix},\]
-    于是$\sigma\vert_U$的矩阵为$A$，对应特征多项式$|\lambda E-A|$，而$\sigma$的特征多项式$|\lambda E-B|=|\lambda E-A||\lambda E-D|$，由于$\sigma$有$n$个不同的特征值，因此$\sigma\vert_U$必定有$m$个不同的特征值$\lambda_{l_1},\ldots,\lambda_{l_m}$，且$1\leqslant l_1<\cdots<l_m\leqslant n$. 而对每个特征值$\lambda_{l_i}$都有特征向量$\alpha_i\in U$，满足$\sigma\vert_U(\alpha_i)=\lambda_{l_i}\alpha_i$，因此$\sigma(\alpha_i)=\lambda_{l_i}\alpha_i$，即$\alpha_i\in V_{\lambda_{l_i}}$，故$V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}}\subset U$. 再结合
+    于是$\sigma\vert_U$的矩阵为$A$，对应特征多项式$|\lambda E-A|$，而$\sigma$的特征多项式$|\lambda E-B|=|\lambda E-A||\lambda E-D|$. 由于$\sigma$有$n$个不同的特征值，因此$\sigma\vert_U$必定有$m$个不同的特征值$\lambda_{l_1},\ldots,\lambda_{l_m}$，且$1\leqslant l_1<\cdots<l_m\leqslant n$. 而对每个特征值$\lambda_{l_i}$都有特征向量$\alpha_i\in U$，满足$\sigma\vert_U(\alpha_i)=\lambda_{l_i}\alpha_i$，因此$\sigma(\alpha_i)=\lambda_{l_i}\alpha_i$，即$\alpha_i\in V_{\lambda_{l_i}}$，故$V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}}\subset U$. 再结合
     \[\dim(V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}})=m=\dim U,\]
     故$U=V_{\lambda_{l_1}}\oplus\cdots\oplus V_{\lambda_{l_m}}$，故所有不变子空间都是之前讨论的$2^n$种之一，命题得证.
 \end{solution}
@@ -473,7 +473,9 @@
 \subsection{矩阵求幂与马尔可夫链}
 
 若当标准形的另一个应用在于我们可以利用它计算矩阵的幂，因为若当块的幂的计算是简单的，这一点与对角矩阵是类似的：
-\[J_k(a)^n=(aE+J_k(0))^n=a^nE+\mathrm{C}_n^1a^{n-1}J_k(0)+\cdots+\mathrm{C}_n^nJ_k(0)^n\]
+\begin{equation} \label{eq:若当块幂}
+    J_k(a)^n=(aE+J_k(0))^n=a^nE+\mathrm{C}_n^1a^{n-1}J_k(0)+\cdots+\mathrm{C}_n^nJ_k(0)^n.
+\end{equation}
 同时我们也知道$J_k(0)^k=O$（幂零矩阵），并且通过简单的找规律不难找到$J_k(0)$的任意次幂的表达式，所以利用若当标准形求解矩阵的幂是简单的. 我们来看一个例子：
 \begin{example}{}{}
     设$A=\begin{pmatrix}
@@ -483,7 +485,7 @@
 \begin{solution}
     首先求 $A$ 的若当标准形，$|\lambda E - A|=(\lambda + 1)^3$，$-1$为唯一特征值，几何重数为$3$，而$A+E=\begin{pmatrix}
             3 & 6 & -15 \\ 1 & 2 & -5 \\ 1 & 2 & -5
-        \end{pmatrix}$为秩为$1$的矩阵，因此由\autoref{thm:若当标准形唯一}，若当块有$3-1=2$个，只可能是$J_2(-1)$和$J_1(-1)$，因此$A=PJP^{-1}$，其中$J=\begin{pmatrix}
+        \end{pmatrix}$为秩为$1$的矩阵，因此由\autoref{thm:矩阵若当标准形唯一}，若当块有$3-1=2$个，只可能是$J_2(-1)$和$J_1(-1)$，因此$A=PJP^{-1}$，其中$J=\begin{pmatrix}
             -1 & 1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1
         \end{pmatrix}$，用\autoref{ex:求若当标准形过渡矩阵} 中的方法，可得$P=\begin{pmatrix}
             3 & 1 & 2 \\ 1 & 0 & -1 \\ 1 & 0 & 0
@@ -535,6 +537,78 @@
 \end{solution}
 
 由于复数域上任意矩阵都有若当标准形，因此利用若当标准形，我们可以求出复数域上任意矩阵的任意幂次. 于是我们会有一个问题，即任意给定一个矩阵，当我们取其幂次趋向于无穷时，会得到一个什么样的矩阵呢？是所有元素都有限的矩阵，还是有些元素可能趋于无穷了呢？
+
+这个问题可以用若当标准形回答. 事实上，矩阵幂是否收敛（这里将矩阵的收敛定义为矩阵的每个元素都收敛）取决于各个若当块在高次幂下的行为. 基于\autoref{ex:若当m次幂} 的结果，直观而言这取决于特征值（可能为复数）$\lambda$的模长. 下面我们将给出一个严格的判别条件.
+
+\begin{theorem}{}{矩阵幂收敛判别}
+    设$A\in\mathbf{C}^{n\times n}$，并设$A$的若当标准形为 $J=\diag(J_{r_1}(\lambda_1),J_{r_2}(\lambda_2),\ldots,J_{r_s}(\lambda_s))$，则 $\{A^m\}_{m\geqslant 1}$收敛当且仅当 $A$ 的每一个若当块都满足下列两种情形之一：
+    \begin{enumerate}
+        \item 该若当块的特征值$\lambda$满足$|\lambda|<1$；
+        \item 该若当块恰为$J_1(1)$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    先讨论单个若当块$J_k(\lambda)$的情形. 根据\autoref{ex:若当m次幂} 的结果，有
+    \begin{enumerate}
+        \item 若$|\lambda|<1$，则 $J_k(\lambda)^m\to O$，因此收敛于零矩阵（注意 $P^{-1}AP$ 的每个元素是 $A$ 各元素的固定线性组合）.
+
+        \item 若$|\lambda|>1$，则$J_k(\lambda)^m$的对角元都是 $\lambda^m$，从而不可能收敛.
+
+        \item 若$|\lambda|=1$ 且 $k\geqslant 2$，根据\autoref{eq:若当块幂}，$J_k(\lambda)^m$的第一条超对角线上的元素为$\mathrm{C}_m^1\lambda^{m-1}=m\lambda^{m-1}$，其模长等于$m$，故不可能收敛.
+
+        \item 若$|\lambda|=1$ 且 $k=1$，则$J_1(\lambda)^m=\lambda^m$. 这一数列收敛当且仅当$\lambda=1$；事实上，若$\lambda^m\to l$，则$\lambda^{m+1}\to l$，于是$\lambda^{m+1}-\lambda^m\to 0$，即$\lambda^m(\lambda-1)\to 0$. 取模后得$|\lambda-1|=|\lambda^m(\lambda-1)|\to 0$，故$\lambda=1$.
+    \end{enumerate}
+
+    综上，一个若当块的幂次收敛，当且仅当它要么对应于模长严格小于$1$的特征值，要么恰好是$J_1(1)$.
+
+    再看一般矩阵$A$. 由$A^m=PJ^mP^{-1}$可知，$\{A^m\}$收敛当且仅当$\{J^m\}$收敛；而$J^m$是各若当块幂次构成的分块对角矩阵，因此$\{J^m\}$收敛当且仅当每个若当块的幂次都收敛. 于是便得到定理中的判别条件.
+\end{proof}
+
+等价地，上述定理给出的条件也可以写为：$\{A^m\}_{m\geqslant 1}$收敛，当且仅当（1）$A$的全部特征值都满足$|\lambda|\leqslant 1$；（2）若$|\lambda|=1$，则必有$\lambda=1$；（3）特征值$1$对应的全部若当块都是$1$级若当块. 若上述条件成立，并且特征值 $1$ 对应的 $1$ 级若当块共有 $r$ 个，则经过重新排列若当块后可写成 $J=\diag(I_r,J_0)$，其中$J_0$的全部特征值都满足 $|\lambda| < 1$，并且 $\lim_{m\to\infty}A^m=P\diag(I_r,O)P^{-1}$. 也就是说，当极限存在时，这个极限矩阵实际上就是投影到特征值 $1$ 对应特征子空间上的投影矩阵. 对于实矩阵，只需将它视为复矩阵后应用同样的判别，因为矩阵幂是否收敛并不因系数域扩张到复数域而改变.
+
+这一定理在概率论中有一个非常经典的应用，这就是有限状态马尔可夫链. 所谓马尔可夫链，就是下一步所处的状态只依赖于当前状态，而与更早的历史无关的随机过程. 一个经典的例子是天气预测：
+
+\begin{example}{}{}
+    设某地的天气状态集合为$\{\text{晴},\text{阴},\text{雨}\}$，每天的天气状态只依赖于前一天的天气状态，并且满足如下转移概率：
+    \begin{center}
+        \begin{tabular}{c|ccc}
+            & 晴   & 阴   & 雨   \\ \hline
+            晴 & 0.5  & 0.3  & 0.2  \\
+            阴 & 0.2  & 0.5  & 0.3  \\
+            雨 & 0.1  & 0.4  & 0.5
+        \end{tabular}
+    \end{center}
+    也就是说，如果前一天是晴，那么第二天是晴、阴、雨的概率分别为 $0.5, 0.3, 0.2$，其余类推.
+\end{example}
+
+下面开始形式化定义. 若状态集合为$\{1,2,\ldots,n\}$，并记$p_{ij}$为从状态$i$一步转移到状态$j$的概率，则得到转移矩阵
+\[P=(p_{ij}),\qquad p_{ij}\geqslant 0,\qquad \sum_{j=1}^np_{ij}=1,\enspace i=1,2,\ldots,n.\]
+这样的矩阵称为\term{随机矩阵}，更准确地说，这里是\term{行随机矩阵}，因为矩阵每一行的元素和为 $1$. 若初始时刻的状态分布写成概率行向量$\mu^{(0)}=(\mu_1^{(0)},\ldots,\mu_n^{(0)})$，则一步之后的分布为$\mu^{(1)}=\mu^{(0)}P$，进一步归纳可得$\mu^{(m)}=\mu^{(0)}P^m$. 因此，研究马尔可夫链经过很多步之后会趋向什么分布，本质上就是研究随机矩阵$P$的幂次$P^m$是否收敛以及收敛到什么矩阵.
+
+\begin{corollary}{}{随机矩阵幂次收敛}
+    设$P=(p_{ij})\in\mathbf{R}^{n\times n}$是一个行随机矩阵，则
+    \begin{enumerate}
+        \item $1$一定是$P$的特征值，并且$P$的任一特征值$\lambda$都满足$|\lambda|\leqslant 1$；
+        \item $\{P^m\}_{m\geqslant 1}$收敛，当且仅当$1$是$P$在单位圆上的唯一特征值，也就是说，对任意满足$\lambda\neq 1$的特征值都有$|\lambda|<1$.
+    \end{enumerate}
+    若上述条件成立，则极限矩阵仍是随机矩阵，并且是$P$在特征值$1$对应特征子空间上的投影.
+\end{corollary}
+
+\begin{proof}
+    记$e=(1,1,\ldots,1)^\mathrm{T}$. 由于$P$ 每行元素和都为$1$，故$Pe=e$，因此$1$是$P$的特征值. 再由Gershgorin 圆盘第一定理（\autoref{thm:Gershgorin disks theorem}），$P$的每个特征值都落在某个圆盘
+    \[D_i=\left\{z\in\mathbf{C}\mid |z-p_{ii}|\leqslant \sum_{j\neq i}p_{ij}\right\}=\{z\in\mathbf{C}\mid |z-p_{ii}|\leqslant 1-p_{ii}\}\]
+    中. 对于任意$z\in D_i$，由三角不等式有 $|z|\leqslant |z-p_{ii}|+p_{ii}\leqslant 1$，因而$P$的全部特征值都满足$|\lambda|\leqslant 1$.
+
+    又因为行随机矩阵的乘积仍是行随机矩阵，所以 $P^m$（$m\geqslant 1$）仍是行随机矩阵. 特别地，它的每个元素都落在区间$[0,1]$内. 因此矩阵序列 $\{P^m\}$ 的每个元素都是有界的，于是对任意可逆矩阵 $S$，矩阵 $S^{-1}P^mS$ 的每个元素也都是 $P^m$ 各元素的固定线性组合，从而仍有界. 设 $P = SJS^{-1}$ 是 $P$ 的若当标准形. 若 $J$ 中存在某个对应于 $|\lambda| = 1$ 的高阶若当块 $J_k(\lambda)$（其中 $k \geqslant 2$），那么由\autoref{eq:若当块幂}，$J_k(\lambda)^m$ 第一条超对角线上的元素为 $m\lambda^{m-1}$，其模长等于 $m$，从而 $\{J^m\}$ 必有元素无界. 这与 $\{J^m\}=\{S^{-1}P^mS\}$ 各元素有界矛盾. 因此，随机矩阵在单位圆上的特征值都只能对应 $1$ 级若当块. 根据\autoref{thm:矩阵幂收敛判别}，$\{P^m\}$ 收敛当且仅当单位圆上的特征值只有 $1$，这就证明了前两点.
+
+    若 $\{P^m\}$ 收敛到某个矩阵 $L$，则 $L$ 显然是行随机矩阵的极限，因此仍是行随机矩阵. 又由\autoref{thm:矩阵幂收敛判别}，$L$ 正是 $P$ 在特征值 $1$ 对应特征子空间上的投影.
+\end{proof}
+
+例如$P=\begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}$对应一个在两个状态之间来回切换的马尔可夫链. 此时$P$的特征值为$1$与$-1$，因为单位圆上除了$1$之外还出现了$-1$，所以$P^m$不收敛，这恰好对应于该链始终带有周期性的振荡.
 
 \subsection{若当标准形与矩阵分解}
 矩阵分解是讨论标准形时绕不开的话题. 接下来我们讨论若当标准形在矩阵分解中的应用，先从矩阵方根问题开始. 下面的结论是前文线性变换平方根问题的自然延续：
@@ -695,6 +769,81 @@
 \]
 即可得到原微分方程的通解. 这说明若当标准形把常系数线性微分方程组的求解化为若当块指数的计算，而后者只涉及有限次幂.
 
+\begin{example}{}{}
+    利用若当标准形求解初值问题
+    \[
+        X'(t)=\begin{pmatrix}
+            2 & 3 & 2 \\ 1 & 8 & 2 \\ -2 & -14 & -3
+        \end{pmatrix}X(t),\qquad
+        X(0)=\begin{pmatrix}
+            -1 \\ 0 \\ 0
+        \end{pmatrix}.
+    \]
+\end{example}
+\begin{solution}
+    记
+    \[
+        A=\begin{pmatrix}
+            2 & 3 & 2 \\ 1 & 8 & 2 \\ -2 & -14 & -3
+        \end{pmatrix}.
+    \]
+    由\autoref{ex:求若当标准形过渡矩阵} 可知，$A$的若当标准形为
+    \[
+        J=\begin{pmatrix}
+            3 & 1 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 1
+        \end{pmatrix},
+        \qquad
+        P=\begin{pmatrix}
+            1 & -1 & 2 \\ -1 & 0 & 0 \\ 2 & 0 & -1
+        \end{pmatrix},
+        \qquad
+        P^{-1}AP=J.
+    \]
+
+    令$X(t)=PY(t)$，则
+    \[
+        PY'(t)=X'(t)=AX(t)=APY(t)=PJY(t).
+    \]
+    由于$P$可逆，故$Y'(t)=JY(t)$. 又注意到初值向量$X(0)=(-1,0,0)^\mathrm{T}$恰为$P$的第二列，因此
+    \[
+        Y(0)=P^{-1}X(0)=\begin{pmatrix}
+            0 \\ 1 \\ 0
+        \end{pmatrix}.
+    \]
+
+    现在只需求解若当标准形对应的方程组. 由于
+    \[
+        J=\diag(J_2(3),1),
+    \]
+    因而
+    \[
+        \mathrm{e}^{Jt}=\begin{pmatrix}
+            \mathrm{e}^{3t} & t\mathrm{e}^{3t} & 0 \\
+            0 & \mathrm{e}^{3t} & 0 \\
+            0 & 0 & \mathrm{e}^{t}
+        \end{pmatrix}.
+    \]
+    故
+    \[
+        Y(t)=\mathrm{e}^{Jt}Y(0)=\begin{pmatrix}
+            t\mathrm{e}^{3t} \\ \mathrm{e}^{3t} \\ 0
+        \end{pmatrix}.
+    \]
+
+    最后代回$X(t)=PY(t)$，得到
+    \[
+        X(t)=\begin{pmatrix}
+            1 & -1 & 2 \\ -1 & 0 & 0 \\ 2 & 0 & -1
+        \end{pmatrix}\begin{pmatrix}
+            t\mathrm{e}^{3t} \\ \mathrm{e}^{3t} \\ 0
+        \end{pmatrix}
+        =\mathrm{e}^{3t}\begin{pmatrix}
+            t-1 \\ -t \\ 2t
+        \end{pmatrix}.
+    \]
+    这就是所求的解.
+\end{solution}
+
 \subsection{求解线性递推方程}
 
 数列的线性递推方程求解是我们高中就曾经接触过的问题，在行列式的运算技巧中我们也曾提及二阶齐次线性递推方程的求解，不过那种方法显然缺乏普适性. 很自然地，我们希望能寻求某种方法来解决$m$阶线性递推方程，不过在此之前，我们需要明确这其中蕴含的线性性究竟在何处.
@@ -825,10 +974,40 @@
 \begin{example}{}{}
     求解线性递推方程$a_n = 5a_{n - 1} - 8a_{n - 2} + 4a_{n - 3}$，其中$a_0 = 2, a_1 = 4, a_2 = 9$.
 \end{example}
+\begin{solution}
+    设这一递推方程的特征多项式为
+    \[
+        p(\lambda)=\lambda^3-5\lambda^2+8\lambda-4=(\lambda-1)(\lambda-2)^2.
+    \]
+    因此特征值为$1$与$2$，其中$2$是二重根. 根据前面对重根情形的讨论，数列$\{a_n\}$的通项应具有形式
+    \[
+        a_n=c_1\cdot 1^n+c_2\cdot 2^n+c_3\binom{n}{1}2^{n-1}
+        =c_1+c_2\cdot 2^n+c_3n2^{n-1},
+    \]
+    其中$c_1,c_2,c_3$为待定常数.
+
+    将初值代入上式，得到方程组
+    \[
+        \begin{cases}
+            c_1+c_2=2, \\
+            c_1+2c_2+c_3=4, \\
+            c_1+4c_2+4c_3=9.
+        \end{cases}
+    \]
+    解得
+    \[
+        c_1=1,\qquad c_2=1,\qquad c_3=1.
+    \]
+    从而
+    \[
+        a_n=1+2^n+n2^{n-1}.
+    \]
+    这就是所求的通项公式.
+\end{solution}
 
 \section{实数域上的若当标准形} \label{sec:实数域上的若当标准形}
 
-复数域上的若当标准形依赖于代数学基本定理：任意复矩阵的特征多项式都能分解为一次因式. 在实数域上，这一点不再成立. 例如矩阵
+复数域上的若当标准形依赖于代数学基本定理：任意复矩阵的特征多项式都能分解为一次因式的乘积. 在实数域上，这一点不再成立. 例如矩阵
 \[
     \begin{pmatrix}
         0 & 1 \\ -1 & 0
@@ -839,42 +1018,24 @@
 下面先证明一个用于从复相似回到实相似的结论. 一般的数域扩张版本也成立，但本节只需要实数域与复数域之间的版本.
 
 \begin{theorem}{}{相似域不变性}
-    设$A,B$为同阶实矩阵，则$A,B$在复数域上相似当且仅当它们在实数域上相似.
+    设 $A, B$ 为同阶实矩阵，则 $A, B$ 在复数域上相似当且仅当它们在实数域上相似.
 \end{theorem}
 \begin{proof}
-    若$A,B$在实数域上相似，则相同的实可逆矩阵也可以视为复可逆矩阵，因此$A,B$在复数域上相似.
+    若 $A, B$ 在实数域上相似，由于实可逆矩阵也可以视为复可逆矩阵，因此$A,B$在复数域上相似.
 
-    反过来，若$A,B$在复数域上相似，则存在复可逆矩阵$P$使得$AP=PB$，将$P$写成$P=P_1+\i P_2$，其中$P_1,P_2$都是实矩阵. 因为$A,B$都是实矩阵，比较实部与虚部可得
-    \[
-        AP_1=P_1B,\qquad AP_2=P_2B.
-    \]
-    对任意$t\in\mathbf{R}$，令$P(t)=P_1+tP_2$，则
-    \[
-        AP(t)=P(t)B.
-    \]
-    又$\det(P_1+tP_2)$是关于$t$的实系数多项式. 由于
-    \[
-        \det(P_1+\i P_2)=\det P\neq 0,
-    \]
-    该多项式不是零多项式，因此只有有限多个实根. 取$t_0\in\mathbf{R}$使得$\det(P_1+t_0P_2)\neq 0$，则$P(t_0)$是实可逆矩阵，并且
-    \[
-        AP(t_0)=P(t_0)B.
-    \]
-    故$P(t_0)^{-1}AP(t_0)=B$，即$A,B$在实数域上相似.
+    反过来，若 $A, B$ 在复数域上相似，则存在复可逆矩阵 $P$ 使得 $AP = PB$，将 $P$ 写成 $P = P_1 + \i P_2$，其中 $P_1, P_2$ 都是实矩阵. 因为 $A, B$ 都是实矩阵，比较实部与虚部可得 $AP_1 = P_1B, AP_2 = P_2B$. 对任意 $t \in \mathbf{R}$，令 $P(t) = P_1 + t P_2$，则 $AP(t) = P(t)B$. 又 $\det(P_1 + t P_2)$ 是关于 $t$ 的实系数多项式. 由于 $\det(P_1+\i P_2)=\det P\neq 0$，该多项式不是零多项式，因此只有有限多个实根. 取 $t_0 \in \mathbf{R}$ 使得 $\det(P_1 + t_0 P_2) \neq 0$，则 $P(t_0)$ 是实可逆矩阵，并且 $AP(t_0) = P(t_0)B$. 故 $P(t_0)^{-1}AP(t_0) = B$，即 $A, B$ 在实数域上相似.
 \end{proof}
 
-有了相似域不变性，要把复若当标准形转回实形式，关键在于替每一对共轭的复若当块构造合适的实矩阵块. 下面就来定义所需的实分块.
-
-对$a,b\in\mathbf{R}$且$b\neq 0$，记
+有了相似域不变性，要把复若当标准形转回实形式，关键在于为每一对共轭的复若当块构造合适的实矩阵块. 下面就来定义所需的实分块. 对 $a, b \in \mathbf{R}$ 且 $b \neq 0$，记
 \[
-    R(a,b)=\begin{pmatrix}
+    R(a, b) = \begin{pmatrix}
         a & b \\ -b & a
     \end{pmatrix},\qquad
-    C_2=\begin{pmatrix}
+    C_2 = \begin{pmatrix}
         0 & 0 \\ 1 & 0
     \end{pmatrix}.
 \]
-其中$R(a,b)$的特征值为$a+b\i$与$a-b\i$. 对正整数$s$，定义两个$2s$阶实矩阵
+不难验证 $R(a, b)$ 的特征值为 $a + b\i$ 与 $a - b\i$. 对正整数 $s$，定义两个 $2s$ 阶实矩阵
 \[
     J_s(a,b)=\begin{pmatrix}
         R(a,b) & E_2    &        &        &     \\
@@ -894,7 +1055,7 @@
                &        &        &        & R(a,b)
     \end{pmatrix}.
 \]
-二者都是一对共轭复若当块的实表现，区别只在于选取实基的方式不同. 下面的引理确认了它们回到复数域时的若当结构.
+下面的引理说明了这两类矩阵块的作用：它们在复数域上都相似于一对共轭的复若当块.
 
 \begin{lemma}{}{实若当块的复化}
     设$\alpha=a+b\i$，其中$a,b\in\mathbf{R}$且$b\neq 0$. 则$J_s(a,b)$与$\tilde{J}_s(a,b)$在复数域上都相似于
@@ -915,31 +1076,13 @@
             \alpha & 0 \\ 0 & \overline{\alpha}
         \end{pmatrix},\qquad S^{-1}E_2S=E_2.
     \]
-    于是用分块对角矩阵$\diag(S,\ldots,S)$对$J_s(a,b)$作相似变换后，得到对角块为$\diag(\alpha,\overline{\alpha})$、上方相邻分块为$E_2$的分块矩阵. 再交换基向量顺序，将$\alpha$对应的向量放在一起、$\overline{\alpha}$对应的向量放在一起，便得到
-    \[
-        \diag(J_s(\alpha),J_s(\overline{\alpha})).
-    \]
+    于是用分块对角矩阵$\diag(S,\ldots,S)$对$J_s(a,b)$作相似变换后，得到对角块为$\diag(\alpha,\overline{\alpha})$、上方相邻分块为$E_2$的分块矩阵. 再交换基向量顺序，将$\alpha$对应的向量放在一起、$\overline{\alpha}$对应的向量放在一起，便得到 $\diag(J_s(\alpha),J_s(\overline{\alpha}))$.
 
-    再考虑$\tilde{J}_s(a,b)$. 记$T=\tilde{J}_s(a,b)$，$D=R(a,b)-\alpha E_2$. 由于$T-\lambda E$是分块上三角矩阵，故
-    \[
-        |\lambda E-T|=\bigl((\lambda-a)^2+b^2\bigr)^s,
-    \]
-    因此$\alpha$与$\overline{\alpha}$都是$T$的$s$重特征值. 只需说明它们对应的特征空间均为一维.
-
-    设$w=(w_1,\ldots,w_s)^\mathrm{T}$是$T$关于$\alpha$的特征向量，其中$w_j\in\mathbf{C}^2$. 则
+    再考虑$\tilde{J}_s(a,b)$. 记$T=\tilde{J}_s(a,b)$，$D=R(a,b)-\alpha E_2$. 由于$T-\lambda E$是分块上三角矩阵，故 $|\lambda E-T|=\bigl((\lambda-a)^2+b^2\bigr)^s$，因此$\alpha$与$\overline{\alpha}$都是$T$的$s$重特征值. 下面只需说明它们对应的特征空间均为一维. 设$w=(w_1,\ldots,w_s)^\mathrm{T}$是$T$关于$\alpha$的特征向量，其中$w_j\in\mathbf{C}^2$. 则
     \[
         Dw_s=0,\qquad Dw_j+C_2w_{j+1}=0,\enspace j=1,\ldots,s-1.
     \]
-    直接计算可知
-    \[
-        \ker D=\spa\{(1,\i)^\mathrm{T}\},\qquad \im D=\spa\{(1,-\i)^\mathrm{T}\}.
-    \]
-    若$w_s=c(1,\i)^\mathrm{T}$，则$C_2w_s=c(0,1)^\mathrm{T}$. 但$(0,1)^\mathrm{T}\notin\im D$，所以上述方程要求$c=0$，即$w_s=0$. 逐步向前递推可得$w_s=w_{s-1}=\cdots=w_2=0$，而$w_1\in\ker D$. 因此$\alpha$对应的特征空间为一维. 对$\overline{\alpha}$同理.
-
-    于是$\tilde{J}_s(a,b)$在复数域上的若当标准形中，$\alpha$和$\overline{\alpha}$各对应一个$s$阶若当块，即
-    \[
-        \tilde{J}_s(a,b)\sim \diag(J_s(\alpha),J_s(\overline{\alpha})).
-    \]
+    直接计算可知 $\ker D=\spa\{(1,\i)^\mathrm{T}\},\qquad \im D=\spa\{(1,-\i)^\mathrm{T}\}$. 若$w_s=c(1,\i)^\mathrm{T}$，则$C_2w_s=c(0,1)^\mathrm{T}$. 但$(0,1)^\mathrm{T}\notin\im D$，所以上述方程要求$c=0$，即$w_s=0$. 逐步向前递推可得$w_s=w_{s-1}=\cdots=w_2=0$，而$w_1\in\ker D$. 因此$\alpha$对应的特征空间为一维. 对$\overline{\alpha}$同理. 于是$\tilde{J}_s(a,b)$在复数域上的若当标准形中，$\alpha$和$\overline{\alpha}$各对应一个$s$阶若当块，即 $\tilde{J}_s(a,b)\sim \diag(J_s(\alpha),J_s(\overline{\alpha}))$.
 \end{proof}
 
 现在可以将复数域上的结果“下降”到实数域，得到实数域上的若当标准形.
@@ -953,22 +1096,14 @@
     其中$\lambda_1,\ldots,\lambda_k,a_1,\ldots,a_l,b_1,\ldots,b_l$都是实数，$b_1,\ldots,b_l$均非零，$J_{r_i}(\lambda_i)$表示通常意义下以$\lambda_i$为特征值的若当块.
 \end{theorem}
 \begin{proof}
-    将实矩阵$A$视为复矩阵. 根据复数域上的若当标准形存在性，$A$在复数域上相似于一个复若当标准形$J_{\mathbf{C}}$.
-
-    因为$A$是实矩阵，若$\alpha$是$A$的非实特征值，则$\overline{\alpha}$也是$A$的特征值. 更进一步，二者对应的若当块大小完全相同. 事实上，对任意$v\in\mathbf{C}^n$都有
+    将实矩阵$A$视为复矩阵. 根据复数域上的若当标准形存在性，$A$在复数域上相似于一个复若当标准形$J_{\mathbf{C}}$. 因为$A$是实矩阵，若$\alpha$是$A$的非实特征值，则$\overline{\alpha}$也是$A$的特征值. 更进一步，二者对应的若当块大小完全相同. 事实上，对任意$v\in\mathbf{C}^n$都有
     \[
         \overline{(A-\alpha E)^m v}=(A-\overline{\alpha}E)^m\overline{v},
     \]
-    因此共轭映射给出了$\ker(A-\alpha E)^m$与$\ker(A-\overline{\alpha}E)^m$之间的一一对应. 由\autoref{thm:若当标准形唯一} 中若当块大小由这些核空间维数决定可知，$\alpha$与$\overline{\alpha}$对应的若当块可以按相同大小一一配对.
-
-    于是$J_{\mathbf{C}}$中的实特征值对应部分已经是通常的实若当块；每一对非实共轭特征值$a_j\pm b_j\i$对应的一对同阶复若当块
-    \[
-        J_{s_j}(a_j+b_j\i),\qquad J_{s_j}(a_j-b_j\i)
-    \]
-    可以由\autoref{lem:实若当块的复化} 替换为实矩阵块$J_{s_j}(a_j,b_j)$，也可以替换为$\tilde{J}_{s_j}(a_j,b_j)$.
-
-    这样得到的$J$与$\tilde{J}$都是实矩阵，并且它们作为复矩阵都与$A$相似. 由\autoref{thm:相似域不变性} 可知，$A$与$J$、$\tilde{J}$实际上在实数域上相似. 命题得证.
+    因此共轭映射给出了$\ker(A-\alpha E)^m$与$\ker(A-\overline{\alpha}E)^m$之间的一一对应. 由\autoref{thm:若当标准形唯一} 中若当块大小由这些核空间维数决定可知，$\alpha$与$\overline{\alpha}$对应的若当块可以按相同大小一一配对. 于是$J_{\mathbf{C}}$中的实特征值对应部分已经是通常的实若当块；每一对非实共轭特征值$a_j\pm b_j\i$对应的一对同阶复若当块 $J_{s_j}(a_j+b_j\i), J_{s_j}(a_j-b_j\i)$，进一步可以由\autoref{lem:实若当块的复化} 替换为实矩阵块$J_{s_j}(a_j,b_j)$，也可以替换为$\tilde{J}_{s_j}(a_j,b_j)$. 这样得到的$J$与$\tilde{J}$都是实矩阵，并且它们作为复矩阵都与$A$相似. 由\autoref{thm:相似域不变性} 可知，$A$与$J$、$\tilde{J}$实际上在实数域上相似. 命题得证.
 \end{proof}
+
+总结而言，得到实数域上的若当标准形的步骤是：先将实矩阵视为复矩阵，得到一个复数域上的若当标准形；然后将其中的每一对共轭复若当块替换为一个实分块；最后利用相似域不变性回到实数域上. 下面我们给出一些例子来展开上述过程.
 
 \begin{example}{}{}
     矩阵
@@ -980,7 +1115,42 @@
     的特征多项式为$\lambda^2+1$，在实数域上没有特征值，因此不能化为通常意义下的若当标准形. 但它本身就是一个实若当块$J_1(0,1)=R(0,1)$，对应于复数域上的一对共轭特征值$\i$与$-\i$.
 \end{example}
 
-由此可见，实数域上的若当标准形并没有完全保留复数域上``一维链''的形式，而是把每一条非实共轭若当链合并为一条由二维实块组成的链. 实特征值仍给出通常的若当块，非实特征值则给出$2s$阶实若当块. 因此它是复若当标准形在实数域上的最直接替代.
+\begin{example}{}{}
+    求矩阵
+    \[
+        A=\begin{pmatrix}
+            0 & 0 & 4 \\
+            1 & 0 & -6 \\
+            0 & 1 & 4
+        \end{pmatrix}
+    \]
+    在实数域上的若当标准形.
+\end{example}
+\begin{solution}
+    按照前面的总结，我们先将$A$视为复矩阵来求其复数域上的若当标准形. 计算特征多项式：
+    \[
+        |\lambda E-A|
+        =\begin{vmatrix}
+            \lambda & 0 & -4 \\
+            -1 & \lambda & 6 \\
+            0 & -1 & \lambda-4
+        \end{vmatrix}
+        =\lambda(\lambda^2-4\lambda+6)-4
+        =\lambda^3-4\lambda^2+6\lambda-4.
+    \]
+    不难得到 $A$ 的特征值为 $2,\qquad 1+\i,\qquad 1-\i$. 这三个特征值两两不同，所以$A$在复数域上的若当标准形就是对角矩阵 $J_{\mathbf{C}}=\diag(2,1+\i,1-\i)$. 现在回到实数域上. 其中实特征值$2$对应一个通常的一阶若当块$J_1(2)=(2)$；一对共轭复特征值$1\pm\i$对应一个二维实块 $R(1,1)=\begin{pmatrix}
+            1 & 1 \\
+            -1 & 1
+        \end{pmatrix}$. 因而$A$在实数域上的若当标准形可取为
+    \[
+        J_{\mathbf{R}}=\diag(2,R(1,1))
+        =\begin{pmatrix}
+            2 & 0 & 0 \\
+            0 & 1 & 1 \\
+            0 & -1 & 1
+        \end{pmatrix}.
+    \]
+\end{solution}
 
 \begin{summary}
     本讲在复数域上建立了若当标准形的存在性与唯一性. 存在性来自广义特征子空间到若当循环子空间的分解；唯一性可由Young图以及$r((A-\lambda E)^k)$所决定的若当块大小推出. 在应用部分，若当标准形将矩阵幂、矩阵方根、Jordan-Chevalley分解、常系数线性微分方程组和线性递推方程统一为对若当块的计算. 最后，实数域上不能保证特征多项式完全分裂，因此通常的若当块需要与表示共轭复特征值的二维实块共同组成实若当标准形.

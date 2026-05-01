@@ -696,14 +696,17 @@ Gram-Schmidt 过程可以说是线性代数计算较为困难的方面之一，�
 
     \item 对 $ U $ 的每个规范正交基 $e_1, \ldots , e_m$ 均有 $ P_U v = \langle v, e_1 \rangle e_1 + \cdots + \langle v, e_m \rangle e_m$.
 \end{enumerate}
-其中由 \ref*{item:23:正交投影性质:7} 我们知道正交投影存在一种矩阵表示是幂等的，且进一步可以证明在实空间上则是对称幂等的，这一性质在卡方分布中有着运用，此处仅仅介绍一下.
+其中由 \ref*{item:23:正交投影性质:7} 我们知道正交投影一定是幂等的. 事实上，实内积空间上的正交投影还有一个非常重要的刻画：它们恰好就是对称幂等变换. 这里所谓对称，是指$\sigma\in \mathcal{L}(V)$满足$\langle \sigma(u),v\rangle = \langle u,\sigma(v)\rangle,\enspace \forall u,v\in V$. 在下一讲中，我们会知道这里对称的定义等价于 $\sigma$ 的矩阵表示是对称矩阵（\autoref{thm:伴随与共轭转置}）.
 
-\begin{example}{}{}
-    设 $ U $ 是实内积空间 $ V $ 的一个有限维子空间. 证明：正交投影 $ P_U $ 具有以下性质：
-    \[\langle P_U u, v\rangle = \langle u, P_U v\rangle, \enspace \forall u, v \in V \]
-\end{example}
+\begin{theorem}{}{对称幂等变换与正交投影的关系}
+    设$V$是有限维实内积空间，$\sigma\in \mathcal{L}(V)$. 则$\sigma$是正交投影，当且仅当$\sigma$是对称幂等变换.
+\end{theorem}
 
-这个例子的意义可能你暂时还没法理解，但等你学习完正规算子与自伴算子后，再结合这个例子，你会发现实内积空间上的正交投影存在一种对称幂等的矩阵表示形式是显然的.
+\begin{proof}
+    必要性：若$\sigma=P_U$是到子空间$U$上的正交投影，则由上面的性质知$\sigma^2=\sigma$. 对任意$u,v\in V$，设$u=u_1+u_2,\enspace v=v_1+v_2$，其中$u_1,v_1\in U,\enspace u_2,v_2\in U^\perp$，则$\sigma(u)=u_1,\sigma(v)=v_1$. 因此$\langle \sigma(u),v\rangle=\langle u_1,v_1+v_2\rangle=\langle u_1,v_1\rangle$，而$\langle u,\sigma(v)\rangle=\langle u_1+u_2,v_1\rangle=\langle u_1,v_1\rangle$，故$\langle \sigma(u),v\rangle=\langle u,\sigma(v)\rangle$，于是$\sigma$是对称的.
+
+    充分性：若$\sigma^2=\sigma$，根据\autoref{thm:幂等变换等价于投影变换}可知 $V = \im \sigma \oplus \ker \sigma$ 以及 $\sigma$ 是 $V$ 到 $\im \sigma$ 上的投影变换，故只需证明 $\ker \sigma = (\im \sigma)^\perp$. 记 $U = \im \sigma$，若 $x\in\ker \sigma$，则对任意 $y\in V$，因为 $\sigma(y)\in U$ 且 $\sigma$ 是对称的，故$\langle x,\sigma(y)\rangle=\langle \sigma(x),y\rangle=0$，从而$x\in U^\perp$. 反之，若$x\in U^\perp$，则对任意$y\in V$都有$\langle \sigma(x),y\rangle=\langle x,\sigma(y)\rangle=0$，特别地取$y=\sigma(x)$，便有$\lVert \sigma(x)\rVert^2=0$，故$\sigma(x)=0$，即$x\in\ker \sigma$. 因此$\ker \sigma=U^\perp$，故$\sigma$是正交投影变换.
+\end{proof}
 
 \subsection{极小化问题}
 
