@@ -1,0 +1,947 @@
+\LUchapter{特定域上的线性代数}
+
+在这一讲当中，我们将就特定域上，我们已有的线性代数知识所能应用之程度进行回顾. 事实上，在前面的讨论当中所用的几乎所有工具，在这里都依然能够保持其原状. 不过，前面给出的各种结果、各种直观将会带给我们一些讨论有限域的更方便的视角，也能让我们开始理解一套相当漂亮的数学理论，Galois 理论. 本章主要讨论的特定域有两类，一类是有限域 $\mathbf{F}_p$，另一类是有理数域 $\Q$ 的有限扩张. 前者便于计算，且在数论上存在丰富的意涵，而后者则在理论上更为简洁，也更能彰显 Galois 理论所具备的特有威力.
+
+\section{域论的基本定义}
+
+\subsection{域同构、子域和域扩张}
+
+在前面的线性代数课程中，我们已经反复见过一个原则：真正重要的不是元素的名字，而是运算结构. 对域也是如此. 若两个域之间存在一个双射，既保持加法又保持乘法，并且把 $1$ 送到 $1$，那么它们在域论意义下没有本质区别.
+
+\begin{definition}{域同态与域同构}{}
+    设 $\mathbf{K},\mathbf{L}$ 是两个域. 映射 $\varphi\colon \mathbf{K}\to\mathbf{L}$ 若满足
+    \[
+        \varphi(a+b)=\varphi(a)+\varphi(b),\quad
+        \varphi(ab)=\varphi(a)\varphi(b),
+    \]
+    且 $\varphi(1_\mathbf{K})=1_\mathbf{L}$，则称 $\varphi$ 为\term{域同态（field homomorphism）}. 若 $\varphi$ 还是双射，则称 $\varphi$ 为\term{域同构（field isomorphism）}. 若存在域同构 $\mathbf{K}\to\mathbf{L}$，则称两个域同构，记作 $\mathbf{K}\cong\mathbf{L}$.
+\end{definition}
+
+域同构会自动保持减法、除法和多项式方程. 因此，若 $\alpha$ 满足某个多项式方程，那么它在同构下的像也满足对应的多项式方程. 这正是后面 Galois 理论能够把``方程的根''与``域的自同构''联系起来的第一层原因.
+
+\begin{definition}{子域与域扩张}{}
+    设 $\mathbf{L}$ 是域，$\mathbf{K}\subset\mathbf{L}$. 如果 $\mathbf{K}$ 在 $\mathbf{L}$ 的加法、乘法以及取逆运算下仍构成一个域，则称 $\mathbf{K}$ 是 $\mathbf{L}$ 的\term{子域（subfield）}. 此时也称 $\mathbf{L}$ 是 $\mathbf{K}$ 的\term{域扩张（field extension）}，记作 $\mathbf{L}/\mathbf{K}$.
+\end{definition}
+
+域扩张与线性代数之间最密切的联系来源于下面这个事实：
+
+\begin{theorem}{}{}
+    设 $\mathbf{K} \subset \mathbf{L}$ 是两个域，$\mathbf{K}$ 是 $\mathbf{L}$ 的子域，则 $\mathbf{L}$ 是 $\mathbf{K}$ 上的一个线性空间.
+\end{theorem}
+
+证明是直接的：$\mathbf{L}$ 的加法给出向量加法，$\mathbf{K}$ 中的元素通过 $\mathbf{L}$ 的乘法作用在 $\mathbf{L}$ 上，线性空间公理都来自域公理. 我们把 $\mathbf{L}$ 作为 $\mathbf{K}$-线性空间的维数称为扩张 $\mathbf{L}/\mathbf{K}$ 的\term{次数 (degree)}，记作 $[\mathbf{L}:\mathbf{K}]=\dim_{\mathbf{K}}\mathbf{L}$. 若这个维数有限，则称 $\mathbf{L}/\mathbf{K}$ 为有限扩张. 设 $\mathbf{L}/\mathbf{K}$ 是域扩张，若存在 $\alpha\in\mathbf{L}$ 使得 $\mathbf{L}$ 中的每个元素都能由 $\mathbf{K}$ 中的元素和 $\alpha$ 经过有限次加、减、乘、除得到，则称 $\mathbf{L}$ 是由 $\alpha$ 生成的扩张，记作 $\mathbf{L}=\mathbf{K}(\alpha)$. 这样的扩张称为\term{单扩张 (simple extension)}.
+
+\begin{example}{$\Q(\sqrt{2})/\Q$}{}
+    $\Q(\sqrt{2})/\Q$ 是二次扩张，因为
+    \[
+        \Q(\sqrt{2})=\{a+b\sqrt{2}\mid a,b\in\Q\}
+    \]
+    以 $1,\sqrt{2}$ 为一组 $\Q$-基. 有限域的情形也会遵循同一个原则：一旦知道某个有限域含有 $\mathbf{F}_p$ 作为子域，它就自动成为 $\mathbf{F}_p$ 上的有限维线性空间.
+\end{example}
+
+读者不能想当然地认为所有的单扩张都是二次扩张. 例如 $\Q(\sqrt[3]{2})/\Q$ 也是单扩张，但它的次数为 $3$. 在本章主要遇到的情形中，有限扩张通常可以由一个元素生成；更准确地说，有限域上的有限扩张和 $\Q$ 上的有限扩张都是单扩张. 这背后的原因是这些扩张都是可分扩张，不过可分性的完整定义将留到更系统的代数课程中展开.
+
+\subsection{有限域的一些性质}
+
+有限域的系统研究与 Galois 的名字密切相关. Galois 在研究同余方程时已经意识到，仅有 $\Z_p$ 并不够，常常需要人为加入某个多项式的根，在模 $p$ 的世界中构造更大的有限域. 这与复数从实数中加入 $\sqrt{-1}$ 的过程非常相似，只不过现在一切都发生在有限算术中. 后来有限域也常被称为 Galois 域，这正是这一历史来源的痕迹.
+
+在\autoref{ex:有限域} 当中，我们已经以整数环的商的形式给出了一类有限域 $\Z_p$，其中 $p$ 为素数. 当然，并非所有的有限域都如此，下面是一个简单的例子：
+
+\begin{example}{$\mathbf{F}_4$}{四元素有限域的例子}
+    考虑集合 $\{0, 1, x, x + 1\}$，我们定义加法和乘法运算如下：
+
+    \[
+    \begin{array}{c|cccc}
+        + & 0 & 1 & x & x + 1 \\
+        \hline
+        0 & 0 & 1 & x & x + 1 \\
+        1 & 1 & 0 & x + 1 & x \\
+        x & x & x + 1 & 0 & 1 \\
+        x + 1 & x + 1 & x & 1 & 0 \\
+    \end{array}
+    \quad
+    \begin{array}{c|cccc}
+        \cdot & 0 & 1 & x & x + 1 \\
+        \hline
+        0 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 1 & x & x + 1 \\
+        x & 0 & x & x + 1 & 1 \\
+        x + 1 & 0 & x + 1 & 1 & x \\
+    \end{array}
+    \]
+
+    此时不难验证它构成一个域. 当然，在它的乘法表当中，我们这里取了 $x^2 = x + 1 = -x - 1$，这在后文也是一个有趣的伏笔. 另外，它是 $\Z_2$ 上的一个线性空间，验证留作习题. 同样显然的是，这样的域和 $\Z_4$ 是在本质上不同的，因为后者甚至不构成一个域.
+\end{example}
+
+在进一步讨论有限域的结构之前，我们首先需要引入一个技术性的定义：
+
+\begin{definition}{特征}{}
+    设 $\mathbf{F}$ 是一个域，如果存在正整数 $n$ 使得
+    \[
+        \underbrace{1_\mathbf{F} + 1_\mathbf{F} + \cdots + 1_\mathbf{F}}_{n \text{ 个}} = 0
+    \]
+    则称 $\mathbf{F}$ 的\term{特征 (characteristic)}为满足这个条件的最小正整数 $n$，记作 $\cha(\mathbf{F}) = n$. 如果这样的 $n$ 不存在，则称 $\mathbf{F}$ 的特征为 $0$，记作 $\cha(\mathbf{F}) = 0$.
+\end{definition}
+
+根据定义中最小的叙述，读者可以自行验证，域的特征要么为 $0$，要么为素数. 同时，设有限域 $\mathbf{F}$ 有特征 $p$，则 $\mathbf{F}_p$ 同构于这个有限域的一个子域——事实上，这个子域就是由 $1_\mathbf{F}$ 生成的.
+
+在上例中，鉴于 $\mathbf{F}_4$ 构成 $\Z_2$的一个线性空间，且特征就是 $2$，我们会猜想，有限域是否总能视作某个 $\Z_p$ 上的有限维线性空间？实际上，这是正确的：
+
+\begin{theorem}{}{有限域是素域上的有限维线性空间}
+    设 $\mathbf{F}$ 是有限域，且 $\cha(\mathbf{F}) = p$，则 $\mathbf{F}$ 是 $\Z_p$ 上的有限维线性空间.
+\end{theorem}
+
+事实上，只需将 $\Z_p$ 视为 $\mathbf{F}$ 的素子域，并把 $\mathbf{F}$ 中的乘法限制为 $\Z_p$ 对 $\mathbf{F}$ 的数乘即可验证所有线性空间公理. 因为 $\mathbf{F}$ 是有限集，所以这一定义下的维数也是有限的. 因此任意有限域的元素个数都形如 $p^n$，其中 $n = \dim_{\Z_p}\mathbf{F}$. 为了统一起见，我们将含有 $p^n$ 个元素的有限域记作 $\mathbf{F}_{p^n}$，其中 $n$ 取任意正整数.
+
+\subsection{$\mathbf{F}_{p^n}$ 的构造}
+
+反过来，我们就要问，是不是任意的 $\mathbf{F}_{p^n}$ 都能通过某种自然的构造来得到？答案是肯定的，但我们需要用到一点多项式理论的工具. 由于本讲位于多项式理论之前，我们先用较少的语言说明这一构造中最关键的想法. 设 $\mathbf{K}$ 是一个域，$f(x)\in\mathbf{K}[x]$ 是一个非零多项式. 我们可以在多项式环 $\mathbf{K}[x]$ 中定义一个等价关系：
+\[
+    g(x) \sim h(x) \iff f(x) \mid g(x) - h(x).
+\]
+这个等价关系的含义是，两个多项式相差一个 $f(x)$ 的倍式时，我们便把它们视作相同. 全体等价类构成一个商环，记作 $\mathbf{K}[x]/(f(x))$. 如果 $f(x)$ 的次数为 $n$，根据带余除法，每个等价类都有唯一的代表元
+\[
+    a_0 + a_1x + \cdots + a_{n - 1}x^{n - 1},
+\]
+其中 $a_i\in\mathbf{K}$. 因此，$\mathbf{K}[x]/(f(x))$ 至少作为 $\mathbf{K}$ 上的线性空间是非常清楚的，它的一组基便是 $\{1, x, \ldots, x^{n - 1}\}$，乘法则来自多项式乘法，只是在乘完之后要用 $f(x)=0$ 的关系把次数降到 $n-1$ 以下. 这就是商空间思想在域论中的一次自然出现.
+
+\begin{example}{}{}
+    在 $\mathbf{F}_2[x]/(x^2+x+1)$ 中，我们有
+    \[
+        x^2+x+1=0.
+    \]
+    由于 $\mathbf{F}_2$ 中 $-1=1$，因此 $x^2=x+1$. 于是
+    \[
+        x(x+1)=x^2+x=(x+1)+x=1,
+    \]
+    这与前面给出的 $\mathbf{F}_4$ 乘法表完全一致. 也就是说，前面的乘法表并不是凭空规定的，而是由关系 $x^2+x+1=0$ 强制给出的.
+\end{example}
+
+现在自然要问：什么时候 $\mathbf{K}[x]/(f(x))$ 不只是一个环，而且是一个域？答案与整数环中的素数情形类似. 对整数而言，$\Z/n\Z$ 是域当且仅当 $n$ 是素数；对多项式而言，$\mathbf{K}[x]/(f(x))$ 是域当且仅当 $f(x)$ 不可约. 这里的不可约是指 $f(x)$ 不能分解为两个次数都低于它的非零多项式的乘积. 例如 $x^2+x+1$ 在 $\mathbf{F}_2$ 上没有根，因此不能分解为两个一次多项式的乘积，所以它是不可约的. 当然，这里的类似性若要进行形式化，就会不可避免地涉及一些环论术语，留待后文展开. 不过，这个结论的证明相对来讲还是简单的，我们可以直接用辗转相除法来验证 $\mathbf{K}[x]/(f(x))$ 中每个非零元素都有乘法逆元.
+
+\begin{theorem}{}{}
+    设 $\mathbf{K}$ 是域，$f(x)\in\mathbf{K}[x]$ 是次数为 $n$ 的不可约多项式，则 $\mathbf{K}[x]/(f(x))$ 是 $\mathbf{K}$ 的一个 $n$ 次扩张.
+\end{theorem}
+
+\begin{proof}
+    为了避免混淆，记 $g(x)$ 在商环 $\mathbf{K}[x]/(f(x))$ 中的等价类为 $\overline{g(x)}$. 我们只要证明任意非零等价类 $\overline{g(x)}$ 都可逆. 这里 $\overline{g(x)}\neq 0$ 的含义是 $f(x)\nmid g(x)$. 由于 $f(x)$ 不可约，这说明 $f(x)$ 与 $g(x)$ 互素. 利用多项式的辗转相除法，存在 $u(x),v(x)\in\mathbf{K}[x]$ 使得
+    \[
+        u(x)f(x)+v(x)g(x)=1.
+    \]
+    两边取模 $(f(x))$ 后，$\overline{u(x)f(x)}=0$，于是
+    \[
+        \overline{v(x)}\,\overline{g(x)}=\overline{1}.
+    \]
+    因此 $\overline{v(x)}$ 就是 $\overline{g(x)}$ 的乘法逆元. 这说明商环中的每个非零元素都有乘法逆元，因而它是域.
+\end{proof}
+
+这个构造也给出了有限域上做线性代数时最直接的计算方式. 若 $q=p^n$，则 $\mathbf{F}_q$ 可以看作 $\mathbf{F}_p$ 上的 $n$ 维线性空间；其中的元素可以写成 $a_0+a_1x+\cdots+a_{n-1}x^{n-1}$，加法按坐标相加，乘法则先作多项式乘法，再对某个不可约多项式取余. 这就把有限域上的运算完全化为了线性代数与多项式除法的结合.
+
+\begin{example}{}{}
+    考虑 $\mathbf{F}_3[x]/(x^2+1)$. 因为 $x^2+1$ 在 $\mathbf{F}_3$ 上没有根，所以它不可约. 因此
+    \[
+        \mathbf{F}_9=\mathbf{F}_3[x]/(x^2+1)
+    \]
+    是一个含有 $9$ 个元素的域. 它的元素都可以唯一写成 $a+bx$，其中 $a,b\in\mathbf{F}_3$，并且其中满足关系 $x^2=-1=2$.
+\end{example}
+
+总结上面的讨论，我们知道：
+
+\begin{theorem}{}{}
+    任意有限域的元素个数都形如 $p^n$，其中 $p$ 为素数，$n$ 为正整数. 反之，对任意素数幂 $p^n$，存在且在同构意义下仅存在一个含有 $p^n$ 个元素的有限域，记作 $\mathbf{F}_{p^n}$.
+\end{theorem}
+
+这就给出了一个有限域的分类定理，完整刻画了所有有限域的结构. 至此，对有限域本身的讨论文意已尽. 此后，它们将成为我们的重要样本. 读者在阅读时如果遇到任何障碍，也不妨尝试向有限域的情形讨要一些具体的例子.
+
+\subsection{域扩张的 Galois 群}
+
+承继上文，我们知道，对域扩张的研究能够被划归为对线性空间的研究. 但是，域扩张除了有线性结构之外，还有乘法结构；而乘法结构会限制哪些线性变换真正来自域的对称性. 为了探讨这种更精细的结构，第一步依旧是从最基本的观察开始：
+
+\begin{theorem}{}{}
+    设 $\mathbf{L}/\mathbf{K}$ 是一个有限扩张，则全体保持 $\mathbf{K}$ 中元素逐点不动的 $\mathbf{L}$ 的域自同构构成一个群，这个群就称作是域扩张 $\mathbf{L}/\mathbf{K}$ 的 Galois 群，记作 $\Gal \mathbf{L}/\mathbf{K}$.
+\end{theorem}
+
+这个观察的证明也相当简单，只需要验证这样的自同构在复合下满足群公理给出的几条性质即可. 需要注意的是，Galois 群的元素首先是域自同构，因而必须同时保持加法和乘法；它们当然也是 $\mathbf{K}$ 上的线性映射，但并非所有 $\mathbf{K}$ 上的线性映射都属于 Galois 群.
+
+有限域中最重要的域自同构来自 Frobenius 映射. 若 $\mathbf{F}$ 是特征为 $p$ 的域，则
+\[
+    (a+b)^p=a^p+b^p,\quad (ab)^p=a^pb^p,
+\]
+其中第一个等式来自二项式系数 $\binom{p}{i}$ 都被 $p$ 整除. 因此映射 $a\mapsto a^p$ 保持加法和乘法. 当 $\mathbf{F}$ 是有限域时，这个映射还是双射，于是它给出有限域的一个域自同构. 这就是有限域 Galois 理论中反复出现的 Frobenius 自同构.
+
+\begin{definition}{Galois 扩张}{}
+    设 $\mathbf{L}/\mathbf{K}$ 是有限扩张. 如果 $\left|\Gal\mathbf{L}/\mathbf{K}\right|=[\mathbf{L}:\mathbf{K}]$，则称 $\mathbf{L}/\mathbf{K}$ 是一个\term{Galois 扩张}. 换言之，这些扩张中由域结构允许的对称性已经达到线性维数所允许的最大数量.
+\end{definition}
+
+通常的域论教材会把有限 Galois 扩张定义为同时满足``可分''与``正规''的有限扩张，并证明这与上面的定义等价. 本讲暂不展开这些概念，而采用自同构数量作为判别标准：它最接近线性代数，也足以支撑后面对有限域扩张和 Galois 对应的表述.
+
+\begin{example}{}{}
+    考虑域扩张 $\mathbf{F}_4/\mathbf{F}_2$，我们希望计算 $\Gal \mathbf{F}_4/\mathbf{F}_2$. 根据前面的讨论，可以将 $\mathbf{F}_4$ 写作 $\mathbf{F}_2[x]/(x^2 + x + 1)$. 任一 $\mathbf{F}_2$-自同构都必须固定 $0,1$，并且把 $x$ 映到 $x^2 + x + 1$ 的另一个根. 由于在 $\mathbf{F}_4$ 中有 $x^2 + x + 1 = 0$，另一个根就是 $x + 1$. 因此 $\Gal \mathbf{F}_4/\mathbf{F}_2$ 只有两个元素：恒等映射和 $x\mapsto x + 1$ 的映射. 后者也就是有限域上的 Frobenius 自同构 $a\mapsto a^2$，故这个 Galois 群同构于 $\mathbf{Z}_2$.
+\end{example}
+
+\begin{example}{一个非 Galois 扩张}{}
+    并非所有有限扩张都是 Galois 扩张. 例如 $\Q(\sqrt[3]{2})/\Q$ 的次数为 $3$，因为 $\sqrt[3]{2}$ 的最小多项式是 $x^3-2$. 任一 $\Q$-自同构必须把 $\sqrt[3]{2}$ 映到 $x^3-2$ 的另一个根. 但是 $x^3-2$ 的三个根为
+    \[
+        \sqrt[3]{2},\quad \omega\sqrt[3]{2},\quad \omega^2\sqrt[3]{2},
+    \]
+    其中 $\omega$ 是非平凡三次单位根，而后两个根并不属于实数域 $\Q(\sqrt[3]{2})$. 因此 $\Q(\sqrt[3]{2})$ 中唯一可作为 $\sqrt[3]{2}$ 的像的根仍是 $\sqrt[3]{2}$ 本身. 于是
+    \[
+        \Gal(\Q(\sqrt[3]{2})/\Q)=\{\operatorname{id}\},
+    \]
+    其元素个数为 $1$，小于扩张次数 $3$. 所以 $\Q(\sqrt[3]{2})/\Q$ 不是 Galois 扩张.
+\end{example}
+
+这些例子说明了 Galois 群的一个重要性质：它的元素可以看作是对某些生成元的不同但保持域结构的变换；而若域中没有包含足够多的根，对称性就会变少，扩张也就可能不是 Galois 的. 这为我们后续的讨论奠定了基础. 从历史上说，Galois 的突破正在于他不再只盯着方程的根本身，而是研究这些根之间允许怎样互换. 这种把求解方程的问题转化为研究置换群的问题，是十九世纪代数学从计算走向结构的标志之一.
+
+\section{域扩张的线性代数}
+
+接下来，我们将引入一系列线性代数工具来丰富对域扩张的讨论. 这些工具的核心在于，它们能够把域扩张中的元素与多项式方程联系起来，并且把域扩张的结构转化为线性代数对象的结构. 这也是 Galois 理论的一个重要方面：它不仅仅是一个关于群的理论，更是一个关于域、多项式和线性代数三者之间关系的理论.
+
+\subsection{最小多项式}
+
+\begin{definition}{代数元与最小多项式}{}
+    设 $\mathbf{L}/\mathbf{K}$ 是域扩张，$\alpha\in\mathbf{L}$. 若存在非零多项式 $f(x)\in\mathbf{K}[x]$ 使得 $f(\alpha)=0$，则称 $\alpha$ 是 $\mathbf{K}$ 上的\term{代数元（algebraic element）}. 在所有使得 $f(\alpha)=0$ 的非零多项式中，次数最低且首项系数为 $1$ 的多项式称为 $\alpha$ 在 $\mathbf{K}$ 上的\term{最小多项式（minimal polynomial）}.
+\end{definition}
+
+最小多项式是把域扩张转化为线性代数对象的核心工具. 若 $\alpha$ 在 $\mathbf{K}$ 上的最小多项式为 $m_\alpha(x)$，且 $\deg m_\alpha=n$，则 $\{1,\alpha,\ldots,\alpha^{n-1}\}$ 构成 $\mathbf{K}(\alpha)$ 作为 $\mathbf{K}$ 上线性空间的一组基. 换言之，$[\mathbf{K}(\alpha):\mathbf{K}]=\deg m_\alpha$. 这说明单扩张 $\mathbf{K}(\alpha)/\mathbf{K}$ 的次数完全由 $\alpha$ 的最小多项式的次数决定. 当然，如何计算最小多项式也会用到一些多项式理论的工具，我们在此仅给出一些直观的例子.
+
+\begin{example}{}{}
+    $\sqrt{2}$ 在 $\Q$ 上的最小多项式为 $x^2-2$，因此 $\Q(\sqrt{2})/\Q$ 是二次扩张. 任一元素都可以唯一写成 $a+b\sqrt{2}$，其中 $a,b\in\Q$.
+\end{example}
+
+\begin{example}{}{}
+    设 $\zeta=\cos(2\pi/3)+\i\sin(2\pi/3)$. 则 $\zeta^2+\zeta+1=0$，并且 $\zeta\notin\Q$，所以 $\zeta$ 在 $\Q$ 上的最小多项式为 $x^2+x+1$. 因此
+    \[
+        \Q(\zeta)=\{a+b\zeta\mid a,b\in\Q\}
+    \]
+    也是 $\Q$ 上的二次扩张.
+\end{example}
+
+下面给出一个在本章范围内够用的事实. 它的完整证明需要更多域论准备，我们在此只说明其意义.
+
+\begin{theorem}{本原元定理}{}
+    若 $\mathbf{L}/\mathbf{K}$ 是有限可分扩张，则存在 $\alpha\in\mathbf{L}$，使得
+    \[
+        \mathbf{L}=\mathbf{K}(\alpha).
+    \]
+    特别地，有限域上的有限扩张以及 $\Q$ 上的有限扩张都是单扩张.
+\end{theorem}
+
+这个定理通常称为\term{本原元定理 (primitive element theorem)}. 对我们来说，它的作用是把一般有限扩张在很多问题上化约为单扩张：只要找到一个合适的生成元 $\alpha$，扩张 $\mathbf{L}/\mathbf{K}$ 的线性空间结构就可以通过 $\alpha$ 的最小多项式来控制. 需要强调的是，若不加可分性条件，``有限扩张一定是单扩张''这样的说法在一般域论中并不成立；本章之所以可以放心使用，是因为有限域和特征 $0$ 的数域扩张都落在可分情形内.
+
+\subsection{扩张的迹与范数}
+
+既然有限扩张 $\mathbf{L}/\mathbf{K}$ 可以看作一个有限维 $\mathbf{K}$-线性空间，那么 $\mathbf{L}$ 中的每个元素都能自然地定义出一个线性变换. 对任意 $\alpha\in\mathbf{L}$，考虑映射
+\[
+    l_\alpha\colon \mathbf{L}\to\mathbf{L},\quad x\mapsto \alpha x.
+\]
+因为乘法对加法满足分配律，且 $\mathbf{K}$ 中元素与 $\alpha$ 可交换，所以 $l_\alpha$ 是 $\mathbf{K}$ 上的线性映射. 于是我们可以讨论它的矩阵表示、迹和行列式.
+
+\begin{definition}{域扩张的迹与范数}{}
+    设 $\mathbf{L}/\mathbf{K}$ 是有限扩张，$\alpha\in\mathbf{L}$. 将乘法映射 $l_\alpha\colon x\mapsto\alpha x$ 视作 $\mathbf{K}$ 上的线性映射，则称
+    \[
+        \operatorname{Tr}_{\mathbf{L}/\mathbf{K}}(\alpha)=\tr(l_\alpha)
+    \]
+    为 $\alpha$ 关于扩张 $\mathbf{L}/\mathbf{K}$ 的\term{迹 (trace)}，称
+    \[
+        \operatorname{N}_{\mathbf{L}/\mathbf{K}}(\alpha)=\det(l_\alpha)
+    \]
+    为 $\alpha$ 关于扩张 $\mathbf{L}/\mathbf{K}$ 的\term{范数 (norm)}.
+\end{definition}
+
+这个定义看起来把域论问题变成了线性代数问题. 事实上，这正是迹与范数的用处：它们把扩域中的元素压回到基域中，并且保留了乘法或加法的关键信息. 根据线性映射迹与行列式的性质，我们立刻得到
+\[
+    \operatorname{Tr}_{\mathbf{L}/\mathbf{K}}(\alpha+\beta)
+    =\operatorname{Tr}_{\mathbf{L}/\mathbf{K}}(\alpha)+\operatorname{Tr}_{\mathbf{L}/\mathbf{K}}(\beta),
+\]
+以及
+\[
+    \operatorname{N}_{\mathbf{L}/\mathbf{K}}(\alpha\beta)
+    =\operatorname{N}_{\mathbf{L}/\mathbf{K}}(\alpha)\operatorname{N}_{\mathbf{L}/\mathbf{K}}(\beta).
+\]
+前者说明迹是加法意义下的线性对象，后者说明范数是乘法意义下的对象.
+
+在使用迹与范数时，常会出现\term{共轭元 (conjugates)} 的语言. 设 $\alpha$ 是 $\mathbf{K}$ 上的代数元，其最小多项式在某个更大的域（具体地，可以取成代数闭包）中分解为
+\[
+    m_\alpha(x)=(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n).
+\]
+这些根 $\alpha_1,\ldots,\alpha_n$ 称为 $\alpha$ 在 $\mathbf{K}$ 上的共轭元. 其中一个共轭元就是 $\alpha$ 本身. 直观地说，共轭元是 $\alpha$ 在保持 $\mathbf{K}$ 不变的范畴中所有可能的``同位体''；Galois 自同构正是在这些同位体之间移动元素.
+
+\begin{example}{}{}
+    考虑 $\Q(\sqrt{2})/\Q$. 对 $\alpha=a+b\sqrt{2}$，在基 $1,\sqrt{2}$ 下有
+    \[
+        l_\alpha(1)=a+b\sqrt{2},\quad
+        l_\alpha(\sqrt{2})=2b+a\sqrt{2}.
+    \]
+    因此 $l_\alpha$ 的矩阵为
+    \[
+        \begin{pmatrix}
+            a  & 2b \\
+            b  & a
+        \end{pmatrix}.
+    \]
+    于是
+    \[
+        \operatorname{Tr}_{\Q(\sqrt{2})/\Q}(a+b\sqrt{2})=2a,\quad
+        \operatorname{N}_{\Q(\sqrt{2})/\Q}(a+b\sqrt{2})=a^2-2b^2.
+    \]
+    这与两个共轭元 $a+b\sqrt{2}$ 和 $a-b\sqrt{2}$ 的和与积完全一致.
+\end{example}
+
+若 $\mathbf{L}/\mathbf{K}$ 是 Galois 扩张，那么迹与范数也可以用 Galois 群更对称地写出：
+\[
+    \operatorname{Tr}_{\mathbf{L}/\mathbf{K}}(\alpha)
+    =\sum_{\sigma\in\Gal\mathbf{L}/\mathbf{K}}\sigma(\alpha),\quad
+    \operatorname{N}_{\mathbf{L}/\mathbf{K}}(\alpha)
+    =\prod_{\sigma\in\Gal\mathbf{L}/\mathbf{K}}\sigma(\alpha).
+\]
+这个公式就是这样的一种图景：迹是所有共轭元的和，范数是所有共轭元的积. 在有限域的情形中，这个公式会变得非常具体.
+
+\begin{example}{$\mathbf{F}_4/\mathbf{F}_2$ 的迹与范数}{}
+    仍将 $\mathbf{F}_4$ 写作 $\mathbf{F}_2[x]/(x^2+x+1)$，于是 $x^2=x+1$. 扩张 $\mathbf{F}_4/\mathbf{F}_2$ 的非平凡 Galois 自同构为 Frobenius 映射
+    \[
+        \varphi(a)=a^2.
+    \]
+    因此，对任意 $\alpha\in\mathbf{F}_4$，
+    \[
+        \operatorname{Tr}_{\mathbf{F}_4/\mathbf{F}_2}(\alpha)=\alpha+\alpha^2,\quad
+        \operatorname{N}_{\mathbf{F}_4/\mathbf{F}_2}(\alpha)=\alpha\alpha^2=\alpha^3.
+    \]
+    逐个计算可得
+    \[
+    \begin{array}{c|cccc}
+        \alpha & 0 & 1 & x & x+1 \\
+        \hline
+        \operatorname{Tr}_{\mathbf{F}_4/\mathbf{F}_2}(\alpha) & 0 & 0 & 1 & 1 \\
+        \operatorname{N}_{\mathbf{F}_4/\mathbf{F}_2}(\alpha) & 0 & 1 & 1 & 1
+    \end{array}
+    \]
+    例如
+    \[
+        \operatorname{Tr}(x)=x+x^2=x+(x+1)=1,\quad
+        \operatorname{N}(x)=x\cdot x^2=x(x+1)=1.
+    \]
+    这个小表格很好地展示了迹与范数的基本作用：它们把扩域 $\mathbf{F}_4$ 中的元素送回到底域 $\mathbf{F}_2$ 中，同时仍然记住了 Frobenius 共轭的加法和乘法信息.
+\end{example}
+
+上面的公式的证明实际上也是线性代数的：设 $\mathbf{L}/\mathbf{K}$ 是有限 Galois 扩张，$\alpha\in\mathbf{L}$. 乘法映射 $l_\alpha$ 在 $\mathbf{K}$ 上未必已经能对角化；但如果把标量放大到一个包含所有共轭元的域中，那么 $l_\alpha$ 的特征值正是
+\[
+    \sigma(\alpha),\quad \sigma\in\Gal(\mathbf{L}/\mathbf{K}).
+\]
+于是线性代数中的``迹等于特征值之和，行列式等于特征值之积''给出
+\[
+    \operatorname{Tr}_{\mathbf{L}/\mathbf{K}}(\alpha)
+    =\sum_{\sigma\in\Gal(\mathbf{L}/\mathbf{K})}\sigma(\alpha),
+    \quad
+    \operatorname{N}_{\mathbf{L}/\mathbf{K}}(\alpha)
+    =\prod_{\sigma\in\Gal(\mathbf{L}/\mathbf{K})}\sigma(\alpha).
+\]
+严格证明需要说明这个特征多项式在扩标量后如何分解；但核心思想仍然只是线性代数：同一个线性变换换到更大的域上看，迹和行列式不变，而特征值将会重新变得可见. 这也是为什么在此后正文的讨论中，对于特征值和对角化的讨论常常需要注重基域的选取.
+
+迹与范数在数论中非常常用. 范数把数域中的元素变成有理数，甚至在代数整数的情形中变成整数，因此可以用来检测一个元素是否可逆、一个元素可能有哪些因子，以及素数在扩张中如何分解. 迹则给出一个双线性映射
+\[
+    (\alpha,\beta)\longmapsto \operatorname{Tr}_{\mathbf{L}/\mathbf{K}}(\alpha\beta),
+\]
+这是代数数论的入口之一，我们会在结尾处作出一个小小的说明. 在有限域中，迹还常用来构造从 $\mathbf{F}_{q^n}$ 到 $\mathbf{F}_q$ 的线性函数；在编码理论、有限域上的 Fourier 分析和指数和中，这个映射都是基本工具，读过未竟专题 2 的读者想必对此会留有一些印象.
+
+\subsection{超越元：超越线性代数能力的边界}
+
+前面讨论的最小多项式、共轭元、迹与范数，都依赖一个共同前提：我们研究的元素是代数元. 也就是说，它必须满足某个以基域为系数的非零多项式方程. 如果一个元素不满足任何这样的方程，就会进入另一种完全不同的情形.
+
+\begin{definition}{超越元}{}
+    设 $\mathbf{L}/\mathbf{K}$ 是域扩张，$\alpha\in\mathbf{L}$. 若不存在非零多项式 $f(x)\in\mathbf{K}[x]$ 使得 $f(\alpha)=0$，则称 $\alpha$ 是 $\mathbf{K}$ 上的\term{超越元 (transcendental element)}. 否则称 $\alpha$ 是 $\mathbf{K}$ 上的代数元.
+\end{definition}
+
+最标准的例子不是某个具体实数，而是一个形式变量 $t$. 在有理函数域 $\mathbf{K}(t)$ 中，元素 $t$ 在 $\mathbf{K}$ 上是超越的：若某个非零多项式 $f(x)\in\mathbf{K}[x]$ 满足 $f(t)=0$，那就意味着一个非零多项式作为形式表达式恒等于零，这是不可能的. 因此 $\mathbf{K}(t)/\mathbf{K}$ 不是有限扩张；事实上，$1,t,t^2,\ldots$ 已经给出无限多个 $\mathbf{K}$-线性无关的元素.
+
+这说明超越元正好超出了本章线性代数方法的边界. 对代数元 $\alpha$，最小多项式给出有限维空间 $\mathbf{K}(\alpha)$ 的一组基，乘法映射有有限矩阵，因此可以谈迹与范数. 对超越元 $t$，没有最小多项式，也没有有限维的 $\mathbf{K}$-线性空间 $\mathbf{K}(t)$，于是本章中那套有限维线性代数工具不再直接适用. 当然，这不意味着超越扩张就不重要，它们是代数几何和函数域理论的基本对象之一，超越数论本身也是数论的一大重要分支. 只是从本讲的角度看，它们提醒我们：Galois 理论首先是关于代数方程的理论，而不是关于任意新符号的理论.
+
+\section{Galois 群：根的对称性}
+
+现在我们重新审视 Galois 群. 设 $\mathbf{L}/\mathbf{K}$ 是一个有限扩张. $\Gal \mathbf{L}/\mathbf{K}$ 中的元素必须固定 $\mathbf{K}$，所以它只能移动 $\mathbf{L}$ 中那些由扩张引入的新元素. 如果 $\mathbf{L}=\mathbf{K}(\alpha)$，并设 $\alpha$ 的最小多项式为 $f_\alpha(x)$，那么对任意 $\sigma\in\Gal \mathbf{L}/\mathbf{K}$，$\sigma(\alpha)$ 仍然必须是 $\alpha$ 的最小多项式的一个根. 这就是 Galois 群与方程根的对称性发生联系的原因.
+
+\begin{example}{}{}
+    考虑二次扩张 $\Q(\sqrt{2})/\Q$. 因为 $\sqrt{2}$ 的最小多项式是 $x^2-2$，所以任一 $\Q$-自同构只能把 $\sqrt{2}$ 映到 $x^2-2$ 的根，即 $\sqrt{2}$ 或 $-\sqrt{2}$. 因此
+    \[
+        \Gal(\Q(\sqrt{2})/\Q)=\{\operatorname{id},\sigma\},
+    \]
+    其中 $\sigma(\sqrt{2})=-\sqrt{2}$. 这个群同构于 $\mathbf{Z}_2$.
+\end{example}
+
+\begin{example}{}{}
+    对有限域 $\mathbf{F}_{p^n}/\mathbf{F}_p$，Frobenius 映射
+    \[
+        \varphi\colon a\mapsto a^p
+    \]
+    固定 $\mathbf{F}_p$ 中的每个元素，并且保持加法与乘法，因此是一个 $\mathbf{F}_p$-自同构. 可以证明
+    \[
+        \Gal(\mathbf{F}_{p^n}/\mathbf{F}_p)=\langle\varphi\rangle\cong\mathbf{Z}_n.
+    \]
+    这说明有限域扩张的 Galois 群是循环群.
+\end{example}
+
+这些例子展现了 Galois 理论的基本精神：域扩张带来新的元素，新元素满足某些多项式方程，而保持基域不变的自同构只能在这些方程的根之间作变换. 因此，域的结构、多项式的根和群的对称性被联系在一起.
+
+\subsection{群论语言}
+
+为了更准确地表述 Galois 理论，我们需要补充一些群论语言. 下面的定义并不追求完整展开，而是服务于本讲之后的讨论. 首先依然是一个形式性的定义：
+
+\begin{definition}{群同态与同构}{}
+    设 $G,H$ 是群，映射 $\varphi\colon G\to H$ 若满足
+    \[
+        \varphi(g_1g_2)=\varphi(g_1)\varphi(g_2),\quad \forall g_1,g_2\in G,
+    \]
+    则称 $\varphi$ 为\term{群同态}. 若 $\varphi$ 同时为双射，则称 $\varphi$ 为\term{群同构}，并称 $G$ 与 $H$ 同构，记作 $G\cong H$.
+\end{definition}
+
+接下来的定义比较重要：子群虽然是与群结构相容的子集，但并不一定能让我们在商集上定义出群结构. 只有当子群满足某个额外条件时，我们才能把商集变成一个群，这就是正规子群的概念.
+
+\begin{definition}{子群、正规子群与商群}{}
+    设 $G$ 是群，$H\subset G$. 如果 $H$ 在 $G$ 的乘法下本身构成一个群，也就是说，$H$ 含有单位元，且对任意 $h_1,h_2\in H$ 都有 $h_1h_2\in H$，对任意 $h\in H$ 都有 $h^{-1}\in H$，则称 $H$ 是 $G$ 的\term{子群（subgroup）}，记作 $H\leq G$. 设 $N$ 是 $G$ 的子群，若对任意 $g\in G$ 都有 $gNg^{-1}=N$, 则称 $N$ 是 $G$ 的\term{正规子群（normal subgroup）}，记作 $N\triangleleft G$. 此时可以在左陪集集合 $G/N$ 上定义乘法 $(gN)(hN)=(gh)N$, 并使其构成一个群，称为 $G$ 对 $N$ 的\term{商群（quotient group）}.
+\end{definition}
+
+矩阵群给出了很好的例子. 设 $\mathbf{K}$ 是域，$\operatorname{GL}_2(\mathbf{K})$ 表示所有二阶可逆矩阵在乘法下构成的群. 行列式映射
+\[
+    \det\colon \operatorname{GL}_2(\mathbf{K})\to \mathbf{K}^{\times}
+\]
+是群同态. 因此
+\[
+    \operatorname{SL}_2(\mathbf{K})
+    =
+    \{A\in\operatorname{GL}_2(\mathbf{K})\mid \det A=1\}
+\]
+是这个同态的核，它是 $\operatorname{GL}_2(\mathbf{K})$ 的正规子群. 实际上，群同态的核总是正规子群. 直观地说，对任意可逆矩阵 $P$，共轭矩阵 $PAP^{-1}$ 与 $A$ 有相同的行列式，因此行列式为 $1$ 的性质在共轭下保持不变.
+
+相比之下，某些看起来很自然的子群并不正规. 例如令
+\[
+    D=\left\{
+    \begin{pmatrix}
+        a & 0\\
+        0 & b
+    \end{pmatrix}
+    \ \middle|\ a,b\in\mathbf{K}^{\times}
+    \right\}\leq \operatorname{GL}_2(\mathbf{K})
+\]
+为可逆对角矩阵群. 取
+\[
+    P=
+    \begin{pmatrix}
+        1 & 1\\
+        0 & 1
+    \end{pmatrix},\quad
+    A=
+    \begin{pmatrix}
+        a & 0\\
+        0 & b
+    \end{pmatrix},
+\]
+若 $a\neq b$，则
+\[
+    PAP^{-1}
+    =
+    \begin{pmatrix}
+        a & b-a\\
+        0 & b
+    \end{pmatrix},
+\]
+它不再是对角矩阵. 因此 $D$ 一般不是 $\operatorname{GL}_2(\mathbf{K})$ 的正规子群. 这个例子说明，正规性并不是``子群足够自然''就自动成立的性质，而是要求子群在整个大群的共轭作用下保持不变.
+
+从线性代数角度看，共轭 $A\mapsto PAP^{-1}$ 正是在改变坐标系. 因此，正规性也可以理解为一种``与坐标系选取无关''的性质. 例如，行列式为 $1$ 这件事不依赖于基的选择，所以 $\operatorname{SL}_2(\mathbf{K})$ 在任意换坐标后仍然是 $\operatorname{SL}_2(\mathbf{K})$ 中的元素. 但是``矩阵是对角矩阵''这个性质明显依赖于当前选定的基；换一组基以后，同一个线性变换的矩阵表示通常不再对角. 因此，对角矩阵群不是正规子群，正反映了``对角''不是一个坐标无关的群论性质. 在 Galois 理论中，正规子群还对应于一种特别好的中间扩张，在后面我们会给出更具体的表述.
+
+\begin{example}{循环群与置换群}
+    设 $G$ 是群，$g\in G$. 由 $g$ 的所有整数次幂构成的子群
+    \[
+        \langle g\rangle=\{g^m\mid m\in\Z\}
+    \]
+    称为由 $g$ 生成的\term{循环子群}. 若存在 $g\in G$ 使得 $G=\langle g\rangle$，则称 $G$ 是\term{循环群（cyclic group）}，并称 $g$ 是 $G$ 的生成元. 设 $X$ 是集合. $X$ 到自身的所有双射在复合下构成一个群，称为 $X$ 上的\term{置换群（permutation group）}. 特别地，当 $X=\{1,2,\ldots,n\}$ 时，这个群称为 $n$ 次对称群，记作 $S_n$.
+\end{example}
+
+循环群是最简单的群之一，有限域扩张的 Galois 群正是由 Frobenius 自同构生成的循环群. 置换群则是 Galois 理论最早的语言：一个多项式的 Galois 群可以看作它的根集合上的某个置换群，只是并非任意置换都允许，只有那些与域结构相容的置换才会出现. 这里有一条重要的数学史线索. 十九世纪初，Ruffini 和 Abel 已经证明一般五次方程不能用根式求解，但他们的结论主要说明``不可能''. Galois 的观点更进一步：每个具体方程都有自己的根的对称群，而根式可解性正由这个群是否可解控制. 因此，Galois 理论并不只是给出一个否定结果，而是解释了哪些方程可以解、哪些方程不能解，以及原因在哪里.
+
+在本讲中，我们只需要注意一个简单事实：循环群都是 Abel 群，因此都是可解群. 于是有限域扩张的 Galois 群由于是循环群，自动是可解的.
+
+最后，为了描述交换环上的 Galois 理论，我们还需要一个关于群作用的定义：
+
+\begin{definition}{群作用}{}
+    设 $G$ 是群，$X$ 是集合. 若给定映射
+    \[
+        G\times X\to X,\quad (g,x)\mapsto g\cdot x,
+    \]
+    满足
+    \[
+        e\cdot x=x,\quad (gh)\cdot x=g\cdot(h\cdot x),
+        \quad \forall g,h\in G,\ x\in X,
+    \]
+    则称 $G$ \term{作用 (act)}在 $X$ 上，或称 $X$ 是一个 $G$-集合. 等价地，群作用就是一个群同态
+    \[
+        G\to S_X,
+    \]
+    其中 $S_X$ 表示 $X$ 到自身的所有双射构成的置换群.
+
+    若 $X$ 还带有额外的代数结构，并且每个 $g\in G$ 给出的映射 $x\mapsto g\cdot x$ 都保持这个结构，则称 $G$ 通过自同构作用在 $X$ 上. 此时称
+    \[
+        X^G=\{x\in X\mid g\cdot x=x,\ \forall g\in G\}
+    \]
+    为这个作用的不动点集.
+\end{definition}
+
+例如，若 $L/K$ 是 Galois 扩张，则 $G=\Gal(L/K)$ 通过域自同构作用在 $L$ 上，而 $L^G=K$. 这句话正是 Galois 对应的最短形式：基域就是所有 Galois 对称性共同固定的元素集合. 在交换环情形中，我们仍然希望从一个有限群 $G$ 对环 $B$ 的自同构作用出发，把固定子环 $B^G$ 看作基环 $A$，并由此发展一套类似的 Galois 理论. 只是由于环上的模不再像域上的线性空间那样良好，这一步需要额外的技术条件.
+
+\subsection{有限域的 Galois 理论}
+
+完整的 Galois 理论远超出本讲的范围，但有限域的情形已经可以完整陈述. 设 $q=p^r$ 是素数幂，$\mathbf{F}_{q^n}/\mathbf{F}_q$ 是有限域扩张. Frobenius 映射
+\[
+    \varphi_q\colon \mathbf{F}_{q^n}\to\mathbf{F}_{q^n},\quad a\mapsto a^q
+\]
+固定 $\mathbf{F}_q$ 中每个元素，并且是 $\mathbf{F}_{q^n}$ 的域自同构.
+
+\begin{theorem}{有限域扩张的 Galois 群}{}
+    扩张 $\mathbf{F}_{q^n}/\mathbf{F}_q$ 的 Galois 群为
+    \[
+        \Gal(\mathbf{F}_{q^n}/\mathbf{F}_q)
+        =\langle\varphi_q\rangle
+        \cong \mathbf{Z}_n.
+    \]
+    换言之，它是由 Frobenius 自同构 $a\mapsto a^q$ 生成的 $n$ 阶循环群.
+\end{theorem}
+
+这一结论背后的理由可以简要说明如下. 有限域 $\mathbf{F}_{q^n}$ 中每个元素都满足 $a^{q^n}=a$，而 $\mathbf{F}_q$ 正是其中满足 $a^q=a$ 的元素构成的子域. 映射 $\varphi_q$ 反复作用 $n$ 次后变成恒等映射，且在此之前不会整体变为恒等. 因此它生成一个 $n$ 阶循环子群. 另一方面，有限域上的自同构完全由 Frobenius 自同构的幂给出，所以这已经是完整的 Galois 群了.
+
+有限域的中间域也有非常清晰的刻画：
+
+\begin{theorem}{有限域扩张的中间域}{}
+    设 $q$ 是素数幂. 对扩张 $\mathbf{F}_{q^n}/\mathbf{F}_q$，其中间域与 $n$ 的正因子一一对应. 具体地，若 $d\mid n$，则存在唯一的中间域 $\mathbf{F}_{q^d}$，并且
+    \[
+        \mathbf{F}_q\subset \mathbf{F}_{q^d}\subset \mathbf{F}_{q^n}.
+    \]
+    反过来，任一中间域都具有这种形式.
+\end{theorem}
+
+因此，有限域版本的 Galois 对应可以完全写成因子关系. 若 $d\mid n$，则
+\[
+    \Gal(\mathbf{F}_{q^n}/\mathbf{F}_{q^d})
+    =
+    \langle\varphi_q^d\rangle,
+\]
+它的阶为 $n/d$. 另一方面，
+\[
+    \Gal(\mathbf{F}_{q^d}/\mathbf{F}_q)
+    =
+    \langle\varphi_q|_{\mathbf{F}_{q^d}}\rangle
+    \cong\mathbf{Z}_d.
+\]
+由于循环群的子群也是循环群，而且每个阶数的子群唯一，有限域的 Galois 对应没有一般情形中那么复杂：中间域唯一地由其元素个数决定.
+
+特别地，所有子群都是正规子群，所以所有中间扩张都是 Galois 扩张. 这使得有限域成为 Galois 理论中最干净的一类例子：它既有完整的域扩张结构，又没有一般代数数域中复杂的分歧和非正规现象.
+
+\begin{example}{}{}
+    考虑 $\mathbf{F}_{2^6}/\mathbf{F}_2$. 因为 $6$ 的正因子为 $1,2,3,6$，所以中间域恰为
+    \[
+        \mathbf{F}_2,\quad \mathbf{F}_{2^2},\quad \mathbf{F}_{2^3},\quad \mathbf{F}_{2^6}.
+    \]
+    Galois 群 $\Gal(\mathbf{F}_{2^6}/\mathbf{F}_2)$ 是 $6$ 阶循环群，由 $a\mapsto a^2$ 生成. 其中固定 $\mathbf{F}_{2^2}$ 的子群由 $a\mapsto a^{2^2}$ 生成，阶为 $3$；固定 $\mathbf{F}_{2^3}$ 的子群由 $a\mapsto a^{2^3}$ 生成，阶为 $2$.
+\end{example}
+
+有限域扩张的迹与范数也可以完全写出. 对 $\alpha\in\mathbf{F}_{q^n}$，有
+\[
+    \operatorname{Tr}_{\mathbf{F}_{q^n}/\mathbf{F}_q}(\alpha)
+    =
+    \alpha+\alpha^q+\alpha^{q^2}+\cdots+\alpha^{q^{n-1}},
+\]
+以及
+\[
+    \operatorname{N}_{\mathbf{F}_{q^n}/\mathbf{F}_q}(\alpha)
+    =
+    \alpha\alpha^q\alpha^{q^2}\cdots\alpha^{q^{n-1}}
+    =
+    \alpha^{(q^n-1)/(q-1)}.
+\]
+这两个公式非常重要：它们把有限域扩张中的元素自然地送回到底域 $\mathbf{F}_q$ 中. 例如，迹映射是 $\mathbf{F}_q$-线性的，而范数映射则是乘法群上的同态 $\mathbf{F}_{q^n}^{\times}\to\mathbf{F}_q^{\times}$.
+
+\subsection{Galois 对应}
+
+有限域的例子已经把 Galois 理论的核心图景展示出来了：中间域不是孤立的对象，而是按照包含关系组织起来；Galois 群的子群也按照包含关系组织起来；二者之间存在一个方向相反的对应. 一般情形中的证明需要较长的准备，但定理本身现在已经可以清楚地表述.
+
+设 $L/K$ 是一个有限 Galois 扩张，并记 $G=\Gal(L/K)$. 若 $E$ 是中间域 $K\subset E\subset L$，则固定 $E$ 中所有元素的自同构构成 $G$ 的一个子群：
+\[
+    \Gal(L/E)=\{\sigma\in G\mid \sigma(a)=a,\ \forall a\in E\}.
+\]
+反过来，若 $H$ 是 $G$ 的一个子群，则 $H$ 的公共不动元素构成一个中间域：
+\[
+    L^H=\{a\in L\mid \sigma(a)=a,\ \forall\sigma\in H\}.
+\]
+这就是 Galois 对应的两条映射，下面的定理说明它们是逆映射，并且反转包含关系.
+
+\begin{theorem}{Galois 对应}{}
+    设 $L/K$ 是有限 Galois 扩张，$G=\Gal(L/K)$. 则映射 $E\mapsto \Gal(L/E)$ 给出中间域 $K\subset E\subset L$ 与子群 $H\leq G$ 之间的一一对应，其逆映射为 $H\mapsto L^H$.
+
+    这个对应反转包含关系：若 $E_1\subset E_2$，则 $\Gal(L/E_2)\subset \Gal(L/E_1)$. 此外，$E/K$ 是 Galois 扩张当且仅当 $\Gal(L/E)$ 是 $G$ 的正规子群；此时 $\Gal(E/K)\cong G/\Gal(L/E)$.
+\end{theorem}
+
+这一定理解释了前面群论定义的必要性. 子群记录哪些对称性仍然被允许；中间域记录哪些元素已经被固定下来. 固定的元素越多，允许的对称性就越少，所以对应必然反转包含关系. 正规子群的出现也不是偶然的：只有当 $\Gal(L/E)$ 在 $G$ 中正规时，把 $G$ 中的对称性``模掉''这些固定 $E$ 的对称性，才会得到良好定义的商群，并且这个商群正是 $E/K$ 的 Galois 群.
+
+最后补充一个关于``格''的正式说法. 一个偏序集合 $(P,\leq)$ 称为\term{格（lattice）}，如果其中任意两个元素 $a,b$ 都有最大下界和最小上界. 最大下界称为 $a,b$ 的\term{交（meet）}，常记作 $a\wedge b$；最小上界称为 $a,b$ 的\term{并（join）}，常记作 $a\vee b$. 对按包含关系排序的子空间、子群、中间域而言，交通常就是集合意义下的交；并则通常是由两个对象共同生成的最小对象. 这正是线性代数中子空间格的抽象版本.
+
+因此，中间域按包含关系构成一个格，子群也按包含关系构成一个格. 在中间域格中，两个中间域的交 $E_1\cap E_2$ 是它们共同的下界，而由二者生成的复合域 $E_1E_2$ 是它们共同的上界. 在子群格中，对应的操作则是子群交 $H_1\cap H_2$ 与由两个子群生成的子群 $\langle H_1,H_2\rangle$. Galois 对应把这两个格反向匹配起来：
+\[
+    E_1\subset E_2
+    \quad\Longleftrightarrow\quad
+    \Gal(L/E_2)\subset \Gal(L/E_1).
+\]
+更具体地，若 $H_i=\Gal(L/E_i)$，则
+\[
+    \Gal(L/E_1E_2)=H_1\cap H_2,
+    \quad
+    \Gal(L/(E_1\cap E_2))=\langle H_1,H_2\rangle.
+\]
+也就是说，中间域格里的``向上合成''对应到子群格里的``向下取交''；中间域格里的``向下取交''对应到子群格里的``向上生成''.
+
+有限域情形是这个格对应最清晰的样本. 对 $\mathbf{F}_{q^n}/\mathbf{F}_q$，中间域格就是 $n$ 的正因子按整除关系形成的格：
+\[
+    d\mid n
+    \quad\longleftrightarrow\quad
+    \mathbf{F}_{q^d}\subset\mathbf{F}_{q^n}.
+\]
+而 Galois 群是循环群 $\langle\varphi_q\rangle$，它的子群也由因子唯一决定. 因此，有限域 Galois 对应几乎就是``因子格''本身：一个因子给出一个中间域，同时给出一个固定该中间域的 Frobenius 子群.
+
+这种从对象的覆盖、子对象或中间对象中读出对称群的思想，在现代数学中会被进一步抽象. 本书最后的未竟专题会再次遇到它：Grothendieck 的 Galois 理论不再只研究域扩张，而是研究一类对象的有限覆盖如何组成一个范畴，并从这些覆盖的格状结构中重建基本群. 经典 Galois 理论是这个思想最早、最可计算也最值得反复回看的模型.
+
+\subsection{从域到环：Galois 理论的另一种延伸}
+
+到目前为止，我们一直把 Galois 理论放在域扩张中讨论. 这是最清楚也最经典的情形：域扩张 $\mathbf{L}/\mathbf{K}$ 自动把 $\mathbf{L}$ 变成 $\mathbf{K}$ 上的线性空间；有限扩张意味着有限维；自同构群、中间域和线性代数工具都可以顺利配合. 但是，一旦进入代数数论，我们很快就不能只看域本身. 例如在 $\Q(i)/\Q$ 中，真正承载整数分解信息的是整数环 $\Z[i]$ 相对于 $\Z$ 的扩张，而不是单纯的域扩张.
+
+这迫使我们考虑交换环同态 $A\to B$，其中 $A$ 是一个交换环，$B$ 是另一个交换环，并且 $B$ 作为 $A$-模满足某些良好性质. 它可以被看作域扩张 $\mathbf{K}\subset\mathbf{L}$ 的环论版本. 不过，这一步会立刻带来新的困难：$B$ 不再是 $A$ 上的向量空间，而只是一个 $A$-模；模未必有基，未必是自由的，也未必表现得像有限维线性空间. 此外，环中可能有零因子、幂零元，素数也可能在扩张后分解、保持素性或发生分歧. 因此，交换环上的 Galois 理论并不是把``域''机械替换成``环''就能得到的理论.
+
+在进入张量积之前，先把环和模的语言压缩成线性代数能够识别的形式. 本节中的基本环都指含幺交换环，环同态默认保持 $1$；稍后临时出现的扭群代数则可能非交换. 给定交换环 $A$，一个 \term{$A$-模 (module)}就是一个可以被 $A$ 中元素数乘的加法交换群，满足与线性空间完全类似的分配律和结合律. 如果 $A$ 是域，那么 $A$-模正是 $A$ 上的线性空间；如果 $A$ 只是一般交换环，模就可能出现没有基、不能自由分解等现象.
+
+若有环同态 $A\to B$，则 $B$ 自动成为 $A$-模：$a\in A$ 对 $b\in B$ 的作用就是用 $a$ 在 $B$ 中的像去乘 $b$. 更一般地，任意 $A$-模 $M$ 都可以沿着 $A\to B$ 把纯量从 $A$ 扩大到 $B$，这称为\term{换基（base change）}或\term{纯量扩张（extension of scalars）}，记作 $B\otimes_A M$. 例如，实向量空间 $V$ 的复化可以写作 $\C\otimes_\R V$.
+
+基于此，我们可以更进一步地将其推广，去讨论环上的张量积. 设 $A$ 是交换环，$M,N$ 是 $A$-模. 它们的\term{张量积（tensor product）} $M\otimes_A N$ 是一个 $A$-模，并带有一个双加性且 $A$-平衡的映射
+\[
+    M\times N\to M\otimes_A N,\quad (m,n)\mapsto m\otimes n,
+\]
+满足
+\[
+    (m+m')\otimes n=m\otimes n+m'\otimes n,\quad
+    m\otimes(n+n')=m\otimes n+m\otimes n',
+\]
+以及
+\[
+    (am)\otimes n=m\otimes(an)=a(m\otimes n).
+\]
+它的本质性质是泛性质：任意从 $M\times N$ 出发的双加性且 $A$-平衡的映射，都唯一地穿过 $M\otimes_A N$. 这与向量空间张量积的定义完全平行，只是这里的纯量来自一个可能很复杂的环 $A$.
+
+若 $A\to B$ 是交换环同态，则 $B$ 是 $A$-模，可以构造 $B\otimes_A B$. 在域扩张 $K\subset L$ 中，$L\otimes_K L$ 可以理解为把 $L$ 的两个副本放在同一个 $K$ 上相乘；在环扩张中也一样，$B\otimes_A B$ 同时记录了 $B$ 的两个 $A$-代数结构. 这就是交换环 Galois 理论的第一个关键对象.
+
+在域扩张中还有一个更基本的观察. 令 $G=\Gal(L/K)$，由于每个 $\sigma\in G$ 都逐点固定 $K$，总有自然包含
+\[
+    K\subset L^G=\{x\in L\mid \sigma(x)=x,\ \forall\sigma\in G\}.
+\]
+如果这个包含实际上是同构，也就是 $K=L^G$，那么所有被 Galois 群完全看不见的元素都已经来自基域 $K$. 换言之，$G$ 没有把某个真正的新元素误认为``标量''. 这个条件很必要，但还不够充分：例如在 $\Q(\sqrt[3]{2})/\Q$ 中，Galois 群平凡，所以不动域是整个 $\Q(\sqrt[3]{2})$，明显大于 $\Q$. 环上定义中的 $A\to B^G$ 正是这一观察的直接推广，而还需要另一个条件来保证对称性的数量也足够多.
+
+在把 Galois 条件提升为交换环上的定义之前，先回到域扩张，看看前面用``Galois 群大小等于扩张次数''给出的定义还可以怎样表达. 设 $L/K$ 是有限域扩张，$G$ 是 $\Gal(L/K)$ 的一个子群. 定义\term{扭群代数（twisted group algebra）}
+\[
+    L\{G\}=\bigoplus_{\sigma\in G}L u_\sigma,
+\]
+其中乘法由 $(a u_\sigma)(b u_\tau)=a\sigma(b)u_{\sigma\tau}$ 给出. 它自然作用在 $L$ 上：
+\[
+    a u_\sigma\colon x\mapsto a\sigma(x).
+\]
+就能得到一个环同态
+\[
+    \Theta_L\colon L\{G\}\to \operatorname{End}_K(L).
+\]
+直观地说，$\Theta_L$ 问的是：$L$ 上的每个 $K$-线性自同态，能否唯一地写成若干个 Galois 对称性与乘法操作的线性组合.
+
+真正支撑这一判断的域上事实，是下面的 Dedekind 独立性引理：
+
+\begin{lemma}{Dedekind 引理}{}
+    设 $L/K$ 是域扩张，$\sigma_1,\ldots,\sigma_n$ 是互不相同的 $K$-同态 $L\to \Omega$，其中 $\Omega$ 是包含这些像的域. 那么 $\sigma_1,\ldots,\sigma_n$ 在 $\Omega$ 上线性无关. 也就是说，若
+    \[
+        a_1\sigma_1(x)+\cdots+a_n\sigma_n(x)=0,\quad \forall x\in L,
+    \]
+    其中 $a_i\in\Omega$，则 $a_1=\cdots=a_n=0$.
+\end{lemma}
+
+\begin{proof}
+    假设存在非平凡的线性关系. 在所有这样的关系中，删去零系数后取项数最少的一个：
+    \[
+        a_1\sigma_1(x)+\cdots+a_m\sigma_m(x)=0,\quad \forall x\in L,
+    \]
+    其中 $a_1,\ldots,a_m$ 均非零. 若 $m=1$，代入 $x=1$ 便得到 $a_1=0$，矛盾. 因此 $m\geq2$.
+
+    由于 $\sigma_1\neq\sigma_m$，存在 $y\in L$ 使得 $\sigma_1(y)\neq\sigma_m(y)$. 将上式中的 $x$ 换成 $xy$，得到
+    \[
+        \sum_{i=1}^m a_i\sigma_i(y)\sigma_i(x)=0,\quad \forall x\in L.
+    \]
+    另一方面，将原关系乘以 $\sigma_m(y)$，再与上式相减，得到
+    \[
+        \sum_{i=1}^{m-1} a_i\bigl(\sigma_i(y)-\sigma_m(y)\bigr)\sigma_i(x)=0,\quad \forall x\in L.
+    \]
+    这是一个项数更少的线性关系. 由最小性，它的所有系数都为零. 但 $i=1$ 时，$a_1\bigl(\sigma_1(y)-\sigma_m(y)\bigr)\neq0$，矛盾. 因此原先的非平凡关系不存在.
+\end{proof}
+
+换言之，域同态不只是在代数结构上互不相同；它们作为函数已经线性无关. 因此，若在域扩张 $L/K$ 中有
+\[
+    \sum_{\sigma\in\Gal(L/K)}a_\sigma\sigma(x)=0,\quad \forall x\in L,
+\]
+其中 $a_\sigma\in L$，那么所有 $a_\sigma$ 都必须为零. 这正说明 $L\{\Gal(L/K)\}\to \operatorname{End}_K(L)$ 至少在单射性上没有隐藏的线性关系.
+
+Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基本含义：不同的对称性不会线性抵消. 这立刻给出前面 Galois 条件的一个线性代数刻画.
+
+\begin{theorem}{扭群代数对 Galois 条件的刻画}{}
+    设 $L/K$ 是有限域扩张，$G\leq\Gal(L/K)$. 上述映射
+    \[
+        \Theta_L\colon L\{G\}\to \operatorname{End}_K(L)
+    \]
+    是单射. 并且它是同构当且仅当 $|G|=[L:K]$. 特别地，当 $G=\Gal(L/K)$ 时，$\Theta_L$ 是同构当且仅当 $L/K$ 是前面定义意义下的 Galois 扩张.
+\end{theorem}
+
+\begin{proof}
+    若 $\sum_{\sigma\in G}a_\sigma u_\sigma$ 映到零，则
+    \[
+        \sum_{\sigma\in G}a_\sigma\sigma(x)=0,\quad \forall x\in L.
+    \]
+    由 Dedekind 引理，所有 $a_\sigma$ 都为零，因此 $\Theta_L$ 单射.
+
+    再比较维数. 作为左 $L$-线性空间，$L\{G\}$ 的维数为 $|G|$. 另一方面，若 $[L:K]=n$，则 $\operatorname{End}_K(L)$ 的 $K$-维数为 $n^2$；而它通过左乘成为 $L$-线性空间，所以其 $L$-维数为 $n$. 因此 $\Theta_L$ 是同构当且仅当 $|G|=n=[L:K]$.
+\end{proof}
+
+在后面的习题中，我们将表明，对有限维 $L$-线性空间取对偶时，上面的映射 $\Theta_L$ 的对偶可以写成 $\Gamma_L$：取 $G=\Gal(L/K)$，则有
+\[
+    \Gamma_L\colon L\otimes_K L\to \prod_{\sigma\in G}L,\quad
+    a\otimes b\mapsto \left(a\sigma(b)\right)_{\sigma\in G}.
+\]
+因此 $\Theta_L$ 为同构等价于 $\Gamma_L$ 为同构. 它把第二个 $L$ 的元素同时送到所有 Galois 共轭方向上；这正是上面扭群代数刻画的张量版本. 由于这个写法只用到环同态、群作用和张量积，它比 $\operatorname{End}_K(L)$ 的表述更适合推广到一般交换环.
+
+现在设有限群 $G$ 通过 $A$-代数自同构作用在交换环 $B$ 上，也就是说每个 $\sigma\in G$ 都是保持 $A$ 中元素不动的环自同构. 此时可以定义规范映射
+\[
+    \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
+    b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}.
+\]
+于是交换环上的 Galois 扩张定义如下.
+
+\begin{definition}{$G$-Galois 扩张}{}
+    设 $A\to B$ 是交换环同态，有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上. 若 $A\to B^G$ 是同构，并且规范映射
+    \[
+        \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
+        b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}
+    \]
+    是同构，则称 $A\to B$ 是一个 \term{$G$-Galois 扩张}.
+\end{definition}
+
+有些文献会在定义中额外要求 $B$ 作为 $A$-模是\term{忠实平坦（faithfully flat）}的. 在上面的有限群情形中，这个条件实际上可以从固定环条件和规范映射同构推出，因此我们不把它作为第三条定义项. 平坦性大致意味着张量上 $B$ 不会破坏短正合列；忠实性则意味着张量上 $B$ 之后若某个 $A$-模变成零，那么原来的模已经是零. 换言之，$B$ 足够忠实地反映 $A$ 上的代数信息. 对域扩张来说这件事几乎自动成立，因为向量空间都是自由模；但对一般交换环而言，它必须由 Nakayama 引理来保证.
+
+为了读懂下面这个引理，我们再补上几条最小限度的环论词汇. 设 $A$ 是交换环. 子集 $I\subset A$ 若是加法子群，并且对任意 $a\in A$、$x\in I$ 都有 $ax\in I$，则称 $I$ 是 $A$ 的一个\term{理想（ideal）}. 若 $I\neq A$，并且不存在严格夹在 $I$ 与 $A$ 之间的理想，则称 $I$ 为\term{极大理想（maximal ideal）}. 一个只有唯一极大理想 $\mathfrak{m}$ 的环称为\term{局部环（local ring）}. 在局部环中，恰好所有不属于 $\mathfrak{m}$ 的元素都是可逆元.
+
+类似地，若 $M$ 是 $A$-模，$N\subset M$ 在加法和 $A$ 中元素数乘下都封闭，则称 $N$ 是 $M$ 的子模. 商集 $M/N$ 按陪集加法和数乘成为一个 $A$-模，称为\term{商模（quotient module）}. 若存在有限个元素 $x_1,\ldots,x_r\in M$，使得每个 $x\in M$ 都能写成 $x=a_1x_1+\cdots+a_rx_r$，其中 $a_i\in A$，则称 $M$ 是\term{有限生成（finitely generated）}的. 对理想 $\mathfrak{m}$，记号 $\mathfrak{m}M$ 表示所有有限和 $\sum a_i x_i$ 组成的子模，其中 $a_i\in\mathfrak{m}$、$x_i\in M$.
+
+\begin{lemma}{Nakayama 引理}{}
+    设 $A$ 是局部环，$\mathfrak{m}$ 是其极大理想，$M$ 是有限生成 $A$-模. 若 $M=\mathfrak{m}M$，则 $M=0$. 更一般地，若 $m_1,\ldots,m_r\in M$ 在商模 $M/\mathfrak{m}M$ 中的像生成 $M/\mathfrak{m}M$，则 $m_1,\ldots,m_r$ 生成 $M$.
+\end{lemma}
+
+\begin{proof}
+    先证明 $M=\mathfrak{m}M$ 时 $M=0$. 取 $M$ 的一组生成元 $x_1,\ldots,x_r$. 由 $M=\mathfrak{m}M$，存在 $a_{ij}\in\mathfrak{m}$ 使得
+    \[
+        x_i=\sum_{j=1}^r a_{ij}x_j,\quad i=1,\ldots,r.
+    \]
+    于是
+    \[
+        \sum_{j=1}^r(\delta_{ij}-a_{ij})x_j=0,\quad i=1,\ldots,r.
+    \]
+    令 $C=(\delta_{ij}-a_{ij})$. 这里的关键是伴随矩阵技巧：用 $\operatorname{adj}(C)C=\det(C)I$ 左乘上式，可得 $\det(C)x_i=0$ 对所有 $i$ 成立. 但 $C\equiv I\pmod{\mathfrak{m}}$，所以 $\det(C)\equiv1\pmod{\mathfrak{m}}$. 在局部环中，不属于极大理想的元素都是可逆元，因此 $\det(C)$ 可逆，进而 $x_1=\cdots=x_r=0$. 这说明 $M=0$.
+
+    对一般情形，设 $N$ 是由 $m_1,\ldots,m_r$ 生成的子模. 它们的像生成 $M/\mathfrak{m}M$ 等价于 $M=N+\mathfrak{m}M$. 因此商模 $M/N$ 满足 $M/N=\mathfrak{m}(M/N)$. 由刚证明的结论，$M/N=0$，即 $N=M$.
+\end{proof}
+
+这个引理的意义是：有限生成模的许多性质可以通过模掉极大理想后的向量空间来检测. 因此，在证明 $G$-Galois 扩张的性质时，我们可以把 $A$ 局部化为局部环，再看 $B\otimes_A \kappa(\mathfrak{p})$，其中 $\kappa(\mathfrak{p})$ 是素理想 $\mathfrak{p}$ 处的剩余域. 在这个纤维上，问题重新变成域或有限维代数上的问题，Dedekind 引理可以控制不同群元素的独立性，而 Nakayama 引理则把纤维上的生成性提升回局部环. 通过这一路线可以证明：上述定义中的规范映射同构条件使 $B$ 成为有限投射 $A$-模，因而平坦；再结合 $B^G=A$，可进一步得到忠实性. 这里的技术细节我们将在习题中给出.
+
+在上面的背景下，交换环上的 Galois 对应可以表述为如下形式：
+
+\begin{theorem}{Chase-Harrison-Rosenberg 的 Galois 对应}{}
+    设 $G$ 为有限群，$A\to B$ 是一个 $G$-Galois 扩张. 则每个子群 $H\leq G$ 都给出中间环
+    \[
+        B^H=\{b\in B\mid \sigma(b)=b,\ \forall\sigma\in H\},
+    \]
+    且 $B^H\to B$ 是 $H$-Galois 扩张. 子群 $H\leq G$ 与 $A$-可分的中间子环 $A\subset C\subset B$ 之间反向的格对应
+    \[
+        H\longmapsto B^H,\quad
+        C\longmapsto \{\sigma\in G\mid \sigma(c)=c,\ \forall c\in C\}.
+    \]
+    在比较好的环当中成立. 此外，正规子群对应于正规中间扩张；若 $H\triangleleft G$，则 $A\to B^H$ 的 Galois 群为 $G/H$.
+\end{theorem}
+
+这一定理是由 Chase、Harrison 与 Rosenberg 在 1965 年系统建立的. 从形式上看，它和域扩张的 Galois 对应几乎一致：子群对应固定环，包含关系反转，正规子群对应商群. 真正新增的是这里被我们含糊带过的``比较好''的环论现象. 它说明，环上的 Galois 理论并不是丢掉除法后的域论，而是一套以张量积和下降理论为核心的结构理论.
+
+本章不再继续发展这一理论. 对我们的主线而言，重要的是看清楚它与线性代数的关系：域扩张时，有限维向量空间、迹、范数和自同构群已经足以支撑 Galois 理论；交换环扩张时，向量空间被模取代，基与维数被有限投射和忠实平坦取代，而 $L\otimes_K L\cong\prod_G L$ 这条线性代数式的分解则被提升为 $G$-Galois 扩张的核心定义. 换言之，线性代数并没有消失，只是被翻译成了模论与张量积的语言.
+
+\section{代数数论中的 Galois 理论}
+
+最后我们给出一个极简的例子，说明域扩张的 Galois 理论如何通向代数数论. 在代数数论中，我们不仅研究数域本身，也研究整数环在扩张中的变化. 例如在二次扩张 $\Q(\sqrt{d})/\Q$ 中，我们会把普通整数环 $\Z$ 放大到包含 $\sqrt{d}$ 的整数环，并考察素数在这个新环中如何分解.
+
+考虑最简单的例子 $\Q(i)/\Q$. 它的整数环为
+\[
+    \Z[i]=\{a+bi\mid a,b\in\Z\},
+\]
+称为 Gauss 整数环. 在 $\Z$ 中，$2$ 是素数；但在 $\Z[i]$ 中，我们有
+\[
+    2=(1+i)(1-i).
+\]
+这里迹与范数可以非常具体地看见. 扩张 $\Q(i)/\Q$ 的非平凡 Galois 自同构是复共轭
+\[
+    a+bi\longmapsto a-bi,
+\]
+因此
+\[
+    \operatorname{Tr}_{\Q(i)/\Q}(a+bi)=2a,\quad
+    \operatorname{N}_{\Q(i)/\Q}(a+bi)=a^2+b^2.
+\]
+特别地，
+\[
+    \operatorname{N}_{\Q(i)/\Q}(1+i)=2,\quad
+    \operatorname{N}_{\Q(i)/\Q}(1-i)=2,
+\]
+而
+\[
+    \operatorname{N}_{\Q(i)/\Q}(2)=4.
+\]
+这与范数的乘法性完全一致：
+\[
+    4=\operatorname{N}(2)
+    =\operatorname{N}(1+i)\operatorname{N}(1-i)
+    =2\cdot 2.
+\]
+迹在这里记录的是共轭元的和，例如
+\[
+    \operatorname{Tr}_{\Q(i)/\Q}(1+i)=(1+i)+(1-i)=2.
+\]
+更进一步，由于
+\[
+    1-i=-i(1+i),
+\]
+而 $-i$ 在 $\Z[i]$ 中是可逆元，所以从理想分解的角度看，$2$ 实际上变成了同一个素因子的平方. 我们把这种现象称为\term{分歧 (ramification)}.
+
+从历史上看，把整数放到更大的数环中再分解，也是证明 Fermat 大定理的一条自然尝试. 例如可以把方程 $x^n+y^n=z^n$ 放到含有 $n$ 次单位根的环中，将左边分解为一次因子的乘积. 这种思路在 Kummer 的工作中非常重要，并促成了理想数、理想类群等概念的发展；但早期尝试常常默认这些新数环仍有唯一分解性质，而这一般并不成立，因此它并没有直接给出 Fermat 大定理的完整证明. Gauss 整数环 $\Z[i]$ 是较温和的情形，唯一分解仍然成立；但更一般的数环会暴露出更深的困难.
+
+与此相对，奇素数在 $\Z[i]$ 中的行为由它模 $4$ 的余数决定：
+\[
+    p\equiv 1\pmod 4 \implies p \text{ 在 } \Z[i] \text{ 中分解},
+\]
+\[
+    p\equiv 3\pmod 4 \implies p \text{ 在 } \Z[i] \text{ 中仍保持素性}.
+\]
+例如
+\[
+    5=(2+i)(2-i),
+\]
+这里
+\[
+    \operatorname{N}_{\Q(i)/\Q}(2+i)=5,\quad
+    \operatorname{N}_{\Q(i)/\Q}(2-i)=5,
+\]
+所以 $5$ 分解成两个互为共轭、范数同为 $5$ 的因子. 而 $3$ 在 $\Z[i]$ 中仍然不可约；相应地，方程 $a^2+b^2=3$ 没有整数解，所以 $\Z[i]$ 中没有范数为 $3$ 的元素可用来分解它. 这个判别事实上来自多项式 $x^2+1$ 在有限域 $\mathbf{F}_p$ 上是否有根：若 $x^2+1$ 在 $\mathbf{F}_p$ 上分裂，则 $p$ 在 $\Z[i]$ 中分解；若它不可约，则 $p$ 保持素性；而 $p=2$ 时，$x^2+1=(x+1)^2$ 在 $\mathbf{F}_2$ 上有重根，于是出现分歧.
+
+这就把本讲的几条线索连在了一起：有限域上的多项式分解、数域扩张、Galois 对称性、范数，以及整数环中素数的分解行为. 更一般地，在数域扩张中，素数如何分解、何时分歧、分歧程度如何，构成了代数数论的核心问题之一. 从这个角度看，线性代数提供了语言，有限域提供了计算场所，而 Galois 理论则组织了隐藏在这些计算背后的对称性.
+
+\begin{summary}
+    本讲从域同构、子域和域扩张出发，说明了域本身也可以被视为较小域上的线性空间. 对有限域而言，这一观点立刻给出其元素个数必为素数幂；而借助不可约多项式的商，可以构造出具体的有限域. 随后我们讨论了一般域扩张，说明最小多项式控制了单扩张的线性空间结构，并通过乘法映射定义了扩张的迹与范数，还用 $\mathbf{F}_4/\mathbf{F}_2$ 展示了有限域中迹与范数的具体计算. 超越元的讨论则指出了这些有限维线性代数方法的边界. 最后，我们补充了正规子群、商群和可解群等群论语言，完整陈述了有限域扩张的 Galois 群、中间域、迹与范数公式，并把一般 Galois 对应表述为中间域格与子群格之间的反向对应. 章末还简要说明了从域到交换环时 Galois 理论会遇到的模论困难. 历史上，从 Galois 对方程根的置换思想，到 Kummer 对 Fermat 大定理的尝试，都说明这些概念并非孤立技巧；Gauss 整数中素数 $2$ 的分歧现象则暗示 Galois 理论通向代数数论的道路.
+\end{summary}
+
+\begin{exercise}
+    \begin{exgroup}
+        \item 证明，\autoref{ex:四元素有限域的例子} 中定义的 $\mathbf{F}_4$ 是一个域，而且构成 $\Z_2$ 上的一个线性空间.
+        \item 证明：域的特征只能为 $0$ 或素数. 进一步证明，若域 $\mathbf{F}$ 的特征为素数 $p$，则由 $1_\mathbf{F}$ 生成的子域同构于 $\Z_p$.
+        \item 给出\autoref{thm:有限域是素域上的有限维线性空间} 的完整证明.
+        \item 利用 $\mathbf{F}_2[x]/(x^2+x+1)$ 重新推导\autoref{ex:四元素有限域的例子} 中的乘法表. 列出 $\mathbf{F}_3[x]/(x^2+1)$ 中所有元素.
+        \item 设 $d$ 是一个不是有理数平方的有理数. 证明 $\Q(\sqrt{d})=\{a+b\sqrt{d}\mid a,b\in\Q\}$，并求 $\Gal(\Q(\sqrt{d})/\Q)$，计算 $\Q(\sqrt{d})/\Q$ 中元素 $a+b\sqrt{d}$ 的迹与范数.
+        \item 证明任意循环群的子群都是正规子群.
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 设 $q=p^r$，证明 Frobenius 映射
+        \[
+            \varphi_q\colon \mathbf{F}_{q^n}\to\mathbf{F}_{q^n},\quad x\mapsto x^q
+        \]
+        是 $\mathbf{F}_q$-自同构，并证明它的阶为 $n$. 由此推出
+        \[
+            \Gal(\mathbf{F}_{q^n}/\mathbf{F}_q)=\langle\varphi_q\rangle\cong \Z_n.
+        \]
+        \item 证明有限域中的子域判别：
+        \[
+            \mathbf{F}_{q^d}\subset \mathbf{F}_{q^n}\iff d\mid n.
+        \]
+        提示：可从乘法群阶数、方程 $x^{q^d}-x=0$，或 Frobenius 固定元三个角度任选其一.
+        \item 设 $d\mid n$. 证明 $\mathbf{F}_{q^d}$ 正是 $\varphi_q^d$ 的固定域，并写出在 Galois 对应下 $\mathbf{F}_{q^d}$ 对应的子群. 由此说明有限域的 Galois 对应就是因子格的反向对应.
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 本题证明正文中提到的 $\Theta_L$ 与 $\Gamma_L$ 的对偶关系. 设 $L/K$ 是有限域扩张，$G\leq \Gal(L/K)$，并令
+        \[
+            \Theta_L\colon L\{G\}\to\operatorname{End}_K(L),\quad
+            a u_\sigma\mapsto (x\mapsto a\sigma(x)).
+        \]
+        \begin{enumerate}
+            \item 把 $\operatorname{End}_K(L)$ 看作 $L$-线性空间，证明
+            \[
+                L\otimes_K L\to \operatorname{Hom}_L(\operatorname{End}_K(L),L),\quad
+                a\otimes b\mapsto\bigl(T\mapsto aT(b)\bigr)
+            \]
+            是 $L$-线性同构. 提示：取 $L$ 的一组 $K$-基 $\beta_1,\ldots,\beta_n$，用把某个 $\beta_i$ 送到 $1$、其余基向量送到 $0$ 的 $K$-线性映射检验单射性.
+            \item 证明 $\operatorname{Hom}_L(L\{G\},L)\cong\prod_{\sigma\in G}L$，其中一个线性泛函对应于它在各个 $u_\sigma$ 上的取值.
+            \item 在上述两个同构下，证明 $\Theta_L$ 的对偶映射就是
+            \[
+                \Gamma_L\colon L\otimes_K L\to\prod_{\sigma\in G}L,\quad
+                a\otimes b\mapsto\bigl(a\sigma(b)\bigr)_{\sigma\in G}.
+            \]
+            \item 当 $G=\Gal(L/K)$ 且 $|G|=[L:K]$ 时，说明 $\Theta_L$ 为同构当且仅当 $\Gamma_L$ 为同构.
+        \end{enumerate}
+        \item 本题补充有限投射模和平坦模的基本工具. 设 $A$ 是交换环，$M$ 是 $A$-模. 若存在 $A$-模 $N$ 与非负整数 $r$，使得 $M\oplus N\cong A^r$，则称 $M$ 是一个\term{有限投射（finite projective）}$A$-模；换言之，有限投射模就是有限自由模的直和因子. 若有限个元素 $x_i\in M$ 与 $A$-线性映射 $\varphi_i\in\operatorname{Hom}_A(M,A)$ 满足对任意 $x\in M$ 都有 $x=\sum_i x_i\varphi_i(x)$，则称它们构成 $M$ 的一组有限对偶基.
+        \begin{enumerate}
+            \item 设 $e\in A$ 满足 $e^2=e$. 证明理想 $eA$ 是有限投射 $A$-模. 进一步地，写出 $A=eA\oplus(1-e)A$，并给出 $eA$ 的一组有限对偶基.
+            \item 若存在有限个元素 $x_1,\ldots,x_r\in M$ 与 $A$-线性映射 $\varphi_1,\ldots,\varphi_r\in\operatorname{Hom}_A(M,A)$，使得对任意 $x\in M$ 都有
+            \[
+                x=\sum_{i=1}^r x_i\varphi_i(x),
+            \]
+            则证明 $M$ 是有限投射 $A$-模. 提示：构造 $A^r\to M$ 与 $M\to A^r$，并证明它们的复合为 $\operatorname{id}_M$.
+            \item 反过来，若 $M$ 是有限投射 $A$-模，则证明存在满足上一问条件的 $x_i$ 与 $\varphi_i$. 因此，有限投射模等价于存在这样一组有限对偶基.
+            \item 称 $A$-模 $P$ 是\term{平坦（flat）}的，如果对任意单射 $N_1\to N_2$，诱导映射
+            \[
+                N_1\otimes_A P\to N_2\otimes_A P
+            \]
+            仍为单射. 证明有限自由模是平坦模.
+            \item 证明平坦模的直和因子仍然平坦. 结合定义与上一问推出：有限投射模一定平坦.
+        \end{enumerate}
+        \item 本题给出交换环 Galois 扩张有限投射性的标准证明. 设 $A\to B$ 是交换环同态，有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上，且规范映射
+        \[
+            \Gamma\colon B\otimes_A B\to\prod_{\sigma\in G}B,\quad
+            b_1\otimes b_2\mapsto\bigl(b_1\sigma(b_2)\bigr)_{\sigma\in G}
+        \]
+        是同构，并且 $B^G=A$. 令 $e_1\in\prod_{\sigma\in G}B$ 为第 $1_G$ 个分量为 $1$、其余分量为 $0$ 的元素，设
+        \[
+            \Gamma^{-1}(e_1)=\sum_{i=1}^r x_i\otimes y_i.
+        \]
+        \begin{enumerate}
+            \item 证明
+            \[
+                \sum_{i=1}^r x_i\sigma(y_i)=
+                \begin{cases}
+                    1,&\sigma=1_G,\\
+                    0,&\sigma\neq1_G.
+                \end{cases}
+            \]
+            \item 定义 $\operatorname{tr}_G(b)=\sum_{\sigma\in G}\sigma(b)$. 证明 $\operatorname{tr}_G(b)\in B^G=A$，且映射 $\operatorname{tr}_G\colon B\to A$ 是 $A$-线性的.
+            \item 证明对任意 $b\in B$ 都有
+            \[
+                b=\sum_{i=1}^r x_i\,\operatorname{tr}_G(y_i b).
+            \]
+            \item 利用有限投射模的对偶基判别准则，证明 $B$ 是有限投射 $A$-模. 因而 $B$ 是平坦 $A$-模.
+        \end{enumerate}
+        \item 本题继续上一题，证明忠实平坦性. 可使用如下判别准则：若 $B$ 是平坦 $A$-代数，则 $B$ 忠实平坦当且仅当对 $A$ 的每个极大理想 $\mathfrak{m}$ 都有 $B/\mathfrak{m}B\neq0$.
+        \begin{enumerate}
+            \item 由 $B^G=A$ 说明 $A\to B$ 是单射.
+            \item 对任意极大理想 $\mathfrak{m}\subset A$，若 $\mathfrak{m}B=B$，将其局部化到局部环 $A_{\mathfrak{m}}$ 上，并用 Nakayama 引理推出 $B_{\mathfrak{m}}=0$.
+            \item 说明上一步与单射 $A_{\mathfrak{m}}\to B_{\mathfrak{m}}$ 矛盾. 因此 $B/\mathfrak{m}B\neq0$.
+            \item 结合上一题的平坦性与本题开头的判别准则，证明 $B$ 是忠实平坦 $A$-模.
+        \end{enumerate}
+    \end{exgroup}
+\end{exercise}
