@@ -580,8 +580,6 @@
 
 这一定理解释了前面群论定义的必要性. 子群记录哪些对称性仍然被允许；中间域记录哪些元素已经被固定下来. 固定的元素越多，允许的对称性就越少，所以对应必然反转包含关系. 正规子群的出现也不是偶然的：只有当 $\Gal(L/E)$ 在 $G$ 中正规时，把 $G$ 中的对称性``模掉''这些固定 $E$ 的对称性，才会得到良好定义的商群，并且这个商群正是 $E/K$ 的 Galois 群.
 
-可解群在这里的作用也可以重新理解. Galois 对应把``逐步加入根''的问题翻译成``逐步缩小 Galois 群''的问题. 如果一个方程可以用根式求解，那么在域扩张一侧，它对应于一串由开方、开 $n$ 次方等操作得到的中间域；在群论一侧，这会反映为一串子群，使得相邻商群足够简单，最终表现为可解群的条件. 因此，可解群不是一个孤立的群论定义，而是把方程的根式求解过程压缩成群结构之后出现的判据. 本讲不证明这个判据，但它解释了为什么 Galois 理论需要从域扩张走到子群链和商群.
-
 最后补充一个关于``格''的正式说法. 一个偏序集合 $(P,\leq)$ 称为\term{格（lattice）}，如果其中任意两个元素 $a,b$ 都有最大下界和最小上界. 最大下界称为 $a,b$ 的\term{交（meet）}，常记作 $a\wedge b$；最小上界称为 $a,b$ 的\term{并（join）}，常记作 $a\vee b$. 对按包含关系排序的子空间、子群、中间域而言，交通常就是集合意义下的交；并则通常是由两个对象共同生成的最小对象. 这正是线性代数中子空间格的抽象版本.
 
 因此，中间域按包含关系构成一个格，子群也按包含关系构成一个格. 在中间域格中，两个中间域的交 $E_1\cap E_2$ 是它们共同的下界，而由二者生成的复合域 $E_1E_2$ 是它们共同的上界. 在子群格中，对应的操作则是子群交 $H_1\cap H_2$ 与由两个子群生成的子群 $\langle H_1,H_2\rangle$. Galois 对应把这两个格反向匹配起来：
@@ -614,7 +612,11 @@
 
 这迫使我们考虑交换环同态 $A\to B$，其中 $A$ 是一个交换环，$B$ 是另一个交换环，并且 $B$ 作为 $A$-模满足某些良好性质. 它可以被看作域扩张 $\mathbf{K}\subset\mathbf{L}$ 的环论版本. 不过，这一步会立刻带来新的困难：$B$ 不再是 $A$ 上的向量空间，而只是一个 $A$-模；模未必有基，未必是自由的，也未必表现得像有限维线性空间. 此外，环中可能有零因子、幂零元，素数也可能在扩张后分解、保持素性或发生分歧. 因此，交换环上的 Galois 理论并不是把``域''机械替换成``环''就能得到的理论.
 
-首先需要把向量空间的张量积替换为模的张量积. 设 $A$ 是交换环，$M,N$ 是 $A$-模. 它们的\term{张量积 (tensor product)} $M\otimes_A N$ 是一个 $A$-模，并带有一个双加性且 $A$-平衡的映射
+在进入张量积之前，先把环和模的语言压缩成线性代数能够识别的形式. 本节中的基本环都指含幺交换环，环同态默认保持 $1$；稍后临时出现的扭群代数则可能非交换. 给定交换环 $A$，一个 \term{$A$-模 (module)}就是一个可以被 $A$ 中元素数乘的加法交换群，满足与线性空间完全类似的分配律和结合律. 如果 $A$ 是域，那么 $A$-模正是 $A$ 上的线性空间；如果 $A$ 只是一般交换环，模就可能出现没有基、不能自由分解等现象.
+
+若有环同态 $A\to B$，则 $B$ 自动成为 $A$-模：$a\in A$ 对 $b\in B$ 的作用就是用 $a$ 在 $B$ 中的像去乘 $b$. 更一般地，任意 $A$-模 $M$ 都可以沿着 $A\to B$ 把纯量从 $A$ 扩大到 $B$，这称为\term{换基（base change）}或\term{纯量扩张（extension of scalars）}，记作 $B\otimes_A M$. 例如，实向量空间 $V$ 的复化可以写作 $\C\otimes_\R V$.
+
+基于此，我们可以更进一步地将其推广，去讨论环上的张量积. 设 $A$ 是交换环，$M,N$ 是 $A$-模. 它们的\term{张量积（tensor product）} $M\otimes_A N$ 是一个 $A$-模，并带有一个双加性且 $A$-平衡的映射
 \[
     M\times N\to M\otimes_A N,\quad (m,n)\mapsto m\otimes n,
 \]
@@ -629,53 +631,29 @@
 \]
 它的本质性质是泛性质：任意从 $M\times N$ 出发的双加性且 $A$-平衡的映射，都唯一地穿过 $M\otimes_A N$. 这与向量空间张量积的定义完全平行，只是这里的纯量来自一个可能很复杂的环 $A$.
 
-若 $A\to B$ 是交换环同态，则 $B$ 是 $A$-模，于是可以构造 $B\otimes_A B$. 在域扩张 $K\subset L$ 中，$L\otimes_K L$ 可以理解为把 $L$ 的两个副本放在同一个 $K$ 上相乘；在环扩张中也一样，$B\otimes_A B$ 同时记录了 $B$ 的两个 $A$-代数结构. 这就是交换环 Galois 理论的第一个关键对象.
+若 $A\to B$ 是交换环同态，则 $B$ 是 $A$-模，可以构造 $B\otimes_A B$. 在域扩张 $K\subset L$ 中，$L\otimes_K L$ 可以理解为把 $L$ 的两个副本放在同一个 $K$ 上相乘；在环扩张中也一样，$B\otimes_A B$ 同时记录了 $B$ 的两个 $A$-代数结构. 这就是交换环 Galois 理论的第一个关键对象.
 
-现在设有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上，也就是说每个 $\sigma\in G$ 都是保持 $A$ 中元素不动的环自同构. 此时可以定义一个规范映射
+在域扩张中还有一个更基本的观察. 令 $G=\Gal(L/K)$，由于每个 $\sigma\in G$ 都逐点固定 $K$，总有自然包含
 \[
-    \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
-    b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}.
+    K\subset L^G=\{x\in L\mid \sigma(x)=x,\ \forall\sigma\in G\}.
 \]
-在域的情形中，若 $L/K$ 是有限 Galois 扩张，这个映射正是
-\[
-    L\otimes_K L\cong \prod_{\sigma\in\Gal(L/K)}L
-\]
-的抽象形式. 因此，交换环上 Galois 扩张的定义也应当要求这个映射是同构.
+如果这个包含实际上是同构，也就是 $K=L^G$，那么所有被 Galois 群完全看不见的元素都已经来自基域 $K$. 换言之，$G$ 没有把某个真正的新元素误认为``标量''. 这个条件很必要，但还不够充分：例如在 $\Q(\sqrt[3]{2})/\Q$ 中，Galois 群平凡，所以不动域是整个 $\Q(\sqrt[3]{2})$，明显大于 $\Q$. 环上定义中的 $A\to B^G$ 正是这一观察的直接推广，而还需要另一个条件来保证对称性的数量也足够多.
 
-\begin{definition}{$G$-Galois 扩张}{}
-    设 $A\to B$ 是交换环同态，有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上. 若
-    \[
-        A\to B^G
-    \]
-    是同构，并且规范映射
-    \[
-        \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
-        b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}
-    \]
-    是同构，并且 $B$ 作为 $A$-模是忠实平坦的，则称 $A\to B$ 是一个 \term{$G$-Galois 扩张}.
-\end{definition}
+在把 Galois 条件提升为交换环上的定义之前，先回到域扩张，看看前面用``Galois 群大小等于扩张次数''给出的定义还可以怎样表达. 设 $L/K$ 是有限域扩张，$G$ 是 $\Gal(L/K)$ 的一个子群. 定义\term{扭群代数（twisted group algebra）}
+\[
+    L\{G\}=\bigoplus_{\sigma\in G}L u_\sigma,
+\]
+其中乘法由 $(a u_\sigma)(b u_\tau)=a\sigma(b)u_{\sigma\tau}$ 给出. 它自然作用在 $L$ 上：
+\[
+    a u_\sigma\colon x\mapsto a\sigma(x).
+\]
+就能得到一个环同态
+\[
+    \Theta_L\colon L\{G\}\to \operatorname{End}_K(L).
+\]
+直观地说，$\Theta_L$ 问的是：$L$ 上的每个 $K$-线性自同态，能否唯一地写成若干个 Galois 对称性与乘法操作的线性组合.
 
-这里出现的\term{忠实平坦 (faithfully flat)} 是一个模论条件. 平坦性大致意味着张量上 $B$ 不会破坏短正合列；忠实性则意味着张量上 $B$ 之后若某个 $A$-模变成零，那么原来的模已经是零. 换言之，$B$ 足够忠实地反映 $A$ 上的代数信息. 对域扩张来说这件事几乎自动成立，因为向量空间都是自由模；但对一般交换环而言，它必须被认真处理.
-
-为了理解上面的规范映射为什么是正确条件，还可以引入一个与群表示更接近的对象. 定义\term{扭群环 (twisted group ring)}
-\[
-    B\{G\}=\bigoplus_{\sigma\in G}B u_\sigma,
-\]
-其中乘法由
-\[
-    (b u_\sigma)(c u_\tau)=b\sigma(c)u_{\sigma\tau}
-\]
-给出. 它自然作用在 $B$ 上：
-\[
-    b u_\sigma\colon x\mapsto b\sigma(x).
-\]
-于是得到一个环同态
-\[
-    \Theta\colon B\{G\}\to \operatorname{End}_A(B).
-\]
-在 Galois 情形中，这个映射应当是同构. 直观地说，$B$ 上的每个 $A$-线性自同态都可以唯一地写成若干个 Galois 对称性与乘法操作的线性组合. 这正是域扩张中``自同构给出所有共轭方向''这一事实在环论中的版本.
-
-这里有一个经典引理作为思想来源：
+真正支撑这一判断的域上事实，是下面的 Dedekind 独立性引理：
 
 \begin{lemma}{Dedekind 引理}{}
     设 $L/K$ 是域扩张，$\sigma_1,\ldots,\sigma_n$ 是互不相同的 $K$-同态 $L\to \Omega$，其中 $\Omega$ 是包含这些像的域. 那么 $\sigma_1,\ldots,\sigma_n$ 在 $\Omega$ 上线性无关. 也就是说，若
@@ -685,36 +663,117 @@
     其中 $a_i\in\Omega$，则 $a_1=\cdots=a_n=0$.
 \end{lemma}
 
-在域的 Galois 理论中，Dedekind 引理保证不同的自同构不会产生非平凡的线性关系，因此 $L\{\Gal(L/K)\}\to \operatorname{End}_K(L)$ 的单射性是可信的. 交换环情形更微妙，因为我们不能随意除以非零元素，也不能总把模当作自由空间来处理. 常见做法是先局部化到局部环，再化到剩余域上用域上的结论，最后再把局部信息粘回全局. 这正是 Nakayama 引理发挥作用的地方.
+\begin{proof}
+    假设存在非平凡的线性关系. 在所有这样的关系中，删去零系数后取项数最少的一个：
+    \[
+        a_1\sigma_1(x)+\cdots+a_m\sigma_m(x)=0,\quad \forall x\in L,
+    \]
+    其中 $a_1,\ldots,a_m$ 均非零. 若 $m=1$，代入 $x=1$ 便得到 $a_1=0$，矛盾. 因此 $m\geq2$.
+
+    由于 $\sigma_1\neq\sigma_m$，存在 $y\in L$ 使得 $\sigma_1(y)\neq\sigma_m(y)$. 将上式中的 $x$ 换成 $xy$，得到
+    \[
+        \sum_{i=1}^m a_i\sigma_i(y)\sigma_i(x)=0,\quad \forall x\in L.
+    \]
+    另一方面，将原关系乘以 $\sigma_m(y)$，再与上式相减，得到
+    \[
+        \sum_{i=1}^{m-1} a_i\bigl(\sigma_i(y)-\sigma_m(y)\bigr)\sigma_i(x)=0,\quad \forall x\in L.
+    \]
+    这是一个项数更少的线性关系. 由最小性，它的所有系数都为零. 但 $i=1$ 时，$a_1\bigl(\sigma_1(y)-\sigma_m(y)\bigr)\neq0$，矛盾. 因此原先的非平凡关系不存在.
+\end{proof}
+
+换言之，域同态不只是在代数结构上互不相同；它们作为函数已经线性无关. 因此，若在域扩张 $L/K$ 中有
+\[
+    \sum_{\sigma\in\Gal(L/K)}a_\sigma\sigma(x)=0,\quad \forall x\in L,
+\]
+其中 $a_\sigma\in L$，那么所有 $a_\sigma$ 都必须为零. 这正说明 $L\{\Gal(L/K)\}\to \operatorname{End}_K(L)$ 至少在单射性上没有隐藏的线性关系.
+
+Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基本含义：不同的对称性不会线性抵消. 这立刻给出前面 Galois 条件的一个线性代数刻画.
+
+\begin{theorem}{扭群代数对 Galois 条件的刻画}{}
+    设 $L/K$ 是有限域扩张，$G\leq\Gal(L/K)$. 上述映射
+    \[
+        \Theta_L\colon L\{G\}\to \operatorname{End}_K(L)
+    \]
+    是单射. 并且它是同构当且仅当 $|G|=[L:K]$. 特别地，当 $G=\Gal(L/K)$ 时，$\Theta_L$ 是同构当且仅当 $L/K$ 是前面定义意义下的 Galois 扩张.
+\end{theorem}
+
+\begin{proof}
+    若 $\sum_{\sigma\in G}a_\sigma u_\sigma$ 映到零，则
+    \[
+        \sum_{\sigma\in G}a_\sigma\sigma(x)=0,\quad \forall x\in L.
+    \]
+    由 Dedekind 引理，所有 $a_\sigma$ 都为零，因此 $\Theta_L$ 单射.
+
+    再比较维数. 作为左 $L$-线性空间，$L\{G\}$ 的维数为 $|G|$. 另一方面，若 $[L:K]=n$，则 $\operatorname{End}_K(L)$ 的 $K$-维数为 $n^2$；而它通过左乘成为 $L$-线性空间，所以其 $L$-维数为 $n$. 因此 $\Theta_L$ 是同构当且仅当 $|G|=n=[L:K]$.
+\end{proof}
+
+在后面的习题中，我们将表明，对有限维 $L$-线性空间取对偶时，上面的映射 $\Theta_L$ 的对偶可以写成 $\Gamma_L$：取 $G=\Gal(L/K)$，则有
+\[
+    \Gamma_L\colon L\otimes_K L\to \prod_{\sigma\in G}L,\quad
+    a\otimes b\mapsto \left(a\sigma(b)\right)_{\sigma\in G}.
+\]
+因此 $\Theta_L$ 为同构等价于 $\Gamma_L$ 为同构. 它把第二个 $L$ 的元素同时送到所有 Galois 共轭方向上；这正是上面扭群代数刻画的张量版本. 由于这个写法只用到环同态、群作用和张量积，它比 $\operatorname{End}_K(L)$ 的表述更适合推广到一般交换环.
+
+现在设有限群 $G$ 通过 $A$-代数自同构作用在交换环 $B$ 上，也就是说每个 $\sigma\in G$ 都是保持 $A$ 中元素不动的环自同构. 此时可以定义规范映射
+\[
+    \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
+    b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}.
+\]
+于是交换环上的 Galois 扩张定义如下.
+
+\begin{definition}{$G$-Galois 扩张}{}
+    设 $A\to B$ 是交换环同态，有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上. 若 $A\to B^G$ 是同构，并且规范映射
+    \[
+        \Gamma\colon B\otimes_A B\to \prod_{\sigma\in G}B,\quad
+        b_1\otimes b_2\mapsto \left(b_1\sigma(b_2)\right)_{\sigma\in G}
+    \]
+    是同构，则称 $A\to B$ 是一个 \term{$G$-Galois 扩张}.
+\end{definition}
+
+有些文献会在定义中额外要求 $B$ 作为 $A$-模是\term{忠实平坦（faithfully flat）}的. 在上面的有限群情形中，这个条件实际上可以从固定环条件和规范映射同构推出，因此我们不把它作为第三条定义项. 平坦性大致意味着张量上 $B$ 不会破坏短正合列；忠实性则意味着张量上 $B$ 之后若某个 $A$-模变成零，那么原来的模已经是零. 换言之，$B$ 足够忠实地反映 $A$ 上的代数信息. 对域扩张来说这件事几乎自动成立，因为向量空间都是自由模；但对一般交换环而言，它必须由 Nakayama 引理来保证.
+
+为了读懂下面这个引理，我们再补上几条最小限度的环论词汇. 设 $A$ 是交换环. 子集 $I\subset A$ 若是加法子群，并且对任意 $a\in A$、$x\in I$ 都有 $ax\in I$，则称 $I$ 是 $A$ 的一个\term{理想（ideal）}. 若 $I\neq A$，并且不存在严格夹在 $I$ 与 $A$ 之间的理想，则称 $I$ 为\term{极大理想（maximal ideal）}. 一个只有唯一极大理想 $\mathfrak{m}$ 的环称为\term{局部环（local ring）}. 在局部环中，恰好所有不属于 $\mathfrak{m}$ 的元素都是可逆元.
+
+类似地，若 $M$ 是 $A$-模，$N\subset M$ 在加法和 $A$ 中元素数乘下都封闭，则称 $N$ 是 $M$ 的子模. 商集 $M/N$ 按陪集加法和数乘成为一个 $A$-模，称为\term{商模（quotient module）}. 若存在有限个元素 $x_1,\ldots,x_r\in M$，使得每个 $x\in M$ 都能写成 $x=a_1x_1+\cdots+a_rx_r$，其中 $a_i\in A$，则称 $M$ 是\term{有限生成（finitely generated）}的. 对理想 $\mathfrak{m}$，记号 $\mathfrak{m}M$ 表示所有有限和 $\sum a_i x_i$ 组成的子模，其中 $a_i\in\mathfrak{m}$、$x_i\in M$.
 
 \begin{lemma}{Nakayama 引理}{}
     设 $A$ 是局部环，$\mathfrak{m}$ 是其极大理想，$M$ 是有限生成 $A$-模. 若 $M=\mathfrak{m}M$，则 $M=0$. 更一般地，若 $m_1,\ldots,m_r\in M$ 在商模 $M/\mathfrak{m}M$ 中的像生成 $M/\mathfrak{m}M$，则 $m_1,\ldots,m_r$ 生成 $M$.
 \end{lemma}
 
-这个引理的意义是：有限生成模的许多性质可以通过模掉极大理想后的向量空间来检测. 因此，在证明 $G$-Galois 扩张的性质时，我们可以把 $A$ 局部化为局部环，再看
-\[
-    B\otimes_A \kappa(\mathfrak{p}),
-\]
-其中 $\kappa(\mathfrak{p})$ 是素理想 $\mathfrak{p}$ 处的剩余域. 在这个纤维上，问题重新变成域或有限维代数上的问题，Dedekind 引理可以控制不同群元素的独立性，而 Nakayama 引理则把纤维上的生成性提升回局部环. 通过这一路线可以证明：满足上述规范映射同构条件的扩张在良好有限性假设下是有限投射的，因而平坦；再结合 $B^G=A$，可进一步得到忠实性. 这就是``从域到环''时最核心的技术过渡.
+\begin{proof}
+    先证明 $M=\mathfrak{m}M$ 时 $M=0$. 取 $M$ 的一组生成元 $x_1,\ldots,x_r$. 由 $M=\mathfrak{m}M$，存在 $a_{ij}\in\mathfrak{m}$ 使得
+    \[
+        x_i=\sum_{j=1}^r a_{ij}x_j,\quad i=1,\ldots,r.
+    \]
+    于是
+    \[
+        \sum_{j=1}^r(\delta_{ij}-a_{ij})x_j=0,\quad i=1,\ldots,r.
+    \]
+    令 $C=(\delta_{ij}-a_{ij})$. 这里的关键是伴随矩阵技巧：用 $\operatorname{adj}(C)C=\det(C)I$ 左乘上式，可得 $\det(C)x_i=0$ 对所有 $i$ 成立. 但 $C\equiv I\pmod{\mathfrak{m}}$，所以 $\det(C)\equiv1\pmod{\mathfrak{m}}$. 在局部环中，不属于极大理想的元素都是可逆元，因此 $\det(C)$ 可逆，进而 $x_1=\cdots=x_r=0$. 这说明 $M=0$.
 
-有了这些准备，交换环上的 Galois 对应可以表述为如下形式：
+    对一般情形，设 $N$ 是由 $m_1,\ldots,m_r$ 生成的子模. 它们的像生成 $M/\mathfrak{m}M$ 等价于 $M=N+\mathfrak{m}M$. 因此商模 $M/N$ 满足 $M/N=\mathfrak{m}(M/N)$. 由刚证明的结论，$M/N=0$，即 $N=M$.
+\end{proof}
+
+这个引理的意义是：有限生成模的许多性质可以通过模掉极大理想后的向量空间来检测. 因此，在证明 $G$-Galois 扩张的性质时，我们可以把 $A$ 局部化为局部环，再看 $B\otimes_A \kappa(\mathfrak{p})$，其中 $\kappa(\mathfrak{p})$ 是素理想 $\mathfrak{p}$ 处的剩余域. 在这个纤维上，问题重新变成域或有限维代数上的问题，Dedekind 引理可以控制不同群元素的独立性，而 Nakayama 引理则把纤维上的生成性提升回局部环. 通过这一路线可以证明：上述定义中的规范映射同构条件使 $B$ 成为有限投射 $A$-模，因而平坦；再结合 $B^G=A$，可进一步得到忠实性. 这里的技术细节我们将在习题中给出.
+
+在上面的背景下，交换环上的 Galois 对应可以表述为如下形式：
 
 \begin{theorem}{Chase-Harrison-Rosenberg 的 Galois 对应}{}
-    设 $A\to B$ 是有限群 $G$ 的 $G$-Galois 扩张. 则每个子群 $H\leq G$ 都给出中间环
+    设 $G$ 为有限群，$A\to B$ 是一个 $G$-Galois 扩张. 则每个子群 $H\leq G$ 都给出中间环
     \[
         B^H=\{b\in B\mid \sigma(b)=b,\ \forall\sigma\in H\},
     \]
-    且 $B^H\to B$ 是 $H$-Galois 扩张. 在 Chase-Harrison-Rosenberg 的理论中，子群 $H\leq G$ 与 $A$-可分的中间子环 $A\subset C\subset B$ 之间存在反向的格对应：
+    且 $B^H\to B$ 是 $H$-Galois 扩张. 子群 $H\leq G$ 与 $A$-可分的中间子环 $A\subset C\subset B$ 之间反向的格对应
     \[
         H\longmapsto B^H,\quad
         C\longmapsto \{\sigma\in G\mid \sigma(c)=c,\ \forall c\in C\}.
     \]
-    在没有非平凡幂等元的连通情形中，这正是经典 Galois 对应在交换环上的直接推广. 此外，正规子群对应于正规中间扩张；若 $H\triangleleft G$，则 $A\to B^H$ 的 Galois 群为 $G/H$.
+    在比较好的环当中成立. 此外，正规子群对应于正规中间扩张；若 $H\triangleleft G$，则 $A\to B^H$ 的 Galois 群为 $G/H$.
 \end{theorem}
 
-这一定理是由 Chase、Harrison 与 Rosenberg 在 1965 年系统建立的. 从形式上看，它和域扩张的 Galois 对应几乎一致：子群对应固定环，包含关系反转，正规子群对应商群. 真正新增的是``可分''、``忠实平坦''和``幂等元''这些环论现象. 它们说明，环上的 Galois 理论并不是丢掉除法后的域论，而是一套以张量积和下降理论为核心的结构理论.
+这一定理是由 Chase、Harrison 与 Rosenberg 在 1965 年系统建立的. 从形式上看，它和域扩张的 Galois 对应几乎一致：子群对应固定环，包含关系反转，正规子群对应商群. 真正新增的是这里被我们含糊带过的``比较好''的环论现象. 它说明，环上的 Galois 理论并不是丢掉除法后的域论，而是一套以张量积和下降理论为核心的结构理论.
 
-本章不再继续证明这一理论. 对我们的主线而言，重要的是看清楚它与线性代数的关系：域扩张时，有限维向量空间、迹、范数和自同构群已经足以支撑 Galois 理论；交换环扩张时，向量空间被模取代，基与维数被有限投射和忠实平坦取代，而 $L\otimes_K L\cong\prod_G L$ 这条线性代数式的分解则被提升为 $G$-Galois 扩张的核心定义. 换言之，线性代数并没有消失，只是变成了模论与张量积的语言.
+本章不再继续发展这一理论. 对我们的主线而言，重要的是看清楚它与线性代数的关系：域扩张时，有限维向量空间、迹、范数和自同构群已经足以支撑 Galois 理论；交换环扩张时，向量空间被模取代，基与维数被有限投射和忠实平坦取代，而 $L\otimes_K L\cong\prod_G L$ 这条线性代数式的分解则被提升为 $G$-Galois 扩张的核心定义. 换言之，线性代数并没有消失，只是被翻译成了模论与张量积的语言.
 
 \section{代数数论中的 Galois 理论}
 
@@ -791,9 +850,82 @@
 \begin{exercise}
     \begin{exgroup}
         \item 证明，\autoref{ex:四元素有限域的例子} 中定义的 $\mathbf{F}_4$ 是一个域，而且构成 $\Z_2$ 上的一个线性空间.
+        \item 证明：域的特征只能为 $0$ 或素数. 进一步证明，若域 $\mathbf{F}$ 的特征为素数 $p$，则由 $1_\mathbf{F}$ 生成的子域同构于 $\Z_p$.
         \item 给出\autoref{thm:有限域是素域上的有限维线性空间} 的完整证明.
         \item 利用 $\mathbf{F}_2[x]/(x^2+x+1)$ 重新推导\autoref{ex:四元素有限域的例子} 中的乘法表. 列出 $\mathbf{F}_3[x]/(x^2+1)$ 中所有元素.
         \item 设 $d$ 是一个不是有理数平方的有理数. 证明 $\Q(\sqrt{d})=\{a+b\sqrt{d}\mid a,b\in\Q\}$，并求 $\Gal(\Q(\sqrt{d})/\Q)$，计算 $\Q(\sqrt{d})/\Q$ 中元素 $a+b\sqrt{d}$ 的迹与范数.
         \item 证明任意 Abel 群都是可解群，并证明任意循环群的子群都是正规子群.
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 设 $q=p^r$，证明 Frobenius 映射
+        \[
+            \varphi_q\colon \mathbf{F}_{q^n}\to\mathbf{F}_{q^n},\quad x\mapsto x^q
+        \]
+        是 $\mathbf{F}_q$-自同构，并证明它的阶为 $n$. 由此推出
+        \[
+            \Gal(\mathbf{F}_{q^n}/\mathbf{F}_q)=\langle\varphi_q\rangle\cong \Z_n.
+        \]
+        \item 证明有限域中的子域判别：
+        \[
+            \mathbf{F}_{q^d}\subset \mathbf{F}_{q^n}\iff d\mid n.
+        \]
+        提示：可从乘法群阶数、方程 $x^{q^d}-x=0$，或 Frobenius 固定元三个角度任选其一.
+        \item 设 $d\mid n$. 证明 $\mathbf{F}_{q^d}$ 正是 $\varphi_q^d$ 的固定域，并写出在 Galois 对应下 $\mathbf{F}_{q^d}$ 对应的子群. 由此说明有限域的 Galois 对应就是因子格的反向对应.
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 本题证明正文中提到的 $\Theta_L$ 与 $\Gamma_L$ 的对偶关系. 设 $L/K$ 是有限域扩张，$G\leq \Gal(L/K)$，并令
+        \[
+            \Theta_L\colon L\{G\}\to\operatorname{End}_K(L),\quad
+            a u_\sigma\mapsto (x\mapsto a\sigma(x)).
+        \]
+        \begin{enumerate}
+            \item 把 $\operatorname{End}_K(L)$ 看作左 $L$-线性空间，证明
+            \[
+                L\otimes_K L\to \operatorname{Hom}_L(\operatorname{End}_K(L),L),\quad
+                a\otimes b\mapsto\bigl(T\mapsto aT(b)\bigr)
+            \]
+            是 $L$-线性同构. 提示：取 $L$ 的一组 $K$-基 $\beta_1,\ldots,\beta_n$，用把某个 $\beta_i$ 送到 $1$、其余基向量送到 $0$ 的 $K$-线性映射检验单射性.
+            \item 证明 $\operatorname{Hom}_L(L\{G\},L)\cong\prod_{\sigma\in G}L$，其中一个线性泛函对应于它在各个 $u_\sigma$ 上的取值.
+            \item 在上述两个同构下，证明 $\Theta_L$ 的对偶映射就是
+            \[
+                \Gamma_L\colon L\otimes_K L\to\prod_{\sigma\in G}L,\quad
+                a\otimes b\mapsto\bigl(a\sigma(b)\bigr)_{\sigma\in G}.
+            \]
+            \item 当 $G=\Gal(L/K)$ 且 $|G|=[L:K]$ 时，说明 $\Theta_L$ 为同构当且仅当 $\Gamma_L$ 为同构.
+        \end{enumerate}
+        \item 本题给出交换环 Galois 扩张有限投射性的标准证明. 设 $A\to B$ 是交换环同态，有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上，且规范映射
+        \[
+            \Gamma\colon B\otimes_A B\to\prod_{\sigma\in G}B,\quad
+            b_1\otimes b_2\mapsto\bigl(b_1\sigma(b_2)\bigr)_{\sigma\in G}
+        \]
+        是同构，并且 $B^G=A$. 令 $e_1\in\prod_{\sigma\in G}B$ 为第 $1_G$ 个分量为 $1$、其余分量为 $0$ 的元素，设
+        \[
+            \Gamma^{-1}(e_1)=\sum_{i=1}^r x_i\otimes y_i.
+        \]
+        \begin{enumerate}
+            \item 证明
+            \[
+                \sum_{i=1}^r x_i\sigma(y_i)=
+                \begin{cases}
+                    1,&\sigma=1_G,\\
+                    0,&\sigma\neq1_G.
+                \end{cases}
+            \]
+            \item 定义 $\operatorname{tr}_G(b)=\sum_{\sigma\in G}\sigma(b)$. 证明 $\operatorname{tr}_G(b)\in B^G=A$，且映射 $\operatorname{tr}_G\colon B\to A$ 是 $A$-线性的.
+            \item 证明对任意 $b\in B$ 都有
+            \[
+                b=\sum_{i=1}^r x_i\,\operatorname{tr}_G(y_i b).
+            \]
+            \item 利用有限投射模的对偶基判别准则，证明 $B$ 是有限生成投射 $A$-模. 因而 $B$ 是平坦 $A$-模.
+        \end{enumerate}
+        \item 本题继续上一题，证明忠实平坦性. 可使用如下判别准则：若 $B$ 是平坦 $A$-代数，则 $B$ 忠实平坦当且仅当对 $A$ 的每个极大理想 $\mathfrak{m}$ 都有 $B/\mathfrak{m}B\neq0$.
+        \begin{enumerate}
+            \item 由 $B^G=A$ 说明 $A\to B$ 是单射.
+            \item 对任意极大理想 $\mathfrak{m}\subset A$，若 $\mathfrak{m}B=B$，将其局部化到局部环 $A_{\mathfrak{m}}$ 上，并用 Nakayama 引理推出 $B_{\mathfrak{m}}=0$.
+            \item 说明上一步与单射 $A_{\mathfrak{m}}\to B_{\mathfrak{m}}$ 矛盾. 因此 $B/\mathfrak{m}B\neq0$.
+            \item 结合上一题的平坦性与本题开头的判别准则，证明 $B$ 是忠实平坦 $A$-模.
+        \end{enumerate}
     \end{exgroup}
 \end{exercise}
