@@ -895,6 +895,26 @@ Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基�
             \]
             \item 当 $G=\Gal(L/K)$ 且 $|G|=[L:K]$ 时，说明 $\Theta_L$ 为同构当且仅当 $\Gamma_L$ 为同构.
         \end{enumerate}
+        \item 本题补充有限投射模和平坦模的基本工具. 设 $A$ 是交换环，$M$ 是 $A$-模. 若存在 $A$-模 $N$ 与非负整数 $r$，使得
+        \[
+            M\oplus N\cong A^r,
+        \]
+        则称 $M$ 是一个\term{有限投射（finite projective）}$A$-模；换言之，有限投射模就是有限自由模的直和因子. 若有限个元素 $x_i\in M$ 与 $A$-线性映射 $\varphi_i\in\operatorname{Hom}_A(M,A)$ 满足对任意 $x\in M$ 都有 $x=\sum_i x_i\varphi_i(x)$，则称它们构成 $M$ 的一组有限\term{对偶基（dual basis）}.
+        \begin{enumerate}
+            \item 设 $e\in A$ 满足 $e^2=e$. 证明理想 $eA$ 是有限投射 $A$-模. 进一步地，写出 $A=eA\oplus(1-e)A$，并给出 $eA$ 的一组有限对偶基.
+            \item 若存在有限个元素 $x_1,\ldots,x_r\in M$ 与 $A$-线性映射 $\varphi_1,\ldots,\varphi_r\in\operatorname{Hom}_A(M,A)$，使得对任意 $x\in M$ 都有
+            \[
+                x=\sum_{i=1}^r x_i\varphi_i(x),
+            \]
+            则证明 $M$ 是有限投射 $A$-模. 提示：构造 $A^r\to M$ 与 $M\to A^r$，并证明它们的复合为 $\operatorname{id}_M$.
+            \item 反过来，若 $M$ 是有限投射 $A$-模，则证明存在满足上一问条件的 $x_i$ 与 $\varphi_i$. 因此，有限投射模等价于存在这样一组有限\term{对偶基（dual basis）}.
+            \item 称 $A$-模 $P$ 是\term{平坦（flat）}的，如果对任意单射 $N_1\to N_2$，诱导映射
+            \[
+                N_1\otimes_A P\to N_2\otimes_A P
+            \]
+            仍为单射. 证明有限自由模是平坦模.
+            \item 证明平坦模的直和因子仍然平坦. 结合定义与上一问推出：有限投射模一定平坦.
+        \end{enumerate}
         \item 本题给出交换环 Galois 扩张有限投射性的标准证明. 设 $A\to B$ 是交换环同态，有限群 $G$ 通过 $A$-代数自同构作用在 $B$ 上，且规范映射
         \[
             \Gamma\colon B\otimes_A B\to\prod_{\sigma\in G}B,\quad
@@ -918,7 +938,7 @@ Dedekind 引理在这里的作用，是解释扭群代数作用中的一个基�
             \[
                 b=\sum_{i=1}^r x_i\,\operatorname{tr}_G(y_i b).
             \]
-            \item 利用有限投射模的对偶基判别准则，证明 $B$ 是有限生成投射 $A$-模. 因而 $B$ 是平坦 $A$-模.
+            \item 利用有限投射模的对偶基判别准则，证明 $B$ 是有限投射 $A$-模. 因而 $B$ 是平坦 $A$-模.
         \end{enumerate}
         \item 本题继续上一题，证明忠实平坦性. 可使用如下判别准则：若 $B$ 是平坦 $A$-代数，则 $B$ 忠实平坦当且仅当对 $A$ 的每个极大理想 $\mathfrak{m}$ 都有 $B/\mathfrak{m}B\neq0$.
         \begin{enumerate}
