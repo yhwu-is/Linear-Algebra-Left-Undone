@@ -180,9 +180,17 @@
     设 $ T \in \mathcal{L}(V),\enspace \lambda \in \mathbf{F} $. 证明：$ \lambda $ 是 $ T $ 的特征值当且仅当 $ \overline{\lambda} $是 $ T^* $ 的特征值.
 \end{example}
 
-% \begin{proof}
-
-% \end{proof}
+\begin{proof}
+    由定义可知，$ \lambda $ 是 $ T $ 的特征值当且仅当 $ T - \lambda I $ 不是单射，这又等价于 $ T - \lambda I $ 不是满射. 根据\autoref{thm:伴随核空间像空间}，这等价于
+    \[
+        \ker \bigl( (T - \lambda I)^* \bigr) \neq \{ 0 \}.
+    \]
+    而
+    \[
+        (T - \lambda I)^* = T^* - \overline{\lambda} I,
+    \]
+    因而这又等价于 $ T^* - \overline{\lambda} I $ 不是单射，也即 $ \overline{\lambda} $ 是 $ T^* $ 的特征值.
+\end{proof}
 
 \begin{example}{}{伴随与不变子空间}
     设 $ T \in \mathcal{L}(V) $ 且 $ U $ 是 $ V $ 的子空间. 证明：$ U $ 在 $ T $ 下不变当且仅当 $ U^{\perp} $ 在 $ T^* $ 下不变.
@@ -219,6 +227,19 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
 \begin{theorem}{}{}
     设 $ S \in \mathcal{L}(V) $ 是酉变换（正交变换），则 $ S $ 在 $ V $ 的任一一组标准正交基下的表示矩阵是酉矩阵（正交矩阵）.
 \end{theorem}
+
+\begin{proof}
+    设 $ e_1, \cdots, e_n $ 是 $ V $ 的一组标准正交基，$ A = (a_{ij}) $ 是 $ S $ 在这组基下的表示矩阵. 则对每个 $ j = 1, \cdots, n $，有
+    \[
+        S e_j = a_{1j} e_1 + \cdots + a_{nj} e_n.
+    \]
+    由于 $ S $ 是酉变换（正交变换），$ S e_1, \cdots, S e_n $ 仍构成一组标准正交基. 因此对任意 $ j, k $，有
+    \[
+        \delta_{jk} = \langle S e_j, S e_k \rangle
+        = \sum_{i = 1}^n a_{ij} \overline{a_{ik}}.
+    \]
+    这说明 $ A^\mathrm{H} A = E $（实数情形下为 $ A^{\mathrm{T}} A = E $），故 $ A $ 是酉矩阵（正交矩阵）.
+\end{proof}
 
 我们也可以对定义做一些变形，显然，酉矩阵满足 $ A^\mathrm{H}A = AA^\mathrm{H} = E $，而正交矩阵满足 $ A^{\mathrm{T}}A = AA^{\mathrm{T}} = E $. 设 \[
     A = (\alpha_1, \ldots, \alpha_n) = \begin{pmatrix}
@@ -467,6 +488,29 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
     设 $ T \in \mathcal{L}(V) $ 是正规的，且 $ v \in V $ 是 $ T $ 相应于特征值 $ \lambda $ 的特征向量，则 $ v $ 也是 $ T^* $ 相应于特征值$ \overline{\lambda} $ 的特征向量.
 \end{theorem}
 
+\begin{proof}
+    令 $ N = T - \lambda I $，则 $N^* = T^* - \overline{\lambda} I$. 由 $ T $ 是正规的可得
+    \begin{align*}
+        N^* N &= (T^* - \overline{\lambda} I)(T - \lambda I) \\
+        &= T^* T - \lambda T^* - \overline{\lambda} T + |\lambda|^2 I \\
+        &= T T^* - \lambda T^* - \overline{\lambda} T + |\lambda|^2 I \\
+        &= (T - \lambda I)(T^* - \overline{\lambda} I) = N N^*.
+    \end{align*}
+    因而 $ N $ 也是正规的. 由\autoref{thm:正规算子的等价条件} 的条件 2 可知，对任意 $ x \in V $ 都有 $ \| N x \| = \| N^* x \| $. 由于 $ v $ 是 $ T $ 相应于 $ \lambda $ 的特征向量，故
+    \[
+        N v = (T - \lambda I)v = 0.
+    \]
+    从而
+    \[
+        \| N^* v \| = \| N v \| = 0.
+    \]
+    因此 $ N^* v = 0 $，即
+    \[
+        (T^* - \overline{\lambda} I)v = 0.
+    \]
+    这说明 $ v $ 是 $ T^* $ 相应于特征值 $ \overline{\lambda} $ 的特征向量.
+\end{proof}
+
 这是\autoref{ex:伴随与特征值} 在正规算子条件下的加强，它不仅反映了算子与其伴随的特征值在数值上的关系，也反映出了特征空间的关系. 从这里出发，你可以先思考一下正规算子的不变子空间是怎样的，如果有困难的话不妨结合一下\autoref{ex:伴随与不变子空间}.
 
 在学特征值时我们就学过，同一映射的属于不同特征值的特征向量是线性无关的. 在正规算子条件下，这一结论也得到了加强，从原先的线性无关变为互相正交.
@@ -543,11 +587,45 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
     仿照实谱定理的证明方法，证明复谱定理.
 \end{example}
 
+\begin{proof}
+    对 $ \dim V $ 作归纳. 当 $ \dim V = 1 $ 时结论显然成立.
+
+    设结论对维数小于 $ \dim V $ 的情形成立. 由代数学基本定理，$ T $ 至少有一个特征值 $ \lambda $. 取相应的单位特征向量 $ e_1 $，令 $ U = \spa(e_1) $. 任取 $ v \in U^\perp $，由\autoref{thm:正规算子的特征向量} 可知
+    \[
+        T^* e_1 = \overline{\lambda} e_1.
+    \]
+    因而
+    \[
+        \langle Tv, e_1 \rangle = \langle v, T^* e_1 \rangle = \langle v, \overline{\lambda} e_1 \rangle = \lambda \langle v, e_1 \rangle = 0.
+    \]
+    这说明 $ U^\perp $ 在 $ T $ 下不变. 另一方面，由\autoref{ex:伴随与不变子空间} 可知 $ U^\perp $ 在 $ T^* $ 下也不变. 因而 $ T|_{U^\perp} \in \mathcal{L}(U^\perp) $. 对任意 $ x, y \in U^\perp $，有
+    \[
+        \langle T|_{U^\perp} x, y \rangle = \langle Tx, y \rangle = \langle x, T^* y \rangle = \langle x, T^*|_{U^\perp} y \rangle,
+    \]
+    故 $ (T|_{U^\perp})^* = T^*|_{U^\perp} $. 于是
+    \[
+        T|_{U^\perp}(T|_{U^\perp})^* = T|_{U^\perp} T^*|_{U^\perp} = (TT^*)|_{U^\perp} = (T^*T)|_{U^\perp} = T^*|_{U^\perp} T|_{U^\perp} = (T|_{U^\perp})^* T|_{U^\perp},
+    \]
+    所以 $ T|_{U^\perp} $ 也是正规的.
+
+    由归纳假设，$ U^\perp $ 有一组由 $ T|_{U^\perp} $ 的特征向量构成的标准正交基 $ e_2, \cdots, e_n $. 再加上 $ e_1 $，便得到 $ V $ 的一组由 $ T $ 的特征向量构成的标准正交基. 因此复谱定理成立.
+\end{proof}
+
 借助复谱定理，我们也可以对正规算子和自伴算子的关系做更深入的理解.
 
 \begin{example}{}{}
     证明：复内积空间上的正规算子是自伴的当且仅当其所有的特征值都是实的.
 \end{example}
+
+\begin{proof}
+    若 $ T $ 是自伴的，则由前面已经证明过的结论可知 $ T $ 的所有特征值都是实数.
+
+    反之，设 $ T $ 是正规的，且它的所有特征值都是实数. 由复谱定理，$ V $ 有一组由 $ T $ 的特征向量构成的标准正交基 $ e_1, \cdots, e_n $. 设
+    \[
+        T e_j = \lambda_j e_j, \quad j = 1, \cdots, n,
+    \]
+    其中 $ \lambda_1, \cdots, \lambda_n \in \mathbb{R} $. 因而 $ T $ 在这组标准正交基下的表示矩阵为 $\diag(\lambda_1, \cdots, \lambda_n)$. 由\autoref{thm:伴随与共轭转置} 可知，$ T^* $ 在同一组标准正交基下的表示矩阵是该矩阵的共轭转置，仍等于它自身，故 $ T^* = T $，即 $ T $ 是自伴算子.
+\end{proof}
 
 相应地，我们也可以给出酉变换的一个完全描述.
 
@@ -560,7 +638,39 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
     \end{enumerate}
 \end{theorem}
 
-这是复谱定理和酉变换特征值的性质的一个直接推论.
+\begin{proof}
+    (1) $ \Rightarrow $ (2) 设 $ S $ 是酉变换. 由前面的讨论可知 $ S^{-1} = S^* $，于是
+    \[
+        S^* S = S S^* = I,
+    \]
+    从而 $ S $ 是正规的. 由复谱定理，$ V $ 有一组由 $ S $ 的特征向量构成的标准正交基. 若 $ v $ 是 $ S $ 相应于特征值 $ \lambda $ 的特征向量，则
+    \[
+        \| v \| = \| Sv \| = \| \lambda v \| = |\lambda| \, \| v \|.
+    \]
+    由于 $ v \neq 0 $，故 $ |\lambda| = 1 $.
+
+    (2) $ \Rightarrow $ (1) 设 $ e_1, \cdots, e_n $ 是一组由 $ S $ 的特征向量构成的标准正交基，且
+    \[
+        S e_j = \lambda_j e_j, \quad |\lambda_j| = 1, \quad j = 1, \cdots, n.
+    \]
+    任取 $v = a_1 e_1 + \cdots + a_n e_n \in V$，有
+    \[
+        Sv = a_1 \lambda_1 e_1 + \cdots + a_n \lambda_n e_n.
+    \]
+    因而
+    \[
+        \| Sv \|^2 = |a_1 \lambda_1|^2 + \cdots + |a_n \lambda_n|^2 = |a_1|^2 + \cdots + |a_n|^2 = \| v \|^2.
+    \]
+    任取
+    \[
+        u = b_1 e_1 + \cdots + b_n e_n \in V,
+    \]
+    则
+    \[
+        \langle Sv, Su \rangle = \sum_{j = 1}^n a_j \overline{b_j} |\lambda_j|^2 = \sum_{j = 1}^n a_j \overline{b_j} = \langle v, u \rangle.
+    \]
+    因而 $ S $ 保持内积，所以 $ S $ 是酉变换.
+\end{proof}
 
 复内积空间上的正规算子我们已经有了一个非常漂亮的描述，但实内积空间上的正规算子有着一个致命的问题，那就是它不一定存在特征值，正交变换时我们就已经给出了一个反例. 为了从复内积空间过渡到实内积空间，我们需要建立起复数和实矩阵的对应关系.
 
@@ -626,7 +736,7 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
 
 实内积空间上的自伴算子的完全描述已经由实谱定理给出，所以我们只需要讨论正规但不自伴的情况，再将二者结合即可. 前面我们提到过，实内积空间刻画旋转需要更高的维度，本质上是复数需要一个二阶实矩阵来对应. 比如 $ z = a + b\i $，我们可以用矩阵 $ \begin{pmatrix} a & -b \\ b & a \end{pmatrix} = aI + bJ $ 来对应，其中 $ I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} $ 是单位矩阵，对应于 1，$ J = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} $ 是 ，对应于 $ \i $. 可以验证加法和乘法都是对应的，只需注意到 $ J^2 = -I $ 即可. 而共轭操作则是矩阵的转置，即 $ (aI + bJ)^{\mathrm{T}} = aI - bJ $. 更重要的一点在于，这个二阶矩阵是可以和自己的共轭转置交换的，即 $ (aI + bJ)(aI - bJ) = (aI - bJ)(aI + bJ) $. 也就是说，这是一个实正规矩阵. 所以萌生出将实正规算子中的复特征值用一个二阶矩阵去替代也就不足为奇了. 下面给出有关此二阶矩阵的完全描述.
 
-\begin{theorem}{}{}
+\begin{theorem}{}{二维实正规算子}
     设 $ V $ 是二维的实内积空间，$ T \in \mathcal{L}(V) $. 则以下条件等价：
     \begin{enumerate}
         \item $ T $ 是正规的但不是自伴的；
@@ -637,24 +747,83 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
     \end{enumerate}
 \end{theorem}
 
-其正与我们的目标相一致. 而考虑到实谱定理的证明方法，我们希望能够得到正规算子与其不变子空间之间的联系，最重要的是在不变子空间上的限制依然是正规的，来让我们继续使用归纳法. 事实上这是可行的，我们有如下的结论.
+证明是非常容易的：只需要利用矩阵正规但不自伴的定义（$ A A^\mathrm{T} = A^\mathrm{T} A $ 且 $ A \neq A^\mathrm{T} $）就可以得到矩阵的形式了，这里不再展开.
 
-\begin{theorem}{}{}
+事实上，这一定理正与我们的目标相一致. 而考虑到实谱定理的证明方法，我们希望能够得到正规算子与其不变子空间之间的联系，最重要的是在不变子空间上的限制依然是正规的，来让我们继续使用归纳法. 事实上这是可行的，我们有如下的结论.
+
+\begin{theorem}{}{正规算子的不变子空间}
     设 $ V $ 是内积空间，$ T \in \mathcal{L}(V) $ 是正规的，$ U $ 是 $ V $ 在 $ T $ 下不变的子空间，则
     \begin{enumerate}
         \item $ U^{\perp} $ 在 $ T $ 下不变；
 
-        \item $ U $ 在 $ T $ 下不变.
+        \item $ U $ 在 $ T^* $ 下不变；
 
-        \item $ (T|_U)^* = (T^*|_U) $；
+        \item $ (T|_U)^* = T^*|_U $；
 
         \item $ T|_U \in \mathcal{L}(U) $ 和 $ T|_{U^{\perp }} \in \mathcal{L}(U^{\perp }) $ 都是正规的.
     \end{enumerate}
 \end{theorem}
 
+\begin{proof}
+    设 $ \dim U = r $，取 $ U $ 的一组标准正交基 $ e_1, \cdots, e_r $，再将其扩充为 $ V $ 的一组标准正交基
+    \[
+        e_1, \cdots, e_r, e_{r+1}, \cdots, e_n,
+    \]
+    其中 $ e_{r+1}, \cdots, e_n $ 是 $ U^\perp $ 的一组标准正交基. 由于 $ U $ 在 $ T $ 下不变，$ T $ 在这组基下的矩阵必有分块上三角形式
+    \[
+        A = \begin{pmatrix}
+            A_1 & B \\
+            0   & A_2
+        \end{pmatrix}.
+    \]
+    由\autoref{thm:伴随与共轭转置}，$ T^* $ 在这组基下的矩阵为
+    \[
+        A^\mathrm{H} = \begin{pmatrix}
+            A_1^\mathrm{H} & 0 \\
+            B^\mathrm{H}   & A_2^\mathrm{H}
+        \end{pmatrix}.
+    \]
+    因为 $ T $ 正规，所以 $ A $ 也是正规矩阵，即 $ A A^\mathrm{H} = A^\mathrm{H} A $. 比较两边左上角的分块可得
+    \[
+        A_1 A_1^\mathrm{H} + B B^\mathrm{H} = A_1^\mathrm{H} A_1.
+    \]
+    对上式取迹，得到 $\operatorname{tr}(B B^\mathrm{H}) = 0$. 但 $ B B^\mathrm{H} $ 的对角元之和等于 $ B $ 的各个元素模平方之和，因此 $ B = 0 $. 于是 $ A $ 实际上是分块对角矩阵
+    \[
+        A = \begin{pmatrix}
+            A_1 & 0 \\
+            0   & A_2
+        \end{pmatrix}.
+    \]
+    这立刻说明 $ U^\perp $ 在 $ T $ 下不变，从而第 1 条成立；同时 $ A^\mathrm{H} $ 也是分块对角矩阵，因此 $ U $ 在 $ T^* $ 下不变，第 2 条也成立.
+
+    对任意 $ u, v \in U $，由第 2 条知 $ T^*v \in U $，于是
+    \[
+        \langle T|_U u, v \rangle = \langle Tu, v \rangle = \langle u, T^*v \rangle = \langle u, T^*|_U v \rangle.
+    \]
+    故 $ (T|_U)^* = T^*|_U $，第 3 条成立.
+
+    由 $ A $ 的分块对角形式可知
+    \[
+        A A^\mathrm{H} = \begin{pmatrix}
+            A_1 A_1^\mathrm{H} & 0 \\
+            0                  & A_2 A_2^\mathrm{H}
+        \end{pmatrix},
+        \qquad
+        A^\mathrm{H} A = \begin{pmatrix}
+            A_1^\mathrm{H} A_1 & 0 \\
+            0                  & A_2^\mathrm{H} A_2
+        \end{pmatrix}.
+    \]
+    由于这两个矩阵相等，所以
+    \[
+        A_1 A_1^\mathrm{H} = A_1^\mathrm{H} A_1, \qquad A_2 A_2^\mathrm{H} = A_2^\mathrm{H} A_2.
+    \]
+    这说明 $ T|_U $ 和 $ T|_{U^\perp} $ 都是正规的，第 4 条成立.
+\end{proof}
+
 接下来就只需要将整个空间分解为不变子空间的直和，就可以得到实内积空间上正规算子的完全描述了.
 
-\begin{theorem}{}{}
+\begin{theorem}{}{实正规算子的结构}
     设 $ V $ 是实内积空间，$ T \in \mathcal{L}(V) $，则以下条件等价：
     \begin{enumerate}
         \item $ T $ 是正规的.
@@ -670,9 +839,56 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
     \end{enumerate}
 \end{theorem}
 
+\begin{proof}
+    \begin{itemize}
+        \item[(2) $ \Rightarrow $ (1)] 对角线上的每个 $ 1 \times 1 $ 块显然都是正规的，而每个
+        \[
+            \begin{pmatrix}
+                a & -b \\
+                b & a
+            \end{pmatrix}
+        \]
+        型的 $ 2 \times 2 $ 块由\autoref{thm:二维实正规算子}也知道是正规的. 分块对角矩阵正规当且仅当每个对角块正规，因此 $ T $ 是正规的.
+
+        \item[(1) $ \Rightarrow $ (2)] 对 $ \dim V $ 作归纳. 当 $ \dim V = 1 $ 时结论显然成立.
+
+        设结论对维数小于 $ \dim V $ 的实内积空间成立，且 $ T $ 是正规的. 若 $ T $ 是自伴的，则由实谱定理可知 $ T $ 在某组标准正交基下是对角矩阵，结论成立.
+
+        下面设 $ T $ 不是自伴的. 任取 $ V $ 的一组标准正交基，设 $ A $ 是 $ T $ 在这组基下的实矩阵. 把 $ A $ 看成复矩阵，则它仍是正规矩阵. 由复谱定理，$ A $ 有一个复特征值 $ \lambda $.
+
+        若 $ \lambda \in \mathbb{R} $，取相应的复特征向量 $ z = x + \i y $，其中 $ x, y \in \mathbb{R}^n $. 由 $A z = \lambda z$ 可得
+        \[
+            A x = \lambda x, \qquad A y = \lambda y.
+        \]
+        因为 $ z \neq 0 $，故 $ x, y $ 不全为零，于是可取一个非零实向量 $ u $ 满足 $ A u = \lambda u $. 这对应于 $ V $ 中的一个实特征向量. 令 $ U = \spa(u) $，则 $ U $ 在 $ T $ 下不变. 由\autoref{thm:正规算子的不变子空间}，$ U^\perp $ 在 $ T $ 下不变，且 $ T|_{U^\perp} $ 仍是正规的. 由归纳假设，$ U^\perp $ 有一组满足条件的标准正交基；再加上 $ u $ 标准化后得到的向量，便得到 $ V $ 的一组满足条件的标准正交基.
+
+        若 $ \lambda \notin \mathbb{R} $，则可设 $ \lambda = a + b\i $，其中 $ b > 0 $. 取 $ \lambda = a + b\i $ 的一个复特征向量 $ z = x + \i y $，其中 $ x, y \in \mathbb{R}^n $. 由 $ A z = \lambda z $ 比较实部与虚部可得
+        \[
+            A x = a x - b y, \qquad A y = b x + a y.
+        \]
+        因而 $ W = \spa(x, y) $ 在 $ T $ 下不变. 注意 $ x, y $ 线性无关；否则若 $ y = c x $，则 $ z = (1 + c\i)x $，从而 $ A x = \lambda x $，这与 $ A x $ 为实向量而 $ \lambda \notin \mathbb{R} $ 矛盾. 因此 $ \dim W = 2 $.
+
+        由\autoref{thm:正规算子的不变子空间}，$ T|_W $ 也是正规的，且 $ W^\perp $ 在 $ T $ 下不变，$ T|_{W^\perp} $ 仍是正规的. 在基 $\{x, -y\}$ 下，$ T|_W $ 的矩阵为
+        \[
+            \begin{pmatrix}
+                a & -b \\
+                b & a
+            \end{pmatrix},
+        \]
+        因而它的特征多项式为 $(t - a)^2 + b^2$，所以 $ T|_W $ 的特征值为 $ a \pm b\i $. 特别地，$ T|_W $ 不是自伴的；否则它的特征值都应是实数. 于是 $ T|_W $ 是二维实内积空间 $ W $ 上正规的但不是自伴的算子，由\autoref{thm:二维实正规算子}，$ W $ 有一组标准正交基，使得 $ T|_W $ 在这组基下的矩阵是
+        \[
+            \begin{pmatrix}
+                a & -b \\
+                b & a
+            \end{pmatrix}.
+        \]
+        对 $ W^\perp $ 用归纳假设，即得结论.
+    \end{itemize}
+\end{proof}
+
 我们也可以借此给出正交变换的完全描述. 之前我们提到过，正交变换是由旋转和镜像组成的，旋转用二阶实矩阵也就是旋转矩阵表示，形式为 $ \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix} $，而保持不变或者反向的镜像对应于特征值为 $ 1 $ 和 $ -1 $. 所以正交变换的完全表示中只涉及旋转矩阵以及 $ 1, -1 $.
 
-\begin{theorem}{}{}
+\begin{theorem}{}{正交变换的结构}
     设 $ V $ 是实内积空间，$ S \in \mathcal{L}(V) $，则以下条件等价：
     \begin{enumerate}
         \item $ S $ 是正交变换；
@@ -687,6 +903,48 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
               的 $ 2 \times 2 $ 矩阵，其中 $ \theta \in (0, \pi) $.
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    \begin{itemize}
+        \item[(1) $ \Rightarrow $ (2)] 设 $ S $ 是正交变换，则 $ S $ 是正规的. 由\autoref{thm:实正规算子的结构}，存在 $ V $ 的一组标准正交基，使得 $ S $ 关于这组基的矩阵是分块对角矩阵，每个块要么是 $ 1 \times 1 $ 矩阵，要么是
+        \[
+            \begin{pmatrix}
+                a & -b \\
+                b & a
+            \end{pmatrix},
+            \qquad b > 0.
+        \]
+        对于 $ 1 \times 1 $ 块，因其对应的算子仍是正交变换，故该块必为 $ 1 $ 或 $ -1 $.
+
+        对于 $ 2 \times 2 $ 块，设其为 $ B = \begin{pmatrix} a & -b \\ b & a \end{pmatrix} $. 由于 $ S $ 是正交变换，$ B $ 是正交矩阵，从而
+        \[
+            B^{\mathrm{T}} B = \begin{pmatrix}
+                a^2 + b^2 & 0 \\
+                0         & a^2 + b^2
+            \end{pmatrix} = I.
+        \]
+        因此 $ a^2 + b^2 = 1 $. 又因为 $ b > 0 $，故存在唯一的 $ \theta \in (0, \pi) $ 使得
+        \[
+            a = \cos \theta, \qquad b = \sin \theta.
+        \]
+        于是该块可写成
+        \[
+            \begin{pmatrix}
+                \cos \theta & -\sin \theta \\
+                \sin \theta & \cos \theta
+            \end{pmatrix}.
+        \]
+
+        \item[(2) $ \Rightarrow $ (1)] 题设中的每个 $ 1 \times 1 $ 块 $ 1 $ 和 $ -1 $ 都是正交矩阵，每个
+        \[
+            \begin{pmatrix}
+                \cos \theta & -\sin \theta \\
+                \sin \theta & \cos \theta
+            \end{pmatrix}
+        \]
+        也是正交矩阵. 因而整个分块对角矩阵是正交矩阵，故 $ S $ 是正交变换.
+    \end{itemize}
+\end{proof}
 
 \section{算子与数的类比 \quad 正算子}
 
@@ -771,13 +1029,21 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
     设 $ V $ 为复向量空间，$ T \in \mathcal{L}(V) $. 证明：若 $\langle Tv, v \rangle \geqslant 0, \forall v \in V$，则 $ T $ 是自伴算子.
 \end{example}
 
+\begin{proof}
+    由条件可知，对任意 $ v \in V $，$ \langle Tv, v \rangle $ 都是实数. 于是对算子 $ T - T^* $，有
+    \[
+        \langle (T - T^*)v, v \rangle = \langle Tv, v \rangle - \langle T^*v, v \rangle = \langle Tv, v \rangle - \overline{\langle Tv, v \rangle} = 0.
+    \]
+    由\autoref{thm:复内积空间} 可知 $ T - T^* = 0 $，故 $ T = T^* $. 因此 $ T $ 是自伴算子.
+\end{proof}
+
 非负数很重要的一种运算就是开方运算，所以我们自然也希望能够定义正算子的开方运算，以及相应的平方根.
 
 \begin{definition}{平方根}{} \index{pingfanggen@平方根 (square root)}
     算子 $ R $ 被称为算子 $ T $ 的平方根，如果 $ R^{2} = T $.
 \end{definition}
 
-因为我们先前已经给出过自伴算子的完全描述，所以正算子在对角化方面的行为与自伴算子是一致的. 下面的刻画更多是从算子与数的类比角度出发.
+因为我们先前已经给出过自伴算子的完全描述，所以正算子在对角化方面的行为与自伴算子是一致的. 下面的刻画更多是从算子与数的类比角度出发. 其中\ref*{item:25:正算子刻画:3} 就相当于复数非负当且仅当其有非负的平方根，\ref*{item:25:正算子刻画:4} 就相当于复数非负当且仅当其有实的平方根，\ref*{item:25:正算子刻画:5} 就相当于复数 $ z $ 非负当且仅当存在复数 $ w $ 使得 $ z = \overline{w}w $.
 
 \begin{theorem}{}{}
     设 $ T \in \mathcal{L}(V) $. 则以下条件等价.
@@ -799,7 +1065,39 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
     \end{enumerate}
 \end{theorem}
 
-\ref*{item:25:正算子刻画:3} 就相当于复数非负当且仅当其有非负的平方根，\ref*{item:25:正算子刻画:4} 就相当于复数非负当且仅当其有实的平方根，\ref*{item:25:正算子刻画:5} 就相当于复数 $ z $ 非负当且仅当存在复数 $ w $ 使得 $ z = \overline{w}w $.
+\begin{proof}
+    \begin{itemize}
+        \item[\ref*{item:25:正算子刻画:1}$\Rightarrow$\ref*{item:25:正算子刻画:2}] 设 $ T $ 是正的. 由定义，$ T $ 是自伴的. 若 $ v \neq 0 $ 是 $ T $ 相应于特征值 $ \lambda $ 的特征向量，则
+        \[
+            \lambda \| v \|^2 = \langle \lambda v, v \rangle = \langle Tv, v \rangle \geqslant 0.
+        \]
+        因而 $ \lambda \geqslant 0 $.
+
+        \item[\ref*{item:25:正算子刻画:2}$\Rightarrow$\ref*{item:25:正算子刻画:3}] 设 $ T $ 是自伴的，且所有特征值都非负. 由前面对自伴算子的讨论可知，$ V $ 有一组由 $ T $ 的特征向量构成的标准正交基 $ e_1, \cdots, e_n $. 设
+        \[
+            T e_j = \lambda_j e_j, \qquad \lambda_j \geqslant 0, \quad j = 1, \cdots, n.
+        \]
+        定义算子 $ R \in \mathcal{L}(V) $ 为
+        \[
+            R e_j = \sqrt{\lambda_j} e_j, \qquad j = 1, \cdots, n.
+        \]
+        则 $ R $ 是自伴的，且其特征值都非负，故 $ R $ 是正的. 同时
+        \[
+            R^2 e_j = \lambda_j e_j = T e_j, \qquad j = 1, \cdots, n.
+        \]
+        因为 $ e_1, \cdots, e_n $ 是一组基，所以 $ R^2 = T $. 因而 $ R $ 是 $ T $ 的正平方根.
+
+        \item[\ref*{item:25:正算子刻画:3}$\Rightarrow$\ref*{item:25:正算子刻画:4}] 显然，因为正算子必为自伴算子.
+
+        \item[\ref*{item:25:正算子刻画:4}$\Rightarrow$\ref*{item:25:正算子刻画:5}] 设 $ R $ 是 $ T $ 的一个自伴平方根，则 $T = R^2 = R^* R$.
+
+        \item[\ref*{item:25:正算子刻画:5}$\Rightarrow$\ref*{item:25:正算子刻画:1}] 设 $ T = R^* R $. 则 $T^* = (R^* R)^* = R^* R = T$，所以 $ T $ 是自伴的. 又对任意 $ v \in V $，有
+        \[
+            \langle Tv, v \rangle = \langle R^* Rv, v \rangle = \langle Rv, Rv \rangle = \| Rv \|^2 \geqslant 0.
+        \]
+        因此 $ T $ 是正的.
+    \end{itemize}
+\end{proof}
 
 每个非负数都有唯一的非负平方根，下面这个定理表明正算子也具有类似的性质.
 

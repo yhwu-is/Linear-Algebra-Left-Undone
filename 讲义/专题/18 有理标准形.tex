@@ -13,7 +13,7 @@
 回顾\nameref{thm:多项式的唯一分解定理}叙述的唯一分解性质，任意数域上的特征多项式（所以是首一的）$f(\lambda)$都可以被唯一分解为一些首一不可约多项式的乘积，即
 \[f(\lambda)=p_1(\lambda)^{n_1}p_2(\lambda)^{n_2}\cdots p_k(\lambda)^{n_k},\]
 其中$p_i(\lambda)$是首一不可约多项式，$n_i$是正整数. 如果我们讨论的是复数域，则这些不可约多项式都是一次多项式，即$p_i(\lambda)=\lambda-\lambda_i$，其中$\lambda_i$是复数域上的特征值. 但是如果我们讨论的是实数域或者有理数域，则这些不可约多项式可能是一次多项式，也可能是更高次的多项式. 事实上，在复数域上我们推导若当标准形的起点是定义广义特征子空间，然后将广义特征子空间分解为循环子空间的直和，那么我们最直接的想法便是，在所有数域上（包括非代数闭域）定义类似的概念，进行类似的分解. 于是我们首先有如下定义：
-\begin{definition}{}{}
+\begin{definition}{}{推广广义特征子空间}
     设$V$是一个有限维线性空间，$T\in\mathcal{L}(V)$. 设$T$的特征多项式为
     \[f(\lambda)=p_1(\lambda)^{n_1}p_2(\lambda)^{n_2}\cdots p_k(\lambda)^{n_k},\]
     其中$p_i(\lambda)$是首一不可约多项式，$n_i$是正整数. 对于每一个不可约多项式$p_i(\lambda)$，我们定义\term{广义特征子空间}$G_{p_i}$为
@@ -23,46 +23,64 @@
 
 事实上我们很容易发现这就是原先复数域上定义的广义特征子空间在任意数域上的推广形式：当数域为复数域时，$p_i(\lambda)=\lambda-\lambda_i$，其中$\lambda_i$是复数域上的特征值，则$G_{p_i}=\{v\in V\mid\exists m\in\mathbf{N}^+,(T-\lambda_iI)^mv=0\}$，实际上就等同于之前定义的广义特征子空间. 于是，我们也期望将\autoref{thm:广义特征性质} 推广到任意数域上：
 \begin{theorem}{}{推广广义特征性质}
-    设$V$是有限线性空间，$T\in \mathcal{L}(V)$. $T$的特征多项式有如下分解：
+    设$V$是有限维线性空间，$T\in \mathcal{L}(V)$. $T$的特征多项式有如下分解：
     \[f(\lambda)=p_1(\lambda)^{n_1}p_2(\lambda)^{n_2}\cdots p_k(\lambda)^{n_k},\]
-    其中$p_i(\lambda)$是首一不可约多项式，$n_i$是正整数，$G_{p_i}$为广义特征空间，则我们有如下结论：
+    其中$p_i(\lambda)$是首一不可约多项式，$n_i$是正整数，$G_{p_i}$为广义特征子空间，则我们有如下结论：
     \begin{enumerate}[label=(\arabic*)]
         \item 每个$G_{p_i}$在$T$下都是不变的；
-        \item $T$对应于不同特征值的广义特征向量线性无关；
-        \item $T$不同特征值对应的广义特征子空间的和为直和，且$V=G_{p_1}\oplus G_{p_2}\oplus\cdots\oplus G_{p_k}$；
+        \item $T$对应于不同不可约多项式的广义特征向量线性无关；
+        \item $T$对应于不同不可约多项式的广义特征子空间的和为直和，且$V=G_{p_1}\oplus G_{p_2}\oplus\cdots\oplus G_{p_k}$；
         \item $V$有一个由$T$的广义特征向量组成的基.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     \begin{enumerate}
-        \item
-        \item
-        \item
-        \item
+        \item 设$v\in G_{p_i}$，则存在正整数$m$使得$(p_i(T))^mv=0$. 由于$p_i(T)$与$T$可交换，因此
+              \[
+                  (p_i(T))^m(Tv)=T(p_i(T))^mv=0.
+              \]
+              所以$Tv\in G_{p_i}$，即$G_{p_i}$在$T$下不变.
+
+        \item 我们先证明第(3)点，再由第(3)点推出本结论.
+
+        \item 记
+              \[
+                  f_i(\lambda)=\frac{f(\lambda)}{p_i(\lambda)^{n_i}}=\prod_{j\neq i}p_j(\lambda)^{n_j}.
+              \]
+              由于$p_i^{n_i}$与$f_i$互素，若$v\in G_{p_i}$，设$(p_i(T))^mv=0$，则$p_i^m$与$f_i$也互素. 根据裴蜀定理，存在$a,b\in\mathbf{F}[x]$使得
+              \[
+                  a(\lambda)p_i(\lambda)^m+b(\lambda)f_i(\lambda)=1.
+              \]
+              代入$T$后作用于$v$，得到
+              \[
+                  v=a(T)(p_i(T))^mv+b(T)f_i(T)v=b(T)f_i(T)v.
+              \]
+              再作用$(p_i(T))^{n_i}$，便有
+              \[
+                  (p_i(T))^{n_i}v=b(T)f(T)v=0,
+              \]
+              因为由 Hamilton-Cayley 定理知$f(T)=0$. 这说明$G_{p_i}\subseteq \ker (p_i(T))^{n_i}$；反过来，若$v\in \ker (p_i(T))^{n_i}$，则它当然属于$G_{p_i}$. 因而
+              \[
+                  G_{p_i}=\ker (p_i(T))^{n_i}.
+              \]
+
+              现在由$f(T)=0$可知$\ker f(T)=V$，再利用\autoref{cor:多项式分解与核空间直和2}，得到
+              \[
+                  V=\ker f(T)=\ker (p_1(T))^{n_1}\oplus\cdots\oplus\ker (p_k(T))^{n_k}=G_{p_1}\oplus\cdots\oplus G_{p_k}.
+              \]
+              因此第(3)点成立.
+
+        \item 由第(3)点，任取每个$G_{p_i}$的一组基，将它们合并便得到$V$的一组基. 而$G_{p_i}$中的每个向量按定义都是$T$对应于$p_i$的广义特征向量，因此这组基由广义特征向量组成.
     \end{enumerate}
+
+    第(2)点现在是第(3)点的直接推论：若$v_1,\ldots,v_s$分别属于互不相同的广义特征子空间$G_{p_{i_1}},\ldots,G_{p_{i_s}}$且都非零，而有
+    \[
+        c_1v_1+\cdots+c_sv_s=0,
+    \]
+    那么直和分解的唯一性迫使$c_1v_1=\cdots=c_sv_s=0$，于是$c_1=\cdots=c_s=0$. 故它们线性无关.
 \end{proof}
 
-接下来我们的目标便是将广义特征子空间分解为循环子空间的直和. 事实上，我们无法分解为若当块所需的循环子空间的形式，因为一方面我们不一定在复数域上讨论，另一方面若当标准形有唯一性，而我们需要找到另一种标准形，如果还保持原先的循环子空间还是只能局限于若当标准形. 因此我们有如下定义：
-\begin{definition}{}{}
-    设$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量. 我们称子空间
-    \[W=\{v,Tv,T^2v,\ldots,T^kv,\cdots\}\]
-    为\term{由$v$生成的$T$-循环子空间}. 在不引起歧义的情况下，我们也称$W$为\term{$T$-循环子空间}或\term{循环子空间}.
-\end{definition}
-
-事实上，$V$一定是$T$的不变子空间，并且当$V$是有限维线性空间时，循环子空间也一定是有限维的. 一个有趣的事实是，如果循环子空间的维数等于$m$，那么它的一组基就是$\{v,Tv,\ldots,T^{m-1}v\}$. 我们来书写这一定理并给出证明：
-\begin{theorem}{}{}
-    设$V$是有限维线性空间，$T\in\mathcal{L}(V)$，$v\in V$是一个非零向量，$W$是由$v$生成的$T$-循环子空间，则
-    \begin{enumerate}
-        \item $W$是$T$的不变子空间；
-        \item 若$W$的维数为$m$，则$W$的一组基为$\{v,Tv,\ldots,T^{m-1}v\}$.
-    \end{enumerate}
-\end{theorem}
-\begin{proof}
-    \begin{enumerate}
-        \item
-        \item
-    \end{enumerate}
-\end{proof}
+接下来我们的目标便是将广义特征子空间分解为循环子空间的直和. 事实上，我们无法分解为若当块所需的循环子空间的形式，因为一方面我们不一定在复数域上讨论，另一方面若当标准形有唯一性，而我们需要找到另一种标准形，如果还保持原先的循环子空间还是只能局限于若当标准形. 因此我们使用\autoref{def:循环子空间}中定义的循环子空间来进行分解.
 
 若我们记由$v$生成的$T-\text{循环子空间}$为$C_v$，则我们可以得到限制映射$T|_{C_v}$在循环基$\{v,Tv,\ldots,T^{m-1}v\}$下的矩阵. 为了得到这一矩阵，我们设$Tv=a_0v+a_1Tv+\cdots+a_{m-1}T^{m-1}v$（因为$Tv$一定可以在这组基下被表示），则我们有矩阵表示为
 \[A=\begin{pmatrix}
@@ -78,34 +96,164 @@
 \begin{theorem}{}{}
     若$T$的极小多项式具有如下形式：$g(\lambda)=(p(\lambda))^m$，则$T$有一组基使得其表示矩阵为有理标准形.
 \end{theorem}
+\begin{proof}
+    记$d=\deg p$. 我们实际上证明一个更强的结论：$V$可以分解为若干个$T$-循环子空间的直和，
+    \[
+        V=C_{v_1}\oplus\cdots\oplus C_{v_s},
+    \]
+    且每个$C_{v_i}$上的极小多项式都形如$p^{r_i}$，并且向量$p(T)^{r_i-1}v_i$在$\ker p(T)$中构成$E=\mathbf{F}[x]/(p)$上的一组基. 取每个$C_{v_i}$的循环基并起来，便得到所需的有理标准形基.
+
+    我们对$m$作归纳.
+
+    当$m=1$时，$p(T)=0$. 记$E=\mathbf{F}[x]/(p)$. 由于$p$不可约，$E$是一个域. 对任意$\overline{f(x)}\in E$与$v\in V$，定义
+    \[
+        \overline{f(x)}\cdot v=f(T)v.
+    \]
+    这是良定义的，因为若$f-g$能被$p$整除，则$(f-g)(T)=0$. 因而$V$成为$E$上的向量空间. 取$V$的一组$E$-基$u_1,\ldots,u_s$. 对每个$u_i\neq 0$，由于$p(T)u_i=0$，其极小多项式必为$p$，于是$C_{u_i}$是一个$d$维循环子空间，其循环基可取为
+    \[
+        u_i,Tu_i,\ldots,T^{d-1}u_i.
+    \]
+    将这些循环基合并便得到$V$的一组$\mathbf{F}$-基，而且$u_1,\ldots,u_s$本身就是$\ker p(T)=V$的一组$E$-基，故结论成立.
+
+    设$m>1$，并假设命题对$p^{m-1}$成立. 令
+    \[
+        U=\im p(T).
+    \]
+    由于$p(T)$与$T$可交换，$U$在$T$下不变. 又$T\vert_U$的极小多项式整除$p^{m-1}$，故由归纳假设，$U$可以分解为若干个循环子空间的直和
+    \[
+        U=C_{w_1}\oplus\cdots\oplus C_{w_s},
+    \]
+    其中每个$C_{w_i}$上的极小多项式为$p^{r_i-1}$，并且$p(T)^{r_i-2}w_i$在$\ker p(T)\cap U$中构成$E=\mathbf{F}[x]/(p)$上的一组基.
+
+    对每个$i$，取$v_i\in V$使得$p(T)v_i=w_i$. 我们断言$C_{v_i}$上的极小多项式为$p^{r_i}$. 事实上，
+    \[
+        p(T)^{r_i}v_i=p(T)^{r_i-1}w_i=0.
+    \]
+    若$p(T)^{r_i-1}v_i=0$，则
+    \[
+        p(T)^{r_i-2}w_i=p(T)^{r_i-1}v_i=0,
+    \]
+    这与$C_{w_i}$上的极小多项式是$p^{r_i-1}$矛盾. 因此$C_{v_i}$上的极小多项式确为$p^{r_i}$.
+
+    由
+    \[
+        p(T)^{r_i-1}v_i=p(T)^{r_i-2}w_i
+    \]
+    可知这些向量在$\ker p(T)$中线性无关，并在$\ker p(T)\cap U$中构成一组$E$-基. 将它们扩充为$\ker p(T)$的一组$E$-基，不妨记扩充得到的向量为$u_1,\ldots,u_t$. 由于每个$u_j\neq 0$且$p(T)u_j=0$，所以$C_{u_j}$上的极小多项式都是$p$.
+
+    现在定义
+    \[
+        W=C_{v_1}+\cdots+C_{v_s}+C_{u_1}+\cdots+C_{u_t}.
+    \]
+    显然$W$在$T$下不变. 并且
+    \[
+        p(T)W=C_{w_1}+\cdots+C_{w_s}=U,
+    \]
+    因为$p(T)C_{v_i}=C_{w_i}$，而$p(T)C_{u_j}=0$. 此外，根据$u_1,\ldots,u_t$的选取方式，$\ker p(T)\subseteq W$. 故对限制映射$p(T)\vert_W$应用秩-零度定理，有
+    \[
+        \dim W=r\bigl(p(T)\vert_W\bigr)+\dim\ker\bigl(p(T)\vert_W\bigr)=\dim U+\dim\ker p(T).
+    \]
+    再对$p(T):V\to V$应用秩-零度定理，得到
+    \[
+        \dim V=\dim U+\dim\ker p(T).
+    \]
+    从而$\dim W=\dim V$，所以$W=V$.
+
+    最后证明上述和是直和. 对每个$i$，$C_{v_i}$的极小多项式是$p^{r_i}$，故$\dim C_{v_i}=dr_i$；而$\dim C_{w_i}=d(r_i-1)$，所以
+    \[
+        \dim C_{v_i}=\dim C_{w_i}+d.
+    \]
+    又每个$C_{u_j}$的维数都是$d$. 因此
+    \[
+        \sum_{i=1}^s\dim C_{v_i}+\sum_{j=1}^t\dim C_{u_j}
+        =\sum_{i=1}^s\bigl(\dim C_{w_i}+d\bigr)+td
+        =\dim U+\dim\ker p(T)
+        =\dim V.
+    \]
+    而这些子空间的和已经等于$V$，故该和必为直和.
+
+    于是$V$被分解为若干个循环子空间的直和. 对每个循环子空间取循环基，$T$在这组基下的矩阵就是若干个友阵构成的分块对角矩阵，即有理标准形.
+\end{proof}
 
 \begin{corollary}{}{}
-    $G_p$有一组由不相交的循环基的并集构成的基.
-\end{corollary}
-
-\begin{corollary}{}{第二有理基存在}
-    设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$，则存在一组基$B$使得$T$在$B$下的矩阵表示为有理标准形.
+    设$p$是$T$的特征多项式的一个首一不可约因式，则$G_p$有一组由不相交的循环基的并集构成的基.
 \end{corollary}
 \begin{proof}
+    由\autoref{thm:推广广义特征性质}，$G_p$在$T$下不变. 设$T\vert_{G_p}$的极小多项式为$p^m$，则它确实是某个$p$的幂，因为其极小多项式整除$T\vert_{G_p}$的特征多项式，而后者是$p$的幂. 因此可将上一定理应用于$T\vert_{G_p}$，便得到$G_p$有一组由不相交的循环基的并集构成的基.
+\end{proof}
 
+\begin{corollary}{}{第二有理基存在}
+    设$V$是$\mathbf{F}$上的有限维线性空间，$T\in\mathcal{L}(V)$，则存在一组基$B$使得$T$在$B$下的矩阵表示为有理标准形.
+\end{corollary}
+\begin{proof}
+    根据\autoref{thm:推广广义特征性质}，若$T$的特征多项式分解为
+    \[
+        f(\lambda)=p_1(\lambda)^{n_1}\cdots p_k(\lambda)^{n_k},
+    \]
+    则
+    \[
+        V=G_{p_1}\oplus\cdots\oplus G_{p_k},
+    \]
+    且每个$G_{p_i}$都在$T$下不变. 再由上一个推论可知，每个$G_{p_i}$都有一组由不相交的循环基的并集构成的基. 将这些基合并，就得到$V$的一组基，使得$T$在这组基下的矩阵表示为若干个友阵构成的分块对角矩阵，也就是有理标准形.
 \end{proof}
 事实上，如果我们按照上一讲的做法将直和分解书写出来，我们发现这样的分解仍然是基于初等因子的分解，我们将这样得到的有理标准形称为\term{第二有理标准形}.
 
 接下来我们需要描述矩阵的第二有理标准形.
 \begin{corollary}{}{}
-    矩阵的第二有理标准形
+    设$A\in\mathbf{M}_n(\mathbf{F})$，则存在可逆矩阵$P$，使得$P^{-1}AP$是分块对角矩阵，且每个对角块都是某个首一不可约多项式的幂的友阵. 这一矩阵称为$A$的\term{第二有理标准形}.
 \end{corollary}
 \begin{proof}
-
+    将$A$看作线性变换$\sigma:\mathbf{F}^n\to\mathbf{F}^n,\ \sigma(x)=Ax$在自然基下的矩阵表示. 由\autoref{cor:第二有理基存在}，存在$\mathbf{F}^n$的一组基$B$使得$\sigma$在$B$下的矩阵表示为有理标准形. 设$P$为从自然基变到$B$的过渡矩阵，则由换基公式可知$P^{-1}AP$就是这一个有理标准形.
 \end{proof}
 
 有理标准形的唯一性定理：
-\begin{theorem}{}{}
+\begin{theorem}{}{第二有理标准形唯一}
+    设$p$是$T$的特征多项式的一个首一不可约因式，$d=\deg p$. 在$T$的第二有理标准形中，设所有以$p$为底的初等因子为
+    \[
+        p^{m_1},p^{m_2},\ldots,p^{m_s}\qquad (m_1\geqslant m_2\geqslant\cdots\geqslant m_s).
+    \]
+    对任意正整数$i$，记$r_i$为满足$m_j\geqslant i$的指标$j$的个数，即$r_i$表示指数至少为$i$的$p$-初等因子的个数，则
     \begin{enumerate}
         \item $r_1=\dfrac{1}{d}(\dim V-r(p(T)))$；
-        \item $r_i=\dfrac{1}{d}(r(p(T)^{i-1})-r(p(T))^i)$.
+        \item $r_i=\dfrac{1}{d}(r(p(T)^{i-1})-r(p(T)^i))\quad (i>1)$.
     \end{enumerate}
+    从而第二有理标准形除对角块的排列次序外唯一.
 \end{theorem}
+\begin{proof}
+    设$V$已经写成第二有理标准形对应的循环子空间直和. 对于每一个以$p$为底的初等因子$p^{m_j}$，对应的循环子空间同构于$\mathbf{F}[x]/(p^{m_j})$. 在这个商空间上，$p(T)$对应于“乘以$p(x)$”这一算子，因此对任意$i\geqslant 1$，
+    \[
+        \dim\ker\bigl(p(T)^i\vert_{\mathbf{F}[x]/(p^{m_j})}\bigr)=d\min\{i,m_j\}.
+    \]
+    于是当$i=1$时，每个这样的循环子空间都向$\ker p(T)$贡献恰好$d$维；当$i>1$时，它向$\ker p(T)^i$相对于$\ker p(T)^{i-1}$的增长贡献恰好是
+    \[
+        \dim\ker p(T)^i-\dim\ker p(T)^{i-1}=
+        \begin{cases}
+            d, & m_j\geqslant i, \\
+            0, & m_j<i.
+        \end{cases}
+    \]
+    另一方面，若某个循环子空间对应的初等因子底数不是$p$，则由于该底数与$p$互素，$p(T)$在这个循环子空间上可逆，因此对上述各个核空间都没有贡献.
+
+    故有
+    \[
+        \dim\ker p(T)=dr_1,
+    \]
+    以及对$i>1$，
+    \[
+        \dim\ker p(T)^i-\dim\ker p(T)^{i-1}=dr_i.
+    \]
+    再由秩-零度定理，
+    \[
+        \dim\ker p(T)=\dim V-r(p(T)),
+    \]
+    且
+    \[
+        \dim\ker p(T)^i-\dim\ker p(T)^{i-1}=r(p(T)^{i-1})-r(p(T)^i).
+    \]
+    代入即得题中的两个公式.
+
+    最后，大小恰为$i$的$p$-初等因子的个数等于$r_i-r_{i+1}$，故所有$m_j$都被唯一确定. 对每个首一不可约多项式$p$都作同样讨论，便可唯一确定全部初等因子，因此第二有理标准形除对角块排列次序外唯一.
+\end{proof}
 
 \section{不变因子与第一有理标准形}
 接下来我们将讨论第二个问题及其回答，从而引入不变因子的概念以及第一有理标准形. 事实上，尽管我们暂未给出第一个问题的解答，但直觉告诉我们，初等因子分解已经是一种比较细的分解方式了——因为它都是一些准素多项式，因此我们希望对一些初等因子进行合并，得到更大的循环子空间. 因此我们需要研究初等因子合并的条件，我们将其叙述为以下定理：
@@ -113,38 +261,77 @@
     设$p_1(\lambda),p_2(\lambda)\in\mathbf{F}[\lambda]$，则循环子空间$C_1\cong\mathbf{F}[\lambda]/(p_1(\lambda))$与$C_2\cong\mathbf{F}[\lambda]/(p_2(\lambda))$可以直和成一个新的循环子空间$C\cong\mathbf{F}[\lambda]/(p(\lambda))$（其中$p(\lambda)\in\mathbf{F}[\lambda]$）当且仅当$p_1(\lambda)$与$p_2(\lambda)$互素，且互素时有$p(\lambda)=p_1(\lambda)p_2(\lambda)$.
 \end{theorem}
 \begin{proof}
-    首先证明必要性. 若$p_1(\lambda)$与$p_2(\lambda)$互素，我们证明$\mathbf{F}[\lambda]/(p_1(\lambda)p_2(\lambda))=\mathbf{F}[\lambda]/(p_1(\lambda))\oplus\mathbf{F}[\lambda]/(p_2(\lambda))$. 回忆证明直和的两种方法，我们选取更简单的，即
-    \begin{enumerate}
-        \item 交集为$\{0\}$：设$v\in\mathbf{F}[\lambda]/(p_1(\lambda))\cap\mathbf{F}[\lambda]/(p_2(\lambda))$，则基于$p(x)$实际上是$\mathbf{F}[\lambda]/(p(\lambda))$的特征多项式的事实，根据Hamilton-Cayley定理，$p_1(\lambda)v=p_2(\lambda)v=0$. 由于$p_1(\lambda)$与$p_2(\lambda)$互素，因此存在$q_1(\lambda),q_2(\lambda)\in\mathbf{F}[\lambda]$使得$q_1(\lambda)p_1(\lambda)+q_2(\lambda)p_2(\lambda)=1$，因此$v=q_1(\lambda)p_1(\lambda)v+q_2(\lambda)p_2(\lambda)v=0$.
-        \item $\dim\mathbf{F}[\lambda]/(p_1(\lambda))+\dim\mathbf{F}[\lambda]/(p_2(\lambda)))=\dim\mathbf{F}[\lambda]/(p_1(\lambda)p_2(\lambda))$：这是显然的，因为由\autoref{ex:多项式域扩张} 可知，$\dim\mathbf{F}[\lambda]/(p(\lambda))=\deg p$，而$\deg p=\deg p_1p_2=\deg p_1+\deg p_2$.
-    \end{enumerate}
-    接下来证明充分性：我们用反证法，假设$p_1(\lambda)$与$p_2(\lambda)$不互素，且存在$p(\lambda)\in\mathbf{F}[\lambda]$使得$\mathbf{F}[\lambda]/(p(\lambda))=\mathbf{F}[\lambda]/(p_1(\lambda))\oplus\mathbf{F}[\lambda]/(p_2(\lambda))$，我们需要导出矛盾.
+    先证充分性. 若$p_1(\lambda)$与$p_2(\lambda)$互素，设$p(\lambda)=p_1(\lambda)p_2(\lambda)$，并定义线性映射
+    \[
+        \Phi:\mathbf{F}[\lambda]/(p(\lambda))\to \mathbf{F}[\lambda]/(p_1(\lambda))\oplus\mathbf{F}[\lambda]/(p_2(\lambda)),
+        \qquad
+        \overline{f(\lambda)}\mapsto \bigl(\overline{f(\lambda)},\overline{f(\lambda)}\bigr).
+    \]
+    若$\Phi(\overline{f(\lambda)})=0$，则$p_1(\lambda)\mid f(\lambda)$且$p_2(\lambda)\mid f(\lambda)$. 由于$p_1,p_2$互素，故$p_1(\lambda)p_2(\lambda)\mid f(\lambda)$，即$\overline{f(\lambda)}=0$，所以$\Phi$单射. 又
+    \[
+        \dim \mathbf{F}[\lambda]/(p(\lambda))=\deg p=\deg p_1+\deg p_2
+    \]
+    与
+    \[
+        \dim \bigl(\mathbf{F}[\lambda]/(p_1(\lambda))\oplus\mathbf{F}[\lambda]/(p_2(\lambda))\bigr)=\deg p_1+\deg p_2
+    \]
+    相同，因此$\Phi$是同构. 这就说明
+    \[
+        \mathbf{F}[\lambda]/(p_1(\lambda)p_2(\lambda))\cong \mathbf{F}[\lambda]/(p_1(\lambda))\oplus\mathbf{F}[\lambda]/(p_2(\lambda)),
+    \]
+    即$C_1$与$C_2$可以直和成一个新的循环子空间.
 
-    考虑$p_1(\lambda)$和$p_2(\lambda)$的最小公倍式$l(\lambda)|p_1(\lambda)p_2(\lambda)$，且$l(\lambda)\neq p_1(\lambda)p_2(\lambda)$. 然而我们知道，$\forall v\in\mathbf{F}[\lambda]/(p(\lambda))$，由于$v$可以写为$v=v_1+v_2,\enspace v_1\in\mathbf{F}[\lambda]/(p_1(\lambda)),v_2\in\mathbf{F}[\lambda]/(p_2(\lambda))$，因此必有$l(\lambda)v=l(\lambda)v_1+l(\lambda)v_2=0$，因此$l(\lambda)$是$\mathbf{F}[\lambda]/(p(\lambda))$的零化多项式. 而零化多项式是极小多项式的倍式，且循环空间的极小多项式等于特征多项式，故$l(\lambda)$是$p(\lambda)$的倍式. 这表明$\dim\mathbf{F}[\lambda]/(p(\lambda))=\deg p\leqslant \deg l<\deg p_1+\deg p_2$，故根据直和维数相加的等价条件，不可能存在这样的$p(\lambda)$使得$\mathbf{F}[\lambda]/(p(\lambda))=\mathbf{F}[\lambda]/(p_1(\lambda))\oplus\mathbf{F}[\lambda]/(p_2(\lambda))$.
+    再证必要性. 设存在首一多项式$p(\lambda)$使得
+    \[
+        \mathbf{F}[\lambda]/(p(\lambda))\cong \mathbf{F}[\lambda]/(p_1(\lambda))\oplus\mathbf{F}[\lambda]/(p_2(\lambda)).
+    \]
+    由于右侧空间的维数为$\deg p_1+\deg p_2$，故$\deg p=\deg p_1+\deg p_2$.
+
+    另一方面，$p_1(\lambda)$与$p_2(\lambda)$分别消去右侧的两个直和项，所以它们的最小公倍式$l(\lambda)=\lcm(p_1(\lambda),p_2(\lambda))$消去整个直和空间. 因而$l(\lambda)$也是$\mathbf{F}[\lambda]/(p(\lambda))$上的零化多项式. 由循环子空间的极小多项式等于特征多项式，知道$p(\lambda)$正是该空间的极小多项式，所以$p(\lambda)\mid l(\lambda)$. 从而
+    \[
+        \deg p\leqslant \deg l\leqslant \deg p_1+\deg p_2=\deg p.
+    \]
+    因此$\deg l=\deg p_1+\deg p_2$. 这只可能在$p_1(\lambda)$与$p_2(\lambda)$互素时发生；否则$l(\lambda)$的次数将严格小于$\deg p_1+\deg p_2$. 故$p_1(\lambda)$与$p_2(\lambda)$必互素. 此时
+    \[
+        l(\lambda)=p_1(\lambda)p_2(\lambda),
+    \]
+    又$p(\lambda)$是首一且与$l(\lambda)$次数相同，并满足$p(\lambda)\mid l(\lambda)$，故$p(\lambda)=p_1(\lambda)p_2(\lambda)$.
 \end{proof}
 
 \begin{corollary}{}{}
-    两两互素
+    设$p_1(\lambda),\ldots,p_s(\lambda)\in\mathbf{F}[\lambda]$都是首一多项式，则循环子空间
+    \[
+        C_i\cong \mathbf{F}[\lambda]/(p_i(\lambda))\qquad (i=1,\ldots,s)
+    \]
+    可以直和成一个新的循环子空间，当且仅当$p_1(\lambda),\ldots,p_s(\lambda)$两两互素；此时所得循环子空间同构于
+    \[
+        \mathbf{F}[\lambda]/(p_1(\lambda)\cdots p_s(\lambda)).
+    \]
 \end{corollary}
+\begin{proof}
+    对$s$作归纳即可. 当$s=2$时结论就是上一个定理. 设结论对$s-1$个多项式成立，则前$s-1$个对应的循环子空间可组合成一个循环子空间，当且仅当它们两两互素；再将这个新的循环子空间与第$s$个循环子空间应用上一个定理，便得到结论.
+\end{proof}
 
 事实上一个巧合在于这一定理间接回答了第一个问题：
 \begin{corollary}{}{}
-    最细分解
+    \autoref{eq:19:初等因子分解} 给出的初等因子分解是循环子空间分解中最细的一种：其中每一个直和项都不能再分解为两个非平凡循环子空间的直和，并且不同初等因子之间也不能再作进一步的组合.
 \end{corollary}
 \begin{proof}
+    对于\autoref{eq:19:初等因子分解} 中的任意一个直和项$\mathbf{F}[\lambda]/(p(\lambda)^r)$，若它还能分解为两个非平凡循环子空间的直和，则根据\autoref{thm:初等因子组合}，$p(\lambda)^r$应能写成两个互素首一多项式的乘积. 但$p(\lambda)^r$的任意两个非平凡因式都含有公因子$p(\lambda)$，不可能互素，故这是不可能的.
 
+    另一方面，若想把两个不同的初等因子继续组合成更大的循环子空间，根据\autoref{thm:初等因子组合}，它们对应的多项式必须互素. 但在初等因子分解中，凡是可以组合的不同底数的初等因子都已经由上一个推论统一控制，而同一底数的两个初等因子显然不互素，不能组合. 故初等因子分解已经是最细分解.
 \end{proof}
 
 自然地，在证明初等因子分解是最细分解后，我们可以利用\autoref{thm:初等因子组合} 来构造更大的循环子空间. 事实上，根据定理，我们知道这样的构造由非常多种，我们可以仅仅合并两个初等因子，也可以把所有可以合并的初等因子全部合并. 为了得到更标准且优雅的形式，我们做如下合并：首先我们将$T$的特征多项式进行分解得到
 \[f(\lambda)=p_1(\lambda)^{n_1}p_2(\lambda)^{n_2}\cdots p_k(\lambda)^{n_k},\]
-其中$p_i(\lambda)$是首一不可约多项式，$n_i$是正整数. 于是$T$的初等因子具有形式$p_i^{r_{ij}}$，我们将这些初等因子按照不可约多项式进行分组，即将所有底数$p_i(\lambda)$相同的初等因子写在一行，并且按不可约多项式次数降幂排列：
+其中$p_i(\lambda)$是首一不可约多项式，$n_i$是正整数. 于是$T$的初等因子具有形式$p_i^{r_{ij}}$，我们将这些初等因子按照不可约多项式进行分组，即将所有底数$p_i(\lambda)$相同的初等因子写在一行，并且按幂次降序排列：
 \begin{gather*}
     p_1^{r_{11}},p_1^{r_{12}},\ldots,p_1^{r_{1s_1}}, \\
     p_2^{r_{21}},p_2^{r_{22}},\ldots,p_2^{r_{2s_2}}, \\
     \cdots \\
     p_k^{r_{k1}},p_k^{r_{k2}},\ldots,p_k^{r_{ks_k}}.
 \end{gather*}
-其中$r_{ij}$是正整数，$r_{i1}\geqslant r_{i2}\geqslant\cdots\geqslant r_{is_i}$，且有$\prod\limits_{j=1}^{s_i}r_{ij}=n_i$. 接下来我们将每一行的长度对齐，不足的补$1$，于是可以写成
+其中$r_{ij}$是正整数，$r_{i1}\geqslant r_{i2}\geqslant\cdots\geqslant r_{is_i}$，且有$\sum\limits_{j=1}^{s_i}r_{ij}=n_i$. 接下来我们将每一行的长度对齐，不足的补$1$，于是可以写成
 \begin{gather*}
     p_1^{r_{11}},p_1^{r_{12}},\ldots,p_1^{r_{1s}}, \\
     p_2^{r_{21}},p_2^{r_{22}},\ldots,p_2^{r_{2s}}, \\
@@ -168,60 +355,43 @@
 
 事实上，由\autoref{thm:初等因子组合} 的互素条件可知，这一分解已经是最``粗粒度''的分解了，因为每个不变因子都是不互素的，无法进一步组合成更大的循环子空间. 接下来我们需要为这一不变因子分解具体实现出一组循环基和对应的标准形.
 
-\begin{theorem}{}{}
-    \autoref{thm:初等因子组合} 组合的有理标准形基的构造
+\begin{theorem}{}{第一有理基构造}
+    在\autoref{eq:20:不变因子分解} 的记号下，存在一组基$B$使得$T$在$B$下的矩阵表示为
+    \[
+        \diag(C(d_1),C(d_2),\ldots,C(d_s)),
+    \]
+    其中$C(d_i)$表示多项式$d_i$的友阵. 这一分块对角矩阵称为$T$的\term{第一有理标准形}.
 \end{theorem}
 \begin{proof}
+    对于\autoref{eq:20:不变因子分解} 中的每一个直和项$\mathbf{F}[x]/(d_i)$，考虑其自然生成元$\overline{1}$所生成的循环子空间. 由\autoref{thm:循环子空间}，它的一组循环基可取为
+    \[
+        \overline{1},\overline{x},\ldots,\overline{x^{\deg d_i-1}}.
+    \]
+    在这组基下，“乘以$x$”这一线性映射的矩阵恰好就是$d_i$的友阵$C(d_i)$. 因此每一个直和项都能给出一个友阵块.
 
+    现在将各个直和项上的上述循环基依次合并，便得到整个空间$V$的一组基. 因为\autoref{eq:20:不变因子分解} 是直和分解，所以$T$在这组基下的矩阵表示就是
+    \[
+        \diag(C(d_1),C(d_2),\ldots,C(d_s)).
+    \]
+    这正是第一有理标准形.
 \end{proof}
 
 \begin{theorem}{}{}
     不变因子组也是相似的全系不变量.
 \end{theorem}
 \begin{proof}
-    与初等因子组互相唯一确定，一一对应.
+    由上一节的\autoref{thm:第二有理标准形唯一} 可知，初等因子组是相似的全系不变量. 因此只需证明初等因子组与不变因子组可以互相唯一确定.
+
+    由初等因子组到不变因子组的确定方式，就是\autoref{eq:20:不变因子分解} 前面的“按底数分行、按幂次对齐、按列相乘”的过程，这一过程显然是唯一的.
+
+    反过来，已知不变因子组$d_1,\ldots,d_s$，把每个$d_i$在$\mathbf{F}[x]$中唯一分解为首一不可约多项式的幂的乘积，然后把相同底数的幂次按列重新排开，便能唯一恢复出全部初等因子. 也就是说，不变因子组与初等因子组一一对应.
+
+    于是两个矩阵相似当且仅当它们有相同的不变因子组，即不变因子组也是相似的全系不变量.
 \end{proof}
 
 \begin{corollary}{}{}
-    第一有理标准形唯一.
+    第一有理标准形除对角块的排列次序外唯一.
 \end{corollary}
-
-\section{关于相似的最后讨论}
-
-% 相抵、相似、相合的全系不变量
-最后我们再来总结一个题型. 一些题目可能需要判断矩阵是否相似，实际上我们有如下基本方法：
-\begin{enumerate}
-    \item 定义法：找到$P$使得$P^{-1}AP=B$即可，这一般是$A,B$没给出具体矩阵的做法，例如上面的性质证明；
-
-    \item 我们也可以先计算两者特征多项式是否相等（即特征值是否一致），若不一致则一定不相似，得到结论，若一致且均为实对称矩阵则相似，否则不一定相似（因为这是相似的必要条件）. 对于这种特征值一致的情况，我们进行对角化，情况如下：
-          \begin{enumerate}
-              \item 若两矩阵均可对角化，则两矩阵相似：因为特征多项式相等则特征值相等，均可对角化那么对角矩阵也完全一致，因此二者与同一个对角矩阵相似，根据相似这一等价关系的传递性可知两矩阵相似；
-
-              \item 若一个矩阵可对角化，另一个矩阵不可对角化，则一定不相似；
-
-              \item 若两个矩阵都不可对角化，不一定相似. 需要两矩阵各个特征值的几何重数（即各个特征子空间维数）都一致才相似，否则不相似. 这是因为只有几何重数一致才有相同的若当标准形.
-          \end{enumerate}
-\end{enumerate}
-
-\begin{example}{}{}
-    设$A,B\in \mathbf{M}_n(\mathbf{F})$，证明：若$A$可逆，则$AB\sim BA$.
-\end{example}
-
-\begin{proof}
-
-\end{proof}
-
-\begin{example}{}{}
-    设$A=\begin{pmatrix}
-            0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0
-        \end{pmatrix},B=\begin{pmatrix}
-            -1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 2
-        \end{pmatrix}$，判断$A$与$B$是否相似.
-\end{example}
-
-\begin{solution}
-
-\end{solution}
 
 \begin{summary}
 

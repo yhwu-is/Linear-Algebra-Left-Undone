@@ -55,7 +55,20 @@
 \end{example}
 
 \begin{proof}
+    下面给出两种证明. 第一种证明从特征多项式出发. 设$A$是$\sigma$在$V$某组基下的矩阵表示，$P$是$\tau$在同一组基下的矩阵表示. 则$\tau^{-1}\sigma\tau$在这组基下的矩阵表示为$P^{-1}AP$. 因此
+    \[
+        |\lambda E-P^{-1}AP|=|P^{-1}(\lambda E-A)P|=|\lambda E-A|.
+    \]
+    这表明$\sigma$与$\tau^{-1}\sigma\tau$有相同的特征多项式，因此它们有相同的特征值，且每个特征值的代数重数也相同.
 
+    第二种证明从广义特征子空间出发. 对任意$\lambda\in\mathbf{F}$与任意正整数$m$，有 $(\tau^{-1}\sigma\tau-\lambda I)^m=\tau^{-1}(\sigma-\lambda I)^m\tau$. 因此对任意$v\in V$，有
+    \begin{align*}
+        v\in G(\lambda,\tau^{-1}\sigma\tau)
+         & \iff \exists m\in\mathbf{N}^+,\ (\tau^{-1}\sigma\tau-\lambda I)^mv=0 \\
+         & \iff \exists m\in\mathbf{N}^+,\ (\sigma-\lambda I)^m(\tau v)=0       \\
+         & \iff \tau v\in G(\lambda,\sigma).
+    \end{align*}
+    于是$\tau$给出了$G(\lambda,\tau^{-1}\sigma\tau)$到$G(\lambda,\sigma)$的线性同构，所以这两个广义特征子空间维数相同. 根据\autoref{cor:代数重数等于广义特征空间维数}，这就说明$\sigma$与$\tau^{-1}\sigma\tau$关于同一特征值$\lambda$的重数相同. 又某个广义特征子空间非零当且仅当对应的特征值存在，因此它们的特征值也完全相同.
 \end{proof}
 
 在此后深入讨论多项式与标准形之间的联系的过程中，我们通常需要使用一些零化多项式来辅助我们的讨论. 我们给出如下定义：
@@ -119,7 +132,9 @@
     设$V$是实向量空间，$\sigma\in \mathcal{L}(V)$，则$\sigma$的特征多项式是它的零化多项式.
 \end{theorem}
 \begin{proof}
+    设$q$是$\sigma$的特征多项式. 取$V$的一组实基$B$，设$A$是$\sigma$在$B$下的矩阵表示. 根据\autoref{ex:复化线性变换的矩阵表示}，$A$也是$\sigma_{\mathbf{C}}$在复化空间$V_{\mathbf{C}}$的基$B$下的矩阵表示，因此$\sigma_{\mathbf{C}}$的特征多项式也是$q$.
 
+    由于$V_{\mathbf{C}}$是复向量空间，根据 Hamilton-Cayley 定理可知$q(\sigma_{\mathbf{C}})=0$. 现在任取$\alpha\in V$，将它看作$V_{\mathbf{C}}$中的向量，则有 $q(\sigma)\alpha=q(\sigma_{\mathbf{C}})\alpha=0$. 因为$\alpha$任意，所以$q(\sigma)=0$，即$\sigma$的特征多项式是它的零化多项式.
 \end{proof}
 
 \section{特征多项式与标准形}
@@ -162,16 +177,37 @@
 \[V=G(\lambda_1,\sigma)\oplus\cdots\oplus G(\lambda_m,\sigma),\]
 其中$G(\lambda_i,\sigma)=\ker (\sigma-\lambda_iI)^{\dim V}$，这与上式的形式是类似的. 事实上由于 $\ker (\sigma-\lambda_iI)^{r_i}\subseteq \ker (\sigma-\lambda_iI)^{\dim V} = G(\lambda_i,\sigma)$，且 $\ker f(\sigma)=V$，因此有 $G(\lambda_i,\sigma)=\ker (\sigma-\lambda_iI)^{r_i}$. 因此这里将广义特征子空间定义中$(\sigma-\lambda I)$由于核空间扩张所需的幂次降低了. 事实上，根据\autoref{thm:核空间性质}中的核空间增长性质，\autoref{cor:代数重数等于广义特征空间维数} 也说明了这一点.
 
+下面的例子说明当 $0$ 是代数重数为 $1$ 的特征值时，线性变换的核空间与像空间的关系. 证明思路与\autoref{lem:多项式分解与核空间直和}类似.
+
 \begin{example}{}{}
-    设$\sigma\in \mathcal{L}(V)$，$p(z)=a_nx^n+\cdots+a_1x\in\mathbf{F}[x]$是$\sigma$的一个零化多项式，其中$a_1\neq 0$，证明：
+    设$\sigma\in \mathcal{L}(V)$，$p(x)=a_nx^n+\cdots+a_1x\in\mathbf{F}[x]$是$\sigma$的一个零化多项式，其中$a_1\neq 0$，证明：
     \[V=\ker \sigma\oplus\im\sigma.\]
 \end{example}
 
 \begin{proof}
+    设$q(x)=a_nx^{n-1}+\cdots+a_1$，则$p(x)=xq(x)$. 由于$q(0)=a_1\neq 0$，所以$x$与$q(x)$互素. 根据\nameref{thm:裴蜀定理}，存在$u(x),v(x)\in\mathbf{F}[x]$使得 $xu(x)+q(x)v(x)=1$. 将$x$替换为$\sigma$得到
+    \[
+        \sigma u(\sigma)+q(\sigma)v(\sigma)=I.
+    \]
+    因此对任意$\alpha\in V$，都有
+    \[
+        \alpha=\sigma u(\sigma)\alpha+q(\sigma)v(\sigma)\alpha.
+    \]
+    第一项显然属于$\im\sigma$. 又因为 $\sigma q(\sigma)v(\sigma)\alpha=p(\sigma)v(\sigma)\alpha=0$，所以第二项属于$\ker\sigma$. 故$V=\ker\sigma+\im\sigma$.
 
+    接下来证明这是直和. 设$\alpha\in\ker\sigma\cap\im\sigma$，则存在$\beta\in V$使得$\alpha=\sigma(\beta)$. 另一方面，由于$\sigma(\alpha)=0$，根据上面的恒等式可得
+    \[
+        \alpha=\sigma u(\sigma)\alpha+q(\sigma)v(\sigma)\alpha=q(\sigma)v(\sigma)\alpha.
+    \]
+    代入$\alpha=\sigma(\beta)$，并利用多项式代入后的可交换性，有
+    \[
+        \alpha=q(\sigma)v(\sigma)\sigma\beta=\sigma q(\sigma)v(\sigma)\beta=p(\sigma)v(\sigma)\beta=0.
+    \]
+    因此$\ker\sigma\cap\im\sigma=\{0\}$，从而$V=\ker\sigma\oplus\im\sigma$.
 \end{proof}
 
 \subsection{初等因子分解与若当标准形}
+
 事实上，学习了若当标准形后，我们已不满足于基于广义特征子空间的分解. 我们知道同一个特征值可能对应多个若当块，因此每个广义特征子空间还能继续分解，分解成可以得到若当块的由循环基张成的循环子空间的直和. 我们可以根据\autoref{cor:若当基存在} 形式化地写出这一分解：设$V$是$\mathbf{C}$上的有限维线性空间，$T\in\mathcal{L}(V)$，设每个特征值$\lambda_i(i=1,\ldots,n)$对应的广义特征子空间$K_{\lambda_i}$可以由$s_i$组若当基$B_{i1},B_{i2},\ldots,B_{is_i}$张成，其中每一组基都可以表达为：
 \[B_{ij}=\{(T-\lambda_iI)^{r_{ij}-1}v_{ij},(T-\lambda_iI)^{r_{ij}-2}v_{ij},\ldots,v_{ij}\},\]
 事实上$r_{ij}$就是这组循环基的长度. 我们设由$B_{ij}$张成的循环子空间为$C_{ij}$，则有
@@ -213,7 +249,34 @@
 
 对于矩阵显然有类似的定义，就不再赘述了. 对于像初等因子这样，是一次多项式（或者将来数域不再是复数域时的一般不可约多项式）的次方的形式的多项式，我们称其为准素多项式. 这是因为不可约多项式可以类比为整数中的素数，而初等因子只是这些``素多项式''的次方，因此只有单个``素多项式''为其因子，非常简单，并且在代数中也比较常见.
 
-除此之外需要说明的是，引入初等因子组的一个重要目的就是希望说明它是我们判断两个矩阵是否相似的全系不变量. 这里出现了一个新的名词，但实际上内涵并不新. 所谓相似的全系不变量，就是满足两个矩阵相似当且仅当它们有相同的这个全系不变量. 我们知道对于相抵而言，矩阵的秩就是全系不变量，因为矩阵相抵当且仅当它们的秩相同. 但在相似中，在讨论若当标准形之前只能知道相似矩阵有相同的特征多项式（特征值、迹、行列式等），这些都是相似的必要条件，直到得到若当标准形后我们才得到了相似的充要条件是有相同的若当标准形，而且这并不容易得到，而矩阵的秩是非常基础的性质，所以相似的研究比相抵困难很多. 现在我们从若当标准形这一相似的充要条件出发，抽象出了初等因子组与若当标准形一一对应（观察推导过程，初等因子组与若当基完全对应）的多项式组，从而我们可以有如下结论：
+\begin{example}{}{}
+    求矩阵
+    \[
+        A=\begin{pmatrix}
+                2 & 3 & 2 \\
+                1 & 8 & 2 \\
+                -2 & -14 & -3
+            \end{pmatrix}
+    \]
+    的初等因子组.
+\end{example}
+
+\begin{solution}
+    这一矩阵正是\autoref{ex:求若当标准形过渡矩阵}中讨论过的矩阵. 我们已经求得它的若当标准形为
+    \[
+        J=\begin{pmatrix}
+                3 & 1 & 0 \\
+                0 & 3 & 0 \\
+                0 & 0 & 1
+            \end{pmatrix},
+    \]
+    即它有一个关于特征值$3$的二阶若当块$J_2(3)$，以及一个关于特征值$1$的一阶若当块$J_1(1)$. 根据前面的讨论可知，每一个若当块$J_r(\lambda_i)$都对应一个初等因子$(\lambda-\lambda_i)^r$，因此矩阵$A$的初等因子组为
+    \[
+        (\lambda-3)^2,\ \lambda-1.
+    \]
+\end{solution}
+
+除此之外需要说明的是，引入初等因子组的一个重要目的就是希望说明它是我们判断两个矩阵是否相似的\term{全系不变量}. 这里出现了一个新的名词，但实际上内涵并不新. 所谓相似的全系不变量，就是满足两个矩阵相似当且仅当它们有相同的这个全系不变量. 我们知道对于相抵而言，矩阵的秩就是全系不变量，因为矩阵相抵当且仅当它们的秩相同. 但在相似中，在讨论若当标准形之前只能知道相似矩阵有相同的特征多项式（特征值、迹、行列式等），这些都是相似的必要条件，直到得到若当标准形后我们才得到了相似的充要条件是有相同的若当标准形，而且这并不容易得到，而矩阵的秩是非常基础的性质，所以相似的研究比相抵困难很多. 现在我们从若当标准形这一相似的充要条件出发，抽象出了初等因子组与若当标准形一一对应（观察推导过程，初等因子组与若当基完全对应）的多项式组，从而我们可以有如下结论：
 
 \begin{theorem}{}{初等因子组是相似全系不变量}
     初等因子组是矩阵相似的全系不变量，即两个矩阵相似当且仅当它们有相同的初等因子组.
@@ -253,19 +316,31 @@
 \[a_0M(I)+a_1M(\sigma)+\cdots+a_{m-1}M(\sigma^{m-1})+M(\sigma^m)=0,\]
 直到这一方程组有一个解$a_0,a_1,\ldots,a_{m-1}$，此时$a_0,a_1,\ldots,a_{m-1},1$即为极小多项式的次数.
 \begin{example}{}{极小多项式}
-    求矩阵$A=\begin{pmatrix}
+    求矩阵 $A = \begin{pmatrix}
             0 & 0 & 0 \\ 1 & 0 & 2 \\ 2 & 1 & -1
-        \end{pmatrix}$和$B=\begin{pmatrix}
-            2 & 2 & 1 \\ 0 & 2 & -1 \\ 0 & 0 & -3
-        \end{pmatrix}$的最小多项式.
+        \end{pmatrix}$ 的极小多项式.
 \end{example}
 
 \begin{solution}
-    \begin{enumerate}
-        \item
-
-        \item
-    \end{enumerate}
+    对于矩阵$A$，我们依次考察方程组
+    \[
+        a_0I+A=O,\qquad a_0I+a_1A+A^2=O,\qquad a_0I+a_1A+a_2A^2+A^3=O.
+    \]
+    先计算
+    \[
+        A^2=\begin{pmatrix}
+                0 & 0  & 0  \\
+                4 & 2  & -2 \\
+                -1 & -1 & 3
+            \end{pmatrix},
+        \qquad
+        A^3=\begin{pmatrix}
+                0 & 0  & 0  \\
+                -2 & -2 & 6  \\
+                5 & 3  & -5
+            \end{pmatrix}.
+    \]
+    读者不难验证，前两个方程组均无解. 根据三个方程组可以解得 $a_0 = 0, a_1 = -2, a_2 = 1$. 于是 $A^3 + A^2 - 2A=O$. 因为次数小于 $3$ 的首一多项式都不能化零 $A$，所以 $A$ 的极小多项式为 $\lambda^3+\lambda^2-2\lambda$.
 \end{solution}
 
 与零化多项式的讨论一致，如果一个多项式是线性变换$\sigma$的极小多项式$p$，那么它一定也是$\sigma$在任意一组基下表示矩阵$A$的零化多项式，这是因为线性变换的多项式$p(T)=0$的矩阵表示是$p(A)=O$. 下面我们给出一些简单线性变换/矩阵的极小多项式：
@@ -320,6 +395,8 @@
     因此$p_A$也是$B$的零化多项式，故$p_B\vert p_A$，同理$p_A\vert p_B$，又因为二者都是首一多项式，故$p_A=p_B$.
 \end{proof}
 
+基于这一结论，要计算一个矩阵的极小多项式，我们可以先将其化为若当标准形，然后根据若当标准形的极小多项式来得到原矩阵的极小多项式. 接下来的小节将会讨论若当标准形的极小多项式.
+
 \subsection{极小多项式与标准形}
 
 在最后一小节我们尝试将两种描述线性变换的角度（标准形和多项式）联系起来，只是现在我们是利用极小多项式这一工具. 在前文讨论特征多项式诱导的不变子空间分解时，我们将广义特征子空间定义中需要求核空间的线性变换幂次降低，而依据\autoref{thm:极小多项式与特征多项式相同根} 以及特征多项式是极小多项式的倍式可知，这一幂次还可以进一步降低：
@@ -327,6 +404,13 @@
     设$\sigma\in \mathcal{L}(V)$，$\sigma$的极小多项式为$p=(\lambda-\lambda_1)^{s_1}\cdots(\lambda-\lambda_m)^{s_m}$，则有
     \[\ker p(\sigma)=V=\ker (\sigma-\lambda_1I)^{s_1}\oplus\cdots\oplus\ker (\sigma-\lambda_mI)^{s_m}.\]
 \end{theorem}
+\begin{proof}
+    由于$p$是$\sigma$的极小多项式，因此$p(\sigma)=0$，从而$\ker p(\sigma)=V$. 又因为$(\lambda-\lambda_1)^{s_1},\ldots,(\lambda-\lambda_m)^{s_m}$两两互素，所以根据\autoref{cor:多项式分解与核空间直和2}，
+    \[
+        \ker p(\sigma)=\ker (\sigma-\lambda_1I)^{s_1}\oplus\cdots\oplus\ker (\sigma-\lambda_mI)^{s_m}.
+    \]
+    与$\ker p(\sigma)=V$合并即可得到结论.
+\end{proof}
 
 我们知道，极小多项式的因式次数无法继续降低，否则不为零化多项式，因此它也给出了广义特征子空间定义中需要求核空间的线性变换的幂次为何值时，核空间会停止增长，并且这是一个下界，基于此我们更进一步地理解了极小多项式因式次数的含义.
 
@@ -366,7 +450,7 @@
     设$A=\begin{pmatrix}
             0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0
         \end{pmatrix}$和$B=\begin{pmatrix}
-            0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0
+            0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0
         \end{pmatrix}$，它们的极小多项式根据上面的结论均为$\lambda^2$，但两者是不同的若当标准形.
 \end{example}
 
@@ -395,22 +479,40 @@
 
 我们需要补充说明一点，虽然矩阵相似不随数域改变而改变，但可对角化与数域有关. 例如实矩阵$A$的极小多项式为$\lambda^3-1$，在它在实数域上无法分解为互素一次因式的乘积，复数域上则可以，这表明$A$在实数域上不可对角化，但在复数域上可以.
 
-最后我们讨论特征多项式等于极小多项式的情况. 实际上我们发现一个矩阵可对角化，且特征值互不相同，那么根据\autoref{thm:极小多项式与特征多项式相同根} 和\autoref{thm:极小多项式与可对角化}，它的特征多项式一定等于极小多项式. 基于这一观察我们可以推广得到如下结论：
-\begin{example}{}{}
-    设$A$为$n$阶方阵且极小多项式次数为$n$，则$A$的若当标准形中各个若当块的主对角线元素互不相同.
-\end{example}
+最后我们讨论特征多项式等于极小多项式的情况. 实际上我们发现一个矩阵可对角化，且特征值互不相同，那么根据\autoref{thm:极小多项式与特征多项式相同根} 和\autoref{thm:极小多项式与可对角化}，它的特征多项式一定等于极小多项式. 事实上我们可以很轻松地推广得到如下结论：
+\begin{corollary}{}{特征多项式等于极小多项式}
+    设 $A$ 为 $n$ 阶方阵，则极小多项式次数为 $n$ 当且仅当 $A$ 的若当标准形中各个若当块的主对角线元素互不相同，即 $A$ 的每个特征值都恰好只有一个若当块.
+\end{corollary}
 
-\begin{proof}
+更进一步地，我们发现对于一个若当块矩阵，它由循环子空间生成，且其特征多项式和极小多项式是相同的. 基于这一观察我们可以推广得到一个更强的结论：
 
-\end{proof}
-
-更进一步地，我们发现对于一个若当块矩阵，它的特征多项式和极小多项式是相同的. 基于这一观察我们可以得到一个更强的结论，即特征多项式等于极小多项式的充要条件：
 \begin{theorem}{}{特征多项式等于极小多项式}
-    设$V$是有限维线性空间，$T\in \mathcal{L}(V)$，则$T$的特征多项式等于极小多项式当且仅当$V$是循环子空间，即可以由一组循环基张成.
+    设$V$是有限维线性空间，$T \in \mathcal{L}(V)$，则 $T$ 的特征多项式等于极小多项式当且仅当 $V$ 是 $T$-循环子空间.
 \end{theorem}
-\begin{proof}
 
+\begin{proof}
+    先证充分性. 设 $\dim V = n$，并且 $V$ 是 $T$-循环子空间，即存在 $v \in V$ 使得
+    \[
+        V=\spa\{v,Tv,\ldots,T^{n-1}v\}.
+    \]
+    由于 $\dim V = n$，上式中的 $n$ 个向量构成 $V$ 的一组基（\autoref{thm:循环子空间}）. 若 $T$ 的极小多项式 $q(x) = x^d + a_{d-1}x^{d-1} + \cdots + a_0$，其中 $d < n$. 则 $q(T) = 0$，从而对任意的 $v \in V$，都有
+    \[T^d v + a_{d-1}T^{d-1} v + \cdots + a_0 v = 0.\]
+    这表明 $T^d v$ 可以表示成 $v, Tv, \ldots, T^{d - 1}v$ 的线性组合，因此 $v, Tv, \ldots, T^{n - 1}v$ 线性相关，与它们构成 $V$ 的一组基矛盾，故 $d \geqslant n$，又因为特征多项式是极小多项式的倍式，故 $d \leqslant n$，因此 $d = n$，得证.
+
+    再证必要性. 设 $T$ 的特征多项式等于极小多项式，根据\autoref{cor:特征多项式等于极小多项式}，$T$ 的每个特征值都恰好只有一个若当块. 设这些若当块依次为 $J_{r_1}(\lambda_1), \ldots, J_{r_m}(\lambda_m)$，其中 $\lambda_1, \ldots, \lambda_m$ 互不相同. 取第 $i$ 个若当块对应的循环基的终止向量 $u_i$，并令
+    \[
+        u = u_1 + \cdots + u_m.
+    \]
+    对每个 $i$，记 $q_i(x) = (x-\lambda_i)^{r_i}$. 由于 $\lambda_1, \ldots, \lambda_m$ 两两不同，所以 $q_1(x), \ldots, q_m(x)$ 两两互素。由\nameref{thm:中国剩余定理}，存在多项式 $h_i(x)$，使得
+    \[ h_i(x) \equiv 1 \pmod{q_i(x)}, \qquad h_i(x)\equiv 0 \pmod{q_j(x)}\quad (j\neq i). \]
+    因此 $h_i(T)$ 在第 $i$ 个若当块对应的循环子空间上等于恒等映射，而在其他若当块对应的循环子空间上等于零映射。于是 $h_i(T)u = u_i$. 这说明每个 $u_i$ 都属于由 $u$ 生成的循环子空间
+    \[ \spa\{v, Tu, T^2u, \ldots\} = \spa\{v, Tu, \ldots, T^{n - 1}u\}. \]
+    又因为在单个若当块对应的循环子空间中，其余基向量都可以由 $u_i$ 通过 $T - \lambda_i I$ 的幂次作用得到，所以第 $i$ 个若当块对应的循环子空间中的所有基向量都属于 $\spa\{v, Tu, \ldots, T^{n - 1}u\}$.
+
+    最后将所有 $i$ 对应的循环基合并，得到整个空间的一组基都属于这个循环子空间，因此 $V = \spa\{v, Tu, \ldots, T^{n - 1}u\}$，得证.
 \end{proof}
+
+事实上，上述定理的必要性如果使用有理标准形的理论将是更为显然的，读者可以在学完下一讲内容后尝试使用有理标准形的理论来证明必要性.
 
 \begin{summary}
 
@@ -431,6 +533,11 @@
             \item 求$\sigma$的特征值；
             \item 证明：$\sigma$可对角化.
         \end{enumerate}
+        \item 设 $A = \begin{pmatrix}
+            0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0
+        \end{pmatrix}, B = \begin{pmatrix}
+            -1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 2
+        \end{pmatrix}$，判断 $A$ 与 $B$ 是否相似.
     \end{exgroup}
 
     \begin{exgroup}
