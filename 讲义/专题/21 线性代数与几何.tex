@@ -1,434 +1,1370 @@
 \chapter{线性代数与几何} \label{chap:线性代数与几何}
 
-解析几何很大程度上是线性代数发展的初衷，在研究点线面以及几何体时，将集体的几何问题抽象化为代数问题使其方便解决与计算，即是解析几何的主要思想. 本节我们将会从线性代数的角度探究解析几何的一些基本概念与方法. 此在线性代数课程的考察中也会有少部分的解析几何内容，但内容较浅，主要考察点、直线、平面等之间的关系.
+解析几何很大程度上是线性代数发展的初衷. 在研究点、直线、平面以及各种曲面时，将具体的几何问题翻译为代数问题，正是解析几何最核心的思想. 本讲从线性代数的角度整理空间解析几何中的若干基本对象与基本方法，并为下一讲二次型的讨论作准备.
 
 \section{欧氏空间上的运算}
 
-我们也已经基本掌握了模、内积、夹角等在内积空间中的基本概念，在此我们引入一些在先前的学习中接触较少的概念.
+我们已经在内积空间中讨论过向量的长度、夹角与正交性. 在三维欧氏空间中，这些概念还可以配合叉积与混合积一起使用，从而有效处理点、直线、平面之间的位置关系.
+
+在空间中取定一个坐标系 $O;\vec{e}_1,\vec{e}_2,\vec{e}_3$，即以 $O$ 为原点，以 $\vec{e}_1,\vec{e}_2,\vec{e}_3$ 为基向量. 我们不假定 $\vec{e}_1,\vec{e}_2,\vec{e}_3$ 两两垂直，也不假定它们都是单位向量. 任一向量 $\vec{a},\vec{b},\vec{c}$ 都可唯一写成
+\[
+    \vec{a} = a_1 \vec{e}_1 + a_2 \vec{e}_2 + a_3 \vec{e}_3,\qquad
+    \vec{b} = b_1 \vec{e}_1 + b_2 \vec{e}_2 + b_3 \vec{e}_3,\qquad
+    \vec{c} = c_1 \vec{e}_1 + c_2 \vec{e}_2 + c_3 \vec{e}_3.
+\]
+下面分别讨论三种运算. 首先是点积，这与内积空间中的定义完全一致，读者可以将这部分内容视为简单的复习.
+
 \begin{definition}{点积}{} \index{dianji@点积 (dot product)}
-    \term{点积}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\cdot\vec{b}$表示. 两向量点积得到的数值等于两向量模长的乘积与两向量夹角的余弦的乘积.
+    三维欧氏空间中两个向量 $\vec{a}, \vec{b}$ 的\term{点积}记作 $\vec{a}\cdot\vec{b}$，定义为
+    \[
+        \vec{a}\cdot\vec{b} = |\vec{a}|\,|\vec{b}|\cos\theta,
+    \]
+    其中 $\theta$ 为 $\vec{a}, \vec{b}$ 的夹角.
 \end{definition}
-特别的，三维欧氏空间中的向量点积$(a_1,a_2,a_3)\cdot(b_1,b_2,b_3)$可以表示为\[a_1b_1+a_2b_2+a_3b_3\]
-由点积的计算，我们可以很方便地得到两向量夹角的余弦，即\[\cos\theta=\frac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}\]
-\begin{definition}{叉乘}{} \index{chacheng@叉乘 (cross product)}
-    \term{叉乘}是在三维欧氏空间中对两个向量的运算，用$\vec{a}\times\vec{b}$表示. 两向量叉乘得到的向量垂直于两向量，方向遵循右手定则，其模长为两向量的模的乘积与两向量夹角的正弦的乘积.
-\end{definition}
-由定义可知，叉乘仅在三维欧氏空间中有定义，且叉乘的结果是一个向量，而不是一个数. 关于叉乘向量的计算有另一种更常用的用行列式表示的计算方法，即
-\[(a_1,a_2,a_3)\times(b_1,b_2,b_3)=\begin{vmatrix}
-        \vec{i} & \vec{j} & \vec{k} \\
-        a_1     & a_2     & a_3     \\
-        b_1     & b_2     & b_3
-    \end{vmatrix}\]
-其中$\vec{i},\vec{j},\vec{k}$为三维欧氏空间的自然基.
 
-在解析几何中，叉乘的一个重要应用是求解与两向量垂直的向量.
+从几何上理解，点积就是将 $\vec{a}$ 在 $\vec{b}$ 方向上的投影长度乘以 $\vec{b}$ 的模长. 根据定义可知，点积满足如下性质：
+
+\begin{enumerate}
+    \item $\vec{a}\perp \vec{b} \iff \vec{a}\cdot\vec{b} = 0$，即点积为 $0$ 是两个向量垂直的充分必要条件.
+    \item 对称性：$\vec{a}\cdot\vec{b} = \vec{b}\cdot\vec{a}$，根据定义可以直接得到这一点.
+    \item 齐性：$\lambda(\vec{a}\cdot\vec{b}) = (\lambda \vec{a})\cdot\vec{b} = \vec{a}\cdot(\lambda \vec{b})$，其中 $\lambda$ 是任意实数. 这一点根据定义也是显然的.
+    \item 加性：$\vec{a}\cdot(\vec{b} + \vec{c}) = \vec{a}\cdot\vec{b} + \vec{a}\cdot\vec{c}$，以及 $(\vec{a} + \vec{b})\cdot\vec{c} = \vec{a}\cdot\vec{c} + \vec{b}\cdot\vec{c}$. 理解这一点最直接的方式是利用点积的投影几何意义，读者应当不难想象.
+    \item 正定性：$\vec{a}\cdot\vec{a} = |\vec{a}|^2 \geqslant 0$，且当且仅当 $\vec{a} = \vec{0}$ 时等号成立.
+\end{enumerate}
+
+\begin{theorem}{点积的坐标公式}{点积的坐标公式}
+    设 $g_{ij} = \vec{e}_i \cdot \vec{e}_j (i,j = 1,2,3)$，则有
+    \[
+        \vec{a}\cdot\vec{b} = \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} a_i b_j.
+    \]
+\end{theorem}
+
+\begin{proof}
+    根据点积的加性，不难得到
+    \begin{align*}
+        \vec{a}\cdot\vec{b}
+         & = (a_1 \vec{e}_1 + a_2 \vec{e}_2 + a_3 \vec{e}_3)\cdot(b_1 \vec{e}_1 + b_2 \vec{e}_2 + b_3 \vec{e}_3) \\
+         & = \sum_{i=1}^3 \sum_{j=1}^3 a_i b_j (\vec{e}_i \cdot \vec{e}_j)
+        = \sum_{i=1}^3 \sum_{j=1}^3 g_{ij} a_i b_j.
+    \end{align*}
+\end{proof}
+
+若取 $\vec{e}_1, \vec{e}_2, \vec{e}_3$ 为标准正交基，则点积的坐标公式可以进一步简化.
+
+\begin{corollary}{直角坐标系中的点积公式}{直角坐标系中的点积公式}
+    若 $O;\vec{e}_1,\vec{e}_2,\vec{e}_3$ 是直角坐标系，且三个基向量都是单位向量，则
+    \[
+        \vec{a}\cdot\vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3.
+    \]
+\end{corollary}
+
+\begin{definition}{叉积}{} \index{chacheng@叉积 (cross product)}
+    三维欧氏空间中两个向量 $\vec{a}, \vec{b}$ 的\term{叉积}记作 $\vec{a}\times\vec{b}$. 它是同时垂直于 $\vec{a}, \vec{b}$ 的向量，其方向由右手定则确定，模长为
+    \[
+        |\vec{a}\times\vec{b}| = |\vec{a}|\,|\vec{b}| \sin \theta.
+    \]
+\end{definition}
+
+有时叉积也被称为\term{外积}，以区别于点积对应的\term{内积}.
+叉积与点积不同，它的结果不是一个数而是一个向量. 这个向量同时记录了两类信息：方向上，它垂直于原来的两个向量，因而叉积非常适合用来寻找法向量；大小上，它等于由这两个向量张成的平行四边形面积.
+
+根据定义，叉积满足如下性质：
+\begin{enumerate}
+    \item $\vec{a}\times\vec{b} = \vec{0}$ 当且仅当 $\vec{a}, \vec{b}$ 线性相关；
+    \item 反对称性：$\vec{a}\times\vec{b} = - \vec{b}\times\vec{a}$，这是由定义和右手定则直接得到的；
+    \item 齐性：$\lambda(\vec{a}\times\vec{b}) = (\lambda \vec{a})\times\vec{b} = \vec{a}\times(\lambda \vec{b})$，其中 $\lambda$ 是任意实数. 这一点根据定义是显然的.
+    \item 投影：若 $\vec{a} \neq \vec{0}$，则 $\vec{a}\times\vec{b} = \vec{a}\times\vec{b}_\perp$，其中 $\vec{b} = \vec{b}_\parallel + \vec{b}_\perp$，$\vec{b}_\parallel$ 与 $\vec{a}$ 平行，$\vec{b}_\perp$ 与 $\vec{a}$ 垂直. 这一点需要展开证明：
+    \begin{proof}
+        由于 $\vec{b}_\perp$ 是 $\vec{b}$ 在垂直于 $\vec{a}$ 的方向上的分量，因此 $|\vec{b}_\perp| = |\vec{b}|\sin\theta$，故有
+        \[ |\vec{a}\times\vec{b}_\perp| = |\vec{a}|\,|\vec{b}_\perp| = |\vec{a}|\,|\vec{b}|\sin\theta = |\vec{a}\times\vec{b}|. \]
+        而 $\vec{a} \times \vec{b}$ 的方向显然与 $\vec{a} \times \vec{b}_\perp$ 相同，因此 $\vec{a}\times\vec{b} = \vec{a}\times\vec{b}_\perp$.
+    \end{proof}
+
+    \item 加性：$\vec{a}\times(\vec{b} + \vec{c}) = \vec{a}\times\vec{b} + \vec{a}\times\vec{c}$，以及 $(\vec{a} + \vec{b})\times\vec{c} = \vec{a}\times\vec{c} + \vec{b}\times\vec{c}$. 这一点需要展开证明（我们只证明第一个等式，第二个等式可以基于反对称性得到）：
+    \begin{proof}
+        我们可以将 $\vec{b}$ 分解为 $\vec{b} = \vec{b}_\parallel + \vec{b}_\perp$，其中 $\vec{b}_\parallel$ 与 $\vec{a}$ 平行，$\vec{b}_\perp$ 与 $\vec{a}$ 垂直. 同理 $\vec{c} = \vec{c}_\parallel + \vec{c}_\perp$，其中 $\vec{c}_\parallel$ 与 $\vec{a}$ 平行，$\vec{c}_\perp$ 与 $\vec{a}$ 垂直. 则
+        \begin{align*}
+            \vec{a}\times(\vec{b} + \vec{c})
+             & = \vec{a}\times(\vec{b}_\parallel + \vec{b}_\perp + \vec{c}_\parallel + \vec{c}_\perp) = \vec{a}\times(\vec{b}_\perp + \vec{c}_\perp) \\
+             & = \vec{a}\times\vec{b}_\perp + \vec{a}\times\vec{c}_\perp
+            = \vec{a}\times\vec{b} + \vec{a}\times\vec{c}.
+        \end{align*}
+        其中第二个等号根据投影性质得到，第三个根据叉积的定义直接可以验证.
+    \end{proof}
+\end{enumerate}
+
+\begin{theorem}{叉积的一般坐标展开式}{叉积的一般坐标展开式}
+    在一般坐标系 $O;\vec{e}_1,\vec{e}_2,\vec{e}_3$ 中，
+    \[
+        \vec{a}\times\vec{b}
+        =
+        (a_2 b_3 - a_3 b_2)\,\vec{e}_2\times\vec{e}_3
+        + (a_3 b_1 - a_1 b_3)\,\vec{e}_3\times\vec{e}_1
+        + (a_1 b_2 - a_2 b_1)\,\vec{e}_1\times\vec{e}_2.
+    \]
+\end{theorem}
+
+\begin{proof}
+    利用叉积对两个变量都满足分配律，可得
+    \begin{align*}
+        \vec{a}\times\vec{b}
+         & = (a_1 \vec{e}_1 + a_2 \vec{e}_2 + a_3 \vec{e}_3)\times(b_1 \vec{e}_1 + b_2 \vec{e}_2 + b_3 \vec{e}_3) \\
+         & = \sum_{i=1}^3 \sum_{j=1}^3 a_i b_j\, \vec{e}_i \times \vec{e}_j.
+    \end{align*}
+    其中 $\vec{e}_i \times \vec{e}_i = \vec{0}$，并且 $\vec{e}_j \times \vec{e}_i = - \vec{e}_i \times \vec{e}_j$. 因此把成对出现的项合并，便得到
+    \begin{align*}
+        \vec{a}\times\vec{b}
+         & = (a_1 b_2 - a_2 b_1)\,\vec{e}_1 \times \vec{e}_2
+        + (a_1 b_3 - a_3 b_1)\,\vec{e}_1 \times \vec{e}_3
+        + (a_2 b_3 - a_3 b_2)\,\vec{e}_2 \times \vec{e}_3 \\
+         & = (a_2 b_3 - a_3 b_2)\,\vec{e}_2 \times \vec{e}_3
+        + (a_3 b_1 - a_1 b_3)\,\vec{e}_3 \times \vec{e}_1
+        + (a_1 b_2 - a_2 b_1)\,\vec{e}_1 \times \vec{e}_2.
+    \end{align*}
+\end{proof}
+
+\begin{corollary}{直角坐标系中的叉积公式}{直角坐标系中的叉积公式}
+    若 $O;\vec{i},\vec{j},\vec{k}$ 是右手直角坐标系，则
+    \[
+        \vec{a}\times\vec{b} =
+        \begin{vmatrix}
+            \vec{i} & \vec{j} & \vec{k} \\
+            a_1     & a_2     & a_3     \\
+            b_1     & b_2     & b_3
+        \end{vmatrix}.
+    \]
+\end{corollary}
+
+\begin{proof}
+    首先在右手直角坐标系中，不难得到
+    \[
+        \vec{i}\times\vec{j} = \vec{k},\qquad
+        \vec{j}\times\vec{k} = \vec{i},\qquad
+        \vec{k}\times\vec{i} = \vec{j}.
+    \]
+    将这些关系代入\autoref{thm:叉积的一般坐标展开式} 即得
+    \[
+        \vec{a}\times\vec{b}
+        = (a_2 b_3 - a_3 b_2)\vec{i}
+        - (a_1 b_3 - a_3 b_1)\vec{j}
+        + (a_1 b_2 - a_2 b_1)\vec{k},
+    \]
+    这正是行列式写法所表示的向量.
+\end{proof}
+
 \begin{definition}{混合积}{} \index{hunheji@混合积 (mixed product)} \index{biaoliangsancongji@标量三重积 (scalar triple product)}
-    \term{混合积}（或称\term{标量三重积}，不同于\term{矢量三重积}）是三维欧氏空间中对三个向量的运算，用$[\vec{a},\vec{b},\vec{c}]$表示，等价于$(\vec{a}\times\vec{b})\cdot\vec{c}$.
+    三维欧氏空间中三个向量 $\vec{a}, \vec{b}, \vec{c}$ 的\term{混合积}记作
+    \[
+        [\vec{a}, \vec{b}, \vec{c}] = (\vec{a}\times\vec{b})\cdot\vec{c}.
+    \]
 \end{definition}
-混合积的几何意义是以$\vec{a},\vec{b},\vec{c}$为邻边的平行六面体的体积，可以用行列式表示为
-\[[(a_1,a_2,a_3),(b_1,b_2,b_3),(c_1,c_2,c_3)]=\begin{vmatrix}
-        a_1 & a_2 & a_3 \\
-        b_1 & b_2 & b_3 \\
-        c_1 & c_2 & c_3
-    \end{vmatrix}\]
-同时读者也不难验证 $ (\vec{a}\times\vec{b})\cdot\vec{c} = \vec{a}\cdot(\vec{b}\times\vec{c}) $. 其应用之一是可以用来判断三个向量是否共面.
 
-\section{点、直线、平面的表示}
+混合积先用 $\vec{a}, \vec{b}$ 做叉积得到一个法向量，再与 $\vec{c}$ 做点积，因此它同时含有“底面积”和“高”的信息. 如\autoref{fig:混合积的几何意义}所示，$\vec{a}\times\vec{b}$ 的模长给出底面平行四边形的面积，而 $[\vec{a},\vec{b},\vec{c}]$ 则等于这个底面积再乘上 $\vec{c}$ 在法向方向上的有向投影，因此 $|[\vec{a},\vec{b},\vec{c}]|$ 是平行六面体的体积，而它的符号则反映了三向量的定向.
 
-一个点在欧氏空间中可以用一个向量来表示. 在三维欧氏空间中，我们可以用三个实数来表示一个点的坐标.
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=0.95, >=Stealth]
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (3.4,0);
+        \coordinate (D) at (1.0,1.25);
+        \coordinate (C) at (4.4,1.25);
+        \coordinate (Ap) at (-0.75,2.15);
+        \coordinate (Bp) at (2.65,2.15);
+        \coordinate (Dp) at (0.25,3.40);
+        \coordinate (Cp) at (3.65,3.40);
+        \coordinate (H) at (0,3.08);
+        \coordinate (N) at (0,3.95);
+
+        \draw[->, thick] (A) -- (B);
+        \draw[->, thick] (A) -- (D);
+        \draw[thick] (B) -- (C);
+        \draw[dashed, thick] (D) -- (C);
+
+        \draw[->, thick] (A) -- (Ap);
+        \draw[thick] (Ap) -- (Bp);
+        \draw[thick] (B) -- (Bp);
+        \draw[thick] (C) -- (Cp) -- (Bp);
+        \draw[thick] (Ap) -- (H) -- (Dp) -- (Cp);
+        \draw[dashed, thick] (D) -- (Dp);
+
+        \draw[dashed] (A) -- (H);
+        \draw[->, thick] (H) -- (N);
+
+        \node[below left] at (A) {$A$};
+        \node[below] at (B) {$B$};
+        \node[right] at (C) {$C$};
+        \node[below right] at (D) {$D$};
+        \node[left] at (Ap) {$A'$};
+        \node[right] at (Bp) {$B'$};
+        \node[right] at (Cp) {$C'$};
+        \node[left] at (Dp) {$D'$};
+
+        \node[below] at (1.7,0) {$\vec{a}$};
+        \node[left] at (0.55,0.72) {$\vec{b}$};
+        \node[left] at (-0.42,1.08) {$\vec{c}$};
+        \node[above right] at (N) {$\vec{a}\times\vec{b}$};
+    \end{tikzpicture}
+    \caption{混合积的几何意义}
+    \label{fig:混合积的几何意义}
+\end{figure}
+
+下面给出混合积的一些性质：
+
+\begin{enumerate}
+    \item 三个向量 $\vec{a}, \vec{b}, \vec{c}$ 共面的充分必要条件是 $[\vec{a}, \vec{b}, \vec{c}] = 0$.
+    \item 循环对称性：$(\vec{a}\times\vec{b})\cdot\vec{c} = (\vec{b}\times\vec{c})\cdot\vec{a} = (\vec{c}\times\vec{a})\cdot\vec{b}$，即 $[\vec{a}, \vec{b}, \vec{c}] = [\vec{b}, \vec{c}, \vec{a}] = [\vec{c}, \vec{a}, \vec{b}]$，即混合积在三个变量上满足循环对称. 这一点从几何意义上理解是显然的.
+\end{enumerate}
+
+\begin{theorem}{混合积的一般坐标公式}{混合积的一般坐标公式}
+    在一般坐标系 $O;\vec{e}_1,\vec{e}_2,\vec{e}_3$ 中，
+    \[
+        [\vec{a}, \vec{b}, \vec{c}]
+        =
+        \begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}
+        [\vec{e}_1, \vec{e}_2, \vec{e}_3].
+    \]
+\end{theorem}
+
+\begin{proof}
+    利用\autoref{thm:点积的坐标公式}，\autoref{thm:叉积的一般坐标展开式}以及上面给出的性质，我们可以得到
+    \begin{align*}
+        [\vec{a}, \vec{b}, \vec{c}]
+         & = \bigl((a_2 b_3 - a_3 b_2)\,\vec{e}_2\times\vec{e}_3
+        + (a_3 b_1 - a_1 b_3)\,\vec{e}_3\times\vec{e}_1
+        + (a_1 b_2 - a_2 b_1)\,\vec{e}_1\times\vec{e}_2\bigr) \\
+         &\qquad \cdot (c_1 \vec{e}_1 + c_2 \vec{e}_2 + c_3 \vec{e}_3) \\
+         & = (a_2 b_3 - a_3 b_2) c_1 [\vec{e}_1, \vec{e}_2, \vec{e}_3]
+        + (a_3 b_1 - a_1 b_3) c_2 [\vec{e}_1, \vec{e}_2, \vec{e}_3] \\
+         &\qquad + (a_1 b_2 - a_2 b_1) c_3 [\vec{e}_1, \vec{e}_2, \vec{e}_3] \\
+         & = \begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}
+        [\vec{e}_1, \vec{e}_2, \vec{e}_3].
+    \end{align*}
+\end{proof}
+
+\begin{corollary}{直角坐标系中的混合积公式}{直角坐标系中的混合积公式}
+    若 $O;\vec{i},\vec{j},\vec{k}$ 是右手直角坐标系，则
+    \[
+        [\vec{a}, \vec{b}, \vec{c}] =
+        \begin{vmatrix}
+            a_1 & a_2 & a_3 \\
+            b_1 & b_2 & b_3 \\
+            c_1 & c_2 & c_3
+        \end{vmatrix}.
+    \]
+\end{corollary}
+
+\begin{proof}
+    在右手直角坐标系中，不难验证 $[\vec{i},\vec{j},\vec{k}] = 1$. 代入\autoref{thm:混合积的一般坐标公式} 即得.
+\end{proof}
+
+事实上，这一推论也验证了我们在\autoref{def:公理化定义}中所说的，行列式的值等于由行列式中向量张成的平行多面体的体积（带符号）.
+
+\section{直线与平面的表示}
+
+解析几何的一个重要目标是把几何对象翻译成代数对象. 在三维欧氏空间中，一个点可以用它相对于原点的位置向量来表示. 因而，研究直线和平面时，我们也可以直接把它们表示为向量方程或坐标方程. 一旦建立起这一表示，后续的各种位置关系、距离公式等都可以通过代数运算来处理，这也是解析几何的核心思想.
 
 \subsection{平面的方程}
 
-平面是欧氏空间中的一个基本几何对象，我们有多种代数方法来表示平面.
+平面是空间中最基本的几何对象之一. 常用的表示方式有参数方程、点法式与一般方程. 其中参数方程的基本思想是从平面上的一个点出发，利用两个不共线的方向向量来描述平面上的任意一点；点法式则是从平面上的一个点出发，利用一个法向量来描述平面上的任意一点；一般方程则是点法式的展开形式.
 
-平面的一般方程是平面的一种最基本的表示方法，即$Ax+By+Cz+D=0$. 平面的一般方程十分简洁，但是我们很难由此方程得到平面的几何性质，因此我们还需要考虑其他的表示方法. 例如，一个平面由平面上一点与平面上两个不共线的向量来表示. 假设已知平面上一点$P(x_0,y_0,z_0)$和平面上两个不共线的向量$\vec{u}=(a,b,c)$和$\vec{v}=(d,e,f)$，则平面上的任意一点$Q(x,y,z)$都满足$\overrightarrow{PQ}$与$\vec{u}$和$\vec{v}$线性相关，即
-\[\overrightarrow{PQ}=k_1\vec{u}+k_2\vec{v}\]
-化为坐标形式即为
-\[\begin{cases}
-        x=x_0+k_1a+k_2d \\
-        y=y_0+k_1b+k_2e \\
-        z=z_0+k_1c+k_2f
-    \end{cases}\]
-这就是平面的参数方程，其中$k_1,k_2$是参数.
+为了得到平面的参数方程，首先设点 $P_0(x_0, y_0, z_0)$ 在平面 $\Pi$ 上，且 $\vec{u} = (a_1, a_2, a_3), \vec{v} = (b_1, b_2, b_3)$ 是平面内两个不共线的方向向量，则平面上任一点 $P(x, y, z)$ 都满足
+\[
+    \overrightarrow{P_0P} = \lambda \vec{u} + \mu \vec{v},
+\]
+即
+\[
+    \begin{cases}
+        x = x_0 + \lambda a_1 + \mu b_1, \\
+        y = y_0 + \lambda a_2 + \mu b_2, \\
+        z = z_0 + \lambda a_3 + \mu b_3.
+    \end{cases}
+\]
+这称为平面的\term{参数方程}. 从定义平面的参数方程的思想可以看出，空间中不共线的三个点唯一确定一个平面：设三点为 $A, B, C$，且不共线，则可以写出过点 $A$ 且以 $\overrightarrow{AB}, \overrightarrow{AC}$ 为方向向量的参数方程.
 
-此外，平面还可以由平面上一点和平面的法向量来表示. 假设已知平面上一点$P(x_0,y_0,z_0)$和平面的法向量$\vec{n}=(A,B,C)$，则平面上的任意一点$Q(x,y,z)$都满足向量$\overrightarrow{PQ}$与$\vec{n}$垂直，即点积为0. 由此可得其方程为\[A(x-x_0)+B(y-y_0)+C(z-z_0)=0\]这种表示方法称为\term{点法式}.
+为了得到平面的点法式，设已知平面上一点 $P_0(x_0, y_0, z_0)$ 与它的一个法向量 $\vec{n} = (A, B, C)$，则平面上任一点 $P(x, y, z)$ 满足
+\[
+    \vec{n}\cdot \overrightarrow{P_0P} = 0,
+\]
+即
+\[
+    A(x - x_0) + B(y - y_0) + C(z - z_0) = 0.
+\]
+这称为平面的\term{点法式}. 展开后得到
+\[
+    A x + B y + C z + D = 0,
+\]
+其中 $D = - (A x_0 + B y_0 + C z_0)$，这就是平面的\term{一般方程}. 显然，一般方程的系数向量 $(A, B, C)$ 就是平面的一个法向量.
 
-我们发现这跟平面的一般方程十分相似，实际上，我们可以直接通过平面的一般方程得到平面的法向量.
-
-在得到一张由其他方式表示的平面时，我们往往也会将其转化为一般式或点法式，以便于我们计算其与其他几何对象的关系. 例如，得到一个由平面上一点与平面上两不共线的向量表示的平面，则可以通过求两向量的叉积得到平面的法向量，从而得到平面的点法式.
+在定义了参数方程与一般方程之后，我们就可以在这两种表示之间进行转换（点法式本质上与一般方程无异）. 显然，要将一般方程转换为参数方程，最关键的步骤是找到平面内的两个不共线的方向向量. 反过来，要将参数方程转换为一般方程，最关键的步骤则是找到一个法向量. 要获得法向量，最直接的方式就是取两个方向向量的叉积.
 
 \begin{example}{}{}
-    若已知一个平面上有三点$A(1,2,0),\enspace B(0,1,-1),\enspace C(1,1,1)$，求该平面的一般方程.
+    若已知一个平面上有三点
+    \[
+        A(1, 2, 0), \quad B(0, 1, -1), \quad C(1, 1, 1),
+    \]
+    求该平面的一般方程.
 \end{example}
+
+\begin{solution}
+    取平面内两个方向向量
+    \[
+        \overrightarrow{AB} = (-1, -1, -1), \qquad \overrightarrow{AC} = (0, -1, 1).
+    \]
+    因此平面的一个法向量为
+    \[
+        \vec{n} = \overrightarrow{AB}\times\overrightarrow{AC} = (-2, 1, 1).
+    \]
+    因此平面的点法式可写成
+    \[
+        -2(x - 1) + (y - 2) + z = 0,
+    \]
+    化简得 $-2x + y + z = 0$.
+\end{solution}
 
 \subsection{直线的方程}
 
-直线在欧氏空间中也是一个基本对象，同样有多种代数方法可以表示直线.
+空间直线同样有多种表示方式. 与平面类似，直线最本质的数据也是``一个基点加一个方向''. 不过在空间中，直线还常常被看成两个平面的交线. 前一种观点便于直接写出参数表示，后一种观点则在讨论两个几何对象的联立关系时更自然. 下面的几种方程正对应着这两种观察角度.
 
-首先直线可以用某两张平面的交表示. 假设有两相交平面的方程，联立可得直线方程
-\[\begin{cases}
-        A_1x+B_1y+C_1z+D_1=0 \\
-        A_2x+B_2y+C_2z+D_2=0
-    \end{cases}\]
-即为直线的一般方程. 这种联立方程的表示方法最为基本，但是不够简洁，大多情况下也不够直观. 所以更多情况下我们希望在表示中可以直观体现直线的一些特征. 因此，可以用直线上的一个点和直线的方向（即方向向量）来确定一条直线.
+我们首先考虑``一个基点加一个方向''思想对应的方程。设点 $P_0(x_0, y_0, z_0)$ 在直线 $L$ 上，$\vec{l} = (a, b, c)$ 是它的一个方向向量，则直线上任一点 $P(x, y, z)$ 满足
+\[
+    \overrightarrow{P_0P} = t \vec{l},
+\]
+即
+\[
+    \begin{cases}
+        x = x_0 + a t, \\
+        y = y_0 + b t, \\
+        z = z_0 + c t.
+    \end{cases}
+\]
+这称为直线的\term{参数方程}. 它的向量形式就是
+\[
+    \vec{r} = \vec{r}_0 + t \vec{l}.
+\]
 
-假设已知直线上的一点$A_0(x_0,y_0,z_0)$和直线的方向向量$\vec{l}=(a,b,c)$，则直线上的任意一点$A(x,y,z)$都满足$\overrightarrow{AA_0}$与$\vec{l}$平行，用具体的方程则表示为
-\[\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\]
-其中$a,b,c$不为零. 这种表示方法称为\term{点向式}.
+当 $a, b, c$ 都非零时，上式还可以写成
+\[
+    \frac{x - x_0}{a} = \frac{y - y_0}{b} = \frac{z - z_0}{c},
+\]
+这称为直线的\term{点向式方程}或\term{标准方程}. 若某一分量为 $0$，则对应坐标应写成常数，例如 $a = 0$ 时写作 $x = x_0$.
 
-如果我们对上述式子进行替换，令\[t=\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\]
-则可得
-\[\begin{cases}
-        x=x_0+at \\
-        y=y_0+bt \\
-        z=z_0+ct
-    \end{cases}\]
-这样就得到了直线的参数方程，其中$t$为参数.
+若已知直线经过两点 $P_1(x_1, y_1, z_1), P_2(x_2, y_2, z_2)$，则方向向量可取
+\[
+    \overrightarrow{P_1P_2} = (x_2 - x_1, y_2 - y_1, z_2 - z_1),
+\]
+从而可以直接写出参数方程与点向式方程，其中改写后的点向式方程又称为\term{两点式方程}.
 
-当然还有以两点确定一条直线的表示方法，我们可以轻松地算出直线的方向向量，然后用点向式或参数方程来表示. 最后可以得出方程
-\[\frac{x-x_1}{x_2-x_1}=\frac{y-y_1}{y_2-y_1}=\frac{z-z_1}{z_2-z_1}\]
-
-那么如何实现从一般方程到点向式或参数方程的转换呢？最简单的方法是求解线性方程组再用两点表示或者参数表示，但是这样的方法比较麻烦，事实上我们可以利用法向量进行转换. 假设两平面的一般方程为$A_1x+B_1y+C_1z+D_1=0$与$A_2x+B_2y+C_2z+D_2=0$，则可以得到两平面的法向量分别为$\vec{n}_1=(A_1,B_1,C_1),\enspace\vec{n}_2=(A_2,B_2,C_2)$，因为该直线在两张平面内，所以直线与两个法向量都垂直，所以$\vec{n}_1\times\vec{n}_2$即为直线的方向向量. 再求出一般方程的一个解（即直线上一点）即可得到直线的点向式与参数方程.
-
-\section{平面与直线间的位置关系}
-
-对于三维欧氏空间中的几何对象，我们主要需要研究平行、相交与重合等关系. 我们可以通过平面与直线的方程来判断.
-
-\subsection{线与线的位置关系}
-
-线与线之间的位置关系判断主要依靠它们的方向向量. 如果两条直线的方向向量平行，则两条直线平行或重合，此时再判断两直线是否存在公共点，若联立方程有解，说明两直线重合，否则两条直线平行. 如果两条直线的方向向量不平行，则还需要判断两条直线是否共面，若共面则说明两条直线相交，否则两条直线异面. 此时以两直线方程联立方程组，若有解则说明存在交点，否则说明两条直线异面.
+下面我们转换定义的思路. 直线还可以表示为两相交平面的交线：
+\[
+    \begin{cases}
+        A_1 x + B_1 y + C_1 z + D_1 = 0, \\
+        A_2 x + B_2 y + C_2 z + D_2 = 0.
+    \end{cases}
+\]
+这称为直线的\term{一般方程}. 若两平面的法向量分别为
+\[
+    \vec{n}_1 = (A_1, B_1, C_1), \qquad \vec{n}_2 = (A_2, B_2, C_2),
+\]
+则交线的方向向量可取
+\[
+    \vec{l} = \vec{n}_1 \times \vec{n}_2.
+\]
+再求出交线上一点，就得到这条直线的参数方程与点向式.
 
 \begin{example}{}{}
-    已知直线$L_1=\begin{cases}
-            x+y+z-1=0 \\
-            x-2y+2=0
-        \end{cases},\enspace L_2=\begin{cases}
-            x=2t  \\
-            y=t+a \\
-            z=bt+1
-        \end{cases}$，试确定$a,b$的值使得$L_1,L_2$是：
+    将直线
+    \[
+        \begin{cases}
+            x + y - z = 2, \\
+            2x - y + z = 1
+        \end{cases}
+    \]
+    化为参数方程.
+\end{example}
+
+\begin{solution}
+    两平面的法向量分别为
+    \[
+        \vec{n}_1 = (1, 1, -1), \qquad \vec{n}_2 = (2, -1, 1).
+    \]
+    因此交线的一个方向向量为
+    \[
+        \vec{l} = \vec{n}_1 \times \vec{n}_2 = (0, -3, -3),
+    \]
+    可化简为 $(0, 1, 1)$. 取 $z = 0$，解方程组
+    \[
+        \begin{cases}
+            x + y = 2, \\
+            2x - y = 1
+        \end{cases}
+    \]
+    得到直线上一点 $(1, 1, 0)$. 故所求参数方程为
+    \[
+        \begin{cases}
+            x = 1, \\
+            y = 1 + t, \\
+            z = t.
+        \end{cases}
+    \]
+\end{solution}
+
+\section{点、直线与平面间的度量与位置关系}
+
+在三维欧氏空间中，我们最常研究的度量关系是距离与角度，而最常研究的位置关系则是平行、相交、重合、异面与垂直. 这些关系可以通过前面定义的点积、叉积以及混合积来统一刻画.
+
+\subsection{点到直线和平面的距离}
+
+我们从最简单的开始，即点和直线、平面之间的关系. 显然，位置关系是点在直线上或平面上，这是平凡的；度量关系则是点到直线或平面的距离. 下面我们给出点到直线和平面的距离公式.
+
+\begin{theorem}{点到直线的距离公式}{点到直线的距离公式}
+    设直线
+    \[
+        L:\ \vec{r} = \vec{r}_0 + t \vec{l},
+    \]
+    其中 $\vec{l} \neq \vec{0}$. 若点 $P$ 的位置向量为 $\vec{p}$，则点 $P$ 到直线 $L$ 的距离为
+    \[
+        d(P, L) = \frac{|(\vec{p} - \vec{r}_0)\times \vec{l}|}{|\vec{l}|}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    以 $\vec{p} - \vec{r}_0$ 和 $\vec{l}$ 为邻边的平行四边形面积为
+    \[
+        |(\vec{p} - \vec{r}_0)\times \vec{l}|.
+    \]
+    另一方面，这个面积也等于底边长 $|\vec{l}|$ 与高 $d(P, L)$ 的乘积，故结论成立.
+\end{proof}
+
+为了推导点到平面的距离公式，我们可以利用上述点到直线的距离公式的思想证明，只是此时平行四边形的面积要替换为平行六面体的体积，我们留作习题. 下面我们使用平面的一般方程来得到点到平面的距离公式. 设平面
+\[
+    \Pi:\ A x + B y + C z + D = 0,
+\]
+这可以写成内积形式
+\[
+    \langle \vec{n}, \vec{x} \rangle + D = 0,
+\]
+其中 $\vec{n} = (A, B, C)$ 是平面的一个法向量.
+
+\begin{theorem}{点到平面的距离公式}{点到平面的距离公式}
+    点 $P(x_0, y_0, z_0)$ 到平面
+    \[
+        \Pi:\ A x + B y + C z + D = 0
+    \]
+    的距离为
+    \[
+        d(P, \Pi) = \frac{|A x_0 + B y_0 + C z_0 + D|}{\sqrt{A^2 + B^2 + C^2}}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    设 $\vec{p} = (x_0, y_0, z_0)$，任取平面上一点 $\vec{q}$，则
+    \[
+        \langle \vec{n}, \vec{q} \rangle + D = 0.
+    \]
+    因而
+    \[
+        \langle \vec{n}, \vec{p} - \vec{q} \rangle
+        = \langle \vec{n}, \vec{p} \rangle - \langle \vec{n}, \vec{q} \rangle
+        = \langle \vec{n}, \vec{p} \rangle + D.
+    \]
+    由 Cauchy-Schwartz 不等式，
+    \[
+        |\langle \vec{n}, \vec{p} \rangle + D|
+        = |\langle \vec{n}, \vec{p} - \vec{q} \rangle|
+        \leqslant |\vec{n}|\,|\vec{p} - \vec{q}|.
+    \]
+    所以对任意 $\vec{q} \in \Pi$ 都有
+    \[
+        |\vec{p} - \vec{q}| \geqslant \frac{|\langle \vec{n}, \vec{p} \rangle + D|}{|\vec{n}|}.
+    \]
+    当 $\vec{p} - \vec{q}$ 与 $\vec{n}$ 平行时取等号，此时 $\vec{q}$ 正是 $P$ 在平面上的垂足. 因此
+    \[
+        d(P, \Pi)
+        = \frac{|\langle \vec{n}, \vec{p} \rangle + D|}{|\vec{n}|}
+        = \frac{|A x_0 + B y_0 + C z_0 + D|}{\sqrt{A^2 + B^2 + C^2}}.
+    \]
+\end{proof}
+
+特别地，原点到平面 $\Pi$ 的距离为
+\[
+    d(O, \Pi) = \frac{|D|}{\sqrt{A^2 + B^2 + C^2}}.
+\]
+
+总结而言，点到直线或平面的距离公式的证明并不复杂，关键在于理解它们的几何意义，并在适当的时候使用点积、叉积以及混合积的几何意义简化表示. 后续的证明中读者也应当多加注意几何意义，这样才能更好地理解公式的来龙去脉.
+
+\subsection{直线与直线的度量与位置关系}
+
+设
+\[
+    L_1:\ \vec{r} = \vec{r}_1 + s \vec{u}, \qquad
+    L_2:\ \vec{r} = \vec{r}_2 + t \vec{v},
+\]
+其中 $\vec{u}, \vec{v} \neq \vec{0}$. 下面首先给出两条直线之间的位置关系判定条件，然后基于不同的位置关系给出两条直线之间的距离公式.
+
+\begin{theorem}{两直线的位置判定}{两直线的位置判定}
+    上述两条直线的位置关系可由下列条件判定：
+    \begin{enumerate}
+        \item $L_1 = L_2$ 当且仅当 $\vec{u}\times\vec{v} = \vec{0}$ 且 $(\vec{r}_2 - \vec{r}_1)\times\vec{u} = \vec{0}$；
+        \item $L_1 \parallel L_2$ 且不重合当且仅当 $\vec{u}\times\vec{v} = \vec{0}$ 且 $(\vec{r}_2 - \vec{r}_1)\times\vec{u} \neq \vec{0}$；
+        \item $L_1, L_2$ 相交当且仅当 $\vec{u}\times\vec{v} \neq \vec{0}$ 且
+              \[
+                  [\vec{r}_2 - \vec{r}_1, \vec{u}, \vec{v}] = 0;
+              \]
+        \item $L_1, L_2$ 异面当且仅当
+              \[
+                  [\vec{r}_2 - \vec{r}_1, \vec{u}, \vec{v}] \neq 0.
+              \]
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    若 $\vec{u}\times\vec{v} = \vec{0}$，则两直线方向向量平行，故它们平行或重合. 此时再看连接两直线对应点的向量 $\vec{r}_2 - \vec{r}_1$ 是否与 $\vec{u}$ 平行，即可区分平行与重合.
+
+    若 $\vec{u}\times\vec{v} \neq \vec{0}$，则两直线不平行. 此时它们相交的充分必要条件是共面，而共面的充分必要条件正是
+    \[
+        [\vec{r}_2 - \vec{r}_1, \vec{u}, \vec{v}] = 0.
+    \]
+    若此式不成立，则两直线不共面，只能是异面直线.
+\end{proof}
+
+\begin{example}{}{}
+    已知直线
+    \[
+        L_1 =
+        \begin{cases}
+            x + y + z - 1 = 0, \\
+            x - 2y + 2 = 0
+        \end{cases},
+        \qquad
+        L_2 =
+        \begin{cases}
+            x = 2t, \\
+            y = t + a, \\
+            z = bt + 1
+        \end{cases},
+    \]
+    试确定 $a, b$ 的值，使得 $L_1, L_2$ 分别是：
     \begin{enumerate}
         \item 平行直线；
-
         \item 异面直线.
     \end{enumerate}
 \end{example}
 
-\subsection{线与面的位置关系}
+\begin{solution}
+    先把 $L_1$ 化为参数方程. 只需要将 $L_1$ 方程视为线性方程组来求解即可得到：
+    \[
+        L_1:\ (x, y, z) = (-2, 0, 3) + s (2, 1, -3).
+    \]
+    因而 $L_1$ 的方向向量可取
+    \[
+        \vec{u} = (2, 1, -3),
+    \]
+    而 $L_2$ 的方向向量为
+    \[
+        \vec{v} = (2, 1, b).
+    \]
 
-线与面的位置关系首先需要判断线的方向向量与平面的法向量的关系. 如果方向向量与法向量平行，则说明线与面垂直. 如果两者垂直，则说明该直线与平面平行或者在平面内，只需再判断直线上的点是否在平面内即可.
+    \begin{enumerate}
+        \item 若 $L_1, L_2$ 平行，则 $\vec{u}, \vec{v}$ 平行. 由于前两坐标已经相同，必有 $b = -3$. 此时两直线不可能重合，因为把 $L_2$ 上点 $(0, a, 1)$ 代入 $L_1$ 的两个平面方程分别得到
+        \[
+            a = 0, \qquad 2 - 2a = 0,
+        \]
+        二者矛盾. 故当且仅当 $b = -3$ 时，$L_1, L_2$ 为平行直线，而 $a$ 任意.
 
-此外还有一些对于平面不同表示形式的方法. 例如，假设已知直线的方向向量与平面上两个不平行的向量，则可以对这三个向量做混合积，如果混合积为零，则说明三个向量共面，即直线与平面平行或者在平面内.
+        \item 若 $L_1, L_2$ 异面，则必须不平行且不共面. 取
+        \[
+            \vec{r}_1 = (-2, 0, 3), \qquad \vec{r}_2 = (0, a, 1),
+        \]
+        则
+        \[
+            \vec{r}_2 - \vec{r}_1 = (2, a, -2).
+        \]
+        计算混合积
+        \[
+            [\vec{r}_2 - \vec{r}_1, \vec{u}, \vec{v}]
+            =
+            \begin{vmatrix}
+                2 & a & -2 \\
+                2 & 1 & -3 \\
+                2 & 1 & b
+            \end{vmatrix}
+            = 2(b + 3)(1 - a).
+        \]
+        因而异面的充分必要条件是 $2(b + 3)(1 - a) \neq 0$，即 $a \neq 1, \qquad b \neq -3$.
+    \end{enumerate}
+\end{solution}
 
-\subsection{面与面的位置关系}
+接下来给出两条直线之间的距离公式. 由于直线重合或相交时距离为 $0$，因此我们只需要考虑两条直线平行或异面的情况.
 
-面与面的位置关系主要依靠两个平面的法向量来判断. 如果两个平面的法向量平行，则说明两个平面平行或重合，再判断两平面是否存在公共点. 若两法向量垂直，则两平面也垂直.
-
-\subsection{平面与点的位置关系}
-一个空间中的平面 $\Gamma$ 可以以一个方程表示：
-\[
-A x + B y + C z + D = 0
-\]
-它的一个法向量是 $\vec{n} = (A, B, C)$，因此我们说一个向量 $\vec{a}$ 在平面 $\Gamma$ 中当且仅当
-\[
-\langle \vec{n}, \vec{a} \rangle = -D
-\]
-一个简单的观察是，$D$ 表征了平面和原点之间的距离. 实际上，平面和原点之间的距离就是
-\[
-d_{O\text{-}\Gamma} = \frac{\abs{D}}{\sqrt{A^2 + B^2 + C^2}}
-\]
-这并不难估计，只需注意到
-\[
-\langle \vec{n}, \frac{-D}{A^2 + B^2 + C^2}\vec{n} \rangle = -D
-\]
-即可. 另一种计算方式也可由截距入手，读者可自行计算直角四面体的体积，这留作一个习题. 有了这个式子之后，我们就能考虑任意一点到平面的距离. 这种考虑的第一个步骤是考虑怎么将某个点``移作''原点，实际上，设这个点的向量表示为 $\vec{b}$，我们就有一个新的以内积的形式作的表示：
-\[
-\left\langle \vec{n}, \vec{a} + \vec{b} \right\rangle = -D
-\]
-利用线性性将其写开，并移项，得到新的平面的常数项：
-\[
-D' = \langle \vec{n}, \vec{b} \rangle + D
-\]
-将此式代入到已有的方程中，就能得到：
-\[
-d_{\vec{b}\text{-}\Gamma} = \frac{\abs{\langle \vec{n}, \vec{b} \rangle + D}}{\sqrt{A^2 + B^2 + C^2}}
-\]
-或者，如果你宁愿为了得到一个更为优雅的方程而多加一些标记，把 $\vec{b}$ 记作 $(x_0, y_0, z_0)$，则可以得到结果：
-\[
-d_{\vec{b}\text{-}\Gamma} = \frac{\abs{A x_0 + B y_0 + C z_0 + D}}{\sqrt{A^2 + B^2 + C^2}}
-\]
-另一种同样利用内积的推导方式是利用 Cauchy-Schwartz 不等式，同样见诸习题.
-
-另一个式子是球方程. 就球而言，我们需要考虑的事情其实很少. 一个圆心为 $\vec{a}$，半径为 $r$ 的球 $C$ 中的点 $\vec{x}$ 满足方程：
-\[
-\langle \vec{x} - \vec{a}, \vec{x} - \vec{a} \rangle = r^2
-\]
-如果你乐意的话，也可以将其展开：
-\[
-\langle \vec{x}, \vec{x} \rangle - 2 \langle \vec{x}, \vec{a} \rangle + \langle \vec{a}, \vec{a} \rangle - r^2 = 0
-\]
-它是一个二次的形式. 对它而言，我们更关注的是它的另外一个性质：其切点的向量表示就是切面的一个法向量，在后面的讨论中，这将是至关重要的一点. 因为相切关系的平移不变性，我们给出以下结果：
-
-\begin{theorem}{}{}
-球 $\langle \vec{x}, \vec{x} \rangle = r^2$ 与平面 $\langle \vec{n}, \vec{x} \rangle = -D$ 在点 $\vec{t}$ 处相交，且总共有且仅有一个交点（即相切）当且仅当：
-\begin{enumerate}
-    \item $\langle \vec{t}, \vec{t} \rangle = r^2, \quad \langle \vec{n}, \vec{t} \rangle = -D$，即 $\vec{t}$ 既在圆上，也在平面上；
-    \item 存在 $\lambda \in \R$ 使得 $\vec{t} = \lambda \vec{n}$ 成立，即 $\vec{t}$ 和 $\vec{n}$ 共线.
-\end{enumerate}
+\begin{theorem}{两直线的距离公式}{两直线的距离公式}
+    设 $L_1, L_2$ 如上.
+    \begin{enumerate}
+        \item 若 $L_1 \parallel L_2$，则
+        \[
+            d(L_1, L_2) = \frac{|(\vec{r}_2 - \vec{r}_1)\times \vec{u}|}{|\vec{u}|}.
+        \]
+        \item 若 $L_1, L_2$ 异面，则
+        \[
+            d(L_1, L_2) = \frac{|[\vec{r}_2 - \vec{r}_1, \vec{u}, \vec{v}]|}{|\vec{u}\times\vec{v}|}.
+        \]
+    \end{enumerate}
 \end{theorem}
 
-这个命题的证明与命题本身一样显而易见，只要利用二次方程的求根公式即可，与圆和直线相切的推导别无二致，请读者自行完成证明.
+\begin{proof}
+    当两条直线平行时，直线间的距离自然退化为一条直线上的任意点到另一条直线的距离，因此第一式就是点到平行直线的距离公式. 第二式中，$|\vec{u}\times\vec{v}|$ 是以 $\vec{u}, \vec{v}$ 为邻边的平行四边形面积，而 $|[\vec{r}_2 - \vec{r}_1, \vec{u}, \vec{v}]|$ 是对应平行六面体体积，因此它们的比值恰为公垂线段长度.
+\end{proof}
+
+两条直线之间的度量关系还有它们之间的夹角，事实上这直接由它们的方向向量 $\vec{u}, \vec{v}$ 的夹角定义即可，即
+\[
+    \cos \theta = \frac{|\vec{u}\cdot\vec{v}|}{|\vec{u}|\,|\vec{v}|}.
+\]
+
+\subsection{直线与平面的度量与位置关系}
+
+设直线
+\[
+    L:\ \vec{r} = \vec{r}_0 + t \vec{l}
+\]
+的方向向量为 $\vec{l} = (a, b, c)$，平面
+\[
+    \Pi:\ A x + B y + C z + D = 0
+\]
+的法向量为 $\vec{n} = (A, B, C)$.
+
+\begin{theorem}{直线与平面的位置判定}{直线与平面的位置判定}
+    直线 $L$ 与平面 $\Pi$ 的位置关系可由 $\vec{l}$ 与 $\vec{n}$ 判断：
+    \begin{enumerate}
+        \item $L \perp \Pi$ 当且仅当 $\vec{l} \parallel \vec{n}$；
+        \item $L \parallel \Pi$ 或 $L \subset \Pi$ 当且仅当 $\vec{l}\cdot\vec{n} = 0$；
+        \item 在 $\vec{l}\cdot\vec{n} = 0$ 的前提下，若 $L$ 上一点 $P_0$ 满足 $P_0 \in \Pi$，则 $L \subset \Pi$；若 $P_0 \notin \Pi$，则 $L \parallel \Pi$；
+        \item 若 $\vec{l}\cdot\vec{n} \neq 0$，则 $L$ 与 $\Pi$ 相交于唯一一点.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    由于 $\vec{n}$ 垂直于平面内一切方向向量，而 $\vec{l}$ 给出了直线方向，所以结论直接由垂直与平行的定义得到.
+\end{proof}
+
+若直线与平面相交且不垂直，我们把直线与其在平面上的正射影之间的夹角称为\term{直线与平面的夹角}. 设该夹角为 $\theta \in [0, \pi / 2]$，则
+\[
+    \sin \theta = \frac{|\vec{l}\cdot\vec{n}|}{|\vec{l}|\,|\vec{n}|}.
+\]
+这是因为 $\theta$ 与 $\vec{l}$ 与法向量 $\vec{n}$ 的夹角互余.
+
+若 $L \parallel \Pi$，则直线到平面的距离等于直线上任一点到平面的距离.
+
+\subsection{平面与平面的度量与位置关系}
+
+设两个平面
+\[
+    \Pi_1:\ A_1 x + B_1 y + C_1 z + D_1 = 0, \qquad
+    \Pi_2:\ A_2 x + B_2 y + C_2 z + D_2 = 0
+\]
+的法向量分别为
+\[
+    \vec{n}_1 = (A_1, B_1, C_1), \qquad \vec{n}_2 = (A_2, B_2, C_2).
+\]
+
+下面的定理是显然成立的，因此不再赘述其证明.
+\begin{theorem}{两平面的位置判定}{两平面的位置判定}
+    \begin{enumerate}
+        \item $\Pi_1 \parallel \Pi_2$ 或 $\Pi_1 = \Pi_2$ 当且仅当 $\vec{n}_1 \parallel \vec{n}_2$；
+        \item 在 $\vec{n}_1 \parallel \vec{n}_2$ 的前提下，若两方程成比例，则 $\Pi_1 = \Pi_2$；否则 $\Pi_1 \parallel \Pi_2$；
+        \item 当 $\vec{n}_1 \not\parallel \vec{n}_2$ 时，两平面相交于一直线，其方向向量可取
+        \[
+            \vec{n}_1 \times \vec{n}_2;
+        \]
+        \item $\Pi_1 \perp \Pi_2$ 当且仅当 $\vec{n}_1 \cdot \vec{n}_2 = 0$.
+    \end{enumerate}
+\end{theorem}
+
+两相交平面的夹角定义为其法向量所成锐角，因此
+\[
+    \cos \varphi = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1|\,|\vec{n}_2|}.
+\]
+若两平面平行，且都写成同一法向量下的方程
+\[
+    A x + B y + C z + D_1 = 0, \qquad A x + B y + C z + D_2 = 0,
+\]
+则它们的距离为（用点到平面的距离公式计算其中一个平面上任意一点到另一个平面的距离即可）
+\[
+    d(\Pi_1, \Pi_2) = \frac{|D_1 - D_2|}{\sqrt{A^2 + B^2 + C^2}}.
+\]
+
+\subsection{球面与切平面}
+
+最后我们稍微超出``平面''的范畴，简要介绍一下球面与其切平面. 一个球心为 $\vec{a}$、半径为 $r$ 的球面可写为
+\[
+    \|\vec{x} - \vec{a}\|^2 = r^2.
+\]
+展开后得到
+\[
+    \langle \vec{x}, \vec{x} \rangle - 2 \langle \vec{a}, \vec{x} \rangle + \langle \vec{a}, \vec{a} \rangle - r^2 = 0.
+\]
+
+球面最重要的局部性质之一是：在球面上一点处，半径方向就是切平面的法向方向. 由此可以得到如下两个定理.
+
+\begin{theorem}{球面的切平面}{球面的切平面}
+    设球面
+    \[
+        \|\vec{x} - \vec{a}\|^2 = r^2
+    \]
+    上一点为 $\vec{t}$，则该点处切平面的法向量可取 $\vec{t} - \vec{a}$，从而切平面方程为
+    \[
+        \langle \vec{t} - \vec{a}, \vec{x} - \vec{t} \rangle = 0.
+    \]
+\end{theorem}
+
+\begin{theorem}{平面与球面相切的判据}{平面与球面相切的判据}
+    球面
+    \[
+        \|\vec{x} - \vec{a}\|^2 = r^2
+    \]
+    与平面
+    \[
+        \Pi:\ A x + B y + C z + D = 0
+    \]
+    相切当且仅当球心到平面的距离等于半径，即
+    \[
+        d(\vec{a}, \Pi) = r.
+    \]
+\end{theorem}
+
+\begin{example}{}{}
+    求球面
+    \[
+        x^2 + y^2 + z^2 - 2x + 4y - 2z - 20 = 0
+    \]
+    在点 $P(3, -1, 2)$ 处的切平面.
+\end{example}
+
+\begin{solution}
+    将球面配方得
+    \[
+        (x - 1)^2 + (y + 2)^2 + (z - 1)^2 = 26,
+    \]
+    故球心为 $C(1, -2, 1)$. 点 $P$ 处的法向量可取
+    \[
+        \overrightarrow{CP} = (2, 1, 1).
+    \]
+    因而切平面方程为
+    \[
+        2(x - 3) + (y + 1) + (z - 2) = 0,
+    \]
+    即
+    \[
+        2x + y + z - 7 = 0.
+    \]
+\end{solution}
 
 \section{仿射变换}
 
-在不考虑内积的情况下，在向量空间中的几何性质当中，实际上只有共线性和共线点之间的比例是特殊的. 在此，我们定义
+在不考虑长度与角度时，解析几何中最稳定的结构是共线关系、平行关系以及同一直线上的定比分点关系. 这正是仿射几何的出发点.
 
-\begin{definition}{}{}
-    称一个保持共线性和定比分点性质的映射为仿射变换（affine transformation）.
+\begin{definition}{仿射变换}{}
+    设 $F:\R^n \to \R^m$ 是一个映射. 若对任意 $x, y \in \R^n$ 与任意 $t \in \R$ 都有
+    \[
+        F((1 - t)x + t y) = (1 - t)F(x) + t F(y),
+    \]
+    则称 $F$ 为一个\term{仿射变换}.
 \end{definition}
 
-一个重要的结论如下：
-\begin{theorem}{}{}
-    $\R^n \to \R^m$ 的仿射变换全体就是所有形如
+这个定义等价于说：仿射变换保持共线性，并保持同一直线上的定比分点关系.
+
+\begin{theorem}{仿射变换的代数表示}{仿射变换的代数表示}
+    映射 $F:\R^n \to \R^m$ 是仿射变换，当且仅当存在矩阵 $A \in \R^{m\times n}$ 与向量 $\vec{b} \in \R^m$ 使得
     \[
-    F(u) = A u + v
+        F(x) = A x + \vec{b}.
     \]
-    的映射全体
 \end{theorem}
 
-这个结论告诉我们，仿射变换就是线性变换的一种推广. 它实际上就是线性变换和平移操作的复合. 这个结论的证明并不复杂：
-
 \begin{proof}
-    零点的像平移、基的像线性变换（利用共线性和定比分点性质推导出线性变换的定义）.
+    若 $F(x) = A x + \vec{b}$，则
+    \[
+        F((1 - t)x + t y)
+        = A((1 - t)x + t y) + \vec{b}
+        = (1 - t)(A x + \vec{b}) + t(A y + \vec{b}),
+    \]
+    故 $F$ 是仿射变换.
+
+    反之，设 $F$ 是仿射变换，记 $\vec{b} = F(0)$，并定义
+    \[
+        T(x) = F(x) - \vec{b}.
+    \]
+    则
+    \[
+        T((1 - t)x + t y) = (1 - t)T(x) + t T(y).
+    \]
+    取 $y = 0$，得齐次性
+    \[
+        T(t x) = t T(x), \qquad \forall t \in \R.
+    \]
+    再取 $t = \frac{1}{2}$，对任意 $x, y$ 有
+    \[
+        T\Bigl(\frac{x + y}{2}\Bigr) = \frac{T(x) + T(y)}{2}.
+    \]
+    结合齐次性，得到
+    \[
+        T(x + y) = 2 T\Bigl(\frac{x + y}{2}\Bigr) = T(x) + T(y).
+    \]
+    因而 $T$ 是线性映射. 于是存在矩阵 $A$ 使得 $T(x) = A x$，从而
+    \[
+        F(x) = A x + \vec{b}.
+    \]
 \end{proof}
 
-% 例子：平移、旋转、拉伸、斜截
+这个定理说明，仿射变换就是线性变换与平移的复合.
 
-但是，这样的记号多少有点不够精致. 我们知道的线性变换有了非常丰富的性质，所以我们也希望能够把仿射变换做成某种线性映射. 考虑一个更加形式性的解法：
+\begin{corollary}{}{}
+    仿射变换把直线映成直线，把平行直线映成平行直线或同一直线，并保持同一直线上的线段分比.
+\end{corollary}
+
+\begin{proof}
+    设
+    \[
+        L:\ x = x_0 + t \vec{u}.
+    \]
+    对仿射变换 $F(x) = A x + \vec{b}$，有
+    \[
+        F(x_0 + t \vec{u}) = A x_0 + \vec{b} + t A \vec{u},
+    \]
+    因此像仍是一条直线. 若两条直线平行，则它们方向向量成比例，于是像直线的方向向量也成比例，故结论成立.
+\end{proof}
+
+\begin{example}{}{}
+    设 $F:\R^2 \to \R^2$ 由
+    \[
+        F(x, y) = (x + 2y + 1, y - 1)
+    \]
+    给出. 说明它的几何意义.
+\end{example}
+
+\begin{solution}
+    该映射可分解为
+    \[
+        (x, y) \mapsto (x + 2y, y)
+    \]
+    与
+    \[
+        (x, y) \mapsto (x + 1, y - 1)
+    \]
+    的复合. 前者是沿 $x$ 方向的错切，后者是平移. 因而 $F$ 是一个典型的仿射变换.
+\end{solution}
+
+但是，这样的记号多少有点不够精致. 我们知道的线性变换有非常丰富的性质，所以我们也希望能够把仿射变换做成某种线性映射. 为了把仿射变换也写成线性变换，我们常把点 $x \in \R^n$ 写成齐次向量 $(x, 1)^\mathrm{T}$，于是
 \[
-A u + v = \begin{pmatrix}
-    A & v \\
-    0 & 1
-\end{pmatrix} \begin{pmatrix}
-    u \\ 1
-\end{pmatrix}
+    A x + \vec{b}
+    =
+    \begin{pmatrix}
+        A & \vec{b} \\
+        0 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x \\
+        1
+    \end{pmatrix}.
 \]
-作为分块矩阵，它们自然地能够满足仿射变换的需求，但是它将一个 $\R^n \to \R^m$ 的仿射变换表示为了一个 $\R^{n + 1} \to \R^{m + 1}$ 的线性变换. 但是，这样的表示依然是不够充分的. 这是因为我们``要求''向量为一个末尾为 $1$ 的向量，而矩阵的最后一行也被确定为一个末尾为 $1$ 的行向量. 基于此限制的线性变换是``过度受限''的. 因此，我们希望更多地以几何的方式解读这些限制，而不是以代数的方式将其强加到空间之上.
+作为分块矩阵，它们自然地能够满足仿射变换的需求，但是它将一个 $\R^n \to \R^m$ 的仿射变换表示为了一个 $\R^{n + 1} \to \R^{m + 1}$ 的线性变换. 但是，这样的表示依然是不够充分的. 这是因为我们``要求''向量的末尾必须为 $1$，而矩阵的最后一行也被确定为一个末尾为 $1$ 的行向量. 基于此限制的线性变换是``过度受限''的. 因此，我们希望更多地以几何的方式解读这些限制，而不是以代数的方式将其强加到空间之上，这就引出了射影空间的概念.
 
 \section{射影空间} \label{sec:射影空间}
 
-回顾对平面方程的讨论. 我们业已提及，一个平面的表达式就是
-\[
-\langle \vec{n}, \vec{a} \rangle = -D
-\]
-注意到，这里的法向量 $\vec{n}$ 是没有正规化的. 也就是说，实际上平面方程由两种东西决定：一是 $\vec{n}$ 的坐标，一是 $-D$ 的取值，而且实际上平面方程就相当于
-\[
-\langle (\vec{n}, D), (\vec{a}, 1) \rangle = 0
-\]
-而且左边的向量似乎可以在相差一个倍数的意义下表示同一个平面. 因此，我们定义：
-\begin{definition}{}{}
-    称空间 $\R^{n + 1}$ 关于如下等价关系构成的等价类为 $n$ 维实射影空间：
+仿射几何中，平行直线永不相交；但若在无穷远处补上一类新点，使得每一束平行直线都交于同一个无穷远点，那么几何结构会更整齐. 射影空间正是把这一想法严格化后的结果.
+
+\begin{definition}{实射影空间}{}
+    设
     \[
-    x \sim y \iff \exists k \in \R, x = k y
+        \R^{n + 1}_* = \R^{n + 1} \setminus \{ \vec{0} \}.
     \]
-    将其构成的集合全体记作 $\mathbf{PR}^n$.
+    在 $\R^{n + 1}_*$ 上定义等价关系
+    \[
+        x \sim y
+        \iff
+        \exists \lambda \in \R \setminus \{ 0 \},\ x = \lambda y.
+    \]
+    由这些等价类构成的集合称为\term{$n$ 维实射影空间}，记作 $\mathbf{PR}^n$.
 \end{definition}
 
-现在，我们完成了从代数到几何最关键的一步：通过一个等价关系，原来的线性空间变成了一个看上去相当奇怪的结构. 但是，它把捉了几何上重要的``比值''关系. 接下来的部分当中，我们就需要讨论实射影空间所具备的结构特征.
+根据上述定义，每个等价类都由 $\R^{n + 1}$ 中的一条过原点的直线组成，因此 $\mathbf{PR}^n$ 中的一个点就是 $\R^{n + 1}$ 中的一条过原点的直线. 若 $x = (x_0, x_1, \ldots, x_n) \neq \vec{0}$，记它对应的等价类为
+\[
+    [x_0 : x_1 : \cdots : x_n],
+\]
+称为该点的\term{齐次坐标}. 比例相同的齐次坐标表示射影空间中的同一点.
 
-注意到，在射影空间之间，存在一个事实上很平凡的嵌入关系：
-\begin{lemma}{}{}
-    $\mathbf{PR}^{n - 1}$ 能够被自然地嵌入到 $\mathbf{PR}^n$ 当中，此嵌入映射如下：
+下面的定理将说明，射影空间 $\mathbf{PR}^n$ 可以视为在 $\R^n$ 的基础上补上一个\term{无穷远超平面} $H_\infty$ 后得到的空间. 注意，定理中的 $\sqcup$ 表示集合的并且要求两集合交集为空，即两个集合的无交并. 集合 $U$ 也被称为\term{仿射图}.
+
+\begin{theorem}{}{}
+    记
     \[
-    [x] \mapsto [(x, 0)]
+        U = \{ [x_0 : \cdots : x_n] \in \mathbf{PR}^n \mid x_n \neq 0 \}.
     \]
-\end{lemma}
-
-证明只需要验证这个映射的良定性即可. 不难发现，这个映射实际上是一个单射. 而且在去掉所有形如 $[(x, 0)]$ 的等价类之后，剩下的所有等价类就是所有形如 $[(x, 1)]$ 的等价类. 也就是说：
-\begin{theorem}{}{}
-    实射影空间 $\mathbf{PR}^n$ 无非是 $\R^{n - 1}$ 和 $\mathbf{PR^{n - 1}}$ 的无交并.
+    则 $U$ 与 $\R^n$ 一一对应；其补集
+    \[
+        H_\infty = \{ [x_0 : \cdots : x_n] \in \mathbf{PR}^n \mid x_n = 0 \}
+    \]
+    与 $\mathbf{PR}^{n - 1}$ 一一对应. 因而
+    \[
+        \mathbf{PR}^n = U \sqcup H_\infty \cong \R^n \sqcup \mathbf{PR}^{n - 1}.
+    \]
 \end{theorem}
 
-通过一个更简单的想法可以更好地理解这样的结构：射影直线 $\mathbf{PR}^1$ 就是一个 $\R$ 并上一个``无穷远点''，射影平面 $\mathbf{PR}^2$ 就是一个 $\R^2$ 并上一个无穷远处的射影直线. 推而广之，一个射影空间 $\mathbf{PR}^n$ 就是一个 $R^{n - 1}$ 并上一个无穷远处的子射影空间 $\mathbf{PR}^{n - 1}$.
+\begin{proof}
+    若 $[x_0 : \cdots : x_n] \in U$，则可用 $x_n$ 约去，唯一写成
+    \[
+        \Bigl[\frac{x_0}{x_n} : \cdots : \frac{x_{n-1}}{x_n} : 1\Bigr].
+    \]
+    这就与 $\R^n$ 中的点
+    \[
+        \Bigl(\frac{x_0}{x_n}, \ldots, \frac{x_{n-1}}{x_n}\Bigr)
+    \]
+    一一对应.
 
-那么，对于我们的目的而言，这有什么用呢？实际上，可以表明：
+    若 $x_n = 0$，则点可写成
+    \[
+        [x_0 : \cdots : x_{n-1} : 0],
+    \]
+    这恰好与 $\mathbf{PR}^{n - 1}$ 中的点 $[x_0 : \cdots : x_{n-1}]$ 一一对应. 从而命题得证.
+\end{proof}
 
-\begin{theorem}{}{}
-    一个 $\R^n \to \R^m$ 的仿射变换可以被写成一个 $\mathbf{PR}^n \to \mathbf{PR}^m$ 的线性映射的商，且子空间 $\mathbf{PR}^{m - 1}$ 的原像包含于子空间 $\mathbf{PR}^n$ 当中.
+接下来的任务就是理解为什么这一定理说明了射影空间 $\mathbf{PR}^n$ 可以视为在 $\R^n$ 的基础上补上一个无穷远超平面 $H_\infty$. 具体而言，任取 $\R^n$ 中的一条直线 $L: x = x_0 + t \vec{u}$，则 $L$ 中的点在 $\mathbf{PR}^n$ 中对应于
+\[
+    [x_0 + t \vec{u} : 1] = [x_{01} + t u_1 : \cdots : x_{0n} + t u_n : 1] = \left[\frac{x_{01}}{t} + u_1 : \cdots : \frac{x_{0n}}{t} + u_n : \frac{1}{t}\right].
+\]
+因此，对于任意的 $x_0$，当 $t \to \infty$ 时，$L$ 中的点在 $\mathbf{PR}^n$ 中趋近于
+\[
+    [u_1 : \cdots : u_n : 0] \in H_\infty.
+\]
+也就是说，$\R^n$ 中的每一束平行直线（$x_0$ 不同，$u$ 相同）都在 $H_\infty$ 中对应于同一个点，则 $H_\infty$ 中的点就可以视为这些平行直线在无穷远处的交点，$H_\infty$ 就是\term{无穷远超平面}. 例如，$\mathbf{PR}^1$ 可以看成在一条仿射直线上补上一个无穷远点；$\mathbf{PR}^2$ 可以看成在一张仿射平面上补上一条无穷远直线.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.0, >=Stealth]
+        \draw[fill=gray!10] (0,0) -- (4.8,0) -- (6,1.5) -- (1.2,1.5) -- cycle;
+        \node at (5.55,0.45) {$\R^2$};
+        \draw (0.5,2.7) -- (5.9,2.7);
+        \node[right] at (5.9,2.7) {$\ell_\infty$};
+        \coordinate (I) at (4.1,2.7);
+        \draw[dashed] (0.95,0.3) -- (I);
+        \draw[dashed] (0.8,0.75) -- (I);
+        \draw (0.95,0.3) -- (4.9,1.55);
+        \draw (0.8,0.75) -- (4.75,2.0);
+        \fill (I) circle (1.1pt) node[above] {$P_\infty$};
+    \end{tikzpicture}
+    \caption{仿射平面补上一条无穷远直线后，可把一束平行直线看成相交于同一个无穷远点}
+\end{figure}
+
+最后，我们来探讨上一小节最后提到的仿射变换与射影空间之间的联系.
+
+\begin{theorem}{仿射同构的射影表示}{仿射同构的射影表示}
+    设
+    \[
+        F(x) = A x + \vec{b}, \qquad A \in \R^{n\times n},\ \det A \neq 0.
+    \]
+    则 $F$ 在齐次坐标下由矩阵
+    \[
+        \widehat{A}
+        =
+        \begin{pmatrix}
+            A & \vec{b} \\
+            0 & 1
+        \end{pmatrix}
+    \]
+    诱导出 $\mathbf{PR}^n$ 上的一个射影自同构，并保持无穷远超平面 $H_\infty$ 不变.
 \end{theorem}
 
-也就是说，我们现在的操作如下图所示：
+\begin{proof}
+    对仿射图中的点 $[x : 1]$，有
+    \[
+        \widehat{A}
+        \begin{pmatrix}
+            x \\
+            1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            A x + \vec{b} \\
+            1
+        \end{pmatrix},
+    \]
+    因而在射影空间中对应于
+    \[
+        [x : 1] \longmapsto [A x + \vec{b} : 1].
+    \]
+    另一方面，对无穷远点 $[u : 0]$，有
+    \[
+        \widehat{A}
+        \begin{pmatrix}
+            u \\
+            0
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            A u \\
+            0
+        \end{pmatrix},
+    \]
+    因而 $H_\infty$ 被映到自身. 由于 $\det \widehat{A} = \det A \neq 0$，该变换是射影自同构.
+\end{proof}
+
+也就是说，仿射同构在射影空间里不过是某个线性自同构在商空间上的表现：
 \[
 \begin{tikzcd}
-    \R^n \dar \rar & \R^{n + 1} \dar \rar & \mathbf{PR}^n \dar \rar & \R^n \dar \\
-    \R^m \rar & \R^{m + 1} \rar & \mathbf{PR}^m \rar & \R^m
+    \R^n \arrow[r, hook] \arrow[d, "F"'] & \R^{n + 1}_* \arrow[r, two heads] \arrow[d, "\widehat{A}"] & \mathbf{PR}^n \arrow[d] \\
+    \R^n \arrow[r, hook] & \R^{n + 1}_* \arrow[r, two heads] & \mathbf{PR}^n
 \end{tikzcd}
 \]
+这也是仿射几何与射影几何之间最基本的联系.
 
 \section{曲面上的标架}
 
 考虑曲面 $S$ 的参数化，将其写成下面的形式：
 \[
 \begin{cases}
-x = x(u, v) \\
-y = y(u, v) \\
-z = z(u, v)
+    x = x(u, v), \\
+    y = y(u, v), \\
+    z = z(u, v).
 \end{cases}
 \]
 
 考虑导数
 \[
-\vec{t}_u = (x_{u}, y_{u}, z_{u}), \quad \vec{t}_v = (x_{v}, y_{v}, z_{v})
+    \vec{t}_u = (x_u, y_u, z_u), \qquad
+    \vec{t}_v = (x_v, y_v, z_v).
 \]
 
 对微积分有所了解的读者应该不难看出，这两个向量是曲面在某个点的切向量. 考虑一个``好的''参数化，即在任意点这样的两个切向量线性无关. 这样的参数网对于满足一些可微性条件的曲面来说总是存在的，在此不做证明. 我们定义：
-\begin{definition}
-    称切向量 $\vec{t}_u |_{\vec{t}_0}, \vec{t}_v |_{\vec{t}_0}$ 所张成的向量空间为曲面 $S$ 在 $\vec{t_0}$ 点的切平面，记作 $T_{\vec{t}_0} S$.
+
+\begin{definition}{}{曲面切平面}
+    称切向量 $\vec{t}_u |_{\vec{t}_0}, \vec{t}_v |_{\vec{t}_0}$ 所张成的向量空间为曲面 $S$ 在 $\vec{t}_0$ 点的切平面，记作 $T_{\vec{t}_0} S$.
 \end{definition}
+
 切平面的单位法向量称为这个点处曲面的法向量，记作 $\vec{n}$. 不难发现，在曲面上的任意点上，$(\vec{t}_u, \vec{t}_v, \vec{n})$ 张成三维空间，这被称为曲面上在这个点处的自然标架.
 
 在自然标架下，我们不难考虑曲面上某一片小区域的面积，通过一点点微积分的操作，我们可以得出：
 \[
-\mathrm{d} s^2 = |\vec{t}_u|^2 \mathrm{d} u^2 + 2 \vec{t}_u \cdot \vec{t}_v \mathrm{d} u \mathrm{d} v + |\vec{t}_v|^2 \mathrm{d} v^2
+    \mathrm{d} s^2 = |\vec{t}_u|^2 \mathrm{d} u^2 + 2 \vec{t}_u \cdot \vec{t}_v \mathrm{d} u \mathrm{d} v + |\vec{t}_v|^2 \mathrm{d} v^2.
 \]
 我们定义：
 \begin{align*}
-    E &= |\vec{t}_u|^2 \\
-    F &= \vec{t}_u \cdot \vec{t}_v \\
-    G &= |\vec{t}_v|^2
+    E &= |\vec{t}_u|^2, \\
+    F &= \vec{t}_u \cdot \vec{t}_v, \\
+    G &= |\vec{t}_v|^2.
 \end{align*}
 不难发现，$E > 0, G > 0, E G - F^2 > 0$，我们可以将其写成矩阵的形式：
 \[
-\begin{pmatrix}
-    E & F \\
-    F & G
-\end{pmatrix}
+    \begin{pmatrix}
+        E & F \\
+        F & G
+    \end{pmatrix}.
 \]
 这种形式通常被称作曲面的第一基本形式. 不难发现，它给定了曲面上的长度和面积.
 
 考虑坐标变换
 \[
 \begin{cases}
-    \tilde{u} = \tilde{u}(u, v) \\
-    \tilde{v} = \tilde{v}(u, v)
+    \tilde{u} = \tilde{u}(u, v), \\
+    \tilde{v} = \tilde{v}(u, v).
 \end{cases}
 \]
-我们探讨在此变换下（如果这个变换之后的结果也是``好的''），第一基本形式会发生什么样的变化. 记变换之后的第一基本形式为：
+我们探讨在此变换下（如果这个变换之后的结果也是``好的''），第一基本形式会发生什么样的变化. 记变换之后的第一基本形式为
 \[
-\begin{pmatrix}
-    \tilde{E} & \tilde{F} \\
-    \tilde{F} & \tilde{G}
-\end{pmatrix}
-\]
-可以证明：
-\begin{theorem}{}{}
-    变换前后的第一标准形式与原来的第一标准形式有如下关系：
-    \[
     \begin{pmatrix}
         \tilde{E} & \tilde{F} \\
         \tilde{F} & \tilde{G}
-    \end{pmatrix}
-     =
-    J^\mathrm{T} \begin{pmatrix}
-        E & F \\
-        F & G
-    \end{pmatrix} J
-    \]
-    其中 $J$ 为 Jacobi 矩阵，形式如下：
+    \end{pmatrix}.
+\]
+
+\begin{theorem}{}{第一基本形式的坐标变换}
+    变换前后的第一基本形式满足
     \[
-    \begin{pmatrix}
-        \dfrac{\partial u}{\partial \tilde{u}} & \dfrac{\partial u}{\partial \tilde{v}} \\ \\
-        \dfrac{\partial v}{\partial \tilde{u}} &
-        \dfrac{\partial v}{\partial \tilde{v}}
-    \end{pmatrix}
+        \begin{pmatrix}
+            \tilde{E} & \tilde{F} \\
+            \tilde{F} & \tilde{G}
+        \end{pmatrix}
+        =
+        J^\mathrm{T}
+        \begin{pmatrix}
+            E & F \\
+            F & G
+        \end{pmatrix}
+        J,
+    \]
+    其中 $J$ 为 Jacobi 矩阵
+    \[
+        J =
+        \begin{pmatrix}
+            \dfrac{\partial u}{\partial \tilde{u}} & \dfrac{\partial u}{\partial \tilde{v}} \\[1.2ex]
+            \dfrac{\partial v}{\partial \tilde{u}} & \dfrac{\partial v}{\partial \tilde{v}}
+        \end{pmatrix}.
     \]
 \end{theorem}
 
-证明基于 Jacobi 矩阵的含义来完成.
-
 \begin{proof}
-    将 $\mathrm{d} s^2$ 按照一阶的形式展开.
+    只需把 $\mathrm{d}u, \mathrm{d}v$ 用 $\mathrm{d}\tilde{u}, \mathrm{d}\tilde{v}$ 表出，再代回 $\mathrm{d}s^2$ 即可.
 \end{proof}
 
-我们会意识到，这个``乘上一个可逆矩阵及其转置''的形式是非常重要的. 在后文中，我们会称之为矩阵的相合标准型. 由此，读者亦可窥见此定义的重要性.
+我们会意识到，这个``乘上一个可逆矩阵及其转置''的形式是非常重要的. 在下一讲中，我们将把它抽象为矩阵的相合变换.
 
 \section{二次曲面及其分类}
 
-下面我们考虑一族简单的曲面，令
+下面我们考虑一类最重要的代数曲面. 若空间曲面 $S$ 由一个二次方程给出，则称其为\term{二次曲面}. 为了统一处理，我们把它写成
 \[
-S: a x^2 + b y^2 + c z^2 + 2 d y z + 2 e x z + 2 f x y + g x + h y + i z = 1
+    \vec{x}^\mathrm{T} A \vec{x} + 2 \vec{b}^{\,\mathrm{T}} \vec{x} + c = 0,
 \]
-其中关于 $x, y, z$ 都是二次的，称作二次曲面. 下面我们想问的是，如何对二次曲面完成分类. 注意到，上面的方程也可以被写成：
+其中
 \[
-S: \begin{pmatrix}
-    x & y & z
-\end{pmatrix}
-\begin{pmatrix}
-    a & f & e \\
-    f & b & d \\
-    e & d & c
-\end{pmatrix}
-\begin{pmatrix}
-    x \\ y \\ z
-\end{pmatrix} + \begin{pmatrix}
-    g & h & i
-\end{pmatrix} \begin{pmatrix}
-    x \\ y \\ z
-\end{pmatrix} = 1
+    \vec{x} =
+    \begin{pmatrix}
+        x \\
+        y \\
+        z
+    \end{pmatrix},
+    \qquad
+    A =
+    \begin{pmatrix}
+        a & f & e \\
+        f & b & d \\
+        e & d & c
+    \end{pmatrix}, \qquad \vec{b} = \frac{1}{2}
+    \begin{pmatrix}
+        g \\
+        h \\
+        i
+    \end{pmatrix},
+    \qquad c = j.
+\]
+注意 $A$ 是实对称矩阵. 则二次曲面 $S$ 的方程可以写成
+\[
+    a x^2 + b y^2 + c z^2 + 2 d y z + 2 e x z + 2 f x y + g x + h y + i z + j = 0.
 \]
 
-一般地，前面的形式 $v^\mathrm{T} A v$ 被称为``二次型''，在后面我们会花费一整讲的时间来讨论有关于它的理论. 但是在此之前，我们先思考如何对二次曲面进行分类.
+要分类二次曲面，我们需要通过一些变换把它化简成更简单的形式. 这些变换应当是仿射同构，即可逆线性变换与平移的复合，从而保证我们得到的结果仍然是同一类二次曲面. 首先我们考虑通过正交变换消去交叉项.
 
-上面的方程可以简记作：
-\[
-v^\mathrm{T} A v + b^\mathrm{T} v = 1
-\]
-
-首先，我们考虑对 $A$ 进行谱分解. 由于 $A$ 是实对称矩阵，所以它可以被写成 $Q^\mathrm{T} \Lambda Q$ 的形式，其中 $\Lambda$ 为对角矩阵，$Q$ 为正交矩阵. 我们知道，正交矩阵对应的是一个等距同构. 所以，我们将其先写成：
-\[
-v^\mathrm{T} Q^\mathrm{T} \Lambda Q v + b^\mathrm{T} Q^\mathrm{T} Q v = 1
-\]
-于是，将 $Q v$ 置为 $\tilde v$，则能得到方程：
-\[
-\tilde v^\mathrm{T} \Lambda \tilde v^\mathrm{T} + \tilde b^\mathrm{T} \tilde v' = 1
-\]
-其中 $\tilde b = Q^\mathrm{T} b$.
-
-此时我们对应到二次曲面，实际上是通过一次等距同构消掉了 $d, e, f$ 三个系数. 我们得到的方程就变成了
-\[
-S: ax^2 + by^2 + cz^2 + g x + h y + i z = 1
-\]
-通过我们熟知的配方法，我们可以把左式变成
-\[
-S: a(x - \frac{g}{2a})^2 - \frac{g^2}{4a} + b(y - \frac{h}{2b})^2 - \frac{h^2}{4b} + c(z - \frac{i}{2c})^2 - \frac{i^2}{4c} = 1
-\]
-也就是说，通过一个平移变换，就能将原式变成
-\[
-a x^2 + b y^2 + c z^2 = d
-\]
-的形式.
-
-总结上述讨论，我们可以得到以下定理：
-
-\begin{theorem}{}{}
-    任意二次曲面经过等距变换都可以得到满足如下曲面方程的曲面：
+\begin{theorem}{消去交叉项}{消去交叉项}
+    任意二次曲面经过一次正交变换后，都可以化为不含交叉项的方程
     \[
-    a x^2 + b y^2 + c z^2 = d
+        \lambda_1 y_1^2 + \lambda_2 y_2^2 + \lambda_3 y_3^2 + 2 \beta_1 y_1 + 2 \beta_2 y_2 + 2 \beta_3 y_3 + c = 0,
     \]
+    其中 $\lambda_1, \lambda_2, \lambda_3$ 是矩阵 $A$ 的特征值.
 \end{theorem}
 
-注意到一点，这里的 $a, b, c$ 是原先的矩阵
+\begin{proof}
+    由\autoref{thm:实谱定理}，存在正交矩阵 $Q$ 使得
+    \[
+        Q^\mathrm{T} A Q = \Lambda = \diag(\lambda_1, \lambda_2, \lambda_3).
+    \]
+    令
+    \[
+        \vec{x} = Q \vec{y},
+    \]
+    则
+    \[
+        \vec{x}^\mathrm{T} A \vec{x}
+        = \vec{y}^\mathrm{T} Q^\mathrm{T} A Q \vec{y}
+        = \vec{y}^\mathrm{T} \Lambda \vec{y}
+        = \lambda_1 y_1^2 + \lambda_2 y_2^2 + \lambda_3 y_3^2.
+    \]
+    再记
+    \[
+        \vec{\beta} = Q^\mathrm{T} \vec{b},
+    \]
+    则线性项变为 $2 \vec{\beta}^{\,\mathrm{T}} \vec{y}$，结论成立.
+\end{proof}
+
+接下来要做的，是用平移消去尽可能多的一次项. 对每个 $\lambda_i \neq 0$，都可以通过配方把
 \[
-\begin{pmatrix}
-    a & f & e \\
-    f & b & d \\
-    e & d & c
-\end{pmatrix}
+    \lambda_i y_i^2 + 2 \beta_i y_i
 \]
-的特征值. 也就是说，对于一个二次曲面的方程，这个矩阵的特征值几乎决定了它的几何结构，这在后面的分类讨论给出每种曲面的形式之后将能够更清晰地展现. 一个有意思的观察是，对于二次曲线，我们也能得出类似的结果，这留作一个习题，请读者自行完成分类. 而在后面的学习中，我们会发现，对于更高维度空间中的二次曲面，这依然是一个重要的分类依据.
+写成平方项加常数项；而当 $\lambda_i = 0$ 时，对应的一次项一般不能再用同方向的平移消去. 因此二次曲面的分类，本质上由对称矩阵 $A$ 的秩与特征值符号决定. 下面我们给出二次曲面的完整分类定理.
+
+\begin{theorem}{二次曲面的标准型}{二次曲面的标准型}
+    任意非零二次曲面经过正交变换、平移以及必要时对坐标作伸缩后，都可以化为下列标准型之一：
+    \begin{enumerate}
+        \item \textbf{椭球面型}
+        \[
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1,
+            \qquad
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = -1,
+            \qquad
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 0.
+        \]
+        它们分别对应椭球面、虚椭球面（无实点）与一点.
+
+        \item \textbf{双曲面型}
+        \[
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 1,
+            \qquad
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = -1,
+            \qquad
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2} = 0.
+        \]
+        它们分别对应单叶双曲面、双叶双曲面与二次锥面.
+
+        \item \textbf{抛物面型}
+        \[
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} = 2 z,
+            \qquad
+            \frac{x^2}{a^2} - \frac{y^2}{b^2} = 2 z.
+        \]
+        它们分别对应椭圆抛物面与双曲抛物面.
+
+        \item \textbf{柱面型}
+        \[
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1,
+            \qquad
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} = -1,
+            \qquad
+            \frac{x^2}{a^2} + \frac{y^2}{b^2} = 0,
+        \]
+        \[
+            \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1,
+            \qquad
+            \frac{x^2}{a^2} - \frac{y^2}{b^2} = 0,
+            \qquad
+            x^2 = 2 p y.
+        \]
+        它们分别对应椭圆柱面、虚椭圆柱面、一直线、双曲柱面、一对相交平面与抛物柱面.
+
+        \item \textbf{平行平面型}
+        \[
+            x^2 = a^2,
+            \qquad
+            x^2 = - a^2,
+            \qquad
+            x^2 = 0.
+        \]
+        它们分别对应一对平行平面、一对虚平行平面与一个重平面.
+    \end{enumerate}
+    其中 $a, b, c, p > 0$.
+\end{theorem}
+
+\begin{proof}
+    设矩阵 $A$ 的秩为 $r$.
+
+    \begin{enumerate}
+        \item 当 $r = 3$ 时，三个特征值都非零. 由配方可以消去全部一次项，于是方程化为
+        \[
+            \lambda_1 u_1^2 + \lambda_2 u_2^2 + \lambda_3 u_3^2 = d.
+        \]
+        再根据特征值的符号得到椭球面型或双曲面型的标准方程；当 $d = 0$ 时分别退化为一点或二次锥面.
+
+        \item 当 $r = 2$ 时，恰有一个特征值为 $0$. 经过配方后，方程可化为
+        \[
+            \lambda_1 u_1^2 + \lambda_2 u_2^2 + 2 \mu u_3 + d = 0.
+        \]
+        若 $\mu \neq 0$，则可进一步化为
+        \[
+            \lambda_1 u_1^2 + \lambda_2 u_2^2 = - 2 \mu u_3 - d = - 2 \mu \Bigl(u_3 + \frac{d}{2 \mu}\Bigr).
+        \]
+        令
+        \[
+            v_3 = - \mu \Bigl(u_3 + \frac{d}{2 \mu}\Bigr),
+        \]
+        则方程变为
+        \[
+            \lambda_1 u_1^2 + \lambda_2 u_2^2 = 2 v_3.
+        \]
+        依 $\lambda_1, \lambda_2$ 同号或异号，得到椭圆抛物面或双曲抛物面. 若 $\mu = 0$，则得到
+        \[
+            \lambda_1 u_1^2 + \lambda_2 u_2^2 = d,
+        \]
+        这是柱面型：同号时得到椭圆柱面、虚椭圆柱面或一直线；异号时得到双曲柱面或一对相交平面.
+
+        \item 当 $r = 1$ 时，经过配方后，二次项只剩一个平方项. 此时方程可写成
+        \[
+            \lambda u_1^2 + 2 \alpha u_2 + 2 \gamma u_3 + d = 0.
+        \]
+        若 $\alpha = \gamma = 0$，则得到
+        \[
+            \lambda u_1^2 = d,
+        \]
+        这给出一对平行平面、一对虚平行平面或一个重平面.
+
+        若 $(\alpha,\gamma) \neq (0,0)$，则说明在零特征值方向上仍有不能消去的一次项. 记 $\rho = \sqrt{\alpha^2 + \gamma^2}$，并在 $(u_2,u_3)$-平面内再作一次正交变换
+        \[
+            \begin{pmatrix}
+                v_2 \\
+                v_3
+            \end{pmatrix}
+            =
+            \frac{1}{\rho}
+            \begin{pmatrix}
+                \alpha & \gamma \\
+                -\gamma & \alpha
+            \end{pmatrix}
+            \begin{pmatrix}
+                u_2 \\
+                u_3
+            \end{pmatrix}.
+        \]
+        由于该矩阵正交，故这一步只是在零空间内部重新选取正交基. 按构造有 $\alpha u_2 + \gamma u_3 = \rho v_2$，从而原方程化为
+        \[
+            \lambda u_1^2 + 2 \rho v_2 + d = 0.
+        \]
+        再令 $w_2 = - \Bigl(\rho v_2 + \frac{d}{2}\Bigr)$，则
+        \[
+            \lambda u_1^2 = 2 w_2.
+        \]
+        即抛物柱面.
+    \end{enumerate}
+
+    以上各情形穷尽了所有可能性，因此标准型列表完整.
+\end{proof}
+
+\begin{example}{}{}
+    将二次曲面
+    \[
+        x^2 + y^2 + 2 x y - 4 z + 2 = 0
+    \]
+    化为标准型，并判定其类型.
+\end{example}
+
+\begin{solution}
+    二次项对应矩阵为
+    \[
+        A =
+        \begin{pmatrix}
+            1 & 1 & 0 \\
+            1 & 1 & 0 \\
+            0 & 0 & 0
+        \end{pmatrix}.
+    \]
+    它的二次型可直接写成
+    \[
+        x^2 + y^2 + 2 x y = (x + y)^2.
+    \]
+    取正交变换
+    \[
+        u = \frac{x + y}{\sqrt{2}}, \qquad
+        v = \frac{x - y}{\sqrt{2}}, \qquad
+        w = z.
+    \]
+    则原方程化为
+    \[
+        2 u^2 - 4 w + 2 = 0,
+    \]
+    令 $w' = w - \frac{1}{2}$，则 $S$ 的方程化为
+    \[
+    u^2 = 2 w',
+    \]
+    这就是抛物柱面型的标准方程.
+\end{solution}
+
+二次曲面的分类事实上已经预示了下一讲的核心问题：对称矩阵在相合意义下究竟有哪些不变量. 这一点将在二次型理论中得到系统回答.
 
 \begin{summary}
+    本讲有三条主线. 第一条主线是用向量与坐标研究点、直线、平面的表示与位置关系，其中法向量、方向向量、叉积和混合积构成了最基本的计算工具.
 
+    第二条主线是仿射与射影观点. 仿射变换在代数上就是 $A x + \vec{b}$ 的形式，而把点写成齐次坐标后，仿射同构又可以嵌入到射影空间中的线性自同构里.
+
+    第三条主线是二次曲面的标准化. 通过正交变换消去交叉项，再通过平移消去尽可能多的一次项，最终把曲面化为有限种标准型. 这正是后一讲二次型理论的几何原型.
 \end{summary}
 
 \begin{exercise}
@@ -437,19 +1373,37 @@ a x^2 + b y^2 + c z^2 = d
     \begin{exgroup}
         \item 用等体积法计算原点到平面的距离. 考虑 $A, B, C$ 均非零的平面 $A x + B y + C z + D = 0$，计算：
         \begin{enumerate}
-            \item 平面在 $x, y, z$ 轴上的截距以及三个截点与平面构成的直角四面体的体积.
-            \item 三个截点围成的三角形的面积.（提示：运用 Helen 公式或者秦九韶公式）.
-            \item 给出平面到原点的距离公式，并与文中的公式比对.
+            \item 平面在 $x, y, z$ 轴上的截距以及三个截点与原点构成的直角四面体的体积；
+            \item 三个截点围成的三角形的面积；
+            \item 给出平面到原点的距离公式，并与正文中的公式比对.
         \end{enumerate}
 
-        \item 用 Cauchy-Schwartz 不等式证明点到平面的距离公式.
+        \item 将二次曲面
+        \[
+            x^2 + y^2 - z^2 + 2x - 4y + 2z - 2 = 0
+        \]
+        化为标准型，并判定其类型.
     \end{exgroup}
 
     \begin{exgroup}
-        \item 考虑平面曲线 \[A x^2 + B y^2 + C x y + D x + E y + F = 0\] 的分类.（提示：类比上面对空间二次曲面的分类，找出变换方式和判据）
+        \item 证明\term{拉格朗日恒等式}：对任意四个向量 $\vec{a}, \vec{b}, \vec{c}, \vec{d}$，恒有
+        \[
+            (\vec{a} \times \vec{b}) \cdot (\vec{c} \times \vec{d}) = \begin{vmatrix}
+                \vec{a} \cdot \vec{c} & \vec{a} \cdot \vec{d} \\
+                \vec{b} \cdot \vec{c} & \vec{b} \cdot \vec{d}
+            \end{vmatrix}.
+        \]
+
+        \item 用平面的参数方程表达点到平面的距离.
     \end{exgroup}
 
     \begin{exgroup}
-        \item
+        \item 考虑平面二次曲线
+        \[
+            A x^2 + B y^2 + C x y + D x + E y + F = 0
+        \]
+        的分类. 提示：类比上面对空间二次曲面的分类，先用正交变换消去交叉项，再讨论平移对一次项的影响.
+
+        \item 设 $F(x) = A x + \vec{b}$，其中 $A \in \R^{n\times n}$ 可逆. 写出它在齐次坐标下对应的矩阵，并证明它在射影空间中保持无穷远超平面不变.
     \end{exgroup}
 \end{exercise}
