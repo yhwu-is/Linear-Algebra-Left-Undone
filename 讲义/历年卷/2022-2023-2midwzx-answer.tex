@@ -1,0 +1,98 @@
+\section{2022-2023学年线性代数II（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：90分钟
+\end{center}
+\begin{enumerate}
+    \item 过直线 $L$ 的平面均可写成
+    \[
+        \lambda(2x+y-3z+2)+\mu(5x+5y-4z+3)=0.
+    \]
+    令其过点 $(4,-3,1)$，得 $4\lambda+4\mu=0$，可取 $\lambda= -1$，$\mu=1$，得到
+    \[
+        \pi_1:\ 3x+4y-z+1=0.
+    \]
+    再令其法向量 $(2\lambda + 5\mu, \lambda + 5\mu, -3\lambda - 4\mu)$ 与 $(3,4,-1)$ 垂直，得 $\lambda + 3\mu=0$，可取 $\lambda=3$，$\mu=-1$，得到
+    \[
+        \pi_2:\ x-2y-5z+3=0.
+    \]
+
+    \item $l_1$ 的方向向量为 $(1,1,0)$，$l_2$ 的方向向量为 $(4,-2,-1)$. 取 $l_1$ 上点 $(0,0,0)$ 与 $l_2$ 上点 $(2,1,3)$，则两异面直线距离为
+    \[
+        \frac{|(2,1,3)\cdot((1,1,0)\times(4,-2,-1))|}
+        {\|(1,1,0)\times(4,-2,-1)\|}
+        =
+        \frac{19}{\sqrt{38}}=\frac{\sqrt{38}}{2}.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 设 $p(x)=x^3+x^2+1$. 则对任意的 $f, g \in W$，存在 $a, b \in \mathbf{R}[x]$ 使得 $f=ap$，$g=bp$. 从而对任意的 $\lambda, \mu \in \mathbf{R}$，有 $\lambda f + \mu g = (\lambda a + \mu b)p \in W$. 故 $W$ 是子空间.
+
+        \item 由多项式带余除法，任意 $f\in\mathbf{R}[x]$ 可唯一写成 $f=qp+r,\quad \deg r<3$. 从而 $f+W=r+W \in \spa(1+W, x+W, x^2+W)$，故 $\mathbf{R}[x]/W=\spa(1+W, x+W, x^2+W)$，且显然 $\spa(1+W, x+W, x^2+W) \subseteq \mathbf{R}[x]/W$，故 $\mathbf{R}[x]/W=\spa(1+W, x+W, x^2+W)$. 设 $a, b, c \in \mathbf{R}$ 使得 $a(1+W)+b(x+W)+c(x^2+W)=W$，则 $a+bx+cx^2\in W$，但 $W$ 中元素的次数至少为 $3$，故 $a=b=c=0$. 因此 $1+W, x+W, x^2+W$ 线性无关. 综上所述，$1+W, x+W, x^2+W$ 是 $\mathbf{R}[x]/W$ 的一组基，故该空间维数为 $3$.
+    \end{enumerate}
+
+    \item 定义映射
+    \[
+        \Phi:\mathcal{L}(V,W)\to
+        \mathcal{L}(V_1,W)\times\cdots\times\mathcal{L}(V_n,W),
+        \quad
+        \Phi(T)=(T|_{V_1},\ldots,T|_{V_n}).
+    \]
+    它显然线性. 接下来我们验证它是单射与满射.
+
+    单射：若 $T|_{V_i}$ 为零映射对 $i=1,2,\cdots,n$ 都成立，则对任意 $v\in V$，$v=v_1+\cdots+v_n$，其中 $v_i\in V_i$，因此 $Tv=T|_{V_1}v_1+\cdots+T|_{V_n}v_n=\vec{0}_W$. 故 $T$ 是零映射，即 $\Phi$ 的核只有零元. 故 $\Phi$ 是单射.
+
+    满射：由于 $V=V_1\oplus\cdots\oplus V_n$，任意 $v\in V$ 唯一写成 $v=v_1+\cdots+v_n$. 给定 $S_i\in\mathcal{L}(V_i,W)$，令
+    \[
+        T(v_1+\cdots+v_n)=S_1v_1+\cdots+S_nv_n
+    \]
+    即得 $\Phi(T)=(S_1,\ldots,S_n)$. 故 $\Phi$ 是满射，从而 $\Phi$ 是同构. 得证.
+
+    \item 因 $T$ 是同构且 $W$ 是 $T$-不变子空间，限制映射 $T|_W:W\to W$ 是单射. 有限维下它也是满射. 因此对任意 $w\in W$，存在 $u\in W$ 使 $Tu=w$，即 $T^{-1}w=u\in W$. 故 $W$ 是 $T^{-1}$ 的不变子空间.
+
+    \item
+    \begin{enumerate}
+        \item 共轭对称性、第一个位置的加性与齐性均由迹与共轭转置性质直接得到. 且
+        \[
+            \langle A,A\rangle=\tr(AA^{\mathrm{H}})=\sum_{i,j}|a_{ij}|^2\geqslant 0,
+        \]
+        等号成立当且仅当 $A=O$，因此正定性也成立，故 $\langle \cdot,\cdot\rangle$ 是复内积.
+
+        \item 若 $A^{\mathrm{T}}=A,\ B^{\mathrm{T}}=-B$，则由 $\tr(AB)=\tr(BA)$ 可得
+        \[
+            \tr(AB^{\mathrm{H}})=\tr((AB^{\mathrm{H}})^{\mathrm{T}})
+            =\tr(\overline{B}A)=-\tr(A\overline{B})=0.
+        \]
+        因此 $U\subseteq W^\perp$. 又 $\dim U+\dim W=n^2=\dim M_n(\mathbf{C})$，故 $U=W^\perp$.
+
+        \item 所求为 $A$ 到 $U$ 的正交投影. 由分解
+        \[
+            A=\frac{A+A^{\mathrm{T}}}{2}+\frac{A-A^{\mathrm{T}}}{2},
+        \]
+        其中前者属于 $U$，后者属于 $W=U^\perp$，从而该分解为正交分解，因此 $A$ 到 $U$ 的正交投影为
+        \[
+            B=\frac{A+A^{\mathrm{T}}}{2}.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 在基 $1,x,x^2$ 下，三个泛函的坐标行向量为
+        \[
+            \left(1,\frac12,\frac13\right),\quad
+            \left(2,2,\frac83\right),\quad
+            \left(-1,\frac12,-\frac13\right).
+        \]
+        该矩阵行列式为 $-2\neq 0$，故 $f_1,f_2,f_3$ 是对偶空间的一组基.
+
+        \item 解方程 $f_i(g_j)=\delta_{ij}$，可取
+        \[
+            g_1(x)=1+x-\frac32x^2, \quad
+            g_2(x)=-\frac16+\frac12x^2, \quad
+            g_3(x)=-\frac13+x-\frac12x^2.
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

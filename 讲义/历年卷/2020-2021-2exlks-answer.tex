@@ -1,0 +1,69 @@
+\section{2020-2021学年线性代数II（H）小测答案}
+
+\begin{center}
+    任课老师：刘康生\hspace{4em} 考试时长：45分钟
+\end{center}
+\begin{enumerate}
+    \item 复内积空间上，以下条件等价：
+    \[
+        T\text{ 正规}\iff T^*T=TT^*
+        \iff \|Tv\|=\|T^*v\|\quad(\forall v)
+    \]
+    \[
+        \iff V\text{ 有一组由 }T\text{ 的特征向量组成的规范正交基}
+        \iff T\text{ 可酉对角化}.
+    \]
+    还可等价表述为：$T$ 的每个不变子空间的正交补仍不变；不同特征值的特征子空间相互正交；$T$ 与 $T^*$ 可同时酉对角化.
+
+    \item 实内积空间上，$T$ 正规等价于 $T^*T=TT^*$，也等价于 $\|Tv\|=\|T^*v\|$ 对所有 $v$ 成立. 还等价于存在一组规范正交基，使 $T$ 的矩阵是若干个一维实块 $[a]$ 与二维块
+    \[
+        \begin{pmatrix}a&-b\\ b&a\end{pmatrix}\quad(b\neq 0)
+    \]
+    的正交直和. 对实矩阵 $A$，还等价于 $A^{\mathrm{T}}A=AA^{\mathrm{T}}$，或等价于其对称部分与反对称部分可交换.
+
+    \item 在有限维情形下存在. 由 $\|Tv\|=\|Sv\|$ 知 $\ker S=\ker T$. 定义
+    \[
+        U_0:\im S\to \im T,\qquad U_0(Sv)=Tv.
+    \]
+    若 $Sv_1=Sv_2$，则 $v_1-v_2\in\ker S=\ker T$，故定义良好. 且
+    \[
+        \|U_0(Sv)\|=\|Tv\|=\|Sv\|,
+    \]
+    所以 $U_0$ 是 $\im S$ 到 $\im T$ 的等距同构. 又 $\dim(\im S)^\perp=\dim(\im T)^\perp$，将 $U_0$ 任意延拓为整个 $V$ 上的等距同构 $U$，即有 $T=US$.
+
+    \item
+    \begin{enumerate}
+        \item 直接计算得
+        \[
+            A^{\mathrm{T}}A=AA^{\mathrm{T}}=2I,
+        \]
+        故 $A$ 正规.
+
+        \item 取
+        \[
+            p_1=\left(\frac12,\frac1{\sqrt2},\frac12,0\right)^{\mathrm{T}},\quad
+            p_2=\left(\frac12,-\frac1{\sqrt2},\frac12,0\right)^{\mathrm{T}},
+        \]
+        \[
+            p_3=(0,0,0,1)^{\mathrm{T}},\quad
+            p_4=\left(\frac1{\sqrt2},0,-\frac1{\sqrt2},0\right)^{\mathrm{T}}.
+        \]
+        它们构成规范正交基，且
+        \[
+            Ap_1=\sqrt2p_1,\quad Ap_2=-\sqrt2p_2,\quad
+            Ap_3=\sqrt2p_4,\quad Ap_4=-\sqrt2p_3.
+        \]
+        令 $P=(p_1,p_2,p_3,p_4)$，则
+        \[
+            P^{\mathrm{T}}AP=
+            \begin{pmatrix}
+                \sqrt2&0&0&0\\
+                0&-\sqrt2&0&0\\
+                0&0&0&-\sqrt2\\
+                0&0&\sqrt2&0
+            \end{pmatrix}.
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

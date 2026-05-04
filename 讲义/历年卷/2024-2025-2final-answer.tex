@@ -1,0 +1,149 @@
+\section{2024-2025学年线性代数II（H）期末答案}
+
+\begin{enumerate}
+    \item 点 $P_0(1,0,1)$ 到平面 $x+y+z=D$ 的距离为 $\sqrt{3}$，由点到平面距离公式：
+    \[
+    \frac{|1+0+1-D|}{\sqrt{1^2+1^2+1^2}} = \sqrt{3} \implies |2-D|=3 \implies D=5 \quad(D>0)
+    \]
+    直线 $\begin{cases}x+y+z=5 \\ x-y+z=1\end{cases}$ 的方向向量为两平面法向量的叉乘：
+    \[
+    \boldsymbol{n}_1=(1,1,1),\ \boldsymbol{n}_2=(1,-1,1) \implies \boldsymbol{v}=\boldsymbol{n}_1\times\boldsymbol{n}_2=(2,0,-2)
+    \]
+    取直线上点$Q(0,2,3)$，向量$\overrightarrow{P_0Q}=(-1,2,2)$，外积：
+    \[ \overrightarrow{P_0Q}\times\boldsymbol{v}=(-4,2,-4) \]
+    距离为：
+    \[
+    \frac{|\overrightarrow{P_0Q}\times\boldsymbol{v}|}{|\boldsymbol{v}|} = \frac{6}{2\sqrt{2}} = \frac{3\sqrt{2}}{2}.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 由 $W=\spa(x,x^2)$，设 $f(x)=ax^2+bx+c\in W^\perp$，则
+        \[
+            \begin{cases}
+                \displaystyle \int_0^1 (ax^2+bx+c)x\,\mathrm{d}x=0,\\[0.4em]
+                \displaystyle \int_0^1 (ax^2+bx+c)x^2\,\mathrm{d}x=0.
+            \end{cases}
+        \]
+        即
+        \[
+            \frac{a}{4}+\frac{b}{3}+\frac{c}{2}=0,\qquad
+            \frac{a}{5}+\frac{b}{4}+\frac{c}{3}=0.
+        \]
+        解得 $a=\dfrac{10}{3}c,\ b=-4c$，故 $W^\perp=\spa(10x^2-12x+3)$.
+
+        \item 设 $f(x)=Ax^2+Bx+C$. 对任意 $p(x)=a x^2+b x+c$，条件等价于
+        \[
+            \int_0^1 (a x^2+b x+c)(Ax^2+Bx+C)\,\mathrm{d}x=c.
+        \]
+        比较 $a,b,c$ 的系数得
+        \[
+            \begin{cases}
+                \dfrac{A}{5}+\dfrac{B}{4}+\dfrac{C}{3}=0,\\[0.5em]
+                \dfrac{A}{4}+\dfrac{B}{3}+\dfrac{C}{2}=0,\\[0.5em]
+                \dfrac{A}{3}+\dfrac{B}{2}+C=1.
+            \end{cases}
+        \]
+        解得 $A=30,\ B=-36,\ C=9$，故 $f(x)=30x^2-36x+9$.
+    \end{enumerate}
+
+    \item 由条件，$A$ 为幂零矩阵，且 $A^3=B^6\neq O$，$A^4=B^8=O$（因为 $B$ 只有 $7$ 阶且幂零），故 $B$ 的若当块一定是 $J_7(0)$，故 $r(A)=r(B^2)=5$.
+
+    \item 幂零算子 $T$ 的秩为1，故其 Jordan 标准形有 $n-1$ 个若当块，只能为一个 $J_2(0)$ 和 $n-2$ 个 $J_1(0)$，即一个除了第一行第二列元素为 1 之外其余元素均为 0 的方阵. \\
+    对任意 $a$，$U_a=\spa(e_2,e_1+ae_3)$ 是二维 $T$-不变子空间，且有无穷多个.得证.
+
+    \item
+    \begin{enumerate}
+        \item 假. 例如 $T$ 在某组基下的矩阵为
+        \[
+            \begin{pmatrix}1&0&0\\0&2&1\\0&0&2\end{pmatrix},
+        \]
+        它的特征值只有 $1,2$，但
+        \[
+            T^2-3T+2I=
+            \begin{pmatrix}0&0&0\\0&0&1\\0&0&0\end{pmatrix}\neq O.
+        \]
+
+        \item 假. 例如算子 $T$ 在自然基下的矩阵为
+        \[
+            \begin{pmatrix}
+                1&-1&0&0\\
+                1&1&0&0\\
+                0&0&1&-1\\
+                0&0&1&1
+            \end{pmatrix}.
+        \]
+        显然每个对角块对应一个非平凡不变子空间，但它的特征多项式为 $(x^2-2x+2)^2$ 无实根，故没有实特征值.
+
+        \item 真. 设 $W$ 是 $U$ 的补空间，取 $W$ 的基 $\varepsilon_1,\cdots,\varepsilon_s$ 并扩展成 $V$ 的一组基 $\varepsilon_1,\cdots,\varepsilon_s,\cdots,\varepsilon_n$. 对任意 $v \in V$，$v =\displaystyle\sum_{i=1}^n b_i \varepsilon_i$，故 $v + U = \displaystyle\sum_{i=1}^s b_i(\varepsilon_i + U)$（因为对 $s+1\geqslant k\geqslant n$，由于 $\varepsilon_k \in U$，故 $\varepsilon_k+U$ 为 $V/U$ 的零元），因此 $\varepsilon_1 + U, \ldots, \varepsilon_s + U$ 张成 $V/U$. 设 $a_1(\varepsilon_1+U)+\cdots+a_s(\varepsilon_s+U)=\vec{0}_{V/U}$，则 $a_1\varepsilon_1+\cdots+a_s\varepsilon_s\in U\cap W=\{\vec{0}_V\}$，故 $a_1=\cdots=a_s=0$. 所以它们是 $V/U$ 的一组基.
+
+        \item 假. 对称矩阵只有在规范正交基下才对应自伴算子. 例如在 $\mathbf{R}^2$ 的基 $\{(1,0),(1,1)\}$ 下矩阵 $\begin{pmatrix}0&1\\1&0\end{pmatrix}$ 是对称的，但它对应的算子在自然基下的矩阵为 $\begin{pmatrix}1&1\\0&-1\end{pmatrix}$，不是对称矩阵，因此不是标准内积下的自伴算子.
+
+        \item 真. 设 $s$ 是奇异值，则 $s = \sqrt{\lambda}$，$\lambda$ 为 $G = T^*T$ 的特征值。取单位特征向量 $\alpha$，则 $\|T\alpha\|^2 = \langle T^*T\alpha, \alpha \rangle = \lambda\langle \alpha,\alpha \rangle=\lambda$，故 $\|T\alpha\| = s$.
+    \end{enumerate}
+
+    \item 令
+    \[
+        U=\spa(\varepsilon_1,\varepsilon_2,\varepsilon_3),\qquad
+        W=\spa(\varepsilon_4,\varepsilon_5).
+    \]
+    两个子空间均为 $T$-不变子空间. 在 $U$ 上有 $(T|_U)^2=3T|_U$，且 $T|_U$ 既不是零算子也不是 $3I$，故极小多项式为 $x(x-3)$. 同理，在 $W$ 上有 $(T|_W)^2=2T|_W$，极小多项式为 $x(x-2)$. 因此整体的极小多项式为最小公倍式 $x(x-2)(x-3)$.
+
+    又对 $k\geqslant 1$，归纳易得 $(T|_U)^k=3^{k-1}T|_U$，$(T|_W)^k=2^{k-1}T|_W$，所以
+    \[
+        T^{2025618}(\varepsilon_i) = 3^{2025617}(\varepsilon_1+\varepsilon_2+\varepsilon_3) \, (i=1,2,3), \quad T^{2025618}(\varepsilon_j) = 2^{2025617}(\varepsilon_4+\varepsilon_5) \, (j=4,5).
+    \]
+
+    \item 记 $G=T^*T$.
+
+    $(1)\implies(2)$：若 $T$ 正规，则 $T$ 可酉对角化. 取一组规范正交基 $\{f_k\}$，使得 $Tf_k=\mu_k f_k$. 于是
+    \[
+        Gf_k=|\mu_k|^2f_k.
+    \]
+    对 $\lambda_i>0$ 的特征空间 $E(\lambda_i,G)$，定义
+    \[
+        Sf_k=\frac{\mu_k}{\sqrt{\lambda_i}}f_k\qquad(f_k\in E(\lambda_i,G)).
+    \]
+    在 $E(0,G)=\ker T$ 上任取一个等距同构作为 $S$ 的限制. 这样得到的 $S$ 是等距同构，且每个 $E(\lambda_i,G)$ 都是 $S$-不变的. 于是对任意 $v$，
+    \[
+        Tv=\sum_{i=1}^m\sum_{j=1}^{d_i}\sqrt{\lambda_i}
+        \langle v,\varepsilon_{ij}\rangle S\varepsilon_{ij}.
+    \]
+
+    $(2)\implies(1)$：设 $P_i$ 是到 $E(\lambda_i,G)$ 的正交投影. 由题设可写成
+    \[
+        T=S\sqrt{G}.
+    \]
+    且 $S(E(\lambda_i,G))\subseteq E(\lambda_i,G)$，故 $S$ 与 $G$ 交换，也与 $\sqrt{G}$ 交换. 因此
+    \[
+        TT^*=S\sqrt{G}\sqrt{G}S^*=SGS^*=G=T^*T,
+    \]
+    即 $T$ 正规.
+
+    $(1)\implies(3)$：若 $T$ 正规，则 $\ker T=\ker T^*$，故
+    \[
+        \im T=(\ker T^*)^\perp=(\ker T)^\perp.
+    \]
+    又 $T$ 与 $T^*$ 交换，故
+    \[
+        (T^2)^*T^2=(T^*T)^2=G^2.
+    \]
+    对 $T^2$ 作极分解即得某个等距同构 $S'$，使得
+    \[
+        T^2=S'\sqrt{(T^2)^*T^2}=S'G.
+    \]
+
+    $(3)\implies(1)$：由 $T^2=S'G$ 且 $S'$ 等距可知
+    \[
+        \|T(Tv)\|=\|T^*(Tv)\|,\qquad \forall v.
+    \]
+    令 $H=T^*T-TT^*$，则对任意 $y\in\im T$ 有 $\langle Hy,y\rangle=0$. 又由 $\im T=(\ker T)^\perp$ 得 $T^*(\im T)\subseteq \im T$，从而 $H(\im T)\subseteq \im T$. 因 $H$ 自伴，极化恒等式给出 $H$ 在 $\im T$ 上为零.
+
+    另一方面，$\im T=(\ker T)^\perp$ 等价于 $\ker T=\ker T^*$，故 $H$ 在 $\ker T$ 上也为零. 由
+    \[
+        V=\im T\oplus\ker T
+    \]
+    得 $H=O$，即 $T^*T=TT^*$，所以 $T$ 正规.
+\end{enumerate}
+
+\clearpage
