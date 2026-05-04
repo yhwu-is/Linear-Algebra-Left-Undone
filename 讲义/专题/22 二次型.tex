@@ -4,7 +4,7 @@
 
 在几何部分中，我们讨论了二次曲线和二次曲面的分类. 对于平面二次曲线
 \[ax^2 + by^2 + cxy + dx + ey + f = 0,\]
-常见的处理手段是通过旋转变换消去交叉项$xy$，然后平移变换消去一次项，最终得到标准形式. 类似的多项式和变换形式在数学与物理中也有很多应用，为了方便我们考虑二次齐次多项式，也就引入了二次型的概念.
+常见的处理手段是通过旋转变换消去交叉项$xy$，然后平移变换消去一次项，最终得到标准形式. 类似的多项式和变换形式在数学与物理中也有很多应用，为了方便我们考虑二次齐次多项式，也就引入了二次型的概念. 需要注意的是，本讲的讨论对象是数域（主要是实数域）上的二次型；非数域的情形需要采用不同的方法，将另作讨论.
 
 \begin{definition}{二次型}{} \index{ercixing@二次型 (quadratic form)}
     $n$个元$x_1,x_2,\ldots,x_n$的二次齐次多项式
@@ -15,9 +15,54 @@
     \end{align*}
     称为域$\mathbf{F}$上的$n$元二次型（简称\term{二次型}）.
 \end{definition}
-先考虑实域上的情况. 若令$a_{ij}=a_{ji}\enspace(1\leqslant i<j\leqslant n)$，则二次型可表示为
+
+若令$a_{ij}=a_{ji}\enspace(1\leqslant i<j\leqslant n)$，则二次型可表示为
 \[f(x_1,x_2,\ldots,x_n)=\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j=X^\mathrm{T}AX\]
 其中$X=(x_1,x_2,\ldots,x_n)^\mathrm{T}\in\mathbf{R}^n$，$A=(a_{ij})_{n\times n}$为实对称矩阵，并称对称矩阵$A$为二次型$f(x_1,x_2,\ldots,x_n)$的相伴矩阵.
+
+\begin{example}{}{}
+    回答以下问题：
+    \begin{enumerate}
+        \item 已知$A$是一个$n$阶矩阵，则$A$为反对称矩阵的充要条件是对任意$n$元列向量$X$都有$X^\mathrm{T}AX=0$；
+
+        \item 若二次型$f(x_1,x_2,\ldots,x_n)=X^\mathrm{T}AX$对任意的$n$元列向量$X$都有$f(x_1,x_2,\ldots,x_n)=0$，证明：$A=O$；
+
+        \item 设二次型$f(x_1,x_2,\ldots,x_n)=X^\mathrm{T}AX,\enspace g(x_1,x_2,\ldots,x_n)=X^\mathrm{T}BX$.\\
+              证明：若$f(x_1,x_2,\ldots,x_n)=g(x_1,x_2,\ldots,x_n)$，则$A=B$.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item 先证充分性. 若 $A^\mathrm{T}=-A$，则对任意列向量 $X$ 都有
+              \[
+                  (X^\mathrm{T}AX)^\mathrm{T}=X^\mathrm{T}A^\mathrm{T}X=-X^\mathrm{T}AX.
+              \]
+              由于 $X^\mathrm{T}AX$ 是一个 $1$ 阶矩阵，也就是一个数，它等于自身的转置，于是
+              \[
+                  X^\mathrm{T}AX=-X^\mathrm{T}AX,
+              \]
+              从而 $X^\mathrm{T}AX=0$.
+
+              再证必要性. 若对任意 $X$ 都有 $X^\mathrm{T}AX=0$，取 $X=e_i$ 得 $a_{ii}=0$. 再取 $X=e_i+e_j\enspace(i\neq j)$，则
+              \[
+                  0=(e_i+e_j)^\mathrm{T}A(e_i+e_j)=a_{ii}+a_{ij}+a_{ji}+a_{jj}=a_{ij}+a_{ji}.
+              \]
+              故 $a_{ji}=-a_{ij}$ 对任意 $i,j$ 都成立，即 $A^\mathrm{T}=-A$.
+
+        \item 因为 $f(X)=X^\mathrm{T}AX$ 是二次型，所以这里的 $A$ 是对称矩阵. 已知对任意 $X$ 都有 $X^\mathrm{T}AX=0$，取 $X=e_i$，得到 $a_{ii}=0$. 再取 $X=e_i+e_j\enspace(i\neq j)$，则
+              \[
+                  0=(e_i+e_j)^\mathrm{T}A(e_i+e_j)=a_{ii}+2a_{ij}+a_{jj}=2a_{ij}.
+              \]
+              故 $a_{ij}=0$. 因而 $A=O$.
+
+        \item 由 $f(X)=g(X)$ 可知对任意 $X$ 都有
+              \[
+                  X^\mathrm{T}(A-B)X=0.
+              \]
+              又 $A,B$ 都是二次型的相伴矩阵，所以它们都是对称矩阵，从而 $A-B$ 也是对称矩阵. 由第 2 问立刻得到 $A-B=O$，即 $A=B$.
+    \end{enumerate}
+\end{solution}
 
 \begin{example}{}{}
     已知二次型
@@ -29,19 +74,37 @@
     写出二次型$f(X)$的相伴矩阵.
 \end{example}
 
+\begin{solution}
+    设题中给出的矩阵为
+    \[
+        M=\begin{pmatrix}
+            1 & 2 & 3 & -4 \\
+            3 & 2 & 1 & 4 \\
+            -4 & 3 & -7 & 2 \\
+            0 & -6 & 8 & 4
+        \end{pmatrix}.
+    \]
+    因为
+    \[
+        X^\mathrm{T}MX=X^\mathrm{T}\left(\frac{M+M^\mathrm{T}}{2}\right)X+X^\mathrm{T}\left(\frac{M-M^\mathrm{T}}{2}\right)X,
+    \]
+    而 $ \dfrac{M-M^\mathrm{T}}{2} $ 是反对称矩阵，故对任意 $X$ 都有
+    \[
+        X^\mathrm{T}\left(\frac{M-M^\mathrm{T}}{2}\right)X=0.
+    \]
+    因此二次型 $f(X)$ 的相伴矩阵就是 $M$ 的对称部分
+    \[
+        A=\frac{M+M^\mathrm{T}}{2}
+        =\begin{pmatrix}
+            1 & \dfrac{5}{2} & -\dfrac{1}{2} & -2 \\
+            \dfrac{5}{2} & 2 & 2 & -1 \\
+            -\dfrac{1}{2} & 2 & -7 & 5 \\
+            -2 & -1 & 5 & 4
+        \end{pmatrix}.
+    \]
+\end{solution}
+
 实际上一个形如$f(x_1,x_2,\ldots,x_n)=\displaystyle\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j$的函数可以对应的矩阵是很多的，但不唯一的矩阵表示会给我们带来很多不便. 而选取对称矩阵作为二次型的相伴矩阵，不仅是因为简化了计算，还是因为二次型和对称矩阵之间存在一一对应的关系.
-
-\begin{example}{}{}
-    回答以下问题：
-    \begin{enumerate}
-        \item 已知$A$是一个$n$阶矩阵，则$A$为反对称矩阵的充要条件是对任意$n$元列向量$X$都有$X^\mathrm{T}AX=0$；
-
-        \item 若二次型$f(x_1,x_2,\ldots,x_n)=X^\mathrm{T}AX$对任意$n$元列向量$X$都有$f(x_1,x_2,\ldots,x_n)=0$，证明：$A=O$；
-
-        \item 设二次型$f(x_1,x_2,\ldots,x_n)=X^\mathrm{T}AX,\enspace g(x_1,x_2,\ldots,x_n)=X^\mathrm{T}BX$.\\
-              证明：若$f(x_1,x_2,\ldots,x_n)=g(x_1,x_2,\ldots,x_n)$，则$A=B$.
-    \end{enumerate}
-\end{example}
 
 \section{矩阵相合的定义与性质}
 
@@ -50,9 +113,9 @@
 \begin{definition}{}{}
     我们称$n$阶矩阵$A$相合于$B$（记作$A\simeq B$），如果存在可逆矩阵$C$使得$B=C^\mathrm{T}AC$.
 \end{definition}
-矩阵相合（合同）有如下基本性质：
+矩阵相合（合同）有如下基本性质，证明我们留作习题.
 \begin{enumerate}
-    \item 合同是等价关系；合同不同于相似，是与域有关的；合同要求$C$必须可逆，因此是一种特殊的相抵；
+    \item 合同是等价关系；合同与域有关；
 
     \item $A\simeq B$一般不能得到$A^m\simeq B^m$（但是$A,B$为实对称矩阵时可以），但如果可逆，我们有$A^{-1}\simeq B^{-1}$，同时如果$A_1\simeq A_2,B_1\simeq B_2$，则有$\begin{pmatrix}
                   A_1 & O \\ O & B_1
@@ -60,20 +123,12 @@
                   A_2 & O \\ O & B_2
               \end{pmatrix}$；
 
-    \item $A\simeq B$表明$A$可以每次做相同的初等行列变换得到$B$，反之亦然.
+    \item $A\simeq B$表明$A$可以每次做相同的初等行列变换得到$B$，反之亦然（下面的\autoref{lem:初等变换与合同变换引理1}会给出一部分证明，另一部分留作习题）.
 \end{enumerate}
-
-% \begin{example}{}{}
-%     设$A\simeq B$，$C\simeq D$，且它们都是$n$阶实对称矩阵，问：$A+C\simeq B+D$ 是否成立.
-% \end{example}
-
-% \begin{example}{}{}
-%     判断：矩阵相似是否一定合同？矩阵合同是否一定相似？对于实对称矩阵上述论断又是否正确呢？正确请说明理由，不正确请举出反例.
-% \end{example}
 
 \section{二次型标准形的定义与求解}
 
-所以用矩阵的语言表示的话，求解二次型的标准形就是寻找可逆矩阵 $C$ 使得 $C^\mathrm{T}AC$ 为对角矩阵. 最基础的想法就是如同相抵标准型那样，通过初等变换将矩阵变换为对角矩阵.
+求解二次型的标准形就是寻找可逆矩阵 $C$ 使得 $C^\mathrm{T}AC$ 为对角矩阵. 最基础的想法就是如同相抵标准型那样，通过初等变换将矩阵变换为对角矩阵.
 
 \begin{lemma}{}{初等变换与合同变换引理1}
     对称矩阵 $A$ 的下列变换都是相合变换：
@@ -85,6 +140,18 @@
         \item 将 $A$ 的第 $i$ 行乘以 $k$ 加到第 $j$ 行，再将 $A$ 的第 $i$ 列乘以 $k$ 加到第 $j$ 列.
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}
+    记 $E_{ij}$ 为第 $(i,j)$ 个位置为 $1$、其余位置为 $0$ 的矩阵.
+    \begin{enumerate}
+        \item 设 $P_{ij}$ 为交换第 $i,j$ 个基向量的置换矩阵，则 $P_{ij}^{-1}=P_{ij}^\mathrm{T}=P_{ij}$，而 $P_{ij}^\mathrm{T}AP_{ij}$ 恰好对应于同时交换 $A$ 的第 $i,j$ 行与第 $i,j$ 列.
+
+        \item 设 $D_i(k)=I+(k-1)E_{ii}$，则 $D_i(k)$ 可逆且 $D_i(k)^\mathrm{T}=D_i(k)$. 直接计算可知 $D_i(k)^\mathrm{T}AD_i(k)$ 恰好对应于将 $A$ 的第 $i$ 行乘以 $k$，再将第 $i$ 列乘以 $k$.
+
+        \item 设 $T_{ji}(k)=I+kE_{ji}\enspace(i\neq j)$，则 $T_{ji}(k)$ 可逆，且 $T_{ji}(k)^{-1}=I-kE_{ji}$. 由于 $T_{ji}(k)^\mathrm{T}=I+kE_{ij}$，所以 $T_{ji}(k)^\mathrm{T}AT_{ji}(k)$ 恰好对应于将第 $i$ 行乘以 $k$ 加到第 $j$ 行，再将第 $i$ 列乘以 $k$ 加到第 $j$ 列.
+    \end{enumerate}
+    因而上述三类变换都是合同变换.
+\end{proof}
 
 接下来的问题是，如何进行合适的初等变换来将一个对称矩阵对角化.
 
@@ -214,13 +281,174 @@
     化为标准形，并求所用的坐标变换$X=CY$即变换矩阵$C$.
 \end{example}
 
+\begin{solution}
+    直接配方可得
+    \begin{align*}
+        f(x_1,x_2,x_3)
+         & = 2x_1^2+4x_1x_2-4x_1x_3+3x_2^2-8x_2x_3+x_3^2 \\
+         & = 2(x_1+x_2-x_3)^2+x_2^2-4x_2x_3-3x_3^2         \\
+         & = 2(x_1+x_2-x_3)^2+(x_2-2x_3)^2-5x_3^2.
+    \end{align*}
+    令
+    \[
+        \begin{cases}
+            y_1 = x_1+x_2-x_3, \\
+            y_2 = x_2-2x_3,    \\
+            y_3 = x_3,
+        \end{cases}
+    \]
+    则
+    \[
+        f(y_1,y_2,y_3)=2y_1^2+y_2^2-5y_3^2.
+    \]
+    由上式反解得
+    \[
+        \begin{cases}
+            x_3 = y_3,             \\
+            x_2 = y_2+2y_3,        \\
+            x_1 = y_1-y_2-y_3,
+        \end{cases}
+    \]
+    因而所求坐标变换 $X=CY$ 为
+    \[
+        \begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            1 & -1 & -1 \\
+            0 & 1 & 2   \\
+            0 & 0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            y_1 \\
+            y_2 \\
+            y_3
+        \end{pmatrix}.
+    \]
+\end{solution}
+
 配方法的合理性是可逆的坐标变换所保证的，只要配方成功的消除了所有交叉项，便可以得到标准形. 但配方法在处理一些情况的时候需要一些技巧，比如\autoref{ex:相合标准形例1}，需要先通过坐标变换构造出平方项，再通过配方法消除交叉项.
+
+\begin{example}{}{相合标准形例3}
+    用配方法把二次型
+    \[f(x_1,x_2,x_3)=2x_1x_2-2x_1x_3+2x_2x_3\]
+    化为标准形，并求所用的坐标变换$X=CY$即变换矩阵$C$.
+\end{example}
+
+\begin{solution}
+    对于 $f(x_1,x_2,x_3)=2x_1x_2-2x_1x_3+2x_2x_3$，原式中没有平方项，因此不能直接像通常那样配方. 这时先作一个可逆线性变换
+    \[
+        \begin{cases}
+            y_1 = x_1+x_2, \\
+            y_2 = x_1-x_2, \\
+            y_3 = x_3.
+        \end{cases}
+    \]
+    由此反解得
+    \[
+        \begin{cases}
+            x_1 = \dfrac{y_1+y_2}{2}, \\
+            x_2 = \dfrac{y_1-y_2}{2}, \\
+            x_3 = y_3.
+        \end{cases}
+    \]
+    代入原二次型，有
+    \[ f(y_1, y_2, y_3) = \frac{1}{2}y_1^2-\frac{1}{2}y_2^2-2y_2y_3. \]
+    经过这一步，二次型中已经出现了平方项，于是便可以继续配方：
+    \[ f(y_1, y_2, y_3) = \frac{1}{2}y_1^2-\frac{1}{2}(y_2+2y_3)^2+2y_3^2. \]
+    再令
+    \[
+        z_1=y_1,\qquad z_2=y_2+2y_3,\qquad z_3=y_3,
+    \]
+    便得到标准形
+    \[
+        f(z_1,z_2,z_3)=\frac{1}{2}z_1^2-\frac{1}{2}z_2^2+2z_3^2.
+    \]
+    如果写成从新坐标到旧坐标的形式，则由
+    \[
+        y_1=z_1,\qquad y_2=z_2-2z_3,\qquad y_3=z_3
+    \]
+    以及
+    \[
+        x_1=\frac{y_1+y_2}{2},\qquad x_2=\frac{y_1-y_2}{2},\qquad x_3=y_3
+    \]
+    可得
+    \[
+        \begin{cases}
+            x_1 = \dfrac{1}{2}z_1+\dfrac{1}{2}z_2-z_3, \\
+            x_2 = \dfrac{1}{2}z_1-\dfrac{1}{2}z_2+z_3, \\
+            x_3 = z_3.
+        \end{cases}
+    \]
+    因此坐标变换矩阵可取为
+    \[
+        X=
+        \begin{pmatrix}
+            \dfrac{1}{2} & \dfrac{1}{2} & -1 \\
+            \dfrac{1}{2} & -\dfrac{1}{2} & 1 \\
+            0 & 0 & 1
+        \end{pmatrix}
+        Z.
+    \]
+    这说明：当原二次型没有平方项、无法直接配方时，可以先通过一个简单的可逆线性变换人为造出平方项，再继续做配方法.
+\end{solution}
 
 不过需要注意的是，以上两种方法得到的对角矩阵不一定是相伴矩阵的相似对角化，相似对角化要求是 $P^{-1}AP$ 为对角矩阵，而相合对角化是 $P^\mathrm{T}AP$ 为对角矩阵，二者一致的话需要满足 $P^{-1} = P^\mathrm{T}$，也就是说 $P$ 是正交矩阵. 不过这一点并不是难以做到的，因为 $A$ 是实对称矩阵，根据\nameref{thm:实谱定理}，$A$ 的标准化后的特征向量组成的矩阵便是正交矩阵$P$，所以我们也可以通过正交变换求解二次型的相合标准形.
 
 \begin{example}{}{}
     用正交变换法将二次型 $f(x_1,x_2) = 2x_1^2 + 5x_2^2 + 4x_1x_2$ 化为标准形，并给出变换矩阵 $P$.
 \end{example}
+
+\begin{solution}
+    二次型的相伴矩阵为
+    \[
+        A=\begin{pmatrix}
+            2 & 2 \\
+            2 & 5
+        \end{pmatrix}.
+    \]
+    其特征多项式为
+    \[
+        |\lambda E-A|=\begin{vmatrix}
+            \lambda-2 & -2        \\
+            -2        & \lambda-5
+        \end{vmatrix}
+        =\lambda^2-7\lambda+6=(\lambda-1)(\lambda-6),
+    \]
+    故特征值为 $1,6$.
+
+    对于特征值 $1$，解方程 $(A-E)X=0$ 得特征向量可取为 $(-2,1)^\mathrm{T}$；对于特征值 $6$，解方程 $(A-6E)X=0$ 得特征向量可取为 $(1,2)^\mathrm{T}$. 将它们单位化，得到两个单位特征向量
+    \[
+        u_1=\frac{1}{\sqrt{5}}\begin{pmatrix}
+            -2 \\
+            1
+        \end{pmatrix},
+        \qquad
+        u_2=\frac{1}{\sqrt{5}}\begin{pmatrix}
+            1 \\
+            2
+        \end{pmatrix}.
+    \]
+    令
+    \[
+        P=\begin{pmatrix}
+            -\dfrac{2}{\sqrt{5}} & \dfrac{1}{\sqrt{5}} \\
+            \dfrac{1}{\sqrt{5}}  & \dfrac{2}{\sqrt{5}}
+        \end{pmatrix},
+    \]
+    则 $P$ 为正交矩阵，且
+    \[
+        P^\mathrm{T}AP=\diag(1,6).
+    \]
+    因此在正交变换 $X=PY$ 下，
+    \[
+        f(X)=Y^\mathrm{T}(P^\mathrm{T}AP)Y=y_1^2+6y_2^2.
+    \]
+    这就是所求标准形.
+\end{solution}
 
 \section{相合规范形 \quad 惯性定理}
 
@@ -292,6 +520,29 @@
     确定二次型$f(x_1,x_2,\ldots,x_{10})=x_1x_2+x_3x_4+x_5x_6+x_7x_8+x_9x_{10}$的秩以及正、负惯性指数.
 \end{example}
 
+\begin{solution}
+    对每一对变量分别配方：
+    \[
+        x_{2k-1}x_{2k}=\frac{1}{4}\bigl((x_{2k-1}+x_{2k})^2-(x_{2k-1}-x_{2k})^2\bigr), \quad k=1,2,\ldots,5.
+    \]
+    因而
+    \[
+        f=\frac{1}{4}\sum_{k=1}^5\bigl((x_{2k-1}+x_{2k})^2-(x_{2k-1}-x_{2k})^2\bigr).
+    \]
+    令
+    \[
+        y_{2k-1}=x_{2k-1}+x_{2k}, \qquad y_{2k}=x_{2k-1}-x_{2k}, \qquad k=1,2,\ldots,5,
+    \]
+    则这是一个可逆线性变换，并且
+    \[
+        f=\frac{1}{4}(y_1^2-y_2^2+y_3^2-y_4^2+y_5^2-y_6^2+y_7^2-y_8^2+y_9^2-y_{10}^2).
+    \]
+    因而该二次型的相合规范形中有 $5$ 个正项和 $5$ 个负项，没有零项，所以
+    \[
+        r(f)=10, \qquad r_+=5, \qquad r_-=5.
+    \]
+\end{solution}
+
 惯性定理的``惯性''二字与物理中的惯性有关，实际上透露着某种不变性. 根据惯性定理，我们有如下结论：
 \begin{enumerate}
     \item 我们可以按相合关系对全体$n$阶实对称矩阵分类，因为实对称矩阵相合意味着规范形唯一，我们可以按照$+1$、$-1$、0个数的不同划分为$\vphantom{\cfrac{n+1}{2}}\dfrac{(n+1)(n+2)}{2}$个等价类；
@@ -346,7 +597,7 @@
     \end{enumerate}
 \end{theorem}
 
-由此而得到的一个显然的推论如下：
+这一定理证明是显然的，故略去不在此展开. 由此而得到的一个显然的推论如下：
 
 \begin{corollary}{}{}
     $n$阶实对称矩阵$A$是正定矩阵当且仅当其合同于单位阵$E_n$，是半正定矩阵当且仅当其合同于对角阵$\begin{pmatrix}
@@ -354,22 +605,105 @@
     \end{pmatrix}$.
 \end{corollary}
 
-所以考虑正定矩阵$A$，其经过合同变换得到单位阵$E_n$，即$C^\mathrm{T}AC = E_n$，两侧取行列式有$\det(C^\mathrm{T})\det(A)\det(C)=\det(C)^2\det(A)=\det(E_n)=1$，所以$\det(A)>0$，即正定矩阵的行列式大于$0$. 而考虑对正定矩阵做限制，即只取前$r$行$r$列，得到的$r$阶子矩阵也是正定矩阵，回忆\hyperref[def:子式、主子式、顺序主子式]{顺序主子式的定义}，这启示我们可以通过顺序主子式的符号来判断矩阵的正定性.
+所以考虑正定矩阵$A$，其经过合同变换得到单位阵$E_n$，即$C^\mathrm{T}AC = E_n$，两侧取行列式有$\det(C^\mathrm{T})\det(A)\det(C)=\det(C)^2\det(A)=\det(E_n)=1$，所以$\det(A)>0$，即正定矩阵的行列式大于$0$. 而考虑对正定矩阵做限制，即只取前$r$行$r$列，得到的$r$阶子矩阵也必然是正定矩阵，回忆\hyperref[def:子式、主子式、顺序主子式]{顺序主子式的定义}，这启示我们可以通过顺序主子式的符号来判断矩阵的正定性.
 
-\begin{theorem}{}{}
+\begin{theorem}{Sylvester 判别法}{}
     $n$阶实对称矩阵$A$是正定阵的充分必要条件是$A$的所有顺序主子式的行列式都大于$0$.
 \end{theorem}
+
+\begin{proof}
+    先证必要性. 设 $A$ 是正定矩阵，记其前 $k$ 行前 $k$ 列构成的顺序主子阵为 $A_k$. 对任意非零向量 $Y=(y_1,\ldots,y_k)^\mathrm{T}$，令
+    \[
+        X=(y_1,\ldots,y_k,0,\ldots,0)^\mathrm{T},
+    \]
+    则
+    \[
+        Y^\mathrm{T}A_kY=X^\mathrm{T}AX>0.
+    \]
+    因此 $A_k$ 也是正定矩阵. 由前面关于正定矩阵的讨论可知 $\det A_k>0$. 所以 $A$ 的所有顺序主子式都大于 $0$.
+
+    再证充分性. 对 $n$ 作归纳. 当 $n=1$ 时结论显然成立. 下面设结论对 $n - 1$ 阶情形成立，考虑 $n$ 阶实对称矩阵
+    \[
+        A=\begin{pmatrix}
+            a_{11} & \alpha^\mathrm{T} \\
+            \alpha & B
+        \end{pmatrix},
+    \]
+    其中 $\alpha\in\mathbf{R}^{n-1}$，$B$ 是 $(n-1)$ 阶实对称矩阵. 由第一个顺序主子式大于 $0$ 知 $a_{11}>0$. 定义
+    \[
+        S=B-\frac{1}{a_{11}}\alpha\alpha^\mathrm{T}.
+    \]
+    这是一个 $(n-1)$ 阶实对称矩阵. 对任意 $k=1,2,\ldots,n-1$，设 $S_k$ 为 $S$ 的前 $k$ 阶顺序主子阵，$A_{k+1}$ 为 $A$ 的前 $k+1$ 阶顺序主子阵，则
+    \[
+        A_{k+1}=
+        \begin{pmatrix}
+            a_{11} & \alpha_k^\mathrm{T} \\
+            \alpha_k & B_k
+        \end{pmatrix},
+    \]
+    其中 $\alpha_k$ 和 $B_k$ 分别是 $\alpha$ 与 $B$ 的前 $k$ 个分量、前 $k$ 阶顺序主子阵. 对 $A_{k+1}$ 做初等行列变换可得
+    \[
+        \det A_{k+1}=a_{11}\det S_k.
+    \]
+    由于 $\det A_{k+1}>0$ 且 $a_{11}>0$，故 $\det S_k>0$. 因而 $S$ 的所有顺序主子式都大于 $0$. 由归纳假设，$S$ 正定.
+
+    现对任意非零向量 $X=(x_1,Y^\mathrm{T})^\mathrm{T}\in\mathbf{R}^n$，有
+    \begin{align*}
+        X^\mathrm{T}AX
+         & = a_{11}x_1^2+2x_1\alpha^\mathrm{T}Y+Y^\mathrm{T}BY \\
+         & = a_{11}\left(x_1+\frac{\alpha^\mathrm{T}Y}{a_{11}}\right)^2+Y^\mathrm{T}\left(B-\frac{1}{a_{11}}\alpha\alpha^\mathrm{T}\right)Y \\
+         & = a_{11}\left(x_1+\frac{\alpha^\mathrm{T}Y}{a_{11}}\right)^2+Y^\mathrm{T}SY.
+    \end{align*}
+    若 $Y\neq 0$，则因 $S$ 正定知 $Y^\mathrm{T}SY>0$；若 $Y=0$，则 $x_1\neq 0$，于是第一项大于 $0$. 因而对任意非零 $X$ 都有 $X^\mathrm{T}AX>0$，即 $A$ 正定.
+\end{proof}
 
 \begin{example}{}{}
     求$t$的取值范围，使得下面的二次型是正定的：
     \[f(x_1,x_2,x_3,x_4) = x_1^2+4x_2^2+4x_3^2+3x_4^2+2tx_1x_2-2x_1x_3+4x_1x_2.\]
 \end{example}
 
+\begin{solution}
+    该二次型的相伴矩阵为
+    \[
+        A=\begin{pmatrix}
+            1 & t+2 & -1 & 0 \\
+            t+2 & 4 & 0 & 0 \\
+            -1 & 0 & 4 & 0 \\
+            0 & 0 & 0 & 3
+        \end{pmatrix}.
+    \]
+    由 Sylvester 判别法，只需计算顺序主子式：
+    \[
+        D_1=1>0,
+    \]
+    \[
+        D_2=\begin{vmatrix}
+            1 & t+2 \\
+            t+2 & 4
+        \end{vmatrix}
+        =4-(t+2)^2,
+    \]
+    \[
+        D_3 = \begin{vmatrix}
+                 1 & t+2 & -1 \\
+                 t+2 & 4 & 0 \\
+                 -1 & 0 & 4
+             \end{vmatrix} = 4\bigl(3-(t+2)^2\bigr),
+    \]
+    \[
+        D_4=3D_3=12\bigl(3-(t+2)^2\bigr).
+    \]
+    因而正定的充要条件是 $D_2>0,\qquad D_3>0,\qquad D_4>0$. 其中 $D_3>0$ 已经推出 $D_2>0$ 和 $D_4>0$，故最终只需 $3-(t+2)^2>0$. 即
+    \[
+        -2-\sqrt{3}<t<-2+\sqrt{3}.
+    \]
+\end{solution}
+
 而通过一些简单的行列对换，我们可以得到这一定理的推论：
 \begin{corollary}{}{}
     若 $A$ 是正定矩阵，则：
     \begin{enumerate}
-        \item $A$的任一$k$阶主子阵都是正定阵；
+        \item $A$的任一$k$阶主子阵都是正定矩阵；
         \item $A$的所有主子式均为正，特别地，$A$的主对角元素全大于零.
     \end{enumerate}
 \end{corollary}
@@ -386,6 +720,24 @@
     设$A$是$n$阶实对称矩阵，那么$A$是正定矩阵的充要条件是存在$n$阶可逆矩阵$C$使得$A=C^\mathrm{T}C$.
 \end{lemma}
 
+\begin{proof}
+    若存在可逆矩阵 $C$ 使得 $A=C^\mathrm{T}C$，则对任意非零向量 $X$ 有
+    \[
+        X^\mathrm{T}AX=X^\mathrm{T}C^\mathrm{T}CX=(CX)^\mathrm{T}(CX)=\|CX\|^2>0,
+    \]
+    因为 $C$ 可逆，故 $CX\neq 0$. 因而 $A$ 正定.
+
+    反之，若 $A$ 正定，则由前面的推论可知 $A$ 合同于单位阵 $E_n$，即存在可逆矩阵 $P$ 使得
+    \[
+        P^\mathrm{T}AP=E_n.
+    \]
+    两边同乘以 $P^{-\mathrm{T}}$ 与 $P^{-1}$，得到
+    \[
+        A=P^{-\mathrm{T}}P^{-1}.
+    \]
+    令 $C=P^{-1}$，则 $A=C^\mathrm{T}C$.
+\end{proof}
+
 设$\lambda$为$A$的任一特征值，$X$为对应的特征向量，则有$AX = \lambda X$，代入引理得到$C^\mathrm{T}CX = \lambda X$，两侧同时左乘$X^\mathrm{T}$，得到
 \begin{gather*}
     X^\mathrm{T}C^\mathrm{T}CX = \lambda X^\mathrm{T}X, \\
@@ -396,11 +748,72 @@
 \[||CX||^2 = \lambda ||X||^2,\]
 因为$C$可逆且$X \neq 0$，所以$\lambda > 0$，即$A$的特征值均为正数.
 
-在先前我们介绍过$LU$分解，对于正定矩阵，我们有更加高效的分解方法，即 Choelsky 分解.
+在先前我们介绍过$LU$分解，对于正定矩阵，我们有更加高效的分解方法，即 Cholesky 分解.
 
-\begin{theorem}{}{Choelsky 分解}
+\begin{theorem}{}{Cholesky 分解}
     对于正定矩阵$A$，存在唯一的下三角矩阵$L$使得$A=LL^\mathrm{T}$，并且$L$的对角元素均为正数.
 \end{theorem}
+
+\begin{proof}
+    对 $n$ 作归纳. 当 $n=1$ 时，$A=(a_{11})$ 且 $a_{11}>0$，取 $L=(\sqrt{a_{11}})$ 即可.
+
+    设结论对 $n-1$ 阶正定矩阵成立，现设
+    \[
+        A=\begin{pmatrix}
+            a_{11} & \alpha^\mathrm{T} \\
+            \alpha & B
+        \end{pmatrix}
+    \]
+    为 $n$ 阶正定矩阵. 由正定性知 $a_{11}>0$. 令
+    \[
+        S=B-\frac{1}{a_{11}}\alpha\alpha^\mathrm{T}.
+    \]
+    在证明 Sylvester 判别法时我们已经看到：对任意 $Y\neq 0$，
+    \[
+        Y^\mathrm{T}SY>0,
+    \]
+    因而 $S$ 也是正定矩阵. 由归纳假设，存在唯一的下三角矩阵 $L_1$，其对角元均为正，使得
+    \[
+        S=L_1L_1^\mathrm{T}.
+    \]
+    令
+    \[
+        L=\begin{pmatrix}
+            \sqrt{a_{11}} & 0 \\
+            \dfrac{\alpha}{\sqrt{a_{11}}} & L_1
+        \end{pmatrix},
+    \]
+    则 $L$ 为下三角矩阵，且其对角元均为正. 直接计算可得
+    \[
+        LL^\mathrm{T}
+        =
+        \begin{pmatrix}
+            a_{11} & \alpha^\mathrm{T} \\
+            \alpha & \dfrac{1}{a_{11}}\alpha\alpha^\mathrm{T}+L_1L_1^\mathrm{T}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            a_{11} & \alpha^\mathrm{T} \\
+            \alpha & B
+        \end{pmatrix}
+        =A.
+    \]
+    于是存在性成立.
+
+    再证唯一性. 设
+    \[
+        A=LL^\mathrm{T}=\widetilde{L}\widetilde{L}^\mathrm{T},
+    \]
+    其中 $L,\widetilde{L}$ 都是对角元为正的下三角矩阵. 比较 $(1,1)$ 元得
+    \[
+        l_{11}^2=\widetilde{l}_{11}^2=a_{11}.
+    \]
+    又因二者都为正，故 $l_{11}=\widetilde{l}_{11}$. 再比较第一列的其余元素，可得
+    \[
+        l_{i1}l_{11}=\widetilde{l}_{i1}\widetilde{l}_{11}, \qquad i=2,\ldots,n,
+    \]
+    从而 $l_{i1}=\widetilde{l}_{i1}$. 去掉第一行第一列后，对右下角 $(n-1)$ 阶块继续同样讨论，递归下去便得到 $L=\widetilde{L}$. 唯一性得证.
+\end{proof}
 
 半正定矩阵关于以上的结论也是类似的，但相应地有条件的减弱，以及部分等价条件不再成立.
 \begin{theorem}{}{}
@@ -409,33 +822,556 @@
         \item 若$A$为半正定矩阵，则$A$的顺序主子式非负；
         \item $A$为半正定矩阵等价于$A$的各阶主子式非负；
         \item 若$A$为半正定矩阵，则存在矩阵$C$使得$A=C^{\mathrm{T}}C$（注意$C$未必可逆）；
-        \item $A$为半正定矩阵等价于$A$的所有特征值非负.
+        \item $A$为半正定矩阵等价于$A$的所有特征值非负；
         \item 若$A$为半正定矩阵，则存在对角线上元素非负的下三角矩阵$L$使得$A=LL^{\mathrm{T}}$.
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    先证第 4 条. 由实谱定理，存在正交矩阵 $P$ 使得
+    \[
+        P^\mathrm{T}AP=\diag(\lambda_1,\ldots,\lambda_n),
+    \]
+    其中 $\lambda_1,\ldots,\lambda_n$ 是 $A$ 的全部特征值. 对任意 $X=PY$，有
+    \[
+        X^\mathrm{T}AX=Y^\mathrm{T}(P^\mathrm{T}AP)Y=\lambda_1y_1^2+\cdots+\lambda_ny_n^2.
+    \]
+    因而 $A$ 半正定当且仅当 $\lambda_i\geqslant 0\enspace(i=1,\ldots,n)$.
+
+    再证第 2 条.
+
+    若 $A$ 半正定，则任取一个主子阵 $B$，对任意非零向量 $Y$，将其嵌入为一个 $n$ 维向量 $X$，则
+    \[
+        Y^\mathrm{T}BY=X^\mathrm{T}AX\geqslant 0.
+    \]
+    所以 $B$ 也是半正定矩阵. 由第 4 条，$B$ 的特征值都非负，于是
+    \[
+        \det B\geqslant 0.
+    \]
+    因而 $A$ 的各阶主子式都非负.
+
+    反之，设 $A$ 的各阶主子式都非负. 对 $n$ 作归纳.
+
+    当 $n=1$ 时结论显然成立.
+
+    若所有对角元都为 $0$，则对任意 $i\neq j$，由 $2$ 阶主子式非负可得
+    \[
+        \begin{vmatrix}
+            0 & a_{ij} \\
+            a_{ij} & 0
+        \end{vmatrix}
+        =-a_{ij}^2\geqslant 0,
+    \]
+    故 $a_{ij}=0$. 于是 $A=O$，自然半正定.
+
+    否则存在某个 $a_{ii}>0$. 由于同时交换第 $1$ 行与第 $i$ 行、再交换第 $1$ 列与第 $i$ 列只是在重新排列主子阵，不改变“各阶主子式都非负”这一条件，所以不妨设 $a_{11}>0$. 写成分块形式
+    \[
+        A=\begin{pmatrix}
+            a_{11} & \alpha^\mathrm{T} \\
+            \alpha & B
+        \end{pmatrix},
+        \qquad
+        S=B-\frac{1}{a_{11}}\alpha\alpha^\mathrm{T}.
+    \]
+    对任意指标集 $I\subseteq\{2,\ldots,n\}$，记 $S_I$ 为 $S$ 的对应主子阵，$A_I$ 为 $A$ 中由第 $1$ 行、第 $1$ 列以及指标集 $I$ 对应的那些行列组成的主子阵，则
+    \[
+        \det S_I=\frac{1}{a_{11}}\det A_I\geqslant 0.
+    \]
+    因而 $S$ 的各阶主子式都非负. 由归纳假设，$S$ 半正定.
+
+    于是对任意 $X=(x_1,Y^\mathrm{T})^\mathrm{T}$，有
+    \begin{align*}
+        X^\mathrm{T}AX
+         & = a_{11}x_1^2+2x_1\alpha^\mathrm{T}Y+Y^\mathrm{T}BY \\
+         & = a_{11}\left(x_1+\frac{\alpha^\mathrm{T}Y}{a_{11}}\right)^2+Y^\mathrm{T}SY \\
+         & \geqslant 0.
+    \end{align*}
+    所以 $A$ 半正定. 第 2 条得证.
+
+    第 1 条是第 2 条的直接推论，因为顺序主子式只是主子式中的一部分.
+
+    第 3 条可由第 4 条立即得到：若 $A$ 半正定，则
+    \[
+        A=P^\mathrm{T}\diag(\lambda_1,\ldots,\lambda_n)P,
+    \]
+    其中 $\lambda_i\geqslant 0$. 令
+    \[
+        C=\diag(\sqrt{\lambda_1},\ldots,\sqrt{\lambda_n})P,
+    \]
+    则
+    \[
+        C^\mathrm{T}C=P^\mathrm{T}\diag(\lambda_1,\ldots,\lambda_n)P=A.
+    \]
+    反过来，若 $A=C^\mathrm{T}C$，则对任意 $X$ 都有
+    \[
+        X^\mathrm{T}AX=X^\mathrm{T}C^\mathrm{T}CX=(CX)^\mathrm{T}(CX)=\|CX\|^2\geqslant 0,
+    \]
+    故 $A$ 半正定.
+
+    最后证第 5 条. 仍对 $n$ 作归纳.
+
+    当 $n=1$ 时显然成立.
+
+    设结论对 $n-1$ 阶情形成立. 若 $a_{11}=0$，则由半正定性知对任意 $j\geqslant 2$，
+    \[
+        0\leqslant (e_1+te_j)^\mathrm{T}A(e_1+te_j)=2a_{1j}t+a_{jj}t^2, \qquad \forall t\in\mathbf{R}.
+    \]
+    将 $t$ 取为充分小的正数与负数，便知 $a_{1j}=0$. 因而第一行与第一列全为 $0$，于是
+    \[
+        A=\begin{pmatrix}
+            0 & 0 \\
+            0 & B
+        \end{pmatrix},
+    \]
+    其中 $B$ 半正定. 由归纳假设，存在对角元非负的下三角矩阵 $L_1$ 使得 $B=L_1L_1^\mathrm{T}$. 于是
+    \[
+        L=\begin{pmatrix}
+            0 & 0 \\
+            0 & L_1
+        \end{pmatrix}
+    \]
+    满足 $A=LL^\mathrm{T}$.
+
+    若 $a_{11}>0$，则仍令
+    \[
+        S=B-\frac{1}{a_{11}}\alpha\alpha^\mathrm{T}.
+    \]
+    对任意 $Y$，取 $x_1=-\dfrac{\alpha^\mathrm{T}Y}{a_{11}}$，由 $A$ 半正定可得
+    \[
+        0\leqslant \begin{pmatrix}
+            -\dfrac{\alpha^\mathrm{T}Y}{a_{11}} \\
+            Y
+        \end{pmatrix}^\mathrm{T}
+        A
+        \begin{pmatrix}
+            -\dfrac{\alpha^\mathrm{T}Y}{a_{11}} \\
+            Y
+        \end{pmatrix}
+        =Y^\mathrm{T}SY.
+    \]
+    故 $S$ 半正定. 由归纳假设，存在对角元非负的下三角矩阵 $L_1$ 使得 $S=L_1L_1^\mathrm{T}$. 令
+    \[
+        L=\begin{pmatrix}
+            \sqrt{a_{11}} & 0 \\
+            \dfrac{\alpha}{\sqrt{a_{11}}} & L_1
+        \end{pmatrix},
+    \]
+    则 $L$ 的对角元都非负，并且
+    \[
+        LL^\mathrm{T}
+        =
+        \begin{pmatrix}
+            a_{11} & \alpha^\mathrm{T} \\
+            \alpha & \dfrac{1}{a_{11}}\alpha\alpha^\mathrm{T}+L_1L_1^\mathrm{T}
+        \end{pmatrix}
+        =A.
+    \]
+    第 5 条得证.
+\end{proof}
 
 而到如今，我们回望实内积空间时，会发现所谓的 Gram 矩阵其实就是一个半正定矩阵，内积也可以写作一个二次型的形式. 使用任意一个半正定矩阵都可以定义一个内积，而内积空间的基本性质也可以通过半正定矩阵的性质来推导.但对于复内积空间来说，这就依赖于 Hermite 型和 Hermite 矩阵的性质了，不再过多展开.
 
 \section{标准形的应用}
 
-我们已经讨论了三种标准形，即相抵标准形，相似标准形和相合标准形，实际上它们之间的关系我们已经讨论，即相似一定相抵，相合一定相抵，但相似和相合互相没有包含关系. 本节我们考虑一些基于矩阵分解的问题，利用之前所学的相抵标准形、相似标准形、相合标准形的分解解决一些问题. 本节内容可以选择性掌握.
+\subsection{基于相合标准形的分解}
 
-首先看一个关于幂等矩阵的例题，需要用到相抵标准形、相似标准形的分解：
+在相抵和相似标准形的讨论中，我们都考虑了基于这些标准形的分解的应用. 本小节继续这个话题，考虑基于相合标准形的分解.
+
 \begin{example}{}{}
-    解答以下两个问题：
+    证明：每个秩为$r$的$n\enspace(r<n)$阶实对称矩阵均可表示为$n-r$个秩为$n-1$的实对称矩阵的乘积.
+\end{example}
+
+\begin{solution}
+    设 $A$ 是秩为 $r$ 的 $n$ 阶实对称矩阵，且 $r<n$. 由实谱定理，存在正交矩阵 $Q$ 使得
+    \[
+        A=Q^\mathrm{T}\Lambda Q,
+    \]
+    其中
+    \[
+        \Lambda=\diag(\lambda_1,\ldots,\lambda_r,0,\ldots,0),
+    \]
+    且 $\lambda_1,\ldots,\lambda_r\neq 0$.
+
+    下面将对角矩阵 $\Lambda$ 分解成 $n-r$ 个秩为 $n-1$ 的对角矩阵的乘积. 定义
+    \[
+        D_1=\diag(\lambda_1,\ldots,\lambda_r,0,1,\ldots,1),
+    \]
+    对于 $s=2,\ldots,n-r$，定义
+    \[
+        D_s=\diag(\underbrace{1,\ldots,1}_{r+s-1},0,1,\ldots,1).
+    \]
+    每个 $D_s$ 都是实对称矩阵，且恰有一个对角元为 $0$，因此
+    \[
+        r(D_s)=n-1.
+    \]
+    并且显然有
+    \[
+        \Lambda=D_1D_2\cdots D_{n-r}.
+    \]
+
+    令
+    \[
+        A_s=Q^\mathrm{T}D_sQ,\qquad s=1,2,\ldots,n-r,
+    \]
+    则每个 $A_s$ 都是实对称矩阵，并且由于正交相似保持秩不变，有 $r(A_s)=n-1$. 同时
+    \[
+        A_1A_2\cdots A_{n-r}
+        =Q^\mathrm{T}D_1QQ^\mathrm{T}D_2Q\cdots Q^\mathrm{T}D_{n-r}Q
+        =Q^\mathrm{T}(D_1D_2\cdots D_{n-r})Q
+        =Q^\mathrm{T}\Lambda Q
+        =A.
+    \]
+    因而 $A$ 可表示为 $n-r$ 个秩为 $n-1$ 的实对称矩阵的乘积.
+\end{solution}
+
+\subsection{与特征值有关的进一步结论}
+
+从最优化的角度看，二次型与特征值之间的联系尤为重要. 下面补充几条最常用的结论. 在本小节中，若 $A$ 是 $n$ 阶实对称矩阵，我们总把它的特征值按
+\[
+    \lambda_1\geqslant \lambda_2\geqslant \cdots \geqslant \lambda_n
+\]
+的顺序排列，并对任意非零向量 $X$ 定义 $A$ 的 Rayleigh 商为
+\[
+    R_A(X)=\frac{X^\mathrm{T}AX}{X^\mathrm{T}X}.
+\]
+
+\begin{theorem}{Rayleigh 商定理}{}
+    设 $A$ 是 $n$ 阶实对称矩阵，则对任意非零向量 $X$ 都有
+    \[
+        \lambda_n\leqslant R_A(X)\leqslant \lambda_1,
+    \]
+    从而
+    \[
+        \lambda_n\|X\|^2\leqslant X^\mathrm{T}AX\leqslant \lambda_1\|X\|^2.
+    \]
+    特别地，
+    \[
+        \lambda_1=\max_{X\neq 0}R_A(X), \qquad \lambda_n=\min_{X\neq 0}R_A(X).
+    \]
+\end{theorem}
+
+\begin{proof}
+    由实谱定理，存在正交矩阵 $P$ 使得
+    \[
+        P^\mathrm{T}AP=\diag(\lambda_1,\ldots,\lambda_n).
+    \]
+    对任意非零向量 $X$，令 $X=PY$，则 $Y\neq 0$ 且
+    \[
+        R_A(X)=\frac{Y^\mathrm{T}(P^\mathrm{T}AP)Y}{Y^\mathrm{T}Y}
+        =\frac{\lambda_1y_1^2+\cdots+\lambda_ny_n^2}{y_1^2+\cdots+y_n^2}.
+    \]
+    右端是 $\lambda_1,\ldots,\lambda_n$ 的加权平均，其中权都非负且和为 $1$，故
+    \[
+        \lambda_n\leqslant R_A(X)\leqslant \lambda_1.
+    \]
+    两边同时乘以 $\|X\|^2=\|Y\|^2$ 便得
+    \[
+        \lambda_n\|X\|^2\leqslant X^\mathrm{T}AX\leqslant \lambda_1\|X\|^2.
+    \]
+    当 $X$ 取对应于 $\lambda_1$ 或 $\lambda_n$ 的特征向量时，上下界分别取到，因此
+    \[
+        \lambda_1=\max_{X\neq 0}R_A(X), \qquad \lambda_n=\min_{X\neq 0}R_A(X).
+    \]
+\end{proof}
+
+特别地，实对称矩阵 $A$ 正定当且仅当 $\lambda_n>0$，半正定当且仅当 $\lambda_n\geqslant 0$.
+
+\begin{example}{}{}
+    求二次型
+    \[
+        f(x_1,x_2)=2x_1^2+5x_2^2+4x_1x_2
+    \]
+    在约束 $x_1^2+x_2^2=1$ 下的最大值与最小值.
+\end{example}
+
+\begin{solution}
+    该二次型的相伴矩阵为
+    \[
+        A=\begin{pmatrix}
+            2 & 2 \\
+            2 & 5
+        \end{pmatrix}.
+    \]
+    在前面已经算出它的特征值为 $1,6$. 由于约束条件 $x_1^2+x_2^2=1$ 等价于 $\|X\|=1$，故
+    \[
+        f(X)=X^\mathrm{T}AX=R_A(X).
+    \]
+    由 Rayleigh 商定理立刻得到
+    \[
+        \min_{\|X\|=1}f(X)=1,\qquad \max_{\|X\|=1}f(X)=6.
+    \]
+    当 $X$ 取对应于特征值 $1$ 的单位特征向量 $\dfrac{1}{\sqrt{5}}(-2,1)^\mathrm{T}$ 时取到最小值；当 $X$ 取对应于特征值 $6$ 的单位特征向量 $\dfrac{1}{\sqrt{5}}(1,2)^\mathrm{T}$ 时取到最大值.
+\end{solution}
+
+\begin{theorem}{Courant-Fischer 极小极大定理}{}
+    设 $A$ 是 $n$ 阶实对称矩阵，特征值按 $\lambda_1\geqslant \cdots \geqslant \lambda_n$ 排列. 则对每个 $k=1,2,\ldots,n$，都有
+    \[
+        \lambda_k=\max_{\dim U=k}\ \min_{0\neq X\in U}R_A(X)
+    \]
+    以及
+    \[
+        \lambda_k=\min_{\dim W=n-k+1}\ \max_{0\neq X\in W}R_A(X).
+    \]
+\end{theorem}
+
+\begin{proof}
+    由实谱定理，存在 $A$ 的一组标准正交特征向量 $\xi_1,\ldots,\xi_n$，满足
+    \[
+        A\xi_i=\lambda_i\xi_i,\qquad i=1,\ldots,n.
+    \]
+
+    先证第一个公式. 对任意 $k$ 维子空间 $U$，因为
+    \[
+        \dim U+\dim\spa(\xi_k,\xi_{k+1},\ldots,\xi_n)=k+(n-k+1)=n+1,
+    \]
+    所以
+    \[
+        U\cap \spa(\xi_k,\xi_{k+1},\ldots,\xi_n)\neq \{\vec{0}\}.
+    \]
+    取其中非零向量
+    \[
+        X=a_k\xi_k+\cdots+a_n\xi_n,
+    \]
+    则
+    \[
+        R_A(X)=\frac{\lambda_ka_k^2+\cdots+\lambda_na_n^2}{a_k^2+\cdots+a_n^2}\leqslant \lambda_k.
+    \]
+    因而
+    \[
+        \min_{0\neq X\in U}R_A(X)\leqslant \lambda_k.
+    \]
+    对所有 $k$ 维子空间取最大，得到
+    \[
+        \max_{\dim U=k}\ \min_{0\neq X\in U}R_A(X)\leqslant \lambda_k.
+    \]
+    另一方面，取
+    \[
+        U_0=\spa(\xi_1,\ldots,\xi_k),
+    \]
+    则对任意非零向量
+    \[
+        X=a_1\xi_1+\cdots+a_k\xi_k\in U_0
+    \]
+    都有
+    \[
+        R_A(X)=\frac{\lambda_1a_1^2+\cdots+\lambda_ka_k^2}{a_1^2+\cdots+a_k^2}\geqslant \lambda_k.
+    \]
+    故
+    \[
+        \min_{0\neq X\in U_0}R_A(X)\geqslant \lambda_k.
+    \]
+    再取 $X=\xi_k$，便知这里的最小值恰为 $\lambda_k$. 因而
+    \[
+        \max_{\dim U=k}\ \min_{0\neq X\in U}R_A(X)=\lambda_k.
+    \]
+
+    再证第二个公式. 对任意维数为 $n-k+1$ 的子空间 $W$，同理由于
+    \[
+        \dim W+\dim\spa(\xi_1,\ldots,\xi_k)=(n-k+1)+k=n+1,
+    \]
+    可知
+    \[
+        W\cap\spa(\xi_1,\ldots,\xi_k)\neq \{\vec{0}\}.
+    \]
+    取其中非零向量
+    \[
+        X=a_1\xi_1+\cdots+a_k\xi_k,
+    \]
+    则
+    \[
+        R_A(X)=\frac{\lambda_1a_1^2+\cdots+\lambda_ka_k^2}{a_1^2+\cdots+a_k^2}\geqslant \lambda_k.
+    \]
+    因而
+    \[
+        \max_{0\neq X\in W}R_A(X)\geqslant \lambda_k.
+    \]
+    对所有这类 $W$ 取最小，得到
+    \[
+        \min_{\dim W=n-k+1}\ \max_{0\neq X\in W}R_A(X)\geqslant \lambda_k.
+    \]
+    另一方面，取
+    \[
+        W_0=\spa(\xi_k,\xi_{k+1},\ldots,\xi_n),
+    \]
+    则对任意非零 $X\in W_0$，都有 $R_A(X)\leqslant \lambda_k$，故
+    \[
+        \max_{0\neq X\in W_0}R_A(X)\leqslant \lambda_k.
+    \]
+    再取 $X=\xi_k$，便知这一最大值恰为 $\lambda_k$. 因此
+    \[
+        \min_{\dim W=n-k+1}\ \max_{0\neq X\in W}R_A(X)=\lambda_k.
+    \]
+\end{proof}
+
+\begin{theorem}{Cauchy 交错定理}{}
+    设 $A$ 是 $n$ 阶实对称矩阵，特征值为
+    \[
+        \lambda_1\geqslant \lambda_2\geqslant \cdots \geqslant \lambda_n.
+    \]
+    设 $B$ 是 $A$ 的一个 $m$ 阶主子阵，特征值为
+    \[
+        \mu_1\geqslant \mu_2\geqslant \cdots \geqslant \mu_m.
+    \]
+    则对每个 $i=1,2,\ldots,m$，都有
+    \[
+        \lambda_i\geqslant \mu_i\geqslant \lambda_{n-m+i}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    不妨设 $B$ 对应于坐标子空间 $V\subseteq \mathbf{R}^n$；也就是说，$B$ 由 $A$ 删去若干行和对应列得到. 对任意 $Y\in\mathbf{R}^m$，将它按对应位置嵌入为 $V$ 中的向量 $\widetilde{Y}$，则
+    \[
+        Y^\mathrm{T}BY=\widetilde{Y}^\mathrm{T}A\widetilde{Y}, \qquad Y^\mathrm{T}Y=\widetilde{Y}^\mathrm{T}\widetilde{Y}.
+    \]
+    因而 $B$ 在 $Y$ 上的 Rayleigh 商恰等于 $A$ 在 $\widetilde{Y}$ 上的 Rayleigh 商.
+
+    由 Courant-Fischer 定理，
+    \[
+        \mu_i=\max_{\substack{\dim U=i \\ U\subseteq V}}\ \min_{0\neq X\in U}R_A(X).
+    \]
+    由于这里取最大时只在 $V$ 的子空间中取，而 $A$ 的对应极大值是在所有 $i$ 维子空间中取，所以
+    \[
+        \mu_i\leqslant \max_{\dim U=i}\ \min_{0\neq X\in U}R_A(X)=\lambda_i.
+    \]
+
+    同样地，
+    \[
+        \mu_i=\min_{\substack{\dim W=m-i+1 \\ W\subseteq V}}\ \max_{0\neq X\in W}R_A(X).
+    \]
+    而由 Courant-Fischer 定理，
+    \[
+        \lambda_{n-m+i}=\min_{\dim W=m-i+1}\ \max_{0\neq X\in W}R_A(X).
+    \]
+    由于后者是在所有维数为 $m-i+1$ 的子空间上取最小，前者只是在其中一部分子空间上取最小，所以
+    \[
+        \lambda_{n-m+i}\leqslant \mu_i.
+    \]
+    两式合并即得
+    \[
+        \lambda_i\geqslant \mu_i\geqslant \lambda_{n-m+i}.
+    \]
+\end{proof}
+
+\begin{theorem}{Weyl 不等式}{}
+    设 $A,B$ 是 $n$ 阶实对称矩阵，它们的特征值分别按降序排列为
+    \[
+        \alpha_1\geqslant \cdots \geqslant \alpha_n,\qquad \beta_1\geqslant \cdots \geqslant \beta_n.
+    \]
+    设 $A+B$ 的特征值按降序排列为
+    \[
+        \gamma_1\geqslant \cdots \geqslant \gamma_n.
+    \]
+    则
     \begin{enumerate}
-        \item 证明：任意一个方阵都可以分解成一个可逆矩阵和一个幂等矩阵的乘积；
-
-        \item 已知$A$是一个秩为$r$的$n$级非零矩阵，证明：$A$为幂等矩阵的充要条件是存在列满秩的$n\times r$矩阵$B$和行满秩的$r\times n$矩阵$C$使得$A=BC$且$CB=E_r$.
+        \item 若 $i+j-1\leqslant n$，则
+              \[
+                  \gamma_{i+j-1}\leqslant \alpha_i+\beta_j;
+              \]
+        \item 若 $i+j-n\geqslant 1$，则
+              \[
+                  \gamma_{i+j-n}\geqslant \alpha_i+\beta_j.
+              \]
     \end{enumerate}
-\end{example}
-下面是一个利用相合标准形进行分解的例子：
-\begin{example}{}{}
-    （与正交有关）证明：每个秩为$r$的$n\enspace(r<n)$阶实对称矩阵均可表示为$n-r$个秩为$n-1$的实对称矩阵的乘积.
-\end{example}
+\end{theorem}
+
+\begin{proof}
+    设 $\xi_1,\ldots,\xi_n$ 是 $A$ 的一组标准正交特征向量，满足 $A\xi_s=\alpha_s\xi_s$；设 $\eta_1,\ldots,\eta_n$ 是 $B$ 的一组标准正交特征向量，满足 $B\eta_t=\beta_t\eta_t$.
+
+    先证第 1 条. 令
+    \[
+        U=\spa(\xi_i,\xi_{i+1},\ldots,\xi_n),\qquad V=\spa(\eta_j,\eta_{j+1},\ldots,\eta_n).
+    \]
+    则
+    \[
+        \dim U=n-i+1,\qquad \dim V=n-j+1,
+    \]
+    从而
+    \[
+        \dim(U\cap V)\geqslant (n-i+1)+(n-j+1)-n=n-i-j+2.
+    \]
+    当 $i+j-1\leqslant n$ 时，上式右端正好是
+    \[
+        n-(i+j-1)+1.
+    \]
+    取 $U\cap V$ 的一个维数为 $n-(i+j-1)+1$ 的子空间 $W$. 对任意非零 $X\in W$，都有
+    \[
+        R_A(X)\leqslant \alpha_i,\qquad R_B(X)\leqslant \beta_j,
+    \]
+    故
+    \[
+        R_{A+B}(X)=R_A(X)+R_B(X)\leqslant \alpha_i+\beta_j.
+    \]
+    因而
+    \[
+        \max_{0\neq X\in W}R_{A+B}(X)\leqslant \alpha_i+\beta_j.
+    \]
+    由 Courant-Fischer 定理，
+    \[
+        \gamma_{i+j-1}=\min_{\dim W'=n-(i+j-1)+1}\ \max_{0\neq X\in W'}R_{A+B}(X)\leqslant \alpha_i+\beta_j.
+    \]
+
+    再证第 2 条. 令
+    \[
+        U=\spa(\xi_1,\ldots,\xi_i),\qquad V=\spa(\eta_1,\ldots,\eta_j).
+    \]
+    则
+    \[
+        \dim U=i,\qquad \dim V=j,
+    \]
+    从而
+    \[
+        \dim(U\cap V)\geqslant i+j-n.
+    \]
+    当 $i+j-n\geqslant 1$ 时，可取 $U\cap V$ 的一个维数为 $i+j-n$ 的子空间 $W$. 对任意非零 $X\in W$，都有
+    \[
+        R_A(X)\geqslant \alpha_i,\qquad R_B(X)\geqslant \beta_j,
+    \]
+    故
+    \[
+        R_{A+B}(X)=R_A(X)+R_B(X)\geqslant \alpha_i+\beta_j.
+    \]
+    因而
+    \[
+        \min_{0\neq X\in W}R_{A+B}(X)\geqslant \alpha_i+\beta_j.
+    \]
+    再由 Courant-Fischer 定理，
+    \[
+        \gamma_{i+j-n}=\max_{\dim W'=i+j-n}\ \min_{0\neq X\in W'}R_{A+B}(X)\geqslant \alpha_i+\beta_j.
+    \]
+    第 2 条得证.
+\end{proof}
+
+\begin{corollary}{}{}
+    设 $A,B$ 是 $n$ 阶实对称矩阵，特征值分别按降序排列为 $\alpha_1\geqslant \cdots \geqslant \alpha_n$ 与 $\beta_1\geqslant \cdots \geqslant \beta_n$，设 $A+B$ 的特征值为 $\gamma_1\geqslant \cdots \geqslant \gamma_n$. 则对每个 $k=1,2,\ldots,n$，都有
+    \[
+        \alpha_k+\beta_n\leqslant \gamma_k\leqslant \alpha_k+\beta_1.
+    \]
+\end{corollary}
+
+\begin{proof}
+    在 Weyl 不等式中分别取 $(i,j)=(k,n)$ 与 $(i,j)=(k,1)$ 即可.
+\end{proof}
+
+\begin{corollary}{}{}
+    设 $A,B$ 是 $n$ 阶实对称矩阵. 若 $B-A$ 半正定，则对每个 $k=1,2,\ldots,n$，都有
+    \[
+        \lambda_k(A)\leqslant \lambda_k(B).
+    \]
+\end{corollary}
+
+\begin{proof}
+    记 $C=B-A$. 由假设知 $C$ 半正定，所以它的最小特征值满足 $\lambda_n(C)\geqslant 0$. 又 $B=A+C$，故由上一个推论可得
+    \[
+        \lambda_k(B)\geqslant \lambda_k(A)+\lambda_n(C)\geqslant \lambda_k(A).
+    \]
+\end{proof}
 
 \begin{summary}
+    本讲围绕实数域上二次型的标准化展开，此时二次型与对称矩阵一一对应；求二次型的标准形，本质上就是把相伴矩阵作合同对角化. 这可以通过初等变换、配方法或正交变换来完成.
 
+    在实数域上，合同对角化进一步导向相合规范形与惯性定理：实对称矩阵的正、负、零惯性指数是合同不变量. 由此可以把正定、半正定等保号性质完全转化为规范形、特征值与矩阵分解的条件，并得到 Sylvester 判别法、特征值判别法以及 Cholesky 分解等一系列常用工具.
+
+    在应用部分，一方面可以借助相抵、相似与合同标准形处理矩阵分解问题；另一方面，Rayleigh 商、Courant-Fischer 极小极大定理、Cauchy 交错定理与 Weyl 不等式把二次型和特征值估计紧密联系起来，这正是后续微积分、最优化和数值分析中最常见的线性代数基础.
 \end{summary}
 
 \begin{exercise}
@@ -447,15 +1383,59 @@
         \end{pmatrix},\enspace B=\begin{pmatrix}
             -2 & 0 & 0 \\ 0 & 2 & 1 \\ 0 & 1 & 2
         \end{pmatrix}$，判断$A$与$B$是否相合.
+
+        \item 回答如下有关合同性质的问题：
+        \begin{enumerate}
+            \item 证明：合同是等价关系；
+            \item 证明：在复数域上，两个矩阵相合当且仅当它们相抵；并基于此举例说明：在复数域上相合的矩阵不一定在实数域上相合；
+            \item 举例说明：$A \simeq B$ 不能得到 $A^m \simeq B^m$；
+            \item 证明：当 $A,B$ 是实对称矩阵时，$A\simeq B$ 当且仅当 $A^m\simeq B^m$；
+            \item 证明：若可逆矩阵 $A, B$ 满足 $A\simeq B$，则 $A^{-1}\simeq B^{-1}$；
+            \item 证明：若 $A_1\simeq A_2$ 且 $B_1\simeq B_2$，则
+                  \[
+                      \begin{pmatrix}
+                          A_1 & O \\ O & B_1
+                      \end{pmatrix}\simeq\begin{pmatrix}
+                          A_2 & O \\ O & B_2
+                      \end{pmatrix};
+                  \]
+            \item 设$A\simeq B$，$C\simeq D$，且它们都是$n$阶实对称矩阵，判断 $A+C\simeq B+D$ 是否成立，正确请说明理由，不正确请举出反例；
+            \item  判断：矩阵相似是否一定合同？矩阵合同是否一定相似？对于实对称矩阵上述论断又是否正确呢？正确请说明理由，不正确请举出反例.
+        \end{enumerate}
+    \end{exgroup}
+
+    \begin{exgroup}
+        \item 证明：$A\simeq B$表明$A$可以每次做相同的初等行列变换得到$B$，反之亦然
+
+        \item 设
+        \[
+            A=\begin{pmatrix}
+                2 & 2 \\
+                2 & 5
+            \end{pmatrix}.
+        \]
+        不直接求偏导，利用 Rayleigh 商定理求二次型 $2x_1^2+5x_2^2+4x_1x_2$ 在单位圆 $x_1^2+x_2^2=1$ 上的最大值与最小值.
     \end{exgroup}
 
     \begin{exgroup}
         \item 设$n$元二次型$f(x_1,x_2,\ldots,x_n)=l_1^2+\cdots+l_p^2-l_{p+1}^2-\cdots-l_{p+q}^2$，其中$l_i\enspace (i=1,2,\ldots,p+q)$是关于$x_1,x_2,\ldots,x_n$的一次齐次式. 证明：$f(x_1,x_2,\ldots,x_n)$的正惯性指数$\leqslant p$，负惯性指数$\leqslant q$；
 
         \item 已知$A$为$m$阶实对称矩阵，$C$为$m\times n$实矩阵，证明：$C^\mathrm{T}AC$的正负惯性指数分别小于等于$A$的正负惯性指数.
-    \end{exgroup}
 
-    \begin{exgroup}
-        \item
+        \item 设 $A$ 是 $n$ 阶实对称矩阵，证明：对任意实数 $t$，$A+tE_n$ 的特征值恰为 $\lambda_1(A)+t,\ldots,\lambda_n(A)+t$. 由此求使得 $A+tE_n$ 半正定的最小实数 $t$.
+
+        \item 设 $A$ 是 $n$ 阶实对称矩阵，$B$ 是 $A$ 的一个 $m$ 阶主子阵. 证明 Cauchy 交错定理
+        \[
+            \lambda_i(A)\geqslant \lambda_i(B)\geqslant \lambda_{n-m+i}(A), \qquad i=1,\ldots,m.
+        \]
+        并由此推出：若 $A$ 正定，则任一主子阵也正定.
+
+        \item 设 $A,B$ 都是 $n$ 阶实对称矩阵. 利用 Weyl 不等式证明：
+        \[
+            |\lambda_k(A)-\lambda_k(B)|\leqslant \|A-B\|_2, \qquad k=1,2,\ldots,n,
+        \]
+        其中 $\|\,\cdot\,\|_2$ 表示谱范数.
+
+        \item 设 $A,B$ 都是 $n$ 阶实对称矩阵，且 $B-A$ 半正定. 证明：对任意非零向量 $X$，若 $X^\mathrm{T}AX>0$，则 $X^\mathrm{T}BX>0$；并说明这与特征值单调性之间的关系.
     \end{exgroup}
 \end{exercise}
