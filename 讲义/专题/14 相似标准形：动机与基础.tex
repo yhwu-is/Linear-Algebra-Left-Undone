@@ -925,7 +925,7 @@
 
 因为有 $n$ 个对角元可供选择，所以 $T$ 共有 $n$ 个 Gershgorin 圆盘. 在复数域考虑的话，上述的 $D_i$ 就是闭圆盘，而在实数域考虑的话，$D_i$ 就是闭区间.
 
-在进一步讨论之前，先考虑一种特殊的情况：对角矩阵. 设 $T \in \mathcal{L}(V)$，并且 $v_1, \ldots, v_n$ 是 $V$ 的一组基，$A = (a_{ij})_{n \times n}$ 为 $T$ 在这组基下的矩阵表示. 若 $A$ 是对角矩阵，那么 $T$ 相应的 Gershgorin 圆盘就是 $n$ 个单点，也就是对应的特征值. 这让我们朦胧之中觉得 Gershgorin 圆盘或许可以“控制”特征值. 事实上，这一想法是正确的：
+在进一步讨论之前，先考虑一种特殊的情况：对角矩阵. 设 $T \in \mathcal{L}(V)$，并且 $v_1, \ldots, v_n$ 是 $V$ 的一组基，$A = (a_{ij})_{n \times n}$ 为 $T$ 在这组基下的矩阵表示. 若 $A$ 是对角矩阵，那么 $T$ 相应的 Gershgorin 圆盘就是 $n$ 个单点，也就是对应的特征值. 这让我们朦胧之中觉得 Gershgorin 圆盘或许可以``控制''特征值. 事实上，这一想法是正确的：
 
 \begin{theorem}{Gershgorin 圆盘第一定理}{Gershgorin disks theorem}
     设 $T \in \mathcal{L}(V)$，并且 $v_1, \ldots, v_n$ 是 $V$ 的一组基. 那么 $T$ 的每个特征值都在其关于 $v_1, \ldots, v_n$ 这组基的某个 Gershgorin 圆盘内.
