@@ -1,0 +1,107 @@
+\section{2023-2024学年线性代数II（H）期末答案}
+
+\begin{enumerate}
+    \item 设 $A=\begin{pmatrix}1&1&0\\0&1&1\\1&0&x\end{pmatrix}$ 正规，则 $AA^{\mathrm{T}}=A^{\mathrm{T}}A$，解得 $1=x$，代回验证可知 $x=1$ 确实满足正规条件，故唯一解为 $x=1$.
+
+    当 $x=1$ 时，注意到 $A=I+P$，其中 $P=\begin{pmatrix}0&0&1\\1&0&0\\0&1&0\end{pmatrix}$ 是三阶循环置换矩阵，$P$ 的特征值为 $1,\omega,\omega^2$，其中 $\omega=\dfrac{-1+\sqrt{3}\i}{2}$. 因此 $A$ 的特征值为
+    \[
+        2,\quad 1+\omega=\frac{1+\sqrt{3}\i}{2},\quad 1+\omega^2=\frac{1-\sqrt{3}\i}{2}.
+    \]
+    因正规矩阵可酉对角化，故它在复数域上相似于
+    \[
+        \diag\left(2,\frac{1+\sqrt{3}\i}{2},\frac{1-\sqrt{3}\i}{2}\right).
+    \]
+
+    \item 设
+    \[
+        \vec{a}=(1,1,0,0)^{\mathrm{T}},\quad \vec{b}=(1,1,-1,2)^{\mathrm{T}},\quad \vec{y}=(1,1,2,2)^{\mathrm{T}}.
+    \]
+    所求为 $\vec{y}$ 到 $U^\perp$ 的正交投影，即 $u=\vec{y}-P_U \vec{y}$. 对 $\vec{a}, \vec{b}$ 正交化得 $U$ 的一个正交基为 $\vec{v_1}=(1,1,0,0)^{\mathrm{T}},\vec{v_2}=(0,0,-1,2)^{\mathrm{T}}$. 因此
+    \[
+        P_U \vec{y} = \frac{\vec{y}\cdot\vec{v_1}}{\|\vec{v1}\|^2}\vec{v_1} + \frac{\vec{y}\cdot\vec{v_2}}{\|\vec{v_2}\|^2}\vec{v_2} = \frac{3}{5}\vec{a}+\frac{2}{5}\vec{b}=(1,1,-\frac{2}{5},\frac{4}{5})^{\mathrm{T}}.
+    \]
+    因此所求为 $u=\vec{y}-P_U \vec{y}=\left(0,0,\dfrac{12}{5},\dfrac{6}{5}\right)^{\mathrm{T}}$.
+
+    \item 记题中矩阵为 $A$. 直接计算得 $A^2=\begin{pmatrix}4&0&-2\\0&0&0\\8&0&-4\end{pmatrix}\neq O$，$A^3=O$.
+
+    若存在 $S$ 使得 $S^2=T$，则 $S$ 也是幂零算子，全部特征值为 $0$，于是 $S^3=O$，从而 $T^2=S^4=O$，与 $T^2\neq O$ 矛盾. 所以不存在这样的 $S$.
+
+    由于 $T^2 \neq O$，$T^3 = O$，故 $T$ 的极小多项式为 $x^3$，Jordan 标准形为 $J_3(0)$.
+
+    \item 记题中矩阵为 $A$，则对偶映射 $T'$ 在相应对偶基下的矩阵为
+    \[
+        A^{\mathrm{T}}=
+        \begin{pmatrix}
+        1&4&3&6\\
+        -1&-3&4&2\\
+        2&1&-2&-1
+        \end{pmatrix}.
+    \]
+    若 $f=(1,-1,1,2)$，由对偶映射定义，对 $v=(x,y,z)$，有
+    \[
+        T'(f)(v) = f \circ T(v) = f(x-y+2z, 4x-3y+z, 3x+4y-2z, 6x+2y-z) = 12x+10y-3z.
+    \]
+    即 $T'(f)(x,y,z)=12x+10y-3z$.
+
+    \item 这里我们认为 $T$ 是 $\mathbf{R}^3$ 上的算子，故 $T$ 在自然基下的矩阵为 $\begin{pmatrix}
+        0 & 0 & 1 \\ 2 & 0 & 0 \\ 0 & 3 & 0
+    \end{pmatrix}$，故 $T^*T$ 在自然基下的矩阵为 $\diag(4, 9, 1)$，奇异值为 $2,3,1$.
+
+    \item 过该直线的平面可写成
+    \[
+        \lambda(x-y+z+4)+\mu(x+y-3z)=0.
+    \]
+    代入点 $(1,-1,-1)$ 得 $5\lambda+3\mu=0$. 取 $\lambda=3,\mu=-5$，代入化简得所求平面
+    \[
+        x+4y-9z-6=0.
+    \]
+    题述直线的方向向量为 $(1,-1,1) \times (1,1,-3)=(2,4,2)$，取直线上一点 $Q=(-2,2,0)$，则点 $P=(1,-1,-1)$ 到直线的距离为
+    \[
+        \frac{\|\overrightarrow{PQ}\times(1,2,1)\|}{\|(1,2,1)\|}
+        =\frac{7\sqrt{2}}{\sqrt{6}}
+        =\frac{7\sqrt{3}}{3}.
+    \]
+
+    \item 不难证明 $\langle f, g \rangle = \displaystyle\int_{-\pi}^{\pi} f(x)g(x)\,\mathrm{d}x, \quad f, g \in V$ 定义了一个 $V$ 上的内积. 故即求 $f \in V$，使得线性泛函 $\varphi(g) = \displaystyle\int_{-\pi}^{\pi} (2x-1)g(x)\,\mathrm{d}x$ 满足 $\varphi(g) = \langle f, g \rangle$ 对任意 $g \in V$ 成立. 由 Riesz 表示定理，设 $e_1, e_2, e_3$ 是 $V$ 的一组规范正交基，则 $f = \displaystyle\sum_{i=1}^3 \overline{\varphi(e_i)} e_i$，故只需要求 $e_i$ 与 $\varphi(e_i)$ 即可.
+
+    由于 $1,\cos x,\sin x$ 在 $[-\pi,\pi]$ 上两两正交，且范数平方分别为 $2\pi,\pi,\pi$，因此 $e_1=\dfrac{1}{\sqrt{2\pi}}, e_2=\dfrac{\cos x}{\sqrt{\pi}}, e_3=\dfrac{\sin x}{\sqrt{\pi}}$. 计算得
+    \begin{gather*}
+        \varphi(e_1) = \int_{-\pi}^{\pi} (2x-1)\frac{1}{\sqrt{2\pi}}\,\mathrm{d}x=-\sqrt{2\pi},\\
+        \varphi(e_2) = \int_{-\pi}^{\pi} (2x-1)\frac{\cos x}{\sqrt{\pi}}\,\mathrm{d}x=0,\\
+        \varphi(e_3) = \int_{-\pi}^{\pi} (2x-1)\frac{\sin x}{\sqrt{\pi}}\,\mathrm{d}x=4\sqrt{\pi}.
+    \end{gather*}
+    故
+    \[
+        f(x)=-\sqrt{2\pi}e_1+4\sqrt{\pi}e_3=-1+4\sin x.
+    \]
+
+    \item 若 $(v_1,Tv_1),(v_2,Tv_2)\in U$，则对任意标量 $a,b$，
+    \[
+        a(v_1,Tv_1)+b(v_2,Tv_2)=(av_1+bv_2,T(av_1+bv_2))\in U.
+    \]
+    故 $U$ 是 $V\times W$ 的子空间. 映射 $v\mapsto(v,Tv)$ 是 $V$ 到 $U$ 的同构，故
+    \[
+        \dim U=\dim V=n.
+    \]
+    又 $\dim(V\times W)=n+m$，因此
+    \[
+        \dim (V\times W)/U=m.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 真. 正算子是自伴算子，有限维内积空间上的自伴算子可正交对角化.
+
+        \item 假. 正确关系是
+        \[
+            \ker T^*=(\im T)^\perp.
+        \]
+        例如 $T=I$ 时，$\ker T^*=\{0\}$，而 $\im T=V$.
+
+        \item 真. 令 $U=\ker(T^2+T+I)$. 在 $U$ 上有 $T^2+T+I=O$，而 $x^2+x+1$ 在实数域上无一次因子. 因此 $U$ 可分解为若干个二维 $T$-不变子空间的直和，故 $\dim U$ 为偶数.
+
+        \item 真. 等距变换是正规算子. 在复内积空间上，它们均可酉对角化，故特征多项式相同当且仅当各特征值重数相同，也即相似. 在实内积空间上，等距变换可化为 $\pm1$ 的一维块与旋转二维块的正交直和，特征多项式同样唯一决定这些块的重数，因此结论仍成立.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

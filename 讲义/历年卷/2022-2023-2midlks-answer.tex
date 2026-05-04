@@ -1,0 +1,111 @@
+\section{2022-2023学年线性代数II（H）期中答案}
+
+\begin{center}
+    任课老师：刘康生\hspace{4em} 考试时长：45分钟
+
+    注：上午班考察1-3题，下午班考察2-4题
+\end{center}
+\begin{enumerate}
+    \item 由对偶映射性质：$\ker T'=(\im T)^0=\{\varphi \in V^* \mid \forall\, p\in\im T, \varphi(p)=0\}$.
+
+    而已知 $\ker T'=\spa(\varphi)$，其中 $\varphi(p)=p(18)$，故
+    \[
+        \im T=\{p\in\mathbf{R}[x]_4\mid p(18)=0\}.
+    \]
+    即
+    \[
+        \im T=\spa(x-18,(x-18)^2,(x-18)^3,(x-18)^4).
+    \]
+
+    \item 设 $w=(x_1, x_2, x_3, x_4)$ 满足要求，可以得到不等式组：$\begin{cases}
+        x_1 - x_2 < 0 \\
+        x_2 - x_3 < 0 \\
+        x_3 - x_4 < 0 \\
+        x_4 > 0 \\
+        x_1 + x_2 + x_3 > 0 \\
+        x_4 - x_1 - 2x_2 - 3x_3 > 0
+    \end{cases}$. 这样的限定条件其实过于宽松，随便取一组解即可，例如取 $w=(1,2,3,20)$，则
+    \[
+        \langle\alpha_1,w\rangle=-1,\quad
+        \langle\alpha_2,w\rangle=-1,\quad
+        \langle\alpha_3,w\rangle=-17,
+    \]
+    且
+    \[
+        \langle\beta_1,w\rangle=20,\quad
+        \langle\beta_2,w\rangle=6,\quad
+        \langle\beta_3,w\rangle=6.
+    \]
+    因此该 $w$ 满足题设不等式.
+
+    \item 记两平面的法向量为 $\vec{n_1}=(1,-2,2), \vec{n_2}=(-2,4,c)$.
+    \begin{enumerate}
+        \item 若平行但不重合，则 $\vec{n_2}=-2\vec{n_1}$ 且常数项不满足同一倍数关系，故
+        \[
+            c=-4,\qquad d\neq -\frac12.
+        \]
+
+        \item 重合当且仅当第二个方程是第一个方程的 $-2$ 倍，故
+        \[
+            c=-4,\qquad d=-\frac12.
+        \]
+
+        \item 垂直当且仅当 $\vec{n_1}\cdot \vec{n_2}=0$，即
+        \[
+            -2-8+2c=0\implies c=5, \forall \, d \in \mathbf{R}.
+        \]
+
+        \item 相交当且仅当 $c\neq -4$. 此时由两方程消去得 $z=\dfrac{2d-1}{c+4}$. 令 $y=t$，则交线参数方程可写为
+        \[
+            \begin{cases}
+                x=2t-d-\dfrac{2(2d-1)}{c+4},\\
+                y=t,\\
+                z=\dfrac{2d-1}{c+4}.
+            \end{cases}
+        \]
+
+        \item 仍需 $c\neq -4$. 原点到交线的距离平方等于
+        \[
+            \begin{pmatrix}-d&-1\end{pmatrix}
+            (NN^{\mathrm{T}})^{-1}
+            \begin{pmatrix}-d\\-1\end{pmatrix},
+            \quad
+            N=\begin{pmatrix}1&-2&2\\-2&4&c\end{pmatrix}.
+        \]
+        计算得条件为
+        \[
+            \frac{(c^2+20)d^2+(20-4c)d+9}{5(c+4)^2}=1,
+            \qquad c\neq -4.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对任意 $X=(x_i)$，
+        \[
+            \|AX\|_1\leqslant \sum_i\sum_j |a_{ij}||x_j|
+            =\sum_j\left(\sum_i|a_{ij}|\right)|x_j|
+            \leqslant \left(\max_j\sum_i|a_{ij}|\right)\|X\|_1.
+        \]
+        取达到最大列和的第 $j$ 列并令 $X=e_j$，可知
+        \[
+            \|A\|_1=\max_{1\leqslant j\leqslant n}\sum_{i=1}^n|a_{ij}|.
+        \]
+
+        \item 由 $|a_{ij}|\leqslant b_{ij}$，用归纳法不难得到
+        \[
+            |(A^m)_{ij}|\leqslant (B^m)_{ij}.
+        \]
+        因此每一列的绝对值列和均不超过 $B^m$ 的对应列和，故
+        \[
+            \|A^m\|_1\leqslant \|B^m\|_1.
+        \]
+
+        \item 由条件知 $A$ 为上三角矩阵，故特征值就是对角元，均满足 $|a_{ii}|<1$. 因此 $A$ 的 Jordan 标准形中每个 Jordan 块的特征值模长均小于 $1$，从而 $A^m\to O$. 所以
+        \[
+            \|A^m\|_1\to 0\qquad(m\to\infty).
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

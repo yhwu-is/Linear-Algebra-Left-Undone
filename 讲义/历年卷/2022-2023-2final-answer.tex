@@ -1,0 +1,97 @@
+\section{2022-2023学年线性代数II（H）期末答案}
+
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item 直接计算得 $A^2\neq O$ 且 $A^3=O$，故 $A$ 的 Jordan 标准形为
+        \[
+            J_3(0)=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}.
+        \]
+
+        \item 若存在复矩阵 $B$ 使得 $B^2=A$，则 $B$ 的全部特征值均为 $0$，故 $B$ 是 $3$ 阶幂零矩阵，从而 $B^3=O$. 于是
+        \[
+            A^2=B^4=O,
+        \]
+        与 $A^2\neq O$ 矛盾. 故不存在这样的复矩阵 $B$.
+    \end{enumerate}
+
+    \item $L_1$ 的方向向量为 $(1,1,1) \times (1,-2,0) = (2,1,-3)$，且点 $(-2,0,3)$ 在 $L_1$ 上，故 $L_1$ 可写成 $\begin{cases}
+        x = -2+2t,\\
+        y = t,\\
+        z = 3-3t
+    \end{cases}$，而 $L_2$ 的方向向量为 $(2,1,b)$.
+
+    因此 $L_1,L_2$ 平行当且仅当 $b=-3$. 此时无论 $a$ 为何，两直线不重合，所以均为平行直线.
+
+    两直线相交时，联立
+    \[
+        (2t,t+a,bt+1)=(-2+2s,s,3-3s)
+    \]
+    可得 $a=1$ 且 $b\neq -3$. 因此异面直线的条件为 $b\neq -3$ 且 $a\neq 1$.
+
+    \item
+    \begin{enumerate}
+        \item 第一个位置的加性与齐性、共轭对称性均容易验证. 又
+        \[
+            \langle \vec{x}, \vec{x}\rangle_V=x_1^2+x_2^2+(x_2+x_3)^2 \geqslant 0.
+        \]
+        若其为 $0$，则 $x_1=0,x_2=0,x_2+x_3=0$，等价于 $\vec{x}$ 为零向量，因此正定性也满足. 故 $\langle \cdot, \cdot \rangle_V$ 是内积.
+
+        \item 对自然基作 Gram-Schmidt 正交化，计算可得
+        \[
+            e_1=(1,0,0),\quad e_2=\frac{1}{\sqrt{2}}(0,1,0),\quad e_3=\sqrt{2}\left(0,-\frac12,1\right).
+        \]
+        是一组满足要求的规范正交基.
+
+        \item 设 $\beta=(a,b,c)$. 由
+        \[
+            \langle x,\beta\rangle=x_1a+x_2b+(x_2+x_3)(b+c)
+        \]
+        与 $x_1+2x_2$ 比较系数，得 $\begin{cases}
+            a=1,\\
+            b+2(b+c)=2,\\
+            b+c=0.
+         \end{cases}$ 解得 $a=1,b=2,c=-2$，故 $\beta=(1,2,-2)$.
+    \end{enumerate}
+
+    \item 由矩阵可知
+    \[
+        T\varepsilon_1=\varepsilon_1,\quad
+        T\varepsilon_2=2\varepsilon_2,\quad
+        T\varepsilon_3=\varepsilon_2+2\varepsilon_3.
+    \]
+    因特征值 $1$ 与 $2$ 对应的广义特征子空间互不相交，每个 $T$-不变子空间都是这两部分中不变子空间的直和. 对 $J_2(2)$ 块，不变子空间只有 $\{0\}, \spa(\varepsilon_2), \spa(\varepsilon_2,\varepsilon_3)$. 故 $V$ 的所有 $T$-不变子空间为
+    \[
+        \{0\},\quad
+        \spa(\varepsilon_1),\quad
+        \spa(\varepsilon_2),\quad
+        \spa(\varepsilon_1,\varepsilon_2),\quad
+        \spa(\varepsilon_2,\varepsilon_3),\quad
+        V.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 假. 取 $V=\mathbf{R}^2$，$e_1, e_2$ 为自然基，$T(e_1)=e_1$，$T(e_2)=2e_2$，$W=\spa(e_1)$. 补空间 $W'=\spa(e_1+e_2)$ 不是 $T$-不变子空间.
+
+        \item 真. 对任意 $v\in V,w\in W$，
+        \[
+            \langle Tv,w\rangle=\langle \langle v,\alpha\rangle\beta,w\rangle
+            =\langle v,\alpha\rangle\langle\beta,w\rangle
+            =\langle v,\langle w,\beta\rangle\alpha\rangle.
+        \]
+        故 $T^*w=\langle w,\beta\rangle\alpha$.
+
+        \item 真. 条件 $\ker T^{n-1}\neq\ker T^{n-2}$ 说明 $T$ 在特征值 $0$ 处有一个大小至少为 $n-1$ 的 Jordan 块. 因 $\dim V=n$ 且 $T$ 非幂零，剩余的一维只能对应某个非零特征值 $a$. 因此极小多项式为 $m(\lambda)=\lambda^{n-1}(\lambda-a),\quad 0 \neq a \in \mathbf{R}$.
+
+        \item 真. 令 $S_1=A^{\mathrm{T}}+A,\ S_2=A^{\mathrm{T}}-A$，则 $S_1S_2-S_2S_1=2(AA^{\mathrm{T}}-A^{\mathrm{T}}A)$. 故 $S_1S_2=S_2S_1$ 当且仅当 $A^{\mathrm{T}}A=AA^{\mathrm{T}}$，即 $A$ 正规.
+
+        \item 假. 例如 $A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ 是复正规矩阵，但其实部矩阵就是 $A$，并非对称矩阵.
+    \end{enumerate}
+
+    \item 因 $T=S\sqrt{G}$，有 $T^*T=G,\quad TT^*=S G S^*$. 故 $T$ 正规当且仅当 $S G S^*=G$，也即 $SG=GS$. 这证明了 (1) 与 (2) 等价.
+
+    又 $G$ 是自伴算子，可正交分解为各特征空间的直和. 一个算子 $S$ 与 $G$ 交换，当且仅当 $S$ 保持 $G$ 的每个特征空间. 因此 (2) 与 (3) 等价. 综上，三个条件等价.
+\end{enumerate}
+
+\clearpage

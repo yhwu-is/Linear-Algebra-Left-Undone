@@ -1,0 +1,156 @@
+\section{2024-2025学年线性代数II（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+
+    考试时间：2025年4月23日（星期三）10:00-12:00
+\end{center}
+\begin{enumerate}
+    \item 设待求直线与给定直线交于
+    \[
+        Q=(1+4s,-1-2s,s).
+    \]
+    因待求直线过 $P=(1,0,2)$ 且平行于平面 $3x-y+2z+2=0$，有
+    \[
+        (Q-P)\cdot(3,-1,2)=0.
+    \]
+    即 $16s-3=0$，故 $s=\dfrac{3}{16}$. 于是方向向量可取 $\overrightarrow{PQ}=\left(\frac34,-\frac{11}{8},-\frac{29}{16}\right)$，代入化简可得所求直线为
+    \[
+        \frac{x-1}{12}=\frac{y}{-22}=\frac{z-2}{-29}.
+    \]
+
+    \item 令 $P=T-I$. 由 $T^2-3T+2I=O$ 得 $P^2=P$. 从而对任意 $v\in V$，
+    \[
+        v=(v-Pv)+Pv,
+    \]
+    其中 $P(v-Pv)=Pv-P^2v=0$，故 $v-Pv\in\operatorname{null}(T-I)$；而 $Pv\in\operatorname{range}(T-I)$. 又若 $w\in\operatorname{null}P\cap\operatorname{range}P$，设 $w=Pu$，则
+    \[
+        w=Pu=P^2u=P(Pu)=Pw=0.
+    \]
+    因此 $\operatorname{null} P + \operatorname{range} P$ 是直和，即
+    \[
+        V=\operatorname{null}(T-I)\oplus\operatorname{range}(T-I).
+    \]
+
+    \item 对任意 $v=\displaystyle\sum_{i=1}^n a_i v_i$，有 $a_i=\varphi_i(v)$. 因此
+    \[
+        \left(\sum_{i=1}^n \psi(v_i)\varphi_i\right)(v)
+        =
+        \sum_{i=1}^n\psi(v_i)\varphi_i(v)
+        =
+        \sum_{i=1}^n a_i\psi(v_i)
+        =
+        \psi(v).
+    \]
+    故
+    \[
+        \psi=\psi(v_1)\varphi_1+\cdots+\psi(v_n)\varphi_n.
+    \]
+
+    \item 设 $d=\deg p$.
+    \begin{enumerate}
+        \item 设 $\deg p = m$，对任意$f\in\mathcal{P}(\mathbf{C})$，由带余除法得 $f = pq + r$（$r=0$ 或 $\deg r < m$），故 $f + U = r + U$. 若 $r_1 + U = r_2 + U$，则 $r_1 - r_2 = pq$，由次数关系得 $r_1 = r_2$，故 $\dim(\mathcal{P}(\mathbf{C})/U) = m$（$\mathcal{P}(\mathbf{C})/U$ 的维数等价于余数多项式 $r$ 构成的空间维数，自然为 $m$）.
+
+        \item 次数小于 $m$ 的多项式 $1,x,\cdots,x^{m-1}$ 的等价类线性无关且张成商空间，故基为：\[\{1 + U,\ x + U,\ \cdots,\ x^{m-1} + U\}.\]
+    \end{enumerate}
+
+    \item 若 $S,T$ 可同时对角化，则它们在同一组基下都是对角矩阵，显然 $ST=TS$.
+
+    反之，设 $ST=TS$ 且 $S,T$ 均可对角化. 因 $S$ 可对角化，故 $V$ 可分解为 $S$ 的特征子空间的直和：$V = \displaystyle\bigoplus_{\lambda \in \sigma(S)} E(\lambda, S)$，其中 $\sigma(S)$ 是 $S$ 的特征值集，$E(\lambda, S) = \{v \in V \mid Sv = \lambda v\}$ 为对应特征子空间.
+
+    任取 $\lambda \in \sigma(S)$ 及 $v \in E(\lambda, S)$，则 $Sv = \lambda v$. 由 $ST = TS$，得：
+    \[
+    S(Tv) = T(Sv) = T(\lambda v) = \lambda (Tv)
+    \]
+    故 $Tv \in E(\lambda, S)$，即 $T(E(\lambda, S)) \subseteq E(\lambda, S)$，因此 $E(\lambda, S)$ 是 $T$ 的不变子空间.
+
+    因 $T$ 可对角化，其在不变子空间 $E(\lambda, S)$ 上的限制 $T|_{E(\lambda, S)}$ 仍可对角化. 故 $E(\lambda, S)$ 存在一组由 $T|_{E(\lambda, S)}$ 的特征向量组成的基，记为 $B_\lambda$. 则 $B_\lambda \subseteq E(\lambda, S)$，$B_\lambda$ 中的向量也是 $S$ 的特征向量（对应特征值 $\lambda$）.
+
+    从而令 $B = \displaystyle\bigcup_{\lambda \in \sigma(S)} B_\lambda$，则 $B$ 是 $V$ 的一组基（由直和性质），且每个向量均为 $S$ 和 $T$ 的共同特征向量. 因此 $S,T$ 在基 $B$ 下的矩阵均为对角矩阵，即 $S,T$ 可同时对角化. 充分性成立. 得证.
+
+    \item 特征子空间 $E(\lambda, A) = \ker(\lambda I - A)$，其维数为 $n - r(\lambda I - A)$.
+
+    因矩阵与其转置秩相等，即 $r(\lambda I - A) = r(\lambda I - A^\mathrm{T})$，故
+    \[
+        \dim E(\lambda, A) = n - r(\lambda I - A) = n - r(\lambda I - A^\mathrm{T}) = \dim E(\lambda, A^\mathrm{T}).
+    \]
+
+    \item \begin{enumerate}
+        \item 先证明 $(W_1 + W_2)^\perp \subseteq W_1^\perp \cap W_2^\perp$：
+
+        任取 $v\in(W_1 + W_2)^\perp$，则对 $\forall v_1\in W_1$，$v\perp v_1$；对 $\forall v_2\in W_2$，$v\perp v_2$，故 $v\in W_1^\perp \cap W_2^\perp$.
+
+        再证明 $(W_1 + W_2)^\perp \supseteq W_1^\perp \cap W_2^\perp$：
+
+        任取 $v\in W_1^\perp \cap W_2^\perp$，对 $w_1 + w_2\in W_1 + W_2$，$\langle v, w_1 + w_2\rangle = \langle v, w_1\rangle + \langle v, w_2\rangle = 0$，故$v\in(W_1 + W_2)^\perp$.
+
+        \item 对 $W_1^\perp, W_2^\perp$ 用上一问得 $(W_1^\perp + W_2^\perp)^\perp = W_1 \cap W_2$，两边取正交补即证.
+    \end{enumerate}
+
+    \item \begin{enumerate}
+        \item 已知 $v_1,\cdots,v_k$ 是 $C=XX^\mathrm{T}$ 的单位特征向量，且 $C$ 是实对称矩阵. 实对称矩阵的不同特征值对应的特征向量必正交（以本题为例，设 $Cv=\lambda v$，$Cw=\mu w$，则 $\lambda v^{T}w=(Cv)^{T}w=v^{T}Cw=\mu v^{T}w$，由于 $\lambda\neq\mu$ 可得 $v^{T}w=\langle v,w \rangle=0$），故：
+        \[
+            \langle v_i, v_j \rangle = v_i^\mathrm{T} v_j = \delta_{ij}
+        \]
+        故 $\{v_1,\cdots,v_k\}$ 是 $V$ 的规范正交基.
+
+        正交投影需满足两个条件：幂等性（$P_V^2=P_V$）和 对称性（$P_V^\mathrm{T}=P_V$）.
+
+        幂等性：因 $U=(v_1,\cdots,v_k)$ 的列是规范正交基，故 $U^\mathrm{T} U=E$，因此：
+        \[
+            P_V^2 = (UU^\mathrm{T})(UU^\mathrm{T}) = U(U^\mathrm{T} U)U^\mathrm{T} = UI_k U^\mathrm{T} = UU^\mathrm{T} = P_V
+        \]
+
+        对称性：
+        \[
+            P_V^\mathrm{T} = (UU^\mathrm{T})^\mathrm{T} = (U^\mathrm{T})^\mathrm{T} U^\mathrm{T} = UU^\mathrm{T} = P_V
+        \]
+        且 $P_V$ 的值域为 $\spa\{v_1,\cdots,v_k\}=V$，故 $P_V$ 是 $\mathbf{R}^n$ 到 $V$ 的正交投影.
+
+        \item 对任意向量$x$和正交投影$P$，有正交分解$x=Px+(x-Px)$，故：
+        \[
+            \|x\|^2 = \|Px\|^2 + \|x-Px\|^2 \implies \|x-Px\|^2 = \|x\|^2 - \|Px\|^2
+        \]
+        因此总投影误差可写为：
+        \[
+            \sum_{i=1}^p \|x_i - Px_i\|^2 = \sum_{i=1}^p \|x_i\|^2 - \sum_{i=1}^p \|Px_i\|^2
+        \]
+        因 $\sum\|x_i\|^2$ 是常数（与 $P$ 无关），故即证：$\displaystyle\sum_{i=1}^p \|P_V x_i\|^2 \geqslant \displaystyle\sum_{i=1}^p \|P_W x_i\|^2.$ 而
+        \[
+            \|P_V x_i\|^2 = (P_V x_i)^\mathrm{T} (P_V x_i) = x_i^\mathrm{T} P_V^\mathrm{T} P_V x_i = x_i^\mathrm{T} P_V x_i \quad (P_V^\mathrm{T}=P_V=P_V^2)
+        \]
+        利用 $x^\mathrm{T} A x = \tr(A x x^\mathrm{T})$ 且$C=XX^\mathrm{T}=\sum x_i x_i^\mathrm{T}$，可知总和为：
+        \[
+            \sum_{i=1}^p x_i^\mathrm{T} P_V x_i = \tr\left(P_V \sum_{i=1}^p x_i x_i^\mathrm{T}\right) = \tr(P_V C)
+        \]
+        设 $C$ 的特征值为 $\lambda_1 \geqslant \lambda_2 \geqslant \cdots \geqslant \lambda_n > 0$，对应的规范正交特征向量为$v_1,\cdots,v_n$，则 $C=\displaystyle\sum_{i=1}^n \lambda_i v_i v_i^\mathrm{T}$.
+        对 $P_V=UU^\mathrm{T}$（$U=(v_1,\cdots,v_k)$），有：
+        \[
+        \tr(P_V C) = \tr\left(\sum_{i=1}^k v_i v_i^\mathrm{T} \cdot \sum_{j=1}^n \lambda_j v_j v_j^\mathrm{T}\right) = \sum_{i=1}^k \lambda_i \quad (\text{仅当}\space i=j\space\text{时迹非零})
+        \]
+        对任意 $k$ 维子空间 $W$ 的正交投影 $P_W=QQ^\mathrm{T}$（$Q$ 的列是 $W$ 的规范正交基），利用 $x^\mathrm{T} A x = \tr(A x x^\mathrm{T})$ 有 $\tr(P_W v_i v_i^{T})=v_i^{T}QQ^{T}v_i=\|v_i^\mathrm{T} Q\|^2$，从而：
+        \[
+        \tr(P_W C) = \sum_{i=1}^n \lambda_i \cdot \|v_i^\mathrm{T} Q\|^2
+        \]
+        因 $\displaystyle\sum_{i=1}^n \|v_i^\mathrm{T} Q\|^2 = \tr(Q^\mathrm{T} (\displaystyle\sum_{i=1}^n v_i v_i^\mathrm{T}) Q) = \tr(Q^\mathrm{T} E Q) = k$，由特征值的排序性，最大的 $\tr(P_W C)$ 必为 $\displaystyle\sum_{i=1}^k \lambda_i$（当 $Q$ 的列取前 $k$ 个特征向量时达到）.
+
+        因此 $\sum\|P_V x_i\|^2 \geqslant \sum\|P_W x_i\|$，得证.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 假. 取 $\vec a=e_1,\vec b=e_2,\vec c=e_2$，则
+        \[
+            (\vec a\times\vec b)\times\vec c=-e_1,\quad
+            \vec a\times(\vec b\times\vec c)=0.
+        \]
+
+        \item 真. 代数学基本定理的结果.
+
+        \item 假. 例如矩阵 $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ 对应的线性变换不可对角化.
+
+        \item 假. 内积需满足正定性，取 $f(t)$ 在 $\left[0,\dfrac{1}{2}\right]$ 为 $0$，在 $\left(\dfrac{1}{2},1\right]$ 非零，则 $\langle f,f \rangle=0$ 但 $f\neq 0$，不是内积.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

@@ -1,0 +1,81 @@
+\section{2020-2021学年线性代数II（H）期中答案}
+
+\begin{center}
+    任课老师：谈之奕\hspace{4em} 考试时长：90分钟
+\end{center}
+\begin{enumerate}
+    \item 设 $g(x)=a(x-\alpha)$，其中 $\alpha=-b/a$. 因 $a\neq 0$，$g\mid f^2$ 当且仅当 $f^2(\alpha)=0$，当且仅当 $f(\alpha)=0$，也即 $g\mid f$.
+
+    \item 因 $\lambda^3=1,\lambda\notin\mathbf{R}$，有 $\lambda^2+\lambda+1=0$. $A$ 的极小多项式次数为 $2$ 且以 $\lambda$ 为根，故只能为
+    \[
+        m_A(x)=x^2+x+1.
+    \]
+    由于 $m_A(-1)=1\neq 0$，$-1$ 不是 $A$ 的特征值，所以 $A+I$ 可逆.
+
+    \item Jordan 块总数等于几何重数 $3$，块大小之和为代数重数 $5$. 因此只有两种可能：
+    \[
+        J_3(1)\oplus J_1(1)\oplus J_1(1),\quad m_T(x)=(x-1)^3;
+    \]
+    \[
+        J_2(1)\oplus J_2(1)\oplus J_1(1),\quad m_T(x)=(x-1)^2.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 因 $d_i$ 两两不同，$T$ 的一维不变子空间只能是特征子空间，故为
+        \[
+            \spa(e_i),\quad i=1,\ldots,n.
+        \]
+
+        \item 对任意 $T$-不变子空间 $U$，若 $u=\sum a_i e_i\in U$，则利用 Lagrange 插值可构造多项式 $p_i$ 使 $p_i(T)u=a_i e_i\in U$. 因此 $U$ 由它包含的若干个 $e_i$ 张成. 所有不变子空间为
+        \[
+            \spa(e_{i_1},\ldots,e_{i_k}),\quad \{i_1,\ldots,i_k\}\subseteq\{1,\ldots,n\}.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 取 $S$ 的一个特征值 $\lambda$，则 $E(\lambda,S)$ 在 $T$ 下不变，因为
+        \[
+            S(Tv)=T(Sv)=\lambda Tv.
+        \]
+        在复空间中，$T|_{E(\lambda,S)}$ 有特征向量，该向量即为 $S,T$ 的公共特征向量.
+
+        \item 由 (1) 取公共特征向量 $v_1$，再将其扩充为一组基. 在商空间 $V/\spa(v_1)$ 上，$S,T$ 诱导的算子仍可交换. 对维数归纳，即得一组基使 $S,T$ 同时为上三角矩阵.
+    \end{enumerate}
+
+    \item 记
+    \[
+        A=\begin{pmatrix}
+        2&1&1\\
+        -2&-1&-2\\
+        1&1&2
+        \end{pmatrix}.
+    \]
+    计算得特征多项式为 $(x-1)^3$，且
+    \[
+        A-I=\begin{pmatrix}1&1&1\\-2&-2&-2\\1&1&1\end{pmatrix},\quad (A-I)^2=O.
+    \]
+    又 $\dim\ker(A-I)=2$，故 Jordan 标准形为
+    \[
+        J=\begin{pmatrix}1&1&0\\0&1&0\\0&0&1\end{pmatrix}.
+    \]
+    取
+    \[
+        u_1=(1,-2,1)^{\mathrm{T}},\quad
+        u_2=(1,0,0)^{\mathrm{T}},\quad
+        u_3=(1,-1,0)^{\mathrm{T}},
+    \]
+    则 $(A-I)u_2=u_1$，且 $u_1,u_3\in\ker(A-I)$. 令
+    \[
+        P=(u_1,u_2,u_3)=
+        \begin{pmatrix}
+            1&1&1\\
+            -2&0&-1\\
+            1&0&0
+        \end{pmatrix},
+    \]
+    则 $P^{-1}AP=J$.
+\end{enumerate}
+
+\clearpage

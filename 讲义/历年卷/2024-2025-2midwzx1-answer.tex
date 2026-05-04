@@ -1,0 +1,121 @@
+\section{2024-2025学年线性代数II（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+
+    考试时间：2025年4月21日（星期一）10:00-12:00
+\end{center}
+\begin{enumerate}
+    \item $L_1$ 的方向向量为 $(2,3,4)$，$L_2$ 的方向向量为 $(1,1,2)$. 取 $L_1$ 上点 $P_1=(0,-3,0)$，$L_2$ 上点 $P_2=(1,-2,2)$，则 $\overrightarrow{P_1P_2}\cdot((2,3,4)\times(1,1,2))=0$，故两直线共面. 联立
+    \[
+        (2t,-3+3t,4t)=(1+s,-2+s,2+2s)
+    \]
+    得 $t=0,\ s=-1$，故两直线相交，交点为 $(0,-3,0)$.
+
+    \item 因 $\dim V/U=1$，商空间 $V/U$ 与 $\mathbf{F}$ 同构. 取同构 $\psi:V/U\to\mathbf{F}$，并令
+    \[
+        \varphi=\psi\circ\pi,
+    \]
+    其中 $\pi:V\to V/U$ 是自然投影. 则 $\varphi$ 是线性泛函，且
+    \[
+        \operatorname{null}\varphi=\ker\pi=U.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 对任意 $v\in V$，令
+        \[
+            v_0=v-\frac{\varphi(v)}{\varphi(u)}u.
+        \]
+        则 $v_0\in\operatorname{null}\varphi$，所以
+        \[
+            v=v_0+\frac{\varphi(v)}{\varphi(u)}u\in \operatorname{null}\varphi+\{au\mid a\in\mathbf{F}\}.
+        \]
+        又若 $au\in\operatorname{null}\varphi$，则 $a\varphi(u)=0$，故 $a=0$. 因此这是直和.
+
+        \item 定义
+        \[
+            \Phi:V\to\mathbf{F}^n,\quad \Phi(v)=(\varphi_1(v),\ldots,\varphi_n(v)).
+        \]
+        若 $\Phi(v)=0$，则所有 $V'$ 中的泛函在 $v$ 上都为零，故 $v=0$. 因 $\dim V=n$，$\Phi$ 是同构. 取 $v_j=\Phi^{-1}(e_j)$，则
+        \[
+            \varphi_i(v_j)=\delta_{ij},
+        \]
+        所以 $v_1,\ldots,v_n$ 是一组基，且其对偶基为 $\varphi_1,\ldots,\varphi_n$.
+    \end{enumerate}
+
+    \item 考虑线性映射
+    \[
+        \Phi:\mathcal{P}_{n-1}(\mathbf{C})\times\mathcal{P}_{m-1}(\mathbf{C})
+        \to \mathcal{P}_{m+n-1}(\mathbf{C}),
+        \quad
+        \Phi(r,s)=rp+sq.
+    \]
+    两边维数均为 $m+n$. 若 $\Phi(r,s)=0$，则 $rp=-sq$. 因 $p,q$ 无公共零点，即 $(p,q)=1$，故 $p\mid s$. 但 $\deg s<m=\deg p$，所以 $s=0$，从而 $r=0$. 因此 $\Phi$ 单射，从而满射. 特别地 $1\in\im\Phi$，故存在所需的 $r,s$.
+
+    \item 设 $\lambda$ 是 $ST$ 的任意一个本征值，$v$ 是对应的非零本征向量，则 $STv=\lambda v$，从而 $TS(Tv)=T(\lambda v) =\lambda(Tv)$. 且 $Tv\neq 0$，否则 $STv=\lambda v=0$，矛盾. 因此 $\lambda$ 也是 $TS$ 的一个本征值. 同理可得 $TS$ 的任意一个本征值也是 $ST$ 的一个本征值. 综上，$ST$ 与 $TS$ 的本征值相同.
+
+    \item 若 $T v=\lambda v$ 且 $v\neq 0$，则 $p(T)v=p(\lambda)v$，故 $p(\lambda)$ 是 $p(T)$ 的本征值.
+
+    反之，若 $\alpha$ 是 $p(T)$ 的本征值，则 $p(T)-\alpha I$ 不可逆. 在 $\mathbf{C}$ 上分解
+    \[
+        p(x)-\alpha=c\prod_{i=1}^k(x-\lambda_i).
+    \]
+    于是
+    \[
+        p(T)-\alpha I=c\prod_{i=1}^k(T-\lambda_i I)
+    \]
+    不可逆，故某个 $T-\lambda_iI$ 不可逆，即 $\lambda_i$ 是 $T$ 的本征值，且 $\alpha=p(\lambda_i)$.
+
+    \item 第一个位置的加性与齐性以及共轭对称性由原内积直接得到. 又
+    \[
+        \langle v,v\rangle_1=\langle Sv,Sv\rangle\geqslant 0,
+    \]
+    且等号成立当且仅当 $Sv=0$. 因 $S$ 是单射，$Sv=0$ 当且仅当 $v=0$，故正定性也成立，从而 $\langle\cdot,\cdot\rangle_1$ 是 $V$ 上的一个内积.
+
+    \item
+    \begin{enumerate}
+        \item 由三角函数正交关系可知这些函数两两正交；又
+        \[
+            \int_{-\pi}^{\pi}\frac{1}{2\pi}\,\mathrm{d}x=1,\quad
+            \int_{-\pi}^{\pi}\frac{\cos^2 kx}{\pi}\,\mathrm{d}x
+            =
+            \int_{-\pi}^{\pi}\frac{\sin^2 kx}{\pi}\,\mathrm{d}x=1.
+        \]
+        故它们是规范正交组.
+
+        \item 记 $e_0 = \dfrac{1}{\sqrt{2\pi}}$，$c_k = \dfrac{\cos kx}{\sqrt{\pi}}$，$s_k = \dfrac{\sin kx}{\sqrt{\pi}}$. 对于任意的 $f \in C[-\pi,\pi]$，有
+        \begin{gather*}
+            \langle f,e_0\rangle = \frac{1}{\sqrt{2}}(\frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}f(x)\,\mathrm{d}x)=\frac{a_0}{\sqrt{2}}, \\
+            \langle f,c_k\rangle = \int_{-\pi}^{\pi}f(x)\frac{\cos kx}{\sqrt{\pi}}\,\mathrm{d}x=a_k, \\
+            \langle f,s_k\rangle = \int_{-\pi}^{\pi}f(x)\frac{\sin kx}{\sqrt{\pi}}\,\mathrm{d}x=b_k.
+        \end{gather*}
+
+        由内积的性质，对任意的 $n$，由于 $e_0,c_1,s_1,\ldots,c_n,s_n$ 为规范正交组，故
+        \[
+            \langle f,e_0\rangle^2+\sum_{k=1}^n(\langle f,c_k\rangle^2+\langle f,s_k\rangle^2)
+            \leqslant \|f\|^2 = \langle f,f\rangle.
+        \]
+        代入之前计算的系数，并令 $n\to\infty$ 得
+        \[
+            \frac{a_0^2}{2}+\sum_{k=1}^{\infty}(a_k^2+b_k^2)
+            \leqslant \int_{-\pi}^{\pi}f^2(x)\,\mathrm{d}x.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 真. 若 $\varphi\neq 0$，存在 $v$ 使 $\varphi(v)=a\neq 0$. 对任意 $c\in\mathbf{F}$，有 $\varphi(\frac ca v)=c$，故 $\varphi$ 满射.
+
+        \item 真. 若 $T=S\circ\pi$，则对任意 $u\in U$ 有 $Tu=S(U)=0$. 反之若 $T$ 在 $U$ 上为零，定义 $\widetilde{T}(v+U)=Tv$，该定义良好且线性，并有 $T=\widetilde{T}\circ\pi$.
+
+        \item 假. 内积诱导的范数满足平行四边形恒等式，但最大范数不满足，例如
+        \[
+            \|(1,0)+(0,1)\|^2+\|(1,0)-(0,1)\|^2=2\neq 4.
+        \]
+
+        \item 假. 若存在连续函数 $g$ 使 $f(0)=\int_{-1}^1 f(x)g(x)\,\mathrm{d}x$ 对所有连续 $f$ 成立，则对所有满足 $f(0)=0$ 的连续函数有 $\int fg=0$. 取支撑在任意不含 $0$ 的小区间内的连续函数可知 $g$ 在 $[-1,1]\setminus\{0\}$ 上恒为 $0$，由连续性 $g(0)=0$，即 $g=0$. 但取 $f\equiv 1$ 得 $1=0$，矛盾.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

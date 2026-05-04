@@ -1,0 +1,93 @@
+\section{2023-2024学年线性代数II（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+\end{center}
+\begin{enumerate}
+    \item 对任意 $g\in W'$，$T'(g)=g\circ T$ 在 $\ker T$ 上为零，故 $\im T'\subseteq(\ker T)^0$. 又
+    \[
+        \dim\im T'=\dim\im T=\dim V-\dim\ker T=\dim(\ker T)^0,
+    \]
+    因此
+    \[
+        \im T'=(\ker T)^0.
+    \]
+
+    \item 该矩阵为实对称矩阵. 特征值为 $1,\dfrac{9\pm\sqrt{57}}{2}$，对应特征向量可取
+    \[
+        (0,1,1)^{\mathrm{T}},\quad
+        (\sqrt{57}-5, 4, -4)^{\mathrm{T}},\quad
+        (\sqrt{57}+5, -4, 4)^{\mathrm{T}}.
+    \]
+    将其分别单位化，即得一组由本征向量组成的规范正交基：
+    \[
+        \frac{1}{\sqrt2}(0,1,1)^{\mathrm{T}},\quad \frac{(\sqrt{57}-5, 4, -4)^{\mathrm{T}}}
+        {\sqrt{114-10\sqrt{57}}},
+        \quad
+        \frac{(\sqrt{57}+5, -4, 4)^{\mathrm{T}}}
+        {\sqrt{114+10\sqrt{57}}}.
+    \]
+
+    \item 不难证明 $\langle f, g \rangle = \displaystyle\int_0^1 f(x)g(x)\,\mathrm{d}x, \quad f, g \in \mathbf{R}[x]_3$ 定义了一个 $V=\mathbf{R}[x]_3$ 上的内积. 故即求 $q \in V$，使得线性泛函 $\varphi(p) = \displaystyle\int_0^1 \sin\pi x \cdot g(x)\,\mathrm{d}x$ 满足 $\varphi(p) = \langle p, q \rangle$ 对任意 $p \in V$ 成立. 由 Riesz 表示定理，设 $e_1, e_2, e_3$ 是 $V$ 的一组规范正交基，则 $q = \displaystyle\sum_{i=1}^3 \overline{\varphi(e_i)} e_i$，故只需要求 $e_i$ 与 $\varphi(e_i)$ 即可.
+
+    对自然基 $1,x, x^2$ 在 $[0,1]$ 上做 Gram-Schmidt 正交化，可以得到 $e_1=1, e_2=2\sqrt{3}(x-\dfrac{1}{2}), e_3=6\sqrt{5}(x^2-x+\dfrac{1}{6})$. 计算得
+    \begin{gather*}
+        \varphi(e_1) = \int_0^1 (\sin\pi x)\,\mathrm{d}x=\dfrac{2}{\pi},\\
+        \varphi(e_2) = \int_0^1 2\sqrt{3}(\sin\pi x)(x-\dfrac{1}{2})\,\mathrm{d}x=0,\\
+        \varphi(e_3) = \int_0^1 6\sqrt{5}(\sin\pi x)(x^2-x+\dfrac{1}{6})\,\mathrm{d}x=\dfrac{2\sqrt{5}}{\pi}-\dfrac{24\sqrt{5}}{\pi^3}.
+    \end{gather*}
+
+    因此
+    \[
+        q=\frac{2}{\pi}\cdot 1+\left(\frac{2\sqrt{5}}{\pi}-\frac{24\sqrt{5}}{\pi^3}\right)\cdot 6\sqrt{5}\left(x^2-x+\frac{1}{6}\right)=\frac{2}{\pi}+\left(\frac{60}{\pi}-\frac{720}{\pi^3}\right)\left(x^2-x+\frac{1}{6}\right).
+    \]
+
+    \item 若 $T$ 可逆，则 $\sqrt{T^*T}$ 可逆，令 $S=T(\sqrt{T^*T})^{-1}$，则
+    \[
+        S^*S=(\sqrt{T^*T})^{-1}T^*T(\sqrt{T^*T})^{-1}=I,
+    \]
+    故 $S$ 是等距同构，且唯一性由 $\sqrt{T^*T}$ 可逆立即推出.
+
+    反之，若这样的 $S$ 唯一而 $T$ 不可逆，则 $\ker T=\ker\sqrt{T^*T}\neq\{0\}$. 在 $\ker T$ 上可任意改变极分解中等距同构的取法而不影响 $T=S\sqrt{T^*T}$，与唯一性矛盾. 故 $T$ 可逆.
+
+    \item 由于 $\im T^*=(\ker T)^\perp$，因此 $T$ 为单射当且仅当 $\ker T=\{0\}$，当且仅当 $\im T^*=V$，也即 $T^*$ 为满射.
+
+    \item 由题设得 $T^2=T^*$. 取伴随得
+    \[
+        T=(T^*)^*=(T^2)^*=(T^*)^2=T^4.
+    \]
+    因 $T$ 可逆，故 $T^3=I$. 于是
+    \[
+        T^*T=T^2T=T^3=I,
+    \]
+    所以 $T$ 是等距同构.
+
+    \item 若 $\langle u,v\rangle_T=\langle Tu,v\rangle$ 是内积，则由对称性得 $T=T^*$，由正定性得 $\langle Tu,u\rangle>0$ 对所有 $u\neq 0$ 成立，故 $T$ 是正算子且无核，因此可逆.
+
+    反之，若 $T$ 是可逆正算子，则 $\langle Tu,v\rangle$ 双线性、对称，且
+    \[
+        \langle u,u\rangle_T=\langle Tu,u\rangle>0\quad(u\neq 0),
+    \]
+    故它是内积.
+
+    \item 正规算子可酉对角化. 在一组规范正交特征基下，$T$ 的特征值为 $\lambda_i$，$T^k$ 的特征值为 $\lambda_i^k$. 因 $\lambda_i^k=0$ 当且仅当 $\lambda_i=0$，故
+    \[
+        \ker T^k=\ker T.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 真. 仿射子集可写为 $v+U$. 两个仿射子集的交 $x+U_1$ 与 $y+U_2$ 若非空，取交中一点 $p$，则交集为 $p+(U_1\cap U_2)$.
+
+        \item 真. 取 $V$ 的一组基，使前若干个向量为 $U$ 的基，再取对补充基向量非零、对 $U$ 为零的对偶基泛函即可.
+
+        \item 真. 若 $U=\{0\}$，则所有泛函都在 $U$ 上为零，故 $U^0=V'$. 反之，若 $U$ 含非零向量 $u$，可取某个 $f\in V'$ 使 $f(u)\neq 0$，则 $f\notin U^0$.
+
+        \item 假. 由内积诱导的范数满足平行四边形恒等式，但 $\|(x,y)\|=\max\{|x|,|y|\}$ 不满足：
+        \[
+            \|(1,0)+(0,1)\|^2+\|(1,0)-(0,1)\|^2=2\neq 4.
+        \]
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage
