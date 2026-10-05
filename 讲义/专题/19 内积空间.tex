@@ -190,7 +190,7 @@ $V$ 上的内积是一个函数，它把 $ V $ 中元素的每个有序对 $(u, 
     \begin{align*}
         \lVert u + v \rVert^2 & = \langle u + v, u + v \rangle \\
                               & = \langle u, u \rangle + \langle u, v \rangle + \langle v, u \rangle + \langle v, v \rangle \\
-                              & = \lVert u \rVert^2 + \lVert v \rVert^2
+                              & = \lVert u \rVert^2 + \lVert v \rVert^2 \qedhere
     \end{align*}
 \end{proof}
 
@@ -275,7 +275,7 @@ $V$ 上的内积是一个函数，它把 $ V $ 中元素的每个有序对 $(u, 
                           & = (\lVert u \rVert + \lVert v \rVert)^2,
     \end{align*}
     因为 $\lVert u + v \rVert$ 和 $\lVert u \rVert + \lVert v \rVert$ 都是非负实数，两边开平方，即得：
-    \[\lVert u + v \rVert \le \lVert u \rVert + \lVert v \rVert.\]
+    \[\lVert u + v \rVert \le \lVert u \rVert + \lVert v \rVert. \qedhere\]
 \end{proof}
 
 其几何解释就是俗称的三角形两边之和小于第三边.
@@ -395,7 +395,7 @@ $V$ 上的内积是一个函数，它把 $ V $ 中元素的每个有序对 $(u, 
         \lVert u \rVert^2 = \sum_{i=1}^{m} a_i \overline{a_i} \langle e_i, e_i \rangle = \sum_{i=1}^{m} a_i \overline{a_i} \cdot 1 = \sum_{i=1}^{m} \lvert a_i \rvert^2,
     \]
     即
-    \[ \lVert a_1e_1 + \cdots + a_m e_m\rVert^2 = \lvert a_1 \rvert^2 + \cdots + \lvert a_m \rvert^2. \]
+    \[ \lVert a_1e_1 + \cdots + a_m e_m\rVert^2 = \lvert a_1 \rvert^2 + \cdots + \lvert a_m \rvert^2. \qedhere \]
 \end{proof}
 
 其本质可以看作勾股定理的推广，该定理也有一个重要推论：

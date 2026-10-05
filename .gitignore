@@ -3,11 +3,8 @@
 讲义/*.pdf
 习题参考答案/*.pdf
 
-build
-gh-actions-build
-讲义/LALU.tex
-讲义/LALU-ans-contents.tex
-习题参考答案/LALU-answers.tex
+build/
+docs/
 
 ## latexindent.pl backup files
 *.bak*

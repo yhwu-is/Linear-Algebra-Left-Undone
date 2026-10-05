@@ -158,7 +158,7 @@
         f(x)\in \mathbf{F}[x]$，证明：$g(x)$是$f^2(x)$的因式的充要条件是$g(x)$是$f(x)$的因式.
 \end{example}
 \begin{proof}
-    根据带余除法可知存在唯一的$q(x),r(x)(r(x)\neq 0)\in\mathbf{F}[x]$使得$f(x)=g(x)q(x)+r(x)$，且$\deg r<\deg g=1$，故$\deg r=0$，即$r(x)$是一个常数多项式，记为$c$，则$f^2(x)=g^2(x)q^2(x)+2cg(x)q(x)+c^2=(g(x)q^2(x)+2cq(x))g(x)+c^2$. 从而\[g(x) \mid f^2(x) \iff c^2=0 \iff c=0 \iff g(x) \mid f(x).\]
+    根据带余除法可知存在唯一的$q(x),r(x)(r(x)\neq 0)\in\mathbf{F}[x]$使得$f(x)=g(x)q(x)+r(x)$，且$\deg r<\deg g=1$，故$\deg r=0$，即$r(x)$是一个常数多项式，记为$c$，则$f^2(x)=g^2(x)q^2(x)+2cg(x)q(x)+c^2=(g(x)q^2(x)+2cq(x))g(x)+c^2$. 从而\[g(x) \mid f^2(x) \iff c^2=0 \iff c=0 \iff g(x) \mid f(x). \qedhere\]
 \end{proof}
 
 关于带余除法的具体计算方法此处不具体展开，因为与我们在小学中学习的整数竖式除法是基本一致的. 接下来我们利用已经定义的整除、因式、带余除法等概念进一步引进公因式、公倍式、最大公因式和最小公倍式等概念：
@@ -538,7 +538,7 @@
     证明非常直接，我们直接验证
     \begin{align*}
         p(\overline{\lambda}) & =a_n\overline{\lambda}^n+a_{n-1}\overline{\lambda}^{n-1}+\cdots+a_1\overline{\lambda}+a_0 \\
-                              & =\overline{a_n\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_1\lambda+a_0}=0.
+                              & =\overline{a_n\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_1\lambda+a_0}=0. \qedhere
     \end{align*}
 \end{proof}
 这一引理表明，实数域上的多项式的复根是成对出现的（实根的共轭是其本身，上面的定理不再具有意义）. 下面我们来研究实数域上不可约多项式的形式，事实上中学阶段我们都学习过这一点：

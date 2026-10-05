@@ -19,13 +19,28 @@
 
 % Declaration of options
 % ----------------------
-\DeclareBoolOption[false]{draft} % 是否打上未定稿标记
+\DeclareBoolOption[false]{draft} % 预留：尚无自定义未定稿标记；全局 draft 仍会影响支持它的宏包
 \DeclareBoolOption[true]{colors} % 是否让链接带颜色
-\DeclareBoolOption[false]{CJKthechapter} % 是否让天眉的各章编号使用中文数字
-\DeclareStringOption{coverpage} % 封面档档名, 默认为空
-\DeclareStringOption{fontsetup} % 字体设定档档名
-\DeclareStringOption{titlesetup} % 章节标题设定档档名
+\DeclareBoolOption[false]{CJKthechapter} % 预留：目前尚未实现中文章编号天眉
+\DeclareStringOption{coverpage} % 预留：目前尚未使用的封面档档名
+\DeclareStringOption{fontsetup} % 预留：目前尚未使用的字体设定档档名
+\DeclareStringOption{titlesetup} % 预留：目前尚未使用的章节标题设定档档名
 \DeclareStringOption[16k]{geometry} % 版面（默认 16k）
+
+% 将 10pt/11pt/12pt、oneside/twoside、openany/openright 等标准选项
+% 交由底层 ctexbook 处理。
+\newcommand*{\LALU@rejectpaperoption}{%
+    \ClassError{LALUbook}{Class option `\CurrentOption' conflicts with `geometry'}%
+        {Use `geometry=a4' for A4 paper. Supported layouts are `geometry=16k' and `geometry=a4'.}%
+}
+\DeclareVoidOption{a4paper}{\LALU@rejectpaperoption}
+\DeclareVoidOption{a5paper}{\LALU@rejectpaperoption}
+\DeclareVoidOption{b5paper}{\LALU@rejectpaperoption}
+\DeclareVoidOption{letterpaper}{\LALU@rejectpaperoption}
+\DeclareVoidOption{legalpaper}{\LALU@rejectpaperoption}
+\DeclareVoidOption{executivepaper}{\LALU@rejectpaperoption}
+\DeclareVoidOption{landscape}{\LALU@rejectpaperoption}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 
 \PassOptionsToPackage{dvipsnames}{xcolor} % 让 xcolor 带 dvipsnames 选项; tikz 随后会载入之.
 
@@ -43,12 +58,15 @@
 \RequirePackage{mathrsfs}
 \RequirePackage{amssymb}
 \RequirePackage{mathtools}
+\RequirePackage{amsthm}
 
 % 加入字串处理功能
 \RequirePackage{xstring}
+\RequirePackage{xspace}
 
 % 设置天眉所需
 \RequirePackage{fancyhdr}
+\RequirePackage{emptypage}
 
 \RequirePackage{graphicx}
 \RequirePackage{float}
@@ -56,7 +74,6 @@
 \RequirePackage{multicol}
 \RequirePackage{pdfpages}
 \RequirePackage{indentfirst}
-\RequirePackage{ntheorem}
 \RequirePackage{titlesec}
 \RequirePackage{mismath} % 包含 rank, span 等运算符
 \RequirePackage{zhnumber}
@@ -76,10 +93,6 @@
 % 首行缩进 2 字符
 \setlength{\parindent}{2em}
 
-% 定理字体
-\theoremheaderfont{\bfseries\heiti}
-\theorembodyfont{\fangsong}
-
 \usetikzlibrary{shapes.symbols}
 
 % 设置页面尺寸
@@ -93,21 +106,16 @@
         right = 20mm,
         headheight = 5ex,
         headsep = 5ex,
-        textwidth = 132mm,
-        textheight = 198mm,
-        twoside,
-        asymmetric, % 单双数页不分
         % bindingoffset = 18pt,
-    }}{}
+    }}{% 载入 A4 版面设置或报告不支持的值
+    \IfStrEq{\@LALU@geometry}{a4}{
+        \geometry{a4paper}
+    }{
+        \ClassError{LALUbook}{Unknown geometry `\@LALU@geometry'}%
+            {Supported geometry values are `16k' and `a4'.}
+    }}
 
-\IfStrEq{\@LALU@geometry}{a4}{% 载入 a4 版面设置
-    \geometry{
-        a4paper,
-        twoside,
-        asymmetric,
-    }}{}
-
-% 使空页恒空
+% 章首页不显示页眉；由 emptypage 保证双面排版所插入的空页恒空
 \fancypagestyle{plain}{
     \fancyhead{}
     \renewcommand{\headrulewidth}{0pt}
@@ -161,8 +169,30 @@
     #3,
 }
 
-\NewDocumentEnvironment{proof}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 证明}}{#1}{#2}\fangsong}{\hspace*{\fill}$\square$\end{tcblaluthmbox}}
-\NewDocumentEnvironment{solution}{O{}O{}}{\begin{tcblaluthmbox}{{\heiti 解}}{#1}{#2}\fangsong}{\end{tcblaluthmbox}}
+% amsthm 负责 QED 栈和 \qedhere，tcolorbox 只负责外观。
+\renewcommand*{\qedsymbol}{$\square$}
+\RenewDocumentEnvironment{proof}{O{}}{%
+    \pushQED{\qed}%
+    \begin{tcblaluthmbox}{{\heiti 证明}}{#1}{}%
+    \fangsong\ignorespaces
+}{%
+    \popQED
+    \end{tcblaluthmbox}%
+}
+\NewDocumentEnvironment{solution}{O{}}{%
+    \begin{tcblaluthmbox}{{\heiti 解}}{#1}{}%
+    \fangsong\ignorespaces
+}{%
+    \end{tcblaluthmbox}%
+}
+
+% 定理环境的名称、颜色、标签前缀与引用名称由同一处声明。
+\newcommand*{\LALU@DeclareBoxedTheorem}[4]{%
+    \newtcbtheorem[number within=chapter]{#1}{#2}{laluthmstyle={#3}}{#4}%
+    \expandafter\def\csname tcb@cnt@#1autorefname\endcsname{#2}%
+    \crefname{tcb@cnt@#1}{#2}{#2}%
+    \Crefname{tcb@cnt@#1}{#2}{#2}%
+}
 
 \NewDocumentCommand{\term}{m}{{\sffamily\heiti\bfseries{#1}}}
 
@@ -176,7 +206,15 @@
 \newcommand{\Set}{\mathsf{Set}}
 \newcommand{\FSet}{\mathsf{FSet}}
 
-\AtEndPreamble{
+% 文档入口在自身的宏包和定义之后显式调用此命令，以保持
+% hyperref/cleveref 的载入次序，而不依赖隐式的 begin-document 钩子。
+\newif\ifLALU@preamble@finalized
+\newcommand*{\LALUFinalizePreamble}{%
+  \ifLALU@preamble@finalized
+    \ClassError{LALUbook}{Preamble already finalized}%
+      {Call \string\LALUFinalizePreamble\space exactly once, after document-specific packages and definitions.}%
+  \else
+    \global\LALU@preamble@finalizedtrue
     \RequirePackage[Bjornstrup]{fncychap} % found on Internet
 
     % hyperref 与 cleveref 需要最后引入
@@ -184,12 +222,30 @@
     \RequirePackage{bookmark}
     \RequirePackage{cleveref}
 
-    \newtcbtheorem[number within=chapter]{definition}{定义}{laluthmstyle={red}}{def}
-    \newtcbtheorem[number within=chapter]{example}{例}{laluthmstyle={blue}}{ex}
-    \newtcbtheorem[number within=chapter]{lemma}{引理}{laluthmstyle={orange}}{lem}
-    \newtcbtheorem[number within=chapter]{theorem}{定理}{laluthmstyle={violet}}{thm}
-    \newtcbtheorem[number within=chapter]{corollary}{推论}{laluthmstyle={green}}{cor}
-    \newtcbtheorem[number within=chapter]{axiom}{公理}{laluthmstyle={olive}}{axm}
+    % hyperref 在链接组内组装引用文字，XeCJK 因此无法总是从
+    % 后继中文字符自动推断边界间距。xspace 在正文前补等价空格，
+    % 而在中英文标点和括号前保持紧贴。
+    \xspaceaddexceptions{%
+        ,.;:!?()[]%
+        ，。．、；：？！%
+        （）［］〔〕【】〖〗〘〙〚〛%
+        〈〉《》「」『』“”‘’%
+        …—·%
+    }
+    \NewCommandCopy{\LALU@hyperref@autoref}{\autoref}
+    \RenewDocumentCommand{\autoref}{s m}{%
+        \IfBooleanTF{##1}
+            {\LALU@hyperref@autoref*{##2}}
+            {\LALU@hyperref@autoref{##2}}%
+        \xspace
+    }
+
+    \LALU@DeclareBoxedTheorem{definition}{定义}{red}{def}
+    \LALU@DeclareBoxedTheorem{example}{例}{blue}{ex}
+    \LALU@DeclareBoxedTheorem{lemma}{引理}{orange}{lem}
+    \LALU@DeclareBoxedTheorem{theorem}{定理}{violet}{thm}
+    \LALU@DeclareBoxedTheorem{corollary}{推论}{green}{cor}
+    \LALU@DeclareBoxedTheorem{axiom}{公理}{olive}{axm}
 
     \hypersetup{
         unicode,
@@ -214,23 +270,14 @@
     \renewcommand{\equationautorefname}{式}
     \renewcommand{\chapterautorefname}{章}
     \renewcommand{\sectionautorefname}{节}
-    \makeatletter
-    \newcommand{\tcb@cnt@theoremautorefname}{定理}
-    \newcommand{\tcb@cnt@lemmaautorefname}{引理}
-    \newcommand{\tcb@cnt@corollaryautorefname}{推论}
-    \newcommand{\tcb@cnt@exampleautorefname}{例}
-    \newcommand{\tcb@cnt@definitionautorefname}{定义}
-    \newcommand{\tcb@cnt@axiomautorefname}{公理}
-    \makeatother
-
     % https://tex.stackexchange.com/a/2244/316373
-    \makeatletter
     \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
     \hskip -\arraycolsep
     \let\@ifnextchar\new@ifnextchar
-    \array{#1}}
-    \makeatother
+    \array{##1}}
 
-    \crefrangeformat{equation}{式~#3#1#4--#5#2#6}
-    \crefrangeformat{example}{例~#3#1#4--#5#2#6}
+    \crefrangeformat{equation}{式~##3##1##4--##5##2##6}
+    \crefrangeformat{example}{例~##3##1##4--##5##2##6}
+  \fi
 }
+\@onlypreamble\LALUFinalizePreamble

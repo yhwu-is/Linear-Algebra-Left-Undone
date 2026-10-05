@@ -1,7 +1,3 @@
-\makeatletter
-   \def\input@path{{..}} % 搜索上层目录的 LALUbook
-\makeatother
-
 \documentclass[
     % colors = false,
     geometry = 16k,
@@ -17,38 +13,327 @@
 \title{\heiti 浙江大学 2023--2024 学年 \\ 线性代数荣誉课辅学习题答案}
 \author{2023--2024 学年线性代数 I/II（H）辅学授课 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
 
-\AtEndPreamble{\hypersetup{
+% The main document publishes this generated manifest only after a successful
+% build.  Keeping the path overrideable makes out-of-tree builds possible.
+\providecommand*{\LALUAnswerManifestPath}{build/answers/LALU.manifest.tex}
+\providecommand*{\LALUAnswerManifestJob}{LALU}
+
+\newcounter{LALUanswerunit}
+
+\ExplSyntaxOn
+\msg_new:nnn { lalu-answer } { manifest-missing }
+  { Answer~manifest~'#1'~does~not~exist.~Build~the~main~document~first. }
+\msg_new:nnn { lalu-answer } { manifest-version }
+  { Unsupported~answer~manifest~schema~'#1'. }
+\msg_new:nnn { lalu-answer } { manifest-job }
+  { Answer~manifest~is~for~job~'#1',~not~'#2'. }
+\msg_new:nnn { lalu-answer } { manifest-order }
+  { Invalid~answer~manifest~event~order~near~'#1'. }
+\msg_new:nnn { lalu-answer } { manifest-status }
+  { Unsupported~answer~status~'#1'. }
+\msg_new:nnn { lalu-answer } { manifest-count }
+  { Answer~manifest~count~'#1'~is~#2;~expected~#3. }
+\msg_new:nnn { lalu-answer } { manifest-data }
+  { Invalid~answer~manifest~data~'#1'~near~'#2'. }
+
+\bool_new:N \g_lalu_answer_manifest_open_bool
+\bool_new:N \g_lalu_answer_manifest_ended_bool
+\bool_new:N \g_lalu_answer_first_unit_bool
+\bool_new:N \g_lalu_answer_unit_seen_bool
+\bool_new:N \g_lalu_answer_group_open_bool
+\tl_new:N \l_lalu_answer_reference_tl
+\tl_new:N \l_lalu_answer_anchor_tl
+\tl_new:N \l_lalu_answer_heading_tl
+\tl_new:N \l_lalu_answer_manifest_path_tl
+\tl_new:N \l_lalu_answer_group_id_tl
+\tl_new:N \l_lalu_answer_group_items_tl
+\int_new:N \g_lalu_answer_unit_int
+\int_new:N \g_lalu_answer_group_int
+\int_new:N \g_lalu_answer_item_int
+\int_new:N \g_lalu_answer_answered_int
+\int_new:N \g_lalu_answer_todo_int
+\int_new:N \g_lalu_answer_omitted_int
+\int_new:N \l_lalu_answer_group_number_int
+\int_new:N \l_lalu_answer_group_expected_int
+\int_new:N \l_lalu_answer_group_item_int
+\prop_new:N \g_lalu_answer_unit_id_prop
+\prop_new:N \g_lalu_answer_group_id_prop
+\prop_new:N \g_lalu_answer_item_id_prop
+\cs_generate_variant:Nn \file_if_exist:nTF { V }
+\cs_generate_variant:Nn \file_input:n { V }
+
+\cs_new:Npn \lalu_answer_greek:n #1
+  {
+    \ifcase #1 \or
+      \texorpdfstring{$\boldsymbol{\varepsilon}$}{ε}\or
+      \texorpdfstring{$\boldsymbol{\delta}$}{δ}\or
+      \texorpdfstring{$\boldsymbol{\lambda}$}{λ}\or
+      \texorpdfstring{$\boldsymbol{\mu}$}{μ}\or
+      \texorpdfstring{$\boldsymbol{\varphi}$}{φ}\or
+      \texorpdfstring{$\boldsymbol{\theta}$}{θ}\else
+      \msg_expandable_error:nnn { lalu-answer } { manifest-order }
+        { unfinished-slot-#1 }
+    \fi
+  }
+
+\cs_set:Npn \theLALUanswerunit { \tl_use:N \l_lalu_answer_reference_tl }
+\cs_if_exist:NTF \theHLALUanswerunit
+  { \cs_set:Npn \theHLALUanswerunit { \tl_use:N \l_lalu_answer_anchor_tl } }
+  { \cs_new:Npn \theHLALUanswerunit { \tl_use:N \l_lalu_answer_anchor_tl } }
+
+\cs_new_protected:Npn \lalu_answer_require_open:n #1
+  {
+    \bool_if:NF \g_lalu_answer_manifest_open_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } {#1} }
+    \bool_if:NT \g_lalu_answer_manifest_ended_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } {#1-after-end} }
+  }
+
+\cs_new_protected:Npn \lalu_answer_assert_count:nnn #1#2#3
+  {
+    \int_compare:nNnF {#2} = {#3}
+      { \msg_fatal:nnnnn { lalu-answer } { manifest-count } {#1}{#2}{#3} }
+  }
+
+\cs_new_protected:Npn \lalu_answer_claim_id:Nnn #1#2#3
+  {
+    \prop_if_in:NnTF #1 {#2}
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { duplicate-id } {#2} }
+      { \prop_gput:Nnn #1 {#2} {#3} }
+  }
+
+\cs_new_protected:Npn \LALUAnswerManifestBegin #1#2
+  {
+    \bool_if:NT \g_lalu_answer_manifest_open_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { duplicate-begin } }
+    \str_if_eq:nnF {#1} {2}
+      { \msg_fatal:nnn { lalu-answer } { manifest-version } {#1} }
+    \str_if_eq:eeF {#2} { \LALUAnswerManifestJob }
+      {
+        \msg_fatal:nnnn { lalu-answer } { manifest-job }
+          {#2} { \LALUAnswerManifestJob }
+      }
+    \bool_gset_true:N \g_lalu_answer_manifest_open_bool
+    \bool_gset_false:N \g_lalu_answer_manifest_ended_bool
+    \bool_gset_true:N \g_lalu_answer_first_unit_bool
+    \bool_gset_false:N \g_lalu_answer_unit_seen_bool
+    \bool_gset_false:N \g_lalu_answer_group_open_bool
+    \int_gzero:N \g_lalu_answer_unit_int
+    \int_gzero:N \g_lalu_answer_group_int
+    \int_gzero:N \g_lalu_answer_item_int
+    \int_gzero:N \g_lalu_answer_answered_int
+    \int_gzero:N \g_lalu_answer_todo_int
+    \int_gzero:N \g_lalu_answer_omitted_int
+    \prop_gclear:N \g_lalu_answer_unit_id_prop
+    \prop_gclear:N \g_lalu_answer_group_id_prop
+    \prop_gclear:N \g_lalu_answer_item_id_prop
+    \group_begin:
+    % The legacy answer PDF deliberately displayed chapter-based counters as
+    % ``.1'', ``.2'', ... in this generated section.  Preserve that visible
+    % form, while giving Hyperref a unique answer-unit parent.
+    \cs_set:Npn \thechapter { }
+    \cs_set:Npn \theHchapter { \theHLALUanswerunit }
+  }
+
+\cs_new_protected:Npn \LALUAnswerUnit #1#2#3#4#5#6
+  {
+    \lalu_answer_require_open:n { unit }
+    \bool_if:NT \g_lalu_answer_group_open_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { unit-inside-group } }
+    \int_gincr:N \g_lalu_answer_unit_int
+    \str_if_eq:eeF
+      {#5} { answer-unit:\int_use:N \g_lalu_answer_unit_int }
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { unit-id } {#5} }
+    \lalu_answer_claim_id:Nnn \g_lalu_answer_unit_id_prop {#5} { unit }
+    \bool_gset_true:N \g_lalu_answer_unit_seen_bool
+    \bool_if:NTF \g_lalu_answer_first_unit_bool
+      { \bool_gset_false:N \g_lalu_answer_first_unit_bool }
+      { \clearpage }
+
+    \str_case:nnF {#1}
+      {
+        { normal }
+          {
+            \int_compare:nNnF {#2} > {0}
+              { \msg_fatal:nnnn { lalu-answer } { manifest-data } { normal-base } {#2} }
+            \int_compare:nNnF {#3} = {0}
+              { \msg_fatal:nnnn { lalu-answer } { manifest-data } { normal-serial } {#3} }
+            \int_compare:nNnF {#4} = {0}
+              { \msg_fatal:nnnn { lalu-answer } { manifest-data } { normal-slot } {#4} }
+            \tl_set:Nn \l_lalu_answer_reference_tl {#2}
+            \tl_set:Nn \l_lalu_answer_anchor_tl { answer.#5 }
+            \tl_set:Nn \l_lalu_answer_heading_tl { 第~#2~讲 }
+          }
+        { unfinished }
+          {
+            \int_compare:nNnF {#2} > {0}
+              { \msg_fatal:nnnn { lalu-answer } { manifest-data } { unfinished-base } {#2} }
+            \int_compare:nNnF {#3} > {0}
+              { \msg_fatal:nnnn { lalu-answer } { manifest-data } { unfinished-serial } {#3} }
+            \int_compare:nNnF {#4} > {0}
+              { \msg_fatal:nnnn { lalu-answer } { manifest-data } { unfinished-slot } {#4} }
+            \int_compare:nNnF {#4} < {7}
+              { \msg_fatal:nnnn { lalu-answer } { manifest-data } { unfinished-slot } {#4} }
+            \tl_set:Nn \l_lalu_answer_reference_tl
+              { #2\lalu_answer_greek:n {#4} }
+            \tl_set:Nn \l_lalu_answer_anchor_tl { answer.#5 }
+            \tl_set:Nn \l_lalu_answer_heading_tl
+              { 未竟专题\zhnumber{#3} }
+          }
+      }
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { unit-kind-#1 } }
+
+    \refstepcounter{LALUanswerunit}
+    \setcounter{equation}{0}
+    \clist_map_inline:nn
+      { tcb@cnt@definition, tcb@cnt@example, tcb@cnt@lemma,
+        tcb@cnt@theorem, tcb@cnt@corollary, tcb@cnt@axiom }
+      { \cs_if_exist:cT { c@##1 } { \setcounter{##1}{0} } }
+
+    % Write the TOC entry while the dedicated answer-unit href is current;
+    % \section* may create its own internal anchor afterwards.
+    \addcontentsline{toc}{section}
+      { \protect\numberline{\tl_use:N \l_lalu_answer_heading_tl}#6 }
+    \section*{\tl_use:N \l_lalu_answer_heading_tl \quad #6}
+    \markright{\tl_use:N \l_lalu_answer_heading_tl \quad #6}
+  }
+
+\cs_new_protected:Npn \LALUAnswerGroupBegin #1#2#3
+  {
+    \lalu_answer_require_open:n { group-begin }
+    \bool_if:NF \g_lalu_answer_unit_seen_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { group-before-unit } }
+    \bool_if:NT \g_lalu_answer_group_open_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { nested-group } }
+    \int_gincr:N \g_lalu_answer_group_int
+    \str_if_eq:eeF
+      {#1} { answer-group:\int_use:N \g_lalu_answer_group_int }
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { group-id } {#1} }
+    \lalu_answer_claim_id:Nnn \g_lalu_answer_group_id_prop {#1} { group }
+    \int_compare:nNnF {#2} > {0}
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { group-number } {#2} }
+    \int_compare:nNnF {#3} > {0}
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { group-size } {#3} }
+    \tl_set:Nn \l_lalu_answer_group_id_tl {#1}
+    \int_set:Nn \l_lalu_answer_group_number_int {#2}
+    \int_set:Nn \l_lalu_answer_group_expected_int {#3}
+    \int_zero:N \l_lalu_answer_group_item_int
+    \tl_clear:N \l_lalu_answer_group_items_tl
+    \bool_gset_true:N \g_lalu_answer_group_open_bool
+  }
+
+\cs_new_protected:Npn \LALUAnswerItem #1#2#3#4
+  {
+    \lalu_answer_require_open:n { item }
+    \bool_if:NF \g_lalu_answer_group_open_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { item-outside-group } }
+    \int_gincr:N \g_lalu_answer_item_int
+    \int_incr:N \l_lalu_answer_group_item_int
+    \str_if_eq:eeF
+      {#1} { answer-item:\int_use:N \g_lalu_answer_item_int }
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { item-id } {#1} }
+    \lalu_answer_claim_id:Nnn \g_lalu_answer_item_id_prop {#1} { item }
+    \int_compare:nNnF {#2} > {0}
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { item-number } {#2} }
+    \str_case:nnF {#3}
+      {
+        { answered }
+          {
+            \int_gincr:N \g_lalu_answer_answered_int
+            \tl_put_right:Nn \l_lalu_answer_group_items_tl
+              { \item[#2.] #4 }
+          }
+        { todo }
+          {
+            \int_gincr:N \g_lalu_answer_todo_int
+            \tl_put_right:Nn \l_lalu_answer_group_items_tl
+              { \item[#2.] \emph{暂无答案} }
+          }
+        % The legacy generator placed consecutive empty \item tokens next to
+        % one another. Accumulating raw item tokens and expanding them only
+        % at GroupEnd preserves that (slightly odd) visible layout exactly.
+        { omitted }
+          {
+            \int_gincr:N \g_lalu_answer_omitted_int
+            \tl_put_right:Nn \l_lalu_answer_group_items_tl
+              { \item[#2.] #4 }
+          }
+      }
+      { \msg_fatal:nnn { lalu-answer } { manifest-status } {#3} }
+  }
+
+\cs_new_protected:Npn \LALUAnswerGroupEnd #1#2
+  {
+    \lalu_answer_require_open:n { group-end }
+    \bool_if:NF \g_lalu_answer_group_open_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { group-end-without-begin } }
+    \str_if_eq:eeF {#1} { \tl_use:N \l_lalu_answer_group_id_tl }
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { group-end-id } {#1} }
+    \lalu_answer_assert_count:nnn
+      { group-declared } {#2} { \l_lalu_answer_group_expected_int }
+    \lalu_answer_assert_count:nnn
+      { group-items } { \l_lalu_answer_group_item_int }
+      { \l_lalu_answer_group_expected_int }
+    \subsection*{\int_to_Alph:n { \l_lalu_answer_group_number_int }组}
+    \begin{enumerate}
+      \tl_use:N \l_lalu_answer_group_items_tl
+    \end{enumerate}
+    \tl_clear:N \l_lalu_answer_group_items_tl
+    \bool_gset_false:N \g_lalu_answer_group_open_bool
+  }
+
+\cs_new_protected:Npn \LALUAnswerManifestEnd #1#2#3#4#5#6#7
+  {
+    \lalu_answer_require_open:n { end }
+    \bool_if:NT \g_lalu_answer_group_open_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { end-inside-group } }
+    \lalu_answer_assert_count:nnn
+      { units } { \g_lalu_answer_unit_int } {#1}
+    \int_compare:nNnT {#3} > {#2}
+      { \msg_fatal:nnnn { lalu-answer } { manifest-data } { group-totals } {#3/#2} }
+    \lalu_answer_assert_count:nnn
+      { emitted-groups } { \g_lalu_answer_group_int } {#3}
+    \lalu_answer_assert_count:nnn
+      { items } { \g_lalu_answer_item_int } {#4}
+    \lalu_answer_assert_count:nnn
+      { answered } { \g_lalu_answer_answered_int } {#5}
+    \lalu_answer_assert_count:nnn
+      { todo } { \g_lalu_answer_todo_int } {#6}
+    \lalu_answer_assert_count:nnn
+      { omitted } { \g_lalu_answer_omitted_int } {#7}
+    \lalu_answer_assert_count:nnn
+      { item-status-sum } {#4} { \int_eval:n { #5 + #6 + #7 } }
+    \par
+    \group_end:
+    \bool_gset_true:N \g_lalu_answer_manifest_ended_bool
+    \iow_term:x
+      {
+        LALU~answers:~units~#1,~groups~#3/#2,~
+        answered~#5,~todo~#6,~omitted~#7.
+      }
+  }
+
+\cs_new_protected:Npn \lalu_answer_input_manifest:
+  {
+    \tl_set:Ne \l_lalu_answer_manifest_path_tl
+      { \LALUAnswerManifestPath }
+    \file_if_exist:VTF \l_lalu_answer_manifest_path_tl
+      { \file_input:V \l_lalu_answer_manifest_path_tl }
+      {
+        \msg_fatal:nnn { lalu-answer } { manifest-missing }
+          { \LALUAnswerManifestPath }
+      }
+    \bool_if:NF \g_lalu_answer_manifest_ended_bool
+      { \msg_fatal:nnn { lalu-answer } { manifest-order } { missing-end } }
+  }
+\cs_new_protected:Npn \LALUInputAnswerManifest
+  { \lalu_answer_input_manifest: }
+\ExplSyntaxOff
+
+\LALUFinalizePreamble
+\hypersetup{
     pdfauthor = {吴一航},
     pdftitle = {线性代数荣誉课辅学习题答案},
-}}
-
-\newcounter{LUsection}
-
-\makeatletter
-\newcommand*{\LUgroupsancheck}{%
-\expandafter\@ifundefined{@exist@LUsection@\arabic{section}}%
-    {}
-    {\endgroup}
-}
-\let\@std@section\section
-\renewcommand*{\section}{%
-    \LUgroupsancheck%
-    \@std@section
-}
-\makeatother
-
-\NewDocumentCommand{\LUsection}{m}{%
-\LUgroupsancheck
-\begingroup
-\addtocounter{section}{-1}
-\refstepcounter{LUsection}
-\renewcommand*{\thesection}{未竟专题\zhnumber{\arabic{LUsection}}}
-\renewcommand*{\theHsection}{LU.\arabic{LUsection}}
-\ctexset{
-    section={format={\centering\Huge\bfseries},name={未竟专题,},number={\zhnumber{\arabic{LUsection}}}},
-}
-\csname @std@section\endcsname{#1}
-\expandafter\xdef\csname @exist@LUsection@\arabic{section}\endcsname{\null}
 }
 
 \begin{document}
@@ -70,19 +355,14 @@
 
 \chapter{《线性代数：未竟之美》习题参考答案}
 \titleformat{\subsection}[block]{\centering\heiti\bfseries}{}{1em}{}
-\input{LALU-ans-contents.tex}
-
-\LUgroupsancheck
-
-\makeatletter
-\let\section\@std@section
-\let\@std@section\relax
-\makeatother
+% Read author tokens with ordinary LaTeX catcodes.  In particular, spaces in
+% label keys and prose must not be ignored as they would be under expl3 syntax.
+\LALUInputAnswerManifest
 
 \ctexset{
     section={format={\raggedright\Large\bfseries},name={,},number={}},
 }
-\renewcommand*{\thesection}{} % FIXME: this breaks equation numbering
+\renewcommand*{\thesection}{}
 
 % 嵌套 enumerate 环境的 label
 \setlist[enumerate,1]{label=\chinese*、}

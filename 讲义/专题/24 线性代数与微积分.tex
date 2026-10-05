@@ -335,7 +335,7 @@
     由于欧氏空间的紧子集都是有界闭的，所以我们知道 $Jf$ 在 $C$ 上一致连续，所以任给 $\varepsilon>0$，存在 $\delta>0$ 使得只要 $u',u\in C$ 且 $\Vert u'-u\Vert < \delta$，就有\[\Vert Jf(u') - Jf(u)\Vert < \varepsilon.\]
     暂时固定 $u\in C$，当 $x\in D$ 时，记 $F(x) = f(x) - f(u) - J(u)(x - u)$，则 $JF(x) = Jf(x) - Jf(u)$，当 $v\in C$ 时，使用拟微分中值定理，有
     \[\Vert F(v)\Vert = \Vert F(v) - F(u)\Vert \leqslant \Vert JF(\xi)\Vert\cdot \Vert v - u\Vert = \Vert Jf(\xi) - Jf(u)\Vert\cdot \Vert v - u\Vert.\]
-    其中 $\xi = \theta u + (1-\theta)v$，$\theta\in (0, 1)$，由于 $Jf$ 在 $C$ 上一致连续，所以只要 $\Vert v - u\Vert < \delta$，就有 $\Vert \xi - u\Vert = \theta \Vert v - u\Vert < \delta$，所以\[\Vert F(v)\Vert = \Vert f(v) - f(u) - Jf(u)(v - u)\Vert \leqslant \varepsilon\Vert v - u\Vert.\]
+    其中 $\xi = \theta u + (1-\theta)v$，$\theta\in (0, 1)$，由于 $Jf$ 在 $C$ 上一致连续，所以只要 $\Vert v - u\Vert < \delta$，就有 $\Vert \xi - u\Vert = \theta \Vert v - u\Vert < \delta$，所以\[\Vert F(v)\Vert = \Vert f(v) - f(u) - Jf(u)(v - u)\Vert \leqslant \varepsilon\Vert v - u\Vert. \qedhere\]
 \end{proof}
 
 既然我们可以对一个函数的反函数求微分，回想起对于一元函数，如果它可微并且导数处处非零，那么该函数存在反函数并且反函数可微. 那么一个自然的问题就是：在什么样的条件下，多元向量值函数存在反函数并且反函数可微呢？这就是\term{反函数定理}. 在考虑反函数定理之前，我们先看一个小小的比喻.

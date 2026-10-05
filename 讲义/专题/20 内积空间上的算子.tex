@@ -52,7 +52,7 @@
 \end{theorem}
 
 \begin{proof}
-    \begin{itemize}
+    \begin{itemize} % FIXME: horizontal overflow
         \item[\ref*{item:20:保积同构条件:1}$\implies$\ref*{item:20:保积同构条件:2}] 由内积的保持可知范数的保持，从而对于任意 $v\in V$，$ Sv=\vec{0} \iff \|Sv\|=\|v\|=\vec{0} \iff v=\vec{0}$，所以 $ S $ 是单射. 而 $ V $ 和 $ U $ 维数相同，进而是双射.
 
         \item[\ref*{item:20:保积同构条件:2}$\implies$\ref*{item:20:保积同构条件:3}] 设 $ e_1, \ldots , e_n $ 是 $ V $ 的任意一组标准正交基，则
@@ -1239,7 +1239,7 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
 % 从这里我们进一步加深类比.
 
 \begin{example}{镜像变换}{镜像变换}
-    镜像变换(或镜面反射)--$\mathbf{R}^2$中每个向量关于过原点的直线$L$(看作镜面)相对称的变换 $\varphi$，即
+    镜像变换（或镜面反射）--$\mathbf{R}^2$中每个向量关于过原点的直线$L$（看作镜面）相对称的变换 $\varphi$，即
         \[
         \varphi: \forall \alpha = \vec{OA} \in \mathbf{R}^2,\\
         \varphi(\alpha) = \alpha'= \vec{OB}
@@ -1271,7 +1271,7 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
 \end{example}
 
 \begin{proof}
-    事实上，设直线 $L$ 的某个方向的单位向量为$\omega$,则$\vec{OC}=(\alpha,\omega)\omega$,其中$(\alpha,\omega)$为向量$\alpha$和$\omega$的内积，对于刚接触内积的读者来说，这可能并不是这么显然，但是稍加思考，我们发现这是很自然的，因为$\vec{OC}$是$\vec{OA}$在$\omega$方向上的投影，而求一个向量在另一个向量上的投影，我们高中时已经见了无数遍了,不妨设$\vec{OA}$与$\omega$的夹角为$\theta$，则$\vec{OC}=\vert\alpha \vert cos\theta\omega$，又
+    事实上，设直线 $L$ 的某个方向的单位向量为$\omega$,则$\vec{OC}=(\alpha,\omega)\omega$,其中$(\alpha,\omega)$为向量$\alpha$和$\omega$的内积，对于刚接触内积的读者来说，这可能并不是这么显然，但是稍加思考，我们发现这是很自然的，因为$\vec{OC}$是$\vec{OA}$在$\omega$方向上的投影，而求一个向量在另一个向量上的投影，我们高中时已经见了无数遍了,不妨设$\vec{OA}$与$\omega$的夹角为$\theta$，则$\vec{OC}=\vert\alpha \vert \cos\theta\omega$，又
     \[
         \vert\alpha \vert\cos\theta=\vert\alpha \vert\dfrac{\alpha\cdot\omega}{\vert \alpha\vert\cdot\vert\omega\vert}=\dfrac{(\alpha,\omega)}{\vert\omega\vert}.
     \]
@@ -1898,7 +1898,7 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
     \]
     因而 $\lVert T \rVert \geqslant s_1$. 综上
     \[
-        \lVert T \rVert = s_1.
+        \lVert T \rVert = s_1. \qedhere
     \]
 \end{proof}
 

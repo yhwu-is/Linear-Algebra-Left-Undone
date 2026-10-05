@@ -1,0 +1,922 @@
+\documentclass[
+    % colors = false,
+    geometry = 16k,
+]{LALUbook}
+
+\usepackage{mathdots}
+\usepackage{booktabs} % Excel 导出的大表格
+\usepackage{rotating}
+\usepackage{extarrows}
+\usepackage{blkarray}
+\usepackage{cases}
+
+\usepackage{float}
+\usepackage{diagbox}
+\usepackage{caption}
+
+\usepackage{pgfplots}
+\usetikzlibrary{cd, arrows, arrows.meta, calc, intersections, decorations.pathreplacing, patterns, decorations.markings,angles,quotes, graphs, positioning, shapes.geometric}
+\pgfplotsset{compat=newest}
+
+\usepackage[xindy, noautomatic, quiet]{imakeidx}
+\makeindex[
+    columns=1,
+    program=truexindy,
+    intoc=true,
+    options=-M texindy -I xelatex -C utf8,
+    title={名词索引}
+] % 名词索引
+\makeindex[
+    columns=3,
+    program=truexindy,
+    intoc=true,
+    options=-M numeric-sort -M latex -M latex-loc-fmts -M makeindex -I xelatex -C utf8,
+    name=sym,
+    title={符号索引}
+] % 符号索引
+
+% 标题格式
+% \chapter   正常专题
+% \LUchapter 未竟专题
+
+% 结构 chapter 只记录所有有编号顶层单元的次序；各类可见编号独立维护。
+\newcounter{LALUnormalchapter}
+\newcounter{LALUunfinishedchapter}
+\newcounter{LALUunfinishedslot}
+\newcounter{LALUappendixchapter}
+\newcounter{LALUunnumberedunit}
+
+\makeatletter
+\ExplSyntaxOn
+\tl_new:N \g_lalu_chapter_phase_tl
+\tl_new:N \g_lalu_chapter_kind_tl
+\tl_new:N \g_lalu_chapter_title_tl
+\tl_new:N \g_lalu_chapter_short_title_tl
+\tl_new:N \g_lalu_chapter_unit_id_tl
+\tl_gset:Nn \g_lalu_chapter_phase_tl { initial }
+\tl_gset:Nn \g_lalu_chapter_kind_tl { unnumbered }
+
+% 正文字形和 PDF 字符串字形在这一张表中同步维护。
+\cs_new:Npn \lalu_chapter_greek:n #1
+  {
+    \int_case:nnF {#1}
+      {
+        {1}{\texorpdfstring{$\boldsymbol{\varepsilon}$}{ε}}
+        {2}{\texorpdfstring{$\boldsymbol{\delta}$}{δ}}
+        {3}{\texorpdfstring{$\boldsymbol{\lambda}$}{λ}}
+        {4}{\texorpdfstring{$\boldsymbol{\mu}$}{μ}}
+        {5}{\texorpdfstring{$\boldsymbol{\varphi}$}{φ}}
+        {6}{\texorpdfstring{$\boldsymbol{\theta}$}{θ}}
+      }
+      { }
+  }
+
+% 供答案生成器等 supporting structure 读取的语义接口。
+\NewExpandableDocumentCommand \LALUCurrentUnitKind { }
+  { \tl_use:N \g_lalu_chapter_kind_tl }
+\NewExpandableDocumentCommand \LALUNormalChapterNumber { }
+  { \int_to_arabic:n { \value{LALUnormalchapter} } }
+\NewExpandableDocumentCommand \LALUCurrentNormalBase { }
+  { \int_to_arabic:n { \value{LALUnormalchapter} } }
+\NewExpandableDocumentCommand \LALUCurrentUnfinishedSerial { }
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_kind_tl { unfinished }
+      { \int_to_arabic:n { \value{LALUunfinishedchapter} } }
+      { 0 }
+  }
+\NewExpandableDocumentCommand \LALUCurrentUnfinishedSlot { }
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_kind_tl { unfinished }
+      { \int_to_arabic:n { \value{LALUunfinishedslot} } }
+      { 0 }
+  }
+\NewExpandableDocumentCommand \LALUCurrentReferenceNumber { }
+  {
+    \str_case:VnF \g_lalu_chapter_kind_tl
+      {
+        { normal }
+          { \int_to_arabic:n { \value{LALUnormalchapter} } }
+        { unfinished }
+          {
+            \int_to_arabic:n { \value{LALUnormalchapter} }
+            \lalu_chapter_greek:n { \value{LALUunfinishedslot} }
+          }
+        { appendix }
+          { \int_to_Alph:n { \value{LALUappendixchapter} } }
+      }
+      { }
+  }
+\NewExpandableDocumentCommand \LALUCurrentUnitTitle { }
+  { \tl_use:N \g_lalu_chapter_title_tl }
+\cs_new_protected:Npn \LALUGetCurrentUnitTitle:N #1
+  { \tl_set:NV #1 \g_lalu_chapter_title_tl }
+\NewExpandableDocumentCommand \LALUCurrentUnitID { }
+  { \tl_use:N \g_lalu_chapter_unit_id_tl }
+\NewExpandableDocumentCommand \LALUIfCurrentAnswerUnitTF { m m }
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_kind_tl { normal }
+      {#1}
+      {
+        \str_if_eq:VnTF \g_lalu_chapter_kind_tl { unfinished }
+          {#1}
+          {#2}
+      }
+  }
+
+\cs_new:Npn \lalu_chapter_anchor_number:
+  {
+    \str_case:VnF \g_lalu_chapter_kind_tl
+      {
+        { normal }
+          { \int_to_arabic:n { \value{LALUnormalchapter} } }
+        { unfinished }
+          { LU.\int_to_arabic:n { \value{LALUunfinishedchapter} } }
+        { appendix }
+          { APP.\int_to_Alph:n { \value{LALUappendixchapter} } }
+        { unnumbered }
+          { UNNUMBERED.\int_to_arabic:n { \value{LALUunnumberedunit} } }
+      }
+      { UNNUMBERED.0 }
+  }
+
+\cs_new_protected:Npn \lalu_chapter_install_number_commands:
+  {
+    \cs_gset:Npn \thechapter { \LALUCurrentReferenceNumber }
+    \cs_gset:Npn \theHchapter { \lalu_chapter_anchor_number: }
+    % CTeX makes \p@chapter discard \thechapter in favour of the Chinese
+    % title number.  Current LaTeX/cleveref recomputes label data from this
+    % prefix inside every \label, so restore the standard empty prefix and
+    % keep the semantic reference number supplied by \thechapter.
+    \cs_gset:Npn \p@chapter { }
+  }
+
+% cleveref 自身会在 \appendix 中切换类型，但新 LaTeX 内核的
+% first-aid label hook 会从 counter alias 重建数据。在阶段切换时同步
+% alias，避免将附录章误记为 chapter。
+\cs_new_protected:Npn \lalu_chapter_set_main_cref_aliases:
+  {
+    \cs_if_exist:NT \crefalias
+      {
+        \crefalias{chapter}{chapter}
+        \crefalias{section}{section}
+        \crefalias{subsection}{subsection}
+        \crefalias{subsubsection}{subsubsection}
+      }
+  }
+\cs_new_protected:Npn \lalu_chapter_set_appendix_cref_aliases:
+  {
+    \cs_if_exist:NT \crefalias
+      {
+        \crefalias{chapter}{appendix}
+        \crefalias{section}{subappendix}
+        \crefalias{subsection}{subsubappendix}
+        \crefalias{subsubsection}{subsubsubappendix}
+      }
+  }
+
+\cs_new_protected:Npn \lalu_chapter_apply_normal_style:
+  {
+    \ctexset
+      {
+        chapter =
+          {
+            format = { \centering \Huge \bfseries },
+            name = { 第,讲 },
+            number = { \arabic{LALUnormalchapter} }
+          }
+      }
+  }
+\cs_new_protected:Npn \lalu_chapter_apply_unfinished_style:
+  {
+    \ctexset
+      {
+        chapter =
+          {
+            format = { \centering \Huge \bfseries },
+            name = { 未竟专题, },
+            number = { \zhnumber{\arabic{LALUunfinishedchapter}} }
+          }
+      }
+  }
+\cs_new_protected:Npn \lalu_chapter_apply_appendix_style:
+  {
+    \ctexset
+      {
+        chapter =
+          {
+            format = { \centering \Huge \bfseries },
+            name = { 附录, },
+            number = { \Alph{LALUappendixchapter} }
+          }
+      }
+  }
+
+\cs_new_protected:Npn \lalu_chapter_clear_current_unit:
+  {
+    \tl_gset:Nn \g_lalu_chapter_kind_tl { unnumbered }
+    \tl_gclear:N \g_lalu_chapter_title_tl
+    \tl_gclear:N \g_lalu_chapter_short_title_tl
+    \tl_gclear:N \g_lalu_chapter_unit_id_tl
+  }
+\cs_new_protected:Npn \lalu_chapter_set_titles:nn #1#2
+  {
+    \tl_gset:Nn \g_lalu_chapter_title_tl {#2}
+    \tl_if_novalue:nTF {#1}
+      { \tl_gset:Nn \g_lalu_chapter_short_title_tl {#2} }
+      { \tl_gset:Nn \g_lalu_chapter_short_title_tl {#1} }
+  }
+\cs_new_protected:Npn \lalu_chapter_set_normal:nn #1#2
+  {
+    \stepcounter{LALUnormalchapter}
+    \setcounter{LALUunfinishedslot}{0}
+    \tl_gset:Nn \g_lalu_chapter_kind_tl { normal }
+    \tl_gset:Nx \g_lalu_chapter_unit_id_tl
+      { normal:\int_to_arabic:n { \value{LALUnormalchapter} } }
+    \lalu_chapter_set_titles:nn {#1}{#2}
+    \lalu_chapter_apply_normal_style:
+  }
+\cs_new_protected:Npn \lalu_chapter_set_unfinished:nn #1#2
+  {
+    \stepcounter{LALUunfinishedchapter}
+    \stepcounter{LALUunfinishedslot}
+    \tl_gset:Nn \g_lalu_chapter_kind_tl { unfinished }
+    \tl_gset:Nx \g_lalu_chapter_unit_id_tl
+      { lu:\int_to_arabic:n { \value{LALUunfinishedchapter} } }
+    \lalu_chapter_set_titles:nn {#1}{#2}
+    \lalu_chapter_apply_unfinished_style:
+  }
+\cs_new_protected:Npn \lalu_chapter_set_appendix:nn #1#2
+  {
+    \stepcounter{LALUappendixchapter}
+    \tl_gset:Nn \g_lalu_chapter_kind_tl { appendix }
+    \tl_gset:Nx \g_lalu_chapter_unit_id_tl
+      { appendix:\int_to_Alph:n { \value{LALUappendixchapter} } }
+    \lalu_chapter_set_titles:nn {#1}{#2}
+    \lalu_chapter_apply_appendix_style:
+  }
+\cs_new_protected:Npn \lalu_chapter_set_unnumbered:nn #1#2
+  {
+    \stepcounter{LALUunnumberedunit}
+    \lalu_chapter_clear_current_unit:
+    \lalu_chapter_set_titles:nn {#1}{#2}
+  }
+
+% 与 CTeX 的标准章编号判定保持一致。
+\cs_new_protected:Npn \lalu_chapter_if_numbered:TF #1#2
+  {
+    \if@mainmatter
+      \ifnum \c@secnumdepth > \m@ne
+        \ifodd \CTEX@chapter@numbering
+          #1
+        \else
+          #2
+        \fi
+      \else
+        #2
+      \fi
+    \else
+      #2
+    \fi
+  }
+\cs_new_protected:Npn \lalu_chapter_call_standard:nn #1#2
+  {
+    \tl_if_novalue:nTF {#1}
+      { \LALU@standardchapter{#2} }
+      { \LALU@standardchapter[#1]{#2} }
+  }
+
+% CTeX 会把 chapter 的 label 值设成标题中文编号；这里恢复数字引用语义。
+\cs_new_protected:Npn \lalu_chapter_restore_current_label:
+  {
+    \protected@xdef \@currentlabel
+      { \LALUCurrentReferenceNumber }
+    \cs_if_exist:NT \cref@constructprefix
+      {
+        \cref@constructprefix{chapter}{\cref@result}
+        \str_if_eq:VnTF \g_lalu_chapter_kind_tl { appendix }
+          { \def\lalu@creftype{appendix} }
+          { \def\lalu@creftype{chapter} }
+        \protected@xdef \cref@currentlabel
+          {
+            [\lalu@creftype][\arabic{chapter}][\cref@result]
+            \LALUCurrentReferenceNumber
+          }
+      }
+  }
+\cs_new_protected:Npn \lalu_chapter_clear_current_label:
+  {
+    \global\let\@currentlabel\@empty
+    % LaTeX 2025+ label hooks use this counter name to reconstruct package
+    % metadata.  An unnumbered chapter must not inherit the previous chapter.
+    \global\let\@currentcounter\@empty
+    \cs_if_exist:NT \cref@currentlabel
+      { \global\let\cref@currentlabel\@empty }
+  }
+
+\cs_new_protected:Npn \lalu_chapter_numbered:nn #1#2
+  {
+    \str_case:VnF \g_lalu_chapter_phase_tl
+      {
+        { initial }
+          {
+            \tl_gset:Nn \g_lalu_chapter_phase_tl { mainmatter }
+            \lalu_chapter_set_normal:nn {#1}{#2}
+          }
+        { mainmatter }
+          { \lalu_chapter_set_normal:nn {#1}{#2} }
+        { appendix }
+          { \lalu_chapter_set_appendix:nn {#1}{#2} }
+      }
+      {
+        \lalu_chapter_set_unnumbered:nn {#1}{#2}
+      }
+    \lalu_chapter_call_standard:nn {#1}{#2}
+    \str_if_eq:VnTF \g_lalu_chapter_kind_tl { unnumbered }
+      { \lalu_chapter_clear_current_label: }
+      { \lalu_chapter_restore_current_label: }
+  }
+\cs_new_protected:Npn \lalu_chapter_unstarred:nn #1#2
+  {
+    \lalu_chapter_if_numbered:TF
+      { \lalu_chapter_numbered:nn {#1}{#2} }
+      {
+        \lalu_chapter_set_unnumbered:nn {#1}{#2}
+        \lalu_chapter_call_standard:nn {#1}{#2}
+        \lalu_chapter_clear_current_label:
+      }
+  }
+\cs_new_protected:Npn \lalu_chapter_starred:n #1
+  {
+    \lalu_chapter_set_unnumbered:nn { \NoValue }{#1}
+    \LALU@standardchapter*{#1}
+    \lalu_chapter_clear_current_label:
+  }
+
+\cs_new_protected:Npn \lalu_unfinished_chapter:nn #1#2
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_phase_tl { mainmatter }
+      {
+        \int_compare:nNnTF { \value{LALUnormalchapter} } > { 0 }
+          {
+            \lalu_chapter_if_numbered:TF
+              {
+                \int_compare:nNnTF { \value{LALUunfinishedslot} } < { 6 }
+                  {
+                    \lalu_chapter_set_unfinished:nn {#1}{#2}
+                    \lalu_chapter_call_standard:nn {#1}{#2}
+                    \lalu_chapter_restore_current_label:
+                  }
+                  {
+                    \PackageError{LALU}
+                      {Too~many~unfinished~topics~after~chapter~\LALUNormalChapterNumber}
+                      {Only~six~Greek~slots~are~configured.~Extend~the~central~mapping~before~adding~another~topic.}
+                  }
+              }
+              {
+                \PackageError{LALU}
+                  {An~unfinished~topic~cannot~be~unnumbered}
+                  {Restore~chapter~numbering~before~using~\string\LUchapter.}
+              }
+          }
+          {
+            \PackageError{LALU}
+              {An~unfinished~topic~requires~a~preceding~normal~chapter}
+              {Start~a~numbered~normal~chapter~before~using~\string\LUchapter.}
+          }
+      }
+      {
+        \PackageError{LALU}
+          {\string\LUchapter~is~only~valid~in~mainmatter}
+          {Move~the~unfinished~topic~after~\string\mainmatter~and~a~numbered~normal~chapter.}
+      }
+  }
+
+\cs_new_protected:Npn \lalu_phase_error:n #1
+  {
+    \PackageError{LALU}
+      {Invalid~document~phase~transition~from~\tl_use:N\g_lalu_chapter_phase_tl~to~#1}
+      {The~supported~order~is~frontmatter,~mainmatter,~appendix,~backmatter;~each~phase~command~is~idempotent.}
+  }
+\cs_new_protected:Npn \lalu_frontmatter:
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_phase_tl { frontmatter }
+      { }
+      {
+        \str_if_eq:VnTF \g_lalu_chapter_phase_tl { initial }
+          {
+            \LALU@standardfrontmatter
+            \tl_gset:Nn \g_lalu_chapter_phase_tl { frontmatter }
+            \lalu_chapter_clear_current_unit:
+          }
+          { \lalu_phase_error:n { frontmatter } }
+      }
+  }
+\cs_new_protected:Npn \lalu_mainmatter:
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_phase_tl { mainmatter }
+      { }
+      {
+        \str_case:VnF \g_lalu_chapter_phase_tl
+          {
+            { initial }
+              {
+                \LALU@standardmainmatter
+                \setcounter{chapter}{0}
+                \setcounter{LALUnormalchapter}{0}
+                \setcounter{LALUunfinishedchapter}{0}
+                \setcounter{LALUunfinishedslot}{0}
+                \setcounter{LALUappendixchapter}{0}
+                \tl_gset:Nn \g_lalu_chapter_phase_tl { mainmatter }
+                \lalu_chapter_clear_current_unit:
+                \lalu_chapter_set_main_cref_aliases:
+              }
+            { frontmatter }
+              {
+                \LALU@standardmainmatter
+                \setcounter{chapter}{0}
+                \setcounter{LALUnormalchapter}{0}
+                \setcounter{LALUunfinishedchapter}{0}
+                \setcounter{LALUunfinishedslot}{0}
+                \setcounter{LALUappendixchapter}{0}
+                \tl_gset:Nn \g_lalu_chapter_phase_tl { mainmatter }
+                \lalu_chapter_clear_current_unit:
+                \lalu_chapter_set_main_cref_aliases:
+              }
+          }
+          { \lalu_phase_error:n { mainmatter } }
+      }
+  }
+\int_new:N \l_lalu_structural_chapter_int
+\cs_new_protected:Npn \lalu_appendix:
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_phase_tl { appendix }
+      { }
+      {
+        \str_if_eq:VnTF \g_lalu_chapter_phase_tl { mainmatter }
+          {
+            \int_set:Nn \l_lalu_structural_chapter_int { \value{chapter} }
+            \LALU@standardappendix
+            \setcounter{chapter}{\int_use:N \l_lalu_structural_chapter_int}
+            \setcounter{LALUappendixchapter}{0}
+            \tl_gset:Nn \g_lalu_chapter_phase_tl { appendix }
+            \lalu_chapter_clear_current_unit:
+            \lalu_chapter_install_number_commands:
+            \lalu_chapter_set_appendix_cref_aliases:
+            \lalu_chapter_apply_appendix_style:
+          }
+          { \lalu_phase_error:n { appendix } }
+      }
+  }
+\cs_new_protected:Npn \lalu_backmatter:
+  {
+    \str_if_eq:VnTF \g_lalu_chapter_phase_tl { backmatter }
+      { }
+      {
+        \str_case:VnF \g_lalu_chapter_phase_tl
+          {
+            { frontmatter }
+              {
+                \LALU@standardbackmatter
+                \tl_gset:Nn \g_lalu_chapter_phase_tl { backmatter }
+                \lalu_chapter_clear_current_unit:
+                \lalu_chapter_set_main_cref_aliases:
+              }
+            { mainmatter }
+              {
+                \LALU@standardbackmatter
+                \tl_gset:Nn \g_lalu_chapter_phase_tl { backmatter }
+                \lalu_chapter_clear_current_unit:
+                \lalu_chapter_set_main_cref_aliases:
+              }
+            { appendix }
+              {
+                \LALU@standardbackmatter
+                \tl_gset:Nn \g_lalu_chapter_phase_tl { backmatter }
+                \lalu_chapter_clear_current_unit:
+                \lalu_chapter_set_main_cref_aliases:
+              }
+          }
+          { \lalu_phase_error:n { backmatter } }
+      }
+  }
+
+\NewDocumentCommand \LUchapter { o m }
+  { \lalu_unfinished_chapter:nn {#1}{#2} }
+
+% 所有宏包完成 chapter/phase 补丁后再保存最终标准实现。
+\AddToHook{begindocument/end}
+  {
+    \let\LALU@standardchapter\chapter
+    \let\LALU@standardfrontmatter\frontmatter
+    \let\LALU@standardmainmatter\mainmatter
+    \let\LALU@standardappendix\appendix
+    \let\LALU@standardbackmatter\backmatter
+    \RenewDocumentCommand \chapter { s o m }
+      {
+        \IfBooleanTF{#1}
+          { \lalu_chapter_starred:n {#3} }
+          { \lalu_chapter_unstarred:nn {#2}{#3} }
+      }
+    \RenewDocumentCommand \frontmatter { } { \lalu_frontmatter: }
+    \RenewDocumentCommand \mainmatter  { } { \lalu_mainmatter: }
+    \RenewDocumentCommand \appendix    { } { \lalu_appendix: }
+    \RenewDocumentCommand \backmatter  { } { \lalu_backmatter: }
+    \lalu_chapter_install_number_commands:
+  }
+\ExplSyntaxOff
+\makeatother
+
+% 内容总结
+\newenvironment{summary}{%
+    \hypersetup{bookmarksnumbered=false}%
+    \titleformat{\subsection}[block]{\centering\heiti\Large}{}{1em}{}%
+    \phantomsection%
+    \subsection*{内容总结}%
+}{}
+
+% 习题环境
+% \begin{exercise}
+%   \exquote[somebody]{...}
+%   \begin{exgroup}
+%     \item ...
+%     \item ...
+%   \end{exgroup}
+%   \begin{exgroup}
+%     ...
+%   \end{exgroup}
+% \end{exercise}
+\newcounter{exgroupcounter}
+\ExplSyntaxOn
+\msg_new:nnn { lalu-answer } { invalid-unit }
+  { The~exercise~environment~requires~a~numbered~normal~or~unfinished~chapter. }
+\msg_new:nnn { lalu-answer } { invalid-nesting }
+  { Invalid~exercise~environment~nesting~near~'#1'. }
+\msg_new:nnn { lalu-answer } { invalid-status }
+  { Unknown~answer~status~'#1'. }
+
+\bool_new:N \g_lalu_ans_in_exercise_bool
+\bool_new:N \l_lalu_ans_in_group_bool
+\seq_new:N \g_lalu_ans_group_seq
+\tl_new:N \l_lalu_ans_status_tl
+\tl_new:N \l_lalu_ans_body_probe_tl
+\tl_new:N \l_lalu_ans_unit_kind_tl
+\tl_new:N \l_lalu_ans_unit_normal_tl
+\tl_new:N \l_lalu_ans_unit_serial_tl
+\tl_new:N \l_lalu_ans_unit_slot_tl
+\tl_new:N \l_lalu_ans_unit_id_tl
+\tl_new:N \l_lalu_ans_unit_title_tl
+\int_new:N \g_lalu_ans_total_unit_int
+\int_new:N \g_lalu_ans_total_group_int
+\int_new:N \g_lalu_ans_emitted_group_int
+\int_new:N \g_lalu_ans_total_item_int
+\int_new:N \g_lalu_ans_answered_int
+\int_new:N \g_lalu_ans_todo_int
+\int_new:N \g_lalu_ans_omitted_int
+\int_new:N \g_lalu_ans_group_number_int
+\tl_new:N \l_lalu_ans_group_id_tl
+
+\keys_define:nn { lalu / answer }
+  { status .tl_set:N = \l_lalu_ans_status_tl }
+
+\cs_new_protected:Npn \lalu_ans_write_marker:n #1
+  {
+    \iow_now:Nx \g_lalu_ans_iow
+      { \c_percent_str \c_space_tl LALU-MANIFEST-EVENT \c_space_tl #1 }
+  }
+
+\cs_new_protected:Npn \lalu_ans_write_unit:
+  {
+    \lalu_ans_write_marker:n
+      { unit~id=\l_lalu_ans_unit_id_tl }
+    \iow_now:Nx \g_lalu_ans_iow
+      {
+        \exp_not:N \LALUAnswerUnit
+          { \exp_not:V \l_lalu_ans_unit_kind_tl }
+          { \exp_not:V \l_lalu_ans_unit_normal_tl }
+          { \exp_not:V \l_lalu_ans_unit_serial_tl }
+          { \exp_not:V \l_lalu_ans_unit_slot_tl }
+          { \exp_not:V \l_lalu_ans_unit_id_tl }
+          { \exp_not:V \l_lalu_ans_unit_title_tl }
+      }
+  }
+
+\cs_new_protected:Npn \lalu_ans_write_item:nnnn #1#2#3#4
+  {
+    \lalu_ans_write_marker:n
+      {
+        item~id=#1~group=\l_lalu_ans_group_id_tl
+        \c_space_tl number=#2~status=#3
+      }
+    \iow_now:Nx \g_lalu_ans_iow
+      {
+        \exp_not:N \LALUAnswerItem
+          {#1}{#2}{#3}{ \exp_not:n {#4} }
+      }
+  }
+
+\cs_new_protected:Npn \lalu_ans_begin_exercise:
+  {
+    \bool_if:NT \g_lalu_ans_in_exercise_bool
+      { \msg_fatal:nnn { lalu-answer } { invalid-nesting } { exercise } }
+    \LALUIfCurrentAnswerUnitTF
+      {
+        \bool_gset_true:N \g_lalu_ans_in_exercise_bool
+        \int_gincr:N \g_lalu_ans_total_unit_int
+        \tl_set:Ne \l_lalu_ans_unit_kind_tl { \LALUCurrentUnitKind }
+        \tl_set:Ne \l_lalu_ans_unit_normal_tl { \LALUCurrentNormalBase }
+        \tl_set:Ne \l_lalu_ans_unit_serial_tl
+          { \LALUCurrentUnfinishedSerial }
+        \tl_set:Ne \l_lalu_ans_unit_slot_tl { \LALUCurrentUnfinishedSlot }
+        % Record IDs deliberately follow manifest order rather than chapter
+        % identity.  This keeps them unique even if a chapter contains more
+        % than one exercise environment; cross-version stability is outside
+        % the current schema contract.
+        \tl_set:Nx \l_lalu_ans_unit_id_tl
+          { answer-unit:\int_use:N \g_lalu_ans_total_unit_int }
+        \LALUGetCurrentUnitTitle:N \l_lalu_ans_unit_title_tl
+        \lalu_ans_write_unit:
+      }
+      { \msg_fatal:nn { lalu-answer } { invalid-unit } }
+    \setcounter{exgroupcounter}{0}
+    \hypersetup{bookmarksnumbered=false}
+    \titleformat{\section}[block]{\centering\heiti\Large}{}{1em}{}
+    \titleformat{\subsection}[block]{\centering\heiti\bfseries}{}{1em}{}
+    \phantomsection
+    \section*{习题}
+    \addcontentsline{toc}{section}{习题}
+  }
+
+\cs_new_protected:Npn \lalu_ans_end_exercise:
+  {
+    \bool_if:NF \g_lalu_ans_in_exercise_bool
+      { \msg_fatal:nnn { lalu-answer } { invalid-nesting } { exercise-end } }
+    \bool_gset_false:N \g_lalu_ans_in_exercise_bool
+  }
+
+\NewDocumentEnvironment{exercise} { }
+  { \lalu_ans_begin_exercise: }
+  { \lalu_ans_end_exercise: }
+
+\cs_new_protected:Npn \lalu_ans_begin_group:n #1
+  {
+    \bool_if:NF \g_lalu_ans_in_exercise_bool
+      { \msg_fatal:nnn { lalu-answer } { invalid-nesting } { exgroup } }
+    \bool_if:NT \l_lalu_ans_in_group_bool
+      { \msg_fatal:nnn { lalu-answer } { invalid-nesting } { nested-exgroup } }
+    \bool_set_true:N \l_lalu_ans_in_group_bool
+    \int_gincr:N \g_lalu_ans_total_group_int
+    \seq_gclear:N \g_lalu_ans_group_seq
+    \tl_if_novalue:nTF {#1}
+      { \stepcounter{exgroupcounter} }
+      { \setcounter{exgroupcounter}{#1} }
+    \int_gset:Nn \g_lalu_ans_group_number_int { \value{exgroupcounter} }
+    \subsection*{\Alph{exgroupcounter}组}
+    \begin{enumerate}
+  }
+
+\cs_new_protected:Npn \lalu_ans_end_group:
+  {
+    \end{enumerate}
+    \seq_if_empty:NF \g_lalu_ans_group_seq
+      {
+        \int_gincr:N \g_lalu_ans_emitted_group_int
+        \tl_set:Nx \l_lalu_ans_group_id_tl
+          { answer-group:\int_use:N \g_lalu_ans_emitted_group_int }
+        \lalu_ans_write_marker:n
+          {
+            group-begin~id=\l_lalu_ans_group_id_tl
+            \c_space_tl unit=\l_lalu_ans_unit_id_tl
+            \c_space_tl number=\int_use:N \g_lalu_ans_group_number_int
+            \c_space_tl items=\int_eval:n { \seq_count:N \g_lalu_ans_group_seq }
+          }
+        \iow_now:Nx \g_lalu_ans_iow
+          {
+            \exp_not:N \LALUAnswerGroupBegin
+              { \exp_not:V \l_lalu_ans_group_id_tl }
+              { \int_use:N \g_lalu_ans_group_number_int }
+              { \int_eval:n { \seq_count:N \g_lalu_ans_group_seq } }
+          }
+        \seq_map_inline:Nn \g_lalu_ans_group_seq {##1}
+        \lalu_ans_write_marker:n
+          {
+            group-end~id=\l_lalu_ans_group_id_tl
+            \c_space_tl items=\int_eval:n { \seq_count:N \g_lalu_ans_group_seq }
+          }
+        \iow_now:Nx \g_lalu_ans_iow
+          {
+            \exp_not:N \LALUAnswerGroupEnd
+              { \exp_not:V \l_lalu_ans_group_id_tl }
+              { \int_eval:n { \seq_count:N \g_lalu_ans_group_seq } }
+          }
+      }
+    \seq_gclear:N \g_lalu_ans_group_seq
+    \bool_set_false:N \l_lalu_ans_in_group_bool
+  }
+
+\NewDocumentEnvironment{exgroup} { o }
+  { \lalu_ans_begin_group:n {#1} }
+  { \lalu_ans_end_group: }
+
+\cs_new_protected:Npn \lalu_ans_store_answer:nn #1#2
+  {
+    \bool_if:NF \l_lalu_ans_in_group_bool
+      { \msg_fatal:nnn { lalu-answer } { invalid-nesting } { answer } }
+    \int_gincr:N \g_lalu_ans_total_item_int
+    \tl_set:Nn \l_lalu_ans_status_tl { answered }
+    \tl_if_blank:nF {#1} { \keys_set:nn { lalu / answer } {#1} }
+    % xparse represents a visually empty long-environment body as one or more
+    % \par tokens.  Ignore those only for status classification; the original
+    % token list is still written unchanged for non-empty inline answers.
+    \tl_set:Nn \l_lalu_ans_body_probe_tl {#2}
+    \tl_remove_all:Nn \l_lalu_ans_body_probe_tl { \par }
+    \tl_if_blank:VT \l_lalu_ans_body_probe_tl
+      {
+        \tl_if_eq:NnT \l_lalu_ans_status_tl { answered }
+          { \tl_set:Nn \l_lalu_ans_status_tl { omitted } }
+      }
+    \str_case:VnF \l_lalu_ans_status_tl
+      {
+        { answered } { \int_gincr:N \g_lalu_ans_answered_int }
+        { todo }     { \int_gincr:N \g_lalu_ans_todo_int }
+        { omitted }  { \int_gincr:N \g_lalu_ans_omitted_int }
+      }
+      {
+        \msg_fatal:nnn { lalu-answer } { invalid-status }
+          { \l_lalu_ans_status_tl }
+      }
+    \seq_gput_right:Nx \g_lalu_ans_group_seq
+      {
+        \exp_not:N \lalu_ans_write_item:nnnn
+          { answer-item:\int_use:N \g_lalu_ans_total_item_int }
+          { \int_eval:n { \value{enumi} } }
+          { \exp_not:V \l_lalu_ans_status_tl }
+          { \exp_not:n {#2} }
+      }
+  }
+
+\NewDocumentEnvironment{answer} { O{} +b }
+  { \lalu_ans_store_answer:nn {#1}{#2} }
+  { }
+
+\NewDocumentCommand{\exquote}{om}
+  {
+    \vspace{2ex}
+    {\sffamily\kaishu #2}
+    \IfValueT{#1}
+      {
+        \begin{flushright}
+          \sffamily\kaishu ——#1
+        \end{flushright}
+      }
+  }
+
+\iow_new:N \g_lalu_ans_iow
+\tl_new:N \g_lalu_ans_manifest_path_tl
+\cs_generate_variant:Nn \iow_open:Nn { NV }
+\cs_if_exist:NTF \LALUAnswerManifestTempPath
+  { \tl_gset:Ne \g_lalu_ans_manifest_path_tl { \LALUAnswerManifestTempPath } }
+  {
+    \tl_gset:Nx \g_lalu_ans_manifest_path_tl
+      { \c_sys_jobname_str .answer-manifest.pending.tex }
+  }
+\iow_open:NV \g_lalu_ans_iow \g_lalu_ans_manifest_path_tl
+\iow_now:Nx \g_lalu_ans_iow
+  {
+    \c_percent_str \c_space_tl LALU-ANSWER-MANIFEST
+    \c_space_tl schema=2 \c_space_tl job=\c_sys_jobname_str
+  }
+\iow_now:Nx \g_lalu_ans_iow
+  { \exp_not:N \LALUAnswerManifestBegin {2}{\c_sys_jobname_str} }
+\AtEndDocument
+  {
+    \iow_now:Nx \g_lalu_ans_iow
+      {
+        \exp_not:N \LALUAnswerManifestEnd
+          { \int_use:N \g_lalu_ans_total_unit_int }
+          { \int_use:N \g_lalu_ans_total_group_int }
+          { \int_use:N \g_lalu_ans_emitted_group_int }
+          { \int_use:N \g_lalu_ans_total_item_int }
+          { \int_use:N \g_lalu_ans_answered_int }
+          { \int_use:N \g_lalu_ans_todo_int }
+          { \int_use:N \g_lalu_ans_omitted_int }
+      }
+    \iow_now:Nx \g_lalu_ans_iow
+      {
+        \c_percent_str \c_space_tl LALU-ANSWER-MANIFEST-END
+        \c_space_tl total-units=\int_use:N \g_lalu_ans_total_unit_int
+        \c_space_tl total-groups=\int_use:N \g_lalu_ans_total_group_int
+        \c_space_tl emitted-groups=\int_use:N \g_lalu_ans_emitted_group_int
+        \c_space_tl total-items=\int_use:N \g_lalu_ans_total_item_int
+        \c_space_tl answered=\int_use:N \g_lalu_ans_answered_int
+        \c_space_tl todo=\int_use:N \g_lalu_ans_todo_int
+        \c_space_tl omitted=\int_use:N \g_lalu_ans_omitted_int
+      }
+    \iow_close:N \g_lalu_ans_iow
+    \iow_term:x
+      {
+        LALU~answer~manifest:~units~
+        \int_use:N \g_lalu_ans_total_unit_int,~groups~
+        \int_use:N \g_lalu_ans_emitted_group_int /
+        \int_use:N \g_lalu_ans_total_group_int,~answered~
+        \int_use:N \g_lalu_ans_answered_int,~todo~
+        \int_use:N \g_lalu_ans_todo_int,~empty~
+        \int_use:N \g_lalu_ans_omitted_int.
+      }
+  }
+\ExplSyntaxOff
+
+\ctexset{
+    chapter={format={\centering\Huge\bfseries},name={第,讲},number=\arabic{LALUnormalchapter}},
+    section={format={\raggedright\Large\bfseries},name={,},number={\thechapter.\arabic{section}}},
+    subsection={format={\raggedright\large\bfseries},name={,},number={\thesection.\arabic{subsection}}},
+    subsubsection={format={\raggedright\normalsize\bfseries},name={,},number={\thesubsection.\arabic{subsubsection}}},
+}
+
+\title{线性代数：未竟之美}
+\author{线性代数荣誉课辅学讲义 \\ 吴一航 \quad \verb|yhwu_is@zju.edu.cn|}
+
+\LALUFinalizePreamble
+\hypersetup{
+    hypertexnames=true,
+    pdfauthor={吴一航},
+    pdftitle={线性代数：未竟之美},
+}
+
+\begin{document}
+\frontmatter
+
+% 封面，代替 \maketitle
+\includepdf[
+    pages={1},
+    noautoscale=true,
+    width=\paperwidth,
+]{./figs/cover-16k.pdf}
+
+\songti
+
+% 插入空页
+\thispagestyle{empty}
+\null
+\clearpage
+
+\input{./其它/扉页.tex}
+\clearpage
+
+\pagenumbering{Roman}
+\input{./其它/序.tex}
+\input{./其它/致读者.tex}
+\clearpage
+
+\pdfbookmark[0]{目录}{contents}
+\tableofcontents
+
+\addtolength{\parskip}{.5em}
+
+\mainmatter
+\input{./专题/1 预备知识.tex}
+\input{./其它/未竟专题1 预备思想.tex}
+\input{./专题/2 线性空间.tex}
+\input{./专题/3 有限维线性空间.tex}
+\input{./专题/4 线性空间的运算.tex}
+\input{./专题/5 线性映射.tex}
+\input{./专题/6 对偶空间.tex}
+\input{./专题/7 线性映射矩阵表示与矩阵运算基础.tex}
+\input{./专题/8 相抵标准形.tex}
+\input{./专题/9 矩阵运算进阶.tex}
+\input{./其它/未竟专题2 有限域上的矩阵.tex}
+\input{./专题/10 行列式.tex}
+\input{./其它/未竟专题3 矩阵空间.tex}
+\input{./专题/11 朝花夕拾.tex}
+\input{./其它/未竟专题4 特定域上的线性代数.tex}
+\input{./专题/12 史海拾遗.tex}
+\input{./专题/13 多项式.tex}
+\input{./其它/未竟专题5 纽结的多项式不变量.tex}
+\input{./专题/14 相似标准形：动机与基础.tex}
+\input{./其它/未竟专题6 控制法及其在矩阵理论中的应用.tex}
+\input{./专题/15 相似标准形：复数域上的尝试与理论.tex}
+\input{./专题/16 若当标准形.tex}
+\input{./专题/17 多项式的进一步讨论.tex}
+\input{./专题/18 有理标准形.tex}
+\input{./其它/未竟专题7 对称多项式和Young图.tex}
+\input{./专题/19 内积空间.tex}
+\input{./专题/20 内积空间上的算子.tex}
+\input{./其它/未竟专题8 希尔伯特空间引论.tex}
+\input{./专题/21 线性代数与几何.tex}
+\input{./专题/22 二次型.tex}
+\input{./专题/23 多重线性映射与张量的计算.tex}
+\input{./其它/未竟专题9 射影几何的代数方法.tex}
+\input{./其它/未竟专题10 有限域上的二次型.tex}
+\input{./其它/未竟专题11 二次型的几何.tex}
+\input{./其它/未竟专题12 实数域的诸扩域.tex}
+\input{./其它/未竟专题13 线性动力系统.tex}
+\input{./专题/24 线性代数与微积分.tex}
+\input{./专题/25 线性代数与最优化问题.tex}
+\input{./其它/未竟专题14 范畴论视角下的线性代数.tex}
+
+\backmatter
+{\small
+\printindex
+\printindex[sym]
+}
+
+\end{document}

@@ -233,7 +233,7 @@
     \begin{align*}
         \mathbf{M}_{B_1',B_2'}(\sigma) &= \mathbf{M}_{B_2,B_2'}(I)\mathbf{M}_{B_1',B_2}(\sigma) \\
         &= \mathbf{M}_{B_2,B_2'}(I)\mathbf{M}_{B_1,B_2}(\sigma)\mathbf{M}_{B_1',B_1}(I) \\
-        &= Q^{-1} \mathbf{M}_{B_1,B_2}(\sigma)P
+        &= Q^{-1} \mathbf{M}_{B_1,B_2}(\sigma)P \qedhere
     \end{align*}
 \end{proof}
 
@@ -912,7 +912,7 @@
     从而
     \[A^{2}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q}=\tr(A) \widetilde{P} \widetilde{Q}=\tr(A) A,\]
     进一步地
-    \[A^{k}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q} \cdots \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} A.\]
+    \[A^{k}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q} \cdots \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} A. \qedhere\]
 \end{proof}
 
 事实上，本题的解答过程给我们了一个很重要的启示，那就是秩为1的矩阵一定可以分解为一个列向量和一个行向量的乘积. 之后我们将利用这一结论来解决一些问题，例如便于矩阵求幂等. 此外，若 $\tr(A) = 1$，则 $A^k = A$，这表明秩为 1 且迹为 1 的矩阵一定是幂等矩阵.
