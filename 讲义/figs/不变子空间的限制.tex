@@ -1,0 +1,13 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[>=Stealth]
+    \draw[thick] (-2,0) ellipse (1 and 1.5) node[above=0.3] {$V$}
+    (2,0) ellipse (1 and 1.5) node[above=0.3] {$V$}
+    (-1.9,-0.5) circle (0.5) node {$U$}
+    (1.9,-0.5) ellipse (0.5 and 0.7) node {$\sigma(U)$}
+    (-1.8,0.5) edge[out=30,in=150,->] node[above] {$\sigma$} (1.8,0.5)
+    (-1.6,-0.6) edge[out=-30,in=190,->] node[below] {$\sigma\vert_U$} (1.75,-0.8);
+\end{tikzpicture}
+
+\end{document}

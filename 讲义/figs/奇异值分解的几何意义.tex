@@ -1,0 +1,37 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[scale=0.9, >=latex]
+    \tikzset{every path/.style={thick}}
+
+    \begin{scope}[xshift=-5.2cm]
+        \draw[->] (-1.6,0) -- (1.8,0) node[right] {$x_1$};
+        \draw[->] (0,-1.4) -- (0,1.6) node[above] {$x_2$};
+        \draw (0,0) circle (1);
+        \draw[->,blue] (0,0) -- (0.82,0.57) node[above right] {$v_1$};
+        \draw[->,blue] (0,0) -- (-0.57,0.82) node[above left] {$v_2$};
+        \node at (0,-1.8) {单位圆};
+    \end{scope}
+
+    \begin{scope}
+        \draw[->] (-2.2,0) -- (2.4,0);
+        \draw[->] (0,-1.4) -- (0,1.6);
+        \draw (0,0) ellipse (1.7 and 0.8);
+        \draw[dashed] (-1.7,0) -- (1.7,0);
+        \draw[dashed] (0,-0.8) -- (0,0.8);
+        \node[above right] at (1.7,0) {$s_1$};
+        \node[right] at (0,1) {$s_2$};
+        \node at (0,-1.8) {经 $\Sigma$ 拉伸后};
+    \end{scope}
+
+    \begin{scope}[xshift=5.4cm]
+        \draw[->] (-2.1,0) -- (2.3,0);
+        \draw[->] (0,-1.4) -- (0,1.6);
+        \draw[rotate=28] (0,0) ellipse (1.7 and 0.8);
+        \draw[->,red] (0,0) -- ({1.7*cos(28)},{1.7*sin(28)}) node[above right] {$u_1$};
+        \draw[->,red] (0,0) -- ({-0.8*sin(28)},{0.8*cos(28)}) node[above left] {$u_2$};
+        \node at (0,-1.8) {再经 $U$ 旋转后};
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

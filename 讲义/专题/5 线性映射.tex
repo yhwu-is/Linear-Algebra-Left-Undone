@@ -106,26 +106,7 @@
         \]
         是 $\mathbf{R}^2$ 上的一个线性变换\\
         \begin{center}
-            \begin{tikzpicture}[scale=1.8]
-                \tikzset{>=latex, every path/.style={thick}}
-                \draw (0,0) coordinate (O)
-                    (1,2) coordinate (A)
-                    (2,1) coordinate (B)
-                    (2,0) coordinate (C);
-                \draw[->] (0, 0) -- (0, 2.5)
-                    node[above] {$y$};
-                \draw[->] (0, 0) -- (2.5, 0)
-                    node[right] {$x$};
-                \draw[->] (O) -- (A)
-                    node[above,xshift=-8pt] {$\boldsymbol{\alpha}'=(x',y')$};
-                \draw[->] (O) -- (B)
-                    node[above,xshift=-8pt] {$\boldsymbol{\alpha}=(x,y)$};
-                \draw[dashed] (0,2) -- (1,2) -- (1,0) node[below] {$x'$}
-                    (0,1) -- (2,1) -- (2,0) node[below] {$x$};
-                \draw pic[draw,"$\theta$",angle eccentricity=1.5] {angle=B--O--A};
-                \draw pic[draw,"$\beta$",angle eccentricity=1.5,angle radius=.6cm] {angle=C--O--B};
-                \draw node[below left] at (O) {$O$};
-            \end{tikzpicture}
+            \includegraphics{figs/旋转变换}
         \end{center}
         \item 镜像变换（或镜面反射）--$\mathbf{R}^2$中每个向量关于过原点的直线$L$（看作镜面）相对称的变换 $\varphi$，即
         \[
@@ -133,28 +114,7 @@
         \varphi(\alpha) = \alpha'= \vec{OB}
         \]
         \begin{center}
-            \begin{tikzpicture}[scale=1.8]
-                \tikzset{>=latex, every path/.style={thick}, ->-/.style={
-                    decoration={markings, mark=at position .4 with {\arrow{>}}}, postaction={decorate}
-                }}
-                \draw[->] (0, 0) -- (0, 2) node[above] {$y$};
-                \draw[->] (0, 0) -- (2, 0) node[right] {$x$};
-                \draw (0,0) coordinate (O)
-                    (0.5, 1.5) coordinate (A)
-                    (1.5,0.5) coordinate (B);
-                \draw node[above] at (A) {$A$}
-                    node[below left] at (A) {$\boldsymbol{\alpha}$}
-                    node[below] at (B) {$B$};
-                \draw[->] (O) -- (A);
-                \draw[->] (O) -- (B)
-                    node[pos=.5, below] {$\boldsymbol{\alpha}'$};
-                \draw[->] (A) -- (B)
-                    node[pos=.35, above=3pt] {$C$};
-                \draw[->-] (O) -- (1.6, 1.6)
-                    node[pos=.4, below right] {$\boldsymbol{\omega}$}
-                    node[below right] {$L$};
-                \draw node[below left] at (O) {$O$};
-            \end{tikzpicture}
+            \includegraphics{figs/镜像变换}
         \end{center}
         \item 三维立体空间中的投影变换也是线性变换，例如$\mathbf{R}^3$到子空间 $W=\spa((1,0,0))$ 的投影变换 $p$.
         \[

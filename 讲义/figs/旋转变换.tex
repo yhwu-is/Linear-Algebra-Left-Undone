@@ -1,0 +1,25 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[scale=1.8]
+    \tikzset{>=latex, every path/.style={thick}}
+    \draw (0,0) coordinate (O)
+        (1,2) coordinate (A)
+        (2,1) coordinate (B)
+        (2,0) coordinate (C);
+    \draw[->] (0, 0) -- (0, 2.5)
+        node[above] {$y$};
+    \draw[->] (0, 0) -- (2.5, 0)
+        node[right] {$x$};
+    \draw[->] (O) -- (A)
+        node[above,xshift=-8pt] {$\boldsymbol{\alpha}'=(x',y')$};
+    \draw[->] (O) -- (B)
+        node[above,xshift=-8pt] {$\boldsymbol{\alpha}=(x,y)$};
+    \draw[dashed] (0,2) -- (1,2) -- (1,0) node[below] {$x'$}
+        (0,1) -- (2,1) -- (2,0) node[below] {$x$};
+    \draw pic[draw,"$\theta$",angle eccentricity=1.5] {angle=B--O--A};
+    \draw pic[draw,"$\beta$",angle eccentricity=1.5,angle radius=.6cm] {angle=C--O--B};
+    \draw node[below left] at (O) {$O$};
+\end{tikzpicture}
+
+\end{document}

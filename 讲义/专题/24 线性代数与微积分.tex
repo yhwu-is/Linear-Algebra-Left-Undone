@@ -507,14 +507,7 @@
 
 \begin{figure}[hb]
     \centering
-    \begin{tikzpicture}[>=latex,scale=2.4]
-        \fill[gray!40] (-0.5, -1) rectangle (0.5, 1);
-        \draw[dashed, thick] (-0.5, 1) -- (-0.5, -1) node[below] {$0$} -- (0.5, -1) node[below] {$2\pi$} -- (0.5, 1);
-        \fill[gray!40] (2.5, 0) circle (1);
-        \draw[white, thick] (2.5, 0) -- (3.5, 0);
-        \draw node at (0, 0) {$(r, \theta)$} node[above left] at (2.5, 0) {$(x, y)$};
-        \draw[thick] (0.6, 0) edge[out=30, in=180, ->] node[above] {$\Phi$} (1.5, 0.4);
-    \end{tikzpicture}
+    \includegraphics{figs/极坐标变换}
     \caption{坐标变换的几何直观}
     \label{fig:coordinate-transformation}
 \end{figure}
@@ -557,19 +550,7 @@
 
           \begin{figure}[h]
               \centering
-              \begin{tikzpicture}[scale=0.7]
-                  \pgfmathsetseed{42}
-
-                  \fill[gray!40] (1, 1) -- (1, 5) -- (2, 5) -- (2, 6) -- (5, 6) -- (5, 5) -- (6, 5) -- (6, 2) -- (5, 2) -- (5, 1) -- cycle;
-                  \fill[gray!80] (2, 2) -- (2, 4) -- (3, 4) -- (3, 5) -- (4, 5) -- (4, 4) -- (5, 4) -- (5, 3) -- (4, 3) -- (4, 2) -- cycle;
-
-                  \draw[dashed] (0, 0) grid (6, 6);
-                  \draw[thick] (0, 0) rectangle (6, 6);
-
-                  \begin{scope}[shift={(3.3, 3.3)}]
-                      \path[draw, thick] plot[domain=0:350, smooth cycle] (\x:1.9+0.2*rnd);
-                  \end{scope}
-              \end{tikzpicture}
+              \includegraphics{figs/第一覆盖引理}
               \caption{第一覆盖引理}
           \end{figure}
 
@@ -598,13 +579,7 @@
 
           \begin{figure}[h]
               \centering
-              \begin{tikzpicture}[scale=2]
-                  \draw (0, 0) grid (2, 2);
-                  \foreach \i in {0.5, 1.5}
-                      \foreach \j in {0.5, 1.5}
-                          \draw[fill=gray!50] (\i, \j) circle (0.5)
-                              \foreach \k in {45, 135, 225, 315} {($(\i, \j) + (\k:{sqrt(2)/(sqrt(2)+1)})$) circle ({(sqrt(2)-1)/(2+2*sqrt(2))})};
-              \end{tikzpicture}
+              \includegraphics{figs/第二覆盖引理}
               \caption{第二覆盖引理}
           \end{figure}
 

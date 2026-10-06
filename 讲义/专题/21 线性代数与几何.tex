@@ -163,47 +163,7 @@
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=0.95, >=Stealth]
-        \coordinate (A) at (0,0);
-        \coordinate (B) at (3.4,0);
-        \coordinate (D) at (1.0,1.25);
-        \coordinate (C) at (4.4,1.25);
-        \coordinate (Ap) at (-0.75,2.15);
-        \coordinate (Bp) at (2.65,2.15);
-        \coordinate (Dp) at (0.25,3.40);
-        \coordinate (Cp) at (3.65,3.40);
-        \coordinate (H) at (0,3.08);
-        \coordinate (N) at (0,3.95);
-
-        \draw[->, thick] (A) -- (B);
-        \draw[->, thick] (A) -- (D);
-        \draw[thick] (B) -- (C);
-        \draw[dashed, thick] (D) -- (C);
-
-        \draw[->, thick] (A) -- (Ap);
-        \draw[thick] (Ap) -- (Bp);
-        \draw[thick] (B) -- (Bp);
-        \draw[thick] (C) -- (Cp) -- (Bp);
-        \draw[thick] (Ap) -- (H) -- (Dp) -- (Cp);
-        \draw[dashed, thick] (D) -- (Dp);
-
-        \draw[dashed] (A) -- (H);
-        \draw[->, thick] (H) -- (N);
-
-        \node[below left] at (A) {$A$};
-        \node[below] at (B) {$B$};
-        \node[right] at (C) {$C$};
-        \node[below right] at (D) {$D$};
-        \node[left] at (Ap) {$A'$};
-        \node[right] at (Bp) {$B'$};
-        \node[right] at (Cp) {$C'$};
-        \node[left] at (Dp) {$D'$};
-
-        \node[below] at (1.7,0) {$\vec{a}$};
-        \node[left] at (0.55,0.72) {$\vec{b}$};
-        \node[left] at (-0.42,1.08) {$\vec{c}$};
-        \node[above right] at (N) {$\vec{a}\times\vec{b}$};
-    \end{tikzpicture}
+    \includegraphics{figs/混合积的几何意义}
     \caption{混合积的几何意义}
     \label{fig:混合积的几何意义}
 \end{figure}
@@ -945,18 +905,7 @@
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=1.0, >=Stealth]
-        \draw[fill=gray!10] (0,0) -- (4.8,0) -- (6,1.5) -- (1.2,1.5) -- cycle;
-        \node at (5.55,0.45) {$\R^2$};
-        \draw (0.5,2.7) -- (5.9,2.7);
-        \node[right] at (5.9,2.7) {$\ell_\infty$};
-        \coordinate (I) at (4.1,2.7);
-        \draw[dashed] (0.95,0.3) -- (I);
-        \draw[dashed] (0.8,0.75) -- (I);
-        \draw (0.95,0.3) -- (4.9,1.55);
-        \draw (0.8,0.75) -- (4.75,2.0);
-        \fill (I) circle (1.1pt) node[above] {$P_\infty$};
-    \end{tikzpicture}
+    \includegraphics{figs/无穷远直线}
     \caption{仿射平面补上一条无穷远直线后，可把一束平行直线看成相交于同一个无穷远点}
 \end{figure}
 

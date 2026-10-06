@@ -1,0 +1,36 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[node distance=10pt]
+    \node[draw, rounded corners]            (initial)   {待求行列式};
+    \node[below=75pt of initial]            (temp)      {};
+    \node[draw, left=50pt of temp]          (special)   {特殊行列式};
+    \node[draw, right=50pt of temp]         (reduced)   {降阶后的行列式};
+    \node[draw, below=60pt of temp, rounded corners]      (result)    {结果};
+
+    \draw[->] (initial) -- (special|-initial) -> node[left] {
+        \begin{tabular}{c}
+            连加 \\
+            滚动消去 \\
+            升阶 \\
+            硬拆
+        \end{tabular}
+    } (special);
+    \draw[->] (initial) -- (reduced|-initial) -> node[right] {
+        降阶
+    } (reduced);
+    \draw[->] (special) -- node[left] {
+        \begin{tabular}{c}
+            上/下三角行列式 \\
+            范德蒙行列式 \\
+            $\cdots$
+        \end{tabular}
+    } (special|-result) -> (result);
+    \draw[->] (reduced) -- node[left] {
+        递推
+    } (reduced|-result) -> (result);
+    \draw[->, loop right] (reduced) to (reduced);
+    \node at (5, -4) {降阶 / 递推};
+\end{tikzpicture}
+
+\end{document}

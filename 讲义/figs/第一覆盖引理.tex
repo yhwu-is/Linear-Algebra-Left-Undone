@@ -1,0 +1,18 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[scale=0.7]
+    \pgfmathsetseed{42}
+
+    \fill[gray!40] (1, 1) -- (1, 5) -- (2, 5) -- (2, 6) -- (5, 6) -- (5, 5) -- (6, 5) -- (6, 2) -- (5, 2) -- (5, 1) -- cycle;
+    \fill[gray!80] (2, 2) -- (2, 4) -- (3, 4) -- (3, 5) -- (4, 5) -- (4, 4) -- (5, 4) -- (5, 3) -- (4, 3) -- (4, 2) -- cycle;
+
+    \draw[dashed] (0, 0) grid (6, 6);
+    \draw[thick] (0, 0) rectangle (6, 6);
+
+    \begin{scope}[shift={(3.3, 3.3)}]
+        \path[draw, thick] plot[domain=0:350, smooth cycle] (\x:1.9+0.2*rnd);
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

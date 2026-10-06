@@ -1,0 +1,13 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[>=latex,scale=2.4]
+    \fill[gray!40] (-0.5, -1) rectangle (0.5, 1);
+    \draw[dashed, thick] (-0.5, 1) -- (-0.5, -1) node[below] {$0$} -- (0.5, -1) node[below] {$2\pi$} -- (0.5, 1);
+    \fill[gray!40] (2.5, 0) circle (1);
+    \draw[white, thick] (2.5, 0) -- (3.5, 0);
+    \draw node at (0, 0) {$(r, \theta)$} node[above left] at (2.5, 0) {$(x, y)$};
+    \draw[thick] (0.6, 0) edge[out=30, in=180, ->] node[above] {$\Phi$} (1.5, 0.4);
+\end{tikzpicture}
+
+\end{document}
