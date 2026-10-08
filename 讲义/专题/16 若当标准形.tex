@@ -203,37 +203,7 @@
 
           \begin{figure}[H]
               \centering
-              \begin{tikzpicture}[scale=1.2]
-                  \foreach[count=\i] \len in {7, 7, 5, 3, 3, 2}
-                  \draw (0, -\i+1) -- (\len, -\i+1);
-
-                  \foreach \i in {0, 1, 2}
-                  \draw (\i, -3) -- (\i, -5);
-
-                  \draw (3, -3) -- (3, -4);
-
-                  \foreach \i in {0,...,5}
-                  \draw (\i, 0) -- (\i, -2);
-
-                  \foreach \i in {6, 7}
-                  \draw (\i, 0) -- (\i, -1);
-
-                  \foreach \i in {1, 2} {
-                  \node at (\i-.5, -4.5) {$v_{\i}$};
-                  \node at (\i-.5, -.5) {$N^{m_{\i}}v_{\i}$};
-                  }
-                  \foreach \i in {1, 2}
-                  \node at (\i-.5, -3.5) {$Nv_{\i}$};
-
-                  \node at (3-.5, -3.5) {$v_{3}$};
-                  \node at (6.5, -.5) {$N^{m_n}v_n$};
-                  \node at (1.5, -2.5) {$\cdots\cdots$};
-
-                  \node[anchor=west] at (7, -.5) {$G_1(\lambda,\sigma)$};
-                  \node[anchor=west] at (5, -1.5) {$G_2(\lambda,\sigma) \backslash G_1(\lambda,\sigma)$};
-                  \node[anchor=west] at (3, -3.5) {$G_{m_1}(\lambda,\sigma) \backslash G_{m_1-1}(\lambda,\sigma)$};
-                  \node[anchor=west] at (2, -4.5) {$G_{m_1+1}(\lambda,\sigma) \backslash G_{m_1}(\lambda,\sigma)$};
-              \end{tikzpicture}
+              \includegraphics{figs/若当基Young图}
               \caption{将若当基排列成Young图形式}
               \label{fig:17:若当基Young图形式}
           \end{figure}
@@ -243,29 +213,7 @@
           在求出各个$G_j(\lambda,\sigma)$的维数后阶梯形状也即确定，因为各层向量个数确定了. 举个简单的例子，假设$G_\lambda$是11维空间，满足$G_1(\lambda,\sigma)$，$G_2(\lambda,\sigma)$，$G_3(\lambda,\sigma)$的维数分别为5,9,11. 对照Young图每行右侧的标注，这说明从最上方一行往下的向量个数依次为5，4($=9-5$)，2($=11-9$)，具体Young图为
           \begin{figure}[H]
               \centering
-              \begin{tikzpicture}[scale=1.2]
-                  \foreach[count=\i] \len in {5, 5, 4, 2}
-                  \draw (0, -\i+1) -- (\len, -\i+1);
-
-                  \foreach \i in {0,...,5}
-                  \draw (\i, 0) -- (\i, -1);
-                  \foreach \i in {0,...,4}
-                  \draw (\i, -1) -- (\i, -2);
-                  \foreach \i in {0, 1, 2}
-                  \draw (\i, -2) -- (\i, -3);
-
-                  \node at (.5, -.5) {$N^2v_1$};
-                  \node at (1.5, -.5) {$N^2v_2$};
-                  \node at (2.5, -.5) {$Nv_3$};
-                  \node at (3.5, -.5) {$Nv_4$};
-                  \node at (4.5, -.5) {$v_5$};
-                  \node at (.5, -1.5) {$Nv_1$};
-                  \node at (1.5, -1.5) {$Nv_2$};
-                  \node at (2.5, -1.5) {$v_3$};
-                  \node at (3.5, -1.5) {$v_4$};
-                  \node at (.5, -2.5) {$v_1$};
-                  \node at (1.5, -2.5) {$v_2$};
-              \end{tikzpicture}
+              \includegraphics{figs/若当循环基示例}
           \end{figure}
           然后我们就能得到每组若当循环基的长度，即每个若当块的阶数，分别为$3,3,2,2,1$.
 \end{enumerate}

@@ -57,25 +57,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[>=Stealth, scale=1]
-        \draw[->] (-0.5, 0) -- (1.5, 0);
-        \draw[->] (0, -0.5) -- (0, 1.5);
-        \draw[thick, ->] (0, 0) -- (1, 0) node[below]{$e_1$};
-        \draw[thick, ->] (0, 0) -- (0, 1) node[left]{$e_2$};
-        \fill[red, opacity=0.2] (0, 0) -- (1, 0) -- (1, 1) -- (0, 1);
-        \begin{scope}[shift={(3, 0)}]
-            \draw[->] (-.5, 0) -- (3.5, 0);
-            \draw[->] (0, -1) -- (0, 2);
-            \draw[thick, ->] (0, 0) -- (2, -.5)
-                node[below]{$\varphi(e_1)$};
-            \draw[thick, ->] (0, 0) -- (1, 1.5)
-                node[above]{$\varphi(e_2)$};
-            \fill[red, opacity=0.2] (0, 0) -- (2, -.5)
-                -- (3, 1) -- (1, 1.5);
-        \end{scope}
-        \draw[->] (1.6, 0.5) -- node[above]{$\varphi$}
-             (2.4, 0.5);
-    \end{tikzpicture}
+    \includegraphics{figs/线性变换的体积变化}
     \caption{可以参考 \href{https://b23.tv/BV1ys411472E}{3b1b《线性代数的本质》系列视频}相关内容}
 \end{figure}
 
@@ -1415,37 +1397,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
 \begin{figure}[!ht]
     \centering
-    \begin{tikzpicture}[node distance=10pt]
-        \node[draw, rounded corners]            (initial)   {待求行列式};
-        \node[below=75pt of initial]            (temp)      {};
-        \node[draw, left=50pt of temp]          (special)   {特殊行列式};
-        \node[draw, right=50pt of temp]         (reduced)   {降阶后的行列式};
-        \node[draw, below=60pt of temp, rounded corners]      (result)    {结果};
-
-        \draw[->] (initial) -- (special|-initial) -> node[left] {
-            \begin{tabular}{c}
-                连加 \\
-                滚动消去 \\
-                升阶 \\
-                硬拆
-            \end{tabular}
-        } (special);
-        \draw[->] (initial) -- (reduced|-initial) -> node[right] {
-            降阶
-        } (reduced);
-        \draw[->] (special) -- node[left] {
-            \begin{tabular}{c}
-                上/下三角行列式 \\
-                范德蒙行列式 \\
-                $\cdots$
-            \end{tabular}
-        } (special|-result) -> (result);
-        \draw[->] (reduced) -- node[left] {
-            递推
-        } (reduced|-result) -> (result);
-        \draw[->, loop right] (reduced) to (reduced);
-        \node at (5, -4) {降阶 / 递推};
-    \end{tikzpicture}
+    \includegraphics{figs/行列式计算技巧}
     \caption{行列式计算技巧归纳}
     \label{fig:行列式计算技巧归纳}
 \end{figure}

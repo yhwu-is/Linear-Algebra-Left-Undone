@@ -34,5 +34,5 @@
 在仓库目录下运行 `make` 编译讲义与习题参考答案，编译完成的 PDF 位于讲义目录下. 也可以使用 Docker 编译：
 
 ```bash
-docker run -v"$PWD":/app -w/app -eTERM=xterm --rm texlive/texlive:TL2023-historic make
+docker run -v"$PWD":/app -w/app -eTERM=xterm --rm texlive/texlive:latest make
 ```

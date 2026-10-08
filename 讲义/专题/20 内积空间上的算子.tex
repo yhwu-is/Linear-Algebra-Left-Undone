@@ -1245,28 +1245,7 @@ $U$ 在 $T$ 下不变当且仅当对任意的 $u\in U$，$Tu \in U$. 由此可�
         \varphi(\alpha) = \alpha'= \vec{OB}
         \]
         \begin{center}
-            \begin{tikzpicture}[scale=1.8]
-                \tikzset{>=latex, every path/.style={thick}, ->-/.style={
-                    decoration={markings, mark=at position .4 with {\arrow{>}}}, postaction={decorate}
-                }}
-                \draw[->] (0, 0) -- (0, 2) node[above] {$y$};
-                \draw[->] (0, 0) -- (2, 0) node[right] {$x$};
-                \draw (0,0) coordinate (O)
-                    (0.5, 1.5) coordinate (A)
-                    (1.5,0.5) coordinate (B);
-                \draw node[above] at (A) {$A$}
-                    node[below left] at (A) {$\boldsymbol{\alpha}$}
-                    node[below] at (B) {$B$};
-                \draw[->] (O) -- (A);
-                \draw[->] (O) -- (B)
-                    node[pos=.5, below] {$\boldsymbol{\alpha}'$};
-                \draw[->] (A) -- (B)
-                    node[pos=.35, above=3pt] {$C$};
-                \draw[->-] (O) -- (1.6, 1.6)
-                    node[pos=.4, below right] {$\boldsymbol{\omega}$}
-                    node[below right] {$L$};
-                \draw node[below left] at (O) {$O$};
-            \end{tikzpicture}
+            \includegraphics{figs/镜像变换}
         \end{center}
 \end{example}
 
@@ -1613,38 +1592,7 @@ $T^*T$ 除去其特征值的性质外，更重要的在于其是一个自伴算�
 总结上述证明过程，右奇异向量给出了 $T_A$ 出发空间中彼此正交的一系列方向，$T_A$ 在这些方向上的伸张倍数分别就是奇异值，最后左奇异向量给出这些方向在到达空间中旋转后得到的方向. 下面的示意图展示了二维情形下单位圆 $\to$ 轴对齐椭圆 $\to$ 旋转后的椭圆的过程.
 
 \begin{center}
-    \begin{tikzpicture}[scale=0.9, >=latex]
-        \tikzset{every path/.style={thick}}
-
-        \begin{scope}[xshift=-5.2cm]
-            \draw[->] (-1.6,0) -- (1.8,0) node[right] {$x_1$};
-            \draw[->] (0,-1.4) -- (0,1.6) node[above] {$x_2$};
-            \draw (0,0) circle (1);
-            \draw[->,blue] (0,0) -- (0.82,0.57) node[above right] {$v_1$};
-            \draw[->,blue] (0,0) -- (-0.57,0.82) node[above left] {$v_2$};
-            \node at (0,-1.8) {单位圆};
-        \end{scope}
-
-        \begin{scope}
-            \draw[->] (-2.2,0) -- (2.4,0);
-            \draw[->] (0,-1.4) -- (0,1.6);
-            \draw (0,0) ellipse (1.7 and 0.8);
-            \draw[dashed] (-1.7,0) -- (1.7,0);
-            \draw[dashed] (0,-0.8) -- (0,0.8);
-            \node[above right] at (1.7,0) {$s_1$};
-            \node[right] at (0,1) {$s_2$};
-            \node at (0,-1.8) {经 $\Sigma$ 拉伸后};
-        \end{scope}
-
-        \begin{scope}[xshift=5.4cm]
-            \draw[->] (-2.1,0) -- (2.3,0);
-            \draw[->] (0,-1.4) -- (0,1.6);
-            \draw[rotate=28] (0,0) ellipse (1.7 and 0.8);
-            \draw[->,red] (0,0) -- ({1.7*cos(28)},{1.7*sin(28)}) node[above right] {$u_1$};
-            \draw[->,red] (0,0) -- ({-0.8*sin(28)},{0.8*cos(28)}) node[above left] {$u_2$};
-            \node at (0,-1.8) {再经 $U$ 旋转后};
-        \end{scope}
-    \end{tikzpicture}
+    \includegraphics{figs/奇异值分解的几何意义}
 \end{center}
 
 在这个意义下，奇异值分解把一个一般线性映射矩阵的几何本质完全揭示了出来：它无非就是先在出发空间中调整观察方向，再沿着若干互相正交的方向做不同比例的拉伸，最后再把结果旋转到到达空间中的适当位置.

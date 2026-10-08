@@ -1,5 +1,5 @@
 {
-    "editor.wordWrap": "bounded",
+    "editor.wordWrap": "on",
     "editor.wordWrapColumn": 120,
     "editor.detectIndentation": false,
     "editor.tabSize": 4,

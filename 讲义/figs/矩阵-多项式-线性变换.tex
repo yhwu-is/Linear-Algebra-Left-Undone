@@ -1,0 +1,11 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}
+    \node (A) at (0, 0) {矩阵};
+    \node (B) at (3, 0) {多项式};
+    \node (C) at (60:3) {线性变换};
+    \draw[thick] (A) -- (B) -- (C) -- (A) -- cycle;
+\end{tikzpicture}
+
+\end{document}

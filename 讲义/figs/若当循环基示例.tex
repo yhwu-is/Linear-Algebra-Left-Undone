@@ -1,0 +1,28 @@
+\documentclass[border=1pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[scale=1.2]
+    \foreach[count=\i] \len in {5, 5, 4, 2}
+    \draw (0, -\i+1) -- (\len, -\i+1);
+
+    \foreach \i in {0,...,5}
+    \draw (\i, 0) -- (\i, -1);
+    \foreach \i in {0,...,4}
+    \draw (\i, -1) -- (\i, -2);
+    \foreach \i in {0, 1, 2}
+    \draw (\i, -2) -- (\i, -3);
+
+    \node at (.5, -.5) {$N^2v_1$};
+    \node at (1.5, -.5) {$N^2v_2$};
+    \node at (2.5, -.5) {$Nv_3$};
+    \node at (3.5, -.5) {$Nv_4$};
+    \node at (4.5, -.5) {$v_5$};
+    \node at (.5, -1.5) {$Nv_1$};
+    \node at (1.5, -1.5) {$Nv_2$};
+    \node at (2.5, -1.5) {$v_3$};
+    \node at (3.5, -1.5) {$v_4$};
+    \node at (.5, -2.5) {$v_1$};
+    \node at (1.5, -2.5) {$v_2$};
+\end{tikzpicture}
+
+\end{document}

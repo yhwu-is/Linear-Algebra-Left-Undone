@@ -1,0 +1,48 @@
+\documentclass[border=2pt]{standalone}
+\input{preamble.tex}
+\begin{document}
+\begin{tikzpicture}[
+        >=Stealth,
+        font=\small,
+        box/.style={draw, align=center, inner sep=4.5pt},
+        oval/.style={draw, ellipse, align=center, inner xsep=7pt, inner ysep=4pt},
+        arr/.style={->, thick},
+        both/.style={<->, thick}
+    ]
+    \node[oval] (dep) at (0,0) {线性相关性};
+    \node[box] (comb) at (0.15,1.85) {线性组合\\（定义）};
+    \node[box] (eq) at (-2.55,1.2) {线性方程组};
+    \node[box] (part) at (-3.85,-0.05) {部分组\\线性相关性};
+    \node[box, text width=6.5cm] (repr) at (-1.55,-2.45)
+        {线性表示\\表示其他向量唯一？\\内部向量可以互相线性表示？\\存在后面的向量可以被前面的向量表示？};
+    \node[box] (source) at (5.4,-1.0) {源泉定理};
+    \node[box, text width=4.15cm] (pair) at (5.4,-2.65)
+        {向量组 1 可以表示向量组 2\\二者秩的关系？};
+    \node[oval] (max) at (-3.05,-4.85) {极大线性无关组};
+    \node[oval] (rank) at (1.45,-4.85) {向量组的秩};
+    \node[oval] (equiv) at (5.75,-4.85) {等价向量组};
+    \node[box] (solve) at (-5.05,-6.55) {求解：初等变换};
+    \node[oval] (basis) at (0.2,-7.05) {基和维数};
+    \node[above] at (basis.north) {线性空间};
+    \node[box] (nvec) at (-2.85,-8.65) {$n$ 维空间 $n$ 个\\线性无关向量};
+    \node[box] (ext) at (0.2,-8.65) {基的扩充};
+    \node[oval] (coord) at (3.05,-8.65) {向量的坐标};
+
+    \draw[both] (comb) -- (dep);
+    \draw[both] (eq.south east) -- (dep.north west);
+    \draw[both] (part) -- (dep);
+    \draw[both] (dep.south west) -- (repr.north);
+    \draw[arr] (dep.east) -- (source.north);
+    \draw[arr] (source) -- (pair);
+    \draw[arr] (repr.210) -- node[left] {存在} (max.north);
+    \draw[arr] (solve.north) -- (max.south west);
+    \draw[arr] (max) -- (rank);
+    \draw[arr] (rank.north east) -- (pair.210);
+    \draw[arr] (pair.south) -- (equiv.north);
+    \draw[arr] (max.south east) -- (basis.north west);
+    \draw[arr] (rank.south east) -- (basis.north east);
+    \draw[arr] (basis.south west) -- (nvec.north east);
+    \draw[arr] (basis.south) -- (ext.north);
+    \draw[arr] (basis.south east) -- (coord.north west);
+\end{tikzpicture}
+\end{document}
