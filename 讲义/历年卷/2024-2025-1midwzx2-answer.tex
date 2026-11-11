@@ -1,0 +1,235 @@
+\section{2024-2025学年线性代数I（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+
+    考试时间：2024年11月8日（星期五）19:00-21:00
+\end{center}
+\begin{enumerate}
+    \item 对增广矩阵消元：
+    \[
+        \left(\begin{array}{ccccc|c}
+            1&2&-1&3&1&2\\
+            2&4&-2&6&3&6\\
+            -1&-2&1&-1&3&4
+        \end{array}\right)
+        \longrightarrow
+        \left(\begin{array}{ccccc|c}
+            1&2&-1&0&0&3\\
+            0&0&0&1&0&-1\\
+            0&0&0&0&1&2
+        \end{array}\right).
+    \]
+    故一般解为
+    \[
+        x=\begin{pmatrix}3\\0\\0\\-1\\2\end{pmatrix}
+        +s\begin{pmatrix}-2\\1\\0\\0\\0\end{pmatrix}
+        +t\begin{pmatrix}1\\0\\1\\0\\0\end{pmatrix},
+        \qquad s,t\in\mathbf{R}.
+    \]
+
+    \item 因 $\alpha_1,\ldots,\alpha_m$ 线性相关，存在不全为零的 $d_1,\ldots,d_m$ 使
+    \[
+        \sum_{i=1}^md_i\alpha_i=0.
+    \]
+    选取 $c_1,\ldots,c_m$ 使得
+    \[
+        \sum_{i=1}^md_ic_i=0
+    \]
+    （若 $d$ 至少有两个非零分量，则可取 $c$ 满足此式；若只有一个 $d_k\neq 0$，则 $\alpha_k=0$，取 $c_k=0$ 即可）. 于是对任意 $\beta$，
+    \[
+        \sum_{i=1}^md_i(\alpha_i+c_i\beta)
+        =\sum_{i=1}^md_i\alpha_i+\left(\sum_{i=1}^md_ic_i\right)\beta=0.
+    \]
+    因 $d_i$ 不全为零，故 $\{\beta,\alpha_1+c_1\beta,\ldots,\alpha_m+c_m\beta\}$ 线性相关.
+
+    \item 记 $f_1=(a^{n-1},a^{n-2},\ldots,a,1)$，$f_2=(a^{n-2},\ldots,1,0)$，$\ldots$，$f_n=(1,0,\ldots,0)$. 以它们为列作矩阵 $F$，则 $F$ 的反对角线全为 $1$，故 $F$ 是置换矩阵（每行每列恰有一个 $1$），从而 $|F|=\pm 1\neq 0$. 因此 $\{f_1,\ldots,f_n\}$ 是 $\mathbf{F}^n$ 的一组基.
+
+    又
+    \[
+        f_i-af_{i+1}=e_{n-i+1}\quad(1\leqslant i\leqslant n-1),
+        \qquad f_n=e_1.
+    \]
+    设 $\alpha=(a_1,\ldots,a_n)$，则
+    \[
+        \alpha=\sum_{r=1}^na_re_r
+        =a_1f_n+\sum_{r=2}^na_r(f_{n-r+1}-af_{n-r+2}).
+    \]
+    整理得
+    \[
+        \alpha=\sum_{i=1}^n\left(a_{n-i+1}-aa_{n-i+2}\right)f_i,
+        \qquad (a_{n+1}:=0).
+    \]
+    故 $\alpha$ 在该基下的坐标为
+    \[
+        \left(a_n,\ a_{n-1}-aa_n,\ a_{n-2}-aa_{n-1},\ \ldots,\ a_1-aa_2\right).
+    \]
+
+    \item $W_1$ 由向量 $(1,1,\ldots,1)$ 张成，维数为 $1$；$W_2$ 由一个非零线性方程给出，维数为 $n-1$. 若
+    \[
+        c(1,1,\ldots,1)\in W_2,
+    \]
+    则 $nc=0$，故 $c=0$，即 $W_1\cap W_2=\{0\}$. 于是
+    \[
+        \dim(W_1+W_2)=1+(n-1)=n,
+    \]
+    从而 $W_1+W_2=\mathbf{R}^n$ 且为直和，即
+    \[
+        \mathbf{R}^n=W_1\oplus W_2.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 由 $W_1$ 的方程相加得 $2x_1+2x_3=0$，即 $x_3=-x_1$；代回得 $x_2=0$. 故
+        \[
+            W_1=\spa\{(1,0,-1)\}.
+        \]
+        取 $\beta_1=(1,0,-1)$，$\beta_2=(1,0,0)$，$\beta_3=(0,1,0)$，则 $\{\beta_1,\beta_2,\beta_3\}$ 为 $\mathbf{R}^3$ 的一组基，且扩充了 $W_1$ 的基.
+
+        \item 由
+        \[
+            (a_1,a_2,a_3)=
+            \begin{pmatrix}
+                1&1&1\\
+                2&1&3\\
+                1&-1&3
+            \end{pmatrix}
+        \]
+        消元知 $r(W_2)=2$，且 $a_3=2a_1-a_2$，故
+        \[
+            W_2=\spa(a_1,a_2).
+        \]
+        因 $\beta_1=(1,0,-1)\notin W_2$，故
+        \[
+            W_1\cap W_2=\{0\},\qquad \dim(W_1\cap W_2)=0,
+        \]
+        基为空集（或说无）.
+
+        又 $\dim W_1=1,\ \dim W_2=2$，故
+        \[
+            \dim(W_1+W_2)=1+2=3,
+            \qquad W_1+W_2=\mathbf{R}^3,
+        \]
+        其一组基为 $\{a_1,a_2,\beta_1\}$（也可取标准基）.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对 $\alpha_1,\alpha_2,\alpha_3$ 作 Schmidt 正交化：
+        \[
+            v_1=\alpha_1=(1,0,0,0,1),\qquad \|v_1\|^2=2,
+        \]
+        \[
+            v_2=\alpha_2-\frac{\langle\alpha_2,v_1\rangle}{\|v_1\|^2}v_1
+            =\alpha_2-\frac12\alpha_1
+            =\left(\frac12,-1,0,1,-\frac12\right),
+        \]
+        取 $w_2=(1,-2,0,2,-1)$，则 $\|w_2\|^2=10$；
+        \[
+            v_3=\alpha_3-\frac{\langle\alpha_3,v_1\rangle}{\|v_1\|^2}v_1
+            -\frac{\langle\alpha_3,w_2\rangle}{\|w_2\|^2}w_2
+            =(1,1,1,0,-1),
+        \]
+        且 $\|v_3\|^2=4$. 故一组标准正交基为
+        \[
+            \frac{1}{\sqrt2}(1,0,0,0,1),\quad
+            \frac{1}{\sqrt{10}}(1,-2,0,2,-1),\quad
+            \frac12(1,1,1,0,-1).
+        \]
+
+        \item 先证 $W_1\perp W_2$：对任意 $\alpha\in W_2$ 及 $w\in W_1$，由 $W_2$ 的定义有 $\langle\alpha,w\rangle=0$，故 $W_1\perp W_2$. 从而 $W_1\cap W_2=\{0\}$（因 $w\in W_1\cap W_2$ 时 $\langle w,w\rangle=0$，故 $w=0$）.
+
+        再证维数：取 $W_1$ 的一组标准正交基 $e_1,\ldots,e_k$，将其扩充为 $V$ 的一组标准正交基
+        \[
+            e_1,\ldots,e_k,e_{k+1},\ldots,e_n.
+        \]
+        则 $e_{k+1},\ldots,e_n$ 张成 $W_1^{\perp}$，故
+        \[
+            \dim W_1+\dim W_1^{\perp}=k+(n-k)=n.
+        \]
+        因此 $W_1+W_2=V$，结合 $W_1\cap W_2=\{0\}$ 得 $W_1\oplus W_2=V$.
+    \end{enumerate}
+
+    \item 对任意 $A,B$ 及 $k\in\mathbf{R}$，
+    \[
+        \varphi(A+B)=\begin{pmatrix}1&1\\1&1\end{pmatrix}(A+B)\begin{pmatrix}2&0\\0&1\end{pmatrix}
+        =\varphi(A)+\varphi(B),
+    \]
+    \[
+        \varphi(kA)=k\varphi(A),
+    \]
+    故 $\varphi$ 为线性变换.
+
+    设 $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，则
+    \[
+        \varphi(A)=\begin{pmatrix}2(a+c)&b+d\\2(a+c)&b+d\end{pmatrix}.
+    \]
+    其像空间由
+    \[
+        \begin{pmatrix}2&0\\2&0\end{pmatrix},\qquad
+        \begin{pmatrix}0&1\\0&1\end{pmatrix}
+    \]
+    张成，故 $r(\varphi)=2$. 又 $\varphi(A)=0$ 等价于
+    \[
+        a+c=0,\qquad b+d=0,
+    \]
+    故
+    \[
+        \ker\varphi
+        =\spa\left\{\begin{pmatrix}1&0\\-1&0\end{pmatrix},
+        \begin{pmatrix}0&1\\0&-1\end{pmatrix}\right\},
+    \]
+        维数为 $2$.
+
+    \item
+    \begin{enumerate}
+        \item $(\sigma+\tau)^2=\sigma^2+\sigma\tau+\tau\sigma+\tau^2
+        =\sigma+\tau+\sigma\tau+\tau\sigma$. 故
+        \[
+            (\sigma+\tau)^2=\sigma+\tau
+            \iff \sigma\tau+\tau\sigma=0.
+        \]
+        若 $\sigma\tau=\tau\sigma=0$，则等式显然成立.
+
+        \item 反之，设 $\sigma\tau+\tau\sigma=0$，即 $\sigma\tau=-\tau\sigma$. 左乘 $\sigma$ 得
+        \[
+            \sigma\tau=-\sigma\tau\sigma,
+        \]
+        右乘 $\sigma$ 得
+        \[
+            \sigma\tau\sigma=-\tau\sigma.
+        \]
+        两式合并得 $\sigma\tau=\tau\sigma$. 又 $\sigma\tau=-\tau\sigma$，故 $2\sigma\tau=0$，从而
+        \[
+            \sigma\tau=0,\qquad \tau\sigma=0.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 错. 取 $\mathbf{R}^2$ 中
+        \[
+            V_1=\spa(e_1),\quad V_2=\spa(e_2),\quad V_3=\spa(e_1+e_2).
+        \]
+        则
+        \[
+            V_1\cap(V_2+V_3)=V_1,
+            \qquad
+            V_1\cap V_2+V_1\cap V_3=\{0\},
+        \]
+        两者不相等.
+
+        \item 对. 若 $\alpha_1,\ldots,\alpha_m$ 线性相关，则存在不全为零的 $d_i$ 使 $\sum d_i\alpha_i=0$. 取某个 $d_j\neq 0$，可将 $\alpha_j$ 用其余向量线性表示. 代入 $\beta$ 的表示式即可将 $\beta$ 用少于 $m$ 个向量线性表示，矛盾. 故 $\alpha_1,\ldots,\alpha_m$ 线性无关.
+
+        \item 对. 此时
+        \[
+            \dim\ker\sigma=\dim V-r(\sigma)
+            \geqslant\dim V-\dim W>0,
+        \]
+        故 $\ker\sigma\neq\{0\}$.
+
+        \item 对. $(1,-1,1)$ 与 $(1,1,1)$ 线性无关，可扩充为 $\mathbf{R}^3$ 的一组基. 在基上任意指定像（只需在已知两向量上分别指定为题给的像），即可唯一确定一个线性映射 $\sigma:\mathbf{R}^3\to\mathbf{R}^2$.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

@@ -1,0 +1,120 @@
+\section{2022-2023学年线性代数I（H）期中答案}
+
+\begin{center}
+    任课老师：刘康生\hspace{4em} 考试时长：45分钟
+\end{center}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item 计算系数矩阵的行列式
+        \[
+            |A|=(a-1)^2(a+2).
+        \]
+        由方程组有解但不唯一知 $|A|=0$，故 $a=1$ 或 $a=-2$. 当 $a=1$ 时增广矩阵的秩大于系数矩阵的秩，无解；当 $a=-2$ 时有无穷多解. 因此
+        \[
+            a=-2.
+        \]
+
+        \item 当 $a=-2$ 时，对增广矩阵消元得全部解
+        \[
+            x=\begin{pmatrix}\dfrac13\\[4pt]-\dfrac23\\[4pt]0\end{pmatrix}
+            +k\begin{pmatrix}1\\-1\\1\end{pmatrix},\qquad k\in\mathbf{R}.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对任意 $A,B$ 及 $k\in\mathbf{R}$，
+        \[
+            \sigma(A+B)=P(A+B)Q=PAQ+PBQ=\sigma(A)+\sigma(B),
+        \]
+        \[
+            \sigma(kA)=P(kA)Q=kPAQ=k\sigma(A),
+        \]
+        故 $\sigma$ 为线性映射.
+
+        \item 记 $A$ 的列向量为 $\alpha_1,\alpha_2$，则 $AQ=(\alpha_2,0)$，故
+        \[
+            \sigma(A)=PAQ=(P\alpha_2,0).
+        \]
+        因 $P$ 的像空间为 $\spa\{(1,0,0)^\mathrm{T},(1,1,0)^\mathrm{T}\}$，故
+        \[
+            \im\sigma
+            =\left\{\begin{pmatrix}u&0\\v&0\\0&0\end{pmatrix}\,\middle|\,u,v\in\mathbf{R}\right\},
+        \]
+        其一组基为
+        \[
+            \begin{pmatrix}1&0\\0&0\\0&0\end{pmatrix},\quad
+            \begin{pmatrix}1&0\\1&0\\0&0\end{pmatrix},
+        \]
+        维数为 $2$.
+
+        又 $PAQ=0\iff P\alpha_2=0$，解得 $\alpha_2 = k(0,0,1)^\mathrm{T}, k \in \mathbf{R}$，于是
+        \[
+            \ker\sigma
+            =\left\{\begin{pmatrix}a&0\\b&0\\c&d\end{pmatrix}\,\middle|\,a,b,c,d\in\mathbf{R}\right\},
+        \]
+        维数为 $4$.
+
+        \item 取 $E_{ij}$ 表示 $(i,j)$ 位置为 $1$、其余位置为 $0$ 的 $3\times 2$ 矩阵. 令
+        \[
+            B_1=\{E_{12},E_{22},E_{11},E_{21},E_{31},E_{32}\},
+        \]
+        \[
+            B_2=\{E_{11},E_{11}+E_{21},E_{31},E_{32},E_{12},E_{22}\}.
+        \]
+        它们都是 $\mathbf{R}^{3\times 2}$ 的基，且
+        \[
+            \sigma(E_{12})=E_{11},\qquad
+            \sigma(E_{22})=E_{11}+E_{21},
+        \]
+        而 $E_{11},E_{21},E_{31},E_{32}\in\ker\sigma$. 因此 $\sigma$ 在基 $B_1,B_2$ 下的矩阵为
+        \[
+            \begin{pmatrix}
+                1&0&0&0&0&0\\
+                0&1&0&0&0&0\\
+                0&0&0&0&0&0\\
+                0&0&0&0&0&0\\
+                0&0&0&0&0&0\\
+                0&0&0&0&0&0
+            \end{pmatrix}.
+        \]
+    \end{enumerate}
+
+    \item $T$ 在基 $B$ 下的矩阵为
+    \[
+        A=\begin{pmatrix}
+            0&0&\cdots&0&a_1\\
+            1&0&\cdots&0&a_2\\
+            0&1&\cdots&0&a_3\\
+            \vdots&&\ddots&&\vdots\\
+            0&0&\cdots&1&a_n
+        \end{pmatrix}.
+    \]
+    按第一行展开得 $|A|=(-1)^{n+1}a_1$. 因此 $T$ 为同构映射当且仅当 $|A|\neq 0$，即
+    \[
+        a_1\neq 0.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 错. 取 $W=\{0\}$，$\alpha\neq 0$，则 $\alpha+W=\{\alpha\}$ 不含零向量，不是子空间.
+
+        \item 对. 商空间 $V/W$ 中的两个元素（即两个陪集）若相交则必相等，故
+        \[
+            \overline{\alpha}=\overline{\beta}
+            \quad\text{或}\quad
+            \overline{\alpha}\cap\overline{\beta}=\varnothing.
+        \]
+
+        \item 对. 由 $A^3=0$ 得
+        \[
+            E=(E+A)(E-A+A^2)=(E-A)(E+A+A^2),
+        \]
+        故 $E+A$ 与 $E-A$ 都可逆.
+
+        \item 错. 取 $A=E$，则 $A^2=A$，但 $E-A=0$ 不可逆.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

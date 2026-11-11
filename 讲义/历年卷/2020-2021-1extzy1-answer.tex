@@ -1,0 +1,172 @@
+\section{2020-2021学年线性代数I（H）小测1答案}
+
+\begin{center}
+    任课老师：谈之奕\hspace{4em} 考试时长：90分钟
+\end{center}
+\begin{enumerate}
+    \item 记系数矩阵为 $A$，则
+    \[
+        |A|=\begin{vmatrix}
+            3&2&1\\
+            1&-1&-2\\
+            a&-2&2
+        \end{vmatrix}=-3a-24=-3(a+8).
+    \]
+    当 $a\neq -8$ 时 $|A|\neq 0$，方程组有唯一解，解集非空.
+
+    当 $a=-8$ 时，增广矩阵
+    \[
+        \begin{pmatrix}[ccc|c]
+            3&2&1&2\\
+            1&-1&-2&-3\\
+            -8&-2&2&6
+        \end{pmatrix} \to
+        \begin{pmatrix}[ccc|c]
+            3&2&1&2\\
+            1&-1&-2&-3\\
+            0&0&0&4
+        \end{pmatrix}
+    \]
+    故方程组无解. 因此所求为
+    \[
+        a\in\mathbf{R}\setminus\{-8\}.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 设 $\delta=(x_1,x_2,x_3,x_4)$，由正交条件得
+        \[
+            \begin{cases}
+                x_1+x_2+x_3+x_4=0,\\
+                -x_1-x_2+2x_4=0,\\
+                x_1-x_2=0.
+            \end{cases}
+        \]
+        解得 $x_1=x_2,\ x_4=x_1,\ x_3=-3x_1$，故
+        \[
+            \delta=\pm\frac{1}{2\sqrt{3}}(1,1,-3,1).
+        \]
+
+        \item $\alpha+\beta+\gamma=(1,-1,1,3)$，且 $\delta\perp\alpha,\beta,\gamma$，故
+        \[
+            \|\alpha+\beta+\gamma+\delta\|^2=\|(1,-1,1,3)\|^2+\|\delta\|^2=12+1=13,
+        \]
+        即 $\|\alpha+\beta+\gamma+\delta\|=\sqrt{13}$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 若 $v\in\ker\sigma_1$，则 $\sigma_1v=0$，从而
+        \[
+            (\sigma_2\circ\sigma_1)v=\sigma_2(0)=0,
+        \]
+        故 $\ker\sigma_1\subseteq\ker(\sigma_2\circ\sigma_1)$.
+
+        \item 任取 $w\in\im(\sigma_2\circ\sigma_1)$，存在 $v\in V$ 使 $w=\sigma_2(\sigma_1v)\in\im\sigma_2$，故 $\im(\sigma_2\circ\sigma_1)\subseteq\im\sigma_2$.
+    \end{enumerate}
+
+    \item $T$ 在基 $\{\alpha_1,\alpha_2,\alpha_3\}$ 下的矩阵为
+    \[
+        A=\begin{pmatrix}
+            1&1&1\\
+            1&-1&2\\
+            0&0&0
+        \end{pmatrix}.
+    \]
+    前两列线性无关，故 $r(T)=2$. 像空间
+    \[
+        \im T=\spa(\alpha_1+\alpha_2,\ \alpha_1-\alpha_2)=\spa(\alpha_1,\alpha_2).
+    \]
+    由 $Ax=0$ 得 $x_2=x_3/2,\ x_1=-3x_2$，故
+    \[
+        \ker T=\spa(-3\alpha_1+\alpha_2+2\alpha_3).
+    \]
+
+    \item 记方程组系数矩阵为 $A$，解空间 $W=N(A)$. 由
+    \[
+        A=\begin{pmatrix}
+            1&-1&4&-1\\
+            1&1&-2&3
+        \end{pmatrix}\longrightarrow
+        \begin{pmatrix}
+            1&0&1&1\\
+            0&1&-3&2
+        \end{pmatrix}
+    \]
+    得
+    \[
+        W=\spa\big((-1,3,1,0),\,(-1,-2,0,1)\big).
+    \]
+    对这两向量作 Schmidt 正交化：
+    \[
+        u_1=(-1,3,1,0),\qquad \|u_1\|^2=11,
+    \]
+    \[
+        u_2=(-1,-2,0,1)-\frac{-5}{11}(-1,3,1,0)
+        =\frac{1}{11}(-16,-7,5,11),
+    \]
+    其中 $\|(-16,-7,5,11)\|^2=451$. 故 $W$ 的一组单位正交基为
+    \[
+        e_1=\frac{1}{\sqrt{11}}(-1,3,1,0),\qquad
+        e_2=\frac{1}{\sqrt{451}}(-16,-7,5,11).
+    \]
+    又 $W^{\perp}$ 由两个方程的法向量 $(1,-1,4,-1)$、$(1,1,-2,3)$ 张成，正交化后得
+    \[
+        f_1=\frac{1}{\sqrt{19}}(1,-1,4,-1),\qquad
+        f_2=\frac{1}{\sqrt{779}}(15,4,3,23).
+    \]
+    于是 $\{e_1,e_2,f_1,f_2\}$ 即为 $\mathbf{R}^4$ 的一组单位正交基.
+
+    \item
+    \begin{enumerate}
+        \item 设 $f(x)=a_0+a_1x+a_2x^2+a_3x^3$. 则
+        \[
+            T(f)=\begin{pmatrix}
+                a_0&a_0+a_1+a_2+a_3\\
+                a_0-a_1+a_2-a_3&a_0
+            \end{pmatrix}.
+        \]
+        若 $T(f)=0$，则 $a_0=0$，且
+        \[
+            a_1+a_2+a_3=0,\qquad -a_1+a_2-a_3=0,
+        \]
+        相加得 $a_2=0$，从而 $a_3=-a_1$. 故
+        \[
+            \ker T=\spa(x-x^3).
+        \]
+        反之，任意形如 $\begin{pmatrix}p&q\\r&p\end{pmatrix}$ 的矩阵都可取
+        \[
+            a_0=p,\quad a_1=\frac{q-r}{2},\quad a_2=\frac{q+r-2p}{2},\quad a_3=0
+        \]
+        得到，故
+        \[
+            \im T=\left\{\begin{pmatrix}p&q\\r&p\end{pmatrix}\,\middle|\,p,q,r\in\mathbf{R}\right\}.
+        \]
+        其基可取
+        \[
+            \begin{pmatrix}1&0\\0&1\end{pmatrix},\quad
+            \begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+            \begin{pmatrix}0&0\\1&0\end{pmatrix},
+        \]
+        维数为 $3$.
+
+        \item $\dim\mathbf{R}[x]_4=4$，且
+        \[
+            \dim\ker T+\dim\im T=1+3=4,
+        \]
+        维数公式成立.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 错. 取 $S=\{0,e_1\}$，$S$ 线性相关，但 $e_1$ 不能由 $0$ 线性表示.
+
+        \item 错. 正确公式为 $\dim V=\dim\im T+\dim\ker T$，而 $\dim\im T\leqslant\dim W$. 例如零映射 $T:\mathbf{R}\to\mathbf{R}$ 有 $\dim V=1$，$\dim W+\dim K=1+1=2$.
+
+        \item 对. 取 $W$ 的一组基并扩充为 $V$ 的基，定义 $T$ 在 $W$ 上为零、在扩充部分为恒等映射即可，此时 $\ker T=W$.
+
+        \item 错. 若 $U=\spa(v_1,v_2,v_3)$，$W_0=\spa(w_1,w_2,w_3)$，且 $\langle v_i,w_j\rangle=0$，则 $W_0\subseteq U^{\perp}$. 但 $\dim U=3$，故 $\dim U^{\perp}=2$，而 $\dim W_0=3>2$，矛盾.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

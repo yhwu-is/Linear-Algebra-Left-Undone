@@ -1,0 +1,187 @@
+\section{2020-2021学年线性代数I（H）小测2答案}
+
+\begin{center}
+    任课老师：谈之奕\hspace{4em} 考试时长：90分钟
+\end{center}
+\begin{enumerate}
+    \item 若 $M^{-1}$ 为整数矩阵，则 $|M|$ 与 $|M^{-1}|$ 都是整数，且
+    \[
+        |M|\cdot|M^{-1}|=|MM^{-1}|=1,
+    \]
+    故 $|M|=\pm 1$.
+
+    反之，若 $|M|=\pm 1$，由伴随矩阵公式
+    \[
+        M^{-1}=\frac{1}{|M|}M^*
+    \]
+    由于 $M$ 是整数矩阵，故 $M^*$ 的元素（代数余子式）均为整数，从而 $M^{-1}$ 为整数矩阵.
+
+    \item
+    \begin{enumerate}
+        \item 由
+        \[
+            \sigma(v_1)=v_2+v_3,\quad
+            \sigma(v_2)=v_3,\quad
+            \sigma(v_3)=v_1-v_2
+        \]
+        得 $\sigma$ 在基 $B$ 下的矩阵
+        \[
+            A=\begin{pmatrix}
+                0&0&1\\
+                1&0&-1\\
+                1&1&0
+            \end{pmatrix}.
+        \]
+
+        \item $B'$ 在基 $B$ 下的过渡矩阵为
+        \[
+            P=\begin{pmatrix}
+                0&1&1\\
+                1&0&-1\\
+                0&1&0
+            \end{pmatrix},\qquad |P|=1\neq 0,
+        \]
+        故 $B'$ 也是 $V$ 的一组基.
+
+        \item $\sigma$ 在基 $B'$ 下的矩阵为
+        \[
+            P^{-1}AP=
+            \begin{pmatrix}
+                -1&0&1\\
+                1&1&0\\
+                -1&0&0
+            \end{pmatrix}.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对任意 $A,B$ 及 $k\in\mathbf{R}$，
+        \[
+            \sigma(A+B)=P(A+B)Q=PAQ+PBQ=\sigma(A)+\sigma(B),
+        \]
+        \[
+            \sigma(kA)=P(kA)Q=kPAQ=k\sigma(A),
+        \]
+        故 $\sigma$ 为线性映射.
+
+        \item 记 $A$ 的列向量为 $\alpha_1,\alpha_2$，则 $AQ=(\alpha_2,0)$，故
+        \[
+            \sigma(A)=PAQ=(P\alpha_2,0).
+        \]
+        因 $P$ 的像空间为 $\spa\{(1,0,0)^\mathrm{T},(1,1,0)^\mathrm{T}\}$，故
+        \[
+            \im\sigma
+            =\left\{\begin{pmatrix}u&0\\v&0\\0&0\end{pmatrix}\,\middle|\,u,v\in\mathbf{R}\right\},
+        \]
+        其一组基为
+        \[
+            \begin{pmatrix}1&0\\0&0\\0&0\end{pmatrix},\quad
+            \begin{pmatrix}1&0\\1&0\\0&0\end{pmatrix},
+        \]
+        维数为 $2$.
+
+        又 $PAQ=0\iff P\alpha_2=0$，解得 $\alpha_2 = k(0,0,1)^\mathrm{T}, k \in \mathbf{R}$，于是
+        \[
+            \ker\sigma
+            =\left\{\begin{pmatrix}a&0\\b&0\\c&d\end{pmatrix}\,\middle|\,a,b,c,d\in\mathbf{R}\right\},
+        \]
+        维数为 $4$.
+
+        \item $\dim\mathbf{R}^{3\times 2}=6$，且 $\dim\im\sigma+\dim\ker\sigma=2+4=6$，维数公式成立.
+    \end{enumerate}
+
+    \item 原题有误，应将所求的行列式改为：$\begin{vmatrix}
+        x & y & z \\
+        1 & -1 & 13 \\
+        u & v & w
+    \end{vmatrix}$.
+
+    将三个行列式均按第一行展开，并记三个行列式的代数余子式 $A_{11} = c_1, A_{12} = c_2, A_{13} = c_3$，则有方程组
+    \[
+        \begin{cases}
+            c_1 + c_2 + c_3 = 1\\
+            c_1 + 2c_2 - 5c_3 = 2\\
+            2c_1 + 3c_2 + bc_3 = a
+        \end{cases}
+    \]
+    整理有 $(b+4)c_3 = a-3$，故 $a=3, b=-4$.
+
+    待定系数可得所求为 $-\begin{vmatrix}
+        1 & -1 & 13 \\
+        x & y & z \\
+        u & v & w
+    \end{vmatrix} = -c_1 + c_2 - 13c_3 = 2(c_1 + 2c_2 - 5c_3) - 3(c_1 + c_2 + c_3) = 1$.
+
+    \item
+    \begin{enumerate}
+        \item 记基 (A) 与基 (B) 的向量在标准基 $\{1,x,x^2\}$ 下的坐标矩阵分别为
+        \[
+            M_A=\begin{pmatrix}
+                1&0&0\\
+                -1&-1&3\\
+                0&1&-2
+            \end{pmatrix},\qquad
+            M_B=\begin{pmatrix}
+                0&-1&0\\
+                4&0&3\\
+                5&0&4
+            \end{pmatrix}.
+        \]
+        则基 (A) 到基 (B) 的过渡矩阵为 $P=M_A^{-1}M_B$，计算得
+        \[
+            P=\begin{pmatrix}
+                0&-1&0\\
+                23&-2&18\\
+                9&-1&7
+            \end{pmatrix}.
+        \]
+
+        \item $\alpha$ 在基 (A) 下的坐标为 $(1,1,-1)^\mathrm{T}$，故在基 (B) 下的坐标为
+        \[
+            P^{-1}\begin{pmatrix}1\\1\\-1\end{pmatrix}
+            =\begin{pmatrix}-29\\-1\\37\end{pmatrix}.
+        \]
+        也可直接验证
+        \[
+            \alpha=1-x-(-x+x^2)-(3x-2x^2)=1-5x+3x^2
+            =-29\beta_1-\beta_2+37\beta_3.
+        \]
+    \end{enumerate}
+
+    \item 取 $A$ 的零空间 $N(A)$ 的一组基 $\xi_1,\ldots,\xi_{n-r}$，再取其中任意 $k-r$ 个向量 $\xi_1,\ldots,\xi_{k-r}$（因 $k\leqslant n$，有 $k-r\leqslant n-r$）. 定义线性映射 $B:\mathbf{F}^n\to\mathbf{F}^n$ 使
+    \[
+        Be_i=\xi_i\quad(1\leqslant i\leqslant k-r),\qquad
+        Be_i=0\quad(k-r<i\leqslant n).
+    \]
+    则 $\im B\subseteq N(A)$，故 $AB=0$，且 $r(B)=k-r$，从而
+    \[
+        r(A)+r(B)=r+(k-r)=k.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 错. $E$ 与 $-E$ 都可逆，但 $E+(-E)=0$ 不可逆.
+
+        \item 对. 对分块矩阵作初等变换（交换两个块行）可得
+        \[
+            \begin{pmatrix}O&B\\A&C\end{pmatrix}
+            \longrightarrow\begin{pmatrix}A&C\\O&B\end{pmatrix},
+        \]
+        其行列式为 $\pm|A||B|\neq 0$，故原矩阵可逆.
+
+        \item 错. 由 $A^*=|A|A^{-1}$ 得
+        \[
+            |A^*|=|A|^n|A^{-1}|=|A|^{n-1}.
+        \]
+        例如 $A=2E$ 时 $|A^*|=2^{n(n-1)}\neq 1$.
+
+        \item 错. 取 $A=\diag(0,1)$（阶数大于 $1$），则对任意正整数 $n$，
+        \[
+            A^n=\diag(0,1)\neq O,
+        \]
+        但 $A$ 不可逆.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

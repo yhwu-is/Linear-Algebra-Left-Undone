@@ -1,0 +1,230 @@
+\section{2024-2025学年线性代数I（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+
+    考试时间：2024年11月9日（星期六）16:15-18:15
+\end{center}
+\begin{enumerate}
+    \item 对增广矩阵消元：
+    \[
+        \begin{pmatrix}[cccc|c]
+            1&1&-1&2&3\\
+            2&1&0&-3&1\\
+            -2&0&-2&10&4
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}[cccc|c]
+            1&0&1&-5&-2\\
+            0&1&-2&7&5\\
+            0&0&0&0&0
+        \end{pmatrix}.
+    \]
+    故一般解为
+    \[
+        x=\begin{pmatrix}-2\\5\\0\\0\end{pmatrix}
+        +s\begin{pmatrix}-1\\2\\1\\0\end{pmatrix}
+        +t\begin{pmatrix}5\\-7\\0\\1\end{pmatrix},
+        \qquad s,t\in\mathbf{R}.
+    \]
+
+    \item 由题设存在 $c_1,\ldots,c_r$ 使
+    \[
+        \beta=c_1\alpha_1+\cdots+c_r\alpha_r.
+    \]
+    若 $c_r=0$，则 $\beta$ 可由 $\alpha_1,\ldots,\alpha_{r-1}$ 线性表示，矛盾，故 $c_r\neq 0$. 于是
+    \[
+        \alpha_r=\frac1{c_r}\left(\beta-\sum_{i=1}^{r-1}c_i\alpha_i\right)
+        \in\spa(\alpha_1,\ldots,\alpha_{r-1},\beta).
+    \]
+    因此
+    \[
+        \spa(\alpha_1,\ldots,\alpha_r)
+        \subseteq\spa(\alpha_1,\ldots,\alpha_{r-1},\beta),
+    \]
+    反向包含显然，故两边相等.
+
+    \item 设
+    \[
+        (\beta_1,\ldots,\beta_r)
+        =(\alpha_1,\ldots,\alpha_r)C,
+    \]
+    则 $C$ 为主对角线为 $0$、其余元素为 $1$ 的矩阵，即 $C=J-E$，其中 $J$ 为全 $1$ 矩阵. 计算可得
+    \[
+        |C|=(r-1)(-1)^{r-1}\neq 0\qquad(r\geqslant 2).
+    \]
+    故 $C$ 可逆，于是 $\beta_1,\ldots,\beta_r$ 线性无关当且仅当 $\alpha_1,\ldots,\alpha_r$ 线性无关.
+
+    \item
+    \begin{enumerate}
+        \item
+        \[
+            \langle\alpha_1,\alpha_2\rangle=2,\qquad
+            \|\alpha_1\|^2=3,\qquad
+            \|\alpha_2\|^2=2,
+        \]
+        故
+        \[
+            \cos\theta=\frac{2}{\sqrt6}=\frac{\sqrt6}{3},
+            \qquad \theta=\arccos\frac{\sqrt6}{3}.
+        \]
+
+        \item 作 Schmidt 正交化：
+        \[
+            v_1=\alpha_1=(1,1,1),\qquad \|v_1\|^2=3,
+        \]
+        \[
+            v_2=\alpha_2-\frac23\alpha_1
+            =\left(-\frac23,\frac13,\frac13\right),
+        \]
+        取 $w_2=(-2,1,1)$，则 $\|w_2\|^2=6$；
+        \[
+            v_3=\alpha_3-\frac{\langle\alpha_3,v_1\rangle}{\|v_1\|^2}v_1
+            -\frac{\langle\alpha_3,w_2\rangle}{\|w_2\|^2}w_2
+            =(0,-\tfrac12,\tfrac12),
+        \]
+        取 $w_3=(0,-1,1)$，则 $\|w_3\|^2=2$. 故一组标准正交基为
+        \[
+            e_1=\frac{1}{\sqrt3}(1,1,1),\quad
+            e_2=\frac{1}{\sqrt6}(-2,1,1),\quad
+            e_3=\frac{1}{\sqrt2}(0,-1,1).
+        \]
+
+        \item 因基是标准正交的，
+        \[
+            \mu=(\mu\cdot e_1)e_1+(\mu\cdot e_2)e_2+(\mu\cdot e_3)e_3,
+        \]
+        而
+        \[
+            \mu\cdot e_1=\frac{6}{\sqrt3}=2\sqrt3,\quad
+            \mu\cdot e_2=\frac{-3}{\sqrt6}=-\frac{\sqrt6}{2},\quad
+            \mu\cdot e_3=\frac{1}{\sqrt2}=\frac{\sqrt2}{2}.
+        \]
+        故 $\mu$ 在该基下的坐标为
+        \[
+            \left(2\sqrt3,\ -\frac{\sqrt6}{2},\ \frac{\sqrt2}{2}\right).
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item $W_1$ 的方程为 $x_1=x_2-x_3+x_4$，取自由未知量 $x_2,x_3,x_4$ 得基
+        \[
+            \beta_1=(1,1,0,0),\quad
+            \beta_2=(-1,0,1,0),\quad
+            \beta_3=(1,0,0,1).
+        \]
+        再取 $W_1$ 的法向量 $\beta_4=(1,-1,1,-1)$，则 $\{\beta_1,\beta_2,\beta_3,\beta_4\}$ 为 $\mathbf{R}^4$ 的基.
+
+        \item 因 $W_1,W_2$ 的方程系数不成比例，故它们为不同的超平面，从而
+        \[
+            W_1+W_2=\mathbf{R}^4,
+        \]
+        维数为 $4$，一组基可取标准基 $\{e_1,e_2,e_3,e_4\}$（或 $\{\beta_1,\beta_2,\beta_3,(1,1,1,1)\}$）.
+
+        联立 $W_1,W_2$ 的方程：
+        \[
+            \begin{cases}
+                x_1-x_2+x_3-x_4=0,\\
+                x_1+x_2+x_3+x_4=0,
+            \end{cases}
+        \]
+        两式相加得 $x_3=-x_1$，相减得 $x_4=-x_2$，故
+        \[
+            W_1\cap W_2=\spa\{(1,0,-1,0),\ (0,1,0,-1)\},
+        \]
+        维数为 $2$.
+    \end{enumerate}
+
+    \item 令 $t=x-2$，则 $x=t+2$，故
+    \[
+        f(x)=a+b(t+2)+c(t+2)^2
+        =(a+2b+4c)+(b+4c)t+ct^2.
+    \]
+    因此 $f$ 关于基 $\{1,x-2,(x-2)^2\}$ 的坐标为
+    \[
+        (a+2b+4c,\ b+4c,\ c).
+    \]
+    该基显然线性无关且个数为 $3$，故为 $\mathbf{R}_3[x]$ 的一组基.
+
+    \item 对任意 $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$，$B=\begin{pmatrix}e&f\\g&h\end{pmatrix}$ 及 $k\in\mathbf{R}$，由矩阵运算的线性性，$\sigma(A+B)=\sigma(A)+\sigma(B)$，$\sigma(kA)=k\sigma(A)$，故 $\sigma$ 为线性变换.
+
+    取基 $E_{11},E_{12},E_{21},E_{22}$，则
+    \[
+        \sigma(E_{11})=E_{11}+E_{21},\quad
+        \sigma(E_{12})=E_{11}+E_{12},
+    \]
+    \[
+        \sigma(E_{21})=-E_{12}+E_{21},\quad
+        \sigma(E_{22})=0.
+    \]
+    故 $\sigma$ 的矩阵为
+    \[
+        \begin{pmatrix}
+            1&1&0&0\\
+            0&1&-1&0\\
+            1&0&1&0\\
+            0&0&0&0
+        \end{pmatrix},
+    \]
+    其秩为 $2$. 于是 $r(\sigma)=2$，且
+    \[
+        \ker\sigma=\spa\left\{\begin{pmatrix}-1&1\\1&0\end{pmatrix},
+        \begin{pmatrix}0&0\\0&1\end{pmatrix}\right\},
+    \]
+    \[
+        \im\sigma=\spa\left\{\begin{pmatrix}1&1\\0&0\end{pmatrix},
+        \begin{pmatrix}1&0\\1&0\end{pmatrix}\right\}.
+    \]
+
+    \item 设 $f(x)=a+bx+cx^2$，则 $f''(x)=2c$，故
+    \[
+        \sigma(f)=2cx^2+1.
+    \]
+    由 $\sigma(f)=\lambda f$ 得
+    \[
+        \begin{cases}
+            1=\lambda a,\\
+            0=\lambda b,\\
+            2c=\lambda c.
+        \end{cases}
+    \]
+    由 $1=\lambda a$ 知 $\lambda\neq 0$，故 $b=0$. 若 $\lambda\neq 2$，则 $c=0$，此时
+    \[
+        \lambda\neq 0,\qquad f(x)=\frac1\lambda.
+    \]
+    若 $\lambda=2$，则 $a=\dfrac12$，$c$ 任意，此时
+    \[
+        \lambda=2,\qquad f(x)=\frac12+cx^2\quad(c\in\mathbf{R}).
+    \]
+    综上，所有解为
+    \[
+        \lambda\in\mathbf{R}\setminus\{0,2\},\ f(x)=\frac1\lambda;
+        \qquad
+        \lambda=2,\ f(x)=\frac12+cx^2\ (c\in\mathbf{R}).
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 对. $V_1$ 是两个齐次线性方程 $x_1-x_4=0$ 与 $x_2+x_3=0$ 的解空间，因而是子空间. 其一组基为 $(1,0,0,1),(0,1,-1,0)$.
+
+        \item 对. 设 $U=\spa(\alpha_1,\ldots,\alpha_s)$，$W=\spa(\beta_1,\ldots,\beta_t)$. 由条件 $U\perp W$，故 $W\subseteq U^{\perp}$，于是
+        \[
+            \dim W\leqslant\dim U^{\perp}=n-\dim U.
+        \]
+        即 $r(\alpha_1,\ldots,\alpha_s)+r(\beta_1,\ldots,\beta_t)\leqslant n$.
+
+        \item 错. 例如 $\sigma:\mathbf{R}^2\to\mathbf{R}$，$\sigma(x,y)=x$，则 $\dim V=2\geqslant1=\dim W$，但
+        \[
+            \ker\sigma=\{(0,y)\mid y\in\mathbf{R}\}\neq\{0\}.
+        \]
+
+        \item 错. 因 $(0,-1)=-(0,1)$，线性变换必须满足
+        \[
+            T(0,-1)=-T(0,1)=-(0,1)=(0,-1),
+        \]
+        但题设要求 $T(0,-1)=(2,0)$，矛盾. 故不存在这样的线性变换.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

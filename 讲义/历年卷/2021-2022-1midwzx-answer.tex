@@ -1,0 +1,197 @@
+\section{2021-2022学年线性代数I（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+\end{center}
+\begin{enumerate}
+    \item 计算系数矩阵的行列式
+    \[
+        |A|=\begin{vmatrix}
+            1&1&1\\
+            2&1&-a\\
+            1&-2&-3
+        \end{vmatrix}=-2-3a.
+    \]
+    当 $a\neq-\dfrac23$ 时 $|A|\neq 0$，方程组有唯一解，与题设矛盾. 当 $a=-\dfrac23$ 时，增广矩阵化为
+    \[
+        \begin{pmatrix}
+            1&0&-\dfrac13&0\\
+            0&1&\dfrac43&0\\
+            0&0&0&1
+        \end{pmatrix},
+    \]
+    系数矩阵的秩为 $2$，增广矩阵的秩为 $3$，故方程组无解. 因此
+    \[
+        a=-\frac23.
+    \]
+
+    \item 设某个 $b_i\neq 0$（题中 $\beta_i$ 应为 $b_i$）. 考虑向量组
+    \[
+        \alpha_1,\ldots,\alpha_{i-1},\ \beta,\ \alpha_{i+1},\ldots,\alpha_s.
+    \]
+    若
+    \[
+        \sum_{j\neq i}c_j\alpha_j+c\beta=0,
+    \]
+    代入 $\beta=\sum_{j=1}^sb_j\alpha_j$ 得
+    \[
+        \sum_{j\neq i}(c_j+cb_j)\alpha_j+cb_i\alpha_i=0.
+    \]
+    由 $\alpha_1,\ldots,\alpha_s$ 线性无关得 $cb_i=0$，又 $b_i\neq 0$，故 $c=0$，进而所有 $c_j=0$. 因此 $\beta$ 可替换 $\alpha_i$，得到新的线性无关组.
+
+    \item
+    \begin{enumerate}
+        \item
+        \[
+            \langle\alpha_1,\alpha_2\rangle=2+1=3,\quad
+            \|\alpha_1\|^2=6,\quad
+            \|\alpha_2\|^2=3,
+        \]
+        故
+        \[
+            \cos\theta=\frac{3}{\sqrt{6}\sqrt{3}}=\frac{1}{\sqrt2},
+            \qquad \theta=\frac{\pi}{4}.
+        \]
+
+        \item 对 $\alpha_1,\alpha_2,\alpha_3$ 作 Schmidt 正交化：
+        \[
+            v_1=\alpha_1=(2,1,1,0,0),
+        \]
+        \[
+            v_2=\alpha_2-\frac{\langle\alpha_2,v_1\rangle}{\|v_1\|^2}v_1
+            =\alpha_2-\frac12\alpha_1=(0,\tfrac12,-\tfrac12,0,1),
+        \]
+        取 $w_2=(0,1,-1,0,2)$，则 $\|w_2\|^2=6$；
+        \[
+            v_3=\alpha_3-\frac{\langle\alpha_3,v_1\rangle}{\|v_1\|^2}v_1
+            -\frac{\langle\alpha_3,w_2\rangle}{\|w_2\|^2}w_2
+            =(\tfrac23,-1,-\tfrac13,1,\tfrac13),
+        \]
+        取 $w_3=(2,-3,-1,3,1)$，则 $\|w_3\|^2=24$. 故 $W$ 的一组单位正交基为
+        \[
+            \frac{1}{\sqrt6}(2,1,1,0,0),\quad
+            \frac{1}{\sqrt6}(0,1,-1,0,2),\quad
+            \frac{1}{\sqrt{24}}(2,-3,-1,3,1).
+        \]
+    \end{enumerate}
+
+    \item 设 $S=\{\alpha_{i_1},\ldots,\alpha_{i_s}\}$ 是原向量组的任意 $s$ 个向量组成的子集，其余 $m-s$ 个向量记为 $T$. 每向 $S$ 中加入一个 $T$ 中的向量，秩至多增加 $1$，故
+    \[
+        r(\{\alpha_1,\ldots,\alpha_m\})\leqslant r(S)+(m-s).
+    \]
+    因此
+    \[
+        r(S)\geqslant r-(m-s)=r+s-m.
+    \]
+
+    \item 设
+    \[
+        P=(\alpha_1,\alpha_2,\alpha_3)=
+        \begin{pmatrix}
+            1&-3&2\\
+            -2&0&4\\
+            0&-2&3
+        \end{pmatrix},
+    \]
+    则 $\sigma(\alpha_i)=e_i$ 等价于 $AP=E$（$A$ 为 $\sigma$ 在自然基下的矩阵），故 $A=P^{-1}$.
+    \begin{enumerate}
+        \item 计算得
+        \[
+            A=P^{-1}=
+            \begin{pmatrix}
+                -4&-\dfrac52&6\\[4pt]
+                -3&-\dfrac32&4\\[4pt]
+                -2&-1&3
+            \end{pmatrix}.
+        \]
+
+        \item 设 $\mu=(-2,5,6)$，则
+        \[
+            \sigma(\mu)=A\mu
+            =\begin{pmatrix}
+                -4&-\dfrac52&6\\[4pt]
+                -3&-\dfrac32&4\\[4pt]
+                -2&-1&3
+            \end{pmatrix}
+            \begin{pmatrix}-2\\5\\6\end{pmatrix}
+            =\begin{pmatrix}\dfrac{63}{2}\\[4pt]\dfrac{45}{2}\\[4pt]17\end{pmatrix}.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 若 $\sigma(p)=0$，则 $p(x+1)=p(x)$，故 $p$ 为常数. 因此
+        \[
+            \ker\sigma=\spa(1),\qquad \dim\ker\sigma=1.
+        \]
+        由 $\dim\mathbf{R}[x]_n=n$ 得
+        \[
+            r(\sigma)=n-1.
+        \]
+
+        \item 设 $\sigma(p)=\lambda p$. 若 $p$ 非常数，设 $\deg p=d\geqslant 1$，则 $p(x+1)-p(x)$ 的次数为 $d-1$，而 $\lambda p$ 的次数为 $d$（当 $\lambda\neq 0$ 时），矛盾. 故只能 $\lambda=0$，此时 $p$ 为常数. 所以所有解为
+        \[
+            \lambda=0,\qquad p(x)\equiv C\quad(C\in\mathbf{R}).
+        \]
+    \end{enumerate}
+
+    \item 对矩阵 $A$ 作初等行变换得
+    \[
+        A\longrightarrow
+        \begin{pmatrix}
+            1&0&2&1\\
+            0&1&\dfrac32&2\\
+            0&0&0&0\\
+            0&0&0&0
+        \end{pmatrix},
+    \]
+    故 $r(A)=2$，且
+    \[
+        \im\sigma=\spa(\alpha_1-\alpha_2+\alpha_3+2\alpha_4,\ 2\alpha_2+2\alpha_3-2\alpha_4),
+    \]
+        即
+    \[
+        \im\sigma=\spa(\alpha_1-\alpha_2+\alpha_3+2\alpha_4,\ \alpha_2+\alpha_3-\alpha_4).
+    \]
+    由 $Ax=0$ 得
+    \[
+        \ker\sigma=\spa(-4\alpha_1-3\alpha_2+2\alpha_3,\ -\alpha_1-2\alpha_2+\alpha_4).
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 对任意 $A,B\in M_{m\times n}(\mathbf F)$ 及 $k\in\mathbf F$，
+        \[
+            (A+B)e_{ii}=Ae_{ii}+Be_{ii},\qquad
+            (kA)e_{ii}=k(Ae_{ii}),
+        \]
+        故 $V_i$ 对加法和数乘封闭；又 $Oe_{ii}=O\in V_i$，所以 $V_i$ 是子空间.         事实上
+        \[
+            V_i=\{\text{第 }i\text{ 列任意，其余各列全为零的矩阵}\}
+            =\spa(E_{1i},\ldots,E_{mi}),
+        \]
+        其维数为 $m$.
+
+        \item 任意 $A\in M_{m\times n}(\mathbf F)$ 可唯一地写成
+        \[
+            A=\sum_{i=1}^n Ae_{ii},\qquad Ae_{ii}\in V_i.
+        \]
+        若 $\sum_{i=1}^n A_i=0$ 且 $A_i\in V_i$，则比较第 $i$ 列得 $A_i=0$，故
+        \[
+            M_{m\times n}(\mathbf F)=V_1\oplus V_2\oplus\cdots\oplus V_n.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 错. 若 $\mathbf{R}^+$ 指正整数集，则取 $a=2,\ \lambda=-1$ 时 $\lambda\circ a=2^{-1}=\dfrac12\notin\mathbf{R}^+$，数乘不封闭；若 $\mathbf{R}^+$ 指正实数集，则线性空间的标量域必须是域，而 $\mathbf{Z}$ 不是域.
+
+        \item 对. $\sigma$ 由基向量的像唯一确定. 若 $\{\sigma(\alpha_1),\ldots,\sigma(\alpha_n)\}$ 是基，则 $\sigma$ 将一组基映为基，故为可逆线性变换；反之若 $\sigma$ 可逆，则它把基映为基.
+
+        \item 错. 例如 $V=\mathbf{R}$，其唯一的真子空间是 $\{0\}$，有限个 $\{0\}$ 的并仍为 $\{0\}\neq\mathbf{R}$.
+
+        \item 对. 设 $A$ 与所有 $n$ 阶矩阵可交换. 取 $E_{ij}$，由 $AE_{ij}=E_{ij}A$ 比较元素可得 $a_{kk}=a_{jj}$（对所有 $k,j$）以及 $a_{kj}=0\ (k\neq j)$，故 $A$ 为数量矩阵.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

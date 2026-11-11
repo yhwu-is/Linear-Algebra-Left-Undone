@@ -1,0 +1,286 @@
+\section{2022-2023学年线性代数I（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：90分钟
+\end{center}
+\begin{enumerate}
+    \item 记系数矩阵为 $A$，对增广矩阵消元：
+    \[
+        \begin{pmatrix}[ccccc|c]
+            1&1&1&1&1&1\\
+            3&2&1&1&-3&a\\
+            0&1&2&2&6&3\\
+            5&4&3&3&-1&2
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}[ccccc|c]
+            1&1&1&1&1&1\\
+            0&-1&-2&-2&-6&a-3\\
+            0&1&2&2&6&3\\
+            0&-1&-2&-2&-6&-3
+        \end{pmatrix}.
+    \]
+    由此 $r(A)=2$. 当 $a\neq 0$ 时增广矩阵的秩为 $3$，方程组无解；当 $a=0$ 时秩为 $2$，方程组有解（且有无穷多解）.
+
+    当 $a=0$ 时，通解为
+    \[
+        x=\begin{pmatrix}-2\\3\\0\\0\\0\end{pmatrix}
+        +s\begin{pmatrix}1\\-2\\1\\0\\0\end{pmatrix}
+        +t\begin{pmatrix}1\\-2\\0\\1\\0\end{pmatrix}
+        +u\begin{pmatrix}5\\-6\\0\\0\\1\end{pmatrix},
+        \qquad s,t,u\in\mathbf{R}.
+    \]
+
+    \item 设新向量组为 $\beta_1,\beta_2,\beta_3$，则
+    \[
+        (\beta_1,\beta_2,\beta_3)
+        =(\alpha_1,\alpha_2,\alpha_3)
+        \begin{pmatrix}
+            2&0&1\\
+            1&2&0\\
+            0&1&2
+        \end{pmatrix}.
+    \]
+    记右端矩阵为 $C$，则 $|C|=9\neq 0$，故 $C$ 可逆. 于是
+    \[
+        \beta_1,\beta_2,\beta_3\text{ 线性无关}
+        \iff \alpha_1,\alpha_2,\alpha_3\text{ 线性无关}.
+    \]
+
+    \item 以 $\alpha_1,\ldots,\alpha_4$ 为列作矩阵并消元：
+    \[
+        \begin{pmatrix}
+            1&1&-2&1\\
+            2&-1&-1&1\\
+            4&-6&2&-2\\
+            3&6&-9&7
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            1&0&-1&0\\
+            0&1&-1&0\\
+            0&0&0&1\\
+            0&0&0&0
+        \end{pmatrix}.
+    \]
+    \begin{enumerate}
+        \item 秩为 $3$，故 $\dim W=3$，且 $\{\alpha_1,\alpha_2,\alpha_4\}$ 为 $W$ 的一组基.
+
+        \item 设
+        \[
+            \beta=c_1\alpha_1+c_2\alpha_2+c_4\alpha_4.
+        \]
+        由前三个分量解得 $c_1=4,\ c_2=3,\ c_4=-3$，再由第四个分量得
+        \[
+            a=3c_1+6c_2+7c_4=12+18-21=9.
+        \]
+        故 $a=9$，且 $\beta$ 在基 $\{\alpha_1,\alpha_2,\alpha_4\}$ 下的坐标为 $(4,3,-3)^\mathrm{T}$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item
+        \[
+            \langle\alpha_1,\alpha_2\rangle=3+3-1-1=4,
+            \quad \|\alpha_1\|^2=4,
+            \quad \|\alpha_2\|^2=9+9+1+1=20,
+        \]
+        故
+        \[
+            \cos\theta=\frac{4}{2\sqrt{20}}=\frac{1}{\sqrt5},
+            \qquad \theta=\arccos\frac{1}{\sqrt5}.
+        \]
+
+        \item 对 $\alpha_1,\alpha_2,\alpha_3$ 作 Schmidt 正交化：
+        \[
+            v_1=\alpha_1=(1,1,1,1),\qquad \|v_1\|^2=4,
+        \]
+        \[
+            v_2=\alpha_2-\frac{\langle\alpha_2,v_1\rangle}{\|v_1\|^2}v_1
+            =\alpha_2-\alpha_1=(2,2,-2,-2),
+        \]
+        取 $w_2=(1,1,-1,-1)$，则 $\|w_2\|^2=4$；
+        \[
+            v_3=\alpha_3-\frac{\langle\alpha_3,v_1\rangle}{\|v_1\|^2}v_1
+            -\frac{\langle\alpha_3,w_2\rangle}{\|w_2\|^2}w_2
+            =(-1,1,-1,1),
+        \]
+        且 $\|v_3\|^2=4$. 故 $W$ 的一组单位正交基为
+        \[
+            \frac12(1,1,1,1),\quad
+            \frac12(1,1,-1,-1),\quad
+            \frac12(-1,1,-1,1).
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item $f_1,f_2,f_3$ 在标准基 $\{1,x,x^2\}$ 下的坐标矩阵为
+        \[
+            \begin{pmatrix}
+                1&1&0\\
+                -1&0&1\\
+                0&1&2
+            \end{pmatrix},\qquad |\cdot|=1\neq 0,
+        \]
+        故它们构成 $\mathbf{R}[x]_3$ 的一组基.
+
+        \item 分别将 $\sigma(f_1),\sigma(f_2),\sigma(f_3)$ 用 $f_1,f_2,f_3$ 表示，得
+        \[
+            \sigma(f_1)=-f_1+3f_2-f_3,
+        \]
+        \[
+            \sigma(f_2)=-2f_1+2f_2-f_3,
+        \]
+        \[
+            \sigma(f_3)=-2f_1+3f_2-f_3.
+        \]
+        故 $\sigma$ 在基 $\{f_1,f_2,f_3\}$ 下的矩阵为
+        \[
+            M=\begin{pmatrix}
+                -1&-2&-2\\
+                3&2&3\\
+                -1&-1&-1
+            \end{pmatrix}.
+        \]
+
+        \item 因
+        \[
+            f=1+2x+3x^2=-2f_1+3f_2,
+        \]
+        故
+        \[
+            \sigma(f)=-2\sigma(f_1)+3\sigma(f_2)
+            =-2(2+x^2)+3x
+            =-4+3x-2x^2.
+        \]
+    \end{enumerate}
+
+    \item 设 $\sigma,\tau$ 的矩阵分别为
+    \[
+        A=\begin{pmatrix}
+            1&2&3\\
+            -1&2&-1\\
+            0&0&0
+        \end{pmatrix},\qquad
+        B=\begin{pmatrix}
+            0&1&0\\
+            0&0&1\\
+            0&0&0
+        \end{pmatrix}.
+    \]
+    \begin{enumerate}
+        \item
+        \[
+            A+B=\begin{pmatrix}
+                1&3&3\\
+                -1&2&0\\
+                0&0&0
+            \end{pmatrix},\qquad r(\sigma+\tau)=2.
+        \]
+        又
+        \[
+            AB=\begin{pmatrix}
+                0&1&2\\
+                0&-1&2\\
+                0&0&0
+            \end{pmatrix},\qquad r(\sigma\tau)=2.
+        \]
+
+        \item 由 $A$ 消元得
+        \[
+            \im\sigma=\spa\{(1,-1,0),(2,2,0)\}
+            =\{(x_1,x_2,0)\mid x_1,x_2\in\mathbf{R}\},
+        \]
+        \[
+            \ker\sigma=\spa\{(4,1,-2)\}.
+        \]
+        因 $(4,1,-2)\notin\im\sigma$，故
+        \[
+            \im\sigma+\ker\sigma=\mathbf{R}^3.
+        \]
+    \end{enumerate}
+
+    \item 条件 $a_{ji}=ka_{ij}\ (i\leqslant j)$ 中令 $i=j$ 得 $(k-1)a_{ii}=0$，故 $k\neq 1$ 时对角元全为零；$i<j$ 时下方元素由上方元素确定.
+    \begin{enumerate}
+        \item $k=0$：$a_{ji}=0\ (i\leqslant j)$，即 $W$ 为严格上三角矩阵空间. 基为
+        \[
+            \{E_{ij}\mid 1\leqslant i<j\leqslant n\},
+        \]
+        维数为 $\dfrac{n(n-1)}2$.
+
+        \item $k=1$：$a_{ji}=a_{ij}$，即 $W$ 为对称矩阵空间. 基为
+        \[
+            \{E_{ii}\mid 1\leqslant i\leqslant n\}
+            \cup
+            \{E_{ij}+E_{ji}\mid 1\leqslant i<j\leqslant n\},
+        \]
+        维数为 $\dfrac{n(n+1)}2$.
+
+        \item $k=2$：对角元为零，且 $a_{ji}=2a_{ij}\ (i<j)$. 基为
+        \[
+            \{E_{ij}+2E_{ji}\mid 1\leqslant i<j\leqslant n\},
+        \]
+        维数为 $\dfrac{n(n-1)}2$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 定义线性映射
+        \[
+            \varphi\in\mathcal{L}(\mathbf{F}^n,\mathbf{F}), \quad\varphi\left(\sum_{i=1}^nk_i\alpha_i\right)
+            =\sum_{i=1}^n\frac{k_i}{i}.
+        \]
+        则 $V_2=\ker\varphi$，故 $V_2$ 是 $V$ 的子空间.
+
+        \item 设
+        \[
+            v=\alpha_1+2\alpha_2+\cdots+n\alpha_n,
+        \]
+        则 $V_1=\spa(v)$，且
+        \[
+            \varphi(v)=\sum_{i=1}^n\frac{i}{i}=n\neq 0.
+        \]
+        故 $v\notin V_2$，从而 $V_1\cap V_2=\{0\}$. 又 $\dim V_1=1$，$\dim V_2=n-1$（因为 $\dim\im\varphi=1$），于是
+        \[
+            \dim(V_1+V_2)=1+(n-1)=n,
+        \]
+        故 $V_1+V_2=V$. 综上 $V=V_1\oplus V_2$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对. 若存在这样的 $f$，设 $I=\ker f$，对任意 $A \in I$，$B \in M_n(\mathbf{R})$，我们有 $f(AB)=f(A)f(B)=0=f(BA)$，故 $AB \in I, BA \in I$.
+
+        若存在某个非零矩阵 $A \in I$，其第 $i$ 行第 $j$ 列元素 $a_{ij}\neq 0$，则 $E_{ii}AE_{jj}=a_{ij}E_{ij}\in I$，从而 $E_{ij} \in I$，其中 $E_{ij}$ 表示第 $i$ 行第 $j$ 列元素为 $1$ 其余元素为 $0$ 的矩阵. 从而对任意的 $1 \leqslant k,l \leqslant n$，$E_{ki}E_{ij}E_{jl}=E_{kl}\in I$，这表明 $I$ 中包含 $M_n(\mathbf{R})$ 的所有的自然基，自然 $I=M_n(\mathbf{R})$，这与 $f$ 为非零线性映射矛盾，故 $I=\ker f = 0$，即 $f$ 为单射，这与 $\dim M_n(\mathbf{R})=n^2>1=\dim\mathbf{R}$ 矛盾.
+
+        \item 对. 若 $W_1\subseteq W_2$，则 $W_1\cup W_2=W_2=W_1+W_2$；反之亦然. 反之若两者互不包含，取 $x\in W_1\setminus W_2$，$y\in W_2\setminus W_1$，则 $x+y\in W_1+W_2=W_1\cup W_2$，但 $x+y\notin W_1$（否则 $y\in W_1$），$x+y\notin W_2$（否则 $x\in W_2$），矛盾.
+
+        \item 对. 令
+        \[
+            p=\frac{2\langle\alpha,\beta\rangle}{\langle\alpha,\alpha\rangle},\qquad
+            q=\frac{2\langle\alpha,\beta\rangle}{\langle\beta,\beta\rangle}.
+        \]
+        则 $p,q$ 为不大于零的整数，且
+        \[
+            pq=4\cos^2\theta.
+        \]
+        因 $\alpha,\beta$ 线性无关，$\cos\theta\neq\pm1$. 当 $p=q=0$ 时 $\cos\theta=0$，即 $\theta=\pi/2$；当 $p,q<0$ 时 $pq\in\{1,2,3\}$，故
+        \[
+            \cos\theta=-\frac{\sqrt{pq}}2\in\left\{-\frac12,-\frac{\sqrt2}{2},-\frac{\sqrt3}{2}\right\},
+        \]
+        对应 $\theta=2\pi/3,3\pi/4,5\pi/6$. 故命题为真.
+
+        \item 错. 当 $n>1$ 时该集合一般不是子空间. 例如在 $\mathbf{C}^2$ 中取
+        \[
+            x=(1,\i),\quad y=(1,-\i),
+        \]
+        则 $x_1^2+x_2^2=0$，$y_1^2+y_2^2=0$，但
+        \[
+            x+y=(2,0),\qquad 2^2+0^2=4\neq0,
+        \]
+        故 $W$ 对加法不封闭.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage
