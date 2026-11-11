@@ -1,0 +1,129 @@
+\section{2022-2023学年线性代数I（H）期中答案}
+
+\begin{center}
+    任课老师：谈之奕\hspace{4em} 考试时长：90分钟
+\end{center}
+\begin{enumerate}
+    \item 对增广矩阵作初等行变换：
+    \[
+        \begin{pmatrix}
+            2&-4&5&3&1\\
+            3&-6&4&2&2\\
+            4&-8&3&1&\lambda
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            2&-4&5&3&1\\
+            3&-6&4&2&2\\
+            0&0&0&0&\lambda-3
+        \end{pmatrix}.
+    \]
+    故当且仅当 $\lambda=3$ 时方程组有解. 当 $\lambda=3$ 时，通解为
+    \[
+        x=\begin{pmatrix}\dfrac45\\[4pt]0\\[4pt]0\\[4pt]-\dfrac15\end{pmatrix}
+        +s\begin{pmatrix}2\\1\\0\\0\end{pmatrix}
+        +t\begin{pmatrix}-2\\0\\5\\-7\end{pmatrix},
+        \qquad s,t\in\mathbf{R}.
+    \]
+
+    \item 以 $\alpha_1,\ldots,\alpha_5$ 为列作矩阵并消元，得
+    \[
+        \begin{pmatrix}
+            1&3&-2&5&4\\
+            1&4&1&3&5\\
+            1&4&2&4&3\\
+            2&7&-3&6&13
+        \end{pmatrix}
+        \longrightarrow
+        \begin{pmatrix}
+            1&0&0&22&-21\\
+            0&1&0&-5&7\\
+            0&0&1&1&-2\\
+            0&0&0&0&0
+        \end{pmatrix}.
+    \]
+    故 $r=3$，$\{\alpha_1,\alpha_2,\alpha_3\}$ 是一组极大线性无关组，且
+    \[
+        \alpha_4=22\alpha_1-5\alpha_2+\alpha_3,\qquad
+        \alpha_5=-21\alpha_1+7\alpha_2-2\alpha_3.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item $\sigma$ 的矩阵为
+        \[
+            A=\begin{pmatrix}
+                1&-1\\
+                2&-2
+            \end{pmatrix}.
+        \]
+        由 $Ax=0$ 得 $x_1=x_2$，故
+        \[
+            \ker\sigma=\spa\{(1,1)\}.
+        \]
+        又
+        \[
+            (I-\sigma)(x_1,x_2)=(x_2,-2x_1+3x_2),
+        \]
+        其矩阵 $\begin{pmatrix}0&1\\-2&3\end{pmatrix}$ 的行列式为 $2\neq 0$，故
+        \[
+            \im(I-\sigma)=\mathbf{R}^2.
+        \]
+
+        \item 若 $v\in\ker\tau$，则 $\tau v=0$，从而
+        \[
+            (I-\tau)v=v,
+        \]
+        故 $v\in\im(I-\tau)$，即 $\ker\tau\subseteq\im(I-\tau)$.
+
+        $\im\tau\subseteq\ker(I-\tau)$ 不一定成立. 例如取 $\tau=2I$（在 $\mathbf{R}$ 上），则
+        \[
+            \im\tau=\mathbf{R},\qquad
+            \ker(I-\tau)=\ker(-I)=\{0\},
+        \]
+        并不满足包含关系.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 设 $f(x)=a+bx+cx^2$，则 $f(1)=a+b+c$. 条件 $f(1)=0$ 等价于 $a+b+c=0$，故 $W$ 是齐次线性方程组的解空间，因而是子空间. 且
+        \[
+            \dim W=3-1=2.
+        \]
+        取 $b=1,c=0$ 与 $b=0,c=1$，得基
+        \[
+            \{x-1,\ x^2-1\}.
+        \]
+
+        \item $T(f)=f(1)$ 是线性映射：对任意 $f,g$ 及 $k\in\mathbf{R}$，
+        \[
+            T(f+g)=(f+g)(1)=f(1)+g(1)=T(f)+T(g),
+        \]
+        \[
+            T(kf)=(kf)(1)=kf(1)=kT(f).
+        \]
+        又 $\ker T=W$，故 $\dim\ker T=2$；而 $T(1)=1$，故 $\im T=\mathbf{R}$，$\dim\im T=1$. 于是
+        \[
+            \dim\ker T+\dim\im T=2+1=3.
+        \]
+
+        \item 因 $f,g,h\in W$，而 $\dim W=2$，故 $W$ 中任意三个向量线性相关，特别地 $f,g,h$ 线性相关.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 错. 取 $\alpha_1=\alpha_2=0$，$\beta=e_1$，则 $\beta$ 不能由 $\alpha_1,\alpha_2$ 线性表示，但 $\{0,0,e_1\}$ 线性相关.
+
+        \item 错. $\mathbf{R}$ 对实数加法与乘法不构成 $\mathbf{C}$ 上的线性空间，因为 $\i\cdot 1\notin\mathbf{R}$.
+
+        \item 错. 当 $0<k<n$ 时，$\mathbf{R}_k^n$ 对加法不封闭. 例如 $k=1$，$(1,0,\ldots,0)+(0,1,0,\ldots,0)$ 有两个非零分量.
+
+        \item 错. 取 $S=\{0,e_1\}$，$S$ 线性相关，但 $e_1$ 不能由 $0$ 线性表示.
+
+        \item 错. 正确公式为 $\dim V=\dim\im T+\dim\ker T$，而 $\dim\im T\leqslant\dim W$. 例如零映射 $\mathbf{R}\to\mathbf{R}$ 有 $\dim V=1$，$\dim W+\dim K=2$.
+
+        \item 对. 取 $W$ 的一组基并扩充为 $V$ 的基，定义 $T$ 在 $W$ 上为零、在扩充部分为恒等映射，则 $T$ 为线性映射且 $\ker T=W$.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

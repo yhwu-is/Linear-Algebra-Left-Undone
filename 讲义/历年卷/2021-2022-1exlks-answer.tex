@@ -1,0 +1,119 @@
+\section{2021-2022学年线性代数I（H）小测答案}
+
+\begin{center}
+    任课老师：刘康生\hspace{4em} 考试时长：90分钟
+\end{center}
+\begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item 计算得
+        \[
+            |A|=(a-1)^2(a+2).
+        \]
+        方程组有解但不唯一，故 $|A|=0$，即 $a=1$ 或 $a=-2$.
+
+        当 $a=1$ 时，增广矩阵的秩大于系数矩阵的秩，方程组无解；当 $a=-2$ 时，秩相等且小于未知量个数，方程组有无穷多解. 故
+        \[
+            a=-2.
+        \]
+
+        \item 当 $a=-2$ 时，对增广矩阵消元得通解
+        \[
+            x=\begin{pmatrix}\dfrac13\\[4pt]-\dfrac23\\[4pt]0\end{pmatrix}
+            +k\begin{pmatrix}1\\-1\\1\end{pmatrix},\qquad k\in\mathbf{R}.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对任意 $A,B$ 及 $k\in\mathbf{R}$，
+        \[
+            \sigma(A+B)=P(A+B)Q=PAQ+PBQ=\sigma(A)+\sigma(B),
+        \]
+        \[
+            \sigma(kA)=P(kA)Q=kPAQ=k\sigma(A),
+        \]
+        故 $\sigma$ 为线性映射.
+
+        \item 记 $A$ 的列向量为 $\alpha_1,\alpha_2$，则 $AQ=(\alpha_2,0)$，故
+        \[
+            \sigma(A)=PAQ=(P\alpha_2,0).
+        \]
+        因 $P$ 的像空间为 $\spa\{(1,0,0)^\mathrm{T},(1,1,0)^\mathrm{T}\}$，故
+        \[
+            \im\sigma
+            =\left\{\begin{pmatrix}u&0\\v&0\\0&0\end{pmatrix}\,\middle|\,u,v\in\mathbf{R}\right\},
+        \]
+        其一组基为
+        \[
+            \begin{pmatrix}1&0\\0&0\\0&0\end{pmatrix},\quad
+            \begin{pmatrix}1&0\\1&0\\0&0\end{pmatrix},
+        \]
+        维数为 $2$.
+
+        又 $PAQ=0\iff P\alpha_2=0$，解得 $\alpha_2 = k(0,0,1)^\mathrm{T}, k \in \mathbf{R}$，于是
+        \[
+            \ker\sigma
+            =\left\{\begin{pmatrix}a&0\\b&0\\c&d\end{pmatrix}\,\middle|\,a,b,c,d\in\mathbf{R}\right\},
+        \]
+        维数为 $4$.
+
+        \item $\dim\mathbf{R}^{3\times 2}=6$，且 $\dim\im\sigma+\dim\ker\sigma=2+4=6$，维数公式成立.
+    \end{enumerate}
+
+    \item 设 $B$ 为 $3\times 1$ 矩阵，$C$ 为 $1\times 3$ 矩阵. 由秩不等式
+    \[
+        r(BC)\leqslant\min\{r(B),r(C)\}\leqslant 1
+    \]
+    得 $r(BC)\leqslant 1$.
+
+    反之，若 $r(A)=1$，则 $A$ 的列向量都落在某个非零列向量 $\beta$ 张成的一维子空间中，即存在 $c_1,c_2,c_3\in\mathbf F$ 使
+    \[
+        A=(\beta c_1,\beta c_2,\beta c_3)=\beta(c_1,c_2,c_3).
+    \]
+    令 $B=\beta$，$C=(c_1,c_2,c_3)$ 即可.
+
+    \item $T$ 在基 $B$ 下的矩阵为
+    \[
+        A=\begin{pmatrix}
+            0&0&\cdots&0&a_1\\
+            1&0&\cdots&0&a_2\\
+            0&1&\cdots&0&a_3\\
+            \vdots&&\ddots&&\vdots\\
+            0&0&\cdots&1&a_n
+        \end{pmatrix}.
+    \]
+    按第一行展开得 $|A|=(-1)^{n+1}a_1$. 故 $T$ 为同构映射当且仅当 $T$ 可逆，当且仅当 $|A|\neq 0$，即
+    \[
+        a_1\neq 0.
+    \]
+
+    \item 当 $n\geqslant 2$ 时，
+    \[
+        r(A^*)=
+        \begin{cases}
+            n,&r(A)=n,\\
+            1,&r(A)=n-1,\\
+            0,&r(A)\leqslant n-2.
+        \end{cases}
+    \]
+    证明如下：若 $r(A)=n$，则 $A$ 可逆，$A^*=|A|A^{-1}$ 也可逆，故 $r(A^*)=n$；若 $r(A)=n-1$，则 $A$ 至少有一个 $n-1$ 阶子式非零，故 $A^*\neq O$，又 $AA^*=|A|E=0$，故 $\im A^*\subseteq\ker A$，而 $\dim\ker A=1$，所以 $r(A^*)=1$；若 $r(A)\leqslant n-2$，则所有 $n-1$ 阶子式为零，故 $A^*=O$，$r(A^*)=0$.
+
+    \item
+    \begin{enumerate}
+        \item 对. 因 $v\neq 0$，可将 $v$ 扩充为 $V$ 的一组基，在这组基上规定 $T(v)=w$，其余基向量的像任意，即可得到满足条件的线性映射.
+
+        \item 对. 将齐次线性方程组看成 $m$ 个方程、$n$ 个未知量，因 $m<n$，系数矩阵的秩不超过 $m$，故自由未知量个数至少为 $n-m>0$，方程组有非零解.
+
+        \item 对. 若 $A^3=0$，则
+        \[
+            E=(E+A)(E-A+A^2),\qquad
+            E=(E-A)(E+A+A^2),
+        \]
+        故 $E+A$ 与 $E-A$ 都可逆.
+
+        \item 错. 取 $A=E$，则 $A^2=A$，但 $E-A=0$ 不可逆（而 $E+A=2E$ 可逆）. 故命题不成立.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage

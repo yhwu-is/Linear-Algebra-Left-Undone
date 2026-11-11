@@ -1,0 +1,328 @@
+\section{2020-2021学年线性代数I（H）期中答案}
+
+\begin{center}
+    任课老师：吴志祥\hspace{4em} 考试时长：120分钟
+\end{center}
+\begin{enumerate}
+    \item 记两个方程组的系数矩阵分别为 $A_1,A_2$. 对 $A_1$ 消元可得
+    \[
+        r(A_1)=
+        \begin{cases}
+            3,&a\neq 3,\\
+            2,&a=3,
+        \end{cases}
+        \qquad
+        \dim V_1=
+        \begin{cases}
+            1,&a\neq 3,\\
+            2,&a=3.
+        \end{cases}
+    \]
+    对 $A_2$ 计算其 $3$ 阶子式可知
+    \[
+        r(A_2)=
+        \begin{cases}
+            3,&b\neq \dfrac{11}{2},\\[0.5pt]
+            2,&b=\dfrac{11}{2},
+        \end{cases}
+        \qquad
+        \dim V_2=
+        \begin{cases}
+            1,&b\neq \dfrac{11}{2},\\[0.5pt]
+            2,&b=\dfrac{11}{2}.
+        \end{cases}
+    \]
+    若 $\mathbf{R}^4=V_1\oplus V_2$，则必须有 $\dim V_1+\dim V_2=4$，故只能 $a=3,\ b=\dfrac{11}{2}$. 此时
+    \[
+        V_1=\spa\{(1,7,6,0),\,(-1,-3,0,2)\},
+    \]
+    \[
+        V_2=\spa\{(1,7,6,0),\,(-25,-49,0,36)\},
+    \]
+    从而 $(1,7,6,0)\in V_1\cap V_2$，交集非零，故 $V_1+V_2$ 不是直和.
+
+    因此按题面所给数据，不存在满足条件的 $a,b$.
+
+    \item
+    \begin{enumerate}
+        \item 设 $A,B\in V$，$k\in\mathbf{F}$. 则
+        \[
+            (A+B)_{ij}=a_{ij}+b_{ij}=a_{ji}+b_{ji}=(A+B)_{ji},
+        \]
+        \[
+            (kA)_{ij}=ka_{ij}=ka_{ji}=(kA)_{ji},
+        \]
+        故 $A+B,\ kA\in V$，即 $V$ 为 $\mathbf{F}^{n\times n}$ 的子空间.
+
+        \item 取
+        \[
+            E_{ii}\quad(1\leqslant i\leqslant n),\qquad
+            E_{ij}+E_{ji}\quad(1\leqslant i<j\leqslant n),
+        \]
+        其中 $E_{ij}$ 表示 $(i,j)$ 位置为 $1$、其余位置为 $0$ 的矩阵. 它们线性无关且张成 $V$，故构成 $V$ 的一组基. 因此
+        \[
+            \dim V=n+\frac{n(n-1)}{2}=\frac{n(n+1)}{2}.
+        \]
+    \end{enumerate}
+
+    \item 在标准基 $\{1,x,x^2,x^3\}$ 下，各向量的坐标为
+    \[
+        f_1=(-1,1,0,0),\ f_2=(1,0,-1,0),\ f_3=(1,0,0,-1),
+    \]
+    \[
+        g_1=(0,1,-1,0),\ g_2=(0,1,0,1).
+    \]
+    \begin{enumerate}
+        \item 由 $g_1=f_1+f_2$ 知 $g_1\in V_1$，又 $g_2\notin V_1$，故
+        \[
+            V_1+V_2=\spa(f_1,f_2,f_3,g_2)=\mathbf{R}[x]_4,
+        \]
+        其一组基为 $\{f_1,f_2,f_3,g_2\}$，维数为 $4$.
+
+        \item 由 $V_1\cap V_2=\spa(g_1)$ 得
+        \[
+            V_1\cap V_2=\spa(x-x^2),
+        \]
+        维数为 $1$，基为 $\{x-x^2\}$.
+
+        \item 取 $W=\spa(1,x^2)$. 若 $a+bx^2\in V_2$，设
+        \[
+            a+bx^2=c(x-x^2)+d(x+x^3),
+        \]
+        比较系数得 $a=0,\ d=0,\ c=0,\ b=0$，故 $V_2\cap W=\{0\}$. 又 $\dim V_2+\dim W=2+2=4$，所以
+        \[
+            \mathbf{R}[x]_4=V_2\oplus W,
+        \]
+        即 $W=\spa(1,x^2)$ 为 $V_2$ 在 $\mathbf{R}[x]_4$ 中的一个补空间.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对任意 $\alpha,\beta\in V$ 及 $k\in\mathbf{R}$，利用内积的线性性，
+        \[
+            \sigma(\alpha+\beta)
+            =\alpha+\beta-2\langle\alpha+\beta,\varepsilon_1\rangle\varepsilon_1
+            -2\langle\alpha+\beta,\varepsilon_2\rangle\varepsilon_2
+            =\sigma(\alpha)+\sigma(\beta),
+        \]
+        \[
+            \sigma(k\alpha)
+            =k\alpha-2k\langle\alpha,\varepsilon_1\rangle\varepsilon_1
+            -2k\langle\alpha,\varepsilon_2\rangle\varepsilon_2
+            =k\sigma(\alpha),
+        \]
+        故 $\sigma$ 是线性变换.
+
+        \item 将 $\alpha,\beta$ 分解为
+        \[
+            \alpha=a_1\varepsilon_1+a_2\varepsilon_2+u,\qquad
+            \beta=b_1\varepsilon_1+b_2\varepsilon_2+v,
+        \]
+        其中 $u,v\perp\varepsilon_1,\varepsilon_2$. 则
+        \[
+            \sigma(\alpha)=-a_1\varepsilon_1-a_2\varepsilon_2+u,\qquad
+            \sigma(\beta)=-b_1\varepsilon_1-b_2\varepsilon_2+v.
+        \]
+        由 $\varepsilon_1,\varepsilon_2,u$ 与 $\varepsilon_1,\varepsilon_2,v$ 的相应正交性，
+        \[
+            \langle\sigma(\alpha),\sigma(\beta)\rangle
+            =a_1b_1+a_2b_2+\langle u,v\rangle
+            =\langle\alpha,\beta\rangle.
+        \]
+    \end{enumerate}
+
+    \item 因 $r(A)=1$，存在非零列向量 $\alpha,\beta$ 使
+    \[
+        A=\alpha\beta^\mathrm{T}.
+    \]
+    又
+    \[
+        \tr A=\tr(\alpha\beta^\mathrm{T})=\beta^\mathrm{T}\alpha,
+    \]
+    故
+    \[
+        A^2=\alpha\beta^\mathrm{T}\alpha\beta^\mathrm{T}
+        =(\beta^\mathrm{T}\alpha)\alpha\beta^\mathrm{T}
+        =(\tr A)A.
+    \]
+    由归纳法得
+    \[
+        A^k=(\tr A)^{k-1}A\qquad(k\geqslant 1).
+    \]
+
+    \item 先化简题中两个逆矩阵. 对任意可逆矩阵 $A,B$，
+    \[
+        (A^\mathrm{T}B^2)^{-1}A^\mathrm{T}=B^{-2}(A^\mathrm{T})^{-1}A^\mathrm{T}=B^{-2},
+    \]
+    故
+    \[
+        \bigl(B(A^\mathrm{T}B^2)^{-1}A^\mathrm{T}\bigr)^{-1}
+        =(BB^{-2})^{-1}=B.
+    \]
+    同理，
+    \[
+        (B^\mathrm{T}A)^{-1}B^\mathrm{T}=A^{-1}(B^\mathrm{T})^{-1}B^\mathrm{T}=A^{-1},
+    \]
+    故
+    \[
+        \bigl(A^2(B^\mathrm{T}A)^{-1}B^\mathrm{T}\bigr)^{-1}
+        =(A^2A^{-1})^{-1}=A^{-1}.
+    \]
+    又由 $B$ 的列向量是 $A$ 的列向量的线性组合可知
+    \[
+        B=A\begin{pmatrix}
+            1&0&0\\
+            -2&1&0\\
+            0&-3&-1
+        \end{pmatrix},
+    \]
+    右端矩阵的行列式为 $-1\neq 0$，故 $B$ 可逆.
+
+    原方程化为
+    \[
+        X+B=XA^{-1}(A+B)=X+XA^{-1}B,
+    \]
+    即
+    \[
+        B=XA^{-1}B.
+    \]
+    因 $B$ 可逆，得 $XA^{-1}=E$，故
+    \[
+        X=A=\begin{pmatrix}
+            -\dfrac13&\dfrac13&\dfrac13\\[4pt]
+            \dfrac23&\dfrac13&-\dfrac23\\[4pt]
+            -2&-1&1
+        \end{pmatrix}.
+    \]
+
+    \item
+    \begin{enumerate}
+        \item 因 $\dim\mathcal{L}(V,V)=n^2$，故 $n^2+1$ 个线性变换
+        \[
+            I,\ \sigma,\ \sigma^2,\ldots,\sigma^{n^2}
+        \]
+        必线性相关，即存在不全为零的数 $c_0,\ldots,c_{n^2}$ 使
+        \[
+            c_0I+c_1\sigma+\cdots+c_{n^2}\sigma^{n^2}=0.
+        \]
+        令 $p(x)=c_0+c_1x+\cdots+c_{n^2}x^{n^2}$，则 $p$ 非零且次数不超过 $n^2$，并满足 $p(\sigma)=0$.
+
+        \item 若 $\sigma$ 可逆，由上一问，存在非零多项式 $p(x)=c_0+c_1x+\cdots+c_{n^2}x^{n^2} \in \mathbf{F}[x]$ 使得 $p(\sigma)=0$. 设 $i$ 为最小的正整数使得 $c_i$ 不为零，即
+        \[
+            c_i \sigma^i + c_{i+1}\sigma^{i+1} + \cdots + c_{n^2}\sigma^{n^2}=\sigma^i(c_i + c_{i+1}\sigma + \cdots + c_{n^2}\sigma^{n^2-i})=0
+        \]
+        由于 $\sigma$ 可逆，故 $c_i + c_{i+1}\sigma + \cdots + c_{n^2}\sigma^{n^2-i} = 0$，则多项式 $q(x)=c_i + c_{i+1}x + \cdots + c_{n^2}x^{n^2-i}$ 即为所需多项式.
+
+        反之，设 $p(x)=c_0+c_1x+\cdots+c_mx^m$ 满足 $p(\sigma)=0$ 且 $c_0\neq 0$. 则
+        \[
+            c_0I=-\sigma(c_1I+c_2\sigma+\cdots+c_m\sigma^{m-1}),
+        \]
+        从而
+        \[
+            \sigma\left(-\frac{1}{c_0}(c_1I+c_2\sigma+\cdots+c_m\sigma^{m-1})\right)=I.
+        \]
+        故 $\sigma$ 可逆.
+    \end{enumerate}
+
+    \item 设
+        \[
+            P=\begin{pmatrix}
+                2&1&-1\\
+                1&1&1\\
+                3&2&1
+            \end{pmatrix},
+        \]
+        则 $P$ 的列向量为 $\beta_1,\beta_2,\beta_3$ 在基 $\{\alpha_1,\alpha_2,\alpha_3\}$ 下的坐标，且 $|P|=1$.
+    \begin{enumerate}
+        \item $\sigma$ 在基 $\{\beta_1,\beta_2,\beta_3\}$ 下的矩阵为
+        \[
+            B=P^{-1}AP=
+            \begin{pmatrix}
+                2&0&-1\\
+                0&2&1\\
+                3&1&-1
+            \end{pmatrix},
+        \]
+        其中
+        \[
+            A=\begin{pmatrix}
+                1&2&-1\\
+                2&1&0\\
+                3&0&1
+            \end{pmatrix}.
+        \]
+
+        \item $r(A)=2$，且
+        \[
+            \im\sigma=\spa(\alpha_1+2\alpha_2+3\alpha_3,\ 2\alpha_1+\alpha_2),
+        \]
+        由 $Ax=0$ 得
+        \[
+            \ker\sigma=\spa(-\alpha_1+2\alpha_2+3\alpha_3).
+        \]
+
+        \item 取
+        \[
+            \gamma_1=\sigma(\alpha_1)=\alpha_1+2\alpha_2+3\alpha_3,\quad
+            \gamma_2=\sigma(\alpha_2)=2\alpha_1+\alpha_2,\quad
+            \gamma_3=\alpha_3.
+        \]
+        则 $\{\gamma_1,\gamma_2,\gamma_3\}$ 为 $V$ 的一组基，且 $\sigma$ 在该基下的矩阵为
+        \[
+            Q^{-1}AQ=
+            \begin{pmatrix}
+                2&2&\dfrac13\\[4pt]
+                0&1&-\dfrac23\\[4pt]
+                0&0&0
+            \end{pmatrix},
+            \quad
+            Q=\begin{pmatrix}
+                1&2&0\\
+                2&1&0\\
+                3&0&1
+            \end{pmatrix}.
+        \]
+
+        \item 取
+        \[
+            \delta_1=-\alpha_1+2\alpha_2+3\alpha_3,\quad
+            \delta_2=\alpha_1,\quad
+            \delta_3=\alpha_2.
+        \]
+        则 $\{\delta_1,\delta_2,\delta_3\}$ 为 $V$ 的一组基，且 $\sigma$ 在该基下的矩阵为
+        \[
+            \begin{pmatrix}
+                0&1&0\\
+                0&2&2\\
+                0&0&1
+            \end{pmatrix}.
+        \]
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item 对. 设
+        \[
+            \beta_1=\alpha_1+\alpha_2,\quad
+            \beta_2=\alpha_2+\alpha_3,\quad
+            \beta_3=\alpha_3+\alpha_1.
+        \]
+        其系数矩阵
+        \[
+            C=\begin{pmatrix}
+                1&0&1\\
+                1&1&0\\
+                0&1&1
+            \end{pmatrix},\qquad |C|=2\neq 0.
+        \]
+        故 $\beta_1,\beta_2,\beta_3$ 线性相关当且仅当 $\alpha_1,\alpha_2,\alpha_3$ 线性相关，命题为真.
+
+        \item 错. 例如 $\mathbf{R}^2$ 中过原点的每条直线都是其子空间，而这样的直线有无限多条.
+
+        \item 错. 维数公式 $r(\sigma)+\dim\ker\sigma=n$ 恒成立，但 $\im\sigma+\ker\sigma$ 未必是直和. 例如 $\sigma(x,y)=(x,0)$，则 $\im\sigma=\ker\sigma=\spa(e_1)$，其和不等于 $\mathbf{R}^2$.
+
+        \item 错. 取 $A=\diag(0,1)$，则对任意正整数 $k$ 都有 $A^k=\diag(0,1)\neq O$，但 $A$ 不可逆.
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage
